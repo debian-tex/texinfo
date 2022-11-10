@@ -1,23 +1,13 @@
-@node Texinfo::Convert::Converter
+@node Texinfo@asis{::}Convert@asis{::}Converter
 @chapter Texinfo::Convert::Converter
 
-@menu
-* Texinfo@asis{::}Convert@asis{::}Converter NAME::
-* Texinfo@asis{::}Convert@asis{::}Converter SYNOPSIS::
-* Texinfo@asis{::}Convert@asis{::}Converter DESCRIPTION::
-* Texinfo@asis{::}Convert@asis{::}Converter METHODS::
-* Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO::
-* Texinfo@asis{::}Convert@asis{::}Converter AUTHOR::
-* Texinfo@asis{::}Convert@asis{::}Converter POD ERRORS::
-@end menu
-
-@node Texinfo::Convert::Converter NAME
-@section NAME
+@node Texinfo@asis{::}Convert@asis{::}Converter NAME
+@section Texinfo::Convert::Converter NAME
 
 Texinfo::Convert::Converter - Parent class for Texinfo tree converters
 
-@node Texinfo::Convert::Converter SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Convert@asis{::}Converter SYNOPSIS
+@section Texinfo::Convert::Converter SYNOPSIS
 
 @verbatim
   package Texinfo::Convert::MyConverter;
@@ -31,9 +21,6 @@ Texinfo::Convert::Converter - Parent class for Texinfo tree converters
   sub converter_initialize($) {
     my $self = shift;
     $self->{'document_context'} = [{}];
-  }
-  sub converter_global_commands($) {
-    return ('documentlanguage', documentencoding', 'paragraphindent');
   }
 
   sub convert($$) {
@@ -53,166 +40,398 @@ Texinfo::Convert::Converter - Parent class for Texinfo tree converters
   $converter->output($texinfo_tree);
 @end verbatim
 
-@node Texinfo::Convert::Converter DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Convert@asis{::}Converter NOTES
+@section Texinfo::Convert::Converter NOTES
 
-Texinfo::Convert::Converter is a super class that can be used to
-simplify converters initialization.  The class also provide some 
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Convert@asis{::}Converter DESCRIPTION
+@section Texinfo::Convert::Converter DESCRIPTION
+
+@code{Texinfo::Convert::Converter} is a super class that can be used to
+simplify converters initialization.  The class also provide some
 useful methods.
 
-In turn, the converter should define some methods.  Three are 
-optional, @code{converter_defaults}, @code{converter_initialize} and 
-@code{converter_global_commands} and used for initialization, to 
-give @code{Texinfo::Convert::Converter} some informations.
+In turn, the converter should define some methods.  Two are
+optional, @code{converter_defaults}, @code{converter_initialize} and
+used for initialization, to give information to @code{Texinfo::Convert::Converter}.
 
-The @code{convert_tree} method is more or less mandatory and should 
-convert portions of Texinfo tree.  The @code{output} and @code{convert} 
-are not required, but customarily used by converters as entry 
-points for conversion to a file with headers and so on, or 
-conversion of a whole Texinfo tree.
+@cindex @code{convert_tree}
+@cindex @code{output}
+@cindex @code{convert}
+The @code{convert_tree} method is mandatory and should convert portions of Texinfo
+tree.  The @code{output} method is used by converters as entry point for conversion
+to a file with headers and so on.  Although it is is not called from other
+modules, it should in general be implemented by converters. @code{output} is called
+from @code{texi2any}.  @code{convert} is not required, but customarily used by
+converters as entry point for a conversion of a whole Texinfo tree without
+the headers done when outputting to a file.
 
 Existing backends may be used as examples that implement those
-methods.  @code{Texinfo::Convert::Texinfo} together with 
-@code{Texinfo::Convert::PlainTexinfo}, as well as 
-@code{Texinfo::Convert::TextContent} are trivial examples.  
-@code{Texinfo::Convert::Text} is less trivial, although still simplistic, 
+methods.  @code{Texinfo::Convert::Texinfo} together with
+@code{Texinfo::Convert::PlainTexinfo}, as well as
+@code{Texinfo::Convert::TextContent} are trivial examples.
+@code{Texinfo::Convert::Text} is less trivial, although still simple,
 while @code{Texinfo::Convert::DocBook} is a real converter
-that is also not too complex.  
+that is also not too complex.
 
-@ref{Texinfo::Common NAME}, @ref{Texinfo::Convert::Unicode NAME} 
-and @ref{Texinfo::Report NAME} document modules or additional function 
-that may be useful for backends, while the parsed Texinfo tree is 
-described in @ref{Texinfo::Parser NAME}.
+The documentation of @ref{Texinfo@asis{::}Common NAME,, Texinfo::Common}, @ref{Texinfo@asis{::}Convert@asis{::}Unicode NAME,, Texinfo::Convert::Unicode}
+and @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} describes modules or additional function
+that may be useful for backends, while the parsed Texinfo tree is
+described in @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}.
 
-@node Texinfo::Convert::Converter METHODS
-@section METHODS
+@node Texinfo@asis{::}Convert@asis{::}Converter METHODS
+@section Texinfo::Convert::Converter METHODS
 
-@menu
-* Texinfo@asis{::}Convert@asis{::}Converter Initialization::
-* Texinfo@asis{::}Convert@asis{::}Converter Helper methods::
-@end menu
-
-@node Texinfo::Convert::Converter Initialization
+@node Texinfo@asis{::}Convert@asis{::}Converter Initialization
 @subsection Initialization
 
+@cindex @code{converter}
+@cindex @code{Texinfo::Convert::Converter} initialization
+
+
 A module subclassing @code{Texinfo::Convert::Converter} is created by calling
-the @code{converter} method that should be inherited from 
+the @code{converter} method that should be inherited from
 @code{Texinfo::Convert::Converter}.
 
 @table @asis
 @item $converter = MyConverter->converter($options)
-@anchor{Texinfo::Convert::Converter $converter = MyConverter->converter($options)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter = MyConverter->converter($options)}
 
 The @emph{$options} hash reference holds options for the converter.  In
-this option hash reference a @ref{Texinfo::Parser NAME, parser object, parser object} 
-may be associated with the @emph{parser} key.  The other options 
-should be configuration options described in the Texinfo manual.
-Those options, when appropriate, override the document content.
+this option hash reference a @ref{Texinfo@asis{::}Parser NAME,, parser object}
+may be associated with the @emph{parser} key.  The other options
+are Texinfo customization options and a few other options that can
+be passed to the converter. Most of the customization options
+are described in the Texinfo manual.
+Those customization options, when appropriate, override the document content.
+@strong{TODO what about the other options (all are used in converters;
+'structuring' is available in HTML $converter->get_info()?}
+The parser should not be available directly anymore after getting the
+associated information. @strong{TODO document this associated information
+('parser_info', 'indices_information', 'floats'..., most available
+in HTML converter, either through $converter->get_info() or label_command())}
 
-The @code{converter} function returns a converter object (a blessed hash 
+The @code{converter} function returns a converter object (a blessed hash
 reference) after checking the options and performing some initializations,
 especially when a parser is given among the options.  The converter is
-also initialized as a @ref{Texinfo::Report NAME}.
+also initialized as a @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report}.
 
 @end table
 
-To help with these initializations, the modules can define three methods:
+To help with these initializations, the modules subclassing @code{Texinfo::Convert::Converter}
+can define two methods:
 
 @table @asis
 @item %defaults = $converter->converter_defaults($options)
-@anchor{Texinfo::Convert::Converter %defaults = $converter->converter_defaults($options)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter %defaults = $converter->converter_defaults($options)}
+@cindex @code{converter_defaults}
 
-The converter can provide a defaults hash for configuration options.
+The module can provide a defaults hash for converter customization options.
 The @emph{$options} hash reference holds options for the converter.
 
-@item @@global_commands = $converter->converter_global_commands()
-@anchor{Texinfo::Convert::Converter @@global_commands = $converter->converter_global_commands()}
-
-The list returned is the list of Texinfo global commands (like 
-@code{@@paragraphindent}, @code{@@documentlanguage}...) that are relevant for the
-converter.
-
 @item converter_initialize
-@anchor{Texinfo::Convert::Converter converter_initialize}
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter converter_initialize}
+@cindex @code{converter_initialize}
 
-This method is called at the end of the converter initialization.
+This method is called at the end of the @code{Texinfo::Convert::Converter}
+converter initialization.
 
 @end table
 
-@node Texinfo::Convert::Converter Helper methods
-@subsection Helper methods
+@node Texinfo@asis{::}Convert@asis{::}Converter Getting and setting customization variables
+@subsection Getting and setting customization variables
 
-@code{Texinfo::Convert::Converter} provides methods
-that may be useful for every converter:
+@code{Texinfo::Convert::Converter} implements a simple interface to
+set and retrieve Texinfo customization variables.  Helper
+functions from diverse Texinfo modules needing customization
+information expect an object implementing @code{get_conf} and/or
+@code{set_conf}.  The converter itself can therefore be used in
+such cases.
 
 @table @asis
-@item $converter->get_conf($option_string)
-@anchor{Texinfo::Convert::Converter $converter->get_conf($option_string)}
+@item $converter->force_conf($variable_name, $variable_value)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter->force_conf($variable_name@comma{} $variable_value)}
+@cindex @code{force_conf}
 
-Returns the value of the Texinfo configuration option @emph{$option_string}.
-
-@item $converter->set_conf($option_string, $value)
-@anchor{Texinfo::Convert::Converter $converter->set_conf($option_string@comma{} $value)}
-
-Set the Texinfo configuration option @emph{$option_string} to @emph{$value} if
-not set as a converter option.
-
-@item $converter->force_conf($option_string, $value)
-@anchor{Texinfo::Convert::Converter $converter->force_conf($option_string@comma{} $value)}
-
-Set the Texinfo configuration option @emph{$option_string} to @emph{$value}.
+Set the Texinfo customization option @emph{$variable_name} to @emph{$variable_value}.
 This should rarely be used, but the purpose of this method is to be able
-to revert a configuration that is always wrong for a given output
+to revert a customization that is always wrong for a given output
 format, like the splitting for example.
 
-@item $result = $converter->convert_document_sections($root, $file_handler)
-@anchor{Texinfo::Convert::Converter $result = $converter->convert_document_sections($root@comma{} $file_handler)}
+@item $converter->get_conf($variable_name)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter->get_conf($variable_name)}
+@cindex @code{get_conf}
 
-This method splits the @emph{$root} Texinfo tree at sections and 
-calls @code{convert_tree} on the elements.  If the optional @emph{$file_handler}
-is given in argument, the result are output in @emph{$file_handler}, otherwise
-the resulting string is returned.
+Returns the value of the Texinfo customization variable @emph{$variable_name}.
+
+@item $converter->set_conf($variable_name, $variable_value)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter->set_conf($variable_name@comma{} $variable_value)}
+@cindex @code{set_conf}
+
+Set the Texinfo customization option @emph{$variable_name} to @emph{$variable_value} if
+not set as a converter option.
+
+@end table
+
+@node Texinfo@asis{::}Convert@asis{::}Converter Conversion to XML
+@subsection Conversion to XML
+
+Some @code{Texinfo::Convert::Converter} methods target conversion to XML.
+Most methods take a @emph{$converter} as argument to get some
+information and use methods for error reporting.
+
+@table @asis
+@item $formatted_text = $converter->xml_format_text_with_numeric_entities($text)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $formatted_text = $converter->xml_format_text_with_numeric_entities($text)}
+@cindex @code{xml_format_text_with_numeric_entities}
+
+Replace quotation marks and hyphens used to represent dash in
+Texinfo text with numeric XML entities.
+
+@item $protected_text = $converter->xml_protect_text($text)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $protected_text = $converter->xml_protect_text($text)}
+@cindex @code{xml_protect_text}
+
+Protect special XML characters (&, <, >, ") of @emph{$text}.
+
+@item $comment = $converter->xml_comment($text)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $comment = $converter->xml_comment($text)}
+@cindex @code{xml_comment}
+
+Returns an XML comment for @emph{$text}.
+
+@item $result = xml_accent($text, $accent_command, $in_upper_case, $use_numeric_entities)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = xml_accent($text@comma{} $accent_command@comma{} $in_upper_case@comma{} $use_numeric_entities)}
+@cindex @code{xml_accent}
+
+@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
+should be a Texinfo tree element corresponding to an accent command taking
+an argument.  @emph{$in_upper_case} is optional, and, if set, the text is put
+in upper case.  The function returns the accented letter as XML named entity
+if possible, falling back to numeric entities if there is no named entity
+and to an ASCII transliteration as last resort.  @emph{$use_numeric_entities}
+is optional.  If set, numerical entities are used instead of named entities
+if possible.
+
+@item $result = $converter->xml_accents($accent_command, $in_upper_case)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->xml_accents($accent_command@comma{} $in_upper_case)}
+@cindex @code{xml_accents}
+
+@emph{$accent_command} is an accent command, which may have other accent
+commands nested.  If @emph{$in_upper_case} is set, the result should be
+upper cased.  The function returns the accents formatted as XML.
+
+@item $result = xml_numeric_entity_accent($accent_command_name, $text)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = xml_numeric_entity_accent($accent_command_name@comma{} $text)}
+@cindex @code{xml_numeric_entity_accent}
+
+@emph{$accent_command_name} is the name of an accent command.  @emph{$text} is the text
+appearing within the accent command.  Returns the accented letter as XML numeric
+entity, or @code{undef} is there is no such entity.
+
+@end table
+
+@node Texinfo@asis{::}Convert@asis{::}Converter Helper methods
+@subsection Helper methods
+
+The module provides methods that may be useful for converter.
+Most methods take a @emph{$converter} as argument to get some
+information and use methods for error reporting, see @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report}.  Also
+to translate strings, see @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.  For
+useful methods that need a converter optionally and can be used
+in converters that do not inherit from @code{Texinfo::Convert::Converter},
+see @ref{Texinfo@asis{::}Convert@asis{::}Utils NAME,, Texinfo::Convert::Utils}.
+
+@table @asis
+@item $contents_array = $converter->comma_index_subentries_tree($entry)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $contents_array = $converter->comma_index_subentries_tree($entry)}
+@cindex @code{comma_index_subentries_tree}
+
+@emph{$entry} is a Texinfo tree index entry element. The function sets up
+an array with the @code{@@subentry} contents, separated by commas.  The
+array reference is returned as @emph{$contents_array}, or @code{undef} if there
+is no such content.
 
 @item $result = $converter->convert_accents($accent_command, \&format_accents, $in_upper_case)
-@anchor{Texinfo::Convert::Converter $result = $converter->convert_accents($accent_command@comma{} \&format_accents@comma{} $in_upper_case)}
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->convert_accents($accent_command@comma{} \&format_accents@comma{} $in_upper_case)}
+@cindex @code{convert_accents}
 
 @emph{$accent_command} is an accent command, which may have other accent
 commands nested.  The function returns the accents formatted either
 as encoded letters, or formatted using @emph{\&format_accents}.
 If @emph{$in_upper_case} is set, the result should be uppercased.
 
-@end table
+@item $result = $converter->convert_document_sections($root, $file_handler)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->convert_document_sections($root@comma{} $file_handler)}
+@cindex @code{convert_document_sections}
 
-Other @code{Texinfo::Convert::Converter} methods target conversion to XML:
+This method splits the @emph{$root} Texinfo tree at sections and
+calls @code{convert_tree} on the elements.  If the optional @emph{$file_handler}
+is given in argument, the result are output in @emph{$file_handler}, otherwise
+the resulting string is returned.
+
+@item $succeeded = $converter->create_destination_directory($destination_directory_path, $destination_directory_name)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $succeeded = $converter->create_destination_directory($destination_directory_path@comma{} $destination_directory_name)}
+@cindex @code{create_destination_directory}
+
+Create destination directory @emph{$destination_directory_path}.
+@emph{$destination_directory_path} should be a binary string, while
+@emph{$destination_directory_name} should be a character string, that can be used in
+error messages.  @emph{$succeeded} is true if the creation was successful or
+uneeded, false otherwise.
+
+@item ($output_file, $destination_directory, $output_filename, $document_name, $input_basefile) = $converter->determine_files_and_directory($output_format)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($output_file@comma{} $destination_directory@comma{} $output_filename@comma{} $document_name@comma{} $input_basefile) = $converter->determine_files_and_directory($output_format)}
+@cindex @code{determine_files_and_directory}
+
+Determine output file and directory, as well as names related to files.  The
+result depends on the presence of @code{@@setfilename}, on the Texinfo input file
+name, and on customization options such as @code{OUTPUT}, @code{SUBDIR} or @code{SPLIT},
+as described in the Texinfo manual.  @emph{$output_format} is optional.  If it is
+not set the current output format, if defined, is used instead.  If not an
+empty string, @code{_$output_format} is prepended to the default directory name.
+
+@emph{$output_file} is mainly relevant when not split and should be used as the
+output file name.  In general, if not split and @emph{$output_file} is an empty
+string, it means that text should be returned by the converter instead of being
+written to an output file.  This is used in the test suite.
+@emph{$destination_directory} is either the directory @emph{$output_file} is in, or if
+split, the directory where the files should be created.  @emph{$output_filename}
+is, in general, the file name portion of @emph{$output_file} (without directory)
+but can also be set based on @code{@@setfilename}, in particular when
+@emph{$output_file} is an empty string. @emph{$document_name} is @emph{$output_filename}
+without extension.  @emph{$input_basefile} is based on the input texinfo file name,
+with the file name portion only (without directory).
+
+The strings returned are text strings.
+
+@item ($encoded_name, $encoding) = $converter->encoded_input_file_name($character_string_name)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($encoded_name@comma{} $encoding) = $converter->encoded_input_file_name($character_string_name)}
+
+@item ($encoded_name, $encoding) = $converter->encoded_output_file_name($character_string_name)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($character_string_name)}
+@cindex @code{encoded_input_file_name}
+@cindex @code{encoded_output_file_name}
+
+Encode @emph{$character_string_name} in the same way as other file name are
+encoded in the converter, based on customization variables, and possibly
+on the input file encoding.  Return the encoded name and the encoding
+used to encode the name.  The @code{encoded_input_file_name} and
+@code{encoded_output_file_name} functions use different customization variables to
+determine the encoding.
+
+Note that @code{encoded_output_file_name} is a wrapper around the
+function with the same name in @ref{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($converter@comma{} $character_string_name),, Texinfo::Convert::Utils::encoded_output_file_name}.
+
+@item ($caption, $prepended) = $converter->float_name_caption($float)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($caption@comma{} $prepended) = $converter->float_name_caption($float)}
+@cindex @code{float_name_caption}
+
+@emph{$float} is a texinfo tree @code{@@float} element.  This function
+returns the caption element that should be used for the float formatting
+and the @emph{$prepended} texinfo tree combining the type and label
+of the float.
+
+@item $tree = $converter->float_type_number($float)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $tree = $converter->float_type_number($float)}
+@cindex @code{float_type_number}
+
+@emph{$float} is a texinfo tree @code{@@float} element.  This function
+returns the type and number of the float as a texinfo tree with
+translations.
+
+@item $end_line = $converter->format_comment_or_return_end_line($element)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $end_line = $converter->format_comment_or_return_end_line($element)}
+@cindex @code{format_comment_or_return_end_line}
+
+Format comment at end of line or return the end of line associated with
+the element.  In many cases, converters ignore comments and output is
+better formatted with new lines added independently of the presence
+of newline or comment in the initial Texinfo line, so most converters
+are better off not using this method.
+
+@item $filename = sub $converter->node_information_filename($node_info)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $filename = sub $converter->node_information_filename($node_info)}
+@cindex @code{node_information_filename}
+
+Returns the normalized file name corresponding to the @emph{$node_info}
+node element tree @code{extra} field.
+
+@item ($normalized_name, $filename) = $converter->normalized_sectioning_command_filename($element)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($normalized_name@comma{} $filename) = $converter->normalized_sectioning_command_filename($element)}
+@cindex @code{normalized_sectioning_command_filename}
+
+Returns a normalized name @emph{$normalized_name} corresponding to a sectioning
+command tree element @emph{$element}, expanding the command argument using
+transliteration and characters protection.  Also returns @emph{$filename}
+the corresponding filename based on @emph{$normalized_name} taking into
+account additional constraint on file names and adding a file extension.
+
+@item $converter->present_bug_message($message, $element)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter->present_bug_message($message@comma{} $element)}
+@cindex @code{present_bug_message}
+
+Show a bug message using @emph{$message} text.  Use information on
+@emph{$element} tree element if given in argument.
+
+@item $converter->set_global_document_commands($commands_location, $selected_commands)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter->set_global_document_commands($commands_location@comma{} $selected_commands)}
+@cindex @code{set_global_document_commands}
+
+Set the Texinfo customization options for @@-commands.  @emph{$selected_commands}
+is an optional array reference containing the @@-commands set, if not given
+all the global informative @@-commands are set.  @emph{$commands_location} specifies
+where in the document the value should be taken from. The possibilities are:
 
 @table @asis
-@item $protected_text = $converter->xml_protect_text($text)
-@anchor{Texinfo::Convert::Converter $protected_text = $converter->xml_protect_text($text)}
+@item before
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter before}
 
-Protect special XML characters (&, <, >, ") of @emph{$text}.
+Set to the values before document conversion, from defaults and command-line.
 
-@item $comment = $converter->xml_comment($text)
-@anchor{Texinfo::Convert::Converter $comment = $converter->xml_comment($text)}
+@item last
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter last}
 
-Returns an XML comment for @emph{$text}.
+Set to the last value for the command.
 
-@item $result = xml_accent($text, $accent_command, $in_upper_case, $use_numeric_entities)
-@anchor{Texinfo::Convert::Converter $result = xml_accent($text@comma{} $accent_command@comma{} $in_upper_case@comma{} $use_numeric_entities)}
+@item preamble
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter preamble}
 
-@emph{$text} is the text appearing within an accent command.  @emph{$accent_command}
-should be a Texinfo tree element corresponding to an accent command taking
-an argument.  @emph{$in_upper_case} is optional, and, if set, the text is put
-in upper case.  The function returns the accented letter as XML entity 
-if possible.  @emph{$use_numeric_entities} is also optional, and, if set, and
-there is no XML entity, the numerical entity corresponding to Unicode 
-points is preferred to an ASCII transliteration.
+Set sequentially to the values in the Texinfo preamble.
 
-@item $result = $converter->xml_accents($accent_command, $in_upper_case)
-@anchor{Texinfo::Convert::Converter $result = $converter->xml_accents($accent_command@comma{} $in_upper_case)}
+@item preamble_or_first
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter preamble_or_first}
 
-@emph{$accent_command} is an accent command, which may have other accent
-commands nested.  If @emph{$in_upper_case} is set, the result should be 
-upper cased.  The function returns the accents formatted as XML.
+Set to the first value of the command if the first command is not
+in the Texinfo preamble, else set as with @emph{preamble},
+sequentially to the values in the Texinfo preamble.
+
+@end table
+
+Notice that the only effect of this function is to set a customization
+variable value, no @@-command side effects are run, no associated customization
+variables are set.
+
+For more information on the function used to set the value for each of the command, see
+@ref{Texinfo@asis{::}Common $element = set_global_document_command($customization_information@comma{} $global_commands_information@comma{} $cmdname@comma{} $command_location),, Texinfo::Common set_global_document_command}.
+
+@item $table_item_tree = $converter->table_item_content_tree($element, $contents)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $table_item_tree = $converter->table_item_content_tree($element@comma{} $contents)}
+@cindex @code{table_item_content_tree}
+
+@emph{$element} should be an @code{@@item} or @code{@@itemx} tree element,
+@emph{$contents} should be corresponding texinfo tree contents.
+Returns a tree in which the @@-command in argument of @code{@@*table}
+of the @emph{$element} has been applied to @emph{$contents}.
+
+@item $result = $converter->top_node_filename($document_name)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->top_node_filename($document_name)}
+@cindex @code{top_node_filename}
+
+Returns a file name for the Top node file using either @code{TOP_FILE}
+customization value, or @code{EXTENSION} customization value and @emph{$document_name}.
 
 @end table
 
@@ -220,35 +439,34 @@ Finally, there is:
 
 @table @asis
 @item $result = $converter->output_internal_links()
-@anchor{Texinfo::Convert::Converter $result = $converter->output_internal_links()}
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->output_internal_links()}
+@cindex @code{output_internal_links}
 
 At this level, the method just returns undef.  It is used in the HTML
-output, following the @code{--internal-links} option of texi2any/makeinfo
+output, following the @code{--internal-links} option of @code{texi2any}
 specification.
 
 @end table
 
-@node Texinfo::Convert::Converter SEE ALSO
-@section SEE ALSO
+@node Texinfo@asis{::}Convert@asis{::}Converter SEE ALSO
+@section Texinfo::Convert::Converter SEE ALSO
 
-@ref{Texinfo::Common NAME}, @ref{Texinfo::Convert::Unicode NAME}, @ref{Texinfo::Report NAME} 
-and @ref{Texinfo::Parser NAME}.  
+@ref{Texinfo@asis{::}Common NAME,, Texinfo::Common}, @ref{Texinfo@asis{::}Convert@asis{::}Unicode NAME,, Texinfo::Convert::Unicode}, @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report},
+@ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}, @ref{Texinfo@asis{::}Convert@asis{::}Utils NAME,, Texinfo::Convert::Utils} and @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}.
 
-@node Texinfo::Convert::Converter AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Convert@asis{::}Converter AUTHOR
+@section Texinfo::Convert::Converter AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
 
-@node Texinfo::Convert::Converter POD ERRORS
-@section POD ERRORS
+@node Texinfo@asis{::}Convert@asis{::}Converter COPYRIGHT AND LICENSE
+@section Texinfo::Convert::Converter COPYRIGHT AND LICENSE
 
-Hey! @strong{The above document had some coding errors, which are explained below:}
+Copyright 2011- Free Software Foundation, Inc.  See the source file for
+all copyright years.
 
-@table @asis
-@item Around line 1713:
-@anchor{Texinfo::Convert::Converter Around line 1713:}
-
-'=item' outside of any '=over'
-
-@end table
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

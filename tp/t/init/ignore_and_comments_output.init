@@ -1,7 +1,5 @@
 use strict;
 
-use vars qw(%commands_conversion);
-
 sub convert_comment_command($$$)
 {
   my $self = shift;
@@ -18,11 +16,12 @@ sub convert_comment_command($$$)
 texinfo_register_command_formatting('c', \&convert_comment_command);
 texinfo_register_command_formatting('comment', \&convert_comment_command);
 
-sub convert_ignore_command($$$$)
+sub convert_ignore_command($$$$$)
 {
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
+  my $args = shift;
   my $content = shift;
 
   # FIXME should the spacing be set differently for raw commands?

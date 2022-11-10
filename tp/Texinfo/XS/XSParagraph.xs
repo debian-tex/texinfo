@@ -5,6 +5,11 @@
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
+/* Avoid warnings about Perl headers redefining symbols that gnulib
+   redefined already. */
+#if defined _WIN32 && !defined __CYGWIN__
+  #undef free
+#endif
 #include "XSUB.h"
 
 #include "ppport.h"

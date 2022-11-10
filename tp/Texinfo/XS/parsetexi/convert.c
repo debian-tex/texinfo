@@ -164,15 +164,6 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
         }
       if (e->type == ET_bracketed)
         ADD("}");
-
-      // TODO: raw block command
-      if (command_flags (e) & CF_block)
-        {
-          ADD("@end ");
-          ADD(command_name(e->cmd));
-          if (command_data(e->cmd).data != BLOCK_raw)
-            ADD("\n");
-        }
     }
 
   return;

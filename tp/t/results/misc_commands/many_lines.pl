@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,281 +10,284 @@ $result_trees{'many_lines'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'pagesizes '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'pagesizes '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '200mm,150mm following '
-                },
-                {
-                  'cmdname' => '@',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => 'pagesizes arg'
+                  'contents' => [
+                    {
+                      'text' => '200mm,150mm following '
+                    },
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => 'pagesizes arg'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'pagesizes',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'pagesizes',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'afourpaper '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following afourpaper
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'afourpaper',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'smallbook '
-        },
-        {
-          'args' => [
+              'text' => 'afourpaper '
+            },
             {
-              'parent' => {},
-              'text' => ' on line following smallbook
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'smallbook',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'headings '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'on line following headings'
+                  'text' => ' on line following afourpaper
+',
+                  'type' => 'misc_arg'
                 }
               ],
+              'cmdname' => 'afourpaper',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'smallbook '
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' on line following smallbook
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'smallbook',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'headings '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following headings'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'headings',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'headings',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'oddfooting '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following oddfooting
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'oddfooting',
-          'extra' => {
-            'misc_args' => [
-              ' on line following oddfooting
-'
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'everyheading '
-        },
-        {
-          'args' => [
+              'text' => 'oddfooting '
+            },
             {
-              'parent' => {},
-              'text' => ' on line following everyheading
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'everyheading',
-          'extra' => {
-            'misc_args' => [
-              ' on line following everyheading
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following oddfooting'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'everyfooting '
-        },
-        {
-          'args' => [
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'oddfooting',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following everyfooting
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'everyfooting',
-          'extra' => {
-            'misc_args' => [
-              ' on line following everyfooting
-'
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'evenheading '
-        },
-        {
-          'args' => [
+              'text' => 'everyheading '
+            },
             {
-              'parent' => {},
-              'text' => ' on line following evenheading
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'evenheading',
-          'extra' => {
-            'misc_args' => [
-              ' on line following evenheading
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following everyheading'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'evenfooting '
-        },
-        {
-          'args' => [
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'everyheading',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following evenfooting
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'evenfooting',
-          'extra' => {
-            'misc_args' => [
-              ' on line following evenfooting
-'
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'oddheading '
-        },
-        {
-          'args' => [
+              'text' => 'everyfooting '
+            },
             {
-              'parent' => {},
-              'text' => ' on line following
-',
-              'type' => 'misc_arg'
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following everyfooting'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'everyfooting',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'evenheading '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following evenheading'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'evenheading',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'evenfooting '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following evenfooting'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'evenfooting',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'oddheading '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'on line following'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'oddheading',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'need '
             }
           ],
-          'cmdname' => 'oddheading',
-          'extra' => {
-            'misc_args' => [
-              ' on line following
-'
-            ]
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'need '
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '0.1 on line following'
                 }
               ],
@@ -292,7 +295,6 @@ $result_trees{'many_lines'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -300,23 +302,25 @@ $result_trees{'many_lines'} = {
           'extra' => {
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 11,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => 'need '
+          'contents' => [
+            {
+              'text' => 'need '
+            }
+          ],
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '0.1'
                 }
               ],
@@ -324,7 +328,6 @@ $result_trees{'many_lines'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -335,982 +338,747 @@ $result_trees{'many_lines'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 12,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => 'setchapternewpage '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'setchapternewpage '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'on line following setchapternewpage'
+                  'contents' => [
+                    {
+                      'text' => 'on line following setchapternewpage'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'setchapternewpage',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'setchapternewpage',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'raisesections '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following raisesections
+              'text' => 'raisesections '
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' on line following raisesections
 ',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'raisesections',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'lowersections '
-        },
-        {
-          'args' => [
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'raisesections'
+            },
             {
-              'parent' => {},
-              'text' => ' on line following lowersections
+              'text' => 'lowersections '
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' on line following lowersections
 ',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'lowersections',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'kbdinputstyle code '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'code something'
+                  'type' => 'misc_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'kbdinputstyle',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'afourpaper '
-        },
-        {
-          'args' => [
+              'cmdname' => 'lowersections'
+            },
             {
-              'parent' => {},
-              'text' => ' on line following afourpaper
+              'text' => 'kbdinputstyle code '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'code something'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'kbdinputstyle',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'afourpaper '
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' on line following afourpaper
 ',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'afourpaper',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'afourlatex '
-        },
-        {
-          'args' => [
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'afourpaper',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 17,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following afourlatex
+              'text' => 'afourlatex '
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' on line following afourlatex
 ',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'afourlatex',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'afourwide '
-        },
-        {
-          'args' => [
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'afourlatex',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' on line following afourwide
+              'text' => 'afourwide '
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' on line following afourwide
 ',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'afourwide',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'paragraphindent asis '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'asis'
+                  'type' => 'misc_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'paragraphindent',
-          'extra' => {
-            'misc_args' => [
-              'asis'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 20,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'paragraphindent 0 '
-        },
-        {
-          'args' => [
+              'cmdname' => 'afourwide',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 19,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'paragraphindent asis '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '0'
+                  'contents' => [
+                    {
+                      'text' => 'asis'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'paragraphindent',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'asis'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'paragraphindent',
-          'extra' => {
-            'misc_args' => [
-              '0'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 21,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'paragraphindent none '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 20,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'paragraphindent 0 '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'none'
+                  'contents' => [
+                    {
+                      'text' => '0'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'paragraphindent',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  '0'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'paragraphindent',
-          'extra' => {
-            'misc_args' => [
-              'none'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 22,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'paragraphindent 4 '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 21,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'paragraphindent none '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '4'
+                  'contents' => [
+                    {
+                      'text' => 'none'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'paragraphindent',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'none'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'paragraphindent',
-          'extra' => {
-            'misc_args' => [
-              '4'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 23,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'firstparagraphindent none '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 22,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'paragraphindent 4 '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'none'
+                  'contents' => [
+                    {
+                      'text' => '4'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'paragraphindent',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  '4'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'firstparagraphindent',
-          'extra' => {
-            'misc_args' => [
-              'none'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 24,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'exampleindent 6 '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 23,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'firstparagraphindent none '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '6 on line following exampleindent'
+                  'contents' => [
+                    {
+                      'text' => 'none'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'firstparagraphindent',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'none'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'exampleindent',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 25,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'exampleindent 6 '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 24,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'exampleindent 6 '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '6'
+                  'contents' => [
+                    {
+                      'text' => '6 on line following exampleindent'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'exampleindent',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'exampleindent',
-          'extra' => {
-            'misc_args' => [
-              '6'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 26,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'footnotestyle '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'exampleindent 6 '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'end'
+                  'contents' => [
+                    {
+                      'text' => '6'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'exampleindent',
               'extra' => {
-                'spaces_after_argument' => ' 
-'
+                'misc_args' => [
+                  '6'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'footnotestyle',
-          'extra' => {
-            'misc_args' => [
-              'end'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'footnotestyle '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 26,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'footnotestyle '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'separate'
+                  'contents' => [
+                    {
+                      'text' => 'end'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' 
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'footnotestyle',
               'extra' => {
-                'spaces_after_argument' => ' 
-'
+                'misc_args' => [
+                  'end'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'footnotestyle',
-          'extra' => {
-            'misc_args' => [
-              'separate'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 28,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'documentencoding '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 27,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'footnotestyle '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'US-ascii encoding name'
+                  'contents' => [
+                    {
+                      'text' => 'separate'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' 
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'footnotestyle',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'separate'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'documentencoding',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'US-ascii encoding name'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 29,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 28,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'documentencoding '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'ISO-8859-1'
+                  'contents' => [
+                    {
+                      'text' => 'US-ascii encoding name'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'US-ascii encoding name'
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'documentencoding',
-          'extra' => {
-            'input_encoding_name' => 'iso-8859-1',
-            'input_perl_encoding' => 'iso-8859-1',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'ISO-8859-1'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 30,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'frenchspacing '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 29,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'on'
+                  'contents' => [
+                    {
+                      'text' => 'ISO-8859-1'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'input_encoding_name' => 'iso-8859-1',
+                'input_perl_encoding' => 'iso-8859-1',
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'ISO-8859-1'
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'frenchspacing',
-          'extra' => {
-            'misc_args' => [
-              'on'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 31,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'frenchspacing '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 30,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'frenchspacing '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'off'
+                  'contents' => [
+                    {
+                      'text' => 'on'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'frenchspacing',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'on'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'frenchspacing',
-          'extra' => {
-            'misc_args' => [
-              'off'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 32,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'fonttextsize '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 31,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'frenchspacing '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '10'
+                  'contents' => [
+                    {
+                      'text' => 'off'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'frenchspacing',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'off'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'fonttextsize',
-          'extra' => {
-            'misc_args' => [
-              '10'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 33,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'everyheadingmarks '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'fonttextsize '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'bottom on line following everyheadingmarks'
+                  'contents' => [
+                    {
+                      'text' => '10'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'fonttextsize',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  '10'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'everyheadingmarks',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 34,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 33,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => 'everyheadingmarks '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'false'
+                  'contents' => [
+                    {
+                      'text' => 'bottom on line following everyheadingmarks'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'everyheadingmarks',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'allowcodebreaks',
-          'extra' => {
-            'misc_args' => [
-              'false'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 35,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 34,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'true'
+                  'contents' => [
+                    {
+                      'text' => 'false'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'allowcodebreaks',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'misc_args' => [
+                  'false'
+                ],
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 35,
+                'macro' => ''
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'true'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'allowcodebreaks',
+              'extra' => {
+                'misc_args' => [
+                  'true'
+                ],
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 36,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'allowcodebreaks',
-          'extra' => {
-            'misc_args' => [
-              'true'
-            ],
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 36,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Text line followed by finalout on the same line and another below '
+            },
+            {
+              'args' => [
+                {
+                  'text' => '
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'finalout'
+            },
+            {
+              'args' => [
+                {
+                  'text' => '
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'finalout'
+            },
+            {
+              'text' => 'Text line after the finalout followed by a fianlout '
+            },
+            {
+              'args' => [
+                {
+                  'text' => '
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'finalout'
+            },
+            {
+              'text' => 'Text line after the text line followed by the finalout.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Test text after finalout
+'
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' a word after finalout
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'finalout'
+            },
+            {
+              'text' => 'Line after finalout
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Text line followed by finalout on the same line and another below '
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'finalout',
-          'parent' => {}
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'finalout',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'Text line after the finalout followed by a fianlout '
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'finalout',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'Text line after the text line followed by the finalout.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Test text after finalout
-'
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' a word after finalout
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'finalout',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'Line after finalout
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[1];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[3];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[5];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[7];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[9];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[11];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[13];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[15];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[17];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[18]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[19]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[19];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[19]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[21]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[21]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[21]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[21];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[21]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[22]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[23]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[23]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[23]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[23];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[23]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[24]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[25]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[25]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[25]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[25];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[25]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[26]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[27]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[27];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[27]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[28]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[29]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[29];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[29]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[30]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[31]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[31]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[31]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[31];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[31]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[32]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[33]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[33];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[33]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[34]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[35]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[35];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[35]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[36]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[37]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[37];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[37]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[38]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[39]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[39]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[39]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[39];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[39]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[40]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[41]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[41]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[41]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[41];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[41]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[42]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[43]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[43]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[43]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[43];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[43]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[44]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[45]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[45]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[45]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[45];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[45]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[46]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[47]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[47]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[47]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[47];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[47]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[48]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[49]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[49]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[49]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[49];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[49]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[50]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[51]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[51]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[51]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[51];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[51]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[52]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[53]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[53]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[53]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[53];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[53]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[54]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[55]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[55]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[55]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[55];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[55]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[56]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[57]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[57]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[57]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[57];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[57]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[58]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[58]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[58]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[58];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[58]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[59]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[60]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[60]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[60]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[60];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[60]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[61]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[62]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[62]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[62]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[62];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[62]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[63]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[64]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[64]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[64]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[64];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[64]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[65]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[66]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[66]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[66]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[66];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[66]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[67]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[67]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[67]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[67];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[67]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[68]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[68]{'args'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[68]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[0]{'contents'}[68];
-$result_trees{'many_lines'}{'contents'}[0]{'contents'}[68]{'parent'} = $result_trees{'many_lines'}{'contents'}[0];
-$result_trees{'many_lines'}{'contents'}[0]{'parent'} = $result_trees{'many_lines'};
-$result_trees{'many_lines'}{'contents'}[1]{'parent'} = $result_trees{'many_lines'};
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[2]{'contents'}[1];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'many_lines'}{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[2]{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'many_lines'}{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'many_lines'}{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[2]{'contents'}[4];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'many_lines'}{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'many_lines'}{'contents'}[2];
-$result_trees{'many_lines'}{'contents'}[2]{'parent'} = $result_trees{'many_lines'};
-$result_trees{'many_lines'}{'contents'}[3]{'parent'} = $result_trees{'many_lines'};
-$result_trees{'many_lines'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[4];
-$result_trees{'many_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'many_lines'}{'contents'}[4]{'contents'}[1];
-$result_trees{'many_lines'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'many_lines'}{'contents'}[4];
-$result_trees{'many_lines'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'many_lines'}{'contents'}[4];
-$result_trees{'many_lines'}{'contents'}[4]{'parent'} = $result_trees{'many_lines'};
 
 $result_texis{'many_lines'} = 'pagesizes @pagesizes 200mm,150mm following @@pagesizes arg
 afourpaper @afourpaper on line following afourpaper
@@ -1369,7 +1137,7 @@ Line after finalout
 
 $result_errors{'many_lines'} = [
   {
-    'error_line' => ':1: warning: @pagesizes should only appear at the beginning of a line
+    'error_line' => 'warning: @pagesizes should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -1378,7 +1146,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':2: warning: @afourpaper should only appear at the beginning of a line
+    'error_line' => 'warning: @afourpaper should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -1387,7 +1155,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @smallbook should only appear at the beginning of a line
+    'error_line' => 'warning: @smallbook should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -1396,7 +1164,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: @headings should only appear at the beginning of a line
+    'error_line' => 'warning: @headings should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -1405,7 +1173,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: bad argument to @headings: on line following headings
+    'error_line' => 'bad argument to @headings: on line following headings
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -1414,7 +1182,7 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: warning: @oddfooting should only appear at the beginning of a line
+    'error_line' => 'warning: @oddfooting should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -1423,7 +1191,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: @everyheading should only appear at the beginning of a line
+    'error_line' => 'warning: @everyheading should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 6,
@@ -1432,7 +1200,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':7: warning: @everyfooting should only appear at the beginning of a line
+    'error_line' => 'warning: @everyfooting should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 7,
@@ -1441,7 +1209,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: @evenheading should only appear at the beginning of a line
+    'error_line' => 'warning: @evenheading should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 8,
@@ -1450,7 +1218,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: @evenfooting should only appear at the beginning of a line
+    'error_line' => 'warning: @evenfooting should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 9,
@@ -1459,7 +1227,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: @oddheading should only appear at the beginning of a line
+    'error_line' => 'warning: @oddheading should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 10,
@@ -1468,7 +1236,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: @need should only appear at the beginning of a line
+    'error_line' => 'warning: @need should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 11,
@@ -1477,7 +1245,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: bad argument to @need: 0.1 on line following
+    'error_line' => 'bad argument to @need: 0.1 on line following
 ',
     'file_name' => '',
     'line_nr' => 11,
@@ -1486,7 +1254,7 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':12: warning: @need should only appear at the beginning of a line
+    'error_line' => 'warning: @need should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 12,
@@ -1495,7 +1263,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: @setchapternewpage should only appear at the beginning of a line
+    'error_line' => 'warning: @setchapternewpage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 13,
@@ -1504,7 +1272,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: @setchapternewpage arg must be `on\', `off\' or `odd\', not `on line following setchapternewpage\'
+    'error_line' => '@setchapternewpage arg must be `on\', `off\' or `odd\', not `on line following setchapternewpage\'
 ',
     'file_name' => '',
     'line_nr' => 13,
@@ -1513,7 +1281,7 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':14: warning: @raisesections should only appear at the beginning of a line
+    'error_line' => 'warning: @raisesections should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 14,
@@ -1522,7 +1290,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: warning: @lowersections should only appear at the beginning of a line
+    'error_line' => 'warning: @lowersections should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 15,
@@ -1531,7 +1299,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: @kbdinputstyle should only appear at the beginning of a line
+    'error_line' => 'warning: @kbdinputstyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 16,
@@ -1540,7 +1308,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: @kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `code something\'
+    'error_line' => '@kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `code something\'
 ',
     'file_name' => '',
     'line_nr' => 16,
@@ -1549,7 +1317,7 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':17: warning: @afourpaper should only appear at the beginning of a line
+    'error_line' => 'warning: @afourpaper should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 17,
@@ -1558,7 +1326,16 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':18: warning: @afourlatex should only appear at the beginning of a line
+    'error_line' => 'warning: multiple @afourpaper
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'multiple @afourpaper',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @afourlatex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 18,
@@ -1567,7 +1344,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: warning: @afourwide should only appear at the beginning of a line
+    'error_line' => 'warning: @afourwide should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 19,
@@ -1576,7 +1353,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':20: warning: @paragraphindent should only appear at the beginning of a line
+    'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 20,
@@ -1585,7 +1362,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':21: warning: @paragraphindent should only appear at the beginning of a line
+    'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 21,
@@ -1594,7 +1371,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: @paragraphindent should only appear at the beginning of a line
+    'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 22,
@@ -1603,7 +1380,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: @paragraphindent should only appear at the beginning of a line
+    'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 23,
@@ -1612,7 +1389,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':24: warning: @firstparagraphindent should only appear at the beginning of a line
+    'error_line' => 'warning: @firstparagraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 24,
@@ -1621,7 +1398,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':25: warning: @exampleindent should only appear at the beginning of a line
+    'error_line' => 'warning: @exampleindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 25,
@@ -1630,7 +1407,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':25: @exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
+    'error_line' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
 ',
     'file_name' => '',
     'line_nr' => 25,
@@ -1639,7 +1416,7 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':26: warning: @exampleindent should only appear at the beginning of a line
+    'error_line' => 'warning: @exampleindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 26,
@@ -1648,7 +1425,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':27: warning: @footnotestyle should only appear at the beginning of a line
+    'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 27,
@@ -1657,7 +1434,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':28: warning: @footnotestyle should only appear at the beginning of a line
+    'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 28,
@@ -1666,7 +1443,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':28: warning: multiple @footnotestyle
+    'error_line' => 'warning: multiple @footnotestyle
 ',
     'file_name' => '',
     'line_nr' => 28,
@@ -1675,7 +1452,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: @documentencoding should only appear at the beginning of a line
+    'error_line' => 'warning: @documentencoding should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 29,
@@ -1684,7 +1461,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: encoding `US-ascii encoding name\' is not a canonical texinfo encoding
+    'error_line' => 'warning: encoding `US-ascii encoding name\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 29,
@@ -1693,7 +1470,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: unrecognized encoding name `US-ascii encoding name\'
+    'error_line' => 'warning: unrecognized encoding name `US-ascii encoding name\'
 ',
     'file_name' => '',
     'line_nr' => 29,
@@ -1702,7 +1479,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':31: warning: @frenchspacing should only appear at the beginning of a line
+    'error_line' => 'warning: @frenchspacing should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 31,
@@ -1711,7 +1488,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: @frenchspacing should only appear at the beginning of a line
+    'error_line' => 'warning: @frenchspacing should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 32,
@@ -1720,7 +1497,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: warning: @fonttextsize should only appear at the beginning of a line
+    'error_line' => 'warning: @fonttextsize should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 33,
@@ -1729,7 +1506,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':34: warning: @everyheadingmarks should only appear at the beginning of a line
+    'error_line' => 'warning: @everyheadingmarks should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 34,
@@ -1738,7 +1515,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':34: @everyheadingmarks arg must be `top\' or `bottom\', not `bottom on line following everyheadingmarks\'
+    'error_line' => '@everyheadingmarks arg must be `top\' or `bottom\', not `bottom on line following everyheadingmarks\'
 ',
     'file_name' => '',
     'line_nr' => 34,
@@ -1747,7 +1524,7 @@ $result_errors{'many_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':38: warning: @finalout should only appear at the beginning of a line
+    'error_line' => 'warning: @finalout should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 38,
@@ -1756,7 +1533,7 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':40: warning: @finalout should only appear at the beginning of a line
+    'error_line' => 'warning: @finalout should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 40,

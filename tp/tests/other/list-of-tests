@@ -1,0 +1,5 @@
+# formats :_html
+
+highlight_syntax_example highlight_example.texi --html --init=highlight_syntax.pm
+
+highlight_syntax_example_latin9 highlight_example.texi --html --init=highlight_syntax.pm -c 'OUTPUT_ENCODING_NAME=ISO-8859-15'

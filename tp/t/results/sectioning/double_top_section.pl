@@ -1,23 +1,20 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'double_top_section'} = {
   'contents' => [
     {
-      'contents' => [],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'First top'
             }
           ],
@@ -25,14 +22,12 @@ $result_trees{'double_top_section'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -40,16 +35,13 @@ $result_trees{'double_top_section'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'First top.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -58,20 +50,17 @@ $result_trees{'double_top_section'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Second top'
             }
           ],
@@ -79,14 +68,12 @@ $result_trees{'double_top_section'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -94,43 +81,25 @@ $result_trees{'double_top_section'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Second top.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_top_section'}{'contents'}[0]{'parent'} = $result_trees{'double_top_section'};
-$result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
-$result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'parent'} = $result_trees{'double_top_section'};
-$result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];
-$result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2];
-$result_trees{'double_top_section'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2];
-$result_trees{'double_top_section'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2];
-$result_trees{'double_top_section'}{'contents'}[2]{'parent'} = $result_trees{'double_top_section'};
 
 $result_texis{'double_top_section'} = '@top First top
 
@@ -154,38 +123,40 @@ Second top.
 ';
 
 $result_sectioning{'double_top_section'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {},
+        'structure' => {
+          'section_level' => 0,
+          'section_up' => {}
+        }
       },
-      'level' => 0,
-      'section_up' => {}
-    },
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_prev' => {},
-      'section_up' => {},
-      'toplevel_prev' => {},
-      'toplevel_up' => {}
-    }
-  ]
+      {
+        'cmdname' => 'top',
+        'extra' => {},
+        'structure' => {
+          'section_level' => 0,
+          'section_prev' => {},
+          'section_up' => {},
+          'toplevel_prev' => {},
+          'toplevel_up' => {}
+        }
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'double_top_section'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'double_top_section'};
-$result_sectioning{'double_top_section'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'double_top_section'}{'section_childs'}[0];
-$result_sectioning{'double_top_section'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'double_top_section'};
-$result_sectioning{'double_top_section'}{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'double_top_section'}{'section_childs'}[0];
-$result_sectioning{'double_top_section'}{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'double_top_section'}{'section_childs'}[0];
+$result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'double_top_section'};
+$result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'double_top_section'};
+$result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'double_top_section'}{'structure'}{'section_childs'}[0];
 
 $result_errors{'double_top_section'} = [
   {
-    'error_line' => ':5: warning: multiple @top
+    'error_line' => 'warning: multiple @top
 ',
     'file_name' => '',
     'line_nr' => 5,

@@ -1,8 +1,7 @@
-# $Id: 02coverage.t 8055 2018-08-13 11:41:21Z gavin $
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -70,7 +69,7 @@ my @test_cases = (
   undef,
   # tests for node with directions after section
   {'test_file' => 'sectioning.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 1},
-  {'SPLIT' => 'chapter', 'FRAMES' => 1, 'CHECK_NORMAL_MENU_STRUCTURE' => 1}
+  {'SPLIT' => 'chapter', 'FRAMES' => 1}
 ],
 ['placed_things_before_element',
   undef,
@@ -114,6 +113,4 @@ foreach my $test (@test_cases) {
   $test->[3]->{'PACKAGE_URL'} = 'http://www.gnu.org/software/texinfo/';
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('moresectioning', [@test_cases], $arg_test_case, $arg_generate, $arg_debug);
+run_all('moresectioning', [@test_cases]);

@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -102,6 +102,17 @@ Value
 @ringaccent @value{a_letter}
 @~@value{a_letter}'
 ],
+['value_after_brace_command',
+'@set bracedletter {a}
+@set unknowncmd @unknown
+
+@ringaccent @value{bracedletter}
+@ringaccent @value{unknowncmd}
+@^ @value{bracedletter}
+@^ @value{unknowncmd}
+@code @value{bracedletter}
+@code @value{unknowncmd}
+'],
 ['value_in_index_commands',
 '@set cp cp
 @set fn fn
@@ -289,7 +300,7 @@ After page on it\'s own line.
 @set bye_macro @bye
 
 @value{bye_macro}',
-{'expanded_formats' => []}
+{'EXPANDED_FORMATS' => []}
 ],
 ['value_in_invalid_documentencoding',
 '@set badvalue bad
@@ -351,8 +362,4 @@ line
 ']
 );
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('value', \@test_cases, $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('value', \@test_cases);

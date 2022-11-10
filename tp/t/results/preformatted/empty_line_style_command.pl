@@ -1,131 +1,104 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'empty_line_style_command'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'example',
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'example '
+              'contents' => [
+                {
+                  'text' => 'example '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in samp
+'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        },
+                        {
+                          'text' => 'after empty'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'samp',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 2,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' line
+'
+                }
+              ],
+              'type' => 'preformatted'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'in samp
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'after empty'
+                      'text' => 'example'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'samp',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' line
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 5,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_line_style_command'}{'contents'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_line_style_command'}{'contents'}[0];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_line_style_command'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_line_style_command'}{'contents'}[0]{'parent'} = $result_trees{'empty_line_style_command'};
 
 $result_texis{'empty_line_style_command'} = '@example
 example @samp{in samp

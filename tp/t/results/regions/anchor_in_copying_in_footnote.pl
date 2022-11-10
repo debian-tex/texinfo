@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,171 +10,150 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
     {
       'contents' => [
         {
-          'cmdname' => 'copying',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'copying',
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'Copying'
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Copying'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'In footnote.
+'
+                                },
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'Copying footnote'
+                                        }
+                                      ],
+                                      'extra' => {
+                                        'region' => {}
+                                      },
+                                      'type' => 'brace_command_arg'
+                                    }
+                                  ],
+                                  'cmdname' => 'anchor',
+                                  'extra' => {
+                                    'node_content' => [
+                                      {}
+                                    ],
+                                    'normalized' => 'Copying-footnote'
+                                  },
+                                  'source_info' => {
+                                    'file_name' => '',
+                                    'line_nr' => 5,
+                                    'macro' => ''
+                                  }
+                                },
+                                {
+                                  'text' => '
+',
+                                  'type' => 'spaces_after_close_brace'
+                                }
+                              ],
+                              'type' => 'paragraph'
+                            }
+                          ],
+                          'type' => 'brace_command_context'
+                        }
+                      ],
+                      'cmdname' => 'footnote',
+                      'extra' => {
+                        'spaces_before_argument' => '
+'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => '.
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'empty_line'
                 },
                 {
                   'args' => [
                     {
                       'contents' => [
                         {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'In footnote.
-'
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'parent' => {},
-                                      'text' => 'Copying footnote'
-                                    }
-                                  ],
-                                  'extra' => {
-                                    'region' => {}
-                                  },
-                                  'parent' => {},
-                                  'type' => 'brace_command_arg'
-                                }
-                              ],
-                              'cmdname' => 'anchor',
-                              'contents' => [],
-                              'extra' => {
-                                'node_content' => [
-                                  {}
-                                ],
-                                'normalized' => 'Copying-footnote'
-                              },
-                              'line_nr' => {
-                                'file_name' => '',
-                                'line_nr' => 5,
-                                'macro' => ''
-                              },
-                              'parent' => {}
-                            },
-                            {
-                              'parent' => {},
-                              'text' => '
-',
-                              'type' => 'empty_spaces_after_close_brace'
-                            }
-                          ],
-                          'parent' => {},
-                          'type' => 'paragraph'
+                          'text' => 'copying'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_context'
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
                     }
                   ],
-                  'cmdname' => 'footnote',
-                  'contents' => [],
+                  'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => '
-'
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'copying'
                   },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 3,
+                    'line_nr' => 8,
                     'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '.
-'
+                  }
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
             },
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'empty_line'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'copying'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'copying',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'copying'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
-              },
-              'parent' => {}
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -182,108 +161,12 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'contents' => [
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'insertcopying',
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'insertcopying',
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'Copying footnote'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'xref',
-              'contents' => [],
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Copying-footnote'
-                }
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -304,60 +187,148 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 10,
         'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'node'
+            }
+          ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'insertcopying',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 14,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'insertcopying',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Copying footnote'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'xref',
+              'extra' => {
+                'label' => {},
+                'node_argument' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'Copying-footnote'
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 18,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {
+        'node_content' => [
+          {}
+        ],
+        'nodes_manuals' => [
+          {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'node'
+          }
+        ],
+        'normalized' => 'node',
+        'spaces_before_argument' => ' '
       },
-      'parent' => {}
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'region'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'};
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'args'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[3];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'label'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'region'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying_in_footnote'};
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'label'} = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 
 $result_texis{'anchor_in_copying_in_footnote'} = '@copying
 
@@ -369,6 +340,8 @@ In footnote.
 @end copying
 
 @node Top
+
+@node node
 
 @insertcopying
 
@@ -383,26 +356,36 @@ $result_texts{'anchor_in_copying_in_footnote'} = '
 
 
 
+
 Copying footnote.
 
 ';
 
-$result_sectioning{'anchor_in_copying_in_footnote'} = {};
-
 $result_nodes{'anchor_in_copying_in_footnote'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'node'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'anchor_in_copying_in_footnote'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'anchor_in_copying_in_footnote'};
 
 $result_menus{'anchor_in_copying_in_footnote'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
-  }
+    'normalized' => 'Top'
+  },
+  'structure' => {}
 };
 
 $result_errors{'anchor_in_copying_in_footnote'} = [];
@@ -421,7 +404,10 @@ Copying(1).
    (1) In footnote.
 
 
-File: ,  Node: Top,  Up: (dir)
+File: ,  Node: Top,  Next: node,  Up: (dir)
+
+
+File: ,  Node: node,  Prev: Top
 
 Copying(1).
 
@@ -439,9 +425,10 @@ Copying(1).
 
 Tag Table:
 Node: Top97
-Ref: Top-Footnote-1226
-Ref: Copying footnote245
-Ref: Top-Footnote-2247
+Node: node144
+Ref: node-Footnote-1274
+Ref: Copying footnote293
+Ref: node-Footnote-2295
 
 End Tag Table
 
@@ -453,7 +440,7 @@ End:
 
 $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
   {
-    'error_line' => ':5: @anchor output more than once: Copying footnote
+    'error_line' => '@anchor output more than once: Copying footnote
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -465,7 +452,7 @@ $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
 
 
 
-$result_converted{'html'}->{'anchor_in_copying_in_footnote'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'anchor_in_copying_in_footnote'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -482,55 +469,47 @@ Copying.
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
-<style type="text/css">
-<!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
--->
-</style>
 
 
 </head>
 
 <body lang="en">
 
-<span id="Top"></span><h1 class="node-heading">Top</h1>
+<a class="node-id" id="Top"></a><div class="nav-panel">
+<p>
+Next: <a href="#node" accesskey="n" rel="next">node</a> &nbsp; </p>
+</div>
+<h1 class="node">Top</h1>
+
+<hr>
+<a class="node-id" id="node"></a><div class="nav-panel">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
+</div>
+<h4 class="node">node</h4>
 
 
-<p>Copying<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
+<p>Copying<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
 
 
-<p>Copying<a id="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
+<p>Copying<a class="footnote" id="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
 </p>
 
-<p>See <a href="#Copying-footnote">Copying footnote</a>.
+<p>See <a class="xref" href="#Copying-footnote">Copying footnote</a>.
 </p>
-<div class="footnote">
+<div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>In footnote.
-<span id="Copying-footnote"></span></p>
-<h5><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h5>
+<a class="anchor" id="Copying-footnote"></a></p>
+<h5 class="footnote-body-heading"><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h5>
 <p>In footnote.
-<span id="Copying-footnote"></span></p>
+<a class="anchor" id="Copying-footnote"></a></p>
 </div>
-<hr>
+
 
 
 </body>
@@ -546,5 +525,27 @@ $result_converted_errors{'html'}->{'anchor_in_copying_in_footnote'} = [
   }
 ];
 
+
+
+$result_converted{'latex_text'}->{'anchor_in_copying_in_footnote'} = '
+\\begin{document}
+\\label{anchor:Top}%
+\\label{anchor:node}%
+
+
+Copying\\footnote{In footnote.
+\\label{anchor:Copying-footnote}%
+}.
+
+
+
+Copying\\footnote{In footnote.
+\\label{anchor:Copying-footnote}%
+}.
+
+
+See \\hyperref[anchor:Copying-footnote]{[Copying footnote], page~\\pageref*{anchor:Copying-footnote}}.
+
+';
 
 1;

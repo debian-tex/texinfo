@@ -1,112 +1,64 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'ignored_in_ifset'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'text
-'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'ifset'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'ifset'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
+          'type' => 'empty_line'
+        },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'ifset'
+              'text' => 'text
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'ifset'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'ifset'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'end',
-      'extra' => {
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'ifset'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'paragraph'
+        },
         {
-          'parent' => {},
-          'text' => '%
-'
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'ifset'
                 }
               ],
@@ -114,7 +66,6 @@ $result_trees{'ignored_in_ifset'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -123,36 +74,58 @@ $result_trees{'ignored_in_ifset'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'ifset'
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 19,
+            'line_nr' => 13,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => '%
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'ifset'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'ifset'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 19,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'ignored_in_ifset'}{'contents'}[0]{'parent'} = $result_trees{'ignored_in_ifset'};
-$result_trees{'ignored_in_ifset'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[1];
-$result_trees{'ignored_in_ifset'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'ignored_in_ifset'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[1]{'contents'}[1];
-$result_trees{'ignored_in_ifset'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[1];
-$result_trees{'ignored_in_ifset'}{'contents'}[1]{'parent'} = $result_trees{'ignored_in_ifset'};
-$result_trees{'ignored_in_ifset'}{'contents'}[2]{'parent'} = $result_trees{'ignored_in_ifset'};
-$result_trees{'ignored_in_ifset'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[3]{'args'}[0];
-$result_trees{'ignored_in_ifset'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[3];
-$result_trees{'ignored_in_ifset'}{'contents'}[3]{'parent'} = $result_trees{'ignored_in_ifset'};
-$result_trees{'ignored_in_ifset'}{'contents'}[4]{'parent'} = $result_trees{'ignored_in_ifset'};
-$result_trees{'ignored_in_ifset'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[5];
-$result_trees{'ignored_in_ifset'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[5]{'contents'}[1]{'args'}[0];
-$result_trees{'ignored_in_ifset'}{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[5]{'contents'}[1];
-$result_trees{'ignored_in_ifset'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'ignored_in_ifset'}{'contents'}[5];
-$result_trees{'ignored_in_ifset'}{'contents'}[5]{'parent'} = $result_trees{'ignored_in_ifset'};
 
 $result_texis{'ignored_in_ifset'} = '
 text
@@ -174,7 +147,7 @@ text
 
 $result_errors{'ignored_in_ifset'} = [
   {
-    'error_line' => ':5: unmatched `@end ignore\'
+    'error_line' => 'unmatched `@end ignore\'
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -183,7 +156,7 @@ $result_errors{'ignored_in_ifset'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: unmatched `@end\'
+    'error_line' => 'unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 7,
@@ -192,7 +165,7 @@ $result_errors{'ignored_in_ifset'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':12: unmatched `@end verbatim\'
+    'error_line' => 'unmatched `@end verbatim\'
 ',
     'file_name' => '',
     'line_nr' => 12,
@@ -201,7 +174,7 @@ $result_errors{'ignored_in_ifset'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':13: unmatched `@end\'
+    'error_line' => 'unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 13,
@@ -210,7 +183,7 @@ $result_errors{'ignored_in_ifset'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':18: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 18,
@@ -219,7 +192,7 @@ $result_errors{'ignored_in_ifset'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':19: unmatched `@end\'
+    'error_line' => 'unmatched `@end\'
 ',
     'file_name' => '',
     'line_nr' => 19,

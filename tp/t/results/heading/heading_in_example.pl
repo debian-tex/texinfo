@@ -1,142 +1,114 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'heading_in_example'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'args' => [
             {
-              'contents' => [
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'in example '
-                },
-                {
-                  'cmdname' => '@',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' '
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'text' => 'in example '
+                    },
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => ' '
+                    },
+                    {
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'heading'
+                          'contents' => [
+                            {
+                              'text' => 'heading'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'emph',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'emph',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
                   },
-                  'parent' => {}
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'heading',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'heading',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'level' => 2,
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'example'
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 3,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'heading_in_example'}{'contents'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_example'}{'contents'}[0];
-$result_trees{'heading_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'heading_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'heading_in_example'}{'contents'}[0]{'parent'} = $result_trees{'heading_in_example'};
 
 $result_texis{'heading_in_example'} = '@example
 @heading in example @@ @emph{heading}
@@ -161,7 +133,7 @@ $result_converted{'plaintext'}->{'heading_in_example'} = '     in example @ _hea
 ';
 
 
-$result_converted{'html'}->{'heading_in_example'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'heading_in_example'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -176,21 +148,7 @@ $result_converted{'html'}->{'heading_in_example'} = '<!DOCTYPE html PUBLIC "-//W
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -199,7 +157,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <div class="example">
-<span id="in-example-_0040-heading"></span><strong>in example @ <em>heading</em></strong>
+<strong class="heading" id="in-example-_0040-heading">in example @ <em class="emph">heading</em></strong>
 </div>
 
 

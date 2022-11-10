@@ -1,6 +1,6 @@
 /* footnotes.c -- Some functions for manipulating footnotes.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,8 @@
 
 #include "info.h"
 #include "session.h"
-#include "info-utils.h"
+#include "scan.h"
+#include "util.h"
 #include "footnotes.h"
 
 /* Nonzero means attempt to show footnotes when displaying a new window. */
@@ -119,7 +120,7 @@ make_footnotes_node (NODE *node)
     char *header;
     long text_start = fn_start;
 
-    asprintf (&header,
+    xasprintf (&header,
               "*** Footnotes appearing in the node '%s' ***\n",
               node->nodename);
 
@@ -248,31 +249,26 @@ info_get_or_remove_footnotes (WINDOW *window)
 DECLARE_INFO_COMMAND (info_show_footnotes,
    _("Show the footnotes associated with this node in another window"))
 {
-  /* A negative argument means just make the window go away. */
-  if (count < 0)
-    {
-      WINDOW *fn_win = find_footnotes_window ();
+  /* Make the window go away if it is already showing. */
+    WINDOW *fn_win = find_footnotes_window ();
 
-      /* If there is an old footnotes window, and it isn't the only window
-         on the screen, delete it. */
-      if (fn_win && windows->next)
+    /* If there is an old footnotes window, and it isn't the only window
+       on the screen, delete it. */
+    if (fn_win && windows->next)
+      {
         info_delete_window_internal (fn_win);
-    }
-  else
-    {
-      int result;
+        return;
+      }
 
-      result = info_get_or_remove_footnotes (window);
 
-      switch (result)
-        {
-        case FN_UNFOUND:
-          info_error ("%s", msg_no_foot_node);
-          break;
+    switch (info_get_or_remove_footnotes (window))
+      {
+      case FN_UNFOUND:
+        info_error ("%s", msg_no_foot_node);
+        break;
 
-        case FN_UNABLE:
-          info_error ("%s", msg_win_too_small);
-          break;
-        }
-    }
+      case FN_UNABLE:
+        info_error ("%s", msg_win_too_small);
+        break;
+      }
 }

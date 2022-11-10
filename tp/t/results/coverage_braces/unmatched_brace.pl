@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,83 +10,64 @@ $result_trees{'unmatched_brace'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'Closing'
+                  'contents' => [
+                    {
+                      'text' => 'Closing'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'samp',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
+              'cmdname' => 'samp',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => ' '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => ' '
-                },
-                {
-                  'cmdname' => '}',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' without opening macro '
+                  'contents' => [
+                    {
+                      'text' => ' '
+                    },
+                    {
+                      'cmdname' => '}'
+                    },
+                    {
+                      'text' => ' without opening macro '
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'samp',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.'
             }
           ],
-          'cmdname' => 'samp',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'unmatched_brace'}{'contents'}[0];
-$result_trees{'unmatched_brace'}{'contents'}[0]{'parent'} = $result_trees{'unmatched_brace'};
 
 $result_texis{'unmatched_brace'} = '@samp{Closing} @samp{ @} without opening macro }.';
 
@@ -95,7 +76,7 @@ $result_texts{'unmatched_brace'} = 'Closing  } without opening macro .';
 
 $result_errors{'unmatched_brace'} = [
   {
-    'error_line' => ':1: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 1,

@@ -1,24 +1,16 @@
-@node Texinfo::Convert::DocBook
+@node Texinfo@asis{::}Convert@asis{::}DocBook
 @chapter Texinfo::Convert::DocBook
 
-@menu
-* Texinfo@asis{::}Convert@asis{::}DocBook NAME::
-* Texinfo@asis{::}Convert@asis{::}DocBook SYNOPSIS::
-* Texinfo@asis{::}Convert@asis{::}DocBook DESCRIPTION::
-* Texinfo@asis{::}Convert@asis{::}DocBook METHODS::
-* Texinfo@asis{::}Convert@asis{::}DocBook AUTHOR::
-@end menu
-
-@node Texinfo::Convert::DocBook NAME
-@section NAME
+@node Texinfo@asis{::}Convert@asis{::}DocBook NAME
+@section Texinfo::Convert::DocBook NAME
 
 Texinfo::Convert::DocBook - Convert Texinfo tree to DocBook
 
-@node Texinfo::Convert::DocBook SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Convert@asis{::}DocBook SYNOPSIS
+@section Texinfo::Convert::DocBook SYNOPSIS
 
 @verbatim
-  my $converter 
+  my $converter
     = Texinfo::Convert::DocBook->converter({'parser' => $parser});
 
   $converter->output($tree);
@@ -26,51 +18,70 @@ Texinfo::Convert::DocBook - Convert Texinfo tree to DocBook
   $converter->convert_tree($tree);
 @end verbatim
 
-@node Texinfo::Convert::DocBook DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Convert@asis{::}DocBook NOTES
+@section Texinfo::Convert::DocBook NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Convert@asis{::}DocBook DESCRIPTION
+@section Texinfo::Convert::DocBook DESCRIPTION
 
 Texinfo::Convert::DocBook converts a Texinfo tree to DocBook.
 
-@node Texinfo::Convert::DocBook METHODS
-@section METHODS
+@node Texinfo@asis{::}Convert@asis{::}DocBook METHODS
+@section Texinfo::Convert::DocBook METHODS
 
 @table @asis
 @item $converter = Texinfo::Convert::DocBook->converter($options)
-@anchor{Texinfo::Convert::DocBook $converter = Texinfo::Convert::DocBook->converter($options)}
+@anchor{Texinfo@asis{::}Convert@asis{::}DocBook $converter = Texinfo@asis{::}Convert@asis{::}DocBook->converter($options)}
 
-Initialize converter from Texinfo to DocBook.  
+Initialize converter from Texinfo to DocBook.
 
 The @emph{$options} hash reference holds options for the converter.  In
-this option hash reference a parser object may be associated with the 
-@emph{parser} key.  The other options should be configuration options
-described in the Texinfo manual.  Those options, when appropriate,
-override the document content.
+this option hash reference a @ref{Texinfo@asis{::}Parser NAME,, parser object}
+may be associated with the @emph{parser} key.  The other options
+are Texinfo customization options and a few other options that can
+be passed to the converter. Most of the customization options are described in
+the Texinfo manual.  Those customization options, when appropriate, override
+the document content.  The parser should not be available directly anymore
+after getting the associated information.
 
-See @ref{Texinfo::Convert::Converter NAME} for more informations.
+See @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} for more information.
 
 @item $converter->output($tree)
-@anchor{Texinfo::Convert::DocBook $converter->output($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}DocBook $converter->output($tree)}
 
 Convert a Texinfo tree @emph{$tree} and output the result in files as
 described in the Texinfo manual.
 
 @item $result = $converter->convert($tree)
-@anchor{Texinfo::Convert::DocBook $result = $converter->convert($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}DocBook $result = $converter->convert($tree)}
 
-Convert a Texinfo tree @emph{$tree} or tree portion and return 
-the resulting output.
+Convert a Texinfo tree @emph{$tree} and return the resulting output.
 
 @item $result = $converter->convert_tree($tree)
-@anchor{Texinfo::Convert::DocBook $result = $converter->convert_tree($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}DocBook $result = $converter->convert_tree($tree)}
 
-Convert a Texinfo tree portion @emph{$tree} and return the resulting 
+Convert a Texinfo tree portion @emph{$tree} and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use @code{convert}.
 
 @end table
 
-@node Texinfo::Convert::DocBook AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Convert@asis{::}DocBook AUTHOR
+@section Texinfo::Convert::DocBook AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Convert@asis{::}DocBook COPYRIGHT AND LICENSE
+@section Texinfo::Convert::DocBook COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

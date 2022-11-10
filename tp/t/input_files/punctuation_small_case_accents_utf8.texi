@@ -1,0 +1,23 @@
+\input texinfo
+
+@node top
+@top top section
+
+@node node chap
+@chapter chapter
+
+``in double q''. `in simple q'.
+
+@'e, --- @dfn{def} -- @code{in code}. @samp{in samp} aé. @comma{} @exclamdown{}. @dots{}
+
+@geq{} @enddots{} @AA{} @'e @dotaccent{A} @l{}. @copyright{}. @error{}.
+@quotedblleft{} in quotes @quotedblright{}. @expansion{}
+@minus{} @registeredsymbol{}
+
+
+@u{--a}
+@^{--a}
+@aa{} @AA{} @^e @^E @~{@dotless{i}} @dotless{i} @udotaccent{r} @v{@'{r}} @={@,{@~{n}}}.
+@equiv{}
+@sc{@aa{} @AA{} @^e @^E @~{@dotless{i}} @dotless{i} @udotaccent{r} @v{@'{r}} @={@,{@~{n}}}}.
+

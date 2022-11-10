@@ -1,155 +1,132 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'headitem_itemx_in_enumerate'} = {
   'contents' => [
     {
-      'cmdname' => 'enumerate',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'cmdname' => 'item',
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'enumerate',
           'contents' => [
             {
+              'cmdname' => 'item',
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'item enumerate
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'item enumerate
 '
+                    }
+                  ],
+                  'type' => 'paragraph'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'itemx enumerate'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'itemx',
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'headitem enumerate
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
+              'extra' => {
+                'item_number' => 1
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'itemx enumerate'
+                      'text' => 'enumerate'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
-              'cmdname' => 'itemx',
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' '
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'enumerate'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 3,
+                'line_nr' => 5,
                 'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'headitem enumerate
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'paragraph'
+              }
             }
           ],
           'extra' => {
-            'item_number' => 1,
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => '1'
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 2,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'enumerate'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'enumerate',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'enumerate'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {},
-        'enumerate_specification' => '1'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'};
 
 $result_texis{'headitem_itemx_in_enumerate'} = '@enumerate
 @item item enumerate
@@ -166,7 +143,7 @@ headitem enumerate
 
 $result_errors{'headitem_itemx_in_enumerate'} = [
   {
-    'error_line' => ':3: @itemx outside of table or list
+    'error_line' => '@itemx outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -175,7 +152,7 @@ $result_errors{'headitem_itemx_in_enumerate'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: @headitem not meaningful inside `@enumerate\' block
+    'error_line' => '@headitem not meaningful inside `@enumerate\' block
 ',
     'file_name' => '',
     'line_nr' => 4,

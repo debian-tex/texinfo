@@ -4,6 +4,7 @@ top
 * Menu:
 
 * “:                                     Top.                   (line 3)
+* “ <1>:                                 Top.                   (line 3)
 * ”:                                     Top.                   (line 3)
 * ":                                     Top.                   (line 3)
 * ’:                                     Top.                   (line 3)
@@ -16,7 +17,6 @@ top
 * ‘:                                     Top.                   (line 3)
 * ¡:                                     Top.                   (line 3)
 * °:                                     Top.                   (line 3)
-* “ <1>:                                 Top.                   (line 3)
 * €:                                     Top.                   (line 3)
 * ≥:                                     Top.                   (line 3)
 * a:                                     Top.                   (line 3)

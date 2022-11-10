@@ -1,209 +1,166 @@
-@node Texinfo::Report
+@node Texinfo@asis{::}Report
 @chapter Texinfo::Report
 
-@menu
-* Texinfo@asis{::}Report NAME::
-* Texinfo@asis{::}Report SYNOPSIS::
-* Texinfo@asis{::}Report DESCRIPTION::
-* Texinfo@asis{::}Report METHODS::
-* Texinfo@asis{::}Report AUTHOR::
-@end menu
+@node Texinfo@asis{::}Report NAME
+@section Texinfo::Report NAME
 
-@node Texinfo::Report NAME
-@section NAME
+Texinfo::Report - Error storing for Texinfo modules
 
-Texinfo::Report - Error storing and string translations for Texinfo modules
-
-@node Texinfo::Report SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Report SYNOPSIS
+@section Texinfo::Report SYNOPSIS
 
 @verbatim
-  @ISA = qw(Texinfo::Report);
+  use Texinfo::Report;
 
-  $converter->Texinfo::Report::new();
+  my $registrar = Texinfo::Report::new();
   
   if ($warning_happened) {
-    $converter->line_warn(sprintf($converter->__("\@%s is wrongly used"),
-                       $current->{'cmdname'}), $current->{'line_nr'});
+    $registrar->line_warn($converter, sprintf(__("\@%s is wrongly used"),
+                       $current->{'cmdname'}), $current->{'source_info'});
   }
   
-  my ($errors, $errors_count) = $converter->errors();
+  my ($errors, $errors_count) = $registrar->errors();
   foreach my $error_message (@$errors) {
     warn $error_message->{'error_line'};
   }
-
-  my $tree_translated = $converter->gdt('See {reference} in @cite{{book}}',
-                       {'reference' => $tree_reference,
-                        'book'  => {'text' => $book_name}});
 @end verbatim
 
-@node Texinfo::Report DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Report NOTES
+@section Texinfo::Report NOTES
 
-The Texinfo::Report module helps with string translations and error 
-handling.  It is used by the Texinfo modules Texinfo::Parser and 
-Texinfo::Convert::Converter.  To use this module, the usual way is
-to inherit Texinfo::Report methods and initialize the Texinfo::Report
-variables for a @emph{$converter} object. This is done by calling 
-@code{Texinfo::Report::new()} on the @emph{$converter} object.  This is done by 
-Texinfo::Convert::Converter, for instance, so every module that inherits
-Texinfo::Convert::Converter can automatically use the Texinfo::Report
-methods in an object-oriented way.
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
 
-Besides the @code{new} method, @code{gdt} is used for string translations, 
-@code{errors} for reporting errors, and the other methods to store errors
-(and warnings).
+@node Texinfo@asis{::}Report DESCRIPTION
+@section Texinfo::Report DESCRIPTION
 
-@node Texinfo::Report METHODS
-@section METHODS
+The @code{Texinfo::Report} module helps with error handling.  It is
+used by the Texinfo modules @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser} and
+@ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.  To use this module, either create
+a new @code{Texinfo::Report} object or initialize another object
+such as to be able to call @code{Texinfo::Report} methods.  In any
+case, @code{Texinfo::Report::new()} is called to setup the module.
 
-No method is exported in the default case.  
+Besides the @code{new} method, @code{errors} is used for reporting errors, and the
+other methods to store errors (and warnings).
 
-The @code{new} method initializes Texinfo::Report related fields:
+@node Texinfo@asis{::}Report METHODS
+@section Texinfo::Report METHODS
 
-@verbatim
-  $converter->Texinfo::Report::new()
-@end verbatim
+No method is exported in the default case.
 
-The @code{gdt} method is used to translate strings to be output in 
-converted documents, and return a texinfo tree.
-
-@table @asis
-@item $tree = $converter->gdt($string, $replaced_substrings, $mode)
-@anchor{Texinfo::Report $tree = $converter->gdt($string@comma{} $replaced_substrings@comma{} $mode)}
-
-The @emph{$string} is a string to be translated.  In the default case, 
-the function returns a Texinfo tree, as the string is 
-interpreted as Texinfo code after
-translation.  @emph{$replaced_substrings} is an optional 
-hash reference specifying some 
-substitution to be done after the translation.  The key of 
-the @emph{$replaced_substrings} hash reference identifies what is to 
-be substituted, and the value is some string, texinfo tree or array content 
-that is substituted in the resulting texinfo tree.
-In the string to be translated word in brace matching keys of 
-@emph{$replaced_substrings} are replaced.
-
-@emph{$mode} is an optional string which may modify how the function
-behaves.  The possible values are
-
-@table @asis
-@item translated_text
-@anchor{Texinfo::Report translated_text}
-
-In that case the string is not considered to be Texinfo, a plain string
-that is returned after translation and substitution.  The substitutions
-may only be strings in that case.
-
-@end table
-
-For example in the following call, the string 
-@emph{See @{reference@} in @@cite@{@{book@}@}} is translated, then
-parsed as a Texinfo string, with @emph{@{reference@}} substituted by
-@emph{$tree_reference} in the resulting tree, and @emph{@{book@}} 
-replaced by the associated texinfo tree text element:
-
-@verbatim
-  $tree = $converter->gdt('See {reference} in @cite{{book}}',
-                       {'reference' => $tree_reference,
-                        'book'  => {'text' => $book_name}});
-@end verbatim
-
-@code{gdt} uses the information in the @emph{$converter} to know the
-encoding and documentlanguage.  More precisely, 
-@code{$converter->@{'encoding_name'@}}, @code{$converter->@{'perl_encoding'@}}
-and @code{$converter->get_conf('documentlanguage')} are used.
-
-@code{gdt} uses a gettext-like infrastructure to retrieve the 
-translated strings, using the @emph{texinfo_document} domain.
-
-@end table
-
+The @code{new} method initializes @code{Texinfo::Report} related fields.
 The errors collected are available through the @code{errors} method, the other
 methods allow registering errors and warnings.
 
 @table @asis
-@item ($error_warnings_list, $error_count) = errors ($converter)
-@anchor{Texinfo::Report ($error_warnings_list@comma{} $error_count) = errors ($converter)}
+@item my $registrar = Texinfo::Report::new()
+@anchor{Texinfo@asis{::}Report my $registrar = Texinfo@asis{::}Report@asis{::}new()}
+
+@item $converter->Texinfo::Report::new()
+@anchor{Texinfo@asis{::}Report $converter->Texinfo@asis{::}Report@asis{::}new()}
+@cindex @code{Texinfo::Report::new}
+
+If called without argument, a @code{Texinfo::Report} object is initialized and
+returned.  This is how the module is used in the Texinfo Parsers, as
+a separate object.
+
+If called on a @code{$converter}, the @code{$converter} is initialized itself
+such as to be able to call @code{Texinfo::Report} methods.  It is how it is
+used in the Converters.
+
+@item ($error_warnings_list, $error_count) = errors($registrar)
+@anchor{Texinfo@asis{::}Report ($error_warnings_list@comma{} $error_count) = errors($registrar)}
+@cindex @code{errors}
 
 This function returns as @emph{$error_count} the count of errors since
 calling @code{new}.  The @emph{$error_warnings_list} is an array of hash references
-one for each error, warning or error line continuation.  Each of these has 
+one for each error, warning or error line continuation.  Each of these has
 the following keys:
 
 @table @asis
 @item type
-@anchor{Texinfo::Report type}
+@anchor{Texinfo@asis{::}Report type}
 
 May be @code{warning}, or @code{error}.
 
 @item text
-@anchor{Texinfo::Report text}
+@anchor{Texinfo@asis{::}Report text}
 
 The text of the error.
 
 @item error_line
-@anchor{Texinfo::Report error_line}
+@anchor{Texinfo@asis{::}Report error_line}
 
 The text of the error formatted with the file name, line number and macro
 name, as needed.
 
 @item line_nr
-@anchor{Texinfo::Report line_nr}
+@anchor{Texinfo@asis{::}Report line_nr}
 
 The line number of the error or warning.
 
 @item file_name
-@anchor{Texinfo::Report file_name}
+@anchor{Texinfo@asis{::}Report file_name}
 
 The file name where the error or warning occurs.
 
 @item macro
-@anchor{Texinfo::Report macro}
+@anchor{Texinfo@asis{::}Report macro}
 
-The user macro name that is expanded at the location of 
+The user macro name that is expanded at the location of
 the error or warning.
 
 @end table
 
-@item $converter->line_warn($text, $line_nr)
-@anchor{Texinfo::Report $converter->line_warn($text@comma{} $line_nr)}
+@item $registrar->line_warn($text, $configuration_information, $error_location_info)
+@anchor{Texinfo@asis{::}Report $registrar->line_warn($text@comma{} $configuration_information@comma{} $error_location_info)}
 
-@item $converter->line_error($text, $line_nr)
-@anchor{Texinfo::Report $converter->line_error($text@comma{} $line_nr)}
+@item $registrar->line_error($text, $configuration_information, $error_location_info)
+@anchor{Texinfo@asis{::}Report $registrar->line_error($text@comma{} $configuration_information@comma{} $error_location_info)}
+@cindex @code{line_warn}
+@cindex @code{line_error}
 
 Register a warning or an error.  The @emph{$text} is the text of the
-error or warning.  The optional @emph{$line_nr} holds the information
-on the error or warning location.  It is associated with the @emph{line_nr} 
-key of Texinfo tree elements as described in @ref{Texinfo::Parser line_nr}
-for the @@-commands.  The @emph{$line_nr} structure is described in @ref{, errors,, error_warnings_list_error_count__errors_converter}
-above.
+error or warning.  The @emph{$configuration_information} object gives
+some information that can modify the messages or their delivery.
+The optional @emph{$error_location_info} holds the information on the error or
+warning location.  The @emph{$error_location_info} reference on hash may be
+obtained from Texinfo elements @emph{source_info} keys.   It may also
+be setup to point to a file name, using the @code{file_name} key and
+to a line number, using the @code{line_nr} key.  The @code{file_name} key value
+should be a binary string.
 
-@item $converter->document_warn($text)
-@anchor{Texinfo::Report $converter->document_warn($text)}
+The @emph{source_info} key of Texinfo tree elements is described
+in more details in @ref{Texinfo@asis{::}Parser source_info}.
 
-@item $converter->document_error($text)
-@anchor{Texinfo::Report $converter->document_error($text)}
+@item $registrar->document_warn($configuration_information, $text)
+@anchor{Texinfo@asis{::}Report $registrar->document_warn($configuration_information@comma{} $text)}
+
+@item $registrar->document_error($configuration_information, $text)
+@anchor{Texinfo@asis{::}Report $registrar->document_error($configuration_information@comma{} $text)}
+@cindex @code{document_warn}
+@cindex @code{document_error}
 
 Register a document-wide error or warning.  @emph{$text} is the error or
-warning message.
-
-@item $converter->file_line_warn($text, $file, $line_nr)
-@anchor{Texinfo::Report $converter->file_line_warn($text@comma{} $file@comma{} $line_nr)}
-
-Register the warning message @emph{$text} for file @emph{$file}, with, optionally
-the line @emph{$line_nr} in the file.
-
-@item $converter->file_line_error($text, $file, $line_nr)
-@anchor{Texinfo::Report $converter->file_line_error($text@comma{} $file@comma{} $line_nr)}
-
-Register the error message @emph{$text} for file @emph{$file}, with, optionally
-the line @emph{$line_nr} in the file.
+warning message.  The @emph{$configuration_information} object gives
+some information that can modify the messages or their delivery.
 
 @end table
 
-@node Texinfo::Report AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Report AUTHOR
+@section Texinfo::Report AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Report COPYRIGHT AND LICENSE
+@section Texinfo::Report COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

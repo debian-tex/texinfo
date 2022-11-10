@@ -1,0 +1,79 @@
+\documentclass{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{titleps}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% set defaults for lists that match Texinfo TeX formatting
+\setlist[enumerate]{label=\arabic*.}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+\begin{document}
+\begin{enumerate}[label=\alph*.]
+\item value
+\item value
+\end{enumerate}
+
+\begin{enumerate}[label=\Alph*.]
+\item value
+\item value
+\end{enumerate}
+
+\begin{enumerate}[label=\alph*.,start=3]
+\item value
+\item value
+\end{enumerate}
+
+\begin{enumerate}[label=\Alph*.,start=3]
+\item value
+\item value
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+\item value
+\item value
+\end{enumerate}
+
+\begin{enumerate}[start=3]
+\item value
+\item value
+\end{enumerate}
+
+\end{document}

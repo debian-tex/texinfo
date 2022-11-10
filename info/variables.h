@@ -1,6 +1,6 @@
 /* variables.h -- Description of user visible variables in Info.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@
 #define INFO_VARIABLES_H
 
 #include "window.h"
-#include "info-utils.h"
 
 /* A variable (in the Info sense) is an integer value with a user-visible
    name.  You may supply an array of strings to complete over when the

@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -12,13 +12,25 @@ my @test_cases = (
 @item @option{--target=} target platform on which the program is processed.
 @end itemize
 '],
-# unclear that these are valid constructs...
-['accent_argument',
+['empty_accent_argument',
 '@itemize @~@comment
 @item item
 @end itemize
 
 @itemize @~
+@item item
+@end itemize
+
+@itemize @~{}
+@item item
+@end itemize
+'],
+['accent_argument',
+'@itemize @~e
+@item item
+@end itemize
+
+@itemize @~{e}
 @item item
 @end itemize
 '],
@@ -453,13 +465,42 @@ more.
 @item item +
 @end itemize
 
+@itemize m--n
+@item with m--n
+@end itemize
+
 @itemize @bullet{} a--n itemize line
 @item in an itemize line
 @end itemize
 @end example
 '],
+['table_in_itemize',
+'@itemize @bullet
+@item item one
+@item
+@table @asis
+@item table one
+aaaaa
+
+New para.
+@item table two
+Five
+
+New para.
+@end table
+@item item three
+@end itemize'],
+);
+
+my @test_full_doc = (
 ['inter_item_commands_in_itemize',
-'@itemize @minus
+'@node Top
+@top top
+
+@node chapter
+@chapter chap
+
+@itemize @minus
 @c comment in itemize
 @cindex also a cindex in itemize
 @item e--mph item
@@ -480,10 +521,35 @@ T--ext before items.
 @end itemize
 '],
 ['inter_item_commands_in_enumerate',
-'@enumerate
+'@node Top
+@top top
+
+@node chapter
+@chapter chap
+
+@enumerate
 
 @comment comment before first item in enumerate
 @item e--numerate
+@end enumerate
+
+@enumerate
+
+@cindex index inter in enumerate between lines
+
+@item enumerate item
+@end enumerate
+
+@enumerate
+
+@cindex index inter in enumerate after line
+@item enumerate item
+@end enumerate
+
+@enumerate
+@cindex index inter in enumerate before line
+
+@item enumerate item
 @end enumerate
 
 @enumerate
@@ -491,23 +557,16 @@ Title
 @cindex cindex
 @item enum
 @end enumerate
+
+@enumerate
+@cindex first idx
+@comment comment
+@cindex sedond idx
+@cindex another
+@item enum
+@end enumerate
+
 '],
-['table_in_itemize',
-'@itemize @bullet
-@item item one
-@item
-@table @asis
-@item table one
-aaaaa
-
-New para.
-@item table two
-Five
-
-New para.
-@end table
-@item item three
-@end itemize']
 );
 
 my @test_invalid = (
@@ -553,13 +612,22 @@ my @test_invalid = (
 '],
 );
 
+my @latex_tests_cases_tests = ('w_argument', 'enumerate_in_example',
+                               'itemize_long_item', 'itemize_in_example');
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
+  push @{$test->[2]->{'test_formats'}}, 'latex_text'
+    if (grep {$_ eq $test->[0]} @latex_tests_cases_tests);
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
+foreach my $test (@test_full_doc) {
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  push @{$test->[2]->{'test_formats'}}, 'html_text';
+  push @{$test->[2]->{'test_formats'}}, 'file_latex';
+  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+  $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
+}
 
-run_all ('itemize', [@test_cases, @test_invalid], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('itemize', [@test_cases, @test_full_doc, @test_invalid]);

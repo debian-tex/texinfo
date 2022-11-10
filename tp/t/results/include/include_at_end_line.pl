@@ -1,68 +1,59 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'include_at_end_line'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'inc_file.texi'
+                },
+                {
+                  'cmdname' => '
+'
+                }
+              ],
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'include',
+          'extra' => {
+            'spaces_before_argument' => ' ',
+            'text_arg' => 'inc_file.texi'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'inc_file.texi'
-            },
-            {
-              'cmdname' => '
-',
-              'parent' => {}
+              'text' => 'After.'
             }
           ],
-          'parent' => {},
-          'type' => 'line_arg'
+          'type' => 'paragraph'
         }
       ],
-      'cmdname' => 'include',
-      'extra' => {
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'inc_file.texi'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'After.'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0];
-$result_trees{'include_at_end_line'}{'contents'}[0]{'parent'} = $result_trees{'include_at_end_line'};
-$result_trees{'include_at_end_line'}{'contents'}[1]{'parent'} = $result_trees{'include_at_end_line'};
-$result_trees{'include_at_end_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[2];
-$result_trees{'include_at_end_line'}{'contents'}[2]{'parent'} = $result_trees{'include_at_end_line'};
 
 $result_texis{'include_at_end_line'} = '@include inc_file.texi@
 
@@ -74,7 +65,7 @@ After.';
 
 $result_errors{'include_at_end_line'} = [
   {
-    'error_line' => ':1: bad argument to @include: inc_file.texi@
+    'error_line' => 'bad argument to @include: inc_file.texi@
 ',
     'file_name' => '',
     'line_nr' => 1,

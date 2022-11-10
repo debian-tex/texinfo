@@ -1,0 +1,137 @@
+@node Texinfo@asis{::}Convert@asis{::}Utils
+@chapter Texinfo::Convert::Utils
+
+@node Texinfo@asis{::}Convert@asis{::}Utils NAME
+@section Texinfo::Convert::Utils NAME
+
+Texinfo::Convert::Utils - miscellaneous functions usable in all converters
+
+@node Texinfo@asis{::}Convert@asis{::}Utils SYNOPSIS
+@section Texinfo::Convert::Utils SYNOPSIS
+
+@verbatim
+  use Texinfo::Convert::Utils qw(expand_today expand_verbatiminclude);
+  
+  my $today_tree = expand_today($converter);
+  my $verbatiminclude_tree
+     = expand_verbatiminclude(undef, $converter, $verbatiminclude);
+@end verbatim
+
+@node Texinfo@asis{::}Convert@asis{::}Utils NOTES
+@section Texinfo::Convert::Utils NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Convert@asis{::}Utils DESCRIPTION
+@section Texinfo::Convert::Utils DESCRIPTION
+
+miscellaneous methods that may be useful for backends converting texinfo
+trees.  This module contains the methods that can be used in converters
+that do not inherit @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.
+
+@node Texinfo@asis{::}Convert@asis{::}Utils METHODS
+@section Texinfo::Convert::Utils METHODS
+
+No method is exported in the default case.
+
+Most methods takes a @emph{$converter} as argument, in general optionally,
+to get some information and use methods for error reporting,
+see @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} and @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report}.
+On strings translations, see @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.
+
+@table @asis
+@item $arguments = definition_arguments_content($element)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $arguments = definition_arguments_content($element)}
+@cindex @code{definition_arguments_content}
+
+@emph{$element} should be a @code{@@def*} Texinfo tree element.  Texinfo elements
+on the @@-command line corresponding to arguments in the function
+definition are returned in the @emph{$arguments} array reference.
+Arguments correspond to text following the category and the name
+on the @@-command line.  If there is no argument, @emph{$arguments}
+will be @code{undef}.
+
+@item $tree = definition_category_tree($converter, $def_line)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $tree = definition_category_tree($converter@comma{} $def_line)}
+@cindex @code{definition_category_tree}
+
+The @emph{$converter} argument may be undef.  @emph{$def_line} is a
+@code{def_line} texinfo tree container.  This function
+returns a texinfo tree corresponding to the category of the
+@emph{$def_line} taking the class into account, if there is one.
+If @emph{$converter} is not defined, the resulting string won't be
+translated.
+
+@item ($encoded_name, $encoding) = $converter->encoded_output_file_name($converter, $character_string_name)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($converter@comma{} $character_string_name)}
+@cindex @code{encoded_output_file_name}
+
+Encode @emph{$character_string_name} in the same way as other file name are
+encoded in converters, based on customization variables, and possibly
+on the input file encoding.  Return the encoded name and the encoding
+used to encode the name.  The @emph{$converter} argument is not optional
+and is used both to access to customization variables and to access to parser
+information.
+
+@item $tree = expand_today($converter)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $tree = expand_today($converter)}
+@cindex @code{expand_today}
+
+Expand today's date, as a texinfo tree with translations.
+
+@item $tree = expand_verbatiminclude($registrar, $customization_information, $verbatiminclude)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $tree = expand_verbatiminclude($registrar@comma{} $customization_information@comma{} $verbatiminclude)}
+@cindex @code{expand_verbatiminclude}
+
+The @emph{$registrar} argument may be undef.  @emph{$verbatiminclude} is a
+@code{@@verbatiminclude} tree element.  This function returns a
+@code{@@verbatim} tree elements after finding the included file and
+reading it.  If @emph{$registrar} is not defined, errors messages are
+not registered.
+
+@item (\@@contents, \@@accent_commands) = find_innermost_accent_contents($element)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils (\@@contents@comma{} \@@accent_commands) = find_innermost_accent_contents($element)}
+@cindex @code{find_innermost_accent_contents}
+
+@emph{$element} should be an accent command Texinfo tree element.  Returns
+an array reference containing the innermost accent command contents,
+normally a text element with one or two letter, and an array reference
+containing the accent commands nested in @emph{$element} (including
+@emph{$element}).
+
+@item $result = add_heading_number($converter, $heading_element, $heading_text, $do_number)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $result = add_heading_number($converter@comma{} $heading_element@comma{} $heading_text@comma{} $do_number)}
+@cindex @code{add_heading_number}
+
+The @emph{$converter} argument may be undef.  @emph{$heading_element} is
+a heading command tree element.  @emph{$heading_text} is the already
+formatted heading text.  if the @emph{$do_number} optional argument is
+defined and false, no number is used and the text is returned as is.
+This function returns the heading with a number and the appendix
+part if needed.  If @emph{$converter} is not defined, the resulting
+string won't be translated.
+
+@end table
+
+@node Texinfo@asis{::}Convert@asis{::}Utils SEE ALSO
+@section Texinfo::Convert::Utils SEE ALSO
+
+@ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} and @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.
+
+@node Texinfo@asis{::}Convert@asis{::}Utils AUTHOR
+@section Texinfo::Convert::Utils AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Convert@asis{::}Utils COPYRIGHT AND LICENSE
+@section Texinfo::Convert::Utils COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

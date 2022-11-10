@@ -16,7 +16,7 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 use strict;
@@ -24,6 +24,7 @@ use Getopt::Long qw(GetOptions);
 # for dirname.
 use File::Basename;
 use File::Spec;
+use Encode;
 
 Getopt::Long::Configure("gnu_getopt");
 
@@ -31,7 +32,7 @@ BEGIN
 {
   # emulate -w
   $^W = 1;
-  my ($real_command_name, $command_directory, $command_suffix) 
+  my ($real_command_name, $command_directory, $command_suffix)
      = fileparse($0, '.pl');
 
   my $datadir = '@datadir@';
@@ -54,9 +55,9 @@ BEGIN
     # try to make package relocatable, will only work if standard relative paths
     # are used
     if (! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm')
-        and -f File::Spec->catfile($command_directory, $updir, 'share', 
+        and -f File::Spec->catfile($command_directory, $updir, 'share',
                                    'texinfo', 'Texinfo', 'Parser.pm')) {
-      $texinfolibdir = File::Spec->catdir($command_directory, $updir, 
+      $texinfolibdir = File::Spec->catdir($command_directory, $updir,
                                           'share', 'texinfo');
     }
     $lib_dir = $texinfolibdir;
@@ -80,9 +81,9 @@ BEGIN
 
 use XML::LibXML::Reader;
 
-# gather information on Texinfo XML elements
-use Texinfo::Common;
-use Texinfo::Convert::TexinfoXML;
+use Texinfo::Commands;
+# gather information on Texinfo markup language elements
+use Texinfo::Convert::TexinfoMarkup;
 
 my $debug = 0;
 my $result_options = Getopt::Long::GetOptions (
@@ -112,7 +113,15 @@ my %elements_end_attributes = (
   'menutitle' => 1,
 );
 
+# keys are markup elements.  If the element is associated to one @-command
+# only, the value is a string, the corresponding @-command formatted.
+# If the element is associated to more than one element, the value is a
+# hash to select the command based on an attribute value.  They key of the
+# hash attribute is an attribute name and the value is another hash
+# reference which associates an attribute value to the formatted @-command
+# string.
 my %element_at_commands;
+# entities not associated to @-commands
 my %entity_texts = (
   'textldquo' => '``',
   'textrdquo' => "''",
@@ -121,21 +130,25 @@ my %entity_texts = (
   'textrsquo' => "'",
   'textlsquo' => '`',
   'formfeed' => "\f",
-  # this is not used in pratice, as attrformfeed appears in an 
+  # this is not used in pratice, as attrformfeed appears in an
   # attribute and thus is already expanded to text.
   'attrformfeed' => "\f",
 );
 
-foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_formatting)) {
-  if (!ref($Texinfo::Convert::TexinfoXML::commands_formatting{$command})) {
-    $entity_texts{$Texinfo::Convert::TexinfoXML::commands_formatting{$command}}
+# contains nobrace symbol and brace noarg commands
+my %no_arg_commands_formatting
+  = %Texinfo::Convert::TexinfoMarkup::no_arg_commands_formatting;
+
+foreach my $command (keys(%no_arg_commands_formatting)) {
+  if (!ref($no_arg_commands_formatting{$command})) {
+    $entity_texts{$no_arg_commands_formatting{$command}}
       = command_with_braces($command);
   } else {
-    my $spec = $Texinfo::Convert::TexinfoXML::commands_formatting{$command};
+    my $spec = $no_arg_commands_formatting{$command};
     my $element = $spec->[0];
     if ($element eq 'spacecmd') {
-      if ($spec->[1] eq 'type') {
-        $element_at_commands{$element}->{"type"}->{$spec->[2]}
+      if ($spec->[1]->[0] eq 'type') {
+        $element_at_commands{$element}->{"type"}->{$spec->[1]->[1]}
           = command_with_braces($command);
       } else {
         die "BUG, bad spacecmd specification";
@@ -146,22 +159,31 @@ foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_formatting)) {
   }
 }
 
-$element_at_commands{'accent'} = 0;
-
 my %arg_elements;
-foreach my $command (keys(%Texinfo::Convert::TexinfoXML::commands_args_elements)) {
+my %variadic_elements;
+
+foreach my $command (keys(%Texinfo::Convert::TexinfoMarkup::commands_args_elements)) {
   my $arg_index = 0;
-  foreach my $element_argument (@{$Texinfo::Convert::TexinfoXML::commands_args_elements{$command}}) {
+  my @element_arguments
+    = @{$Texinfo::Convert::TexinfoMarkup::commands_args_elements{$command}};
+  foreach my $element_argument (@element_arguments) {
     if ($element_argument ne '*') {
-      $arg_elements{$element_argument} = [$arg_index, $command];
-      $arg_index++;
+      # need to disambiguate by command as some markup argument elements
+      # are common, for @*ref, for example.  It should not matter, in general,
+      # if the argument indices are the same, which should be the case, but
+      # it is cleaner anyway.
+      $arg_elements{$element_argument}->{$command} = $arg_index;
+    } else {
+      my $previous_element_argument = $element_arguments[$arg_index - 1];
+      $variadic_elements{$previous_element_argument}->{$command} = $arg_index;
     }
+    $arg_index++;
   }
 }
 
 my %accent_type_command;
-foreach my $accent_command (keys(%Texinfo::Convert::TexinfoXML::accent_types)) {
-  $accent_type_command{$Texinfo::Convert::TexinfoXML::accent_types{$accent_command}} 
+foreach my $accent_command (keys(%Texinfo::Convert::TexinfoMarkup::accent_types)) {
+  $accent_type_command{$Texinfo::Convert::TexinfoMarkup::accent_types{$accent_command}}
     = $accent_command;
 }
 
@@ -176,9 +198,12 @@ if (!defined($infile) or $infile !~ /\S/) {
   die "Missing file\n";
 }
 
-my $reader = XML::LibXML::Reader->new('location' => $infile,
-                                       'expand_entities' => 0,
-                                    )
+my $reader_options = {'location' => $infile,
+                      'expand_entities' => 0,
+                      'pedantic_parser' => $debug,
+                      #'validation' => 1,
+                     };
+my $reader = XML::LibXML::Reader->new($reader_options)
        or die "cannot read $infile\n";
 
 #(my $mydir = $0) =~ s,/[^/]*$,,;  # dir we are in
@@ -203,10 +228,10 @@ while ($reader->read) {
 
   # ============================================================ begin debug
   if ($debug) {
-    printf STDERR "(args: @commands_with_args_stack) (eat_space $eat_space) %d %d %s %d", ($reader->depth,
-                           $reader->nodeType,
-                           $reader->name,
-                           $reader->isEmptyElement);
+    my $args_stack_str = join('|', map {'['.$_->[0].','.$_->[1].']'}
+                                        @commands_with_args_stack);
+    printf STDERR "(args: $args_stack_str) (eat_space $eat_space) %d %d %s %d", (
+          $reader->depth, $reader->nodeType, $reader->name, $reader->isEmptyElement);
     my $value = '';
     if ($reader->hasValue()) {
       $value = $reader->value();
@@ -214,7 +239,7 @@ while ($reader->read) {
       print STDERR " |$value|";
     }
     if ($reader->nodeType() eq XML_READER_TYPE_ELEMENT
-        and $reader->hasAttributes() 
+        and $reader->hasAttributes()
         and defined($reader->getAttribute('spaces'))) {
       my $spaces = $reader->getAttribute('spaces');
       print STDERR " spaces:$spaces|";
@@ -229,7 +254,7 @@ while ($reader->read) {
     next;
   } elsif ($reader->nodeType() eq XML_READER_TYPE_TEXT
       or $reader->nodeType() eq XML_READER_TYPE_WHITESPACE
-      or $reader->nodeType() eq XML_READER_TYPE_SIGNIFICANT_WHITESPACE 
+      or $reader->nodeType() eq XML_READER_TYPE_SIGNIFICANT_WHITESPACE
      ) {
     if ($reader->hasValue()) {
       print $reader->value();
@@ -237,65 +262,80 @@ while ($reader->read) {
   }
   my $name = $reader->name;
   if ($reader->nodeType() eq XML_READER_TYPE_ELEMENT) {
+    my $user_defined_index_command;
     if (($name eq 'entry' or $name eq 'indexcommand')
         and $reader->hasAttributes()
         and defined($reader->getAttribute('command'))) {
       $name = $reader->getAttribute('command');
+      $user_defined_index_command = 1;
     } elsif ($name eq 'listitem') {
       $name = 'item';
     }
-    if ($Texinfo::Convert::TexinfoXML::commands_args_elements{$name}) {
-      push @commands_with_args_stack, 0;
+    if ($Texinfo::Convert::TexinfoMarkup::commands_args_elements{$name}) {
+      push @commands_with_args_stack, [$name, 0];
     }
-    if (exists $element_at_commands{$name}) {
-      if ($name eq 'accent') {
-        if ($reader->hasAttributes()) {
-          if (defined($reader->getAttribute('type'))) {
-            my $command = $accent_type_command{$reader->getAttribute('type')};
-            print "\@$command"
-              if (defined($command));
-          }
-          if (!defined($reader->getAttribute('spaces'))
-              and !(defined($reader->getAttribute('bracketed'))
-                    and $reader->getAttribute('bracketed') eq 'off')) {
-            print '{';
-          }
-        } else {
+    my $spaces = $reader->getAttribute('spaces');
+    if (defined($spaces)) {
+      $spaces =~ s/\\n/\n/g;
+      $spaces =~ s/\\f/\f/g;
+    } else {
+      $spaces = '';
+    }
+    if ($name eq 'accent') {
+      if ($reader->hasAttributes()) {
+        if (defined($reader->getAttribute('type'))) {
+          my $command = $accent_type_command{$reader->getAttribute('type')};
+          print "\@$command"
+            if (defined($command));
+        }
+        print "$spaces";
+        if (!(defined($reader->getAttribute('bracketed'))
+              and $reader->getAttribute('bracketed') eq 'off')) {
           print '{';
         }
-      } elsif (!ref($element_at_commands{$name})) {
+      } else {
+        print '{';
+      }
+    } elsif (exists $element_at_commands{$name}) {
+      if (!ref($element_at_commands{$name})) {
         print $element_at_commands{$name};
       } else {
         my ($attribute) = keys(%{$element_at_commands{$name}});
-        if ($reader->hasAttributes() 
+        if ($reader->hasAttributes()
             and defined($reader->getAttribute($attribute))) {
           print
             $element_at_commands{$name}->{$attribute}->{$reader->getAttribute($attribute)};
         }
       }
-    } elsif (exists($Texinfo::Common::brace_commands{$name})) {
+    } elsif (exists($Texinfo::Commands::brace_commands{$name})) {
       print "\@${name}\{";
-      if ($name eq 'verb' and $reader->hasAttributes() 
+      if ($name eq 'verb' and $reader->hasAttributes()
           and defined($reader->getAttribute('delimiter'))) {
         print $reader->getAttribute('delimiter');
       }
-    } elsif (exists($Texinfo::Common::block_commands{$name})) {
+      print "$spaces";
+    } elsif (exists($Texinfo::Commands::block_commands{$name})) {
       print "\@$name";
-      if ($name eq 'macro') {
+      if ($name eq 'macro' or $name eq 'rmacro') {
         if ($reader->hasAttributes() and defined($reader->getAttribute('line'))) {
           print $reader->getAttribute('line');
         }
         print "\n";
+      } else {
+        # leading spaces are already in the line attribute for (r)macro
+        print "$spaces";
       }
-    } elsif (defined($Texinfo::Common::misc_commands{$name})) {
+    } elsif (defined($Texinfo::Commands::line_commands{$name})
+             or defined($Texinfo::Commands::nobrace_commands{$name})
+             or $user_defined_index_command) {
       if ($reader->hasAttributes()
           and defined($reader->getAttribute('originalcommand'))) {
         $name = $reader->getAttribute('originalcommand');
       }
-      if ($name eq 'documentencoding' and $reader->hasAttributes() 
+      if ($name eq 'documentencoding' and $reader->hasAttributes()
           and defined($reader->getAttribute('encoding'))) {
-        my ($texinfo_encoding, $perl_encoding, $output_encoding)
-         = Texinfo::Encoding::encoding_alias($reader->getAttribute('encoding'));
+        my $perl_encoding
+          = Encode::resolve_alias($reader->getAttribute('encoding'));
 
         if (defined($perl_encoding)) {
           if ($debug) {
@@ -305,6 +345,7 @@ while ($reader->read) {
         }
       }
       print "\@$name";
+      print "$spaces";
       if ($reader->hasAttributes() and defined($reader->getAttribute('line'))) {
         my $line = $reader->getAttribute('line');
         $line =~ s/\\\\/\x{1F}/g;
@@ -316,17 +357,43 @@ while ($reader->read) {
         skip_until_end($reader, $name);
       }
     } elsif ($arg_elements{$name}) {
-      if ($reader->hasAttributes() 
+      if ($reader->hasAttributes()
           and defined($reader->getAttribute('automatic'))
           and $reader->getAttribute('automatic') eq 'on') {
         skip_until_end($reader, $name);
         next;
       }
-      while ($arg_elements{$name}->[0] 
-             and $commands_with_args_stack[-1] < $arg_elements{$name}->[0]) {
-        $commands_with_args_stack[-1]++;
-        print ',';
+      my ($command, $current_index) = @{$commands_with_args_stack[-1]};
+      my $arg_element_index = $arg_elements{$name}->{$command};
+      if ($commands_with_args_stack[-1]->[1] < $arg_element_index) {
+        while ($commands_with_args_stack[-1]->[1] < $arg_element_index) {
+          $commands_with_args_stack[-1]->[1]++;
+          print ',';
+        }
+      } elsif ($commands_with_args_stack[-1]->[1] > 0) {
+        # the index is already at or above the argument index.  Either it is
+        # a variadic command, or an incorrect input.
+        if ($variadic_elements{$name}
+            and defined($variadic_elements{$name}->{$command})) {
+          $commands_with_args_stack[-1]->[1]++;
+          print ',';
+          # a debug consistency check
+          my $variadic_arg_index = $variadic_elements{$name}->{$command};
+          if ($commands_with_args_stack[-1]->[1] < $variadic_arg_index) {
+            print STDERR "BUG: $command: $name: current index < variadic_arg_index: "
+               ."$commands_with_args_stack[-1]->[1] < $variadic_arg_index\n"
+                  if ($debug);
+          }
+        } else {
+          # could happen with duplicate markup argument elements and
+          # markup argument elements in the wrong order
+          print STDERR "BAD INPUT: $command: $name(not variadic): "
+                 ."current index >= arg_element_index: "
+                 ."$commands_with_args_stack[-1]->[1] >= $arg_element_index\n"
+                       if ($debug);
+        }
       }
+      print "$spaces";
     } elsif ($ignored_elements{$name}) {
       my $keep_indexterm = 0;
       if ($name eq 'indexterm') {
@@ -339,18 +406,22 @@ while ($reader->read) {
         }
       }
       if (!$keep_indexterm) {
+        #print STDERR "IGNORE $name\n" if ($debug);
         skip_until_end($reader, $name);
         next;
       }
     } elsif ($name eq 'formattingcommand') {
-      if ($reader->hasAttributes()
-          and defined($reader->getAttribute('command'))) {
-        print '@'.$reader->getAttribute('command');
+      if ($reader->hasAttributes()) {
+        if (defined($reader->getAttribute('command'))
+            and (not (defined($reader->getAttribute('automatic'))
+                      and $reader->getAttribute('automatic') eq 'on'))) {
+          print '@'.$reader->getAttribute('command');
+        }
       }
-    # def* automatic 
-    } elsif ($reader->hasAttributes() 
-          and defined($reader->getAttribute('automatic'))
-          and $reader->getAttribute('automatic') eq 'on') {
+    # def* automatic
+    } elsif ($reader->hasAttributes()
+             and defined($reader->getAttribute('automatic'))
+             and $reader->getAttribute('automatic') eq 'on') {
       skip_until_end($reader, $name);
       # eat the following space
       $reader->read();
@@ -363,75 +434,74 @@ while ($reader->read) {
       if (defined($reader->getAttribute('bracketed'))
           and $reader->getAttribute('bracketed') eq 'on') {
         print '{';
-      }
-      if (defined($reader->getAttribute('spaces'))) {
-        my $spaces = $reader->getAttribute('spaces');
-        $spaces =~ s/\\n/\n/g;
-        $spaces =~ s/\\f/\f/g;
-        print $spaces;
+        print "$spaces";
       }
       if (defined($reader->getAttribute('leadingtext'))) {
         print $reader->getAttribute('leadingtext');
       }
     }
-    if ($Texinfo::Common::item_line_commands{$name}
-        and $reader->hasAttributes() 
+    if ($Texinfo::Commands::block_commands{$name}
+        and $Texinfo::Commands::block_commands{$name} eq 'item_line'
+        and $reader->hasAttributes()
         and defined($reader->getAttribute('commandarg'))) {
       print '@'.$reader->getAttribute('commandarg');
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_END_ELEMENT) {
-    if ($Texinfo::Convert::TexinfoXML::commands_args_elements{$name}) {
+    if ($Texinfo::Convert::TexinfoMarkup::commands_args_elements{$name}) {
       pop @commands_with_args_stack;
+    }
+    my $trailingspaces = '';
+    if ($reader->hasAttributes()
+        and defined($reader->getAttribute('trailingspaces'))) {
+      $trailingspaces = $reader->getAttribute('trailingspaces');
+      $trailingspaces =~ s/\\f/\f/g;
     }
     if ($reader->hasAttributes()) {
       if (defined($reader->getAttribute('bracketed'))
           and $reader->getAttribute('bracketed') eq 'on') {
+        print "$trailingspaces";
         print '}';
       }
     }
-    if (exists ($Texinfo::Common::brace_commands{$name})) {
-      if ($name eq 'verb' and $reader->hasAttributes() 
+    if (exists ($Texinfo::Commands::brace_commands{$name})) {
+      if ($name eq 'verb' and $reader->hasAttributes()
           and defined($reader->getAttribute('delimiter'))) {
         print $reader->getAttribute('delimiter');
       }
       print '}';
-    } elsif (exists($Texinfo::Common::block_commands{$name})) {
+    } elsif (exists($Texinfo::Commands::block_commands{$name})) {
       my $end_spaces;
-      if ($reader->hasAttributes() 
+      if ($reader->hasAttributes()
           and defined($reader->getAttribute('endspaces'))) {
         $end_spaces = $reader->getAttribute('endspaces');
       }
       $end_spaces = ' ' if (!defined($end_spaces) or $end_spaces eq '');
       print "\@end".$end_spaces."$name";
-    } elsif (defined($Texinfo::Common::misc_commands{$name})) {
-      if ($Texinfo::Common::root_commands{$name} and $name ne 'node') {
+    } elsif (defined($Texinfo::Commands::line_commands{$name})
+             or defined($Texinfo::Commands::nobrace_commands{$name})) {
+      if ($Texinfo::Commands::root_commands{$name} and $name ne 'node') {
         $eat_space = 1;
       }
+      print "$trailingspaces";
     } elsif ($elements_end_attributes{$name}) {
       if ($name eq 'accent') {
         if ($reader->hasAttributes()) {
-          if (!defined($reader->getAttribute('spaces'))
-              and !(defined($reader->getAttribute('bracketed'))
-                    and $reader->getAttribute('bracketed') eq 'off')) {
+          if (!(defined($reader->getAttribute('bracketed'))
+                and $reader->getAttribute('bracketed') eq 'off')) {
             print '}';
           }
         } else {
           print '}';
         }
-      } elsif ($reader->hasAttributes() 
+      } elsif ($reader->hasAttributes()
                and defined($reader->getAttribute('separator'))) {
         print $reader->getAttribute('separator');
+        print "$trailingspaces";
       }
     } elsif ($eat_space_elements{$name}) {
       $eat_space = 1;
     } else {
       print STDERR "END UNKNOWN $name\n" if ($debug);
-    }
-    if ($reader->hasAttributes() 
-        and defined($reader->getAttribute('trailingspaces'))) {
-      my $trailingspaces = $reader->getAttribute('trailingspaces');
-      $trailingspaces =~ s/\\f/\f/g;
-      print $trailingspaces;
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_ENTITY_REFERENCE) {
     if (defined($entity_texts{$name})) {

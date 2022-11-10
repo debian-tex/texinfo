@@ -1,0 +1,83 @@
+\documentclass{book}
+\usepackage{imakeidx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{titleps}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+\usepackage[latin1]{inputenc}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% no index headers or page break
+\indexsetup{level=\relax,toclevel=section,noclearpage}%
+\makeindex[name=cp,title=]%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+
+
+\begin{document}
+\label{anchor:Top}%
+\chapter{{ä ë ï ö ü ÿ Ä Ë Ï Ö Ü}}
+\label{anchor:_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc}%
+
+\printindex[cp]
+
+\chapter{{é}}
+\label{anchor:_00e9}%
+
+\chapter{{à è ù}}
+\label{anchor:_00e0-_00e8-_00f9}%
+
+\chapter{{â ê î ô û Â Ê Î Ô Û}}
+\label{anchor:_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db}%
+
+\chapter{{ç}}
+\label{anchor:_00e7}%
+
+\hyperref[anchor:_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc]{\chaptername~\ref*{anchor:_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc} [ä ë ï ö ü ÿ Ä Ë Ï Ö Ü], page~\pageref*{anchor:_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc}}
+\hyperref[anchor:_00e9]{\chaptername~\ref*{anchor:_00e9} [é], page~\pageref*{anchor:_00e9}}
+\hyperref[anchor:_00e0-_00e8-_00f9]{\chaptername~\ref*{anchor:_00e0-_00e8-_00f9} [à è ù], page~\pageref*{anchor:_00e0-_00e8-_00f9}}
+\hyperref[anchor:_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db]{\chaptername~\ref*{anchor:_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db} [â ê î ô û Â Ê Î Ô Û], page~\pageref*{anchor:_00e2-_00ea-_00ee-_00f4-_00fb-_00c2-_00ca-_00ce-_00d4-_00db}}
+\hyperref[anchor:_00e7]{\chaptername~\ref*{anchor:_00e7} [ç], page~\pageref*{anchor:_00e7}}
+
+\index[cp]{ä ë ï ö ü ÿ@ä ë ï ö ü ÿ}%
+\index[cp]{Ä Ë Ï Ö Ü@Ä Ë Ï Ö Ü}%
+\index[cp]{é@é}%
+\index[cp]{è@è}%
+\index[cp]{â ê î ô û Â Ê Î Ô Û@â ê î ô û Â Ê Î Ô Û}%
+\index[cp]{ç@ç}%
+
+\end{document}

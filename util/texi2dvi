@@ -1,7 +1,7 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
 #
-# Copyright 1992-2021 Free Software Foundation, Inc.
+# Copyright 1992-2022 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -74,18 +74,15 @@ newline='
 '
 IFS="$space$tab$newline"
 
-: ${EGREP=egrep}
+: ${EGREP='grep -E'}
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
 # directories in TEXINPUTS -- except for Cygwin and Msys, where COMSPEC
 # might be inherited, but : is used.
 
-# In the case of Msys, uname returns a value derived from MSYSTEM, as
-# MSYSTEM is user configurable, it is not so safe to use it to detect
-# Msys. It is safer to use OSTYPE, this is why we set MSYSTEM to
-# $OSTYPE before calling uname
 if test -n "$COMSPEC$ComSpec" \
-   && MSYSTEM=$OSTYPE uname | $EGREP -iv 'cygwin|msys' >/dev/null; then
+   && uname | $EGREP -iv 'cygwin|msys' >/dev/null \
+   && test "$OSTYPE" != msys ; then
   path_sep=";"
 else
   path_sep=":"
@@ -198,9 +195,9 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 6.8)
+texi2dvi (GNU Texinfo 7.0)
 
-Copyright (C) 2021 Free Software Foundation, Inc.
+Copyright (C) 2022 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -449,24 +446,6 @@ list_infix ()
   IFS=$save_IFS
 }
 
-# list_dir_to_abs LIST-NAME - Convert list to using only absolute dir names.
-# Currently unused, but should replace absolute_filenames some day.
-list_dir_to_abs ()
-{
-  ldta_list="$1"
-  eval set X \$$ldta_list
-  shift
-  ldta_result=''
-  for dir
-  do
-    dir=`absolute "$dir"`
-    test -d "$dir" || continue
-    ldta_result="$ldata_result \"$dir\""
-  done
-  set X $ldta_result; shift
-  eval $ldta_list=\"$@\"
-}
-
 
 #  Language auxiliary functions. 
 #
@@ -673,24 +652,6 @@ index_file_p ()
   esac
   return 0
 }
-
-########### not used currently
-# xref_file_p FILE - Return success if FILE is an xref file (indexes,
-# tables and lists).
-xref_file_p ()
-{
-  test -f "$1" || return 1
-  # If the file is not suitable to be an index or xref file, don't
-  # process it.  It's suitable if the first character is a
-  # backslash or right quote or at, as long as the first line isn't
-  # \input texinfo.
-  case `$SED '1q' "$1"` in
-    "\\input texinfo"*) return 1;;
-    [\\''@]*)           return 0;;
-           *)           return 1;;
-  esac
-}
-
 
 # Used in generated_files_get
 generated_files_get_from_log ()
@@ -1549,6 +1510,12 @@ set_aux_files_from_log ()
   generated_files_get_method=generated_files_get_from_log
 }
 
+aux_files_error='Your TeX installation appears to be broken - texi2dvi
+cannot determine auxiliary files output from a TeX run.
+
+You may need to install TeX, or change the values of your PATH, TEX
+or PDFTEX environment variables in order to proceed.'
+
 # Decide whether output auxiliary files are detected with the -recorder
 # option, or by searching for \openout in the log file.
 decide_aux_files_method ()
@@ -1579,7 +1546,7 @@ decide_aux_files_method ()
       elif check_openout_in_log_support; then
         set_aux_files_from_log
       else
-        error 1 "TeX neither supports -recorder nor outputs \\openout lines in its log file"
+        error 1 "$aux_files_error"
       fi
       ;;
 
@@ -1589,7 +1556,7 @@ decide_aux_files_method ()
       elif check_recorder_support; then
         set_aux_files_from_fls
       else
-        error 1 "TeX neither supports -recorder nor outputs \\openout lines in its log file"
+        error 1 "$aux_files_error"
       fi
       ;;
     

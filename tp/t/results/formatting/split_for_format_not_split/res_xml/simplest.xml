@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V5.0//EN" "http://www.gnu.org/software/texinfo/dtd/5.0/texinfo.dtd">
-<texinfo xml:lang="en">
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V6.8//EN" "http://www.gnu.org/software/texinfo/dtd/6.8/texinfo.dtd">
+<texinfo>
 <filename file="simplest.xml"></filename>
-<preamble>\input texinfo @c -*-texinfo-*-
+<preamblebeforebeginning>\input texinfo @c -*-texinfo-*-
 
-</preamble><setfilename file="simplest.info" spaces=" ">simplest.info</setfilename>
+</preamblebeforebeginning><setfilename file="simplest.info" spaces=" ">simplest.info</setfilename>
 
 <node name="Top" spaces=" "><nodename>Top</nodename></node>
 

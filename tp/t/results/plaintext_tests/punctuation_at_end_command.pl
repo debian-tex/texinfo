@@ -1,349 +1,254 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'punctuation_at_end_command'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Text. Email '
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'Text. Email '
             },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'email',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' dmn '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '1.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'dmn',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and text. indicateurl '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'indicateurl',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and 
-'
-        },
-        {
-          'parent' => {},
-          'text' => 'then kbd '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'kbd',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and math '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_context'
-            }
-          ],
-          'cmdname' => 'math',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and cite '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'cite',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and emph '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '.'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'emph',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' text. 
-'
-        },
-        {
-          'parent' => {},
-          'text' => 'asis in code '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => '.'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => '.'
                     }
                   ],
-                  'cmdname' => 'asis',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' text. a dot before a emph open .'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
+                  'type' => 'brace_command_arg'
+                },
                 {
-                  'parent' => {},
-                  'text' => ' and in emph.'
+                  'contents' => [
+                    {
+                      'text' => '.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'email',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' dmn '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '1.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'dmn',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and text. indicateurl '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'indicateurl',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and 
+'
+            },
+            {
+              'text' => 'then kbd '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'kbd',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and math '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '.'
+                    }
+                  ],
+                  'type' => 'brace_command_context'
+                }
+              ],
+              'cmdname' => 'math',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and cite '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'cite',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and emph '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'emph',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' text. 
+'
+            },
+            {
+              'text' => 'asis in code '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => '.'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'asis',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 4,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' text. a dot before a emph open .'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => ' and in emph.'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'emph',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'emph',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'punctuation_at_end_command'}{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'};
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'args'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[3];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[5]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[5];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[12]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[12];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[14]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[14];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[17]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[18]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[19]{'args'}[0];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[19];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[19]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'contents'}[20]{'parent'} = $result_trees{'punctuation_at_end_command'}{'contents'}[1];
-$result_trees{'punctuation_at_end_command'}{'contents'}[1]{'parent'} = $result_trees{'punctuation_at_end_command'};
 
 $result_texis{'punctuation_at_end_command'} = '
 Text. Email @email{.,.} dmn @dmn{1.} and text. indicateurl @indicateurl{.} and 
@@ -365,8 +270,8 @@ $result_floats{'punctuation_at_end_command'} = {};
 
 
 
-$result_converted{'plaintext'}->{'punctuation_at_end_command'} = 'Text.  Email .  <.> dmn 1. and text.  indicateurl \'.\' and then kbd \'.\'
-and math . and cite \'.\' and emph _._  text.  asis in code \'.\' text.  a
+$result_converted{'plaintext'}->{'punctuation_at_end_command'} = 'Text.  Email .  <.> dmn 1. and text.  indicateurl ‘.’ and then kbd ‘.’
+and math . and cite ‘.’ and emph _._  text.  asis in code ‘.’ text.  a
 dot before a emph open ._  and in emph._
 ';
 

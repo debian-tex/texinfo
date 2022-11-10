@@ -17,7 +17,7 @@ test $? = 0 || exit 1
 ${install_info} ${testdir}/ii-0053-input-info-file $outputdirfile
 test $? = 0 || exit 2
 
-diff ${testdir}/ii-0053-expected-dir-file $outputdirfile
+${diff} ${testdir}/ii-0053-expected-dir-file $outputdirfile
 test $? = 0 || exit 3
 
 rm -f $outputdirfile

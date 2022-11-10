@@ -1,90 +1,78 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'image_text_encoded'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'utf-8'
+              'contents' => [
+                {
+                  'text' => 'utf-8'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
             }
           ],
+          'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_after_argument' => '
-'
+            'input_encoding_name' => 'utf-8',
+            'input_perl_encoding' => 'utf-8-strict',
+            'spaces_before_argument' => ' ',
+            'text_arg' => 'utf-8'
           },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'documentencoding',
-      'extra' => {
-        'input_encoding_name' => 'utf-8',
-        'input_perl_encoding' => 'utf-8-strict',
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'utf-8'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
         {
-          'contents' => [
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'image_encoded'
+              'contents' => [
+                {
+                  'text' => 'image_encoded'
+                }
+              ],
+              'type' => 'brace_command_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'brace_command_arg'
+          'cmdname' => 'image',
+          'extra' => {
+            'input_perl_encoding' => 'utf-8-strict'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+'
         }
       ],
-      'cmdname' => 'image',
-      'contents' => [],
-      'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0];
-$result_trees{'image_text_encoded'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[0];
-$result_trees{'image_text_encoded'}{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'};
-$result_trees{'image_text_encoded'}{'contents'}[1]{'parent'} = $result_trees{'image_text_encoded'};
-$result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0];
-$result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2];
-$result_trees{'image_text_encoded'}{'contents'}[2]{'parent'} = $result_trees{'image_text_encoded'};
-$result_trees{'image_text_encoded'}{'contents'}[3]{'parent'} = $result_trees{'image_text_encoded'};
 
 $result_texis{'image_text_encoded'} = '@documentencoding utf-8
 

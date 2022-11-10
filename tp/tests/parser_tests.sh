@@ -1,5 +1,4 @@
 #! /bin/sh
-# $Id$
 # Run individual tests.
 #
 # Copyright 2010-2019 Free Software Foundation, Inc.

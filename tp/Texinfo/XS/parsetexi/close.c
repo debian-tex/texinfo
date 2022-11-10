@@ -23,7 +23,7 @@
 /* Possibly print an error message, and return CURRENT->parent. */
 static ELEMENT *
 close_brace_command (ELEMENT *current,
-                     enum command_id closed_command,
+                     enum command_id closed_block_command,
                      enum command_id interrupting_command)
 {
 
@@ -37,10 +37,10 @@ close_brace_command (ELEMENT *current,
   if (0)
     {
 yes:
-      if (closed_command)
+      if (closed_block_command)
         command_error (current,
                         "@end %s seen before @%s closing brace",
-                        command_name(closed_command),
+                        command_name(closed_block_command),
                         command_name(current->cmd));
       else if (interrupting_command)
         command_error (current,
@@ -67,14 +67,14 @@ yes:
    paragraphs. */
 ELEMENT *
 close_all_style_commands (ELEMENT *current,
-                          enum command_id closed_command,
+                          enum command_id closed_block_command,
                           enum command_id interrupting_command)
 {
   while (current->parent
          && (command_flags(current->parent) & CF_brace)
          && !(command_data(current->parent->cmd).data == BRACE_context))
     current = close_brace_command (current->parent,
-                                   closed_command, interrupting_command);
+                                   closed_block_command, interrupting_command);
 
   return current;
 }
@@ -163,7 +163,7 @@ close_command_cleanup (ELEMENT *current)
       int have_leading_spaces = 0;
       ELEMENT *before_item = 0;
       if (current->contents.number >= 2
-          && current->contents.list[0]->type == ET_empty_line_after_command
+          && current->contents.list[0]->type == ET_ignorable_spaces_after_command
           && current->contents.list[1]->type == ET_before_item)
         {
           have_leading_spaces = 1;
@@ -178,10 +178,8 @@ close_command_cleanup (ELEMENT *current)
       if (before_item)
         {
           /* Reparent @end from a ET_before_item to the block command */
-          KEY_PAIR *k = lookup_extra (current, "end_command");
-          ELEMENT *e = k ? k->value : 0;
-          if (k && last_contents_child (before_item)
-              && last_contents_child (before_item) == e)
+          ELEMENT *e = last_contents_child (before_item);
+          if (e && e->cmd == CM_end)
             {
               add_to_element_contents (current,
                                      pop_element_from_contents (before_item));
@@ -221,7 +219,7 @@ close_command_cleanup (ELEMENT *current)
                           && (e->cmd != CM_c && e->cmd != CM_comment
                               && e->cmd != CM_end)
                           || e->type != ET_NONE
-                          && e->type != ET_empty_line_after_command)
+                          && e->type != ET_ignorable_spaces_after_command)
                         {
                           empty_format = 0;
                           break;
@@ -237,9 +235,34 @@ close_command_cleanup (ELEMENT *current)
     }
 }
 
+void
+pop_block_command_contexts (enum command_id cmd)
+{
+  if (command_data(cmd).flags & CF_preformatted
+       || command_data(cmd).data == BLOCK_menu)
+    {
+      if (pop_context () != ct_preformatted)
+        fatal ("preformatted context expected");
+    }
+  else if (command_data(cmd).data == BLOCK_format_raw)
+    {
+      if (pop_context () != ct_rawpreformatted)
+        fatal ("rawpreformatted context expected");
+    }
+  else if (cmd == CM_displaymath)
+    {
+      if (pop_context () != ct_math)
+        fatal ("math context expected");
+    }
+  else if (command_data(cmd).data == BLOCK_region)
+    {
+      pop_region ();
+    }
+}
+
 ELEMENT *
 close_current (ELEMENT *current,
-               enum command_id closed_command,
+               enum command_id closed_block_command,
                enum command_id interrupting_command)
 {
   /* Element is a command */
@@ -249,19 +272,27 @@ close_current (ELEMENT *current,
       if (command_flags(current) & CF_brace)
         {
           if (command_data(current->cmd).data == BRACE_context)
-            pop_context ();
-          current = close_brace_command (current,
-                                         closed_command, interrupting_command);
+            {
+              if (current->cmd == CM_math)
+                {
+                  if (pop_context () != ct_math)
+                    fatal ("math context expected");
+                }
+              else if (pop_context () != ct_brace_command)
+                fatal ("context brace command context expected");
+            }
+          current = close_brace_command (current, closed_block_command,
+                                         interrupting_command);
         }
       else if (command_flags(current) & CF_block)
         {
           enum command_id cmd = current->cmd;
           ELEMENT *parent = 0;
-          if (closed_command)
+          if (closed_block_command)
             {
               line_error ("`@end' expected `%s', but saw `%s'",
                           command_name(current->cmd),
-                          command_name(closed_command));
+                          command_name(closed_block_command));
             }
           else if (interrupting_command)
             {
@@ -282,15 +313,7 @@ close_current (ELEMENT *current,
                                                           (parent));
                 }
             }
-          if (command_data(cmd).flags
-              & (CF_preformatted | CF_menu | CF_format_raw))
-            {
-              pop_context ();
-            }
-          if (command_data(cmd).data == BLOCK_region)
-            {
-              pop_region ();
-            }
+          pop_block_command_contexts (cmd);
           if (!parent)
             parent = current->parent;
           current = parent;
@@ -312,7 +335,7 @@ close_current (ELEMENT *current,
           command_error (current, "misplaced {");
           if (current->contents.number > 0
               && current->contents.list[0]->type
-                 == ET_empty_spaces_before_argument)
+                 == ET_internal_spaces_before_argument)
             {
               /* remove spaces element from tree and update extra values */
               abort_empty_line (&current, 0);
@@ -322,10 +345,6 @@ close_current (ELEMENT *current,
           break;
         case ET_menu_comment:
         case ET_menu_entry_description:
-          c = pop_context ();
-          if (c != ct_preformatted)
-            fatal ("preformatted context expected");
-
           /* Remove empty menu_comment */
           if (current->type == ET_menu_comment
               && current->contents.number == 0)
@@ -362,64 +381,42 @@ close_current (ELEMENT *current,
   return current;
 }
 
-/* Return lowest level ancestor of CURRENT containing a CLOSED_COMMAND
-   element.  Set CLOSED_ELEMENT to the element itself.  INTERRUPTING is used in 
+/* Return lowest level ancestor of CURRENT containing a CLOSED_BLOCK_COMMAND
+   element, or the lowest level ancestor if CLOSED_BLOCK_COMMAND is 0.
+   Set CLOSED_BLOCK_ELEMENT to the last closed element.  INTERRUPTING is used in 
    close_brace_command to display an error message.  Remove a context from 
-   context stack if it was added by this command. */
+   context stack if CLOSED_BLOCK_COMMAND is not 0 and a context was added
+   by the CLOSED_BLOCK_COMMAND.
+   CLOSED_BLOCK_COMMAND should be the id of a block command.
+ */
 ELEMENT *
-close_commands (ELEMENT *current, enum command_id closed_command,
+close_commands (ELEMENT *current, enum command_id closed_block_command,
                 ELEMENT **closed_element, enum command_id interrupting)
 {
   *closed_element = 0;
-  current = end_paragraph (current, closed_command, interrupting);
-  current = end_preformatted (current, closed_command, interrupting);
+  current = end_paragraph (current, closed_block_command, interrupting);
+  current = end_preformatted (current, closed_block_command, interrupting);
 
   while (current->parent
-         && (!closed_command || current->cmd != closed_command)
+         && (!closed_block_command || current->cmd != closed_block_command)
      /* Stop if in a root command. */
-         && !(current->cmd && command_flags(current) & CF_root))
+         && !(current->cmd && command_flags(current) & CF_root)
+     /* Stop if at a type at the root */
+         && !(current->type == ET_before_node_section))
     {
       close_command_cleanup (current);
-      current = close_current (current, closed_command, interrupting);
+      current = close_current (current, closed_block_command, interrupting);
     }
 
-  if (closed_command && current->cmd == closed_command)
+  if (closed_block_command && current->cmd == closed_block_command)
     {
-      if (command_data(current->cmd).flags & CF_preformatted)
-        {
-          if (pop_context () != ct_preformatted)
-            fatal ("preformatted context expected");
-        }
-      else if (command_data(current->cmd).flags & CF_format_raw)
-        {
-          if (pop_context () != ct_rawpreformatted)
-            fatal ("rawpreformatted context expected");
-          // TODO: pop expanded formats stack
-        }
-      else if (command_data(current->cmd).flags & CF_menu)
-        {
-          enum context c;
-          c = pop_context ();
-          if (c != ct_menu && c != ct_preformatted)
-            fatal ("menu or preformatted context expected");
-        }
-      else if (current->cmd == CM_math || current->cmd == CM_displaymath)
-        {
-          enum context c;
-          c = pop_context ();
-          if (c != ct_math)
-            fatal ("math context expected");
-        }
-
-      if (command_data(current->cmd).data == BLOCK_region)
-        pop_region ();
-
+      pop_block_command_contexts (current->cmd);
       *closed_element = current;
       current = current->parent;
     }
-  else if (closed_command)
+  else if (closed_block_command)
     {
-      line_error ("unmatched `@end %s'", command_name(closed_command));
+      line_error ("unmatched `@end %s'", command_name(closed_block_command));
     }
 
   return current;

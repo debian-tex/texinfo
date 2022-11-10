@@ -1,150 +1,122 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'bad_syntax'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => '
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' 
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' ?
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' :-/ hey!
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' a@b
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' :-" bad
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' } no
-'
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'clear',
-      'extra' => {
-        'arg_line' => ' aaa ggg
-'
-      },
-      'parent' => {}
-    },
-    {
-      'cmdname' => 'clear',
-      'extra' => {
-        'arg_line' => ' and{other
-'
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_spaces_before_paragraph'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'gurgl
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => '
+'
+          }
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' 
+'
+          }
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' ?
+'
+          }
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' :-/ hey!
+'
+          }
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' a@b
+'
+          }
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' :-" bad
+'
+          }
+        },
+        {
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' } no
+'
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'clear',
+          'extra' => {
+            'arg_line' => ' aaa ggg
+'
+          }
+        },
+        {
+          'cmdname' => 'clear',
+          'extra' => {
+            'arg_line' => ' and{other
+'
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'gurgl
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'value',
+          'extra' => {
+            'flag' => 'unknown'
+          }
+        },
+        {
+          'text' => '
 '
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'value',
-      'contents' => [],
-      'parent' => {},
-      'type' => 'unknown'
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'bad_syntax'}{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[1]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[2]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[3]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[4]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[5]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[6]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[7]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[8]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[9]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[10]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[11]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'bad_syntax'}{'contents'}[12];
-$result_trees{'bad_syntax'}{'contents'}[12]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[13]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[14]{'parent'} = $result_trees{'bad_syntax'};
-$result_trees{'bad_syntax'}{'contents'}[15]{'parent'} = $result_trees{'bad_syntax'};
 
 $result_texis{'bad_syntax'} = '
 @set
@@ -173,7 +145,7 @@ gurgl
 
 $result_errors{'bad_syntax'} = [
   {
-    'error_line' => ':2: @set requires a name
+    'error_line' => '@set requires a name
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -182,7 +154,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: @set requires a name
+    'error_line' => '@set requires a name
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -191,7 +163,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: bad name for @set
+    'error_line' => 'bad name for @set
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -200,7 +172,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: bad name for @set
+    'error_line' => 'bad name for @set
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -209,7 +181,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: bad name for @set
+    'error_line' => 'bad name for @set
 ',
     'file_name' => '',
     'line_nr' => 6,
@@ -218,7 +190,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: bad name for @set
+    'error_line' => 'bad name for @set
 ',
     'file_name' => '',
     'line_nr' => 7,
@@ -227,7 +199,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':8: bad name for @set
+    'error_line' => 'bad name for @set
 ',
     'file_name' => '',
     'line_nr' => 8,
@@ -236,7 +208,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':10: bad name for @clear
+    'error_line' => 'bad name for @clear
 ',
     'file_name' => '',
     'line_nr' => 10,
@@ -245,7 +217,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':11: bad name for @clear
+    'error_line' => 'bad name for @clear
 ',
     'file_name' => '',
     'line_nr' => 11,
@@ -254,7 +226,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':13: bad syntax for @value
+    'error_line' => 'bad syntax for @value
 ',
     'file_name' => '',
     'line_nr' => 13,
@@ -263,7 +235,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':13: misplaced {
+    'error_line' => 'misplaced {
 ',
     'file_name' => '',
     'line_nr' => 13,
@@ -272,7 +244,7 @@ $result_errors{'bad_syntax'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: undefined flag: unknown
+    'error_line' => 'warning: undefined flag: unknown
 ',
     'file_name' => '',
     'line_nr' => 15,

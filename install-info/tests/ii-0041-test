@@ -27,7 +27,7 @@ if cmp $expectedfile $outputdirfile >/dev/null; then
 else
   if gzip -d -c < $expectedfile > $expectedfile_uncompressed; then
     if gzip -d -c < $outputdirfile > $outputdirfile_uncompressed; then
-      diff $expectedfile_uncompressed $outputdirfile_uncompressed
+      ${diff} $expectedfile_uncompressed $outputdirfile_uncompressed
       retval=$?
     else
       # $outputdirfile is not in gzip format

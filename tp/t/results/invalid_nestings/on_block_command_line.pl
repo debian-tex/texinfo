@@ -1,437 +1,343 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'on_block_command_line'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'in anchor'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'anchor',
-                  'contents' => [],
-                  'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
-                    'normalized' => 'in-anchor'
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'bracketed'
-            },
-            {
-              'parent' => {},
-              'text' => ' '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in titlefont'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'titlefont',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'multitable',
       'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
               'contents' => [
                 {
-                  'cmdname' => 'item',
                   'contents' => [
                     {
                       'args' => [
                         {
                           'contents' => [
                             {
-                              'parent' => {},
-                              'text' => 'in titlefont'
+                              'text' => 'in anchor'
                             }
                           ],
-                          'parent' => {},
                           'type' => 'brace_command_arg'
                         }
                       ],
-                      'cmdname' => 'titlefont',
-                      'contents' => [],
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                      'cmdname' => 'anchor',
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'in-anchor'
                       },
-                      'parent' => {}
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-'
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'extra' => {
-                    'cell_number' => 1,
-                    'spaces_before_argument' => ' '
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'extra' => {
-                'row_number' => 1
-              },
-              'parent' => {},
-              'type' => 'row'
-            }
-          ],
-          'parent' => {},
-          'type' => 'multitable_body'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
+                  'type' => 'bracketed'
+                },
                 {
-                  'parent' => {},
-                  'text' => 'multitable'
+                  'text' => ' '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in titlefont'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'titlefont',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'multitable',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'multitable'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {},
-        'max_columns' => 1,
-        'prototypes' => [
-          {
-            'contents' => [
-              {}
-            ],
-            'type' => 'bracketed_multitable_prototype'
-          }
-        ],
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
+          'cmdname' => 'multitable',
           'contents' => [
             {
-              'cmdname' => 'indent',
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'in titlefont'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'titlefont',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in quotation anchor'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'in-quotation-anchor'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
+                      'cmdname' => 'item',
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'footnote'
+                          'text' => ' ',
+                          'type' => 'ignorable_spaces_after_command'
+                        },
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'in titlefont'
+                                }
+                              ],
+                              'type' => 'brace_command_arg'
+                            }
+                          ],
+                          'cmdname' => 'titlefont',
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 2,
+                            'macro' => ''
+                          }
+                        },
+                        {
+                          'text' => '
+'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'paragraph'
+                      'extra' => {
+                        'cell_number' => 1
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'brace_command_context'
+                  'extra' => {
+                    'row_number' => 1
+                  },
+                  'type' => 'row'
                 }
               ],
-              'cmdname' => 'footnote',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' '
+              'type' => 'multitable_body'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'exdent'
+                      'text' => 'multitable'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
-              'cmdname' => 'exdent',
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' '
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'multitable'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 5,
+                'line_nr' => 3,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'quotation',
-      'contents' => [
+          'extra' => {
+            'max_columns' => 1,
+            'prototypes' => [
+              {
+                'contents' => [
+                  {}
+                ],
+                'type' => 'bracketed_multitable_prototype'
+              }
+            ],
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'quotation'
+                  'cmdname' => 'indent',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in titlefont'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'titlefont',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in quotation anchor'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'anchor',
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'in-quotation-anchor'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'footnote'
+                            }
+                          ],
+                          'type' => 'paragraph'
+                        }
+                      ],
+                      'type' => 'brace_command_context'
+                    }
+                  ],
+                  'cmdname' => 'footnote',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'exdent'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'exdent',
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'quotation',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'quotation'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'quotation'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            }
+          ],
           'extra' => {
-            'command_argument' => 'quotation',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'quotation'
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 6,
+            'line_nr' => 5,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {},
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'};
-$result_trees{'on_block_command_line'}{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'};
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'parent'} = $result_trees{'on_block_command_line'};
+$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'on_block_command_line'} = '@multitable {@anchor{in anchor}} @titlefont{in titlefont}
 @item @titlefont{in titlefont}
@@ -449,7 +355,7 @@ in titlefont  exdent
 
 $result_errors{'on_block_command_line'} = [
   {
-    'error_line' => ':1: warning: @titlefont should not appear in @multitable
+    'error_line' => 'warning: @titlefont should not appear in @multitable
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -458,7 +364,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: unexpected argument on @multitable line: @titlefont{in titlefont}
+    'error_line' => 'warning: unexpected argument on @multitable line: @titlefont{in titlefont}
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -467,7 +373,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @indent should not appear in @quotation
+    'error_line' => 'warning: @indent should not appear in @quotation
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -476,7 +382,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @titlefont should not appear in @quotation
+    'error_line' => 'warning: @titlefont should not appear in @quotation
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -485,7 +391,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @anchor should not appear in @quotation
+    'error_line' => 'warning: @anchor should not appear in @quotation
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -494,7 +400,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @footnote should not appear in @quotation
+    'error_line' => 'warning: @footnote should not appear in @quotation
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -503,7 +409,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @exdent should only appear at the beginning of a line
+    'error_line' => 'warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -512,7 +418,7 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @exdent should not appear in @quotation
+    'error_line' => 'warning: @exdent should not appear in @quotation
 ',
     'file_name' => '',
     'line_nr' => 5,

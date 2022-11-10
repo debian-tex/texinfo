@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,481 +10,349 @@ $result_trees{'kbd'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'kbd: '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in kbd'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'kbd in code: '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in first '
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'in nested kbd'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'kbd',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'kbd in kbd: '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in top kbd '
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'in nested kbd'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'kbd',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'kbd',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'kbd in '
-        },
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'example:
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => ' 
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'in example
-'
+              'text' => 'kbd: '
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'in example in kbd'
+                      'text' => 'in kbd'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'code',
-              'contents' => [],
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 11,
+                'line_nr' => 1,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => '.
 '
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'type' => 'paragraph'
         },
         {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'kbd in '
-        },
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'format:
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'format',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => ' 
-',
-          'type' => 'empty_line_after_command'
+          'type' => 'empty_line'
         },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'in format
-'
+              'text' => 'kbd in code: '
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'in format in kbd'
+                      'text' => 'in first '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'in nested kbd'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'kbd',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'code',
-              'contents' => [],
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 18,
+                'line_nr' => 3,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => '.
 '
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'kbd in kbd: '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in top kbd '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'in nested kbd'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'kbd',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'kbd',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'kbd in '
+            },
+            {
+              'cmdname' => '@'
+            },
+            {
+              'text' => 'example:
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'format'
-                }
-              ],
               'extra' => {
-                'spaces_after_argument' => '
+                'spaces_after_argument' => ' 
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'format',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'format'
-          },
-          'line_nr' => {
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in example
+'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in example in kbd'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'code',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 11,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '.
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 19,
+            'line_nr' => 9,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'kbd in '
+            },
+            {
+              'cmdname' => '@'
+            },
+            {
+              'text' => 'format:
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => ' 
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'format',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in format
+'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in format in kbd'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'code',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 18,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '.
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'format'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'format'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 19,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 16,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'kbd'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[0];
-$result_trees{'kbd'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[0]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[0];
-$result_trees{'kbd'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[0];
-$result_trees{'kbd'}{'contents'}[0]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[1]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[2]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[2]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[3]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[4]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[4];
-$result_trees{'kbd'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[4];
-$result_trees{'kbd'}{'contents'}[4]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[5]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[6];
-$result_trees{'kbd'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[6];
-$result_trees{'kbd'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[6];
-$result_trees{'kbd'}{'contents'}[6]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[7]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[0]{'extra'}{'command'} = $result_trees{'kbd'}{'contents'}[8];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[8];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[8];
-$result_trees{'kbd'}{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'kbd'}{'contents'}[8]{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[8]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[9]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[10];
-$result_trees{'kbd'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[10];
-$result_trees{'kbd'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[10];
-$result_trees{'kbd'}{'contents'}[10]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[11]{'parent'} = $result_trees{'kbd'};
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[0]{'extra'}{'command'} = $result_trees{'kbd'}{'contents'}[12];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[1];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'kbd'}{'contents'}[12];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[12]{'contents'}[2]{'parent'} = $result_trees{'kbd'}{'contents'}[12];
-$result_trees{'kbd'}{'contents'}[12]{'extra'}{'end_command'} = $result_trees{'kbd'}{'contents'}[12]{'contents'}[2];
-$result_trees{'kbd'}{'contents'}[12]{'parent'} = $result_trees{'kbd'};
 
 $result_texis{'kbd'} = 'kbd: @code{in kbd}.
 
@@ -532,11 +400,11 @@ $result_floats{'kbd'} = {};
 
 
 
-$result_converted{'plaintext'}->{'kbd'} = 'kbd: \'in kbd\'.
+$result_converted{'plaintext'}->{'kbd'} = 'kbd: ‘in kbd’.
 
-   kbd in code: \'in first in nested kbd\'.
+   kbd in code: ‘in first in nested kbd’.
 
-   kbd in kbd: \'in top kbd in nested kbd\'.
+   kbd in kbd: ‘in top kbd in nested kbd’.
 
    kbd in @example:
 
@@ -546,29 +414,53 @@ $result_converted{'plaintext'}->{'kbd'} = 'kbd: \'in kbd\'.
    kbd in @format:
 
 in format
-\'in format in kbd\'.
+‘in format in kbd’.
 ';
 
 
-$result_converted{'html_text'}->{'kbd'} = '<p>kbd: <code>in kbd</code>.
+$result_converted{'html_text'}->{'kbd'} = '<p>kbd: <code class="code">in kbd</code>.
 </p>
-<p>kbd in code: <code>in first <kbd>in nested kbd</kbd></code>.
+<p>kbd in code: <code class="code">in first <kbd class="kbd">in nested kbd</kbd></code>.
 </p>
-<p>kbd in kbd: <kbd>in top kbd <kbd>in nested kbd</kbd></kbd>.
+<p>kbd in kbd: <kbd class="kbd">in top kbd <kbd class="kbd">in nested kbd</kbd></kbd>.
 </p>
 <p>kbd in @example:
 </p>
 <div class="example">
-<pre class="example">in example
-<code>in example in kbd</code>.
+<pre class="example-preformatted">in example
+<code class="code">in example in kbd</code>.
 </pre></div>
 
 <p>kbd in @format:
 </p>
 <div class="format">
-<pre class="format">in format
-<code>in format in kbd</code>.
+<pre class="format-preformatted">in format
+<code class="code">in format in kbd</code>.
 </pre></div>
+';
+
+
+$result_converted{'latex_text'}->{'kbd'} = 'kbd: \\texttt{in kbd}.
+
+kbd in code: \\texttt{in first \\Texinfocommandstyletextkbd{in nested kbd}}.
+
+kbd in kbd: \\Texinfocommandstyletextkbd{in top kbd \\Texinfocommandstyletextkbd{in nested kbd}}.
+
+kbd in @example:
+
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily in example
+\\texttt{in example in kbd}.
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+kbd in @format:
+
+\\begin{Texinfopreformatted}%
+in format
+\\texttt{in format in kbd}.
+\\end{Texinfopreformatted}
 ';
 
 1;

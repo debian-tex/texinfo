@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,193 +10,145 @@ $result_trees{'inlineraw_with_empty_line'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'A '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'plaintext'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'A '
             },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'plaintext ``
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => 'plaintext'
                     }
                   ],
-                  'cmdname' => 'lbracechar',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 },
                 {
-                  'parent' => {},
-                  'text' => ' '
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'inlineraw',
-          'contents' => [],
-          'extra' => {
-            'expand_index' => 1,
-            'format' => 'plaintext'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' a.  Now html
-'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'html'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in 
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                },
-                {
-                  'parent' => {},
-                  'text' => '<i>'
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'text' => 'plaintext ``
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    },
+                    {
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'HTML'
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'lbracechar',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => ' '
                     }
                   ],
-                  'cmdname' => 'acronym',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
+                  'extra' => {
+                    'spaces_before_argument' => ' '
                   },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '</i>'
+                  'type' => 'brace_command_arg'
                 }
               ],
+              'cmdname' => 'inlineraw',
               'extra' => {
-                'spaces_before_argument' => ' '
+                'expand_index' => 1,
+                'format' => 'plaintext'
               },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' a.  Now html
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'html'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in 
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    },
+                    {
+                      'text' => '<i>'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'HTML'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'acronym',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 6,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => '</i>'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'inlineraw',
+              'extra' => {
+                'expand_index' => 1,
+                'format' => 'html'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => 'inlineraw',
-          'contents' => [],
-          'extra' => {
-            'expand_index' => 1,
-            'format' => 'html'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[2];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[3];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[4]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'inlineraw_with_empty_line'}{'contents'}[0];
-$result_trees{'inlineraw_with_empty_line'}{'contents'}[0]{'parent'} = $result_trees{'inlineraw_with_empty_line'};
 
 $result_texis{'inlineraw_with_empty_line'} = 'A @inlineraw{plaintext, plaintext ``
 

@@ -1,8 +1,7 @@
 use strict;
 
-use vars qw($special_element_target_file_name);
-
-$special_element_target_file_name = \&toc_out_element_file_name;
+texinfo_register_file_id_setting_function('special_element_target_file_name',
+                                          \&toc_out_element_file_name);
 
 sub toc_out_element_file_name($$$$$)
 {
@@ -12,7 +11,7 @@ sub toc_out_element_file_name($$$$$)
     my $filename = shift;
 
     my $prefix = $converter->{'document_name'};
-    my $type = $element->{'extra'}->{'special_element'};
+    my $type = $element->{'extra'}->{'special_element_variety'};
     if ($type and $type ne 'Contents')
     {
         $filename = "$prefix.".$converter->get_conf('EXTENSION');

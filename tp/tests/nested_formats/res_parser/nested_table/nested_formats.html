@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -14,21 +14,15 @@
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.center {text-align:center}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+p.flushleft-paragraph {text-align:left}
+p.flushright-paragraph {text-align:right}
+span.program-in-footer {font-size: smaller}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -50,15 +44,15 @@ ul.no-bullet {list-style: none}
 
 
 
-<div class="top" id="Top">
-<span id="Test-nested-table"></span><h1 class="top">Test nested table</h1>
+<div class="top-level-extent" id="Top">
+<h1 class="top" id="Test-nested-table">Test nested table</h1>
 
 
 <p>Call macro
 in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -66,7 +60,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -75,7 +69,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -84,19 +78,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -104,38 +98,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -144,46 +139,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-1"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-1' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-1"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-1'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -192,21 +188,21 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 
 <p>Call macro in format_command
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -214,7 +210,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -223,7 +219,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -232,19 +228,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-1"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-1">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -252,38 +248,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-2"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-2' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-2"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-2'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -292,46 +289,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-3"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-3' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-3"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-3'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -340,11 +338,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -352,11 +350,11 @@ html
 </dl>
 
 <p>Call macro in itemize at the beginning of an item
-</p><ul class="no-bullet">
-<li>a&ndash;n itemize line in macro
+</p><ul class="itemize" style="list-style-type: 'a\2013 n itemize line'">
+<li>in macro
 
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -364,7 +362,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -373,7 +371,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -382,19 +380,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-2"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-2">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -402,38 +400,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-4"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-4' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-4"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-4'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -442,46 +441,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-5"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-5' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-5"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-5'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -490,20 +490,20 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
-</li><li>a&ndash;n itemize line item 1
+</li><li>item 1
 Call macro in itemize
 in macro
 
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -511,7 +511,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -520,7 +520,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -529,19 +529,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-3"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-3">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -549,38 +549,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-6"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-6' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-6"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-6'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -589,46 +590,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-7"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-7' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-7"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-7'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -637,21 +639,21 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
-</li><li>a&ndash;n itemize line item 2
+</li><li>item 2
 Call macro in itemize in format_command
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -659,7 +661,7 @@ Call macro in itemize in format_command
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -668,7 +670,7 @@ Call macro in itemize in format_command
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -677,19 +679,19 @@ Call macro in itemize in format_command
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-4"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-4">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -697,38 +699,39 @@ Call macro in itemize in format_command
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-8"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-8' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-8"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-8'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -737,46 +740,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-9"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-9' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-9"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-9'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -785,11 +789,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -798,11 +802,11 @@ html
 </li></ul>
 
 <p>Call macro in enumerate at the beginning of enumerate
-</p><ol>
+</p><ol class="enumerate">
 <li> in macro
 
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -810,7 +814,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -819,7 +823,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -828,19 +832,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-5"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-5">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -848,38 +852,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-10"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-10' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-10"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-10'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -888,46 +893,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-11"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-11' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-11"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-11'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -936,11 +942,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -949,7 +955,7 @@ Call macro in enumerate
 in macro
 
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -957,7 +963,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -966,7 +972,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -975,19 +981,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-6"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-6">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -995,38 +1001,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-12"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-12' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-12"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-12'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1035,46 +1042,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-13"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-13' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-13"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-13'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1083,21 +1091,21 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 </li><li> enumerate2
 Call macro in enumerate in format_command
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -1105,7 +1113,7 @@ Call macro in enumerate in format_command
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1114,7 +1122,7 @@ Call macro in enumerate in format_command
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1123,19 +1131,19 @@ Call macro in enumerate in format_command
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-7"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-7">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -1143,38 +1151,39 @@ Call macro in enumerate in format_command
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-14"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-14' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-14"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-14'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1183,46 +1192,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-15"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-15' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-15"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-15'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1231,11 +1241,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -1243,14 +1253,14 @@ html
 </dl>
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">multitable item</td><td width="70%">multitable tab. And after Call macro in mutitable
+<tbody><tr><td width="60%">multitable item</td><td width="70%">multitable tab. And after Call macro in mutitable
 after item</td></tr>
 <tr><td width="60%">in macro
 
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -1258,7 +1268,7 @@ after item</td></tr>
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1267,7 +1277,7 @@ after item</td></tr>
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1276,19 +1286,19 @@ after item</td></tr>
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-8"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-8">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -1296,38 +1306,39 @@ after item</td></tr>
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-16"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-16' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-16"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-16'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1336,46 +1347,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-17"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-17' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-17"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-17'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1384,11 +1396,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl></td></tr>
 <tr><td width="60%">multitable item 2</td><td width="70%">multitable tab 2
@@ -1396,7 +1408,7 @@ Call macro in mutitable
 in macro
 
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -1404,7 +1416,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1413,7 +1425,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1422,19 +1434,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-9"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-9">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -1442,38 +1454,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-18"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-18' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-18"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-18'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1482,46 +1495,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-19"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-19' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-19"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-19'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1530,20 +1544,20 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl></td></tr>
 <tr><td width="60%">lone multitable item
 Call macro in mutitable in format_command
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -1551,7 +1565,7 @@ Call macro in mutitable in format_command
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1560,7 +1574,7 @@ Call macro in mutitable in format_command
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -1569,19 +1583,19 @@ Call macro in mutitable in format_command
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-10"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-10">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -1589,38 +1603,39 @@ Call macro in mutitable in format_command
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-20"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-20' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-20"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-20'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1629,46 +1644,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-21"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-21' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-21"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-21'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -1677,568 +1693,575 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 </dd>
 </dl></td></tr>
+</tbody>
 </table>
 
 <p>call macro at the example beginning
 </p><div class="example">
-<pre class="example">in macro
+<pre class="example-preformatted">in macro
 
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><pre class="example">in format_command
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in format_command
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 Something
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
 Something
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 Something2
-</pre><pre class="example">After
+</pre><pre class="example-preformatted">After
 
 Something2
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">After
+<pre class="example-preformatted">After
 
 
 
 
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><blockquote>
-<pre class="example">A quot---ation
+</pre><dl class="table">
+<dd><blockquote class="quotation">
+<pre class="example-preformatted">A quot---ation
 </pre></blockquote>
 </dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><span id="subheading-11"></span><strong>subheading</strong>
-<pre class="example">
+</pre><strong class="subheading" id="subheading-11">subheading</strong>
+<pre class="example-preformatted">
 
 </pre><pre class="verbatim">in verbatim
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
 
 html
 
 
-</pre><ul>
-<li> <pre class="example">i--tem 1
-</pre></li><li> <pre class="example">i--tem 2
+</pre><ul class="itemize mark-bullet">
+<li><pre class="example-preformatted">i--tem 1
+</pre></li><li><pre class="example-preformatted">i--tem 2
 </pre></li></ul>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><ol>
-<li> <pre class="example">e--numerate
+</pre><ol class="enumerate">
+<li> <pre class="example-preformatted">e--numerate
 </pre></li></ol>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><table>
-<thead><tr><th width="60%"><pre class="example">mu--ltitable headitem</pre></th><th width="70%"><pre class="example">another tab</pre></th></tr></thead>
-<tr><td width="60%"><pre class="example">mu--ltitable item</pre></td><td width="70%"><pre class="example">multitable tab</pre></td></tr>
-<tr><td width="60%"><pre class="example">mu--ltitable item 2</pre></td><td width="70%"><pre class="example">multitable tab 2</pre></td></tr>
-<tr><td width="60%"><pre class="example">lone mu--ltitable item</pre></td></tr>
+</pre><table class="multitable">
+<thead><tr><th width="60%"><pre class="example-preformatted">mu--ltitable headitem</pre></th><th width="70%"><pre class="example-preformatted">another tab</pre></th></tr></thead>
+<tbody><tr><td width="60%"><pre class="example-preformatted">mu--ltitable item</pre></td><td width="70%"><pre class="example-preformatted">multitable tab</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">mu--ltitable item 2</pre></td><td width="70%"><pre class="example-preformatted">multitable tab 2</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">lone mu--ltitable item</pre></td></tr>
+</tbody>
 </table>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><div class="example">
-<pre class="example">s--mallexample
+</pre><div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl class="def">
-<dt id="index-d_002d_002deffn_005fname-22"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-22' class='copiable-anchor'> &para;</a></span></dt>
-<dd><pre class="example">d--effn
+</pre><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-22"><span class="category-def">c--ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-22'> &para;</a></span></dt>
+<dd><pre class="example-preformatted">d--effn
 </pre></dd></dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dt><span><tt>a</tt></span></dt>
-<dd><pre class="example">l--ine
+</pre><dl class="table">
+<dt><code class="table-term-preformatted-code">a</code></dt>
+<dd><pre class="example-preformatted">l--ine
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><table class="cartouche" border="1"><tr><td>
-<pre class="example">c--artouche
+<pre class="example-preformatted">c--artouche
 </pre></td></tr></table>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><pre class="example">f--lushleft
-</pre><pre class="example">
+</pre><div class="flushleft"><pre class="example-preformatted">f--lushleft
+</pre></div><pre class="example-preformatted">
 
-</pre><pre class="example">f--lushright
-</pre><pre class="example">
+</pre><div class="flushright"><pre class="example-preformatted">f--lushright
+</pre></div><pre class="example-preformatted">
 
-</pre><div align="center">ce--ntered line
-</div><pre class="example">
+</pre><div class="center">ce--ntered line
+</div><pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><pre class="example">in macro, a format_command containing some other commands.
-</pre><ul>
-<li> <pre class="example">i--tem 1
-</pre></li><li> <pre class="example">i--tem 2
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in macro, a format_command containing some other commands.
+</pre><ul class="itemize mark-bullet">
+<li><pre class="example-preformatted">i--tem 1
+</pre></li><li><pre class="example-preformatted">i--tem 2
 </pre></li></ul>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><ol>
-<li> <pre class="example">e--numerate
+</pre><ol class="enumerate">
+<li> <pre class="example-preformatted">e--numerate
 </pre></li></ol>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><table>
-<thead><tr><th width="60%"><pre class="example">mu--ltitable headitem</pre></th><th width="70%"><pre class="example">another tab</pre></th></tr></thead>
-<tr><td width="60%"><pre class="example">mu--ltitable item</pre></td><td width="70%"><pre class="example">multitable tab</pre></td></tr>
-<tr><td width="60%"><pre class="example">mu--ltitable item 2</pre></td><td width="70%"><pre class="example">multitable tab 2</pre></td></tr>
-<tr><td width="60%"><pre class="example">lone mu--ltitable item</pre></td></tr>
+</pre><table class="multitable">
+<thead><tr><th width="60%"><pre class="example-preformatted">mu--ltitable headitem</pre></th><th width="70%"><pre class="example-preformatted">another tab</pre></th></tr></thead>
+<tbody><tr><td width="60%"><pre class="example-preformatted">mu--ltitable item</pre></td><td width="70%"><pre class="example-preformatted">multitable tab</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">mu--ltitable item 2</pre></td><td width="70%"><pre class="example-preformatted">multitable tab 2</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">lone mu--ltitable item</pre></td></tr>
+</tbody>
 </table>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><div class="example">
-<pre class="example">s--mallexample
+</pre><div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl class="def">
-<dt id="index-d_002d_002deffn_005fname-23"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-23' class='copiable-anchor'> &para;</a></span></dt>
-<dd><pre class="example">d--effn
+</pre><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-23"><span class="category-def">c--ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-23'> &para;</a></span></dt>
+<dd><pre class="example-preformatted">d--effn
 </pre></dd></dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dt><span><tt>a</tt></span></dt>
-<dd><pre class="example">l--ine
+</pre><dl class="table">
+<dt><code class="table-term-preformatted-code">a</code></dt>
+<dd><pre class="example-preformatted">l--ine
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><table class="cartouche" border="1"><tr><td>
-<pre class="example">c--artouche
+<pre class="example-preformatted">c--artouche
 </pre></td></tr></table>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><pre class="example">f--lushleft
-</pre><pre class="example">
+</pre><div class="flushleft"><pre class="example-preformatted">f--lushleft
+</pre></div><pre class="example-preformatted">
 
-</pre><pre class="example">f--lushright
-</pre><pre class="example">
+</pre><div class="flushright"><pre class="example-preformatted">f--lushright
+</pre></div><pre class="example-preformatted">
 
-</pre><div align="center">ce--ntered line
+</pre><div class="center">ce--ntered line
 </div></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 example  some
    text
 call macro in example
 in macro
 
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><pre class="example">in format_command
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in format_command
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 Something
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
 Something
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 Something2
-</pre><pre class="example">After
+</pre><pre class="example-preformatted">After
 
 Something2
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">After
+<pre class="example-preformatted">After
 
 
 
 
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><blockquote>
-<pre class="example">A quot---ation
+</pre><dl class="table">
+<dd><blockquote class="quotation">
+<pre class="example-preformatted">A quot---ation
 </pre></blockquote>
 </dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><span id="subheading-12"></span><strong>subheading</strong>
-<pre class="example">
+</pre><strong class="subheading" id="subheading-12">subheading</strong>
+<pre class="example-preformatted">
 
 </pre><pre class="verbatim">in verbatim
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
 
 html
 
 
-</pre><ul>
-<li> <pre class="example">i--tem 1
-</pre></li><li> <pre class="example">i--tem 2
+</pre><ul class="itemize mark-bullet">
+<li><pre class="example-preformatted">i--tem 1
+</pre></li><li><pre class="example-preformatted">i--tem 2
 </pre></li></ul>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><ol>
-<li> <pre class="example">e--numerate
+</pre><ol class="enumerate">
+<li> <pre class="example-preformatted">e--numerate
 </pre></li></ol>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><table>
-<thead><tr><th width="60%"><pre class="example">mu--ltitable headitem</pre></th><th width="70%"><pre class="example">another tab</pre></th></tr></thead>
-<tr><td width="60%"><pre class="example">mu--ltitable item</pre></td><td width="70%"><pre class="example">multitable tab</pre></td></tr>
-<tr><td width="60%"><pre class="example">mu--ltitable item 2</pre></td><td width="70%"><pre class="example">multitable tab 2</pre></td></tr>
-<tr><td width="60%"><pre class="example">lone mu--ltitable item</pre></td></tr>
+</pre><table class="multitable">
+<thead><tr><th width="60%"><pre class="example-preformatted">mu--ltitable headitem</pre></th><th width="70%"><pre class="example-preformatted">another tab</pre></th></tr></thead>
+<tbody><tr><td width="60%"><pre class="example-preformatted">mu--ltitable item</pre></td><td width="70%"><pre class="example-preformatted">multitable tab</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">mu--ltitable item 2</pre></td><td width="70%"><pre class="example-preformatted">multitable tab 2</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">lone mu--ltitable item</pre></td></tr>
+</tbody>
 </table>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><div class="example">
-<pre class="example">s--mallexample
+</pre><div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl class="def">
-<dt id="index-d_002d_002deffn_005fname-24"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-24' class='copiable-anchor'> &para;</a></span></dt>
-<dd><pre class="example">d--effn
+</pre><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-24"><span class="category-def">c--ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-24'> &para;</a></span></dt>
+<dd><pre class="example-preformatted">d--effn
 </pre></dd></dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dt><span><tt>a</tt></span></dt>
-<dd><pre class="example">l--ine
+</pre><dl class="table">
+<dt><code class="table-term-preformatted-code">a</code></dt>
+<dd><pre class="example-preformatted">l--ine
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><table class="cartouche" border="1"><tr><td>
-<pre class="example">c--artouche
+<pre class="example-preformatted">c--artouche
 </pre></td></tr></table>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><pre class="example">f--lushleft
-</pre><pre class="example">
+</pre><div class="flushleft"><pre class="example-preformatted">f--lushleft
+</pre></div><pre class="example-preformatted">
 
-</pre><pre class="example">f--lushright
-</pre><pre class="example">
+</pre><div class="flushright"><pre class="example-preformatted">f--lushright
+</pre></div><pre class="example-preformatted">
 
-</pre><div align="center">ce--ntered line
-</div><pre class="example">
+</pre><div class="center">ce--ntered line
+</div><pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><pre class="example">in macro, a format_command containing some other commands.
-</pre><ul>
-<li> <pre class="example">i--tem 1
-</pre></li><li> <pre class="example">i--tem 2
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in macro, a format_command containing some other commands.
+</pre><ul class="itemize mark-bullet">
+<li><pre class="example-preformatted">i--tem 1
+</pre></li><li><pre class="example-preformatted">i--tem 2
 </pre></li></ul>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><ol>
-<li> <pre class="example">e--numerate
+</pre><ol class="enumerate">
+<li> <pre class="example-preformatted">e--numerate
 </pre></li></ol>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><table>
-<thead><tr><th width="60%"><pre class="example">mu--ltitable headitem</pre></th><th width="70%"><pre class="example">another tab</pre></th></tr></thead>
-<tr><td width="60%"><pre class="example">mu--ltitable item</pre></td><td width="70%"><pre class="example">multitable tab</pre></td></tr>
-<tr><td width="60%"><pre class="example">mu--ltitable item 2</pre></td><td width="70%"><pre class="example">multitable tab 2</pre></td></tr>
-<tr><td width="60%"><pre class="example">lone mu--ltitable item</pre></td></tr>
+</pre><table class="multitable">
+<thead><tr><th width="60%"><pre class="example-preformatted">mu--ltitable headitem</pre></th><th width="70%"><pre class="example-preformatted">another tab</pre></th></tr></thead>
+<tbody><tr><td width="60%"><pre class="example-preformatted">mu--ltitable item</pre></td><td width="70%"><pre class="example-preformatted">multitable tab</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">mu--ltitable item 2</pre></td><td width="70%"><pre class="example-preformatted">multitable tab 2</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">lone mu--ltitable item</pre></td></tr>
+</tbody>
 </table>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><div class="example">
-<pre class="example">s--mallexample
+</pre><div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl class="def">
-<dt id="index-d_002d_002deffn_005fname-25"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-25' class='copiable-anchor'> &para;</a></span></dt>
-<dd><pre class="example">d--effn
+</pre><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-25"><span class="category-def">c--ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-25'> &para;</a></span></dt>
+<dd><pre class="example-preformatted">d--effn
 </pre></dd></dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dt><span><tt>a</tt></span></dt>
-<dd><pre class="example">l--ine
+</pre><dl class="table">
+<dt><code class="table-term-preformatted-code">a</code></dt>
+<dd><pre class="example-preformatted">l--ine
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><table class="cartouche" border="1"><tr><td>
-<pre class="example">c--artouche
+<pre class="example-preformatted">c--artouche
 </pre></td></tr></table>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><pre class="example">f--lushleft
-</pre><pre class="example">
+</pre><div class="flushleft"><pre class="example-preformatted">f--lushleft
+</pre></div><pre class="example-preformatted">
 
-</pre><pre class="example">f--lushright
-</pre><pre class="example">
+</pre><div class="flushright"><pre class="example-preformatted">f--lushright
+</pre></div><pre class="example-preformatted">
 
-</pre><div align="center">ce--ntered line
+</pre><div class="center">ce--ntered line
 </div></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 
 more example text
 call macro in example in format_command
-</pre><dl compact="compact">
-<dd><pre class="example">in macro
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in macro
 
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><pre class="example">in format_command
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in format_command
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 Something
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
 Something
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 Something2
-</pre><pre class="example">After
+</pre><pre class="example-preformatted">After
 
 Something2
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">After
+<pre class="example-preformatted">After
 
 
 
 
-</pre><dl compact="compact">
-<dd><pre class="example">in group
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in group
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><blockquote>
-<pre class="example">A quot---ation
+</pre><dl class="table">
+<dd><blockquote class="quotation">
+<pre class="example-preformatted">A quot---ation
 </pre></blockquote>
 </dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><span id="subheading-13"></span><strong>subheading</strong>
-<pre class="example">
+</pre><strong class="subheading" id="subheading-13">subheading</strong>
+<pre class="example-preformatted">
 
 </pre><pre class="verbatim">in verbatim
-</pre><pre class="example">
+</pre><pre class="example-preformatted">
 
 
 html
 
 
-</pre><ul>
-<li> <pre class="example">i--tem 1
-</pre></li><li> <pre class="example">i--tem 2
+</pre><ul class="itemize mark-bullet">
+<li><pre class="example-preformatted">i--tem 1
+</pre></li><li><pre class="example-preformatted">i--tem 2
 </pre></li></ul>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><ol>
-<li> <pre class="example">e--numerate
+</pre><ol class="enumerate">
+<li> <pre class="example-preformatted">e--numerate
 </pre></li></ol>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><table>
-<thead><tr><th width="60%"><pre class="example">mu--ltitable headitem</pre></th><th width="70%"><pre class="example">another tab</pre></th></tr></thead>
-<tr><td width="60%"><pre class="example">mu--ltitable item</pre></td><td width="70%"><pre class="example">multitable tab</pre></td></tr>
-<tr><td width="60%"><pre class="example">mu--ltitable item 2</pre></td><td width="70%"><pre class="example">multitable tab 2</pre></td></tr>
-<tr><td width="60%"><pre class="example">lone mu--ltitable item</pre></td></tr>
+</pre><table class="multitable">
+<thead><tr><th width="60%"><pre class="example-preformatted">mu--ltitable headitem</pre></th><th width="70%"><pre class="example-preformatted">another tab</pre></th></tr></thead>
+<tbody><tr><td width="60%"><pre class="example-preformatted">mu--ltitable item</pre></td><td width="70%"><pre class="example-preformatted">multitable tab</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">mu--ltitable item 2</pre></td><td width="70%"><pre class="example-preformatted">multitable tab 2</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">lone mu--ltitable item</pre></td></tr>
+</tbody>
 </table>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><div class="example">
-<pre class="example">s--mallexample
+</pre><div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl class="def">
-<dt id="index-d_002d_002deffn_005fname-26"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-26' class='copiable-anchor'> &para;</a></span></dt>
-<dd><pre class="example">d--effn
+</pre><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-26"><span class="category-def">c--ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-26'> &para;</a></span></dt>
+<dd><pre class="example-preformatted">d--effn
 </pre></dd></dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dt><span><tt>a</tt></span></dt>
-<dd><pre class="example">l--ine
+</pre><dl class="table">
+<dt><code class="table-term-preformatted-code">a</code></dt>
+<dd><pre class="example-preformatted">l--ine
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><table class="cartouche" border="1"><tr><td>
-<pre class="example">c--artouche
+<pre class="example-preformatted">c--artouche
 </pre></td></tr></table>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><pre class="example">f--lushleft
-</pre><pre class="example">
+</pre><div class="flushleft"><pre class="example-preformatted">f--lushleft
+</pre></div><pre class="example-preformatted">
 
-</pre><pre class="example">f--lushright
-</pre><pre class="example">
+</pre><div class="flushright"><pre class="example-preformatted">f--lushright
+</pre></div><pre class="example-preformatted">
 
-</pre><div align="center">ce--ntered line
-</div><pre class="example">
+</pre><div class="center">ce--ntered line
+</div><pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dd><pre class="example">in macro, a format_command containing some other commands.
-</pre><ul>
-<li> <pre class="example">i--tem 1
-</pre></li><li> <pre class="example">i--tem 2
+</pre><dl class="table">
+<dd><pre class="example-preformatted">in macro, a format_command containing some other commands.
+</pre><ul class="itemize mark-bullet">
+<li><pre class="example-preformatted">i--tem 1
+</pre></li><li><pre class="example-preformatted">i--tem 2
 </pre></li></ul>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><ol>
-<li> <pre class="example">e--numerate
+</pre><ol class="enumerate">
+<li> <pre class="example-preformatted">e--numerate
 </pre></li></ol>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><table>
-<thead><tr><th width="60%"><pre class="example">mu--ltitable headitem</pre></th><th width="70%"><pre class="example">another tab</pre></th></tr></thead>
-<tr><td width="60%"><pre class="example">mu--ltitable item</pre></td><td width="70%"><pre class="example">multitable tab</pre></td></tr>
-<tr><td width="60%"><pre class="example">mu--ltitable item 2</pre></td><td width="70%"><pre class="example">multitable tab 2</pre></td></tr>
-<tr><td width="60%"><pre class="example">lone mu--ltitable item</pre></td></tr>
+</pre><table class="multitable">
+<thead><tr><th width="60%"><pre class="example-preformatted">mu--ltitable headitem</pre></th><th width="70%"><pre class="example-preformatted">another tab</pre></th></tr></thead>
+<tbody><tr><td width="60%"><pre class="example-preformatted">mu--ltitable item</pre></td><td width="70%"><pre class="example-preformatted">multitable tab</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">mu--ltitable item 2</pre></td><td width="70%"><pre class="example-preformatted">multitable tab 2</pre></td></tr>
+<tr><td width="60%"><pre class="example-preformatted">lone mu--ltitable item</pre></td></tr>
+</tbody>
 </table>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><div class="example">
-<pre class="example">s--mallexample
+</pre><div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl class="def">
-<dt id="index-d_002d_002deffn_005fname-27"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-27' class='copiable-anchor'> &para;</a></span></dt>
-<dd><pre class="example">d--effn
+</pre><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-27"><span class="category-def">c--ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-27'> &para;</a></span></dt>
+<dd><pre class="example-preformatted">d--effn
 </pre></dd></dl>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><dl compact="compact">
-<dt><span><tt>a</tt></span></dt>
-<dd><pre class="example">l--ine
+</pre><dl class="table">
+<dt><code class="table-term-preformatted-code">a</code></dt>
+<dd><pre class="example-preformatted">l--ine
 </pre></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre><table class="cartouche" border="1"><tr><td>
-<pre class="example">c--artouche
+<pre class="example-preformatted">c--artouche
 </pre></td></tr></table>
-<pre class="example">
+<pre class="example-preformatted">
 
-</pre><pre class="example">f--lushleft
-</pre><pre class="example">
+</pre><div class="flushleft"><pre class="example-preformatted">f--lushleft
+</pre></div><pre class="example-preformatted">
 
-</pre><pre class="example">f--lushright
-</pre><pre class="example">
+</pre><div class="flushright"><pre class="example-preformatted">f--lushright
+</pre></div><pre class="example-preformatted">
 
-</pre><div align="center">ce--ntered line
+</pre><div class="center">ce--ntered line
 </div></dd>
 </dl>
-<pre class="example">
+<pre class="example-preformatted">
 
 </pre></dd>
 </dl>
 </div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-28"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-28' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-28"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-28'> &para;</a></span></dt>
 <dd><p>deffn
 call macro in deffn 
 in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -2246,7 +2269,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2255,7 +2278,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2264,19 +2287,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-14"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-14">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -2284,38 +2307,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-29"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-29' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-29"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-29'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2324,46 +2348,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-30"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-30' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-30"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-30'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2372,21 +2397,21 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 <p>deffn continues
 call macro in deffn in format_command
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -2394,7 +2419,7 @@ call macro in deffn in format_command
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2403,7 +2428,7 @@ call macro in deffn in format_command
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2412,19 +2437,19 @@ call macro in deffn in format_command
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-15"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-15">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -2432,38 +2457,39 @@ call macro in deffn in format_command
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-31"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-31' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-31"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-31'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2472,46 +2498,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-32"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-32' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-32"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-32'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2520,11 +2547,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -2533,12 +2560,12 @@ html
 </dd></dl>
 
 <p>call macro in deffn at the beginning
-</p><dl class="def">
-<dt id="index-d_002d_002deffn_005fname2"><span class="category">c--ategory2: </span><span><strong>d--effn_name2</strong> <em>a--rguments2...</em><a href='#index-d_002d_002deffn_005fname2' class='copiable-anchor'> &para;</a></span></dt>
+</p><dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname2"><span class="category-def">c&ndash;ategory2: </span><span><strong class="def-name">d--effn_name2</strong> <var class="def-var-arguments">a&ndash;rguments2...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname2'> &para;</a></span></dt>
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -2546,7 +2573,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2555,7 +2582,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2564,19 +2591,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-16"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-16">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -2584,38 +2611,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-33"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-33' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-33"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-33'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2624,46 +2652,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-34"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-34' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-34"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-34'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2672,23 +2701,23 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 </dd></dl>
 
-<dl compact="compact">
-<dt><span>a line</span></dt>
+<dl class="table">
+<dt>a line</dt>
 <dd><p>call macro in table
 in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -2696,7 +2725,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2705,7 +2734,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2714,19 +2743,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-17"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-17">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -2734,38 +2763,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-35"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-35' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-35"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-35'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2774,46 +2804,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-36"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-36' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-36"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-36'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2822,21 +2853,21 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 <p>call macro in table at an item beginning
 </p></dd>
-<dt><span>a line</span></dt>
+<dt>a line</dt>
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -2844,7 +2875,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2853,7 +2884,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -2862,19 +2893,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-18"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-18">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -2882,38 +2913,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-37"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-37' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-37"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-37'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2922,46 +2954,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-38"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-38' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-38"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-38'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -2970,22 +3003,22 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 </dd>
-<dt><span>a line2</span></dt>
+<dt>a line2</dt>
 <dd><p>call macro in table in format_command
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -2993,7 +3026,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3002,7 +3035,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3011,19 +3044,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-19"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-19">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3031,38 +3064,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-39"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-39' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-39"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-39'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3071,46 +3105,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-40"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-40' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-40"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-40'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3119,11 +3154,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -3137,7 +3172,7 @@ html
 <p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -3145,7 +3180,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3154,7 +3189,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3163,19 +3198,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-20"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-20">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3183,38 +3218,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-41"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-41' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-41"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-41'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3223,46 +3259,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-42"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-42' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-42"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-42'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3271,11 +3308,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -3284,7 +3321,7 @@ call macro in cartouche
 in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -3292,7 +3329,7 @@ in macro
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3301,7 +3338,7 @@ in macro
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3310,19 +3347,19 @@ in macro
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-21"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-21">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3330,38 +3367,39 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-43"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-43' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-43"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-43'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3370,46 +3408,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-44"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-44' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-44"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-44'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3418,20 +3457,20 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 <p>call macro in cartouche in format_command
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in macro
 </p>
 
-<dl compact="compact">
+<dl class="table">
 <dd><p>in format_command
 </p></dd>
 </dl>
@@ -3439,7 +3478,7 @@ html
 <p>Something
 </p>
 <p>Something
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3448,7 +3487,7 @@ html
 </p><p>After
 </p>
 <p>Something2
-</p><dl compact="compact">
+</p><dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
@@ -3457,19 +3496,19 @@ html
 
 <br>
 <br>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
+<dl class="table">
+<dd><blockquote class="quotation">
 <p>A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-22"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-22">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3477,38 +3516,39 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-45"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-45' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-45"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-45'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3517,46 +3557,47 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
+<dl class="table">
 <dd><p>in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-46"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-46' class='copiable-anchor'> &para;</a></span></dt>
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-46"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-46'> &para;</a></span></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
+<dl class="table">
+<dt>a</dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
@@ -3565,11 +3606,11 @@ html
 <p>c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
@@ -3577,49 +3618,49 @@ html
 </dl>
 </td></tr></table>
 
-<p align="left">call macro in flushleft
+<div class="flushleft"><p class="flushleft-paragraph">call macro in flushleft
 in macro
 </p>
 
-<dl compact="compact">
-<dd><p align="left">in format_command
+<dl class="table">
+<dd><p class="flushleft-paragraph">in format_command
 </p></dd>
 </dl>
 
-<p align="left">Something
+<p class="flushleft-paragraph">Something
 </p>
-<p align="left">Something
-</p><dl compact="compact">
-<dd><p align="left">in group
+<p class="flushleft-paragraph">Something
+</p><dl class="table">
+<dd><p class="flushleft-paragraph">in group
 </p></dd>
 </dl>
 
-<p align="left">Something2
-</p><p align="left">After
+<p class="flushleft-paragraph">Something2
+</p><p class="flushleft-paragraph">After
 </p>
-<p align="left">Something2
-</p><dl compact="compact">
-<dd><p align="left">in group
+<p class="flushleft-paragraph">Something2
+</p><dl class="table">
+<dd><p class="flushleft-paragraph">in group
 </p></dd>
 </dl>
-<p align="left">After
+<p class="flushleft-paragraph">After
 </p>
 
 <br>
 <br>
-<dl compact="compact">
-<dd><p align="left">in group
+<dl class="table">
+<dd><p class="flushleft-paragraph">in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
-<p align="left">A quot&mdash;ation
+<dl class="table">
+<dd><blockquote class="quotation">
+<p class="flushleft-paragraph">A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-23"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-23">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3627,147 +3668,149 @@ in macro
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-47"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-47' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="left">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-47"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-47'> &para;</a></span></dt>
+<dd><p class="flushleft-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="left">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushleft-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="left">c&ndash;artouche
+<p class="flushleft-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
-<dd><p align="left">in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<dl class="table">
+<dd><p class="flushleft-paragraph">in macro, a format_command containing some other commands.
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-48"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-48' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="left">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-48"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-48'> &para;</a></span></dt>
+<dd><p class="flushleft-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="left">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushleft-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="left">c&ndash;artouche
+<p class="flushleft-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
-<p align="left">flushleft
+<p class="flushleft-paragraph">flushleft
 call macro in flushleft in format_command
-</p><dl compact="compact">
-<dd><p align="left">in macro
+</p><dl class="table">
+<dd><p class="flushleft-paragraph">in macro
 </p>
 
-<dl compact="compact">
-<dd><p align="left">in format_command
+<dl class="table">
+<dd><p class="flushleft-paragraph">in format_command
 </p></dd>
 </dl>
 
-<p align="left">Something
+<p class="flushleft-paragraph">Something
 </p>
-<p align="left">Something
-</p><dl compact="compact">
-<dd><p align="left">in group
+<p class="flushleft-paragraph">Something
+</p><dl class="table">
+<dd><p class="flushleft-paragraph">in group
 </p></dd>
 </dl>
 
-<p align="left">Something2
-</p><p align="left">After
+<p class="flushleft-paragraph">Something2
+</p><p class="flushleft-paragraph">After
 </p>
-<p align="left">Something2
-</p><dl compact="compact">
-<dd><p align="left">in group
+<p class="flushleft-paragraph">Something2
+</p><dl class="table">
+<dd><p class="flushleft-paragraph">in group
 </p></dd>
 </dl>
-<p align="left">After
+<p class="flushleft-paragraph">After
 </p>
 
 <br>
 <br>
-<dl compact="compact">
-<dd><p align="left">in group
+<dl class="table">
+<dd><p class="flushleft-paragraph">in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
-<p align="left">A quot&mdash;ation
+<dl class="table">
+<dd><blockquote class="quotation">
+<p class="flushleft-paragraph">A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-24"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-24">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3775,147 +3818,149 @@ call macro in flushleft in format_command
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-49"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-49' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="left">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-49"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-49'> &para;</a></span></dt>
+<dd><p class="flushleft-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="left">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushleft-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="left">c&ndash;artouche
+<p class="flushleft-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
-<dd><p align="left">in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<dl class="table">
+<dd><p class="flushleft-paragraph">in macro, a format_command containing some other commands.
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-50"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-50' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="left">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-50"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-50'> &para;</a></span></dt>
+<dd><p class="flushleft-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="left">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushleft-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="left">c&ndash;artouche
+<p class="flushleft-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 </dd>
 </dl>
-
-<p align="right">in macro
+</div>
+<div class="flushright"><p class="flushright-paragraph">in macro
 </p>
 
-<dl compact="compact">
-<dd><p align="right">in format_command
+<dl class="table">
+<dd><p class="flushright-paragraph">in format_command
 </p></dd>
 </dl>
 
-<p align="right">Something
+<p class="flushright-paragraph">Something
 </p>
-<p align="right">Something
-</p><dl compact="compact">
-<dd><p align="right">in group
+<p class="flushright-paragraph">Something
+</p><dl class="table">
+<dd><p class="flushright-paragraph">in group
 </p></dd>
 </dl>
 
-<p align="right">Something2
-</p><p align="right">After
+<p class="flushright-paragraph">Something2
+</p><p class="flushright-paragraph">After
 </p>
-<p align="right">Something2
-</p><dl compact="compact">
-<dd><p align="right">in group
+<p class="flushright-paragraph">Something2
+</p><dl class="table">
+<dd><p class="flushright-paragraph">in group
 </p></dd>
 </dl>
-<p align="right">After
+<p class="flushright-paragraph">After
 </p>
 
 <br>
 <br>
-<dl compact="compact">
-<dd><p align="right">in group
+<dl class="table">
+<dd><p class="flushright-paragraph">in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
-<p align="right">A quot&mdash;ation
+<dl class="table">
+<dd><blockquote class="quotation">
+<p class="flushright-paragraph">A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-25"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-25">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -3923,146 +3968,148 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-51"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-51' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="right">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-51"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-51'> &para;</a></span></dt>
+<dd><p class="flushright-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="right">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushright-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="right">c&ndash;artouche
+<p class="flushright-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
-<dd><p align="right">in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<dl class="table">
+<dd><p class="flushright-paragraph">in macro, a format_command containing some other commands.
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-52"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-52' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="right">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-52"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-52'> &para;</a></span></dt>
+<dd><p class="flushright-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="right">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushright-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="right">c&ndash;artouche
+<p class="flushright-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
-<p align="right">flushright
-</p><dl compact="compact">
-<dd><p align="right">in macro
+<p class="flushright-paragraph">flushright
+</p><dl class="table">
+<dd><p class="flushright-paragraph">in macro
 </p>
 
-<dl compact="compact">
-<dd><p align="right">in format_command
+<dl class="table">
+<dd><p class="flushright-paragraph">in format_command
 </p></dd>
 </dl>
 
-<p align="right">Something
+<p class="flushright-paragraph">Something
 </p>
-<p align="right">Something
-</p><dl compact="compact">
-<dd><p align="right">in group
+<p class="flushright-paragraph">Something
+</p><dl class="table">
+<dd><p class="flushright-paragraph">in group
 </p></dd>
 </dl>
 
-<p align="right">Something2
-</p><p align="right">After
+<p class="flushright-paragraph">Something2
+</p><p class="flushright-paragraph">After
 </p>
-<p align="right">Something2
-</p><dl compact="compact">
-<dd><p align="right">in group
+<p class="flushright-paragraph">Something2
+</p><dl class="table">
+<dd><p class="flushright-paragraph">in group
 </p></dd>
 </dl>
-<p align="right">After
+<p class="flushright-paragraph">After
 </p>
 
 <br>
 <br>
-<dl compact="compact">
-<dd><p align="right">in group
+<dl class="table">
+<dd><p class="flushright-paragraph">in group
 </p></dd>
 </dl>
 
-<dl compact="compact">
-<dd><blockquote>
-<p align="right">A quot&mdash;ation
+<dl class="table">
+<dd><blockquote class="quotation">
+<p class="flushright-paragraph">A quot&mdash;ation
 </p></blockquote>
 </dd>
 </dl>
 
-<span id="subheading-26"></span><h3 class="subheading">subheading</h3>
+<h3 class="subheading" id="subheading-26">subheading</h3>
 
 <pre class="verbatim">in verbatim
 </pre>
@@ -4070,109 +4117,112 @@ html
 html
 
 
-<ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-53"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-53' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="right">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-53"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-53'> &para;</a></span></dt>
+<dd><p class="flushright-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="right">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushright-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="right">c&ndash;artouche
+<p class="flushright-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div>
-<dl compact="compact">
-<dd><p align="right">in macro, a format_command containing some other commands.
-</p><ul>
-<li> i&ndash;tem 1
-</li><li> i&ndash;tem 2
+<dl class="table">
+<dd><p class="flushright-paragraph">in macro, a format_command containing some other commands.
+</p><ul class="itemize mark-bullet">
+<li>i&ndash;tem 1
+</li><li>i&ndash;tem 2
 </li></ul>
 
-<ol>
+<ol class="enumerate">
 <li> e&ndash;numerate
 </li></ol>
 
-<table>
+<table class="multitable">
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="70%">another tab</th></tr></thead>
-<tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
+<tbody><tr><td width="60%">mu&ndash;ltitable item</td><td width="70%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="70%">multitable tab 2</td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
+</tbody>
 </table>
 
 <div class="example">
-<pre class="example">e--xample  some
+<pre class="example-preformatted">e--xample  some
    text
 </pre></div>
 
-<div class="example">
-<pre class="example">s--mallexample
+<div class="example smallexample">
+<pre class="example-preformatted">s--mallexample
 </pre></div>
 
-<dl class="def">
-<dt id="index-d_002d_002deffn_005fname-54"><span class="category">c--ategory: </span><span><strong>d--effn_name</strong> <em>a--rguments...</em><a href='#index-d_002d_002deffn_005fname-54' class='copiable-anchor'> &para;</a></span></dt>
-<dd><p align="right">d&ndash;effn
+<dl class="first-deffn">
+<dt class="deffn" id="index-d_002d_002deffn_005fname-54"><span class="category-def">c&ndash;ategory: </span><span><strong class="def-name">d--effn_name</strong> <var class="def-var-arguments">a&ndash;rguments...</var><a class="copiable-link" href='#index-d_002d_002deffn_005fname-54'> &para;</a></span></dt>
+<dd><p class="flushright-paragraph">d&ndash;effn
 </p></dd></dl>
 
-<dl compact="compact">
-<dt><span>a</span></dt>
-<dd><p align="right">l&ndash;ine
+<dl class="table">
+<dt>a</dt>
+<dd><p class="flushright-paragraph">l&ndash;ine
 </p></dd>
 </dl>
 
 <table class="cartouche" border="1"><tr><td>
-<p align="right">c&ndash;artouche
+<p class="flushright-paragraph">c&ndash;artouche
 </p></td></tr></table>
 
-<p align="left">f&ndash;lushleft
-</p>
-<p align="right">f&ndash;lushright
-</p>
-<div align="center">ce&ndash;ntered line
+<div class="flushleft"><p class="flushleft-paragraph">f&ndash;lushleft
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">f&ndash;lushright
+</p></div>
+<div class="center">ce&ndash;ntered line
 </div></dd>
 </dl>
 
 </dd>
 </dl>
-
-<hr></div>
-<p><font size="-1">
-  This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
-</font></p>
+</div>
+<hr>
+</div>
+<p>
+  <span class="program-in-footer">This document was generated on <em class="emph">a sunny day</em> using <a class="uref" href="http://www.gnu.org/software/texinfo/"><em class="emph">texi2any</em></a>.</span>
+</p>
 
 
 </body>

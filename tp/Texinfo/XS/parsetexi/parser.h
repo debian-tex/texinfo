@@ -35,7 +35,6 @@ typedef struct GLOBAL_INFO {
     char *input_encoding_name;
     char *input_perl_encoding;
     int sections_level;
-    int novalidate;
     ELEMENT dircategory_direntry; /* an array of elements */
 
     /* Elements that should be unique. */
@@ -63,6 +62,13 @@ typedef struct GLOBAL_INFO {
     ELEMENT *evenfootingmarks;
     ELEMENT *oddfootingmarks;
     ELEMENT *shorttitlepage;
+    ELEMENT *novalidate;
+    ELEMENT *afourpaper;
+    ELEMENT *afourlatex;
+    ELEMENT *afourwide;
+    ELEMENT *afivepaper;
+    ELEMENT *bsixpaper;
+    ELEMENT *smallbook;
 
     /* Arrays of elements */
     ELEMENT footnotes;
@@ -88,22 +94,26 @@ typedef struct GLOBAL_INFO {
     ELEMENT frenchspacing;
     ELEMENT headings;
     ELEMENT kbdinputstyle;
+    ELEMENT microtype;
     ELEMENT paragraphindent;
     ELEMENT shortcontents;
     ELEMENT urefbreakstyle;
     ELEMENT xrefautomaticsectiontitle;
+
+    /* Ignored characters for index sort key */
+    IGNORED_CHARS ignored_chars;
 } GLOBAL_INFO;
 
 
 /* In close.c */
 void close_command_cleanup (ELEMENT *current);
-ELEMENT *close_commands (ELEMENT *current, enum command_id closed_command,
+ELEMENT *close_commands (ELEMENT *current, enum command_id closed_block_command,
                          ELEMENT **closed_element, enum command_id);
 ELEMENT *close_all_style_commands (ELEMENT *current,
-                               enum command_id closed_command,
+                               enum command_id closed_block_command,
                                enum command_id interrupting_command);
 ELEMENT *close_current (ELEMENT *current,
-                        enum command_id closed_command,
+                        enum command_id closed_block_command,
                         enum command_id interrupting_command);
 
 /* In end_line.c */
@@ -132,20 +142,22 @@ ELEMENT *handle_separator (ELEMENT *current, char separator,
                            char **line_inout);
 
 /* In parser.c */
-ELEMENT *parse_texi (ELEMENT *root_elt);
+ELEMENT *parse_texi (ELEMENT *root_elt, ELEMENT *current_elt);
 void push_conditional_stack (enum command_id cond);
 enum command_id pop_conditional_stack (void);
 extern size_t conditional_number;
-ELEMENT *parse_texi_file (char *filename);
+ELEMENT *parse_texi_document (void);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
 ELEMENT *end_paragraph (ELEMENT *current,
-                        enum command_id closed_command,
+                        enum command_id closed_block_command,
                         enum command_id interrupting_command);
 void isolate_last_space (ELEMENT *current);
-int command_with_command_as_argument (ELEMENT *current);
+int kbd_formatted_as_code (ELEMENT *current);
+int parent_of_command_as_argument (ELEMENT *current);
+void register_command_as_argument (ELEMENT *cmd_as_arg);
 ELEMENT *begin_preformatted (ELEMENT *current);
 ELEMENT *end_preformatted (ELEMENT *current,
-                           enum command_id closed_command,
+                           enum command_id closed_block_command,
                            enum command_id interrupting_command);
 char *read_command_name (char **ptr);
 char *read_flag_name (char **ptr);
@@ -157,8 +169,10 @@ int format_expanded_p (char *format);
 int is_end_current_command (ELEMENT *current, char **line,
                             enum command_id *end_cmd);
 void set_documentlanguage (char *);
-void set_novalidate (int value);
+void set_documentlanguage_override (char *value);
+void set_accept_internalvalue (void);
 char *element_type_name (ELEMENT *e);
+int check_space_element (ELEMENT *e);
 
 /* Return values */
 #define GET_A_NEW_LINE 0
@@ -176,6 +190,8 @@ extern ELEMENT *current_part;
 extern GLOBAL_INFO global_info;
 extern char *global_clickstyle;
 extern char *global_documentlanguage;
+extern int global_documentlanguage_fixed;
+extern int global_accept_internalvalue;
 
 enum kbd_enum {kbd_none, kbd_code, kbd_example, kbd_distinct };
 extern enum kbd_enum global_kbdinputstyle;
@@ -184,6 +200,8 @@ int register_global_command (ELEMENT *current);
 void wipe_global_info (void);
 
 extern COUNTER count_remaining_args, count_items, count_cells;
+
+ELEMENT *setup_document_root_and_before_node_section (void);
 
 /* In multitable.c */
 ELEMENT *item_line_parent (ELEMENT *current);

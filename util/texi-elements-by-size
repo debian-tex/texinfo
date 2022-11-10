@@ -219,8 +219,10 @@ my $error_count = 0;
 my $parser = Texinfo::Parser::parser($parser_options);
 my $tree = $parser->parse_texi_file($input_file_name);
 
+my $registrar = $parser->registered_errors();
+
 if (!defined($tree)) {
-  handle_errors($parser, $error_count);
+  handle_errors($registrar, $error_count);
   exit (1);
 }
 

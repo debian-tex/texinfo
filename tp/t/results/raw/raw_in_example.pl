@@ -1,465 +1,349 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'raw_in_example'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'cmdname' => 'html',
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line_after_command'
-                },
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in html
-'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'rawpreformatted'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'html'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'parent' => {},
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'command_argument' => 'html',
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'html'
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'extra' => {
-                'end_command' => {}
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
+          'cmdname' => 'example',
           'contents' => [
             {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
-              'cmdname' => 'html',
               'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line_after_command'
-                },
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'Some html <code>some code</code>.
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'rawpreformatted'
-                },
                 {
                   'args' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'html'
-                        }
-                      ],
                       'extra' => {
                         'spaces_after_argument' => '
 '
                       },
-                      'parent' => {},
-                      'type' => 'line_arg'
+                      'type' => 'block_line_arg'
                     }
                   ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'command_argument' => 'html',
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'html'
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 13,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'extra' => {
-                'end_command' => {}
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
-              'cmdname' => 'tex',
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line_after_command'
-                },
-                {
+                  'cmdname' => 'html',
                   'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '$$ 
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '\\chi^2 = \\sum_'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '{i=1'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '}^N
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '\\left(y_i - (a + b x_i)
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '\\over \\sigma_i\\right)^2 
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '$$
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'rawpreformatted'
-                },
-                {
-                  'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'tex'
+                          'text' => 'in html
+'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'type' => 'rawpreformatted'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'html'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
 '
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'end',
+                      'extra' => {
+                        'spaces_before_argument' => ' ',
+                        'text_arg' => 'html'
                       },
-                      'parent' => {},
-                      'type' => 'line_arg'
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 4,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'command_argument' => 'tex',
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'tex'
-                  },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 23,
+                    'line_nr' => 2,
                     'macro' => ''
-                  },
-                  'parent' => {}
+                  }
                 }
               ],
-              'extra' => {
-                'end_command' => {}
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
-              },
-              'parent' => {}
+              'type' => 'preformatted'
             },
             {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line'
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
             }
           ],
-          'parent' => {},
-          'type' => 'preformatted'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                },
+                {
+                  'args' => [
+                    {
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'block_line_arg'
+                    }
+                  ],
+                  'cmdname' => 'html',
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        },
+                        {
+                          'text' => 'Some html <code>some code</code>.
+'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        }
+                      ],
+                      'type' => 'rawpreformatted'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'html'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
+'
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'end',
+                      'extra' => {
+                        'spaces_before_argument' => ' ',
+                        'text_arg' => 'html'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 13,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 9,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                },
+                {
+                  'args' => [
+                    {
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'block_line_arg'
+                    }
+                  ],
+                  'cmdname' => 'tex',
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        },
+                        {
+                          'text' => '$$ 
+'
+                        },
+                        {
+                          'text' => '\\chi^2 = \\sum_'
+                        },
+                        {
+                          'text' => '{i=1'
+                        },
+                        {
+                          'text' => '}^N
+'
+                        },
+                        {
+                          'text' => '\\left(y_i - (a + b x_i)
+'
+                        },
+                        {
+                          'text' => '\\over \\sigma_i\\right)^2 
+'
+                        },
+                        {
+                          'text' => '$$
+'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        }
+                      ],
+                      'type' => 'rawpreformatted'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'tex'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
+'
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'end',
+                      'extra' => {
+                        'spaces_before_argument' => ' ',
+                        'text_arg' => 'tex'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 23,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 15,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'empty_line'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 25,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 25,
+            'line_nr' => 7,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[0];
-$result_trees{'raw_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'raw_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'};
-$result_trees{'raw_in_example'}{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'};
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'}{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'raw_in_example'}{'contents'}[2]{'contents'}[2];
-$result_trees{'raw_in_example'}{'contents'}[2]{'parent'} = $result_trees{'raw_in_example'};
-$result_trees{'raw_in_example'}{'contents'}[3]{'parent'} = $result_trees{'raw_in_example'};
 
 $result_texis{'raw_in_example'} = '@example
 @html
@@ -513,11 +397,11 @@ $result_converted{'plaintext'}->{'raw_in_example'} = '
 
 
 $result_converted{'html_text'}->{'raw_in_example'} = '<div class="example">
-<pre class="example">in html
+<pre class="example-preformatted">in html
 </pre></div>
 
 <div class="example">
-<pre class="example">
+<pre class="example-preformatted">
 
 
 Some html <code>some code</code>.

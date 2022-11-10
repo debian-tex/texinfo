@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -12,7 +12,6 @@ $result_trees{'text_before_line_command'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'before title '
             },
             {
@@ -20,7 +19,6 @@ $result_trees{'text_before_line_command'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'the title'
                     }
                   ],
@@ -28,7 +26,6 @@ $result_trees{'text_before_line_command'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
@@ -36,19 +33,16 @@ $result_trees{'text_before_line_command'} = {
               'extra' => {
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 1,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -56,23 +50,19 @@ $result_trees{'text_before_line_command'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'i'
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'LD Version Scripts'
             }
           ],
@@ -80,7 +70,6 @@ $result_trees{'text_before_line_command'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
@@ -89,11 +78,9 @@ $result_trees{'text_before_line_command'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => '--- '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         }
       ],
@@ -112,19 +99,17 @@ $result_trees{'text_before_line_command'} = {
         'normalized' => 'LD-Version-Scripts',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'LD Version Scripts'
             }
           ],
@@ -132,14 +117,12 @@ $result_trees{'text_before_line_command'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -147,52 +130,46 @@ $result_trees{'text_before_line_command'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'ddd '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 6,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
           'cmdname' => 'quotation',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'aaa '
                 },
                 {
@@ -200,7 +177,6 @@ $result_trees{'text_before_line_command'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => 'quotation author'
                         }
                       ],
@@ -208,7 +184,6 @@ $result_trees{'text_before_line_command'} = {
                         'spaces_after_argument' => '
 '
                       },
-                      'parent' => {},
                       'type' => 'line_arg'
                     }
                   ],
@@ -217,20 +192,17 @@ $result_trees{'text_before_line_command'} = {
                     'quotation' => {},
                     'spaces_before_argument' => ' '
                   },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
                     'line_nr' => 9,
                     'macro' => ''
-                  },
-                  'parent' => {}
+                  }
                 },
                 {
-                  'parent' => {},
                   'text' => 'quotation
 '
                 }
               ],
-              'parent' => {},
               'type' => 'paragraph'
             },
             {
@@ -238,7 +210,6 @@ $result_trees{'text_before_line_command'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'quotation'
                     }
                   ],
@@ -246,93 +217,49 @@ $result_trees{'text_before_line_command'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'quotation',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 11,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
           'extra' => {
             'authors' => [
               {}
-            ],
-            'end_command' => {}
+            ]
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 8,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 4,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'};
-$result_trees{'text_before_line_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[1]{'args'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[1]{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[1];
 $result_trees{'text_before_line_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'text_before_line_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'text_before_line_command'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'text_before_line_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'};
-$result_trees{'text_before_line_command'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'args'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'quotation'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[2]{'args'}[0];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'extra'}{'authors'}[0] = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[1]{'contents'}[1];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'text_before_line_command'}{'contents'}[2];
-$result_trees{'text_before_line_command'}{'contents'}[2]{'parent'} = $result_trees{'text_before_line_command'};
+$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'extra'}{'quotation'} = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4];
+$result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'extra'}{'authors'}[0] = $result_trees{'text_before_line_command'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[1];
 
 $result_texis{'text_before_line_command'} = 'before title @title the title
 
@@ -348,64 +275,65 @@ quotation
 ';
 
 
-$result_texts{'text_before_line_command'} = 'before title 
+$result_texts{'text_before_line_command'} = 'before title the title
+
 i-- 1 LD Version Scripts
 ********************
 
 ddd 
-aaa quotation
+aaa quotation author
+quotation
 ';
 
 $result_sectioning{'text_before_line_command'} = {
-  'level' => 0,
-  'section_childs' => [
-    {
-      'cmdname' => 'chapter',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'LD-Version-Scripts',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'chapter',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'LD-Version-Scripts'
+            }
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 1,
-      'number' => 1,
-      'section_up' => {}
-    }
-  ]
+        'structure' => {
+          'section_level' => 1,
+          'section_number' => 1,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => 0
+  }
 };
-$result_sectioning{'text_before_line_command'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'text_before_line_command'};
+$result_sectioning{'text_before_line_command'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'text_before_line_command'};
 
 $result_nodes{'text_before_line_command'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 1,
-      'number' => 1
+      'extra' => {},
+      'structure' => {
+        'section_number' => 1
+      }
     },
-    'normalized' => 'LD-Version-Scripts',
-    'spaces_before_argument' => ' '
+    'normalized' => 'LD-Version-Scripts'
   }
 };
 
 $result_menus{'text_before_line_command'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'LD-Version-Scripts',
-    'spaces_before_argument' => ' '
+    'normalized' => 'LD-Version-Scripts'
   }
 };
 
 $result_errors{'text_before_line_command'} = [
   {
-    'error_line' => ':1: warning: @title should only appear at the beginning of a line
+    'error_line' => 'warning: @title should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -414,7 +342,7 @@ $result_errors{'text_before_line_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @node should only appear at the beginning of a line
+    'error_line' => 'warning: @node should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -423,7 +351,7 @@ $result_errors{'text_before_line_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: @chapter should only appear at the beginning of a line
+    'error_line' => 'warning: @chapter should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -432,7 +360,7 @@ $result_errors{'text_before_line_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: @contents should only appear at the beginning of a line
+    'error_line' => 'warning: @contents should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 6,
@@ -441,7 +369,7 @@ $result_errors{'text_before_line_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: @author should only appear at the beginning of a line
+    'error_line' => 'warning: @author should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 9,

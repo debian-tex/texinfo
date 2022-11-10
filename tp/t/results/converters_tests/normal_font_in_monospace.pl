@@ -1,238 +1,181 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'normal_font_in_monospace'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'in example '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'in r---now '
-                    },
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'in co---de'
-                            }
-                          ],
-                          'parent' => {},
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'code',
-                      'contents' => [],
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'r',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'args' => [
+          'cmdname' => 'example',
+          'contents' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'in command---c '
+                  'text' => 'in example '
                 },
                 {
                   'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'in r---r '
+                          'text' => 'in r---now '
                         },
                         {
                           'args' => [
                             {
                               'contents' => [
                                 {
-                                  'parent' => {},
-                                  'text' => 'in file---'
+                                  'text' => 'in co---de'
                                 }
                               ],
-                              'parent' => {},
                               'type' => 'brace_command_arg'
                             }
                           ],
-                          'cmdname' => 'file',
-                          'contents' => [],
-                          'line_nr' => {
+                          'cmdname' => 'code',
+                          'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 5,
+                            'line_nr' => 2,
                             'macro' => ''
-                          },
-                          'parent' => {}
+                          }
                         }
                       ],
-                      'parent' => {},
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'r',
-                  'contents' => [],
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 5,
+                    'line_nr' => 2,
                     'macro' => ''
-                  },
-                  'parent' => {}
+                  }
+                },
+                {
+                  'text' => '
+'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'command',
-          'contents' => [],
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 5,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
-          'text' => '.
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in command---c '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'in r---r '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'in file---'
+                                    }
+                                  ],
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => 'file',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 5,
+                                'macro' => ''
+                              }
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'r',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'command',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
 '
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[2];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'normal_font_in_monospace'}{'contents'}[0]{'contents'}[2];
-$result_trees{'normal_font_in_monospace'}{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'};
-$result_trees{'normal_font_in_monospace'}{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'};
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'normal_font_in_monospace'}{'contents'}[2];
-$result_trees{'normal_font_in_monospace'}{'contents'}[2]{'parent'} = $result_trees{'normal_font_in_monospace'};
 
 $result_texis{'normal_font_in_monospace'} = '@example
 in example @r{in r---now @code{in co---de}}
@@ -254,17 +197,17 @@ $result_floats{'normal_font_in_monospace'} = {};
 
 
 
-$result_converted{'plaintext'}->{'normal_font_in_monospace'} = '     in example in r--now \'in co---de\'
+$result_converted{'plaintext'}->{'normal_font_in_monospace'} = '     in example in r—now ‘in co---de’
 
-   \'in command---c in r--r \'in file---\'\'.
+   ‘in command---c in r—r ‘in file---’’.
 ';
 
 
 $result_converted{'html_text'}->{'normal_font_in_monospace'} = '<div class="example">
-<pre class="example">in example <span class="roman">in r&mdash;now <code>in co---de</code></span>
+<pre class="example-preformatted">in example <span class="r">in r&mdash;now <code class="code">in co---de</code></span>
 </pre></div>
 
-<p><code>in command---c <span class="roman">in r&mdash;r <samp>in file---</samp></span></code>.
+<p><code class="command">in command---c <span class="r">in r&mdash;r <samp class="file">in file---</samp></span></code>.
 </p>';
 
 
@@ -280,5 +223,15 @@ $result_converted{'docbook'}->{'normal_font_in_monospace'} = '<screen>in example
 </screen>
 <para><command>in command---c in r&#8212;r <filename>in file---</filename></command>.
 </para>';
+
+
+$result_converted{'latex_text'}->{'normal_font_in_monospace'} = '\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily in example \\textnormal{in r---now \\texttt{in co{-}{-}{-}de}}
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+\\texttt{in command{-}{-}{-}c \\textnormal{in r---r \\texttt{in file{-}{-}{-}}}}.
+';
 
 1;

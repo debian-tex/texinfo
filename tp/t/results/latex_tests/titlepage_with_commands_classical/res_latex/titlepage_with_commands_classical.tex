@@ -1,0 +1,90 @@
+\documentclass{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{titleps}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+
+% no headings before titlepage
+\pagestyle{empty}%
+
+
+
+\begin{document}
+
+\frontmatter
+\begin{titlepage}
+\begingroup
+\newskip\titlepagetopglue \titlepagetopglue = 1.5in
+\newskip\titlepagebottomglue \titlepagebottomglue = 2pc
+\setlength{\parindent}{0pt}
+% Leave some space at the very top of the page.
+    \vglue\titlepagetopglue
+{\raggedright {\huge \bfseries Some manual \leavevmode{}\\ tested}}
+\vskip 4pt \hrule height 4pt width \hsize \vskip 4pt
+\rightline{Subtitle manual \leavevmode{}\\ tested}
+\rightline{Subtitle 2 manual \leavevmode{}\\ tested}
+\vskip 0pt plus 1filll
+\leftline{\Large \bfseries First \leavevmode{}\\ author}%
+\leftline{\Large \bfseries Second \leavevmode{}\\ author\footnote{Something
+about the address of author.
+
+Something about the life. 
+\[
+\frac{a}{b}
+\]
+}}%
+\vskip4pt \hrule height 2pt width \hsize
+  \vskip\titlepagebottomglue
+\endgroup
+\newpage{}%
+\phantom{blabla}%
+\newpage{}%
+\phantom{blabla}%
+\vskip 0pt plus 1filll
+in Copying
+\end{titlepage}
+\pagestyle{single}%
+\mainmatter
+\label{anchor:Top}%
+\chapter{{Chapter}}
+\label{anchor:chapter}%
+
+In chapter
+
+\end{document}

@@ -1,62 +1,55 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'not_only_characters'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => '-e_\'::;',
-          'type' => 'misc_arg'
-        },
-        {
-          'parent' => {},
-          'text' => 'hh',
-          'type' => 'misc_arg'
-        }
-      ],
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' -e_\'::; hh
-',
-        'misc_args' => [
-          '-e_\'::;',
-          'hh'
-        ]
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Say hh.
+          'args' => [
+            {
+              'text' => '-e_\'::;',
+              'type' => 'misc_arg'
+            },
+            {
+              'text' => 'hh',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' -e_\'::; hh
+',
+            'misc_args' => [
+              '-e_\'::;',
+              'hh'
+            ]
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Say hh.
 '
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'not_only_characters'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_only_characters'}{'contents'}[0];
-$result_trees{'not_only_characters'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'not_only_characters'}{'contents'}[0];
-$result_trees{'not_only_characters'}{'contents'}[0]{'parent'} = $result_trees{'not_only_characters'};
-$result_trees{'not_only_characters'}{'contents'}[1]{'parent'} = $result_trees{'not_only_characters'};
-$result_trees{'not_only_characters'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'not_only_characters'}{'contents'}[2];
-$result_trees{'not_only_characters'}{'contents'}[2]{'parent'} = $result_trees{'not_only_characters'};
 
 $result_texis{'not_only_characters'} = '@set -e_\'::; hh
 

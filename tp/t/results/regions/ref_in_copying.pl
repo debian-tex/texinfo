@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,156 +10,140 @@ $result_trees{'ref_in_copying'} = {
     {
       'contents' => [
         {
-          'cmdname' => 'copying',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'copying',
               'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'GFDL'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'ref',
+                      'extra' => {
+                        'label' => {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'GFDL'
+                                }
+                              ],
+                              'extra' => {
+                                'spaces_after_argument' => '
+'
+                              },
+                              'type' => 'line_arg'
+                            }
+                          ],
+                          'cmdname' => 'node',
+                          'extra' => {
+                            'node_content' => [
+                              {}
+                            ],
+                            'nodes_manuals' => [
+                              {
+                                'node_content' => [
+                                  {}
+                                ],
+                                'normalized' => 'GFDL'
+                              }
+                            ],
+                            'normalized' => 'GFDL',
+                            'spaces_before_argument' => ' '
+                          },
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 14,
+                            'macro' => ''
+                          }
+                        },
+                        'node_argument' => {
+                          'node_content' => [
+                            {}
+                          ],
+                          'normalized' => 'GFDL'
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => '
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                },
                 {
                   'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'GFDL'
+                          'text' => 'copying'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
                     }
                   ],
-                  'cmdname' => 'ref',
-                  'contents' => [],
+                  'cmdname' => 'end',
                   'extra' => {
-                    'label' => {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'GFDL'
-                            }
-                          ],
-                          'extra' => {
-                            'spaces_after_argument' => '
-'
-                          },
-                          'parent' => {},
-                          'type' => 'line_arg'
-                        }
-                      ],
-                      'cmdname' => 'node',
-                      'contents' => [],
-                      'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
-                        'nodes_manuals' => [
-                          {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'GFDL'
-                          }
-                        ],
-                        'normalized' => 'GFDL',
-                        'spaces_before_argument' => ' '
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 14,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    },
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'GFDL'
-                    }
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'copying'
                   },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 2,
+                    'line_nr' => 3,
                     'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-'
+                  }
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
             },
             {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'copying'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'copying',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'copying'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
-              },
-              'parent' => {}
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -167,12 +151,10 @@ $result_trees{'ref_in_copying'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -188,19 +170,17 @@ $result_trees{'ref_in_copying'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'top'
             }
           ],
@@ -208,14 +188,12 @@ $result_trees{'ref_in_copying'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -223,57 +201,50 @@ $result_trees{'ref_in_copying'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'insertcopying',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 8,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
                 },
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'GFDL'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'menu_entry_node'
                 },
                 {
-                  'parent' => {},
                   'text' => '::',
                   'type' => 'menu_entry_separator'
                 },
@@ -282,16 +253,13 @@ $result_trees{'ref_in_copying'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => '
 '
                         }
                       ],
-                      'parent' => {},
                       'type' => 'preformatted'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'menu_entry_description'
                 }
               ],
@@ -304,12 +272,11 @@ $result_trees{'ref_in_copying'} = {
                   'normalized' => 'GFDL'
                 }
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 11,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'menu_entry'
             },
             {
@@ -317,7 +284,6 @@ $result_trees{'ref_in_copying'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'menu'
                     }
                   ],
@@ -325,36 +291,28 @@ $result_trees{'ref_in_copying'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'menu',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 12,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 10,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -363,13 +321,11 @@ $result_trees{'ref_in_copying'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 6,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {},
     {
@@ -377,7 +333,6 @@ $result_trees{'ref_in_copying'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'GFDL'
             }
           ],
@@ -385,14 +340,12 @@ $result_trees{'ref_in_copying'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -401,73 +354,23 @@ $result_trees{'ref_in_copying'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 15,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'};
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'} = $result_trees{'ref_in_copying'};
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'};
-$result_trees{'ref_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[1];
+$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'ref_in_copying'};
-$result_trees{'ref_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[2];
-$result_trees{'ref_in_copying'}{'contents'}[2]{'parent'} = $result_trees{'ref_in_copying'};
-$result_trees{'ref_in_copying'}{'contents'}[3] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'label'};
-$result_trees{'ref_in_copying'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[4]{'args'}[0];
-$result_trees{'ref_in_copying'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[4];
-$result_trees{'ref_in_copying'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_in_copying'}{'contents'}[4];
-$result_trees{'ref_in_copying'}{'contents'}[4]{'parent'} = $result_trees{'ref_in_copying'};
+$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[3];
+$result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'ref_in_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[1]{'contents'}[0];
+$result_trees{'ref_in_copying'}{'contents'}[3] = $result_trees{'ref_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'label'};
 
 $result_texis{'ref_in_copying'} = '@copying
 @ref{GFDL}
@@ -501,120 +404,115 @@ top
 ';
 
 $result_sectioning{'ref_in_copying'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            },
+            'structure' => {}
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_childs' => [
-        {
-          'cmdname' => 'chapter',
-          'extra' => {
-            'associated_node' => {
-              'cmdname' => 'node',
+        'structure' => {
+          'section_childs' => [
+            {
+              'cmdname' => 'chapter',
               'extra' => {
-                'normalized' => 'GFDL',
-                'spaces_before_argument' => ' '
+                'associated_node' => {
+                  'cmdname' => 'node',
+                  'extra' => {
+                    'normalized' => 'GFDL'
+                  },
+                  'structure' => {}
+                }
+              },
+              'structure' => {
+                'section_level' => 1,
+                'section_number' => 1,
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
               }
-            },
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 1,
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
+            }
+          ],
+          'section_level' => 0,
+          'section_up' => {}
         }
-      ],
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'ref_in_copying'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'ref_in_copying'}{'section_childs'}[0];
-$result_sectioning{'ref_in_copying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'ref_in_copying'}{'section_childs'}[0];
-$result_sectioning{'ref_in_copying'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'ref_in_copying'}{'section_childs'}[0];
-$result_sectioning{'ref_in_copying'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'ref_in_copying'};
+$result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'ref_in_copying'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'ref_in_copying'};
 
 $result_nodes{'ref_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
-  },
-  'menu_child' => {
-    'cmdname' => 'node',
-    'extra' => {
-      'associated_section' => {
-        'cmdname' => 'chapter',
-        'extra' => {
-          'spaces_before_argument' => ' '
-        },
-        'level' => 1,
-        'number' => 1
-      },
-      'normalized' => 'GFDL',
-      'spaces_before_argument' => ' '
-    },
-    'node_prev' => {},
-    'node_up' => {}
-  },
-  'menus' => [
-    {
-      'cmdname' => 'menu',
-      'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'menu',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'menu'
-          }
-        }
+    'menus' => [
+      {
+        'cmdname' => 'menu'
       }
-    }
-  ],
-  'node_next' => {}
+    ],
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'structure' => {
+            'section_number' => 1
+          }
+        },
+        'normalized' => 'GFDL'
+      },
+      'structure' => {
+        'node_prev' => {},
+        'node_up' => {}
+      }
+    },
+    'node_next' => {}
+  }
 };
-$result_nodes{'ref_in_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'ref_in_copying'};
-$result_nodes{'ref_in_copying'}{'menu_child'}{'node_up'} = $result_nodes{'ref_in_copying'};
-$result_nodes{'ref_in_copying'}{'node_next'} = $result_nodes{'ref_in_copying'}{'menu_child'};
+$result_nodes{'ref_in_copying'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'ref_in_copying'};
+$result_nodes{'ref_in_copying'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'ref_in_copying'};
+$result_nodes{'ref_in_copying'}{'structure'}{'node_next'} = $result_nodes{'ref_in_copying'}{'structure'}{'menu_child'};
 
 $result_menus{'ref_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   },
-  'menu_child' => {
-    'cmdname' => 'node',
-    'extra' => {
-      'normalized' => 'GFDL',
-      'spaces_before_argument' => ' '
-    },
-    'menu_up' => {},
-    'menu_up_hash' => {
-      'Top' => 1
+  'structure' => {
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'GFDL'
+      },
+      'structure' => {
+        'menu_up' => {},
+        'menu_up_hash' => {
+          'Top' => 1
+        }
+      }
     }
   }
 };
-$result_menus{'ref_in_copying'}{'menu_child'}{'menu_up'} = $result_menus{'ref_in_copying'};
+$result_menus{'ref_in_copying'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'ref_in_copying'};
 
 $result_errors{'ref_in_copying'} = [];
 
@@ -660,7 +558,7 @@ End:
 ';
 
 
-$result_converted{'html'}->{'ref_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'ref_in_copying'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -675,51 +573,32 @@ $result_converted{'html'}->{'ref_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
-<style type="text/css">
-<!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
--->
-</style>
 
 
 </head>
 
 <body lang="en">
 
-<div class="top" id="Top">
-<div class="header">
+<div class="top-level-extent" id="Top">
+<div class="nav-panel">
 <p>
 Next: <a href="#GFDL" accesskey="n" rel="next">GFDL</a> &nbsp; </p>
 </div>
-<span id="top"></span><h1 class="top">top</h1>
+<h1 class="top" id="top">top</h1>
 
-<p><a href="#GFDL">GFDL</a>
+<p><a class="ref" href="#GFDL">GFDL</a>
 </p>
 
-<ul class="section-toc">
+<ul class="mini-toc">
 <li><a href="#GFDL" accesskey="1">GFDL</a></li>
 </ul>
 <hr>
-<div class="chapter" id="GFDL">
-<div class="header">
+<div class="chapter-level-extent" id="GFDL">
+<div class="nav-panel">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
-<span id="GFDL-1"></span><h2 class="chapter">1 GFDL</h2>
+<h2 class="chapter" id="GFDL-1">1 GFDL</h2>
 
 </div>
 </div>
@@ -728,6 +607,15 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 
 </body>
 </html>
+';
+
+
+$result_converted{'latex_text'}->{'ref_in_copying'} = '
+\\begin{document}
+\\label{anchor:Top}%
+\\chapter{{GFDL}}
+\\label{anchor:GFDL}%
+
 ';
 
 1;

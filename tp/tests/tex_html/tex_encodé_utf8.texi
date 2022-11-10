@@ -1,0 +1,20 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top top
+
+@node Chapter
+@chapter chap
+
+@tex
+$$
+é \partial_{\eta} g(\eta(t),\varphi(t));
+$$
+@end tex
+
+Some @math{(I-D) é \varphi(t)} math.
+
+@displaymath
+ é ï î  \int v(t)\, dt = u(t) + C
+@end displaymath
+

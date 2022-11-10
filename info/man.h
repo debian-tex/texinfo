@@ -1,6 +1,6 @@
 /* man.h: Defines and external function declarations for man.c.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 
 #define MANPAGE_FILE_BUFFER_NAME "*manpages*"
 
+int check_manpage_node (char *pagename);
 extern NODE *get_manpage_node (char *pagename);
 
 #endif /* INFO_MAN_H */

@@ -1,388 +1,293 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'exdent_and_commands'} = {
   'contents' => [
     {
-      'cmdname' => 'quotation',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'quotation',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'quotation1
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in exdented protected eol '
+                    },
+                    {
+                      'cmdname' => '
+'
+                    }
+                  ],
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'exdent',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'following
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in exdented a '
+                    },
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => '* '
+                    },
+                    {
+                      'cmdname' => '*'
+                    },
+                    {
+                      'text' => ' and following'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'exdent',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'after exdented
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'quotation'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'quotation'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'quotation1
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in exdented protected eol '
-                },
-                {
-                  'cmdname' => '
-',
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'exdent',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'following
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in exdented a '
-                },
-                {
-                  'cmdname' => '@',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '* '
-                },
-                {
-                  'cmdname' => '*',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' and following'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'exdent',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
+          'cmdname' => 'example',
           'contents' => [
-            {
-              'parent' => {},
-              'text' => 'after exdented
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'quotation'
+                  'text' => 'example
+'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in exdented protected eol '
+                    },
+                    {
+                      'cmdname' => '
 '
+                    }
+                  ],
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'exdent',
+              'extra' => {
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 11,
+                'macro' => ''
+              }
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'following
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'in exdented a '
+                    },
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => '* '
+                    },
+                    {
+                      'cmdname' => '*'
+                    },
+                    {
+                      'text' => ' and following'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'exdent',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'after exdented
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'quotation',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'quotation'
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 7,
+            'line_nr' => 9,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'example
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in exdented protected eol '
-                },
-                {
-                  'cmdname' => '
-',
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'exdent',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'following
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in exdented a '
-                },
-                {
-                  'cmdname' => '@',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '* '
-                },
-                {
-                  'cmdname' => '*',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' and following'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'exdent',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'after exdented
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'preformatted'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[1];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[3];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[5];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[6]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[6];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'exdent_and_commands'}{'contents'}[0]{'contents'}[6];
-$result_trees{'exdent_and_commands'}{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'};
-$result_trees{'exdent_and_commands'}{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'};
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[1];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[3];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[5];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[6]{'args'}[0];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[6];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'exdent_and_commands'}{'contents'}[2];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'exdent_and_commands'}{'contents'}[2]{'contents'}[6];
-$result_trees{'exdent_and_commands'}{'contents'}[2]{'parent'} = $result_trees{'exdent_and_commands'};
 
 $result_texis{'exdent_and_commands'} = '@quotation
 quotation1
@@ -440,21 +345,21 @@ in exdented a @*
 ';
 
 
-$result_converted{'html_text'}->{'exdent_and_commands'} = '<blockquote>
+$result_converted{'html_text'}->{'exdent_and_commands'} = '<blockquote class="quotation">
 <p>quotation1
-</p><p>in exdented protected eol &nbsp;
+</p><p class="exdent">in exdented protected eol &nbsp;
 </p><p>following
-</p><p>in exdented a @* <br> and following
+</p><p class="exdent">in exdented a @* <br> and following
 </p><p>after exdented
 </p></blockquote>
 
 <div class="example">
-<pre class="example">example
-</pre><pre class="example">in exdented protected eol &nbsp;
-</pre><pre class="example">following
-</pre><pre class="example">in exdented a @* 
+<pre class="example-preformatted">example
+</pre><pre class="exdent">in exdented protected eol &nbsp;
+</pre><pre class="example-preformatted">following
+</pre><pre class="exdent">in exdented a @* 
  and following
-</pre><pre class="example">after exdented
+</pre><pre class="example-preformatted">after exdented
 </pre></div>
 ';
 
@@ -475,17 +380,53 @@ $result_converted{'xml'}->{'exdent_and_commands'} = '<quotation endspaces=" ">
 ';
 
 
+$result_converted{'latex_text'}->{'exdent_and_commands'} = '\\begin{quote}
+quotation1
+\\leavevmode{}\\\\
+\\hbox{\\kern -\\leftmargin}%
+in exdented protected eol \\ {}
+\\\\
+following
+\\leavevmode{}\\\\
+\\hbox{\\kern -\\leftmargin}%
+in exdented a @* \\leavevmode{}\\\\ and following
+\\\\
+after exdented
+\\end{quote}
+
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily example
+\\end{Texinfopreformatted}
+\\leavevmode{}\\\\
+\\hbox{\\kern -\\leftmargin}%
+in exdented protected eol \\ {}
+\\\\
+\\begin{Texinfopreformatted}%
+\\ttfamily following
+\\end{Texinfopreformatted}
+\\leavevmode{}\\\\
+\\hbox{\\kern -\\leftmargin}%
+in exdented a @* \\leavevmode{}\\\\ and following
+\\\\
+\\begin{Texinfopreformatted}%
+\\ttfamily after exdented
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+';
+
+
 $result_converted{'docbook'}->{'exdent_and_commands'} = '<blockquote><para>quotation1
-</para><simpara>in exdented protected eol &#160;</simpara>
+</para><simpara role="exdent">in exdented protected eol &#160;</simpara>
 <para>following
-</para><simpara>in exdented a @* 
+</para><simpara role="exdent">in exdented a @* 
  and following</simpara>
 <para>after exdented
 </para></blockquote>
 <screen>example
-</screen><simpara>in exdented protected eol &#160;</simpara>
+</screen><simpara role="exdent">in exdented protected eol &#160;</simpara>
 <screen>following
-</screen><simpara>in exdented a @* 
+</screen><simpara role="exdent">in exdented a @* 
  and following</simpara>
 <screen>after exdented
 </screen>';

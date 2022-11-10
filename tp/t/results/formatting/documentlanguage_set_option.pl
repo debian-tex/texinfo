@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -14,19 +14,16 @@ $result_trees{'documentlanguage_set_option'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '\\input texinfo @c -*-texinfo-*-
 ',
-                  'type' => 'preamble_text'
+                  'type' => 'text_before_beginning'
                 }
               ],
-              'parent' => {},
-              'type' => 'preamble'
+              'type' => 'preamble_before_beginning'
             },
             {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => '
 ',
                   'type' => 'misc_arg'
@@ -38,123 +35,112 @@ $result_trees{'documentlanguage_set_option'} = {
                   '
 '
                 ]
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
           'type' => 'preamble_before_setfilename'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'documentlanguage_set.info'
+                  'contents' => [
+                    {
+                      'text' => 'documentlanguage_set.info'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'documentlanguage_set.info'
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'setfilename',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'documentlanguage_set.info'
-          },
-          'line_nr' => {
-            'file_name' => 'documentlanguage_set.texi',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => 'documentlanguage_set.texi',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'pt'
+                  'contents' => [
+                    {
+                      'text' => 'pt'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'pt'
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'documentlanguage',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'pt'
-          },
-          'line_nr' => {
-            'file_name' => 'documentlanguage_set.texi',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => 'documentlanguage_set.texi',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'Test '
-                },
-                {
-                  'cmdname' => '@',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => 'documentlanguage set'
+                  'contents' => [
+                    {
+                      'text' => 'Test '
+                    },
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => 'documentlanguage set'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'settitle',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' '
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'settitle',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => 'documentlanguage_set.texi',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
+              'source_info' => {
+                'file_name' => 'documentlanguage_set.texi',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
 ',
-          'type' => 'empty_line'
+              'type' => 'empty_line'
+            }
+          ],
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -162,12 +148,10 @@ $result_trees{'documentlanguage_set_option'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -183,23 +167,20 @@ $result_trees{'documentlanguage_set_option'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'documentlanguage_set.texi',
         'line_nr' => 7,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'cmdname' => '@',
-              'parent' => {}
+              'cmdname' => '@'
             },
             {
-              'parent' => {},
               'text' => 'documentlanguage set'
             }
           ],
@@ -207,14 +188,12 @@ $result_trees{'documentlanguage_set_option'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -222,16 +201,13 @@ $result_trees{'documentlanguage_set_option'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Text.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -240,62 +216,27 @@ $result_trees{'documentlanguage_set_option'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'documentlanguage_set.texi',
         'line_nr' => 8,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'misc_arg'
         }
       ],
-      'cmdname' => 'bye',
-      'parent' => {}
+      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[1];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[2];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'};
-$result_trees{'documentlanguage_set_option'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[1]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[1];
 $result_trees{'documentlanguage_set_option'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'documentlanguage_set_option'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'documentlanguage_set_option'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'documentlanguage_set_option'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[1]{'parent'} = $result_trees{'documentlanguage_set_option'};
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2]{'args'}[0];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2]{'contents'}[1];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[2];
-$result_trees{'documentlanguage_set_option'}{'contents'}[2]{'parent'} = $result_trees{'documentlanguage_set_option'};
-$result_trees{'documentlanguage_set_option'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'documentlanguage_set_option'}{'contents'}[3];
-$result_trees{'documentlanguage_set_option'}{'contents'}[3]{'parent'} = $result_trees{'documentlanguage_set_option'};
 
 $result_texis{'documentlanguage_set_option'} = '\\input texinfo @c -*-texinfo-*-
 @c
@@ -321,47 +262,45 @@ Text.
 ';
 
 $result_sectioning{'documentlanguage_set_option'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            }
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_up' => {}
-    }
-  ]
+        'structure' => {
+          'section_level' => 0,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'documentlanguage_set_option'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'documentlanguage_set_option'};
+$result_sectioning{'documentlanguage_set_option'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'documentlanguage_set_option'};
 
 $result_nodes{'documentlanguage_set_option'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'documentlanguage_set_option'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 

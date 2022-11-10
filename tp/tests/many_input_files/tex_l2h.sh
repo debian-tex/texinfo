@@ -53,8 +53,8 @@ raw_outdir=$raw_output_dir/$basename
 [ -d $raw_outdir ] && rm -rf $raw_outdir
 mkdir $basename
 : > $basename/$stdout_file
-echo "$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'L2H 1' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2" >> $logfile
-$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'L2H 1' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init  --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2
+echo "$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'HTML_MATH l2h' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2" >> $logfile
+$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'HTML_MATH l2h' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init  --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2
 
 return_code=0
 ret=$?
@@ -90,8 +90,6 @@ else
     rm -rf $staging_dir/${dir}_res
     cp -pr "$srcdir/${dir}_res" $staging_dir
     chmod -R u+w "$staging_dir/${dir}_res"
-    rm -rf $staging_dir/${dir}_res/CVS $staging_dir/${dir}_res/.svn
-    #diff -u --exclude=CVS --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"
     diff $DIFF_U_OPTION -r "$staging_dir/${dir}_res" "$outdir" 2>>$logfile > "$diffs_dir/$dir.diff"
     dif_ret=$?
     if [ $dif_ret != 0 ]; then

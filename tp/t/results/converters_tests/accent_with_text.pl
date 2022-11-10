@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,214 +10,158 @@ $result_trees{'accent_with_text'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '--a'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'u',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '--b'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'dotless',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '--'
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'i'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => '--a'
                     }
                   ],
-                  'cmdname' => 'dotless',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => '^',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
+              'cmdname' => 'u',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => ' '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '--'
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'j'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => '--b'
                     }
                   ],
-                  'cmdname' => 'dotless',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => '^',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
+              'cmdname' => 'dotless',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => ' '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '--a'
+                  'contents' => [
+                    {
+                      'text' => '--'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'i'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'dotless',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => '^',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
+              'cmdname' => '^',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '--'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'j'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'dotless',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => '^',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '--a'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => '^',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
 '
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[2];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[8]{'args'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[8];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'accent_with_text'}{'contents'}[0];
-$result_trees{'accent_with_text'}{'contents'}[0]{'parent'} = $result_trees{'accent_with_text'};
 
 $result_texis{'accent_with_text'} = '@u{--a} @dotless{--b} @^{--@dotless{i}} @^{--@dotless{j}} @^{--a}
 ';
@@ -228,7 +172,7 @@ $result_texts{'accent_with_text'} = '-a( -b i^ j^ -a^
 
 $result_errors{'accent_with_text'} = [
   {
-    'error_line' => ':1: @dotless expects `i\' or `j\' as argument, not `--b\'
+    'error_line' => '@dotless expects `i\' or `j\' as argument, not `--b\'
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -247,7 +191,7 @@ $result_converted{'plaintext'}->{'accent_with_text'} = '-ă -b î ĵ -â
 ';
 
 
-$result_converted{'html_text'}->{'accent_with_text'} = '<p>&ndash;a( &ndash;b &icirc; &#309; &ndash;a^
+$result_converted{'html_text'}->{'accent_with_text'} = '<p>&ndash;a&#774; &ndash;b &icirc; &#309; &ndash;a&#770;
 </p>';
 
 
@@ -255,7 +199,11 @@ $result_converted{'xml'}->{'accent_with_text'} = '<para><accent type="breve">&te
 </para>';
 
 
-$result_converted{'docbook'}->{'accent_with_text'} = '<para>&#8211;a( &#8211;b &#238; &#309; &#8211;a^
+$result_converted{'docbook'}->{'accent_with_text'} = '<para>&#8211;a&#774; &#8211;b &#238; &#309; &#8211;a&#770;
 </para>';
+
+
+$result_converted{'latex_text'}->{'accent_with_text'} = '\\u{--a} --b \\^{--\\i{}} \\^{--\\j{}} \\^{--a}
+';
 
 1;

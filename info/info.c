@@ -1,6 +1,6 @@
 /* info.c -- Display nodes of Info files in multiple windows.
 
-   Copyright 1993-2021 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +19,8 @@
 
 #include "info.h"
 #include "filesys.h"
-#include "info-utils.h"
+#include "scan.h"
+#include "util.h"
 #include "session.h"
 #include "indices.h"
 #include "dribble.h"
@@ -182,7 +183,7 @@ get_initial_file (int *argc, char ***argv, char **error)
           /* Prefix "./" to the filename to prevent a lookup
              in INFOPATH.  */
           char *s;
-          asprintf (&s, "%s%s", "./", user_filename);
+          xasprintf (&s, "%s%s", "./", user_filename);
           free (user_filename);
           user_filename = s;
         }
@@ -274,25 +275,24 @@ get_initial_file (int *argc, char ***argv, char **error)
           return;
         }
       else
-        asprintf (error, _("No menu item '%s' in node '%s'"),
+        xasprintf (error, _("No menu item '%s' in node '%s'"),
             (*argv)[0], "(dir)Top");
     }
 
   /* Fall back to loading man page. */
     {
-      NODE *man_node;
+      int man_exists;
 
       debug (3, ("falling back to manpage node"));
 
-      man_node = get_manpage_node ((*argv)[0]);
-      if (man_node)
+      man_exists = check_manpage_node ((*argv)[0]);
+      if (man_exists)
         {
           add_pointer_to_array
             (info_new_reference (MANPAGE_FILE_BUFFER_NAME, (*argv)[0]),
              ref_index, ref_list, ref_slots, 2);
 
           initial_file = MANPAGE_FILE_BUFFER_NAME;
-          free (man_node);
           return;
         }
     }
@@ -412,7 +412,7 @@ add_initial_nodes (int argc, char **argv, char **error)
               if (!node_nodename)
                 {
                   free (*error);
-                  asprintf (error, _("Cannot find node '%s'"),
+                  xasprintf (error, _("Cannot find node '%s'"),
                             user_nodenames[i]);
                   continue;
                 }
@@ -860,7 +860,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2021");
+	      "2022");
       exit (EXIT_SUCCESS);
     }
 
@@ -1058,11 +1058,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   /* --output */
   if (user_output_filename)
     {
-      if (error)
-        info_error ("%s", error);
-
       preprocess_nodes_p = 0;
       dump_nodes_to_file (ref_list, user_output_filename, dump_subnodes);
+
+      if (error)
+        {
+          info_error ("%s", error);
+          exit (1);
+        }
       exit (0);
     }
 
@@ -1086,6 +1089,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 static void
 info_short_help (void)
 {
+   /* Note: split usage information up into separate strings when usage
+      revised to make it easier for translators. */
+
   printf (_("\
 Usage: %s [OPTION]... [MENU-ITEM...]\n\
 \n\
@@ -1104,9 +1110,6 @@ Frequently-used options:\n\
       --index-search=STRING    go to node pointed by index entry STRING\n\
   -n, --node=NODENAME          specify nodes in first visited Info file\n\
   -o, --output=FILE            output selected nodes to FILE"));
-
-  puts (_("\
-  -O, --show-options, --usage  go to command-line options node"));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
   puts (_("\
@@ -1128,18 +1131,27 @@ items relative to the initial node visited."));
 
   puts (_("\n\
 For a summary of key bindings, type H within Info."));
+  puts ("");
 
-  puts (_("\n\
-Examples:\n\
-  info                         show top-level dir menu\n\
-  info info-stnd               show the manual for this Info program\n\
-  info emacs                   start at emacs node from top-level dir\n\
-  info emacs buffers           select buffers menu entry in emacs manual\n\
-  info emacs -n Files          start at Files node within emacs manual\n\
-  info '(emacs)Files'          alternative way to start at Files node\n\
-  info --show-options emacs    start at node with emacs' command line options\n\
+puts (_("\
+Examples:"));
+
+puts (_("\
+  info                         show top-level dir menu"));
+puts (_("\
+  info info-stnd               show the manual for this Info program"));
+puts (_("\
+  info emacs                   start at emacs node from top-level dir"));
+puts (_("\
+  info emacs buffers           select buffers menu entry in emacs manual"));
+puts (_("\
+  info emacs -n Files          start at Files node within emacs manual"));
+puts (_("\
+  info '(emacs)Files'          alternative way to start at Files node"));
+puts (_("\
   info --subnodes -o out.txt emacs\n\
-                               dump entire emacs manual to out.txt\n\
+                               dump entire emacs manual to out.txt"));
+puts (_("\
   info -f ./foo.info           show file ./foo.info, not searching dir"));
 
   puts ("");

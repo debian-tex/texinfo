@@ -1,239 +1,182 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'flushleft_flushright'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'flushleft',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
-'
-            },
-            {
-              'parent' => {},
-              'text' => 'ldskf dsflj
-'
-            },
-            {
-              'parent' => {},
-              'text' => '     lklsdlv l    lll. Bbb.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'lhds
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'flushleft'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'flushleft',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'flushleft'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'flushright',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
+          'cmdname' => 'flushleft',
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+              'contents' => [
+                {
+                  'text' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
 '
+                },
+                {
+                  'text' => 'ldskf dsflj
+'
+                },
+                {
+                  'text' => '     lklsdlv l    lll. Bbb.
+'
+                }
+              ],
+              'type' => 'paragraph'
             },
             {
-              'parent' => {},
-              'text' => 'ldskf dsflj
-'
+              'text' => '
+',
+              'type' => 'empty_line'
             },
             {
-              'parent' => {},
-              'text' => '     lklsdlv l    lll. Bbb.
+              'contents' => [
+                {
+                  'text' => 'lhds
 '
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'flushleft'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'flushleft'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              }
             }
           ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'lhds
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'flushright'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'flushright',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'flushright'
-          },
-          'line_nr' => {
+          'cmdname' => 'flushright',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+'
+                },
+                {
+                  'text' => 'ldskf dsflj
+'
+                },
+                {
+                  'text' => '     lklsdlv l    lll. Bbb.
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'lhds
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'flushright'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'flushright'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 16,
+            'line_nr' => 10,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'flushleft_flushright'}{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'};
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'};
-$result_trees{'flushleft_flushright'}{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'};
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'parent'} = $result_trees{'flushleft_flushright'};
 
 $result_texis{'flushleft_flushright'} = '
 @flushleft
@@ -290,18 +233,18 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbb
 
 
 $result_converted{'html_text'}->{'flushleft_flushright'} = '
-<p align="left">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+<div class="flushleft"><p class="flushleft-paragraph">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
 ldskf dsflj
      lklsdlv l    lll. Bbb.
 </p>
-<p align="left">lhds
-</p>
-<p align="right">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+<p class="flushleft-paragraph">lhds
+</p></div>
+<div class="flushright"><p class="flushright-paragraph">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
 ldskf dsflj
      lklsdlv l    lll. Bbb.
 </p>
-<p align="right">lhds
-</p>';
+<p class="flushright-paragraph">lhds
+</p></div>';
 
 
 $result_converted{'xml'}->{'flushleft_flushright'} = '
@@ -320,6 +263,29 @@ ldskf dsflj
 </para>
 <para>lhds
 </para></flushright>
+';
+
+
+$result_converted{'latex_text'}->{'flushleft_flushright'} = '
+\\begin{flushleft}
+\\begin{Texinfopreformatted}%
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+
+lhds
+\\end{Texinfopreformatted}
+\\end{flushleft}
+
+\\begin{flushright}
+\\begin{Texinfopreformatted}%
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ccccccccccccccc
+ldskf dsflj
+     lklsdlv l    lll. Bbb.
+
+lhds
+\\end{Texinfopreformatted}
+\\end{flushright}
 ';
 
 

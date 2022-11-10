@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -53,11 +53,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
   SV **svp;
   int contents_num;
   HV *spaces_elt;
-  //char *key;
-  HV *test_extra = 0;
-  HV *command_extra = 0;
 
-  HV *owning_elt = 0;
   char *type;
   SV *existing_text_sv;
 
@@ -100,29 +96,15 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
 
   /* Must be one of these types to continue. */
   if (strcmp (type, "empty_line")
-       && strcmp (type, "empty_line_after_command")
-       && strcmp (type, "empty_spaces_before_argument")
-       && strcmp (type, "empty_spaces_after_close_brace"))
+       && strcmp (type, "ignorable_spaces_after_command")
+       && strcmp (type, "internal_spaces_after_command")
+       && strcmp (type, "internal_spaces_before_argument")
+       && strcmp (type, "spaces_after_close_brace"))
     {
       return 0;
     }
   
   //fprintf (stderr, "ABORT EMPTY\n");
-
-  svp = hv_fetch (spaces_elt, "extra", strlen ("extra"), 0);
-  if (svp)
-    {
-      test_extra = (HV *) SvRV (*svp);
-      svp = hv_fetch (test_extra, "command",
-                      strlen ("command"), 0);
-      if (svp)
-        {
-          owning_elt = (HV *) SvRV (*svp);
-          svp = hv_fetch (owning_elt, "extra", strlen ("extra"), 0);
-          if (svp)
-            command_extra = (HV *) SvRV (*svp);
-        }
-    }
 
   svp = hv_fetch (spaces_elt, "text", strlen ("text"), 0);
   if (!svp)
@@ -137,6 +119,8 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
     {
       /* Remove spaces_elt */
       av_pop (contents_array);
+      if (av_len(contents_array) + 1 == 0)
+        hv_delete (current, "contents", strlen ("contents"), G_DISCARD);
     }
   else if (!strcmp (type, "empty_line"))
     {
@@ -156,7 +140,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
          one of these types. */
       if (current_type
           && strcmp (current_type, "before_item")
-          && strcmp (current_type, "text_root")
+          && strcmp (current_type, "before_node_section")
           && strcmp (current_type, "document_root")
           && strcmp (current_type, "brace_command_context"))
         goto delete_type;
@@ -175,17 +159,17 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
       top_context_sv = *svp;
       top_context = SvPV_nolen (top_context_sv);
 
-      /* Change type to "empty_spaces_before_paragraph" unless we are in
+      /* Change type to "spaces_before_paragraph" unless we are in
          one of these contexts. */
-      if (strcmp (top_context, "math")
-          && strcmp (top_context, "menu")
-          && strcmp (top_context, "preformatted")
-          && strcmp (top_context, "rawpreformatted")
-          && strcmp (top_context, "def")
-          && strcmp (top_context, "inlineraw"))
+      if (strcmp (top_context, "ct_math")
+          && strcmp (top_context, "ct_menu")
+          && strcmp (top_context, "ct_preformatted")
+          && strcmp (top_context, "ct_rawpreformatted")
+          && strcmp (top_context, "ct_def")
+          && strcmp (top_context, "ct_inlineraw"))
         {
           hv_store (spaces_elt, "type", strlen ("type"),
-                    newSVpv ("empty_spaces_before_paragraph", 0), 0);
+                    newSVpv ("spaces_before_paragraph", 0), 0);
         }
       else
         {
@@ -193,37 +177,43 @@ delete_type:
           hv_delete (spaces_elt, "type", strlen ("type"), G_DISCARD);
         }
     }
-  else if (!strcmp (type, "empty_line_after_command")
-           || !strcmp (type, "empty_spaces_before_argument"))
+  else if (!strcmp (type, "internal_spaces_after_command")
+           || !strcmp (type, "internal_spaces_before_argument"))
     {
       STRLEN len;
+      HV *owning_elt = 0;
+      HV *command_extra = 0;
+      HV *test_extra = 0;
       char *ptr;
 
-      if (owning_elt)
-        {
-          /* Remove spaces_elt */
-          av_pop (contents_array);
+      /* Remove spaces_elt */
+      av_pop (contents_array);
+      if (av_len(contents_array) + 1 == 0)
+        hv_delete (current, "contents", strlen ("contents"), G_DISCARD);
 
-          ptr = SvPV(existing_text_sv, len);
-          /* Replace element reference with a simple string. */
-          if (!command_extra)
-            {
-              command_extra = newHV ();
-              hv_store (owning_elt, "extra", strlen ("extra"),
-                        newRV_inc((SV *)command_extra), 0);
-            }
-          hv_store (command_extra,
-                    "spaces_before_argument",
-                    strlen ("spaces_before_argument"),
-                    newSVpv(ptr, len),
-                    0);
-        }
+      /* add spaces to associated element extra "spaces_before_argument" */
+      svp = hv_fetch (spaces_elt, "extra", strlen ("extra"), 0);
+      test_extra = (HV *) SvRV (*svp);
+      svp = hv_fetch (test_extra, "spaces_associated_command",
+                      strlen ("spaces_associated_command"), 0);
+      owning_elt = (HV *) SvRV (*svp);
+
+      svp = hv_fetch (owning_elt, "extra", strlen ("extra"), 0);
+      if (svp)
+        command_extra = (HV *) SvRV (*svp);
       else
         {
-          hv_store (spaces_elt, "type", strlen ("type"),
-                    newSVpv ("empty_spaces_after_command", 0), 0);
-
+          command_extra = newHV ();
+          hv_store (owning_elt, "extra", strlen ("extra"),
+                    newRV_inc((SV *)command_extra), 0);
         }
+
+      ptr = SvPV(existing_text_sv, len);
+      hv_store (command_extra,
+                "spaces_before_argument",
+                strlen ("spaces_before_argument"),
+                newSVpv(ptr, len),
+                0);
     }
   return 1;
 }
@@ -274,29 +264,31 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
           leading_spaces_sv = newSVpv (text, leading_spaces);
         }
 
-      svp = hv_fetch (current,
-                      "contents", strlen ("contents"), 0);
-      contents_array = (AV *)SvRV(*svp);
-      
-      contents_num = av_len(contents_array) + 1;
-      if (contents_num > 0)
+      svp = hv_fetch (current, "contents", strlen ("contents"), 0);
+      if (svp)
         {
-          HV *last_elt;
-          char *type = 0;
-
-          last_elt = (HV *)
-            SvRV (*av_fetch (contents_array, contents_num - 1, 0));
-
-          svp = hv_fetch (last_elt, "type", strlen ("type"), 0);
-          if (svp)
-            type = SvPV_nolen (*svp);
-          if (type
-              && (!strcmp (type, "empty_line_after_command")
-                  || !strcmp (type, "empty_spaces_after_command")
-                  || !strcmp (type, "empty_spaces_before_argument")
-                  || !strcmp (type, "empty_spaces_after_close_brace")))
+          contents_array = (AV *)SvRV(*svp);
+          
+          contents_num = av_len(contents_array) + 1;
+          if (contents_num > 0)
             {
-              no_merge_with_following_text = 1;
+              HV *last_elt;
+              char *type = 0;
+
+              last_elt = (HV *)
+                SvRV (*av_fetch (contents_array, contents_num - 1, 0));
+
+              svp = hv_fetch (last_elt, "type", strlen ("type"), 0);
+              if (svp)
+                type = SvPV_nolen (*svp);
+              if (type
+                  && (!strcmp (type, "ignorable_spaces_after_command")
+                      || !strcmp (type, "internal_spaces_after_command")
+                      || !strcmp (type, "internal_spaces_before_argument")
+                      || !strcmp (type, "spaces_after_close_brace")))
+                {
+                  no_merge_with_following_text = 1;
+                }
             }
         }
 
@@ -340,7 +332,7 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
       contents_ref = newRV_inc ((SV *) contents_array);
       hv_store (current, "contents", strlen ("contents"),
                 contents_ref, 0);
-      fprintf (stderr, "NEW CONTENTS %p\n", contents_array);
+      /* fprintf (stderr, "NEW CONTENTS %p\n", contents_array); */
       goto NEW_TEXT;
     }
   else
@@ -545,6 +537,85 @@ xs_unicode_text (char *text, int in_code)
   return new;
 }
 
+char *
+xs_entity_text (char *text)
+{
+  char *p, *q;
+  static char *new;
+  int new_space, new_len;
+
+  dTHX; /* Perl boilerplate. */
+
+  p = text;
+  new_space = strlen (text);
+  new = realloc (new, new_space + 1);
+  new_len = 0;
+
+#define ADDN(s, n) \
+  if (new_len + n - 1 >= new_space - 1)           \
+    {                                             \
+      new_space += n;                             \
+      new = realloc (new, (new_space *= 2) + 1);  \
+    }                                             \
+  memcpy(new + new_len, s, n);                    \
+  new_len += n;
+
+  while (1)
+    {
+      q = p + strcspn (p, "-`'");
+      ADDN(p, q - p);
+      if (!*q)
+        break;
+      switch (*q)
+        {
+        case '-':
+          if (!memcmp (q, "---", 3))
+            {
+              p = q + 3;
+              ADDN("&mdash;", 7);
+            }
+          else if (!memcmp (q, "--", 2))
+            {
+              p = q + 2;
+              ADDN("&ndash;", 7);
+            }
+          else
+            {
+              p = q + 1;
+              ADD1(*q);
+            }
+          break;
+        case '`':
+          if (!memcmp (q, "``", 2))
+            {
+              p = q + 2;
+              ADDN("&ldquo;", 7);
+            }
+          else
+            {
+              p = q + 1;
+              ADDN("&lsquo;", 7);
+            }
+          break;
+        case '\'':
+          if (!memcmp (q, "''", 2))
+            {
+              p = q + 2;
+              ADDN("&rdquo;", 7);
+            }
+          else
+            {
+              p = q + 1;
+              ADDN("&rsquo;", 7);
+            }
+          break;
+        }
+    }
+
+  new[new_len] = '\0';
+  return new;
+}
+
 /* Return list ($at_command, $open_brace, $asterisk, $single_letter_command,
        $separator_match) */
 void xs_parse_texi_regex (SV *text_in,
@@ -631,4 +702,57 @@ void xs_parse_texi_regex (SV *text_in,
     }
 
   return;
+}
+
+char *
+xs_default_format_protect_text (char *text)
+{
+  char *p, *q;
+  static char *new;
+  int new_space, new_len;
+
+  dTHX; /* Perl boilerplate. */
+
+  p = text;
+  new_space = strlen (text);
+  new = realloc (new, new_space + 1);
+  new_len = 0;
+
+#define ADDN(s, n) \
+  if (new_len + n - 1 >= new_space - 1)           \
+    {                                             \
+      new_space += n;                             \
+      new = realloc (new, (new_space *= 2) + 1);  \
+    }                                             \
+  memcpy(new + new_len, s, n);                    \
+  new_len += n;
+
+  while (1)
+    {
+      q = p + strcspn (p, "<>&\"\f");
+      ADDN(p, q - p);
+      if (!*q)
+        break;
+      switch (*q)
+        {
+        case '<':
+          ADDN("&lt;", 4);
+          break;
+        case '>':
+          ADDN("&gt;", 4);
+          break;
+        case '&':
+          ADDN("&amp;", 5);
+          break;
+        case '"':
+          ADDN("&quot;", 6);
+          break;
+        case '\f':
+          ADDN("&#12;", 5);
+          break;
+        }
+      p = q + 1;
+    }
+  new[new_len] = '\0';
+  return new;
 }

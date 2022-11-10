@@ -1,169 +1,141 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'simple'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Type'
-            }
-          ],
-          'parent' => {},
-          'type' => 'block_line_arg'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Label'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'float',
       'contents' => [
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'In float.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'contents' => [],
+          'type' => 'preamble_before_content'
         },
         {
           'args' => [
             {
               'contents' => [
+                {
+                  'text' => 'Type'
+                }
+              ],
+              'type' => 'block_line_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'Label'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+',
+                'spaces_before_argument' => ' '
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'float',
+          'contents' => [
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'In float.
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'Caption.'
+                      'contents' => [
+                        {
+                          'text' => 'Caption.'
+                        }
+                      ],
+                      'type' => 'paragraph'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
+                  'type' => 'brace_command_context'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_context'
-            }
-          ],
-          'cmdname' => 'caption',
-          'contents' => [],
-          'extra' => {
-            'float' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        },
-        {
-          'args' => [
+              'cmdname' => 'caption',
+              'extra' => {
+                'float' => {}
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '
+'
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'float'
+                  'contents' => [
+                    {
+                      'text' => 'float'
+                    }
+                  ],
+                  'type' => 'line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'line_arg'
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'float'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'end',
           'extra' => {
-            'command_argument' => 'float',
+            'caption' => {},
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Label',
             'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
+            'type' => {
+              'content' => [
+                {}
+              ],
+              'normalized' => 'Type'
+            }
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 5,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'caption' => {},
-        'end_command' => {},
-        'node_content' => [
-          {}
-        ],
-        'normalized' => 'Label',
-        'spaces_before_argument' => ' ',
-        'type' => {
-          'content' => [
-            {}
-          ],
-          'normalized' => 'Type'
-        }
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0];
-$result_trees{'simple'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[1];
-$result_trees{'simple'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[1];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'extra'}{'float'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'caption'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
+$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'float'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[1];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'simple'} = '@float Type, Label
 
@@ -192,16 +164,7 @@ $result_floats{'simple'} = {
             'float' => {}
           }
         },
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'float',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'float'
-          }
-        },
         'normalized' => 'Label',
-        'spaces_before_argument' => ' ',
         'type' => {
           'content' => [
             {
@@ -211,7 +174,9 @@ $result_floats{'simple'} = {
           'normalized' => 'Type'
         }
       },
-      'number' => 1
+      'structure' => {
+        'float_number' => 1
+      }
     }
   ]
 };
@@ -226,7 +191,7 @@ Type 1: Caption.
 ';
 
 
-$result_converted{'html'}->{'simple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'simple'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -239,35 +204,16 @@ $result_converted{'html'}->{'simple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<style type="text/css">
-<!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
--->
-</style>
 
 
 </head>
 
 <body lang="en">
-<div class="float"><span id="Label"></span>
+<div class="float" id="Label">
 
 <p>In float.
 </p>
-<div class="float-caption"><p><strong>Type 1: </strong>Caption.</p></div></div>
+<div class="caption"><p><strong class="strong">Type 1: </strong>Caption.</p></div></div>
 
 
 </body>

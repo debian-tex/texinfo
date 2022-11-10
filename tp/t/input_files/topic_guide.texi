@@ -1,0 +1,85 @@
+\input texinfo.tex
+
+@node Top
+@top A example quide topic collection
+
+This is an example of guide/topic based manual inspired by the Mallard
+format.
+
+@menu
+* guide1:: the easy way
+* guide2:: the perillous way
+@end menu
+
+@node guide1
+@chapter guide 1
+
+This is the guide for an easy use.
+
+@menu
+* topic1:: topic1 description
+* topic2:: topic2 description
+* topic5:: topic5 description
+@end menu
+
+@node topic1, topic2
+
+This is topic 1.
+
+@menu
+More information
+
+* guide1:: guide 1
+@end menu
+
+@node topic2, topic3, topic1
+
+This is topic 2
+
+@menu
+More information
+
+* guide1:: guide 1
+@end menu
+
+@node topic3, topic5, topic2
+
+This is topic 3
+
+@menu
+More information
+
+@end menu
+
+@node topic4
+
+This is topic 4
+
+@menu
+More information
+
+* guide2:: guide 2
+@end menu
+
+@node topic5, , topic3
+
+This is topic 5
+
+@menu
+More information
+
+* guide1:: guide 1
+* guide2:: guide 2
+@end menu
+
+@node guide2
+@chapter guide 2
+
+This is the guide for an in depth use
+
+@menu
+* topic5:: topic5 description
+* topic4:: topic4 description
+@end menu
+
+@bye

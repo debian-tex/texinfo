@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,279 +10,207 @@ $result_trees{'uref_in_ref'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '('
-                },
-                {
-                  'parent' => {},
-                  'text' => 'file'
-                },
-                {
-                  'parent' => {},
-                  'text' => ')'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'node'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'cross ref with uref '
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'href://http/myhost.com/index.html'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => '('
                     },
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'uref1'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'uref',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'title with uref2 '
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'href://http/myhost.com/index2.html'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => 'file'
                     },
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'uref2'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'uref',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'info file with uref3 '
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'href://http/myhost.com/index3.html'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => ')'
                     },
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'uref3'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => 'node'
                     }
                   ],
-                  'cmdname' => 'uref',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'printed manual with uref4 '
+                  'type' => 'brace_command_arg'
                 },
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'href://http/myhost.com/index4.html'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'text' => 'cross ref with uref '
                     },
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'uref4'
+                          'contents' => [
+                            {
+                              'text' => 'href://http/myhost.com/index.html'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'uref1'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'uref',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'uref',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                  'extra' => {
+                    'spaces_before_argument' => ' '
                   },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'title with uref2 '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'href://http/myhost.com/index2.html'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'uref2'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'uref',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'info file with uref3 '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'href://http/myhost.com/index3.html'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'uref3'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'uref',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'printed manual with uref4 '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'href://http/myhost.com/index4.html'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'uref4'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'uref',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
                 }
               ],
+              'cmdname' => 'ref',
               'extra' => {
-                'spaces_before_argument' => ' '
+                'node_argument' => {
+                  'manual_content' => [
+                    {}
+                  ],
+                  'node_content' => [
+                    {}
+                  ]
+                }
               },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'ref',
-          'contents' => [],
-          'extra' => {
-            'node_argument' => {
-              'manual_content' => [
-                {}
-              ],
-              'node_content' => [
-                {}
-              ]
-            }
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'args'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'args'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[4]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'uref_in_ref'}{'contents'}[0];
-$result_trees{'uref_in_ref'}{'contents'}[0]{'parent'} = $result_trees{'uref_in_ref'};
+$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'uref_in_ref'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 
 $result_texis{'uref_in_ref'} = '@ref{(file)node, cross ref with uref @uref{href://http/myhost.com/index.html,uref1}, title with uref2 @uref{href://http/myhost.com/index2.html,uref2}, info file with uref3 @uref{href://http/myhost.com/index3.html,uref3}, printed manual with uref4 @uref{href://http/myhost.com/index4.html,uref4}}
 ';
@@ -305,7 +233,7 @@ $result_converted{'plaintext'}->{'uref_in_ref'} = '*note cross ref with uref ure
 
 $result_converted_errors{'plaintext'}->{'uref_in_ref'} = [
   {
-    'error_line' => ':1: warning: @ref cross-reference name should not contain `:\'
+    'error_line' => 'warning: @ref cross-reference name should not contain `:\'
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -317,7 +245,11 @@ $result_converted_errors{'plaintext'}->{'uref_in_ref'} = [
 
 
 
-$result_converted{'html_text'}->{'uref_in_ref'} = '<p><a data-manual="info file with uref3 href://http/myhost.com/index3.html (uref3)" href="index3.html (uref3).html#node">title with uref2 <a href="href://http/myhost.com/index2.html">uref2</a></a> in <cite>printed manual with uref4 <a href="href://http/myhost.com/index4.html">uref4</a></cite>
+$result_converted{'html_text'}->{'uref_in_ref'} = '<p><a data-manual="info file with uref3 href://http/myhost.com/index3.html (uref3)" href="index3.html%20%28uref3%29.html#node">title with uref2 <a class="uref" href="href://http/myhost.com/index2.html">uref2</a></a> in <cite class="cite">printed manual with uref4 <a class="uref" href="href://http/myhost.com/index4.html">uref4</a></cite>
 </p>';
+
+
+$result_converted{'latex_text'}->{'uref_in_ref'} = 'Section ``title with uref2 \\href{href://http/myhost.com/index2.html}{uref2 (\\nolinkurl{href://http/myhost.com/index2.html})}\'\' in \\textsl{printed manual with uref4 \\href{href://http/myhost.com/index4.html}{uref4 (\\nolinkurl{href://http/myhost.com/index4.html})}}
+';
 
 1;

@@ -1,43 +1,12 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'punctuation_and_code_style_commands_utf8'} = {
   'contents' => [
-    {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'utf-8'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'documentencoding',
-      'extra' => {
-        'input_encoding_name' => 'utf-8',
-        'input_perl_encoding' => 'utf-8-strict',
-        'spaces_before_argument' => ' ',
-        'text_arg' => 'utf-8'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
     {
       'contents' => [
         {
@@ -45,397 +14,313 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'aaa'
+                  'text' => 'utf-8'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
             }
           ],
-          'cmdname' => 'command',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+          'cmdname' => 'documentencoding',
+          'extra' => {
+            'input_encoding_name' => 'utf-8',
+            'input_perl_encoding' => 'utf-8-strict',
+            'spaces_before_argument' => ' ',
+            'text_arg' => 'utf-8'
           },
-          'parent' => {}
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'text' => 'aaa'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'command',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '. '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'e'
+                          'contents' => [
+                            {
+                              'text' => 'e'
+                            }
+                          ],
+                          'type' => 'following_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'following_arg'
+                      'cmdname' => '~',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => '~',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'args' => [
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '. '
+            },
+            {
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'aa',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'samp',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'AAA'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'command',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'args' => [
-                    {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'E'
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'following_arg'
+                      'cmdname' => 'aa',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => '~',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'args' => [
+              'cmdname' => 'samp',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
-                {
-                  'args' => [
-                    {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'AA',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'samp',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
+              'text' => '.
 '
-        },
-        {
-          'args' => [
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'double AAA'
+                  'contents' => [
+                    {
+                      'text' => 'AAA'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'command',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.  '
-        },
-        {
-          'args' => [
+              'cmdname' => 'command',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '. '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'double '
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'E'
+                          'contents' => [
+                            {
+                              'text' => 'E'
+                            }
+                          ],
+                          'type' => 'following_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'following_arg'
+                      'cmdname' => '~',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => '~',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '. '
-        },
-        {
-          'args' => [
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => '. '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'double '
-                },
-                {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'args' => [
+                        {
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'AA',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'AA',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'samp',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'double AAA'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'command',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.  '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'double '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'E'
+                            }
+                          ],
+                          'type' => 'following_arg'
+                        }
+                      ],
+                      'cmdname' => '~',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 4,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '. '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'double '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'AA',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 4,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'samp',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.  End.
+'
             }
           ],
-          'cmdname' => 'samp',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.  End.
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'};
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[12]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[12];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[17]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'};
 
 $result_texis{'punctuation_and_code_style_commands_utf8'} = '@documentencoding utf-8
 @command{aaa}. @code{@~e}. @samp{@aa{}}.

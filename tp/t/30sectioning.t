@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -32,7 +32,7 @@ my $test_text =
 
 '.$sections_no_top_text;
 
-my $chapter_sections_text = 
+my $chapter_sections_text =
 '@unnumbered unnumbered
 
 @chapter First chapter
@@ -50,12 +50,12 @@ my $chapter_sections_text =
 @chapter Chapter 2
 ';
 
-my $top_chapter_sections_text = 
+my $top_chapter_sections_text =
 '@top top
 
 '.$chapter_sections_text;
 
-my $unnumbered_top_without_node_text = 
+my $unnumbered_top_without_node_text =
 '@node a node,,,(dir)
 @unnumbered unnumbered
 
@@ -474,6 +474,8 @@ $section_in_unnumbered_text
 
 @node node after chapter 1
 
+in node after chapter 1
+
 @node node after chapter 2
 ', {'test_split' => 'section'}],
 ['chapter_before_and_after_part',
@@ -503,15 +505,49 @@ $nodes_after_top_before_chapter_text
 ['nodes_after_top_before_chapter_not_split_no_use_node_directions',
 $nodes_after_top_before_chapter_text
 ,{}, {'USE_NODE_DIRECTIONS' => 0}
-]
+],
+['node_sectop_before_chapter_no_node',
+'@setfilename node_sectop_before_chapter_no_node.info
+
+@node Top
+@top top section
+
+@chapter chap
+'],
+# automatic directions are confused by the following setup
+# as @node Top next is with the first non Top node which
+# happens to be before.  Then the next node for the
+# node before node is obtained with toplevel next which is
+# the node associated with the chapter, after the Top node!
+['node_sectop_before_lone_node_Top',
+'@setfilename node_sectop_before_lone_node_Top.info
+
+@node node before
+@top top sectionning
+
+in node before
+
+@node Top
+
+in node Top
+
+@node chap
+@chapter chap
+
+in chap
+'],
 );
 
 my $character_and_spaces_in_refs_text = '@node Top
 @top Test refs
 
 @menu
+* node to avoid DocBook or LaTeX ignored::
 * other nodes::
 @end menu
+
+@node node to avoid DocBook or LaTeX ignored
+@chapter first chapter
 
 @subheading Testing distant nodes
 
@@ -576,6 +612,21 @@ $character_and_spaces_in_refs_text],
 @node /;<=>?[\\]^_`|~,local   node,!_"#$%&\'()*+-., other nodes
 @node  local   node,,/;<=>?[\\]^_`|~,other nodes
 '],
+['special_spaces_in_nodes',
+undef, {'test_file' => 'special_spaces_in_nodes.texi',
+        'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, }],
+['only_special_spaces_node',
+undef, {'test_file' => 'only_special_spaces_node.texi',
+        'skip' => ($] < 5.018) ? 'Perl too old: LINE TABULATION in /a needed' : undef, }],
+# a subset of the next test, with ascii spaces only
+['in_menu_only_special_ascii_spaces_node',
+undef, {'test_file' => 'in_menu_only_special_ascii_spaces_node.texi'}],
+['in_menu_only_special_spaces_node',
+undef, {'test_file' => 'in_menu_only_special_spaces_node.texi',
+        'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, }],
+['reference_to_only_special_spaces_node',
+undef, {'test_file' => 'reference_to_only_special_spaces_node.texi',
+        'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, }],
 ['double_node_anchor_float',
 '@node node1
 
@@ -678,7 +729,7 @@ Ref to float
 @end menu
 
 @cindex index entry
-'],
+', {}, {'SHOW_TITLE' => 1}],
 ['placed_things_before_element',
 '@anchor{An anchor}
 
@@ -811,9 +862,11 @@ anchor ref @anchor{ref}.
 
 ref to ref @ref{ref}.
 '],
+# NOTE that the DocBook output is incorrect because the chapter opened
+# in the Top node is not output, while the closing element is output
+# at the end of the document
 ['chapter_between_nodes',
-'
-@node Top
+'@node Top
 @top top section
 Top node
 
@@ -832,6 +885,28 @@ section.
 
 @contents
 ', {}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
+['section_before_after_top_node_last_node',
+'@unnumbered before
+
+@node Top
+@top top section
+
+@chapter Chapter
+
+in chapter
+
+@node node after
+'],
+['section_before_after_top_node',
+'@unnumbered before
+
+@node Top
+@top top section
+
+@chapter Chapter
+
+in chapter
+'],
 ['part_node_before_top',
 '@node part node before top, Top,,Top
 @part part
@@ -1058,6 +1133,9 @@ Top node
 
 @part part
 '],
+# FIXME in DocBook the nesting is incorrect, part is opened before chapter
+# and is closed first too.  This is not an important bug, however, as
+# this construct is not normal, and @top has no equivalent in DocBook.
 ['top_node_part_top',
 '@node Top
 
@@ -1188,8 +1266,8 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first
-',{'test_split' => 'node'}, 
-  {'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals', 
+',{'test_split' => 'node'},
+  {'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals',
    'TOP_NODE_UP_URL' => 'http://www.gnu.org/manual/'}
 ],
 ['non_automatic_top_node_up_url',
@@ -1212,7 +1290,7 @@ $unnumbered_top_without_node_text,
 @end menu
 
 @node first, , Top, @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
-',{'test_split' => 'node'}, 
+',{'test_split' => 'node'},
   {'TOP_NODE_UP' => '@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals'}
 ],
 ['non_automatic_top_node_up_and_url',
@@ -1333,6 +1411,9 @@ directions and lone node.
 ';
 
 my @test_cases = (
+['node',
+'@node Top'
+],
 ['node_too_much_args',
 '@node Top, , , , (dir)'
 ],
@@ -1584,7 +1665,8 @@ in node following second
 @xref{unknown ref}.
 '],
 ['loop_nodes',
-'
+'@setfilename loop_nodes.info
+
 @node Top
 @top top
 
@@ -1640,7 +1722,9 @@ Second top.
 @subsection the subsection
 '],
 ['lone_Top_node',
-'@node Top
+'@setfilename lone_Top_node.info
+
+@node Top
 
 @menu
 * First::
@@ -1745,7 +1829,9 @@ Second top.
 @section Sub3
 ', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['nodes_before_top',
-'@node first, Top, ,(dir)
+'@setfilename nodes_before_top.info
+
+@node first, Top, ,(dir)
 
 @menu
 * node in menu before top::
@@ -1762,6 +1848,57 @@ Second top.
 
 @node second node
 @chapter a chapter
+'],
+['nodes_before_after_top',
+'@setfilename nodes_before_after_top.info
+
+@node node before
+
+In node before
+
+@node Top
+@top top sectionning
+
+in node Top
+
+@node after
+
+in node after
+
+@node chap
+@chapter chap
+
+in chap
+'],
+['nodes_before_after_top_xref',
+'@setfilename nodes_before_after_top_xref.info
+
+@node node before
+
+In node before
+
+@node Top
+@top top sectionning
+
+in node Top
+
+@node after
+
+in node after
+
+@node chap
+@chapter chap
+
+in chap
+
+@xrefautomaticsectiontitle on
+@xref{node before}.
+@xref{after}.
+
+@xrefautomaticsectiontitle off
+@xref{node before}.
+@xref{after}.
+
 '],
 ['part_before_section',
 '@part part
@@ -1926,7 +2063,13 @@ my @test_out_files = (
 ', {'test_split' => 'node'}],
 ['character_and_spaces_in_refs_out',
 $character_and_spaces_in_refs_text,
-{'test_split' => 'node'}]
+{'test_split' => 'node'},],
+['topic_guide',
+  undef,
+  {'test_file' => 'topic_guide.texi',
+   'test_formats' => ['file_info'],}, # file_html is also added
+  {'FORMAT_MENU' => 'menu', } # add explicitely for the converter
+],
 );
 
 foreach my $test (@test_out_files) {
@@ -1934,23 +2077,41 @@ foreach my $test (@test_out_files) {
   $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
 }
 
-my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part', 
+my @xml_tests_converted_tests = ('section_before_part', 'chapter_before_part',
   'part_before_top', 'double_part', 'section_in_unnumbered_plaintext',
   'two_unnumbered_no_argument', 'two_nodes_between_chapters',
   'chapter_before_and_after_part');
 
+my @docbook_tests_converted_tests = ('node_sectop_before_chapter_no_node',
+  'node_sectop_before_lone_node_Top');
+
+my @latex_tests_converted_tests = ('two_nodes_at_the_end',
+  'node_sectop_before_chapter_no_node',
+  'node_sectop_before_lone_node_Top');
+
+my @file_latex_tests_converted_tests = ('node_sectop_before_chapter_no_node',
+  'node_sectop_before_lone_node_Top');
+
 foreach my $test (@tests_converted) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html';
-  push @{$test->[2]->{'test_formats'}}, 'xml' 
+  push @{$test->[2]->{'test_formats'}}, 'xml'
     if (grep {$_ eq $test->[0]} @xml_tests_converted_tests);
+  push @{$test->[2]->{'test_formats'}}, 'docbook'
+    if (grep {$_ eq $test->[0]} @docbook_tests_converted_tests);
+  push @{$test->[2]->{'test_formats'}}, 'latex_text'
+    if (grep {$_ eq $test->[0]} @latex_tests_converted_tests);
+  push @{$test->[2]->{'test_formats'}}, 'file_latex'
+    if (grep {$_ eq $test->[0]} @file_latex_tests_converted_tests);
+
+  $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
 }
 
-my @xml_tests_info_tests = ('part_chapter_after_top', 
+my @xml_tests_info_tests = ('part_chapter_after_top',
   'part_node_after_top', 'part_node_before_top',
   'chapter_between_nodes', 'nodes_no_node_top_explicit_directions',
   'part_node_chapter_after_top', 'node_part_chapter_after_top',
-  'node_part_chapter_after_chapter', 'section_before_top', 
+  'node_part_chapter_after_chapter', 'section_before_top',
   'section_node_before_part', 'top_node_part_top',
   'chapter_node_before_and_after_part',
   'more_nodes_than_sections', 'part_node_chapter_appendix',
@@ -1959,32 +2120,77 @@ my @xml_tests_info_tests = ('part_chapter_after_top',
   'explicit_node_directions', 'nodes_after_top_before_chapter_nodes',
   'double_node_anchor_float');
 
-my @docbook_tests_info_tests = ('double_node_anchor_float');
+my @docbook_tests_info_tests = ('character_and_spaces_in_refs',
+  'chapter_between_nodes', 'section_before_after_top_node_last_node',
+  'section_before_after_top_node', 'part_node_before_top part_node_after_top',
+  'part_chapter_after_top node_part_chapter_after_top',
+  'node_part_chapter_after_chapter',
+  'part_node_chapter_appendix part_node_part_appendix',
+  'unnumbered_before_top_node', 'section_before_top',
+  'section_chapter_before_top_nodes', 'top_node_part_top',
+  'top_without_node_sections', 'double_node_anchor_float');
+
+my @latex_tests_info_tests = ('character_and_spaces_in_refs',
+  'chapter_between_nodes',
+  'section_before_after_top_node_last_node',
+  'section_before_after_top_node',
+  'section_chapter_before_top_nodes', 'unnumbered_top_without_node_sections',
+  'top_node_part_top');
+
+my @file_latex_tests_info_tests = ('chapter_between_nodes',
+  'section_before_after_top_node_last_node',
+  'section_before_after_top_node',
+  'section_chapter_before_top_nodes', 'top_node_part_top');
 
 foreach my $test (@tests_info) {
   push @{$test->[2]->{'test_formats'}}, 'info';
   push @{$test->[2]->{'test_formats'}}, 'html';
-  push @{$test->[2]->{'test_formats'}}, 'xml' 
+  push @{$test->[2]->{'test_formats'}}, 'xml'
     if (grep {$_ eq $test->[0]} @xml_tests_info_tests);
   push @{$test->[2]->{'test_formats'}}, 'docbook'
     if (grep {$_ eq $test->[0]} @docbook_tests_info_tests);
+  if (grep {$_ eq $test->[0]} @latex_tests_info_tests) {
+    push @{$test->[2]->{'test_formats'}}, 'latex_text';
+    $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
+  }
+  if (grep {$_ eq $test->[0]} @file_latex_tests_info_tests) {
+    push @{$test->[2]->{'test_formats'}}, 'file_latex';
+    $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+    $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
+  }
 }
 
-my @xml_tests_cases_tests = ('part_before_section', 
+my @xml_tests_cases_tests = ('part_before_section',
 'section_before_chapter',
-'top_part_chapter', 'section_before_top_no_node', 
+'top_part_chapter', 'section_before_top_no_node',
 'section_chapter_before_top', 'sectioning_part_appendix',
 'part_chapter_appendix', 'sectioning_part_appendix_no_top',
 'top_chapter_sections', 'chapter_sections',
 'more_sections_than_nodes');
+
+my @docbook_tests_cases_tests = ('hole_in_sectioning');
+
+my @latex_tests_cases_tests = ('loop_nodes', 'lone_Top_node',
+ 'nodes_before_top', 'nodes_before_after_top',
+ 'nodes_before_after_top_xref');
+
+my @file_latex_tests_cases_tests = ('loop_nodes', 'lone_Top_node',
+ 'nodes_before_top', 'nodes_before_after_top',
+ 'nodes_before_after_top_xref');
+
 foreach my $test (@test_cases) {
-  push @{$test->[2]->{'test_formats'}}, 'xml' 
+  push @{$test->[2]->{'test_formats'}}, 'xml'
     if (grep {$_ eq $test->[0]} @xml_tests_cases_tests);
+  push @{$test->[2]->{'test_formats'}}, 'docbook'
+    if (grep {$_ eq $test->[0]} @docbook_tests_cases_tests);
+  push @{$test->[2]->{'test_formats'}}, 'latex_text'
+    if (grep {$_ eq $test->[0]} @latex_tests_cases_tests);
+  if (grep {$_ eq $test->[0]} @file_latex_tests_cases_tests) {
+    push @{$test->[2]->{'test_formats'}}, 'file_latex';
+    $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+    $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
+  }
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('sectioning', [@test_cases, @tests_converted, 
-                        @test_out_files, @tests_info], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('sectioning', [@test_cases, @tests_converted,
+                       @test_out_files, @tests_info]);

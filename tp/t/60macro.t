@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -173,11 +173,11 @@ now, arg3
 }.'],
 ['implicit_quoting_one_arg',
 '
-@macro FIXME{a}
-@strong{FIXME: \a\}
+@macro FIXAME{a}
+@strong{FIXAME: \a\}
 @end macro
 
-@FIXME{Many arguments, separated by commas, are processed here}
+@FIXAME{Many arguments, separated by commas, are processed here}
 '],
 ['implicit_quoting_recursion',
 '@rmacro cat{a,b}
@@ -522,7 +522,7 @@ Call macroseven
 @macroseven{aaa}
 
 ',
-{'expanded_formats' => []}
+{'EXPANDED_FORMATS' => []}
 ],
 ['expansion_order',
 '@macro bidule{arg}
@@ -720,7 +720,7 @@ line following documentlanguage
 @pagesizes @pagesizesarg{}
 @afourpapermacro{}
 @headings on line following headings @text{}
-@oddfooting some text ignored @text{}
+@oddfooting on line following oddfooting @text{}
 @everyheading on line following everyheading @text{}
 
 @macro needarg
@@ -1051,8 +1051,4 @@ The @gentry{id1, name1, text1\, arg1 } is used in many cases while
 );
 
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('macro', \@test_cases, $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('macro', \@test_cases);

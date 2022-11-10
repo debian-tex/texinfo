@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,21 +10,27 @@ $result_trees{'index_entries_locations'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'text' => '
 ',
-          'type' => 'empty_line'
+              'type' => 'text_before_beginning'
+            }
+          ],
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'contents' => [],
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -32,14 +38,12 @@ $result_trees{'index_entries_locations'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -47,16 +51,13 @@ $result_trees{'index_entries_locations'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Initial paragraph.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -64,7 +65,6 @@ $result_trees{'index_entries_locations'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Paragraph
 '
             },
@@ -73,7 +73,6 @@ $result_trees{'index_entries_locations'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'entry in paragraph'
                     }
                   ],
@@ -81,36 +80,33 @@ $result_trees{'index_entries_locations'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
               'extra' => {
                 'index_entry' => {
-                  'command' => {},
-                  'content' => [],
                   'content_normalized' => [],
+                  'entry_content' => [],
+                  'entry_element' => {},
+                  'entry_node' => {},
+                  'entry_number' => 1,
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
+                  'index_ignore_chars' => {},
                   'index_name' => 'cp',
-                  'index_type_command' => 'cindex',
-                  'key' => 'entry in paragraph',
-                  'node' => {},
-                  'number' => 1
+                  'index_type_command' => 'cindex'
                 },
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'index_entry_command'
             },
             {
-              'parent' => {},
               'text' => 'end paragraph.
 '
             },
@@ -119,7 +115,6 @@ $result_trees{'index_entries_locations'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'entry at end of paragraph.'
                     }
                   ],
@@ -127,40 +122,36 @@ $result_trees{'index_entries_locations'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
               'extra' => {
                 'index_entry' => {
-                  'command' => {},
-                  'content' => [],
                   'content_normalized' => [],
+                  'entry_content' => [],
+                  'entry_element' => {},
+                  'entry_node' => {},
+                  'entry_number' => 2,
                   'in_code' => 0,
                   'index_at_command' => 'cindex',
+                  'index_ignore_chars' => {},
                   'index_name' => 'cp',
-                  'index_type_command' => 'cindex',
-                  'key' => 'entry at end of paragraph.',
-                  'node' => {},
-                  'number' => 2
+                  'index_type_command' => 'cindex'
                 },
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 9,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'index_entry_command'
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -168,16 +159,13 @@ $result_trees{'index_entries_locations'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'New paragraph.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -187,7 +175,6 @@ $result_trees{'index_entries_locations'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'Entry before paragraph'
                 }
               ],
@@ -195,47 +182,42 @@ $result_trees{'index_entries_locations'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
             'index_entry' => {
-              'command' => {},
-              'content' => [],
               'content_normalized' => [],
+              'entry_content' => [],
+              'entry_element' => {},
+              'entry_node' => {},
+              'entry_number' => 3,
               'in_code' => 0,
               'index_at_command' => 'cindex',
+              'index_ignore_chars' => {},
               'index_name' => 'cp',
-              'index_type_command' => 'cindex',
-              'key' => 'Entry before paragraph',
-              'node' => {},
-              'number' => 3
+              'index_type_command' => 'cindex'
             },
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 13,
             'macro' => ''
           },
-          'parent' => {},
           'type' => 'index_entry_command'
         },
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Another paragraph.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -245,7 +227,6 @@ $result_trees{'index_entries_locations'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'lone entry'
                 }
               ],
@@ -253,36 +234,33 @@ $result_trees{'index_entries_locations'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
             'index_entry' => {
-              'command' => {},
-              'content' => [],
               'content_normalized' => [],
+              'entry_content' => [],
+              'entry_element' => {},
+              'entry_node' => {},
+              'entry_number' => 4,
               'in_code' => 0,
               'index_at_command' => 'cindex',
+              'index_ignore_chars' => {},
               'index_name' => 'cp',
-              'index_type_command' => 'cindex',
-              'key' => 'lone entry',
-              'node' => {},
-              'number' => 4
+              'index_type_command' => 'cindex'
             },
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 16,
             'macro' => ''
           },
-          'parent' => {},
           'type' => 'index_entry_command'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -290,16 +268,13 @@ $result_trees{'index_entries_locations'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Last paragraph.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -309,7 +284,6 @@ $result_trees{'index_entries_locations'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'cp'
                 }
               ],
@@ -317,7 +291,6 @@ $result_trees{'index_entries_locations'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -328,12 +301,11 @@ $result_trees{'index_entries_locations'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 20,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
@@ -352,72 +324,33 @@ $result_trees{'index_entries_locations'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 2,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'index_entries_locations'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'};
-$result_trees{'index_entries_locations'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'args'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
 $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[5];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'args'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'command'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3];
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
 $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[8];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'args'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'command'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7];
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
 $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'};
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[12];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[14]{'args'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[14];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'index_entries_locations'}{'contents'}[1];
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'};
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10];
+$result_trees{'index_entries_locations'}{'contents'}[1]{'contents'}[10]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'index_entries_locations'}{'contents'}[1];
 $result_trees{'index_entries_locations'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'index_entries_locations'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entries_locations'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entries_locations'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entries_locations'}{'contents'}[1]{'parent'} = $result_trees{'index_entries_locations'};
 
 $result_texis{'index_entries_locations'} = '
 @node Top
@@ -443,7 +376,6 @@ Last paragraph.
 
 
 $result_texts{'index_entries_locations'} = '
-
 Initial paragraph.
 
 Paragraph
@@ -458,14 +390,11 @@ Last paragraph.
 
 ';
 
-$result_sectioning{'index_entries_locations'} = {};
-
 $result_nodes{'index_entries_locations'} = {
   'cmdname' => 'node',
   'extra' => {
     'isindex' => 1,
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -473,8 +402,7 @@ $result_menus{'index_entries_locations'} = {
   'cmdname' => 'node',
   'extra' => {
     'isindex' => 1,
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -482,6 +410,16 @@ $result_errors{'index_entries_locations'} = [];
 
 
 $result_floats{'index_entries_locations'} = {};
+
+
+$result_indices_sort_strings{'index_entries_locations'} = {
+  'cp' => [
+    'entry at end of paragraph.',
+    'Entry before paragraph',
+    'entry in paragraph',
+    'lone entry'
+  ]
+};
 
 
 
@@ -542,47 +480,71 @@ $result_converted{'plaintext'}->{'index_entries_locations'} = 'Initial paragraph
 ';
 
 
-$result_converted{'html_text'}->{'index_entries_locations'} = '
-<span id="Top"></span><h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'index_entries_locations'} = '<h1 class="node" id="Top">Top</h1>
 
 <p>Initial paragraph.
 </p>
 <p>Paragraph
-<span id="index-entry-in-paragraph"></span>
+<a class="index-entry-id" id="index-entry-in-paragraph"></a>
 end paragraph.
-<span id="index-entry-at-end-of-paragraph_002e"></span>
+<a class="index-entry-id" id="index-entry-at-end-of-paragraph_002e"></a>
 </p>
 <p>New paragraph.
 </p>
-<span id="index-Entry-before-paragraph"></span>
+<a class="index-entry-id" id="index-Entry-before-paragraph"></a>
 <p>Another paragraph.
 </p>
-<span id="index-lone-entry"></span>
+<a class="index-entry-id" id="index-lone-entry"></a>
 
 <p>Last paragraph.
 </p>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-E"><b>E</b></a>
+<div class="printindex cp-printindex">
+<table class="cp-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-E"><b>E</b></a>
  &nbsp; 
-<a class="summary-letter" href="#t_h_cp_letter-L"><b>L</b></a>
+<a class="summary-letter-printindex" href="#t_i_cp_letter-L"><b>L</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="index-cp" border="0">
-<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<table class="cp-entries-printindex" border="0">
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_h_cp_letter-E">E</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-entry-at-end-of-paragraph_002e">entry at end of paragraph.</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-Entry-before-paragraph">Entry before paragraph</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-entry-in-paragraph">entry in paragraph</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><th id="t_i_cp_letter-E">E</th><td></td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-entry-at-end-of-paragraph_002e">entry at end of paragraph.</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Entry-before-paragraph">Entry before paragraph</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-entry-in-paragraph">entry in paragraph</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_h_cp_letter-L">L</th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-lone-entry">lone entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
+<tr><th id="t_i_cp_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-lone-entry">lone entry</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
-<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-E"><b>E</b></a>
+<table class="cp-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-E"><b>E</b></a>
  &nbsp; 
-<a class="summary-letter" href="#t_h_cp_letter-L"><b>L</b></a>
+<a class="summary-letter-printindex" href="#t_i_cp_letter-L"><b>L</b></a>
  &nbsp; 
 </td></tr></table>
-<hr>';
+</div>
+';
+
+
+$result_converted{'xml'}->{'index_entries_locations'} = '<preamblebeforebeginning>
+</preamblebeforebeginning><node name="Top" spaces=" "><nodename>Top</nodename></node>
+
+<para>Initial paragraph.
+</para>
+<para>Paragraph
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">entry in paragraph</indexterm></cindex>
+end paragraph.
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">entry at end of paragraph.</indexterm></cindex>
+</para>
+<para>New paragraph.
+</para>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="3">Entry before paragraph</indexterm></cindex>
+<para>Another paragraph.
+</para>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="4">lone entry</indexterm></cindex>
+
+<para>Last paragraph.
+</para>
+<printindex spaces=" " value="cp" line="cp"></printindex>
+';
 
 1;

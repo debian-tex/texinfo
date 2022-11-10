@@ -1,6 +1,6 @@
 /* tag.c -- Functions to handle Info tags.
 
-   Copyright 2012-2019 Free Software Foundation, Inc.
+   Copyright 2012-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 #ifndef TAG_H
 #define TAG_H
 
-#include "info-utils.h"
+#include "util.h"
 
 int tag_expand (char **input, char *input_end,
                 struct text_buffer *outbuf, int *is_index);

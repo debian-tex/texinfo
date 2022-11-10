@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,90 +10,73 @@ $result_trees{'ref_in_style_command'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => '('
-                        },
-                        {
-                          'parent' => {},
-                          'text' => 'manula'
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ')'
-                        },
-                        {
-                          'parent' => {},
-                          'text' => 'other node'
+                          'contents' => [
+                            {
+                              'text' => '('
+                            },
+                            {
+                              'text' => 'manula'
+                            },
+                            {
+                              'text' => ')'
+                            },
+                            {
+                              'text' => 'other node'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'ref',
+                      'extra' => {
+                        'node_argument' => {
+                          'manual_content' => [
+                            {}
+                          ],
+                          'node_content' => [
+                            {}
+                          ]
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'ref',
-                  'contents' => [],
-                  'extra' => {
-                    'node_argument' => {
-                      'manual_content' => [
-                        {}
-                      ],
-                      'node_content' => [
-                        {}
-                      ]
-                    }
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'samp',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.'
             }
           ],
-          'cmdname' => 'samp',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_style_command'}{'contents'}[0];
-$result_trees{'ref_in_style_command'}{'contents'}[0]{'parent'} = $result_trees{'ref_in_style_command'};
+$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_style_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 
 $result_texis{'ref_in_style_command'} = '@samp{@ref{(manula)other node}}.';
 
@@ -107,10 +90,13 @@ $result_floats{'ref_in_style_command'} = {};
 
 
 
-$result_converted{'plaintext'}->{'ref_in_style_command'} = '\'*note (manula)other node::\'.
+$result_converted{'plaintext'}->{'ref_in_style_command'} = '‘*note (manula)other node::’.
 ';
 
 
-$result_converted{'html_text'}->{'ref_in_style_command'} = '<p>&lsquo;<samp><a data-manual="manula" href="manula.html#other-node">(manula)other node</a></samp>&rsquo;.</p>';
+$result_converted{'html_text'}->{'ref_in_style_command'} = '<p>&lsquo;<samp class="samp"><a data-manual="manula" href="manula.html#other-node">(manula)other node</a></samp>&rsquo;.</p>';
+
+
+$result_converted{'latex_text'}->{'ref_in_style_command'} = '`\\texttt{(manula)other node}\'.';
 
 1;

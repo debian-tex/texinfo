@@ -1,185 +1,152 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'quotation_author_in_example'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'cmdname' => 'quotation',
-          'contents' => [
+          'args' => [
             {
               'extra' => {
-                'command' => {}
+                'spaces_after_argument' => '
+'
               },
-              'parent' => {},
-              'text' => ' 
-',
-              'type' => 'empty_line_after_command'
-            },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'example',
+          'contents' => [
             {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => ' 
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'quotation',
               'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'Some One'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
+'
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'author',
+                      'extra' => {
+                        'quotation' => {},
+                        'spaces_before_argument' => ' '
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 3,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => 'A quot---ation
+'
+                    }
+                  ],
+                  'type' => 'preformatted'
+                },
                 {
                   'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'Some One'
+                          'text' => 'quotation'
                         }
                       ],
                       'extra' => {
                         'spaces_after_argument' => '
 '
                       },
-                      'parent' => {},
                       'type' => 'line_arg'
                     }
                   ],
-                  'cmdname' => 'author',
+                  'cmdname' => 'end',
                   'extra' => {
-                    'quotation' => {},
-                    'spaces_before_argument' => ' '
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'quotation'
                   },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 3,
+                    'line_nr' => 5,
                     'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => 'A quot---ation
-'
+                  }
                 }
               ],
-              'parent' => {},
-              'type' => 'preformatted'
+              'extra' => {
+                'authors' => [
+                  {}
+                ]
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'quotation'
+                      'text' => 'example'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'quotation',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'quotation'
+                'text_arg' => 'example'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 5,
+                'line_nr' => 6,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'authors' => [
-              {}
-            ],
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 2,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quotation_author_in_example'}{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'quotation'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'authors'}[0] = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'};
+$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'quotation'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'authors'}[0] = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 
 $result_texis{'quotation_author_in_example'} = '@example
 @quotation 
@@ -190,7 +157,8 @@ A quot---ation
 ';
 
 
-$result_texts{'quotation_author_in_example'} = 'A quot---ation
+$result_texts{'quotation_author_in_example'} = 'Some One
+A quot---ation
 ';
 
 $result_errors{'quotation_author_in_example'} = [];
@@ -201,15 +169,15 @@ $result_floats{'quotation_author_in_example'} = {};
 
 
 $result_converted{'plaintext'}->{'quotation_author_in_example'} = '          A quot---ation
-                             -- _Some One_
+                             — _Some One_
 ';
 
 
 $result_converted{'html_text'}->{'quotation_author_in_example'} = '<div class="example">
-<blockquote>
-<pre class="example">A quot---ation
+<blockquote class="quotation">
+<pre class="example-preformatted">A quot---ation
 </pre></blockquote>
-<div align="center">--- <em>Some One</em>
+<div class="center">--- <em class="emph">Some One</em>
 </div></div>
 ';
 
@@ -226,5 +194,63 @@ A quot---ation
 $result_converted{'docbook'}->{'quotation_author_in_example'} = '<blockquote><attribution>Some One</attribution>
 <screen>A quot---ation
 </screen></blockquote>';
+
+
+$result_converted{'latex'}->{'quotation_author_in_example'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage[T1]{fontenc}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+\\usepackage[utf8]{inputenc}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+\\begin{Texinfoindented}
+\\begin{quote}
+\\begin{Texinfopreformatted}%
+\\ttfamily A quot{-}{-}{-}ation
+\\end{Texinfopreformatted}
+\\end{quote}
+\\begin{center}
+--- \\emph{Some One}
+\\end{center}
+\\end{Texinfoindented}
+\\end{document}
+';
 
 1;

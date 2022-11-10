@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,300 +10,223 @@ $result_trees{'invalid_U'} = {
     {
       'contents' => [
         {
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'z'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'abc'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '9999999999999'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '110000'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '10FFFF'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '0023'
-                }
-              ],
+              'cmdname' => 'U',
               'extra' => {
-                'spaces_after_argument' => ' ',
-                'spaces_before_argument' => ' '
+                'spaces' => ' '
               },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'FFFD'
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
+              'text' => ' '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'wxyz'
+                  'contents' => [
+                    {
+                      'text' => 'z'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' ',
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'U',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'abc'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '9999999999999'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '110000'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '10FFFF'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
 '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '0023'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' ',
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'FFFD'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'wxyz'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => ' ',
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'U',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[13]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[13];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[15]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[15];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[17]{'args'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[17];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[18]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
-$result_trees{'invalid_U'}{'contents'}[0]{'parent'} = $result_trees{'invalid_U'};
 
-$result_texis{'invalid_U'} = '@U@U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
+$result_texis{'invalid_U'} = '@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
 @U{ 0023 } @U{FFFD} @U{ wxyz }
 ';
 
@@ -314,7 +237,7 @@ $result_texts{'invalid_U'} = ' z abc 9999999999999 110000 10FFFF
 
 $result_errors{'invalid_U'} = [
   {
-    'error_line' => ':1: @U expected braces
+    'error_line' => '@U expected braces
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -323,7 +246,7 @@ $result_errors{'invalid_U'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: warning: no argument specified for @U
+    'error_line' => 'warning: no argument specified for @U
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -332,7 +255,7 @@ $result_errors{'invalid_U'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: non-hex digits in argument for @U: z
+    'error_line' => 'non-hex digits in argument for @U: z
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -341,7 +264,7 @@ $result_errors{'invalid_U'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: warning: fewer than four hex digits in argument for @U: abc
+    'error_line' => 'warning: fewer than four hex digits in argument for @U: abc
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -350,7 +273,7 @@ $result_errors{'invalid_U'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: argument for @U exceeds Unicode maximum 0x10FFFF: 9999999999999
+    'error_line' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 9999999999999
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -359,7 +282,7 @@ $result_errors{'invalid_U'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: argument for @U exceeds Unicode maximum 0x10FFFF: 110000
+    'error_line' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 110000
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -368,7 +291,7 @@ $result_errors{'invalid_U'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':2: non-hex digits in argument for @U: wxyz
+    'error_line' => 'non-hex digits in argument for @U: wxyz
 ',
     'file_name' => '',
     'line_nr' => 2,
@@ -397,13 +320,18 @@ $result_converted{'xml'}->{'invalid_U'} = '<para><U></U> <U>z</U> <U>abc</U> <U>
 </para>';
 
 
+$result_converted{'latex_text'}->{'invalid_U'} = ' U+z ઼ U+9999999999999 U+110000 U+10FFFF
+\\# � U+wxyz
+';
+
+
 $result_converted{'docbook'}->{'invalid_U'} = '<para> &#xz; &#xabc; &#x9999999999999; &#x110000; &#x10FFFF;
 &#x0023; &#xFFFD; &#xwxyz;
 </para>';
 
 $result_converted_errors{'docbook'}->{'invalid_U'} = [
   {
-    'error_line' => ':1: warning: no argument specified for @U
+    'error_line' => 'warning: no argument specified for @U
 ',
     'file_name' => '',
     'line_nr' => 1,

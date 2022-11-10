@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -54,6 +54,9 @@ my $anchor_in_titlepage_text =
 @top top
 @node Top
 
+@chapter Chapter
+@node nchap
+
 @xref{in titlepage}.
 ';
 
@@ -68,6 +71,8 @@ Copying.
 @end copying
 
 @node Top
+
+@node node
 
 @insertcopying
 
@@ -88,6 +93,8 @@ In footnote.
 
 @node Top
 
+@node node
+
 @insertcopying
 
 @insertcopying
@@ -99,13 +106,13 @@ In footnote.
 $format_in_titlepage_text
 ],
 ['format_in_titlepage_titlepage',
-$format_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
+$format_in_titlepage_text, {}, {'SHOW_TITLE' => 1}
 ],
 ['anchor_in_titlepage',
 $anchor_in_titlepage_text
 ],
 ['anchor_in_titlepage_titlepage',
-$anchor_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
+$anchor_in_titlepage_text, {}, {'SHOW_TITLE' => 1}
 ],
 ['ref_in_copying',
 '@copying
@@ -125,6 +132,27 @@ $anchor_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
 @chapter GFDL
 
 '],
+['ref_in_copying_insert_in_chapter',
+'@copying
+@ref{GFDL}
+@end copying
+
+@node Top
+@top top
+
+@node Intro
+@chapter Introduction
+
+@insertcopying
+
+@menu
+* GFDL::
+@end menu
+
+@node GFDL
+@section GFDL
+
+'],
 ['today_in_copying',
 '@copying
 @today{}.
@@ -133,6 +161,8 @@ $anchor_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
 @node Top
 @top top
 
+@node node
+
 @insertcopying
 ',{},{'TEST' => 1}],
 );
@@ -140,10 +170,8 @@ $anchor_in_titlepage_text, {}, {'USE_TITLEPAGE_FOR_TITLE' => 1}
 foreach my $test (@test_formatted) {
   push @{$test->[2]->{'test_formats'}}, 'info';
   push @{$test->[2]->{'test_formats'}}, 'html';
+  push @{$test->[2]->{'test_formats'}}, 'latex_text';
+  $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('regions', [@test_cases, @test_formatted], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('regions', [@test_cases, @test_formatted]);

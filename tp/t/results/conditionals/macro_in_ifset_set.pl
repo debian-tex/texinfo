@@ -1,191 +1,188 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'macro_in_ifset_set'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'a',
-          'type' => 'misc_arg'
-        },
-        {
-          'parent' => {},
-          'text' => '',
-          'type' => 'misc_arg'
-        }
-      ],
-      'cmdname' => 'set',
-      'extra' => {
-        'arg_line' => ' a
-',
-        'misc_args' => [
-          'a',
-          ''
-        ]
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'truc',
-          'type' => 'macro_name'
-        }
-      ],
-      'cmdname' => 'macro',
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'truc',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'last_raw_newline'
-        }
-      ],
-      'extra' => {
-        'arg_line' => ' truc {}
-'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'truc',
-          'type' => 'misc_arg'
-        }
-      ],
-      'cmdname' => 'unmacro',
-      'extra' => {
-        'arg_line' => ' truc
-',
-        'misc_args' => [
-          'truc'
-        ]
-      },
-      'parent' => {}
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => 'truc',
-          'type' => 'macro_name'
-        }
-      ],
-      'cmdname' => 'macro',
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'in ifset',
-          'type' => 'raw'
+          'type' => 'empty_line'
         },
         {
-          'parent' => {},
+          'args' => [
+            {
+              'text' => 'a',
+              'type' => 'misc_arg'
+            },
+            {
+              'text' => '',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'set',
+          'extra' => {
+            'arg_line' => ' a
+',
+            'misc_args' => [
+              'a',
+              ''
+            ]
+          }
+        },
+        {
           'text' => '
 ',
-          'type' => 'last_raw_newline'
-        }
-      ],
-      'extra' => {
-        'arg_line' => ' truc{}
-'
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
+          'type' => 'empty_line'
+        },
         {
-          'parent' => {},
-          'text' => 'in ifset
+          'args' => [
+            {
+              'text' => 'truc',
+              'type' => 'macro_name'
+            }
+          ],
+          'cmdname' => 'macro',
+          'contents' => [
+            {
+              'text' => 'truc
+',
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'macro'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'macro'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'arg_line' => ' truc {}
+'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => 'truc',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'unmacro',
+          'extra' => {
+            'arg_line' => ' truc
+',
+            'misc_args' => [
+              'truc'
+            ]
+          }
+        },
+        {
+          'args' => [
+            {
+              'text' => 'truc',
+              'type' => 'macro_name'
+            }
+          ],
+          'cmdname' => 'macro',
+          'contents' => [
+            {
+              'text' => 'in ifset
+',
+              'type' => 'raw'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'macro'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'macro'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'arg_line' => ' truc{}
+'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 10,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'in ifset
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'macro_in_ifset_set'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[1];
-$result_trees{'macro_in_ifset_set'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[1];
-$result_trees{'macro_in_ifset_set'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
-$result_trees{'macro_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
-$result_trees{'macro_in_ifset_set'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[3];
-$result_trees{'macro_in_ifset_set'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[4]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[5]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[6];
-$result_trees{'macro_in_ifset_set'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
-$result_trees{'macro_in_ifset_set'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
-$result_trees{'macro_in_ifset_set'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[7];
-$result_trees{'macro_in_ifset_set'}{'contents'}[7]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[8]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[9]{'parent'} = $result_trees{'macro_in_ifset_set'};
-$result_trees{'macro_in_ifset_set'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'macro_in_ifset_set'}{'contents'}[10];
-$result_trees{'macro_in_ifset_set'}{'contents'}[10]{'parent'} = $result_trees{'macro_in_ifset_set'};
 
 $result_texis{'macro_in_ifset_set'} = '
 @set a

@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -14,88 +14,81 @@ $result_trees{'top_node_up_implicit'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '\\input texinfo  @c public domain
 ',
-                  'type' => 'preamble_text'
+                  'type' => 'text_before_beginning'
                 }
               ],
-              'parent' => {},
-              'type' => 'preamble'
+              'type' => 'preamble_before_beginning'
             }
           ],
-          'parent' => {},
           'type' => 'preamble_before_setfilename'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'top_node_up_implicit'
+                  'contents' => [
+                    {
+                      'text' => 'top_node_up_implicit'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'top_node_up_implicit'
               },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'setfilename',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'top_node_up_implicit'
-          },
-          'line_nr' => {
-            'file_name' => 'top_node_up_implicit.texi',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'args' => [
+              'source_info' => {
+                'file_name' => 'top_node_up_implicit.texi',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
             {
-              'parent' => {},
-              'text' => ' should replace implicit Up.
+              'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'empty_line'
+            },
+            {
+              'args' => [
+                {
+                  'text' => ' should replace implicit Up.
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' should replace implicit Up.
+'
+                ]
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' should replace implicit Up.
-'
-            ]
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -103,12 +96,10 @@ $result_trees{'top_node_up_implicit'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -124,19 +115,17 @@ $result_trees{'top_node_up_implicit'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'top_node_up_implicit.texi',
         'line_nr' => 6,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'The top'
             }
           ],
@@ -144,14 +133,12 @@ $result_trees{'top_node_up_implicit'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -159,51 +146,44 @@ $result_trees{'top_node_up_implicit'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Just a top node.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
                 },
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'Chap'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'menu_entry_node'
                 },
                 {
-                  'parent' => {},
                   'text' => '::',
                   'type' => 'menu_entry_separator'
                 },
@@ -212,16 +192,13 @@ $result_trees{'top_node_up_implicit'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
                           'text' => '
 '
                         }
                       ],
-                      'parent' => {},
                       'type' => 'preformatted'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'menu_entry_description'
                 }
               ],
@@ -234,12 +211,11 @@ $result_trees{'top_node_up_implicit'} = {
                   'normalized' => 'Chap'
                 }
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'top_node_up_implicit.texi',
                 'line_nr' => 12,
                 'macro' => ''
               },
-              'parent' => {},
               'type' => 'menu_entry'
             },
             {
@@ -247,7 +223,6 @@ $result_trees{'top_node_up_implicit'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'menu'
                     }
                   ],
@@ -255,36 +230,28 @@ $result_trees{'top_node_up_implicit'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'menu',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'top_node_up_implicit.texi',
                 'line_nr' => 13,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => 'top_node_up_implicit.texi',
             'line_nr' => 11,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -293,20 +260,17 @@ $result_trees{'top_node_up_implicit'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'top_node_up_implicit.texi',
         'line_nr' => 7,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Chap'
             }
           ],
@@ -314,12 +278,10 @@ $result_trees{'top_node_up_implicit'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -335,19 +297,17 @@ $result_trees{'top_node_up_implicit'} = {
         'normalized' => 'Chap',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'top_node_up_implicit.texi',
         'line_nr' => 15,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'A chapter'
             }
           ],
@@ -355,14 +315,12 @@ $result_trees{'top_node_up_implicit'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -370,16 +328,13 @@ $result_trees{'top_node_up_implicit'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Without the chapter, no up node from top is generated.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -388,85 +343,31 @@ $result_trees{'top_node_up_implicit'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'top_node_up_implicit.texi',
         'line_nr' => 16,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'misc_arg'
         }
       ],
-      'cmdname' => 'bye',
-      'parent' => {}
+      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'};
-$result_trees{'top_node_up_implicit'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[1]{'args'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[1];
 $result_trees{'top_node_up_implicit'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_node_up_implicit'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_up_implicit'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_node_up_implicit'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[1]{'parent'} = $result_trees{'top_node_up_implicit'};
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'args'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[2];
-$result_trees{'top_node_up_implicit'}{'contents'}[2]{'parent'} = $result_trees{'top_node_up_implicit'};
-$result_trees{'top_node_up_implicit'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[3]{'args'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[3];
+$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[3];
+$result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'top_node_up_implicit'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'top_node_up_implicit'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'top_node_up_implicit'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_up_implicit'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_node_up_implicit'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[3]{'parent'} = $result_trees{'top_node_up_implicit'};
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[4]{'args'}[0];
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[4];
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[4];
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[4]{'contents'}[1];
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[4];
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[4];
-$result_trees{'top_node_up_implicit'}{'contents'}[4]{'parent'} = $result_trees{'top_node_up_implicit'};
-$result_trees{'top_node_up_implicit'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'top_node_up_implicit'}{'contents'}[5];
-$result_trees{'top_node_up_implicit'}{'contents'}[5]{'parent'} = $result_trees{'top_node_up_implicit'};
 
 $result_texis{'top_node_up_implicit'} = '\\input texinfo  @c public domain
 @setfilename top_node_up_implicit
@@ -508,120 +409,115 @@ Without the chapter, no up node from top is generated.
 ';
 
 $result_sectioning{'top_node_up_implicit'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            },
+            'structure' => {}
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_childs' => [
-        {
-          'cmdname' => 'chapter',
-          'extra' => {
-            'associated_node' => {
-              'cmdname' => 'node',
+        'structure' => {
+          'section_childs' => [
+            {
+              'cmdname' => 'chapter',
               'extra' => {
-                'normalized' => 'Chap',
-                'spaces_before_argument' => ' '
+                'associated_node' => {
+                  'cmdname' => 'node',
+                  'extra' => {
+                    'normalized' => 'Chap'
+                  },
+                  'structure' => {}
+                }
+              },
+              'structure' => {
+                'section_level' => 1,
+                'section_number' => 1,
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
               }
-            },
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 1,
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
+            }
+          ],
+          'section_level' => 0,
+          'section_up' => {}
         }
-      ],
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'top_node_up_implicit'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'top_node_up_implicit'}{'section_childs'}[0];
-$result_sectioning{'top_node_up_implicit'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'top_node_up_implicit'}{'section_childs'}[0];
-$result_sectioning{'top_node_up_implicit'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'top_node_up_implicit'}{'section_childs'}[0];
-$result_sectioning{'top_node_up_implicit'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'top_node_up_implicit'};
+$result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'top_node_up_implicit'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'top_node_up_implicit'};
 
 $result_nodes{'top_node_up_implicit'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
-  },
-  'menu_child' => {
-    'cmdname' => 'node',
-    'extra' => {
-      'associated_section' => {
-        'cmdname' => 'chapter',
-        'extra' => {
-          'spaces_before_argument' => ' '
-        },
-        'level' => 1,
-        'number' => 1
-      },
-      'normalized' => 'Chap',
-      'spaces_before_argument' => ' '
-    },
-    'node_prev' => {},
-    'node_up' => {}
-  },
-  'menus' => [
-    {
-      'cmdname' => 'menu',
-      'extra' => {
-        'end_command' => {
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'menu',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'menu'
-          }
-        }
+    'menus' => [
+      {
+        'cmdname' => 'menu'
       }
-    }
-  ],
-  'node_next' => {}
+    ],
+    'normalized' => 'Top'
+  },
+  'structure' => {
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'associated_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'structure' => {
+            'section_number' => 1
+          }
+        },
+        'normalized' => 'Chap'
+      },
+      'structure' => {
+        'node_prev' => {},
+        'node_up' => {}
+      }
+    },
+    'node_next' => {}
+  }
 };
-$result_nodes{'top_node_up_implicit'}{'menu_child'}{'node_prev'} = $result_nodes{'top_node_up_implicit'};
-$result_nodes{'top_node_up_implicit'}{'menu_child'}{'node_up'} = $result_nodes{'top_node_up_implicit'};
-$result_nodes{'top_node_up_implicit'}{'node_next'} = $result_nodes{'top_node_up_implicit'}{'menu_child'};
+$result_nodes{'top_node_up_implicit'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'top_node_up_implicit'};
+$result_nodes{'top_node_up_implicit'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'top_node_up_implicit'};
+$result_nodes{'top_node_up_implicit'}{'structure'}{'node_next'} = $result_nodes{'top_node_up_implicit'}{'structure'}{'menu_child'};
 
 $result_menus{'top_node_up_implicit'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   },
-  'menu_child' => {
-    'cmdname' => 'node',
-    'extra' => {
-      'normalized' => 'Chap',
-      'spaces_before_argument' => ' '
-    },
-    'menu_up' => {},
-    'menu_up_hash' => {
-      'Top' => 1
+  'structure' => {
+    'menu_child' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Chap'
+      },
+      'structure' => {
+        'menu_up' => {},
+        'menu_up_hash' => {
+          'Top' => 1
+        }
+      }
     }
   }
 };
-$result_menus{'top_node_up_implicit'}{'menu_child'}{'menu_up'} = $result_menus{'top_node_up_implicit'};
+$result_menus{'top_node_up_implicit'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'top_node_up_implicit'};
 
 $result_errors{'top_node_up_implicit'} = [];
 

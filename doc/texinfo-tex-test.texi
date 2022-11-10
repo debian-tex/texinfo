@@ -81,9 +81,9 @@ roman@sub{sub} @b{bold@sub{sub}}
 
 @section Acronyms
 
-Test of @acronym{ACRONYM}'s.  {ACRONYM}'s.
+Test of @acronym{ACRONYM}s.  {ACRONYM}s.
 
-@majorheading Test of @acronym{ACRONYM}'s.  ACRONYM's hippopotamus
+@majorheading Test of @acronym{ACRONYM}s.  ACRONYMs
 
 
 @chapter Glyph commands
@@ -117,6 +117,61 @@ third third third third third third third third third third
 third third third third third third third third third third
 
 (check no paragraph indent on first paragraph above, after image)
+
+@page
+
+Check page break occurs between example and image
+
+@example
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+line
+@end example
+
+
+@image{image}
 
 @paragraphindent 0
 
@@ -224,6 +279,16 @@ other spaces:@*
 @Mactwo{h \\, i \\}@*
 @Mactwo{h a, i b}@*
 
+
+@section Special characters in macro argument
+
+Braceless single line macro invocation with special characters.  Compare:
+
+@Mac "+<>^+|~@@@{@}
+
+A"+<>^+|~@@@{@}A
+
+
 @section Spaces in macro bodies
 
 Distance between the two x's should be the same
@@ -263,6 +328,7 @@ A@acronym{\x\}A
 
 AA
 
+@page
 @section Trailing newlines in macro bodies
 
 Output should be doubled:
@@ -1570,6 +1636,7 @@ See @ref{Target}.@*
 @copying
 This manual is for blah-de-blah.@*
 Backslash \@*
+Brace commands @{ @{ @}
 
 Copyrite @copyright{} 201X@*
 þ þ þ þ þ þ þ þ
@@ -1643,17 +1710,176 @@ right right right right right right right right
 @end multitable
 @end quotation
 
+@noindent With more columns:
+
+@quotation
+@multitable {@w{@code{português} or}} {@code{do} @code{re}/@code{re} @code{mi} @code{fa} @code{sol} @code{la} @code{sib} @code{si}}
+@item @code{català} or@*@ @code{catalan}
+  @tab @code{do} @code{re} @code{mi} @code{fa} @code{sol} @code{la} @code{sib} @code{si}
+@end multitable
+@end quotation
+
 after after after after after after after after
 after after after after after after after after
 after after after after after after after after
 after after after after after after after after
 
+in @t{@@raggedright} (check warnings re @samp{Underful \hbox} etc.):
+
+@raggedright
+@multitable @columnfractions 0.2 0.2 0.2
+@item foofoo foofoo foofoo foofoo
+  @tab barbar barbar barbar barbar
+  @tab bazbaz bazbaz bazbaz bazbaz
+@end multitable
+@end raggedright
+
+
+@section @code{@@cartouche}
+
+check right margin lines up
+
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+
+@cartouche
+@math{@var{foo}\over@var{bar}} finds the quotient of @var{foo} by
+@var{bar}.  @math{\sqrt{@var{radicand}}} finds the square root of
+@var{radicand}.
+@end cartouche
+
+@noindent
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+
+@quotation
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+
+@cartouche
+@math{@var{foo}\over@var{bar}} finds the quotient of @var{foo} by
+@var{bar}.  @math{\sqrt{@var{radicand}}} finds the square root of
+@var{radicand}.
+@end cartouche
+
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+@end quotation
+
+
+
+
+@section Definitions
+
+Check that spacing does not vary after the `?'@: punctuation on the
+definition line, but spacing does vary inside the definition body and
+afterwards.
+
+@defun foo bar? bar bar
+@defunx foo bar?@: bar bar
+a. b@*
+a.@: b
+@end defun
+
+@noindent
+a. b@*
+a.@: b
+
+@defun foo bar?@: bar bar
+a. b@*
+a.@: b
+@end defun
+
+Check explicit bold with @code{@@r@{@@b@{...} on def line
+
+@defun foo @r{@b{&rest}} (b(sdf)az)
+hello 
+@end defun
+
+Check typewriter [ and ] on def line with @code{@@t}:
+
+@defun foo @t{\f[}font@t{]}
+Do something depending on @var{font}.
+@end defun
+
+With @code{@@deftypefnnewline}
+
+@deftypefnnewline on
+
+@deftypefn {Functionoid} {long int} foo (int @var{bar})
+@dots{} do something with @var{bar}
+@end deftypefn
+
+With @code{@@set txidefnamenospace}
+
+@deftypefnnewline off
+@set txidefnamenospace
+
+@deftypefn {Functionoid} {long int} foo2 (int @var{bar})
+@dots{} do something with @var{bar}
+@end deftypefn
+
+
+
+
+@chapter Style commands
+
+@code{@@var} should reset space factor, while
+@code{@@dfn} doesn't, so second line should have slightly larger space.
+
+@var{Stop.} Following text.
+
+@dfn{Stop.} Following text.
+
+@section Code quote
+
+@code{`foo'}
+
+@codequoteundirected on
+@codequotebacktick on
+
+@code{`foo'}
+
+@codequoteundirected off
+@codequotebacktick off
+
+@code{`foo'}
 
 
 
 
 
 @chapter Document encoding
+
 
 @documentencoding UTF-8
 

@@ -1,4 +1,4 @@
-This is the todo list for the Texinfo::Parser implementation.
+This is the todo list for texi2any
 
   Copyright 2012, 2013, 2014, 2015 Free Software Foundation.
 
@@ -6,31 +6,54 @@ This is the todo list for the Texinfo::Parser implementation.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
-xmllint --nonet --noout --valid commands.xml
-
 
 Before next release
 ===================
 
-
 Bugs
 ====
 
+HTML API
+========
 
-Profiling
-=========
+Issues
+------
 
-profiling: package on debian:
-libdevel-nytprof-perl
-In doc:
-perl -d:NYTProf ../tp/texi2any.pl texinfo.texi
-nytprofhtml --open
-# firefox nytprof/index.html
+Some private function used in conversion
+ _convert_informative_command
+  _translate_names
+ _convert_printindex_command
+  _new_document_context
+
+
+Missing documentation
+=====================
+
+Tree documentation in ParserNonXS.pm
+------------------------------------
+
+replaced, elided, elided_block types.
+
+'extra'->'file' in replaced @include.
+extra->'comment_at_end'
+likely in many line commands
+
+Other
+-----
+
+For converter writers,
+'output_init_conf' and 'converter_init_conf'.
+
+'translated_commands' in converters is not documented anywhere nor is there
+a clean way to set it from user code with an API.  Not urgent, as long as
+it is not possible for users to register translated strings and provide with
+translations.
 
 
 Delayed bugs
 ============
+
+See message/thread from Reißner Ernst: Feature request: api docs
 
 In @inline* ignore arguments, @value and user macros should not be
 expanded.  For example
@@ -45,44 +68,55 @@ In Plaintext, @quotation text should have the right margin narrowed.
 
 Text after @bye should be kept as is when redoing Texinfo.
 
-@-commands in index entries are transliterated when sorting, they should
-certainly be converted to unicode instead.
-
-Sorting of index entries should be locale dependent and sort properly
-unicode sorting.
-my $collator = Unicode::Collate::Locale->new('locale' => $locale_name, 'normalization' => 'NFKD')
+Sorting of index entries should be language dependent and sort properly
+unicode sorting.  Unicode::Collate has been in perl core long enough, but
+Unicode::Collate::Locale is present since perl major version 5.14 only,
+released in 2011.  So probably better to use Unicode::Collate until 2031
+(and if documentlanguage is not set) and switch to Unicode::Collate::Locale
+at this date.
+my $collator = Unicode::Collate::Locale->new('locale' => $documentlanguage, 'normalization' => 'NFKD')
 @sorted = $collator->sort(@not_sorted);
 
-Currently there is no error for something like 
 
-  @chapter @code{@anchor{TTO}}
+in hyphenation: only text and accent commands, and should
+only appear in toplevel.  Not the only command with only
+text and accent commands, there is a FIXME in Common.pm.
 
-there should be an error as for the following construct:
 
-  @chapter @anchor{TTez}
+Some dubious nesting could be warned against.  The parsers context
+command stacks could be used for that.
 
-This would certainly imply adding, on top of the 'context_stack', a 
-stack of opened @-commands (although maybe not every @-commands?).  This 
-would allow to catch many other dubious nesting, such as @table in @menu, 
-@caption in @caption and also would certainly allow to handle the 2 cases 
-below.  This should, however, slow down the computation even more.
+Some erroneous constructs not already warned against:
 
-maybe checking for incorrectly nested @titlepage, @copying and 
-@documentdescription (which is already done in the "regions stack") 
+ @chapter @code{@anchor{TTO}}
+
+ @chapter @anchor{TTez}
+
+ @table in @menu
+
+ @caption in @caption
+
+ nested footnotes
+
+ @example
+ @heading A heading
+ @end example
+ Example in heading/heading_in_example.
+
+ @group outside of @example  (maybe there is no need for command stack for
+                              this one if @group can only appear directly
+                              in @example).
+
+maybe checking for incorrectly nested @titlepage, @copying and
+@documentdescription (which is already done in the "regions stack")
 could be done the same way.
 
-warn nested footnotes.
 
-Following should be an error:
-@example
-@heading A heading
-@end example
-Example in heading/heading_in_example.
+There is no warning with a block command between @def* and @def*x,
+only for paragraph.  Not sure that this can be detected with
+the context command stack.
 
-Similar, but not exactly the same issue, there is no warning with a
-block command between @def* and @def*x, only for paragraph.
-
- @defun a b c d e f 
+ @defun a b c d e f
 
  @itemize @minus
  truc
@@ -100,8 +134,9 @@ In fact @image is completly formatted outside of usual formatting containers.
 Not sure what should be the right way?
 test in info_test/image_and_punctuation
 
-There should be a warning for something like
-@example text
+There should be a warning for block commands without argument
+that have an argument on their line, like:
+@blockcmd text
 ...
 
 Image on sectioning command line haven't their length ignored correctly.
@@ -109,7 +144,7 @@ Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
 
 warn when a @noindent/@indent appears within a paragraph.
 
-in info_tests/error_in_footnote there is an error message for each 
+in info_tests/error_in_footnote there is an error message for each
 listoffloats;  Line numbers are right, though, so maybe this is not
 an issue.
 
@@ -122,6 +157,42 @@ marksource to proceed.
  https://bugzilla.redhat.com/show_bug.cgi?id=744878
 
 
+Some @-commands do not have an element with a class associated, or the
+association is not perfect.  There is @author in @quotation, @-command
+affected by @definfoenclose.  @pxref and similar @-commands have no class
+for references to external nodes, and don't have the 'See ' in the
+element for references to internal nodes.  In general, it is because
+gdt() is used instead of direct HTML.
+
+
+HTML5 validation tidy errors that do not need fixing
+----------------------------------------------------
+
+# to get only errors:
+tidy -qe *.html
+
+Some can also be validation errors in other HTML versions.
+
+missing </a> before <a>
+discarding unexpected </a>
+nested <a> which happens for @url in @xref, which is valid Texinfo.
+
+Warning: <a> anchor "..." already defined
+Should only happen with multiple insertcopying.
+
+Warning: trimming empty <code>
+Normally happens only for invalid Texinfo, missing @def* name, empty
+@def* line...
+
+<td> attribute "width" not allowed for HTML5
+<th> attribute "width" not allowed for HTML5
+These attributes are obsolete (though the elements are 
+still part of the language), and must not be used by authors.
+The CSS replacement would be style="width: 40%".
+However, width is kept as an attribute in texi2nay output and not
+as CSS because it is not style, but table or even line specific formatting.
+
+
 Missing tests
 =============
 
@@ -131,19 +202,28 @@ to a possible test of CASE_INSENSITIVE_FILENAMES.
 
 Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
 
-In html test empty @top for title, with different cases for 
-setcontentsaftertit* and for anchors.
-
-Test @sc{@aa{}} and @sc{@'e} in HTML with 8bit and utf8, with and without
-enable encoding and entities.
-
-in html test footnotestyle separate.  There are such tests in tp/tests,
-maybe they are sufficient, but they are only done for long checks.
-
 anchor in flushright, on an empty line, with a current byte offset.
+
 
 Future features
 ===============
+
+Add in_math (for /) as flag in command_data.txt?
+
+
+From Gavin on the preamble_before_beginning implementation:
+Another way might be to add special input code to trim off and return
+a file prelude.  This would moves the handling of this from the "parser" code
+to the "input" code.  This would avoid the problematic "pushing back" of input
+and would be a clean way of doing this.  It would isolate the handling of
+the "\input" line from the other parsing code.
+
+I understand that the main purpose of the preamble_before_beginning element
+is not to lose information so that the original Texinfo file could be
+regenerated.  If that's the case, maybe the input code could return
+all the text in this preamble as one long string - it wouldn't have to be
+line by line.
+
 
 Update Unicode-EastAsianWidth.  The new version has improved tests
 and a new license, but no functional change.  So maybe wait a
@@ -152,8 +232,10 @@ bit to update.
 Add some elements of texinfo that are not of interest in the
 tree, like beginning and end of included file, @ protecting
 end of line in @def*, begin and end of user defined macro
-or value expansion.  Maybe call the key for these elements
-'sourcemark'?
+or value expansion.  For @include @-commands, which are kept,
+the type is set to 'replaced'.  Could add 'sourcemark'
+instead of 'type' for the marks that are not associated with
+@-commands.
 
 In a similar way, keep the information about aliases in the tree?
 And about @setfilename in included files which is for now completly
@@ -161,23 +243,249 @@ removed (consistently with documentation).
 
 Right now VERBOSE is almost not used.
 
-Handle better @exdent in html? (there is a FIXME in the code)
+Should we warn if output is on STDOUT and OUTPUT_ENCODING_NAME != MESSAGE_OUTPUT_ENCODING_NAME?
 
-Check the design of the HTML.pm API.  Document the API, in particular
-everything in Texinfo::Config.  Add an API for everything used in the 
-default functions, for example in page_head, use $self->title_string() 
-and so on and so forth.  
-Functions to document for HTML API (many more are missing!):
-sectioning_command_target_name
-node_target_name
+Handle better @exdent in html? (there is a FIXME in the code)
 
 Implement what is proposed in HTML Cross Reference Mismatch.
 
-Protection of punctuation in nodes.
-in @ref. First : is searched.  if followed by a : the node name is found
-and there is no label. When parsing a node a filename with ( is searched for.
-Nested parentheses are taken into account.
-Then more parentheses?
+For plaintext, implement an effect of NO_TOP_NODE_OUTPUT
+* if true, output some title, possibly based on titlepage
+  and do not output the Top node.
+* if false, current output is ok
+Default is false.
+
+
+DocBook
+-------
+
+  deftypevr, deftypecv: use type and not returnvalue for the type
+
+  also informalfigure in @float
+
+  also use informaltable or table, for multitable?
+
+  Add an @abstract command or similar to Texinfo?
+  And put in DocBook <abstract>?  Beware that DocBook abstract is quite
+  limited in term of content, only a title and paragraphs.  Although block
+  commands can be in paragraphs in DocBook, it is not the case for Texinfo,
+  so it would be very limited.
+
+  what about @titlefont in docbook?
+
+  maybe use simpara instead of para. Indeed, simpara is for paragraph without
+  block element within, and it should be that way in generated output.
+
+* in docbook, when there is only one section <article> should be better
+  than book. Maybe the best way to do that would be passing the
+  information that there is only one section to the functions formatting
+  the page header and page footer.
+
+  there is a mark= attribute for itemizedlist element for the initial mark
+  of each item but the standard "does not specify a set of appropriate keywords"
+  so it cannot be used.
+
+
+Manual tests
+============
+
+Some tests are interesting but are not in the test suite for various
+reasons.  It is not really expected to have much regressions with these
+tests.  They are shown here for information.  It was up to date in
+March 2022, it may drift away as tests files names or content change.
+
+
+Tests in non utf8 locale
+------------------------
+
+In practice these tests were tested in latin1.  They are not
+in the may test suite because a latin1 locale cannot be expected
+to be present reliably.
+
+Tests with correct or acceptable results
+****************************************
+
+t/formats_encodings.t manual_simple_utf8_with_error
+utf8 manual with errors involving non ascii strings
+./texi2any.pl ./t/input_files/manual_simple_utf8_with_error.texi
+
+t/formats_encodings.t manual_simple_latin1_with_error
+latin1 manual with errors involving non ascii strings
+./texi2any.pl ./t/input_files/manual_simple_latin1_with_error.texi
+
+tests/formatting cpp_lines
+CPP directive with non ascii characters, utf8 manual
+./texi2any.pl -I ./t/include/ ./t/input_files/cpp_lines.texi
+accentÃªd:7: warning: làng is not a valid language code
+The file is UTF-8 encoded, the @documentencoding is obeyed which leads
+in the Parser, to an UTF-8 encoding of include file name, and not to the latin1
+encoding which should be used for the output messages encoding.
+This output is by (Gavin) design.
+
+many_input_files/output_dir_file_non_ascii.sh
+non ascii output directory, utf8 manual
+./texi2any.pl -o encodé/ ./t/input_files/simplest.texi
+
+test of non ascii included file name in utf8 locale is already in formatting:
+formatting/osé_utf8.texi:@include included_akçentêd.texi
+./texi2any.pl --force -I tests/ tests/formatting/os*_utf8.texi
+The file name is utf-8 encoded in messages, which is expected as we do not
+decode/encode file names from the command line for messages
+osÃ©_utf8.texi:15: warning: undefined flag: vùr
+
+t/80include.t cpp_line_latin1
+CPP directive with non ascii characters, latin1 manual
+./texi2any.pl --force ./t/input_files/cpp_line_latin1.texi
+
+Issue to add 'tests/included_lat'$'\356''n1.texi' in make dist
+tests/formatting manual_include_accented_file_name_latin1
+./texi2any.pl --force -I tests/ tests/formatting/manual_include_accented_file_name_latin1.texi
+
+latin1 encoded and latex2html in latin1 locale
+./texi2any.pl --html --init ext/latex2html.pm tests/tex_html/tex_encode_latin1.texi
+
+latin1 encoded and tex4ht in latin1 locale
+./texi2any.pl --html --init ext/tex4ht.pm tests/tex_html/tex_encode_latin1.texi
+
+cp -p tests/tex_html/tex_encode_latin1.texi tex_encodé_latin1.texi
+./texi2any.pl --html --init ext/tex4ht.pm tex_encodé_latin1.texi
+Firefox can't find tex_encod%uFFFD_latin1_html/Chapter.html (?)
+Opened from within the directory, still can't find the image file:
+tex_encod%E9_latin1_html/tex_encod%C3%A9_latin1_tex4ht_tex0x.png
+The file names and file contents looks right, though, with latin1 only
+encoded characters.
+
+epub for utf8 encoded manual in latin1 locale
+./texi2any.pl --force -I tests/ --init ext/epub3.pm tests/formatting/os*_utf8.texi
+
+epub for latin1 encoded manual in latin1 locale
+cp tests/tex_html/tex_encode_latin1.texi tex_encodé_latin1.texi
+./texi2any.pl --init ext/epub3.pm tex_encodé_latin1.texi
+
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8.texi
+output file name is in latin1, but the encoding inside is utf8 consistent
+with the document encoding.
+
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8_no_setfilename.texi
+output file name is utf8 because the utf8 encoded input file name
+is decoded using the locale latin1 encoding keeping the 8bit characters
+from the utf8 encoding, and the encoding inside is utf8
+consistent with the document encoding.
+
+./texi2any.pl --force -I tests/ -o encodé/raw.txt -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8.texi
+encodé/raw.txt file name encoded in latin1, and the encoding inside is utf8
+consistent with the document encoding.
+
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext -c 'SUBDIR=subdîr' tests/formatting/os*_utf8.texi
+subdîr/osé_utf8.txt file name encoded in latin1, and the encoding inside is utf8
+consistent with the document encoding.
+
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o résultat/encodé.txt ./t/input_files/simplest_no_node_section.texi
+résultat/encodé.txt file name encoded in latin1.
+
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o char_latin1_latin1_in_refs_tree.txt ./t/input_files/char_latin1_latin1_in_refs.texi
+char_latin1_latin1_in_refs_tree.txt content encoded in latin1
+
+utf8 encoded manual name and latex2html in latin1 locale
+./texi2any.pl --verbose -c 'COMMAND_LINE_ENCODING=utf-8' --html --init ext/latex2html.pm -c 'L2H_CLEAN 0' tests/tex_html/tex_encod*_utf8.texi
+COMMAND_LINE_ENCODING=utf-8 is required in order to have the
+input file name correctly decoded as document_name which is used
+in init file to set the file names.
+
+latin1 encoded manual name and latex2html in latin1 locale
+cp tests/tex_html/tex_encode_latin1.texi tex_encodé_latin1.texi
+./texi2any.pl -c 'L2H_CLEAN 0' --html --init ext/latex2html.pm tex_encodé_latin1.texi
+
+Tests with incorrect results, though not bugs
+*********************************************
+
+utf8 encoded manual name and latex2html in latin1 locale
+./texi2any.pl --html --init ext/latex2html.pm -c 'L2H_CLEAN 0' tests/tex_html/tex_encod*_utf8.texi
+No error, but the file names are like
+ tex_encodÃ©_utf8_html/tex_encodÃ'$'\203''Â©_utf8_l2h.html
+That's in particular because the document_name is incorrect because it is
+decoded as if it was latin1.
+
+utf8 encoded manual name and tex4ht in latin1 locale
+./texi2any.pl --html --init ext/tex4ht.pm tests/tex_html/tex_encod*_utf8.texi
+html file generated by tex4ht with content="text/html; charset=iso-8859-1">,
+with character encoded in utf8 <img src="tex_encodÃ©_utf8_tex4ht_tex0x.png" ...>
+firefox opens tex_encodÃ©_utf8_html/Chapter.html but does not find the image
+and shows a path like tex_encodé_utf8_html/tex_encodÃ©_utf8_tex4ht_tex0x.png
+mixing latin1 and utf8.
+
+
+Tests in utf8 locales
+---------------------
+
+The archive epub file is not tested in the automated tests.
+
+epub for utf8 encoded manual in utf8 locale
+./texi2any.pl --force -I tests/ --init ext/epub3.pm tests/formatting/osé_utf8.texi
+
+The following tests require latin1 encoded file names.  Note that it
+could be done automatically now with
+tp/maintain/copy_change_file_name_encoding.pl.
+However, there is already a test with an include file in latin1, it
+is enough.
+./texi2any.pl tex_encod*_latin1.texi
+
+The following tests not important enough to have regression test
+./texi2any.pl --force -I tests/ -o encodé/raw.txt -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext -c 'SUBDIR=subdîr' tests/formatting/os*_utf8.texi
+
+Test more interesting in non utf8 locale
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o résultat/encodé.txt ./t/input_files/simplest_no_node_section.texi
+résultat/encodé.txt file name encoded in utf8
+
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o char_latin1_latin1_in_refs_tree.txt ./t/input_files/char_latin1_latin1_in_refs.texi
+char_latin1_latin1_in_refs_tree.txt content encoded in latin1
+
+
+Notes
+=====
+
+In january 2022 the classes in HTML elements were normalized.  There are no
+rules, but here is descriptions of the choices made at that time in case one
+want to use the same conventions.  The objective was to have the link between
+@-commands and classes easy to understand, avoid ambiguities, and have ways to
+style most of the output.
+
+The class names without hyphen were only used for @-commands, with one
+class attribute on an element maximum for each @-command appearing in the
+Texinfo source.  It was also attempted to have such a class for all
+the @-commands with an effect on output, though the coverage was not perfect,
+sometime it is not easy to select an element that would correspond to the
+most logical association with the @-command (case of @*ref @-commands with
+both a <cite> and a <a href> for example).
+
+Class names <command>-* with <command> a Texinfo @-command name were
+only used for classes marking elements within an @-command but in other
+elements that the main element for that @-command, in general sub elements.
+For example, a @flushright lead to a <div class="flushright"> where the
+@flushright command is and to <p class="flushright-paragraph"> for the
+paragraphs within the @flushright.
+
+Class names *-<command> with <command> a Texinfo @-command name were
+reserved for uses related to @-command <command>.  For example
+classes like summary-letter-printindex, cp-entries-printindex or
+cp-letters-header-printindex for the different parts of the @printindex
+formatting.
+
+def- and -def are used for classes related to @def*, in general without
+the specific command name used.
+
+For the classes not associated with @-commands, the names were selected to
+correspond to the role in the document rather than to the formatting style.
+
+
+Notes on protection of punctuation in nodes (done)
+==================================================
+
+This is implemented, in tp/Texinfo/Transformations.pm in _new_node for
+Texinfo generation, and in Info with INFO_SPECIAL_CHARS_QUOTE.  *[nN]ote
+is not protected, though, but it is not clear it would be right to do.
+There is a warning with @strong{note...}.
 
 Automatic generation of node names from section names.  To be protected:
 * in every case
@@ -194,10 +502,14 @@ Automatic generation of node names from section names.  To be protected:
 
 In Info
 
+in cross-references. First : is searched.  if followed by a : the node
+name is found and there is no label. When parsing a node a filename
+with ( is searched for.  Nested parentheses are taken into account.
+
 Nodes:
-* in every case 
+* in every case
   ( at the beginning
-* in Node line 
+* in Node line
   commas
 * In menu entry and *Note
   * if there is a label
@@ -205,68 +517,31 @@ Nodes:
   * if there is no label
     :
 
-Labels in Info (which also means index entries)
+Labels in Info (not index entries, in index entries the last : not in
+                a uoted node should be used to determine the end of the
+                index entry).
   :
 
 * at the beginning of a line in a @menu
 *note more or less everywhere
 
 
-DocBook
-=======
-
-  deftypevr, deftypecv: use type and not returnvalue for the type
-
-  also informalfigure in @float
-
-  also use informaltable or table, for multitable?
-
-  What is before the first sectioning command is put in <bookinfo><abstract>.
-
-  what about @titlefont in docbook?
-
-  maybe use simpara instead of para. Indeed, simpara is for paragraph without
-  block element within, and it should be that way in generated output.
-
-  put <title> in <articleinfo>?
-
-* in docbook, when there is only one section <article> should be better
-  than book. Maybe the best way to do that would be passing the
-  information that there is only one section to the functions formatting
-  the page header and page footer.
-
-
 Interrogations and remarks
 ==========================
 
-Instead of _set_global_multiple_commands and _unset_global_multiple_commands
-have a better granularity and do something per command, with the possibility
-to really revert everything, including things that are not set by set_conf.
-(There is a FIXME in the code).  This is not that important, now that the 
-actual case that was problematic (setting encodings as a side effect of 
-setting @documentencoding) is not supported anymore.  (Now the encoding is
-set at the initialization of the converter and should be changed by setting
-the correct customization variable, in general OUTPUT_ENCODING_NAME).
-
-Should more Converter ignore the last new line (with type 
+Should more Converter ignore the last new line (with type
 last_raw_newline) of a raw block format?
 
-In a first step, close when the the command to be closed is at the 
-top of the tree, not when it should be closed theoretically.
-Then it could be possible to come back to the place where the command
-should be closed and give an error message.
-This is certainly only an issue for @footnote and similar not a general issue.
-
 There is no forward looking code anymore, so maybe a lex/yacc parser
-could be used for the main loop.  More simply, a binary tokenizer, at 
+could be used for the main loop.  More simply, a binary tokenizer, at
 least, could make for a notable speedup.
 
 def/end_of_lines_protected_in_footnote.pl the footnote is
    (1)  -- category: deffn_name arguments arg2 more args with end of line
-and not 
+and not
    (1)
  -- category: deffn_name arguments arg2 more args with end of line
-It happens this way because the paragraph starts right after the footnote 
+It happens this way because the paragraph starts right after the footnote
 number.
 
 in HTML, the argument of a quotation is ignored if the quotation is empty,
@@ -276,21 +551,14 @@ as in
 Is it really a bug?
 
 In @copying things like some raw formats may be expanded.  However it is
-not clear that it should be the same than in the main converter.  Maybe a 
+not clear that it should be the same than in the main converter.  Maybe a
 specific list of formats could be passed to Convert::Text::convert, which
 would be different (for example Info and Plaintext even if converting HTML).
 This requires a test, to begin with.
 
-Use INLINE_INSERTCOPYING as the default for some formats?
-
 In HTML, HEADERS is used.  But not in other modules, especially not in
 Plaintext.pm or Info.pm, this is determined by the module used (Plaintext.pm
 or Info.pm).  No idea whether it is right or wrong.
-
-in hyphenation: only text and accent commands, and should
-only appear in toplevel
-
-use definfoenclose information in Convert::Text?
 
 From vincent Belaïche. About svg image files in HTML:
 
@@ -316,24 +584,21 @@ The @FIGURE @macro is, for html:
 
 Add @value to the corresponding commands categories?
 
-tests .init file not relevant since indices cannot be split anymore
-indices/index_test.init     
-
-Use of specialized synopsis in DocBook is not a priority and it is not even 
+Use of specialized synopsis in DocBook is not a priority and it is not even
 obvious that it is interesting to do so.  The following notes explain the
 possibilities and issues extensively.
 
-Instead of synopsis it might seem to be relevant to use specialized synopsis, 
-funcsynopsis/funcprototype for deftype* and some def*, and other for object 
+Instead of synopsis it might seem to be relevant to use specialized synopsis,
+funcsynopsis/funcprototype for deftype* and some def*, and other for object
 oriented.  There are many issues such that this possibility do not appear
 appealing at all.
 
-1) there is no possibility to have a category.  So the category must be 
+1) there is no possibility to have a category.  So the category must be
    added somewhere as a role= or in the *synopsisinfo, or this should only
    be used for specialized @def, like @defun.
 
 2) @defmethod and @deftypemethod cannot really be mapped to methodsynopsis
-   as the class name is not associated with the method as in Texinfo, but 
+   as the class name is not associated with the method as in Texinfo, but
    instead  the method should be in a class in docbook.
 
 3) From the docbook reference for funcsynopsis
@@ -349,7 +614,7 @@ appealing at all.
   See also the mails from Per Bothner bug-texinfo, Sun, 22 Jul 2012 01:45:54.
 
 specialized @def, without a need for category:
-@defun and @deftypefun 
+@defun and @deftypefun
 <funcsynopsis><funcprototype><funcdef>TYPE <function>NAME</function><paramdef><parameter>args</parameter></paramdef></funcprototype></funcsynopsis>
 
 specialized @def, without a need for category, but without DocBook synopsis
@@ -360,7 +625,7 @@ is not available
 is not available
 
 Generic @def with a need for a category
-For deffn deftypefn (and defmac?, defspec?), the possibilities of 
+For deffn deftypefn (and defmac?, defspec?), the possibilities of
 funcsynopsis, with a category added could be used:
   <funcsynopsis><funcprototype><funcdef role=...>TYPE <function>NAME</function></funcdef><paramdef>PARAMTYPE <parameter>PARAM</parameter></paramdef></funcprototype></funcsynopsis>
 
@@ -373,7 +638,7 @@ is not available
 defcv, deftypecv: fieldsynopsis cannot be used since the class
 is not available
 
-Remaining @def without DocBook synopsis because there is no equivalent, 
+Remaining @def without DocBook synopsis because there is no equivalent,
 and requires a category
 defvr (defvar, defopt), deftypevr (deftypevar)
 deftp
@@ -383,7 +648,7 @@ deftp
 Missing test outputs as files in t/
 ===================================
 
-output files split (node or not split) could be interesting +texi2html 
+output files split (node or not split) could be interesting +texi2html
 style for some tests.  However, the test suite is already too long to
 run so such additions should be done with caution.
 
@@ -395,7 +660,7 @@ t/30sectioning.t
  character_and_spaces_in_refs
  character_and_spaces_in_node
  some_at_commands_in_ref_nodes
- at_commands_in_refs  
+ at_commands_in_refs
  character_and_spaces_in_refs <- mono/chapter
  rec_nodes (with USE_NODES and without)
  loop_nodes?
@@ -417,3 +682,32 @@ t/30sectioning.t
 
 t/info_tests.t
  space_in_setfilename
+
+
+Misc notes
+==========
+
+export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
+xmllint --nonet --noout --valid commands.xml
+
+tidy -qe *.html
+
+profiling: package on debian:
+libdevel-nytprof-perl
+In doc:
+perl -d:NYTProf ../tp/texi2any.pl texinfo.texi
+nytprofhtml
+# firefox nytprof/index.html
+
+Test with 8bit locale:
+export LANG=fr_FR; export LANGUAGE=fr_FR; export LC_ALL=fr_FR
+xterm &
+
+convert to pdf from docbook
+xsltproc -o intermediate-fo-file.fo /usr/share/xml/docbook/stylesheet/docbook-xsl/fo/docbook.xsl texinfo.xml
+fop -r -pdf texinfo-dbk.pdf -fo intermediate-fo-file.fo
+
+dblatex -o texinfo-dblatex.pdf texinfo.xml
+
+Open a specific info file in Emacs Info reader: C-u C-h i
+

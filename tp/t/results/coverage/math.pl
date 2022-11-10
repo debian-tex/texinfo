@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,218 +10,84 @@ $result_trees{'math'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Simple math
-'
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '--'
-                },
+              'text' => 'Simple math
+'
+            },
+            {
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'x^i'
-                    }
-                  ],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {},
-                  'type' => 'bracketed'
-                },
-                {
-                  'parent' => {},
-                  'text' => '\\over'
-                },
-                {
-                  'contents' => [
+                      'text' => '--'
+                    },
                     {
-                      'parent' => {},
-                      'text' => '\\tan y'
+                      'contents' => [
+                        {
+                          'text' => 'x^i'
+                        }
+                      ],
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed'
+                    },
+                    {
+                      'text' => '\\over'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => '\\tan y'
+                        }
+                      ],
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed'
                     }
                   ],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'parent' => {},
-                  'type' => 'bracketed'
+                  'type' => 'brace_command_context'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_context'
+              'cmdname' => 'math',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'math',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Math with '
+          'type' => 'empty_line'
         },
         {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '-command
-'
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'math code'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'code',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' a < b \\sum'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'i'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'sub',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' q'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => '2'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'sup',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_context'
-            }
-          ],
-          'cmdname' => 'math',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Complex
-'
-        },
-        {
-          'args' => [
+              'text' => 'Math with '
+            },
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '\\underline'
-                },
+              'cmdname' => '@'
+            },
+            {
+              'text' => '-command
+'
+            },
+            {
+              'args' => [
                 {
                   'contents' => [
                     {
@@ -229,308 +95,298 @@ $result_trees{'math'} = {
                         {
                           'contents' => [
                             {
-                              'parent' => {},
-                              'text' => 'math \\hbox'
-                            },
-                            {
-                              'contents' => [
-                                {
-                                  'parent' => {},
-                                  'text' => ' code '
-                                }
-                              ],
-                              'line_nr' => {
-                                'file_name' => '',
-                                'line_nr' => 8,
-                                'macro' => ''
-                              },
-                              'parent' => {},
-                              'type' => 'bracketed'
+                              'text' => 'math code'
                             }
                           ],
-                          'parent' => {},
                           'type' => 'brace_command_arg'
                         }
                       ],
                       'cmdname' => 'code',
-                      'contents' => [],
-                      'line_nr' => {
+                      'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 8,
+                        'line_nr' => 5,
                         'macro' => ''
-                      },
-                      'parent' => {}
+                      }
+                    },
+                    {
+                      'text' => ' a < b \\sum'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'i'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'sub',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => ' q'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => '2'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'sup',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 5,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
-                  },
-                  'parent' => {},
-                  'type' => 'bracketed'
-                },
-                {
-                  'parent' => {},
-                  'text' => ' '
-                },
-                {
-                  'cmdname' => '\\',
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => 'i \\sum_'
-                },
+                  'type' => 'brace_command_context'
+                }
+              ],
+              'cmdname' => 'math',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Complex
+'
+            },
+            {
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'i'
-                    }
-                  ],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
-                  },
-                  'parent' => {},
-                  'type' => 'bracketed'
-                },
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
                       'text' => '\\underline'
                     },
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => 'f'
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'math \\hbox'
+                                },
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => ' code '
+                                    }
+                                  ],
+                                  'source_info' => {
+                                    'file_name' => '',
+                                    'line_nr' => 8,
+                                    'macro' => ''
+                                  },
+                                  'type' => 'bracketed'
+                                }
+                              ],
+                              'type' => 'brace_command_arg'
+                            }
+                          ],
+                          'cmdname' => 'code',
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 8,
+                            'macro' => ''
+                          }
                         }
                       ],
-                      'line_nr' => {
+                      'source_info' => {
                         'file_name' => '',
                         'line_nr' => 8,
                         'macro' => ''
                       },
-                      'parent' => {},
+                      'type' => 'bracketed'
+                    },
+                    {
+                      'text' => ' '
+                    },
+                    {
+                      'cmdname' => '\\'
+                    },
+                    {
+                      'text' => 'i \\sum_'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'i'
+                        }
+                      ],
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 8,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => '\\underline'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'f'
+                            }
+                          ],
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 8,
+                            'macro' => ''
+                          },
+                          'type' => 'bracketed'
+                        }
+                      ],
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 8,
+                        'macro' => ''
+                      },
                       'type' => 'bracketed'
                     }
                   ],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
-                  },
-                  'parent' => {},
-                  'type' => 'bracketed'
+                  'type' => 'brace_command_context'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_context'
-            }
-          ],
-          'cmdname' => 'math',
-          'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'cmdname' => '@',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '\\ outside of math
-'
-        },
-        {
-          'cmdname' => '\\',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'The 3'
-        },
-        {
-          'args' => [
+              'cmdname' => 'math',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 8,
+                'macro' => ''
+              }
+            },
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'rd'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'sup',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'is the I'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'r'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'sub',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
+              'text' => '
 '
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'cmdname' => '@'
+            },
+            {
+              'text' => '\\ outside of math
+'
+            },
+            {
+              'cmdname' => '\\'
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'The 3'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'rd'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'sup',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'is the I'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'r'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'sub',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'math'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[0]{'contents'}[1];
-$result_trees{'math'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[0];
-$result_trees{'math'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[0];
-$result_trees{'math'}{'contents'}[0]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[1]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2];
-$result_trees{'math'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[2];
-$result_trees{'math'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[2];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[2]{'contents'}[3];
-$result_trees{'math'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[2];
-$result_trees{'math'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'math'}{'contents'}[2];
-$result_trees{'math'}{'contents'}[2]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[3]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[5];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6]{'contents'}[1];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[4]{'contents'}[1];
-$result_trees{'math'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[4];
-$result_trees{'math'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[4];
-$result_trees{'math'}{'contents'}[4]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[5]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[6];
-$result_trees{'math'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[6];
-$result_trees{'math'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[6];
-$result_trees{'math'}{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[6];
-$result_trees{'math'}{'contents'}[6]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[7]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[8];
-$result_trees{'math'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[8]{'contents'}[1]{'args'}[0];
-$result_trees{'math'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[8]{'contents'}[1];
-$result_trees{'math'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'math'}{'contents'}[8];
-$result_trees{'math'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'math'}{'contents'}[8];
-$result_trees{'math'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math'}{'contents'}[8]{'contents'}[3]{'args'}[0];
-$result_trees{'math'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'math'}{'contents'}[8]{'contents'}[3];
-$result_trees{'math'}{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'math'}{'contents'}[8];
-$result_trees{'math'}{'contents'}[8]{'contents'}[4]{'parent'} = $result_trees{'math'}{'contents'}[8];
-$result_trees{'math'}{'contents'}[8]{'parent'} = $result_trees{'math'};
-$result_trees{'math'}{'contents'}[9]{'parent'} = $result_trees{'math'};
 
 $result_texis{'math'} = 'Simple math
 @math{--{x^i}\\over{\\tan y}}
@@ -567,7 +423,7 @@ The 3rdis the Ir.
 
 $result_errors{'math'} = [
   {
-    'error_line' => ':11: warning: @\\ should only appear in math context
+    'error_line' => 'warning: @\\ should only appear in math context
 ',
     'file_name' => '',
     'line_nr' => 11,
@@ -584,9 +440,9 @@ $result_floats{'math'} = {};
 
 $result_converted{'plaintext'}->{'math'} = 'Simple math --{x^i}\\over{\\tan y}
 
-   Math with @-command \'math code\' a < b \\sum_{i} q^{2}
+   Math with @-command ‘math code’ a < b \\sum_{i} q^{2}
 
-   Complex \\underline{\'math \\hbox{ code }\'} \\i \\sum_{i}{\\underline{f}}
+   Complex \\underline{‘math \\hbox{ code }’} \\i \\sum_{i}{\\underline{f}}
 
    @\\ outside of math \\
 
@@ -596,18 +452,18 @@ $result_converted{'plaintext'}->{'math'} = 'Simple math --{x^i}\\over{\\tan y}
 
 
 $result_converted{'html_text'}->{'math'} = '<p>Simple math
-<em class=\'math\'>--{x^i}\\over{\\tan y}</em>
+<em class="math">--{x^i}\\over{\\tan y}</em>
 </p>
 <p>Math with @-command
-<em class=\'math\'><code>math code</code> a &lt; b \\sum<sub>i</sub> q<sup>2</sup></em>
+<em class="math"><code class="code">math code</code> a &lt; b \\sum<sub class="sub">i</sub> q<sup class="sup">2</sup></em>
 </p>
 <p>Complex
-<em class=\'math\'>\\underline{<code>math \\hbox{ code }</code>} \\i \\sum_{i}{\\underline{f}}</em>
+<em class="math">\\underline{<code class="code">math \\hbox{ code }</code>} \\i \\sum_{i}{\\underline{f}}</em>
 </p>
 <p>@\\ outside of math
 \\
 </p>
-<p>The 3<sup>rd</sup>is the I<sub>r</sub>.
+<p>The 3<sup class="sup">rd</sup>is the I<sub class="sub">r</sub>.
 </p>
 ';
 
@@ -626,6 +482,23 @@ $result_converted{'xml'}->{'math'} = '<para>Simple math
 </para>
 <para>The 3<sup>rd</sup>is the I<sub>r</sub>.
 </para>
+';
+
+
+$result_converted{'latex_text'}->{'math'} = 'Simple math
+$--{x^i}\\over{\\tan y}$
+
+Math with @-command
+$\\mathtt{math code} a < b \\sum_{i} q^{2}$
+
+Complex
+$\\underline{\\mathtt{math \\hbox{ code }}} \\backslash{}i \\sum_{i}{\\underline{f}}$
+
+@\\textbackslash{} outside of math
+\\textbackslash{}
+
+The 3\\textsuperscript{rd}is the I\\textsubscript{r}.
+
 ';
 
 

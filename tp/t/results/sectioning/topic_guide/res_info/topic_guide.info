@@ -1,0 +1,116 @@
+This is topic_guide.info, produced from topic_guide.texi.
+
+
+File: topic_guide.info,  Node: Top,  Next: guide1,  Up: (dir)
+
+A example quide topic collection
+********************************
+
+This is an example of guide/topic based manual inspired by the Mallard
+format.
+
+* Menu:
+
+* guide1:: the easy way
+* guide2:: the perillous way
+
+
+File: topic_guide.info,  Node: guide1,  Next: guide2,  Prev: Top,  Up: Top
+
+1 guide 1
+*********
+
+This is the guide for an easy use.
+
+* Menu:
+
+* topic1:: topic1 description
+* topic2:: topic2 description
+* topic5:: topic5 description
+
+
+File: topic_guide.info,  Node: topic1,  Next: topic2
+
+This is topic 1.
+
+* Menu:
+
+More information
+
+* guide1:: guide 1
+
+
+File: topic_guide.info,  Node: topic2,  Next: topic3,  Prev: topic1
+
+This is topic 2
+
+* Menu:
+
+More information
+
+* guide1:: guide 1
+
+
+File: topic_guide.info,  Node: topic3,  Next: topic5,  Prev: topic2
+
+This is topic 3
+
+* Menu:
+
+More information
+
+
+
+File: topic_guide.info,  Node: topic4,  Prev: topic5,  Up: guide2
+
+This is topic 4
+
+* Menu:
+
+More information
+
+* guide2:: guide 2
+
+
+File: topic_guide.info,  Node: topic5,  Prev: topic3
+
+This is topic 5
+
+* Menu:
+
+More information
+
+* guide1:: guide 1
+* guide2:: guide 2
+
+
+File: topic_guide.info,  Node: guide2,  Prev: guide1,  Up: Top
+
+2 guide 2
+*********
+
+This is the guide for an in depth use
+
+* Menu:
+
+* topic5:: topic5 description
+* topic4:: topic4 description
+
+
+
+Tag Table:
+Node: Top59
+Node: guide1334
+Node: topic1569
+Node: topic2690
+Node: topic3825
+Node: topic4941
+Node: topic51074
+Node: guide21213
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

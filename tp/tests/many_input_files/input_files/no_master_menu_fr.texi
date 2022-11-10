@@ -1,0 +1,20 @@
+\input texinfo.tex
+
+@documentlanguage fr
+
+@node Top
+@top max
+
+@menu
+* chap::
+@end menu
+
+@node chap
+@chapter chap
+
+@menu
+* section::
+@end menu
+
+@node section
+@section sec

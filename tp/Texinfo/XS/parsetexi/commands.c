@@ -22,6 +22,12 @@
 #include "commands.h"
 #include "errors.h"
 
+/* FIXME pass global_accept_internalvalue to lookup_command instead of
+ * #include parser.h to get the global variable value? */
+
+/* for global_accept_internalvalue */
+#include "parser.h"
+
 #include "command_data.c"
 
 COMMAND *user_defined_command_data = 0;
@@ -67,7 +73,18 @@ lookup_command (char *cmdname)
         compare_command_fn);
 
   if (c)
-    return c - &builtin_command_data[0];
+    {
+      enum command_id cmd;
+      cmd = c - &builtin_command_data[0];
+
+      /* txiinternalvalue is invalid if the corresponding configuration
+       * is not set */
+      if (cmd == CM_txiinternalvalue && !global_accept_internalvalue) {
+        return 0;
+      }
+
+      return cmd;
+    }
 
 
   return 0;
@@ -90,6 +107,7 @@ add_texinfo_command (char *name)
   user_defined_command_data[user_defined_number].cmdname = strdup (name);
   user_defined_command_data[user_defined_number].flags = 0;
   user_defined_command_data[user_defined_number].data = 0;
+  user_defined_command_data[user_defined_number].args_number = 0;
 
   return ((enum command_id) user_defined_number++) | USER_COMMAND_BIT;
 }
@@ -112,68 +130,15 @@ wipe_user_commands (void)
   user_defined_number = 0;
 }
 
-/* Commands that terminate a paragraph. */
-/* We may replace this function with a macro, or represent this infomation in
-   command_data. */
-int
-close_paragraph_command (enum command_id cmd)
-{
-  if (cmd == CM_verbatim)
-    return 1;
-
-  /* Block commands except 'raw' and 'conditional'.  */
-
-  if (command_data(cmd).flags & CF_block)
-    {
-      if (command_data(cmd).data == BLOCK_conditional
-          || command_data(cmd).data == BLOCK_raw)
-        return 0;
-      if (command_data(cmd).flags & CF_format_raw)
-        return 0;
-
-      return 1;
-    }
-
-  if (cmd == CM_titlefont
-     || cmd == CM_insertcopying
-     || cmd == CM_sp
-     || cmd == CM_verbatiminclude
-     || cmd == CM_page
-     || cmd == CM_item
-     || cmd == CM_itemx
-     || cmd == CM_tab
-     || cmd == CM_headitem
-     || cmd == CM_printindex
-     || cmd == CM_listoffloats
-     || cmd == CM_center
-     || cmd == CM_dircategory
-     || cmd == CM_contents
-     || cmd == CM_shortcontents
-     || cmd == CM_summarycontents
-     || cmd == CM_caption
-     || cmd == CM_shortcaption
-     || cmd == CM_setfilename
-     || cmd == CM_exdent)
-    return 1;
-
-  if ((command_data(cmd).flags & CF_sectioning)
-      && !(command_data(cmd).flags & CF_root))
-    return 1;
-
-  if ((command_data(cmd).flags & CF_def))
-    return 1;
-
-  return 0;
-}
-
 int
 close_preformatted_command (enum command_id cmd_id)
 {
-  return cmd_id != CM_sp && close_paragraph_command (cmd_id);
+  return cmd_id != CM_sp
+          && command_data(cmd_id).flags & CF_close_paragraph;
 }
 
 int
 item_line_command (enum command_id cmd_id)
 {
-  return cmd_id == CM_table || cmd_id == CM_ftable || cmd_id == CM_vtable;
+  return command_data(cmd_id).data == BLOCK_item_line;
 }

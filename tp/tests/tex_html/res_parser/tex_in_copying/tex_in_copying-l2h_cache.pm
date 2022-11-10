@@ -1,3 +1,6 @@
+# Automatically generated
+use utf8;
+our %l2h_cache;
 
 $l2h_cache_key = q/$$
 2 a = \dot{\phi}
@@ -16,11 +19,11 @@ $">
 </DIV>
 |;
 
-$l2h_cache_key = q/From @ someone <> !
+$l2h_cache_key = q/From \ {}someone <> !
 $$
 a = \phi
 $$/;
-$l2h_cache{$l2h_cache_key} = q|From @ someone &lt;&gt; !
+$l2h_cache{$l2h_cache_key} = q|From  someone &lt;&gt; !
 <DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
@@ -34,4 +37,5 @@ a = \phi
 $">
 </DIV>
 |;
+
 1;

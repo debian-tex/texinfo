@@ -1,101 +1,84 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'paragraphindent_asis_first'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'parent' => {},
-      'text' => '     ',
-      'type' => 'empty_spaces_before_paragraph'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'bbb
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'args' => [
+          'type' => 'empty_line'
+        },
+        {
+          'text' => '     ',
+          'type' => 'spaces_before_paragraph'
+        },
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => 'asis'
+              'text' => 'bbb
+'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'paragraphindent',
-      'extra' => {
-        'misc_args' => [
-          'asis'
-        ],
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '     ',
-      'type' => 'empty_spaces_before_paragraph'
-    },
-    {
-      'contents' => [
+          'type' => 'paragraph'
+        },
         {
-          'parent' => {},
-          'text' => 'ccc
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'asis'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
 '
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'paragraphindent',
+          'extra' => {
+            'misc_args' => [
+              'asis'
+            ],
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 4,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '     ',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'ccc
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'paragraphindent_asis_first'}{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'};
-$result_trees{'paragraphindent_asis_first'}{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_asis_first'};
-$result_trees{'paragraphindent_asis_first'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[2];
-$result_trees{'paragraphindent_asis_first'}{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_asis_first'};
-$result_trees{'paragraphindent_asis_first'}{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_asis_first'};
-$result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0];
-$result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[4];
-$result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'parent'} = $result_trees{'paragraphindent_asis_first'};
-$result_trees{'paragraphindent_asis_first'}{'contents'}[5]{'parent'} = $result_trees{'paragraphindent_asis_first'};
-$result_trees{'paragraphindent_asis_first'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[6];
-$result_trees{'paragraphindent_asis_first'}{'contents'}[6]{'parent'} = $result_trees{'paragraphindent_asis_first'};
 
 $result_texis{'paragraphindent_asis_first'} = '
      bbb

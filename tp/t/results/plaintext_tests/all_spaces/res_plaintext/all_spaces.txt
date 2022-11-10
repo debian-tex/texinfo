@@ -8,7 +8,7 @@ CHARACTER TABULATION: |	|
 
    |
 
-   CARRIAGE RETURN (CR): | |
+   CARRIAGE RETURN (CR): ||
 
    SPACE: | |
 

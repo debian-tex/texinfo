@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,97 +10,76 @@ $result_trees{'double_style_paragraph'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => '
+                          'contents' => [
+                            {
+                              'text' => '
 '
-                        },
-                        {
-                          'parent' => {},
-                          'text' => 'First para.
+                            },
+                            {
+                              'text' => 'First para.
 '
-                        },
-                        {
-                          'parent' => {},
-                          'text' => '
+                            },
+                            {
+                              'text' => '
 ',
-                          'type' => 'empty_line'
+                              'type' => 'empty_line'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'strong',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'strong',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'emph',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'emph',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Second para.
-'
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'text' => 'Second para.
 '
-        },
-        {
-          'parent' => {},
-          'text' => '
+            },
+            {
+              'text' => '
 '
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[0];
-$result_trees{'double_style_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'double_style_paragraph'};
-$result_trees{'double_style_paragraph'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[1];
-$result_trees{'double_style_paragraph'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[1];
-$result_trees{'double_style_paragraph'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'double_style_paragraph'}{'contents'}[1];
-$result_trees{'double_style_paragraph'}{'contents'}[1]{'parent'} = $result_trees{'double_style_paragraph'};
 
 $result_texis{'double_style_paragraph'} = '@emph{@strong{
 First para.
@@ -121,7 +100,7 @@ Second para.
 
 $result_errors{'double_style_paragraph'} = [
   {
-    'error_line' => ':1: @strong missing closing brace
+    'error_line' => '@strong missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -130,7 +109,7 @@ $result_errors{'double_style_paragraph'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: @emph missing closing brace
+    'error_line' => '@emph missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -139,7 +118,7 @@ $result_errors{'double_style_paragraph'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 5,
@@ -148,7 +127,7 @@ $result_errors{'double_style_paragraph'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,

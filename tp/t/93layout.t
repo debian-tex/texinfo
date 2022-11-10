@@ -1,8 +1,7 @@
-# $Id: 02coverage.t 8055 2018-08-13 11:41:21Z gavin $
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -97,6 +96,4 @@ foreach my $test (@test_cases) {
   $test->[3]->{'PACKAGE_URL'} = 'http://www.gnu.org/software/texinfo/';
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('layout', [@test_cases], $arg_test_case, $arg_generate, $arg_debug);
+run_all('layout', [@test_cases]);

@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,86 +10,63 @@ $result_trees{'commands_and_punctuation'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'SomthingA'
-        },
-        {
-          'cmdname' => '.',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '   and now inhibit.'
-        },
-        {
-          'cmdname' => ':',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' Now dots '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'SomthingA'
+            },
+            {
+              'cmdname' => '.'
+            },
+            {
+              'text' => '   and now inhibit.'
+            },
+            {
+              'cmdname' => ':'
+            },
+            {
+              'text' => ' Now dots '
+            },
+            {
+              'args' => [
+                {
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'dots',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and enddots '
+            },
+            {
+              'args' => [
+                {
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'enddots',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' and'
             }
           ],
-          'cmdname' => 'dots',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and enddots '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'enddots',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' and'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[5];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'commands_and_punctuation'}{'contents'}[0];
-$result_trees{'commands_and_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'commands_and_punctuation'};
 
 $result_texis{'commands_and_punctuation'} = 'SomthingA@.   and now inhibit.@: Now dots @dots{} and enddots @enddots{} and';
 

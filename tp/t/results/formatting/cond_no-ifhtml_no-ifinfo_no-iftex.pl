@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -14,64 +14,60 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '\\input texinfo
 ',
-                  'type' => 'preamble_text'
+                  'type' => 'text_before_beginning'
                 }
               ],
-              'parent' => {},
-              'type' => 'preamble'
+              'type' => 'preamble_before_beginning'
             }
           ],
-          'parent' => {},
           'type' => 'preamble_before_setfilename'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'cond.info'
+                  'contents' => [
+                    {
+                      'text' => 'cond.info'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
+              'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'cond.info'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => 'cond.texi',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
-          'cmdname' => 'setfilename',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'cond.info'
-          },
-          'line_nr' => {
-            'file_name' => 'cond.texi',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
+          'type' => 'preamble_before_content'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -79,38 +75,36 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
           'cmdname' => 'html',
           'contents' => [
             {
-              'contents' => [],
-              'parent' => {},
               'type' => 'elided_block'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'html'
                     }
                   ],
@@ -118,37 +112,33 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'html',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'cond.texi',
                 'line_nr' => 8,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'parent' => {}
+          'source_info' => {
+            'file_name' => 'cond.texi',
+            'line_nr' => 6,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -156,28 +146,23 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'This is ifnothtml text.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -185,46 +170,42 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'This is ifnotinfo text.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
           'cmdname' => 'tex',
           'contents' => [
             {
-              'contents' => [],
-              'parent' => {},
               'type' => 'elided_block'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'tex'
                     }
                   ],
@@ -232,37 +213,33 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'tex',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => 'cond.texi',
                 'line_nr' => 30,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'parent' => {}
+          'source_info' => {
+            'file_name' => 'cond.texi',
+            'line_nr' => 28,
+            'macro' => ''
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -270,16 +247,13 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'This is ifnottex text.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -300,74 +274,27 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => 'cond.texi',
         'line_nr' => 4,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'misc_arg'
         }
       ],
-      'cmdname' => 'bye',
-      'parent' => {}
+      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'};
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'args'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[4];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[8];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'args'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[2];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'extra'}{'end_command'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'contents'}[2];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[14];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1];
 $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[1]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'};
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[2];
-$result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'}{'contents'}[2]{'parent'} = $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'};
 
 $result_texis{'cond_no-ifhtml_no-ifinfo_no-iftex'} = '\\input texinfo
 @setfilename cond.info
@@ -412,21 +339,17 @@ This is ifnottex text.
 
 ';
 
-$result_sectioning{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {};
-
 $result_nodes{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
@@ -437,7 +360,7 @@ $result_floats{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {};
 
 
 
-$result_converted{'html'}->{'cond_no-ifhtml_no-ifinfo_no-iftex'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'cond_no-ifhtml_no-ifinfo_no-iftex'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -453,21 +376,7 @@ $result_converted{'html'}->{'cond_no-ifhtml_no-ifinfo_no-iftex'} = '<!DOCTYPE ht
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+span.program-in-footer {font-size: smaller}
 -->
 </style>
 
@@ -476,7 +385,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<span id="Top"></span>
+<a class="node" id="Top"></a>
 
 
 <p>This is ifnothtml text.
@@ -490,9 +399,10 @@ ul.no-bullet {list-style: none}
 
 <p>This is ifnottex text.
 </p>
-<hr><p><font size="-1">
-  This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
-</font></p>
+<hr>
+<p>
+  <span class="program-in-footer">This document was generated on <em class="emph">a sunny day</em> using <a class="uref" href="http://www.gnu.org/software/texinfo/"><em class="emph">texi2any</em></a>.</span>
+</p>
 
 
 </body>
@@ -501,8 +411,9 @@ ul.no-bullet {list-style: none}
 
 $result_converted_errors{'html'}->{'cond_no-ifhtml_no-ifinfo_no-iftex'} = [
   {
-    'error_line' => 'cond.texi: warning: must specify a title with a title command or @top
+    'error_line' => 'warning: must specify a title with a title command or @top
 ',
+    'file_name' => 'cond.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

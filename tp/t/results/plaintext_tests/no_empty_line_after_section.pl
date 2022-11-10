@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -12,24 +12,20 @@ $result_trees{'no_empty_line_after_section'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Text
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'top'
             }
           ],
@@ -37,7 +33,6 @@ $result_trees{'no_empty_line_after_section'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
@@ -46,16 +41,13 @@ $result_trees{'no_empty_line_after_section'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Other text
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -64,20 +56,17 @@ $result_trees{'no_empty_line_after_section'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 2,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'chap'
             }
           ],
@@ -85,7 +74,6 @@ $result_trees{'no_empty_line_after_section'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
@@ -94,7 +82,6 @@ $result_trees{'no_empty_line_after_section'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' comment
 ',
               'type' => 'misc_arg'
@@ -106,11 +93,9 @@ $result_trees{'no_empty_line_after_section'} = {
               ' comment
 '
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -118,14 +103,12 @@ $result_trees{'no_empty_line_after_section'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Para
 '
             },
             {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => ' c
 ',
                   'type' => 'misc_arg'
@@ -137,32 +120,26 @@ $result_trees{'no_empty_line_after_section'} = {
                   ' c
 '
                 ]
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'sec'
             }
           ],
@@ -170,7 +147,6 @@ $result_trees{'no_empty_line_after_section'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
@@ -183,34 +159,27 @@ $result_trees{'no_empty_line_after_section'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'url'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'uref',
-              'contents' => [],
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 11,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => ' A.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -220,7 +189,6 @@ $result_trees{'no_empty_line_after_section'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '3'
                 }
               ],
@@ -228,7 +196,6 @@ $result_trees{'no_empty_line_after_section'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -239,32 +206,27 @@ $result_trees{'no_empty_line_after_section'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 13,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 10,
         'macro' => ''
-      },
-      'number' => '1.1',
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'after sp'
             }
           ],
@@ -272,7 +234,6 @@ $result_trees{'no_empty_line_after_section'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
@@ -280,26 +241,20 @@ $result_trees{'no_empty_line_after_section'} = {
       'contents' => [
         {
           'cmdname' => 'indent',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 15,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '
 ',
-          'type' => 'empty_line_after_command'
+          'type' => 'ignorable_spaces_after_command'
         },
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Para indented.
 '
             }
@@ -307,11 +262,9 @@ $result_trees{'no_empty_line_after_section'} = {
           'extra' => {
             'indent' => 1
           },
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -320,58 +273,15 @@ $result_trees{'no_empty_line_after_section'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 14,
         'macro' => ''
-      },
-      'number' => '1.2',
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'no_empty_line_after_section'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[0]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'};
-$result_trees{'no_empty_line_after_section'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[1]{'args'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[1];
-$result_trees{'no_empty_line_after_section'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[1]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[1];
-$result_trees{'no_empty_line_after_section'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[1];
-$result_trees{'no_empty_line_after_section'}{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'};
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2]{'args'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2]{'contents'}[1];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[2]{'parent'} = $result_trees{'no_empty_line_after_section'};
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'args'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[3];
-$result_trees{'no_empty_line_after_section'}{'contents'}[3]{'parent'} = $result_trees{'no_empty_line_after_section'};
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'args'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[1]{'extra'}{'command'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[2];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'parent'} = $result_trees{'no_empty_line_after_section'};
 
 $result_texis{'no_empty_line_after_section'} = 'Text
 @top top
@@ -416,59 +326,61 @@ Para indented.
 ';
 
 $result_sectioning{'no_empty_line_after_section'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_childs' => [
-        {
-          'cmdname' => 'chapter',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 1,
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {},
+        'structure' => {
           'section_childs' => [
             {
-              'cmdname' => 'section',
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'level' => 2,
-              'number' => '1.1',
-              'section_up' => {}
-            },
-            {
-              'cmdname' => 'section',
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'level' => 2,
-              'number' => '1.2',
-              'section_prev' => {},
-              'section_up' => {}
+              'cmdname' => 'chapter',
+              'extra' => {},
+              'structure' => {
+                'section_childs' => [
+                  {
+                    'cmdname' => 'section',
+                    'extra' => {},
+                    'structure' => {
+                      'section_level' => 2,
+                      'section_number' => '1.1',
+                      'section_up' => {}
+                    }
+                  },
+                  {
+                    'cmdname' => 'section',
+                    'extra' => {},
+                    'structure' => {
+                      'section_level' => 2,
+                      'section_number' => '1.2',
+                      'section_prev' => {},
+                      'section_up' => {}
+                    }
+                  }
+                ],
+                'section_level' => 1,
+                'section_number' => 1,
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
+              }
             }
           ],
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
+          'section_level' => 0,
+          'section_up' => {}
         }
-      ],
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0];
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0];
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0];
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_after_section'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_empty_line_after_section'};
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_after_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_after_section'};
 
 $result_errors{'no_empty_line_after_section'} = [];
 

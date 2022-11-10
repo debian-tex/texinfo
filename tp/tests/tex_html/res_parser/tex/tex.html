@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -14,21 +14,7 @@
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+span.program-in-footer {font-size: smaller}
 -->
 </style>
 
@@ -36,8 +22,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="top" id="Top">
-<span id="Tests"></span><h1 class="top">Tests</h1>
+<div class="top-level-extent" id="Top">
+<h1 class="top" id="Tests">Tests</h1>
 
 <p>Now tex on the same line 
 <P>
@@ -59,6 +45,8 @@ ul.no-bullet {list-style: none}
 
 Some text one the line following @end tex
 </p>
+<p>LaTeX block
+</p>
 <p>Now tex on the following line, valid fot tex (with @end tex on a line).
 
 <P>
@@ -75,36 +63,39 @@ Here some <!-- MATH
  ALT="${x^i}\over{\tan y}$"></SPAN>.
 </p>
 <p>Maths with protected \:
+<!-- MATH
+ $a \backslash{} b$
+ -->
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.84ex; vertical-align: -0.12ex; " SRC="tex_3.svg"
- ALT="$a @\ b$"></SPAN>.
+ STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="tex_3.svg"
+ ALT="$a \backslash{} b$"></SPAN>.
 </p>
 <p>Maths with code @-command:
 </p>
 <p><!-- MATH
- $@code{math code} a < b$
+ $\mathtt{math code} a < b$
  -->
 <SPAN CLASS="MATH"><IMG
  STYLE="height: 1.93ex; vertical-align: -0.21ex; " SRC="tex_4.svg"
- ALT="$@code{math code} a &lt; b$"></SPAN>
+ ALT="$\mathtt{math code} a &lt; b$"></SPAN>
 </p>
 <p>Maths with code @-command and braces:
 </p>
 <p><!-- MATH
- $\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$
+ $\underline{\mathtt{math \hbox{ code }}} \sum_{i}{\underline{\mathit{eff}}}$
  -->
 <SPAN CLASS="MATH"><IMG
  STYLE="height: 2.88ex; vertical-align: -1.03ex; " SRC="tex_5.svg"
- ALT="$\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$"></SPAN>
+ ALT="$\underline{\mathtt{math \hbox{ code }}} \sum_{i}{\underline{\mathit{eff}}}$"></SPAN>
 </p>
 <p>Maths with @-sup
 </p>
 <p><!-- MATH
- $\sum_{i} f(x)@sup{2}$
+ $\sum_{i} f(x)^{2}$
  -->
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.66ex; vertical-align: -0.81ex; " SRC="tex_6.svg"
- ALT="$\sum_{i} f(x)@sup{2}$"></SPAN>
+ STYLE="height: 2.81ex; vertical-align: -0.81ex; " SRC="tex_6.svg"
+ ALT="$\sum_{i} f(x)^{2}$"></SPAN>
 </p>
 <p>@\ outside of math
 </p>
@@ -114,20 +105,21 @@ Here some <!-- MATH
 </p><DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
-- - f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+- - f(x) = {1 \over \sigma \sqrt{2\pi}}e^{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 \end{displaymath}
  -->
 
 <IMG
- STYLE="height: 6.26ex; vertical-align: -2.32ex; " SRC="tex_7.svg"
- ALT="$\displaystyle -- f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+ STYLE="height: 5.44ex; vertical-align: -2.28ex; " SRC="tex_7.svg"
+ ALT="$\displaystyle -- f(x) = {1 \over \sigma \sqrt{2\pi}}e^{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 $">
 </DIV>
 
-<hr></div>
-<p><font size="-1">
-  This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
-</font></p>
+<hr>
+</div>
+<p>
+  <span class="program-in-footer">This document was generated on <em class="emph">a sunny day</em> using <a class="uref" href="http://www.gnu.org/software/texinfo/"><em class="emph">texi2any</em></a>.</span>
+</p>
 
 
 </body>

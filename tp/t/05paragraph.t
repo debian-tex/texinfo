@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -172,7 +172,4 @@ foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('paragraph', [@test_cases, @test_invalid], $arg_test_case, 
-   $arg_generate, $arg_debug);
+run_all('paragraph', [@test_cases, @test_invalid]);

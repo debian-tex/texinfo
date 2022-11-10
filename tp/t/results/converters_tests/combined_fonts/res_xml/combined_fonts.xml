@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V6.8//EN" "http://www.gnu.org/software/texinfo/dtd/6.8/texinfo.dtd">
+<texinfo>
+<filename file="combined_fonts.xml"></filename>
+<setfilename file="combined_fonts.info" spaces=" ">combined_fonts.info</setfilename>
+
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext></node>
+<top spaces=" "><sectiontitle>top section</sectiontitle>
+
+</top>
+<node name="chapter" spaces=" "><nodename>chapter</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>chapter</sectiontitle>
+
+<para><code>c--ode</code>, <dfn>d&textndash;fn</dfn>, <var>v&textndash;ar</var>, <strong>s&textndash;trong</strong>, <kbd>k--bd</kbd>, <samp>s--amp</samp>.
+</para>
+<para><code><dfn>d--fn in code</dfn></code>
+<var><code>c--ode in var</code></var>
+<code><var>v--ar in code</var></code>
+<strong><kbd>k--bd in strong</kbd></strong>
+<samp><strong>s--trong in samp</strong></samp>
+<strong><samp>s--amp in strong</samp></strong>
+</para>
+<para><cite>c&textndash;ite</cite>
+</para>
+<para><code><cite>c--ite in code</cite></code>
+<cite><code>c--ode in cite</code></cite>
+</para>
+<para><code>c--ode</code> <slanted>s&textndash;lanted</slanted> <b>b&textndash;</b> <t>t--</t>
+</para>
+<para><code><slanted>s--lanted in code</slanted></code>
+<slanted><code>c--ode in slanted</code></slanted>
+<b><slanted>s&textndash;lanted in b</slanted></b>
+<slanted><b>b&textndash; in slanted</b></slanted>
+<t><slanted>s--lanted in t</slanted></t>
+<slanted><t>t-- in slanted</t></slanted>
+<t><var>v--ar in t</var></t>
+<var><t>t-- in var</t></var>
+</para>
+<example endspaces=" ">
+<pre xml:space="preserve"><var>v--ar in example</var>
+<cite>c--ite in example</cite>
+</pre></example>
+</chapter>
+</texinfo>

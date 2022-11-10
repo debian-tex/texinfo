@@ -47,4 +47,5 @@ reset_conf (void)
   conf.show_menu = 1;
   conf.cpp_line_directives = 1;
   conf.ignore_space_after_braced_command_name = 1;
+  conf.doc_encoding_for_input_file_name = 1;
 }

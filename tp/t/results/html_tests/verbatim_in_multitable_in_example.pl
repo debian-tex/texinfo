@@ -1,379 +1,339 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'verbatim_in_multitable_in_example'} = {
   'contents' => [
     {
-      'cmdname' => 'example',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
         {
           'args' => [
             {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => '0.5 0.5'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
+'
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'columnfractions',
+                      'extra' => {
+                        'misc_args' => [
+                          '0.5',
+                          '0.5'
+                        ],
+                        'spaces_before_argument' => ' '
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 2,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'multitable',
               'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'cmdname' => 'item',
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => ' ',
+                                  'type' => 'ignorable_spaces_after_command'
+                                },
+                                {
+                                  'text' => 'in item
+'
+                                }
+                              ],
+                              'type' => 'preformatted'
+                            }
+                          ],
+                          'extra' => {
+                            'cell_number' => 1
+                          },
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 3,
+                            'macro' => ''
+                          }
+                        },
+                        {
+                          'cmdname' => 'tab',
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => ' ',
+                                  'type' => 'ignorable_spaces_after_command'
+                                },
+                                {
+                                  'text' => 'in tab
+'
+                                }
+                              ],
+                              'type' => 'preformatted'
+                            }
+                          ],
+                          'extra' => {
+                            'cell_number' => 2
+                          },
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 4,
+                            'macro' => ''
+                          }
+                        }
+                      ],
+                      'extra' => {
+                        'row_number' => 1
+                      },
+                      'type' => 'row'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'cmdname' => 'item',
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => '
+',
+                                  'type' => 'ignorable_spaces_after_command'
+                                }
+                              ],
+                              'type' => 'preformatted'
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'extra' => {
+                                    'spaces_after_argument' => '
+'
+                                  },
+                                  'type' => 'block_line_arg'
+                                }
+                              ],
+                              'cmdname' => 'verbatim',
+                              'contents' => [
+                                {
+                                  'text' => 'in first column, verbatim
+',
+                                  'type' => 'raw'
+                                },
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'verbatim'
+                                        }
+                                      ],
+                                      'extra' => {
+                                        'spaces_after_argument' => '
+'
+                                      },
+                                      'type' => 'line_arg'
+                                    }
+                                  ],
+                                  'cmdname' => 'end',
+                                  'extra' => {
+                                    'spaces_before_argument' => ' ',
+                                    'text_arg' => 'verbatim'
+                                  },
+                                  'source_info' => {
+                                    'file_name' => '',
+                                    'line_nr' => 8,
+                                    'macro' => ''
+                                  }
+                                }
+                              ],
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 6,
+                                'macro' => ''
+                              }
+                            }
+                          ],
+                          'extra' => {
+                            'cell_number' => 1
+                          },
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 5,
+                            'macro' => ''
+                          }
+                        },
+                        {
+                          'cmdname' => 'tab',
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => '
+',
+                                  'type' => 'ignorable_spaces_after_command'
+                                }
+                              ],
+                              'type' => 'preformatted'
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'inc_file.texi'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'spaces_after_argument' => '
+'
+                                  },
+                                  'type' => 'line_arg'
+                                }
+                              ],
+                              'cmdname' => 'verbatiminclude',
+                              'extra' => {
+                                'input_perl_encoding' => 'utf-8',
+                                'spaces_before_argument' => ' ',
+                                'text_arg' => 'inc_file.texi'
+                              },
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 10,
+                                'macro' => ''
+                              }
+                            }
+                          ],
+                          'extra' => {
+                            'cell_number' => 2
+                          },
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 9,
+                            'macro' => ''
+                          }
+                        }
+                      ],
+                      'extra' => {
+                        'row_number' => 2
+                      },
+                      'type' => 'row'
+                    }
+                  ],
+                  'type' => 'multitable_body'
+                },
                 {
                   'args' => [
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => '0.5 0.5'
+                          'text' => 'multitable'
                         }
                       ],
                       'extra' => {
                         'spaces_after_argument' => '
 '
                       },
-                      'parent' => {},
                       'type' => 'line_arg'
                     }
                   ],
-                  'cmdname' => 'columnfractions',
+                  'cmdname' => 'end',
                   'extra' => {
-                    'misc_args' => [
-                      '0.5',
-                      '0.5'
-                    ],
-                    'spaces_before_argument' => ' '
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'multitable'
                   },
-                  'line_nr' => {
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 2,
+                    'line_nr' => 11,
                     'macro' => ''
-                  },
-                  'parent' => {}
+                  }
                 }
               ],
-              'parent' => {},
-              'type' => 'block_line_arg'
-            }
-          ],
-          'cmdname' => 'multitable',
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'contents' => [
-                    {
-                      'cmdname' => 'item',
-                      'contents' => [
-                        {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'in item
-'
-                            }
-                          ],
-                          'parent' => {},
-                          'type' => 'preformatted'
-                        }
-                      ],
-                      'extra' => {
-                        'cell_number' => 1,
-                        'spaces_before_argument' => ' '
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    },
-                    {
-                      'cmdname' => 'tab',
-                      'contents' => [
-                        {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'in tab
-'
-                            }
-                          ],
-                          'parent' => {},
-                          'type' => 'preformatted'
-                        }
-                      ],
-                      'extra' => {
-                        'cell_number' => 2,
-                        'spaces_before_argument' => ' '
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    }
-                  ],
-                  'extra' => {
-                    'row_number' => 1
-                  },
-                  'parent' => {},
-                  'type' => 'row'
-                },
-                {
-                  'contents' => [
-                    {
-                      'cmdname' => 'item',
-                      'contents' => [
-                        {
-                          'extra' => {
-                            'command' => {}
-                          },
-                          'parent' => {},
-                          'text' => '
-',
-                          'type' => 'empty_line_after_command'
-                        },
-                        {
-                          'cmdname' => 'verbatim',
-                          'contents' => [
-                            {
-                              'extra' => {
-                                'command' => {}
-                              },
-                              'parent' => {},
-                              'text' => '
-',
-                              'type' => 'empty_line_after_command'
-                            },
-                            {
-                              'parent' => {},
-                              'text' => 'in first column, verbatim
-',
-                              'type' => 'raw'
-                            }
-                          ],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 6,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => '
-',
-                          'type' => 'empty_line_after_command'
-                        }
-                      ],
-                      'extra' => {
-                        'cell_number' => 1
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    },
-                    {
-                      'cmdname' => 'tab',
-                      'contents' => [
-                        {
-                          'extra' => {
-                            'command' => {}
-                          },
-                          'parent' => {},
-                          'text' => '
-',
-                          'type' => 'empty_line_after_command'
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'parent' => {},
-                                  'text' => 'inc_file.texi'
-                                }
-                              ],
-                              'extra' => {
-                                'spaces_after_argument' => '
-'
-                              },
-                              'parent' => {},
-                              'type' => 'line_arg'
-                            }
-                          ],
-                          'cmdname' => 'verbatiminclude',
-                          'extra' => {
-                            'input_perl_encoding' => 'utf-8',
-                            'spaces_before_argument' => ' ',
-                            'text_arg' => 'inc_file.texi'
-                          },
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 10,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        }
-                      ],
-                      'extra' => {
-                        'cell_number' => 2
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    }
-                  ],
-                  'extra' => {
-                    'row_number' => 2
-                  },
-                  'parent' => {},
-                  'type' => 'row'
-                }
-              ],
-              'parent' => {},
-              'type' => 'multitable_body'
+              'extra' => {
+                'columnfractions' => {},
+                'max_columns' => 2,
+                'spaces_before_argument' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'multitable'
+                      'text' => 'example'
                     }
                   ],
                   'extra' => {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'multitable',
                 'spaces_before_argument' => ' ',
-                'text_arg' => 'multitable'
+                'text_arg' => 'example'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 11,
+                'line_nr' => 12,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'columnfractions' => {},
-            'end_command' => {},
-            'max_columns' => 2,
-            'spaces_before_argument' => ' '
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 2,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'parent' => {},
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'columnfractions'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_multitable_in_example'};
+$result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'verbatim_in_multitable_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'verbatim_in_multitable_in_example'} = '@example
 @multitable @columnfractions 0.5 0.5
@@ -402,7 +362,7 @@ $result_floats{'verbatim_in_multitable_in_example'} = {};
 
 
 
-$result_converted{'html'}->{'verbatim_in_multitable_in_example'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'verbatim_in_multitable_in_example'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -417,21 +377,7 @@ $result_converted{'html'}->{'verbatim_in_multitable_in_example'} = '<!DOCTYPE ht
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
 -->
 </style>
 
@@ -440,11 +386,12 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <div class="example">
-<table>
-<tr><td width="50%"><pre class="example">in item</pre></td><td width="50%"><pre class="example">in tab</pre></td></tr>
+<table class="multitable">
+<tbody><tr><td width="50%"><pre class="example-preformatted">in item</pre></td><td width="50%"><pre class="example-preformatted">in tab</pre></td></tr>
 <tr><td width="50%"><pre class="verbatim">in first column, verbatim
 </pre></td><td width="50%"><pre class="verbatim">In included file.
 </pre></td></tr>
+</tbody>
 </table>
 </div>
 
@@ -458,6 +405,7 @@ $result_converted_errors{'html'}->{'verbatim_in_multitable_in_example'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
+    'file_name' => 'verbatim_in_multitable_in_example.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

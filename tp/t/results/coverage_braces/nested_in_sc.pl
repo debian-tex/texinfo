@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,298 +10,218 @@ $result_trees{'nested_in_sc'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
-                      'contents' => [
+                      'args' => [
                         {
-                          'parent' => {},
-                          'text' => 'aaa '
-                        },
-                        {
-                          'args' => [
+                          'contents' => [
                             {
-                              'contents' => [
-                                {
-                                  'parent' => {},
-                                  'text' => 'n'
-                                }
-                              ],
-                              'parent' => {},
-                              'type' => 'following_arg'
-                            }
-                          ],
-                          'cmdname' => '~',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 1,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ' '
-                        },
-                        {
-                          'args' => [
+                              'text' => 'aaa '
+                            },
                             {
-                              'contents' => [],
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => 'aa',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 1,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ' '
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [],
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => 'TeX',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 1,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ' '
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'args' => [
-                                    {
-                                      'contents' => [],
-                                      'parent' => {},
-                                      'type' => 'brace_command_arg'
-                                    }
-                                  ],
-                                  'cmdname' => 'aa',
-                                  'contents' => [],
-                                  'line_nr' => {
-                                    'file_name' => '',
-                                    'line_nr' => 1,
-                                    'macro' => ''
-                                  },
-                                  'parent' => {}
-                                }
-                              ],
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => '~',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 1,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ' '
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
+                              'args' => [
                                 {
                                   'contents' => [
                                     {
-                                      'parent' => {},
-                                      'text' => 'In footnote'
+                                      'text' => 'n'
                                     }
                                   ],
-                                  'parent' => {},
-                                  'type' => 'paragraph'
+                                  'type' => 'following_arg'
                                 }
                               ],
-                              'parent' => {},
-                              'type' => 'brace_command_context'
-                            }
-                          ],
-                          'cmdname' => 'footnote',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 1,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ', '
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'parent' => {},
-                                  'text' => 'ABr'
-                                }
-                              ],
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
+                              'cmdname' => '~',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 1,
+                                'macro' => ''
+                              }
                             },
                             {
-                              'contents' => [
-                                {
-                                  'parent' => {},
-                                  'text' => 'expl'
-                                }
-                              ],
-                              'extra' => {
-                                'spaces_before_argument' => ' '
-                              },
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => 'abbr',
-                          'contents' => [],
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 1,
-                            'macro' => ''
-                          },
-                          'parent' => {}
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ', 
-'
-                        },
-                        {
-                          'args' => [
+                              'text' => ' '
+                            },
                             {
-                              'contents' => [
+                              'args' => [
                                 {
-                                  'parent' => {},
-                                  'text' => 'in verb',
-                                  'type' => 'raw'
+                                  'type' => 'brace_command_arg'
                                 }
                               ],
-                              'parent' => {},
-                              'type' => 'brace_command_arg'
+                              'cmdname' => 'aa',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 1,
+                                'macro' => ''
+                              }
+                            },
+                            {
+                              'text' => ' '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => 'TeX',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 1,
+                                'macro' => ''
+                              }
+                            },
+                            {
+                              'text' => ' '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'args' => [
+                                        {
+                                          'type' => 'brace_command_arg'
+                                        }
+                                      ],
+                                      'cmdname' => 'aa',
+                                      'source_info' => {
+                                        'file_name' => '',
+                                        'line_nr' => 1,
+                                        'macro' => ''
+                                      }
+                                    }
+                                  ],
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => '~',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 1,
+                                'macro' => ''
+                              }
+                            },
+                            {
+                              'text' => ' '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'In footnote'
+                                        }
+                                      ],
+                                      'type' => 'paragraph'
+                                    }
+                                  ],
+                                  'type' => 'brace_command_context'
+                                }
+                              ],
+                              'cmdname' => 'footnote',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 1,
+                                'macro' => ''
+                              }
+                            },
+                            {
+                              'text' => ', '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'ABr'
+                                    }
+                                  ],
+                                  'type' => 'brace_command_arg'
+                                },
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'expl'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'spaces_before_argument' => ' '
+                                  },
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => 'abbr',
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 1,
+                                'macro' => ''
+                              }
+                            },
+                            {
+                              'text' => ', 
+'
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'in verb',
+                                      'type' => 'raw'
+                                    }
+                                  ],
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => 'verb',
+                              'extra' => {
+                                'delimiter' => ':'
+                              },
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 2,
+                                'macro' => ''
+                              }
                             }
                           ],
-                          'cmdname' => 'verb',
-                          'contents' => [],
-                          'extra' => {
-                            'delimiter' => ':'
-                          },
-                          'line_nr' => {
-                            'file_name' => '',
-                            'line_nr' => 2,
-                            'macro' => ''
-                          },
-                          'parent' => {}
+                          'type' => 'brace_command_arg'
                         }
                       ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
+                      'cmdname' => 'sc',
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 1,
+                        'macro' => ''
+                      }
                     }
                   ],
-                  'cmdname' => 'sc',
-                  'contents' => [],
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'sc',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
             }
           ],
-          'cmdname' => 'sc',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[10]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'args'}[1];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'args'}[1]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[12]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[13]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[13];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[13]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_in_sc'}{'contents'}[0];
-$result_trees{'nested_in_sc'}{'contents'}[0]{'parent'} = $result_trees{'nested_in_sc'};
 
 $result_texis{'nested_in_sc'} = '@sc{@sc{aaa @~n @aa{} @TeX{} @~{@aa{}} @footnote{In footnote}, @abbr{ABr, expl}, 
 @verb{:in verb:}}}
@@ -319,7 +239,7 @@ $result_floats{'nested_in_sc'} = {};
 
 
 
-$result_converted{'docbook'}->{'nested_in_sc'} = '<para>AAA &#209; &#197; &tex; &#197;~ <footnote><para>In footnote</para></footnote>, <abbrev>ABR</abbrev> (EXPL), 
+$result_converted{'docbook'}->{'nested_in_sc'} = '<para>AAA &#209; &#197; &tex; &#197;&#771; <footnote><para>In footnote</para></footnote>, <abbrev>ABR</abbrev> (EXPL), 
 <literal>IN VERB</literal>
 </para>';
 
@@ -333,15 +253,20 @@ $result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA Ñ Å TeX Å̃ (1), ABR 
 ';
 
 
-$result_converted{'html_text'}->{'nested_in_sc'} = '<p><small><small>AAA &Ntilde; &Aring; TeX &Aring;~ <a id="DOCF1" href="#FOOT1"><sup>1</sup></a>, <abbr title="expl">ABR</abbr> (EXPL), 
-<tt>in verb</tt></small></small>
-</p><div class="footnote">
+$result_converted{'html_text'}->{'nested_in_sc'} = '<p><small class="sc"><small class="sc">AAA &Ntilde; &Aring; TeX &Aring;&#771; <a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>, <abbr class="abbr" title="expl">ABR</abbr> (EXPL), 
+<code class="verb">in verb</code></small></small>
+</p><div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>In footnote</p>
 </div>
+';
+
+
+$result_converted{'latex_text'}->{'nested_in_sc'} = '\\textsc{\\textsc{aaa \\~{n} \\aa{} \\TeX{} \\~{\\aa{}} \\footnote{In footnote}, ABr (expl), 
+\\verb:in verb:}}
 ';
 
 1;

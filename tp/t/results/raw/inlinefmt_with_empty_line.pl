@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,197 +10,149 @@ $result_trees{'inlinefmt_with_empty_line'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'A '
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'plaintext'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => 'A '
             },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'plaintext `` 
-'
+                  'contents' => [
+                    {
+                      'text' => 'plaintext'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 },
                 {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'inlinefmt',
-          'contents' => [],
-          'extra' => {
-            'expand_index' => 1,
-            'format' => 'plaintext'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'contents' => [
-        {
-          'args' => [
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'lbracechar',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '  a.  Now html
+                  'contents' => [
+                    {
+                      'text' => 'plaintext `` 
 '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'html'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'inlinefmt',
+              'extra' => {
+                'expand_index' => 1,
+                'format' => 'plaintext'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'lbracechar',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
             },
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'in 
+              'text' => '  a.  Now html
 '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'html'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 },
                 {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'inlinefmt',
-          'contents' => [],
-          'extra' => {
-            'expand_index' => 1,
-            'format' => 'html'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => '<i>'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'HTML'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'acronym',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '</i>.
+                  'contents' => [
+                    {
+                      'text' => 'in 
 '
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'inlinefmt',
+              'extra' => {
+                'expand_index' => 1,
+                'format' => 'html'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              }
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'contents' => [
+            {
+              'text' => '<i>'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'HTML'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'acronym',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '</i>.
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'};
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[0];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'};
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'};
 
 $result_texis{'inlinefmt_with_empty_line'} = 'A @inlinefmt{plaintext, plaintext `` 
 
@@ -217,7 +169,7 @@ $result_texts{'inlinefmt_with_empty_line'} = 'A {  a.  Now html
 
 $result_errors{'inlinefmt_with_empty_line'} = [
   {
-    'error_line' => ':1: @inlinefmt missing closing brace
+    'error_line' => '@inlinefmt missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -226,7 +178,7 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':3: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -235,7 +187,7 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: @inlinefmt missing closing brace
+    'error_line' => '@inlinefmt missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -244,7 +196,7 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 6,

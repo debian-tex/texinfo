@@ -1,200 +1,95 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'nested_formats'} = {
   'contents' => [
     {
-      'cmdname' => 'format',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'cmdname' => 'example',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'in -- format/example
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                }
-              ],
-              'parent' => {},
-              'type' => 'preformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'example'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'example',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'example'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'format'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'format',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'format'
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'example',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
           'cmdname' => 'format',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'in -- example/format
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
+                  },
+                  'type' => 'block_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'preformatted'
+              'cmdname' => 'example',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    },
+                    {
+                      'text' => 'in -- format/example
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'type' => 'preformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'example'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'example'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 6,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'format'
                     }
                   ],
@@ -202,115 +97,147 @@ $result_trees{'nested_formats'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command_argument' => 'format',
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'format'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 14,
+                'line_nr' => 7,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 10,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'example'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'example',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'example'
-          },
-          'line_nr' => {
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'format',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    },
+                    {
+                      'text' => 'in -- example/format
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'type' => 'preformatted'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'format'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'format'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 14,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 10,
+                'macro' => ''
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 15,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 15,
+            'line_nr' => 9,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[0];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[0];
-$result_trees{'nested_formats'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[0]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[0]{'parent'} = $result_trees{'nested_formats'};
-$result_trees{'nested_formats'}{'contents'}[1]{'parent'} = $result_trees{'nested_formats'};
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'nested_formats'}{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'nested_formats'}{'contents'}[2]{'contents'}[2];
-$result_trees{'nested_formats'}{'contents'}[2]{'parent'} = $result_trees{'nested_formats'};
 
 $result_texis{'nested_formats'} = '@format
 @example
@@ -356,9 +283,32 @@ $result_converted{'plaintext'}->{'nested_formats'} = '
 ';
 
 
-$result_converted{'html_text'}->{'nested_formats'} = '<div class="format">
+$result_converted{'html'}->{'nested_formats'} = '<!DOCTYPE html>
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style type="text/css">
+<!--
+div.example {margin-left: 3.2em}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="format">
 <div class="example">
-<pre class="example">
+<pre class="example-preformatted">
 
 in -- format/example
 
@@ -367,23 +317,39 @@ in -- format/example
 
 <div class="example">
 <div class="format">
-<pre class="example">
+<pre class="example-preformatted">
 
 in -- example/format
 
 </pre></div>
 </div>
+
+
+
+</body>
+</html>
 ';
+
+$result_converted_errors{'html'}->{'nested_formats'} = [
+  {
+    'error_line' => 'warning: must specify a title with a title command or @top
+',
+    'file_name' => 'nested_formats.texi',
+    'text' => 'must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
 
 
 $result_converted{'docbook'}->{'nested_formats'} = '<screen>
 in -- format/example
 
 </screen>
-<abstract>
+<literallayout>
 in -- example/format
 
-</abstract>';
+</literallayout>';
 
 
 $result_converted{'xml'}->{'nested_formats'} = '<format endspaces=" ">
@@ -401,6 +367,24 @@ in -- example/format
 
 </pre></format>
 </example>
+';
+
+
+$result_converted{'latex_text'}->{'nested_formats'} = '\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily 
+in {-}{-} format/example
+
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+
+in -- example/format
+
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
 ';
 
 1;

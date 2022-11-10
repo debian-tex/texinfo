@@ -1,64 +1,61 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'ignore_not_closed'} = {
   'contents' => [
     {
-      'cmdname' => 'ignore',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'ignore',
+          'contents' => [
+            {
+              'text' => '
 ',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => '
+              'type' => 'raw'
+            },
+            {
+              'text' => 'This is ignored
 ',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => 'This is ignored
-',
-          'type' => 'raw'
+              'type' => 'raw'
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
-$result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
-$result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
-$result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
-$result_trees{'ignore_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'ignore_not_closed'};
 
 $result_texis{'ignore_not_closed'} = '@ignore
 
 This is ignored
-@end ignore';
+';
 
 
 $result_texts{'ignore_not_closed'} = '';
 
 $result_errors{'ignore_not_closed'} = [
   {
-    'error_line' => ':3: no matching `@end ignore\'
+    'error_line' => 'no matching `@end ignore\'
 ',
     'file_name' => '',
     'line_nr' => 3,

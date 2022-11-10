@@ -3,8 +3,8 @@ listed in "info/Makefile.am" and will usually be run with "make check".
 It should be possible to run a test on its own by running it at the
 command line and checking the return value, e.g.
 
-bash $t/goto-quoted.sh
-bash $echo $?
+$ t/goto-quoted.sh
+$ echo $?
 1
 
 shows a test failure.
@@ -25,9 +25,12 @@ Any interactive test should also finish with
 
 cleanup
 
-to cleanup temporary files and spawned processes.  This function
-will exit with whatever the value of RETVAL is, so you can set the
-exit status of the script indicating success or failure.
+to cleanup temporary files and spawned processes.  'cleanup' will
+exit the script with a status of $retval, which the test should set
+to indicate success or failure.
+
+Non interactive tests can run 'info' as $ginfo.  The interactive tests
+use the run_ginfo function.
 
 Tests of interactive operation
 ------------------------------

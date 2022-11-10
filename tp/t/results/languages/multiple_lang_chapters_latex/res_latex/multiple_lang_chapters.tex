@@ -1,0 +1,116 @@
+\documentclass{book}
+\usepackage{imakeidx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{embrac}
+\usepackage{expl3}
+\usepackage{tabularx}
+\usepackage{titleps}
+\usepackage{float}
+\usepackage{babel}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% no index headers or page break
+\indexsetup{level=\relax,toclevel=section,noclearpage}%
+\makeindex[name=vr,title=]%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+
+% this allows to select languages based on bcp47 codes.  bcp47 is a superset
+% of the LL_CC ISO 639-2 LL ISO 3166 CC information of @documentlanguage
+\babeladjust{
+  autoload.bcp47 = on,
+  autoload.bcp47.options = import
+}
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% braces are upright in italic and slanted only in @def*
+% so it is turned off here, and turned on @def* lines
+\EmbracOff{}%
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+
+\selectlanguage{ja}%
+
+\begin{document}
+\label{anchor:Top}%
+\selectlanguage{ja}%
+\chapter{{ja}}
+\label{anchor:chapter-ja}%
+
+In japanese. See \hyperref[anchor:chapter-ja]{\chaptername~\ref*{anchor:chapter-ja} [chapter ja], page~\pageref*{anchor:chapter-ja}}.
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{BBB \EmbracOn{}\textnormal{\textsl{CCC}}\EmbracOff{}}& [Instance Variable of \texttt{AAA}]
+\end{tabularx}
+
+\index[vr]{BBB of AAA@\texttt{BBB\ of AAA}}%
+
+\selectlanguage{en}%
+\chapter{{en}}
+\label{anchor:chapter-en}%
+
+In english. See \hyperref[anchor:chapter-ja]{\chaptername~\ref*{anchor:chapter-ja} [chapter ja], page~\pageref*{anchor:chapter-ja}}.
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{BBB \EmbracOn{}\textnormal{\textsl{CCC}}\EmbracOff{}}& [Instance Variable of \texttt{AAA}]
+\end{tabularx}
+
+\index[vr]{BBB of AAA@\texttt{BBB\ of AAA}}%
+
+\selectlanguage{fr-FR}%
+\chapter{{fr\_FR}}
+\label{anchor:chapter-fr_005fFR}%
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{BBB \EmbracOn{}\textnormal{\textsl{CCC}}\EmbracOff{}}& [Variable d'instance de \texttt{AAA}]
+\end{tabularx}
+
+\index[vr]{BBB of AAA@\texttt{BBB\ of AAA}}%
+
+\selectlanguage{de}%
+\chapter{{de}}
+\label{anchor:chapter-de}%
+
+\selectlanguage{pt-BR}%
+\chapter{{pt\_bR}}
+\label{anchor:chapter-pt_005fBR}%
+
+In brazilian. See \hyperref[anchor:chapter-ja]{\chaptername~\ref*{anchor:chapter-ja} [chapter ja], page~\pageref*{anchor:chapter-ja}}.
+\end{document}

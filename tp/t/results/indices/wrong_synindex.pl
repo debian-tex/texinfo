@@ -1,76 +1,69 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'wrong_synindex'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'aaa'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
+              'contents' => [
+                {
+                  'text' => 'aaa'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
 '
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'defindex',
-      'extra' => {
-        'misc_args' => [
-          'aaa'
-        ],
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'aaa aaa'
+              },
+              'type' => 'line_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'line_arg'
+          'cmdname' => 'defindex',
+          'extra' => {
+            'misc_args' => [
+              'aaa'
+            ],
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'aaa aaa'
+                }
+              ],
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'synindex',
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
         }
       ],
-      'cmdname' => 'synindex',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[0]{'parent'} = $result_trees{'wrong_synindex'};
-$result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0];
-$result_trees{'wrong_synindex'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'wrong_synindex'}{'contents'}[1];
-$result_trees{'wrong_synindex'}{'contents'}[1]{'parent'} = $result_trees{'wrong_synindex'};
 
 $result_texis{'wrong_synindex'} = '@defindex aaa
 @synindex aaa aaa';
@@ -80,7 +73,7 @@ $result_texts{'wrong_synindex'} = '';
 
 $result_errors{'wrong_synindex'} = [
   {
-    'error_line' => ':2: warning: @synindex leads to a merging of aaa in itself, ignoring
+    'error_line' => 'warning: @synindex leads to a merging of aaa in itself, ignoring
 ',
     'file_name' => '',
     'line_nr' => 2,

@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -10,6 +10,11 @@ my @test_cases = (
 '@table @~
 @item first item
 @item no at-command @code{code}
+@end table
+
+@table @~{}
+@item acc brace first item
+@item no at-command @code{code acc brace}
 @end table
 '],
 ['definfoenclose_on_table_line',
@@ -43,21 +48,27 @@ Text.
 @end table
 '],
 ['inter_item_commands_in_table',
-'@vtable @code
+'@node Top
+@top top
+
+@node chapter
+@chapter chap
+
+@vtable @code
 @c comment in table
-@item a
+@item acode--b
 l--ine
 @end vtable
 
 @vtable @asis
-@item a
+@item aasis--b
 @c comment between item and itemx
 @itemx b
 l--ine
 @end vtable
 
 @ftable @var
-@item a
+@item avar--b
 @cindex index entry between item and itemx
 @c and a comment
 @comment and another comment
@@ -84,11 +95,53 @@ l--ine
 Texte before first item.
 @item abb
 @end table
+
+@table @samp
+@cindex samp cindex in table 
+@c samp comment in table
+@item asamp--bb
+l--ine samp
+@end table
+
+@table @samp
+@cindex samp cindex in table 
+Texte before first item samp.
+@item asamp--bb
+@end table
+
+@table @samp 
+
+@cindex cindex between lines
+
+@item asamp--bb1
+@end table
+
+@table @samp 
+@cindex cindex before line
+
+@item asamp--bb2
+@end table
+
+@table @samp 
+
+@cindex cindex after line
+@item asamp--bb2
+@end table
+
+@table @samp 
+@cindex cindex first
+@c commant
+@cindex second
+@cindex third
+@item asamp--bb2
+@end table
+
+
 '],
 ['inter_item_commands_in_table_in_example',
 '@example
 @table @var
-@item a
+@item a--b
 @cindex index entry between item and itemx
 @c and a comment
 @comment and another comment
@@ -259,14 +312,18 @@ Title
 '],
 );
 
+my @file_latex_tests_cases_tests = ('inter_item_commands_in_table',
+  'inter_item_commands_in_table_in_example');
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
   push @{$test->[2]->{'test_formats'}}, 'xml';
+  if (grep {$_ eq $test->[0]} @file_latex_tests_cases_tests) {
+    push @{$test->[2]->{'test_formats'}}, 'file_latex';
+    $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+    $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
+  }
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('xtable', [@test_cases, @test_invalid], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('xtable', [@test_cases, @test_invalid]);

@@ -6,48 +6,53 @@
 
 use strict;
 
-use vars qw($node_file_name);
-
 my $T2H_BLUE_BUTTONS = 0;
 
 # we only redefine things which ar of relevance to singular
 # all the others we simply "include"
 
-# -prefix
 # Set the output file prefix, prepended to all .html, .png and .pl files.
-set_from_init_file('setfilename', 'sing');
+texinfo_set_from_init_file('setfilename', 'sing');
 
-# -expand
-# if set to "tex" (or, "info") expand @iftex and @tex (or, @ifinfo) sections
-# else, neither expand @iftex, @tex, nor @ifinfo sections
-set_from_init_file('EXPANDED_FORMATS', ['html', 'tex']);
+# add html and tex to expanded formats.  html should be redundant.
+texinfo_add_to_option_list('EXPANDED_FORMATS', ['html', 'tex']);
 
 # if set, creates one html file per node
-set_from_init_file('SPLIT', 'node');
+texinfo_set_from_init_file('SPLIT', 'node');
+
+# we use .htm, but not for external references, both as target and
+# source.
+my $external_extension = 'html';
+texinfo_set_from_init_file('EXTERNAL_CROSSREF_EXTENSION',
+                           $external_extension);
 
 #if set cross-references use the xref node name argument
-set_from_init_file('XREF_USE_NODE_NAME_ARG', 1);
+texinfo_set_from_init_file('XREF_USE_NODE_NAME_ARG', 1);
 
 # if set, chatter about what we are doing
-set_from_init_file('VERBOSE', 1);
+texinfo_set_from_init_file('VERBOSE', 1);
 
 my $T2H_SING_base_images = '../singular_images/';
 
 # inside <BODY ..>
-set_from_init_file('BODYTEXT','lang="en"  background="'.${T2H_SING_base_images}.'Mybg.png"');
+texinfo_set_from_init_file('BODYTEXT','lang="en"  background="'.${T2H_SING_base_images}.'Mybg.png"');
 
 # after <BODY>
-set_from_init_file('AFTER_BODY_OPEN', "\n");
+texinfo_set_from_init_file('AFTER_BODY_OPEN', "\n");
 
 # before </BODY>
-set_from_init_file('PRE_BODY_CLOSE', "\n");
+texinfo_set_from_init_file('PRE_BODY_CLOSE', "\n");
+
+# there is a redefinition of about special element body formatting
+# function to replace the text at the same place as PROGRAM_NAME_IN_ABOUT.
+texinfo_set_from_init_file('PROGRAM_NAME_IN_ABOUT', 0);
 
 # if using tex4ht, must be in latex mode due to \textbf
 $Texinfo::TeX4HT::STYLE='latex';
 
 # title is already in the manual
 #$print_title = \&T2H_DEFAULT_print_title;
-set_from_init_file('SHOW_TITLE', 0);
+texinfo_set_from_init_file('SHOW_TITLE', 0);
 
 # footer
 
@@ -61,17 +66,17 @@ sub singular_format_footer($$$$)
   my $content = shift;
 
 
-  my $end_page = (!$element->{'element_next'}
-       or (defined($element->{'filename'})
-           and $element->{'filename'} ne $element->{'element_next'}->{'filename'}
-           and $self->{'file_counters'}->{$element->{'filename'}} == 1));
+  my $end_page = (!$element->{'structure'}->{'unit_next'}
+   or (defined($element->{'structure'}->{'unit_filename'})
+       and $element->{'structure'}->{'unit_filename'}
+           ne $element->{'structure'}->{'unit_next'}->{'structure'}->{'unit_filename'}
+       and $self->count_elements_in_filename('current',
+                   $element->{'structure'}->{'unit_filename'}) == 1));
 
-  if ($self->element_is_top($element)) {
+  if ($self->element_is_tree_unit_top($element)) {
     my $buttons = $self->get_conf('TOP_BUTTONS');
-    my $content_href = $self->_element_direction($element, 'Contents', 
-                                               'href');
-    my $about_href = $self->_element_direction($element, 'About',
-                                               'href');
+    my $content_href = $self->from_element_direction('Contents', 'href', $element);
+    my $about_href = $self->from_element_direction('About', 'href', $element);
     my $result = '';
     if ($content_href or $about_href) {
       $result .= "<blockquote>\n";
@@ -90,7 +95,7 @@ sub singular_format_footer($$$$)
        if (defined($self->get_conf('DEFAULT_RULE')));
     if ($end_page) {
       $result .= join('', $self->close_registered_sections_level(0));
-      $result .= &{$self->{'format_navigation_header_panel'}}($self, 
+      $result .= &{$self->formatting_function('format_navigation_panel')}($self,
                                             $buttons, undef, $element);
     }
     return $result;
@@ -138,29 +143,29 @@ EOT
 }
 
 # always use bottom navigation
-set_from_init_file('WORDS_IN_PAGE', 0);
+texinfo_set_from_init_file('WORDS_IN_PAGE', 0);
 
-set_from_init_file('VERTICAL_HEAD_NAVIGATION', 1);
+texinfo_set_from_init_file('VERTICAL_HEAD_NAVIGATION', 1);
 my @SECTION_BUTTONS =
   (
    \&singular_banner,
-   'Back', 'Forward',   'FastBack', 'FastForward',   
-   'Up', 'Top', 'Contents', 'Index', 'About' 
+   'Back', 'Forward',   'FastBack', 'FastForward',
+   'Up', 'Top', 'Contents', 'Index', 'About'
   );
 
-set_from_init_file ('SECTION_BUTTONS', \@SECTION_BUTTONS);
+texinfo_set_from_init_file ('SECTION_BUTTONS', \@SECTION_BUTTONS);
 
 my @NODE_FOOTER_BUTTONS = @SECTION_BUTTONS;
-set_from_init_file ('NODE_FOOTER_BUTTONS', \@SECTION_BUTTONS);
+texinfo_set_from_init_file ('NODE_FOOTER_BUTTONS', \@SECTION_BUTTONS);
 
 # buttons for misc stuff
 my @MISC_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
 my @TOP_BUTTONS = (\&singular_banner, 'Top', 'Contents', 'Index', 'About');
 
-set_from_init_file ('MISC_BUTTONS', \@MISC_BUTTONS);
-set_from_init_file ('TOP_BUTTONS', \@TOP_BUTTONS);
+texinfo_set_from_init_file ('MISC_BUTTONS', \@MISC_BUTTONS);
+texinfo_set_from_init_file ('TOP_BUTTONS', \@TOP_BUTTONS);
 
-set_from_init_file('ICONS', 1);
+texinfo_set_from_init_file('ICONS', 1);
 
 my %ACTIVE_ICONS;
 my %PASSIVE_ICONS;
@@ -243,13 +248,15 @@ foreach my $hash_ref((\%ACTIVE_ICONS, \%PASSIVE_ICONS)) {
   }
 }
 
-set_from_init_file ('ACTIVE_ICONS', \%ACTIVE_ICONS);
-set_from_init_file ('PASSIVE_ICONS', \%PASSIVE_ICONS);
+texinfo_set_from_init_file ('ACTIVE_ICONS', \%ACTIVE_ICONS);
+texinfo_set_from_init_file ('PASSIVE_ICONS', \%PASSIVE_ICONS);
 
-sub T2H_SING_pre_about($$)
+sub singular_format_special_body_about($$$)
 {
   my $self = shift;
+  my $special_type = shift;
   my $element = shift;
+
   my $version = $self->get_value('VERSION');
   my $version_date = $self->get_value('VERSION_DATE');
   $version = 'NO VERSION' if (!defined($version));
@@ -258,30 +265,37 @@ sub T2H_SING_pre_about($$)
   my $program_and_version = $self->get_conf('PACKAGE_AND_VERSION');
   my $result = '';
   $result .= <<EOT;
-This document is the user manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version $version, $version_date. 
-<br>   
+<p>
+This document is the user manual for <a href="http://www.singular.uni-kl.de/"><i>Singular</i></a> version $version, $version_date.
+<br>
 
 For questions and comments about Singular, send email to <a href="mailto:singular\@mathematik.uni-kl.de">singular\@mathematik.uni-kl.de</a>.
-  
-<p></p>  
-This document was generated by <a href="$program_homepage"><i>$program_and_version</i></a> 
-and <a href="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/">LaTeX2<tt>HTML</tt></a> 
+
+</p>
+<p>
+This document was generated by <a href="$program_homepage"><i>$program_and_version</i></a>
+and <a href="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/">LaTeX2<tt>HTML</tt></a>
 and is best  viewed with a 16 or 18 point screen font.
-<p></p>
+</p>
 EOT
+
+  $result .= &{$self->defaults_special_element_body_formatting($special_type)}(
+                                                 $self, $special_type, $element);
   return $result;
 }
 
-set_from_init_file ('PRE_ABOUT', \&T2H_SING_pre_about);
+texinfo_register_formatting_special_element_body ('about',
+                       \&singular_format_special_body_about);
 
 # a whole menu
 texinfo_register_command_formatting('menu', \&t2h_sing_menu);
 
-sub t2h_sing_menu($)
+sub t2h_sing_menu($$$$$)
 {
   my $self = shift;
   my $cmdname = shift;
   my $command = shift;
+  my $args = shift;
   my $content = shift;
 
   if ($content =~ /\S/) {
@@ -297,7 +311,7 @@ sub t2h_node_file_name($$$)
   my $element = shift;
   my $filename = shift;
 
-  my $external_file_extension = '.html';
+  my $external_file_extension = '.' . $external_extension;
 
   my $orig_filename = $filename;
 
@@ -315,6 +329,6 @@ sub t2h_node_file_name($$$)
   return $filename;
 }
 
-$node_file_name = \&t2h_node_file_name;
+texinfo_register_file_id_setting_function('node_file_name', \&t2h_node_file_name);
 
 1;    # This must be the last line

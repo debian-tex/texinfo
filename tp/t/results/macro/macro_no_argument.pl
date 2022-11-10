@@ -1,39 +1,41 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'macro_no_argument'} = {
   'contents' => [
     {
-      'cmdname' => 'macro',
-      'contents' => [],
-      'extra' => {
-        'arg_line' => '',
-        'invalid_syntax' => 1
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'contents' => [
+        {
+          'cmdname' => 'macro',
+          'extra' => {
+            'arg_line' => '',
+            'invalid_syntax' => 1
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
+        }
+      ],
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'macro_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'macro_no_argument'};
 
-$result_texis{'macro_no_argument'} = '@macro@end macro';
+$result_texis{'macro_no_argument'} = '@macro';
 
 
 $result_texts{'macro_no_argument'} = '';
 
 $result_errors{'macro_no_argument'} = [
   {
-    'error_line' => ':1: @macro requires a name
+    'error_line' => '@macro requires a name
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -42,7 +44,7 @@ $result_errors{'macro_no_argument'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: no matching `@end macro\'
+    'error_line' => 'no matching `@end macro\'
 ',
     'file_name' => '',
     'line_nr' => 1,

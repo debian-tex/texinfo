@@ -39,6 +39,9 @@ Installation notes specific to Texinfo:
   information as the modules are looked for and loaded, TEXINFO_XS=omit
   to disable their use, and TEXINFO_XS=required to force their use.
 
+  If you want to use the XS modules but not the XS parser, you can set
+  the `TEXINFO_XS_PARSER' environment variable to 0.
+
 * For instructions on compiling this distribution with DJGPP tools
   for MS-DOS and MS-Windows, see the file djgpp/README.
 

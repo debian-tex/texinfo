@@ -1,0 +1,13 @@
+\input texinfo.tex
+
+@documentencoding iso-8859-1
+
+@node Top
+@top Testé
+
+@node ésseulé
+
+@node Chapitré
+@chapter Chapitré
+
+@value{non_connùe}

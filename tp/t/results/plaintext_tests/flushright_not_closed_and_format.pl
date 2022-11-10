@@ -1,131 +1,107 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'flushright_not_closed_and_format'} = {
   'contents' => [
     {
-      'cmdname' => 'flushright',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'flushright
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'cmdname' => 'quotation',
-          'contents' => [
+          'args' => [
             {
               'extra' => {
-                'command' => {}
+                'spaces_after_argument' => '
+'
               },
-              'parent' => {},
-              'text' => ' 
-',
-              'type' => 'empty_line_after_command'
-            },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'flushright',
+          'contents' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'A quot---ation
+                  'text' => 'flushright
 '
                 }
               ],
-              'parent' => {},
               'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             },
             {
               'args' => [
                 {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'quotation'
-                    }
-                  ],
                   'extra' => {
-                    'spaces_after_argument' => '
+                    'spaces_after_argument' => ' 
 '
                   },
-                  'parent' => {},
-                  'type' => 'line_arg'
+                  'type' => 'block_line_arg'
                 }
               ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'quotation',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'quotation'
-              },
-              'line_nr' => {
+              'cmdname' => 'quotation',
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'A quot---ation
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'quotation'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'quotation'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 6,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'source_info' => {
                 'file_name' => '',
-                'line_nr' => 6,
+                'line_nr' => 4,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 4,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[1];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[1];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'};
 
 $result_texis{'flushright_not_closed_and_format'} = '@flushright
 flushright
@@ -143,7 +119,7 @@ A quot--ation
 
 $result_errors{'flushright_not_closed_and_format'} = [
   {
-    'error_line' => ':6: no matching `@end flushright\'
+    'error_line' => 'no matching `@end flushright\'
 ',
     'file_name' => '',
     'line_nr' => 6,
@@ -160,7 +136,7 @@ $result_floats{'flushright_not_closed_and_format'} = {};
 
 $result_converted{'plaintext'}->{'flushright_not_closed_and_format'} = '                                                             flushright
 
-                                                          A quot--ation
+                                                           A quot—ation
 ';
 
 1;

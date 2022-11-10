@@ -1,0 +1,40 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top top
+
+@node chapter
+@chapter châp
+
+Texinfo
+@example texinfo
+@code{texinfo}
+@@code@{protécted@}
+@end example
+
+C++
+@example C++
+// Your First C++ Program
+
+#include <iostream>
+
+int main() @{
+    std::cout << "Hello Wörld!";
+    return 0;
+@}
+@end example
+
+perl
+@example perl
+my $list = ['ça', 'bôù', 'é', '@'e @ogonek{a} @euro{} @equiv{}'];
+sub do ($) @{
+  my $arg = shift;
+  return $arg + 4;
+@}
+@end example
+
+@example unknown
+unknown language
+@end example
+
+@bye

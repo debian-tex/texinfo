@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -121,7 +121,7 @@ add_index (char *name, int in_code)
   idx = add_index_internal (name, in_code);
 
   /* For example, "rq" -> "rqindex". */
-  asprintf (&cmdname, "%s%s", name, "index");
+  xasprintf (&cmdname, "%s%s", name, "index");
   add_index_command (cmdname, idx);
   free (cmdname);
 }
@@ -296,6 +296,7 @@ enter_index_entry (enum command_id index_type_command,
   entry->content = content;
   entry->command = current;
   entry->number = idx->index_number;
+  entry->ignored_chars = global_info.ignored_chars;
 
   k = lookup_extra (current, "sortas");
   if (k)
@@ -323,6 +324,40 @@ enter_index_entry (enum command_id index_type_command,
   if (!current_region () && !current_node && !current_section)
     line_warn ("entry for index `%s' outside of any node", idx->name);
 }
+
+/* turn spaces that are ignored before @-commands like @sortas{} and
+   @seeentry{} back to regular spaces if there is content after the @-command
+ */
+void
+set_non_ignored_space_in_index_before_command (ELEMENT *content)
+{
+  ELEMENT *e;
+  ELEMENT *pending_spaces_element = 0;
+  int i;
+  for (i = 0; i < content->contents.number; i++)
+    {
+      /* could also be, but it does not seems to be needed here:
+         e = contents_child_by_index (content, i); */
+      e = content->contents.list[i];
+      if (e->type == ET_internal_spaces_before_brace_in_index)
+        {
+          pending_spaces_element = e;
+          /* set to "spaces_at_end" in case there are only spaces after */
+          e->type = ET_spaces_at_end;
+        }
+      else if (pending_spaces_element
+                && ! (e->cmd == CM_sortas
+                       || e->cmd == CM_seeentry
+                       || e->cmd == CM_seealso
+                       || e->type == ET_spaces_after_close_brace)
+                && (! check_space_element(e)))
+        {
+          pending_spaces_element->type = ET_NONE;
+          pending_spaces_element = 0;
+        }
+    }
+}
+
 
 
 INDEX *

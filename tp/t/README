@@ -1,6 +1,6 @@
 texinfo/tp/t/README
 
-  Copyright 2010-2019 Free Software Foundation, Inc.
+  Copyright 2010-2022 Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
@@ -28,11 +28,12 @@ Another way to run a test out-source is:
   srcdir=$s ../pre-inst-env perl -w $s/t/92formatting.t empty
 
 where s is the path to the srcdir.  This allows you to run a single
-sub-test.
+sub-test, here the sub-test with name "empty".
 
 Most test files use a testing infrastructure from t/test_utils.pl.
 The run_all function from that file runs the tests that have been
 specified.
+
 
 In that case the reference output files for the test of a test category
 $test_category.t file are in t/results/$test_category/.  For example, if
@@ -51,6 +52,12 @@ When making changes that you expect will change the parse tree but not
 change any of the output, one way to check this would be to run "make
 check" and then "grep FAIL test-suite.log | grep -v 'tree$'".
 
+The tests output on STDERR are not checked, it is possible to look
+for spurious output on STDERR in addition to the header and
+information after "make check" with:
+
+ grep -v -e '^ok [0-9]\+' -e '^PASS:' -e '^SKIP:' -e '1\.\.[0-9]\+$' t/*.log
+
 Another way to check test results is to regenerate the reference test
 results (see below), and then run "git diff t".
 
@@ -58,6 +65,15 @@ To review all the differences for one of the *.t test files, you can do:
 
   for f in t/results/coverage_braces/*.pl; do echo --------; echo \
   Differences in $f; diff $f{,.new}; done | less
+
+For some tests, as well as a .pl file as usual in results/*/, actual
+output files are generated.  For those tests, there are directories with
+reference test results (with names prefixed with res_), and directories
+with the obtained results (with names prefixed with out_).  For example,
+many of the tests whose results are in the 'results/indices' directory
+follow this format.  (The same convention is used by the test suite in
+../tests.)
+
 
 The reference files are regenerated with the -g option given to the .t
 file, as in
@@ -70,18 +86,20 @@ files for the "test_image" test within t/03.coverage_braces.t, run
 
   perl -w t/03coverage_braces.t -g test_image
 
+Another way to overwrite the reference test results with the obtained
+results from the last test run when not actual output file are generated
+is to use a command like
+
+  for f in t/results/*/*.pl.new ; do cp ${f%.new} $f ; done
+
+
 Some tests under this directory use input files in the 'input_files'
 subdirectory.  When adding a test that uses an input file, add its path
 to tp/Makefile.am.
 
+Customization files from the tp/init and tp/t/init directories can
+be used in tests.
 
-For some tests, as well as a .pl file as usual in results/*/, actual
-output files are generated.  For those tests, there are directories with
-reference test results (with names prefixed with res_), and directories
-with the obtained results (with names prefixed with out_).  For example,
-many of the tests whose results are in the 'results/indices' directory
-follow this format.  (The same convention is used by the test suite in
-../tests.)
 
 Tests can be managed using the script in ./maintain/all_tests.sh.  For
 example, "./maintain/all_tests.sh generate" regenerates all of the
@@ -89,18 +107,13 @@ reference test results (run from the upper-level directory), and
 "./maintain/all_tests.sh diff" makes a diff of all resulting files
 against references.
 
-Another way to overwrite the reference test results with the obtained
-results from the last test run is to use a command like
-
-  for f in t/results/*/*.pl.new ; do cp ${f%.new} $f ; done
-
-From the top directory, you can also create texinfo files corresponding to
-tests by running something along the lines of:
+From the top directory, you can also create Texinfo files corresponding to
+tests in t_texis/$test_category/ by running something along the lines of:
 
   perl -w t/60macro.t -c
 
-to create a file for each of the tests in t/60macro.t, or for a specific
-test, here arg_body_expansion_order:
+to create a Texinfo file for each of the tests in t/60macro.t, or for a
+specific test, here arg_body_expansion_order:
 
   perl -w t/60macro.t -c arg_body_expansion_order
 

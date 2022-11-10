@@ -6,13 +6,18 @@ Texinfo::Convert::OUTFORMAT - Convert Texinfo tree to OUTFORMAT
 
 =head1 SYNOPSIS
 
-  my $converter 
+  my $converter
     = Texinfo::Convert::OUTFORMAT->converter({'parser' => $parser});
 
   $converter->output($tree);
   $converter->convert($tree);
   $converter->convert_tree($tree);
 __HTML   $converter->output_internal_links(); # HTML only
+
+=head1 NOTES
+
+The Texinfo Perl module main purpose is to be used in C<texi2any> to convert
+Texinfo to other formats.  There is no promise of API stability.
 
 =head1 DESCRIPTION
 
@@ -24,15 +29,18 @@ Texinfo::Convert::OUTFORMAT converts a Texinfo tree to OUTFORMAT.
 
 =item $converter = Texinfo::Convert::OUTFORMAT->converter($options)
 
-Initialize converter from Texinfo to OUTFORMAT.  
+Initialize converter from Texinfo to OUTFORMAT.
 
 The I<$options> hash reference holds options for the converter.  In
-this option hash reference a parser object may be associated with the 
-I<parser> key.  The other options should be configuration options
-described in the Texinfo manual.  Those options, when appropriate,
-override the document content.
+this option hash reference a L<parser object|Texinfo::Parser>
+may be associated with the I<parser> key.  The other options
+are Texinfo customization options and a few other options that can
+be passed to the converter. Most of the customization options are described in
+the Texinfo manual.  Those customization options, when appropriate, override
+the document content.  The parser should not be available directly anymore
+after getting the associated information.
 
-See L<Texinfo::Convert::Converter> for more informations.
+See L<Texinfo::Convert::Converter> for more information.
 
 =item $converter->output($tree)
 
@@ -41,19 +49,19 @@ described in the Texinfo manual.
 
 =item $result = $converter->convert($tree)
 
-Convert a Texinfo tree I<$tree> or tree portion and return 
-the resulting output.
+Convert a Texinfo tree I<$tree> and return the resulting output.
 
 =item $result = $converter->convert_tree($tree)
 
-Convert a Texinfo tree portion I<$tree> and return the resulting 
+Convert a Texinfo tree portion I<$tree> and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use C<convert>.
 
 __HTML =item $result = $converter->output_internal_links()
+__HTML X<C<output_internal_links>>
 __HTML
 __HTML Returns text representing the links in the document.  The format should
-__HTML follow the C<--internal-links> option of the texi2any/makeinfo
+__HTML follow the C<--internal-links> option of the C<texi2any>
 __HTML specification.  This is only supported in (and relevant for) HTML.
 __HTML
 =back
@@ -64,11 +72,12 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2016 Free Software Foundation, Inc.
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or (at 
+the Free Software Foundation; either version 3 of the License, or (at
 your option) any later version.
 
 =cut

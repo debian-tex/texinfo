@@ -1,290 +1,207 @@
-@node Texinfo::Common
+@node Texinfo@asis{::}Common
 @chapter Texinfo::Common
 
-@menu
-* Texinfo@asis{::}Common NAME::
-* Texinfo@asis{::}Common SYNOPSIS::
-* Texinfo@asis{::}Common DESCRIPTION::
-* Texinfo@asis{::}Common COMMAND CLASSES::
-* Texinfo@asis{::}Common METHODS::
-* Texinfo@asis{::}Common SEE ALSO::
-* Texinfo@asis{::}Common AUTHOR::
-@end menu
+@node Texinfo@asis{::}Common NAME
+@section Texinfo::Common NAME
 
-@node Texinfo::Common NAME
-@section NAME
+Texinfo::Common - Texinfo modules common data and miscellaneous methods
 
-Texinfo::Common - Classification of commands and miscellaneous methods
-
-@node Texinfo::Common SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Common SYNOPSIS
+@section Texinfo::Common SYNOPSIS
 
 @verbatim
-  use Texinfo::Common qw(expand_today expand_verbatiminclude);
-  if ($Texinfo::Common::accent_commands{$a_command}) {
-    print STDERR "$a_command is an accent command\n";
-  }
-  
-  my $today_tree = expand_today($converter);
-  my $verbatiminclude_tree 
-     = expand_verbatiminclude(undef, $verbatiminclude);
+  use Texinfo::Common;
+
+
+  my @commands_to_collect = ('math');
+  my $collected_commands
+    = Texinfo::Common::collect_commands_in_tree($document_root,
+                                             \@commands_to_collect);
 @end verbatim
 
-@node Texinfo::Common DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Common NOTES
+@section Texinfo::Common NOTES
 
-Texinfo::Common holds interesting hashes classifying Texinfo @@-commands,
-as well as miscellaneous methods that may be useful for any backend
-converting texinfo trees.
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
 
-It also defines, as our variable a hash for default indices,
-named @code{%index_names}.  The format of this hash is described in 
-@ref{Texinfo::Parser indices_information}.
+@node Texinfo@asis{::}Common DESCRIPTION
+@section Texinfo::Common DESCRIPTION
 
-@node Texinfo::Common COMMAND CLASSES
-@section COMMAND CLASSES
+Texinfo::Common holds hashes with miscellaneous information and some
+hashes with information on Texinfo @@-commands, as well as miscellaneous
+methods.
+
+@node Texinfo@asis{::}Common MISC INFORMATION
+@section MISC INFORMATION
 
 Hashes are defined as @code{our} variables, and are therefore available
 outside of the module.
 
-The key of the hashes are @@-command names without the @@.  The 
+TODO: undocumented
+%null_device_file %default_parser_customization_values %document_settable_multiple_at_commands %document_settable_unique_at_commands %default_converter_command_line_options %default_main_program_customization_options %default_converter_customization @@variable_string_settables %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command
+
+@table @asis
+@item %texinfo_output_formats
+@anchor{Texinfo@asis{::}Common %texinfo_output_formats}
+@cindex @code{%texinfo_output_formats}
+
+Cannonical output formats that have associated conditionals.  In
+practice corresponds to @code{format_raw} @code{%block_commands} plus @code{info}
+and @code{plaintext}.
+
+@end table
+
+@node Texinfo@asis{::}Common @@-COMMAND INFORMATION
+@section @@-COMMAND INFORMATION
+
+Hashes are defined as @code{our} variables, and are therefore available
+outside of the module.
+
+The key of the hashes are @@-command names without the @@.  The
 following hashes are available:
 
 @table @asis
 @item %all_commands
-@anchor{Texinfo::Common %all_commands}
+@anchor{Texinfo@asis{::}Common %all_commands}
+@cindex @code{%all_commands}
 
 All the @@-commands.
 
-@item %no_brace_commands
-@anchor{Texinfo::Common %no_brace_commands}
+@item %brace_code_commands
+@anchor{Texinfo@asis{::}Common %brace_code_commands}
+@cindex @code{%brace_code_commands}
 
-Commands without brace with a single character as name, like @code{*}
-or @code{:}.  The value is an ascii representation of the command.  It
-may be an empty string.
-
-@item %misc_commands
-@anchor{Texinfo::Common %misc_commands}
-
-Command that do not take braces and are not block commands either, like
-@code{@@node}, @code{@@chapter}, @code{@@cindex}, @code{@@deffnx}, @code{@@end}, @code{@@footnotestyle}, 
-@code{@@set}, @code{@@settitle}, @code{@@indent}, @code{@@definfoenclose}, @code{@@comment} and many 
-others.
-
-@item %default_index_commands
-@anchor{Texinfo::Common %default_index_commands}
-
-Index entry commands corresponding to default indices. For example 
-@code{@@cindex}.
-
-@item %root_commands
-@anchor{Texinfo::Common %root_commands}
-
-Commands that are at the root of a Texinfo document, namely
-@code{@@node} and sectioning commands, except heading commands.
-
-@item %sectioning_commands
-@anchor{Texinfo::Common %sectioning_commands}
-
-All the sectioning and heading commands.
-
-@item %brace_commands
-@anchor{Texinfo::Common %brace_commands}
-
-The commands that take braces.  The associated value is the maximum
-number of arguments.
-
-@item %letter_no_arg_commands
-@anchor{Texinfo::Common %letter_no_arg_commands}
-
-@@-commands with braces but no argument corresponding to letters, 
-like @code{@@AA@{@}} or @code{@@ss@{@}} or @code{@@o@{@}}.
-
-@item %accent_commands
-@anchor{Texinfo::Common %accent_commands}
-
-Accent @@-commands taking an argument, like @code{@@'} or @code{@@ringaccent} 
-including @code{@@dotless} and @code{@@tieaccent}.
-
-@item %style_commands
-@anchor{Texinfo::Common %style_commands}
-
-Commands that mark a fragment of texinfo, like @code{@@strong},
-@code{@@cite}, @code{@@code} or @code{@@asis}.
-
-@item %code_style_commands
-@anchor{Texinfo::Common %code_style_commands}
-
-@emph{style_commands} that have their argument in code style, like 
+Brace commands that have their argument in code style, like
 @code{@@code}.
 
-@item %regular_font_style_commands
-@anchor{Texinfo::Common %regular_font_style_commands}
+@item %def_aliases
+@anchor{Texinfo@asis{::}Common %def_aliases}
 
-@emph{style_commands} that have their argument in regular font, like
-@code{@@r} or @code{@@slanted}.
+@item %def_no_var_arg_commands
+@anchor{Texinfo@asis{::}Common %def_no_var_arg_commands}
+@cindex @code{%def_aliases}
+@cindex @code{%def_no_var_arg_commands}
 
-@item %context_brace_commands
-@anchor{Texinfo::Common %context_brace_commands}
+@code{%def_aliases} associates an aliased command to the original command, for
+example @code{defun} is associated to @code{deffn}.
 
-@@-commands with brace like @code{@@footnote}, @code{@@caption} and @code{@@math}
-whose argument is outside of the main text flow in one way or another.
-
-@item %ref_commands
-@anchor{Texinfo::Common %ref_commands}
-
-Cross reference @@-command referencing nodes, like @code{@@xref}.
+@code{%def_no_var_arg_commands} associates a definition command name with
+a true value if the @emph{argument} on the definition command line can contain
+non-metasyntactic variables.  For instance, it is true for @code{deftypevr}
+but false for @code{defun}, since @code{@@defun} @emph{argument} is supposed to contain
+metasyntactic variables only.
 
 @item %explained_commands
-@anchor{Texinfo::Common %explained_commands}
+@anchor{Texinfo@asis{::}Common %explained_commands}
+@cindex @code{%explained_commands}
 
 @@-commands whose second argument explain first argument and further
 @@-command call without first argument, as @code{@@abbr} and @code{@@acronym}.
 
-@item %block commands
-@anchor{Texinfo::Common %block commands}
+@item %inline_conditional_commands
+@anchor{Texinfo@asis{::}Common %inline_conditional_commands}
 
-Commands delimiting a block with a closing @code{@@end}.  The value
-is @emph{conditional} for @code{@@if} commands, @emph{def} for definition
-commands like @code{@@deffn}, @emph{raw} for @@-commands that have no expansion
-of @@-commands in their bodies and @emph{multitable} for @code{@@multitable}.  
-Otherwise it is set to the number of arguments separated by commas 
-that may appear on the @@-command line. That means 0 in most cases, 
-1 for @code{@@quotation} and 2 for @code{@@float}.
+@item %inline_format_commands
+@anchor{Texinfo@asis{::}Common %inline_format_commands}
+@cindex @code{%inline_conditional_commands}
+@cindex @code{%inline_format_commands}
 
-@item %raw_commands
-@anchor{Texinfo::Common %raw_commands}
+Inline conditional commands, like @code{@@inlineifclear}, and inline format
+commands like @code{inlineraw} and @code{inlinefmt}.
 
-@@-commands that have no expansion of @@-commands in their bodies,
-as @code{@@macro}, @code{@@verbatim} or @code{@@ignore}.
+@item %nobrace_symbol_text
+@anchor{Texinfo@asis{::}Common %nobrace_symbol_text}
+@cindex @code{%nobrace_symbol_text}
 
-@item %format_raw_commands
-@anchor{Texinfo::Common %format_raw_commands}
+Values are ASCII representation of single character non-alphabetical commands
+without brace such as @code{*} or @code{:}.  The value may be an empty string.
 
-@@-commands associated with raw output format, like @code{@@html}, or
-@code{@@docbook}.
+@item %small_block_associated_command
+@anchor{Texinfo@asis{::}Common %small_block_associated_command}
+@cindex @code{%small_block_associated_command}
 
-@item %math_commands
-@anchor{Texinfo::Common %math_commands}
-
-@@-commands which contains math, like @code{@@math} or @code{@@displaymath}.
-
-@item %texinfo_output_formats
-@anchor{Texinfo::Common %texinfo_output_formats}
-
-Cannonical output formats that have associated conditionals.  In
-practice @code{%format_raw_commands} plus @code{info} and @code{plaintext}.
-
-@item %def_commands
-@anchor{Texinfo::Common %def_commands}
-
-@item %def_aliases
-@anchor{Texinfo::Common %def_aliases}
-
-Definition commands.  @code{%def_aliases} associates an aliased command
-to the original command, for example @code{defun} is associated to @code{deffn}.
-
-@item %menu_commands
-@anchor{Texinfo::Common %menu_commands}
-
-@@-commands with menu entries.
-
-@item %align_commands
-@anchor{Texinfo::Common %align_commands}
-
-@@-commands related with alignement of text.
-
-@item %region_commands
-@anchor{Texinfo::Common %region_commands}
-
-Block @@-commands that enclose full text regions, like @code{@@titlepage}.
-
-@item %preformatted_commands
-@anchor{Texinfo::Common %preformatted_commands}
-
-@item %preformatted_code_commands
-@anchor{Texinfo::Common %preformatted_code_commands}
-
-@emph{%preformatted_commands} is for commands whose content should not 
-be filled, like @code{@@example} or @code{@@display}.  If the command is meant 
-for code, it is also in @emph{%preformatted_code_commands}, like @code{@@example}.
-
-@item %item_container_commands
-@anchor{Texinfo::Common %item_container_commands}
-
-Commands holding @code{@@item} with @code{@@item} that contains blocks of text, 
-like @code{@@itemize}.
-
-@item %item_line_commands
-@anchor{Texinfo::Common %item_line_commands}
-
-Commands with @code{@@item} that have their arguments on their lines, like
-@code{@@ftable}.
+Associate small command like @code{smallexample} to the regular command
+@code{example}.
 
 @end table
 
-@node Texinfo::Common METHODS
-@section METHODS
+@node Texinfo@asis{::}Common METHODS
+@section Texinfo::Common METHODS
 
-No method is exported in the default case.
+Two methods are exported in the default case for Texinfo modules messages
+translation in the Uniforum gettext framework, @code{__} and @code{__p}.
 
-Most methods takes a @emph{$converter} as argument, sometime optionally, 
-to get some information and use methods for error reporting, 
-see @ref{Texinfo::Convert::Converter NAME} and @ref{Texinfo::Report NAME}.
+The Texinfo tree and Texinfo tree elements used in argument of some functions
+are documented in @ref{Texinfo@asis{::}Parser TEXINFO TREE}.  When customization
+information is needed, an object that defines @code{set_conf} and/or @code{get_conf} is
+expected, for example a converter inheriting from
+@code{Texinfo::Convert::Converter}, see @ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and
+setting customization variables}.
 
 @table @asis
-@item $tree = expand_today($converter)
-@anchor{Texinfo::Common $tree = expand_today($converter)}
+@item $translated_string = __($msgid)
+@anchor{Texinfo@asis{::}Common $translated_string = __($msgid)}
 
-Expand today's date, as a texinfo tree with translations.
+@item $translated_string = __p($msgctxt, $msgid)
+@anchor{Texinfo@asis{::}Common $translated_string = __p($msgctxt@comma{} $msgid)}
 
-@item $tree = expand_verbatiminclude($converter, $verbatiminclude)
-@anchor{Texinfo::Common $tree = expand_verbatiminclude($converter@comma{} $verbatiminclude)}
+Returns the @emph{$msgid} string translated in the Texinfo messages text domain.
+@code{__p} can be used instead of @code{__} to pass a @emph{$msgctxt} context string to
+provide translators with information on the string context when the string is
+short or if the translation could depend on the context. @code{__} corresponds to
+the @code{gettext} function and @code{__p} to the @code{pgettext} function.
 
-The @emph{$converter} argument may be undef.  @emph{$verbatiminclude} is a
-@code{@@verbatiminclude} tree element.  This function returns a 
-@code{@@verbatim} tree elements after finding the included file and
-reading it.  If @emph{$converter} is not defined, the document encoding 
-is not taken into account when reading the file.
+It is not advised to use those functions in user-defined code.  It is not
+practical either, as the translatable strings marked by @code{__} or @code{__p} need to
+be collected and added to the Texinfo messages domain.  This facility could
+only be used in user-defined code with translatable strings already present in
+the domain anyway.  In fact, these functions are documented mainly because they
+are automatically exported.
 
-@item $tree = definition_category($converter, $def_line)
-@anchor{Texinfo::Common $tree = definition_category($converter@comma{} $def_line)}
+See @ref{,,, libintl-perl},
+@url{https://www.gnu.org/software/gettext/manual/html_node/gettext.html, @code{gettext} C interface},
+@url{https://www.gnu.org/software/gettext/manual/html_node/Perl.html, Perl in GNU Gettext}.
+For translation of strings in output, see @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.
 
-The @emph{$converter} argument may be undef.  @emph{$def_line} is a 
-@code{def_line} texinfo tree container.  This function
-returns a texinfo tree corresponding to the category of the
-@emph{$def_line} taking the class into account, if there is one.
-If @emph{$converter} is not defined, the resulting string won't be
-translated.
+@item collect_commands_in_tree($tree, $commands_list)
+@anchor{Texinfo@asis{::}Common collect_commands_in_tree($tree@comma{} $commands_list)}
+@cindex @code{collect_commands_in_tree}
 
-@item $result = is_content_empty($tree, $do_not_ignore_index_entries)
-@anchor{Texinfo::Common $result = is_content_empty($tree@comma{} $do_not_ignore_index_entries)}
+Returns a hash reference with keys @@-commands names specified
+in the @emph{$commands_list} array reference and values arrays of
+tree elements corresponding to those @@-command found in @emph{$tree}
+by traversing the tree.
 
-Return true if the @code{$tree} has content that could be formatted.
-@code{$do_not_ignore_index_entries} is optional.  If set, index entries
-are considered to be formatted.
+@item collect_commands_list_in_tree($tree, $commands_list)
+@anchor{Texinfo@asis{::}Common collect_commands_list_in_tree($tree@comma{} $commands_list)}
+@cindex @code{collect_commands_list_in_tree}
 
-@item $result = numbered_heading ($converter, $heading_element, $heading_text, $do_number)
-@anchor{Texinfo::Common $result = numbered_heading ($converter@comma{} $heading_element@comma{} $heading_text@comma{} $do_number)}
+Return a list reference containing the tree elements corresponding
+to the @@-commands names specified in the @emph{$commands_list} found
+in @emph{$tree} by traversing the tree.  The order of the @@-commands
+should be kept.
 
-The @emph{$converter} argument may be undef.  @emph{$heading_element} is 
-a heading command tree element.  @emph{$heading_text} is the already 
-formatted heading text.  if the @emph{$do_number} optional argument is 
-defined and false, no number is used and the text is returned as is.
-This function returns the heading with a number and the appendix 
-part if needed.  If @emph{$converter} is not defined, the resulting 
-string won't be translated.
+@item $result = element_is_inline($element, $check_current)
+@anchor{Texinfo@asis{::}Common $result = element_is_inline($element@comma{} $check_current)}
+@cindex @code{element_is_inline}
 
-@item ($caption, $prepended) = float_name_caption ($converter, $float)
-@anchor{Texinfo::Common ($caption@comma{} $prepended) = float_name_caption ($converter@comma{} $float)}
+Return true if the element passed in argument is in running text
+context.  If the optional @emph{$check_current} argument is set,
+check the element itself, in addition to the parent context.
 
-@emph{$float} is a texinfo tree @code{@@float} element.  This function 
-returns the caption that should be used for the float formatting 
-and the @emph{$prepended} texinfo tree combining the type and label
-of the float.
+@item ($encoded_file_name, $encoding) = encode_file_name($file_name, $input_encoding)
+@anchor{Texinfo@asis{::}Common ($encoded_file_name@comma{} $encoding) = encode_file_name($file_name@comma{} $input_encoding)}
+
+Encode the @emph{$file_name} text string to a binary string @emph{$encoded_file_name}
+based on @emph{$input_encoding}.  Also returns the @emph{$encoding} name actually
+used which may have undergone some normalization.  This function is mostly
+a wrapper around @ref{encode,, Encode::encode, Encode} which avoids calling the module if not
+needed.  Do nothing if @emph{$input_encoding} is @code{undef}.
 
 @item $text = enumerate_item_representation($specification, $number)
-@anchor{Texinfo::Common $text = enumerate_item_representation($specification@comma{} $number)}
+@anchor{Texinfo@asis{::}Common $text = enumerate_item_representation($specification@comma{} $number)}
+@cindex @code{enumerate_item_representation}
 
 This function returns the number or letter correponding to item
 number @emph{$number} for an @code{@@enumerate} specification @emph{$specification},
@@ -296,87 +213,198 @@ appearing on an @code{@@enumerate} line.  For example
 
 is @code{e}.
 
-@item trim_spaces_comment_from_content($contents)
-@anchor{Texinfo::Common trim_spaces_comment_from_content($contents)}
+@item $command = find_parent_root_command($object, $tree_element)
+@anchor{Texinfo@asis{::}Common $command = find_parent_root_command($object@comma{} $tree_element)}
+@cindex @code{find_parent_root_command}
 
-Remove empty spaces after commands or braces at begin and
-spaces and comments at end from a content array, modifying it.
+Find the parent root command (sectioning command or node) of a tree element.
+The @emph{$object} argument is optional, its @code{global_commands} field is used
+to continue through @code{@@insertcopying} if in a @code{@@copying}.
 
-@item $normalized_name = normalize_top_node_name ($node_string)
-@anchor{Texinfo::Common $normalized_name = normalize_top_node_name ($node_string)}
+@item $result = is_content_empty($tree, $do_not_ignore_index_entries)
+@anchor{Texinfo@asis{::}Common $result = is_content_empty($tree@comma{} $do_not_ignore_index_entries)}
+@cindex @code{is_content_empty}
+
+Return true if the @emph{$tree} has content that could be formatted.
+@emph{$do_not_ignore_index_entries} is optional.  If set, index entries
+are considered to be formatted.
+
+@item $file = locate_include_file($customization_information, file_path)
+@anchor{Texinfo@asis{::}Common $file = locate_include_file($customization_information@comma{} file_path)}
+@cindex @code{locate_include_file}
+
+Locate @emph{$file_path}.  If @emph{$file_path} is an absolute path or has @code{.}
+or @code{..} in the path directories it is checked that the path exists and is a
+file.  Otherwise, the file name in @emph{$file_path} is located in include
+directories also used to find texinfo files included in Texinfo documents.
+@emph{$file_path} should be a binary string.  @code{undef} is returned if the file was
+not found, otherwise the file found is returned as a binary string.
+
+@item move_index_entries_after_items_in_tree($tree)
+@anchor{Texinfo@asis{::}Common move_index_entries_after_items_in_tree($tree)}
+@cindex @code{move_index_entries_after_items_in_tree}
+
+In @code{@@enumerate} and @code{@@itemize} from the tree, move index entries
+appearing just before @code{@@item} after the @code{@@item}.  Comment lines
+between index entries are moved too.
+
+@item $normalized_name = normalize_top_node_name($node_string)
+@anchor{Texinfo@asis{::}Common $normalized_name = normalize_top_node_name($node_string)}
+@cindex @code{normalize_top_node_name}
 
 Normalize the node name string given in argument, by normalizing
 Top node case.
 
+@item protect_colon_in_tree($tree)
+@anchor{Texinfo@asis{::}Common protect_colon_in_tree($tree)}
+
+@item protect_node_after_label_in_tree($tree)
+@anchor{Texinfo@asis{::}Common protect_node_after_label_in_tree($tree)}
+@cindex @code{protect_colon_in_tree}
+@cindex @code{protect_node_after_label_in_tree}
+
+Protect colon with @code{protect_colon_in_tree} and characters that
+are special in node names after a label in menu entries (tab
+dot and comma) with @code{protect_node_after_label_in_tree}.
+The protection is achieved by putting protected characters
+in @code{@@asis@{@}}.
+
 @item protect_comma_in_tree($tree)
-@anchor{Texinfo::Common protect_comma_in_tree($tree)}
+@anchor{Texinfo@asis{::}Common protect_comma_in_tree($tree)}
+@cindex @code{protect_comma_in_tree}
 
 Protect comma characters, replacing @code{,} with @@comma@{@} in tree.
 
-@item protect_colon_in_tree($tree)
-@anchor{Texinfo::Common protect_colon_in_tree($tree)}
+@item $contents_result = protect_first_parenthesis($contents)
+@anchor{Texinfo@asis{::}Common $contents_result = protect_first_parenthesis($contents)}
+@cindex @code{protect_first_parenthesis}
 
-@item protect_node_after_label_in_tree($tree)
-@anchor{Texinfo::Common protect_node_after_label_in_tree($tree)}
+Return a contents array reference with first parenthesis in the
+contents array reference protected.  If @emph{$contents} is undef
+a fatal error with a backtrace will be emitted.
 
-Protect colon with @code{protect_colon_in_tree} and characters that 
-are special in node names after a label in menu entries (tab
-dot and comma) with @code{protect_node_after_label_in_tree}.  
-The protection is achieved by putting protected characters 
-in @code{@@asis@{@}}.
+@item relate_index_entries_to_table_entries_in_tree($tree)
+@anchor{Texinfo@asis{::}Common relate_index_entries_to_table_entries_in_tree($tree)}
+@cindex @code{relate_index_entries_to_table_entries_in_tree}
 
-@item $contents_result = protect_first_parenthesis ($contents)
-@anchor{Texinfo::Common $contents_result = protect_first_parenthesis ($contents)}
+In @@*table @@-commands, reassociate the index entry information from an index
+@@-command appearing right after an @@item line to the @@item first element.
+Remove the index @@-command from the tree.
 
-Return a contents array reference with first parenthesis in the 
-contents array reference protected.
+@item $level = section_level($section)
+@anchor{Texinfo@asis{::}Common $level = section_level($section)}
+@cindex @code{section_level}
 
-@item protect_hashchar_at_line_beginning($parser, $tree)
-@anchor{Texinfo::Common protect_hashchar_at_line_beginning($parser@comma{} $tree)}
+Return numbered level of the tree sectioning element @emph{$section}, as modified by
+raise/lowersections.
 
-Protect hash character at beginning of line if the line is a cpp
-line directive.  The @emph{$parser} argument maybe undef, if it is 
-defined it is used for error reporting in case an hash character
-could not be protected because it appeared in a raw environment.
+@item $element = set_global_document_command($customization_information, $global_commands_information, $cmdname, $command_location)
+@anchor{Texinfo@asis{::}Common $element = set_global_document_command($customization_information@comma{} $global_commands_information@comma{} $cmdname@comma{} $command_location)}
+@cindex @code{set_global_document_command}
 
-@item move_index_entries_after_items_in_tree($tree)
-@anchor{Texinfo::Common move_index_entries_after_items_in_tree($tree)}
+Set the Texinfo configuration option corresponding to @emph{$cmdname} in
+@emph{$customization_information}.  The @emph{$global_commands_information} should
+contain information about global commands in a Texinfo document, typically obtained
+from a parser @ref{Texinfo@asis{::}Parser $commands = global_commands_information($parser),, $parser->global_commands_information()}.
+@emph{$command_location} specifies where in the document the value should be taken from,
+for commands that may appear more than once. The possibilities are:
 
-In @code{@@enumerate} and @code{@@itemize} from the tree, move index entries 
-appearing just before @code{@@item} after the @code{@@item}.  Comment lines 
-between index entries are moved too.
+@table @asis
+@item last
+@anchor{Texinfo@asis{::}Common last}
 
-@item $command = find_parent_root_command($parser, $tree_element)
-@anchor{Texinfo::Common $command = find_parent_root_command($parser@comma{} $tree_element)}
+Set to the last value for the command.
 
-Find the parent root command of a tree element (sectioning command or node).
-The @code{$parser} argument is optional, it is used to continue 
-through @code{@@insertcopying} if in a @code{@@copying}.
+@item preamble
+@anchor{Texinfo@asis{::}Common preamble}
+
+Set sequentially to the values in the Texinfo preamble.
+
+@item preamble_or_first
+@anchor{Texinfo@asis{::}Common preamble_or_first}
+
+Set to the first value of the command if the first command is not
+in the Texinfo preamble, else set as with @emph{preamble},
+sequentially to the values in the Texinfo preamble.
+
+@end table
+
+The @emph{$element} returned is the last element that was used to set the
+configuration value, or @code{undef} if no configuration value was found.
+
+Notice that the only effect of this function is to set a customization
+variable value, no @@-command side effects are run, no associated customization
+variables are set.
+
+@item set_informative_command_value($customization_information, $element)
+@anchor{Texinfo@asis{::}Common set_informative_command_value($customization_information@comma{} $element)}
+@cindex @code{set_informative_command_value}
+
+Set the Texinfo configuration option corresponding to the tree element
+@emph{$element}.  The command associated to the tree element should be
+a command that sets some information, such as @code{@@documentlanguage},
+@code{@@contents} or @code{@@footnotestyle} for example.
+
+@item set_output_encodings($customization_information, $parser_information)
+@anchor{Texinfo@asis{::}Common set_output_encodings($customization_information@comma{} $parser_information)}
+@cindex @code{set_output_encodings}
+
+If not already set, set @code{OUTPUT_ENCODING_NAME} based on input file
+encoding.  Also set @code{OUTPUT_PERL_ENCODING} accordingly which is used
+to output in the correct encoding.  In general, @code{OUTPUT_PERL_ENCODING}
+should not be set directly by user-defined code such that it corresponds
+to @code{OUTPUT_ENCODING_NAME}.
+
+@item $split_contents = split_custom_heading_command_contents($contents)
+@anchor{Texinfo@asis{::}Common $split_contents = split_custom_heading_command_contents($contents)}
+@cindex @code{split_custom_heading_command_contents}
+
+Split the @emph{$contents} array reference at @code{@@|} in at max three parts.
+Return an array reference containing the split parts.  The @emph{$contents}
+array reference is supposed to be @code{$element->@{'args'@}->[0]->@{'contents'@}}
+of @code{%Texinfo::Commands::heading_spec_commands} commands such as @code{@@everyheading}.
+
+@item trim_spaces_comment_from_content($contents)
+@anchor{Texinfo@asis{::}Common trim_spaces_comment_from_content($contents)}
+@cindex @code{trim_spaces_comment_from_content}
+
+Remove empty spaces after commands or braces at begin and
+spaces and comments at end from a content array, modifying it.
+
+@item valid_customization_option($name)
+@anchor{Texinfo@asis{::}Common valid_customization_option($name)}
+@cindex @code{valid_option}
+
+Return true if the @emph{$name} is a known customization option.
 
 @item valid_tree_transformation($name)
-@anchor{Texinfo::Common valid_tree_transformation($name)}
+@anchor{Texinfo@asis{::}Common valid_tree_transformation($name)}
+@cindex @code{valid_tree_transformation}
 
 Return true if the @emph{$name} is a known tree transformation name
 that may be passed with @code{TREE_TRANSFORMATIONS} to modify a texinfo
 tree.
 
-@item collect_commands_in_tree($tree, $commands_list)
-@anchor{Texinfo::Common collect_commands_in_tree($tree@comma{} $commands_list)}
-
-Returns a hash reference with keys @@-commands names specified
-in the @emph{$commands_list} array reference and values arrays of
-tree elements corresponding to those @@-command found in @emph{$tree}
-by traversing the tree.
-
 @end table
 
-@node Texinfo::Common SEE ALSO
-@section SEE ALSO
+@node Texinfo@asis{::}Common SEE ALSO
+@section Texinfo::Common SEE ALSO
 
-@ref{Texinfo::Parser NAME}, @ref{Texinfo::Convert::Converter NAME} and @ref{Texinfo::Report NAME}. 
+@ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}, @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} and @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report}.
 
-@node Texinfo::Common AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Common AUTHOR
+@section Texinfo::Common AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Common COPYRIGHT AND LICENSE
+@section Texinfo::Common COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

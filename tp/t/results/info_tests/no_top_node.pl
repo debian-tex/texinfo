@@ -1,23 +1,20 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'no_top_node'} = {
   'contents' => [
     {
-      'contents' => [],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'node Top not Top node'
             }
           ],
@@ -25,12 +22,10 @@ $result_trees{'no_top_node'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -46,22 +41,17 @@ $result_trees{'no_top_node'} = {
         'normalized' => 'node-Top-not-Top-node',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'no_top_node'}{'contents'}[0]{'parent'} = $result_trees{'no_top_node'};
-$result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_top_node'}{'contents'}[1];
 $result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_top_node'}{'contents'}[1]{'parent'} = $result_trees{'no_top_node'};
 
 $result_texis{'no_top_node'} = '@node node Top not Top node
 ';
@@ -69,21 +59,17 @@ $result_texis{'no_top_node'} = '@node node Top not Top node
 
 $result_texts{'no_top_node'} = '';
 
-$result_sectioning{'no_top_node'} = {};
-
 $result_nodes{'no_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node-Top-not-Top-node',
-    'spaces_before_argument' => ' '
+    'normalized' => 'node-Top-not-Top-node'
   }
 };
 
 $result_menus{'no_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node-Top-not-Top-node',
-    'spaces_before_argument' => ' '
+    'normalized' => 'node-Top-not-Top-node'
   }
 };
 

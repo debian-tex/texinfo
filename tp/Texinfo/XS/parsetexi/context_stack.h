@@ -24,26 +24,23 @@ enum context {
     ct_def,
     ct_preformatted,
     ct_rawpreformatted,
-    ct_menu,
     ct_math,
-    ct_footnote,
-    ct_caption,
-    ct_shortcaption,
+    ct_brace_command,
     ct_inlineraw
 };
 
 /* Contexts where an empty line doesn't start a new paragraph. */
 #define in_paragraph_context(c) \
   !((c) == ct_math \
-   || (c) == ct_menu \
    || (c) == ct_def \
    || (c) == ct_preformatted \
    || (c) == ct_rawpreformatted \
    || (c) == ct_inlineraw)
 
-void push_context (enum context c);
-enum context pop_context ();
+void push_context (enum context c, enum command_id cmd);
+enum context pop_context (void);
 enum context current_context (void);
+enum command_id current_context_command (void);
 void reset_context_stack (void);
 
 
@@ -53,4 +50,7 @@ ELEMENT *current_region (void);
 enum command_id current_region_cmd (void);
 
 void reset_region_stack (void);
+
+
+int in_preformatted_context_not_menu(void);
 #endif

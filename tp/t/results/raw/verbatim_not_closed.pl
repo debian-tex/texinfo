@@ -1,73 +1,64 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'verbatim_not_closed'} = {
   'contents' => [
     {
-      'cmdname' => 'verbatim',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'verbatim',
+          'contents' => [
+            {
+              'text' => '
 ',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'parent' => {},
-          'text' => '
+              'type' => 'raw'
+            },
+            {
+              'text' => 'some verbatim @
 ',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => 'some verbatim @
+              'type' => 'raw'
+            },
+            {
+              'text' => '
 ',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '
+              'type' => 'raw'
+            },
+            {
+              'text' => '@macro
 ',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '@macro
+              'type' => 'raw'
+            },
+            {
+              'text' => '
 ',
-          'type' => 'raw'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'raw'
+              'type' => 'raw'
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         }
       ],
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'verbatim_not_closed'}{'contents'}[0];
-$result_trees{'verbatim_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'verbatim_not_closed'};
 
 $result_texis{'verbatim_not_closed'} = '@verbatim
 
@@ -75,7 +66,7 @@ some verbatim @
 
 @macro
 
-@end verbatim';
+';
 
 
 $result_texts{'verbatim_not_closed'} = '
@@ -87,7 +78,7 @@ some verbatim @
 
 $result_errors{'verbatim_not_closed'} = [
   {
-    'error_line' => ':6: no matching `@end verbatim\'
+    'error_line' => 'no matching `@end verbatim\'
 ',
     'file_name' => '',
     'line_nr' => 6,

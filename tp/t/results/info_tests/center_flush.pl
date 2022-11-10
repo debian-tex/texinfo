@@ -1,503 +1,377 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'center_flush'} = {
   'contents' => [
     {
-      'args' => [
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'centered'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'line_arg'
-        }
-      ],
-      'cmdname' => 'center',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'flushleft',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'left and
-'
-            },
-            {
-              'parent' => {},
-              'text' => 'left2
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'left3.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'left Last
-'
-            },
-            {
-              'parent' => {},
-              'text' => '  with space.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Now anchor
-'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'anchor in flushleft'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'anchor-in-flushleft'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_spaces_after_close_brace'
-            },
-            {
-              'parent' => {},
-              'text' => 'after anchor
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'flushleft'
+                  'text' => 'centered'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'center',
           'extra' => {
-            'command_argument' => 'flushleft',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'flushleft'
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 16,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'flushright',
-      'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
+          }
         },
         {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'right and
-'
-            },
-            {
-              'parent' => {},
-              'text' => 'right2
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Right3
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Right last
-'
-            },
-            {
-              'parent' => {},
-              'text' => '  with space.     
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'contents' => [
-            {
-              'parent' => {},
-              'text' => 'Now anchor
-'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'anchor in flushright'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'anchor-in-flushright'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_spaces_after_close_brace'
-            },
-            {
-              'parent' => {},
-              'text' => 'after anchor
-'
-            },
-            {
-              'parent' => {},
-              'text' => 'Second anchor in text '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'second anchor in flushright'
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'anchor',
-              'contents' => [],
-              'extra' => {
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'second-anchor-in-flushright'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 31,
-                'macro' => ''
-              },
-              'parent' => {}
-            },
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_close_brace'
-            },
-            {
-              'parent' => {},
-              'text' => 'after anchor.
-'
-            }
-          ],
-          'parent' => {},
-          'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'flushright'
-                }
-              ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'flushright',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'flushright'
-          },
-          'line_nr' => {
+          'cmdname' => 'flushleft',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'left and
+'
+                },
+                {
+                  'text' => 'left2
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'left3.
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'left Last
+'
+                },
+                {
+                  'text' => '  with space.
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'Now anchor
+'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'anchor in flushleft'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'anchor',
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'anchor-in-flushleft'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 14,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_after_close_brace'
+                },
+                {
+                  'text' => 'after anchor
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'flushleft'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'flushleft'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 16,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 32,
+            'line_nr' => 3,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'flushright',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'right and
+'
+                },
+                {
+                  'text' => 'right2
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'Right3
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'Right last
+'
+                },
+                {
+                  'text' => '  with space.     
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'Now anchor
+'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'anchor in flushright'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'anchor',
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'anchor-in-flushright'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 29,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_after_close_brace'
+                },
+                {
+                  'text' => 'after anchor
+'
+                },
+                {
+                  'text' => 'Second anchor in text '
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'second anchor in flushright'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'anchor',
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'second-anchor-in-flushright'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 31,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces_after_close_brace'
+                },
+                {
+                  'text' => 'after anchor.
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'flushright'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'flushright'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 18,
+            'macro' => ''
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 18,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'center_flush'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[0]{'args'}[0];
-$result_trees{'center_flush'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[0]{'parent'} = $result_trees{'center_flush'};
-$result_trees{'center_flush'}{'contents'}[1]{'parent'} = $result_trees{'center_flush'};
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[1];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[1];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[3];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[6];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[6];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1]{'args'}[0];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[9]{'args'}[0];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[9];
-$result_trees{'center_flush'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'center_flush'}{'contents'}[2];
-$result_trees{'center_flush'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'center_flush'}{'contents'}[2]{'contents'}[9];
-$result_trees{'center_flush'}{'contents'}[2]{'parent'} = $result_trees{'center_flush'};
-$result_trees{'center_flush'}{'contents'}[3]{'parent'} = $result_trees{'center_flush'};
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[1];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[1];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[3];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[6];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[6];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[6]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[7]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1]{'args'}[0];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[4]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5]{'args'}[0];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[5]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[6]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'contents'}[7]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[8];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[8]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[9]{'args'}[0];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[9];
-$result_trees{'center_flush'}{'contents'}[4]{'contents'}[9]{'parent'} = $result_trees{'center_flush'}{'contents'}[4];
-$result_trees{'center_flush'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'center_flush'}{'contents'}[4]{'contents'}[9];
-$result_trees{'center_flush'}{'contents'}[4]{'parent'} = $result_trees{'center_flush'};
+$result_trees{'center_flush'}{'contents'}[0]{'contents'}[2]{'contents'}[7]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[0]{'contents'}[2]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[5]{'args'}[0]{'contents'}[0];
 
 $result_texis{'center_flush'} = '@center centered
 
@@ -618,7 +492,7 @@ $result_converted_errors{'info'}->{'center_flush'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':14: warning: @anchor outside of any node
+    'error_line' => 'warning: @anchor outside of any node
 ',
     'file_name' => '',
     'line_nr' => 14,
@@ -627,7 +501,7 @@ $result_converted_errors{'info'}->{'center_flush'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: @anchor outside of any node
+    'error_line' => 'warning: @anchor outside of any node
 ',
     'file_name' => '',
     'line_nr' => 29,
@@ -636,7 +510,7 @@ $result_converted_errors{'info'}->{'center_flush'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':31: warning: @anchor outside of any node
+    'error_line' => 'warning: @anchor outside of any node
 ',
     'file_name' => '',
     'line_nr' => 31,

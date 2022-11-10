@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,242 +10,183 @@ $result_trees{'format_on_first_footnote_line'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'Texte'
-        },
-        {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'text' => 'Texte'
+            },
+            {
+              'args' => [
                 {
-                  'cmdname' => 'quotation',
                   'contents' => [
-                    {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line_after_command'
-                    },
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'in quotation on the first footnote line
-'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'paragraph'
-                    },
                     {
                       'args' => [
                         {
-                          'contents' => [
-                            {
-                              'parent' => {},
-                              'text' => 'quotation'
-                            }
-                          ],
                           'extra' => {
                             'spaces_after_argument' => '
 '
                           },
-                          'parent' => {},
-                          'type' => 'line_arg'
+                          'type' => 'block_line_arg'
                         }
                       ],
-                      'cmdname' => 'end',
-                      'extra' => {
-                        'command_argument' => 'quotation',
-                        'spaces_before_argument' => ' ',
-                        'text_arg' => 'quotation'
-                      },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
-                      },
-                      'parent' => {}
-                    }
-                  ],
-                  'extra' => {
-                    'end_command' => {}
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_context'
-            }
-          ],
-          'cmdname' => 'footnote',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'Last text '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'cmdname' => 'example',
-                  'contents' => [
-                    {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line_after_command'
-                    },
-                    {
+                      'cmdname' => 'quotation',
                       'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'in example
-'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'preformatted'
-                    },
-                    {
-                      'args' => [
                         {
                           'contents' => [
                             {
-                              'parent' => {},
-                              'text' => 'example'
+                              'text' => 'in quotation on the first footnote line
+'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'type' => 'paragraph'
+                        },
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'quotation'
+                                }
+                              ],
+                              'extra' => {
+                                'spaces_after_argument' => '
 '
+                              },
+                              'type' => 'line_arg'
+                            }
+                          ],
+                          'cmdname' => 'end',
+                          'extra' => {
+                            'spaces_before_argument' => ' ',
+                            'text_arg' => 'quotation'
                           },
-                          'parent' => {},
-                          'type' => 'line_arg'
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 3,
+                            'macro' => ''
+                          }
                         }
                       ],
-                      'cmdname' => 'end',
-                      'extra' => {
-                        'command_argument' => 'example',
-                        'spaces_before_argument' => ' ',
-                        'text_arg' => 'example'
-                      },
-                      'line_nr' => {
+                      'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 8,
+                        'line_nr' => 1,
                         'macro' => ''
-                      },
-                      'parent' => {}
+                      }
                     }
                   ],
-                  'extra' => {
-                    'end_command' => {}
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
+                  'type' => 'brace_command_context'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_context'
+              'cmdname' => 'footnote',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => 'footnote',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'Last text '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'extra' => {
+                            'spaces_after_argument' => '
 '
+                          },
+                          'type' => 'block_line_arg'
+                        }
+                      ],
+                      'cmdname' => 'example',
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'in example
+'
+                            }
+                          ],
+                          'type' => 'preformatted'
+                        },
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'example'
+                                }
+                              ],
+                              'extra' => {
+                                'spaces_after_argument' => '
+'
+                              },
+                              'type' => 'line_arg'
+                            }
+                          ],
+                          'cmdname' => 'end',
+                          'extra' => {
+                            'spaces_before_argument' => ' ',
+                            'text_arg' => 'example'
+                          },
+                          'source_info' => {
+                            'file_name' => '',
+                            'line_nr' => 8,
+                            'macro' => ''
+                          }
+                        }
+                      ],
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 6,
+                        'macro' => ''
+                      }
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'type' => 'brace_command_context'
+                }
+              ],
+              'cmdname' => 'footnote',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'};
-$result_trees{'format_on_first_footnote_line'}{'contents'}[1]{'parent'} = $result_trees{'format_on_first_footnote_line'};
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'format_on_first_footnote_line'}{'contents'}[2];
-$result_trees{'format_on_first_footnote_line'}{'contents'}[2]{'parent'} = $result_trees{'format_on_first_footnote_line'};
 
 $result_texis{'format_on_first_footnote_line'} = 'Texte@footnote{@quotation
 in quotation on the first footnote line
@@ -285,23 +226,38 @@ $result_converted{'plaintext'}->{'format_on_first_footnote_line'} = 'Texte(1).
 ';
 
 
-$result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
+$result_converted{'html_text'}->{'format_on_first_footnote_line'} = '<p>Texte<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
-<p>Last text <a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
-</p><div class="footnote">
+<p>Last text <a class="footnote" id="DOCF2" href="#FOOT2"><sup>2</sup></a>
+</p><div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
-<blockquote>
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<blockquote class="quotation">
 <p>in quotation on the first footnote line
 </p></blockquote>
-<h5><a id="FOOT2" href="#DOCF2">(2)</a></h5>
+<h5 class="footnote-body-heading"><a id="FOOT2" href="#DOCF2">(2)</a></h5>
 <div class="example">
-<pre class="example">in example
+<pre class="example-preformatted">in example
 </pre></div>
 
 </div>
+';
+
+
+$result_converted{'latex_text'}->{'format_on_first_footnote_line'} = 'Texte\\footnote{\\begin{quote}
+in quotation on the first footnote line
+\\end{quote}
+}.
+
+Last text \\footnote{\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily in example
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+}
 ';
 
 1;

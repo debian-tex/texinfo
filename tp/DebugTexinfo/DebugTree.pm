@@ -30,11 +30,16 @@
 # --debug=10 (or more), the tree is printed at the end of the run,
 # --debug=100 (or more), the tree is printed at each newline.
 
-
-use Texinfo::Convert::Converter;
+use strict;
 
 package DebugTexinfo::DebugTree;
 
+# also for __(
+use Texinfo::Common;
+use Texinfo::Structuring;
+use Texinfo::Convert::Converter;
+
+use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
 my %defaults = (
@@ -52,19 +57,12 @@ sub output($$)
   my $self = shift;
   my $root = shift;
 
-
-  $self->_set_outfile();
-  return undef unless $self->_create_destination_directory();
-
-  my $fh;
-  if (! $self->{'output_file'} eq '') {
-    $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
-    if (!$fh) {
-      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
-                                    $self->{'output_file'}, $!));
-      return undef;
-    }
-  }
+  my ($output_file, $destination_directory) = $self->determine_files_and_directory();
+  # REMARK for this format SPLIT does not means diverse files created
+  # so the way the directory is determined/created if there is already
+  # a file with the same name does not make sense for this format.
+  # Given that this format is only to be used for debugging, this is
+  # not an issue that really needs fixing.
 
   my $elements;
   if ($self) {
@@ -86,7 +84,44 @@ sub output($$)
     $root = {'type' => 'elements_root',
              'contents' => $elements };
   }
-  return $self->_output_text (_print_tree($self, $root), $fh);
+
+  my ($encoded_destination_directory, $dir_encoding)
+    = $self->encoded_output_file_name($destination_directory);
+  my $succeeded
+    = $self->create_destination_directory($encoded_destination_directory,
+                                          $destination_directory);
+  return undef unless $succeeded;
+
+  my $fh;
+  my $encoded_output_file;
+  if (! $output_file eq '') {
+    my $path_encoding;
+    ($encoded_output_file, $path_encoding)
+      = $self->encoded_output_file_name($output_file);
+    my $error_message;
+    ($fh, $error_message) = Texinfo::Common::output_files_open_out(
+                             $self->output_files_information(), $self,
+                                     $encoded_output_file);
+    if (!$fh) {
+      $self->document_error($self,
+           sprintf(__("could not open %s for writing: %s"),
+                                    $output_file, $error_message));
+      return undef;
+    }
+  }
+  my $result = $self->write_or_return(_print_tree($self, $root), $fh);
+  # NOTE that we close STDOUT too here
+  if ($fh) {
+    Texinfo::Common::output_files_register_closed(
+             $self->output_files_information(), $encoded_output_file);
+    if (!close ($fh)) {
+      $self->document_error($self,
+               sprintf(__("error on closing %s: %s"),
+                                    $output_file, $!));
+      return undef;
+    }
+  }
+  return $result;
 }
 
 sub convert($$)
@@ -107,10 +142,19 @@ sub convert_tree($$)
 
 sub _print_tree($$;$$);
 
+sub _protect_text($)
+{
+  my $text = shift;
+  $text =~ s/\n/\\n/g;
+  $text =~ s/\f/\\f/g;
+  $text =~ s/\r/\\r/g;
+  return $text;
+}
+
 sub _print_tree($$;$$)
 {
   my $self = shift;
-  my $root = shift;
+  my $element = shift;
   my $level = shift;
   my $argument = shift;
   $level = 0 if (!defined($level));
@@ -120,27 +164,40 @@ sub _print_tree($$;$$)
     $result .= '%';
     $level++;
   }
-  if ($root->{'cmdname'}) {
-    $result .= "\@$root->{'cmdname'} ";
+  if ($element->{'cmdname'}) {
+    $result .= "\@$element->{'cmdname'} ";
   }
-  if (defined($root->{'type'})) {
-    $result .= "$root->{'type'} ";
+  if (defined($element->{'type'})) {
+    $result .= "$element->{'type'} ";
   }
-  if (defined($root->{'text'})) {
-    my $text = $root->{'text'};
-    $text =~ s/\n/\\n/g;
-    $text =~ s/\f/\\f/g;
-    $text =~ s/\r/\\r/g;
+  if (defined($element->{'text'})) {
+    my $text = _protect_text($element->{'text'});
     $result .= "|$text|";
   }
+  if ($element->{'extra'}
+      and defined($element->{'extra'}->{'spaces_before_argument'})) {
+    $result .= ' '
+    .'b/'._protect_text($element->{'extra'}->{'spaces_before_argument'}).'/';
+  }
+  if ($element->{'extra'}
+      and defined($element->{'extra'}->{'spaces_after_argument'})) {
+    $result .= ' '
+    .'a/'._protect_text($element->{'extra'}->{'spaces_after_argument'}).'/';
+  }
   $result .= "\n";
-  if ($root->{'args'}) {
-    foreach my $arg (@{$root->{'args'}}) {
+  if ($element->{'extra'}
+      and defined($element->{'extra'}->{'comment_at_end'})) {
+    $result .= ' ' x ($level + 1).'/comment_at_end/'."\n";
+    $result .= _print_tree ($self, $element->{'extra'}->{'comment_at_end'},
+                            $level +2);
+  }
+  if ($element->{'args'}) {
+    foreach my $arg (@{$element->{'args'}}) {
       $result .= _print_tree ($self, $arg, $level +1, 1);
     }
   }
-  if ($root->{'contents'}) {
-    foreach my $content (@{$root->{'contents'}}) {
+  if ($element->{'contents'}) {
+    foreach my $content (@{$element->{'contents'}}) {
       $result .= _print_tree ($self, $content, $level+1);
     }
   }

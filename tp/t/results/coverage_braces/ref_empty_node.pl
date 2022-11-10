@@ -1,268 +1,191 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'ref_empty_node'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
       'contents' => [
         {
-          'args' => [
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'manual'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'ref',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'Manual'
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'ref',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => ' '
-        },
-        {
-          'args' => [
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'imanual'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'inforef',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
           'text' => '
-'
+',
+          'type' => 'empty_line'
         },
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'Bidule'
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'manual'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'ref',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'Truc'
-                }
-              ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'text' => ' '
             },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'file'
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Manual'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'ref',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
             },
             {
-              'contents' => [
+              'text' => ' '
+            },
+            {
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'Printed'
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'imanual'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'inforef',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            },
+            {
+              'args' => [
+                {
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Bidule'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Truc'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'file'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'Printed'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_before_argument' => ' '
+                  },
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'xref',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => 'xref',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '.
-'
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'ref_empty_node'}{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'};
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[4];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'args'}[4]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[1]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[2];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[2]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[3];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[3]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[4];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'args'}[4]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'ref_empty_node'}{'contents'}[1];
-$result_trees{'ref_empty_node'}{'contents'}[1]{'parent'} = $result_trees{'ref_empty_node'};
 
 $result_texis{'ref_empty_node'} = '
 @ref{,,,manual} @ref{,,, , Manual} @inforef{,,imanual}
@@ -277,12 +200,12 @@ $result_texts{'ref_empty_node'} = '
 
 $result_errors{'ref_empty_node'} = [
   {
-    'error_line' => ':2: warning: @inforef is obsolete.
+    'error_line' => 'warning: @inforef is obsolete
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@inforef is obsolete.',
+    'text' => '@inforef is obsolete',
     'type' => 'warning'
   }
 ];

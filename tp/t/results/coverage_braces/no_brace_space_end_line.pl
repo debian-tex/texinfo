@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,96 +10,89 @@ $result_trees{'no_brace_space_end_line'} = {
     {
       'contents' => [
         {
-          'args' => [
+          'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'c'
+                  'contents' => [
+                    {
+                      'text' => 'c'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
+              'cmdname' => 'code',
+              'extra' => {
+                'spaces' => ' '
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '.
+'
             }
           ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => '.
-'
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'contents' => [
-        {
-          'cmdname' => 'TeX',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
-          'parent' => {}
+          'type' => 'empty_line'
         },
         {
-          'parent' => {},
-          'text' => 'text
+          'contents' => [
+            {
+              'cmdname' => 'TeX',
+              'extra' => {
+                'spaces' => '
 '
-        },
-        {
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'Arg.'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'text
+'
+            },
+            {
+              'cmdname' => 'code',
+              'extra' => {
+                'spaces' => '
+'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 5,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'Arg.'
+            }
+          ],
+          'type' => 'paragraph'
         }
       ],
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'no_brace_space_end_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'no_brace_space_end_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'no_brace_space_end_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[0];
-$result_trees{'no_brace_space_end_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[0];
-$result_trees{'no_brace_space_end_line'}{'contents'}[0]{'parent'} = $result_trees{'no_brace_space_end_line'};
-$result_trees{'no_brace_space_end_line'}{'contents'}[1]{'parent'} = $result_trees{'no_brace_space_end_line'};
-$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
-$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
-$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
-$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'no_brace_space_end_line'}{'contents'}[2];
-$result_trees{'no_brace_space_end_line'}{'contents'}[2]{'parent'} = $result_trees{'no_brace_space_end_line'};
 
-$result_texis{'no_brace_space_end_line'} = '@code{c}.
+$result_texis{'no_brace_space_end_line'} = '@code {c}.
 
-@TeXtext
-@codeArg.';
+@TeX
+text
+@code
+Arg.';
 
 
 $result_texts{'no_brace_space_end_line'} = 'c.
@@ -109,7 +102,16 @@ Arg.';
 
 $result_errors{'no_brace_space_end_line'} = [
   {
-    'error_line' => ':4: @TeX expected braces
+    'error_line' => 'warning: command `@TeX\' must not be followed by new line
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'command `@TeX\' must not be followed by new line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => '@TeX expected braces
 ',
     'file_name' => '',
     'line_nr' => 4,
@@ -118,7 +120,16 @@ $result_errors{'no_brace_space_end_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: @code expected braces
+    'error_line' => 'warning: command `@code\' must not be followed by new line
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'command `@code\' must not be followed by new line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => '@code expected braces
 ',
     'file_name' => '',
     'line_nr' => 6,

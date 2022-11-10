@@ -1,0 +1,9 @@
+\input texinfo
+
+#line 100 "foo.ptexi"
+
+@gggg
+
+aaa
+
+@bye

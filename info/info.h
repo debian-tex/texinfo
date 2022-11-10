@@ -1,6 +1,6 @@
-/* info.h -- Header file which includes all of the other headers.
+/* info.h -- Header file included everywhere
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@ typedef char *CFunction ();
 #include "string.h"
 #include "mbiter.h"
 #include "mbchar.h"
+
+int xasprintf (char **ptr, const char *template, ...);
 
 extern char *program_name;
 

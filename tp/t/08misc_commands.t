@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -128,38 +128,6 @@ summarycontents @summarycontents line following summarycontents
 ['invalid_kbdinputstyle',
 'kbdinputstyle @kbdinputstyle wrong arg on line following kbdinputstyle
 '],
-['kbdinputstyle',
-'@macro codekbdmacro
-@code{in code out of example @code{in nested code}}.
-@kbd{kbd out of example}.
-@code{kbd @kbd{in code}}.
-
-in example
-@example
-@code{in code in example @code{in nested code}}.
-@kbd{kbd in example}.
-@code{kbd @kbd{in code} in example}.
-@end example
-@end macro
-
-@@kbdinputstyle code
-
-@kbdinputstyle code
-
-@codekbdmacro{}
-
-@@kbdinputstyle example
-
-@kbdinputstyle example
-
-@codekbdmacro{}
-
-@@kbdinputstyle distinct
-
-@kbdinputstyle distinct
-
-@codekbdmacro{}
-'],
 ['index_entries',
 '@cindex cindex entry
 
@@ -238,7 +206,7 @@ my @converted_test_cases = (
 @setfilename file_space_comment @c comment
 @setfilename @ @verb{: name :}@ 
 
-'],
+', {'full_document' => 1}],
 ['definfoenclose',
 '
 definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
@@ -261,6 +229,17 @@ definfoenclose phi,:,:  @definfoenclose phi,:,:
 
 My @headword{something}.
 
+'],
+['definfoenclose_nestings',
+'@definfoenclose phoo,//,\\
+
+@code{@phoo{in phoo in code}}.
+
+@phoo{@code{in code in phoo}}.
+
+@phoo{
+@center in center in phoo
+}
 '],
 ['no_empty_line_between_headings',
 '@top Top
@@ -329,12 +308,16 @@ aaa
 '],
 ['ref_in_center',
 '@node Top
+@top top
+
+@node chap
+@chapter Chapter
 
 @center @ref{Top}
 
 @center @ref{Top, ,title
 very long}
-'],
+', {'full_document' => 1}],
 ['footnote_in_center',
 '@center Centered text with a footnote@footnote{This footnote
 shows an important feature of the centered text.
@@ -387,7 +370,7 @@ In w:
 After true
 @testallowcodebreakspara{2}
 @testallowcodebreaksexample{}
-'],
+', {'full_document' => 1}],
 ['incorrect_allowcodebreaks_argument',
 '@allowcodebreaks _arg
 @code{b a}
@@ -434,20 +417,28 @@ Titlepage
 @node Top 
 @top test quotes
 
+@node chap
+@chapter Chapter
+
 @allquotes{}
 
 @example
 @allquotes{}
 @end example
 
-'],
+', {'full_document' => 1}],
 ['comment_space_command_on_line',
 '@settitle Settitle @ @c settittle
 
 @node Top  @comment @node Top
 @top top element@  @comment @top
 
+@node chap @comment @node chap
+@chapter Chapter@  @comment @chapter
+
 @frenchspacing on @c comment frenchspacing
+
+@microtype off@c comment microtype
 
 @cindex index entry @  @c index entry
 
@@ -467,10 +458,100 @@ float
 '@everyheading something @thispage @thischapternum
 
 In text @thispage @thischapternum text.
+
+In code @code{@thissection}.
+'],
+# got LaTeX formatting errors when in @example
+['heading_command_in_commands',
+'
+@code{
+@everyheading in code
+}
+
+@example
+@everyheading in example
+@end example
+
+@quotation
+@everyheading in quotation
+@end quotation
 '],
 ['vskip',
 '@vskip 0pt plus 1filll
-']
+'],
+['kbdinputstyle',
+'@macro codekbdmacro
+@code{in code out of example @code{in nested code}}.
+@kbd{kbd out of example}.
+@code{kbd @kbd{in code}}.
+@code{for nesting @r{r in code @kbd{in r in code}}}
+
+in example
+@example
+@code{in code in example @code{in nested code}}.
+@kbd{kbd in example}.
+@code{kbd @kbd{in code} in example}.
+@code{for nesting in example @r{r in code in example @kbd{in r in code in example}}}
+@end example
+@end macro
+
+@@kbdinputstyle code
+
+@kbdinputstyle code
+
+@codekbdmacro{}
+
+@@kbdinputstyle example
+
+@kbdinputstyle example
+
+@codekbdmacro{}
+
+@@kbdinputstyle distinct
+
+@kbdinputstyle distinct
+
+@codekbdmacro{}
+'],
+['kbdinputstyle_in_table',
+'@macro codekbdmacro
+@table @kbd
+@item i--tem out of example
+@end table
+
+@table @kbd{}
+@item braced i--tem out of example
+@end table
+
+in example
+@example
+@table @kbd
+@item i--tem in example
+@end table
+@table @kbd{}
+@item braced i--tem in example
+@end table
+@end example
+@end macro
+
+@@kbdinputstyle code
+
+@kbdinputstyle code
+
+@codekbdmacro{}
+
+@@kbdinputstyle example
+
+@kbdinputstyle example
+
+@codekbdmacro{}
+
+@@kbdinputstyle distinct
+
+@kbdinputstyle distinct
+
+@codekbdmacro{}
+'],
 );
 
 my %info_tests = (
@@ -492,16 +573,29 @@ my %docbook_tests = (
   'empty_center' => 1,
   'ref_in_center' => 1,
   'footnote_in_center' => 1,
+  'command_in_heading_footing' => 1,
+);
+
+my %docbooc_doc_tests = (
   'codequoteundirected_codequotebacktick' => 1,
   'comment_space_command_on_line' => 1,
-  'command_in_heading_footing' => 1,
+);
+
+my %latex_tests = (
+  'noindent_indent' => 1,
+  'kbdinputstyle' => 1,
+  'kbdinputstyle_in_table' => 1,
+  'definfoenclose' => 1,
 );
 
 foreach my $test (@converted_test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
+  push @{$test->[2]->{'test_formats'}}, 'latex';
   if ($docbook_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'docbook';
+  } elsif ($docbooc_doc_tests{$test->[0]}) {
+   push @{$test->[2]->{'test_formats'}}, 'docbook_doc';
   }
   if ($info_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'info';
@@ -512,8 +606,4 @@ foreach my $test (@converted_test_cases) {
   }
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('misc_commands', [@test_cases, @converted_test_cases], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('misc_commands', [@test_cases, @converted_test_cases]);

@@ -1,195 +1,142 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'noindent_indent'} = {
   'contents' => [
     {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'indent',
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
       'contents' => [
         {
-          'parent' => {},
-          'text' => 'First para
-'
-        }
-      ],
-      'extra' => {
-        'indent' => 1
-      },
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'noindent',
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line_after_command'
-    },
-    {
-      'contents' => [
-        {
-          'parent' => {},
-          'text' => 'qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
-'
+          'type' => 'empty_line'
         },
         {
-          'parent' => {},
-          'text' => 'qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
-'
-        }
-      ],
-      'extra' => {
-        'noindent' => 1
-      },
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
-',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'noindent',
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => ' ',
-      'type' => 'empty_spaces_after_command'
-    },
-    {
-      'contents' => [
+          'cmdname' => 'indent',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 2,
+            'macro' => ''
+          }
+        },
         {
-          'parent' => {},
-          'text' => 'noindent in para.
-'
-        }
-      ],
-      'extra' => {
-        'noindent' => 1
-      },
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'parent' => {},
-      'text' => '
+          'text' => '
 ',
-      'type' => 'empty_line'
-    },
-    {
-      'cmdname' => 'indent',
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'extra' => {
-        'command' => {}
-      },
-      'parent' => {},
-      'text' => ' ',
-      'type' => 'empty_spaces_after_command'
-    },
-    {
-      'contents' => [
+          'type' => 'ignorable_spaces_after_command'
+        },
         {
-          'parent' => {},
-          'text' => 'unneeded indent
+          'contents' => [
+            {
+              'text' => 'First para
 '
+            }
+          ],
+          'extra' => {
+            'indent' => 1
+          },
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'noindent',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'ignorable_spaces_after_command'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+'
+            },
+            {
+              'text' => 'qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+'
+            }
+          ],
+          'extra' => {
+            'noindent' => 1
+          },
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'noindent',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 9,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => ' ',
+          'type' => 'ignorable_spaces_after_command'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'noindent in para.
+'
+            }
+          ],
+          'extra' => {
+            'noindent' => 1
+          },
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'cmdname' => 'indent',
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 11,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => ' ',
+          'type' => 'ignorable_spaces_after_command'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'unneeded indent
+'
+            }
+          ],
+          'extra' => {
+            'indent' => 1
+          },
+          'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'indent' => 1
-      },
-      'parent' => {},
-      'type' => 'paragraph'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'noindent_indent'}{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[1]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[1];
-$result_trees{'noindent_indent'}{'contents'}[2]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[3];
-$result_trees{'noindent_indent'}{'contents'}[3]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[4]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[5]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[6]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[5];
-$result_trees{'noindent_indent'}{'contents'}[6]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[7];
-$result_trees{'noindent_indent'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[7];
-$result_trees{'noindent_indent'}{'contents'}[7]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[8]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[9]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[10]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[9];
-$result_trees{'noindent_indent'}{'contents'}[10]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[11];
-$result_trees{'noindent_indent'}{'contents'}[11]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[12]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[13]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[14]{'extra'}{'command'} = $result_trees{'noindent_indent'}{'contents'}[13];
-$result_trees{'noindent_indent'}{'contents'}[14]{'parent'} = $result_trees{'noindent_indent'};
-$result_trees{'noindent_indent'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'noindent_indent'}{'contents'}[15];
-$result_trees{'noindent_indent'}{'contents'}[15]{'parent'} = $result_trees{'noindent_indent'};
 
 $result_texis{'noindent_indent'} = '
 @indent
@@ -244,6 +191,62 @@ qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 </p>
 <p>unneeded indent
 </p>';
+
+
+$result_converted{'latex'}->{'noindent_indent'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage[T1]{fontenc}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+\\usepackage[utf8]{inputenc}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+
+First para
+
+\\noindent{}qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+
+\\noindent{}noindent in para.
+
+unneeded indent
+\\end{document}
+';
 
 
 $result_converted{'docbook'}->{'noindent_indent'} = '

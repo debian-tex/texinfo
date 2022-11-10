@@ -1,6 +1,6 @@
 /* filesys.c -- filesystem specific functions.
 
-   Copyright 1993-2021 Free Software Foundation, Inc.
+   Copyright 1993-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -67,6 +67,7 @@ static COMPRESSION_ALIST compress_suffixes[] = {
   { ".z", "gunzip" },
   { ".lzma", "unlzma" },
   { ".Z", "uncompress" },
+  { ".zst", "unzstd --rm -q" },
   { ".Y", "unyabba" },
 #ifdef __MSDOS__
   { "gz", "gunzip" },
@@ -104,7 +105,7 @@ info_find_fullpath (char *partial, struct stat *finfo)
       fullpath = info_add_extension (0, partial, finfo);
     }
 
-  /* Tilde expansion.  FIXME: Not needed, because done by shell. */
+  /* Tilde expansion.  Could come from user input in echo area. */
   else if (partial[0] == '~')
     {
       partial = tilde_expand_word (partial);
@@ -164,7 +165,7 @@ info_file_find_next_in_path (char *filename, int *path_index, struct stat *finfo
             {
               /* Prefix "./" to it. */
               char *s;
-              asprintf (&s, "%s%s", "./", with_extension);
+              xasprintf (&s, "%s%s", "./", with_extension);
               free (with_extension);
               return s;
             }

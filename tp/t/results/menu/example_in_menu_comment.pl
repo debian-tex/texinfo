@@ -1,276 +1,213 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'example_in_menu_comment'} = {
   'contents' => [
     {
-      'cmdname' => 'menu',
       'contents' => [
-        {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
         {
           'args' => [
             {
-              'parent' => {},
-              'text' => '* ',
-              'type' => 'menu_entry_leading_text'
-            },
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'entry'
-                }
-              ],
-              'parent' => {},
-              'type' => 'menu_entry_node'
-            },
-            {
-              'parent' => {},
-              'text' => '::',
-              'type' => 'menu_entry_separator'
-            },
-            {
-              'contents' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => '
+              'extra' => {
+                'spaces_after_argument' => '
 '
-                    }
-                  ],
-                  'parent' => {},
-                  'type' => 'preformatted'
-                }
-              ],
-              'parent' => {},
-              'type' => 'menu_entry_description'
+              },
+              'type' => 'block_line_arg'
             }
           ],
-          'extra' => {
-            'menu_entry_description' => {},
-            'menu_entry_node' => {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'entry'
-            }
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
-          },
-          'parent' => {},
-          'type' => 'menu_entry'
-        },
-        {
+          'cmdname' => 'menu',
           'contents' => [
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'after_description_line'
-                }
-              ],
-              'parent' => {},
-              'type' => 'preformatted'
-            },
-            {
-              'cmdname' => 'example',
-              'contents' => [
-                {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line_after_command'
+                  'text' => '* ',
+                  'type' => 'menu_entry_leading_text'
                 },
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'in 
-'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'example
-'
+                      'text' => 'entry'
                     }
                   ],
-                  'parent' => {},
+                  'type' => 'menu_entry_node'
+                },
+                {
+                  'text' => '::',
+                  'type' => 'menu_entry_separator'
+                },
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => '
+'
+                        }
+                      ],
+                      'type' => 'preformatted'
+                    }
+                  ],
+                  'type' => 'menu_entry_description'
+                }
+              ],
+              'extra' => {
+                'menu_entry_description' => {},
+                'menu_entry_node' => {
+                  'node_content' => [
+                    {}
+                  ],
+                  'normalized' => 'entry'
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 2,
+                'macro' => ''
+              },
+              'type' => 'menu_entry'
+            },
+            {
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '
+',
+                      'type' => 'after_menu_description_line'
+                    }
+                  ],
                   'type' => 'preformatted'
                 },
                 {
                   'args' => [
                     {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'example'
-                        }
-                      ],
                       'extra' => {
                         'spaces_after_argument' => '
 '
                       },
-                      'parent' => {},
-                      'type' => 'line_arg'
+                      'type' => 'block_line_arg'
                     }
                   ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'command_argument' => 'example',
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'example'
-                  },
-                  'line_nr' => {
+                  'cmdname' => 'example',
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'in 
+'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'empty_line'
+                        },
+                        {
+                          'text' => 'example
+'
+                        }
+                      ],
+                      'type' => 'preformatted'
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'example'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
+'
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'end',
+                      'extra' => {
+                        'spaces_before_argument' => ' ',
+                        'text_arg' => 'example'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 8,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 8,
+                    'line_nr' => 4,
                     'macro' => ''
-                  },
-                  'parent' => {}
+                  }
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    },
+                    {
+                      'text' => 'menu comment.
+'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'empty_line'
+                    }
+                  ],
+                  'type' => 'preformatted'
                 }
               ],
-              'extra' => {
-                'end_command' => {}
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
-              },
-              'parent' => {}
+              'type' => 'menu_comment'
             },
             {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'menu comment.
+                  'contents' => [
+                    {
+                      'text' => 'menu'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_line'
+                  },
+                  'type' => 'line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'preformatted'
-            }
-          ],
-          'parent' => {},
-          'type' => 'menu_comment'
-        },
-        {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => 'menu'
-                }
-              ],
+              'cmdname' => 'end',
               'extra' => {
-                'spaces_after_argument' => '
-'
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'menu'
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              }
             }
           ],
-          'cmdname' => 'end',
-          'extra' => {
-            'command_argument' => 'menu',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'menu'
-          },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 12,
+            'line_nr' => 1,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
-      'extra' => {
-        'end_command' => {}
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[3];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'example_in_menu_comment'}{'contents'}[0];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[3];
-$result_trees{'example_in_menu_comment'}{'contents'}[0]{'parent'} = $result_trees{'example_in_menu_comment'};
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3];
+$result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'example_in_menu_comment'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
 
 $result_texis{'example_in_menu_comment'} = '@menu
 * entry::
@@ -317,7 +254,7 @@ menu comment.
 ';
 
 
-$result_converted{'html'}->{'example_in_menu_comment'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+$result_converted{'html'}->{'example_in_menu_comment'} = '<!DOCTYPE html>
 <html>
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -332,21 +269,11 @@ $result_converted{'html'}->{'example_in_menu_comment'} = '<!DOCTYPE html PUBLIC 
 
 <style type="text/css">
 <!--
-a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-span:hover a.copiable-anchor {visibility: visible}
-ul.no-bullet {list-style: none}
+pre.menu-comment-preformatted {font-family: serif}
+td.menu-entry-description {vertical-align: top}
+td.menu-entry-destination {vertical-align: top}
+th.menu-comment {text-align:left}
 -->
 </style>
 
@@ -355,16 +282,16 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; entry:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td class="menu-entry-destination">&bull; entry:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
 </td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
 
 </pre><div class="example">
-<pre class="example">in 
+<pre class="example-preformatted">in 
 
 example
 </pre></div>
-<pre class="menu-comment">
+<pre class="menu-comment-preformatted">
 
 menu comment.
 

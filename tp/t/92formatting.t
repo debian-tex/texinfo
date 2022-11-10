@@ -1,8 +1,7 @@
-# $Id: 02coverage.t 8055 2018-08-13 11:41:21Z gavin $
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -20,7 +19,7 @@ my @test_cases = (
 ],
 ['texi_cond',
   undef, {'test_file' => 'cond.texi',
-    'expanded_formats' => ['html', 'info'],
+    'EXPANDED_FORMATS' => ['html', 'info'],
   },
 ],
 ['cond',
@@ -30,39 +29,39 @@ my @test_cases = (
 ['cond_xml',
   undef, {'test_file' => 'cond.texi',
     'test_formats' => ['xml'],
-    'expanded_formats' => ['xml'],
+    'EXPANDED_FORMATS' => ['xml'],
   },
 ],
 ['cond_no-ifhtml_no-ifinfo_no-iftex',
   undef, {'test_file' => 'cond.texi',
-    'expanded_formats' => [],
+    'EXPANDED_FORMATS' => [],
   },
 ],
 ['cond_ifhtml_ifinfo_iftex',
   undef, {'test_file' => 'cond.texi',
-    'expanded_formats' => ['html', 'info', 'tex'],
+    'EXPANDED_FORMATS' => ['html', 'info', 'tex'],
   },
-  {'expanded_formats' => ['html', 'info', 'tex'], },
+  {'EXPANDED_FORMATS' => ['html', 'info', 'tex'], },
 ],
 ['cond_info',
   undef, {'test_file' => 'cond.texi',
     'test_formats' => ['info'],
-    'expanded_formats' => ['info', 'plaintext'],
+    'EXPANDED_FORMATS' => ['info', 'plaintext'],
   },
 ],
 ['cond_info_no-ifhtml_no-ifinfo_no-iftex',
   undef, {'test_file' => 'cond.texi',
     'test_formats' => ['info'],
-    'expanded_formats' => [],
+    'EXPANDED_FORMATS' => [],
   },
-  {'expanded_formats' => []}
+  {'EXPANDED_FORMATS' => []}
 ],
 ['cond_info_ifhtml_ifinfo_iftex',
   undef, {'test_file' => 'cond.texi',
     'test_formats' => ['info'],
-    'expanded_formats' => ['info', 'html', 'tex'],
+    'EXPANDED_FORMATS' => ['info', 'html', 'tex'],
   },
-  {'expanded_formats' => ['info', 'html', 'tex'],}
+  {'EXPANDED_FORMATS' => ['info', 'html', 'tex'],}
 ],
 ['defcondx_Dbar',
   undef, {'test_file' => 'defxcond.texi',
@@ -80,10 +79,6 @@ my @test_cases = (
 ],
 ['one_line',
   undef, {'test_file' => 'one_line.texi',
-  },
-],
-['empty',
-  undef, {'test_file' => 'empty.texi',
   },
 ],
 ['direntry_dircategory_info_split',
@@ -174,7 +169,4 @@ foreach my $test (@test_cases) {
   $test->[3]->{'PROGRAM'} = 'texi2any';
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('formatting', [@test_cases], $arg_test_case,
-   $arg_generate, $arg_debug);
+run_all('formatting', [@test_cases]);

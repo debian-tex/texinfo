@@ -1,6 +1,6 @@
 install-info/tests/README
 
-  Copyright 2008-2019 Free Software Foundation, Inc.
+  Copyright 2008-2022 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -172,3 +172,7 @@ This file describes each of the numbered install-info tests.
 0051: Allow periods in menu item name, e.g., config.status.
 0052: Allow periods in node name also, e.g., "config.status Invocation".
 0053: Check newline handling in input dir entries.
+0054: Compressed info file with space.
+0055: --defsection when its value is used
+0056: --defsection when its value is not used
+0057: --maxwidth

@@ -1,6 +1,6 @@
 This file describes the development environment for Texinfo.
 
-  Copyright 2002-2021 Free Software Foundation, Inc.
+  Copyright 2002-2022 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -22,22 +22,12 @@ After getting the development sources, and installing the tools above,
 you can run
  ./autogen.sh
 and then, for example,
- ./configure -C CFLAGS='-g -Wdeclaration-after-statement'
+ ./configure -C CFLAGS='-g' PERL_EXT_CFLAGS='-g'
 and then
  make
 
 The -C tells configure to cache test results, which usually speeds
 things up a bit.
-
-That particular -W is useful because a) intermixing declarations with
-statements is an easy thing to do accidentally, b) gcc doesn't warn
-about it by default, and c) other compilers that don't support it are
-still widespread.  If you're not using gcc, of course you shouldn't
-specify that option.
-
-Other -W options can be useful too, and patches are welcome to resolve
-diagnostics; however, removing all possible warning messages, or
-warnings with nonfree compilers, is explicitly not a goal.
 
 After the initial autogen && configure, simply running make should suffice.
 
@@ -87,7 +77,7 @@ case $2 in
     ;;
   *)
    # Use latest ChangeLog entry as commit message
-   sed -n -e '1,/^\w*$/d' -e '/^[^      ]/q' -e '{s/^   //;p}' ChangeLog  >"$outfile"
+   sed -n -e '1,/^\w*$/d' -e '/^[^	]/q' -e '{s/^	//;p}' ChangeLog  >"$outfile"
 ;;
 esac
 ------------------------------------
@@ -111,18 +101,27 @@ Gnulib
 
 This distribution uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files.  Gnulib files used in Texinfo are checked in to
-the repository.  If you get automake/conf/etc. errors from ./autogen.sh,
-please try getting a checkout of gnulib (in a separate directory from
-the texinfo checkout), and then run, say,
+the repository.  A Gnulib directory is setup in two locations, in
+the main directory and in tp/Texinfo/XS/.
+
+To update the gnulib files, get a checkout of gnulib in a separate
+directory, then run, say
+
   ../gnulib/gnulib-tool --add-import
-in your top-level Texinfo directory.
-(gnulib-tool is in the gnulib source tree.)
+
+in your top-level Texinfo directory and
+
+  ../../../../gnulib/gnulib-tool --add-import
+
+under tp/Texinfo/XS.  (gnulib-tool is in the gnulib source tree.)
 
 The currently-used gnulib modules and other gnulib information are
-recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
-gnulib, you can update the files with gnulib-tool --add-import.
+recorded in gnulib/m4/gnulib-cache.m4.
 
-When running gnulib-tool --add-import or otherwise adding modules, it is
+gnulib-tool --add-import may also be used to add another gnulib module:
+  ../gnulib/gnulib-tool --add-import other_gnulib_module
+
+After running gnulib-tool --add-import or otherwise adding modules, it is
 necessary to check what files were added or removed (e.g., run "git
 status -u") and add new files to the repository with "git add".
 Add any new generated files (typically gnulib/lib/foo.h from foo.h.in) 
@@ -136,6 +135,12 @@ In addition to the subdirectories listed in README, there is the
 following directory in the source control repository:
 
 js/ - Work on enhanced browsing of HTML manuals with JavaScript
+infog/ - HTML-Info reader using WebKitGTK library
+
+Finally, the contrib/ directory contains additional files from users
+provided for your reading and/or hacking pleasure.  They aren't part of
+Texinfo proper or maintained by the Texinfo developers.
+
 
 
 
@@ -193,26 +198,57 @@ Steps for making a release (pretest or official):
 check at latest automake/autoconf/gettext version, and mention in NEWS
 (to upgrade gettext, run
   gettextize -f --po-dir=po --po-dir=po_document
-after installing new version of gettext)
+after installing new version of gettext.
+check that this does not actually downgrade files due to files also
+being updated from gnulib --add-import)
 
 # Under the top level, and also under tp/Texinfo/XS, which uses
 # a separate gnulib import.
 gnulib-tool --add-import
+'git status -u' and add untracked files
 
-After upgrading automake/autoconf/gettext/gnulib, run ./autogen.sh
-and/or "autoreconf --verbose --force --install" and/or util/srclist-txi
-to update ancilliary files in build-aux and elsewhere.  Check changes before
-committing.
+After upgrading automake/autoconf/gettext, run ./autogen.sh
+and/or "autoreconf --verbose --force --install" to update ancilliary
+files in build-aux and elsewhere.  Check changes before committing.
+
+Use util/srclist-txi for checking files to be copied from gnulib
+
+run all tests with valgrind:
+* under info/t, put valgrind in $ginfo, then check t/*.val.log files after
+  running test suite
+* edit install-info/tests/defs.in, uncomment valgrind line and run
+  config.status to regenerate defs
+
+parsetexi memory leak checks with valgrind
+
+NYTProf profiling for Perl code
+* e.g. 'perl -d:NYTProf ../tp/texi2any.pl FILE.texi'.  See Devel::NYTProf
+  man page.
+
 
 try groff.texinfo from groff source repo.
 Check "make ccheck" and "make vcheck" work in "doc/refcard".
 process doc/texinfo-tex-test.texi with TeX and check that output is good.
-check for C compiler warnings by configuring with -Wall (not all have to 
-be fixed)
+check for C compiler warnings by configuring with
+
+  ./configure CFLAGS='-Wall -Wdeclaration-after-statement' \
+              PERL_EXT_CFLAGS='-Wall -Wdeclaration-after-statement'
+
+-Wdeclaration-after-statement is useful because a) intermixing
+declarations with statements is an easy thing to do accidentally,
+b) gcc doesn't warn about it by default, and c) other compilers that
+don't support it are still widespread.
+
+Not all compiler warnings have to be fixed, though.
+
 Have a look at the output of "git status -u" to check for files that
   should be tracked in git or ignored.
 make po-check             # update po/POTFILES.in as needed
 
+check indices of Texinfo manuals and check for duplicates (with <1> in Info)
+
+- Official releases only:
+make V=1 pdf and fix underfull/overfull boxes.
 
 - Final (easy) checks:
 
@@ -235,12 +271,19 @@ for speed when testing).
 update version in configure.ac, notice in ChangeLog.
 check up to date copyright years in files relevant to --version calls
 (tp/texi2any.pl, info/info.c, install-info/install-info.c)
-version number in texi2any.pl, texi2dvi, texi2pdf, txirefcard.tex.
+version number in texi2dvi, texi2pdf, txirefcard.tex.
 check that texindex version is updated properly
   (cd texindex ; rm texindex.awk ; make)
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
 (cd tp ; maintain/regenerate_file_lists.pl) # list all test results
+
+- Official releases only:
+version and date in NEWS.
+version number in txirefcard.tex.
+(cd tp && maintain/regenerate_documentlanguages-loc.pl)
+  -- regenerates tp/Texinfo/Documentlanguages.pm (requires Text::CSV)
+
 one last "git diff" to check release commit looks good
 make distcheck
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
@@ -250,18 +293,11 @@ after uploading distribution,
 pretest announcement -> bug-texinfo / beebe / platform-testers to try.
 bcc coordinator@translationproject.org.
 
-- Official releases only:
-version and date in NEWS.
-version number in txirefcard.tex.
-(cd tp && maintain/regenerate_documentlanguages.pl)
-  -- regenerates tp/Texinfo/Documentlanguages.pm
-
-make V=1 pdf and fix underfull/overfull boxes.
 
 
 - To do the actual upload:
 pkg=texinfo
-ver=6.0
+ver=7.0
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
@@ -281,24 +317,19 @@ cp $tutil/texinfo.dtd $ver
 cvs add -kb $ver $ver/texinfo.dtd
 cvs commit -m$ver $ver
 
-#  ... make diffs at official release:
-prev=5.2
-ver=6.0
-tar xf texinfo-$ver.tar.gz
-tar xf texinfo-$prev.tar.gz
-diff -Nrc2 texinfo-$prev texinfo-$ver | xz >texinfo-$prev-$ver.diff.xz
-ls -l !$
-gnupload --to ftp.gnu.org:texinfo !$
-
 
 - When official release is out there ...
 update home page (texinfo.html) and commit as needed.
 including:
   pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
-  | fgrep -v 'rev="made"' >manual/pod2texi.html
+  | grep -Fv 'rev="made"' >manual/pod2texi.html
+
+check for http links that should be changed to https - then delete
+this item
 
 Build web documentation with
   make -C doc wwwdoc-build
+
 Copy documentation files to web checkout with, e.g.
   make -C doc \
   wwwdoc-install www_target=../../TEXINFO_WEB_PAGES/texinfo/manual/
@@ -306,7 +337,10 @@ Check for removed files with, e.g. ls -ltu $(www_target)/*/html_node,
 followed by cvs rm -f.  Likewise, check for added files with
 cvs -qn update, followed by cvs add.  When done, run cvs commit.
 
-#  Official releases only: Contact root@tug.org to update texinfo at tug.org
+#  Official releases only: Contact root@tug.org to update texinfo at tug.org.
+# If root@tug.org doesn't reply, can try webmaster@tug.org,
+# or (last resort) board@tug.org.
+
 
 #  For official releases:
 send announcement to info-gnu,
@@ -316,3 +350,13 @@ news item at savannah.
 #  ... post-release, or when development resumes:
 configure.ac, util/texi2dvi: add "dev" to versions for clarity,
 until it's time to do pretests again.
+
+after next release:
+rename old ChangeLog and start a new one
+check TODO file and do pending tasks
+discuss on mailing list changing the git branch structure to allow quick
+  bug fix releases for severe bugs (e.g. glibc 2.34 incompatibility, info crash
+  in Brazillian Portuguese locale)
+delete these lines from README-hacking
+
+

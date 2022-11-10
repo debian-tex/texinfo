@@ -1,23 +1,20 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'contents_in_html_text'} = {
   'contents' => [
     {
-      'contents' => [],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'top'
             }
           ],
@@ -25,14 +22,12 @@ $result_trees{'contents_in_html_text'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -41,20 +36,17 @@ $result_trees{'contents_in_html_text'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Chap1'
             }
           ],
@@ -62,14 +54,12 @@ $result_trees{'contents_in_html_text'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -78,21 +68,17 @@ $result_trees{'contents_in_html_text'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'number' => 1,
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Sec 1'
             }
           ],
@@ -100,14 +86,12 @@ $result_trees{'contents_in_html_text'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -116,21 +100,17 @@ $result_trees{'contents_in_html_text'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 2,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'number' => '1.1',
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Chap2'
             }
           ],
@@ -138,14 +118,12 @@ $result_trees{'contents_in_html_text'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
       'contents' => [
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -153,74 +131,46 @@ $result_trees{'contents_in_html_text'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'shortcontents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 9,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 10,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         }
       ],
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 1,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 7,
         'macro' => ''
-      },
-      'number' => 2,
-      'parent' => {}
+      }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'contents_in_html_text'}{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'};
-$result_trees{'contents_in_html_text'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[1]{'args'}[0];
-$result_trees{'contents_in_html_text'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[1];
-$result_trees{'contents_in_html_text'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[1];
-$result_trees{'contents_in_html_text'}{'contents'}[1]{'parent'} = $result_trees{'contents_in_html_text'};
-$result_trees{'contents_in_html_text'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[2]{'args'}[0];
-$result_trees{'contents_in_html_text'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[2];
-$result_trees{'contents_in_html_text'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[2];
-$result_trees{'contents_in_html_text'}{'contents'}[2]{'parent'} = $result_trees{'contents_in_html_text'};
-$result_trees{'contents_in_html_text'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[3]{'args'}[0];
-$result_trees{'contents_in_html_text'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[3];
-$result_trees{'contents_in_html_text'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[3];
-$result_trees{'contents_in_html_text'}{'contents'}[3]{'parent'} = $result_trees{'contents_in_html_text'};
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4]{'args'}[0];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[1];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[2];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'contents_in_html_text'}{'contents'}[4];
-$result_trees{'contents_in_html_text'}{'contents'}[4]{'parent'} = $result_trees{'contents_in_html_text'};
 
 $result_texis{'contents_in_html_text'} = '@top top
 
@@ -250,63 +200,65 @@ $result_texts{'contents_in_html_text'} = 'top
 ';
 
 $result_sectioning{'contents_in_html_text'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_childs' => [
-        {
-          'cmdname' => 'chapter',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 1,
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {},
+        'structure' => {
           'section_childs' => [
             {
-              'cmdname' => 'section',
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'level' => 2,
-              'number' => '1.1',
-              'section_up' => {}
+              'cmdname' => 'chapter',
+              'extra' => {},
+              'structure' => {
+                'section_childs' => [
+                  {
+                    'cmdname' => 'section',
+                    'extra' => {},
+                    'structure' => {
+                      'section_level' => 2,
+                      'section_number' => '1.1',
+                      'section_up' => {}
+                    }
+                  }
+                ],
+                'section_level' => 1,
+                'section_number' => 1,
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
+              }
+            },
+            {
+              'cmdname' => 'chapter',
+              'extra' => {},
+              'structure' => {
+                'section_level' => 1,
+                'section_number' => 2,
+                'section_prev' => {},
+                'section_up' => {},
+                'toplevel_prev' => {},
+                'toplevel_up' => {}
+              }
             }
           ],
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
-        },
-        {
-          'cmdname' => 'chapter',
-          'extra' => {
-            'spaces_before_argument' => ' '
-          },
-          'level' => 1,
-          'number' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {},
-          'toplevel_up' => {}
+          'section_level' => 0,
+          'section_up' => {}
         }
-      ],
-      'section_up' => {}
-    }
-  ]
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'section_prev'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'section_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_childs'}[1]{'toplevel_up'} = $result_sectioning{'contents_in_html_text'}{'section_childs'}[0];
-$result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'contents_in_html_text'};
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'contents_in_html_text'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'contents_in_html_text'};
 
 $result_errors{'contents_in_html_text'} = [];
 
@@ -315,48 +267,52 @@ $result_floats{'contents_in_html_text'} = {};
 
 
 
-$result_converted{'html_text'}->{'contents_in_html_text'} = '<div class="top" id="top">
+$result_converted{'html_text'}->{'contents_in_html_text'} = '<div class="top-level-extent" id="top">
 <h1 class="top">top</h1>
 
-<div class="chapter" id="Chap1">
+<ul class="mini-toc">
+<li><a href="#Chap1" accesskey="1">Chap1</a></li>
+<li><a href="#Chap2" accesskey="2">Chap2</a></li>
+</ul>
+<div class="chapter-level-extent" id="Chap1">
 <h2 class="chapter">1 Chap1</h2>
 
-<ul class="section-toc">
+<ul class="mini-toc">
 <li><a href="#Sec-1" accesskey="1">Sec 1</a></li>
 </ul>
-<div class="section" id="Sec-1">
+<div class="section-level-extent" id="Sec-1">
 <h3 class="section">1.1 Sec 1</h3>
 
 </div>
 </div>
-<div class="chapter" id="Chap2">
+<div class="chapter-level-extent" id="Chap2">
 <h2 class="chapter">2 Chap2</h2>
 
-<div class="Overview_element">
+<div class="element-shortcontents">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
-<ul class="no-bullet">
+<ul class="toc-numbered-mark">
 <li><a id="stoc-Chap1" href="#toc-Chap1">1 Chap1</a></li>
 <li><a id="stoc-Chap2" href="#toc-Chap2">2 Chap2</a></li>
 </ul>
 </div>
 </div>
-<div class="Contents_element">
+<div class="element-contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 
-<ul class="no-bullet">
+<ul class="toc-numbered-mark">
   <li><a id="toc-Chap1" href="#Chap1">1 Chap1</a>
-  <ul class="no-bullet">
+  <ul class="toc-numbered-mark">
     <li><a id="toc-Sec-1" href="#Sec-1">1.1 Sec 1</a></li>
   </ul></li>
   <li><a id="toc-Chap2" href="#Chap2">2 Chap2</a></li>
 </ul>
 </div>
 </div>
-<hr></div>
+</div>
 </div>
 ';
 

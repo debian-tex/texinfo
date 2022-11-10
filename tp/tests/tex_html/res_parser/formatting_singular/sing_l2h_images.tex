@@ -33,7 +33,6 @@
 \addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
 \addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
 \addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
-\setlength{\textwidth}{451pt}
 \setlength{\textheight}{554pt}
 \newwrite\lthtmlwrite
 \makeatletter
@@ -52,6 +51,7 @@
  \def\phantompar{\csname par\endcsname}\normalsize}%
 \def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
 \usepackage[tightpage,active]{preview}
+\PreviewBorder=0.5bp
 \newbox\lthtmlPageBox
 \newdimen\lthtmlCropMarkHeight
 \newdimen\lthtmlCropMarkDepth
@@ -64,10 +64,10 @@
     \lthtmltypeout{^^J:\lthtmllabel:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
     \begin{preview}\copy\lthtmlPageBox\end{preview}}%
 \long\def\lthtmlTightFBoxA#1{\def\lthtmllabel{#1}%
-    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup %
+    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup\hbox\bgroup %
     \let\ifinner=\iffalse \let\)\liih@math %
     \bgroup\catcode`\_=8 }%
-\long\def\lthtmlTightFBoxZ{\egroup
+\long\def\lthtmlTightFBoxZ{\egroup\egroup
     \@next\next\@currlist{}{\def\next{\voidb@x}}%
     \expandafter\box\next\egroup %
     \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt
@@ -118,27 +118,100 @@
 % !!! IMAGES START HERE !!!
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_indisplay27}%
+\lthtmlinlinemathA{tex2html_wrap_inline201}%
+$--a {\frac{1}{2}} -$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay215}%
+$\displaystyle disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e^{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay217}%
+$\displaystyle \mathbf{``simple-double--three---four----''} \hbox{aa}
+`\hbox{}`simple-double-\hbox{}-three---four----'\hbox{}'
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay219}%
+$\displaystyle \imath{} \jmath{}
+\mathord{\text{\l{}}} \textsl{\c{c}}
+\textsl{\b{a}} \textsl{\d{a}} \textsl{\k{a}} a^{h}_{l}
+ \ {}\ {} \ {}\-{}  ! @ \} \{ 
+\today{}
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay221}%
+$\displaystyle \rightarrow{}
+u
+\bullet{} \copyright{} \dots{} \dots{} \equiv{}
+\fbox{error} \mapsto{} - \dashv{} \Rightarrow{}
+\mathord{\text{\AA{}}} \mathord{\text{\ae{}}} \mathord{\text{\oe{}}} \mathord{\text{\AE{}}} \mathord{\text{\OE{}}} \mathord{\text{\o{}}} \mathord{\text{\O{}}} \mathord{\text{\ss{}}} \mathord{\text{\l{}}} \mathord{\text{\L{}}} \mathord{\text{\DH{}}}
+\mathord{\text{\TH{}}} \mathord{\text{\dh{}}} \mathord{\text{\th{}}} \mathord{\text{\textexclamdown {}}} \mathord{\text{\textquestiondown {}}} \mathsterling{}
+\mathord{\text{\textordfeminine{}}} \mathord{\text{\textordmasculine{}}} , 
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay223}%
+$\displaystyle \mathord{\text{\textquotedblleft{}}} \mathord{\text{\textquotedblright{}}} 
+\mathord{\text{\textquoteleft{}}} \mathord{\text{\textquoteright{}}} \mathord{\text{\quotedblbase{}}} \mathord{\text{\quotesinglbase{}}} \mathord{\text{\guillemotleft{}}}
+\mathord{\text{\guillemotright{}}} \mathord{\text{\guillemotleft{}}} \mathord{\text{\guillemotright{}}} \mathord{\text{\guilsinglleft{}}}
+\mathord{\text{\guilsinglright{}}} \euro{} \rightarrow{} \leq{} \geq{}
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay225}%
+$\displaystyle \mathbf{b} \mathit{i} \mathrm{r} sc \mathsf{sansserif} \mathit{slanted}
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay227}%
 $\displaystyle \partial_t \eta (t) = g(\eta(t),\varphi(t))$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline20}%
-$--a {\frac{1}{2}} @minus{}$%
+\lthtmlinlinemathA{tex2html_wrap_inline205}%
+$--a- {\frac{1}{2}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline22}%
-$--a@minus{} {\frac{1}{2}}$%
+\lthtmlinlinemathA{tex2html_wrap_indisplay230}%
+$\displaystyle \ddot{u} \ddot{U} \tilde{n} \hat{a} \acute{e} \bar{o} \grave{i} \acute{e} \grave{\bar{E}}
+\textsl{\c{\'{C}}} \textsl{\c{\'{C}}} \textsl{\H{a}} \dot{a} \mathring{a} \textsl{\t{a}}
+\breve{a} \check{a}
+ ? .
+$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_indisplay31}%
-$\displaystyle disp--laymath
-f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+\lthtmlinlinemathA{tex2html_wrap_indisplay232}%
+$\displaystyle TeX LaTeX \star{} \mathord{\text{\aa{}}} \circledR{} ^{\circ{}} 
+$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_indisplay234}%
+$\displaystyle \mathtt{t} 
 $%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}

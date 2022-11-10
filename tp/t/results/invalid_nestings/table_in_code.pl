@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -10,193 +10,153 @@ $result_trees{'table_in_code'} = {
     {
       'contents' => [
         {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '
-'
-                },
-                {
-                  'parent' => {},
-                  'text' => 'in code
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'brace_command_arg'
-            }
-          ],
-          'cmdname' => 'code',
-          'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'parent' => {}
-        }
-      ],
-      'parent' => {},
-      'type' => 'paragraph'
-    },
-    {
-      'args' => [
-        {
           'contents' => [
             {
-              'cmdname' => 'emph',
-              'contents' => [],
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
-              },
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
-          ],
-          'extra' => {
-            'spaces_after_argument' => '
-'
-          },
-          'parent' => {},
-          'type' => 'block_line_arg'
-        }
-      ],
-      'cmdname' => 'table',
-      'contents' => [
-        {
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'line'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'parent' => {},
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'item',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                }
-              ],
-              'parent' => {},
-              'type' => 'table_term'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => 'text
+                      'text' => '
+'
+                    },
+                    {
+                      'text' => 'in code
 '
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'paragraph'
+                  'type' => 'brace_command_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'table_item'
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              }
             }
           ],
-          'parent' => {},
-          'type' => 'table_entry'
+          'type' => 'paragraph'
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
-                  'text' => 'table'
+                  'cmdname' => 'emph',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
+                  'type' => 'command_as_argument'
                 }
               ],
               'extra' => {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
-              'type' => 'line_arg'
+              'type' => 'block_line_arg'
             }
           ],
-          'cmdname' => 'end',
+          'cmdname' => 'table',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'line'
+                            }
+                          ],
+                          'extra' => {
+                            'spaces_after_argument' => '
+'
+                          },
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'item',
+                      'extra' => {
+                        'spaces_before_argument' => ' '
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 4,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'table_term'
+                },
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'text
+'
+                        }
+                      ],
+                      'type' => 'paragraph'
+                    }
+                  ],
+                  'type' => 'table_item'
+                }
+              ],
+              'type' => 'table_entry'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'table'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'table'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 6,
+                'macro' => ''
+              }
+            }
+          ],
           'extra' => {
-            'command_argument' => 'table',
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'table'
+            'command_as_argument' => {},
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
-            'line_nr' => 6,
+            'line_nr' => 3,
             'macro' => ''
-          },
-          'parent' => {}
+          }
+        },
+        {
+          'text' => '
+'
         }
       ],
-      'extra' => {
-        'command_as_argument' => {},
-        'end_command' => {},
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[0]{'parent'} = $result_trees{'table_in_code'};
-$result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_in_code'}{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_code'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'table_in_code'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_in_code'}{'contents'}[1]{'contents'}[1];
-$result_trees{'table_in_code'}{'contents'}[1]{'parent'} = $result_trees{'table_in_code'};
-$result_trees{'table_in_code'}{'contents'}[2]{'parent'} = $result_trees{'table_in_code'};
+$result_trees{'table_in_code'}{'contents'}[0]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_in_code'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'table_in_code'} = '@code{
 in code
@@ -217,7 +177,7 @@ text
 
 $result_errors{'table_in_code'} = [
   {
-    'error_line' => ':3: warning: @table should not appear in @code
+    'error_line' => 'warning: @table should not appear in @code
 ',
     'file_name' => '',
     'line_nr' => 3,
@@ -226,7 +186,7 @@ $result_errors{'table_in_code'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @code missing closing brace
+    'error_line' => '@code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -235,7 +195,7 @@ $result_errors{'table_in_code'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':7: misplaced }
+    'error_line' => 'misplaced }
 ',
     'file_name' => '',
     'line_nr' => 7,
@@ -250,7 +210,7 @@ $result_floats{'table_in_code'} = {};
 
 
 
-$result_converted{'plaintext'}->{'table_in_code'} = '\' in code \'
+$result_converted{'plaintext'}->{'table_in_code'} = '‘ in code ’
 _line_
      text
 

@@ -10,6 +10,7 @@ Css: p + div, p + pre {margin-top:1em;}
 Css: div + p, pre + p {margin-top:1em;}
 Css: a { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; }
 Css: @media print {div.crosslinks {visibility:hidden;}}
+Css: table.tabular{border-collapse: collapse; border-spacing: 0;}
 Css: a img { border-top: 0; border-left: 0; border-right: 0; }
 Font_Css("4"): .small-caps{font-variant: small-caps; }
 Font_Css("10"): .htf-cmbx {font-weight: bold; font-style:normal;}
@@ -48,8 +49,10 @@ Css: table.pmatrix {width:100%;}
 --- needs --- tex_complex_tex4ht_tex.idv[1] ==> tex_complex_tex4ht_tex0x.png ---
 --- needs --- tex_complex_tex4ht_tex.idv[2] ==> tex_complex_tex4ht_tex1x.png ---
 --- needs --- tex_complex_tex4ht_tex.idv[3] ==> tex_complex_tex4ht_tex2x.png ---
+--- needs --- tex_complex_tex4ht_tex.idv[4] ==> tex_complex_tex4ht_tex3x.png ---
 --- characters ---
 Font("cmr","10","10","100")
 Font("cmmi","10","10","100")
 Font("cmmi","7","7","100")
+Font("cmsy","10","10","100")
 Font("cmsy","7","7","100")

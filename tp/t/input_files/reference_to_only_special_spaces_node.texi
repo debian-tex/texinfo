@@ -1,0 +1,16 @@
+
+@node Top
+@top top
+
+@node    
+@chapter EN QUAD| | EM QUAD| | EN SPACE| |
+
+@ref{    ,    }.
+
+@node @code{   }
+@chapter @code{EN QUAD| | EM QUAD| | EN SPACE| |}
+
+@ref{@code{   }, @code{   }}.
+
+
+@bye

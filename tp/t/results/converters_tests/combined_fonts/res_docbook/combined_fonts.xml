@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="combined_fonts.xml" lang="en">
+<chapter label="1" id="chapter">
+<title>chapter</title>
+
+<para><literal>c--ode</literal>, <firstterm>d&#8211;fn</firstterm>, <replaceable>v&#8211;ar</replaceable>, <emphasis role="bold">s&#8211;trong</emphasis>, <userinput>k--bd</userinput>, &#8216;<literal>s--amp</literal>&#8217;.
+</para>
+<para><literal><firstterm>d--fn in code</firstterm></literal>
+<replaceable><literal>c--ode in var</literal></replaceable>
+<literal><replaceable>v--ar in code</replaceable></literal>
+<emphasis role="bold"><userinput>k--bd in strong</userinput></emphasis>
+&#8216;<literal><emphasis role="bold">s--trong in samp</emphasis></literal>&#8217;
+<emphasis role="bold">&#8216;<literal>s--amp in strong</literal>&#8217;</emphasis>
+</para>
+<para><citetitle>c&#8211;ite</citetitle>
+</para>
+<para><literal><citetitle>c--ite in code</citetitle></literal>
+<citetitle><literal>c--ode in cite</literal></citetitle>
+</para>
+<para><literal>c--ode</literal> s&#8211;lanted <emphasis role="bold">b&#8211;</emphasis> <literal>t--</literal>
+</para>
+<para><literal>s--lanted in code</literal>
+<literal>c--ode in slanted</literal>
+<emphasis role="bold">s&#8211;lanted in b</emphasis>
+<emphasis role="bold">b&#8211; in slanted</emphasis>
+<literal>s--lanted in t</literal>
+<literal>t-- in slanted</literal>
+<literal><replaceable>v--ar in t</replaceable></literal>
+<replaceable><literal>t-- in var</literal></replaceable>
+</para>
+<screen><replaceable>v--ar in example</replaceable>
+<citetitle>c--ite in example</citetitle>
+</screen></chapter>
+</book>

@@ -7,10 +7,25 @@
   \gdef\Desig{\buildrel \rm def \over \equiv}
 @end tex
 
-@math{\Desig}
+@c MathJax process LaTeX commands in math environments
+@c trailing space is needed for latex2html
+@c tex4ht httex does not keep the definition with \def
+@c in @math, which seems correct as \def is only defined
+@c within the math group
+@ifset tex4ht
+@math{\gdef\otest{\sqrt{64}} }
+@end ifset
+@ifclear tex4ht
+@math{\def\otest{\sqrt{64}} }
+@end ifclear
+
+@c MathJax doesn't get \gdef
+@math{\gdef\testmacro{a \equiv b} }
+
+@math{\Desig \testmacro \otest}
 
 @displaymath
- \Desig
+ \Desig \testmacro \otest
 @end displaymath
 
 @bye

@@ -13,7 +13,7 @@
 
 MODULE = Texinfo::MiscXS  PACKAGE = Texinfo::MiscXS  PREFIX = xs_
 
-#  Copyright 2016 Free Software Foundation, Inc.
+#  Copyright 2016-2022 Free Software Foundation, Inc.
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -86,13 +86,34 @@ xs_unicode_text (text_in, ...)
          if (SvOK(ST(1)))
            in_code = (int) SvIV(ST(1));
        }
-     /* Make sure the input is in UTF8. */
+     /* Make sure the input is in UTF-8. */
      if (!SvUTF8 (text_in))
        sv_utf8_upgrade (text_in);
 
      text = SvPV_nolen (text_in);
 
      retval = xs_unicode_text (text, in_code);
+
+     RETVAL = newSVpv (retval, 0);
+     SvUTF8_on (RETVAL);
+
+ OUTPUT:
+     RETVAL
+
+SV *
+xs_entity_text (text_in)
+     SV *text_in
+ PREINIT:
+     char *text;
+     char *retval;
+ CODE:
+     /* Make sure the input is in UTF-8. */
+     if (!SvUTF8 (text_in))
+       sv_utf8_upgrade (text_in);
+
+     text = SvPV_nolen (text_in);
+
+     retval = xs_entity_text (text);
 
      RETVAL = newSVpv (retval, 0);
      SvUTF8_on (RETVAL);
@@ -132,3 +153,26 @@ xs_parse_texi_regex (text)
      PUSHs(sv_newmortal());
      sv_setpv((SV*)ST(5), new_text);
      SvUTF8_on(ST(5));
+
+SV *
+xs_default_format_protect_text (self, text_in)
+     SV *self
+     SV *text_in
+ PREINIT:
+     char *text;
+     char *retval;
+ CODE:
+     /* Make sure the input is in UTF-8. */
+     if (!SvUTF8 (text_in))
+       sv_utf8_upgrade (text_in);
+
+     text = SvPV_nolen (text_in);
+
+     retval = xs_default_format_protect_text (text);
+
+     RETVAL = newSVpv (retval, 0);
+     SvUTF8_on (RETVAL);
+
+ OUTPUT:
+     RETVAL
+

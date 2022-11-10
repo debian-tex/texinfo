@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -31,13 +31,13 @@ my @test_cases = (
 ['raw_block_on_line',
 '@cindex @tex
 ',
-{'expanded_formats' => ['tex']}
+{'EXPANDED_FORMATS' => ['tex']}
 ],
 ['ignored_text',
 '@node before ignore @ifinfo
 in ifinfo
 @end ifinfo on the node line',
-{'expanded_formats' => []}
+{'EXPANDED_FORMATS' => []}
 ],
 ['in_table',
 '
@@ -566,8 +566,4 @@ foreach my $test (@formatted_cases) {
   $test->[2]->{'test_formats'} = ['plaintext'];
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('invalid_nestings', [@test_cases, @formatted_cases], $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('invalid_nestings', [@test_cases, @formatted_cases]);

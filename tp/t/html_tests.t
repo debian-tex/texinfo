@@ -1,9 +1,170 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
+
+my $itemize_arguments_text = '
+@itemize ---
+@item item ---
+@end itemize
+
+@itemize a\'\'b\'c
+@item item a\'\'b\'c
+@end itemize
+
+@itemize @code{a\'\'b\'c}
+@item item code @code{a\'\'b\'c}
+@end itemize
+
+@itemize a``b`c
+@item item a``b`c
+@end itemize
+
+@itemize a\'"
+@item item a\'"
+@end itemize
+
+@itemize b\\<&
+@item item b\\<&
+@end itemize
+
+@itemize @today
+@item item today @today{}
+@end itemize
+
+@itemize @aa{} @sc{@aa{}}
+@item item aa @aa{} @sc{@aa{}}
+@end itemize
+
+@itemize @tie{}
+@item item tie @tie{}
+@end itemize
+
+@itemize @tie{} a
+@item item tie @tie{} a
+@end itemize
+
+@itemize @atchar
+@item item atchar
+@end itemize
+
+@itemize @atchar{} a
+@item item atchar @atchar{} a
+@end itemize
+
+@itemize @*
+@item item * @*
+@end itemize
+
+@itemize @{
+@item item @{
+@end itemize
+
+@itemize @registeredsymbol{}
+@item item registeredsymbol @registeredsymbol{}
+@end itemize
+
+@itemize @registeredsymbol{} a
+@item item registeredsymbol @registeredsymbol{} a
+@end itemize
+
+@itemize @enddots{}
+@item item dots @enddots{}
+@end itemize
+
+@itemize @enddots{} a
+@item item dots @enddots{} a
+@end itemize
+
+@itemize @^e @sc{@^e}
+@item item e @^e @sc{@^e}
+@end itemize
+
+@itemize @^E @sc{@^E}
+@item item E @^E @sc{@^E}
+@end itemize
+
+@itemize @~{@dotless{i}} @dotless{i} @sc{@~{@dotless{i}} @dotless{i}}
+@item item dotless @~{@dotless{i}} @dotless{i} @sc{@~{@dotless{i}} @dotless{i}}
+@end itemize
+
+@itemize @udotaccent{r} @v{@\'{r}} @sc{@udotaccent{r} @v{@\'{r}}}
+@item item complex a @udotaccent{r} @v{@\'{r}} @sc{@udotaccent{r} @v{@\'{r}}}
+@end itemize
+
+@itemize @={@,{@~{n}}} @sc{ @={@,{@~{n}}}}
+@item item complex n @={@,{@~{n}}} @sc{ @={@,{@~{n}}}}
+@end itemize
+
+@itemize @asis
+@item item asis @asis{}
+@end itemize
+
+@itemize @click{}
+@item item click @click{}
+@end itemize
+
+@itemize @click{} a
+@item item click @click{} a
+@end itemize
+
+@clickstyle @result
+
+@itemize @click{}
+@item item result click @click{}
+@end itemize
+
+@itemize @click{} a
+@item item result click @click{}
+@end itemize
+
+@itemize @error{}
+@item item error @error{}
+@end itemize
+
+@itemize @error{} a
+@item item error @error{} a
+@end itemize
+
+@documentlanguage fr
+@itemize @error{}
+@item item fr error @error{}
+@end itemize
+
+@itemize @error{} a
+@item item fr error @error{} a
+@end itemize
+
+';
+
+my $mathjax_with_texinfo = '@displaymath
+a@sup{b - \frac{\xi}{phi @copyright{}}} @dotless{i}
+@end displaymath
+
+Some @math{a @minus{} b @geq{} @AA{} @^e}.
+';
+
+my $check_htmlxref_text = '
+@node Top, (../there/no_existing_no_manual_direction), first, (dir)
+@top top
+
+@ref{a, b, c, no_existing_no_manual.info}
+@ref{a, b, c, no_existing_no_manual.info}
+
+@menu
+* first::
+* (other_no_existing_no_manual)::
+* chapter::
+@end menu
+
+@node first, (no_existing_no_manual.info)
+
+@node chapter, (chap_not_existing), (dir)node in dir
+@chapter Chapter
+';
+
 
 my @test_cases = (
 ['verbatim_in_multitable_in_example',
@@ -36,6 +197,23 @@ in first column, verbatim
 @example
 @abbr{A, @b{abbr} -- b}.
 @end example
+'],
+['acronym_in_node_and_section',
+'@node top
+@top top
+
+@node chap
+@chapter chap
+
+@node sec define
+@section define
+
+@acronym{GHJ, Good Hypo Jolly}
+
+@node sec here is @acronym{GHJ}
+@section here is @acronym{GHJ}
+
+In text @acronym{GHJ}.
 '],
 ['raw_html',
 '@html
@@ -149,8 +327,26 @@ in detaildescription
 
 @end detailmenu
 @end menu
-' ,{'SIMPLE_MENU' => 1, 'test_formats' => ['info']}
-],
+', {'SIMPLE_MENU' => 1, 'test_formats' => ['info']}, {'FORMAT_MENU' => 'menu'}],
+['simple_menu_in_example',
+'@node Top
+
+@example
+@menu
+* (entry)::
+@cartouche
+in cartouche in description in menu in example
+@end cartouche
+
+@cartouche
+in cartouche in menu comment in menu in example
+@end cartouche
+
+* (node) menu::      a node in menu
+* a menu name:(other) node.
+@end menu
+@end example
+', {'SIMPLE_MENU' => 1, 'test_formats' => ['info']}, {'FORMAT_MENU' => 'menu'}],
 ['character_number_leading_toc_stoc',
 '@top top
 @chapter 0
@@ -189,6 +385,65 @@ in detaildescription
 @xrefautomaticsectiontitle off
 
 @xref{chap}.
+'],
+['test_xrefautomaticsectiontitle_off_first',
+'
+@xrefautomaticsectiontitle off
+
+@node Top
+@top top
+
+@menu
+* chap::
+@end menu
+
+@node chap
+@chapter chapter
+
+@xref{chap}.
+
+@xrefautomaticsectiontitle on
+
+@xref{chap}.
+'],
+['deftypefnnewline_for_copying_after',
+'@copying
+@deftypefun TYPE NAME ARGUMENTS...
+BODY-OF-DESCRIPTION
+@end deftypefun
+@end copying
+
+@insertcopying
+
+@deftypefnnewline on
+
+@insertcopying
+
+@node Top
+@top top
+
+@deftypefun void something input
+do something with input
+@end deftypefun
+
+'],
+['deftypefnnewline_for_copying_before',
+'
+@deftypefnnewline on
+
+@copying
+@deftypefun TYPE NAME ARGUMENTS...
+BODY-OF-DESCRIPTION
+@end deftypefun
+@end copying
+
+@node Top
+@top top
+
+@deftypefun void something input
+do something with input
+@end deftypefun
+
 ']
 ,['tex_expanded_in_copying',
 '@copying
@@ -196,8 +451,8 @@ in detaildescription
 aa
 @end tex
 @end copying
-', {'expanded_formats' => ['tex']},
-{'expanded_formats' => ['tex']}
+', {'EXPANDED_FORMATS' => ['tex']},
+{'EXPANDED_FORMATS' => ['tex']}
 ],
 ['titles',
 '@setfilename html-title.info
@@ -209,7 +464,18 @@ aa
 Top.
 
 Second paragraph.
-'],
+', {}, {'SHOW_TITLE' => 1}],
+['shorttitlepage',
+'@setfilename html-shorttitlepage.info
+@shorttitlepage @@title @sc{html} @code{test}
+
+@node Top
+@top Top of @@title @sc{html} @code{test}
+
+Top.
+
+Second paragraph.
+', {}, {'SHOW_TITLE' => 1}],
 ['html_in_copying',
 '
 @copying
@@ -224,6 +490,15 @@ in <b>html</b> in copying ``
 @top top
 
 '],
+['mathjax_with_texinfo',
+$mathjax_with_texinfo, {}, {'HTML_MATH' => 'mathjax'}],
+['mathjax_with_texinfo_enable_encoding',
+$mathjax_with_texinfo, {'test_formats' => ['latex_text', 'file_latex'],
+                        'full_document' => 1},
+{'HTML_MATH' => 'mathjax', 'ENABLE_ENCODING' => 1,},],
+['mathjax_with_texinfo_no_convert_to_latex',
+$mathjax_with_texinfo, {}, {'HTML_MATH' => 'mathjax',
+                            'CONVERT_TO_LATEX_IN_MATH' => 0}],
 ['empty_lines_at_beginning_no_setfilename',
 undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename.texi'}
 ],
@@ -231,20 +506,11 @@ undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename.texi'}
 undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename_no_element.texi'}
 ],
 ['check_htmlxref',
-'
-@node Top, (../there/no_existing_no_manual_direction), first, (dir)
-@top top
-
-@ref{a, b, c, no_existing_no_manual.info}
-@ref{a, b, c, no_existing_no_manual.info}
-
-@menu
-* first::
-* (other_no_existing_no_manual)::
-@end menu
-
-@node first, (no_existing_no_manual.info)
-', {}, {'CHECK_HTMLXREF' => 1}],
+$check_htmlxref_text,
+{}, {'CHECK_HTMLXREF' => 1}],
+['check_htmlxref_ignore_ref_top_up',
+$check_htmlxref_text,
+{}, {'CHECK_HTMLXREF' => 1, 'IGNORE_REF_TO_TOP_NODE_UP' => 1}],
 ['text_before_top_and_contents_after_title',
 '
 Some text before top
@@ -258,56 +524,47 @@ In top.
 
 @contents
 
-', {}, {'CONTENTS_OUTPUT_LOCATION' => 'after_title'}],
-['example_class',
-'@example perl
-foreach my $unclosed_file (keys(%unclosed_files)) @{
-  if (!close($unclosed_files@{$unclosed_file@})) @{
-    warn(sprintf("%s: error on closing %s: %s\n",
-                     $real_command_name, $unclosed_file, $!));
-    $error_count++;
-    _exit($error_count, \@@opened_files);
-  @}
-@}
-@end example
-'],
-['example_multi_class',
-'@example C++ , gothic, purple, embed
-void StateManager::deallocate() @{
-    if(buffer) @{
-        delete [] buffer;
-        buffer = NULL;
-    @}
-    if(tmp_state) @{
-        delete [] tmp_state;
-        tmp_state = NULL;
-    @}
-    if(in_state) @{
-        delete [] in_state;
-        in_state = NULL;
-    @}
-@} 
-@end example
-'],
-['example_empty_arguments',
-'@example ,,,,,,
-example with empty args
-@end example
+', {}, {'SHOW_TITLE' => 1, 'CONTENTS_OUTPUT_LOCATION' => 'after_title'}],
+['text_before_top_and_summarycontents_after_title',
+'
+Some text before top
 
-@example , ,,  ,,, 
-example with empty args with spaces
-@end example
+@node Top
+@top top
 
-@example ,,,nonempty,,,
-example with empty and non empty args mix
-@end example
+In top.
+
+@chapter the chap
+
+@summarycontents
+
+', {}, {'SHOW_TITLE' => 1, 'CONTENTS_OUTPUT_LOCATION' => 'after_title'}],
+['uref_accented_letter',
+'@uref{http://example.com/acc_@"a@ogonek{a}}
 '],
-['example_at_commands_arguments',
-'@example some  thing @^e @TeX{} @exclamdown{} @code{---} @enddots{} !_- _---_ < " & @ @comma{},@@,0
-example with @@-commands and other special characters
-@end example
+['uref_accented_letter_ascii',
+'@documentencoding US-ASCII
+
+@uref{http://example.com/acc_@"a@ogonek{a}}
+'],
+['uref_accented_letter_latin1',
+'@documentencoding ISO-8859-1
+
+@uref{http://example.com/acc_@"a@ogonek{a}}
 '],
 );
+
+my $test_accents_sc_no_brace_commands_quotes = '@u{--a}
+@^{--a}
+@aa{} @AA{} @^e @^E @~{@dotless{i}} @dotless{i} @udotaccent{r} @v{@\'{r}} @={@,{@~{n}}}.
+@equiv{}
+@sc{@aa{} @AA{} @^e @^E @~{@dotless{i}} @dotless{i} @udotaccent{r} @v{@\'{r}} @={@,{@~{n}}}}.
+
+--- -- \'` \'\' ``
+
+@exclamdown{} @comma{} @copyright{} @dots{} @enddots{} @quotedblleft{} @error{} @expansion{}
+@minus{} @registeredsymbol{}
+';
 
 my @test_cases_text = (
 ['commands_in_email',
@@ -315,37 +572,26 @@ my @test_cases_text = (
 ],
 ['no_use_iso',
 'AA @^e --- -- \'` \'\' ``', {}, {'USE_ISO' => 0}],
-['utf8_no_use_entity',
+['utf8_default',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING_USE_ENTITY' => 0}],
-['utf8_no_use_entity_enable_encoding',
-'@documentencoding utf-8
-
-AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
-                                  'ENABLE_ENCODING_USE_ENTITY' => 0}],
+AA @^e --- -- \'` \'\' ``'],
 ['utf8_enable_encoding',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1}],
-['utf8_no_use_entity_no_use_iso',
+AA @^e --- -- \'` \'\' ``', {'ENABLE_ENCODING' => 1}],
+['utf8_enable_encoding_no_use_iso',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING_USE_ENTITY' => 0,
-                                 'USE_ISO' => 0}],
-['utf8_no_use_entity_enable_encoding_no_use_iso',
+AA @^e --- -- \'` \'\' ``', {'ENABLE_ENCODING' => 1}, {'USE_ISO' => 0}],
+['utf8_use_numeric_entity',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1, 'USE_ISO' => 0,
-                                  'ENABLE_ENCODING_USE_ENTITY' => 0}],
-['utf8_enable_encoding_no_use_iso', # this one leads to transiliterated text as
-                                    # ENABLE_ENCODING_USE_ENTITY is set
-                                    # so even ENABLE_ENCODING transformation
-                                    # to utf-8 characters is not done
+AA @^e --- -- \'` \'\' ``', {}, {'USE_NUMERIC_ENTITY' => 1}],
+['utf8_enable_encoding_use_numeric_entity',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
-                                 'USE_ISO' => 0}],
+AA @^e --- -- \'` \'\' ``', {'ENABLE_ENCODING' => 1}, {'USE_NUMERIC_ENTITY' => 1}],
 ['ref_in_preformatted',
 '@node Top
 
@@ -360,29 +606,66 @@ node name}
 
 @node nnn the node name
 '],
+['mathjax_with_texinfo_html_text',
+$mathjax_with_texinfo, {}, {'HTML_MATH' => 'mathjax'}],
+['split_html_text',
+'@node Top
+@top top
+In top
+
+@node chap
+@chapter Chap
+', {'test_split' => 'node'}, {'SPLIT' => 'node'}],
+['footnotestyle_separate_html_text_no_monolithic',
+'@footnotestyle separate
+
+@node Top
+@top top
+In top@footnote{Additional text}.
+
+@node chap
+@chapter Chap
+
+',{}, {'MONOLITHIC' => 0},],
 );
 
-# problem is that the result is code with accented letters,
-# it may not come out right.  So this test is left unused for now.
-# Also could be in converters_tests
-my @todo = (
-['enable_encoding',
-'@documentencoding utf-8
-
-@u{--a}
-@^{--a}
-@AA{} @~{@dotless{i}} @dotless{i}.
-@equiv{}
-@sc{@AA{} @~{@dotless{i}} @dotless{i}}.
-',{}, {'ENABLE_ENCODING' => 1}]
+my @test_cases_file_text = (
+['test_accents_sc_default',
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'}],
+['test_accents_sc_enable_encoding',
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi',
+        'ENABLE_ENCODING' => 1}],
+['test_accents_sc_default_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'}],
+['test_accents_sc_enable_encoding_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',
+        'ENABLE_ENCODING' => 1}],
+['test_accents_sc_default_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'}],
+['test_accents_sc_enable_encoding_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',
+        'ENABLE_ENCODING' => 1}],
+['test_accents_sc_use_numeric_entity',
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'},
+       {'USE_NUMERIC_ENTITY' => 1}],
+# test conversion to utf-8
+['test_accents_sc_to_utf8_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
+        {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+['test_accents_sc_enable_encoding_to_utf8_latin1',
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',
+         'ENABLE_ENCODING' => 1},
+        {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+['test_accents_sc_enable_encoding_to_utf8_usascii',
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',
+         'ENABLE_ENCODING' => 1},
+        {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 );
 
 # test that the node name that goes in the redirection file is reproducible.
 my @file_tests = (
 ['redirection_same_labels',
-'@setfilename redirection_same_labels.info
-
-@node Top
+'@node Top
 @top the top
 
 @menu
@@ -414,23 +697,56 @@ my @file_tests = (
 
 @node @^i
 ', {'test_split' => 'section'}, {'SPLIT' => 'chapter'}],
+# NOTE the result is incorrect, the first footnote text is at the
+# end of the file but the link is towards the separate file.
+# The manual states that the footnotestyle should be in the preamble,
+# so it needs not to be fixed.
+['footnotestyle_separate_late',
+'@node Top
+@top top
+
+@node chap f
+@chapter Chapter f
+
+@footnote{in fchap 1}
+
+@node chap s
+@chapter Chapter s
+
+@footnote{in fchap 2}
+
+@footnotestyle separate
+', {'test_split' => 'node'}, {'SPLIT' => 'node'}],
+['itemize_arguments',
+$itemize_arguments_text
+],
+['itemize_arguments_enable_encoding',
+$itemize_arguments_text
+, {'ENABLE_ENCODING' => 1}
+],
+['check_htmlxref_no_use_nodes',
+$check_htmlxref_text
+, {}, {'CHECK_HTMLXREF' => 1, 'USE_NODES', 0}],
+['check_htmlxref_menu',
+$check_htmlxref_text
+, {'FORMAT_MENU' => 'menu',}, {'FORMAT_MENU' => 'menu', 'CHECK_HTMLXREF' => 1}],
 );
 
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html';
+  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
 }
 foreach my $test (@test_cases_text) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
 foreach my $test (@file_tests) {
   push @{$test->[2]->{'test_formats'}}, 'file_html';
+  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+}
+foreach my $test (@test_cases_file_text) {
+  push @{$test->[2]->{'test_formats'}}, ('html_text', 'file_html');
 }
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('html_tests', [@test_cases, @test_cases_text, @file_tests], $arg_test_case,
-   $arg_generate, $arg_debug);
-
-1;
-
+run_all('html_tests', [@test_cases, @test_cases_text,
+                       @test_cases_file_text, @file_tests]);

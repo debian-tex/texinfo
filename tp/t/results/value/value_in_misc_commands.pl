@@ -1,7 +1,7 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
@@ -12,12 +12,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'text',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'atext',
               'type' => 'misc_arg'
             }
@@ -30,25 +28,21 @@ $result_trees{'value_in_misc_commands'} = {
               'text',
               'atext'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         }
       ],
-      'parent' => {},
-      'type' => 'text_root'
+      'type' => 'before_node_section'
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Top'
             }
           ],
@@ -56,12 +50,10 @@ $result_trees{'value_in_misc_commands'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'contents' => [],
       'extra' => {
         'node_content' => [
           {}
@@ -77,19 +69,17 @@ $result_trees{'value_in_misc_commands'} = {
         'normalized' => 'Top',
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 3,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'top atext'
             }
           ],
@@ -97,7 +87,6 @@ $result_trees{'value_in_misc_commands'} = {
             'spaces_after_argument' => '
 '
           },
-          'parent' => {},
           'type' => 'line_arg'
         }
       ],
@@ -108,7 +97,6 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'Comment like: atext'
                 }
               ],
@@ -116,7 +104,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -124,16 +111,13 @@ $result_trees{'value_in_misc_commands'} = {
           'extra' => {
             'spaces_before_argument' => ' '
           },
-          'level' => 3,
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 5,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -141,13 +125,11 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'Text line followed by a comment on the same line and another below '
             },
             {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => ' comment @value{text}
 ',
                   'type' => 'misc_arg'
@@ -159,13 +141,11 @@ $result_trees{'value_in_misc_commands'} = {
                   ' comment @value{text}
 '
                 ]
-              },
-              'parent' => {}
+              }
             },
             {
               'args' => [
                 {
-                  'parent' => {},
                   'text' => ' comment @value{text}
 ',
                   'type' => 'misc_arg'
@@ -177,15 +157,12 @@ $result_trees{'value_in_misc_commands'} = {
                   ' comment @value{text}
 '
                 ]
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -193,12 +170,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'pagesizes_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '200mm,150mm',
               'type' => 'misc_arg'
             }
@@ -211,18 +186,15 @@ $result_trees{'value_in_misc_commands'} = {
               'pagesizes_arg',
               '200mm,150mm'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'afourpaper_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@afourpaper',
               'type' => 'misc_arg'
             }
@@ -235,11 +207,9 @@ $result_trees{'value_in_misc_commands'} = {
               'afourpaper_macro',
               '@afourpaper'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -249,7 +219,6 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '200mm,150mm'
                 }
               ],
@@ -257,7 +226,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -265,31 +233,32 @@ $result_trees{'value_in_misc_commands'} = {
           'extra' => {
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 14,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'afourpaper',
-          'parent' => {}
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 16,
+            'macro' => ''
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'on line following headings atext'
                 }
               ],
@@ -297,7 +266,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -305,61 +273,63 @@ $result_trees{'value_in_misc_commands'} = {
           'extra' => {
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 17,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
-              'text' => ' some text ignored @value{text}
-',
-              'type' => 'misc_arg'
+              'contents' => [
+                {
+                  'text' => 'some text ignored atext'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'oddfooting',
           'extra' => {
-            'misc_args' => [
-              ' some text ignored @value{text}
-'
-            ]
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 18,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
-              'text' => ' on line following everyheading @value{text}
-',
-              'type' => 'misc_arg'
+              'contents' => [
+                {
+                  'text' => 'on line following everyheading atext'
+                }
+              ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'everyheading',
           'extra' => {
-            'misc_args' => [
-              ' on line following everyheading @value{text}
-'
-            ]
+            'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 19,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -367,12 +337,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'need_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '0.1',
               'type' => 'misc_arg'
             }
@@ -385,11 +353,9 @@ $result_trees{'value_in_misc_commands'} = {
               'need_arg',
               '0.1'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -399,7 +365,6 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '0.1'
                 }
               ],
@@ -407,7 +372,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -418,15 +382,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 24,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -434,12 +396,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'raisesections_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@raisesections',
               'type' => 'misc_arg'
             }
@@ -452,30 +412,25 @@ $result_trees{'value_in_misc_commands'} = {
               'raisesections_macro',
               '@raisesections'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'raisesections',
-          'parent' => {}
+          'cmdname' => 'raisesections'
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'lowersections_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@lowersections',
               'type' => 'misc_arg'
             }
@@ -488,23 +443,19 @@ $result_trees{'value_in_misc_commands'} = {
               'lowersections_macro',
               '@lowersections'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'lowersections',
-          'parent' => {}
+          'cmdname' => 'lowersections'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -512,7 +463,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' tex error: Use of \\ doesn\'t match its definition.
 ',
               'type' => 'misc_arg'
@@ -524,17 +474,14 @@ $result_trees{'value_in_misc_commands'} = {
               ' tex error: Use of \\ doesn\'t match its definition.
 '
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'contents' => [
             {
-              'cmdname' => '@',
-              'parent' => {}
+              'cmdname' => '@'
             },
             {
-              'parent' => {},
               'text' => 'definfoenclose phoo,//,\\\\  '
             },
             {
@@ -542,7 +489,6 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'phoo,//,\\\\'
                     }
                   ],
@@ -550,7 +496,6 @@ $result_trees{'value_in_misc_commands'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
@@ -563,19 +508,16 @@ $result_trees{'value_in_misc_commands'} = {
                 ],
                 'spaces_before_argument' => ' '
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 34,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -587,34 +529,32 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'bar'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'phoo',
-              'contents' => [],
               'extra' => {
                 'begin' => '//',
                 'end' => '\\\\'
               },
-              'parent' => {},
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 36,
+                'macro' => ''
+              },
               'type' => 'definfoenclose_command'
             },
             {
-              'parent' => {},
               'text' => '
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -622,12 +562,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'definfoenclose_name',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'phi',
               'type' => 'misc_arg'
             }
@@ -640,15 +578,13 @@ $result_trees{'value_in_misc_commands'} = {
               'definfoenclose_name',
               'phi'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'phi,:,:'
                 }
               ],
@@ -656,7 +592,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -669,15 +604,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 40,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -689,34 +622,32 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'bar'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'phi',
-              'contents' => [],
               'extra' => {
                 'begin' => ':',
                 'end' => ':'
               },
-              'parent' => {},
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 42,
+                'macro' => ''
+              },
               'type' => 'definfoenclose_command'
             },
             {
-              'parent' => {},
               'text' => '
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -724,12 +655,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'strong_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@strong',
               'type' => 'misc_arg'
             }
@@ -742,18 +671,15 @@ $result_trees{'value_in_misc_commands'} = {
               'strong_macro',
               '@strong'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'strong_name',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'strong',
               'type' => 'misc_arg'
             }
@@ -766,11 +692,9 @@ $result_trees{'value_in_misc_commands'} = {
               'strong_name',
               'strong'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -782,34 +706,27 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'very strong'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'strong',
-              'contents' => [],
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 47,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => '
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -819,7 +736,6 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'strong,(strong:,:)'
                 }
               ],
@@ -827,7 +743,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -840,15 +755,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 49,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -860,34 +773,32 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => ' is it really strong? '
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'strong',
-              'contents' => [],
               'extra' => {
                 'begin' => '(strong:',
                 'end' => ':)'
               },
-              'parent' => {},
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 51,
+                'macro' => ''
+              },
               'type' => 'definfoenclose_command'
             },
             {
-              'parent' => {},
               'text' => '
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -899,34 +810,27 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'something before kbdinputstyle'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'kbd',
-              'contents' => [],
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 53,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => '
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -934,12 +838,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'kbdinputstyle_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'code',
               'type' => 'misc_arg'
             }
@@ -952,15 +854,13 @@ $result_trees{'value_in_misc_commands'} = {
               'kbdinputstyle_arg',
               'code'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'code'
                 }
               ],
@@ -968,7 +868,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -979,15 +878,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 56,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -999,132 +896,30 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'truc'
                     }
                   ],
-                  'parent' => {},
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'kbd',
-              'contents' => [],
               'extra' => {
                 'code' => 1
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 58,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => '
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
-        },
-        {
-          'cmdname' => 'example',
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            },
-            {
-              'contents' => [
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'parent' => {},
-                          'text' => 'example'
-                        }
-                      ],
-                      'parent' => {},
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'kbd',
-                  'contents' => [],
-                  'extra' => {
-                    'code' => 1
-                  },
-                  'line_nr' => {
-                    'file_name' => '',
-                    'line_nr' => 61,
-                    'macro' => ''
-                  },
-                  'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-'
-                }
-              ],
-              'parent' => {},
-              'type' => 'preformatted'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => 'example'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'parent' => {},
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'command_argument' => 'example',
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'example'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 62,
-                'macro' => ''
-              },
-              'parent' => {}
-            }
-          ],
-          'extra' => {
-            'end_command' => {}
-          },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 60,
-            'macro' => ''
-          },
-          'parent' => {}
-        },
-        {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1132,12 +927,90 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'example',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'example'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'kbd',
+                  'extra' => {
+                    'code' => 1
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 61,
+                    'macro' => ''
+                  }
+                },
+                {
+                  'text' => '
+'
+                }
+              ],
+              'type' => 'preformatted'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'example'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'spaces_before_argument' => ' ',
+                'text_arg' => 'example'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 62,
+                'macro' => ''
+              }
+            }
+          ],
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 60,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
               'text' => 'asis_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'asis',
               'type' => 'misc_arg'
             }
@@ -1150,18 +1023,15 @@ $result_trees{'value_in_misc_commands'} = {
               'asis_arg',
               'asis'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'zero',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '0',
               'type' => 'misc_arg'
             }
@@ -1174,18 +1044,15 @@ $result_trees{'value_in_misc_commands'} = {
               'zero',
               '0'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'none_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'none',
               'type' => 'misc_arg'
             }
@@ -1198,18 +1065,15 @@ $result_trees{'value_in_misc_commands'} = {
               'none_arg',
               'none'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'four',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '4',
               'type' => 'misc_arg'
             }
@@ -1222,18 +1086,15 @@ $result_trees{'value_in_misc_commands'} = {
               'four',
               '4'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'six',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '6',
               'type' => 'misc_arg'
             }
@@ -1246,11 +1107,9 @@ $result_trees{'value_in_misc_commands'} = {
               'six',
               '6'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1260,7 +1119,6 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'asis'
                 }
               ],
@@ -1268,7 +1126,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1279,19 +1136,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 70,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '0'
                 }
               ],
@@ -1299,7 +1154,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1310,19 +1164,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 71,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'none'
                 }
               ],
@@ -1330,7 +1182,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1341,19 +1192,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 72,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '4'
                 }
               ],
@@ -1361,7 +1210,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1372,19 +1220,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 73,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'none'
                 }
               ],
@@ -1392,7 +1238,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1403,19 +1248,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 74,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '6'
                 }
               ],
@@ -1423,7 +1266,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1434,15 +1276,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 75,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1450,12 +1290,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'end_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'end',
               'type' => 'misc_arg'
             }
@@ -1468,18 +1306,15 @@ $result_trees{'value_in_misc_commands'} = {
               'end_arg',
               'end'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'separate_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'separate',
               'type' => 'misc_arg'
             }
@@ -1492,15 +1327,13 @@ $result_trees{'value_in_misc_commands'} = {
               'separate_arg',
               'separate'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'end'
                 }
               ],
@@ -1508,7 +1341,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1519,19 +1351,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 79,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'separate'
                 }
               ],
@@ -1539,7 +1369,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1550,15 +1379,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 80,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1566,12 +1393,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'latin1',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'ISO-8859-1',
               'type' => 'misc_arg'
             }
@@ -1584,15 +1409,13 @@ $result_trees{'value_in_misc_commands'} = {
               'latin1',
               'ISO-8859-1'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'ISO-8859-1'
                 }
               ],
@@ -1600,7 +1423,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1611,15 +1433,13 @@ $result_trees{'value_in_misc_commands'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'ISO-8859-1'
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 83,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1627,12 +1447,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'en',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'en',
               'type' => 'misc_arg'
             }
@@ -1645,18 +1463,15 @@ $result_trees{'value_in_misc_commands'} = {
               'en',
               'en'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'documentlanguage_command',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@documentlanguage',
               'type' => 'misc_arg'
             }
@@ -1669,11 +1484,9 @@ $result_trees{'value_in_misc_commands'} = {
               'documentlanguage_command',
               '@documentlanguage'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1681,7 +1494,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'documentlanguage '
             },
             {
@@ -1689,7 +1501,6 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'en'
                     }
                   ],
@@ -1697,7 +1508,6 @@ $result_trees{'value_in_misc_commands'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
@@ -1706,19 +1516,16 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_before_argument' => '  ',
                 'text_arg' => 'en'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 88,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1726,7 +1533,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'documentlanguage on its line
 '
             },
@@ -1735,7 +1541,6 @@ $result_trees{'value_in_misc_commands'} = {
                 {
                   'contents' => [
                     {
-                      'parent' => {},
                       'text' => 'en'
                     }
                   ],
@@ -1743,7 +1548,6 @@ $result_trees{'value_in_misc_commands'} = {
                     'spaces_after_argument' => '
 '
                   },
-                  'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
@@ -1752,24 +1556,20 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_before_argument' => '  ',
                 'text_arg' => 'en'
               },
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 91,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'parent' => {},
               'text' => 'line following documentlanguage
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1777,12 +1577,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'on_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'on',
               'type' => 'misc_arg'
             }
@@ -1795,18 +1593,15 @@ $result_trees{'value_in_misc_commands'} = {
               'on_arg',
               'on'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'off_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'off',
               'type' => 'misc_arg'
             }
@@ -1819,15 +1614,13 @@ $result_trees{'value_in_misc_commands'} = {
               'off_arg',
               'off'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'on'
                 }
               ],
@@ -1835,7 +1628,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1846,19 +1638,17 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 96,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'off'
                 }
               ],
@@ -1866,7 +1656,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1877,15 +1666,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 97,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1893,7 +1680,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' accepts 10 or 11
 ',
               'type' => 'misc_arg'
@@ -1905,18 +1691,15 @@ $result_trees{'value_in_misc_commands'} = {
               ' accepts 10 or 11
 '
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'ten',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '10',
               'type' => 'misc_arg'
             }
@@ -1929,15 +1712,13 @@ $result_trees{'value_in_misc_commands'} = {
               'ten',
               '10'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '10'
                 }
               ],
@@ -1945,7 +1726,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -1956,15 +1736,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 101,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -1972,7 +1750,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' accept false or true
 ',
               'type' => 'misc_arg'
@@ -1984,13 +1761,11 @@ $result_trees{'value_in_misc_commands'} = {
               ' accept false or true
 '
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' makeinfo don\'t care about the arg and remove the remaining of the line
 ',
               'type' => 'misc_arg'
@@ -2002,18 +1777,15 @@ $result_trees{'value_in_misc_commands'} = {
               ' makeinfo don\'t care about the arg and remove the remaining of the line
 '
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'false_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'false',
               'type' => 'misc_arg'
             }
@@ -2026,18 +1798,15 @@ $result_trees{'value_in_misc_commands'} = {
               'false_arg',
               'false'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'true_arg',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => 'true',
               'type' => 'misc_arg'
             }
@@ -2050,15 +1819,13 @@ $result_trees{'value_in_misc_commands'} = {
               'true_arg',
               'true'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'false'
                 }
               ],
@@ -2066,7 +1833,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -2077,15 +1843,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 107,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2095,7 +1859,6 @@ $result_trees{'value_in_misc_commands'} = {
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'true'
                 }
               ],
@@ -2103,7 +1866,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -2114,15 +1876,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 109,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2130,12 +1890,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'page_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@page',
               'type' => 'misc_arg'
             }
@@ -2148,18 +1906,15 @@ $result_trees{'value_in_misc_commands'} = {
               'page_macro',
               '@page'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'noindent_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@noindent',
               'type' => 'misc_arg'
             }
@@ -2172,18 +1927,15 @@ $result_trees{'value_in_misc_commands'} = {
               'noindent_macro',
               '@noindent'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'refill_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@refill',
               'type' => 'misc_arg'
             }
@@ -2196,11 +1948,9 @@ $result_trees{'value_in_misc_commands'} = {
               'refill_macro',
               '@refill'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2208,105 +1958,80 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'contents' => [
             {
-              'cmdname' => '@',
-              'parent' => {}
+              'cmdname' => '@'
             },
             {
-              'parent' => {},
               'text' => 'page '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' @@noindent @value{noindent_macro} @@refill @value{refill_macro} something
 ',
               'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'page',
-          'parent' => {}
+          'cmdname' => 'page'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
           'cmdname' => 'noindent',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 117,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
           'text' => '     ',
-          'type' => 'empty_spaces_after_command'
+          'type' => 'ignorable_spaces_after_command'
         },
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'noindent at beginning of line
 '
             },
             {
               'cmdname' => 'noindent',
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 118,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
               'text' => '
 ',
-              'type' => 'empty_line_after_command'
+              'type' => 'ignorable_spaces_after_command'
             },
             {
-              'parent' => {},
               'text' => 'noindent on the preceding line
 '
             },
             {
-              'parent' => {},
               'text' => '  '
             },
             {
               'cmdname' => 'noindent',
-              'line_nr' => {
+              'source_info' => {
                 'file_name' => '',
                 'line_nr' => 120,
                 'macro' => ''
-              },
-              'parent' => {}
+              }
             },
             {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
               'text' => '    ',
-              'type' => 'empty_spaces_after_command'
+              'type' => 'ignorable_spaces_after_command'
             },
             {
-              'parent' => {},
               'text' => 'noindent after space at beginning of line
 '
             }
@@ -2314,46 +2039,38 @@ $result_trees{'value_in_misc_commands'} = {
           'extra' => {
             'noindent' => 1
           },
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '         page at beginning of line
 ',
               'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'page',
-          'parent' => {}
+          'cmdname' => 'page'
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'page',
-          'parent' => {}
+          'cmdname' => 'page'
         },
         {
           'contents' => [
             {
-              'parent' => {},
               'text' => 'After page on it\'s own line.
 '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2361,31 +2078,25 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'contents' => [
             {
-              'cmdname' => '@',
-              'parent' => {}
+              'cmdname' => '@'
             },
             {
-              'parent' => {},
               'text' => 'page '
             }
           ],
-          'parent' => {},
           'type' => 'paragraph'
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '   @@noindent @value{noindent_macro}    @@refill @value{refill_macro}
 ',
               'type' => 'misc_arg'
             }
           ],
-          'cmdname' => 'page',
-          'parent' => {}
+          'cmdname' => 'page'
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2393,12 +2104,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'contents_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@contents',
               'type' => 'misc_arg'
             }
@@ -2411,28 +2120,24 @@ $result_trees{'value_in_misc_commands'} = {
               'contents_macro',
               '@contents'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 128,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2440,7 +2145,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => ' @value{text}
 ',
               'type' => 'misc_arg'
@@ -2452,11 +2156,9 @@ $result_trees{'value_in_misc_commands'} = {
               ' @value{text}
 '
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2464,12 +2166,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'exdent_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@exdent',
               'type' => 'misc_arg'
             }
@@ -2482,15 +2182,13 @@ $result_trees{'value_in_misc_commands'} = {
               'exdent_macro',
               '@exdent'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => 'line after exdent'
                 }
               ],
@@ -2498,7 +2196,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -2506,15 +2203,13 @@ $result_trees{'value_in_misc_commands'} = {
           'extra' => {
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 133,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2522,12 +2217,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'two',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '2',
               'type' => 'misc_arg'
             }
@@ -2540,15 +2233,13 @@ $result_trees{'value_in_misc_commands'} = {
               'two',
               '2'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
               'contents' => [
                 {
-                  'parent' => {},
                   'text' => '2'
                 }
               ],
@@ -2556,7 +2247,6 @@ $result_trees{'value_in_misc_commands'} = {
                 'spaces_after_argument' => '
 '
               },
-              'parent' => {},
               'type' => 'line_arg'
             }
           ],
@@ -2567,15 +2257,13 @@ $result_trees{'value_in_misc_commands'} = {
             ],
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 136,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2583,12 +2271,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'result_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@result',
               'type' => 'misc_arg'
             }
@@ -2601,11 +2287,9 @@ $result_trees{'value_in_misc_commands'} = {
               'result_macro',
               '@result'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2613,7 +2297,6 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '@value',
               'type' => 'misc_arg'
             }
@@ -2626,15 +2309,13 @@ $result_trees{'value_in_misc_commands'} = {
               '@value'
             ]
           },
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 140,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2642,22 +2323,19 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'contents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 142,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2665,12 +2343,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'shortcontents_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@shortcontents',
               'type' => 'misc_arg'
             }
@@ -2683,28 +2359,24 @@ $result_trees{'value_in_misc_commands'} = {
               'shortcontents_macro',
               '@shortcontents'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
           'args' => [
             {
-              'parent' => {},
               'text' => '
 ',
               'type' => 'misc_arg'
             }
           ],
           'cmdname' => 'shortcontents',
-          'line_nr' => {
+          'source_info' => {
             'file_name' => '',
             'line_nr' => 145,
             'macro' => ''
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2712,12 +2384,10 @@ $result_trees{'value_in_misc_commands'} = {
         {
           'args' => [
             {
-              'parent' => {},
               'text' => 'bye_macro',
               'type' => 'misc_arg'
             },
             {
-              'parent' => {},
               'text' => '@bye',
               'type' => 'misc_arg'
             }
@@ -2730,11 +2400,9 @@ $result_trees{'value_in_misc_commands'} = {
               'bye_macro',
               '@bye'
             ]
-          },
-          'parent' => {}
+          }
         },
         {
-          'parent' => {},
           'text' => '
 ',
           'type' => 'empty_line'
@@ -2743,377 +2411,26 @@ $result_trees{'value_in_misc_commands'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'level' => 0,
-      'line_nr' => {
+      'source_info' => {
         'file_name' => '',
         'line_nr' => 4,
         'macro' => ''
-      },
-      'parent' => {}
+      }
     },
     {
       'args' => [
         {
-          'parent' => {},
           'text' => '',
           'type' => 'misc_arg'
         }
       ],
-      'cmdname' => 'bye',
-      'parent' => {}
+      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'value_in_misc_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[0]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[0]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'};
-$result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[1];
 $result_trees{'value_in_misc_commands'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'value_in_misc_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'value_in_misc_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'};
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[1];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[4];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[4];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[5];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[5]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[5];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[7]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[7];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[8];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[9]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[9];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[10];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[10]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[11];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[11]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[12]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[13];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[13]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[13];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[13]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[14]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[15]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[15];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[15]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[16]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[17];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[17]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[17];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[17]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[18]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[18];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[18]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[19]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[19];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[19]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[19];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[19]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[20]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[20];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[20]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[21]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[22]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[22];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[22]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[2]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[23]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[24]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[25]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[26]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[27]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[27];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[27]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[27];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[27]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[28]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[28]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[28]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[28];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[28]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[29]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[30]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[31]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[32]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[32];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[32]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[32];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[32]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[33]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[33];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[33]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[33];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[33]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[34]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[35]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[36]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[37]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[37]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[37]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[37];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[37]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[38]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[39]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[40]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[41]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[42]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[43]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[43];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[43]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[43];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[43]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[44]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[44]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[44]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[44];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[44]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[45]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[46]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[47]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[0]{'extra'}{'command'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'contents'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[2]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'extra'}{'end_command'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[48]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[49]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[50]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[50];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[50]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[50];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[50]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[51]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[51];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[51]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[51];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[51]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[52]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[52];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[52]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[52];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[52]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[53]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[53];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[53]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[53];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[53]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[54]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[54];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[54]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[54];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[54]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[55]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[56]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[56]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[56]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[56];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[56]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[57]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[57]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[57]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[57];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[57]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[58]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[58]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[58]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[58];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[58]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[59]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[59]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[59]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[59];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[59]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[60]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[60]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[60]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[60];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[60]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[61]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[61]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[61]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[61];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[61]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[62]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[63]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[63];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[63]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[63];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[63]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[64]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[64];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[64]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[64];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[64]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[65]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[65]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[65]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[65];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[65]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[66]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[66]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[66]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[66];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[66]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[67]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[68]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[68];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[68]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[68];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[68]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[69]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[69]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[69]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[69];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[69]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[70]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[71]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[71];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[71]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[71];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[71]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[72]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[72];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[72]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[72];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[72]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[73]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'contents'}[1];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[74]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[75]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[1];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[76]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[77]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[78]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[78];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[78]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[78];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[78]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[79]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[79];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[79]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[79];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[79]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[80]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[80]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[80]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[80];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[80]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[81]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[81]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[81]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[81];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[81]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[82]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[83]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[83];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[83]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[84]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[84];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[84]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[84];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[84]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[85]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[85]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[85]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[85];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[85]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[86]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[87]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[87];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[87]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[88]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[88];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[88]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[89]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[89];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[89]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[89];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[89]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[90]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[90];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[90]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[90];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[90]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[91]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[91]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[91]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[91];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[91]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[92]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[93]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[93]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[93]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[93];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[93]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[94]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[95]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[95];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[95]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[95];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[95]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[96]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[96];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[96]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[96];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[96]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[97]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[97];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[97]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[97];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[97]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[98]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[99]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[99];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[99]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[99];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[99]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[100]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[100];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[100]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[101]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[102]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[103]{'extra'}{'command'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[102];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[103]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[2]{'extra'}{'command'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[1];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[3]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[4]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[5]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[6]{'extra'}{'command'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[5];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[6]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'contents'}[7]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[104]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[105]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[105];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[105]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[106]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[106];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[106]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[107]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[107];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[107]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[108]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[109]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[109];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[109]{'contents'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[109];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[109]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[110]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[110];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[110]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[111]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[112]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[112];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[112]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[112];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[112]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[113]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[113];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[113]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[114]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[115]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[115];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[115]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[116]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[117]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[117];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[117]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[117];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[117]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[118]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[118]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[118]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[118];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[118]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[119]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[120]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[120];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[120]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[120];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[120]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[121]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[121]{'args'}[0];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[121]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[121];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[121]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[122]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[123]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[123];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[123]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[123];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[123]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[124]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[125]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[125];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[125]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[126]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[127]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[127];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[127]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[128]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[129]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[129];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[129]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[129];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[129]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[130]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[130];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[130]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[131]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[132]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[132];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[132]{'args'}[1]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[132];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[132]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'contents'}[133]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[2];
-$result_trees{'value_in_misc_commands'}{'contents'}[2]{'parent'} = $result_trees{'value_in_misc_commands'};
-$result_trees{'value_in_misc_commands'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'value_in_misc_commands'}{'contents'}[3];
-$result_trees{'value_in_misc_commands'}{'contents'}[3]{'parent'} = $result_trees{'value_in_misc_commands'};
 
 $result_texis{'value_in_misc_commands'} = '@set text atext
 
@@ -3130,8 +2447,8 @@ Text line followed by a comment on the same line and another below @c comment @v
 @pagesizes 200mm,150mm
 @afourpaper
 @headings on line following headings atext
-@oddfooting some text ignored @value{text}
-@everyheading on line following everyheading @value{text}
+@oddfooting some text ignored atext
+@everyheading on line following everyheading atext
 
 @set need_arg 0.1
 
@@ -3306,12 +2623,16 @@ line following documentlanguage
 
 
 @page 
+
 noindent at beginning of line
 noindent on the preceding line
   noindent after space at beginning of line
+
+
 After page on it\'s own line.
 
 @page 
+
 
 
 line after exdent
@@ -3327,53 +2648,51 @@ line after exdent
 ';
 
 $result_sectioning{'value_in_misc_commands'} = {
-  'level' => -1,
-  'section_childs' => [
-    {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_node' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Top',
-            'spaces_before_argument' => ' '
+  'structure' => {
+    'section_childs' => [
+      {
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_node' => {
+            'cmdname' => 'node',
+            'extra' => {
+              'normalized' => 'Top'
+            }
           }
         },
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0,
-      'section_up' => {}
-    }
-  ]
+        'structure' => {
+          'section_level' => 0,
+          'section_up' => {}
+        }
+      }
+    ],
+    'section_level' => -1
+  }
 };
-$result_sectioning{'value_in_misc_commands'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'value_in_misc_commands'};
+$result_sectioning{'value_in_misc_commands'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'value_in_misc_commands'};
 
 $result_nodes{'value_in_misc_commands'} = {
   'cmdname' => 'node',
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'level' => 0
+      'extra' => {},
+      'structure' => {}
     },
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_menus{'value_in_misc_commands'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top',
-    'spaces_before_argument' => ' '
+    'normalized' => 'Top'
   }
 };
 
 $result_errors{'value_in_misc_commands'} = [
   {
-    'error_line' => ':17: bad argument to @headings: on line following headings atext
+    'error_line' => 'bad argument to @headings: on line following headings atext
 ',
     'file_name' => '',
     'line_nr' => 17,
@@ -3382,16 +2701,16 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':34: warning: @definfoenclose is obsolete.
+    'error_line' => 'warning: @definfoenclose is obsolete
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
-    'text' => '@definfoenclose is obsolete.',
+    'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   },
   {
-    'error_line' => ':34: warning: @definfoenclose should only appear at the beginning of a line
+    'error_line' => 'warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 34,
@@ -3400,25 +2719,25 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':40: warning: @definfoenclose is obsolete.
+    'error_line' => 'warning: @definfoenclose is obsolete
 ',
     'file_name' => '',
     'line_nr' => 40,
     'macro' => '',
-    'text' => '@definfoenclose is obsolete.',
+    'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   },
   {
-    'error_line' => ':49: warning: @definfoenclose is obsolete.
+    'error_line' => 'warning: @definfoenclose is obsolete
 ',
     'file_name' => '',
     'line_nr' => 49,
     'macro' => '',
-    'text' => '@definfoenclose is obsolete.',
+    'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   },
   {
-    'error_line' => ':80: warning: multiple @footnotestyle
+    'error_line' => 'warning: multiple @footnotestyle
 ',
     'file_name' => '',
     'line_nr' => 80,
@@ -3427,7 +2746,7 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':88: warning: @documentlanguage should only appear at the beginning of a line
+    'error_line' => 'warning: @documentlanguage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 88,
@@ -3436,7 +2755,7 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':115: warning: @page should only appear at the beginning of a line
+    'error_line' => 'warning: @page should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 115,
@@ -3445,7 +2764,7 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':125: warning: @page should only appear at the beginning of a line
+    'error_line' => 'warning: @page should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 125,
@@ -3454,7 +2773,7 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':140: warning: remaining argument on @clickstyle line: {result_macro}
+    'error_line' => 'warning: remaining argument on @clickstyle line: {result_macro}
 ',
     'file_name' => '',
     'line_nr' => 140,

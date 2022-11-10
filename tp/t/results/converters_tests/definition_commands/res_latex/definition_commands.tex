@@ -1,0 +1,701 @@
+\documentclass{book}
+\usepackage{imakeidx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{embrac}
+\usepackage{expl3}
+\usepackage{tabularx}
+\usepackage{titleps}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% no index headers or page break
+\indexsetup{level=\relax,toclevel=section,noclearpage}%
+\makeindex[name=fn,title=]%
+\makeindex[name=vr,title=]%
+
+% style command for var in 'cmd_text' formatting context
+\newcommand\Texinfocommandstyletextvar[1]{{\normalfont{}\textsl{#1}}}%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% braces are upright in italic and slanted only in @def*
+% so it is turned off here, and turned on @def* lines
+\EmbracOff{}%
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+\begin{document}
+\label{anchor:Top}%
+\chapter{{chapter}}
+\label{anchor:chapter}%
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{fname \EmbracOn{}\textnormal{\textsl{a---rg1 a--rg2}}\EmbracOff{}}& [Func]
+\end{tabularx}
+
+\index[fn]{fname@\texttt{fname}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+deffn no var for \Texinfocommandstyletextvar{a---rg1} and \Texinfocommandstyletextvar{a--rg2}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{fname \EmbracOn{}\textnormal{\textsl{\Texinfocommandstyletextvar{a---rg1} \Texinfocommandstyletextvar{a--rg2}}}\EmbracOff{}}& [Func]
+\end{tabularx}
+
+\index[fn]{fname@\texttt{fname}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+deffn explict var for \Texinfocommandstyletextvar{a---rg1} and \Texinfocommandstyletextvar{a--rg2}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{fname \EmbracOn{}\textnormal{\textsl{\EmbracOff{}\textnormal{\textsl{a---rg1}}\EmbracOn{} \EmbracOff{}\textnormal{\textsl{a--rg2}}\EmbracOn{}}}\EmbracOff{}}& [Func]
+\end{tabularx}
+
+\index[fn]{fname@\texttt{fname}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+deffn r slanted for \Texinfocommandstyletextvar{a---rg1} and \Texinfocommandstyletextvar{a--rg2}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var [from to [inc]]) default}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \EmbracOff{}\textnormal{[}\EmbracOn{}from to \EmbracOff{}\textnormal{[}\EmbracOn{}inc\EmbracOff{}\textnormal{]]}\EmbracOn{}) r}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \Texinfocommandstyletextvar{[}from to \Texinfocommandstyletextvar{[}inc\Texinfocommandstyletextvar{]]}) var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \textsl{[}from to \textsl{[}inc\textsl{]]}) slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{[}from to \texttt{[}inc\texttt{]]}) code}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{[}from to \texttt{[}inc\texttt{]]}) t}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{\textbf{[}}from to \texttt{\textbf{[}}inc\texttt{\textbf{]]}}) t:b}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \EmbracOff{}\textnormal{\Texinfocommandstyletextvar{[}}\EmbracOn{}from to \EmbracOff{}\textnormal{\Texinfocommandstyletextvar{[}}\EmbracOn{}inc\EmbracOff{}\textnormal{\Texinfocommandstyletextvar{]]}}\EmbracOn{}) r:var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \EmbracOff{}\textnormal{\textsl{[}}\EmbracOn{}from to \EmbracOff{}\textnormal{\textsl{[}}\EmbracOn{}inc\EmbracOff{}\textnormal{\textsl{]]}}\EmbracOn{}) r:slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \EmbracOff{}\textnormal{\texttt{[}}\EmbracOn{}from to \EmbracOff{}\textnormal{\texttt{[}}\EmbracOn{}inc\EmbracOff{}\textnormal{\texttt{]]}}\EmbracOn{}) r:code}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \EmbracOff{}\textnormal{\texttt{[}}\EmbracOn{}from to \EmbracOff{}\textnormal{\texttt{[}}\EmbracOn{}inc\EmbracOff{}\textnormal{\texttt{]]}}\EmbracOn{}) r:t}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{\Texinfocommandstyletextvar{[}}from to \texttt{\Texinfocommandstyletextvar{[}}inc\texttt{\Texinfocommandstyletextvar{]]}}) code:var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{\Texinfocommandstyletextvar{[}}from to \texttt{\Texinfocommandstyletextvar{[}}inc\texttt{\Texinfocommandstyletextvar{]]}}) t:var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{\textsl{[}}from to \texttt{\textsl{[}}inc\texttt{\textsl{]]}}) code:slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{(var \texttt{\textsl{[}}from to \texttt{\textsl{[}}inc\texttt{\textsl{]]}}) t:slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+separators
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{va---riable default}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\Texinfocommandstyletextvar{va---riable} var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\EmbracOff{}\textnormal{va---riable}\EmbracOn{} r}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\textsl{va---riable} slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{va{-}{-}{-}riable} code}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{va{-}{-}{-}riable} t}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{\textbf{va{-}{-}{-}riable}} t:b}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\EmbracOff{}\textnormal{\Texinfocommandstyletextvar{va---riable}}\EmbracOn{} r:var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\EmbracOff{}\textnormal{\textsl{va---riable}}\EmbracOn{} r:slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\EmbracOff{}\textnormal{\texttt{va{-}{-}{-}riable}}\EmbracOn{} r:code}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\EmbracOff{}\textnormal{\texttt{va{-}{-}{-}riable}}\EmbracOn{} r:t}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{\Texinfocommandstyletextvar{va---riable}} code:var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{\Texinfocommandstyletextvar{va---riable}} t:var}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{\textsl{va{-}{-}{-}riable}} code:slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{\texttt{\textsl{va{-}{-}{-}riable}} t:slanted}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+name
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{\texttt{.ft} \EmbracOn{}\textnormal{\textsl{[\EmbracOff{}\textnormal{\textsl{font}}\EmbracOn{}]}}\EmbracOff{}}& [Request]
+\end{tabularx}
+
+\index[fn]{.ft@\texttt{\texttt{.ft}}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{\texttt{\textbackslash{}f}\textnormal{\textsl{f}}\texttt{}}& [Escape~sequence]
+\end{tabularx}
+
+\index[fn]{\textbackslash{}ff@\texttt{\texttt{\textbackslash{}f}\textnormal{\textsl{f}}\texttt{}}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{\texttt{\textbackslash{}f(}\textnormal{\textsl{fn}}\texttt{}}& [Escape~sequence]
+\end{tabularx}
+
+\index[fn]{\textbackslash{}f(fn@\texttt{\texttt{\textbackslash{}f(}\textnormal{\textsl{fn}}\texttt{}}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{\texttt{\textbackslash{}f[}\textnormal{\textsl{font}}\texttt{]} \EmbracOn{}\textnormal{\textsl{\texttt{\textbackslash{}f[}\EmbracOff{}\textnormal{\textsl{font}}\EmbracOn{}\texttt{]}}}\EmbracOff{}}& [Escape~sequence]
+\end{tabularx}
+
+\index[fn]{\textbackslash{}f[font]@\texttt{\texttt{\textbackslash{}f[}\textnormal{\textsl{font}}\texttt{]}}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{\texttt{\textbackslash{}n[.sty]}}& [Register]
+\end{tabularx}
+
+\index[fn]{\textbackslash{}n[.sty]@\texttt{\texttt{\textbackslash{}n[.sty]}}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+The \texttt{ft} request and the \texttt{\textbackslash{}f} escape change the current font
+to \Texinfocommandstyletextvar{font} (one-character name~\Texinfocommandstyletextvar{f}, two-character name
+\Texinfocommandstyletextvar{fn}).
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{[ \EmbracOff{}\textnormal{[}\EmbracOn{} \textsl{[} \texttt{[} \texttt{[} \EmbracOff{}\textnormal{\textsl{[}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{[}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{\textsl{[}}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{[}}\EmbracOn{} , \EmbracOff{}\textnormal{,}\EmbracOn{} \textsl{,} \texttt{,} \texttt{,} \EmbracOff{}\textnormal{\textsl{,}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{,}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{\textsl{,}}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{,}}\EmbracOn{} ] \EmbracOff{}\textnormal{]}\EmbracOn{} \textsl{]} \texttt{]} \texttt{]} \EmbracOff{}\textnormal{\textsl{]}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{]}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{\textsl{]}}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{]}}\EmbracOn{}}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{foobar \EmbracOn{}\textnormal{\textsl{[] \EmbracOff{}\textnormal{[]}\EmbracOn{} \textsl{[]} \texttt{[]} \texttt{[]} \EmbracOff{}\textnormal{\textsl{[]}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{[]}}\EmbracOn{} \EmbracOff{}\textnormal{\texttt{\textsl{[]}}}\EmbracOn{}}}\EmbracOff{}}& [Special Form]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+test formatting of separators
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo},\ float\ \Texinfocommandstyletextvar{b--ar})}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+\dots{}\@ with var for \Texinfocommandstyletextvar{f---oo} and \Texinfocommandstyletextvar{b--ar}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \textnormal{\textsl{f---oo}},\ float\ \textnormal{\textsl{b--ar}})}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+\dots{}\@ with r slanted for \Texinfocommandstyletextvar{f---oo} and \Texinfocommandstyletextvar{b--ar}
+\end{quote}
+
+\noindent{}produces:
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{border-pattern}& [Class Option of \texttt{Window}]
+\end{tabularx}
+
+\index[vr]{border-pattern@\texttt{border-pattern}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+\dots{}\@
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{\texttt{int} border-pattern}& [Class Option of \texttt{Window}]
+\end{tabularx}
+
+\index[vr]{border-pattern of Window@\texttt{border-pattern\ of Window}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+\dots{}\@
+\end{quote}
+
+\begin{quote}
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{foo},\ float\ \Texinfocommandstyletextvar{bar})}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+\dots{}\@ for \Texinfocommandstyletextvar{foo} and \Texinfocommandstyletextvar{bar}
+\end{quote}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{apply \EmbracOn{}\textnormal{\textsl{function \&rest arguments}}\EmbracOff{}}& [Function]
+\end{tabularx}
+
+\index[fn]{apply@\texttt{apply}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+\texttt{apply} calls no var \Texinfocommandstyletextvar{function} with \Texinfocommandstyletextvar{arguments}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{apply \EmbracOn{}\textnormal{\textsl{function \EmbracOff{}\textnormal{\textbf{\&rest}}\EmbracOn{} argument}}\EmbracOff{}}& [Function]
+\end{tabularx}
+
+\index[fn]{apply@\texttt{apply}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+explicit keyword marking, no var \Texinfocommandstyletextvar{function} with \Texinfocommandstyletextvar{arguments}
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{name \EmbracOn{}\textnormal{\textsl{argument \texttt{int} \texttt{a{-}{-}b} \Texinfocommandstyletextvar{v--ar1}, word \texttt{{-}{-}} (\texttt{type o{-}{-}ther}, \Texinfocommandstyletextvar{v---ar2}  [\texttt{float} [\Texinfocommandstyletextvar{var4}]])}}\EmbracOff{}}& [Category]
+\end{tabularx}
+
+\index[fn]{name@\texttt{name}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+In deffn with code and var used
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ default}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\textnormal{[},\ float\ \Texinfocommandstyletextvar{b--ar}\textnormal{]})\ r}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\Texinfocommandstyletextvar{[},\ float\ \Texinfocommandstyletextvar{b--ar}\Texinfocommandstyletextvar{]})\ var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\textsl{[},\ float\ \Texinfocommandstyletextvar{b--ar}\textsl{]})\ slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{[},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{]})\ code}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{[},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{]})\ t}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{\textbf{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{\textbf{]}})\ t:b}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\textnormal{\Texinfocommandstyletextvar{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\textnormal{\Texinfocommandstyletextvar{]}})\ r:var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\textnormal{\textsl{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\textnormal{\textsl{]}})\ r:slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\textnormal{\texttt{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\textnormal{\texttt{]}})\ r:code}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\textnormal{\texttt{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\textnormal{\texttt{]}})\ r:t}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{\Texinfocommandstyletextvar{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{\Texinfocommandstyletextvar{]}})\ code:var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{\Texinfocommandstyletextvar{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{\Texinfocommandstyletextvar{]}})\ t:var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{\textsl{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{\textsl{]}})\ code:slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (int\ \Texinfocommandstyletextvar{f---oo}\texttt{\textsl{[}},\ float\ \Texinfocommandstyletextvar{b--ar}\texttt{\textsl{]}})\ t:slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+separators
+\end{quote}
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (i{-}{-}nt\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ default}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\textnormal{i--nt}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ r}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\Texinfocommandstyletextvar{i--nt}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\textsl{i{-}{-}nt}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{i{-}{-}nt}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ code}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{i{-}{-}nt}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ t}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{\textbf{i{-}{-}nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ t:b}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\textnormal{\Texinfocommandstyletextvar{i--nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ r:var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\textnormal{\textsl{i--nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ r:slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\textnormal{\texttt{i{-}{-}nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ r:code}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\textnormal{\texttt{i{-}{-}nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ r:t}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{\Texinfocommandstyletextvar{i--nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ code:var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{\Texinfocommandstyletextvar{i--nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ t:var}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{\textsl{i{-}{-}nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ code:slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{int foobar (\texttt{\textsl{i{-}{-}nt}}\ \Texinfocommandstyletextvar{f---oo}[,\ float\ \Texinfocommandstyletextvar{b--ar}])\ t:slanted}& [Library Function]
+\end{tabularx}
+
+\index[fn]{foobar@\texttt{foobar}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+name
+\end{quote}
+
+\end{document}

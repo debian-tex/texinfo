@@ -1,7 +1,7 @@
 use strict;
 
 use lib '.';
-use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
@@ -38,8 +38,4 @@ In verb
 '],
 );
 
-our ($arg_test_case, $arg_generate, $arg_debug);
-
-run_all ('verb', \@test_cases, $arg_test_case,
-   $arg_generate, $arg_debug);
-
+run_all('verb', \@test_cases);

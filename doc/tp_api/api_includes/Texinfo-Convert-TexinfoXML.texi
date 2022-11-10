@@ -1,24 +1,16 @@
-@node Texinfo::Convert::TexinfoXML
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML
 @chapter Texinfo::Convert::TexinfoXML
 
-@menu
-* Texinfo@asis{::}Convert@asis{::}TexinfoXML NAME::
-* Texinfo@asis{::}Convert@asis{::}TexinfoXML SYNOPSIS::
-* Texinfo@asis{::}Convert@asis{::}TexinfoXML DESCRIPTION::
-* Texinfo@asis{::}Convert@asis{::}TexinfoXML METHODS::
-* Texinfo@asis{::}Convert@asis{::}TexinfoXML AUTHOR::
-@end menu
-
-@node Texinfo::Convert::TexinfoXML NAME
-@section NAME
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML NAME
+@section Texinfo::Convert::TexinfoXML NAME
 
 Texinfo::Convert::TexinfoXML - Convert Texinfo tree to TexinfoXML
 
-@node Texinfo::Convert::TexinfoXML SYNOPSIS
-@section SYNOPSIS
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML SYNOPSIS
+@section Texinfo::Convert::TexinfoXML SYNOPSIS
 
 @verbatim
-  my $converter 
+  my $converter
     = Texinfo::Convert::TexinfoXML->converter({'parser' => $parser});
 
   $converter->output($tree);
@@ -26,51 +18,70 @@ Texinfo::Convert::TexinfoXML - Convert Texinfo tree to TexinfoXML
   $converter->convert_tree($tree);
 @end verbatim
 
-@node Texinfo::Convert::TexinfoXML DESCRIPTION
-@section DESCRIPTION
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML NOTES
+@section Texinfo::Convert::TexinfoXML NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML DESCRIPTION
+@section Texinfo::Convert::TexinfoXML DESCRIPTION
 
 Texinfo::Convert::TexinfoXML converts a Texinfo tree to TexinfoXML.
 
-@node Texinfo::Convert::TexinfoXML METHODS
-@section METHODS
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML METHODS
+@section Texinfo::Convert::TexinfoXML METHODS
 
 @table @asis
 @item $converter = Texinfo::Convert::TexinfoXML->converter($options)
-@anchor{Texinfo::Convert::TexinfoXML $converter = Texinfo::Convert::TexinfoXML->converter($options)}
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoXML $converter = Texinfo@asis{::}Convert@asis{::}TexinfoXML->converter($options)}
 
-Initialize converter from Texinfo to TexinfoXML.  
+Initialize converter from Texinfo to TexinfoXML.
 
 The @emph{$options} hash reference holds options for the converter.  In
-this option hash reference a parser object may be associated with the 
-@emph{parser} key.  The other options should be configuration options
-described in the Texinfo manual.  Those options, when appropriate,
-override the document content.
+this option hash reference a @ref{Texinfo@asis{::}Parser NAME,, parser object}
+may be associated with the @emph{parser} key.  The other options
+are Texinfo customization options and a few other options that can
+be passed to the converter. Most of the customization options are described in
+the Texinfo manual.  Those customization options, when appropriate, override
+the document content.  The parser should not be available directly anymore
+after getting the associated information.
 
-See @ref{Texinfo::Convert::Converter NAME} for more informations.
+See @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} for more information.
 
 @item $converter->output($tree)
-@anchor{Texinfo::Convert::TexinfoXML $converter->output($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoXML $converter->output($tree)}
 
 Convert a Texinfo tree @emph{$tree} and output the result in files as
 described in the Texinfo manual.
 
 @item $result = $converter->convert($tree)
-@anchor{Texinfo::Convert::TexinfoXML $result = $converter->convert($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoXML $result = $converter->convert($tree)}
 
-Convert a Texinfo tree @emph{$tree} or tree portion and return 
-the resulting output.
+Convert a Texinfo tree @emph{$tree} and return the resulting output.
 
 @item $result = $converter->convert_tree($tree)
-@anchor{Texinfo::Convert::TexinfoXML $result = $converter->convert_tree($tree)}
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoXML $result = $converter->convert_tree($tree)}
 
-Convert a Texinfo tree portion @emph{$tree} and return the resulting 
+Convert a Texinfo tree portion @emph{$tree} and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use @code{convert}.
 
 @end table
 
-@node Texinfo::Convert::TexinfoXML AUTHOR
-@section AUTHOR
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML AUTHOR
+@section Texinfo::Convert::TexinfoXML AUTHOR
 
 Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoXML COPYRIGHT AND LICENSE
+@section Texinfo::Convert::TexinfoXML COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 

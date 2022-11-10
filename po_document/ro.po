@@ -1,0 +1,1005 @@
+# Mesajele în limba română pentru pachetul texinfo_document.
+# Copyright © 2022 Free Software Foundation, Inc.
+# This file is distributed under the same license as the texinfo package.
+#
+# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022.
+#
+# Cronologia traducerii fișierului „texinfo_document”:
+# Traducerea inițială, făcută de R-GC, pentru versiunea texinfo_document 6.7.91.
+# Actualizare a traducerii pentru versiunea 6.8.90, făcută de R-GC, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo_document 6.8.90\n"
+"Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
+"POT-Creation-Date: 2022-10-29 13:22+0100\n"
+"PO-Revision-Date: 2022-10-21 16:49+0200\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
+"Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: tp/Texinfo/Common.pm:591 tp/Texinfo/Common.pm:596
+msgid "Function"
+msgstr "Funcție"
+
+#: tp/Texinfo/Common.pm:592
+msgid "Macro"
+msgstr "Macro"
+
+#: tp/Texinfo/Common.pm:593
+msgid "Special Form"
+msgstr "Formă specială"
+
+#: tp/Texinfo/Common.pm:594 tp/Texinfo/Common.pm:597
+msgid "Variable"
+msgstr "Variabilă"
+
+#: tp/Texinfo/Common.pm:595
+msgid "User Option"
+msgstr "Opțiunea utilizatorului"
+
+#: tp/Texinfo/Common.pm:598 tp/Texinfo/Common.pm:599
+msgid "Instance Variable"
+msgstr "Variabilă de instanță"
+
+#: tp/Texinfo/Common.pm:600 tp/Texinfo/Common.pm:601
+msgid "Method"
+msgstr "Metodă"
+
+#: tp/Texinfo/Transformations.pm:597
+msgid " --- The Detailed Node Listing ---"
+msgstr " --- Lista detaliată a nodurilor ---"
+
+#: tp/Texinfo/Translations.pm:345
+#, perl-brace-format
+msgid "{name} on {class}"
+msgstr "{name} în {class}"
+
+#: tp/Texinfo/Translations.pm:346
+#, perl-brace-format
+msgid "{name} of {class}"
+msgstr "{name} de {class}"
+
+#: tp/Texinfo/Convert/Converter.pm:107
+msgid "error@arrow{}"
+msgstr "error@arrow{}"
+
+#: tp/Texinfo/Convert/Converter.pm:115
+msgid "January"
+msgstr "ianuarie"
+
+#: tp/Texinfo/Convert/Converter.pm:116
+msgid "February"
+msgstr "februarie"
+
+#: tp/Texinfo/Convert/Converter.pm:117
+msgid "March"
+msgstr "martie"
+
+#: tp/Texinfo/Convert/Converter.pm:118
+msgid "April"
+msgstr "aprilie"
+
+#: tp/Texinfo/Convert/Converter.pm:119
+msgid "May"
+msgstr "mai"
+
+#: tp/Texinfo/Convert/Converter.pm:120
+msgid "June"
+msgstr "iunie"
+
+#: tp/Texinfo/Convert/Converter.pm:121
+msgid "July"
+msgstr "iulie"
+
+#: tp/Texinfo/Convert/Converter.pm:122
+msgid "August"
+msgstr "august"
+
+#: tp/Texinfo/Convert/Converter.pm:123
+msgid "September"
+msgstr "septembrie"
+
+#: tp/Texinfo/Convert/Converter.pm:124
+msgid "October"
+msgstr "octombrie"
+
+#: tp/Texinfo/Convert/Converter.pm:125
+msgid "November"
+msgstr "noiembrie"
+
+#: tp/Texinfo/Convert/Converter.pm:126
+msgid "December"
+msgstr "decembrie"
+
+#: tp/Texinfo/Convert/Converter.pm:1223
+#, perl-brace-format
+msgid "{float_type} {float_number}"
+msgstr "{float_type} {float_number}"
+
+#: tp/Texinfo/Convert/Converter.pm:1227
+#, perl-brace-format
+msgid "{float_type}"
+msgstr "{float_type}"
+
+#: tp/Texinfo/Convert/Converter.pm:1231
+#, perl-brace-format
+msgid "{float_number}"
+msgstr "{float_number}"
+
+#: tp/Texinfo/Convert/Converter.pm:1263
+#, perl-brace-format
+msgid "{float_type} {float_number}: "
+msgstr "{float_type} {float_number}: "
+
+#: tp/Texinfo/Convert/Converter.pm:1267
+#, perl-brace-format
+msgid "{float_type}: "
+msgstr "{float_type}: "
+
+#: tp/Texinfo/Convert/Converter.pm:1273
+#, perl-brace-format
+msgid "{float_type} {float_number}\n"
+msgstr "{float_type} {float_number}\n"
+
+#: tp/Texinfo/Convert/Converter.pm:1277
+#, perl-brace-format
+msgid "{float_type}\n"
+msgstr "{float_type}\n"
+
+#: tp/Texinfo/Convert/Converter.pm:1284
+#, perl-brace-format
+msgid "{float_number}: "
+msgstr "{float_number}: "
+
+#: tp/Texinfo/Convert/Converter.pm:1287
+#, perl-brace-format
+msgid "{float_number}\n"
+msgstr "{float_number}\n"
+
+#: tp/Texinfo/Convert/DocBook.pm:1078
+#, perl-brace-format
+msgid "section ``{section_name}'' in @cite{{book}}"
+msgstr "secțiunea «{section_name}» din @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1083
+#, perl-brace-format
+msgid "See section ``{section_name}'' in @cite{{book}}"
+msgstr "Consultați secțiunea «{section_name}» din @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1088
+#, perl-brace-format
+msgid "see section ``{section_name}'' in @cite{{book}}"
+msgstr "consultați secțiunea «{section_name}» din @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1095
+#, perl-brace-format
+msgid "``{node_name}'' in @cite{{book}}"
+msgstr "«{node_name}» din @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1100
+#, perl-brace-format
+msgid "See ``{node_name}'' in @cite{{book}}"
+msgstr "Consultați «{node_name}» din @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1105
+#, perl-brace-format
+msgid "see ``{node_name}'' in @cite{{book}}"
+msgstr "consultați «{node_name}» din @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1112 tp/Texinfo/Convert/HTML.pm:5071
+#, perl-brace-format
+msgid "@cite{{book}}"
+msgstr "@cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1116 tp/Texinfo/Convert/HTML.pm:5048
+#, perl-brace-format
+msgid "See @cite{{book}}"
+msgstr "Consultați @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1120 tp/Texinfo/Convert/HTML.pm:5025
+#, perl-brace-format
+msgid "see @cite{{book}}"
+msgstr "consultați @cite{{book}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1128
+#, perl-brace-format
+msgid "section ``{section_name}'' in @file{{manual}}"
+msgstr "secțiunea «{section_name}» din @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1133
+#, perl-brace-format
+msgid "See section ``{section_name}'' in @file{{manual}}"
+msgstr "Consultați secțiunea «{section_name}» din @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1138
+#, perl-brace-format
+msgid "see section ``{section_name}'' in @file{{manual}}"
+msgstr "consultați secțiunea «{section_name}» din @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1145
+#, perl-brace-format
+msgid "``{node_name}'' in @file{{manual}}"
+msgstr "«{node_name}» din @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1150
+#, perl-brace-format
+msgid "See ``{node_name}'' in @file{{manual}}"
+msgstr "Consultați «{node_name}» din @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1155
+#, perl-brace-format
+msgid "see ``{node_name}'' in @file{{manual}}"
+msgstr "consultați «{node_name}» din @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1162
+#, perl-brace-format
+msgid "@file{{manual}}"
+msgstr "@file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1166
+#, perl-brace-format
+msgid "See @file{{manual}}"
+msgstr "Consultați @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1170
+#, perl-brace-format
+msgid "see @file{{manual}}"
+msgstr "consultați @file{{manual}}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1189
+#, perl-brace-format
+msgid "{title_ref}"
+msgstr "{title_ref}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1194
+#, perl-brace-format
+msgid "See {title_ref}"
+msgstr "Consultați {title_ref}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1199
+#, perl-brace-format
+msgid "see {title_ref}"
+msgstr "consultați {title_ref}"
+
+#: tp/Texinfo/Convert/DocBook.pm:1349 tp/Texinfo/Convert/LaTeX.pm:3037
+#: tp/Texinfo/Convert/Plaintext.pm:2372
+#, perl-brace-format
+msgid "{abbr_or_acronym} ({explanation})"
+msgstr "{abbr_or_acronym} ({explanation})"
+
+#: tp/Texinfo/Convert/DocBook.pm:1529 tp/Texinfo/Convert/LaTeX.pm:3221
+#: tp/Texinfo/Convert/Plaintext.pm:2545 tp/Texinfo/Convert/HTML.pm:5447
+#, perl-brace-format
+msgid "@b{{quotation_arg}:} "
+msgstr "@b{{quotation_arg}:} "
+
+#: tp/Texinfo/Convert/LaTeX.pm:2744 tp/Texinfo/Convert/Plaintext.pm:2074
+#, perl-brace-format
+msgid "{text} ({url})"
+msgstr "{text} ({url})"
+
+# R-GC, scrie:
+# după revizarea fișierului, DȘ, zice:
+# «→ cred că aici merg ghilimele românești: „ ”»
+# ===
+# Ok, modificare aplicată
+#: tp/Texinfo/Convert/LaTeX.pm:3167 tp/Texinfo/Convert/Plaintext.pm:2469
+#: tp/Texinfo/Convert/HTML.pm:2684
+#, perl-brace-format
+msgid "@{No value for `{value}'@}"
+msgstr "@{Nici o valoare pentru „{value}“@}"
+
+#: tp/Texinfo/Convert/LaTeX.pm:3969
+#, perl-brace-format
+msgid "@center --- @emph{{author}}"
+msgstr "@center --- @emph{{author}}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1186 tp/Texinfo/Convert/HTML.pm:1072
+#: tp/Texinfo/Convert/Utils.pm:306
+#, perl-brace-format
+msgid "Appendix {number} {section_title}"
+msgstr "Apendice {number} {section_title}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1191 tp/Texinfo/Convert/HTML.pm:1078
+#: tp/Texinfo/Convert/Utils.pm:310
+#, perl-brace-format
+msgid "{number} {section_title}"
+msgstr "{number} {section_title}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1450
+msgid "(outside of any node)"
+msgstr "(în afara oricărui nod)"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2044
+#, perl-brace-format
+msgid "{name} @url{{email}}"
+msgstr "{name} @url{{email}}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2047
+#, perl-brace-format
+msgid "@url{{email}}"
+msgstr "@url{{email}}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2079
+#, perl-brace-format
+msgid "@t{<{url}>}"
+msgstr "@t{<{url}>}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2959
+#, perl-brace-format
+msgid "@tie{}-- {category}: {name}{arguments}"
+msgstr "@tie{}-- {category}: {name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2961
+#, perl-brace-format
+msgid "@tie{}-- {category}: {name} {arguments}"
+msgstr "@tie{}-- {category}: {name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2964
+#, perl-brace-format
+msgid "@tie{}-- {category}: {name}"
+msgstr "@tie{}-- {category}: {name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2979
+#, perl-brace-format
+msgid "@tie{}-- {category}:@*{type}@*{name}{arguments}"
+msgstr "@tie{}-- {category}:@*{type}@*{name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2982
+#, perl-brace-format
+msgid "@tie{}-- {category}:@*{type}@*{name} {arguments}"
+msgstr "@tie{}-- {category}:@*{type}@*{name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2987
+#, perl-brace-format
+msgid "@tie{}-- {category}: {type} {name}{arguments}"
+msgstr "@tie{}-- {category}: {type} {name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:2990
+#, perl-brace-format
+msgid "@tie{}-- {category}: {type} {name} {arguments}"
+msgstr "@tie{}-- {category}: {type} {name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3001
+#, perl-brace-format
+msgid "@tie{}-- {category}:@*{type}@*{name}"
+msgstr "@tie{}-- {category}:@*{type}@*{name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3004
+#, perl-brace-format
+msgid "@tie{}-- {category}: {type} {name}"
+msgstr "@tie{}-- {category}: {type} {name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3018
+#, perl-brace-format
+msgid "@tie{}-- {category} of {class}: {name}{arguments}"
+msgstr "@tie{}-- {category} de {class}: {name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3021
+#, perl-brace-format
+msgid "@tie{}-- {category} of {class}: {name} {arguments}"
+msgstr "@tie{}-- {category} de {class}: {name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3025
+#, perl-brace-format
+msgid "@tie{}-- {category} of {class}: {name}"
+msgstr "@tie{}-- {category} de {class}: {name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3040
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}: {name}{arguments}"
+msgstr "@tie{}-- {category} în {class}: {name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3043
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}: {name} {arguments}"
+msgstr "@tie{}-- {category} în {class}: {name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3047
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}: {name}"
+msgstr "@tie{}-- {category} în {class}: {name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3063
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}:@*{type}@*{name}{arguments}"
+msgstr "@tie{}-- {category} în {class}:@*{type}@*{name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3067
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}:@*{type}@*{name} {arguments}"
+msgstr "@tie{}-- {category} în {class}:@*{type}@*{name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3073
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}: {type} {name}{arguments}"
+msgstr "@tie{}-- {category} în {class}: {type} {name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3077
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}: {type} {name} {arguments}"
+msgstr "@tie{}-- {category} în {class}: {type} {name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3089
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}:@*{type}@*{name}"
+msgstr "@tie{}-- {category} în {class}:@*{type}@*{name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3093
+#, perl-brace-format
+msgid "@tie{}-- {category} on {class}: {type} {name}"
+msgstr "@tie{}-- {category} în {class}: {type} {name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3107
+#, perl-brace-format
+msgid "@tie{}-- {category} of {class}: {type} {name}{arguments}"
+msgstr "@tie{}-- {category} de {class}: {type} {name}{arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3111
+#, perl-brace-format
+msgid "@tie{}-- {category} of {class}: {type} {name} {arguments}"
+msgstr "@tie{}-- {category} de {class}: {type} {name} {arguments}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3121
+#, perl-brace-format
+msgid "@tie{}-- {category} of {class}: {type} {name}"
+msgstr "@tie{}-- {category} de {class}: {type} {name}"
+
+#: tp/Texinfo/Convert/Plaintext.pm:3444 tp/Texinfo/Convert/HTML.pm:4568
+#, perl-brace-format
+msgid "@center --- @emph{{author}}\n"
+msgstr "@center --- @emph{{author}}\n"
+
+#: tp/Texinfo/Convert/HTML.pm:1936 tp/Texinfo/Convert/HTML.pm:1998
+msgid "Top"
+msgstr "În frunte"
+
+#: tp/Texinfo/Convert/HTML.pm:1937 tp/Texinfo/Convert/HTML.pm:1999
+msgid "Contents"
+msgstr "Cuprins"
+
+#: tp/Texinfo/Convert/HTML.pm:1938 tp/Texinfo/Convert/HTML.pm:2000
+msgid "Overview"
+msgstr "Prezentare generală"
+
+#: tp/Texinfo/Convert/HTML.pm:1939 tp/Texinfo/Convert/HTML.pm:1972
+#: tp/Texinfo/Convert/HTML.pm:2001
+msgid "Index"
+msgstr "Index"
+
+#: tp/Texinfo/Convert/HTML.pm:1941
+msgid "current"
+msgstr "actual"
+
+#: tp/Texinfo/Convert/HTML.pm:1944 tp/Texinfo/Convert/HTML.pm:2006
+msgid "Prev"
+msgstr "Precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:1945
+msgid " Up "
+msgstr " Sus "
+
+#: tp/Texinfo/Convert/HTML.pm:1946 tp/Texinfo/Convert/HTML.pm:1950
+#: tp/Texinfo/Convert/HTML.pm:2008
+msgid "Next"
+msgstr "Următor"
+
+#: tp/Texinfo/Convert/HTML.pm:1948 tp/Texinfo/Convert/HTML.pm:2007
+msgid "Up"
+msgstr "Sus"
+
+#: tp/Texinfo/Convert/HTML.pm:1952
+msgid "Previous"
+msgstr "Precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:1953
+msgid "Forward node"
+msgstr "Nod înainte"
+
+#: tp/Texinfo/Convert/HTML.pm:1954
+msgid "Back node"
+msgstr "Nod înapoi"
+
+#: tp/Texinfo/Convert/HTML.pm:1960
+msgid "Next file"
+msgstr "Fișierul următor"
+
+#: tp/Texinfo/Convert/HTML.pm:1961
+msgid "Previous file"
+msgstr "Fișierul precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:1969
+msgid "Cover (top) of document"
+msgstr "Coperta (partea de sus) a documentului"
+
+#: tp/Texinfo/Convert/HTML.pm:1970
+msgid "Table of contents"
+msgstr "Cuprins"
+
+#: tp/Texinfo/Convert/HTML.pm:1971
+msgid "Short table of contents"
+msgstr "Scurt cuprins"
+
+#: tp/Texinfo/Convert/HTML.pm:1973
+msgid "Current section"
+msgstr "Secțiunea curentă"
+
+#: tp/Texinfo/Convert/HTML.pm:1974
+msgid "Previous section in reading order"
+msgstr "Secțiunea precedentă în ordinea citirii"
+
+#: tp/Texinfo/Convert/HTML.pm:1975
+msgid "Beginning of this chapter or previous chapter"
+msgstr "Începutul acestui capitol sau capitolul anterior"
+
+#: tp/Texinfo/Convert/HTML.pm:1976
+msgid "Previous section on same level"
+msgstr "Secțiunea precedentă de la același nivel"
+
+#: tp/Texinfo/Convert/HTML.pm:1977
+msgid "Up section"
+msgstr "Secțiunea superioară"
+
+#: tp/Texinfo/Convert/HTML.pm:1978
+msgid "Next section on same level"
+msgstr "Următoarea secțiune de la același nivel"
+
+#: tp/Texinfo/Convert/HTML.pm:1979
+msgid "Up node"
+msgstr "Nodul superior"
+
+#: tp/Texinfo/Convert/HTML.pm:1980
+msgid "Next node"
+msgstr "Nodul următor"
+
+#: tp/Texinfo/Convert/HTML.pm:1981
+msgid "Previous node"
+msgstr "Nodul precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:1982
+msgid "Next node in node reading order"
+msgstr "Nodul următor în ordinea de citire a nodului"
+
+#: tp/Texinfo/Convert/HTML.pm:1983
+msgid "Previous node in node reading order"
+msgstr "Nodul precedent în ordinea de citire a nodului"
+
+#: tp/Texinfo/Convert/HTML.pm:1984
+msgid "Next section in reading order"
+msgstr "Secțiunea următoare în ordinea citirii"
+
+#: tp/Texinfo/Convert/HTML.pm:1985
+msgid "Next chapter"
+msgstr "Capitolul următor"
+
+#: tp/Texinfo/Convert/HTML.pm:1986
+msgid "About (help)"
+msgstr "Despre (ajutor)"
+
+#: tp/Texinfo/Convert/HTML.pm:1987
+msgid "First section in reading order"
+msgstr "Prima secțiune în ordinea lecturii"
+
+#: tp/Texinfo/Convert/HTML.pm:1988
+msgid "Last section in reading order"
+msgstr "Ultima secțiune în ordinea citirii"
+
+#: tp/Texinfo/Convert/HTML.pm:1989
+msgid "Forward section in next file"
+msgstr "Secțiune înainte în fișierul următor"
+
+#: tp/Texinfo/Convert/HTML.pm:1990
+msgid "Back section in previous file"
+msgstr "Secțiunea înapoi în fișierul precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:2003
+msgid "This"
+msgstr "Acesta"
+
+#: tp/Texinfo/Convert/HTML.pm:2004
+msgid "Back"
+msgstr "Înapoi"
+
+#: tp/Texinfo/Convert/HTML.pm:2005
+msgid "FastBack"
+msgstr "Repede înapoi"
+
+#: tp/Texinfo/Convert/HTML.pm:2009
+msgid "NodeUp"
+msgstr "Nod în sus"
+
+#: tp/Texinfo/Convert/HTML.pm:2010
+msgid "NodeNext"
+msgstr "Nodul Următorul"
+
+#: tp/Texinfo/Convert/HTML.pm:2011
+msgid "NodePrev"
+msgstr "Nodul Precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:2012
+msgid "NodeForward"
+msgstr "Nod înainte"
+
+#: tp/Texinfo/Convert/HTML.pm:2013
+msgid "NodeBack"
+msgstr "Nod înapoi"
+
+#: tp/Texinfo/Convert/HTML.pm:2014
+msgid "Forward"
+msgstr "Înainte"
+
+#: tp/Texinfo/Convert/HTML.pm:2015
+msgid "FastForward"
+msgstr "Repede înainte"
+
+#: tp/Texinfo/Convert/HTML.pm:2016
+msgid "About"
+msgstr "Despre"
+
+#: tp/Texinfo/Convert/HTML.pm:2017
+msgid "First"
+msgstr "Primul"
+
+#: tp/Texinfo/Convert/HTML.pm:2018
+msgid "Last"
+msgstr "Ultimul"
+
+#: tp/Texinfo/Convert/HTML.pm:2019
+msgid "NextFile"
+msgstr "Fișierul următor"
+
+#: tp/Texinfo/Convert/HTML.pm:2020
+msgid "PrevFile"
+msgstr "Fișierul precedent"
+
+#: tp/Texinfo/Convert/HTML.pm:2028
+msgid "About This Document"
+msgstr "Despre acest document"
+
+#: tp/Texinfo/Convert/HTML.pm:2029
+msgid "Table of Contents"
+msgstr "Cuprins"
+
+#: tp/Texinfo/Convert/HTML.pm:2030
+msgid "Short Table of Contents"
+msgstr "Scurt cuprins"
+
+#: tp/Texinfo/Convert/HTML.pm:2031
+msgid "Footnotes"
+msgstr "Note de subsol"
+
+#: tp/Texinfo/Convert/HTML.pm:2796
+#, perl-brace-format
+msgid "{explained_string} ({explanation})"
+msgstr "{explained_string} ({explanation})"
+
+#: tp/Texinfo/Convert/HTML.pm:4934
+#, perl-brace-format
+msgid "see {reference_name}"
+msgstr "consultați {reference_name}"
+
+#: tp/Texinfo/Convert/HTML.pm:4937
+#, perl-brace-format
+msgid "See {reference_name}"
+msgstr "Consultați {reference_name}"
+
+#: tp/Texinfo/Convert/HTML.pm:4940
+#, perl-brace-format
+msgid "{reference_name}"
+msgstr "{reference_name}"
+
+#: tp/Texinfo/Convert/HTML.pm:5013
+#, perl-brace-format
+msgid "see {reference} in @cite{{book}}"
+msgstr "consultați {reference} în @cite{{book}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5017
+#, perl-brace-format
+msgid "see @cite{{book_reference}}"
+msgstr "consultați @cite{{book_reference}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5021
+#, perl-brace-format
+msgid "see `{section}' in @cite{{book}}"
+msgstr "vedeți „{section}“ în @cite{{book}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5028
+#, perl-brace-format
+msgid "see {reference}"
+msgstr "vedeți {reference}"
+
+#: tp/Texinfo/Convert/HTML.pm:5031
+#, perl-brace-format
+msgid "see `{section}'"
+msgstr "consultați „{section}“"
+
+#: tp/Texinfo/Convert/HTML.pm:5036
+#, perl-brace-format
+msgid "See {reference} in @cite{{book}}"
+msgstr "Consultați {reference} în @cite{{book}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5040
+#, perl-brace-format
+msgid "See @cite{{book_reference}}"
+msgstr "Consultați @cite{{book_reference}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5044
+#, perl-brace-format
+msgid "See `{section}' in @cite{{book}}"
+msgstr "Consultați „{section}“ în @cite{{book}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5051
+#, perl-brace-format
+msgid "See {reference}"
+msgstr "Consultați {reference}"
+
+#: tp/Texinfo/Convert/HTML.pm:5054
+#, perl-brace-format
+msgid "See `{section}'"
+msgstr "Consultați „{section}“"
+
+#: tp/Texinfo/Convert/HTML.pm:5059
+#, perl-brace-format
+msgid "{reference} in @cite{{book}}"
+msgstr "{reference} în @cite{{book}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5063
+#, perl-brace-format
+msgid "@cite{{book_reference}}"
+msgstr "@cite{{book_reference}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5067
+#, perl-brace-format
+msgid "`{section}' in @cite{{book}}"
+msgstr "„{section}“ în @cite{{book}}"
+
+#: tp/Texinfo/Convert/HTML.pm:5074
+#, perl-brace-format
+msgid "{reference}"
+msgstr "{reference}"
+
+#: tp/Texinfo/Convert/HTML.pm:5077
+#, perl-brace-format
+msgid "`{section}'"
+msgstr "„{section}“"
+
+#: tp/Texinfo/Convert/HTML.pm:5310 tp/Texinfo/Convert/HTML.pm:5335
+msgid "Jump to"
+msgstr "Salt la"
+
+#: tp/Texinfo/Convert/HTML.pm:5321
+msgid "Index Entry"
+msgstr "Intrare în index"
+
+#: tp/Texinfo/Convert/HTML.pm:5324
+msgid "Section"
+msgstr "Secțiune"
+
+#: tp/Texinfo/Convert/HTML.pm:6149
+#, perl-brace-format
+msgid "{category} on @code{{class}}:@* "
+msgstr "{category} în @code{{class}}:@* "
+
+#: tp/Texinfo/Convert/HTML.pm:6153
+#, perl-brace-format
+msgid "{category} on @code{{class}}: "
+msgstr "{category} în @code{{class}}: "
+
+#: tp/Texinfo/Convert/HTML.pm:6157
+#, perl-brace-format
+msgid "{category} of @code{{class}}: "
+msgstr "{category} de @code{{class}}: "
+
+#: tp/Texinfo/Convert/HTML.pm:6170
+#, perl-brace-format
+msgid "{category}:@* "
+msgstr "{category}:@* "
+
+#: tp/Texinfo/Convert/HTML.pm:6172
+#, perl-brace-format
+msgid "{category}: "
+msgstr "{category}: "
+
+#: tp/Texinfo/Convert/HTML.pm:8788
+#, perl-brace-format
+msgid ""
+"This document was generated on @emph{@today{}} using "
+"@uref{{program_homepage}, @emph{{program}}}."
+msgstr ""
+"Acest document a fost generat pe @emph{@today{}} utilizând "
+"@uref{{program_homepage}, @emph{{program}}}."
+
+#: tp/Texinfo/Convert/HTML.pm:8793
+msgid "This document was generated on @emph{@today{}}."
+msgstr "Acest document a fost generat pe @emph{@today{}}."
+
+#: tp/Texinfo/Convert/HTML.pm:8832
+msgid "JavaScript license information"
+msgstr "Informații despre licența JavaScript"
+
+#: tp/Texinfo/Convert/HTML.pm:8879
+#, perl-brace-format
+msgid "{element_text} ({title})"
+msgstr "{element_text} ({title})"
+
+#: tp/Texinfo/Convert/HTML.pm:9092
+#, perl-brace-format
+msgid "The node you are looking for is at {href}."
+msgstr "Nodul pe care îl căutați este la {href}."
+
+#: tp/Texinfo/Convert/HTML.pm:9197
+msgid "  The buttons in the navigation panels have the following meaning:"
+msgstr "  Butoanele din panourile de navigare au următoarea semnificație:"
+
+#: tp/Texinfo/Convert/HTML.pm:9203
+msgid "Button"
+msgstr "Buton"
+
+#: tp/Texinfo/Convert/HTML.pm:9204
+msgid "Name"
+msgstr "Nume"
+
+#: tp/Texinfo/Convert/HTML.pm:9205
+msgid "Go to"
+msgstr "Mergeți la"
+
+#: tp/Texinfo/Convert/HTML.pm:9206
+msgid "From 1.2.3 go to"
+msgstr "De la 1.2.3 mergeți la"
+
+#: tp/Texinfo/Convert/HTML.pm:9235
+msgid ""
+"  where the @strong{ Example } assumes that the current position is at "
+"@strong{ Subsubsection One-Two-Three } of a document of the following "
+"structure:"
+msgstr ""
+" unde @strong{ Exemplul } presupune că poziția curentă este la "
+"@strong{ Subsubsecțiunea Unu-Doi-Trei } a unui document cu următoarea "
+"structură:"
+
+#: tp/Texinfo/Convert/HTML.pm:9246
+msgid "Section One"
+msgstr "Secțiunea Unu"
+
+#: tp/Texinfo/Convert/HTML.pm:9248
+msgid "Subsection One-One"
+msgstr "Subsecțiunea Unu-Unu"
+
+#: tp/Texinfo/Convert/HTML.pm:9255
+msgid "Subsection One-Two"
+msgstr "Subsecțiunea Unu-Doi"
+
+#: tp/Texinfo/Convert/HTML.pm:9257
+msgid "Subsubsection One-Two-One"
+msgstr "Subsubsecțiunea Unu-Doi-Unu"
+
+#: tp/Texinfo/Convert/HTML.pm:9258
+msgid "Subsubsection One-Two-Two"
+msgstr "Subsubsecțiunea Unu-Doi-Doi"
+
+#: tp/Texinfo/Convert/HTML.pm:9259
+msgid "Subsubsection One-Two-Three"
+msgstr "Subsubsecțiunea Unu-Doi-Trei"
+
+#: tp/Texinfo/Convert/HTML.pm:9262
+msgid "Current Position"
+msgstr "Poziția curentă"
+
+#: tp/Texinfo/Convert/HTML.pm:9263
+msgid "Subsubsection One-Two-Four"
+msgstr "Subsubsecțiunea Unu-Doi-Patru"
+
+#: tp/Texinfo/Convert/HTML.pm:9266
+msgid "Subsection One-Three"
+msgstr "Subsecțiunea Unu-Trei"
+
+#: tp/Texinfo/Convert/HTML.pm:9273
+msgid "Subsection One-Four"
+msgstr "Subsecțiunea Unu-Patru"
+
+#: tp/Texinfo/Convert/HTML.pm:9943
+msgid "Untitled Document"
+msgstr "Document fără titlu"
+
+#: tp/Texinfo/Convert/Utils.pm:84
+#, perl-brace-format
+msgid "{month} {day}, {year}"
+msgstr "{day} {month} {year}"
+
+#: tp/Texinfo/Convert/Utils.pm:140
+#, perl-brace-format
+msgid "{category} on @code{{class}}"
+msgstr "{category} în @code{{class}}"
+
+#: tp/Texinfo/Convert/Utils.pm:150
+#, perl-brace-format
+msgid "{category} of @code{{class}}"
+msgstr "{category} de @code{{class}}"
+
+# R-GC, scrie:
+# după revizarea fișierului, DȘ, spune:
+# «→ poți înlocui „Vedeți” cu „Consultați”»
+# ===
+# Ok, modificare aplicată
+#~ msgid "See Info file @file{{myfile}}, node @samp{{mynode}}"
+#~ msgstr "Consultați fișierul Info @file{{myfile}}, nodul @samp{{mynode}}"
+
+#~ msgid "See node @samp{{mynode}}"
+#~ msgstr "Consultați nodul @samp{{mynode}}"
+
+#~ msgid "@tie{}-- {category} of {class}:@*{type}@*{name} {arguments}"
+#~ msgstr "@tie{}-- {category} de {class}:@*{type}@*{name} {arguments}"
+
+#~ msgid "@tie{}-- {category} of {class}:@*{type}@*{name}"
+#~ msgstr "@tie{}-- {category} de {class}:@*{type}@*{name}"
+
+#~ msgid "@strong{{name}} @emph{{arguments}}"
+#~ msgstr "@strong{{name}} @emph{{arguments}}"
+
+#~ msgid "@strong{{name}}"
+#~ msgstr "@strong{{name}}"
+
+#~ msgid "@emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+#~ msgstr "@emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+
+#~ msgid "@emph{{type}} @strong{{name}} @emph{{arguments}}"
+#~ msgstr "@emph{{type}} @strong{{name}} @emph{{arguments}}"
+
+#~ msgid "@emph{{type}} @strong{{name}}"
+#~ msgstr "@emph{{type}} @strong{{name}}"
+
+#~ msgid "{category} of {class}: @strong{{name}} @emph{{arguments}}"
+#~ msgstr "{category} de {class}: @strong{{name}} @emph{{arguments}}"
+
+#~ msgid "{category} of {class}: @strong{{name}}"
+#~ msgstr "{category} de {class}: @strong{{name}}"
+
+#~ msgid "{category} on {class}: @strong{{name}} @emph{{arguments}}"
+#~ msgstr "{category} în {class}: @strong{{name}} @emph{{arguments}}"
+
+#~ msgid "{category} on {class}: @strong{{name}}"
+#~ msgstr "{category} în {class}: @strong{{name}}"
+
+#~ msgid ""
+#~ "{category} on {class}:@* @emph{{type}}@* @strong{{name}} "
+#~ "@emph{{arguments}}"
+#~ msgstr ""
+#~ "{category} în {class}:@* @emph{{type}}@* @strong{{name}} "
+#~ "@emph{{arguments}}"
+
+#~ msgid ""
+#~ "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+#~ msgstr ""
+#~ "{category} în {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+
+#~ msgid "{category} on {class}:@* @emph{{type}}@* @strong{{name}}"
+#~ msgstr "{category} în {class}:@* @emph{{type}}@* @strong{{name}}"
+
+#~ msgid "{category} on {class}: @emph{{type}} @strong{{name}}"
+#~ msgstr "{category} în {class}: @emph{{type}} @strong{{name}}"
+
+#~ msgid ""
+#~ "{category} of {class}:@* @emph{{type}}@* @strong{{name}} "
+#~ "@emph{{arguments}}"
+#~ msgstr ""
+#~ "{category} de {class}:@* @emph{{type}}@* @strong{{name}} "
+#~ "@emph{{arguments}}"
+
+#~ msgid ""
+#~ "{category} of {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+#~ msgstr ""
+#~ "{category} de {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+
+#~ msgid "{category} of {class}:@* @emph{{type}}@* @strong{{name}}"
+#~ msgstr "{category} de {class}:@* @emph{{type}}@* @strong{{name}}"
+
+#~ msgid "{category} of {class}: @emph{{type}} @strong{{name}}"
+#~ msgstr "{category} de {class}: @emph{{type}} @strong{{name}}"

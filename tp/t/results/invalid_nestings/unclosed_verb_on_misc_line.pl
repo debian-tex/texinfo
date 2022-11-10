@@ -1,71 +1,63 @@
 use vars qw(%result_texis %result_texts %result_trees %result_errors 
    %result_indices %result_sectioning %result_nodes %result_menus
    %result_floats %result_converted %result_converted_errors 
-   %result_elements %result_directions_text);
+   %result_elements %result_directions_text %result_indices_sort_strings);
 
 use utf8;
 
 $result_trees{'unclosed_verb_on_misc_line'} = {
   'contents' => [
     {
-      'args' => [
+      'contents' => [
         {
-          'contents' => [
+          'args' => [
             {
-              'parent' => {},
-              'text' => 'name '
-            },
-            {
-              'args' => [
+              'contents' => [
                 {
-                  'contents' => [
+                  'text' => 'name '
+                },
+                {
+                  'args' => [
                     {
-                      'parent' => {},
-                      'text' => 'ile.texi',
-                      'type' => 'raw'
+                      'contents' => [
+                        {
+                          'text' => 'ile.texi',
+                          'type' => 'raw'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
                     }
                   ],
-                  'parent' => {},
-                  'type' => 'brace_command_arg'
+                  'cmdname' => 'verb',
+                  'extra' => {
+                    'delimiter' => 'f'
+                  },
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  }
                 }
               ],
-              'cmdname' => 'verb',
-              'contents' => [],
-              'extra' => {
-                'delimiter' => 'f'
-              },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              },
-              'parent' => {}
+              'type' => 'line_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'line_arg'
+          'cmdname' => 'setfilename',
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          }
         }
       ],
-      'cmdname' => 'setfilename',
-      'extra' => {
-        'spaces_before_argument' => ' '
-      },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
-      'parent' => {}
+      'type' => 'before_node_section'
     }
   ],
-  'type' => 'text_root'
+  'type' => 'document_root'
 };
-$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0];
-$result_trees{'unclosed_verb_on_misc_line'}{'contents'}[0]{'parent'} = $result_trees{'unclosed_verb_on_misc_line'};
 
 $result_texis{'unclosed_verb_on_misc_line'} = '@setfilename name @verb{file.texif}';
 
@@ -74,7 +66,7 @@ $result_texts{'unclosed_verb_on_misc_line'} = '';
 
 $result_errors{'unclosed_verb_on_misc_line'} = [
   {
-    'error_line' => ':1: warning: @verb should not appear in @setfilename
+    'error_line' => 'warning: @verb should not appear in @setfilename
 ',
     'file_name' => '',
     'line_nr' => 1,
@@ -83,7 +75,7 @@ $result_errors{'unclosed_verb_on_misc_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @verb missing closing delimiter sequence: f}
+    'error_line' => '@verb missing closing delimiter sequence: f}
 ',
     'file_name' => '',
     'line_nr' => 1,

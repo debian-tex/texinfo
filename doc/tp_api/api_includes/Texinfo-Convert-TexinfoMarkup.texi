@@ -1,0 +1,153 @@
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup
+@chapter Texinfo::Convert::TexinfoMarkup
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup NAME
+@section Texinfo::Convert::TexinfoMarkup NAME
+
+Texinfo::Convert::TexinfoMarkup - Convert Texinfo tree to element and attribute markup
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup SYNOPSIS
+@section Texinfo::Convert::TexinfoMarkup SYNOPSIS
+
+@verbatim
+  package Texinfo::Convert::TexinfoMyMarkup;
+
+  use Texinfo::Convert::TexinfoMarkup;
+
+  @ISA = qw(Texinfo::Convert::TexinfoMarkup);
+
+  sub converter_defaults ($$) {
+    return %myconverter_defaults;
+  }
+
+  sub txi_markup_protect_text($$)
+  {
+    my $self = shift;
+    ....
+  }
+@end verbatim
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup NOTES
+@section Texinfo::Convert::TexinfoMarkup NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup DESCRIPTION
+@section Texinfo::Convert::TexinfoMarkup DESCRIPTION
+
+@code{Texinfo::Convert::TexinfoMarkup} converts a Texinfo tree to the Texinfo
+Markup Language which is based on nested elements with attributes, similar
+to XML.  All the information present in the Texinfo tree, after
+expansion of @code{@@macro}, @code{@@value} and inclusion of include files is
+kept.  @code{Texinfo::Convert::TexinfoMarkup} is an abstract class, to be used as a
+super class for modules implementing specific markup formatting functions
+called by @code{Texinfo::Convert::TexinfoMarkup}.
+
+The Texinfo Markup Language elements and attributes are not documented,
+but the Texinfo XML output by the @code{Texinfo::Convert::TexinfoXML} subclass
+(@ref{Texinfo@asis{::}Convert@asis{::}TexinfoXML NAME,, Texinfo::Convert::TexinfoXML}) is a straightforward formatting as XML,
+and is described by the texinfo DTD.  Therefore the texinfo DTD can be
+used as a description of the structure of both Texinfo XML and of the
+more abstract Texinfo Markup Language.
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup METHODS
+@section Texinfo::Convert::TexinfoMarkup METHODS
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup Markup formatting methods defined by subclasses
+@subsection Markup formatting methods defined by subclasses
+
+The following methods should be implemented by the modules inheriting
+from @code{Texinfo::Convert::TexinfoMarkup}:
+
+@table @asis
+@item $result = $converter->txi_markup_atom($atom)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_atom($atom)}
+
+Format the @emph{$atom} symbol string in a simpler way than with an element.  For
+example in XML the formatting of the symbol is achieved with an entity.
+
+@item $result = $converter->txi_markup_comment($comment_string)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_comment($comment_string)}
+
+Format @emph{$comment_string} as a comment.
+
+@item $result = $converter->txi_markup_convert_text($element)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_convert_text($element)}
+
+Called to format the Texinfo tree @emph{$element} text, which is a
+reference on a hash.  The @emph{$element} text is in the @code{text} key.
+The @code{type} key value may also be set to distinguish the type of text
+(@ref{Texinfo@asis{::}Parser Types for text elements}).
+Texinfo tree elements are described in details in @ref{Texinfo@asis{::}Parser TEXINFO TREE}.
+
+@item $result = $converter->txi_markup_element($format_element, $attributes)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_element($format_element@comma{} $attributes)}
+
+@item $result = $converter->txi_markup_open_element($format_element, $attributes)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_open_element($format_element@comma{} $attributes)}
+
+@item $result = $converter->txi_markup_close_element($format_element, $attributes)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_close_element($format_element@comma{} $attributes)}
+
+@code{txi_markup_element} is called for the formatting of empty elements.  Otherwise,
+@code{txi_markup_open_element} is called when an element is opened, and
+@code{txi_markup_close_element} is called when an element is closed.
+@emph{$format_element} is the element name, @emph{$attributes} is a reference on an
+array containing references on arrays of pairs, one pair for each attribute, with
+the attribute name as the first item of the pair and the attribute text as the
+second item of the pair.
+
+@item $result = $converter->txi_markup_header()
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_header()}
+
+Called to format a header at the beginning of output files.
+
+@item $result = $converter->txi_markup_protect_text($string)
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $result = $converter->txi_markup_protect_text($string)}
+
+Protect special character in text for text fragments out of text
+texinfo tree elements.  For example, for spaces at end of line that
+are ignorable in most output formats, for @code{@@set} or @code{@@macro}
+arguments.
+
+@end table
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup Formatting state information
+@subsection Formatting state information
+
+A method is available for subclasses to gather information on the
+formatting state:
+
+@table @asis
+@item $converter->in_monospace()
+@anchor{Texinfo@asis{::}Convert@asis{::}TexinfoMarkup $converter->in_monospace()}
+
+Return 1 if in a context where spacing should be kept
+and @code{---} or @code{''} left as is, for example in @code{@@code}, @code{@@example}.
+
+@end table
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup AUTHOR
+@section Texinfo::Convert::TexinfoMarkup AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup SEE ALSO
+@section Texinfo::Convert::TexinfoMarkup SEE ALSO
+
+@ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}. @ref{Texinfo@asis{::}Convert@asis{::}TexinfoXML NAME,, Texinfo::Convert::TexinfoXML}.  The
+@code{Texinfo::Convert::TexinfoSXML} is another subclass, which outputs
+SXML.  It is not much documented.
+
+@node Texinfo@asis{::}Convert@asis{::}TexinfoMarkup COPYRIGHT AND LICENSE
+@section Texinfo::Convert::TexinfoMarkup COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

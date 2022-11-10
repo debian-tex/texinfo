@@ -1,6 +1,6 @@
 /* system.h: system-dependent declarations; include this first.
 
-   Copyright 1997-2019 Free Software Foundation, Inc.
+   Copyright 1997-2022 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -115,10 +115,6 @@ extern char *strerror ();
 #   define HAVE_LONG_FILENAMES(dir)  (pathconf (dir, _PC_NAME_MAX) > 12)
 #   define NULL_DEVICE	"/dev/null"
 #   define DEFAULT_INFOPATH "c:/djgpp/info;/usr/local/info;/usr/info;."
-    /* DJGPP supports /dev/null, which is okay for Unix aficionados,
-       shell scripts and Makefiles, but interactive DOS die-hards
-       would probably want to have NUL as well.  */
-#   define ALSO_NULL_DEVICE  "NUL"
 #  else  /* O_BINARY && !__DJGPP__ */
 #   define HAVE_LONG_FILENAMES(dir)  (0)
 #   define NULL_DEVICE	"NUL"
@@ -181,11 +177,6 @@ extern int kill (pid_t, int);
 # define NULL_DEVICE	"/dev/null"
 # define PIPE_USE_FORK	1
 #endif /* not O_BINARY */
-
-/* Everything but DJGPP.  */
-#ifndef ALSO_NULL_DEVICE
-# define ALSO_NULL_DEVICE  ""
-#endif
 
 #ifdef HAVE_PWD_H
 #include <pwd.h>

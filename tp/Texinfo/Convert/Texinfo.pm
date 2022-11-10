@@ -1,6 +1,6 @@
 # Texinfo.pm: output a Texinfo tree as Texinfo.
 #
-# Copyright 2010-2018 Free Software Foundation, Inc.
+# Copyright 2010-2022 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,29 +23,34 @@ package Texinfo::Convert::Texinfo;
 use 5.00405;
 use strict;
 
+# To check if there is no erroneous autovivification
+#no autovivification qw(fetch delete exists store strict);
+
+use Carp qw(cluck confess);
+
 # commands definitions
-use Texinfo::Common;
+use Texinfo::Commands;
 
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
 %EXPORT_TAGS = ( 'all' => [ qw(
-  convert
+  convert_to_texinfo
   node_extra_to_texi
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-@EXPORT = qw(
-);
+$VERSION = '7.0';
 
-$VERSION = '6.8';
 
-my %misc_commands            = %Texinfo::Common::misc_commands;
-my %brace_commands           = %Texinfo::Common::brace_commands;    
-my %block_commands           = %Texinfo::Common::block_commands;    
-my %def_commands             = %Texinfo::Common::def_commands;    
+my %brace_commands           = %Texinfo::Commands::brace_commands;
+my %block_commands           = %Texinfo::Commands::block_commands;
+my %def_commands             = %Texinfo::Commands::def_commands;
+
+# used in root_heading_command_to_texinfo
+my %sectioning_heading_commands = %Texinfo::Commands::sectioning_heading_commands;
 
 my @ignored_types = ('spaces_inserted', 'bracketed_inserted',
 'command_as_argument_inserted');
@@ -54,85 +59,107 @@ for my $a (@ignored_types) {
   $ignored_types{$a} = 1;
 }
 
-# Following subroutines deal with transforming a texinfo tree into texinfo
-# text.  Should give the text that was used parsed, except for a few cases.
-
-# expand a tree to the corresponding texinfo.
-sub convert
-{
-  my $root = shift;
-
-  die "convert: root undef\n" if (!defined($root));
-  die "convert: bad root type (".ref($root).") $root\n" 
-     if (ref($root) ne 'HASH');
-  my $result = '';
-
-  return '' if ($root->{'type'} and $ignored_types{$root->{'type'}});
-
-  if (defined($root->{'text'})) {
-    $result .= $root->{'text'};
-  } else {
-    if ($root->{'cmdname'} 
-       or ($root->{'type'} and ($root->{'type'} eq 'def_line'
-                                or $root->{'type'} eq 'menu_entry'
-                                or $root->{'type'} eq 'menu_comment'))) {
-      $result .= _expand_cmd_args_to_texi($root);
-    }
-    if ($root->{'type'}
-        and ($root->{'type'} eq 'bracketed'
-             or $root->{'type'} eq 'bracketed_def_content')) {
-      $result .= '{';
-      if ($root->{'extra'}
-          and $root->{'extra'}->{'spaces_before_argument'}) {
-         $result .= $root->{'extra'}->{'spaces_before_argument'};
-      }
-    }
-    if (defined($root->{'contents'})) {
-      foreach my $child (@{$root->{'contents'}}) {
-        $result .= convert($child);
-      }
-    }
-    if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_argument'}) {
-      $result .= $root->{'extra'}->{'spaces_after_argument'};
-    }
-    if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
-      $result .= convert($root->{'extra'}->{'comment_at_end'});
-    }
-    $result .= '}' if ($root->{'type'}
-                       and ($root->{'type'} eq 'bracketed'
-                            or $root->{'type'} eq 'bracketed_def_content'));
-    if ($root->{'cmdname'} and defined($block_commands{$root->{'cmdname'}})
-        and $block_commands{$root->{'cmdname'}} eq 'raw') {
-      $result .= '@end '.$root->{'cmdname'};
-      $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
-    } 
-  }
-  return $result;
-}
-
 # used to put a node name in error messages.
 sub node_extra_to_texi($)
 {
   my $node = shift;
   my $result = '';
   if ($node->{'manual_content'}) {
-    $result = '('.Texinfo::Convert::Texinfo::convert({'contents'
-                                     => $node->{'manual_content'}}) .')';
+    $result = '('.convert_to_texinfo({'contents'
+                              => $node->{'manual_content'}}) .')';
   }
   if ($node->{'node_content'}) {
-    $result .= Texinfo::Convert::Texinfo::convert ({'contents'
-                                          => $node->{'node_content'}});
+    $result .= convert_to_texinfo({'contents' => $node->{'node_content'}});
   }
   return $result;
 }
 
+# for debugging.
+sub root_heading_command_to_texinfo($)
+{
+  my $element = shift;
+  my $tree;
+  if ($element->{'cmdname'}) {
+    if ($element->{'cmdname'} eq 'node') {
+      $tree = $element->{'extra'}->{'node_content'};
+    } elsif ($sectioning_heading_commands{$element->{'cmdname'}}
+             and $element->{'args'}->[0]->{'contents'}) {
+      $tree = $element->{'args'}->[0]->{'contents'};
+    }
+  } else {
+    return "Not a root command";
+  }
+  return '@'.$element->{'cmdname'}.' '.convert_to_texinfo({'contents' => $tree})
+          if ($tree);
+  return '@'.$element->{'cmdname'};
+}
+
+# Following subroutines deal with transforming a texinfo tree into texinfo
+# text.  Should give the text that was used parsed, except for a few cases.
+
+# the second arguments, if defined triggers replaced
+# tree item to be shown, in the default case they are
+# not shown.
+# expand a tree to the corresponding texinfo.
+sub convert_to_texinfo($;$);
+sub convert_to_texinfo($;$)
+{
+  my $element = shift;
+  my $expand_replaced = shift;
+
+  confess "convert_to_texinfo: element undef" if (!defined($element));
+  confess "convert_to_texinfo: bad element type (".ref($element).") $element"
+     if (ref($element) ne 'HASH');
+  my $result = '';
+
+  return '' if ($element->{'type'}
+                and ($ignored_types{$element->{'type'}}
+                     or ($element->{'type'} eq 'replaced'
+                         and not $expand_replaced)));
+  if (defined($element->{'text'})) {
+    $result .= $element->{'text'};
+  } else {
+    if ($element->{'cmdname'}
+       or ($element->{'type'} and ($element->{'type'} eq 'def_line'
+                                or $element->{'type'} eq 'menu_entry'
+                                or $element->{'type'} eq 'menu_comment'))) {
+      $result .= _expand_cmd_args_to_texi($element, $expand_replaced);
+    }
+    if ($element->{'type'}
+        and ($element->{'type'} eq 'bracketed'
+             or $element->{'type'} eq 'bracketed_def_content')) {
+      $result .= '{';
+      if ($element->{'extra'}
+          and $element->{'extra'}->{'spaces_before_argument'}) {
+         $result .= $element->{'extra'}->{'spaces_before_argument'};
+      }
+    }
+    if (defined($element->{'contents'})) {
+      foreach my $child (@{$element->{'contents'}}) {
+        $result .= convert_to_texinfo($child, $expand_replaced);
+      }
+    }
+    if ($element->{'extra'} and $element->{'extra'}->{'spaces_after_argument'}) {
+      $result .= $element->{'extra'}->{'spaces_after_argument'};
+    }
+    if ($element->{'extra'} and $element->{'extra'}->{'comment_at_end'}) {
+      $result .= convert_to_texinfo($element->{'extra'}->{'comment_at_end'},
+                         $expand_replaced);
+    }
+    $result .= '}' if ($element->{'type'}
+                       and ($element->{'type'} eq 'bracketed'
+                            or $element->{'type'} eq 'bracketed_def_content'));
+  }
+  return $result;
+}
 
 # expand a command argument as texinfo.
-sub _expand_cmd_args_to_texi {
+sub _expand_cmd_args_to_texi($;$) {
   my $cmd = shift;
+  my $expand_replaced = shift;
 
   my $cmdname = $cmd->{'cmdname'};
-  $cmdname = '' if (!$cmd->{'cmdname'}); 
+  $cmdname = '' if (!$cmd->{'cmdname'});
   my $result = '';
   $result = '@'.$cmdname if ($cmdname);
 
@@ -141,7 +168,7 @@ sub _expand_cmd_args_to_texi {
   if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
     $result .= $cmd->{'extra'}->{'spaces'};
   }
-  # must be before the next condition
+  # block line commands with arguments not separated by commas
   if ($block_commands{$cmdname}
          and ($def_commands{$cmdname}
               or $block_commands{$cmdname} eq 'multitable')
@@ -149,10 +176,10 @@ sub _expand_cmd_args_to_texi {
      $result .= $cmd->{'extra'}->{'spaces_before_argument'}
        if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
      foreach my $arg (@{$cmd->{'args'}}) {
-        $result .= convert($arg);
+        $result .= convert_to_texinfo($arg, $expand_replaced);
     }
-  # for misc_commands with type special
-  } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
+  # arg_line set for line_commands with type special
+  } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro')
            and defined($cmd->{'extra'}->{'arg_line'})) {
     $result .= $cmd->{'extra'}->{'spaces_before_argument'}
       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
@@ -166,13 +193,13 @@ sub _expand_cmd_args_to_texi {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
-      $result .= convert($arg);
+      $result .= convert_to_texinfo($arg);
       $result .= ',';
     }
     $result =~ s/,$//;
   } elsif (defined($cmd->{'args'})) {
     my $braces;
-    $braces = 1 if ($cmd->{'args'}->[0]->{'type'} 
+    $braces = 1 if ($cmd->{'args'}->[0]->{'type'}
                     and ($cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg'
                          or $cmd->{'args'}->[0]->{'type'} eq 'brace_command_context'));
     $result .= '{' if ($braces);
@@ -185,7 +212,7 @@ sub _expand_cmd_args_to_texi {
     }
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
-      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
+      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'}
                     and $cmd->{'type'} eq 'definfoenclose_command')) {
         $result .= ',' if ($arg_nr);
         $arg_nr++;
@@ -193,18 +220,17 @@ sub _expand_cmd_args_to_texi {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
-      $result .= convert($arg);
+      $result .= convert_to_texinfo($arg);
     }
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'extra'}->{'delimiter'};
     }
-    #die "Shouldn't have args: $cmdname\n";
     $result .= '}' if ($braces);
   } else {
     $result .= $cmd->{'extra'}->{'spaces_before_argument'}
       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
   }
-  $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
+  $result .= '{'.$cmd->{'extra'}->{'flag'}.'}' if ($cmdname eq 'value');
   return $result;
 }
 
@@ -217,23 +243,29 @@ Texinfo::Convert::Texinfo - Convert a Texinfo tree to Texinfo code
 
 =head1 SYNOPSIS
 
-  use Texinfo::Convert::Texinfo qw(convert);
+  use Texinfo::Convert::Texinfo qw(convert_to_texinfo);
   
-  my $texinfo_text = convert($tree);
+  my $texinfo_text = convert_to_texinfo($tree);
+
+=head1 NOTES
+
+The Texinfo Perl module main purpose is to be used in C<texi2any> to convert
+Texinfo to other formats.  There is no promise of API stability.
 
 =head1 DESCRIPTION
 
-Texinfo::Convert::Texinfo converts a Texinfo tree (described in 
-L<Texinfo::Parser>) to Texinfo code.  If the Texinfo tree results from 
+C<Texinfo::Convert::Texinfo> converts a Texinfo tree (described in
+L<Texinfo::Parser>) to Texinfo code.  If the Texinfo tree results from
 parsing some Texinfo document, The converted Texinfo code should be
-exactly the same as the initial document, except that user defined @-macros 
+exactly the same as the initial document, except that user defined @-macros
 and C<@value> are expanded, and some invalid code is discarded.
 
 =head1 METHODS
 
 =over
 
-=item $texinfo_text = convert($tree)
+=item $texinfo_text = convert_to_texinfo($tree)
+X<C<convert_to_texinfo>>
 
 Converts the Texinfo tree I<$tree> to Texinfo code.
 
@@ -242,5 +274,15 @@ Converts the Texinfo tree I<$tree> to Texinfo code.
 =head1 AUTHOR
 
 Patrice Dumas, E<lt>pertusus@free.frE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
 
 =cut

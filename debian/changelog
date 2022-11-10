@@ -2,6 +2,8 @@ texinfo (7.0-1) UNRELEASED; urgency=medium
 
   * New upstream release: disable / refresh patches.
 
+  * Debhelper compat 13.
+  * Remove libncurses5-dev as alternative B-D.
   * Correct lintian overrides.
 
  -- Hilmar Preusse <hille42@web.de>  Sat, 15 Oct 2022 21:12:18 +0200

@@ -1,4 +1,6 @@
-texinfo (6.8-7) UNRELEASED; urgency=medium
+texinfo (7.0-1) UNRELEASED; urgency=medium
+
+  * New upstream release: disable / refresh patches.
 
   * Correct lintian overrides.
 

@@ -1,8 +1,8 @@
 disable-failing-tests
 warn_missing_tex
 numerical-signal-names
-upstream-c0666e580a-fix-makeinfo-dash-input
-13a8894fe2faa45b04033d7122a8fe7939ce6aa2
-texinfo-6.8-undo-gnulib-nonnul.patch
-04f7ed5ce647050f28106b589217fb2509626d38
-0c98220148d6c4a89f357360c28a4fc890c4666b
+#upstream-c0666e580a-fix-makeinfo-dash-input
+#13a8894fe2faa45b04033d7122a8fe7939ce6aa2
+#texinfo-6.8-undo-gnulib-nonnul.patch
+#04f7ed5ce647050f28106b589217fb2509626d38
+#0c98220148d6c4a89f357360c28a4fc890c4666b

@@ -1,0 +1,874 @@
+--- texinfo.orig/tp/Texinfo/Convert/Plaintext.pm
++++ texinfo/tp/Texinfo/Convert/Plaintext.pm
+@@ -1727,6 +1727,10 @@
+   }
+ 
+   if ($element->{'extra'}) {
++    # REMARK it is not that wise to rely on {'extra'}->{'missing_argument'}
++    # being set, additional tests of $element->{'contents'}
++    # being defined could be added, in addition to be more robust in case
++    # {'extra'}->{'missing_argument'} is removed
+     if ($element->{'extra'}->{'missing_argument'}
+              and (!$element->{'contents'} or !@{$element->{'contents'}})) {
+       return '';
+@@ -1958,6 +1962,7 @@
+       if ($element->{'args'}) {
+         $result .= _convert($self, $element->{'args'}->[0]);
+         if ($command eq 'strong' 
++             and $element->{'args'}->[0]->{'contents'}
+              and scalar (@{$element->{'args'}->[0]->{'contents'}})
+              and $element->{'args'}->[0]->{'contents'}->[0]->{'text'}
+              and $element->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\s/i
+@@ -2082,6 +2087,7 @@
+           }
+         } elsif (scalar(@{$element->{'args'}}) == 2
+                  and defined($element->{'args'}->[1])
++                 and $element->{'args'}->[1]->{'contents'}
+                  and @{$element->{'args'}->[1]->{'contents'}}) {
+           unshift @{$self->{'current_contents'}->[-1]}, 
+             {'contents' => $element->{'args'}->[1]->{'contents'}};
+@@ -2368,6 +2374,7 @@
+         }
+         if (scalar (@{$element->{'args'}}) == 2
+             and defined($element->{'args'}->[-1])
++            and $element->{'args'}->[-1]->{'contents'}
+             and @{$element->{'args'}->[-1]->{'contents'}}) {
+           my $prepended = $self->gdt('{abbr_or_acronym} ({explanation})', 
+                            {'abbr_or_acronym' => $argument, 
+@@ -2693,10 +2700,18 @@
+       #my ($counts, $new_locations);
+       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0, 
+                                                    'locations' => []};
+-      $result = $self->convert_line (
++      # $element->{'args'}->[0]->{'contents'} not set cannot happen
++      # as in that case missing_argument would be set.  This condition
++      # is therefre not really needed, but still put in case missing_argument
++      # disappears
++      my $result = '';
++      if ($element->{'args'}->[0]
++          and $element->{'args'}->[0]->{'contents'}) {
++        $result = $self->convert_line (
+                        {'type' => 'frenchspacing',
+                         'contents' => $element->{'args'}->[0]->{'contents'}},
+                        {'indent_length' => 0});
++      }
+       if ($result ne '') {
+         $result = $self->ensure_end_of_line($result);
+ 
+@@ -2710,14 +2725,24 @@
+       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
+       return $result;
+     } elsif ($command eq 'exdent') {
+-      if ($self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
+-        $result = $self->_convert_unfilled({'contents' => $element->{'args'}->[0]->{'contents'}},
+-         {'indent_level'
+-          => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+-      } else {
+-        $result = $self->convert_line({'contents' => $element->{'args'}->[0]->{'contents'}},
+-         {'indent_level' 
+-          => $self->{'format_context'}->[-1]->{'indent_level'} -1});
++      $result = '';
++      # $element->{'args'}->[0]->{'contents'} not set cannot happen
++      # as in that case missing_argument would be set.  This condition
++      # is therefre not really needed, but still put in case missing_argument
++      # disappears
++      if ($element->{'args'}->[0]
++          and $element->{'args'}->[0]->{'contents'}) {
++        if ($self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
++          $result = $self->_convert_unfilled(
++               {'contents' => $element->{'args'}->[0]->{'contents'}},
++               {'indent_level'
++                 => $self->{'format_context'}->[-1]->{'indent_level'} -1});
++        } else {
++          $result = $self->convert_line(
++             {'contents' => $element->{'args'}->[0]->{'contents'}},
++             {'indent_level'
++               => $self->{'format_context'}->[-1]->{'indent_level'} -1});
++        }
+       }
+       if ($result ne '') {
+         $result = $self->ensure_end_of_line($result);
+@@ -2756,6 +2781,7 @@
+         $lines_count += 2;
+         foreach my $float (@{$self->{'floats'}->{$element->{'extra'}->{'type'}->{'normalized'}}}) {
+           next if !$float->{'args'} or !$float->{'args'}->[1]
++                   or !$float->{'args'}->[1]->{'contents'}
+                    or !@{$float->{'args'}->[1]->{'contents'}};
+           my $float_label_text = $self->convert_line({'type' => '_code',
+              'contents' => $float->{'args'}->[1]->{'contents'}});
+@@ -2782,7 +2808,8 @@
+           } elsif ($float->{'extra'}->{'caption'}) {
+             $caption = $float->{'extra'}->{'caption'};
+           }
+-          if ($caption) {
++          if ($caption and $caption->{'args'}->[0]
++              and $caption->{'args'}->[0]->{'contents'}) {
+             $self->{'multiple_pass'} = 1;
+             push @{$self->{'context'}}, 'listoffloats';
+             my $tree = {'contents' => $caption->{'args'}->[0]->{'contents'}};
+@@ -3154,6 +3181,9 @@
+           $result .= _count_added($self, $formatter->{'container'},
+                            add_pending_word($formatter->{'container'}, 1));
+ 
++          # note that $arg->{'contents'} may be undefined in rare case
++          # such as in sectionning in_menu_only_special_ascii_spaces_node
++          # test
+           my $node_text = _convert($self, {'type' => '_code',
+                                       'contents' => $arg->{'contents'}});
+ 
+@@ -3241,6 +3271,7 @@
+   }
+ 
+   # The processing of contents is done here.
++  # $element->{'contents'} undef may happen for some empty commands/containers
+   if ($element->{'contents'}) {
+     my @contents = @{$element->{'contents'}};
+     push @{$self->{'current_contents'}}, \@contents;
+--- texinfo.orig/tp/t/info_tests.t
++++ texinfo/tp/t/info_tests.t
+@@ -933,7 +933,34 @@
+ ['empty_copying_not_ended',
+ '
+ @copying
+-']
++'],
++['empty_arguments',
++'
++@strong{}
++@uref{,}
++@abbr{a,}
++'],
++['float_without_type',
++'
++@node Top
++
++@float a,
++aa
++@end float
++
++@listoffloats a
++'],
++['empty_caption',
++'
++@node Top
++
++@float a,b
++aa
++@caption{}
++@end float
++
++@listoffloats a
++'],
+ );
+ 
+ my @file_tests = (
+--- /dev/null
++++ texinfo/tp/t/results/info_tests/empty_arguments.pl
+@@ -0,0 +1,136 @@
++use vars qw(%result_texis %result_texts %result_trees %result_errors 
++   %result_indices %result_sectioning %result_nodes %result_menus
++   %result_floats %result_converted %result_converted_errors 
++   %result_elements %result_directions_text %result_indices_sort_strings);
++
++use utf8;
++
++$result_trees{'empty_arguments'} = {
++  'contents' => [
++    {
++      'contents' => [
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        },
++        {
++          'contents' => [
++            {
++              'args' => [
++                {
++                  'type' => 'brace_command_arg'
++                }
++              ],
++              'cmdname' => 'strong',
++              'source_info' => {
++                'file_name' => '',
++                'line_nr' => 2,
++                'macro' => ''
++              }
++            },
++            {
++              'text' => '
++'
++            },
++            {
++              'args' => [
++                {
++                  'type' => 'brace_command_arg'
++                },
++                {
++                  'type' => 'brace_command_arg'
++                }
++              ],
++              'cmdname' => 'uref',
++              'source_info' => {
++                'file_name' => '',
++                'line_nr' => 3,
++                'macro' => ''
++              }
++            },
++            {
++              'text' => '
++'
++            },
++            {
++              'args' => [
++                {
++                  'contents' => [
++                    {
++                      'text' => 'a'
++                    }
++                  ],
++                  'type' => 'brace_command_arg'
++                },
++                {
++                  'type' => 'brace_command_arg'
++                }
++              ],
++              'cmdname' => 'abbr',
++              'source_info' => {
++                'file_name' => '',
++                'line_nr' => 4,
++                'macro' => ''
++              }
++            },
++            {
++              'text' => '
++'
++            }
++          ],
++          'type' => 'paragraph'
++        }
++      ],
++      'type' => 'before_node_section'
++    }
++  ],
++  'type' => 'document_root'
++};
++
++$result_texis{'empty_arguments'} = '
++@strong{}
++@uref{,}
++@abbr{a,}
++';
++
++
++$result_texts{'empty_arguments'} = '
++
++
++a
++';
++
++$result_errors{'empty_arguments'} = [];
++
++
++$result_floats{'empty_arguments'} = {};
++
++
++
++$result_converted{'info'}->{'empty_arguments'} = 'This is , produced from .
++
++** a
++
++
++Tag Table:
++
++End Tag Table
++
++
++Local Variables:
++coding: utf-8
++End:
++';
++
++$result_converted_errors{'info'}->{'empty_arguments'} = [
++  {
++    'error_line' => 'warning: document without nodes
++',
++    'text' => 'document without nodes',
++    'type' => 'warning'
++  }
++];
++
++
++1;
+--- /dev/null
++++ texinfo/tp/t/results/info_tests/empty_caption.pl
+@@ -0,0 +1,306 @@
++use vars qw(%result_texis %result_texts %result_trees %result_errors 
++   %result_indices %result_sectioning %result_nodes %result_menus
++   %result_floats %result_converted %result_converted_errors 
++   %result_elements %result_directions_text %result_indices_sort_strings);
++
++use utf8;
++
++$result_trees{'empty_caption'} = {
++  'contents' => [
++    {
++      'contents' => [
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        }
++      ],
++      'type' => 'before_node_section'
++    },
++    {
++      'args' => [
++        {
++          'contents' => [
++            {
++              'text' => 'Top'
++            }
++          ],
++          'extra' => {
++            'spaces_after_argument' => '
++'
++          },
++          'type' => 'line_arg'
++        }
++      ],
++      'cmdname' => 'node',
++      'contents' => [
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        },
++        {
++          'args' => [
++            {
++              'contents' => [
++                {
++                  'text' => 'a'
++                }
++              ],
++              'type' => 'block_line_arg'
++            },
++            {
++              'contents' => [
++                {
++                  'text' => 'b'
++                }
++              ],
++              'extra' => {
++                'spaces_after_argument' => '
++'
++              },
++              'type' => 'block_line_arg'
++            }
++          ],
++          'cmdname' => 'float',
++          'contents' => [
++            {
++              'contents' => [
++                {
++                  'text' => 'aa
++'
++                }
++              ],
++              'type' => 'paragraph'
++            },
++            {
++              'args' => [
++                {
++                  'type' => 'brace_command_context'
++                }
++              ],
++              'cmdname' => 'caption',
++              'extra' => {
++                'float' => {}
++              },
++              'source_info' => {
++                'file_name' => '',
++                'line_nr' => 6,
++                'macro' => ''
++              }
++            },
++            {
++              'text' => '
++',
++              'type' => 'spaces_after_close_brace'
++            },
++            {
++              'args' => [
++                {
++                  'contents' => [
++                    {
++                      'text' => 'float'
++                    }
++                  ],
++                  'extra' => {
++                    'spaces_after_argument' => '
++'
++                  },
++                  'type' => 'line_arg'
++                }
++              ],
++              'cmdname' => 'end',
++              'extra' => {
++                'spaces_before_argument' => ' ',
++                'text_arg' => 'float'
++              },
++              'source_info' => {
++                'file_name' => '',
++                'line_nr' => 7,
++                'macro' => ''
++              }
++            }
++          ],
++          'extra' => {
++            'caption' => {},
++            'node_content' => [
++              {}
++            ],
++            'normalized' => 'b',
++            'spaces_before_argument' => ' ',
++            'type' => {
++              'content' => [
++                {}
++              ],
++              'normalized' => 'a'
++            }
++          },
++          'source_info' => {
++            'file_name' => '',
++            'line_nr' => 4,
++            'macro' => ''
++          }
++        },
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        },
++        {
++          'args' => [
++            {
++              'contents' => [
++                {
++                  'text' => 'a'
++                }
++              ],
++              'extra' => {
++                'spaces_after_argument' => '
++'
++              },
++              'type' => 'line_arg'
++            }
++          ],
++          'cmdname' => 'listoffloats',
++          'extra' => {
++            'spaces_before_argument' => ' ',
++            'type' => {
++              'content' => [
++                {}
++              ],
++              'normalized' => 'a'
++            }
++          },
++          'source_info' => {
++            'file_name' => '',
++            'line_nr' => 9,
++            'macro' => ''
++          }
++        }
++      ],
++      'extra' => {
++        'node_content' => [
++          {}
++        ],
++        'nodes_manuals' => [
++          {
++            'node_content' => [
++              {}
++            ],
++            'normalized' => 'Top'
++          }
++        ],
++        'normalized' => 'Top',
++        'spaces_before_argument' => ' '
++      },
++      'source_info' => {
++        'file_name' => '',
++        'line_nr' => 2,
++        'macro' => ''
++      }
++    }
++  ],
++  'type' => 'document_root'
++};
++$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1];
++$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
++$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
++$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
++$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
++$result_trees{'empty_caption'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
++$result_trees{'empty_caption'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
++
++$result_texis{'empty_caption'} = '
++@node Top
++
++@float a,b
++aa
++@caption{}
++@end float
++
++@listoffloats a
++';
++
++
++$result_texts{'empty_caption'} = '
++
++a, b
++aa
++
++';
++
++$result_nodes{'empty_caption'} = {
++  'cmdname' => 'node',
++  'extra' => {
++    'normalized' => 'Top'
++  }
++};
++
++$result_menus{'empty_caption'} = {
++  'cmdname' => 'node',
++  'extra' => {
++    'normalized' => 'Top'
++  }
++};
++
++$result_errors{'empty_caption'} = [];
++
++
++$result_floats{'empty_caption'} = {
++  'a' => [
++    {
++      'cmdname' => 'float',
++      'extra' => {
++        'caption' => {
++          'cmdname' => 'caption',
++          'extra' => {
++            'float' => {}
++          }
++        },
++        'normalized' => 'b',
++        'type' => {
++          'content' => [
++            {
++              'text' => 'a'
++            }
++          ],
++          'normalized' => 'a'
++        }
++      },
++      'structure' => {
++        'float_number' => 1
++      }
++    }
++  ]
++};
++$result_floats{'empty_caption'}{'a'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'empty_caption'}{'a'}[0];
++
++
++
++$result_converted{'info'}->{'empty_caption'} = 'This is , produced from .
++
++
++File: ,  Node: Top,  Up: (dir)
++
++aa
++
++a 1: 
++* Menu:
++
++* a 1: b.                                
++
++
++
++Tag Table:
++Node: Top27
++Ref: b61
++
++End Tag Table
++
++
++Local Variables:
++coding: utf-8
++End:
++';
++
++1;
+--- /dev/null
++++ texinfo/tp/t/results/info_tests/float_without_type.pl
+@@ -0,0 +1,259 @@
++use vars qw(%result_texis %result_texts %result_trees %result_errors 
++   %result_indices %result_sectioning %result_nodes %result_menus
++   %result_floats %result_converted %result_converted_errors 
++   %result_elements %result_directions_text %result_indices_sort_strings);
++
++use utf8;
++
++$result_trees{'float_without_type'} = {
++  'contents' => [
++    {
++      'contents' => [
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        }
++      ],
++      'type' => 'before_node_section'
++    },
++    {
++      'args' => [
++        {
++          'contents' => [
++            {
++              'text' => 'Top'
++            }
++          ],
++          'extra' => {
++            'spaces_after_argument' => '
++'
++          },
++          'type' => 'line_arg'
++        }
++      ],
++      'cmdname' => 'node',
++      'contents' => [
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        },
++        {
++          'args' => [
++            {
++              'contents' => [
++                {
++                  'text' => 'a'
++                }
++              ],
++              'type' => 'block_line_arg'
++            },
++            {
++              'extra' => {
++                'spaces_after_argument' => '
++'
++              },
++              'type' => 'block_line_arg'
++            }
++          ],
++          'cmdname' => 'float',
++          'contents' => [
++            {
++              'contents' => [
++                {
++                  'text' => 'aa
++'
++                }
++              ],
++              'type' => 'paragraph'
++            },
++            {
++              'args' => [
++                {
++                  'contents' => [
++                    {
++                      'text' => 'float'
++                    }
++                  ],
++                  'extra' => {
++                    'spaces_after_argument' => '
++'
++                  },
++                  'type' => 'line_arg'
++                }
++              ],
++              'cmdname' => 'end',
++              'extra' => {
++                'spaces_before_argument' => ' ',
++                'text_arg' => 'float'
++              },
++              'source_info' => {
++                'file_name' => '',
++                'line_nr' => 6,
++                'macro' => ''
++              }
++            }
++          ],
++          'extra' => {
++            'spaces_before_argument' => ' ',
++            'type' => {
++              'content' => [
++                {}
++              ],
++              'normalized' => 'a'
++            }
++          },
++          'source_info' => {
++            'file_name' => '',
++            'line_nr' => 4,
++            'macro' => ''
++          }
++        },
++        {
++          'text' => '
++',
++          'type' => 'empty_line'
++        },
++        {
++          'args' => [
++            {
++              'contents' => [
++                {
++                  'text' => 'a'
++                }
++              ],
++              'extra' => {
++                'spaces_after_argument' => '
++'
++              },
++              'type' => 'line_arg'
++            }
++          ],
++          'cmdname' => 'listoffloats',
++          'extra' => {
++            'spaces_before_argument' => ' ',
++            'type' => {
++              'content' => [
++                {}
++              ],
++              'normalized' => 'a'
++            }
++          },
++          'source_info' => {
++            'file_name' => '',
++            'line_nr' => 8,
++            'macro' => ''
++          }
++        }
++      ],
++      'extra' => {
++        'node_content' => [
++          {}
++        ],
++        'nodes_manuals' => [
++          {
++            'node_content' => [
++              {}
++            ],
++            'normalized' => 'Top'
++          }
++        ],
++        'normalized' => 'Top',
++        'spaces_before_argument' => ' '
++      },
++      'source_info' => {
++        'file_name' => '',
++        'line_nr' => 2,
++        'macro' => ''
++      }
++    }
++  ],
++  'type' => 'document_root'
++};
++$result_trees{'float_without_type'}{'contents'}[1]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'float_without_type'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
++$result_trees{'float_without_type'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'float_without_type'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
++$result_trees{'float_without_type'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'float_without_type'}{'contents'}[1]{'args'}[0]{'contents'}[0];
++$result_trees{'float_without_type'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'float_without_type'}{'contents'}[1]{'args'}[0]{'contents'}[0];
++
++$result_texis{'float_without_type'} = '
++@node Top
++
++@float a,
++aa
++@end float
++
++@listoffloats a
++';
++
++
++$result_texts{'float_without_type'} = '
++
++a
++aa
++
++';
++
++$result_nodes{'float_without_type'} = {
++  'cmdname' => 'node',
++  'extra' => {
++    'normalized' => 'Top'
++  }
++};
++
++$result_menus{'float_without_type'} = {
++  'cmdname' => 'node',
++  'extra' => {
++    'normalized' => 'Top'
++  }
++};
++
++$result_errors{'float_without_type'} = [];
++
++
++$result_floats{'float_without_type'} = {
++  'a' => [
++    {
++      'cmdname' => 'float',
++      'extra' => {
++        'type' => {
++          'content' => [
++            {
++              'text' => 'a'
++            }
++          ],
++          'normalized' => 'a'
++        }
++      }
++    }
++  ]
++};
++
++
++
++$result_converted{'info'}->{'float_without_type'} = 'This is , produced from .
++
++
++File: ,  Node: Top,  Up: (dir)
++
++aa
++
++a
++
++* Menu:
++
++
++
++
++Tag Table:
++Node: Top27
++
++End Tag Table
++
++
++Local Variables:
++coding: utf-8
++End:
++';
++
++1;

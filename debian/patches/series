@@ -1,4 +1,4 @@
-disable-failing-tests
+#disable-failing-tests
 warn_missing_tex
 numerical-signal-names
 #upstream-c0666e580a-fix-makeinfo-dash-input

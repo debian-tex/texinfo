@@ -1,7 +1,8 @@
 texinfo (7.0-1) UNRELEASED; urgency=medium
 
   * New upstream release: disable / refresh patches.
-    - converts "@minus{}" into real minus (Closes: #1021629).
+    - makeinfo: converts "@minus{}" into real minus sign
+      (Closes: #1021629).
     - UTF-8 is now the default input encoding (Closes: #1022789).
     - speed up "info -w" for man pages (Closes: #1021839).
     - info -o: correct exit status on error (Closes: #1021827).

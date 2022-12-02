@@ -1039,6 +1039,7 @@ Invalid use of @@':@*
 @code{@@image@{f--ile,l--i@}} @image{f--ile,l--i}
 @code{@@image@{f--ile,,l--e@}} @image{f--ile,,l--e}
 @code{@@image@{f--ile,aze,az,alt,.e--xt@}} @image{f--ile,aze,az,alt,.e--xt}
+@code{@@image@{f--ile,aze,az,alt,} @image{f--ile,aze,az,alt,}
 @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{.file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}}
 
 @c It is not reliable to use @verb inside other Texinfo constructs

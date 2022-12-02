@@ -78,7 +78,7 @@ use Texinfo::Convert::TexinfoSXML;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 my $ixin_version = 1;
@@ -783,13 +783,17 @@ sub output_ixin($$)
     foreach my $command (@{$self->{'global_commands'}->{'listoffloats'}}) {
       my $associated_node_id = $self->_associated_node_id($command,
                                                      \%node_label_number);
-      my $type = $command->{'extra'}->{'type'}->{'normalized'};
-      if ($command->{'extra'}->{'type'}->{'content'}) {
-        $floats_information{$type}->{'type'}
-          = $self->convert_tree({'contents'
+      if ($command->{'extra'}
+          and $command->{'extra'}->{'type'}
+          and defined($command->{'extra'}->{'type'}->{'normalized'})) {
+        my $type = $command->{'extra'}->{'type'}->{'normalized'};
+        if ($command->{'extra'}->{'type'}->{'content'}) {
+          $floats_information{$type}->{'type'}
+            = $self->convert_tree({'contents'
                              => $command->{'extra'}->{'type'}->{'content'}});
+        }
+        push @{$floats_information{$type}->{'node_id'}}, $associated_node_id;
       }
-      push @{$floats_information{$type}->{'node_id'}}, $associated_node_id;
     }
   }
 

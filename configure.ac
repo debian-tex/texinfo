@@ -10,14 +10,14 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [7.0], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [7.0.1], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
 dnl parallel-tests as recommended by stefano.
 AM_INIT_AUTOMAKE([1.14 dist-xz
-                 info-in-builddir parallel-tests readme-alpha tar-ustar])
+                 info-in-builddir parallel-tests tar-ustar])
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.

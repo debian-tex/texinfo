@@ -552,6 +552,10 @@ In top.
 
 @uref{http://example.com/acc_@"a@ogonek{a}}
 '],
+['empty_titlefont',
+'
+@titlefont{}
+'],
 );
 
 my $test_accents_sc_no_brace_commands_quotes = '@u{--a}

@@ -71,7 +71,7 @@ valid_tree_transformation
 __ __p
 );
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 # i18n
@@ -738,7 +738,7 @@ foreach my $command (
 
 
 our %preamble_commands;
-foreach my $preamble_command ('direnty', 'hyphenation', 'errormsg',
+foreach my $preamble_command ('direntry', 'hyphenation', 'errormsg',
        'inlineraw', '*', keys(%document_settable_at_commands),
        (grep {$Texinfo::Commands::block_commands{$_} eq 'format_raw'
               or $Texinfo::Commands::block_commands{$_} eq 'region'}

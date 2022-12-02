@@ -21,7 +21,7 @@ test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
 # obliged to.
 if test "x$1" = x--version; then
   cat <<EOF
-texi2pdf (GNU Texinfo 7.0)
+texi2pdf (GNU Texinfo 7.0.1)
 
 Copyright (C) 2022 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>

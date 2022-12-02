@@ -78,7 +78,7 @@ require Exporter;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 our $module_loaded = 0;
 sub import {
@@ -1108,7 +1108,9 @@ sub command_text($$;$)
         if (defined($target->{'tree_nonumber'}));
     }
     $self->{'ignore_notice'}++;
+    push @{$self->{'referred_command_stack'}}, $command;
     $target->{$type} = $self->_convert($tree, $explanation);
+    pop @{$self->{'referred_command_stack'}};
     $self->{'ignore_notice'}--;
 
     $self->_pop_document_context();
@@ -2729,9 +2731,12 @@ sub _convert_explained_command($$$$)
   my $with_explanation;
   my $explanation_result;
   my $explanation_string;
-  my $normalized_type
-    = Texinfo::Convert::NodeNameNormalization::normalize_node(
-    {'contents' => $command->{'args'}->[0]->{'contents'}});
+  my $normalized_type = '';
+  if ($command->{'args'}->[0]
+      and $command->{'args'}->[0]->{'contents'}) {
+    $normalized_type = Texinfo::Convert::NodeNameNormalization::normalize_node(
+          {'contents' => $command->{'args'}->[0]->{'contents'}});
+  }
 
   my $explained_commands
     = $self->shared_conversion_state('explained_commands', {});
@@ -4480,7 +4485,8 @@ sub _convert_float_command($$$$$)
       $prepended_text = '';
     }
     my $caption_text = '';
-    if ($caption) {
+    if ($caption and $caption->{'args'}->[0]
+        and $caption->{'args'}->[0]->{'contents'}) {
       $caption_text = $self->convert_tree_new_formatting_context(
         {'contents' => $caption->{'args'}->[0]->{'contents'}},
         'float caption');
@@ -4565,10 +4571,13 @@ sub _convert_quotation_command($$$$$)
     # FIXME there is no easy way to mark with a class the @author
     # @-command.  Add a span or a div (@center is in a div)?
     foreach my $author (@{$command->{'extra'}->{'authors'}}) {
-      my $centered_author = $self->gdt("\@center --- \@emph{{author}}\n",
-         {'author' => $author->{'args'}->[0]->{'contents'}});
-      $centered_author->{'parent'} = $command;
-      $attribution .= $self->convert_tree($centered_author, 'convert quotation author');
+      if ($author->{'args'}->[0]
+          and $author->{'args'}->[0]->{'contents'}) {
+        my $centered_author = $self->gdt("\@center --- \@emph{{author}}\n",
+           {'author' => $author->{'args'}->[0]->{'contents'}});
+        $centered_author->{'parent'} = $command;
+        $attribution .= $self->convert_tree($centered_author, 'convert quotation author');
+      }
     }
   }
 
@@ -4896,7 +4905,15 @@ sub _convert_xref_commands($$$$)
 
     if (!defined($name)) {
       if ($self->get_conf('xrefautomaticsectiontitle') eq 'on'
-         and $node->{'extra'}->{'associated_section'}) {
+         and $node->{'extra'}->{'associated_section'}
+         # this condition avoids infinite recursions, indeed in that case
+         # the node will be used and not the section.  There should not be
+         # @*ref in nodes, and even if there are, it does not seems to be
+         # possible to construct an infinite recursion with nodes only
+         # as the node must both be a reference target and refer to a specific
+         # target at the same time, which is not possible.
+         and not grep {$_ eq $node->{'extra'}->{'associated_section'}}
+                     @{$self->{'referred_command_stack'}}) {
         $command = $node->{'extra'}->{'associated_section'};
         $name = $self->command_text($command, 'text_nonumber');
       } elsif ($node->{'cmdname'} eq 'float') {
@@ -5806,6 +5823,7 @@ sub _convert_row_type($$$$) {
   if ($content =~ /\S/) {
     my $result = '<tr>' . $content . '</tr>';
     if ($element->{'contents'}
+        and scalar(@{$element->{'contents'}})
         and $element->{'contents'}->[0]->{'cmdname'} ne 'headitem') {
       # if headitem, end of line added in _convert_multitable_head_type
       $result .= "\n";
@@ -5906,6 +5924,9 @@ sub _convert_menu_entry_type($$$)
                and $args[0]->{'type'} eq 'menu_entry_description');
       my $arg = shift @args;
       if ($arg->{'type'} and $arg->{'type'} eq 'menu_entry_node') {
+        # $arg->{'contents'} seems to always be defined.  If it is
+        # not the case, it should not be an issue as an undefined
+        # 'contents' is ignored.
         my $name = $self->convert_tree(
            {'type' => '_code', 'contents' => $arg->{'contents'}},
                          "menu_arg menu_entry_node preformatted [$i]");
@@ -6990,6 +7011,7 @@ sub _load_htmlxref_files {
 #  htmlxref_files
 #  htmlxref
 #  check_htmlxref_already_warned
+#  referred_command_stack
 #
 #    from Converter
 #  labels
@@ -9518,6 +9540,10 @@ sub _initialize_output_state($)
   $self->{'targets'} = {};
   $self->{'seen_ids'} = {};
 
+  # to avoid infinite recursions when a section refers to itself, possibly
+  # indirectly
+  $self->{'referred_command_stack'} = [];
+
   # for directions to special elements, only filled if special
   # elements are actually used.
   $self->{'special_elements_directions'} = {};
@@ -9916,6 +9942,8 @@ sub output($$)
   if (!$fulltitle and $self->{'global_commands'}->{'titlefont'}
       and $self->{'global_commands'}->{'titlefont'}->[0]->{'args'}
       and defined($self->{'global_commands'}->{'titlefont'}->[0]->{'args'}->[0])
+      and $self->{'global_commands'}->{'titlefont'}->[0]
+                                        ->{'args'}->[0]->{'contents'}
       and @{$self->{'global_commands'}->{'titlefont'}->[0]->{'args'}->[0]->{'contents'}}) {
     $fulltitle = $self->{'global_commands'}->{'titlefont'}->[0];
   }
@@ -9923,8 +9951,10 @@ sub output($$)
   foreach my $simpletitle_command ('settitle', 'shorttitlepage') {
     if ($self->{'global_commands'}->{$simpletitle_command}) {
       my $command = $self->{'global_commands'}->{$simpletitle_command};
-      next if ($command->{'extra'}
-               and $command->{'extra'}->{'missing_argument'});
+      next if (!$command->{'args'}
+               or !$command->{'args'}->[0]->{'contents'}
+               or ($command->{'extra'}
+                   and $command->{'extra'}->{'missing_argument'}));
       $self->{'simpletitle_tree'} =
          {'contents' => $command->{'args'}->[0]->{'contents'}};
       $self->{'simpletitle_command_name'} = $simpletitle_command;

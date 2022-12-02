@@ -9,6 +9,22 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+7.0.1 (30 November 2022)
+This is a bug-fix release with minimal changes.
+
+* texi2any
+  . avoid crashes on empty @image argument and other potential crashes
+    (with "Can't use an undefined value as an ARRAY reference" message)
+  . avoid hang on @ref command inside section command
+
+* info
+  . fix recoding of UTF-8 files to ASCII when run in C locale
+
+* js
+  . index search fixed for new HTML output
+  . some obsolete files removed from distribution
+
+
 7.0 (7 November 2022)
 * texi2any
  . LaTeX added as an output format, selected with --latex

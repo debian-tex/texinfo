@@ -1,4 +1,4 @@
-@set UPDATED 25 October 2022
-@set UPDATED-MONTH October 2022
-@set EDITION 7.0
-@set VERSION 7.0
+@set UPDATED 30 November 2022
+@set UPDATED-MONTH November 2022
+@set EDITION 7.0.1
+@set VERSION 7.0.1

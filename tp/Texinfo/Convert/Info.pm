@@ -36,7 +36,7 @@ use Texinfo::Convert::Paragraph;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Plaintext);
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 my $STDIN_DOCU_NAME = 'stdin';
@@ -543,6 +543,7 @@ sub format_image($$)
       {'code' => 1,
        Texinfo::Convert::Text::copy_options_for_convert_text($self)});
     if (defined($element->{'args'}->[4])
+        and $element->{'args'}->[4]->{'contents'}
         and @{$element->{'args'}->[4]->{'contents'}}) {
       my $extension = Texinfo::Convert::Text::convert_to_text(
         {'contents' => $element->{'args'}->[4]->{'contents'}},

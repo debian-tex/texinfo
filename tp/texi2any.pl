@@ -1200,8 +1200,9 @@ if (defined ($formats_table{$format}->{'init_file'})) {
 
 if ($call_texi2dvi) {
   if (defined(get_conf('OUTFILE')) and @ARGV > 1) {
-    die sprintf(__('%s: when generating %s, only one input FILE may be specified with -o'."\n"),
-                $real_command_name, format_name($format));
+    die _encode_message(
+      sprintf(__('%s: when generating %s, only one input FILE may be specified with -o'."\n"),
+                $real_command_name, format_name($format)));
   }
 } elsif($Xopt_arg_nr) {
   document_warn(__('--Xopt option without printed output')); 
@@ -1253,7 +1254,7 @@ if (defined($formats_table{$converted_format}->{'module'})) {
   eval "require $module";
   my $error = $@;
   if ($error ne '') {
-    die sprintf(__("error loading %s: %s"), $module, $error);
+    die _encode_message(sprintf(__("error loading %s: %s"), $module, $error));
   };
   eval "$module->import;";
 
@@ -1324,13 +1325,13 @@ if (get_conf('SHOW_BUILTIN_CSS_RULES')) {
 }
 
 # Main processing, process all the files given on the command line
-
 # Note that the input file names are binary strings and are not decoded
 my @input_files = @ARGV;
 # use STDIN if not a tty, like makeinfo does
 @input_files = ('-') if (!scalar(@input_files) and !-t STDIN);
-die sprintf(__("%s: missing file argument.\n"), $real_command_name) 
-   .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name)
+die _encode_message(
+    sprintf(__("%s: missing file argument.\n"), $real_command_name) 
+   .sprintf(__("Try `%s --help' for more information.\n"), $real_command_name))
      unless (scalar(@input_files) >= 1);
 
 my $file_number = -1;

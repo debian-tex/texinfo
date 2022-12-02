@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2022-10-11.20; # UTC
+htmlxrefversion=2022-11-12.21; # UTC
 
 # Copyright 2010-2022 Free Software Foundation, Inc.
 # 
@@ -45,6 +45,7 @@ GS = ${G}/software
 alive		mono	${GS}/alive/manual/alive.html
 alive		node	${GS}/alive/manual/html_node/
 
+anubis		mono	${GS}/anubis/manual/anubis.html
 anubis		chapter	${GS}/anubis/manual/html_chapter/
 anubis		section	${GS}/anubis/manual/html_section/
 anubis		node	${GS}/anubis/manual/html_node/
@@ -73,10 +74,19 @@ bash		mono	${GS}/bash/manual/bash.html
 bash		node	${GS}/bash/manual/html_node/
 
 BINUTILS = https://sourceware.org/binutils/docs
+binutils	mono	${BINUTILS}/binutils.html
 binutils	node	${BINUTILS}/binutils/
+ #
+ as		mono	${BINUTILS}/as.html
  as		node	${BINUTILS}/as/
+ #
+ bfd		mono	${BINUTILS}/bfd.html
  bfd		node	${BINUTILS}/bfd/
+ #
+ gprof		mono	${BINUTILS}/gprof.html
  gprof		node	${BINUTILS}/gprof/
+ #
+ ld		mono	${BINUTILS}/ld.html
  ld		node	${BINUTILS}/ld/
 
 bison		mono	${GS}/bison/manual/bison.html
@@ -218,8 +228,8 @@ emacs		node	${EMACS}/html_node/emacs/
  info   	mono	${EMACS}/html_mono/info.html
  info   	node	${EMACS}/html_node/info/
  #
- mairix		mono	${EMACS}/html_mono/mairix.html
- mairix		node	${EMACS}/html_node/mairix-el/
+ mairix-el	mono	${EMACS}/html_mono/mairix-el.html
+ mairix-el	node	${EMACS}/html_node/mairix-el/
  #
  message	mono	${EMACS}/html_mono/message.html
  message	node	${EMACS}/html_node/message/
@@ -319,6 +329,8 @@ emms		node	${GS}/emms/manual/
 
 ada-mode	mono	https://elpa.gnu.org/packages/ada-mode.html
 
+gpr-mode	mono	https://elpa.gnu.org/packages/doc/gpr-mode.html
+
 findutils	mono	${GS}/findutils/manual/html_mono/find.html
 findutils	node	${GS}/findutils/manual/html_node/find_html
 
@@ -352,7 +364,9 @@ gcc		node	${GCC}/gcc/
  libiberty	node	${GCC}/libiberty/
 
 GDB = https://sourceware.org/gdb/current/onlinedocs
+gdb		mono	${GDB}/gdb.html
 gdb		node	${GDB}/gdb/
+ stabs		mono	${GDB}/stabs.html
  stabs		node	${GDB}/stabs/
 
 GDBM = http://www.gnu.org.ua/software/gdbm/manual
@@ -377,6 +391,11 @@ gnu-crypto	node	${GS}/gnu-crypto/manual/
 
 gnubg		mono	${GS}/gnubg/manual/gnubg.html
 gnubg		node	${GS}/gnubg/manual/html_node/
+
+GNUCOBOL = https://gnucobol.sourceforge.io/HTML
+gnucobpg	mono	${GNUCOBOL}/gnucobpg.html
+ gnucobqr	mono	${GNUCOBOL}/gnucobqr.html
+ gnucobsp	mono	${GNUCOBOL}/gnucobsp.html
 
 gnubik		mono	${GS}/gnubik/manual/gnubik.html
 gnubik		node	${GS}/gnubik/manual/html_node/
@@ -410,8 +429,13 @@ GNUSTANDARDS = ${G}/prep
  standards	mono	${GNUSTANDARDS}/standards/standards.html
  standards	node	${GNUSTANDARDS}/standards/html_node/
 
-gnutls		mono	${GS}/gnutls/manual/gnutls.html
-gnutls		node	${GS}/gnutls/manual/html_node/
+# following url is a redirect, which cannot be used for links within the manual
+#gnutls		mono	${GS}/gnutls/manual/gnutls.html
+# empty directory
+#gnutls		node	${GS}/gnutls/manual/html_node/
+GNUTLS = http://www.gnutls.org/manual
+gnutls		mono	${GNUTLS}/gnutls.html
+gnutls		node	${GNUTLS}/html_node/
 
 gperf		mono	${GS}/gperf/manual/gperf.html
 gperf		node	${GS}/gperf/manual/html_node/
@@ -490,8 +514,10 @@ idutils		node	${GS}/idutils/manual/html_node/
 inetutils	mono	${GS}/inetutils/manual/inetutils.html
 inetutils	node	${GS}/inetutils/manual/html_node/
 
-jwhois		mono	${GS}/jwhois/manual/jwhois.html
-jwhois		node	${GS}/jwhois/manual/html_node/
+# No manual, redirects to git sources
+#jwhois		mono	${GS}/jwhois/manual/jwhois.html
+# 404 Not Found
+#jwhois		node	${GS}/jwhois/manual/html_node/
 
 libc		mono	${GS}/libc/manual/html_mono/libc.html
 libc		node	${GS}/libc/manual/html_node/
@@ -505,6 +531,9 @@ libextractor	node	${GS}/libextractor/manual/html_node/
 
 libidn		mono	${GS}/libidn/manual/libidn.html
 libidn		node	${GS}/libidn/manual/html_node/
+
+libidn2		mono	${GS}/libidn/libidn2/manual/libidn2.html
+libidn2		node	${GS}/libidn/libidn2/manual/html_node/
 
 librejs		mono	${GS}/librejs/manual/librejs.html
 librejs		node	${GS}/librejs/manual/html_node/
@@ -548,6 +577,25 @@ LSH = http://www.lysator.liu.se/~nisse/lsh
 m4		mono	${GS}/m4/manual/m4.html
 m4		node	${GS}/m4/manual/html_node/
 
+MITGNUSCHEME = ${GS}/mit-scheme/documentation/stable
+mit-scheme-user	mono	${MITGNUSCHEME}/mit-scheme-user.html
+mit-scheme-user	node	${MITGNUSCHEME}/mit-scheme-user/
+ #
+ mit-scheme-ref	mono	${MITGNUSCHEME}/mit-scheme-ref.html
+ mit-scheme-ref	node	${MITGNUSCHEME}/mit-scheme-ref/
+ #
+ mit-scheme-ffi	mono	${MITGNUSCHEME}/mit-scheme-ffi.html
+ mit-scheme-ffi	node	${MITGNUSCHEME}/mit-scheme-ffi/
+ #
+ mit-scheme-sos	mono	${MITGNUSCHEME}/mit-scheme-sos.html
+ mit-scheme-sos	node	${MITGNUSCHEME}/mit-scheme-sos/
+ #
+ mit-scheme-imail	mono	${MITGNUSCHEME}/mit-scheme-imail.html
+ #
+ mit-scheme-blowfish	mono	${MITGNUSCHEME}/mit-scheme-blowfish.html
+ #
+ mit-scheme-gdbm	mono	${MITGNUSCHEME}/mit-scheme-gdbm.html
+
 mailutils	mono	${GS}/mailutils/manual/mailutils.html
 mailutils	chapter	${GS}/mailutils/manual/html_chapter/
 mailutils	section	${GS}/mailutils/manual/html_section/
@@ -573,7 +621,8 @@ moe		mono	${GS}/moe/manual/moe_manual.html
 
 motti		node	${GS}/motti/manual/
 
-mpc		node	http://www.multiprecision.org/index.php?prog=mpc&page=html
+# only PDF is available as documentation to download
+#mpc		node	http://www.multiprecision.org/index.php?prog=mpc&page=html
 
 mpfr		mono	https://www.mpfr.org/mpfr-current/mpfr.html
 
@@ -581,7 +630,7 @@ mtools		mono	${GS}/mtools/manual/mtools.html
 
 nano		mono	https://www.nano-editor.org/dist/latest/nano.html
 
-nettle		chapter	http://www.lysator.liu.se/~nisse/nettle/nettle.html
+nettle		mono	https://www.lysator.liu.se/~nisse/nettle/nettle.html
 
 ocrad		mono	${GS}/ocrad/manual/ocrad_manual.html
 
@@ -655,11 +704,15 @@ sharutils	node	${GS}/sharutils/manual/html_node/
 shepherd	mono	${GS}/shepherd/manual/shepherd.html
 shepherd	node	${GS}/shepherd/manual/html_node/
 
-# can't use mono files since they have generic names
 SMALLTALK = ${GS}/smalltalk
-smalltalk	node	${SMALLTALK}/manual/html_node/
- smalltalk-base	node	${SMALLTALK}/manual-base/html_node/
- smalltalk-libs	node	${SMALLTALK}/manual-libs/html_node/
+gst		mono	${SMALLTALK}/manual/gst.html
+gst		node	${SMALLTALK}/manual/html_node/
+ #
+ gst-base	mono	${SMALLTALK}/manual-base/gst-base.html
+ gst-base	node	${SMALLTALK}/manual-base/html_node/
+ #
+ gst-libs	mono	${SMALLTALK}/manual-libs/gst-libs.html
+ gst-libs	node	${SMALLTALK}/manual-libs/html_node/
 
 sourceinstall	mono	${GS}/sourceinstall/manual/sourceinstall.html
 sourceinstall	node	${GS}/sourceinstall/manual/html_node/
@@ -676,8 +729,8 @@ tar		chapter	${GS}/tar/manual/html_chapter/
 tar		section	${GS}/tar/manual/html_section/
 tar		node	${GS}/tar/manual/html_node/
 
-teseq		mono	${GS}/teseq/teseq.html
-teseq		node	${GS}/teseq/html_node/
+teseq		mono	${GS}/teseq/manual/teseq.html
+teseq		node	${GS}/teseq/manual/html_node/
 
 TEXINFO = ${GS}/texinfo/manual
 texinfo		mono	${TEXINFO}/texinfo/texinfo.html
@@ -685,6 +738,12 @@ texinfo		node	${TEXINFO}/texinfo/html_node/
  #
  info-stnd	mono	${TEXINFO}/info-stnd/info-stnd.html
  info-stnd	node	${TEXINFO}/info-stnd/html_node/
+ #
+ texi2any_api	mono	${TEXINFO}/texi2any_api/texi2any_api.html
+ texi2any_api	node	${TEXINFO}/texi2any_api/html_node/
+ #
+ texi2any_internals	mono	${TEXINFO}/texi2any_internals/texi2any_internals.html
+ texi2any_internals	chapter	${TEXINFO}/texi2any_internals/html_chapter/
 
 thales		node	${GS}/thales/manual/
 

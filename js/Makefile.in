@@ -1340,8 +1340,8 @@ top_srcdir = @top_srcdir@
 phony = $(am__append_1) $(am__append_2) $(am__append_3) \
 	$(am__append_4)
 EXTRA_DIST = HACKING README TODO build-aux/eslint.json \
-	build-aux/modernizr.json modernizr.js package.json server.js \
-	tsconfig.json yarn.lock
+	build-aux/modernizr.json modernizr.js package.json \
+	tsconfig.json
 jsdir = $(pkgdatadir)/js
 
 # Javascript files that will be included in the html pages.  The order

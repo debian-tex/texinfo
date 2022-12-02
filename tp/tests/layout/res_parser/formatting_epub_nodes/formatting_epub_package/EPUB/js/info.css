@@ -141,6 +141,10 @@ div.toc ul ul {
     margin-left: 1em;
 }
 
+div.toc-sidebar a {
+    text-decoration: none;
+}
+
 div.toc a[toc-current] {
     font-weight: bold
 }
@@ -224,6 +228,10 @@ table#keyboard-shortcuts th {
 .error .text-input {
     top: 0;
     right: 0;
+}
+
+.text-input input {
+    width: 25em;
 }
 
 .error {

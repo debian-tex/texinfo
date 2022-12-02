@@ -139,103 +139,223 @@ $result_trees{'texi_formatting'} = {
                 'line_nr' => 4,
                 'macro' => ''
               }
-            }
-          ],
-          'type' => 'preamble_before_content'
-        },
-        {
-          'args' => [
-            {
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'type' => 'block_line_arg'
-            }
-          ],
-          'cmdname' => 'direntry',
-          'contents' => [
-            {
-              'args' => [
-                {
-                  'text' => '* ',
-                  'type' => 'menu_entry_leading_text'
-                },
-                {
-                  'contents' => [
-                    {
-                      'text' => 'Truc'
-                    }
-                  ],
-                  'type' => 'menu_entry_name'
-                },
-                {
-                  'text' => ': ',
-                  'type' => 'menu_entry_separator'
-                },
-                {
-                  'contents' => [
-                    {
-                      'text' => '('
-                    },
-                    {
-                      'text' => 'formatting'
-                    },
-                    {
-                      'text' => ')'
-                    }
-                  ],
-                  'type' => 'menu_entry_node'
-                },
-                {
-                  'text' => '.           ',
-                  'type' => 'menu_entry_separator'
-                },
-                {
-                  'contents' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'The GNU documentation truc.
-'
-                        }
-                      ],
-                      'type' => 'preformatted'
-                    }
-                  ],
-                  'type' => 'menu_entry_description'
-                }
-              ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
-              'source_info' => {
-                'file_name' => 'formatting.texi',
-                'line_nr' => 6,
-                'macro' => ''
-              },
-              'type' => 'menu_entry'
             },
             {
               'args' => [
                 {
-                  'text' => '* ',
-                  'type' => 'menu_entry_leading_text'
-                },
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
+                  'type' => 'block_line_arg'
+                }
+              ],
+              'cmdname' => 'direntry',
+              'contents' => [
                 {
-                  'contents' => [
+                  'args' => [
                     {
-                      'args' => [
+                      'text' => '* ',
+                      'type' => 'menu_entry_leading_text'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'Truc'
+                        }
+                      ],
+                      'type' => 'menu_entry_name'
+                    },
+                    {
+                      'text' => ': ',
+                      'type' => 'menu_entry_separator'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => '('
+                        },
+                        {
+                          'text' => 'formatting'
+                        },
+                        {
+                          'text' => ')'
+                        }
+                      ],
+                      'type' => 'menu_entry_node'
+                    },
+                    {
+                      'text' => '.           ',
+                      'type' => 'menu_entry_separator'
+                    },
+                    {
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'cmdname' => '@'
+                              'text' => 'The GNU documentation truc.
+'
+                            }
+                          ],
+                          'type' => 'preformatted'
+                        }
+                      ],
+                      'type' => 'menu_entry_description'
+                    }
+                  ],
+                  'extra' => {
+                    'menu_entry_description' => {},
+                    'menu_entry_name' => {},
+                    'menu_entry_node' => {
+                      'manual_content' => [
+                        {}
+                      ]
+                    }
+                  },
+                  'source_info' => {
+                    'file_name' => 'formatting.texi',
+                    'line_nr' => 6,
+                    'macro' => ''
+                  },
+                  'type' => 'menu_entry'
+                },
+                {
+                  'args' => [
+                    {
+                      'text' => '* ',
+                      'type' => 'menu_entry_leading_text'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'cmdname' => '@'
+                                },
+                                {
+                                  'text' => ' '
+                                },
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'e'
+                                        }
+                                      ],
+                                      'type' => 'following_arg'
+                                    }
+                                  ],
+                                  'cmdname' => '\'',
+                                  'source_info' => {
+                                    'file_name' => 'formatting.texi',
+                                    'line_nr' => 7,
+                                    'macro' => ''
+                                  }
+                                },
+                                {
+                                  'text' => ' '
+                                },
+                                {
+                                  'args' => [
+                                    {
+                                      'type' => 'brace_command_arg'
+                                    }
+                                  ],
+                                  'cmdname' => 'equiv',
+                                  'source_info' => {
+                                    'file_name' => 'formatting.texi',
+                                    'line_nr' => 7,
+                                    'macro' => ''
+                                  }
+                                }
+                              ],
+                              'type' => 'brace_command_arg'
+                            }
+                          ],
+                          'cmdname' => 'code',
+                          'source_info' => {
+                            'file_name' => 'formatting.texi',
+                            'line_nr' => 7,
+                            'macro' => ''
+                          }
+                        }
+                      ],
+                      'type' => 'menu_entry_name'
+                    },
+                    {
+                      'text' => ': ',
+                      'type' => 'menu_entry_separator'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => '('
+                        },
+                        {
+                          'text' => 'formatting'
+                        },
+                        {
+                          'text' => ')'
+                        }
+                      ],
+                      'type' => 'menu_entry_node'
+                    },
+                    {
+                      'text' => '.  ',
+                      'type' => 'menu_entry_separator'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => '``'
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => '--- something'
+                                    }
+                                  ],
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => 'asis',
+                              'source_info' => {
+                                'file_name' => 'formatting.texi',
+                                'line_nr' => 7,
+                                'macro' => ''
+                              }
+                            },
+                            {
+                              'text' => '\'\' 
+'
+                            },
+                            {
+                              'text' => '                           '
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'cmd'
+                                    }
+                                  ],
+                                  'type' => 'brace_command_arg'
+                                }
+                              ],
+                              'cmdname' => 'command',
+                              'source_info' => {
+                                'file_name' => 'formatting.texi',
+                                'line_nr' => 8,
+                                'macro' => ''
+                              }
                             },
                             {
                               'text' => ' '
@@ -245,201 +365,81 @@ $result_trees{'texi_formatting'} = {
                                 {
                                   'contents' => [
                                     {
-                                      'text' => 'e'
+                                      'text' => 'a'
                                     }
                                   ],
                                   'type' => 'following_arg'
                                 }
                               ],
-                              'cmdname' => '\'',
+                              'cmdname' => '`',
                               'source_info' => {
                                 'file_name' => 'formatting.texi',
-                                'line_nr' => 7,
+                                'line_nr' => 8,
                                 'macro' => ''
                               }
                             },
                             {
-                              'text' => ' '
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'type' => 'brace_command_arg'
-                                }
-                              ],
-                              'cmdname' => 'equiv',
-                              'source_info' => {
-                                'file_name' => 'formatting.texi',
-                                'line_nr' => 7,
-                                'macro' => ''
-                              }
+                              'text' => '
+'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'preformatted'
                         }
                       ],
-                      'cmdname' => 'code',
-                      'source_info' => {
-                        'file_name' => 'formatting.texi',
-                        'line_nr' => 7,
-                        'macro' => ''
-                      }
-                    }
-                  ],
-                  'type' => 'menu_entry_name'
-                },
-                {
-                  'text' => ': ',
-                  'type' => 'menu_entry_separator'
-                },
-                {
-                  'contents' => [
-                    {
-                      'text' => '('
-                    },
-                    {
-                      'text' => 'formatting'
-                    },
-                    {
-                      'text' => ')'
-                    }
-                  ],
-                  'type' => 'menu_entry_node'
-                },
-                {
-                  'text' => '.  ',
-                  'type' => 'menu_entry_separator'
-                },
-                {
-                  'contents' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => '``'
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'text' => '--- something'
-                                }
-                              ],
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => 'asis',
-                          'source_info' => {
-                            'file_name' => 'formatting.texi',
-                            'line_nr' => 7,
-                            'macro' => ''
-                          }
-                        },
-                        {
-                          'text' => '\'\' 
-'
-                        },
-                        {
-                          'text' => '                           '
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'text' => 'cmd'
-                                }
-                              ],
-                              'type' => 'brace_command_arg'
-                            }
-                          ],
-                          'cmdname' => 'command',
-                          'source_info' => {
-                            'file_name' => 'formatting.texi',
-                            'line_nr' => 8,
-                            'macro' => ''
-                          }
-                        },
-                        {
-                          'text' => ' '
-                        },
-                        {
-                          'args' => [
-                            {
-                              'contents' => [
-                                {
-                                  'text' => 'a'
-                                }
-                              ],
-                              'type' => 'following_arg'
-                            }
-                          ],
-                          'cmdname' => '`',
-                          'source_info' => {
-                            'file_name' => 'formatting.texi',
-                            'line_nr' => 8,
-                            'macro' => ''
-                          }
-                        },
-                        {
-                          'text' => '
-'
-                        }
-                      ],
-                      'type' => 'preformatted'
-                    }
-                  ],
-                  'type' => 'menu_entry_description'
-                }
-              ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
-              'source_info' => {
-                'file_name' => 'formatting.texi',
-                'line_nr' => 7,
-                'macro' => ''
-              },
-              'type' => 'menu_entry'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'direntry'
+                      'type' => 'menu_entry_description'
                     }
                   ],
                   'extra' => {
-                    'spaces_after_argument' => '
-'
+                    'menu_entry_description' => {},
+                    'menu_entry_name' => {},
+                    'menu_entry_node' => {
+                      'manual_content' => [
+                        {}
+                      ]
+                    }
                   },
-                  'type' => 'line_arg'
+                  'source_info' => {
+                    'file_name' => 'formatting.texi',
+                    'line_nr' => 7,
+                    'macro' => ''
+                  },
+                  'type' => 'menu_entry'
+                },
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'direntry'
+                        }
+                      ],
+                      'extra' => {
+                        'spaces_after_argument' => '
+'
+                      },
+                      'type' => 'line_arg'
+                    }
+                  ],
+                  'cmdname' => 'end',
+                  'extra' => {
+                    'spaces_before_argument' => ' ',
+                    'text_arg' => 'direntry'
+                  },
+                  'source_info' => {
+                    'file_name' => 'formatting.texi',
+                    'line_nr' => 9,
+                    'macro' => ''
+                  }
                 }
               ],
-              'cmdname' => 'end',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'direntry'
-              },
               'source_info' => {
                 'file_name' => 'formatting.texi',
-                'line_nr' => 9,
+                'line_nr' => 5,
                 'macro' => ''
               }
             }
           ],
-          'source_info' => {
-            'file_name' => 'formatting.texi',
-            'line_nr' => 5,
-            'macro' => ''
-          }
+          'type' => 'preamble_before_content'
         }
       ],
       'type' => 'before_node_section'
@@ -3064,12 +3064,12 @@ $result_trees{'texi_formatting'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[5];
-$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_name'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[1];
-$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[5];
-$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'menu_entry_name'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[1];
-$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[5];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_name'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[1];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[3]{'contents'}[1];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[5];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_name'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[1];
 $result_trees{'texi_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'texi_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_formatting'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'texi_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_formatting'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'texi_formatting'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];

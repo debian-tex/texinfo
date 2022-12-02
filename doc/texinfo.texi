@@ -1101,7 +1101,7 @@ implementation of a Texinfo parser; it creates a tree representation
 of the Texinfo input that you can use for the conversion.  The
 documentation in the source file
 @file{tp/Texinfo/Convert/Converter.pm} is a good place to start
-(@pxref{Texinfo::Convert::Converter,,,tp_api,Texinfo modules documentation}).
+(@pxref{Texinfo::Convert::Converter,,,texi2any_internals,Texinfo modules documentation}).
 @xref{Generic Translator @command{texi2any}}.
 
 Another viable approach is use the Texinfo XML output from
@@ -18056,7 +18056,7 @@ blocks using the first argument to specify the language of the code
 
 The draft documentation of @command{texi2any} HTML output
 adaptation using customization files is in a separate
-manual.  @xref{,,,customization_api,GNU Texinfo @command{texi2any} Output Customization}.
+manual.  @xref{,,,texi2any_api,GNU Texinfo @command{texi2any} Output Customization}.
 
 @menu
 * HTML Translation::       Details of the HTML output.

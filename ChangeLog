@@ -1,3 +1,218 @@
+2022-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	7.0.1 release
+
+2022-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac (AM_INIT_AUTOMAKE): Remove 'readme-alpha' option,
+	as we are using three-part version numbers that do not signify
+	alpha releases.
+
+2022-11-19  Patrice Dumas  <pertusus@free.fr>
+
+	Add Pod/Simple/Texinfo.pm HTML output to wwwdoc
+
+	* doc/Makefile.am (wwwdoc-build, wwwdoc-install): add
+	Pod/Simple/Texinfo.pm HTML output, link Pod/Simple/Texinfo.pm and call
+	pod2html such that a relative link to Pod/Simple/Texinfo.html is
+	actually output.
+
+2022-11-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/Makefile.am (wwwdoc-build): Pass --quiet flag to pod2html.
+
+2022-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/gendocs.chapter/gendocs_template: New file.
+	* doc/Makefile.am (wwwdoc-build): Use it for texi2any_internals
+	manual, as default template does not handle chapter-split
+	manuals.
+
+2022-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/refcard/txirefcard.tex: 7.0.1.
+
+2022-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* js/yarn.lock, js/server.js: Remove files.
+
+2022-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Add 7.0.1 news.
+
+2022-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	info.js improvements
+
+	* js/info.css: No underlining for sidebar links.
+	* js/info.js: Remove "Hide sidebar" text as it takes up too much
+	space.
+
+2022-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix info.js for release branch.
+
+	* js/info.js (cache_index_links),
+	(init_iframe) <on_load>:
+	Change how 'printindex-index-entry' and 'printindex-index-section'
+	links are found to match structure of HTML in index, which
+	has been changed on the master branch.
+
+2022-11-27  Per Bothner  <per@bothner.com>
+
+	* js/info.js (set_current)url): Don't set parameter default.
+	It's not needed, and it triggers an eslint complaint,
+	because parameter default values were new in EcmaScript 6 (2015).
+
+2022-11-29  Per Bothner  <per@bothner.com>
+
+	* js/info.css (cache_index_links): Fix index entry processing.
+	Also implement subentry handling.
+	(init_iframe - on_load): Change search and call of cache_index_links.
+
+2022-11-29  Per Bothner  <per@bothner.com>
+
+	* js/info.css (.tex-input): Make input element a bit wider.
+	This works better for longer index or menu names.
+
+2022-11-27  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/TexinfoMarkup.pm (_convert): correctly use
+	_leading_spaces_arg return in case there is no space after @end
+	command line and something else on the line.
+
+2022-11-22  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm (command_text, _convert_xref_commands)
+	(_initialize_output_state): add 'referred_command_stack' to put
+	commands that can be referred to being expanded, to catch if an @*ref
+	refers to that command during the expansion, leading to an infinite
+	recursion.  In that case, use the node instead of the section, as with
+	nodes only it is not possible to construct a an infinite recursion
+	as the node must both be a reference target and refer to a specific
+	target at the same time, which is not possible.  Report from David
+	Bacon.
+
+2022-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* js/info.js (on_load): Update version number.
+
+2022-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* js/info.js (add_header): Check for h1.top after h1.settitle
+	for text to put at top of sidebar.
+
+2022-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* js/info.js (init_iframe): Change selector for index entries
+	to match new HTML output.  From Per and Patrice.
+
+2022-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/util.c (text_buffer_iconv): Avoid infinite loop
+	by updating space left argument passed to iconv, and by
+	continually expanding the allocated space in the output buffer
+	if iconv continues to return E2BIG.
+	Hang on UTF-8 encoded file with LC_ALL=C reported by
+	Hilmar Preuße <hille42@web.de>.
+
+
+2022-11-11  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Common.pm (%preamble_commands): fix typo on direntry
+	command name.
+
+2022-11-12  Patrice Dumas  <pertusus@free.fr>
+
+	* util/htmlxref.cnf: add manuals, in particular mono manuals
+	and fix some issues with existing manuals. Report from Tzvetelin
+	Katchov.
+	Rename mairix manual as mairix-el, and smalltalk* manuals as
+	gst*.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/DocBook.pm (_convert): avoid formatting when
+	contents is not set.
+
+	* tp/Texinfo/Convert/Converter.pm (table_item_content_tree):
+	explicitely handle undef $contents argument.
+
+2022-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Call _encode_message on messages passed to
+	"die" to avoid "Wide character in die" warning.  Report from
+	Werner.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/IXIN.pm, tp/Texinfo/Convert/TexinfoMarkup.pm,
+	tp/Texinfo/Convert/Utils.pm: convert only if contents are defined,
+	initialize contents if needed.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/IXIN.pm, tp/Texinfo/Convert/TexinfoMarkup.pm,
+	tp/Texinfo/Convert/Utils.pm: convert only if contents are defined,
+	initialize contents if needed.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/LaTeX.pm (_prepare_conversion, _title_font)
+	(_convert): convert only if contents are defined.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm: avoid formatting when contents
+	is not set, avoiding a crash with empty @titlefont as title.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): do not format
+	author if there is no contents, this cannot happen for now but is more
+	robust.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Info.pm (_convert): avoid crashes in case
+	of empty arguments.
+
+2022-11-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Info.pm (format_image): avoid crash on empty
+	@image extension.  Report from Werner Lemberg.
+
+2022-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Generating HTML): Correct name of
+	texi2any_api manual.  (Already done on master branch.)
+
+2022-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf (texi2any_internals): Remove node line
+	to prefer split-by-chapter.
+
+2022-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf (texi2any_internals): Add split-by-chapter
+	line.  Report from Patrice.
+
+2022-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Adding Output Formats): Update name of
+	texi2any_internals manual.
+	* util/htmlxref.cnf: Add texi2any_api, texi2any_internals.
+
+2022-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/Makefile.am (wwwdoc-build): Split texi2any_internals
+	by chapter.  Report from Patrice.  Suppress Info node name
+	warnings for texi2any_api and texi2any_internals.
+
+2022-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Bump version for bug-fix release
+
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf: 7.0.1.
+
 2022-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	7.0

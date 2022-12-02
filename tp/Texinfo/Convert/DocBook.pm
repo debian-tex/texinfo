@@ -43,7 +43,7 @@ require Exporter;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 my %brace_commands = %Texinfo::Commands::brace_commands;
 
@@ -747,12 +747,15 @@ sub _convert($$;$)
                and $element->{'parent'}->{'type'}
                and $element->{'parent'}->{'type'} eq 'table_term') {
 
-        my $table_item_tree = $self->table_item_content_tree($element,
-                                         $element->{'args'}->[0]->{'contents'});
-
         $result .= "<term>";
         $result .= $self->_index_entry($element);
-        $result .= $self->_convert($table_item_tree);
+        if ($element->{'args'}->[0]
+            and $element->{'args'}->[0]->{'contents'}) {
+          my $table_item_tree = $self->table_item_content_tree($element,
+                                         $element->{'args'}->[0]->{'contents'});
+
+          $result .= $self->_convert($table_item_tree);
+        }
         chomp ($result);
         $result .= "\n";
         $result .= "</term>";
@@ -1030,6 +1033,7 @@ sub _convert($$;$)
           } else {
             if (scalar(@{$element->{'args'}}) == 5
                 and defined($element->{'args'}->[-1])
+                and $element->{'args'}->[-1]->{'contents'}
                 and @{$element->{'args'}->[-1]->{'contents'}}) {
               $book_contents = $element->{'args'}->[-1]->{'contents'};
             }
@@ -1329,7 +1333,9 @@ sub _convert($$;$)
       } elsif ($element->{'cmdname'} eq 'abbr' or $element->{'cmdname'} eq 'acronym') {
         my $argument;
         if (scalar(@{$element->{'args'}}) >= 1
-            and defined($element->{'args'}->[0]) and @{$element->{'args'}->[0]->{'contents'}}) {
+            and defined($element->{'args'}->[0])
+            and $element->{'args'}->[0]->{'contents'}
+            and @{$element->{'args'}->[0]->{'contents'}}) {
           my $arg = $self->_convert({'contents' 
                       => $element->{'args'}->[0]->{'contents'}});
           if ($arg ne '') {
@@ -1344,7 +1350,9 @@ sub _convert($$;$)
         }
         #
         if (scalar(@{$element->{'args'}}) == 2
-           and defined($element->{'args'}->[-1]) and @{$element->{'args'}->[-1]->{'contents'}}) {
+           and defined($element->{'args'}->[-1])
+           and $element->{'args'}->[-1]->{'contents'}
+           and @{$element->{'args'}->[-1]->{'contents'}}) {
           if (defined($argument)) {
             my $tree = $self->gdt('{abbr_or_acronym} ({explanation})',
                            {'abbr_or_acronym' => {'type' => '_converted',

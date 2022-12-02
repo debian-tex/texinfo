@@ -348,6 +348,7 @@ text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
   size_t out_bytes_left;
   char *outptr;
   size_t iconv_ret;
+  size_t extra_alloc = 1;
 
   outptr = text_buffer_base (buf) + text_buffer_off (buf);
   out_bytes_left = text_buffer_space_left (buf);
@@ -361,7 +362,10 @@ text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
 
       /* If we ran out of space, allocate more and try again. */
       if (errno == E2BIG)
-        text_buffer_alloc (buf, 4);
+        {
+          text_buffer_alloc (buf, (extra_alloc *= 4));
+          out_bytes_left = text_buffer_space_left (buf);
+        }
       else
         break; /* let calling code deal with it */
     }

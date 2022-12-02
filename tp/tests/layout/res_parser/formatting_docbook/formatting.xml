@@ -789,6 +789,8 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 <!-- It is not reliable to use @verb inside other Texinfo constructs -->
@@ -1704,6 +1706,8 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 <!-- It is not reliable to use @verb inside other Texinfo constructs -->
@@ -2606,6 +2610,8 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 <!-- It is not reliable to use @verb inside other Texinfo constructs -->
@@ -3499,6 +3505,8 @@ aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,l--e}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 

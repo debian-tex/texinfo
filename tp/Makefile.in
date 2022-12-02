@@ -2180,6 +2180,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/html_tests/documentdescription.pl \
   t/results/html_tests/empty_lines_at_beginning_no_setfilename.pl \
   t/results/html_tests/empty_lines_at_beginning_no_setfilename_no_element.pl \
+  t/results/html_tests/empty_titlefont.pl \
   t/results/html_tests/footnotestyle_separate_html_text_no_monolithic.pl \
   t/results/html_tests/footnotestyle_separate_late.pl \
   t/results/html_tests/footnotestyle_separate_late/res_html/chap-f.html \
@@ -2384,12 +2385,15 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/info_tests/colons_in_index_entries_and_node_no_quoting/res_info/colons_in_index_entries_and_node_no_quoting.info \
   t/results/info_tests/def_in_copying.pl \
   t/results/info_tests/direntry_dircategory_and_commands.pl \
+  t/results/info_tests/empty_arguments.pl \
+  t/results/info_tests/empty_caption.pl \
   t/results/info_tests/encoding_us_ascii.pl \
   t/results/info_tests/end_of_line_command_in_node_lines.pl \
   t/results/info_tests/end_of_line_command_in_node_lines/res_info/end_of_line_command_in_node_lines.info \
   t/results/info_tests/error_in_footnote.pl \
   t/results/info_tests/file_only_png.pl \
   t/results/info_tests/float_long_captions.pl \
+  t/results/info_tests/float_without_type.pl \
   t/results/info_tests/image_and_punctuation.pl \
   t/results/info_tests/image_and_spaces_formatting.pl \
   t/results/info_tests/image_extension.pl \
@@ -3265,6 +3269,8 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/sectioning/contents_with_only_top_node.pl \
   t/results/sectioning/double_node_anchor_float.pl \
   t/results/sectioning/double_part.pl \
+  t/results/sectioning/double_recursive_self_section_node_reference.pl \
+  t/results/sectioning/double_recursive_self_section_reference.pl \
   t/results/sectioning/double_top.pl \
   t/results/sectioning/double_top_in_menu.pl \
   t/results/sectioning/double_top_section.pl \
@@ -3351,6 +3357,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/sectioning/protected_node_parentheses.pl \
   t/results/sectioning/raiselowersections.pl \
   t/results/sectioning/rec_nodes.pl \
+  t/results/sectioning/recursive_self_section_reference.pl \
   t/results/sectioning/ref_to_top.pl \
   t/results/sectioning/ref_to_unknown_node.pl \
   t/results/sectioning/reference_to_only_special_spaces_node.pl \

@@ -584,6 +584,88 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '{'
                     },
                     {
+                      'text' => 'f--ile,aze,az,alt,'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'code',
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'f--ile'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'aze'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'az'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'alt'
+                    }
+                  ],
+                  'type' => 'brace_command_arg'
+                },
+                {
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'image',
+              'extra' => {
+                'input_perl_encoding' => 'utf-8'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 13,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => '
+'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => 'image'
+                    },
+                    {
+                      'cmdname' => '{'
+                    },
+                    {
                       'text' => 'f-ile,aze,,a--lt'
                     },
                     {
@@ -596,7 +678,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'code',
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 13,
+                'line_nr' => 14,
                 'macro' => ''
               }
             },
@@ -639,7 +721,7 @@ $result_trees{'image_formatting'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 13,
+                'line_nr' => 14,
                 'macro' => ''
               }
             },
@@ -718,7 +800,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'code',
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 14,
+                'line_nr' => 15,
                 'macro' => ''
               }
             },
@@ -743,7 +825,7 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => 'file',
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 14,
+                        'line_nr' => 15,
                         'macro' => ''
                       }
                     },
@@ -796,7 +878,7 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => 'file',
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 14,
+                        'line_nr' => 15,
                         'macro' => ''
                       }
                     },
@@ -816,7 +898,7 @@ $result_trees{'image_formatting'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 14,
+                'line_nr' => 15,
                 'macro' => ''
               }
             },
@@ -841,7 +923,7 @@ $result_trees{'image_formatting'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 15,
+                'line_nr' => 16,
                 'macro' => ''
               }
             },
@@ -865,7 +947,7 @@ $result_trees{'image_formatting'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 15,
+                'line_nr' => 16,
                 'macro' => ''
               }
             },
@@ -921,7 +1003,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 18,
+                    'line_nr' => 19,
                     'macro' => ''
                   }
                 },
@@ -945,7 +1027,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 18,
+                    'line_nr' => 19,
                     'macro' => ''
                   }
                 },
@@ -979,7 +1061,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 19,
+                    'line_nr' => 20,
                     'macro' => ''
                   }
                 },
@@ -1011,7 +1093,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 19,
+                    'line_nr' => 20,
                     'macro' => ''
                   }
                 },
@@ -1045,7 +1127,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 20,
+                    'line_nr' => 21,
                     'macro' => ''
                   }
                 },
@@ -1080,7 +1162,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 20,
+                    'line_nr' => 21,
                     'macro' => ''
                   }
                 },
@@ -1114,7 +1196,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 21,
+                    'line_nr' => 22,
                     'macro' => ''
                   }
                 },
@@ -1152,7 +1234,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 21,
+                    'line_nr' => 22,
                     'macro' => ''
                   }
                 },
@@ -1186,7 +1268,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 22,
+                    'line_nr' => 23,
                     'macro' => ''
                   }
                 },
@@ -1227,7 +1309,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 22,
+                    'line_nr' => 23,
                     'macro' => ''
                   }
                 },
@@ -1261,7 +1343,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 23,
+                    'line_nr' => 24,
                     'macro' => ''
                   }
                 },
@@ -1317,7 +1399,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 23,
+                    'line_nr' => 24,
                     'macro' => ''
                   }
                 },
@@ -1351,7 +1433,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 24,
+                    'line_nr' => 25,
                     'macro' => ''
                   }
                 },
@@ -1394,7 +1476,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 24,
+                    'line_nr' => 25,
                     'macro' => ''
                   }
                 },
@@ -1473,7 +1555,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 25,
+                    'line_nr' => 26,
                     'macro' => ''
                   }
                 },
@@ -1498,7 +1580,7 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => 'file',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 25,
+                            'line_nr' => 26,
                             'macro' => ''
                           }
                         },
@@ -1551,7 +1633,7 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => 'file',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 25,
+                            'line_nr' => 26,
                             'macro' => ''
                           }
                         },
@@ -1571,7 +1653,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 25,
+                    'line_nr' => 26,
                     'macro' => ''
                   }
                 },
@@ -1596,7 +1678,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 26,
+                    'line_nr' => 27,
                     'macro' => ''
                   }
                 },
@@ -1620,7 +1702,7 @@ $result_trees{'image_formatting'} = {
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 26,
+                    'line_nr' => 27,
                     'macro' => ''
                   }
                 },
@@ -1653,14 +1735,14 @@ $result_trees{'image_formatting'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 27,
+                'line_nr' => 28,
                 'macro' => ''
               }
             }
           ],
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 17,
+            'line_nr' => 18,
             'macro' => ''
           }
         },
@@ -1700,7 +1782,7 @@ $result_trees{'image_formatting'} = {
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 29,
+            'line_nr' => 30,
             'macro' => ''
           }
         },
@@ -1750,7 +1832,7 @@ $result_trees{'image_formatting'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 32,
+                'line_nr' => 33,
                 'macro' => ''
               }
             },
@@ -1791,6 +1873,7 @@ $result_texis{'image_formatting'} = '@node Top
 @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
 @code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
 @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f--ile,aze,az,alt,} @image{f--ile,aze,az,alt,}
 @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
 @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
 @image{image} @image{image}
@@ -1826,6 +1909,7 @@ $result_texts{'image_formatting'} = 'top
 @image{f--ile,,,alt} f--ile
 @image{f--ile,,,,e-d-xt} f--ile
 @image{f--ile,aze,az,alt,e--xt} f--ile
+@image{f--ile,aze,az,alt, f--ile
 @image{f-ile,aze,,a--lt} f-ile
 @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} f--ile@.
 image image
@@ -1951,7 +2035,8 @@ $result_converted{'plaintext'}->{'image_formatting'} = 'top
 
 ‘@image{f--ile}’ Image description""\\. ‘@image{f--ile,l--i}’ Image description""\\. ‘@image{f--ile,,l--e}’ Image description""\\.
 ‘@image{f--ile,,,alt}’ Image description""\\. ‘@image{f--ile,,,,e-d-xt}’ Image description""\\.
-‘@image{f--ile,aze,az,alt,e--xt}’ Image description""\\. ‘@image{f-ile,aze,,a--lt}’ [a-lt]
+‘@image{f--ile,aze,az,alt,e--xt}’ Image description""\\. ‘@image{f--ile,aze,az,alt,’ Image description""\\.
+‘@image{f-ile,aze,,a--lt}’ [a-lt]
 ‘@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}’ [alt] aaa
 bbb
 ccc aaa
@@ -2002,6 +2087,7 @@ $result_converted{'html_text'}->{'image_formatting'} = '<div class="top-level-ex
 <code class="code">@image{f--ile,,,alt}</code> <img class="image" src="f--ile.png" alt="alt">
 <code class="code">@image{f--ile,,,,e-d-xt}</code> <img class="image" src="f--ile.png" alt="f--ile">
 <code class="code">@image{f--ile,aze,az,alt,e--xt}</code> <img class="image" src="f--ile.png" alt="alt">
+<code class="code">@image{f--ile,aze,az,alt,</code> <img class="image" src="f--ile.png" alt="alt">
 <code class="code">@image{f-ile,aze,,a--lt}</code> <img class="image" src="f-ile.jpg" alt="a&ndash;lt">
 <code class="code">@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img class="image" src="f--ile%40.file%20ext%20e--xt%7d" alt="alt">
 <img class="image" src="image.jpg" alt="image"> <img class="image" src="image.jpg" alt="image">
@@ -2031,7 +2117,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 13,
+    'line_nr' => 14,
     'macro' => '',
     'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
     'type' => 'warning'
@@ -2040,7 +2126,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => '',
     'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'',
     'type' => 'warning'
@@ -2049,7 +2135,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 15,
+    'line_nr' => 16,
     'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
@@ -2058,7 +2144,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 15,
+    'line_nr' => 16,
     'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
@@ -2067,7 +2153,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => '',
     'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
     'type' => 'warning'
@@ -2076,7 +2162,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'
 ',
     'file_name' => '',
-    'line_nr' => 25,
+    'line_nr' => 26,
     'macro' => '',
     'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'',
     'type' => 'warning'
@@ -2085,7 +2171,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
@@ -2094,7 +2180,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
@@ -2116,6 +2202,7 @@ $result_converted{'xml'}->{'image_formatting'} = '<node name="Top" spaces=" "><n
 <code>&arobase;image&lbrace;f--ile,,,alt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><alttext>alt</alttext></image>
 <code>&arobase;image&lbrace;f--ile,,,,e-d-xt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imageextension>e--xt</imageextension></image>
 <code>&arobase;image&lbrace;f--ile,aze,az,alt,e--xt&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension>e--xt</imageextension></image>
+<code>&arobase;image&lbrace;f--ile,aze,az,alt,</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension></imageextension></image>
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 <image where="inline"><imagefile>image</imagefile></image> <image where="inline"><imagefile>image</imagefile></image>
@@ -2149,6 +2236,7 @@ $result_converted{'docbook'}->{'image_formatting'} = '<chapter label="1" id="cha
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,alt,</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 <inlinemediaobject><imageobject><imagedata fileref="image.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>aaa
@@ -2183,7 +2271,7 @@ $result_converted_errors{'docbook'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f-ile\' not found, using `f-ile.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 13,
+    'line_nr' => 14,
     'macro' => '',
     'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
     'type' => 'warning'
@@ -2192,7 +2280,7 @@ $result_converted_errors{'docbook'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => '',
     'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
     'type' => 'warning'
@@ -2201,7 +2289,7 @@ $result_converted_errors{'docbook'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f-ile\' not found, using `f-ile.jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => '',
     'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
     'type' => 'warning'
@@ -2210,7 +2298,7 @@ $result_converted_errors{'docbook'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
 ',
     'file_name' => '',
-    'line_nr' => 25,
+    'line_nr' => 26,
     'macro' => '',
     'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
     'type' => 'warning'
@@ -2229,6 +2317,7 @@ $result_converted{'latex_text'}->{'image_formatting'} = '\\label{anchor:Top}%
 \\texttt{@image\\{f{-}{-}ile{,}{,},alt\\}} \\includegraphics{f--ile}
 \\texttt{@image\\{f{-}{-}ile{,}{,}{,}{,}e-d-xt\\}} \\includegraphics{f--ile}
 \\texttt{@image\\{f{-}{-}ile,aze,az,alt,e{-}{-}xt\\}} \\includegraphics[width=aze,height=az]{f--ile}
+\\texttt{@image\\{f{-}{-}ile,aze,az,alt,} \\includegraphics[width=aze,height=az]{f--ile}
 \\texttt{@image\\{f-ile,aze{,}{,}a{-}{-}lt\\}} \\includegraphics[width=aze]{f-ile}
 \\texttt{@image\\{@file\\{f{-}{-}ile\\}@@@.,aze,az,alt,@file\\{file ext\\}\\ e{-}{-}xt@\\}} \\includegraphics[width=aze,height=az]{f--ile@.}
 \\includegraphics{image} \\includegraphics{image}
@@ -2258,7 +2347,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f-ile\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 13,
+    'line_nr' => 14,
     'macro' => '',
     'text' => '@image file `f-ile\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2267,7 +2356,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f--ile@.\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => '',
     'text' => '@image file `f--ile@.\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2276,7 +2365,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 15,
+    'line_nr' => 16,
     'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2285,7 +2374,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 15,
+    'line_nr' => 16,
     'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2294,7 +2383,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f-ile\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => '',
     'text' => '@image file `f-ile\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2303,7 +2392,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `f--ile@.\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 25,
+    'line_nr' => 26,
     'macro' => '',
     'text' => '@image file `f--ile@.\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2312,7 +2401,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2321,7 +2410,7 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
@@ -2350,7 +2439,8 @@ File: ,  Node: chap,  Prev: Top,  Up: Top
 
 ‘@image{f--ile}’  [image src="f--ile.png" text="Image description\\"\\"\\\\." ] ‘@image{f--ile,l--i}’  [image src="f--ile.png" text="Image description\\"\\"\\\\." ] ‘@image{f--ile,,l--e}’  [image src="f--ile.png" text="Image description\\"\\"\\\\." ]
 ‘@image{f--ile,,,alt}’  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ] ‘@image{f--ile,,,,e-d-xt}’  [image src="f--ile.png" text="Image description\\"\\"\\\\." ]
-‘@image{f--ile,aze,az,alt,e--xt}’  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ] ‘@image{f-ile,aze,,a--lt}’ [a-lt]
+‘@image{f--ile,aze,az,alt,e--xt}’  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ] ‘@image{f--ile,aze,az,alt,’  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]
+‘@image{f-ile,aze,,a--lt}’ [a-lt]
 ‘@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}’ [alt] aaa
 bbb
 ccc aaa

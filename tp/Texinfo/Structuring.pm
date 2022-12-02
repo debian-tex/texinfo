@@ -69,7 +69,7 @@ use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 my %types_to_enter;

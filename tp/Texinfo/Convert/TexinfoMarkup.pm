@@ -47,7 +47,7 @@ use Carp qw(cluck);
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 # our because it is used in the xml to texi translator and subclasses.
@@ -992,6 +992,7 @@ sub _convert($$;$)
         my $command_result = '';
         if (scalar (@{$element->{'args'}}) == 2
               and defined($element->{'args'}->[-1])
+              and $element->{'args'}->[-1]->{'contents'}
               and @{$element->{'args'}->[-1]->{'contents'}}) {
           $command_result = $self->_convert({'contents'
                         => $element->{'args'}->[-1]->{'contents'}});
@@ -1220,13 +1221,14 @@ sub _convert($$;$)
             and $element->{'contents'}->[-1]->{'cmdname'} eq 'end') {
           $end_command = $element->{'contents'}->[-1];
         }
-        my $end_command_space = _leading_spaces_arg($end_command);
-        if (scalar(@$end_command_space)) {
-          $end_command_space->[0] = 'endspaces';
+        my @end_command_spaces;
+        push @end_command_spaces, _leading_spaces_arg($end_command);
+        if (scalar(@end_command_spaces)) {
+          $end_command_spaces[0]->[0] = 'endspaces';
         }
         $result .= $self->txi_markup_open_element($element->{'cmdname'},
                                    [@$attribute, _leading_spaces_arg($element),
-                                    $end_command_space])
+                                    @end_command_spaces])
                    .${prepended_elements};
         if ($element->{'args'}) {
           my $variadic_element = undef;
@@ -1313,7 +1315,8 @@ sub _convert($$;$)
                 # Like 'prototypes' extra value, but keeping spaces information
                 if (defined $element->{'args'}->[0]
                     and defined $element->{'args'}->[0]->{'type'}
-                    and $element->{'args'}->[0]->{'type'} eq 'block_line_arg') {
+                    and $element->{'args'}->[0]->{'type'} eq 'block_line_arg'
+                    and $element->{'args'}->[0]->{'contents'}) {
                   foreach my $content (@{$element->{'args'}->[0]->{'contents'}}) {
                     if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
                       push @prototype_line, $content;
@@ -1374,7 +1377,8 @@ sub _convert($$;$)
                 $result .= $self->txi_markup_close_element('columnprototypes');
                 $result .= $self->format_comment_or_return_end_line($element);
               } elsif ($element->{'extra'}
-                         and $element->{'extra'}->{'columnfractions'}) {
+                       and $element->{'extra'}->{'columnfractions'}
+                       and $element->{'args'}->[0]->{'contents'}) {
                 my $cmd;
                 foreach my $content (@{$element->{'args'}->[0]->{'contents'}}) {
                   if ($content->{'cmdname'}

@@ -56,7 +56,7 @@ add_heading_number
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 our @MONTH_NAMES =
@@ -256,6 +256,7 @@ sub expand_verbatiminclude($$$)
       }
       $verbatiminclude = { 'cmdname' => 'verbatim',
                            'parent' => $current->{'parent'},
+                           'contents' => [],
                            'extra' =>
                         {'text_arg' => $current->{'extra'}->{'text_arg'}} };
       while (<VERBINCLUDE>) {

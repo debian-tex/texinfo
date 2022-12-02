@@ -536,6 +536,26 @@ in node Top
 
 in chap
 '],
+['recursive_self_section_reference',
+'@node sharp
+@chapter @ref{sharp} tuple
+'],
+['double_recursive_self_section_reference',
+'@node n1
+@chapter @ref{n2}
+
+@node n2
+@chapter @ref{n1}
+'],
+['double_recursive_self_section_node_reference',
+'@node Top
+@top top
+
+@node node1
+@chapter @ref{to node1}
+
+@node to @ref{node1}
+'],
 );
 
 my $character_and_spaces_in_refs_text = '@node Top

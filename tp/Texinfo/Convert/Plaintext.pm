@@ -60,7 +60,7 @@ sub import {
   goto &Exporter::import;
 }
 
-$VERSION = '7.0';
+$VERSION = '7.0.1';
 
 
 # commands that are of use for formatting.
@@ -1727,6 +1727,10 @@ sub _convert($$)
   }
 
   if ($element->{'extra'}) {
+    # REMARK it is not that wise to rely on {'extra'}->{'missing_argument'}
+    # being set, additional tests of $element->{'contents'}
+    # being defined could be added, in addition to be more robust in case
+    # {'extra'}->{'missing_argument'} is removed
     if ($element->{'extra'}->{'missing_argument'}
              and (!$element->{'contents'} or !@{$element->{'contents'}})) {
       return '';
@@ -1958,6 +1962,7 @@ sub _convert($$)
       if ($element->{'args'}) {
         $result .= _convert($self, $element->{'args'}->[0]);
         if ($command eq 'strong' 
+             and $element->{'args'}->[0]->{'contents'}
              and scalar (@{$element->{'args'}->[0]->{'contents'}})
              and $element->{'args'}->[0]->{'contents'}->[0]->{'text'}
              and $element->{'args'}->[0]->{'contents'}->[0]->{'text'} =~ /^Note\s/i
@@ -2082,6 +2087,7 @@ sub _convert($$)
           }
         } elsif (scalar(@{$element->{'args'}}) == 2
                  and defined($element->{'args'}->[1])
+                 and $element->{'args'}->[1]->{'contents'}
                  and @{$element->{'args'}->[1]->{'contents'}}) {
           unshift @{$self->{'current_contents'}->[-1]}, 
             {'contents' => $element->{'args'}->[1]->{'contents'}};
@@ -2368,6 +2374,7 @@ sub _convert($$)
         }
         if (scalar (@{$element->{'args'}}) == 2
             and defined($element->{'args'}->[-1])
+            and $element->{'args'}->[-1]->{'contents'}
             and @{$element->{'args'}->[-1]->{'contents'}}) {
           my $prepended = $self->gdt('{abbr_or_acronym} ({explanation})', 
                            {'abbr_or_acronym' => $argument, 
@@ -2693,10 +2700,18 @@ sub _convert($$)
       #my ($counts, $new_locations);
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0, 
                                                    'locations' => []};
-      $result = $self->convert_line (
+      # $element->{'args'}->[0]->{'contents'} not set cannot happen
+      # as in that case missing_argument would be set.  This condition
+      # is therefre not really needed, but still put in case missing_argument
+      # disappears
+      my $result = '';
+      if ($element->{'args'}->[0]
+          and $element->{'args'}->[0]->{'contents'}) {
+        $result = $self->convert_line (
                        {'type' => 'frenchspacing',
                         'contents' => $element->{'args'}->[0]->{'contents'}},
                        {'indent_length' => 0});
+      }
       if ($result ne '') {
         $result = $self->ensure_end_of_line($result);
 
@@ -2710,14 +2725,24 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
       return $result;
     } elsif ($command eq 'exdent') {
-      if ($self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
-        $result = $self->_convert_unfilled({'contents' => $element->{'args'}->[0]->{'contents'}},
-         {'indent_level'
-          => $self->{'format_context'}->[-1]->{'indent_level'} -1});
-      } else {
-        $result = $self->convert_line({'contents' => $element->{'args'}->[0]->{'contents'}},
-         {'indent_level' 
-          => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+      $result = '';
+      # $element->{'args'}->[0]->{'contents'} not set cannot happen
+      # as in that case missing_argument would be set.  This condition
+      # is therefre not really needed, but still put in case missing_argument
+      # disappears
+      if ($element->{'args'}->[0]
+          and $element->{'args'}->[0]->{'contents'}) {
+        if ($self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
+          $result = $self->_convert_unfilled(
+               {'contents' => $element->{'args'}->[0]->{'contents'}},
+               {'indent_level'
+                 => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+        } else {
+          $result = $self->convert_line(
+             {'contents' => $element->{'args'}->[0]->{'contents'}},
+             {'indent_level'
+               => $self->{'format_context'}->[-1]->{'indent_level'} -1});
+        }
       }
       if ($result ne '') {
         $result = $self->ensure_end_of_line($result);
@@ -2756,6 +2781,7 @@ sub _convert($$)
         $lines_count += 2;
         foreach my $float (@{$self->{'floats'}->{$element->{'extra'}->{'type'}->{'normalized'}}}) {
           next if !$float->{'args'} or !$float->{'args'}->[1]
+                   or !$float->{'args'}->[1]->{'contents'}
                    or !@{$float->{'args'}->[1]->{'contents'}};
           my $float_label_text = $self->convert_line({'type' => '_code',
              'contents' => $float->{'args'}->[1]->{'contents'}});
@@ -2782,7 +2808,8 @@ sub _convert($$)
           } elsif ($float->{'extra'}->{'caption'}) {
             $caption = $float->{'extra'}->{'caption'};
           }
-          if ($caption) {
+          if ($caption and $caption->{'args'}->[0]
+              and $caption->{'args'}->[0]->{'contents'}) {
             $self->{'multiple_pass'} = 1;
             push @{$self->{'context'}}, 'listoffloats';
             my $tree = {'contents' => $caption->{'args'}->[0]->{'contents'}};
@@ -3154,6 +3181,9 @@ sub _convert($$)
           $result .= _count_added($self, $formatter->{'container'},
                            add_pending_word($formatter->{'container'}, 1));
 
+          # note that $arg->{'contents'} may be undefined in rare case
+          # such as in sectionning in_menu_only_special_ascii_spaces_node
+          # test
           my $node_text = _convert($self, {'type' => '_code',
                                       'contents' => $arg->{'contents'}});
 
@@ -3241,6 +3271,7 @@ sub _convert($$)
   }
 
   # The processing of contents is done here.
+  # $element->{'contents'} undef may happen for some empty commands/containers
   if ($element->{'contents'}) {
     my @contents = @{$element->{'contents'}};
     push @{$self->{'current_contents'}}, \@contents;
@@ -3436,13 +3467,18 @@ sub _convert($$)
           $result .= _convert($self, $tree);
         }
       }
-    } elsif (($command eq 'quotation' 
+    } elsif (($command eq 'quotation'
                or $command eq 'smallquotation')
              and $element->{'extra'} and $element->{'extra'}->{'authors'}) {
       foreach my $author (@{$element->{'extra'}->{'authors'}}) {
-        $result .= _convert($self, 
-                 $self->gdt("\@center --- \@emph{{author}}\n",
-                    {'author' => $author->{'args'}->[0]->{'contents'}}));
+        # this cannot happen as this should be caugth by 'missing_argument'
+        # but it is more robust to check anyway
+        if ($author->{'args'}->[0]
+            and $author->{'args'}->[0]->{'contents'}) {
+          $result .= _convert($self,
+                   $self->gdt("\@center --- \@emph{{author}}\n",
+                      {'author' => $author->{'args'}->[0]->{'contents'}}));
+        }
       }
     } elsif (($command eq 'multitable')) {
       $self->{'document_context'}->[-1]->{'in_multitable'}--;
@@ -3468,7 +3504,7 @@ sub _convert($$)
         }
       }
     }
- 
+
     # close the contexts and register the cells
     if ($self->{'preformatted_context_commands'}->{$command}
         or $command eq 'float') {

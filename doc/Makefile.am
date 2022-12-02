@@ -57,6 +57,7 @@ EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
              $(refcard_files) \
+             gendocs.chapter/gendocs_template \
 	     texinfo-tex-test.texi texinfo-tex-test.WIDOWs \
              texinfo-ja.tex short-sample-ja.texi \
              texinfo-zh.tex short-sample-zh.texi
@@ -111,12 +112,18 @@ mathjax_root = https://www.gnu.org/software/texinfo/manual
 gendocs_mathjax = -c HTML_MATH=mathjax \
                   -c MATHJAX_SCRIPT=$(mathjax_root)/tex-svg.js \
                   -c MATHJAX_SOURCE=$(mathjax_root)/mathjax-instructions.html
-#
-gendocs_invoke = env $(gendocs_envvars) $(gendocs) --email $(gendocs_email) \
-  --html '$(gendocs_mathjax) -c TOP_NODE_UP_URL=$(gendocs_dir_url)'
+
+gendocs_options = --email $(gendocs_email) --html '$(gendocs_mathjax) \
+                  -c TOP_NODE_UP_URL=$(gendocs_dir_url)'
 # A nice side effect of using --html is to eliminate the fancy css default;
 # otherwise, we could use gendocs_template_min.
 #
+gendocs_invoke = env $(gendocs_envvars) $(gendocs) $(gendocs_options)
+gendocs_invoke_chap = env $(gendocs_envvars) \
+            GENDOCS_TEMPLATE_DIR=$(abs_top_srcdir)/doc/gendocs.chapter \
+            $(gendocs) $(gendocs_options)
+
+
 manual1 = info-stnd
 manual1_title = "GNU standalone info manual"
 #
@@ -125,27 +132,39 @@ manual2_title = "GNU Texinfo manual"
 #
 manual3 = texi2any_api
 manual3_title = "GNU Texinfo texi2any Output Customization"
+manual3_flags = --common "-c INFO_SPECIAL_CHARS_WARNING=0"
 #
 manual4 = texi2any_internals
 manual4_title = "GNU Texinfo texi2any modules documentation"
+manual4_flags = --split chapter --common "-c INFO_SPECIAL_CHARS_WARNING=0"
 
-# We also make a little HTML document for pod2texi script.
+# We also make little HTML documents for pod2texi script and
+# Pod::Simple::Texinfo documentation.  Texinfo.pm is linked to
+# be found when translating pod2texi to html in directory set by
+# --podpath.
 
 # destination directory.
 doctemp = wwwtemp
 www_target = $(HOME)/gnu/www/texinfo/manual
 #
+# Beware that the beginning of the --outfile pod2html option and --htmldir
+# must match in order to have --htmldir actually used.
 wwwdoc-build:
 	rm -rf $(doctemp) && mkdir $(doctemp)
 	cd $(doctemp) \
+	&& $(MKDIR_P) Pod/Simple \
 	&& ln -s ../*.texi . \
 	&& ln -s ../tp_api/*.texi . \
 	&& ln -s ../tp_api/api_includes . \
+	&& ln -s ../../../../Pod-Simple-Texinfo/lib/Pod/Simple/Texinfo.pm Pod/Simple \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
-	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title) \
-	&& $(gendocs_invoke) -o $(manual4) $(manual4) $(manual4_title) \
-	&& pod2html $(pod2texi_pl) >pod2texi.html \
+	&& $(gendocs_invoke) $(manual3_flags) \
+	                     -o $(manual3) $(manual3) $(manual3_title) \
+	&& $(gendocs_invoke_chap) $(manual4_flags) \
+	                     -o $(manual4) $(manual4) $(manual4_title) \
+	&& pod2html --podpath . --htmldir='.' --quiet $(pod2texi_pl) --outfile=./pod2texi.html \
+	&& pod2html --quiet Pod/Simple/Texinfo.pm >Pod/Simple/Texinfo.html \
 	&& echo "Manuals ready for web distribution under: $(doctemp)/"
 #
 # At official release, we need to update:
@@ -155,5 +174,7 @@ wwwdoc-install:
                 $(doctemp)/$(manual3) $(doctemp)/$(manual4) \
                 $(doctemp)/pod2texi.html \
                 $(www_target)
+	$(MKDIR_P) $(www_target)/Pod/Simple
+	cp -arf $(doctemp)/Pod/Simple/Texinfo.html $(www_target)/Pod/Simple
 	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files
 # followed by cvs add of new files and cvs commit.

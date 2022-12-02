@@ -588,6 +588,7 @@ explanation
 @code{@@image@{f--ile,,,alt@}} @image{f--ile,,,alt}
 @code{@@image@{f--ile,,,,e-d-xt@}} @image{f--ile,,,,e--xt}
 @code{@@image@{f--ile,aze,az,alt,e--xt@}} @image{f--ile,aze,az,alt,e--xt}
+@code{@@image@{f--ile,aze,az,alt,} @image{f--ile,aze,az,alt,}
 @code{@@image@{f-ile,aze,,a--lt@}} @image{f-ile,aze,,a--lt}
 @code{@@image@{@@file@{f--ile@}@@@@@@.,aze,az,alt,@@file@{file ext@} e--xt@@@}} @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}}
 @image{image} @image{image}

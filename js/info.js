@@ -1,5 +1,5 @@
 /* info.js - Javascript UI for Texinfo manuals
-   Copyright (C) 2017-2019 Free Software Foundation, Inc.
+   Copyright (C) 2017-2022 Free Software Foundation, Inc.
 
    This file is part of GNU Texinfo.
 
@@ -35,7 +35,7 @@
     SCREEN_MIN_WIDTH: 700,
     LOCAL_HTML_PAGE_PATTERN: "^([^:/]*[.](html|htm|xhtml))?([#].*)?$",
     SHOW_SIDEBAR_HTML: '<span class="hide-icon">&#x21db;</span>',
-    HIDE_SIDEBAR_HTML: '<span class="hide-icon">&#x21da;</span><span class="hide-text">Hide sidebar</span>',
+    HIDE_SIDEBAR_HTML: '<span class="hide-icon">&#x21da;</span><span class="hide-text"></span>',
     SHOW_SIDEBAR_TOOLTIP: 'Show navigation sidebar',
     HIDE_SIDEBAR_TOOLTIP: 'Hide navigation sidebar',
 
@@ -120,7 +120,7 @@
         @arg {string} linkid - link identifier
         @arg {string|false} [history] - method name that will be applied on
         the 'window.history' object.  */
-    set_current_url: function (linkid, history, clicked = false) {
+    set_current_url: function (linkid, history, clicked) {
       if (undef_or_null (history))
         history = "pushState";
       return { type: "current-url", url: linkid,
@@ -146,10 +146,32 @@
     /** @arg {NodeListOf<Element>} links */
     cache_index_links: function (links) {
       var dict = {};
+      var text0 = "", text1 = ""; // for subentries
       for (var i = 0; i < links.length; i += 1)
         {
           var link = links[i];
-          dict[link.textContent] = href_hash (link_href (link));
+          var link_cl = link.classList;
+          var text = link.textContent;
+          if (link_cl.contains("index-entry-level-2"))
+            {
+                text = text0 + "; " + text1 + "; " + text;
+            }
+          else if (link_cl.contains("index-entry-level-1"))
+            {
+              text1 = text;
+                text = text0 + "; " + text;
+            }
+          else
+            {
+              text0 = text;
+            }
+
+          if ((link = link.parentElement.parentElement.lastChild)
+              && link.classList.contains("printindex-index-section")
+              && (link = link.firstChild))
+            {
+              dict[text] = href_hash (link_href (link));
+            }
         }
       return { type: "cache-index-links", links: dict };
     },
@@ -1177,7 +1199,7 @@
       store.dispatch ({ type: "iframe-ready", id: config.INDEX_ID });
       store.dispatch ({
         type: "echo",
-        msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
+        msg: "Welcome to Texinfo documentation viewer 7.0.1, type '?' for help."
       });
 
       /* Call user hook.  */
@@ -1356,6 +1378,8 @@
     add_header (elem)
     {
       var h1 = document.querySelector ("h1.settitle");
+      if (!h1)
+        h1 = document.querySelector ("h1.top");
       if (h1)
         {
           var a = document.createElement ("a");
@@ -1455,8 +1479,9 @@
       if (linkid_contains_index (linkid))
         {
           /* Scan links that should be added to the index.  */
-          var index_links = document.querySelectorAll ("td[valign=top] a");
-          store.dispatch (actions.cache_index_links (index_links));
+          var index_entries = document.querySelectorAll
+            ("td.printindex-index-entry a");
+          store.dispatch (actions.cache_index_links (index_entries));
         }
 
       add_icons ();

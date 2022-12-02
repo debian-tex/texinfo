@@ -735,6 +735,7 @@ Invalid use of @':
 @image{f--ile,l--i} f--ilel--i
 @image{f--ile,,l--e} f--ilel--e
 @image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
 @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
 
 @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
@@ -1560,6 +1561,7 @@ Invalid use of @':
 @image{f--ile,l--i} f--ilel--i
 @image{f--ile,,l--e} f--ilel--e
 @image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
 @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
 
 @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
@@ -2406,6 +2408,7 @@ Invalid use of @':
 @image{f--ile,l--i} f--ilel--i
 @image{f--ile,,l--e} f--ilel--e
 @image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
 @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
 
 @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
@@ -3226,6 +3229,7 @@ Invalid use of @':
 @image{f--ile,l--i} f--ilel--i
 @image{f--ile,,l--e} f--ilel--e
 @image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
 @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
 
 @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt

@@ -58,13 +58,12 @@ js_scripts = \
 dist_js_DATA=$(js_scripts) info.css
 
 EXTRA_DIST += HACKING README TODO \
-	      build-aux/eslint.json \
-	      build-aux/modernizr.json \
-	      modernizr.js \
-	      package.json \
-	      server.js \
-	      tsconfig.json \
-	      yarn.lock
+              build-aux/eslint.json \
+              build-aux/modernizr.json \
+              modernizr.js \
+              package.json \
+              tsconfig.json
+
 
 
 ## ---------- ##

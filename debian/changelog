@@ -1,7 +1,8 @@
 texinfo (7.0.1-2) UNRELEASED; urgency=medium
 
-  * Patch:: avoid freezing at beginning of a file when 'nodeline'
+  * Patch: avoid freezing at beginning of a file when 'nodeline'
     is set to 'pointers' (the default).
+  * Patch: info: buffer overflow in copy_converting() (Closes: #1025940).
 
  -- Hilmar Preusse <hille42@web.de>  Sat, 03 Dec 2022 01:01:58 +0100
 

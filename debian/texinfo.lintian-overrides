@@ -1,10 +1,10 @@
-texinfo: executable-not-elf-or-script usr/share/texinfo/texindex.awk
-texinfo: national-encoding usr/share/texmf/tex/texinfo/txi-cs.tex
-texinfo: national-encoding usr/share/texmf/tex/texinfo/txi-fi.tex
-texinfo: national-encoding usr/share/texmf/tex/texinfo/txi-fr.tex
-texinfo: national-encoding usr/share/texmf/tex/texinfo/txi-pl.tex
-texinfo: national-encoding usr/share/texmf/tex/texinfo/txi-ru.tex
-texinfo: national-encoding usr/share/texmf/tex/texinfo/txi-uk.tex
-texinfo: no-manual-page usr/bin/txixml2texi
+texinfo: executable-not-elf-or-script [usr/share/texinfo/texindex.awk]
+texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-cs.tex]
+texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-fi.tex]
+texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-fr.tex]
+texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-pl.tex]
+texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-ru.tex]
+texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-uk.tex]
+texinfo: no-manual-page [usr/bin/txixml2texi]
 texinfo: unusual-interpreter
 texinfo: package-contains-documentation-outside-usr-share-doc

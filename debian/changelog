@@ -1,3 +1,12 @@
+texinfo (7.0.1-3) UNRELEASED; urgency=medium
+
+  * Lintian:
+    - Migrate lintian overrides to new []-format to get rid of
+      "mismatched-override".
+    - Remove unused overrides.
+
+ -- Hilmar Preusse <hille42@web.de>  Thu, 29 Dec 2022 09:16:07 +0100
+
 texinfo (7.0.1-2) experimental; urgency=medium
 
   * Patch: avoid freezing at beginning of a file when 'nodeline'

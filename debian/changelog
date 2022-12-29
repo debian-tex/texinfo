@@ -7,6 +7,7 @@ texinfo (7.0.1-3) UNRELEASED; urgency=medium
     - Add overrides for bogus "very-long-line-length-in-source-file" and
       "source-is missing".
     - "license-problem-gfdl-non-official-text": override and fix.
+    - Fix "bad-whatis" in texi2dvi.1 manual page.
 
  -- Hilmar Preusse <hille42@web.de>  Thu, 29 Dec 2022 09:16:07 +0100
 

@@ -75,3 +75,6 @@ texinfo source: very-long-line-length-in-source-file 778 > 512 [tp/tests/many_in
 texinfo source: very-long-line-length-in-source-file 887 > 512 [tp/t/results/converters_tests/definition_commands/res_latex/definition_commands.tex:366]
 texinfo source: very-long-line-length-in-source-file 916 > 512 [tp/t/results/sectioning/character_and_spaces_in_refs_out.pl:2023]
 texinfo source: very-long-line-length-in-source-file 950 > 512 [tp/t/results/sectioning/sectioning_part_appendix_no_top.pl:754]
+texinfo source: license-problem-gfdl-non-official-text invariant part is: with no invariant sections, with no front-cover texts, and with no back-cover texts [doc/info-stnd.texi]
+texinfo source: license-problem-gfdl-non-official-text invariant part is: with no invariant sections, with no front-cover texts, and with no back-cover texts [doc/texi2any_api.texi]
+texinfo source: license-problem-gfdl-non-official-text invariant part is: with no invariant sections, with no front-cover texts, and with no back-cover texts [doc/texinfo.texi]

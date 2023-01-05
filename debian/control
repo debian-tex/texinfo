@@ -21,8 +21,14 @@ Homepage: https://www.gnu.org/software/texinfo/
 Package: texinfo
 Section: text
 Priority: optional
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}, libtext-unidecode-perl, libxml-libxml-perl, tex-common
+Architecture: all
+Depends: ${shlibs:Depends},
+	${misc:Depends},
+	${perl:Depends},
+	libtext-unidecode-perl,
+	libxml-libxml-perl,
+	texinfo-lib (>= ${source:Version}),
+	tex-common
 Suggests: texlive-base, texlive-latex-base, texlive-plain-generic, texlive-fonts-recommended
 Breaks: texinfo-doc-nonfree
 Replaces: texinfo-doc-nonfree
@@ -35,6 +41,26 @@ Description: Documentation system for on-line information and printed output
  of a book, including chapters, sections, cross references, and indices.
  From the same Texinfo source file, you can create a menu-driven, on-line
  Info file with nodes, menus, cross references, and indices.
+
+Package: texinfo-lib
+Section: text
+Priority: optional
+Architecture: any
+Depends: ${shlibs:Depends},
+	${misc:Depends},
+	${perl:Depends}
+Breaks: texinfo-doc-nonfree, texinfo (<= 7.0.1-2)
+Replaces: texinfo-doc-nonfree, texinfo (<= 7.0.1-2)
+Description: Libraries needed by the texinfo package
+ Texinfo is a documentation system that uses a single source file to
+ produce both on-line information and printed output.
+ .
+ Using Texinfo, you can create a printed document with the normal features
+ of a book, including chapters, sections, cross references, and indices.
+ From the same Texinfo source file, you can create a menu-driven, on-line
+ Info file with nodes, menus, cross references, and indices.
+ .
+ This package contains the architecture dependent parts of the texinfo package.
 
 Package: info
 Priority: important

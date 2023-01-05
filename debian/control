@@ -27,7 +27,7 @@ Depends: ${shlibs:Depends},
 	${perl:Depends},
 	libtext-unidecode-perl,
 	libxml-libxml-perl,
-	texinfo-lib (= ${source:Version}),
+	texinfo-lib (>= ${source:Version}),
 	tex-common
 Suggests: texlive-base, texlive-latex-base, texlive-plain-generic, texlive-fonts-recommended
 Breaks: texinfo-doc-nonfree
@@ -51,7 +51,7 @@ Depends: ${shlibs:Depends},
 	${perl:Depends}
 Breaks: texinfo-doc-nonfree, texinfo (<= 7.0.1-2)
 Replaces: texinfo-doc-nonfree, texinfo (<= 7.0.1-2)
-Description: Documentation system for on-line information and printed output
+Description: Libraries needed by the texinfo package
  Texinfo is a documentation system that uses a single source file to
  produce both on-line information and printed output.
  .
@@ -60,7 +60,7 @@ Description: Documentation system for on-line information and printed output
  From the same Texinfo source file, you can create a menu-driven, on-line
  Info file with nodes, menus, cross references, and indices.
  .
- This package contains the achitecture dependent parts of the texinfo package.
+ This package contains the architecture dependent parts of the texinfo package.
 
 Package: info
 Priority: important

@@ -1,4 +1,4 @@
-texinfo (7.0.1-3) UNRELEASED; urgency=medium
+texinfo (7.0.1-3) experimental; urgency=medium
 
   * Move arch dependent parts of texinfo into separate package
     texinfo-lib.
@@ -14,7 +14,7 @@ texinfo (7.0.1-3) UNRELEASED; urgency=medium
     - Fix "bad-whatis" in texi2dvi.1 manual page.
     - Fix "no-dep5-copyright".
 
- -- Hilmar Preusse <hille42@web.de>  Thu, 29 Dec 2022 09:16:07 +0100
+ -- Hilmar Preusse <hille42@web.de>  Fri, 06 Jan 2023 00:36:53 +0100
 
 texinfo (7.0.1-2) experimental; urgency=medium
 

@@ -1,5 +1,8 @@
-diff --git a/ChangeLog b/ChangeLog
-index eb2b066669..57502e50f5 100644
+Description: Avoid freezing at beginning of a file when 'nodeline' is set to 'pointers'.
+Origin: Upstream.
+Forwarded: Not needed, comes from uptstream.
+Last-Update: Fri Dec 2 22:45:41 2022 +0000
+
 diff --git a/info/session.c b/info/session.c
 index 42285b0bf3..499857ef13 100644
 --- a/info/session.c

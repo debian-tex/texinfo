@@ -13,7 +13,6 @@ texinfo source: source-is-missing [tp/t/results/formats_encodings/japanese_shift
 texinfo source: source-is-missing [tp/tests/layout/res_parser/formatting_inline_css/formatting.html]
 # More bad long lines
 texinfo source: very-long-line-length-in-source-file 1106 > 512 [tp/t/results/sectioning/chapter_sections.pl:631]
-texinfo source: very-long-line-length-in-source-file 1184 > 512 [tp/Makefile.docstr:220]
 texinfo source: very-long-line-length-in-source-file 1198 > 512 [tp/t/results/sectioning/top_chapter_sections.pl:720]
 texinfo source: very-long-line-length-in-source-file 1202 > 512 [tp/t/results/sectioning/sectioning_part_appendix.pl:841]
 texinfo source: very-long-line-length-in-source-file 1241 > 512 [tp/t/results/converters_tests/definition_commands/res_html/chapter.html:103]
@@ -24,7 +23,6 @@ texinfo source: very-long-line-length-in-source-file 1493 > 512 [tp/t/results/fo
 texinfo source: very-long-line-length-in-source-file 1497 > 512 [tp/t/results/formats_encodings/at_commands_in_refs_latin1.pl:*]
 texinfo source: very-long-line-length-in-source-file 1586 > 512 [tp/t/results/sectioning/complex.pl:3153]
 texinfo source: very-long-line-length-in-source-file 1604 > 512 [tp/t/results/sectioning/complex_split_at_node.pl:4102]
-texinfo source: very-long-line-length-in-source-file 23217 > 512 [tp/maintain/lib/libintl-perl/gettext_xs/gettext_xs.o:214]
 texinfo source: very-long-line-length-in-source-file 2629 > 512 [tp/t/results/formats_encodings/japanese_shift_jis.pl:599]
 texinfo source: very-long-line-length-in-source-file 2629 > 512 [tp/t/results/plaintext_tests/japanese_utf8.pl:599]
 texinfo source: very-long-line-length-in-source-file 513 > 512 [tp/t/results/sectioning/part_node_chapter_after_top.pl:631]
@@ -75,6 +73,3 @@ texinfo source: very-long-line-length-in-source-file 778 > 512 [tp/tests/many_in
 texinfo source: very-long-line-length-in-source-file 887 > 512 [tp/t/results/converters_tests/definition_commands/res_latex/definition_commands.tex:366]
 texinfo source: very-long-line-length-in-source-file 916 > 512 [tp/t/results/sectioning/character_and_spaces_in_refs_out.pl:2023]
 texinfo source: very-long-line-length-in-source-file 950 > 512 [tp/t/results/sectioning/sectioning_part_appendix_no_top.pl:754]
-texinfo source: license-problem-gfdl-non-official-text invariant part is: with no invariant sections, with no front-cover texts, and with no back-cover texts [doc/info-stnd.texi]
-texinfo source: license-problem-gfdl-non-official-text invariant part is: with no invariant sections, with no front-cover texts, and with no back-cover texts [doc/texi2any_api.texi]
-texinfo source: license-problem-gfdl-non-official-text invariant part is: with no invariant sections, with no front-cover texts, and with no back-cover texts [doc/texinfo.texi]

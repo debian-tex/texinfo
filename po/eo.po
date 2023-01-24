@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2021-03-17 15:12-0300\n"
 "Last-Translator: Felipe Castro <fefcas@gmail.com>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -413,7 +413,7 @@ msgstr "valoro %s ne estas valida por variablo %s"
 msgid "Try --help for more information.\n"
 msgstr "Por ricevi pli da informoj uzu la opcion “--help”.\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -554,7 +554,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1714,31 +1714,31 @@ msgstr "Variablo %s ricevu la valoron (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linioj ----, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: malplena dosiero"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr "%s por %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPor ricevi kompletan liston da opcioj, tajpu “%s --help”.\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Uzmaniero:  %s [OPCIO...] [INFO-DOSIERO [DIR-DOSIERO]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr "Aldonas aŭ forigas la elementojn en INFO-DOSIERO al aŭ el DIR-DOSIERO."
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
@@ -1746,7 +1746,7 @@ msgstr ""
 "INFO-DOSIERO kaj DIR-DOSIERO nepras, krom se, respektive, la opcioj\n"
 "'--info-file' aŭ '--dir-file/--info-dir' indikatas."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1759,7 +1759,7 @@ msgstr ""
 " --align=KOLUMNO       priskribo de novaj eroj komencu je ĉi tiu KOLUMNO\n"
 " --calign=KOLUMNO      duaj kaj postaj priskribaj linioj komencu ĉi tie."
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1785,7 +1785,7 @@ msgstr ""
 "                          egalas al uzi la argumenton 'DIR-DOSIERO'\n"
 "  --dry-run             egalas al '--test'."
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1806,7 +1806,7 @@ msgstr ""
 "                          se neniu ero indikatas, aldoniĝas la eroj kiuj\n"
 "                          determiniĝas el la informoj de la Info-dosiero."
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1823,7 +1823,7 @@ msgstr ""
 "  --item=TEKSTO         egalas al '--entry=TEKSTO'\n"
 "  --keep-old            ne anstataŭigi erojn, kaj ne forigi vakajn sekciojn."
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1840,7 +1840,7 @@ msgstr ""
 "dosiero\n"
 "  --quiet               ne eligi avertojn."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1877,7 +1877,7 @@ msgstr ""
 "uziĝas\n"
 "  --section RE SEKCIO   egalas al '--regex=RE --section=SEKCIO --add-once'."
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -1887,7 +1887,7 @@ msgstr ""
 "  --test                ne ĝisdatigi la katalogan dosieron\n"
 "  --version             montri programversion kaj eliri."
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1922,63 +1922,63 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: ne eblas legi (%s) kaj ne eblas krei (%s)"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY sen para END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY sen para START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: dir-dosiero jam ekzistas: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Indiku la Info-dosieron solfoje.\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Troa regulesprimo -- '%s' ignoratas"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Eraro en regulesprimo '%s': %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "troa argumento en komandlinio: '%s'"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr "Mankas enigdosiero; provu '--help' por pluaj informoj."
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr "Mankas dosiero Info-katalogo (dir); provu '--help' por pluaj informoj."
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, c-format
 msgid "Could not read %s."
 msgstr "Ne eblas legi %s."
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "nenia informo por Info-katalogo troviĝis en '%s'"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "troviĝis nenia Info-kataloga informo pri '%s'; nenio forigitas"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2020-10-22 14:08+0200\n"
 "Last-Translator: Francesco Groccia <f.g@disroot.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -409,7 +409,7 @@ msgstr "il valore %s non è valido per la variabile %s"
 msgid "Try --help for more information.\n"
 msgstr "Usare «--help» per maggiori informazioni.\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -555,7 +555,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1732,31 +1732,31 @@ msgstr "Imposta %s al valore (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), righe ----, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: file vuoto"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr "%s per %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\\tUsare «%s --help» per l'elenco completo delle opzioni.\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Uso: %s [OPZIONE]... [INFO-FILE [DIR-FILE]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr "Aggiungi o rimuovi voci nel file INFO-FILE dal file DIR-FILE."
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
@@ -1765,7 +1765,7 @@ msgstr ""
 "info-file»\n"
 "o «--dir-file» (o «--info-dir»), rispettivamente."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1781,7 +1781,7 @@ msgstr ""
 " --calign=COL         formatta la seconda e le successive righe di\n"
 "                        descrizione per iniziare alla colonna COL."
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1808,7 +1808,7 @@ msgstr ""
 "                      equivale a usare l'argomento DIR-FILE.\n"
 " --dry-run           equivale a «--test»."
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1828,7 +1828,7 @@ msgstr ""
 "                      Se non si specifica alcuna voce, sono determinate\n"
 "                       dalle informazioni del file Info stesso."
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1844,7 +1844,7 @@ msgstr ""
 " --item-=TESTO       equivalente a «--entry=TESTO».\n"
 " --keep-old          non sostituire le voci, o rimuovere le sezioni vuote."
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1861,7 +1861,7 @@ msgstr ""
 " --no-indent         non formattare le nuove voci nel DIR-FILE.\n"
 " --quiet             ignora gli avvertimenti."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1898,7 +1898,7 @@ msgstr ""
 "                       di default sarà «Vari» --section R SEC     "
 "equivalente a «--regex=R--section=SEC --add-once»."
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -1908,7 +1908,7 @@ msgstr ""
 " --test              ignora l'aggiornamento del DIR-FILE.\n"
 " --version           mostra le informazioni di versione ed esce."
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1948,65 +1948,65 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: impossibile leggere (%s) e creare (%s)"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY senza la corrispondente END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY senza la corrispondente START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: ha già un DIR-FILE: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Specificare il file Info solo una volta.\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Espressione regolare specificata in più, ignoro «%s»"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Errore nell'espressione regolare «%s»: %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "troppi argomenti sulla riga di comando «%s»"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Nessun file in entrata specificato; usare «--help» per maggiori informazioni."
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "File di indice non specificato; usare «--help» per maggiori informazioni."
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, c-format
 msgid "Could not read %s."
 msgstr "impossibile leggere %s."
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "nessuna voce dell'indice in «%s»"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "nessuna voce trovata per «%s»; nulla da eliminare"

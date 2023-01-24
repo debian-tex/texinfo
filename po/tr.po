@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.7.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2021-06-22 12:11+0300\n"
 "Last-Translator: Mehmet Kececi <mkececi@mehmetkececi.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -413,7 +413,7 @@ msgstr "%s değeri %s değişkeni için geçerli değil"
 msgid "Try --help for more information.\n"
 msgstr "Daha fazla bilgi için --help seçeneğini kullanın.\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -555,7 +555,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1719,32 +1719,32 @@ msgstr "%s'e atanacak değer (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), satır ----, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: boş dosya"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr "%s için %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tSeçeneklerin tam bir listesi için `%s --help' komutunu deneyiniz.\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Kullanım: %s [SEÇENEK]... [INFO-DOSYASI [DİZİN-DOSYASI]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 "DİZİN-DOSYASI Info dizininden INFO-DOSYASI içine girdi ekle ya da çıkar."
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
@@ -1752,7 +1752,7 @@ msgstr ""
 "Eğer sırasıyla --info-file ya da --dir-file (ya da --info-dir) seçenekleri\n"
 "verilmemişse INFO-FILE ve DIR-FILE gerekmektedir."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1766,7 +1766,7 @@ msgstr ""
 " calign=SÜT               tariflerin ikinci ve devam eden satırlarını SÜT\n"
 "                     sütunundan başlatır."
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1795,7 +1795,7 @@ msgstr ""
 "                      argümanını kullanmakla eşdeğerdir.\n"
 " --dry-run           --test ile aynı."
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1814,7 +1814,7 @@ msgstr ""
 "                        Eğer hiçbir girdi belirtmezseniz bunlar, Info\n"
 "                       dosyasının içindeki bilgiden belirlenir."
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1830,7 +1830,7 @@ msgstr ""
 " --item=METİN         --entry=METİN ile aynı.\n"
 " --keep-old          girdileri değiştirmez ya da boş bölümleri silmez."
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1846,7 +1846,7 @@ msgstr ""
 " --no-indent         DİZİN dosyasındaki yeni girdileri biçemlemez.\n"
 " --quiet             uyarıları baskılar."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1879,7 +1879,7 @@ msgstr ""
 "                       bilgiden belirlenir, son varsayılan \"Muhtelif\"dir.\n"
 " --section R BÖLÜM     --regex=R --section=BÖLÜM --add-once ile eşdeğer."
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -1889,7 +1889,7 @@ msgstr ""
 " --test              DİZİN-DOSYASI'nın güncellenmesini engeller.\n"
 " --version           sürüm bilgisini gösterir ve çıkar."
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1925,63 +1925,63 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: (%s) okunamıyor ve (%s) oluşturulamıyor"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "Eşleşen END-INFO-DIR-ENTRY'siz START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "Eşleşen START-INFO-DIR-ENTRY'siz END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: zaten dir dosyası var: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Info dosyasını yalnızca bir kez belirtin.\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Bir başka düzenli ifade belirlendi, `%s' yok sayılıyor"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Düzenli ifadede hata `%s': %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "fazladan komut satırı argümanı `%s'"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr "Girdi dosyası belirtilmemiş; daha fazla bilgi için --help deneyin."
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr "Dizin dosyası belirtilmemiş; daha fazla bilgi için --help deneyin."
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, c-format
 msgid "Could not read %s."
 msgstr "%s okunamıyor."
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s' içinde info dizin girdisi yok"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "`%s' için girdi bulunamadı; hiçbir şey silinmedi"

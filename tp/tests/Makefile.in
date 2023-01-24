@@ -3268,10 +3268,10 @@ other-checks: all
 	$(MAKE) $(AM_MAKEFLAGS) check OTHER_TESTS=yes TESTS='$(type_other_one_test_files_generated_list)' SUBDIRS=
 
 input_file_names_recoded_stamp.txt: $(srcdir)/input/included_latin1.texi
-	if $(PERL) $(srcdir)/../maintain/copy_change_file_name_encoding.pl $(srcdir)/input/included_latin1.texi . ; then echo 'OK' > $@ ; else echo 'FAILED' > $@ ; fi
+	mkdir -p built_input ; if $(PERL) $(srcdir)/../maintain/copy_change_file_name_encoding.pl $(srcdir)/input/included_latin1.texi built_input ; then echo 'OK' > $@ ; else echo 'FAILED' > $@ ; fi
 
 distclean-local:
-	rm -f input_file_names_recoded_stamp.txt included_lat*n1.texi
+	rm -rf input_file_names_recoded_stamp.txt built_input
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

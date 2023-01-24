@@ -1,6 +1,6 @@
 /* man.c: How to read and format man files.
 
-   Copyright 1995-2022 Free Software Foundation, Inc.
+   Copyright 1995-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ static NODE **manpage_nodes = 0;
 size_t manpage_node_index = 0;
 size_t manpage_node_slots = 0;
 
-#if PIPE_USE_FORK
+#if PIPE_USE_FORK && !defined(__sun)
 
 /* Check if a man page exists.  Use "man -w" for this rather than getting
    the contents of the man page.  This is faster if we are running
@@ -109,7 +109,9 @@ check_manpage_node (char *pagename)
   return 0;
 }
 
-#else /* !PIPE_USE_FORK */
+#else /* !PIPE_USE_FORK || defined(__sun) */
+/* We check __sun because 'man -w' has a different meaning on
+   Solaris (update whatis database). */
 
 int
 check_manpage_node (char *pagename)

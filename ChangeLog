@@ -1,3 +1,64 @@
+2023-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	7.0.2 release
+
+2023-01-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	pretest 7.0.1.90
+
+	* NEWS: update
+	* configure.ac: version
+
+2023-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/Makefile.am:
+	Call maintain/copy_change_file_name_encoding.pl to create files
+	in built_input subdirectory.  This stops make program on
+	OpenIndiana 11 gagging immediately in a UTF-8 locale.
+	* tp/tests/run_parser_all.sh: Pass -I built_input to texi2any.
+
+2023-01-04  Patrice Dumas  <pertusus@free.fr>
+
+	* .gitignore: replace tp/tests/included_lat*n1.texi by
+	tp/tests/built_input.
+
+2023-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (check_manpage_node):
+	Disable this code if __sun is defined, to avoid clash with
+	man program on Solaris, where -w means to update the whatis
+	database.  Test failure on OpenSolaris 2022.10 reported by
+	Bruno Haible.
+
+2023-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* install-info/install-info.c (split_entry):
+	Rewrite to silence obnoxious gcc warning about use of strncat.
+
+2022-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi, doc/info-stnd.texi, doc/texi2any_api.texi:
+	Adjust copyright notice slightly to match recommended wording.
+	From Hilmar Preuße.
+
+2022-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am (dist-hook): Do not distribute architecture-
+	dependent gettext_xs.o file.  Report from Hilmar Preuße.
+
+2022-12-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/util.c (text_buffer_iconv): Correctly update arguments
+	for iconv in loop.  Crash for "info groff" reported by Jakub Wilk
+	via Hilmar Preuße <hille42@web.de>.
+
+2022-12-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* install-info/install-info.c (error): Declare as static to
+	avoid clash with error function from glibc, called from gnulib.
+	Report from Sam James <sam@gentoo.org> and suggested solution
+	from Arsen Arsenović <arsen@aarsen.me>.
+
 2022-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	7.0.1 release

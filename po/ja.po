@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2014-11-07 08:03+0000\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -436,7 +436,7 @@ msgstr "変数 %s は変数 %s の値としては無効です"
 msgid "Try --help for more information.\n"
 msgstr "詳しくは --help オプションを試してみてください。\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -621,7 +621,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1854,39 +1854,39 @@ msgstr "%s に値を設定 (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), 行数 ----, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: 空のファイル"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr ""
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\t完全な オプションリストを得るには `%s --help' を実行してください。\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "使用法: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 "Info ディレクトリー DIR-FILE 対して INFO-FILE 項目の追加または削除を行いま"
 "す。"
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 msgstr ""
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1895,7 +1895,7 @@ msgid ""
 "                       start at column COL."
 msgstr ""
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 #, fuzzy
 msgid ""
 " --debug             report what is being done.\n"
@@ -1921,7 +1921,7 @@ msgstr ""
 "                      DIR-FILE 引数の使用と同様。\n"
 " --dry-run           --test と同様。"
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 #, fuzzy
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
@@ -1945,7 +1945,7 @@ msgstr ""
 "                      Info ファイルのベース名が見つからない場合に、最後に\n"
 "                      削除されます。"
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 #, fuzzy
 msgid ""
 " --help              display this help and exit.\n"
@@ -1968,7 +1968,7 @@ msgstr ""
 " --no-indent         DIR ファイルにある新規エントリを整形しない。\n"
 " --quiet             警告を抑止する。"
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 #, fuzzy
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
@@ -1991,7 +1991,7 @@ msgstr ""
 " --no-indent         DIR ファイルにある新規エントリを整形しない。\n"
 " --quiet             警告を抑止する。"
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 #, fuzzy
 #| msgid ""
 #| " --regex=R           put this file's entries in all sections that match "
@@ -2041,7 +2041,7 @@ msgstr ""
 "る。\n"
 " --section R SEC     --regex=R --section=SEC --add-once と同様。"
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -2051,7 +2051,7 @@ msgstr ""
 " --test              DIR-FILE の更新を抑止する。\n"
 " --version           バージョン情報を表示して終了する。"
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, fuzzy, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2089,65 +2089,65 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: (%s) を読み込むことができず、(%s) を作成できませんでした"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY に対応する END-INFO-DIR-ENTRY がありません"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY に対応する START-INFO-DIR-ENTRY がありません"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: 既に dir ファイル %s があります\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Info ファイルは一度だけ指定してください。\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "余分な正規表現が指定されています。`%s' を無視します"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "正規表現 `%s' にエラーがあります: %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "コマンドライン引数が多すぎます `%s'"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "入力ファイルが指定されていません -- 詳しくは --help 付で実行してください。"
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "dir ファイルが指定されていません -- 詳しくは --help 付で実行して下さい。"
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "  @FILE                   オプションを FILE から読み込む\n"
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s' に Info dir 用の項目がありません"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "`%s' 項目が見つかりません -- 何も削除しませんでした"

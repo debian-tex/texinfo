@@ -1199,7 +1199,7 @@
       store.dispatch ({ type: "iframe-ready", id: config.INDEX_ID });
       store.dispatch ({
         type: "echo",
-        msg: "Welcome to Texinfo documentation viewer 7.0.1, type '?' for help."
+        msg: "Welcome to Texinfo documentation viewer 7.0.2, type '?' for help."
       });
 
       /* Call user hook.  */

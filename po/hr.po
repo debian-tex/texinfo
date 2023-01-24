@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo-6.8.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2022-11-06 17:19-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -416,7 +416,7 @@ msgstr "vrijednost %s nije valjana za varijablu %s"
 msgid "Try --help for more information.\n"
 msgstr "Pokušajte --help za više informacija.\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -567,7 +567,7 @@ msgstr ""
 "  info -f ./foo.info           pokaže datoteku ./foo.info, a ne traži "
 "direktorij"
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1729,33 +1729,33 @@ msgstr "Postavi %s na vrijednost (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), redaka ----, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: prazna datoteka"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr "%s za %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tUtipkajte „%s --help“ za kompletni popis opcija.\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Uporaba: %s [OPCIJA]... [INFO-DATOTEKA [DIR-DATOTEKA]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 "Dodaje ili uklanja stavke navedene\n"
 "u INFO-DATOTECI iz DIR-DATOTEKE Info direktorija."
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
@@ -1764,7 +1764,7 @@ msgstr ""
 "biti specificirana opcija (--info-file ili --dir-file (ili --info-dir))\n"
 "koja ih definira."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1777,7 +1777,7 @@ msgstr ""
 " --align=STUPAC      opis novih stavki započeti na STUPCU.\n"
 " --calign=STUPAC     drugi i slijedeći opisni redci započinju na STUPCU."
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1803,7 +1803,7 @@ msgstr ""
 "                       jednako upotrebi argumenta DIR-DATOTEKA.\n"
 " --dry-run           isto kao --test."
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1825,7 +1825,7 @@ msgstr ""
 "                       navedete nijednu stavku, one se određuju iz podataka\n"
 "                       u samoj Info-datoteci."
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1843,7 +1843,7 @@ msgstr ""
 " --keep-old          postojeće stavke ne mijenjati i ne brisati prazne "
 "odlomke."
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1859,7 +1859,7 @@ msgstr ""
 " --no-indent         ne formatirati nove stavke u DIR datoteci.\n"
 " --quiet             izostavi upozorenja."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1896,7 +1896,7 @@ msgstr ""
 "„Miscellaneous“.\n"
 " --section R ODLOMAK  ekvivalentno --regex=R --section=ODLOMAK --add-once."
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -1906,7 +1906,7 @@ msgstr ""
 " --test              ne ažurirati DIR-DATOTEKU.\n"
 " --version           prikaži informacije o inačici i iziđi."
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1942,66 +1942,66 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: nije (bilo) moguće čitati (%s) ni napraviti (%s)"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY nema odgovarajući END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY nema odgovarajući START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: već ima dir datoteku: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Navedi Info-datoteku samo jednom.\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Specificiran je suvišni regularni izraz -- „%s“ je zanemaren"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Greška u regularnom izrazu „%s“: %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "suvišni argument  „%s“ na naredbenom retku"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Nije specificirana ulazna datoteka; pokušajte --help za više informacija."
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Nije specificirana „dir“ datoteka; pokušajte --help za više informacija."
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, c-format
 msgid "Could not read %s."
 msgstr "%s nije (bilo) moguće pročitati."
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr ""
 "u „%s“ nema stavke info dir (stavka koju treba dodati u „dir“ datoteku)"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "nema pronađenih stavki za „%s“; ništa nije izbrisano"

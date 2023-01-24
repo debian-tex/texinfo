@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2018-01-23 10:13+0800\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -459,7 +459,7 @@ msgstr "设定 Info 变量的值"
 msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -631,7 +631,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1861,38 +1861,38 @@ msgstr "将 %s 设定为值 (%s)："
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info：()，行 ----，"
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s：空文件"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, fuzzy, c-format
 #| msgid " for %s"
 msgid "%s for %s"
 msgstr " %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\t试用“%s --help”以获得选项的完整列表。\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "用法: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr "从 Info 目录 DIR-FILE 的 INFO-FILE 文件中添加或移除条目。"
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 msgstr ""
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1901,7 +1901,7 @@ msgid ""
 "                       start at column COL."
 msgstr ""
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 #, fuzzy
 #| msgid ""
 #| "Options:\n"
@@ -1940,7 +1940,7 @@ msgstr ""
 "                      等同于使用 DIR-FILE 参数。\n"
 " --dry-run           等同于 --test。"
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 #, fuzzy
 #| msgid ""
 #| " --entry=TEXT        insert TEXT as an Info directory entry.\n"
@@ -1978,7 +1978,7 @@ msgstr ""
 "                      并且还找不到 Info 文件的目录名，\n"
 "\t\t\t那 TEXT 才会作为最后的删除手段。"
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 #, fuzzy
 #| msgid ""
 #| " --help              display this help and exit.\n"
@@ -2013,7 +2013,7 @@ msgstr ""
 " --no-indent         不要在 DIR 文件中格式化新的条目。\n"
 " --quiet             不要输出警告。"
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 #, fuzzy
 #| msgid ""
 #| " --help              display this help and exit.\n"
@@ -2048,7 +2048,7 @@ msgstr ""
 " --no-indent         不要在 DIR 文件中格式化新的条目。\n"
 " --quiet             不要输出警告。"
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 #, fuzzy
 #| msgid ""
 #| " --regex=R           put this file's entries in all sections that match "
@@ -2094,7 +2094,7 @@ msgstr ""
 "                       自身的信息来决定。\n"
 " --section R SEC     等同于 --regex=R --section=SEC --add-once。"
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -2104,7 +2104,7 @@ msgstr ""
 " --test              不更新 DIR-FILE。\n"
 " --version           显示版本信息并退出。"
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, fuzzy, c-format
 #| msgid ""
 #| "This is the file .../info/dir, which contains the\n"
@@ -2156,64 +2156,64 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, fuzzy, c-format
 #| msgid "%s: could not read (%s) and could not create (%s)\n"
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s：即无法读入 (%s) 也无法创建 (%s)\n"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY 没有匹配的 END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY 没有匹配的 START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: 已经存在了 dir 文件: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s：Info 文件只应该指定一次。\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "指定了额外的正则表达式，忽略 “%s”"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "正则表达式“%s”中存在错误: %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "多余的命令行参数“%s”"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr "没有指定输出文件；试用 --help 以获得更多信息。"
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr "没有指定目录文件；试用 --help 以获得更多信息。"
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, c-format
 msgid "Could not read %s."
 msgstr "无法读取 %s。"
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "“%s”中没有 info 目录条目"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到关于“%s”的条目；未删除"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2017-07-11 14:12+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -417,7 +417,7 @@ msgstr "giá trị %s là không hợp lệ với biến %s"
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “--help” để xem thông tin thêm.\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -558,7 +558,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1714,32 +1714,32 @@ msgstr "Đặt %s thành giá trị (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), dòng  ----, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: tập tin rỗng"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr "%s cho %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr ""
 "\tHãy thử lệnh trợ giúp “%s --help” để xem toàn bộ danh sách tùy chọn.\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Cách dùng: %s [TÙY_CHỌN]… [TẬP_TIN_INFO [TẬP_TIN_THƯ_MỤC]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr "Thêm hoặc gỡ bỏ mục nhập trong TẬP_TIN_INFO vào/khỏi TẬP_TIN_THƯ_MỤC."
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
@@ -1747,7 +1747,7 @@ msgstr ""
 "INFO-FILE và DIR-FILE được yêu cầu trừ phi tùy chọn --info-file\n"
 "hoặc --dir-file (hay --info-dir) được chỉ ra, tương ứng."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1761,7 +1761,7 @@ msgstr ""
 " --calign=CỘT        định dạng các dòng mô tả thứ hai và tiếp sau thành\n"
 "                       bắt đầu tại CỘT."
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1789,7 +1789,7 @@ msgstr ""
 "                      có cùng kết quả với đối số TẬP_TIN_THƯ_MỤC.\n"
 " --dry-run           giống với tùy chọn “--test”."
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1808,7 +1808,7 @@ msgstr ""
 "                      Không ghi rõ mục nhập thì các mục nhập được xác định\n"
 "                      từ thông tin trong tập tin Info chính nó."
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1824,7 +1824,7 @@ msgstr ""
 " --item=VĂN_BẢN      giống “--entry=VĂN_BẢN”.\n"
 " --keep-old          đừng thay thế mục nhập hay gỡ bỏ phần rỗng."
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1841,7 +1841,7 @@ msgstr ""
 " --no-indent         đừng định dạng mục nhập mới trong tập tin THƯ_MỤC\n"
 " --quiet             thu hồi cảnh báo."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1875,7 +1875,7 @@ msgstr ""
 "                        mặc định cuối cùng là \"Miscellaneous\".\n"
 " --section R PHẦN    tương đương “--regex=R --section=PHẦN --add-once”."
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -1885,7 +1885,7 @@ msgstr ""
 " --test              thu hồi nâng cấp TẬP_TIN_THƯ_MỤC.\n"
 " --version           hiển thị thông tin phiên bản rồi thoát."
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1923,71 +1923,71 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: không thể đọc (%s) và không thể tạo (%s)"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr ""
 "Có “START-INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) mà không có “END-INFO-"
 "DIR-ENTRY” (mục nhập thư mục Info kết thúc) tương ứng"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr ""
 "Có “END-INFO-DIR-ENTRY” (mục nhập thư mục Info kết thúc) mà không có “START-"
 "INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) tương ứng"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: đã có tập tin thư mục: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: hãy ghi rõ tập tin Info chỉ một lần.\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Biểu thức chính quy thêm được ghi rõ nên bỏ qua “%s”"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Gặp lỗi trong biểu thức chính quy “%s”: %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "đối số dòng lệnh thừa “%s”"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Chưa ghi rõ tập tin nhập vào; Hãy chạy dùng tùy chọn “--help” để xem thông "
 "tin thêm."
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh trợ giúp “--help” để xem thông "
 "tin thêm."
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, c-format
 msgid "Could not read %s."
 msgstr "Không thể đọc %s."
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "không có mục nhập thư mục Info trong “%s”"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "không tìm thấy mục nhập cho “%s” nên không xóa gì"

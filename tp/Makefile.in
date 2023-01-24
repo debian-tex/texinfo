@@ -3514,6 +3514,7 @@ document_strings_mo_files =  \
 	LocaleData/pt_BR/LC_MESSAGES/$(document_domain).mo \
 	LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo \
 	LocaleData/ro/LC_MESSAGES/$(document_domain).mo \
+	LocaleData/sk/LC_MESSAGES/$(document_domain).mo \
 	LocaleData/sr/LC_MESSAGES/$(document_domain).mo \
 	LocaleData/sv/LC_MESSAGES/$(document_domain).mo \
 	LocaleData/uk/LC_MESSAGES/$(document_domain).mo
@@ -4568,6 +4569,13 @@ LocaleData/ro/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/ro.gmo
 	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/ro.gmo $@
 
+$(srcdir)/../po_document/sk.gmo: $(srcdir)/../po_document/sk.po
+	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) sk.gmo
+
+LocaleData/sk/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/sk.gmo
+	$(MKDIR_P) `dirname $@`
+	$(INSTALL_DATA) $(srcdir)/../po_document/sk.gmo $@
+
 $(srcdir)/../po_document/sr.gmo: $(srcdir)/../po_document/sr.po
 	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) sr.gmo
 
@@ -4666,7 +4674,7 @@ install-exec-hook:
 	-makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; texi2any_f=`echo texi2any| sed -e '$(transform)'`; $(LN_S) $$texi2any_f $(DESTDIR)$(bindir)/$$makeinfo_f
 
 dist-hook:
-	rm -rf `find $(distdir)/maintain/lib -name .git`
+	rm -rf `find $(distdir)/maintain/lib -name .git -o -name gettext_xs.o`
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/

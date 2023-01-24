@@ -1,7 +1,7 @@
 #! /bin/sh
 # texi2dvi --- produce DVI (or PDF) files from Texinfo (or (La)TeX) sources.
 #
-# Copyright 1992-2022 Free Software Foundation, Inc.
+# Copyright 1992-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -195,9 +195,9 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 7.0.1)
+texi2dvi (GNU Texinfo 7.0.2)
 
-Copyright (C) 2022 Free Software Foundation, Inc.
+Copyright (C) 2023 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.

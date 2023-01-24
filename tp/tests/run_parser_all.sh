@@ -399,7 +399,7 @@ while read line; do
     mkdir "${outdir}$dir"
     remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
     echo "$command $dir -> ${outdir}$dir" >> $logfile
-    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --conf-dir $srcdir/../ext -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I .  --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --conf-dir $srcdir/../ext -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . -I built_input --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
     echo "$cmd" >>$logfile
     eval $cmd
     ret=$?

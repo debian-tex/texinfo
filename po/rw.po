@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -461,7 +461,7 @@ msgstr "i Agaciro Bya IMPINDURAGACIRO"
 msgid "Try --help for more information.\n"
 msgstr "Ifashayobora kugirango Birenzeho Ibisobanuro"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -570,7 +570,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 #, fuzzy
 msgid ""
@@ -1875,37 +1875,37 @@ msgstr "Kuri Agaciro"
 msgid "-----Info: (), lines ----, "
 msgstr "-----Imirongo"
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, fuzzy, c-format
 msgid "%s: empty file"
 msgstr "%s:ubusa IDOSIYE"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, fuzzy, c-format
 msgid "%s for %s"
 msgstr "ya:"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, fuzzy, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "kugirango a Byuzuye Urutonde Bya Amahitamo"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr ""
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 msgstr ""
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1914,7 +1914,7 @@ msgid ""
 "                       start at column COL."
 msgstr ""
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1930,7 +1930,7 @@ msgid ""
 " --dry-run           same as --test."
 msgstr ""
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1942,7 +1942,7 @@ msgid ""
 "                       from information in the Info file itself."
 msgstr ""
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1952,7 +1952,7 @@ msgid ""
 " --keep-old          do not replace entries, or remove empty sections."
 msgstr ""
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1962,7 +1962,7 @@ msgid ""
 " --quiet             suppress warnings."
 msgstr ""
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1981,14 +1981,14 @@ msgid ""
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
 " --version           display version information and exit."
 msgstr ""
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, fuzzy, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2012,65 +2012,65 @@ msgstr ""
 "kugirango Itangira i Bikorwa Kanda Imbeba Akabuto 2. ku a Ibikubiyemo Ikintu "
 "Cyangwa Kwambukiranya Kuri Guhitamo"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, fuzzy, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s:OYA Gusoma Na OYA Kurema"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr ""
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr ""
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, fuzzy, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s:IDOSIYE"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, fuzzy, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s:i IDOSIYE Rimwe"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, fuzzy, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Ibanjirije Gushaka Ikurikiranyanyuguti"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, fuzzy, c-format
 msgid "excess command line argument `%s'"
 msgstr "Komandi: Umurongo"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 #, fuzzy
 msgid "No input file specified; try --help for more information."
 msgstr "Iyinjiza IDOSIYE Ifashayobora kugirango Birenzeho Ibisobanuro"
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 #, fuzzy
 msgid "No dir file specified; try --help for more information."
 msgstr "IDOSIYE Ifashayobora kugirango Birenzeho Ibisobanuro"
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "Kurema bushyinguro"
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, fuzzy, c-format
 msgid "no info dir entry in `%s'"
 msgstr "Oya Ibisobanuro Icyinjijwe in"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, fuzzy, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "Oya Ibyinjijwe Byabonetse kugirango Cyasibwe"

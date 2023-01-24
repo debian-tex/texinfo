@@ -9,6 +9,22 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+7.0.2 (22 January 2023)
+This is a bug-fix release with minimal changes.
+
+* texi2any
+  . do not distribute architecture-dependent files
+  . build fixed on OpenIndiana 11
+
+* info
+  . further fix of recoding of UTF-8 files to ASCII
+  . fix check for presence of man pages on Solaris
+
+* install-info
+  . fix build by avoiding function name clash on some platforms
+  . compiler warning re strncat silenced
+
+
 7.0.1 (30 November 2022)
 This is a bug-fix release with minimal changes.
 

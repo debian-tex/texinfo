@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2022-11-30 15:26+0000\n"
+"POT-Creation-Date: 2023-01-22 10:35+0000\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -437,7 +437,7 @@ msgstr "Set nilai %s dari sebuah variabel Info %s"
 msgid "Try --help for more information.\n"
 msgstr "Coba --help untuk informasi lebih lanjut.\n"
 
-#: info/info.c:859 install-info/install-info.c:2206
+#: info/info.c:859 install-info/install-info.c:2207
 #: Pod-Simple-Texinfo/pod2texi.pl:160 tp/texi2any.pl:958
 #, c-format, perl-format
 msgid ""
@@ -627,7 +627,7 @@ msgstr ""
 msgid "  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1159 install-info/install-info.c:576
+#: info/info.c:1159 install-info/install-info.c:578
 #: Pod-Simple-Texinfo/pod2texi.pl:137 tp/texi2any.pl:941
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1881,32 +1881,32 @@ msgstr "Set %s ke nilai (%s): "
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), baris ---, "
 
-#: install-info/install-info.c:289
+#: install-info/install-info.c:291
 #, c-format
 msgid "%s: empty file"
 msgstr "%s: berkas kosong"
 
-#: install-info/install-info.c:291
+#: install-info/install-info.c:293
 #, c-format
 msgid "%s for %s"
 msgstr "%s untuk %s"
 
-#: install-info/install-info.c:493
+#: install-info/install-info.c:495
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tCoba `%s --help' untuk sebuah daftar lengkap dari opsi.\n"
 
-#: install-info/install-info.c:501
+#: install-info/install-info.c:503
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Penggunaan: %s [OPSI]... [BERKAS-INFO [BERKAS-DIR]]\n"
 
-#: install-info/install-info.c:503
+#: install-info/install-info.c:505
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 "Tambah atau hapus masukan dalam BERKAS-INFO dari direktori Info BERKAS-DIR."
 
-#: install-info/install-info.c:504
+#: install-info/install-info.c:506
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
@@ -1914,7 +1914,7 @@ msgstr ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 
-#: install-info/install-info.c:508
+#: install-info/install-info.c:510
 msgid ""
 "Options:\n"
 " --add-once          add only to first matching section, not all.\n"
@@ -1928,7 +1928,7 @@ msgstr ""
 " --calign=COL        format second and subsequent description lines to\n"
 "                       start at column COL."
 
-#: install-info/install-info.c:515
+#: install-info/install-info.c:517
 #, fuzzy
 #| msgid ""
 #| " --debug             report what is being done.\n"
@@ -1966,7 +1966,7 @@ msgstr ""
 "                     sama dengan menggunakan argumen BERKAS-DIR.\n"
 " --dry-run           sama seperti --test."
 
-#: install-info/install-info.c:528
+#: install-info/install-info.c:530
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1992,7 +1992,7 @@ msgstr ""
 "                     masukan ditentukan dari berkas Info tidak ada,\n"
 "                     dan nama dasar dari berkas Info tidak ditemukan juga."
 
-#: install-info/install-info.c:537
+#: install-info/install-info.c:539
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -2009,7 +2009,7 @@ msgstr ""
 " --item=TEKS         sama seperti --entry=TEKS.\n"
 " --keep-old          jangan ganti masukan, atau hapus daerah kosong."
 
-#: install-info/install-info.c:545
+#: install-info/install-info.c:547
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -2026,7 +2026,7 @@ msgstr ""
 " --no-indent         jangan format masukan baru dalam berkas DIR.\n"
 " --quiet             tekan peringatan."
 
-#: install-info/install-info.c:553
+#: install-info/install-info.c:555
 #, fuzzy
 #| msgid ""
 #| " --regex=R           put this file's entries in all sections that match "
@@ -2075,7 +2075,7 @@ msgstr ""
 "                     dari informasi dalam berkas Info itu sendiri.\n"
 " --section R SEC     sam dengan --regex=R --section=SEC --add-once."
 
-#: install-info/install-info.c:569
+#: install-info/install-info.c:571
 msgid ""
 " --silent            suppress warnings.\n"
 " --test              suppress updating of DIR-FILE.\n"
@@ -2085,7 +2085,7 @@ msgstr ""
 " --test              tekang pengupdatan dari BERKAS-DIR.\n"
 " --version           tampilkan informasi versi dan keluar."
 
-#: install-info/install-info.c:602
+#: install-info/install-info.c:604
 #, fuzzy, c-format
 #| msgid ""
 #| "This is the file .../info/dir, which contains the\n"
@@ -2139,68 +2139,68 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:626
+#: install-info/install-info.c:628
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: tidak dapat membaca (%s) dan tidak dapat membuat (%s)"
 
-#: install-info/install-info.c:1119 install-info/install-info.c:1161
+#: install-info/install-info.c:1121 install-info/install-info.c:1163
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY tanpat pasangan END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1156
+#: install-info/install-info.c:1158
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY tanpa pasangan START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2031 install-info/install-info.c:2041
+#: install-info/install-info.c:2032 install-info/install-info.c:2042
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: telah memiliki berkas dir: %s\n"
 
-#: install-info/install-info.c:2137
+#: install-info/install-info.c:2138
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Spesifikasikan berkas Info hanya sekali.\n"
 
-#: install-info/install-info.c:2170
+#: install-info/install-info.c:2171
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Ekstra ekspresi regular dispesifikasikan, mengabaikan `%s'"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2183
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Error dalam ekspresi regular `%s': %s"
 
-#: install-info/install-info.c:2244
+#: install-info/install-info.c:2245
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "kelebihan argumen baris perintah `%s'"
 
-#: install-info/install-info.c:2248
+#: install-info/install-info.c:2249
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Tidak ada berkas masukan dispesifikasikan; coba --help untuk informasi lebih "
 "lanjut."
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2251
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Tidak ada berkas direktori dispesifikasikan; coba --help untuk informasi "
 "lebih lanjut."
 
-#: install-info/install-info.c:2271
+#: install-info/install-info.c:2272
 #, fuzzy, c-format
 #| msgid "could not read %s: %s"
 msgid "Could not read %s."
 msgstr "%s: tidak dapat membuka --css-file: %s"
 
-#: install-info/install-info.c:2418
+#: install-info/install-info.c:2419
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "tidak ada masukan direktori info dalam `%s'"
 
-#: install-info/install-info.c:2666
+#: install-info/install-info.c:2667
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "tidak ada masukan ditemukan untuk `%s'; tidak ada yang dihapus"

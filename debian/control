@@ -12,7 +12,7 @@ Build-Depends: debhelper-compat (= 13),
 	help2man,
 	libperl-dev,
 	desktop-file-utils
-Standards-Version: 4.5.0
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Vcs-Git: https://github.com/debian-tex/texinfo.git
 Vcs-Browser: https://github.com/debian-tex/texinfo

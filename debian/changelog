@@ -1,10 +1,11 @@
-texinfo (7.0.2-1) UNRELEASED; urgency=medium
+texinfo (7.0.2-1) experimental; urgency=medium
 
   * New upstream version.
     - Disable / Delete patches.
     - Remove surplus Lintian overrides.
+  * Update Standards version, no changes needed.
 
- -- Hilmar Preusse <hille42@web.de>  Tue, 24 Jan 2023 10:58:08 +0100
+ -- Hilmar Preusse <hille42@web.de>  Wed, 25 Jan 2023 16:57:59 +0100
 
 texinfo (7.0.1-3) experimental; urgency=medium
 

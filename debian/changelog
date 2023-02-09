@@ -1,3 +1,10 @@
+texinfo (7.0.2-2) UNRELEASED; urgency=medium
+
+  * Patch from upstream: Stop text disappearing in Info nodes
+    with encoding conversion.
+
+ -- Hilmar Preusse <hille42@web.de>  Thu, 09 Feb 2023 09:18:27 +0100
+
 texinfo (7.0.2-1) experimental; urgency=medium
 
   * New upstream version.

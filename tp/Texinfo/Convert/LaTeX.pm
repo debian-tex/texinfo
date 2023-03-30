@@ -187,7 +187,7 @@ use Texinfo::Convert::Converter;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0.2';
+$VERSION = '7.0.3';
 
 # could export convert_to_latex_math
 

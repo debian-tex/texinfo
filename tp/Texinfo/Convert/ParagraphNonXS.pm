@@ -213,7 +213,7 @@ sub _add_next($;$$$)
         $paragraph->{'last_char'} = 'a';
       } elsif ($word =~
            /([^$end_sentence_character$after_punctuation_characters])
-            [$end_sentence_character$after_punctuation_characters]*$/x) {
+            [$end_sentence_character$after_punctuation_characters]*$/ox) {
         # Save the last character in $word before punctuation
         $paragraph->{'last_char'} = $1;
       }
@@ -406,7 +406,7 @@ sub add_text($$)
           and $tmp =~
         /(^|[^\p{Upper}$after_punctuation_characters$end_sentence_character])
          [$after_punctuation_characters]*[$end_sentence_character]
-         [$end_sentence_character\x08$after_punctuation_characters]*$/x) {
+         [$end_sentence_character\x08$after_punctuation_characters]*$/ox) {
         if ($paragraph->{'frenchspacing'}) {
           $paragraph->{'end_sentence'} = -1;
         } else {

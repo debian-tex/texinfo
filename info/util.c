@@ -357,6 +357,8 @@ text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
 
       iconv_ret = iconv (iconv_state, inbuf, inbytesleft,
                          &outptr, &out_bytes_left);
+      text_buffer_off (buf) = outptr - text_buffer_base (buf);
+
       if (iconv_ret != (size_t) -1)
         break; /* success */
 
@@ -366,7 +368,6 @@ text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
       else
         break; /* let calling code deal with it */
     }
-  text_buffer_off (buf) = outptr - text_buffer_base (buf);    
   return iconv_ret;
 }
 

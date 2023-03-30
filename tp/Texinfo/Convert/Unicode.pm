@@ -64,7 +64,7 @@ use vars qw($VERSION @EXPORT_OK %EXPORT_TAGS);
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.2';
+$VERSION = '7.0.3';
 
 
 our %unicode_diacritics = (
@@ -1565,6 +1565,14 @@ sub check_unicode_point_conversion($;$)
 sub string_width($)
 {
   my $string = shift;
+
+  # Optimise for the common case where we can just return the length
+  # of the string.  These regexes are faster than making the substitutions
+  # below.
+  if ($string =~ /^[\p{IsPrint}\p{IsSpace}]*$/
+      and $string !~ /[\p{InFullwidth}\pM]/) {
+    return length($string);
+  }
 
   $string =~ s/\p{InFullwidth}/\x{02}/g;
   $string =~ s/\pM/\x{00}/g;

@@ -1,3 +1,43 @@
+2023-03-26  Gavin Smith <gavinsmith0123@gmail.com>
+
+	7.0.3 release
+
+2023-03-19  Gavin Smith <gavinsmith0123@gmail.com>
+
+	pretest 7.0.2.90
+
+	* NEWS: update
+	* configure.ac: version
+
+2023-02-12  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Non-XS optimizations
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm (_add_next, add_text):
+	Add /o flag to regexes using string interpolation, in order to
+	only compile each regex once.
+	* tp/Texinfo/Convert/Unicode.pm (string_width):
+	Sometimes call 'length' on the string.  This makes a difference
+	because string_width is now called from ParagraphNonXS.pm.
+
+2023-02-12  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ParserNonXS.pm (_process_remaining_on_line):
+	Avoid use of goto statements to reduce program run time.
+
+2022-12-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_beginning_of_line): Avoid freezing
+	at beginning of a file when 'nodeline' is set to 'pointers' (the
+	default).  Report from Justin Anthony LaPolla <justin.lapolla@hpe.com>.
+
+2023-02-08  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Stop text disappearing in Info nodes with encoding conversion
+
+	* info/util.c (text_buffer_iconv): Update text buffer length
+	after error so that we do not write over the same output again.
+
 2023-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	7.0.2 release

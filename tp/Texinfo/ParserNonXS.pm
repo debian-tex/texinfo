@@ -119,7 +119,7 @@ sub import {
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.2';
+$VERSION = '7.0.3';
 
 
 # these are the default values for the parser state
@@ -3920,8 +3920,8 @@ sub _process_remaining_on_line($$$$)
                                         'contents' => [],
                                         'extra' => {'arg_line' => $line }};
       $current = $current->{'contents'}->[-1];
-      $retval = $GET_A_NEW_LINE;
-      goto funexit;
+      return ($current, $line, $source_info, $GET_A_NEW_LINE);
+      # goto funexit;  # used in XS code
     } elsif ($line =~ /^(\s*?)\@end\s+([a-zA-Z][\w-]*)/
              and ($2 eq $current->{'cmdname'})) {
       if ($line =~ s/^(\s+)//) {
@@ -3979,8 +3979,8 @@ sub _process_remaining_on_line($$$$)
     } else {
       push @{$current->{'contents'}},
         { 'text' => $line, 'type' => 'raw', 'parent' => $current };
-      $retval = $GET_A_NEW_LINE;
-      goto funexit;
+      return ($current, $line, $source_info, $GET_A_NEW_LINE);
+      # goto funexit;  # used in XS code
     }
   # in ignored conditional block command
   } elsif ($current->{'cmdname'}
@@ -4030,8 +4030,8 @@ sub _process_remaining_on_line($$$$)
       }
     }
     # anything remaining on the line and any other line is ignored here
-    $retval = $GET_A_NEW_LINE;
-    goto funexit;
+    return ($current, $line, $source_info, $GET_A_NEW_LINE);
+    # goto funexit;  # used in XS code
   # in @verb. type should be 'brace_command_arg'
   } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
          and $current->{'parent'}->{'cmdname'} eq 'verb') {
@@ -4057,8 +4057,8 @@ sub _process_remaining_on_line($$$$)
       push @{$current->{'contents'}},
          { 'text' => $line, 'type' => 'raw', 'parent' => $current };
       print STDERR "LINE VERB: $line" if ($self->{'DEBUG'});
-      $retval = $GET_A_NEW_LINE;
-      goto funexit;
+      return ($current, $line, $source_info, $GET_A_NEW_LINE);
+      # goto funexit;  # used in XS code
     }
   } elsif ($current->{'cmdname'}
            and $block_commands{$current->{'cmdname'}}
@@ -4097,8 +4097,8 @@ sub _process_remaining_on_line($$$$)
       $current = _end_line($self, $current, $source_info);
       # It may happen that there is an @include file on the line, it
       # will be picked up at NEXT_LINE, beginning a new line
-      $retval = $GET_A_NEW_LINE;
-      goto funexit;
+      return ($current, $line, $source_info, $GET_A_NEW_LINE);
+      # goto funexit;  # used in XS code
     }
   }
 
@@ -4158,14 +4158,16 @@ sub _process_remaining_on_line($$$$)
          if ($self->{'DEBUG'});
       # empty result.  It is ignored here.
       if ($expanded eq '') {
-        goto funexit;
+        return ($current, $line, $source_info, $retval);
+        # goto funexit;  # used in XS code
       }
       if ($self->{'MAX_MACRO_CALL_NESTING'}
           and scalar(@{$self->{'macro_stack'}}) > $self->{'MAX_MACRO_CALL_NESTING'}) {
         $self->_line_warn(sprintf(__(
   "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"),
                               $self->{'MAX_MACRO_CALL_NESTING'}), $source_info);
-        goto funexit;
+        return ($current, $line, $source_info, $retval);
+        # goto funexit;  # used in XS code
       }
       if ($expanded_macro->{'cmdname'} eq 'macro') {
         my $found = 0;
@@ -4178,16 +4180,21 @@ sub _process_remaining_on_line($$$$)
             last;
           }
         }
-        goto funexit if ($found);
+        return ($current, $line, $source_info, $retval) if $found;
+        # goto funexit if $found;  # used in XS code
       }
 
       my $expanded_lines = _text_to_lines($expanded);
-      goto funexit if (!@$expanded_lines);
+      return ($current, $line, $source_info, $retval)
+        if (!@$expanded_lines);
+      # goto funexit if (!@$expanded_lines);  # used in XS code
       chomp ($expanded_lines->[-1]);
       pop @$expanded_lines if ($expanded_lines->[-1] eq '');
       print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
                                    ."|\nEND LINES MACRO EXPANSION\n" if ($self->{'DEBUG'});
-      goto funexit if (!@$expanded_lines);
+      return ($current, $line, $source_info, $retval)
+        if (!@$expanded_lines);
+      # goto funexit if (!@$expanded_lines);  # used in XS code
       unshift @{$self->{'macro_stack'}}, $expanded_macro;
       print STDERR "UNSHIFT MACRO_STACK: $expanded_macro->{'args'}->[0]->{'text'}\n"
         if ($self->{'DEBUG'});
@@ -4207,7 +4214,8 @@ sub _process_remaining_on_line($$$$)
       # then put the following macro expansion lines with information on the
       # pending text with information stack
       unshift @{$self->{'input'}->[0]->{'pending'}}, @$new_lines;
-      goto funexit;
+      return ($current, $line, $source_info, $retval);
+      # goto funexit;  # used in XS code
     }
     # expand value if it can change the line.  It considered again
     # together with other commands below for all the other cases
@@ -4223,7 +4231,8 @@ sub _process_remaining_on_line($$$$)
         my $value = $1;
         if (exists($self->{'values'}->{$value})) {
           $line = $self->{'values'}->{$value} . $expanded_line;
-          goto funexit;
+          return ($current, $line, $source_info, $retval);
+          # goto funexit;  # used in XS code
         }
       }
     }
@@ -4275,7 +4284,8 @@ sub _process_remaining_on_line($$$$)
     _abort_empty_line($self, $current);
     my $paragraph = _begin_paragraph($self, $current, $source_info);
     $current = $paragraph if ($paragraph);
-    goto funexit;
+    return ($current, $line, $source_info, $retval);
+    # goto funexit;  # used in XS code
   }
 
   # this situation arises when after the $current->{'cmdname'}
@@ -4504,7 +4514,8 @@ sub _process_remaining_on_line($$$$)
         $self->_line_error(sprintf(__("bad syntax for %c%s"), ord('@'),
                              $command), $source_info);
       }
-      goto funexit;
+      return ($current, $line, $source_info, $retval);
+      # goto funexit;  # used in XS code
     }
 
     if (defined($deprecated_commands{$command})) {
@@ -4528,8 +4539,8 @@ sub _process_remaining_on_line($$$$)
     _check_valid_nesting ($self, $current, $command, $source_info);
 
     if ($def_line_continuation) {
-      $retval = $GET_A_NEW_LINE;
-      goto funexit;
+      return ($current, $line, $source_info, $GET_A_NEW_LINE);
+      # goto funexit;  # used in XS code
     }
 
     unless ($self->{'no_paragraph_commands'}->{$command}) {
@@ -4594,8 +4605,8 @@ sub _process_remaining_on_line($$$$)
           }
           if ($command eq "\n") {
             $current = _end_line($self, $current, $source_info);
-            $retval = $GET_A_NEW_LINE;
-            goto funexit;
+            return ($current, $line, $source_info, $GET_A_NEW_LINE);
+            # goto funexit;  # used in XS code
           }
         } else { # other
           _register_global_command($self, $misc, $source_info);
@@ -4806,15 +4817,15 @@ sub _process_remaining_on_line($$$$)
         }
 
         if ($command eq 'bye') {
-          $retval = $FINISHED_TOTALLY;
-          goto funexit;
+          return ($current, $line, $source_info, $FINISHED_TOTALLY);
+          # goto funexit;  # used in XS code
         }
         # Even if _end_line is called, it is not done since there is
         # no line_arg
         $current = _begin_preformatted($self, $current)
           if ($close_preformatted_commands{$command});
-        $retval = $GET_A_NEW_LINE;
-        goto funexit;
+        return ($current, $line, $source_info, $GET_A_NEW_LINE);
+        # goto funexit;  # used in XS code
       } else {
         # $arg_spec is text, line or a number
         # @item or @itemx in @table
@@ -4963,8 +4974,8 @@ sub _process_remaining_on_line($$$$)
                                               $current, $source_info);
         push @{$current->{'contents'}}, $macro;
         $current = $current->{'contents'}->[-1];
-        $retval = $GET_A_NEW_LINE;
-        goto funexit;
+        return ($current, $line, $source_info, $GET_A_NEW_LINE);
+        # goto funexit;  # used in XS code
       } elsif ($block_commands{$command} eq 'conditional') {
         my $ifvalue_true = 0;
         if ($command eq 'ifclear' or $command eq 'ifset') {
@@ -5037,8 +5048,8 @@ sub _process_remaining_on_line($$$$)
         }
         # FIXME(Karl) ignore what is remaining on the line, to eat
         # the end of line?
-        $retval = $GET_A_NEW_LINE;
-        goto funexit;
+        return ($current, $line, $source_info, $GET_A_NEW_LINE);
+        # goto funexit;  # used in XS code
       } else {
         my $block;
         # a menu command closes a menu_comment, but not the other
@@ -5627,8 +5638,9 @@ sub _process_remaining_on_line($$$$)
                 my $new_text;
                 ($new_text, $source_info) = _next_text($self, $source_info);
                 if (!$new_text) {
-                  $retval = $GET_A_NEW_LINE; # error - unbalanced brace
-                  goto funexit;
+                  # error - unbalanced brace
+                  return ($current, $line, $source_info, $GET_A_NEW_LINE);
+                  # goto funexit;  # used in XS code
                 }
                 $line .= $new_text;
               }
@@ -5662,15 +5674,17 @@ sub _process_remaining_on_line($$$$)
               my $new_text;
               ($new_text, $source_info) = _next_text($self, $source_info);
               if (!$new_text) {
-                $retval = $GET_A_NEW_LINE; # error - unbalanced brace
-                goto funexit;
+                # error - unbalanced brace
+                return ($current, $line, $source_info, $GET_A_NEW_LINE);
+                # goto funexit;  # used in XS code
               }
               $line .= $new_text;
             }
           }
           $current = $current->{'args'}->[-1];
           $line = '}' . $line;
-          goto funexit;
+          return ($current, $line, $source_info, $retval);
+          # goto funexit;  # used in XS code
         }
       }
       $current->{'remaining_args'}--;
@@ -5732,8 +5746,8 @@ sub _process_remaining_on_line($$$$)
       }
     }
     $current = _end_line($self, $current, $source_info);
-    $retval = $GET_A_NEW_LINE;
-    goto funexit;
+    return ($current, $line, $source_info, $GET_A_NEW_LINE);
+    # goto funexit;  # used in XS code
   }
 
  funexit:

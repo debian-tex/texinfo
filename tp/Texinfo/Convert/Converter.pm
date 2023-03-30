@@ -58,7 +58,7 @@ xml_accents
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.2';
+$VERSION = '7.0.3';
 
 my %defaults = (
   'documentlanguage'     => undef,

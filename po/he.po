@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-01-22 10:35+0000\n"
+"POT-Creation-Date: 2023-03-26 12:46+0100\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -156,11 +156,11 @@ msgstr "ןורחא שופיחמ תזורחמ ןיא"
 msgid "memory exhausted"
 msgstr "ילאטריוה ןורכזה רמגנ"
 
-#: info/echo-area.c:290 info/session.c:1371
+#: info/echo-area.c:290 info/session.c:1373
 msgid "Move forward a character"
 msgstr "המידק דחא ות ןמס זזה"
 
-#: info/echo-area.c:309 info/session.c:1384
+#: info/echo-area.c:309 info/session.c:1386
 msgid "Move backward a character"
 msgstr "הרוחא דחא ות ןמס זזה"
 
@@ -172,11 +172,11 @@ msgstr "הרושה תליחתל ןמס זזה"
 msgid "Move to the end of this line"
 msgstr "הרושה ףוסל ןמס זזה"
 
-#: info/echo-area.c:348 info/session.c:1399
+#: info/echo-area.c:348 info/session.c:1401
 msgid "Move forward a word"
 msgstr "המידק תחא הלימ ןמס זזה"
 
-#: info/echo-area.c:388 info/session.c:1413
+#: info/echo-area.c:388 info/session.c:1415
 msgid "Move backward a word"
 msgstr "הרוחא תחא הלימ ןמס זזה"
 
@@ -411,7 +411,7 @@ msgstr ".\"%s\" תזורחמ םיליכמה סקדניא יטירפ%s ןיא"
 msgid "No available info files have '%s' in their indices"
 msgstr ".ולש סקדניאב \"%s\" ליכמ ןאכ םינקתומהמ Info ץבוק ףא"
 
-#: info/info.c:278 info/session.c:2790
+#: info/info.c:278 info/session.c:2792
 #, fuzzy, c-format
 #| msgid "No menu item `%s' in node `%s'."
 msgid "No menu item '%s' in node '%s'"
@@ -1170,116 +1170,116 @@ msgstr "הרושה ףוסל ןמס זזה"
 msgid "Move to the start of the line"
 msgstr "הזז סמן לתחילת השורה"
 
-#: info/session.c:1428
+#: info/session.c:1430
 msgid "Move to the start of this node"
 msgstr "וז הקסיפ תליחתל ןמס זזה"
 
-#: info/session.c:1435
+#: info/session.c:1437
 msgid "Move to the end of this node"
 msgstr "וז הקסיפ ףוסל ןמס זזה"
 
-#: info/session.c:1526
+#: info/session.c:1528
 msgid "Scroll forward in this window"
 msgstr ".הז ןולחב המידק לולג"
 
-#: info/session.c:1540
+#: info/session.c:1542
 msgid "Scroll backward in this window"
 msgstr "הז ןולחב הרוחא לולג"
 
-#: info/session.c:1548
+#: info/session.c:1550
 msgid "Scroll forward in this window and set default window size"
 msgstr "ןולח לדוג לש ח\"מרב ךרע הנשו הז ןולחב המידק לולג"
 
-#: info/session.c:1563
+#: info/session.c:1565
 msgid "Scroll backward in this window and set default window size"
 msgstr "ןולח לדוג לש ח\"מרב ךרע הנשו הז ןולחב הרוחא לולג"
 
-#: info/session.c:1569
+#: info/session.c:1571
 msgid "Scroll forward in this window staying within node"
 msgstr "תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב המידק לולג"
 
-#: info/session.c:1584
+#: info/session.c:1586
 msgid "Scroll backward in this window staying within node"
 msgstr "תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב הרוחא לולג"
 
-#: info/session.c:1592
+#: info/session.c:1594
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "ןולח לדוג לש ח\"מרב ךרע הנשו תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב המידק לולג"
 
-#: info/session.c:1619
+#: info/session.c:1621
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr ""
 "ןולח לדוג לש ח\"מרב ךרע הנשו תיחכונה הקסיפהמ תאצל ילבמ הז ןולחב הרוחא לולג"
 
-#: info/session.c:1625
+#: info/session.c:1627
 msgid "Scroll down by lines"
 msgstr "הטמ יפלכ תורוש N לולג"
 
-#: info/session.c:1631
+#: info/session.c:1633
 msgid "Scroll up by lines"
 msgstr "הלעמ יפלכ תורוש N לולג"
 
-#: info/session.c:1643
+#: info/session.c:1645
 msgid "Scroll down by half screen size"
 msgstr "הטמ יפלכ הגוצת יצח לולג"
 
-#: info/session.c:1670
+#: info/session.c:1672
 msgid "Scroll up by half screen size"
 msgstr "הלעמ יפלכ הגוצת יצח לולג"
 
-#: info/session.c:1676
+#: info/session.c:1678
 msgid "Scroll the other window"
 msgstr "אבה ןולחב לולג"
 
-#: info/session.c:1697
+#: info/session.c:1699
 msgid "Scroll the other window backward"
 msgstr "אבה ןולחב הרוחא לולג"
 
-#: info/session.c:1811
+#: info/session.c:1813
 msgid "Select the next window"
 msgstr "אבה ןולחב רחב"
 
-#: info/session.c:1848
+#: info/session.c:1850
 msgid "Select the previous window"
 msgstr "םדוקה ןולחב רחב"
 
-#: info/session.c:1892
+#: info/session.c:1894
 msgid "Split the current window"
 msgstr "םיינשל יחכונה ןולחה קלח"
 
-#: info/session.c:1937
+#: info/session.c:1939
 msgid "Delete the current window"
 msgstr "יחכונה ןולחה תא רסה"
 
-#: info/session.c:1942
+#: info/session.c:1944
 msgid "Cannot delete a permanent window"
 msgstr "עובק ןולח ריסהל ןתינ אל"
 
-#: info/session.c:1973
+#: info/session.c:1975
 msgid "Delete all other windows"
 msgstr "יחכונה דבלמ תונולחה לכ תא רסה"
 
-#: info/session.c:2019
+#: info/session.c:2021
 msgid "Grow (or shrink) this window"
 msgstr "הז ןולח (ןטקה וא) לדגה"
 
-#: info/session.c:2030
+#: info/session.c:2032
 msgid "Divide the available screen space among the visible windows"
 msgstr "םיגצומה תונולחה לכ ןיב הגוצתה חטש קלח"
 
-#: info/session.c:2037
+#: info/session.c:2039
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "יחכונה ןולחב ושלגש תורוש תגצה בצמ הנש"
 
-#: info/session.c:2191
+#: info/session.c:2193
 msgid "Select this menu item"
 msgstr "טירפתהמ הז ףיעסב רחב"
 
-#: info/session.c:2221
+#: info/session.c:2223
 #, fuzzy, c-format
 #| msgid "There aren't %d items in this menu."
 msgid "There isn't %d item in this menu"
@@ -1287,219 +1287,219 @@ msgid_plural "There aren't %d items in this menu"
 msgstr[0] ".םיפיעס %d ןיא הז טירפתב"
 msgstr[1] ".םיפיעס %d ןיא הז טירפתב"
 
-#: info/session.c:2230
+#: info/session.c:2232
 msgid "Select the last item in this node's menu"
 msgstr "וזה הקסיפה טירפתמ ןורחאה ףיעסב רחב"
 
-#: info/session.c:2336 info/session.c:2337
+#: info/session.c:2338 info/session.c:2339
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menu item (%s): "
 
-#: info/session.c:2340
+#: info/session.c:2342
 msgid "Menu item: "
 msgstr "Menu item: "
 
-#: info/session.c:2347 info/session.c:2348
+#: info/session.c:2349 info/session.c:2350
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Follow xref (%s): "
 
-#: info/session.c:2351
+#: info/session.c:2353
 msgid "Follow xref: "
 msgstr "Follow xref: "
 
-#: info/session.c:2428
+#: info/session.c:2430
 #, fuzzy, c-format
 #| msgid "The reference disappeared! (%s)."
 msgid "The reference disappeared! (%s)"
 msgstr "!םלענ (%s) רושיקה לש דעיה"
 
-#: info/session.c:2440
+#: info/session.c:2442
 msgid "Read a menu item and select its node"
 msgstr "המיאתמה הקסיפל רובעו טירפתמ ףיעס םש ארק"
 
-#: info/session.c:2465
+#: info/session.c:2467
 msgid "Read a footnote or cross reference and select its node"
 msgstr "המיאתמה הקסיפל רובעו רושיק וא הרעה לש םש ארק"
 
-#: info/session.c:2488
+#: info/session.c:2490
 msgid "Move to the start of this node's menu"
 msgstr "וז הקסיפב טירפתה תליחתל ןמס זזה"
 
-#: info/session.c:2510
+#: info/session.c:2512
 msgid "Visit as many menu items at once as possible"
 msgstr "הז טירפתמ םיפיעס לש רשפאה לככ בר רפסמ גצה"
 
-#: info/session.c:2610
+#: info/session.c:2612
 msgid "Move to the previous cross reference"
 msgstr "םדוקה רושיקל ןמס זזה"
 
-#: info/session.c:2673
+#: info/session.c:2675
 msgid "Move to the next cross reference"
 msgstr "אבה רושיקל ןמס זזה"
 
-#: info/session.c:2734
+#: info/session.c:2736
 msgid "Select reference or menu item appearing on this line"
 msgstr "תיחכונה הרושב עיפומה טירפתמ ףיעס וא רושיק רחא בוקע"
 
-#: info/session.c:2768
+#: info/session.c:2770
 #, fuzzy, c-format
 #| msgid "No menu in node `%s'."
 msgid "No menu in node '%s'"
 msgstr ".םיטירפת `%s' ןיא הקסיפב"
 
-#: info/session.c:2815
+#: info/session.c:2817
 #, fuzzy, c-format
 #| msgid "Unable to find node referenced by `%s' in `%s'."
 msgid "Unable to find node referenced by '%s' in '%s'"
 msgstr ".`%s' ףיעסב הילא רשקמ `%s'-ב טירפתה רשא הקסיפ יתאצמ אל"
 
-#: info/session.c:2871
+#: info/session.c:2873
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "םהירחא בוקעו dir-מ הליחתמה טירפת יפיעס תרדיס ארק"
 
-#: info/session.c:2873
+#: info/session.c:2875
 msgid "Follow menus: "
 msgstr "Follow menus: "
 
-#: info/session.c:2978
+#: info/session.c:2980
 msgid "Select the Next node"
 msgstr "האבה הקסיפב רובע"
 
-#: info/session.c:2985
+#: info/session.c:2987
 msgid "Select the Prev node"
 msgstr "תמדוקה הקסיפל רובע"
 
-#: info/session.c:2992
+#: info/session.c:2994
 msgid "Select the Up node"
 msgstr "לעמש הקסיפל רובע"
 
-#: info/session.c:2998
+#: info/session.c:3000
 msgid "Select the last node in this file"
 msgstr "הז ךמסמב הנורחאה הקסיפל רובע"
 
-#: info/session.c:3025 info/session.c:3058
+#: info/session.c:3027 info/session.c:3060
 msgid "This window has no additional nodes"
 msgstr "הז ןולחב תואקסיפ רתוי ןיא"
 
-#: info/session.c:3031
+#: info/session.c:3033
 msgid "Select the first node in this file"
 msgstr "הז ךמסמב הנושארה הקסיפל רובע"
 
-#: info/session.c:3165
+#: info/session.c:3167
 #, fuzzy
 #| msgid "No more nodes within this document."
 msgid "No more nodes within this document"
 msgstr ".הז ךמסמב תואקסיפ רתוי ןיא"
 
-#: info/session.c:3209 info/session.c:3256
+#: info/session.c:3211 info/session.c:3258
 #, fuzzy
 #| msgid "No `Prev' or `Up' for this node within this document."
 msgid "No 'Prev' or 'Up' for this node within this document"
 msgstr ".וז הקסיפ רובע `Up'-ו `Prev' ללוכ וניא הז ךמסמ"
 
-#: info/session.c:3269
+#: info/session.c:3271
 msgid "Move forwards or down through node structure"
 msgstr ".תואקסיפה הנבמב רתוי קומע וא המידק עונ"
 
-#: info/session.c:3286
+#: info/session.c:3288
 msgid "Move backwards or up through node structure"
 msgstr ".תואקסיפה הנבמב הלעמ יפלכ וא הרוחא עונ"
 
-#: info/session.c:3309
+#: info/session.c:3311
 msgid "Read a node name and select it"
 msgstr "הילא רובעו הקסיפ לש םש ארק"
 
-#: info/session.c:3363 info/session.c:3367
+#: info/session.c:3365 info/session.c:3369
 msgid "Goto node: "
 msgstr "Goto node: "
 
-#: info/session.c:3546
+#: info/session.c:3548
 msgid "Find the node describing program invocation"
 msgstr "תינכתה ץירהל דציכ תראתמה הקסיפה תא אצמ"
 
-#: info/session.c:3548
+#: info/session.c:3550
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Find Invocation node of [%s]: "
 
-#: info/session.c:3594
+#: info/session.c:3596
 msgid "Read a manpage reference and select it"
 msgstr "ותוא גצהו manpage-ל היינפה ארק"
 
-#: info/session.c:3598
+#: info/session.c:3600
 msgid "Get Manpage: "
 msgstr "Get Manpage: "
 
-#: info/session.c:3619
+#: info/session.c:3621
 #, fuzzy
 #| msgid "Select the node `Top' in this file"
 msgid "Select the node 'Top' in this file"
 msgstr "הז ךמסמב (`Top') תישארה הקסיפל רובע"
 
-#: info/session.c:3625
+#: info/session.c:3627
 #, fuzzy
 #| msgid "Select the node `(dir)'"
 msgid "Select the node '(dir)'"
 msgstr "`(dir)' הקסיפל רובע"
 
-#: info/session.c:3631
+#: info/session.c:3633
 msgid "Show full file name of node being displayed"
 msgstr ""
 
-#: info/session.c:3648
+#: info/session.c:3650
 msgid "Select the most recently selected node"
 msgstr "הגצוהש הנורחאה הקסיפל רוזח"
 
-#: info/session.c:3653
+#: info/session.c:3655
 msgid "No earlier node in history"
 msgstr ""
 
-#: info/session.c:3657
+#: info/session.c:3659
 msgid "Read the name of a file and select it"
 msgstr "ותוא גצהו ץבוק לש םש ארק"
 
-#: info/session.c:3661
+#: info/session.c:3663
 msgid "Find file: "
 msgstr "Find file: "
 
-#: info/session.c:3678
+#: info/session.c:3680
 #, fuzzy, c-format
 #| msgid "Cannot find `%s'."
 msgid "Cannot find '%s'"
 msgstr ".אצמנ אל `%s' ץבוק"
 
-#: info/session.c:3759
+#: info/session.c:3761
 #, fuzzy, c-format
 #| msgid "Could not create output file `%s'."
 msgid "Could not create output file '%s'"
 msgstr ".`%s' טלפ ץבוק תריציב הלקת"
 
-#: info/session.c:3785
+#: info/session.c:3787
 #, fuzzy, c-format
 #| msgid "error writing to `%s'"
 msgid "error writing to %s: %s"
 msgstr "`%s'-ל הביתכב הלקת"
 
-#: info/session.c:3794
+#: info/session.c:3796
 #, c-format
 msgid "closing %s"
 msgstr ""
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3834
+#: info/session.c:3836
 #, fuzzy, c-format
 #| msgid "Writing node %s..."
 msgid "writing node %s..."
 msgstr "`%s' הקסיפ טלפ"
 
-#: info/session.c:3880
+#: info/session.c:3882
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "INFO_PRINT_COMMAND ךרד וז הקסיפ ןכות ספדה"
 
-#: info/session.c:3908
+#: info/session.c:3910
 #, fuzzy, c-format
 #| msgid "Cannot open pipe to `%s'."
 msgid "Cannot open pipe to '%s'"
@@ -1507,7 +1507,7 @@ msgstr ".`%s'-ל קיפא תחיתפב הלקת"
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3913
+#: info/session.c:3915
 #, fuzzy, c-format
 #| msgid "Printing node %s..."
 msgid "printing node %s..."
@@ -1515,60 +1515,60 @@ msgstr "%s הקסיפ תספדה"
 
 # No ellipsis because that would look awkward when the translation of
 # "Done." is appended.
-#: info/session.c:3921
+#: info/session.c:3923
 #, fuzzy, c-format
 #| msgid "Printing node %s..."
 msgid "finished printing node %s"
 msgstr "%s הקסיפ תספדה"
 
-#: info/session.c:3953
+#: info/session.c:3955
 msgid "Toggle the usage of regular expressions in searches"
 msgstr ""
 
-#: info/session.c:3957
+#: info/session.c:3959
 msgid "Using regular expressions for searches"
 msgstr ""
 
-#: info/session.c:3958
+#: info/session.c:3960
 msgid "Using literal strings for searches"
 msgstr ""
 
-#: info/session.c:4161
+#: info/session.c:4163
 msgid "Search continued from the end of the document"
 msgstr ""
 
-#: info/session.c:4166
+#: info/session.c:4168
 #, fuzzy
 #| msgid "Kill to the beginning of the line"
 msgid "Search continued from the beginning of the document"
 msgstr "הרוש תליחת דע קחמ"
 
-#: info/session.c:4183
+#: info/session.c:4185
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "... %s ץבוק-תת קרוס"
 
-#: info/session.c:4224 info/session.c:4490 info/session.c:4603
+#: info/session.c:4226 info/session.c:4492 info/session.c:4605
 #, fuzzy
 #| msgid "Search failed."
 msgid "Search failed"
 msgstr ".האצמנ אל תזורחמה"
 
-#: info/session.c:4241
+#: info/session.c:4243
 #, fuzzy, c-format
 #| msgid "%s%sfor string [%s]: "
 msgid "%s%s%s [%s]: "
 msgstr "%s%sfor string [%s]: "
 
-#: info/session.c:4242 info/session.c:4248
+#: info/session.c:4244 info/session.c:4250
 msgid "Regexp search"
 msgstr ""
 
-#: info/session.c:4242 info/session.c:4248
+#: info/session.c:4244 info/session.c:4250
 msgid "Search"
 msgstr "Search"
 
-#: info/session.c:4243 info/session.c:4249
+#: info/session.c:4245 info/session.c:4251
 #, fuzzy
 #| msgid " case-sensitively "
 msgid " case-sensitively"
@@ -1576,163 +1576,163 @@ msgstr " case-sensitively "
 
 # The following 4 are untranslated because they are used with the
 # format string above in a prompt, and we don't translate prompts.
-#: info/session.c:4244 info/session.c:4250
+#: info/session.c:4246 info/session.c:4252
 #, fuzzy
 #| msgid "Search backward"
 msgid " backward"
 msgstr "Search backward"
 
-#: info/session.c:4247
+#: info/session.c:4249
 #, c-format
 msgid "%s%s%s: "
 msgstr ""
 
-#: info/session.c:4267
+#: info/session.c:4269
 msgid "Search string too short"
 msgstr ""
 
-#: info/session.c:4461
+#: info/session.c:4463
 #, c-format
 msgid "Going back to last match from %s"
 msgstr ""
 
-#: info/session.c:4490 info/session.c:4603
+#: info/session.c:4492 info/session.c:4605
 msgid "No more matches"
 msgstr ""
 
-#: info/session.c:4630
+#: info/session.c:4632
 msgid "Search this node and subnodes for a string"
 msgstr ""
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4637
+#: info/session.c:4639
 #, fuzzy, c-format
 #| msgid "Searching subfile %s ..."
 msgid "Search under %s: "
 msgstr "... %s ץבוק-תת קרוס"
 
-#: info/session.c:4652
+#: info/session.c:4654
 msgid "Go to next match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4656 info/session.c:4668
+#: info/session.c:4658 info/session.c:4670
 msgid "No active search"
 msgstr ""
 
-#: info/session.c:4664
+#: info/session.c:4666
 msgid "Go to previous match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4677
+#: info/session.c:4679
 msgid "Read a string and search for it case-sensitively"
 msgstr "תוישירב תובשחתה ךות התוא שפחו תזורחמ ארק"
 
-#: info/session.c:4682
+#: info/session.c:4684
 msgid "Read a string and search for it"
 msgstr "התוא שפחו תזורחמ ארק"
 
-#: info/session.c:4688
+#: info/session.c:4690
 msgid "Read a string and search backward for it"
 msgstr "הרוחא התוא שפחו תזורחמ ארק"
 
-#: info/session.c:4696
+#: info/session.c:4698
 msgid "Repeat last search in the same direction"
 msgstr "ןוויכ ותואב ןורחא שופיח לע רוזח"
 
-#: info/session.c:4710 info/session.c:4761
+#: info/session.c:4712 info/session.c:4763
 msgid "No previous search string"
 msgstr "ןורחא שופיחמ תזורחמ ןיא"
 
-#: info/session.c:4747
+#: info/session.c:4749
 msgid "Repeat last search in the reverse direction"
 msgstr "ךופה ןוויכב ןורחא שופיח לע רוזח"
 
-#: info/session.c:4800
+#: info/session.c:4802
 msgid "Clear displayed search matches"
 msgstr ""
 
-#: info/session.c:4816 info/session.c:4822
+#: info/session.c:4818 info/session.c:4824
 msgid "Search interactively for a string as you type it"
 msgstr "התוא ה/דילקמ ה/תאש ידכ ךות תזורחמ שפח"
 
-#: info/session.c:4942
+#: info/session.c:4944
 #, fuzzy
 #| msgid "I-search backward: "
 msgid "Regexp I-search backward: "
 msgstr "I-search backward: "
 
-#: info/session.c:4943
+#: info/session.c:4945
 msgid "I-search backward: "
 msgstr "I-search backward: "
 
-#: info/session.c:4945
+#: info/session.c:4947
 #, fuzzy
 #| msgid "I-search: "
 msgid "Regexp I-search: "
 msgstr "I-search: "
 
-#: info/session.c:4946
+#: info/session.c:4948
 msgid "I-search: "
 msgstr "I-search: "
 
 # Untranslated because is used with the I-search: prompt.
-#: info/session.c:4971 info/session.c:4974
+#: info/session.c:4973 info/session.c:4976
 msgid "Failing "
 msgstr "Failing "
 
-#: info/session.c:5339
+#: info/session.c:5341
 msgid "Cancel current operation"
 msgstr "תיחכונ הלועפ לטב"
 
-#: info/session.c:5346
+#: info/session.c:5348
 msgid "Quit"
 msgstr "לטוב"
 
-#: info/session.c:5351
+#: info/session.c:5353
 #, fuzzy
 #| msgid "display version information and exit"
 msgid "Display version of Info being run"
 msgstr "אצו תינכתה תסריג לע עדימ גצה"
 
-#: info/session.c:5353
+#: info/session.c:5355
 #, c-format
 msgid "GNU Info version %s"
 msgstr ""
 
-#: info/session.c:5358
+#: info/session.c:5360
 msgid "Redraw the display"
 msgstr "הגוצת שדח"
 
-#: info/session.c:5395
+#: info/session.c:5397
 msgid "Quit using Info"
 msgstr "Info תינכותמ אצ"
 
-#: info/session.c:5411
+#: info/session.c:5413
 msgid "Run command bound to this key's lowercase variant"
 msgstr "הז שקמ לש תונטק תויתוא תסריגל הרושקה הדוקפ לעפה"
 
-#: info/session.c:5422
+#: info/session.c:5424
 #, fuzzy, c-format
 #| msgid "Unknown command (%s)."
 msgid "Unknown command (%s)"
 msgstr ".(%s) תרכומ-יתלב הדוקפ"
 
-#: info/session.c:5425
+#: info/session.c:5427
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" היוגש הדוקפ"
 
-#: info/session.c:5426
+#: info/session.c:5428
 #, fuzzy, c-format
 #| msgid "\"%s\" is invalid"
 msgid "'%s' is invalid"
 msgstr "\"%s\" היוגש הדוקפ"
 
-#: info/session.c:5744
+#: info/session.c:5746
 msgid "Add this digit to the current numeric argument"
 msgstr "יחכונ ירמונ טנמוגראל וז הרפס ףסוה"
 
-#: info/session.c:5751
+#: info/session.c:5753
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "4-ב םייק ךרע לופכ וא ,ירמונ טנמוגרא לש הדלקה לחתה"
 
@@ -2366,7 +2366,7 @@ msgstr "@image רובע `%s' ץבוק תאירקב (%s) הלקת"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image רובע `%s' ץבוק תאירקב (%s) הלקת"
 
-#: tp/Texinfo/Convert/DocBook.pm:1386 tp/Texinfo/ParserNonXS.pm:5478
+#: tp/Texinfo/Convert/DocBook.pm:1386 tp/Texinfo/ParserNonXS.pm:5489
 #: tp/Texinfo/XS/parsetexi/separator.c:415
 #, fuzzy
 #| msgid "No node name specified for `%c%s' command"
@@ -2682,16 +2682,16 @@ msgstr ""
 msgid "bad syntax for @%s argument: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:1241 tp/Texinfo/ParserNonXS.pm:4983
-#: tp/Texinfo/ParserNonXS.pm:5010 tp/Texinfo/ParserNonXS.pm:5856
-#: tp/Texinfo/ParserNonXS.pm:5869 tp/Texinfo/ParserNonXS.pm:5883
+#: tp/Texinfo/ParserNonXS.pm:1241 tp/Texinfo/ParserNonXS.pm:4994
+#: tp/Texinfo/ParserNonXS.pm:5021 tp/Texinfo/ParserNonXS.pm:5870
+#: tp/Texinfo/ParserNonXS.pm:5883 tp/Texinfo/ParserNonXS.pm:5897
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "םש שרוד %c%s"
 
-#: tp/Texinfo/ParserNonXS.pm:1245 tp/Texinfo/ParserNonXS.pm:4986
-#: tp/Texinfo/ParserNonXS.pm:5013 tp/Texinfo/ParserNonXS.pm:5859
-#: tp/Texinfo/ParserNonXS.pm:5872 tp/Texinfo/ParserNonXS.pm:5886
+#: tp/Texinfo/ParserNonXS.pm:1245 tp/Texinfo/ParserNonXS.pm:4997
+#: tp/Texinfo/ParserNonXS.pm:5024 tp/Texinfo/ParserNonXS.pm:5873
+#: tp/Texinfo/ParserNonXS.pm:5886 tp/Texinfo/ParserNonXS.pm:5900
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:809
 #: tp/Texinfo/XS/parsetexi/macro.c:99
 #, fuzzy, c-format, perl-format
@@ -2750,8 +2750,8 @@ msgstr ""
 msgid "no matching `%cend %s'"
 msgstr "םאות `%cend %s' רסח"
 
-#: tp/Texinfo/ParserNonXS.pm:1833 tp/Texinfo/ParserNonXS.pm:5318
-#: tp/Texinfo/ParserNonXS.pm:5563
+#: tp/Texinfo/ParserNonXS.pm:1833 tp/Texinfo/ParserNonXS.pm:5329
+#: tp/Texinfo/ParserNonXS.pm:5574
 #, fuzzy, perl-format
 #| msgid "Misplaced %c"
 msgid "misplaced %c"
@@ -2811,7 +2811,7 @@ msgstr ""
 msgid "empty multitable"
 msgstr "קיר וניה %s ץבוק"
 
-#: tp/Texinfo/ParserNonXS.pm:3125 tp/Texinfo/ParserNonXS.pm:5954
+#: tp/Texinfo/ParserNonXS.pm:3125 tp/Texinfo/ParserNonXS.pm:5968
 #: tp/Texinfo/XS/parsetexi/end_line.c:313
 #: tp/Texinfo/XS/parsetexi/end_line.c:1128
 #, fuzzy, c-format, perl-format
@@ -2819,8 +2819,8 @@ msgstr "קיר וניה %s ץבוק"
 msgid "superfluous argument to @%s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: tp/Texinfo/ParserNonXS.pm:3132 tp/Texinfo/ParserNonXS.pm:5975
-#: tp/Texinfo/ParserNonXS.pm:5995 tp/Texinfo/XS/parsetexi/end_line.c:1142
+#: tp/Texinfo/ParserNonXS.pm:3132 tp/Texinfo/ParserNonXS.pm:5989
+#: tp/Texinfo/ParserNonXS.pm:6009 tp/Texinfo/XS/parsetexi/end_line.c:1142
 #, fuzzy, c-format, perl-format
 #| msgid "Bad argument to %c%s"
 msgid "bad argument to @%s"
@@ -2843,7 +2843,7 @@ msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "%s תינכת רובע טנמוגרא לבקמ וניא `--%s' ןייפאמ\n"
 
 #: tp/Texinfo/ParserNonXS.pm:3273 tp/Texinfo/ParserNonXS.pm:3440
-#: tp/Texinfo/ParserNonXS.pm:5946 tp/Texinfo/XS/parsetexi/end_line.c:306
+#: tp/Texinfo/ParserNonXS.pm:5960 tp/Texinfo/XS/parsetexi/end_line.c:306
 #: tp/Texinfo/XS/parsetexi/end_line.c:1340
 #: tp/Texinfo/XS/parsetexi/end_line.c:1732
 #, fuzzy, c-format, perl-format
@@ -2858,9 +2858,9 @@ msgid "unknown @end %s"
 msgstr "`%s' רכומ-יתלב סקדניא"
 
 #: tp/Texinfo/ParserNonXS.pm:3314 tp/Texinfo/ParserNonXS.pm:3407
-#: tp/Texinfo/ParserNonXS.pm:6046 tp/Texinfo/ParserNonXS.pm:6093
-#: tp/Texinfo/ParserNonXS.pm:6122 tp/Texinfo/ParserNonXS.pm:6153
-#: tp/Texinfo/ParserNonXS.pm:6231 tp/Texinfo/XS/parsetexi/end_line.c:522
+#: tp/Texinfo/ParserNonXS.pm:6060 tp/Texinfo/ParserNonXS.pm:6107
+#: tp/Texinfo/ParserNonXS.pm:6136 tp/Texinfo/ParserNonXS.pm:6167
+#: tp/Texinfo/ParserNonXS.pm:6245 tp/Texinfo/XS/parsetexi/end_line.c:522
 #: tp/Texinfo/XS/parsetexi/end_line.c:590
 #: tp/Texinfo/XS/parsetexi/end_line.c:1660
 #, fuzzy, c-format, perl-format
@@ -2957,321 +2957,321 @@ msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4166 tp/Texinfo/XS/parsetexi/macro.c:564
+#: tp/Texinfo/ParserNonXS.pm:4167 tp/Texinfo/XS/parsetexi/macro.c:564
 #, c-format, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4175 tp/Texinfo/XS/parsetexi/macro.c:574
+#: tp/Texinfo/ParserNonXS.pm:4177 tp/Texinfo/XS/parsetexi/macro.c:574
 #, c-format, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4260 tp/Texinfo/ParserNonXS.pm:4319
-#: tp/Texinfo/ParserNonXS.pm:4349 tp/Texinfo/XS/parsetexi/parser.c:1530
+#: tp/Texinfo/ParserNonXS.pm:4269 tp/Texinfo/ParserNonXS.pm:4329
+#: tp/Texinfo/ParserNonXS.pm:4359 tp/Texinfo/XS/parsetexi/parser.c:1530
 #: tp/Texinfo/XS/parsetexi/parser.c:1598 tp/Texinfo/XS/parsetexi/parser.c:1640
 #, fuzzy, c-format, perl-format
 #| msgid "%c%s expected `{...}'"
 msgid "@%s expected braces"
 msgstr "`{...}'-ל הפיצ %c%s"
 
-#: tp/Texinfo/ParserNonXS.pm:4272 tp/Texinfo/XS/parsetexi/parser.c:1540
+#: tp/Texinfo/ParserNonXS.pm:4281 tp/Texinfo/XS/parsetexi/parser.c:1540
 #, fuzzy, c-format, perl-format
 #| msgid "Unknown command `%s'"
 msgid "unknown command `%s'"
 msgstr "`%s' תרכומ-יתלב הארוה"
 
-#: tp/Texinfo/ParserNonXS.pm:4303 tp/Texinfo/XS/parsetexi/parser.c:1576
+#: tp/Texinfo/ParserNonXS.pm:4313 tp/Texinfo/XS/parsetexi/parser.c:1576
 #, c-format, perl-format
 msgid "command `@%s' must not be followed by new line"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4343 tp/Texinfo/ParserNonXS.pm:5444
+#: tp/Texinfo/ParserNonXS.pm:4353 tp/Texinfo/ParserNonXS.pm:5455
 #, fuzzy, perl-format
 #| msgid "%c%s expects `i' or `j' as argument, not `%c'"
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "`j' וא `i' תויהל בייח רשא ,%c%s לש טנמוגרא תויהל םיאתמ וניא `%c'"
 
-#: tp/Texinfo/ParserNonXS.pm:4488 tp/Texinfo/XS/parsetexi/parser.c:1693
+#: tp/Texinfo/ParserNonXS.pm:4498 tp/Texinfo/XS/parsetexi/parser.c:1693
 #, c-format, perl-format
 msgid "undefined flag: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4504
+#: tp/Texinfo/ParserNonXS.pm:4514
 #, fuzzy, perl-format
 #| msgid "Bad argument to %c%s"
 msgid "bad syntax for %c%s"
 msgstr "%c%s-ל יוגש טנמוגרא"
 
-#: tp/Texinfo/ParserNonXS.pm:4511
+#: tp/Texinfo/ParserNonXS.pm:4522
 #, perl-format
 msgid "%c%s is obsolete"
 msgstr "ןשוימ וניה %c%s"
 
-#: tp/Texinfo/ParserNonXS.pm:4524 tp/Texinfo/XS/parsetexi/parser.c:1784
+#: tp/Texinfo/ParserNonXS.pm:4535 tp/Texinfo/XS/parsetexi/parser.c:1784
 #, fuzzy, c-format, perl-format
 #| msgid "Kill to the beginning of the line"
 msgid "@%s should only appear at the beginning of a line"
 msgstr "הרוש תליחת דע קחמ"
 
-#: tp/Texinfo/ParserNonXS.pm:4584 tp/Texinfo/XS/parsetexi/handle_commands.c:100
+#: tp/Texinfo/ParserNonXS.pm:4595 tp/Texinfo/XS/parsetexi/handle_commands.c:100
 #, c-format, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4592
+#: tp/Texinfo/ParserNonXS.pm:4603
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4621 tp/Texinfo/ParserNonXS.pm:4629
+#: tp/Texinfo/ParserNonXS.pm:4632 tp/Texinfo/ParserNonXS.pm:4640
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:149
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:158
 #, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: tp/Texinfo/ParserNonXS.pm:4636 tp/Texinfo/XS/parsetexi/handle_commands.c:186
+#: tp/Texinfo/ParserNonXS.pm:4647 tp/Texinfo/XS/parsetexi/handle_commands.c:186
 #, fuzzy, c-format, perl-format
 #| msgid "%s: empty file"
 msgid "@%s in empty multitable"
 msgstr "קיר וניה %s ץבוק"
 
-#: tp/Texinfo/ParserNonXS.pm:4642 tp/Texinfo/XS/parsetexi/handle_commands.c:194
+#: tp/Texinfo/ParserNonXS.pm:4653 tp/Texinfo/XS/parsetexi/handle_commands.c:194
 msgid "@tab before @item"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4645 tp/Texinfo/XS/parsetexi/handle_commands.c:198
+#: tp/Texinfo/ParserNonXS.pm:4656 tp/Texinfo/XS/parsetexi/handle_commands.c:198
 #, fuzzy, c-format, perl-format
 #| msgid "Too many columns in multitable item (max %d)"
 msgid "too many columns in multitable item (max %d)"
 msgstr "(%d דע רתומ) multitable לש @item-ב תודומע ידמ רתוי"
 
-#: tp/Texinfo/ParserNonXS.pm:4676 tp/Texinfo/XS/parsetexi/handle_commands.c:242
+#: tp/Texinfo/ParserNonXS.pm:4687 tp/Texinfo/XS/parsetexi/handle_commands.c:242
 msgid "ignoring @tab outside of multitable"
 msgstr "multitable-ל ץוחמ @tab-מ יתמלעתה"
 
-#: tp/Texinfo/ParserNonXS.pm:4680 tp/Texinfo/ParserNonXS.pm:4829
+#: tp/Texinfo/ParserNonXS.pm:4691 tp/Texinfo/ParserNonXS.pm:4840
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:247
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:489
 #, c-format, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4724
+#: tp/Texinfo/ParserNonXS.pm:4735
 #, fuzzy, perl-format
 #| msgid "@%s not meaningful inside `@%s' block"
 msgid "@%s not allowed inside `@%s' block"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: tp/Texinfo/ParserNonXS.pm:4841 tp/Texinfo/ParserNonXS.pm:5164
+#: tp/Texinfo/ParserNonXS.pm:4852 tp/Texinfo/ParserNonXS.pm:5175
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:1005
 #, c-format, perl-format
 msgid "@%s should only appear in an index entry"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4852 tp/Texinfo/XS/parsetexi/handle_commands.c:528
+#: tp/Texinfo/ParserNonXS.pm:4863 tp/Texinfo/XS/parsetexi/handle_commands.c:528
 msgid "no more than two levels of index subentry are allowed"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4892 tp/Texinfo/XS/parsetexi/handle_commands.c:592
+#: tp/Texinfo/ParserNonXS.pm:4903 tp/Texinfo/XS/parsetexi/handle_commands.c:592
 #, fuzzy, c-format, perl-format
 #| msgid "Must be in `%s' insertion to use `%sx'"
 msgid "must be after `@%s' to use `@%s'"
 msgstr "`%s' ךותב קרו ךא שומישב רתומ `%sx'"
 
-#: tp/Texinfo/ParserNonXS.pm:4935
+#: tp/Texinfo/ParserNonXS.pm:4946
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4939 tp/Texinfo/XS/parsetexi/handle_commands.c:651
+#: tp/Texinfo/ParserNonXS.pm:4950 tp/Texinfo/XS/parsetexi/handle_commands.c:651
 msgid "@dircategory after first node"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5103 tp/Texinfo/XS/parsetexi/handle_commands.c:920
+#: tp/Texinfo/ParserNonXS.pm:5114 tp/Texinfo/XS/parsetexi/handle_commands.c:920
 #, fuzzy, c-format, perl-format
 #| msgid "Footnotes inside footnotes are not allowed"
 msgid "region %s inside region %s is not allowed"
 msgstr "םיילוש תורעה ךותב םיילוש תורעהב הכימת ןיא"
 
-#: tp/Texinfo/ParserNonXS.pm:5116 tp/Texinfo/XS/parsetexi/handle_commands.c:939
+#: tp/Texinfo/ParserNonXS.pm:5127 tp/Texinfo/XS/parsetexi/handle_commands.c:939
 msgid "@direntry after first node"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5124 tp/Texinfo/XS/parsetexi/handle_commands.c:944
+#: tp/Texinfo/ParserNonXS.pm:5135 tp/Texinfo/XS/parsetexi/handle_commands.c:944
 msgid "@menu in invalid context"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5192 tp/Texinfo/XS/parsetexi/parser.c:1903
+#: tp/Texinfo/ParserNonXS.pm:5203 tp/Texinfo/XS/parsetexi/parser.c:1903
 #, fuzzy
 #| msgid "Expected `%s'"
 msgid "unexpected @"
 msgstr "`%s' יופצ היה ןאכ"
 
-#: tp/Texinfo/ParserNonXS.pm:5220 tp/Texinfo/XS/parsetexi/separator.c:78
+#: tp/Texinfo/ParserNonXS.pm:5231 tp/Texinfo/XS/parsetexi/separator.c:78
 #, fuzzy, c-format, perl-format
 #| msgid "@%s not meaningful inside `@%s' block"
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "`@%s' ךותב @%s-ל תועמשמ ןיא"
 
-#: tp/Texinfo/ParserNonXS.pm:5225 tp/Texinfo/XS/parsetexi/separator.c:84
+#: tp/Texinfo/ParserNonXS.pm:5236 tp/Texinfo/XS/parsetexi/separator.c:84
 #, c-format, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5233 tp/Texinfo/XS/parsetexi/separator.c:92
+#: tp/Texinfo/ParserNonXS.pm:5244 tp/Texinfo/XS/parsetexi/separator.c:92
 #, c-format, perl-format
 msgid "ignoring multiple @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5355 tp/Texinfo/XS/parsetexi/separator.c:264
+#: tp/Texinfo/ParserNonXS.pm:5366 tp/Texinfo/XS/parsetexi/separator.c:264
 #, c-format, perl-format
 msgid "command @%s does not accept arguments"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5387 tp/Texinfo/XS/parsetexi/separator.c:300
+#: tp/Texinfo/ParserNonXS.pm:5398 tp/Texinfo/XS/parsetexi/separator.c:300
 #, c-format, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5404 tp/Texinfo/XS/parsetexi/separator.c:338
+#: tp/Texinfo/ParserNonXS.pm:5415 tp/Texinfo/XS/parsetexi/separator.c:338
 #, c-format, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5414 tp/Texinfo/XS/parsetexi/separator.c:356
+#: tp/Texinfo/ParserNonXS.pm:5425 tp/Texinfo/XS/parsetexi/separator.c:356
 #, c-format, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5429 tp/Texinfo/XS/parsetexi/separator.c:371
+#: tp/Texinfo/ParserNonXS.pm:5440 tp/Texinfo/XS/parsetexi/separator.c:371
 msgid "@image missing filename argument"
 msgstr "@image תארוהב רסח ץבוק םש"
 
-#: tp/Texinfo/ParserNonXS.pm:5465 tp/Texinfo/XS/parsetexi/separator.c:401
+#: tp/Texinfo/ParserNonXS.pm:5476 tp/Texinfo/XS/parsetexi/separator.c:401
 #, fuzzy, c-format, perl-format
 #| msgid "%s: missing file argument.\n"
 msgid "@%s missing first argument"
 msgstr ".ץבוק םש רסח %s תינכתל\n"
 
-#: tp/Texinfo/ParserNonXS.pm:5482 tp/Texinfo/XS/parsetexi/separator.c:423
+#: tp/Texinfo/ParserNonXS.pm:5493 tp/Texinfo/XS/parsetexi/separator.c:423
 #, c-format, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5487 tp/Texinfo/XS/parsetexi/separator.c:428
+#: tp/Texinfo/ParserNonXS.pm:5498 tp/Texinfo/XS/parsetexi/separator.c:428
 #, c-format, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5503 tp/Texinfo/XS/parsetexi/separator.c:443
+#: tp/Texinfo/ParserNonXS.pm:5514 tp/Texinfo/XS/parsetexi/separator.c:443
 #, c-format, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5692 tp/Texinfo/XS/parsetexi/separator.c:748
+#: tp/Texinfo/ParserNonXS.pm:5706 tp/Texinfo/XS/parsetexi/separator.c:748
 msgid "superfluous arguments for node"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5814 tp/Texinfo/XS/parsetexi/parser.c:2104
+#: tp/Texinfo/ParserNonXS.pm:5828 tp/Texinfo/XS/parsetexi/parser.c:2104
 #, fuzzy, c-format, perl-format
 #| msgid "Expected `%s'"
 msgid "expected @end %s"
 msgstr "`%s' יופצ היה ןאכ"
 
-#: tp/Texinfo/ParserNonXS.pm:5898
+#: tp/Texinfo/ParserNonXS.pm:5912
 #, fuzzy, perl-format
 #| msgid "Use braces to give a command as an argument to @%s"
 msgid "@%s should only accept an @-command as argument, not `%s'"
 msgstr "םילסלוסמ םיירגוסב ךרוצ שי ,@%s-ל טנמוגרא היהת הארוהש ידכ"
 
-#: tp/Texinfo/ParserNonXS.pm:5908 tp/Texinfo/XS/parsetexi/end_line.c:277
+#: tp/Texinfo/ParserNonXS.pm:5922 tp/Texinfo/XS/parsetexi/end_line.c:277
 #, c-format, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:5970
+#: tp/Texinfo/ParserNonXS.pm:5984
 #, fuzzy, perl-format
 #| msgid "Use braces to give a command as an argument to @%s"
 msgid "environment command %s as argument to @%s"
 msgstr "םילסלוסמ םיירגוסב ךרוצ שי ,@%s-ל טנמוגרא היהת הארוהש ידכ"
 
-#: tp/Texinfo/ParserNonXS.pm:6001
+#: tp/Texinfo/ParserNonXS.pm:6015
 #, perl-format
 msgid "empty @%s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6009 tp/Texinfo/XS/parsetexi/end_line.c:461
+#: tp/Texinfo/ParserNonXS.pm:6023 tp/Texinfo/XS/parsetexi/end_line.c:461
 #, c-format, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6018 tp/Texinfo/XS/parsetexi/end_line.c:483
+#: tp/Texinfo/ParserNonXS.pm:6032 tp/Texinfo/XS/parsetexi/end_line.c:483
 #, fuzzy, c-format, perl-format
 #| msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgid "@sp arg must be numeric, not `%s'"
 msgstr ".%s ןייפאמ רובע %s י\"ע שרדנכ ,ירמונ טנמוגרא וניא `%s'\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6027 tp/Texinfo/XS/parsetexi/end_line.c:527
+#: tp/Texinfo/ParserNonXS.pm:6041 tp/Texinfo/XS/parsetexi/end_line.c:527
 #, fuzzy, c-format, perl-format
 #| msgid "Invalid node name: `%s'"
 msgid "reserved index name %s"
 msgstr "`%s' :יוגש (node) הקסיפ םש"
 
-#: tp/Texinfo/ParserNonXS.pm:6053 tp/Texinfo/XS/parsetexi/end_line.c:558
+#: tp/Texinfo/ParserNonXS.pm:6067 tp/Texinfo/XS/parsetexi/end_line.c:558
 #, fuzzy, c-format, perl-format
 #| msgid "Unknown index `%s'"
 msgid "unknown source index in @%s: %s"
 msgstr "`%s' רכומ-יתלב סקדניא"
 
-#: tp/Texinfo/ParserNonXS.pm:6056 tp/Texinfo/XS/parsetexi/end_line.c:561
+#: tp/Texinfo/ParserNonXS.pm:6070 tp/Texinfo/XS/parsetexi/end_line.c:561
 #, c-format, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6088 tp/Texinfo/XS/parsetexi/end_line.c:581
+#: tp/Texinfo/ParserNonXS.pm:6102 tp/Texinfo/XS/parsetexi/end_line.c:581
 #, c-format, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6101 tp/Texinfo/XS/parsetexi/end_line.c:606
+#: tp/Texinfo/ParserNonXS.pm:6115 tp/Texinfo/XS/parsetexi/end_line.c:606
 #, fuzzy, c-format, perl-format
 #| msgid "Unknown index `%s' in @printindex"
 msgid "unknown index `%s' in @printindex"
 msgstr "@printindex-ב `%s' רכומ-יתלב סקדניא"
 
-#: tp/Texinfo/ParserNonXS.pm:6107 tp/Texinfo/XS/parsetexi/end_line.c:615
+#: tp/Texinfo/ParserNonXS.pm:6121 tp/Texinfo/XS/parsetexi/end_line.c:615
 #, c-format, perl-format
 msgid "printing an index `%s' merged in another one, `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6115 tp/Texinfo/XS/parsetexi/end_line.c:620
+#: tp/Texinfo/ParserNonXS.pm:6129 tp/Texinfo/XS/parsetexi/end_line.c:620
 #, c-format, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6129
+#: tp/Texinfo/ParserNonXS.pm:6143
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6137
+#: tp/Texinfo/ParserNonXS.pm:6151
 #, fuzzy, perl-format
 #| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "%s: `%s' אל ,`end' וא `separate' תויהל --footnote-style לש טנמוגרא לע\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6145
+#: tp/Texinfo/ParserNonXS.pm:6159
 #, fuzzy, perl-format
 #| msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr ".%s ןייפאמ רובע %s י\"ע שרדנכ ,ירמונ טנמוגרא וניא `%s'\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6163 tp/Texinfo/ParserNonXS.pm:6168
+#: tp/Texinfo/ParserNonXS.pm:6177 tp/Texinfo/ParserNonXS.pm:6182
 #: tp/Texinfo/XS/parsetexi/end_line.c:697
 #, fuzzy, c-format, perl-format
 #| msgid ""
@@ -3280,7 +3280,7 @@ msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: `%s' אל ,`asis'/`none'/ירמונ תויהל --paragraph-indent לש טנמוגרא לע\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6176
+#: tp/Texinfo/ParserNonXS.pm:6190
 #, fuzzy, perl-format
 #| msgid ""
 #| "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
@@ -3288,7 +3288,7 @@ msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: `%s' אל ,`asis'/`none'/ירמונ תויהל --paragraph-indent לש טנמוגרא לע\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6186 tp/Texinfo/XS/parsetexi/end_line.c:718
+#: tp/Texinfo/ParserNonXS.pm:6200 tp/Texinfo/XS/parsetexi/end_line.c:718
 #, fuzzy, c-format, perl-format
 #| msgid ""
 #| "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
@@ -3296,31 +3296,31 @@ msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: `%s' אל ,`asis'/`none'/ירמונ תויהל --paragraph-indent לש טנמוגרא לע\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6198 tp/Texinfo/XS/parsetexi/end_line.c:734
+#: tp/Texinfo/ParserNonXS.pm:6212 tp/Texinfo/XS/parsetexi/end_line.c:734
 #, c-format, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6207 tp/Texinfo/XS/parsetexi/end_line.c:754
+#: tp/Texinfo/ParserNonXS.pm:6221 tp/Texinfo/XS/parsetexi/end_line.c:754
 #, c-format, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:6215 tp/Texinfo/XS/parsetexi/end_line.c:766
+#: tp/Texinfo/ParserNonXS.pm:6229 tp/Texinfo/XS/parsetexi/end_line.c:766
 #, fuzzy, c-format, perl-format
 #| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: `%s' אל ,`end' וא `separate' תויהל --footnote-style לש טנמוגרא לע\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6223 tp/Texinfo/XS/parsetexi/end_line.c:778
+#: tp/Texinfo/ParserNonXS.pm:6237 tp/Texinfo/XS/parsetexi/end_line.c:778
 #, fuzzy, c-format, perl-format
 #| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
 "%s: `%s' אל ,`end' וא `separate' תויהל --footnote-style לש טנמוגרא לע\n"
 
-#: tp/Texinfo/ParserNonXS.pm:6241 tp/Texinfo/XS/parsetexi/end_line.c:641
+#: tp/Texinfo/ParserNonXS.pm:6255 tp/Texinfo/XS/parsetexi/end_line.c:641
 #, fuzzy, c-format, perl-format
 #| msgid "%s: %s arg must be numeric, not `%s'.\n"
 msgid "@%s arg must be `top' or `bottom', not `%s'"

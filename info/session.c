@@ -1351,9 +1351,11 @@ DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line")
   while (1)
     {
       point = window->line_map.map[0];
-      if (point == 0 || looking_at_newline (window, point-1))
+      if (point == window->line_starts[0]
+          || looking_at_newline (window, point-1))
 	break;
-      point_prev_line (window);
+      if (!point_prev_line (window))
+        break;
     }
 
   if (point != old_point)

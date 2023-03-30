@@ -71,7 +71,7 @@ valid_tree_transformation
 __ __p
 );
 
-$VERSION = '7.0.2';
+$VERSION = '7.0.3';
 
 
 # i18n

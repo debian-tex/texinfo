@@ -1,7 +1,7 @@
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright 1992-2022 Free Software Foundation, Inc.
+  Copyright 1992-2023 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -9,6 +9,19 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+7.0.3 (26 March 2023)
+This is a bug-fix release with minimal changes.
+
+* texi2any
+  . fix performance regression when Perl binary extension (XS) modules
+    are not being used (e.g. with TEXINFO_XS=omit)
+
+* info
+  . further fix of recoding of UTF-8 files to ASCII to avoid text
+    disappearing from nodes
+  . avoid possible freeze at start of a file with `-v nodeline=pointers'
+
+
 7.0.2 (22 January 2023)
 This is a bug-fix release with minimal changes.
 

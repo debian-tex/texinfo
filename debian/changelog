@@ -1,3 +1,9 @@
+texinfo (7.0.3-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Hilmar Preusse <hille42@web.de>  Mon, 10 Jul 2023 21:05:01 +0200
+
 texinfo (7.0.3-1) experimental; urgency=medium
 
   * New upstream version.

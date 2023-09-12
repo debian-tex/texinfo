@@ -1,3 +1,10 @@
+texinfo (7.0.3-3) UNRELEASED; urgency=medium
+
+  * Remove some generated from built tree during clean. This
+    addresses parts of #1046800.
+
+ -- Hilmar Preusse <hille42@web.de>  Tue, 12 Sep 2023 23:22:46 +0200
+
 texinfo (7.0.3-2) unstable; urgency=medium
 
   * Upload to unstable.

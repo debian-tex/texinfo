@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2022-11-12.21; # UTC
+htmlxrefversion=2023-04-02.12; # UTC
 
-# Copyright 2010-2022 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -364,10 +364,8 @@ gcc		node	${GCC}/gcc/
  libiberty	node	${GCC}/libiberty/
 
 GDB = https://sourceware.org/gdb/current/onlinedocs
-gdb		mono	${GDB}/gdb.html
-gdb		node	${GDB}/gdb/
- stabs		mono	${GDB}/stabs.html
- stabs		node	${GDB}/stabs/
+gdb		node	${GDB}/gdb.html/
+ stabs		node	${GDB}/stabs.html/
 
 GDBM = http://www.gnu.org.ua/software/gdbm/manual
 gdbm		node	${GDBM}/
@@ -543,6 +541,8 @@ libmatheval	mono	${GS}/libmatheval/manual/libmatheval.html
 LIBMICROHTTPD = ${GS}/libmicrohttpd
 libmicrohttpd		mono	${LIBMICROHTTPD}/manual/libmicrohttpd.html
 libmicrohttpd		node	${LIBMICROHTTPD}/manual/html_node/
+ # The manual name is based on the Texinfo file name in the code,
+ # not on the file name for the tutorial which is too generic.
  microhttpd-tutorial	mono	${LIBMICROHTTPD}/tutorial.html
 
 libtasn1	mono	${GS}/libtasn1/manual/libtasn1.html

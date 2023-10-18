@@ -22,7 +22,13 @@ $result_trees{'inlineiffmtifelse_not_closed_three_arg'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' hhhhh',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -31,8 +37,10 @@ $result_trees{'inlineiffmtifelse_not_closed_three_arg'} = {
 '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -58,7 +66,7 @@ $result_trees{'inlineiffmtifelse_not_closed_three_arg'} = {
   'type' => 'document_root'
 };
 
-$result_texis{'inlineiffmtifelse_not_closed_three_arg'} = '@inlinefmtifelse{html,, ggggg
+$result_texis{'inlineiffmtifelse_not_closed_three_arg'} = '@inlinefmtifelse{html, hhhhh, ggggg
 }';
 
 

@@ -45,9 +45,9 @@ output strings translation or error handling.
 @cindex @code{convert_to_text}
 
 Convert a Texinfo tree to simple text.  @emph{$options} is a hash reference of
-options.  The converter is very simple, and has almost no internal state besides
-the options.  It cannot handle as is output strings translation or error
-storing.
+options.  The converter is very simple, and has almost no internal state
+besides the options.  It cannot handle as is output strings translation or
+error storing.
 
 If the @emph{converter} option is set, some additional features may be available
 for the conversion of some @@-commands, like output strings translation or
@@ -62,8 +62,9 @@ The following options may be set:
 If set, the value is considered to be the encoding name texinfo accented
 letters should be converted to.  This option being set corresponds to the
 @code{--enable-encoding} option, or the @code{ENABLE_ENCODING} customization
-variable for Info and Plaintext.  For HTML, DocBook or Texinfo XML, this
-variable should in general be set unless the output encoding is US-ASCII.
+variable for Info and Plaintext and for some conversion to text in other
+formats.  For file names in HTML and LaTeX, and for DocBook or Texinfo XML,
+this variable should in general be set unless the output encoding is US-ASCII.
 
 @item sc
 @anchor{Texinfo@asis{::}Convert@asis{::}Text sc}
@@ -99,7 +100,7 @@ translation, as the converter object is also supposed to be a
 @anchor{Texinfo@asis{::}Convert@asis{::}Text expanded_formats_hash}
 
 A reference on a hash.  The keys should be format names (like @code{html},
-@code{tex}), and if the corresponding  value is set, the format is expanded.
+@code{tex}), and if the corresponding value is set, the format is expanded.
 
 @end table
 

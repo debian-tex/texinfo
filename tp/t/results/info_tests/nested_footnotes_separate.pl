@@ -17,9 +17,11 @@ $result_trees{'nested_footnotes_separate'} = {
                   'text' => 'separate'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -28,8 +30,12 @@ $result_trees{'nested_footnotes_separate'} = {
           'extra' => {
             'misc_args' => [
               'separate'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -48,9 +54,11 @@ $result_trees{'nested_footnotes_separate'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -140,19 +148,12 @@ $result_trees{'nested_footnotes_separate'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -163,8 +164,6 @@ $result_trees{'nested_footnotes_separate'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'nested_footnotes_separate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'nested_footnotes_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nested_footnotes_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'nested_footnotes_separate'} = '@footnotestyle separate
 @node Top
@@ -194,7 +193,17 @@ $result_menus{'nested_footnotes_separate'} = {
   }
 };
 
-$result_errors{'nested_footnotes_separate'} = [];
+$result_errors{'nested_footnotes_separate'} = [
+  {
+    'error_line' => 'warning: @footnote should not appear anywhere inside @footnote
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@footnote should not appear anywhere inside @footnote',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'nested_footnotes_separate'} = {};

@@ -12,9 +12,11 @@ $result_trees{'inline_in_example'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -67,8 +69,10 @@ $result_trees{'inline_in_example'} = {
                           'text' => ' '
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     }
@@ -104,8 +108,10 @@ $result_trees{'inline_in_example'} = {
                           'text' => '`` '
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     }
@@ -176,9 +182,11 @@ $result_trees{'inline_in_example'} = {
                           'text' => '</i>'
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' 
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' 
 '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     }
@@ -209,17 +217,23 @@ $result_trees{'inline_in_example'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -255,11 +269,14 @@ in <i>@acronym{HTML}</i>}.
 ';
 
 
-$result_texts{'inline_in_example'} = 'A  a.
-.
+$result_texts{'inline_in_example'} = 'A plaintext 
+
+`` {  a.
+`` .
 
   Now html
-.
+
+in <i>HTML</i>.
 ';
 
 $result_errors{'inline_in_example'} = [];
@@ -276,6 +293,19 @@ $result_converted{'plaintext'}->{'inline_in_example'} = '     A plaintext
 
        Now html
      .
+';
+
+
+$result_converted{'xml'}->{'inline_in_example'} = '<example endspaces=" ">
+<pre xml:space="preserve">A <inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent spaces=" ">plaintext 
+
+`` &lbracechar; </inlinerawcontent></inlineraw> a.
+<inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent spaces=" ">`` </inlinefmtcontent></inlinefmt>.
+
+  Now html
+<inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent spaces=" \\n">
+in &lt;i&gt;<acronym><acronymword>HTML</acronymword></acronym>&lt;/i&gt;</inlinerawcontent></inlineraw>.
+</pre></example>
 ';
 
 1;

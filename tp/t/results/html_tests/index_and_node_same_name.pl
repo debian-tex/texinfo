@@ -18,16 +18,20 @@ $result_trees{'index_and_node_same_name'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -43,9 +47,11 @@ $result_trees{'index_and_node_same_name'} = {
               'text' => 'index node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -65,28 +71,27 @@ $result_trees{'index_and_node_same_name'} = {
                   'text' => 'node'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -103,9 +108,11 @@ $result_trees{'index_and_node_same_name'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -114,8 +121,12 @@ $result_trees{'index_and_node_same_name'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -131,19 +142,12 @@ $result_trees{'index_and_node_same_name'} = {
       ],
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'index-node'
-          }
-        ],
-        'normalized' => 'index-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'index-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -154,12 +158,7 @@ $result_trees{'index_and_node_same_name'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1];
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'index_and_node_same_name'}{'contents'}[2];
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'index_and_node_same_name'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_and_node_same_name'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'index_and_node_same_name'}{'contents'}[2]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'index_and_node_same_name'}{'contents'}[2];
 
 $result_texis{'index_and_node_same_name'} = '@top top
 @node index node
@@ -181,7 +180,6 @@ $result_sectioning{'index_and_node_same_name'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_level' => 0,
           'section_up' => {}
@@ -240,11 +238,13 @@ $result_converted{'html'}->{'index_and_node_same_name'} = '<!DOCTYPE html>
 <link href="#index-node" rel="index" title="index node">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter-printindex {text-decoration: none}
+span:hover a.copiable-link {visibility: visible}
 td.printindex-index-entry {vertical-align: top}
-td.printindex-index-section {vertical-align: top}
+td.printindex-index-section {vertical-align: top; padding-left: 1em}
 th.entries-header-printindex {text-align:left}
-th.sections-header-printindex {text-align:left}
+th.sections-header-printindex {text-align:left; padding-left: 1em}
 -->
 </style>
 
@@ -253,17 +253,17 @@ th.sections-header-printindex {text-align:left}
 
 <body lang="en">
 <div class="top-level-extent" id="top">
-<h1 class="top">top</h1>
-<h4 class="node" id="index-node">index node</h4>
+<h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
+<h4 class="node" id="index-node"><span>index node<a class="copiable-link" href="#index-node"> &para;</a></span></h4>
 
 <a class="index-entry-id" id="index-node-1"></a>
 <div class="printindex cp-printindex">
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="index-node_cp_letter-N">N</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-node-1">node</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#index-node">index node</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="index-node_cp_letter-N">N</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-node-1">node</a></td><td class="printindex-index-section"><a href="#index-node">index node</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 

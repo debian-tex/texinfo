@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright 2022 Free Software Foundation, Inc.
+# Copyright 2022-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -19,6 +19,7 @@ diffs_dir=diffs
 raw_output_dir=raw_out
 logfile=$basename.log
 stdout_file=stdout_$basename.out
+prepended_command=
 
 [ "z$srcdir" = 'z' ] && srcdir=.
 
@@ -36,8 +37,9 @@ raw_outdir=$raw_output_dir/$basename
 [ -d $raw_outdir ] && rm -rf $raw_outdir
 mkdir $basename
 : > $basename/$stdout_file
-echo "$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split -c FORMAT_MENU=menu -c TREE_TRANSFORMATIONS=regenerate_master_menu --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/no_master_menu_fr.texi $srcdir/input_files/no_master_menu_pt.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2" >> $logfile
-$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split -c FORMAT_MENU=menu -c TREE_TRANSFORMATIONS=regenerate_master_menu --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/no_master_menu_fr.texi $srcdir/input_files/no_master_menu_no_documentlanguage.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2
+cmd="$prepended_command $PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split -c FORMAT_MENU=menu -c TREE_TRANSFORMATIONS=regenerate_master_menu --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/no_master_menu_fr.texi $srcdir/input_files/no_master_menu_no_documentlanguage.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+echo "$cmd" >> $logfile
+eval $cmd
 
 return_code=0
 ret=$?

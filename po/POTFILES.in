@@ -1,4 +1,4 @@
-# Copyright 2005-2022 Free Software Foundation, Inc.
+# Copyright 2005-2023 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -28,7 +28,6 @@ info/pcterm.c
 info/scan.c
 info/search.c
 info/session.c
-info/util.c
 info/variables.c
 info/window.c
 install-info/install-info.c
@@ -46,19 +45,18 @@ tp/Texinfo/Convert/NodeNameNormalization.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/Text.pm
 tp/Texinfo/Convert/TexinfoMarkup.pm
-tp/Texinfo/Convert/TexinfoXML.pm
 tp/Texinfo/Convert/Utils.pm
 tp/Texinfo/ParserNonXS.pm
 tp/Texinfo/Report.pm
 tp/Texinfo/Structuring.pm
 tp/Texinfo/Transformations.pm
-tp/Texinfo/Translations.pm
 tp/init/chm.pm
 tp/ext/epub3.pm
+tp/ext/highlight_syntax.pm
 tp/ext/latex2html.pm
 tp/ext/tex4ht.pm
-tp/init/highlight_syntax.pm
 tp/texi2any.pl
+tp/Texinfo/XS/gnulib/lib/obstack.c
 tp/Texinfo/XS/parsetexi/Parsetexi.pm
 tp/Texinfo/XS/parsetexi/close.c
 tp/Texinfo/XS/parsetexi/end_line.c
@@ -66,6 +64,8 @@ tp/Texinfo/XS/parsetexi/errors.c
 tp/Texinfo/XS/parsetexi/errors.h
 tp/Texinfo/XS/parsetexi/handle_commands.c
 tp/Texinfo/XS/parsetexi/indices.c
+tp/Texinfo/XS/parsetexi/input.c
+tp/Texinfo/XS/parsetexi/labels.c
 tp/Texinfo/XS/parsetexi/macro.c
 tp/Texinfo/XS/parsetexi/menus.c
 tp/Texinfo/XS/parsetexi/multitable.c

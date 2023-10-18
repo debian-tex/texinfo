@@ -39,12 +39,16 @@ elements are in @ref{Texinfo@asis{::}Common $translated_string = __($msgid),, Te
 
 No method is exported.
 
-The @code{gdt} method is used to translate strings to be output in
-converted documents, and returns, in general, a texinfo tree.
+The @code{gdt} and @code{pgdt} methods are used to translate strings to be output in
+converted documents, and returns, in general, a Texinfo tree.
+
+The @code{replace_convert_substrings} method is called by @code{gdt} to substitute
+replaced substrings in a translated string and convert to a Texinfo tree.
+It may be especially useful when overriding or reimplementing @code{gdt}.
 
 @table @asis
-@item $tree = $object->gdt($string, $replaced_substrings, $mode, $lang)
-@anchor{Texinfo@asis{::}Translations $tree = $object->gdt($string@comma{} $replaced_substrings@comma{} $mode@comma{} $lang)}
+@item $tree = $object->gdt($string, $replaced_substrings, $translation_context, $mode, $lang)
+@anchor{Texinfo@asis{::}Translations $tree = $object->gdt($string@comma{} $replaced_substrings@comma{} $translation_context@comma{} $mode@comma{} $lang)}
 @cindex @code{gdt}
 
 The @emph{$string} is a string to be translated.  In the default case,
@@ -56,10 +60,15 @@ reference identifies what is to be substituted, and the value is
 some string, texinfo tree or array content that is substituted in
 the resulting texinfo tree.  In the string to be translated word
 in brace matching keys of @emph{$replaced_substrings} are replaced.
+
 The @emph{$object} is typically a converter, but can be any object that implements
 @code{get_conf}, or undefined (@code{undef}).  If not undefined, the information in the
 @emph{$object} is used to determine the encoding, the documentlanguage and get some
-customization information. @emph{$lang} is optional. If set, it overrides the
+customization information.
+
+The @emph{$translation_context} is optional.  If not @code{undef} this is a translation
+context string for @emph{$string}.  It is the first argument of @code{pgettext}
+in the C API of Gettext.  @emph{$lang} is optional. If set, it overrides the
 documentlanguage.
 
 For example, in the following call, the string
@@ -89,6 +98,31 @@ that is returned after translation and substitution.  The substitutions
 may only be strings in that case.
 
 @end table
+
+@item $tree = $object->pgdt($translation_context, $string, $replaced_substrings, $mode, $lang)
+@anchor{Texinfo@asis{::}Translations $tree = $object->pgdt($translation_context@comma{} $string@comma{} $replaced_substrings@comma{} $mode@comma{} $lang)}
+@cindex @code{pgdt}
+
+Same to @code{gdt} except that the @emph{$translation_context} is not optional.
+Calls @code{gdt}.  This function is useful to mark strings with a
+translation context for translation.  This function is similar to pgettext
+in the Gettext C API.
+
+@item $tree = $object->replace_convert_substrings($translated_string, $replaced_substrings, $mode)
+@anchor{Texinfo@asis{::}Translations $tree = $object->replace_convert_substrings($translated_string@comma{} $replaced_substrings@comma{} $mode)}
+@cindex @code{replace_convert_substrings}
+
+@emph{$translated_string} is a string already translated.  @emph{$replaced_substrings}
+is an optional hash reference specifying some substitution to be done.
+@emph{$mode} is an optional string which may modify how the function behaves, and
+in particular whether the translated string should be converted to a Texinfo
+tree.  @emph{$object} is typically a converter, but can be any object that
+implements @code{get_conf}, or undefined (@code{undef}).  If not undefined, the
+information in the @emph{$object} is used to get some customization information.
+
+The function performs the substitutions of substrings in the translated
+string and converts to a Texinfo tree if needed.  It is called from @code{gdt}
+after the retrieval of the translated string.
 
 @end table
 

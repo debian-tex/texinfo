@@ -24,44 +24,19 @@ $result_trees{'simple_imbricated_macro'} = {
               'type' => 'raw'
             },
             {
-              'cmdname' => 'macro',
-              'contents' => [
-                {
-                  'text' => 'bidule.
+              'text' => '@macro bidule {}
 ',
-                  'type' => 'raw'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'macro'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'macro'
-                  },
-                  'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  }
-                }
-              ],
-              'extra' => {
-                'arg_line' => ' bidule {}
-'
-              }
+              'type' => 'raw'
+            },
+            {
+              'text' => 'bidule.
+',
+              'type' => 'raw'
+            },
+            {
+              'text' => '@end macro
+',
+              'type' => 'raw'
             },
             {
               'args' => [
@@ -71,17 +46,23 @@ $result_trees{'simple_imbricated_macro'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -90,7 +71,7 @@ $result_trees{'simple_imbricated_macro'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' truc {}
 '
           },
@@ -101,6 +82,25 @@ $result_trees{'simple_imbricated_macro'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'truc'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -130,20 +130,34 @@ $result_trees{'simple_imbricated_macro'} = {
                     {
                       'contents' => [
                         {
+                          'source_marks' => [
+                            {
+                              'counter' => 1,
+                              'position' => 5,
+                              'sourcemark_type' => 'macro_expansion',
+                              'status' => 'end'
+                            }
+                          ],
                           'text' => 'macro'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'macro'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -152,7 +166,7 @@ $result_trees{'simple_imbricated_macro'} = {
                   }
                 }
               ],
-              'extra' => {
+              'info' => {
                 'arg_line' => ' bidule {}
 '
               },
@@ -166,6 +180,25 @@ $result_trees{'simple_imbricated_macro'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'bidule'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -173,6 +206,14 @@ $result_trees{'simple_imbricated_macro'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 7,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'bidule.
 '
             }

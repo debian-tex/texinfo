@@ -3,8 +3,7 @@
 #
 # html32.pm: output HTML 3.2
 #
-#    Copyright (C) 2003, 2004, 2007, 2009, 2011, 2013 Free Software
-#    Foundation, Inc.
+# Copyright 2003, 2004, 2007, 2009, 2011-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,7 +35,7 @@ use strict;
 # To check if there is no erroneous autovivification
 #no autovivification qw(fetch delete exists store strict);
 
-use Texinfo::Common;
+use Texinfo::Commands;
 
 use Texinfo::Convert::Text;
 
@@ -165,7 +164,9 @@ sub html32_convert_text($$$$)
     $text =~ s/--/-/g;
     $text =~ s/\x{1F}/--/g;
   }
-  if (!$self->in_preformatted() and $self->in_non_breakable_space()) {
+  if (!$self->in_preformatted()
+      and ($self->in_non_breakable_space()
+             or $self->in_space_protected())) {
     $text .= '&nbsp;' if (chomp($text));
     $text =~ s/ /&nbsp;/g;
   }
@@ -201,7 +202,7 @@ sub html32_convert_explained_command($$$$)
   return $result;
 }
 
-foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
+foreach my $explained_command (keys(%Texinfo::Commands::explained_commands)) {
   texinfo_register_command_formatting($explained_command,
                               \&html32_convert_explained_command);
 }

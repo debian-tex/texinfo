@@ -113,11 +113,11 @@ the error or warning.
 
 @end table
 
-@item $registrar->line_warn($text, $configuration_information, $error_location_info)
-@anchor{Texinfo@asis{::}Report $registrar->line_warn($text@comma{} $configuration_information@comma{} $error_location_info)}
+@item $registrar->line_warn($text, $configuration_information, $error_location_info, $continuation, $silent)
+@anchor{Texinfo@asis{::}Report $registrar->line_warn($text@comma{} $configuration_information@comma{} $error_location_info@comma{} $continuation@comma{} $silent)}
 
-@item $registrar->line_error($text, $configuration_information, $error_location_info)
-@anchor{Texinfo@asis{::}Report $registrar->line_error($text@comma{} $configuration_information@comma{} $error_location_info)}
+@item $registrar->line_error($text, $configuration_information, $error_location_info, $continuation, $silent)
+@anchor{Texinfo@asis{::}Report $registrar->line_error($text@comma{} $configuration_information@comma{} $error_location_info@comma{} $continuation@comma{} $silent)}
 @cindex @code{line_warn}
 @cindex @code{line_error}
 
@@ -131,20 +131,28 @@ be setup to point to a file name, using the @code{file_name} key and
 to a line number, using the @code{line_nr} key.  The @code{file_name} key value
 should be a binary string.
 
+The @emph{$continuation} optional arguments, if true, conveys that
+the line is a continuation line of a message.
+
+The @emph{$silent} optional arguments, if true, suppresses the output of
+a message that is output immediatly if debugging is set.
+
 The @emph{source_info} key of Texinfo tree elements is described
 in more details in @ref{Texinfo@asis{::}Parser source_info}.
 
-@item $registrar->document_warn($configuration_information, $text)
-@anchor{Texinfo@asis{::}Report $registrar->document_warn($configuration_information@comma{} $text)}
+@item $registrar->document_warn($configuration_information, $text, $continuation)
+@anchor{Texinfo@asis{::}Report $registrar->document_warn($configuration_information@comma{} $text@comma{} $continuation)}
 
-@item $registrar->document_error($configuration_information, $text)
-@anchor{Texinfo@asis{::}Report $registrar->document_error($configuration_information@comma{} $text)}
+@item $registrar->document_error($configuration_information, $text, $continuation)
+@anchor{Texinfo@asis{::}Report $registrar->document_error($configuration_information@comma{} $text@comma{} $continuation)}
 @cindex @code{document_warn}
 @cindex @code{document_error}
 
 Register a document-wide error or warning.  @emph{$text} is the error or
 warning message.  The @emph{$configuration_information} object gives
 some information that can modify the messages or their delivery.
+The @emph{$continuation} optional arguments, if true, conveys that
+the line is a continuation line of a message.
 
 @end table
 

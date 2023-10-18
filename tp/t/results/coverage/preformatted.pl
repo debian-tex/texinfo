@@ -17,9 +17,11 @@ $result_trees{'preformatted'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -52,17 +54,23 @@ $result_trees{'preformatted'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -85,9 +93,11 @@ $result_trees{'preformatted'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -108,9 +118,11 @@ $result_trees{'preformatted'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -129,27 +141,26 @@ $result_trees{'preformatted'} = {
                                   'text' => 'item in table in format'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 1,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              1
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -177,7 +188,7 @@ $result_trees{'preformatted'} = {
                           'type' => 'preformatted'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -190,17 +201,23 @@ $result_trees{'preformatted'} = {
                           'text' => 'vtable'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'vtable'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -210,8 +227,12 @@ $result_trees{'preformatted'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -227,17 +248,23 @@ $result_trees{'preformatted'} = {
                       'text' => 'format'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'format'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -258,9 +285,6 @@ $result_trees{'preformatted'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'preformatted'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'preformatted'} = '
@@ -333,7 +357,7 @@ $result_converted{'html_text'}->{'preformatted'} = '
 
 <div class="format">
 <dl class="vtable">
-<dt id=\'index-item-in-table-in-format\'><span><code class="code">item in table in format</code><a class="copiable-link" href=\'#index-item-in-table-in-format\'> &para;</a></span></dt>
+<dt><a id="index-item-in-table-in-format"></a><span><code class="code">item in table in format</code><a class="copiable-link" href="#index-item-in-table-in-format"> &para;</a></span></dt>
 <dd><pre class="format-preformatted">
 
 in table in format

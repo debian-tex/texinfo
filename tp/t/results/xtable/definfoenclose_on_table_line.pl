@@ -17,9 +17,11 @@ $result_trees{'definfoenclose_on_table_line'} = {
                   'text' => 'phi,:,:'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -30,8 +32,12 @@ $result_trees{'definfoenclose_on_table_line'} = {
               'phi',
               ':',
               ':'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -62,9 +68,11 @@ $result_trees{'definfoenclose_on_table_line'} = {
                   'type' => 'definfoenclose_command'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -83,16 +91,20 @@ $result_trees{'definfoenclose_on_table_line'} = {
                               'text' => 'item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -108,16 +120,20 @@ $result_trees{'definfoenclose_on_table_line'} = {
                               'text' => 'item x'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'itemx',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -145,7 +161,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -158,17 +174,23 @@ $result_trees{'definfoenclose_on_table_line'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -178,8 +200,12 @@ $result_trees{'definfoenclose_on_table_line'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -224,12 +250,12 @@ $result_errors{'definfoenclose_on_table_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @phi should not appear in @table
+    'error_line' => 'warning: @phi should not appear on @table line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@phi should not appear in @table',
+    'text' => '@phi should not appear on @table line',
     'type' => 'warning'
   }
 ];
@@ -266,5 +292,13 @@ $result_converted{'xml'}->{'definfoenclose_on_table_line'} = '<definfoenclose sp
 <para>table content.
 </para></tableitem></tableentry></table>
 ';
+
+
+$result_converted{'docbook'}->{'definfoenclose_on_table_line'} = '
+<variablelist><varlistentry><term>item
+</term><term>item x
+</term><listitem>
+<para>table content.
+</para></listitem></varlistentry></variablelist>';
 
 1;

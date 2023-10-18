@@ -12,9 +12,11 @@ $result_trees{'def_not_closed_in_menu_description'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -22,7 +24,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -39,6 +41,11 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                       'text' => ')'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -93,40 +100,24 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                                     'def_role' => 'arg'
                                   },
                                   'text' => 'chose'
-                                },
-                                {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
-                                  },
-                                  'text' => '
-',
-                                  'type' => 'spaces_at_end'
                                 }
                               ],
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
+'
+                                }
+                              },
                               'type' => 'block_line_arg'
                             }
                           ],
                           'extra' => {
                             'def_command' => 'deffn',
-                            'def_parsed_hash' => {
-                              'category' => {},
-                              'name' => {}
-                            },
-                            'index_entry' => {
-                              'content_normalized' => [
-                                {}
-                              ],
-                              'entry_content' => [
-                                {}
-                              ],
-                              'entry_element' => {},
-                              'entry_number' => 1,
-                              'in_code' => 1,
-                              'index_at_command' => 'deffn',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'fn',
-                              'index_type_command' => 'deffn'
-                            },
+                            'def_index_element' => {},
+                            'index_entry' => [
+                              'fn',
+                              1
+                            ],
                             'original_def_cmdname' => 'deffn'
                           },
                           'source_info' => {
@@ -156,8 +147,10 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                           'type' => 'def_item'
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -169,14 +162,6 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 2,
@@ -192,17 +177,23 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -223,13 +214,8 @@ $result_trees{'def_not_closed_in_menu_description'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
+$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'def_not_closed_in_menu_description'} = '@menu
 * (info):: before deff @deffn bidule truc chose

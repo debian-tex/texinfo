@@ -12,9 +12,11 @@ $result_trees{'menutextorder'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -22,7 +24,7 @@ $result_trees{'menutextorder'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -33,6 +35,12 @@ $result_trees{'menutextorder'} = {
                       'text' => 'foo'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'foo'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -54,15 +62,6 @@ $result_trees{'menutextorder'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'foo'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 2,
@@ -71,7 +70,7 @@ $result_trees{'menutextorder'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -82,6 +81,12 @@ $result_trees{'menutextorder'} = {
                       'text' => 'bar'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'bar'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -103,15 +108,6 @@ $result_trees{'menutextorder'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'bar'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -127,17 +123,23 @@ $result_trees{'menutextorder'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -168,28 +170,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'bar'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'bar'
-          }
-        ],
-        'normalized' => 'bar',
-        'spaces_before_argument' => ' '
+        'normalized' => 'bar'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -205,9 +202,11 @@ $result_trees{'menutextorder'} = {
               'text' => 'bar'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -222,9 +221,11 @@ $result_trees{'menutextorder'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -232,7 +233,7 @@ $result_trees{'menutextorder'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -243,6 +244,12 @@ $result_trees{'menutextorder'} = {
                       'text' => 'onesub2'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'onesub2'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -264,15 +271,6 @@ $result_trees{'menutextorder'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'onesub2'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -288,17 +286,23 @@ $result_trees{'menutextorder'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -319,8 +323,11 @@ $result_trees{'menutextorder'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -336,28 +343,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'onesub1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'onesub1'
-          }
-        ],
-        'normalized' => 'onesub1',
-        'spaces_before_argument' => ' '
+        'normalized' => 'onesub1'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -373,9 +375,11 @@ $result_trees{'menutextorder'} = {
               'text' => 'One sub 1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -388,8 +392,11 @@ $result_trees{'menutextorder'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -405,28 +412,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'onesub2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'onesub2'
-          }
-        ],
-        'normalized' => 'onesub2',
-        'spaces_before_argument' => ' '
+        'normalized' => 'onesub2'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -442,9 +444,11 @@ $result_trees{'menutextorder'} = {
               'text' => 'One sub 2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -462,8 +466,11 @@ $result_trees{'menutextorder'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -479,28 +486,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'foo'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'foo'
-          }
-        ],
-        'normalized' => 'foo',
-        'spaces_before_argument' => ' '
+        'normalized' => 'foo'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -516,9 +518,11 @@ $result_trees{'menutextorder'} = {
               'text' => 'foo'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -533,9 +537,11 @@ $result_trees{'menutextorder'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -543,7 +549,7 @@ $result_trees{'menutextorder'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -554,6 +560,12 @@ $result_trees{'menutextorder'} = {
                       'text' => 'sub1'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'sub1'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -575,15 +587,6 @@ $result_trees{'menutextorder'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'sub1'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 24,
@@ -592,7 +595,7 @@ $result_trees{'menutextorder'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -603,6 +606,12 @@ $result_trees{'menutextorder'} = {
                       'text' => 'sub3'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'sub3'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -624,15 +633,6 @@ $result_trees{'menutextorder'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'sub3'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 25,
@@ -641,7 +641,7 @@ $result_trees{'menutextorder'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -652,6 +652,12 @@ $result_trees{'menutextorder'} = {
                       'text' => 'sub2'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'sub2'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -673,15 +679,6 @@ $result_trees{'menutextorder'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'sub2'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 26,
@@ -697,17 +694,23 @@ $result_trees{'menutextorder'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -728,8 +731,11 @@ $result_trees{'menutextorder'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -745,28 +751,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'sub1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'sub1'
-          }
-        ],
-        'normalized' => 'sub1',
-        'spaces_before_argument' => ' '
+        'normalized' => 'sub1'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -782,9 +783,11 @@ $result_trees{'menutextorder'} = {
               'text' => 'Sub1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -797,8 +800,11 @@ $result_trees{'menutextorder'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -814,28 +820,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'sub2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'sub2'
-          }
-        ],
-        'normalized' => 'sub2',
-        'spaces_before_argument' => ' '
+        'normalized' => 'sub2'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -851,9 +852,11 @@ $result_trees{'menutextorder'} = {
               'text' => 'Sub2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -866,8 +869,11 @@ $result_trees{'menutextorder'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -883,28 +889,23 @@ $result_trees{'menutextorder'} = {
               'text' => 'sub3'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'sub3'
-          }
-        ],
-        'normalized' => 'sub3',
-        'spaces_before_argument' => ' '
+        'normalized' => 'sub3'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -920,16 +921,21 @@ $result_trees{'menutextorder'} = {
               'text' => 'Sub3'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -940,32 +946,12 @@ $result_trees{'menutextorder'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3];
-$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[3];
-$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[3];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'args'}[3];
-$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[9]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[9]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[11]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[11]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[11]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[13]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[13]{'args'}[0]{'contents'}[0];
-$result_trees{'menutextorder'}{'contents'}[13]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[13]{'args'}[0]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menutextorder'}{'contents'}[8]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'menutextorder'} = '@menu
 * foo::
@@ -1346,6 +1332,24 @@ $result_menus{'menutextorder'}{'structure'}{'menu_child'}{'structure'}{'menu_up'
 
 $result_errors{'menutextorder'} = [
   {
+    'error_line' => 'warning: node next for `onesub1\' is `onesub2\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'node next for `onesub1\' is `onesub2\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: node up for `onesub1\' is `bar\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => 'node up for `onesub1\' is `bar\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'warning: node `bar\' lacks menu item for `onesub1\' despite being its Up target
 ',
     'file_name' => '',
@@ -1355,12 +1359,30 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => 'warning: node prev for `onesub2\' is `onesub1\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => 'node prev for `onesub2\' is `onesub1\' in sectioning but not in menu',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'warning: node next pointer for `sub1\' is `sub2\' but next is `sub3\' in menu
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
     'text' => 'node next pointer for `sub1\' is `sub2\' but next is `sub3\' in menu',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: node next for `sub2\' is `sub3\' in sectioning but not in menu
+',
+    'file_name' => '',
+    'line_nr' => 32,
+    'macro' => '',
+    'text' => 'node next for `sub2\' is `sub3\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {

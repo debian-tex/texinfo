@@ -24,16 +24,20 @@ $result_trees{'section_below_unnumbered_no_top'} = {
               'text' => 'U'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -49,16 +53,20 @@ $result_trees{'section_below_unnumbered_no_top'} = {
               'text' => 'S'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -86,12 +94,10 @@ $result_sectioning{'section_below_unnumbered_no_top'} = {
     'section_childs' => [
       {
         'cmdname' => 'unnumbered',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
               'cmdname' => 'section',
-              'extra' => {},
               'structure' => {
                 'section_level' => 2,
                 'section_up' => {}
@@ -138,18 +144,24 @@ $result_converted{'html'}->{'section_below_unnumbered_no_top'} = '<!DOCTYPE html
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <div class="unnumbered-level-extent" id="U">
-<h2 class="unnumbered">U</h2>
+<h2 class="unnumbered"><span>U<a class="copiable-link" href="#U"> &para;</a></span></h2>
 <ul class="mini-toc">
 <li><a href="#S" accesskey="1">S</a></li>
 </ul>
 <div class="section-level-extent" id="S">
-<h3 class="section">S</h3>
+<h3 class="section"><span>S<a class="copiable-link" href="#S"> &para;</a></span></h3>
 </div>
 </div>
 

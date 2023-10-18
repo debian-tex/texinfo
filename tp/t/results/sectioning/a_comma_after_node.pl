@@ -27,7 +27,15 @@ $result_trees{'a_comma_after_node'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Requirements'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -38,9 +46,19 @@ $result_trees{'a_comma_after_node'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Nodes-and-Menus'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
@@ -63,31 +81,12 @@ $result_trees{'a_comma_after_node'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Commands'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Requirements'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Nodes-and-Menus'
-          }
-        ],
-        'normalized' => 'Commands',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Commands'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -98,10 +97,8 @@ $result_trees{'a_comma_after_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[0];
+$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[0];
 
 $result_texis{'a_comma_after_node'} = '@node Commands, Requirements, Nodes and Menus
 

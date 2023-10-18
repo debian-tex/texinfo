@@ -30,23 +30,19 @@ $result_trees{'cpp_line_before_first_node'} = {
               'text' => '
 ',
               'type' => 'empty_line'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
             }
           ],
           'type' => 'preamble_before_content'
-        },
-        {
-          'contents' => [
-            {
-              'text' => '
-'
-            }
-          ],
-          'type' => 'paragraph'
-        },
-        {
-          'text' => '
-',
-          'type' => 'empty_line'
         },
         {
           'contents' => [
@@ -70,7 +66,7 @@ $result_trees{'cpp_line_before_first_node'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'

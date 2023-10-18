@@ -234,9 +234,13 @@ $result_trees{'abbr_acronym'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -342,9 +346,9 @@ $result_floats{'abbr_acronym'} = {};
 
 
 
-$result_converted{'plaintext'}->{'abbr_acronym'} = '–a (an accronym) –a –a (an accronym , ...)
+$result_converted{'plaintext'}->{'abbr_acronym'} = '-a (an accronym) -a -a (an accronym , ...)
 
-   É–a. ,A. (Étude–, Autonome) É–a. ,A.
+   É-a. ,A. (Étude-, Autonome) É-a. ,A.
 ';
 
 

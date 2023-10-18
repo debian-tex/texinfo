@@ -12,9 +12,11 @@ $result_trees{'double_exdent'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -33,9 +35,11 @@ $result_trees{'double_exdent'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -63,16 +67,20 @@ $result_trees{'double_exdent'} = {
                                   'text' => 'double  exdented nested other line'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'exdent',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -85,8 +93,10 @@ $result_trees{'double_exdent'} = {
                     }
                   ],
                   'cmdname' => 'exdent',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -102,17 +112,23 @@ $result_trees{'double_exdent'} = {
                           'text' => 'example'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'example'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -135,17 +151,23 @@ $result_trees{'double_exdent'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

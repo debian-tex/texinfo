@@ -35,17 +35,23 @@ $result_trees{'complex_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,7 +60,7 @@ $result_trees{'complex_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrotwo{arg}
 '
           },
@@ -106,17 +112,23 @@ $result_trees{'complex_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -125,7 +137,7 @@ $result_trees{'complex_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrofour {}
 '
           },
@@ -175,17 +187,23 @@ $result_trees{'complex_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -194,7 +212,7 @@ $result_trees{'complex_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrothree{text, arg}
 '
           },
@@ -205,6 +223,51 @@ $result_trees{'complex_argument'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => '@verb{% @macrotwo %}
+@c @macrofour
+@pagesizes 4 @macrofour{}
+@headings doubleafter @macrofour{}
+@verbatim
+@macrotwo
+@end verbatim
+@ignore
+@macrofour
+@end ignore
+@macro macroseven {truc}
+@emph{\\truc\\}
+@end macro
+macroseven defined
+@ifinfo
+@macrofour
+@end ifinfo
+@iftex
+@macrotwo{aa,bb}
+@end iftex
+@macrofour{}
+'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macrothree'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -224,7 +287,7 @@ $result_trees{'complex_argument'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => '%'
               },
               'source_info' => {
@@ -242,35 +305,52 @@ $result_trees{'complex_argument'} = {
                 {
                   'text' => ' @macrofour
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' @macrofour
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 2,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'macrofour'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'position' => 2,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => '4 1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'pagesizes',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -287,6 +367,14 @@ $result_trees{'complex_argument'} = {
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '4
 '
             },
@@ -295,19 +383,42 @@ $result_trees{'complex_argument'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 3,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'macrofour'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'position' => 12,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => 'doubleafter 1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'headings',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -324,6 +435,14 @@ $result_trees{'complex_argument'} = {
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '4
 '
             }
@@ -333,9 +452,11 @@ $result_trees{'complex_argument'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -355,17 +476,23 @@ $result_trees{'complex_argument'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -383,9 +510,11 @@ $result_trees{'complex_argument'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -405,17 +534,23 @@ $result_trees{'complex_argument'} = {
                       'text' => 'ignore'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ignore'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -456,17 +591,23 @@ $result_trees{'complex_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -475,7 +616,7 @@ $result_trees{'complex_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macroseven {truc}
 '
           },
@@ -488,6 +629,151 @@ $result_trees{'complex_argument'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'block_line_arg'
+                      }
+                    ],
+                    'cmdname' => 'ifinfo',
+                    'contents' => [
+                      {
+                        'text' => '@macrofour
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'args' => [
+                          {
+                            'contents' => [
+                              {
+                                'text' => 'ifinfo'
+                              }
+                            ],
+                            'info' => {
+                              'spaces_after_argument' => {
+                                'text' => '
+'
+                              }
+                            },
+                            'type' => 'line_arg'
+                          }
+                        ],
+                        'cmdname' => 'end',
+                        'extra' => {
+                          'text_arg' => 'ifinfo'
+                        },
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'source_info' => {
+                          'file_name' => '',
+                          'line_nr' => 38,
+                          'macro' => 'macrothree'
+                        }
+                      }
+                    ],
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 38,
+                      'macro' => 'macrothree'
+                    }
+                  },
+                  'position' => 19,
+                  'sourcemark_type' => 'ignored_conditional_block'
+                },
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'block_line_arg'
+                      }
+                    ],
+                    'cmdname' => 'iftex',
+                    'contents' => [
+                      {
+                        'text' => '@macrotwo{aa,bb}
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'args' => [
+                          {
+                            'contents' => [
+                              {
+                                'text' => 'iftex'
+                              }
+                            ],
+                            'info' => {
+                              'spaces_after_argument' => {
+                                'text' => '
+'
+                              }
+                            },
+                            'type' => 'line_arg'
+                          }
+                        ],
+                        'cmdname' => 'end',
+                        'extra' => {
+                          'text_arg' => 'iftex'
+                        },
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'source_info' => {
+                          'file_name' => '',
+                          'line_nr' => 38,
+                          'macro' => 'macrothree'
+                        }
+                      }
+                    ],
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 38,
+                      'macro' => 'macrothree'
+                    }
+                  },
+                  'position' => 19,
+                  'sourcemark_type' => 'ignored_conditional_block'
+                },
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macrofour'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 19,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'macroseven defined
 '
             },
@@ -504,6 +790,14 @@ $result_trees{'complex_argument'} = {
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 4,
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '4
 '
             }
@@ -518,6 +812,14 @@ $result_trees{'complex_argument'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 5,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '&&&& 
 '
             }
@@ -532,6 +834,30 @@ $result_trees{'complex_argument'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 5,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'aaa'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macroseven'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 16,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Call macroseven
 '
             },
@@ -551,7 +877,14 @@ $result_trees{'complex_argument'} = {
                 'file_name' => '',
                 'line_nr' => 41,
                 'macro' => 'macroseven'
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 5,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ]
             },
             {
               'text' => '
@@ -646,6 +979,15 @@ aaa
 ';
 
 $result_errors{'complex_argument'} = [
+  {
+    'error_line' => 'warning: use @comma{} instead of \\, in macro arg
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => 'use @comma{} instead of \\, in macro arg',
+    'type' => 'warning'
+  },
   {
     'error_line' => 'bad argument to @headings: doubleafter 1 (possibly involving @macrofour)
 ',

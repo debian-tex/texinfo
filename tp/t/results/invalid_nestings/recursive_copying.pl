@@ -12,9 +12,11 @@ $result_trees{'recursive_copying'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -48,17 +50,23 @@ $result_trees{'recursive_copying'} = {
                       'text' => 'copying'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'copying'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -83,7 +91,7 @@ $result_trees{'recursive_copying'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'insertcopying',

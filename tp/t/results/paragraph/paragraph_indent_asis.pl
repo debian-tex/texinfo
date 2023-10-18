@@ -17,9 +17,11 @@ $result_trees{'paragraph_indent_asis'} = {
                   'text' => 'asis'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -28,8 +30,12 @@ $result_trees{'paragraph_indent_asis'} = {
           'extra' => {
             'misc_args' => [
               'asis'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -67,9 +73,11 @@ $result_trees{'paragraph_indent_asis'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -97,17 +105,23 @@ $result_trees{'paragraph_indent_asis'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

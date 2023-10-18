@@ -13,63 +13,51 @@ $result_trees{'set_form_feed'} = {
           'args' => [
             {
               'text' => 'gg',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'a\\a\\f\\\\',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' gg  a\\a\\f\\\\
-',
-            'misc_args' => [
-              'gg',
-              'a\\a\\f\\\\'
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'hh',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' hh
-',
-            'misc_args' => [
-              'hh',
-              ''
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'll',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' ll 
-',
-            'misc_args' => [
-              'll',
-              ''
-            ]
+'
           }
         },
         {
@@ -84,6 +72,70 @@ $result_trees{'set_form_feed'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
+                              {
+                                'text' => 'gg'
+                              }
+                            ],
+                            'cmdname' => 'value'
+                          },
+                          'line' => 'a\\a\\f\\\\',
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'start'
+                        },
+                        {
+                          'counter' => 1,
+                          'position' => 7,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'end'
+                        },
+                        {
+                          'counter' => 2,
+                          'element' => {
+                            'args' => [
+                              {
+                                'text' => 'hh'
+                              }
+                            ],
+                            'cmdname' => 'value'
+                          },
+                          'line' => '',
+                          'position' => 9,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'start'
+                        },
+                        {
+                          'counter' => 2,
+                          'position' => 9,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'end'
+                        },
+                        {
+                          'counter' => 3,
+                          'element' => {
+                            'args' => [
+                              {
+                                'text' => 'll'
+                              }
+                            ],
+                            'cmdname' => 'value'
+                          },
+                          'line' => '',
+                          'position' => 11,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'start'
+                        },
+                        {
+                          'counter' => 3,
+                          'position' => 11,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'a\\a\\f\\\\. . '
                     }
                   ],

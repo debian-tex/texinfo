@@ -21,16 +21,20 @@ $result_trees{'invalid'} = {
                           'text' => '2x.2 2.23x'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'columnfractions',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -57,8 +61,12 @@ $result_trees{'invalid'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -68,8 +76,12 @@ $result_trees{'invalid'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 0,
-            'spaces_before_argument' => ' '
+            'max_columns' => 0
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

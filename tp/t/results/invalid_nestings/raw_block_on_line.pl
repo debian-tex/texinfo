@@ -16,19 +16,16 @@ $result_trees{'raw_block_on_line'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
                   ],
                   'cmdname' => 'tex',
-                  'contents' => [
-                    {
-                      'type' => 'rawpreformatted'
-                    }
-                  ],
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 1,
@@ -41,13 +38,22 @@ $result_trees{'raw_block_on_line'} = {
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
-          }
+          },
+          'type' => 'index_entry_command'
         }
       ],
       'type' => 'before_node_section'
@@ -71,11 +77,32 @@ $result_errors{'raw_block_on_line'} = [
     'macro' => '',
     'text' => 'no matching `@end tex\'',
     'type' => 'error'
+  },
+  {
+    'error_line' => 'warning: entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'entry for index `cp\' outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: empty index key in @cindex
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'empty index key in @cindex',
+    'type' => 'warning'
   }
 ];
 
 
 $result_floats{'raw_block_on_line'} = {};
+
+
+$result_indices_sort_strings{'raw_block_on_line'} = {};
 
 
 1;

@@ -59,9 +59,6 @@ $result_trees{'on_itemize_line'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'in-anchor'
                   },
                   'source_info' => {
@@ -104,16 +101,20 @@ $result_trees{'on_itemize_line'} = {
                           'text' => 'exdent'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'exdent',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -161,17 +162,23 @@ $result_trees{'on_itemize_line'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -180,8 +187,10 @@ $result_trees{'on_itemize_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -209,9 +218,11 @@ $result_trees{'on_itemize_line'} = {
                   'text' => 'in item'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -226,17 +237,23 @@ $result_trees{'on_itemize_line'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -245,8 +262,10 @@ $result_trees{'on_itemize_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -260,7 +279,6 @@ $result_trees{'on_itemize_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_itemize_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'on_itemize_line'} = '@itemize @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 @item in item.
@@ -277,39 +295,39 @@ $result_texts{'on_itemize_line'} = 'in item.
 
 $result_errors{'on_itemize_line'} = [
   {
-    'error_line' => 'warning: @indent should not appear in @itemize
+    'error_line' => 'warning: @indent should not appear on @itemize line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@indent should not appear in @itemize',
+    'text' => '@indent should not appear on @itemize line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @itemize
+    'error_line' => 'warning: @titlefont should not appear on @itemize line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@titlefont should not appear in @itemize',
+    'text' => '@titlefont should not appear on @itemize line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @itemize
+    'error_line' => 'warning: @anchor should not appear on @itemize line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor should not appear in @itemize',
+    'text' => '@anchor should not appear on @itemize line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @itemize
+    'error_line' => 'warning: @footnote should not appear on @itemize line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@footnote should not appear in @itemize',
+    'text' => '@footnote should not appear on @itemize line',
     'type' => 'warning'
   },
   {
@@ -322,21 +340,21 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @itemize
+    'error_line' => 'warning: @exdent should not appear on @itemize line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should not appear in @itemize',
+    'text' => '@exdent should not appear on @itemize line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @item should not appear in @itemize
+    'error_line' => 'warning: @item should not appear on @itemize line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@item should not appear in @itemize',
+    'text' => '@item should not appear on @itemize line',
     'type' => 'warning'
   },
   {

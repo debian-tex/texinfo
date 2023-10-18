@@ -1,5 +1,5 @@
 # Makefile.am for texinfo/tp/tests.
-# Copyright 2012-2019 Free Software Foundation, Inc.
+# Copyright 2012-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -21,7 +21,7 @@ $(srcdir)/Makefile.onetst: \
 	  -tex_html '$(tex_html_tests_dirs)' \
 	  -other '$(other_tests_dirs)'
 
-base_tests_dirs = formatting sectioning indices nested_formats contents layout
+base_tests_dirs = formatting encoded nested_formats customization coverage layout
 tex_html_tests_dirs = tex_html
 other_tests_dirs = other
 

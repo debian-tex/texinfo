@@ -10,6 +10,71 @@ $result_trees{'info_ifplaintext'} = {
     {
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifplaintext',
+                'contents' => [
+                  {
+                    'text' => 'this text will only appear in plain text.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifplaintext'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifplaintext'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 4,
+                      'macro' => ''
+                    }
+                  }
+                ],
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 2,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'

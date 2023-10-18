@@ -36,16 +36,20 @@ $result_trees{'wrong_command'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => ' 
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' 
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'columnfractions',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -72,8 +76,12 @@ $result_trees{'wrong_command'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -83,8 +91,12 @@ $result_trees{'wrong_command'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 0,
-            'spaces_before_argument' => ' '
+            'max_columns' => 0
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -129,5 +141,14 @@ $result_errors{'wrong_command'} = [
 
 $result_floats{'wrong_command'} = {};
 
+
+
+$result_converted{'xml'}->{'wrong_command'} = '<multitable spaces=" " endspaces=" "><columnfractions spaces=" " line="@b{3.4} "></columnfractions>
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'wrong_command'} = '\\begin{tabular}{}%
+\\end{tabular}%
+';
 
 1;

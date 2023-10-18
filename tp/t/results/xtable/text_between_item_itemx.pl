@@ -23,9 +23,11 @@ $result_trees{'text_between_item_itemx'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -44,16 +46,20 @@ $result_trees{'text_between_item_itemx'} = {
                               'text' => 'in item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -83,16 +89,20 @@ $result_trees{'text_between_item_itemx'} = {
                               'text' => 'in itemx'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'itemx',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -114,17 +124,23 @@ $result_trees{'text_between_item_itemx'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -134,8 +150,12 @@ $result_trees{'text_between_item_itemx'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

@@ -1,3 +1,31 @@
+[Changes for 12.0 - 2018-11-24]
+
+* Update to Unicode v12.0.0.
+
+[Changes for 1.40 - 2018-11-24]
+
+* Fix installation compatibility with Perl 5.26+.
+* Update to Unicode v11.0.0.
+
+[Changes for 1.33 - 2012-10-21]
+
+* Rebuild with up-to-date Module::Install 1.06; no functional changes.
+
+[Changes for 1.32 - 2012-05-13]
+
+* Correct unit tests for Perl 5.16+.
+
+[Changes for 1.31 - 2012-05-13]
+
+* Clarify that $EastAsianWidth needs to be set at BEGIN time in
+  POD and tests for Perl 5.16+; no functional changes.
+
+* LICENSING CHANGE: This compilation and all individual files in it
+  are now under the nullary CC0 1.0 Universal terms:
+
+  To the extent possible under law, 唐鳳 has waived all copyright and
+  related or neighboring rights to selfvars.
+
 [Changes for 1.30 - 2007-02-08]
 
 * Added miss-parsed lines of ranges in EastAsianWidth.txt, affecting

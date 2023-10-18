@@ -25,9 +25,11 @@ $result_trees{'part_chapter_appendix'} = {
               'text' => 'Part 1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -40,8 +42,11 @@ $result_trees{'part_chapter_appendix'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -57,9 +62,11 @@ $result_trees{'part_chapter_appendix'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -73,8 +80,12 @@ $result_trees{'part_chapter_appendix'} = {
         }
       ],
       'extra' => {
-        'associated_part' => {},
-        'spaces_before_argument' => ' '
+        'associated_part' => {}
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -90,16 +101,20 @@ $result_trees{'part_chapter_appendix'} = {
               'text' => 'Appendix'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendix',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -160,7 +175,6 @@ $result_sectioning{'part_chapter_appendix'} = {
       },
       {
         'cmdname' => 'appendix',
-        'extra' => {},
         'structure' => {
           'section_level' => 1,
           'section_number' => 'A',

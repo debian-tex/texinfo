@@ -13,84 +13,68 @@ $result_trees{'comment_on_set_line'} = {
           'args' => [
             {
               'text' => 'x',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' x@c
-',
-            'misc_args' => [
-              'x',
-              ''
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'y',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' y @c
-',
-            'misc_args' => [
-              'y',
-              ''
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'z',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'g',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' z g@c
-',
-            'misc_args' => [
-              'z',
-              'g'
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 't',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'a vv',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' t a vv @comment@ggg
-',
-            'misc_args' => [
-              't',
-              'a vv'
-            ]
+'
           }
         },
         {
@@ -101,6 +85,92 @@ $result_trees{'comment_on_set_line'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'x'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => '',
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'y'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => '',
+                  'position' => 5,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 2,
+                  'position' => 5,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'z'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'g',
+                  'position' => 9,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 3,
+                  'position' => 10,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 't'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'a vv',
+                  'position' => 14,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 4,
+                  'position' => 18,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '!!, !!, !g!, !a vv!
 '
             }

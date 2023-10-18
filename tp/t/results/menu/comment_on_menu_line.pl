@@ -18,9 +18,11 @@ $result_trees{'comment_on_menu_line'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -35,22 +37,16 @@ $result_trees{'comment_on_menu_line'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => '
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      '
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -59,7 +55,7 @@ $result_trees{'comment_on_menu_line'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -70,6 +66,12 @@ $result_trees{'comment_on_menu_line'} = {
                       'text' => 'first'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -91,15 +93,6 @@ $result_trees{'comment_on_menu_line'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'first'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -115,17 +108,23 @@ $result_trees{'comment_on_menu_line'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -134,8 +133,10 @@ $result_trees{'comment_on_menu_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '  '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -150,19 +151,12 @@ $result_trees{'comment_on_menu_line'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -178,16 +172,21 @@ $result_trees{'comment_on_menu_line'} = {
               'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -203,28 +202,23 @@ $result_trees{'comment_on_menu_line'} = {
               'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'first'
-          }
-        ],
-        'normalized' => 'first',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -235,12 +229,7 @@ $result_trees{'comment_on_menu_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'comment_on_menu_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'comment_on_menu_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'comment_on_menu_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'comment_on_menu_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'comment_on_menu_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'comment_on_menu_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'comment_on_menu_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'comment_on_menu_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'comment_on_menu_line'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'comment_on_menu_line'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'comment_on_menu_line'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'comment_on_menu_line'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'comment_on_menu_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'comment_on_menu_line'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'comment_on_menu_line'} = '@node Top
 
@@ -298,8 +287,7 @@ $result_nodes{'comment_on_menu_line'} = {
     },
     'menus' => [
       {
-        'cmdname' => 'menu',
-        'extra' => {}
+        'cmdname' => 'menu'
       }
     ],
     'normalized' => 'Top'
@@ -377,6 +365,8 @@ $result_converted{'html'}->{'comment_on_menu_line'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 td.menu-entry-description {vertical-align: top}
 td.menu-entry-destination {vertical-align: top}
 -->
@@ -397,13 +387,13 @@ Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </td></tr>
 </table>
 
-<h2 class="chapter" id="first-1">1 first</h2>
+<h2 class="chapter" id="first-1"><span>1 first<a class="copiable-link" href="#first-1"> &para;</a></span></h2>
 <hr>
 <a class="node-id" id="first"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">first</a>, Up: <a href="#Top" accesskey="u" rel="up">first</a> &nbsp; </p>
 </div>
-<h4 class="node">first</h4>
+<h4 class="node"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 </div>
 
 
@@ -426,12 +416,12 @@ $result_converted_errors{'html'}->{'comment_on_menu_line'} = [
 $result_converted{'xml'}->{'comment_on_menu_line'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first</nodenext></node>
 
 <menu spaces="  " endspaces=" "><!-- c -->
-<menuentry leadingtext="* "><menunode separator="::">first</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>first</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <chapter spaces=" "><sectiontitle>first</sectiontitle>
-<node name="first" spaces=" "><nodename>first</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 </chapter>
+<node name="first" spaces=" "><nodename>first</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 ';
 
 1;

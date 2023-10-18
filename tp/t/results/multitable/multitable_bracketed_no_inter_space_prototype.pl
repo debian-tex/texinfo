@@ -24,7 +24,7 @@ $result_trees{'multitable_bracketed_no_inter_space_prototype'} = {
                       'text' => 'a'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 },
                 {
                   'contents' => [
@@ -32,12 +32,14 @@ $result_trees{'multitable_bracketed_no_inter_space_prototype'} = {
                       'text' => 'b'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -52,17 +54,23 @@ $result_trees{'multitable_bracketed_no_inter_space_prototype'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -72,22 +80,12 @@ $result_trees{'multitable_bracketed_no_inter_space_prototype'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 2,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              },
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -101,8 +99,6 @@ $result_trees{'multitable_bracketed_no_inter_space_prototype'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'multitable_bracketed_no_inter_space_prototype'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_bracketed_no_inter_space_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'multitable_bracketed_no_inter_space_prototype'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'multitable_bracketed_no_inter_space_prototype'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'multitable_bracketed_no_inter_space_prototype'} = '
 @multitable {a}{b}

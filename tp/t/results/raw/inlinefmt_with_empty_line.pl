@@ -36,8 +36,10 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                       'type' => 'empty_line'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -97,8 +99,10 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                       'type' => 'empty_line'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -163,7 +167,11 @@ $result_texis{'inlinefmt_with_empty_line'} = 'A @inlinefmt{plaintext, plaintext 
 ';
 
 
-$result_texts{'inlinefmt_with_empty_line'} = 'A {  a.  Now html
+$result_texts{'inlinefmt_with_empty_line'} = 'A plaintext " 
+
+{  a.  Now html
+in 
+
 <i>HTML</i>.
 ';
 

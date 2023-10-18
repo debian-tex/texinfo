@@ -38,16 +38,20 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                   'text' => '?\'\''
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -58,9 +62,11 @@ $result_trees{'direntry_dircategory_and_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -68,7 +74,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
           'cmdname' => 'direntry',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -97,6 +103,11 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                       'text' => ')'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -139,15 +150,6 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -163,17 +165,23 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                       'text' => 'direntry'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'direntry'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -201,16 +209,20 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                   'text' => 'cat2'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -221,9 +233,11 @@ $result_trees{'direntry_dircategory_and_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -231,7 +245,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
           'cmdname' => 'direntry',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -246,6 +260,13 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                       'type' => 'space_at_end_menu_node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {},
+                      {}
+                    ],
+                    'normalized' => 'aaa'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -271,16 +292,6 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {},
-                    {}
-                  ],
-                  'normalized' => 'aaa'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -315,17 +326,23 @@ $result_trees{'direntry_dircategory_and_commands'} = {
                       'text' => 'direntry'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'direntry'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -361,28 +378,23 @@ $result_trees{'direntry_dircategory_and_commands'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -398,9 +410,11 @@ $result_trees{'direntry_dircategory_and_commands'} = {
               'text' => 'Test dircategory and direntry'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -422,8 +436,11 @@ $result_trees{'direntry_dircategory_and_commands'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -434,14 +451,9 @@ $result_trees{'direntry_dircategory_and_commands'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[5];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_name'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[1];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[3];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[1] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1];
+$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[1] = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'direntry_dircategory_and_commands'} = '@dircategory ``category---@var{th  ere}?\'\'
 @direntry
@@ -530,9 +542,9 @@ $result_floats{'direntry_dircategory_and_commands'} = {};
 
 $result_converted{'info'}->{'direntry_dircategory_and_commands'} = 'This is , produced from .
 
-INFO-DIR-SECTION “category—TH ERE?”
+INFO-DIR-SECTION "category--TH ERE?"
 START-INFO-DIR-ENTRY
-* foo: (foo).   “hello—THERE?”
+* foo: (foo).   "hello--THERE?"
 END-INFO-DIR-ENTRY
 
 INFO-DIR-SECTION cat2
@@ -553,7 +565,7 @@ Text
 
 
 Tag Table:
-Node: Top274
+Node: Top264
 
 End Tag Table
 

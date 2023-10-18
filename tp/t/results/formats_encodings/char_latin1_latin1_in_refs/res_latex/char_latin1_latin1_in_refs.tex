@@ -1,23 +1,23 @@
 \documentclass{book}
-\usepackage{imakeidx}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage[gen]{eurosym}
-\usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \usepackage{titleps}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
 \usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \usepackage[hidelinks]{hyperref}
-\usepackage[latin1]{inputenc}
 
 \makeatletter
 \newcommand{\Texinfosettitle}{No Title}%
 
-% no index headers or page break
-\indexsetup{level=\relax,toclevel=section,noclearpage}%
+% no index headers
+\indexsetup{level=\relax,toclevel=section}%
 \makeindex[name=cp,title=]%
 
 % redefine the \mainmatter command such that it does not clear page
@@ -47,13 +47,10 @@
 \pagestyle{single}%
 
 
-
 \begin{document}
 \label{anchor:Top}%
 \chapter{{ä ë ï ö ü ÿ Ä Ë Ï Ö Ü}}
 \label{anchor:_00e4-_00eb-_00ef-_00f6-_00fc-_00ff-_00c4-_00cb-_00cf-_00d6-_00dc}%
-
-\printindex[cp]
 
 \chapter{{é}}
 \label{anchor:_00e9}%

@@ -17,9 +17,11 @@ $result_trees{'sp_with_text_before_in_example'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -39,9 +41,11 @@ $result_trees{'sp_with_text_before_in_example'} = {
                           'text' => '4'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -50,8 +54,12 @@ $result_trees{'sp_with_text_before_in_example'} = {
                   'extra' => {
                     'misc_args' => [
                       '4'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -74,17 +82,23 @@ $result_trees{'sp_with_text_before_in_example'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -122,7 +136,17 @@ sp
 text
 ';
 
-$result_errors{'sp_with_text_before_in_example'} = [];
+$result_errors{'sp_with_text_before_in_example'} = [
+  {
+    'error_line' => 'warning: @sp should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@sp should only appear at the beginning of a line',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'sp_with_text_before_in_example'} = {};

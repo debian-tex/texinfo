@@ -36,17 +36,23 @@ $result_trees{'text_before_after'} = {
                           'text' => 'macro after'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'macro after'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -55,7 +61,7 @@ $result_trees{'text_before_after'} = {
                   }
                 }
               ],
-              'extra' => {
+              'info' => {
                 'arg_line' => ' mymacro
 '
               },

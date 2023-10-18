@@ -17,9 +17,11 @@ $result_trees{'enumerate_argument_item'} = {
                   'text' => '1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -86,17 +88,23 @@ $result_trees{'enumerate_argument_item'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -106,8 +114,12 @@ $result_trees{'enumerate_argument_item'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => '1',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => '1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -128,22 +140,16 @@ $result_trees{'enumerate_argument_item'} = {
                   'text' => 'A'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comment
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -211,17 +217,23 @@ $result_trees{'enumerate_argument_item'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -231,8 +243,12 @@ $result_trees{'enumerate_argument_item'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => 'A',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => 'A'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -253,24 +269,20 @@ $result_trees{'enumerate_argument_item'} = {
                   'text' => 'z'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comment
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -337,17 +349,23 @@ $result_trees{'enumerate_argument_item'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -357,8 +375,12 @@ $result_trees{'enumerate_argument_item'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => 'z',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => 'z'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -432,6 +454,23 @@ $result_converted{'html_text'}->{'enumerate_argument_item'} = '<ol class="enumer
 <li> lower case first
 </li><li> lower case second
 </li></ol>
+';
+
+
+$result_converted{'xml'}->{'enumerate_argument_item'} = '<enumerate first="1" spaces=" " endspaces=" "><enumeratefirst>1</enumeratefirst>
+<listitem> <para>numeric first
+</para></listitem><listitem> <para>numeric second
+</para></listitem></enumerate>
+
+<enumerate first="A" spaces=" " endspaces=" "><enumeratefirst>A</enumeratefirst><!-- c comment -->
+<listitem> <para>upper case first
+</para></listitem><listitem> <para>upper case second
+</para></listitem></enumerate>
+
+<enumerate first="z" spaces=" " endspaces=" "><enumeratefirst>z </enumeratefirst><!-- c comment -->
+<listitem> <para>lower case first
+</para></listitem><listitem> <para>lower case second
+</para></listitem></enumerate>
 ';
 
 1;

@@ -17,27 +17,26 @@ $result_trees{'index_entries'} = {
                   'text' => 'cindex entry'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -59,9 +58,11 @@ $result_trees{'index_entries'} = {
                   'text' => 'truc'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -70,8 +71,12 @@ $result_trees{'index_entries'} = {
           'extra' => {
             'misc_args' => [
               'truc'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -92,27 +97,26 @@ $result_trees{'index_entries'} = {
                   'text' => 'index truc'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'trucindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'trucindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'truc',
-              'index_type_command' => 'trucindex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'truc',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -127,12 +131,6 @@ $result_trees{'index_entries'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'index_entries'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_entries'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'index_entries'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_entries'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'index_entries'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_entries'}{'contents'}[0]{'contents'}[0];
-$result_trees{'index_entries'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_entries'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'index_entries'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_entries'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'index_entries'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_entries'}{'contents'}[0]{'contents'}[4];
 
 $result_texis{'index_entries'} = '@cindex cindex entry
 

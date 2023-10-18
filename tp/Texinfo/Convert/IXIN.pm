@@ -1,6 +1,6 @@
 # IXIN.pm: output IXIN format.
 #
-# Copyright 2013-2022 Free Software Foundation, Inc.
+# Copyright 2013-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ use Texinfo::Convert::TexinfoSXML;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 my $ixin_version = 1;
@@ -678,21 +678,23 @@ sub output_ixin($$)
 
   my %dts_information;
 
-  my $index_names = $self->{'indices_information'};
-  if ($index_names) {
+  my $indices_information = $self->{'indices_information'};
+  if ($indices_information) {
     my $merged_index_entries
-        = Texinfo::Structuring::merge_indices($index_names);
+        = Texinfo::Structuring::merge_indices($indices_information);
     my ($entries, $index_entries_sort_strings)
-      = Texinfo::Structuring::sort_indices($self,
-                                           $self, $merged_index_entries);
+      = Texinfo::Structuring::sort_indices($self, $self,
+                                           $merged_index_entries,
+                                           $indices_information);
     # first do the dts_text as the counts are needed for the dts index
     foreach my $index_name (sort(keys(%$entries))) {
       $dts_information{$index_name} = {};
       my $dts_text_result = '';
       my $dts_entries_nr = 0;
-      my $dts_in_code = $index_names->{$index_name}->{'in_code'};
+      my $dts_in_code = $indices_information->{$index_name}->{'in_code'};
       foreach my $dts_entry (@{$entries->{$index_name}}) {
-        my $node = $dts_entry->{'entry_node'};
+        my $main_entry_element = $dts_entry->{'entry_element'};
+        my $node = $main_entry_element->{'extra'}->{'element_node'};
         my $associated_node_id;
         if (defined($node)) {
           $associated_node_id = $self->_associated_node_id(undef,
@@ -700,18 +702,14 @@ sub output_ixin($$)
         } else {
           $associated_node_id = -1;
         }
-        my $entry = $self->convert_tree({'contents' => $dts_entry->{'entry_content'}});
+        my $entry_content_element
+          = Texinfo::Common::index_content_element($main_entry_element);
+        my $entry = $self->convert_tree($entry_content_element);
         $dts_text_result .= $self->ixin_open_element('dtsentry',
                                                 [['nodeid', $associated_node_id]]);
         $dts_text_result .= $self->ixin_open_element('dtsterm');
         $dts_text_result .= $entry;
         $dts_text_result .= $self->ixin_close_element('dtsterm');
-        if ($dts_entry->{'in_code'} != $dts_in_code) {
-          my $font_name = $self->_index_font_name($dts_entry->{'in_code'});
-          $dts_text_result .= ' ';
-          $dts_text_result .= $self->ixin_list_element('dtsfont', [['font',
-                                                                   $font_name]]);
-        }
         $dts_text_result .= $self->ixin_close_element('dtsentry');
         $dts_entries_nr++;
       }
@@ -773,27 +771,22 @@ sub output_ixin($$)
 
   # collect all float types corresponding to float commands
   if ($self->{'floats'}) {
-    foreach my $type (keys(%{$self->{'floats'}})) {
-      $floats_information{$type} = {};
+    foreach my $float_type (keys(%{$self->{'floats'}})) {
+      $floats_information{$float_type} = {};
     }
   }
 
   # collect listoffloats information
   if ($self->{'global_commands'}->{'listoffloats'}) {
-    foreach my $command (@{$self->{'global_commands'}->{'listoffloats'}}) {
-      my $associated_node_id = $self->_associated_node_id($command,
+    foreach my $listoffloats_element (@{$self->{'global_commands'}->{'listoffloats'}}) {
+      my $associated_node_id = $self->_associated_node_id($listoffloats_element,
                                                      \%node_label_number);
-      if ($command->{'extra'}
-          and $command->{'extra'}->{'type'}
-          and defined($command->{'extra'}->{'type'}->{'normalized'})) {
-        my $type = $command->{'extra'}->{'type'}->{'normalized'};
-        if ($command->{'extra'}->{'type'}->{'content'}) {
-          $floats_information{$type}->{'type'}
-            = $self->convert_tree({'contents'
-                             => $command->{'extra'}->{'type'}->{'content'}});
-        }
-        push @{$floats_information{$type}->{'node_id'}}, $associated_node_id;
+      my $float_type = $listoffloats_element->{'extra'}->{'float_type'};
+      if ($float_type ne '') {
+        $floats_information{$float_type}->{'type'}
+          = $self->convert_tree($listoffloats_element->{'args'}->[0]);
       }
+      push @{$floats_information{$float_type}->{'node_id'}}, $associated_node_id;
     }
   }
 
@@ -824,10 +817,11 @@ sub output_ixin($$)
         } else {
           $float_text .= $self->ixin_none_element('floatlabel');
         }
-        if ($float->{'extra'}->{'node_content'}) {
+        if ($float->{'args'} and scalar(@{$float->{'args'}}) >= 2
+            and $float->{'args'}->[1]->{'contents'}) {
           $float_text .= $self->ixin_open_element('floatname');
           $float_text .= $self->convert_tree({'contents'
-                                 => $float->{'extra'}->{'node_content'}});
+                                 => $float->{'args'}->[1]->{'contents'}});
           $float_text .= $self->ixin_close_element('floatname');
         } else {
           $float_text .= $self->ixin_none_element('floatname');
@@ -849,12 +843,10 @@ sub output_ixin($$)
       # determine type expandable string from first float if it was not
       # already determined from listoffloats
       if (!defined($floats_information{$type}->{'type'})) {
-        my $command = $self->{'floats'}->{$type}->[0];
-        if ($command->{'extra'}->{'type'}
-            and $command->{'extra'}->{'type'}->{'content'}) {
+        my $float_element = $self->{'floats'}->{$type}->[0];
+        if ($float_element->{'extra'}->{'float_type'} ne '') {
           $floats_information{$type}->{'type'}
-            = $self->convert_tree({'contents'
-                           => $command->{'extra'}->{'type'}->{'content'}});
+            = $self->convert_tree($float_element->{'args'}->[0]);
         }
       }
     }
@@ -928,9 +920,11 @@ sub output_ixin($$)
           if (open ($filehandle, $file)) {
             $blob_nr++;
             if ($extension eq 'txt') {
-              binmode($filehandle, ":encoding("
-                         .$self->{'parser_info'}->{'input_perl_encoding'}.")")
-                if (defined($self->{'parser_info'}->{'input_perl_encoding'}));
+              my $encoding
+                 = Texinfo::Common::element_associated_processing_encoding($command);
+              if (defined($encoding)) {
+                binmode($filehandle, ":encoding($encoding)");
+              }
             }
             my $file_content;
             if (-z $file) {
@@ -938,6 +932,7 @@ sub output_ixin($$)
             } else {
               $file_content = <$filehandle>;
             }
+            # FIXME error on close should be tested here
             my $encoded_file = encode_base64($file_content);
             $blobs .= $encoded_file;
             my $blob_len = $self->_count_bytes($encoded_file);
@@ -950,7 +945,7 @@ sub output_ixin($$)
             $blobs_index .= $self->ixin_element('blobentry',
              [['bloblen', $blob_len], ['encoding', 'base64'],
               ['mimetype', $mime_type], ['filename', $file_name_text]]) ."\n";
-          }
+          } # FIXME error on open should be tested here
         }
       }
       #print STDERR "$basefile\n";

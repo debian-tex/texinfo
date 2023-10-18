@@ -18,9 +18,11 @@ $result_trees{'no_empty_line_between_headings'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -35,16 +37,20 @@ $result_trees{'no_empty_line_between_headings'} = {
                   'text' => 'Subheading'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -53,8 +59,10 @@ $result_trees{'no_empty_line_between_headings'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -70,16 +78,20 @@ $result_trees{'no_empty_line_between_headings'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -95,16 +107,20 @@ $result_trees{'no_empty_line_between_headings'} = {
               'text' => 'Section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -138,17 +154,14 @@ $result_sectioning{'no_empty_line_between_headings'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '1.1',
@@ -201,18 +214,18 @@ Subheading
 
 
 $result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<div class="top-level-extent" id="Top">
-<h1 class="top">Top</h1>
-<h4 class="subheading" id="Subheading">Subheading</h4>
+<h1 class="top"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
+<h4 class="subheading" id="Subheading"><span>Subheading<a class="copiable-link" href="#Subheading"> &para;</a></span></h4>
 <ul class="mini-toc">
 <li><a href="#Chapter" accesskey="1">Chapter</a></li>
 </ul>
 <div class="chapter-level-extent" id="Chapter">
-<h2 class="chapter">1 Chapter</h2>
+<h2 class="chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 <ul class="mini-toc">
 <li><a href="#Section" accesskey="1">Section</a></li>
 </ul>
 <div class="section-level-extent" id="Section">
-<h3 class="section">1.1 Section</h3>
+<h3 class="section"><span>1.1 Section<a class="copiable-link" href="#Section"> &para;</a></span></h3>
 </div>
 </div>
 </div>
@@ -223,15 +236,15 @@ $result_converted{'latex'}->{'no_empty_line_between_headings'} = '\\documentclas
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

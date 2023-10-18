@@ -78,6 +78,8 @@ Css: .hline hr, .cline hr{ height : 0px; margin:0px; }
 Css: .hline td, .cline td{ padding: 0; }
 Css: .hline hr, .cline hr{border:none;border-top:1px solid black;}
 Css: .hline {border-top: 1px solid black;}
+Css: .hline + .vspace:last-child{display:none;}
+Css: .hline:first-child{border-bottom:1px solid black;border-top:none;}
 Css: .tabbing-right {text-align:right;}
 Css: div.float, div.figure {margin-left: auto; margin-right: auto;}
 Css: div.float img {text-align:center;}
@@ -108,6 +110,7 @@ Css: div.caption span.id{font-weight: bold; white-space: nowrap; }
 Css: h1.partHead{text-align: center}
 Css: p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
 Css: p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+Css: .subsubsectionHead, .likesubsubsectionHead { font-size: 1em; }
 Css: .paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
 Css: .subparagraphHead, .likesubparagraphHead { font-weight: bold;}
 Css: .verse{white-space:nowrap; margin-left:2em}

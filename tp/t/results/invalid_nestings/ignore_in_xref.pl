@@ -15,12 +15,14 @@ $result_trees{'ignore_in_xref'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -39,9 +41,15 @@ $result_trees{'ignore_in_xref'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -49,9 +57,11 @@ $result_trees{'ignore_in_xref'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -71,17 +81,23 @@ $result_trees{'ignore_in_xref'} = {
                                   'text' => 'ignore'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'ignore'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -97,23 +113,16 @@ $result_trees{'ignore_in_xref'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -129,19 +138,12 @@ $result_trees{'ignore_in_xref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -152,14 +154,11 @@ $result_trees{'ignore_in_xref'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ignore_in_xref'}{'contents'}[1];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ignore_in_xref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ignore_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
-$result_texis{'ignore_in_xref'} = '@node Top
+$result_texis{'ignore_in_xref'} = '@node first
 
-@xref{Top,
+@xref{first,
 @ignore
 ignore me
 @end ignore
@@ -168,31 +167,31 @@ ignore me
 
 
 $result_texts{'ignore_in_xref'} = '
-Top.
+first.
 ';
 
 $result_nodes{'ignore_in_xref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'ignore_in_xref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_errors{'ignore_in_xref'} = [
   {
-    'error_line' => 'warning: @ignore should not appear in @xref
+    'error_line' => 'warning: @ignore should not appear anywhere inside @xref
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@ignore should not appear in @xref',
+    'text' => '@ignore should not appear anywhere inside @xref',
     'type' => 'warning'
   }
 ];

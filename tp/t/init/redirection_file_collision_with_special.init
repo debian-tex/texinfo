@@ -1,0 +1,4 @@
+
+# this is used to allow a collision with redirection file name, as with
+# the default with underscore there cannot be a collision.
+texinfo_register_special_element_info('file_string', 'footnotes', '-fot');

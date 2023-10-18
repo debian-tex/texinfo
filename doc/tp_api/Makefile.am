@@ -10,11 +10,18 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-AM_MAKEINFOFLAGS = -c INFO_SPECIAL_CHARS_WARNING=0
+# Without menus completed the Index appendix node in
+# texi2any_internals_indices.texi soes not appear in any menu.
+AM_MAKEINFOFLAGS = -c INFO_SPECIAL_CHARS_WARNING=0 -c TREE_TRANSFORMATIONS=complete_tree_nodes_menus
 
 # Use the programs built in our distribution, taking account of possible
-# cross-compiling.
-MAKEINFO = $(PERL) -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
+# cross-compiling.  The first -I is there to find Texinfo::ModulePath in
+# out-of-source builds.
+MAKEINFO = $(PERL) -I $(top_builddir)/tp/ -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
+
+TEXI2DVI_ENVIRONMENT = TEXINDEX=${abs_top_builddir}/texindex/texindex \
+                       TEXINDEX_SCRIPT=${abs_top_srcdir}/texindex/texindex.awk
+TEXI2DVI = $(TEXI2DVI_ENVIRONMENT) $(top_srcdir)/util/texi2dvi
 
 # the pod files are formatted like man pages.  If HTML is split at node
 # or section, this results in some very short sections at the beginning
@@ -27,10 +34,12 @@ info_TEXINFOS = texi2any_internals.texi
 
 TEXINFO_TEX = ../texinfo.tex
 
-# dependencies are in api_includes/ directory but we do not want to list
-# them explicitly
+# Most dependencies are in api_includes/ directory but we do not want
+# to list them explicitly
 texi2any_internals_TEXINFOS = texi2any_internals_indices.texi
-#dist_texi2any_internals_TEXINFOS = 
+
+# texi2any_internals_preamble.texi is not included but passed on the
+# standard input when building texi2any_internals.texi.
 EXTRA_DIST = texi2any_internals_preamble.texi api_includes
 
 if BUILD_PERL_API_TEXI

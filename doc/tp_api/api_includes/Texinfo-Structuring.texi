@@ -23,11 +23,14 @@ Texinfo::Structuring - information on Texinfo::Parser tree
   my $global_commands = $parser->global_commands_information();
   set_menus_node_directions($registrar, $config, $parser_information,
                             $global_commands, $nodes_list, $labels);
-  my $top_node = nodes_tree($registrar, $config, $parser_information, $nodes_list, $labels);
+  my $top_node = nodes_tree($registrar, $config, $parser_information,
+                            $nodes_list, $labels);
   complete_node_tree_with_menus($registrar, $config, $nodes_list, $top_node);
   my $refs = $parser->internal_references_information();
-  check_nodes_are_referenced($registrar, $config, $nodes_list, $top_node, $labels, $refs);
-  associate_internal_references($registrar, $parser, $parser_information, $labels, $refs);
+  check_nodes_are_referenced($registrar, $config, $nodes_list, $top_node,
+                             $labels, $refs);
+  associate_internal_references($registrar, $parser, $parser_information,
+                                $labels, $refs);
   number_floats($parser->floats_information());
   my $tree_units;
   if ($split_at_nodes) {
@@ -39,16 +42,18 @@ Texinfo::Structuring - information on Texinfo::Parser tree
   elements_directions($config, $labels, $tree_units);
   elements_file_directions($tree_units);
 
-  my $index_names = $parser->indices_information();
+  my $indices_information = $parser->indices_information();
   my $merged_index_entries
-     = merge_indices($index_names);
+     = merge_indices($indices_information);
   my $index_entries_sorted;
   if ($sort_by_letter) {
     $index_entries_sorted = sort_indices($registrar, $config,
-                                       $merged_index_entries, 'by_letter');
+                             $merged_index_entries, $indices_information,
+                             'by_letter');
   } else {
     $index_entries_sorted = sort_indices($registrar, $config,
-                                         $merged_index_entries);
+                                         $merged_index_entries,
+                                         $indices_information);
   }
 @end verbatim
 
@@ -61,27 +66,28 @@ Texinfo to other formats.  There is no promise of API stability.
 @node Texinfo@asis{::}Structuring DESCRIPTION
 @section Texinfo::Structuring DESCRIPTION
 
-Texinfo::Structuring first allows to collect information on a Texinfo tree.
-In most case, it also requires information from a parser object to do that
-job.  Thanks to @code{sectioning_structure} the hierarchy of sectioning commands is
-determined.  The directions implied by menus are determined with
-@code{set_menus_node_directions}.  The node tree is analysed with @code{nodes_tree}.
-Nodes directions are completed with menu directions with
-@code{complete_node_tree_with_menus}.  Floats get their standard numbering with
-@code{number_floats} and internal references are matched up with nodes, floats or
-anchors with @code{associate_internal_references}.
+Texinfo::Structuring first allows to collect information on a Texinfo
+tree.  In most case, it also requires information from a parser object to
+do that job.  Thanks to @code{sectioning_structure} the hierarchy of
+sectioning commands is determined.  The directions implied by menus are
+determined with @code{set_menus_node_directions}.  The node tree is analysed
+with @code{nodes_tree}.  Nodes directions are completed with menu directions
+with @code{complete_node_tree_with_menus}.  Floats get their standard
+numbering with @code{number_floats} and internal references are matched up
+with nodes, floats or anchors with @code{associate_internal_references}.
 
 The following methods depend on the output format, so are usually called
 from converters.
 
-It is also possible to associate top-level contents of the tree, which consist
-in nodes and sectioning commands with tree unit elements that group together
-a node and the next sectioning element.  With @code{split_by_node} nodes are considered
-to be the main sectioning elements, while with @code{split_by_section} the
-sectioning command elements are the main elements.  The first mode is typical
-of Info format, while the second corresponds to a traditional book.
-The elements may be further split in @emph{pages}, which are not pages as
-in book pages, but more like web pages, and hold series of tree unit elements.
+It is also possible to associate top-level contents of the tree, which
+consist in nodes and sectioning commands with tree unit elements that
+group together a node and the next sectioning element.  With
+@code{split_by_node} nodes are considered to be the main sectioning elements,
+while with @code{split_by_section} the sectioning command elements are the
+main elements.  The first mode is typical of Info format, while the second
+corresponds to a traditional book.  The elements may be further split in
+@emph{pages}, which are not pages as in book pages, but more like web pages,
+and hold series of tree unit elements.
 
 The elements may have directions to other elements prepared
 by @code{elements_directions}.  @code{elements_file_directions} should also
@@ -96,25 +102,24 @@ with @code{sort_indices}.
 
 No method is exported in the default case.
 
-Most methods takes a @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} @code{$registrar} as argument for error
-reporting.  Most also require Texinfo customization variables information,
-which means an object implementing the @code{get_conf} method, in practice the main
-program configuration or a converter (@ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and
-setting customization variables}).  Other common input arguments such as parser
-information, labels or refs are obtained from a parser, see @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}.
+Most methods takes a @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} @code{$registrar} as argument for
+error reporting.  Most also require Texinfo customization variables
+information, which means an object implementing the @code{get_conf} method, in
+practice the main program configuration or a converter
+(@ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and setting customization
+variables}).  Other common input arguments such as parser information,
+labels or refs are obtained from a parser, see @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}.
 
 @table @asis
 @item associate_internal_references($registrar, $customization_information, $parser_information, $labels, $refs)
 @anchor{Texinfo@asis{::}Structuring associate_internal_references($registrar@comma{} $customization_information@comma{} $parser_information@comma{} $labels@comma{} $refs)}
 @cindex @code{associate_internal_references}
 
-Verify that internal references (@code{@@ref} and similar without
-fourth of fifth argument and menu entries) have an associated node, anchor or
-float.  Set the @code{normalized} key in the @code{extra} hash @code{menu_entry_node} hash
-for menu entries and in the @code{extra} hash @code{node_argument} hash for internal
-references @code{@@ref} and similar @@-commands.  Set the @code{label} key in the
-@code{extra} hash of the reference tree element to the associated labeled tree
-element.  Register errors in @emph{$registrar}.
+Verify that internal references (@code{@@ref} and similar without fourth of
+fifth argument and menu entries) have an associated node, anchor or float.
+Set the @code{normalized} key in the @code{extra} hash @code{menu_entry_node} hash for
+menu entries and in the first argument @code{extra} hash for internal
+references @code{@@ref} and similar @@-commands.  Register errors in @emph{$registrar}.
 
 @item check_nodes_are_referenced($registrar, $customization_information, $nodes_list, $top_node, $labels, $refs)
 @anchor{Texinfo@asis{::}Structuring check_nodes_are_referenced($registrar@comma{} $customization_information@comma{} $nodes_list@comma{} $top_node@comma{} $labels@comma{} $refs)}
@@ -197,10 +202,10 @@ The up, next and previous section elements.
 @item FastBack
 @anchor{Texinfo@asis{::}Structuring FastBack}
 
-For top level elements, the previous top level element.  For other elements
-the up top level element.  For example, for a chapter element it is the
-previous chapter, for a subsection element it is the chapter element
-that contains the subsection.
+For top level elements, the previous top level element.  For other
+elements the up top level element.  For example, for a chapter element it
+is the previous chapter, for a subsection element it is the chapter
+element that contains the subsection.
 
 @item FastForward
 @anchor{Texinfo@asis{::}Structuring FastForward}
@@ -213,9 +218,9 @@ The next top level section element.
 @anchor{Texinfo@asis{::}Structuring elements_file_directions($tree_units)}
 @cindex @code{elements_file_directions}
 
-In the directions reference described above for @code{elements_directions}, sets
-the @emph{PrevFile} and @emph{NextFile} directions to the elements in previous and
-following files.
+In the directions reference described above for @code{elements_directions},
+sets the @emph{PrevFile} and @emph{NextFile} directions to the elements in
+previous and following files.
 
 It also sets @emph{FirstInFile*} directions for all the elements by using
 the directions of the first element in file.  So, for example,
@@ -245,11 +250,11 @@ override the sort string (typically obtained from @code{@@sortas}).   The
 the generation of the sort string, typically obtained from
 @ref{Texinfo@asis{::}Structuring $option = setup_index_entry_keys_formatting($customization_information),, setup_index_entry_keys_formatting}.
 
-@item $merged_entries = merge_indices($index_names)
-@anchor{Texinfo@asis{::}Structuring $merged_entries = merge_indices($index_names)}
+@item $merged_entries = merge_indices($indices_information)
+@anchor{Texinfo@asis{::}Structuring $merged_entries = merge_indices($indices_information)}
 @cindex @code{merge_indices}
 
-Using information returned by @ref{Texinfo@asis{::}Parser indices_information},
+Using information returned by @ref{Texinfo@asis{::}Parser $indices_information = $parser->indices_information(),, @code{Texinfo::Parser::indices_information}},
 a structure holding all the index entries by index name is returned,
 with all the entries of merged indices merged with those of the indice
 merged into.
@@ -272,6 +277,15 @@ Returns the texinfo tree corresponding to a block command named
 Returns a texinfo tree menu for node @emph{$node}, pointing to the children
 of the node obtained with the sectioning structure.  If @emph{$use_sections}
 is set, use section names for the menu entry names.
+
+@item $detailmenu = new_master_menu($translations, $labels, $menus)
+@anchor{Texinfo@asis{::}Structuring $detailmenu = new_master_menu($translations@comma{} $labels@comma{} $menus)}
+@cindex @code{new_master_menu}
+
+Returns a detailmenu tree element formatted as a master node.
+@emph{$translations}, if defined, should be a @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations} object and
+should also hold customization information. @emph{$menus} is an array
+reference containing the regular menus of the Top node.
 
 @item $entry = new_node_menu_entry($node, $use_sections)
 @anchor{Texinfo@asis{::}Structuring $entry = new_node_menu_entry($node@comma{} $use_sections)}
@@ -324,10 +338,10 @@ and lowered sections, when needed.
 @anchor{Texinfo@asis{::}Structuring $sections_root@comma{} $sections_list = sectioning_structure($registrar@comma{} $customization_information@comma{} $tree)}
 @cindex @code{sectioning_structure}
 
-This function goes through the tree and gather information on
-the document structure for sectioning commands.  It returns @emph{$sections_root}
-the root of the sectioning commands tree and a reference on the sections
-elements list.  Errors are registered in @emph{$registrar}.
+This function goes through the tree and gather information on the document
+structure for sectioning commands.  It returns @emph{$sections_root} the root
+of the sectioning commands tree and a reference on the sections elements
+list.  Errors are registered in @emph{$registrar}.
 
 It sets section elements @code{structure} hash values:
 
@@ -408,8 +422,8 @@ Up, next and previous directions as set in menus.
 
 Return options for conversion of Texinfo to text relevant for index keys sorting.
 
-@item ($index_entries_sorted, $index_entries_sort_strings) = sort_indices($registrar, $customization_information, $merged_index_entries, $sort_by_letter)
-@anchor{Texinfo@asis{::}Structuring ($index_entries_sorted@comma{} $index_entries_sort_strings) = sort_indices($registrar@comma{} $customization_information@comma{} $merged_index_entries@comma{} $sort_by_letter)}
+@item ($index_entries_sorted, $index_entries_sort_strings) = sort_indices($registrar, $customization_information, $merged_index_entries, $indices_information, $sort_by_letter)
+@anchor{Texinfo@asis{::}Structuring ($index_entries_sorted@comma{} $index_entries_sort_strings) = sort_indices($registrar@comma{} $customization_information@comma{} $merged_index_entries@comma{} $indices_information@comma{} $sort_by_letter)}
 @cindex @code{sort_indices}
 
 If @emph{$sort_by_letter} is set, sort by letter, otherwise sort all
@@ -438,10 +452,10 @@ the following sectioning commands.  Sectioning commands without nodes
 are also with the previous node, while nodes without sectioning commands
 are alone in their tree units.
 
-Tree units are regular tree elements with type @emph{unit}, the
-associated nodes and sectioning tree elements are in the array associated
-with the @code{contents} key.  The associated elements have a @emph{associated_unit}
-key set in the @code{structure} hash that points to the associated tree unit.
+Tree units are regular tree elements with type @emph{unit}, the associated
+nodes and sectioning tree elements are in the array associated with the
+@code{contents} key.  The associated elements have a @emph{associated_unit} key
+set in the @code{structure} hash that points to the associated tree unit.
 
 Tree units have directions in the @code{structure}
 hash reference, namely @emph{unit_next} and @emph{unit_prev} pointing to the
@@ -461,12 +475,12 @@ The node command associated with the element.
 @anchor{Texinfo@asis{::}Structuring $tree_units = split_by_section($tree)}
 @cindex @code{split_by_section}
 
-Similarly with @code{split_by_node}, returns an array of tree units.  This time,
-lone nodes are associated with the previous sections and lone sections
-makes up a tree unit.
+Similarly with @code{split_by_node}, returns an array of tree units.  This
+time, lone nodes are associated with the previous sections and lone
+sections makes up a tree unit.
 
-The @code{structure} and @code{extra} hash keys set are the same, except that @emph{unit_command} is
-the sectioning command associated with the element.
+The @code{structure} and @code{extra} hash keys set are the same, except that
+@emph{unit_command} is the sectioning command associated with the element.
 
 @item $pages = split_pages($tree_units, $split)
 @anchor{Texinfo@asis{::}Structuring $pages = split_pages($tree_units@comma{} $split)}

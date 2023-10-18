@@ -36,9 +36,6 @@ $result_trees{'anchor_and_empty_lines'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'in-anchor'
           },
           'source_info' => {
@@ -72,7 +69,6 @@ $result_trees{'anchor_and_empty_lines'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'anchor_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 
 $result_texis{'anchor_and_empty_lines'} = 'text 1.
 

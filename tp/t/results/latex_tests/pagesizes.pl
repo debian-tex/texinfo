@@ -19,16 +19,20 @@ $result_trees{'pagesizes'} = {
                       'text' => '200mm,150mm'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'pagesizes',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -55,28 +59,23 @@ $result_trees{'pagesizes'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -92,9 +91,11 @@ $result_trees{'pagesizes'} = {
               'text' => 'section top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -107,8 +108,11 @@ $result_trees{'pagesizes'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -124,28 +128,23 @@ $result_trees{'pagesizes'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -161,9 +160,11 @@ $result_trees{'pagesizes'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -183,16 +184,20 @@ $result_trees{'pagesizes'} = {
                   'text' => '11.5in'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'pagesizes',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -206,8 +211,11 @@ $result_trees{'pagesizes'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -223,9 +231,11 @@ $result_trees{'pagesizes'} = {
               'text' => 'other pagesizes'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -245,16 +255,20 @@ $result_trees{'pagesizes'} = {
                   'text' => ', 130mm'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'pagesizes',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -275,16 +289,20 @@ $result_trees{'pagesizes'} = {
                   'text' => ','
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' 
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'pagesizes',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -293,8 +311,10 @@ $result_trees{'pagesizes'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -305,10 +325,6 @@ $result_trees{'pagesizes'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'pagesizes'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'pagesizes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'pagesizes'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'pagesizes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'pagesizes'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'pagesizes'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'pagesizes'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'pagesizes'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'pagesizes'} = '@pagesizes 200mm,150mm
 
@@ -379,7 +395,6 @@ $result_sectioning{'pagesizes'} = {
             },
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 2,

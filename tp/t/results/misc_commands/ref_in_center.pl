@@ -24,28 +24,23 @@ $result_trees{'ref_in_center'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'ref_in_center'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -76,8 +73,11 @@ $result_trees{'ref_in_center'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -93,28 +93,23 @@ $result_trees{'ref_in_center'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -130,9 +125,11 @@ $result_trees{'ref_in_center'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -156,19 +153,16 @@ $result_trees{'ref_in_center'} = {
                           'text' => 'Top'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'Top'
+                      },
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'ref',
-                  'extra' => {
-                    'label' => {},
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'Top'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 7,
@@ -176,16 +170,20 @@ $result_trees{'ref_in_center'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -213,8 +211,10 @@ $result_trees{'ref_in_center'} = {
                       'type' => 'brace_command_arg'
                     },
                     {
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -240,8 +240,10 @@ $result_trees{'ref_in_center'} = {
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -259,8 +261,11 @@ $result_trees{'ref_in_center'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -271,12 +276,7 @@ $result_trees{'ref_in_center'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_center'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_center'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_center'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_center'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_center'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_center'}{'contents'}[1];
-$result_trees{'ref_in_center'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_center'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_center'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'ref_in_center'} = '@node Top
 @top top
@@ -435,10 +435,8 @@ $result_converted{'plaintext'}->{'ref_in_center'} = 'top
 
 $result_converted{'html_text'}->{'ref_in_center'} = '<div class="top-level-extent" id="Top">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chap" accesskey="1">Chapter</a></li>
@@ -446,10 +444,8 @@ $result_converted{'html_text'}->{'ref_in_center'} = '<div class="top-level-exten
 <hr>
 <div class="chapter-level-extent" id="chap">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <div class="center"><a class="ref" href="#Top">top</a>
 </div>
@@ -465,15 +461,15 @@ $result_converted{'latex'}->{'ref_in_center'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

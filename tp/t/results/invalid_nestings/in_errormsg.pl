@@ -27,9 +27,6 @@ $result_trees{'in_errormsg'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'in-ref'
           },
           'source_info' => {
@@ -65,9 +62,6 @@ $result_trees{'in_errormsg'} = {
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
                         'normalized' => 'in-anchor'
                       },
                       'source_info' => {
@@ -88,19 +82,16 @@ $result_trees{'in_errormsg'} = {
                               'text' => 'in ref'
                             }
                           ],
+                          'extra' => {
+                            'node_content' => [
+                              {}
+                            ],
+                            'normalized' => 'in-ref'
+                          },
                           'type' => 'brace_command_arg'
                         }
                       ],
                       'cmdname' => 'ref',
-                      'extra' => {
-                        'label' => {},
-                        'node_argument' => {
-                          'node_content' => [
-                            {}
-                          ],
-                          'normalized' => 'in-ref'
-                        }
-                      },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 3,
@@ -133,9 +124,11 @@ $result_trees{'in_errormsg'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
@@ -161,9 +154,11 @@ $result_trees{'in_errormsg'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -182,16 +177,20 @@ $result_trees{'in_errormsg'} = {
                               'text' => 'item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -213,17 +212,23 @@ $result_trees{'in_errormsg'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -233,8 +238,12 @@ $result_trees{'in_errormsg'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -248,10 +257,7 @@ $result_trees{'in_errormsg'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'extra'}{'label'} = $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[1];
-$result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'in_errormsg'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 
 $result_texis{'in_errormsg'} = '
@@ -273,30 +279,21 @@ item
 
 $result_errors{'in_errormsg'} = [
   {
-    'error_line' => 'warning: @anchor should not appear in @errormsg
+    'error_line' => 'warning: @anchor should not appear anywhere inside @errormsg
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@anchor should not appear in @errormsg',
+    'text' => '@anchor should not appear anywhere inside @errormsg',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @ref should not appear in @errormsg
+    'error_line' => 'warning: @ref should not appear anywhere inside @errormsg
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@ref should not appear in @errormsg',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @table should not appear in @errormsg
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => '@table should not appear in @errormsg',
+    'text' => '@ref should not appear anywhere inside @errormsg',
     'type' => 'warning'
   },
   {

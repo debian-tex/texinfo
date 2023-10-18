@@ -4,7 +4,7 @@
 #
 # tex4ht.pm: use tex4ht to convert tex to html
 #
-# Copyright 2005, 2007, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
+# Copyright 2005, 2007, 2009, 2011-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -210,18 +210,21 @@ sub tex4ht_prepare($$)
         my $tree;
         if ($cmdname eq 'math') {
           $tree = $element->{'args'}->[0];
-        } else {
+        } elsif ($element->{'contents'}) {
           $tree = {'contents' => [@{$element->{'contents'}}]};
-          if ($tree->{'contents'}->[0]
+          if (scalar(@{$tree->{'contents'}})
               and $tree->{'contents'}->[0]->{'type'}
               and ($tree->{'contents'}->[0]->{'type'} eq 'empty_line_after_command'
-                   or $tree->{'contents'}->[0]->{'type'} eq 'elided_block')) {
+                   or $tree->{'contents'}->[0]->{'type'} eq 'elided_brace_command_arg'
+                   or $tree->{'contents'}->[0]->{'type'} eq 'elided_rawpreformatted')) {
             shift @{$tree->{'contents'}};
           }
           if ($tree->{'contents'}->[-1]->{'cmdname'}
               and $tree->{'contents'}->[-1]->{'cmdname'} eq 'end') {
             pop @{$tree->{'contents'}};
           }
+        } else {
+          next;
         }
         if (scalar(@{$tree->{'contents'}}) == 0) {
           # should correspond to an ignored block

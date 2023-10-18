@@ -14,9 +14,11 @@ $result_trees{'titlepage_and_headings'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -40,17 +42,23 @@ $result_trees{'titlepage_and_headings'} = {
                           'text' => 'titlepage'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'titlepage'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -101,6 +109,7 @@ $result_converted{'latex_text'}->{'titlepage_and_headings'} = '
 \\begin{document}
 
 \\frontmatter
+\\pagestyle{empty}%
 \\begin{titlepage}
 \\begingroup
 \\newskip\\titlepagetopglue \\titlepagetopglue = 1.5in
@@ -111,8 +120,8 @@ $result_converted{'latex_text'}->{'titlepage_and_headings'} = '
 in titlepage
 \\endgroup
 \\end{titlepage}
-\\pagestyle{single}%
 \\mainmatter
+\\pagestyle{single}%
 ';
 
 1;

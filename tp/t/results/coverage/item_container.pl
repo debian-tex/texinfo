@@ -22,9 +22,11 @@ $result_trees{'item_container'} = {
                   'text' => '+'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -65,17 +67,23 @@ $result_trees{'item_container'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -84,8 +92,10 @@ $result_trees{'item_container'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -112,9 +122,11 @@ $result_trees{'item_container'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -160,17 +172,23 @@ $result_trees{'item_container'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -180,8 +198,12 @@ $result_trees{'item_container'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -203,9 +225,11 @@ $result_trees{'item_container'} = {
                   'type' => 'command_as_argument_inserted'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -246,17 +270,23 @@ $result_trees{'item_container'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -314,9 +344,9 @@ $result_floats{'item_container'} = {};
 
 
 
-$result_converted{'plaintext'}->{'item_container'} = '   + i–tem +
+$result_converted{'plaintext'}->{'item_container'} = '   + i-tem +
 
-   • b–ullet
+   • b-ullet
 
    • no itemize argument
 ';
@@ -347,7 +377,7 @@ $result_converted{'xml'}->{'item_container'} = '
  <para>b&textndash;ullet
 </para></listitem></itemize>
 
-<itemize commandarg="bullet" endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend>
+<itemize commandarg="bullet" automaticcommandarg="on" endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend>
 <listitem><prepend>&bullet;</prepend> <para>no itemize argument
 </para></listitem></itemize>
 ';

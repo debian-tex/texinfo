@@ -18,9 +18,11 @@ $result_trees{'detailmenu_unknown_node'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -35,9 +37,11 @@ $result_trees{'detailmenu_unknown_node'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -47,9 +51,11 @@ $result_trees{'detailmenu_unknown_node'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -57,7 +63,7 @@ $result_trees{'detailmenu_unknown_node'} = {
               'cmdname' => 'detailmenu',
               'contents' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
                       'text' => '* ',
                       'type' => 'menu_entry_leading_text'
@@ -68,6 +74,12 @@ $result_trees{'detailmenu_unknown_node'} = {
                           'text' => 'unknown'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'unknown'
+                      },
                       'type' => 'menu_entry_node'
                     },
                     {
@@ -89,15 +101,6 @@ $result_trees{'detailmenu_unknown_node'} = {
                       'type' => 'menu_entry_description'
                     }
                   ],
-                  'extra' => {
-                    'menu_entry_description' => {},
-                    'menu_entry_node' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'unknown'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 5,
@@ -113,17 +116,23 @@ $result_trees{'detailmenu_unknown_node'} = {
                           'text' => 'detailmenu'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'detailmenu'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -146,17 +155,23 @@ $result_trees{'detailmenu_unknown_node'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -173,19 +188,12 @@ $result_trees{'detailmenu_unknown_node'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -196,10 +204,7 @@ $result_trees{'detailmenu_unknown_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[3];
-$result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'detailmenu_unknown_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'detailmenu_unknown_node'} = '@node Top
 
@@ -273,6 +278,8 @@ $result_converted{'html'}->{'detailmenu_unknown_node'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 td.menu-entry-description {vertical-align: top}
 td.menu-entry-destination {vertical-align: top}
 -->
@@ -282,7 +289,7 @@ td.menu-entry-destination {vertical-align: top}
 </head>
 
 <body lang="en">
-<h1 class="node" id="Top">Top</h1>
+<h1 class="node" id="Top"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td class="menu-entry-destination">&bull; unknown:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
@@ -310,7 +317,7 @@ $result_converted{'xml'}->{'detailmenu_unknown_node'} = '<node name="Top" spaces
 
 <menu endspaces=" ">
 <detailmenu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">unknown</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>unknown</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 </menu>
 ';

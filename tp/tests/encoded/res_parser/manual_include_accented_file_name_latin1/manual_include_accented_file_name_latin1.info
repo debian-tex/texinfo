@@ -1,0 +1,24 @@
+This is manual_include_accented_file_name_latin1.info, produced by
+texi2any version from manual_include_accented_file_name_latin1.texi.
+
+top
+***
+
+
+File: manual_include_accented_file_name_latin1.info,  Node: Top,  Up: (dir)
+
+This is a very simple texi manual   <>.
+
+   où îl é.
+
+
+
+Tag Table:
+Node: Top146
+
+End Tag Table
+
+
+Local Variables:
+coding: iso-8859-1
+End:

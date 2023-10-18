@@ -1,6 +1,6 @@
 #! /usr/bin/env perl
 # pod2texi -- convert Pod to Texinfo.
-# Copyright 2012-2022 Free Software Foundation, Inc.
+# Copyright 2012-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -272,7 +272,7 @@ sub _parsed_manual_tree($$$$$)
 
           # prepare the new node Texinfo name and parse it to a Texinfo tree
           my $node_texi = Texinfo::Convert::Texinfo::convert_to_texinfo(
-                {'contents' => $node->{'extra'}->{'node_content'}});
+                {'contents' => $node->{'args'}->[0]->{'contents'}});
           # We could have kept the asis, too, it is kept when !section_nodes
           $node_texi =~ s/^\s*(\@asis\{\})?\s*//;
           # complete with manual name
@@ -287,16 +287,11 @@ sub _parsed_manual_tree($$$$$)
             $content->{'parent'} = $node_arg;
           }
 
-          # reset extra informations
-          my $parsed_node = {'node_content' => $node_arg->{'contents'}};
           my $normalized_node_name
              = Texinfo::Convert::NodeNameNormalization::normalize_node(
                   { 'contents' => $node_arg->{'contents'} });
-          $parsed_node->{'normalized'} = $normalized_node_name;
           $node->{'extra'}->{'normalized'} = $normalized_node_name;
-          @{$node->{'extra'}->{'nodes_manuals'}} = ($parsed_node);
-          # this (re)sets $node->{'extra'}->{'node_content'}
-          Texinfo::Common::register_label($targets_list, $node, $parsed_node);
+          Texinfo::Common::register_label($targets_list, $node);
           # Nothing should link to the added node, but we setup the label
           # informations nonetheless.
           $labels->{$normalized_node_name} = $node;
@@ -338,6 +333,7 @@ sub _fix_texinfo_tree($$$$;$$)
       # note that that situation cannot happen with the code as it
       # is now.  When _fix_texinfo_tree is called from _do_top_node_menu
       # both $do_master_menu and $do_node_menus are set.
+      # _fix_texinfo_tree can also be called from _fix_texinfo_manual, but
       # _fix_texinfo_manual is never called with a $do_master_menu argument,
       # so when _fix_texinfo_tree is called from _fix_texinfo_manual,
       # $do_master_menu cannot be set.
@@ -369,6 +365,7 @@ sub _fix_texinfo_manual($$$$;$$)
   my $fill_gaps_in_sectioning = shift;
   my $do_node_menus = shift;
   my $do_master_menu = shift;
+
   my ($texi_parser, $tree)
       = _fix_texinfo_tree($self, $manual_texi, $section_nodes,
                           $fill_gaps_in_sectioning, $do_node_menus,
@@ -721,7 +718,7 @@ Texinfo home page: L<http://www.gnu.org/software/texinfo/>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2012-2022 Free Software Foundation, Inc.
+Copyright 2012-2023 Free Software Foundation, Inc.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

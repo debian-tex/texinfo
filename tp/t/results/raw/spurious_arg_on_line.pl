@@ -22,9 +22,11 @@ $result_trees{'spurious_arg_on_line'} = {
                   'text' => 'argt'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -48,17 +50,23 @@ $result_trees{'spurious_arg_on_line'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -67,8 +75,10 @@ $result_trees{'spurious_arg_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -89,9 +99,11 @@ $result_trees{'spurious_arg_on_line'} = {
                   'text' => 'argverbatim'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -111,17 +123,23 @@ $result_trees{'spurious_arg_on_line'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -130,8 +148,10 @@ $result_trees{'spurious_arg_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -152,9 +172,11 @@ $result_trees{'spurious_arg_on_line'} = {
                   'text' => 'argh'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -162,7 +184,14 @@ $result_trees{'spurious_arg_on_line'} = {
           'cmdname' => 'html',
           'contents' => [
             {
-              'type' => 'elided_block'
+              'contents' => [
+                {
+                  'text' => 'in html
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             },
             {
               'args' => [
@@ -172,17 +201,23 @@ $result_trees{'spurious_arg_on_line'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -191,8 +226,10 @@ $result_trees{'spurious_arg_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -217,20 +254,70 @@ in verbatim
 @end verbatim
 
 @html argh
+in html
 @end html
 ';
 
 
 $result_texts{'spurious_arg_on_line'} = '
+in tex
 
 in verbatim
 
 ';
 
-$result_errors{'spurious_arg_on_line'} = [];
+$result_errors{'spurious_arg_on_line'} = [
+  {
+    'error_line' => 'warning: unexpected argument on @tex line: argt
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'unexpected argument on @tex line: argt',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: unexpected argument on @verbatim line: argverbatim
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'unexpected argument on @verbatim line: argverbatim',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: unexpected argument on @html line: argh
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'unexpected argument on @html line: argh',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'spurious_arg_on_line'} = {};
 
+
+
+$result_converted{'plaintext'}->{'spurious_arg_on_line'} = 'in verbatim
+
+';
+
+
+$result_converted{'xml'}->{'spurious_arg_on_line'} = '
+<tex spaces=" " endspaces=" ">
+in tex
+</tex>
+
+<verbatim xml:space="preserve" spaces=" " endspaces=" ">
+in verbatim
+</verbatim>
+
+<html spaces=" " endspaces=" ">
+in html
+</html>
+';
 
 1;

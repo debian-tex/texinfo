@@ -45,17 +45,23 @@ $result_trees{'ifset_in_macro'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -64,7 +70,7 @@ $result_trees{'ifset_in_macro'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' note {arg}
 '
           },
@@ -75,6 +81,121 @@ $result_trees{'ifset_in_macro'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'arg
+'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'note',
+                  'spaces_before_argument' => {
+                    'text' => '
+'
+                  }
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'notes'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => ' 
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'contents' => [
+                  {
+                    'text' => 'arg
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 1,
+                                'position' => 5,
+                                'sourcemark_type' => 'macro_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 9,
+                      'macro' => 'note'
+                    }
+                  }
+                ],
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 9,
+                  'macro' => 'note'
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'

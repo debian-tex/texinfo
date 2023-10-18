@@ -25,28 +25,23 @@ $result_trees{'double_part'} = [
                 'text' => 'Top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'Top'
-            }
-          ],
-          'normalized' => 'Top',
-          'spaces_before_argument' => ' '
+          'normalized' => 'Top'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -62,9 +57,11 @@ $result_trees{'double_part'} = [
                 'text' => 'top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -79,9 +76,11 @@ $result_trees{'double_part'} = [
           {
             'args' => [
               {
-                'extra' => {
-                  'spaces_after_argument' => '
+                'info' => {
+                  'spaces_after_argument' => {
+                    'text' => '
 '
+                  }
                 },
                 'type' => 'block_line_arg'
               }
@@ -89,7 +88,7 @@ $result_trees{'double_part'} = [
             'cmdname' => 'menu',
             'contents' => [
               {
-                'args' => [
+                'contents' => [
                   {
                     'text' => '* ',
                     'type' => 'menu_entry_leading_text'
@@ -100,6 +99,12 @@ $result_trees{'double_part'} = [
                         'text' => 'node chapter'
                       }
                     ],
+                    'extra' => {
+                      'node_content' => [
+                        {}
+                      ],
+                      'normalized' => 'node-chapter'
+                    },
                     'type' => 'menu_entry_node'
                   },
                   {
@@ -121,15 +126,6 @@ $result_trees{'double_part'} = [
                     'type' => 'menu_entry_description'
                   }
                 ],
-                'extra' => {
-                  'menu_entry_description' => {},
-                  'menu_entry_node' => {
-                    'node_content' => [
-                      {}
-                    ],
-                    'normalized' => 'node-chapter'
-                  }
-                },
                 'source_info' => {
                   'file_name' => '',
                   'line_nr' => 5,
@@ -145,17 +141,23 @@ $result_trees{'double_part'} = [
                         'text' => 'menu'
                       }
                     ],
-                    'extra' => {
-                      'spaces_after_argument' => '
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
 '
+                      }
                     },
                     'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
                 'extra' => {
-                  'spaces_before_argument' => ' ',
                   'text_arg' => 'menu'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'source_info' => {
                   'file_name' => '',
@@ -176,8 +178,11 @@ $result_trees{'double_part'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -202,9 +207,11 @@ $result_trees{'double_part'} = [
                 'text' => 'part first'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -226,8 +233,10 @@ $result_trees{'double_part'} = [
             'type' => 'paragraph'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -252,9 +261,11 @@ $result_trees{'double_part'} = [
                 'text' => 'part second'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -276,8 +287,11 @@ $result_trees{'double_part'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -293,28 +307,23 @@ $result_trees{'double_part'} = [
                 'text' => 'node chapter'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'node-chapter'
-            }
-          ],
-          'normalized' => 'node-chapter',
-          'spaces_before_argument' => ' '
+          'normalized' => 'node-chapter'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -330,9 +339,11 @@ $result_trees{'double_part'} = [
                 'text' => 'chapter after 2 parts'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -346,8 +357,12 @@ $result_trees{'double_part'} = [
           }
         ],
         'extra' => {
-          'associated_part' => {},
-          'spaces_before_argument' => ' '
+          'associated_part' => {}
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -363,16 +378,11 @@ $result_trees{'double_part'} = [
     'type' => 'unit'
   }
 ];
-$result_trees{'double_part'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_part'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_part'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_part'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_part'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'double_part'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'double_part'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'double_part'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
+$result_trees{'double_part'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_part'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'double_part'}[0]{'extra'}{'first_in_page'} = $result_trees{'double_part'}[0];
 $result_trees{'double_part'}[0]{'extra'}{'unit_command'} = $result_trees{'double_part'}[0]{'contents'}[2];
 $result_trees{'double_part'}[1]{'extra'}{'first_in_page'} = $result_trees{'double_part'}[1];
 $result_trees{'double_part'}[1]{'extra'}{'unit_command'} = $result_trees{'double_part'}[1]{'contents'}[0];
-$result_trees{'double_part'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_part'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_part'}[2]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_part'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'double_part'}[2]{'contents'}[2]{'extra'}{'associated_part'} = $result_trees{'double_part'}[2]{'contents'}[0];
 $result_trees{'double_part'}[2]{'extra'}{'first_in_page'} = $result_trees{'double_part'}[2];
 $result_trees{'double_part'}[2]{'extra'}{'unit_command'} = $result_trees{'double_part'}[2]{'contents'}[2];
@@ -462,7 +472,6 @@ $result_sectioning{'double_part'} = {
                                 'section_level' => 0,
                                 'section_prev' => {
                                   'cmdname' => 'part',
-                                  'extra' => {},
                                   'structure' => {
                                     'associated_unit' => {
                                       'extra' => {
@@ -624,7 +633,6 @@ $result_nodes{'double_part'} = {
                         'first_in_page' => {},
                         'unit_command' => {
                           'cmdname' => 'part',
-                          'extra' => {},
                           'structure' => {
                             'associated_unit' => {}
                           }
@@ -772,7 +780,6 @@ $result_menus{'double_part'} = {
                     'first_in_page' => {},
                     'unit_command' => {
                       'cmdname' => 'part',
-                      'extra' => {},
                       'structure' => {
                         'associated_unit' => {}
                       }
@@ -932,7 +939,6 @@ $result_elements{'double_part'} = [
                   'first_in_page' => {},
                   'unit_command' => {
                     'cmdname' => 'part',
-                    'extra' => {},
                     'structure' => {
                       'associated_unit' => {}
                     }
@@ -1049,6 +1055,12 @@ $result_converted{'html'}->{'double_part'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -1059,7 +1071,7 @@ $result_converted{'html'}->{'double_part'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#node-chapter" accesskey="n" rel="next">chapter after 2 parts</a> &nbsp; </p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 
 <hr>
@@ -1069,13 +1081,13 @@ Next: <a href="#node-chapter" accesskey="n" rel="next">chapter after 2 parts</a>
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
-<h1 class="part">part first</h1>
+<h1 class="part"><span>part first<a class="copiable-link" href="#part-first"> &para;</a></span></h1>
 <hr>
 
 <p>Text part first.
 </p></div>
 <div class="part-level-extent" id="part-second">
-<h1 class="part">part second</h1>
+<h1 class="part"><span>part second<a class="copiable-link" href="#part-second"> &para;</a></span></h1>
 <hr>
 <p>Text part second.
 </p>
@@ -1083,7 +1095,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 <li><a href="#node-chapter" accesskey="1">chapter after 2 parts</a></li>
 </ul>
 <div class="chapter-level-extent" id="node-chapter">
-<h2 class="chapter" id="chapter-after-2-parts">1 chapter after 2 parts</h2>
+<h2 class="chapter" id="chapter-after-2-parts"><span>1 chapter after 2 parts<a class="copiable-link" href="#chapter-after-2-parts"> &para;</a></span></h2>
 
 </div>
 </div>
@@ -1099,7 +1111,7 @@ $result_converted{'xml'}->{'double_part'} = '<node name="Top" spaces=" "><nodena
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">node chapter</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>node chapter</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>

@@ -6,10 +6,11 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 require 't/test_utils.pl';
 
 my @test_cases = (
-['simple',
+['simple_documentlanguage',
 '@documentlanguage fr
 
 @node Top
+@node chap
 
 @defivar AAA BBB CCC
 @end defivar
@@ -21,7 +22,7 @@ my @test_cases = (
 # the index entry is set in the @copying block which is in
 # @documentlanguage fr.
 # Also the copying comment at the beginning of each file is in fr
-['multiple',
+['multiple_documentlanguage',
 '@documentlanguage fr
 
 @copying
@@ -122,12 +123,18 @@ Text ending the preamble
 @top top @error{}
 
 @error{}
+
+@node chapter @error{}
+@chapter Chapter
 '],
 ['unknown_language',
 '@documentlanguage unknown
 
 @node Top
 @top unknkown language
+
+@node chapter
+@chapter Chapter
 
 Unknown language. @xref{Top}.
 
@@ -139,6 +146,7 @@ Another unknown language. @xref{Top}.
 '@documentlanguage fr_NOWHERE
 
 @node Top
+@node chap
 
 @defivar AAA BBB CCC
 @end defivar
@@ -146,7 +154,7 @@ Another unknown language. @xref{Top}.
 );
 
 my $multiple_lang_chapters_text = 
-'@setfilename multiple_lang_chapters.info
+'
 @documentencoding utf-8
 
 @c @node Top is ignored in TeX and LaTeX, so switch here
@@ -205,24 +213,41 @@ my @file_tests = (
 # this first test expands everything including latex, so ends up
 # with a redundant @documentlanguage
 ['multiple_lang_chapters',
-$multiple_lang_chapters_text, {}, {'SPLIT' => 0}],
+$multiple_lang_chapters_text,
+{'test_input_file_name' => 'multiple_lang_chapters.texi'},
+{'SPLIT' => 0}],
 ['multiple_lang_chapters_texi2html',
 $multiple_lang_chapters_text, 
 {'test_input_file_name' => 'multiple_lang_chapters.texi',
 'EXPANDED_FORMATS' => ['html']}, 
 {'SPLIT' => 0, 'TEXI2HTML' => 1, 'TEST' => 1}],
+['documentlanguage',
+ undef, {'test_file' => '../../tests/formatting/documentlanguage.texi',},
+ {'SPLIT' => 0},
+],
+['documentlanguage_option',
+ undef, {'test_file' => '../../tests/formatting/documentlanguage.texi',
+         'documentlanguage' => 'fr'},
+ {'SPLIT' => 0, 'documentlanguage' => 'fr'},
+],
+['documentlanguage_unknown',
+ undef, {'test_file' => '../../tests/formatting/documentlanguage.texi',
+         'documentlanguage' => 'unknown'},
+ {'SPLIT' => 0, 'documentlanguage' => 'unknown'},
+],
 );
 
 # expand latex
 my @latex_file_tests = (
 ['multiple_lang_chapters_latex',
 $multiple_lang_chapters_text,
-{'EXPANDED_FORMATS' => ['latex']}
+{'test_input_file_name' => 'multiple_lang_chapters.texi',
+'EXPANDED_FORMATS' => ['latex']}
 ]
 );
 
 my %info_tests = (
-  'multiple' => 1,
+  'multiple_documentlanguage' => 1,
   'multiple_in_preamble' => 1,
   'multiple_in_preamble_before_node' => 1,
   'appendix_translated' => 1,
@@ -232,13 +257,13 @@ my %info_tests = (
 );
 
 my %xml_tests = (
-  'multiple' => 1,
+  'multiple_documentlanguage' => 1,
   'multiple_in_preamble' => 1,
   'multiple_in_preamble_before_node' => 1,
 );
 
 my %docbook_doc_tests = (
-  'multiple' => 1,
+  'multiple_documentlanguage' => 1,
   'multiple_in_preamble' => 1,
   'multiple_in_preamble_before_node' => 1,
 );

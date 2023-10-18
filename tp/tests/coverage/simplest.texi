@@ -1,0 +1,11 @@
+\input texinfo @c -*-texinfo-*-
+
+@c this file is used in tests in @verbatiminclude but not converted
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  <>.
+
+@bye

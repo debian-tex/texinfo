@@ -32,8 +32,10 @@ $result_trees{'inline'} = {
                       'text' => '<blink>html</blink> ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -69,8 +71,10 @@ $result_trees{'inline'} = {
                       'text' => 'plaintext ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -106,8 +110,10 @@ $result_trees{'inline'} = {
                       'text' => '<para>xml</para> ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -143,8 +149,10 @@ $result_trees{'inline'} = {
                       'text' => '<emphasis>docbook</emphasis> ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -175,7 +183,13 @@ $result_trees{'inline'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' $\\underline{a < b @code{tex \\hbox{ code }}}$ ``',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlinefmt',
@@ -214,7 +228,7 @@ $result_trees{'inline'} = {
                             {
                               'contents' => [
                                 {
-                                  'text' => 'a < b '
+                                  'text' => '{a < b '
                                 },
                                 {
                                   'args' => [
@@ -226,7 +240,7 @@ $result_trees{'inline'} = {
                                         {
                                           'contents' => [
                                             {
-                                              'text' => ' code '
+                                              'text' => '{ code }'
                                             }
                                           ],
                                           'source_info' => {
@@ -234,7 +248,7 @@ $result_trees{'inline'} = {
                                             'line_nr' => 7,
                                             'macro' => ''
                                           },
-                                          'type' => 'bracketed'
+                                          'type' => 'balanced_braces'
                                         }
                                       ],
                                       'type' => 'brace_command_arg'
@@ -246,6 +260,9 @@ $result_trees{'inline'} = {
                                     'line_nr' => 7,
                                     'macro' => ''
                                   }
+                                },
+                                {
+                                  'text' => '}'
                                 }
                               ],
                               'source_info' => {
@@ -253,12 +270,12 @@ $result_trees{'inline'} = {
                                 'line_nr' => 7,
                                 'macro' => ''
                               },
-                              'type' => 'bracketed'
+                              'type' => 'balanced_braces'
                             },
                             {
                               'contents' => [
                                 {
-                                  'text' => 'b'
+                                  'text' => '{b}'
                                 }
                               ],
                               'source_info' => {
@@ -266,7 +283,7 @@ $result_trees{'inline'} = {
                                 'line_nr' => 7,
                                 'macro' => ''
                               },
-                              'type' => 'bracketed'
+                              'type' => 'balanced_braces'
                             }
                           ],
                           'type' => 'brace_command_context'
@@ -283,8 +300,10 @@ $result_trees{'inline'} = {
                       'text' => ' ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -335,8 +354,10 @@ $result_trees{'inline'} = {
                       'text' => 'raw <blink>html</blink> ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -372,8 +393,10 @@ $result_trees{'inline'} = {
                       'text' => 'raw plaintext ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -409,8 +432,10 @@ $result_trees{'inline'} = {
                       'text' => 'raw <para>xml</para> ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -446,8 +471,10 @@ $result_trees{'inline'} = {
                       'text' => 'raw <emphasis>docbook</emphasis> ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -478,7 +505,13 @@ $result_trees{'inline'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' raw $\\underline{a < b @code{tex \\hbox{ code }}}$ ``',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlineraw',
@@ -513,7 +546,7 @@ $result_trees{'inline'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'a < b '
+                          'text' => '{a < b '
                         },
                         {
                           'args' => [
@@ -525,7 +558,7 @@ $result_trees{'inline'} = {
                                 {
                                   'contents' => [
                                     {
-                                      'text' => ' code '
+                                      'text' => '{ code }'
                                     }
                                   ],
                                   'source_info' => {
@@ -533,7 +566,7 @@ $result_trees{'inline'} = {
                                     'line_nr' => 15,
                                     'macro' => ''
                                   },
-                                  'type' => 'bracketed'
+                                  'type' => 'balanced_braces'
                                 }
                               ],
                               'type' => 'brace_command_arg'
@@ -545,6 +578,9 @@ $result_trees{'inline'} = {
                             'line_nr' => 15,
                             'macro' => ''
                           }
+                        },
+                        {
+                          'text' => '}'
                         }
                       ],
                       'source_info' => {
@@ -552,12 +588,12 @@ $result_trees{'inline'} = {
                         'line_nr' => 15,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'b'
+                          'text' => '{b}'
                         }
                       ],
                       'source_info' => {
@@ -565,14 +601,16 @@ $result_trees{'inline'} = {
                         'line_nr' => 15,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     },
                     {
                       'text' => '$ ``'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -607,7 +645,7 @@ $result_texis{'inline'} = '
 @inlinefmt{plaintext, plaintext ``}, 
 @inlinefmt{xml, <para>xml</para> ``},
 @inlinefmt{docbook, <emphasis>docbook</emphasis> ``}, 
-@inlinefmt{tex,}
+@inlinefmt{tex, $\\underline{a < b @code{tex \\hbox{ code }}}$ ``}
 @inlinefmt{latex, @math{\\frac{a < b @code{tex \\hbox{ code }}}{b}} ``}
 
 
@@ -615,26 +653,26 @@ $result_texis{'inline'} = '
 @inlineraw{plaintext, raw plaintext ``}, 
 @inlineraw{xml, raw <para>xml</para> ``},
 @inlineraw{docbook, raw <emphasis>docbook</emphasis> ``}, 
-@inlineraw{tex,}
+@inlineraw{tex, raw $\\underline{a < b @code{tex \\hbox{ code }}}$ ``}
 @inlineraw{latex, raw $\\frac{a < b @code{tex \\hbox{ code }}}{b}$ ``}
 ';
 
 
 $result_texts{'inline'} = '
-, 
-, 
-,
-, 
+<blink>html</blink> ", 
+plaintext ", 
+<para>xml</para> ",
+<emphasis>docbook</emphasis> ", 
+
+\\frac{a < b tex \\hbox{ code }}{b} "
 
 
+raw <blink>html</blink> ``, 
+raw plaintext ``, 
+raw <para>xml</para> ``,
+raw <emphasis>docbook</emphasis> ``, 
 
-
-, 
-, 
-,
-, 
-
-
+raw $\\frac{a < b tex \\hbox{ code }}{b}$ ``
 ';
 
 $result_errors{'inline'} = [];
@@ -644,7 +682,7 @@ $result_floats{'inline'} = {};
 
 
 
-$result_converted{'plaintext'}->{'inline'} = ', plaintext “, , ,
+$result_converted{'plaintext'}->{'inline'} = ', plaintext ", , ,
 
    , raw plaintext ``, , ,
 ';
@@ -673,7 +711,7 @@ $result_converted{'xml'}->{'inline'} = '
 <inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent spaces=" ">plaintext &textldquo;</inlinefmtcontent></inlinefmt>, 
 &lt;para&gt;xml&lt;/para&gt; &textldquo;,
 <inlinefmt><inlinefmtformat>docbook</inlinefmtformat><inlinefmtcontent spaces=" ">&lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinefmtcontent></inlinefmt>, 
-<inlinefmt><inlinefmtformat>tex</inlinefmtformat></inlinefmt>
+<inlinefmt><inlinefmtformat>tex</inlinefmtformat><inlinefmtcontent> $\\underline{a &lt; b @code{tex \\hbox{ code }}}$ ``</inlinefmtcontent></inlinefmt>
 <inlinefmt><inlinefmtformat>latex</inlinefmtformat><inlinefmtcontent spaces=" "><math>\\frac{a &lt; b <code>tex \\hbox{ code }</code>}{b}</math> &textldquo;</inlinefmtcontent></inlinefmt>
 </para>
 
@@ -681,7 +719,7 @@ $result_converted{'xml'}->{'inline'} = '
 <inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent spaces=" ">raw plaintext &textldquo;</inlinerawcontent></inlineraw>, 
 raw <para>xml</para> ``,
 <inlineraw><inlinerawformat>docbook</inlinerawformat><inlinerawcontent spaces=" ">raw &lt;emphasis&gt;docbook&lt;/emphasis&gt; &textldquo;</inlinerawcontent></inlineraw>, 
-<inlineraw><inlinerawformat>tex</inlinerawformat></inlineraw>
+<inlineraw><inlinerawformat>tex</inlinerawformat><inlinerawcontent> raw $\\underline{a &lt; b @code{tex \\hbox{ code }}}$ ``</inlinerawcontent></inlineraw>
 <inlineraw><inlinerawformat>latex</inlinerawformat><inlinerawcontent spaces=" ">raw $\\frac{a &lt; b <code>tex \\hbox{ code }</code>}{b}$ &textldquo;</inlinerawcontent></inlineraw>
 </para>';
 

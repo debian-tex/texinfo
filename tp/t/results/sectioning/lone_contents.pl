@@ -16,7 +16,7 @@ $result_trees{'lone_contents'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'contents',

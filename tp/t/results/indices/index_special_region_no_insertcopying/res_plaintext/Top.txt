@@ -1,0 +1,15 @@
+Top
+***
+
+1 Chapter
+*********
+
+This test demonstrates @anchor and indices in @copying and titlepage,
+and various wrong index entries.
+
+ -- truc:
+ -- truc:
+ -- :
+
+fun
+

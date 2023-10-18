@@ -18,28 +18,23 @@ $result_trees{'top_no_argument_and_node'} = {
               'text' => 'start'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'start'
-          }
-        ],
-        'normalized' => 'start',
-        'spaces_before_argument' => ' '
+        'normalized' => 'start'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -50,9 +45,11 @@ $result_trees{'top_no_argument_and_node'} = {
     {
       'args' => [
         {
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -68,8 +65,6 @@ $result_trees{'top_no_argument_and_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'top_no_argument_and_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_no_argument_and_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_no_argument_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'top_no_argument_and_node'} = '@node start
 @top

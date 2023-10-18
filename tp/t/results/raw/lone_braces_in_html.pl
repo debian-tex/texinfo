@@ -12,9 +12,11 @@ $result_trees{'lone_braces_in_html'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -38,17 +40,23 @@ $result_trees{'lone_braces_in_html'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -71,9 +79,11 @@ $result_trees{'lone_braces_in_html'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -97,17 +107,23 @@ $result_trees{'lone_braces_in_html'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -139,7 +155,9 @@ $result_texis{'lone_braces_in_html'} = '@html
 ';
 
 
-$result_texts{'lone_braces_in_html'} = '
+$result_texts{'lone_braces_in_html'} = '}
+
+{
 ';
 
 $result_errors{'lone_braces_in_html'} = [];
@@ -150,6 +168,16 @@ $result_floats{'lone_braces_in_html'} = {};
 
 
 $result_converted{'plaintext'}->{'lone_braces_in_html'} = '';
+
+
+$result_converted{'xml'}->{'lone_braces_in_html'} = '<html endspaces=" ">
+}
+</html>
+
+<html endspaces=" ">
+{
+</html>
+';
 
 
 $result_converted{'html_text'}->{'lone_braces_in_html'} = '}

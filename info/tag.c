@@ -1,7 +1,7 @@
 /* tag.c -- Functions to handle Info tags (that is, the special
    construct for images, not the "tag table" of starting position.)
 
-   Copyright 2012-2022 Free Software Foundation, Inc.
+   Copyright 2012-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

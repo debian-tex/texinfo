@@ -19,9 +19,11 @@ $result_trees{'accentenc'} = {
                       'text' => 'ISO-8859-1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -29,9 +31,12 @@ $result_trees{'accentenc'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'iso-8859-1',
-                'input_perl_encoding' => 'iso-8859-1',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ISO-8859-1'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -55,31 +60,26 @@ $result_trees{'accentenc'} = {
         {
           'contents' => [
             {
-              'text' => 'Top node'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top-node'
-          }
-        ],
-        'normalized' => 'Top-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -95,9 +95,11 @@ $result_trees{'accentenc'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -784,8 +786,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'H',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -843,8 +847,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'dotaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -902,8 +908,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'ringaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -996,8 +1004,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'u',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1055,8 +1065,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'ubaraccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1114,8 +1126,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'udotaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1173,8 +1187,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'v',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1232,8 +1248,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'ogonek',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1291,8 +1309,10 @@ $result_trees{'accentenc'} = {
                 }
               ],
               'cmdname' => 'ogonek',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1695,16 +1715,10 @@ $result_trees{'accentenc'} = {
             {
               'text' => ' arg is command -- @dotless{i} is special-cased for HTML
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' arg is command -- @dotless{i} is special-cased for HTML
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'contents' => [
@@ -1911,16 +1925,10 @@ $result_trees{'accentenc'} = {
             {
               'text' => ' arg is command -- @dotless{j}
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' arg is command -- @dotless{j}
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'contents' => [
@@ -2118,8 +2126,11 @@ $result_trees{'accentenc'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -2130,12 +2141,10 @@ $result_trees{'accentenc'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'accentenc'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'accentenc'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accentenc'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'accentenc'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'accentenc'} = '@documentencoding ISO-8859-1
 
-@node Top node
+@node first
 @top top
 
 should be e`: @`{e} @`e
@@ -2304,7 +2313,7 @@ $result_sectioning{'accentenc'} = {
           'associated_node' => {
             'cmdname' => 'node',
             'extra' => {
-              'normalized' => 'Top-node'
+              'normalized' => 'first'
             }
           }
         },
@@ -2327,14 +2336,14 @@ $result_nodes{'accentenc'} = {
       'extra' => {},
       'structure' => {}
     },
-    'normalized' => 'Top-node'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'accentenc'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top-node'
+    'normalized' => 'first'
   }
 };
 
@@ -2425,8 +2434,8 @@ should be e\': è è
 
 
 $result_converted{'html_text'}->{'accentenc'} = '
-<div class="top-level-extent" id="Top-node">
-<h1 class="top" id="top">top</h1>
+<div class="top-level-extent" id="first">
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <p>should be e&lsquo;: &egrave; &egrave;
 </p>
@@ -2507,7 +2516,7 @@ $result_converted{'html_text'}->{'accentenc'} = '
 
 $result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-1" spaces=" ">ISO-8859-1</documentencoding>
 
-<node name="Top-node" spaces=" "><nodename>Top node</nodename></node>
+<node name="first" spaces=" "><nodename>first</nodename></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave" bracketed="off">e</accent>
@@ -2532,25 +2541,25 @@ $result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-
 </para>
 <para>should be e=: <accent type="macr">e</accent> <accent type="macr" bracketed="off">e</accent>
 </para>
-<para>should be e<w>&textrsquo;</w>&textrsquo;: <accent type="doubleacute">e</accent> <accent type="doubleacute" spaces=" " bracketed="off">e</accent>
+<para>should be e<w>&textrsquo;</w>&textrsquo;: <accent type="doubleacute">e</accent> <accent type="doubleacute" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
-<para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent" spaces=" " bracketed="off">e</accent>
+<para>should be e.: <accent type="dotaccent">e</accent> <accent type="dotaccent" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
-<para>should be e*: <accent type="ring">e</accent> <accent type="ring" spaces=" " bracketed="off">e</accent>
+<para>should be e*: <accent type="ring">e</accent> <accent type="ring" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
 <para>should be ee[: <accent type="tieaccent">ee</accent>
 </para>
-<para>should be e(: <accent type="breve">e</accent> <accent type="breve" spaces=" " bracketed="off">e</accent>
+<para>should be e(: <accent type="breve">e</accent> <accent type="breve" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
-<para>should be e_: <accent type="ubaraccent">e</accent> <accent type="ubaraccent" spaces=" " bracketed="off">e</accent>
+<para>should be e_: <accent type="ubaraccent">e</accent> <accent type="ubaraccent" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
-<para>should be .e: <accent type="udotaccent">e</accent> <accent type="udotaccent" spaces=" " bracketed="off">e</accent>
+<para>should be .e: <accent type="udotaccent">e</accent> <accent type="udotaccent" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
-<para>should be e&lt;: <accent type="caron">e</accent> <accent type="caron" spaces=" " bracketed="off">e</accent>
+<para>should be e&lt;: <accent type="caron">e</accent> <accent type="caron" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
-<para>should be a; : <accent type="ogon">a</accent> <accent type="ogon" spaces=" " bracketed="off">a</accent>
+<para>should be a; : <accent type="ogon">a</accent> <accent type="ogon" spacesaftercmd=" " bracketed="off">a</accent>
 </para>
-<para>should be e; : <accent type="ogon">e</accent> <accent type="ogon" spaces=" " bracketed="off">e</accent>
+<para>should be e; : <accent type="ogon">e</accent> <accent type="ogon" spacesaftercmd=" " bracketed="off">e</accent>
 </para>
 <para>upside down: &iquest; &iexcl;
 </para>
@@ -2589,7 +2598,7 @@ $result_converted{'xml'}->{'accentenc'} = '<documentencoding encoding="ISO-8859-
 ';
 
 
-$result_converted{'docbook'}->{'accentenc'} = '<chapter label="" id="Top-node">
+$result_converted{'docbook'}->{'accentenc'} = '<chapter label="" id="first">
 <title>top</title>
 
 <para>should be e&#8216;: &#232; &#232;
@@ -2674,7 +2683,7 @@ $result_converted{'docbook'}->{'accentenc'} = '<chapter label="" id="Top-node">
 $result_converted{'latex_text'}->{'accentenc'} = '
 \\begin{document}
 \\part*{{top}}
-\\label{anchor:Top-node}%
+\\label{anchor:first}%
 
 should be e`: \\`{e} \\`{e}
 

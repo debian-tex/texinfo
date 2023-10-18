@@ -18,9 +18,23 @@ This module requires these other modules and libraries:
 
 Pod::Simple::PullParser, Texinfo::Parser.  
 
+DISTRIBUTION SETUP
+
+This module is usually distributed as part of GNU Texinfo, using Autoconf
+and Automake for the build system.  Alternatively, it is possible to
+distribute the module using Makefile.PL as described here.
+
+The pod2texi script is usually set up using the Autoconf and Automake
+built environment from pod2texi.pl.  When using Makefile.PL, the
+pod2texi.pl file can be copied instead.  In that case, the Texinfo::Parser
+modules will not be searched for as in the GNU Texinfo usual case, only
+in the perl paths, as in other perl modules.
+
+   cp pod2texi.pl pod2texi
+
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2011, 2012 Free Software Foundation, Inc.
+Copyright (C) 2011-2023 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

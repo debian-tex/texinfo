@@ -18,28 +18,23 @@ $result_trees{'at_commands_in_raw'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -55,9 +50,11 @@ $result_trees{'at_commands_in_raw'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -91,17 +88,23 @@ $result_trees{'at_commands_in_raw'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -110,7 +113,7 @@ $result_trees{'at_commands_in_raw'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' othermacro{}
 '
           },
@@ -126,8 +129,11 @@ $result_trees{'at_commands_in_raw'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -143,9 +149,11 @@ $result_trees{'at_commands_in_raw'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -153,19 +161,12 @@ $result_trees{'at_commands_in_raw'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -181,9 +182,11 @@ $result_trees{'at_commands_in_raw'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -198,9 +201,11 @@ $result_trees{'at_commands_in_raw'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -252,9 +257,6 @@ $result_trees{'at_commands_in_raw'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'anchor-in-html'
                   },
                   'source_info' => {
@@ -279,17 +281,23 @@ $result_trees{'at_commands_in_raw'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -362,9 +370,11 @@ $result_trees{'at_commands_in_raw'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -372,7 +382,224 @@ $result_trees{'at_commands_in_raw'} = {
           'cmdname' => 'tex',
           'contents' => [
             {
-              'type' => 'elided_block'
+              'contents' => [
+                {
+                  'text' => '@kbdinputstyle code
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => 'in tex@footnote{footnote in tex}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@anchor{anchor in tex}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@cindex entry
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@findex fentry1
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@float Figs, f1
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => 'Float
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@caption{Fcaption}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@end float
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@menu
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '* n::
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@end menu
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@acronym{FF, Fi Foo}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@synindex cp fn
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@defindex new
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@definfoenclose a,:,:
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@alias moviecite = cite
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@documentlanguage fr
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@errormsg{mymsg}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@ref{Somewhere}.
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@set flag soemthing
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@macro mymacro{}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => 'truc
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@end macro
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@macro macroarg{arg}
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => 'Some \\arg\\.
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@end macro
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@unmacro othermacro
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             },
             {
               'args' => [
@@ -382,17 +609,23 @@ $result_trees{'at_commands_in_raw'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -423,10 +656,12 @@ $result_trees{'at_commands_in_raw'} = {
           'type' => 'empty_line'
         },
         {
-          'cmdname' => 'value',
-          'extra' => {
-            'flag' => 'flag'
-          }
+          'args' => [
+            {
+              'text' => 'flag'
+            }
+          ],
+          'cmdname' => 'value'
         },
         {
           'contents' => [
@@ -484,19 +719,16 @@ $result_trees{'at_commands_in_raw'} = {
                       'text' => 'anchor in html'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'anchor-in-html'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'anchor-in-html'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 69,
@@ -525,18 +757,16 @@ $result_trees{'at_commands_in_raw'} = {
                       'text' => 'anchor in tex'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'anchor-in-tex'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'anchor-in-tex'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 71,
@@ -555,28 +785,27 @@ $result_trees{'at_commands_in_raw'} = {
                       'text' => 'fentry2'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'findex',
               'extra' => {
-                'index_entry' => {
-                  'content_normalized' => [],
-                  'entry_content' => [],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'findex',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'findex'
-                },
-                'spaces_before_argument' => ' '
+                'element_node' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -594,9 +823,13 @@ $result_trees{'at_commands_in_raw'} = {
           'type' => 'empty_line'
         },
         {
+          'text' => ' ',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
           'contents' => [
             {
-              'text' => ' newidx entry
+              'text' => 'newidx entry
 '
             }
           ],
@@ -615,9 +848,11 @@ $result_trees{'at_commands_in_raw'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -626,8 +861,12 @@ $result_trees{'at_commands_in_raw'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -643,9 +882,11 @@ $result_trees{'at_commands_in_raw'} = {
                   'text' => 'fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -654,8 +895,12 @@ $result_trees{'at_commands_in_raw'} = {
           'extra' => {
             'misc_args' => [
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -676,21 +921,22 @@ $result_trees{'at_commands_in_raw'} = {
                   'text' => 'Figs'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Figs'
+            'float_type' => 'Figs'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -767,6 +1013,31 @@ $result_trees{'at_commands_in_raw'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'othermacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 20,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 31,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'Macro not unmacroed Other macro.
 '
             }
@@ -793,8 +1064,11 @@ $result_trees{'at_commands_in_raw'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -805,19 +1079,9 @@ $result_trees{'at_commands_in_raw'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'at_commands_in_raw'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[13]{'contents'}[0]{'extra'}{'label'} = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[3];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[13]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'at_commands_in_raw'}{'contents'}[3];
-$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[22]{'extra'}{'type'}{'content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[22]{'args'}[0]{'contents'}[0];
+$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[13]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'at_commands_in_raw'}{'contents'}[4]{'contents'}[15]{'contents'}[2]{'extra'}{'element_node'} = $result_trees{'at_commands_in_raw'}{'contents'}[3];
 
 $result_texis{'at_commands_in_raw'} = '@node Top
 @top top
@@ -836,6 +1100,49 @@ Other macro
 @kbd{in kbd before tex}@footnote{second footnote}.
 
 @tex
+@kbdinputstyle code
+in tex@footnote{footnote in tex}
+@anchor{anchor in tex}
+@cindex entry
+@findex fentry1
+
+@float Figs, f1
+Float
+@caption{Fcaption}
+@end float
+
+@menu
+* n::
+@end menu
+
+@acronym{FF, Fi Foo}
+
+@synindex cp fn
+
+@defindex new
+
+@definfoenclose a,:,:
+
+@alias moviecite = cite
+
+@documentlanguage fr
+
+@errormsg{mymsg}
+
+@ref{Somewhere}.
+
+@set flag soemthing
+
+@macro mymacro{}
+truc
+@end macro
+
+@macro macroarg{arg}
+Some \\arg\\.
+@end macro
+
+@unmacro othermacro
+
 @end tex
 
 
@@ -876,6 +1183,7 @@ $result_texts{'at_commands_in_raw'} = 'top
 1 Chapter
 *********
 
+<b>in b.</b>
 in kbd before tex.
 
 
@@ -889,7 +1197,7 @@ anchor in html.
 
 anchor in tex.
 
- newidx entry
+newidx entry
 
 
 
@@ -1156,7 +1464,7 @@ $result_converted{'plaintext'}->{'at_commands_in_raw'} = 'top
 <b>in b(1).</b>
    ‘in kbd before tex’(2).
 
-   {No value for ‘flag’}
+   {No value for \'flag\'}
    .
 
    ‘in kbd after tex’.
@@ -1193,9 +1501,9 @@ $result_converted{'plaintext'}->{'at_commands_in_raw'} = 'top
 $result_converted{'html_text'}->{'at_commands_in_raw'} = '<div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 
 <ul class="mini-toc">
@@ -1205,9 +1513,9 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<div class="top-level-
 <div class="chapter-level-extent" id="chap">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <b>in b<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>.</b>
 <a class="anchor" id="anchor-in-html"></a><p><kbd class="kbd">in kbd before tex</kbd><a class="footnote" id="DOCF2" href="#FOOT2"><sup>2</sup></a>.
@@ -1224,15 +1532,15 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<div class="top-level-
 <p>&lsquo;anchor in tex&rsquo;.
 <a class="index-entry-id" id="index-fentry2"></a>
 </p>
-<p> newidx entry
+<p>newidx entry
 </p>
 <div class="printindex fn-printindex">
 <table class="fn-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_fn_letter-F">F</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-fentry2"><code>fentry2</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_fn_letter-F">F</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-fentry2"><code>fentry2</code></a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 
@@ -1264,7 +1572,8 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<div class="top-level-
 $result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap</nodenext></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
-<macro name="othermacro" line=" othermacro{}" endspaces=" ">Other macro
+<macro name="othermacro" line=" othermacro{}" endspaces=" ">
+Other macro
 </macro>
 
 </top>
@@ -1276,6 +1585,49 @@ $result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" ">
 <para><kbd>in kbd before tex</kbd><footnote><para>second footnote</para></footnote>.
 </para>
 <tex endspaces=" ">
+@kbdinputstyle code
+in tex@footnote{footnote in tex}
+@anchor{anchor in tex}
+@cindex entry
+@findex fentry1
+
+@float Figs, f1
+Float
+@caption{Fcaption}
+@end float
+
+@menu
+* n::
+@end menu
+
+@acronym{FF, Fi Foo}
+
+@synindex cp fn
+
+@defindex new
+
+@definfoenclose a,:,:
+
+@alias moviecite = cite
+
+@documentlanguage fr
+
+@errormsg{mymsg}
+
+@ref{Somewhere}.
+
+@set flag soemthing
+
+@macro mymacro{}
+truc
+@end macro
+
+@macro macroarg{arg}
+Some \\arg\\.
+@end macro
+
+@unmacro othermacro
+
 </tex>
 
 
@@ -1289,7 +1641,7 @@ $result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" ">
 <para><ref label="anchor-in-tex"><xrefnodename>anchor in tex</xrefnodename></ref>.
 <findex index="fn" spaces=" "><indexterm index="fn" number="1">fentry2</indexterm></findex>
 </para>
-<para> newidx entry
+ <para>newidx entry
 </para>
 <printindex spaces=" " value="cp" line="cp"></printindex>
 <printindex spaces=" " value="fn" line="fn"></printindex>
@@ -1328,7 +1680,7 @@ $result_converted{'docbook'}->{'at_commands_in_raw'} = '<chapter label="1" id="c
 <para><link linkend="anchor-in-tex">anchor in tex</link>.
 <indexterm role="fn"><primary>fentry2</primary></indexterm>
 </para>
-<para> newidx entry
+<para>newidx entry
 </para>
 <index role="cp"></index>
 <index role="fn"></index>

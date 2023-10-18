@@ -17,9 +17,11 @@ $result_trees{'enumerate_letters'} = {
                   'text' => 'c'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -5390,17 +5392,23 @@ $result_trees{'enumerate_letters'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -5410,8 +5418,12 @@ $result_trees{'enumerate_letters'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => 'c',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => 'c'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -6269,6 +6281,217 @@ $result_converted{'html_text'}->{'enumerate_letters'} = '<ol class="enumerate" t
 </li><li> aaa
 </li><li> aaa
 </li></ol>
+';
+
+
+$result_converted{'xml'}->{'enumerate_letters'} = '<enumerate first="c" spaces=" " endspaces=" "><enumeratefirst>c</enumeratefirst>
+<listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem><listitem> <para>aaa
+</para></listitem></enumerate>
 ';
 
 1;

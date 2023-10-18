@@ -41,17 +41,23 @@ $result_trees{'macro_in_value'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -60,7 +66,7 @@ $result_trees{'macro_in_value'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' ab
 '
           },
@@ -79,21 +85,17 @@ $result_trees{'macro_in_value'} = {
           'args' => [
             {
               'text' => 'flagab',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '@ab',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' flagab @ab
-',
-            'misc_args' => [
-              'flagab',
-              '@ab'
-            ]
+'
           }
         },
         {
@@ -104,6 +106,35 @@ $result_trees{'macro_in_value'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'flagab'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => '@ab',
+                  'position' => 8,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'info' => {
+                      'command_name' => 'ab'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 8,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'flagab: a
 '
             }
@@ -118,6 +149,20 @@ $result_trees{'macro_in_value'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'b
 '
             }

@@ -5,13 +5,13 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 10; }
+BEGIN { plan tests => 13; }
 
 use Data::Dumper;
 use Locale::Messages;
 
 use Texinfo::Convert::Texinfo;
-use Texinfo::Convert::NodeNameNormalization qw(normalize_node transliterate_texinfo);
+use Texinfo::Convert::NodeNameNormalization qw(normalize_node normalize_transliterate_texinfo);
 use Texinfo::Parser;
 
 my $srcdir = $ENV{'srcdir'};
@@ -163,15 +163,15 @@ SKIP: {
   my $line_tree = $parser->parse_texi_line($texi_line);
   my $normalized_line = normalize_node($line_tree);
   is ($normalized_line,
-  '-A-SC-accents-_00ef-_00ef-_1e14-_0142-_1e08-_0146_0303_0304-_0155_030c-_0129_0304-_00ff-_0131-_0237-_00c7-_0118-_1ea1-a_0361-_0227-characters-_0142-_00a1-_00e5-_0153-_002c-error_002d_002d_003e-_2026-_002e_002e_002e-no-brace-commands-_0040-_002e-_007d-signs-_002d_002d-_002d_002d_002d-_0060_0060-_0027_0027-_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e-_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e-spaces-_00a0_2003_2002_0085_180e-',
+  '-A-sc-accents-_00ef-_00ef-_1e14-_0142-_1e08-_0146_0303_0304-_0155_030c-_0129_0304-_00ff-_0131-_0237-_00c7-_0118-_1ea1-a_0361-_0227-characters-_0142-_00a1-_00e5-_0153-_002c-error_002d_002d_003e-_2026-_002e_002e_002e-no-brace-commands-_0040-_002e-_007d-signs-_002d_002d-_002d_002d_002d-_0060_0060-_0027_0027-_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e-_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e-spaces-_00a0_2003_2002_0085_180e-',
   'normalized complex line');
-  my $transliterated_line = transliterate_texinfo($line_tree);
+  my $transliterated_line = normalize_transliterate_texinfo($line_tree);
   is ($transliterated_line,
-  '-A-SC-accents-i-i-E-l-C-n-r-i-y-i-j-C-E-a-a-a-characters-l-_00a1-aa-oe-_002c-error_002d_002d_003e-_2026-_002e_002e_002e-no-brace-commands-_0040-_002e-_007d-signs-_002d_002d-_002d_002d_002d-_0060_0060-_0027_0027-_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e-_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e-spaces-',
+  '-A-sc-accents-i-i-E-l-C-n-r-i-y-i-j-C-E-a-a-a-characters-l-_00a1-aa-oe-_002c-error_002d_002d_003e-_2026-_002e_002e_002e-no-brace-commands-_0040-_002e-_007d-signs-_002d_002d-_002d_002d_002d-_0060_0060-_0027_0027-_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e-_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e-spaces-',
   'transliterated complex line');
-  my $transliterated_line_no_unidecode = transliterate_texinfo($line_tree, 1);
+  my $transliterated_line_no_unidecode = normalize_transliterate_texinfo($line_tree, 1);
   is ($transliterated_line_no_unidecode,
-'-A-SC-accents-i-i-_1e14-l-_1e08-n-r-i-y-i-j-C-E-a-a-a-characters-l-_00a1-aa-oe-_002c-error_002d_002d_003e-_2026-_002e_002e_002e-no-brace-commands-_0040-_002e-_007d-signs-_002d_002d-_002d_002d_002d-_0060_0060-_0027_0027-_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e-_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e-spaces-_00a0_2003_2002_0085_180e-',
+'-A-sc-accents-i-i-_1e14-l-_1e08-n-r-i-y-i-j-C-E-a-a-a-characters-l-_00a1-aa-oe-_002c-error_002d_002d_003e-_2026-_002e_002e_002e-no-brace-commands-_0040-_002e-_007d-signs-_002d_002d-_002d_002d_002d-_0060_0060-_0027_0027-_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e-_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e-spaces-_00a0_2003_2002_180e-',
   'transliterated complex line no unidecode');
 }
 
@@ -182,7 +182,7 @@ is ($top_normalized, 'Top', 'normalize Top node');
 
 my $top_and_space_before = ' tOp';
 # when parsed with parse_texi_text, the text is put in a paragraph
-# and spaces before the text is put in a speicial content for
+# and spaces before the text is put in a special content for
 # spaces before paragraphs, that are ignored afterwards
 my $top_and_space_before_tree_text = $parser->parse_texi_piece($top_and_space_before);
 my $top_and_space_before_text_normalized
@@ -205,3 +205,33 @@ my $top_and_spaces_text = 'TOP ';
 my $top_and_spaces_tree = $parser->parse_texi_line($top_and_spaces_text);
 my $top_and_spaces_normalized = normalize_node($top_and_spaces_tree);
 is ($top_and_spaces_normalized, 'TOP-', 'normalize Top node followed by spaces');
+
+my $empty_command_node_text = '@today{a} @today{b} @today{c} 2';
+my $empty_command_node_tree = $parser->parse_texi_line($empty_command_node_text);
+my $empty_command_node_normalized = normalize_node($empty_command_node_tree);
+is ($empty_command_node_normalized, '-2', 'node with @today');
+
+# also in t/converters_tests.t.  Should be kept in sync.
+my $string_for_upper_case = 'a @~n @aa{} @TeX{} @image{myimage} @ref{chap} @xref{(f)node}
+@ref{ext,,name,argf} @inlinefmtifelse{latex,,@verb{!inverb!}} @anchor{inanchor} @hyphenation{hyphena-te}
+@U{00ff} @math{ma+th} @footnote{infootnote} @url{la} @url{a,b} @url{ ,lb}
+@url{,,c} @email{a@@c, e} @abbr{ab, d}';
+
+my $effect_of_sc_node_tree = $parser->parse_texi_line('@sc{'.$string_for_upper_case
+  # we add a @verb out of @inline*.  @verb is in @inline* to have valid LaTeX output
+  # in the t/converters_tests.t test
+       . ' @verb{!mverb!}}');
+my $effect_of_sc_node_normalized = normalize_node($effect_of_sc_node_tree);
+is ($effect_of_sc_node_normalized,
+    'a-_00f1-_00e5-TeX-myimage-chap-_0028f_0029node-ext-latex-00ff-ma_002bth-la-a-a_0040c-ab-mverb',
+    '@sc content');
+
+my $effect_of_var_node_tree = $parser->parse_texi_line('@var{'.$string_for_upper_case
+  # we add a @verb out of @inline*.  @verb is in @inline* to have valid LaTeX output
+  # in the t/converters_tests.t test
+       . ' @verb{!mverb!}}');
+my $effect_of_var_node_normalized = normalize_node($effect_of_var_node_tree);
+is ($effect_of_var_node_normalized,
+    'a-_00f1-_00e5-TeX-myimage-chap-_0028f_0029node-ext-latex-00ff-ma_002bth-la-a-a_0040c-ab-mverb',
+    '@var content');
+

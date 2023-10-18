@@ -30,7 +30,7 @@ $result_trees{'nested_multitable'} = {
                       'text' => ' machin'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 },
                 {
                   'text' => '    '
@@ -41,12 +41,14 @@ $result_trees{'nested_multitable'} = {
                       'text' => 'bidule'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -75,7 +77,7 @@ $result_trees{'nested_multitable'} = {
                                       'text' => 'AAAA'
                                     }
                                   ],
-                                  'type' => 'bracketed'
+                                  'type' => 'bracketed_arg'
                                 },
                                 {
                                   'text' => ' '
@@ -86,12 +88,14 @@ $result_trees{'nested_multitable'} = {
                                       'text' => 'machin'
                                     }
                                   ],
-                                  'type' => 'bracketed'
+                                  'type' => 'bracketed_arg'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'block_line_arg'
                             }
@@ -170,17 +174,23 @@ $result_trees{'nested_multitable'} = {
                                       'text' => 'multitable'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'end',
                               'extra' => {
-                                'spaces_before_argument' => ' ',
                                 'text_arg' => 'multitable'
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -190,22 +200,12 @@ $result_trees{'nested_multitable'} = {
                             }
                           ],
                           'extra' => {
-                            'max_columns' => 2,
-                            'prototypes' => [
-                              {
-                                'contents' => [
-                                  {}
-                                ],
-                                'type' => 'bracketed_multitable_prototype'
-                              },
-                              {
-                                'contents' => [
-                                  {}
-                                ],
-                                'type' => 'bracketed_multitable_prototype'
-                              }
-                            ],
-                            'spaces_before_argument' => ' '
+                            'max_columns' => 2
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -329,17 +329,23 @@ $result_trees{'nested_multitable'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -349,24 +355,12 @@ $result_trees{'nested_multitable'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 2,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {},
-                  {},
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              },
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -380,12 +374,6 @@ $result_trees{'nested_multitable'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[1] = $result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[2] = $result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'nested_multitable'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[0];
 
 $result_texis{'nested_multitable'} = '
 @multitable {truc AAAA @  machin}    {bidule}

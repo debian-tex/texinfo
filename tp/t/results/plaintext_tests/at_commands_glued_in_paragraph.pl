@@ -85,8 +85,10 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                       'text' => 'aaa bb cc'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -146,8 +148,10 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                       'text' => 'mali'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -174,18 +178,16 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -309,9 +311,11 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                   'text' => '4'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -320,8 +324,12 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
           'extra' => {
             'misc_args' => [
               '4'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -347,9 +355,6 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
               ],
               'cmdname' => 'anchor',
               'extra' => {
-                'node_content' => [
-                  {}
-                ],
                 'normalized' => 'anchor'
               },
               'source_info' => {
@@ -373,27 +378,26 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                       'text' => 'index'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
               'extra' => {
-                'index_entry' => {
-                  'content_normalized' => [],
-                  'entry_content' => [],
-                  'entry_element' => {},
-                  'entry_number' => 1,
-                  'in_code' => 0,
-                  'index_at_command' => 'cindex',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'cp',
-                  'index_type_command' => 'cindex'
-                },
-                'spaces_before_argument' => ' '
+                'index_entry' => [
+                  'cp',
+                  1
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -411,11 +415,7 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[0]{'contents'}[19]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[0]{'contents'}[19]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[2]{'contents'}[4];
+$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[0]{'contents'}[19]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[0]{'contents'}[19]{'args'}[0]{'contents'}[0];
 
 $result_texis{'at_commands_glued_in_paragraph'} = 'at@@.
 TeX@TeX{}TeX.
@@ -454,6 +454,24 @@ anchoranchor
 index';
 
 $result_errors{'at_commands_glued_in_paragraph'} = [
+  {
+    'error_line' => 'warning: @noindent is useless inside of a paragraph
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@noindent is useless inside of a paragraph',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @sp should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => '@sp should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
   {
     'error_line' => 'warning: @cindex should only appear at the beginning of a line
 ',

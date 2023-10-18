@@ -24,9 +24,11 @@ $result_trees{'anchor_in_copying'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -53,16 +55,13 @@ $result_trees{'anchor_in_copying'} = {
                             }
                           ],
                           'extra' => {
-                            'region' => {}
+                            'element_region' => 'copying'
                           },
                           'type' => 'brace_command_arg'
                         }
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
                         'normalized' => 'Copying-information'
                       },
                       'source_info' => {
@@ -92,17 +91,23 @@ $result_trees{'anchor_in_copying'} = {
                           'text' => 'copying'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'copying'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -136,9 +141,11 @@ $result_trees{'anchor_in_copying'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -152,19 +159,12 @@ $result_trees{'anchor_in_copying'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -177,12 +177,14 @@ $result_trees{'anchor_in_copying'} = {
         {
           'contents' => [
             {
-              'text' => 'node'
+              'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -199,7 +201,7 @@ $result_trees{'anchor_in_copying'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'insertcopying',
@@ -219,7 +221,7 @@ $result_trees{'anchor_in_copying'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'insertcopying',
@@ -244,19 +246,16 @@ $result_trees{'anchor_in_copying'} = {
                       'text' => 'Copying information'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Copying-information'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Copying-information'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -277,19 +276,12 @@ $result_trees{'anchor_in_copying'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node'
-          }
-        ],
-        'normalized' => 'node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -300,14 +292,7 @@ $result_trees{'anchor_in_copying'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'anchor_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'region'} = $result_trees{'anchor_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'label'} = $result_trees{'anchor_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'anchor_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'anchor_in_copying'} = '
 @copying
@@ -319,7 +304,7 @@ Copying.
 
 @node Top
 
-@node node
+@node chap
 
 @insertcopying
 
@@ -348,7 +333,7 @@ $result_nodes{'anchor_in_copying'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'node'
+        'normalized' => 'chap'
       },
       'structure' => {
         'node_prev' => {}
@@ -378,10 +363,10 @@ $result_converted{'info'}->{'anchor_in_copying'} = 'This is , produced from .
 Copying.
 
 
-File: ,  Node: Top,  Next: node,  Up: (dir)
+File: ,  Node: Top,  Next: chap,  Up: (dir)
 
 
-File: ,  Node: node,  Prev: Top
+File: ,  Node: chap,  Prev: Top
 
 Copying.
 
@@ -393,7 +378,7 @@ Copying.
 
 Tag Table:
 Node: Top37
-Node: node84
+Node: chap84
 Ref: Copying information127
 
 End Tag Table
@@ -435,6 +420,12 @@ Copying.
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -443,16 +434,16 @@ Copying.
 
 <a class="node-id" id="Top"></a><div class="nav-panel">
 <p>
-Next: <a href="#node" accesskey="n" rel="next">node</a> &nbsp; </p>
+Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <hr>
-<a class="node-id" id="node"></a><div class="nav-panel">
+<a class="node-id" id="chap"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
 </div>
-<h4 class="node">node</h4>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
 
 <p>Copying.
@@ -485,7 +476,7 @@ $result_converted_errors{'html'}->{'anchor_in_copying'} = [
 $result_converted{'latex_text'}->{'anchor_in_copying'} = '
 \\begin{document}
 \\label{anchor:Top}%
-\\label{anchor:node}%
+\\label{anchor:chap}%
 
 
 Copying.

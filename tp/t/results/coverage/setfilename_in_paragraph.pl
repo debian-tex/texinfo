@@ -23,20 +23,26 @@ $result_trees{'setfilename_in_paragraph'} = {
             {
               'contents' => [
                 {
-                  'text' => 'filename.info'
+                  'text' => 'setfilename_in_paragraph.info'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'filename.info'
+            'text_arg' => 'setfilename_in_paragraph.info'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -52,7 +58,7 @@ $result_trees{'setfilename_in_paragraph'} = {
 };
 
 $result_texis{'setfilename_in_paragraph'} = 'Some text
-@setfilename filename.info
+@setfilename setfilename_in_paragraph.info
 ';
 
 
@@ -75,7 +81,7 @@ $result_converted{'html_text'}->{'setfilename_in_paragraph'} = '<p>Some text
 
 
 $result_converted{'xml'}->{'setfilename_in_paragraph'} = '<para>Some text
-</para><setfilename file="filename.info" spaces=" ">filename.info</setfilename>
+</para><setfilename file="setfilename_in_paragraph.info" spaces=" ">setfilename_in_paragraph.info</setfilename>
 ';
 
 

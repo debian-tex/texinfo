@@ -1,4 +1,4 @@
-# Copyright 2014-2019 Free Software Foundation, Inc.
+# Copyright 2014-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ use 5.00405;
 use strict;
 use warnings;
 
-our $VERSION = '7.0.3';
+our $VERSION = '7.1';
 
 use Texinfo::XSLoader;
 

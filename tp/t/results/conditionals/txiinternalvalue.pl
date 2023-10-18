@@ -10,13 +10,9 @@ $result_trees{'txiinternalvalue'} = {
     {
       'contents' => [
         {
-          'contents' => [
-            {
-              'text' => '
-'
-            }
-          ],
-          'type' => 'paragraph'
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'

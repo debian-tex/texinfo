@@ -12,9 +12,11 @@ $result_trees{'normal_font_in_monospace'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -77,17 +79,23 @@ $result_trees{'normal_font_in_monospace'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -197,9 +205,9 @@ $result_floats{'normal_font_in_monospace'} = {};
 
 
 
-$result_converted{'plaintext'}->{'normal_font_in_monospace'} = '     in example in r—now ‘in co---de’
+$result_converted{'plaintext'}->{'normal_font_in_monospace'} = '     in example in r--now ‘in co---de’
 
-   ‘in command---c in r—r ‘in file---’’.
+   ‘in command---c in r--r ‘in file---’’.
 ';
 
 

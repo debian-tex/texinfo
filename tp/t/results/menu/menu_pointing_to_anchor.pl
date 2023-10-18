@@ -18,28 +18,23 @@ $result_trees{'menu_pointing_to_anchor'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -55,9 +50,11 @@ $result_trees{'menu_pointing_to_anchor'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -96,9 +93,6 @@ $result_trees{'menu_pointing_to_anchor'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'An-anchor'
           },
           'source_info' => {
@@ -120,9 +114,11 @@ $result_trees{'menu_pointing_to_anchor'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -130,7 +126,7 @@ $result_trees{'menu_pointing_to_anchor'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -141,6 +137,12 @@ $result_trees{'menu_pointing_to_anchor'} = {
                       'text' => 'An anchor'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'An-anchor'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -162,15 +164,6 @@ $result_trees{'menu_pointing_to_anchor'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'An-anchor'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 9,
@@ -186,17 +179,23 @@ $result_trees{'menu_pointing_to_anchor'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -212,8 +211,11 @@ $result_trees{'menu_pointing_to_anchor'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -224,11 +226,7 @@ $result_trees{'menu_pointing_to_anchor'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'args'}[3];
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'args'}[1]{'contents'}[0];
+$result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'menu_pointing_to_anchor'} = '@node Top
 @top top
@@ -364,6 +362,8 @@ $result_converted{'html'}->{'menu_pointing_to_anchor'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 td.menu-entry-description {vertical-align: top}
 td.menu-entry-destination {vertical-align: top}
 -->
@@ -374,7 +374,7 @@ td.menu-entry-destination {vertical-align: top}
 
 <body lang="en">
 <div class="top-level-extent" id="Top">
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <p>Text
 </p>
@@ -400,7 +400,7 @@ $result_converted{'xml'}->{'menu_pointing_to_anchor'} = '<node name="Top" spaces
 <anchor name="An-anchor">An anchor</anchor>
 
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::                ">An anchor</menunode><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>An anchor</menunode><menuseparator>::                </menuseparator><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
 </pre></menudescription></menuentry></menu>
 </top>
 ';

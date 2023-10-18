@@ -14,9 +14,14 @@ $result_trees{'group_beginning_and_end_on_line'} = {
             {
               'contents' => [
                 {
-                  'text' => 'within '
+                  'text' => 'within'
                 }
               ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
               'type' => 'block_line_arg'
             }
           ],
@@ -30,17 +35,23 @@ $result_trees{'group_beginning_and_end_on_line'} = {
                       'text' => 'group'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'group'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -49,8 +60,10 @@ $result_trees{'group_beginning_and_end_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -79,6 +92,15 @@ $result_errors{'group_beginning_and_end_on_line'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => '@end should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: unexpected argument on @group line: within
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'unexpected argument on @group line: within',
     'type' => 'warning'
   }
 ];

@@ -6,7 +6,11 @@ use vars qw(%result_texis %result_texts %result_trees %result_errors
 use utf8;
 
 $result_trees{'lone_end_itemize'} = {
-  'contents' => [],
+  'contents' => [
+    {
+      'type' => 'before_node_section'
+    }
+  ],
   'type' => 'document_root'
 };
 

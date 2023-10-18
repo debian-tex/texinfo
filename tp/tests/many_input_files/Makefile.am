@@ -1,5 +1,5 @@
 # Makefile.am for texinfo/tp/tests/many_input_files
-# Copyright 2012-2019 Free Software Foundation, Inc.
+# Copyright 2012-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

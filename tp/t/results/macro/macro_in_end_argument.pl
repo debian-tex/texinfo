@@ -31,17 +31,23 @@ $result_trees{'macro_in_end_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +56,7 @@ $result_trees{'macro_in_end_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' acartouche
 '
           },
@@ -68,9 +74,11 @@ $result_trees{'macro_in_end_argument'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -82,20 +90,53 @@ $result_trees{'macro_in_end_argument'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'position' => 9,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'cartouche'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'cartouche'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'acartouche'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

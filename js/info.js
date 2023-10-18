@@ -166,7 +166,7 @@
               text0 = text;
             }
 
-          if ((link = link.parentElement.parentElement.lastChild)
+          if ((link = link.nextSibling)
               && link.classList.contains("printindex-index-section")
               && (link = link.firstChild))
             {
@@ -1199,7 +1199,7 @@
       store.dispatch ({ type: "iframe-ready", id: config.INDEX_ID });
       store.dispatch ({
         type: "echo",
-        msg: "Welcome to Texinfo documentation viewer 7.0.3, type '?' for help."
+        msg: "Welcome to Texinfo documentation viewer 7.1, type '?' for help."
       });
 
       /* Call user hook.  */
@@ -1480,7 +1480,7 @@
         {
           /* Scan links that should be added to the index.  */
           var index_entries = document.querySelectorAll
-            ("td.printindex-index-entry a");
+            ("td.printindex-index-entry");
           store.dispatch (actions.cache_index_links (index_entries));
         }
 

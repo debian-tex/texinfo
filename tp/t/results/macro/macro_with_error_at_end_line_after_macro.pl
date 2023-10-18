@@ -35,17 +35,23 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,7 +60,7 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' witherror{string}
 '
           },
@@ -65,6 +71,30 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'aaa'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'witherror'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -72,9 +102,18 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }

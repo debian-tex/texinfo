@@ -2,15 +2,15 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage[gen]{eurosym}
-\usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \usepackage{titleps}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \usepackage[hidelinks]{hyperref}
-\usepackage[utf8]{inputenc}
 
 \makeatletter
 \newcommand{\Texinfosettitle}{No Title}%
@@ -39,15 +39,15 @@
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
 \makeatother
+\pagestyle{single}%
 
-% no headings before titlepage
-\pagestyle{empty}%
-
+\pagestyle{single}%
 
 
 \begin{document}
 
 \frontmatter
+\pagestyle{empty}%
 \begin{titlepage}
 \begingroup
 \newskip\titlepagetopglue \titlepagetopglue = 1.5in
@@ -58,6 +58,6 @@
 in titlepage
 \endgroup
 \end{titlepage}
-\pagestyle{single}%
 \mainmatter
+\pagestyle{single}%
 \end{document}

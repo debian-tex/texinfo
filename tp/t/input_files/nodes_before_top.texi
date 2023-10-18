@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename index_nodes
+@c test nodes before Top node
 
 
 @node first before top, Top, ,(dir)
@@ -32,10 +32,10 @@ And one one more index
 @printindex cp
 
 @menu
-* first::
+* chap first::
 @end menu
 
-@node first,,Top, Top
+@node chap first,,Top, Top
 Text and then index entries
 @cindex ! entry in node
 @findex fun in node
@@ -47,7 +47,7 @@ Text and then index entries
 * second::
 @end menu
 
-@node second,,,first
+@node second,,,chap first
 @menu
 * a node::
 * another::

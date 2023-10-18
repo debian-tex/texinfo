@@ -18,28 +18,23 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -55,9 +50,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -72,9 +69,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -82,7 +81,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -93,6 +92,12 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                       'text' => 'chap'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -114,15 +119,6 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chap'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -138,17 +134,23 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -169,8 +171,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -186,28 +191,23 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -223,9 +223,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -245,9 +247,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                   'text' => 'on'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -256,8 +260,12 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
           'extra' => {
             'misc_args' => [
               'on'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -280,19 +288,16 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                       'text' => 'chap'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chap'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 13,
@@ -319,9 +324,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                   'text' => 'off'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -330,8 +337,12 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
           'extra' => {
             'misc_args' => [
               'off'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -354,19 +365,16 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
                       'text' => 'chap'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chap'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -381,8 +389,11 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -393,16 +404,9 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'extra'}{'label'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[0]{'extra'}{'label'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'test_xrefautomaticsectiontitle'} = '@node Top
 @top top
@@ -571,6 +575,12 @@ $result_converted{'html'}->{'test_xrefautomaticsectiontitle'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -581,7 +591,7 @@ $result_converted{'html'}->{'test_xrefautomaticsectiontitle'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#chap" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 
 <ul class="mini-toc">
@@ -593,7 +603,7 @@ Next: <a href="#chap" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="chapter">1 chapter</h2>
+<h2 class="chapter" id="chapter"><span>1 chapter<a class="copiable-link" href="#chapter"> &para;</a></span></h2>
 
 
 <p>See <a class="xref" href="#chap">chapter</a>.

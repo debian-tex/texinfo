@@ -49,10 +49,14 @@ $result_trees{'float_in_style_command'} = {
                   'text' => 'B'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -96,7 +100,8 @@ $result_trees{'float_in_style_command'} = {
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'args' => [
@@ -106,17 +111,23 @@ $result_trees{'float_in_style_command'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -127,16 +138,12 @@ $result_trees{'float_in_style_command'} = {
           ],
           'extra' => {
             'caption' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'B',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'A'
+            'float_type' => 'A',
+            'normalized' => 'B'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -153,8 +160,6 @@ $result_trees{'float_in_style_command'} = {
 };
 $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'float'} = $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'float_in_style_command'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'float_in_style_command'} = '@code{
 }@float A, B
@@ -167,19 +172,9 @@ in float
 $result_texts{'float_in_style_command'} = '
 A, B
 in float
-
 ';
 
 $result_errors{'float_in_style_command'} = [
-  {
-    'error_line' => 'warning: @float should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@float should not appear in @code',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@code missing closing brace
 ',
@@ -212,15 +207,8 @@ $result_floats{'float_in_style_command'} = {
             'float' => {}
           }
         },
-        'normalized' => 'B',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'A'
-            }
-          ],
-          'normalized' => 'A'
-        }
+        'float_type' => 'A',
+        'normalized' => 'B'
       },
       'structure' => {
         'float_number' => 1

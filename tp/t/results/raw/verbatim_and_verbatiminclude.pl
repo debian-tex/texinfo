@@ -12,9 +12,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -34,17 +36,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -76,9 +84,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -98,17 +108,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -140,9 +156,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -161,9 +179,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -188,17 +208,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                           'text' => 'verbatim'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'verbatim'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -221,17 +247,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -263,9 +295,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -285,17 +319,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -332,18 +372,24 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                   'text' => 'verb.txt'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'verb.txt'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -359,9 +405,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -385,18 +433,24 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'verb.txt'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'verbatiminclude',
               'extra' => {
-                'input_perl_encoding' => 'utf-8',
-                'spaces_before_argument' => ' ',
+                'input_encoding_name' => 'utf-8',
                 'text_arg' => 'verb.txt'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -412,17 +466,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -459,18 +519,24 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                   'text' => 'verb.txt'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'verb.txt'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -495,9 +561,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -521,9 +589,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -548,17 +618,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                           'text' => 'verbatim'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'verbatim'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -591,17 +667,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -624,9 +706,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -650,9 +734,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -677,17 +763,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                           'text' => 'verbatim'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'verbatim'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -715,17 +807,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -748,9 +846,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -774,9 +874,11 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -796,17 +898,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                           'text' => 'verbatim'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'verbatim'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -838,17 +946,23 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1047,5 +1161,71 @@ $result_converted_errors{'plaintext'}->{'verbatim_and_verbatiminclude'} = [
   }
 ];
 
+
+
+$result_converted{'xml'}->{'verbatim_and_verbatiminclude'} = '<verbatim xml:space="preserve" endspaces=" ">
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+</verbatim>
+
+<para>Text before
+</para><verbatim xml:space="preserve" endspaces=" ">
+in verbatime
+</verbatim>
+<para>Text after
+</para>
+<quotation endspaces=" ">
+<para>In quotation
+</para><verbatim xml:space="preserve" endspaces=" ">
+In verbatim in quotation
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+</verbatim>
+</quotation>
+
+<para>Before
+</para><verbatim xml:space="preserve" endspaces=" ">
+In verbatim test text
+</verbatim>
+<para>After
+</para>
+<verbatiminclude file="verb.txt" spaces=" ">verb.txt</verbatiminclude>
+
+<quotation endspaces=" ">
+<para>In quotation include 
+</para><verbatiminclude file="verb.txt" spaces=" ">verb.txt</verbatiminclude>
+</quotation>
+
+<para>Before include
+</para><verbatiminclude file="verb.txt" spaces=" ">verb.txt</verbatiminclude>
+<para>After
+</para>
+<example endspaces=" ">
+<pre xml:space="preserve">In example
+
+</pre><verbatim xml:space="preserve" endspaces=" ">
+In verbatim in example
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+</verbatim>
+<pre xml:space="preserve">
+</pre></example>
+
+<quotation endspaces=" ">
+<para>In quotation with spaces
+</para>
+<verbatim xml:space="preserve" endspaces=" ">
+In verbatim in quotation with spaces
+In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
+</verbatim>
+
+</quotation>
+
+<quotation endspaces=" ">
+<para>In quotation 
+</para>
+<verbatim xml:space="preserve" endspaces=" ">
+In verbatim in quotation
+</verbatim>
+<para>in quotation after end verbaatim
+</para></quotation>
+';
 
 1;

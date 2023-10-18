@@ -18,9 +18,11 @@ $result_trees{'node_referenced_in_ref'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -35,9 +37,11 @@ $result_trees{'node_referenced_in_ref'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -45,7 +49,7 @@ $result_trees{'node_referenced_in_ref'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -53,9 +57,15 @@ $result_trees{'node_referenced_in_ref'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'first level node'
+                      'text' => 'chap first level node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap-first-level-node'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -77,15 +87,6 @@ $result_trees{'node_referenced_in_ref'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'first-level-node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -101,17 +102,23 @@ $result_trees{'node_referenced_in_ref'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -141,55 +148,16 @@ $result_trees{'node_referenced_in_ref'} = {
                       'text' => 'second level node'
                     }
                   ],
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'ref',
-              'extra' => {
-                'label' => {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'second level node'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'node',
                   'extra' => {
                     'node_content' => [
                       {}
                     ],
-                    'nodes_manuals' => [
-                      {
-                        'node_content' => [
-                          {}
-                        ],
-                        'normalized' => 'second-level-node'
-                      }
-                    ],
-                    'normalized' => 'second-level-node',
-                    'spaces_before_argument' => ' '
+                    'normalized' => 'second-level-node'
                   },
-                  'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
-                  }
-                },
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'second-level-node'
+                  'type' => 'brace_command_arg'
                 }
-              },
+              ],
+              'cmdname' => 'ref',
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -210,19 +178,12 @@ $result_trees{'node_referenced_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -235,12 +196,14 @@ $result_trees{'node_referenced_in_ref'} = {
         {
           'contents' => [
             {
-              'text' => 'first level node'
+              'text' => 'chap first level node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -254,19 +217,12 @@ $result_trees{'node_referenced_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'first-level-node'
-          }
-        ],
-        'normalized' => 'first-level-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap-first-level-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -274,37 +230,60 @@ $result_trees{'node_referenced_in_ref'} = {
         'macro' => ''
       }
     },
-    {}
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'second level node'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'second-level-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => ''
+      }
+    }
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'node_referenced_in_ref'}{'contents'}[3] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'label'};
+$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'node_referenced_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'node_referenced_in_ref'} = '@node Top
 
 @menu
-* first level node::
+* chap first level node::
 @end menu
 
 @ref{second level node}.
 
-@node first level node
+@node chap first level node
 
 @node second level node
 ';
 
 
 $result_texts{'node_referenced_in_ref'} = '
-* first level node::
+* chap first level node::
 
 second level node.
 
@@ -325,7 +304,7 @@ $result_nodes{'node_referenced_in_ref'} = {
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'first-level-node'
+        'normalized' => 'chap-first-level-node'
       },
       'structure' => {
         'node_prev' => {},
@@ -348,7 +327,7 @@ $result_menus{'node_referenced_in_ref'} = {
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'first-level-node'
+        'normalized' => 'chap-first-level-node'
       },
       'structure' => {
         'menu_up' => {},

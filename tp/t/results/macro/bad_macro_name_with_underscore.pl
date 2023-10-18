@@ -39,17 +39,23 @@ $result_trees{'bad_macro_name_with_underscore'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -58,7 +64,7 @@ $result_trees{'bad_macro_name_with_underscore'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' the_macro {arg1, arg2}
 '
           },

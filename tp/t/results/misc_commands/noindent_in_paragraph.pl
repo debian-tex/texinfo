@@ -90,7 +90,26 @@ Begin para2
 after noindent2.
 ';
 
-$result_errors{'noindent_in_paragraph'} = [];
+$result_errors{'noindent_in_paragraph'} = [
+  {
+    'error_line' => 'warning: @noindent is useless inside of a paragraph
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@noindent is useless inside of a paragraph',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @noindent is useless inside of a paragraph
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@noindent is useless inside of a paragraph',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'noindent_in_paragraph'} = {};
@@ -115,15 +134,15 @@ $result_converted{'latex'}->{'noindent_in_paragraph'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

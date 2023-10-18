@@ -36,9 +36,11 @@ $result_trees{'flushright_in_style_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -62,17 +64,23 @@ $result_trees{'flushright_in_style_command'} = {
                       'text' => 'flushright'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'flushright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -106,15 +114,6 @@ in flushright
 ';
 
 $result_errors{'flushright_in_style_command'} = [
-  {
-    'error_line' => 'warning: @flushright should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@flushright should not appear in @code',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@code missing closing brace
 ',

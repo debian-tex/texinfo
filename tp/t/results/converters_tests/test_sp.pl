@@ -26,9 +26,11 @@ $result_trees{'test_sp'} = {
                   'text' => '1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -37,8 +39,12 @@ $result_trees{'test_sp'} = {
           'extra' => {
             'misc_args' => [
               '1'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -78,9 +84,11 @@ $result_trees{'test_sp'} = {
                   'text' => '1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -89,8 +97,12 @@ $result_trees{'test_sp'} = {
           'extra' => {
             'misc_args' => [
               '1'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -111,9 +123,11 @@ $result_trees{'test_sp'} = {
                   'text' => '2'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -122,8 +136,12 @@ $result_trees{'test_sp'} = {
           'extra' => {
             'misc_args' => [
               '2'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -162,9 +180,11 @@ $result_trees{'test_sp'} = {
                   'text' => '2'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -173,8 +193,12 @@ $result_trees{'test_sp'} = {
           'extra' => {
             'misc_args' => [
               '2'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -213,9 +237,11 @@ $result_trees{'test_sp'} = {
                   'text' => '1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -224,8 +250,12 @@ $result_trees{'test_sp'} = {
           'extra' => {
             'misc_args' => [
               '1'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

@@ -73,9 +73,11 @@ $result_trees{'no_documentencoding_and_insertions'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -141,17 +143,23 @@ $result_trees{'no_documentencoding_and_insertions'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -195,7 +203,7 @@ $result_floats{'no_documentencoding_and_insertions'} = {};
 
 
 
-$result_converted{'plaintext'}->{'no_documentencoding_and_insertions'} = '– — ” “ ‘ ’ ‘in code’.  ẽ.
+$result_converted{'plaintext'}->{'no_documentencoding_and_insertions'} = '- -- " " \' \' ‘in code’.  ẽ.
 
      -- --- \'\' `` ` \' in code. ẽ.
 ';

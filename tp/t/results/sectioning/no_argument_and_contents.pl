@@ -16,7 +16,7 @@ $result_trees{'no_argument_and_contents'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'contents',
@@ -45,9 +45,11 @@ $result_trees{'no_argument_and_contents'} = {
               'text' => 'for example'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -60,8 +62,10 @@ $result_trees{'no_argument_and_contents'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -87,9 +91,11 @@ $result_trees{'no_argument_and_contents'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -102,8 +108,10 @@ $result_trees{'no_argument_and_contents'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -138,12 +146,10 @@ $result_sectioning{'no_argument_and_contents'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 1,
@@ -200,6 +206,8 @@ $result_converted{'html'}->{'no_argument_and_contents'} = '<!DOCTYPE html>
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -210,7 +218,7 @@ ul.toc-numbered-mark {list-style: none}
 <body lang="en">
 
 <div class="top-level-extent" id="for-example">
-<h1 class="top">for example</h1>
+<h1 class="top"><span>for example<a class="copiable-link" href="#for-example"> &para;</a></span></h1>
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -223,7 +231,7 @@ ul.toc-numbered-mark {list-style: none}
 </div>
 </div>
 <div class="chapter-level-extent">
-<h2 class="chapter">1 </h2>
+<h2 class="chapter"><span>1 </span></h2>
 
 </div>
 </div>

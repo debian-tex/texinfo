@@ -12,9 +12,11 @@ $result_trees{'menu_entry_no_entry_location'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -22,7 +24,7 @@ $result_trees{'menu_entry_no_entry_location'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -39,6 +41,11 @@ $result_trees{'menu_entry_no_entry_location'} = {
                       'text' => ')'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -64,14 +71,6 @@ $result_trees{'menu_entry_no_entry_location'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 2,
@@ -80,7 +79,7 @@ $result_trees{'menu_entry_no_entry_location'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -97,6 +96,11 @@ $result_trees{'menu_entry_no_entry_location'} = {
                       'text' => ')'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -130,14 +134,6 @@ $result_trees{'menu_entry_no_entry_location'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -146,7 +142,7 @@ $result_trees{'menu_entry_no_entry_location'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -163,6 +159,11 @@ $result_trees{'menu_entry_no_entry_location'} = {
                       'text' => ')'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -184,14 +185,6 @@ $result_trees{'menu_entry_no_entry_location'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -207,17 +200,23 @@ $result_trees{'menu_entry_no_entry_location'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -238,12 +237,9 @@ $result_trees{'menu_entry_no_entry_location'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[3];
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[3];
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[3];
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[1]{'contents'}[1];
+$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'menu_entry_no_entry_location'} = '@menu
 * (manual):: begin description
@@ -340,13 +336,13 @@ $result_converted_errors{'html'}->{'menu_entry_no_entry_location'} = [
 
 
 $result_converted{'xml'}->{'menu_entry_no_entry_location'} = '<menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator=":: ">(manual)</menunode><menudescription><pre xml:space="preserve">begin description
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>(manual)</menunode><menuseparator>:: </menuseparator><menudescription><pre xml:space="preserve">begin description
 * not an entry ?
-</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator=":: ">(manual)</menunode><menudescription><pre xml:space="preserve">an entry
+</pre></menudescription></menuentry><menuentry><menuleadingtext>* </menuleadingtext><menunode>(manual)</menunode><menuseparator>:: </menuseparator><menudescription><pre xml:space="preserve">an entry
   in description
 * and here ?
 with text.
-</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">(last manual)</menunode><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menuleadingtext>* </menuleadingtext><menunode>(last manual)</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 ';
 

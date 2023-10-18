@@ -71,16 +71,20 @@ $result_trees{'custom_headings'} = {
                       'cmdname' => 'thischapternum'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'evenheading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -141,16 +145,20 @@ $result_trees{'custom_headings'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'evenfooting',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -177,28 +185,23 @@ $result_trees{'custom_headings'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -214,9 +217,11 @@ $result_trees{'custom_headings'} = {
               'text' => 'top sectionning'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -229,8 +234,11 @@ $result_trees{'custom_headings'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -246,28 +254,23 @@ $result_trees{'custom_headings'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -283,9 +286,11 @@ $result_trees{'custom_headings'} = {
               'text' => 'ch--ap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -302,7 +307,7 @@ $result_trees{'custom_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -331,7 +336,7 @@ $result_trees{'custom_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -356,8 +361,11 @@ $result_trees{'custom_headings'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -373,9 +381,11 @@ $result_trees{'custom_headings'} = {
               'text' => 'sec1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -388,8 +398,10 @@ $result_trees{'custom_headings'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -405,9 +417,11 @@ $result_trees{'custom_headings'} = {
               'text' => 'chap 2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -433,16 +447,20 @@ $result_trees{'custom_headings'} = {
                   'text' => ' titi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'everyheading',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -460,7 +478,7 @@ $result_trees{'custom_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -489,7 +507,7 @@ $result_trees{'custom_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -514,8 +532,10 @@ $result_trees{'custom_headings'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -531,9 +551,11 @@ $result_trees{'custom_headings'} = {
               'text' => 'chap 3'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -550,7 +572,7 @@ $result_trees{'custom_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -586,16 +608,20 @@ $result_trees{'custom_headings'} = {
                   'text' => ' dd'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'everyfooting',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -609,8 +635,10 @@ $result_trees{'custom_headings'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -621,10 +649,6 @@ $result_trees{'custom_headings'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'custom_headings'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'custom_headings'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'custom_headings'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'custom_headings'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'custom_headings'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'custom_headings'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'custom_headings'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'custom_headings'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'custom_headings'} = '
 @evenheading @thispage @thissectionname @| @thissectionnum @thissection @| @thischaptername @thischapternum
@@ -736,7 +760,6 @@ $result_sectioning{'custom_headings'} = {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '1.1',
@@ -753,7 +776,6 @@ $result_sectioning{'custom_headings'} = {
             },
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 2,
@@ -765,7 +787,6 @@ $result_sectioning{'custom_headings'} = {
             },
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 3,
@@ -854,7 +875,7 @@ $result_converted{'latex_text'}->{'custom_headings'} = '\\newpagestyle{custom}{%
 \\renewpagestyle{custom}{%
 \\sethead[\\thepage{} \\sectiontitle{}][\\thesection{} Section \\thesection{} \\sectiontitle{}][\\chaptertitle{} \\thechapter{}]%
 {}{}{}%
-\\setfoot[\\chaptername{} \\thechapter{} \\chaptertitle{} \\Texinfosettitle{}][][\\texttt{\\chaptertitle{}}]%
+\\setfoot[\\chaptername{} \\thechapter{} \\chaptertitle{} \\Texinfosettitle{}][\\Texinfotheinclude{}][\\texttt{\\chaptertitle{}}]%
 {}{}{}%
 }%
 \\pagestyle{custom}%
@@ -881,7 +902,7 @@ after ch--ap second page
 \\renewpagestyle{custom}{%
 \\sethead[toto][titi][]%
 {toto}{titi}{}%
-\\setfoot[\\chaptername{} \\thechapter{} \\chaptertitle{} \\Texinfosettitle{}][][\\texttt{\\chaptertitle{}}]%
+\\setfoot[\\chaptername{} \\thechapter{} \\chaptertitle{} \\Texinfosettitle{}][\\Texinfotheinclude{}][\\texttt{\\chaptertitle{}}]%
 {}{}{}%
 }%
 \\pagestyle{custom}%

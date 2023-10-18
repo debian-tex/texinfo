@@ -26,7 +26,7 @@ $result_trees{'lone_braces_in_inlineraw'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'truc'
+                          'text' => '{truc}'
                         }
                       ],
                       'source_info' => {
@@ -34,11 +34,13 @@ $result_trees{'lone_braces_in_inlineraw'} = {
                         'line_nr' => 1,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -72,7 +74,7 @@ $result_texis{'lone_braces_in_inlineraw'} = '@inlineraw{plaintext, {truc}}.
 ';
 
 
-$result_texts{'lone_braces_in_inlineraw'} = '.
+$result_texts{'lone_braces_in_inlineraw'} = '{truc}.
 ';
 
 $result_errors{'lone_braces_in_inlineraw'} = [];

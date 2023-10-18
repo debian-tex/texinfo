@@ -13,24 +13,42 @@ $result_trees{'spaces_before_value'} = {
           'args' => [
             {
               'text' => 'var',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'val',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' var val
-',
-            'misc_args' => [
-              'var',
-              'val'
-            ]
+'
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'text' => 'var'
+                  }
+                ],
+                'cmdname' => 'value',
+                'info' => {
+                  'spaces_after_cmd_before_arg' => {
+                    'text' => '  '
+                  }
+                }
+              },
+              'line' => 'val',
+              'position' => 1,
+              'sourcemark_type' => 'value_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -38,6 +56,14 @@ $result_trees{'spaces_before_value'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 3,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'val
 '
             }

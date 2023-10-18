@@ -1,0 +1,6 @@
+Automatically generated
+
+_______________________ 0
+texinfo
+@code{protécted}
+_______________________ 0

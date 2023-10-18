@@ -1,7 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename index_split
-
 @node Top
 @top split indices
 @cindex entry a

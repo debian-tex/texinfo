@@ -130,7 +130,9 @@ my $parser_information = $parser->global_information();
 my $refs = $parser->internal_references_information();
 Texinfo::Structuring::associate_internal_references($registrar, $parser,
                                  $parser_information, $labels, $refs);
-my $master_menu = Texinfo::Transformations::new_master_menu($parser, $labels);
+my $top_node = $labels->{'Top'};
+my $master_menu = Texinfo::Structuring::new_master_menu($parser, $labels,
+                    $top_node->{'extra'}->{'menus'});
 my $out = Texinfo::Convert::Texinfo::convert_to_texinfo($master_menu);
 
 my $reference = '@detailmenu
@@ -175,7 +177,8 @@ $parser_information = $parser->global_information();
 $refs = $parser->internal_references_information();
 Texinfo::Structuring::associate_internal_references($registrar, $parser,
                                  $parser_information, $labels, $refs);
-$master_menu = Texinfo::Transformations::new_master_menu($parser, $labels);
+$master_menu = Texinfo::Structuring::new_master_menu($parser, $labels,
+                    $top_node->{'extra'}->{'menus'});
 $out = Texinfo::Convert::Texinfo::convert_to_texinfo($master_menu);
 is ($out, $reference, 'master menu no detailmenu');
 

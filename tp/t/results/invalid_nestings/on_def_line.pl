@@ -31,9 +31,6 @@ $result_trees{'on_def_line'} = {
                           ],
                           'cmdname' => 'anchor',
                           'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
                             'normalized' => 'in-anchor'
                           },
                           'source_info' => {
@@ -51,7 +48,7 @@ $result_trees{'on_def_line'} = {
                         'line_nr' => 1,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_arg'
                     },
                     {
                       'extra' => {
@@ -129,17 +126,23 @@ $result_trees{'on_def_line'} = {
                               'text' => 'exdent'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'exdent',
                       'extra' => {
-                        'def_role' => 'arg',
-                        'spaces_before_argument' => ' '
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -153,25 +156,11 @@ $result_trees{'on_def_line'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
@@ -200,9 +189,6 @@ $result_trees{'on_def_line'} = {
                           ],
                           'cmdname' => 'anchor',
                           'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
                             'normalized' => 'in-anchorx'
                           },
                           'source_info' => {
@@ -220,7 +206,7 @@ $result_trees{'on_def_line'} = {
                         'line_nr' => 2,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_arg'
                     },
                     {
                       'extra' => {
@@ -298,17 +284,23 @@ $result_trees{'on_def_line'} = {
                               'text' => 'exdentx'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'exdent',
                       'extra' => {
-                        'def_role' => 'arg',
-                        'spaces_before_argument' => ' '
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -323,27 +315,17 @@ $result_trees{'on_def_line'} = {
               'cmdname' => 'deffnx',
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_number' => 2,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffnx',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
-                'original_def_cmdname' => 'deffnx',
-                'spaces_before_argument' => ' '
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  2
+                ],
+                'original_def_cmdname' => 'deffnx'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -360,17 +342,23 @@ $result_trees{'on_def_line'} = {
                       'text' => 'deffn'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deffn'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -379,8 +367,10 @@ $result_trees{'on_def_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -394,18 +384,8 @@ $result_trees{'on_def_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
+$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'on_def_line'} = '@deffn {@anchor{in anchor}} @titlefont{in titlefont} @footnote{footnote} @exdent exdent
 @deffnx {@anchor{in anchorx}} @titlefont{in titlefontx} @footnote{footnotex} @exdent exdentx
@@ -421,30 +401,30 @@ $result_texts{'on_def_line'} = ': in titlefont  exdent
 
 $result_errors{'on_def_line'} = [
   {
-    'error_line' => 'warning: @anchor should not appear in @deffn
+    'error_line' => 'warning: @anchor should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor should not appear in @deffn',
+    'text' => '@anchor should not appear on @deffn line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @deffn
+    'error_line' => 'warning: @titlefont should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@titlefont should not appear in @deffn',
+    'text' => '@titlefont should not appear on @deffn line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @deffn
+    'error_line' => 'warning: @footnote should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@footnote should not appear in @deffn',
+    'text' => '@footnote should not appear on @deffn line',
     'type' => 'warning'
   },
   {
@@ -457,12 +437,12 @@ $result_errors{'on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @deffn
+    'error_line' => 'warning: @exdent should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should not appear in @deffn',
+    'text' => '@exdent should not appear on @deffn line',
     'type' => 'warning'
   },
   {
@@ -475,30 +455,30 @@ $result_errors{'on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @deffn
+    'error_line' => 'warning: @anchor should not appear on @deffnx line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@anchor should not appear in @deffn',
+    'text' => '@anchor should not appear on @deffnx line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @deffnx
+    'error_line' => 'warning: @titlefont should not appear on @deffnx line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@titlefont should not appear in @deffnx',
+    'text' => '@titlefont should not appear on @deffnx line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @deffnx
+    'error_line' => 'warning: @footnote should not appear on @deffnx line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@footnote should not appear in @deffnx',
+    'text' => '@footnote should not appear on @deffnx line',
     'type' => 'warning'
   },
   {
@@ -511,12 +491,12 @@ $result_errors{'on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @deffnx
+    'error_line' => 'warning: @exdent should not appear on @deffnx line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@exdent should not appear in @deffnx',
+    'text' => '@exdent should not appear on @deffnx line',
     'type' => 'warning'
   },
   {

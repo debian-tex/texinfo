@@ -21,9 +21,11 @@ $result_trees{'noindent_after_smallexample'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -51,17 +53,23 @@ $result_trees{'noindent_after_smallexample'} = {
                       'text' => 'smallexample'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'smallexample'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -151,15 +159,15 @@ $result_converted{'latex'}->{'noindent_after_smallexample'} = '\\documentclass{b
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

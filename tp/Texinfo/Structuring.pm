@@ -1,21 +1,21 @@
 # Structuring.pm: extract information about a document structure based on the
 #                 document tree.
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2023 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 # Parts (also from Patrice Dumas) come from texi2html.pl.
 
@@ -28,21 +28,25 @@ use if $] >= 5.012, feature => 'unicode_strings';
 
 use strict;
 # Can be used to check that there is no incorrect autovivfication
-# In that case, creations of hashes should be uncommented
 #no autovivification qw(fetch delete exists store strict);
 
 use Carp qw(cluck confess);
+
+use Unicode::Normalize;
 
 # for %root_commands
 use Texinfo::Commands;
 use Texinfo::Common;
 
 # for error messages
-use Texinfo::Convert::Texinfo qw(node_extra_to_texi);
+use Texinfo::Convert::Texinfo qw(target_element_to_texi_label
+                                 link_element_to_texi);
 # for debugging.  Also for index entries sorting.
 use Texinfo::Convert::Text;
 # for internal references and misc uses
 use Texinfo::Convert::NodeNameNormalization;
+# for new_master_menu translations
+use Texinfo::Translations;
 
 
 require Exporter;
@@ -69,7 +73,7 @@ use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 my %types_to_enter;
@@ -121,7 +125,7 @@ sub sectioning_structure($$$)
 
   my $section_top;
   my @sections_list;
-  
+
   # holds the current number for all the levels.  It is not possible to use
   # something like the last child index, because of @unnumbered.
   my @command_numbers;
@@ -139,11 +143,12 @@ sub sectioning_structure($$$)
       }
     }
     my $level;
-    #$content->{'structure'} = {} if (! $content->{'structure'});
+    $content->{'structure'} = {} if (! $content->{'structure'});
     $level = $content->{'structure'}->{'section_level'}
          = Texinfo::Common::section_level($content);
     if (!defined($level)) {
-      warn "bug: level not defined for $content->{'cmdname'}\n";
+      warn "bug: level not defined for $content->{'cmdname'} "
+           .Texinfo::Common::debug_print_element($content)."\n";
       $level = $content->{'structure'}->{'section_level'} = 0;
     }
 
@@ -214,8 +219,10 @@ sub sectioning_structure($$$)
         } else {
           push @{$up->{'structure'}->{'section_childs'}}, $content;
           $content->{'structure'}->{'section_up'} = $up;
-          $content->{'structure'}->{'section_prev'} = $up->{'structure'}->{'section_childs'}->[-2];
-          $content->{'structure'}->{'section_prev'}->{'structure'}->{'section_next'} = $content;
+          $content->{'structure'}->{'section_prev'}
+                = $up->{'structure'}->{'section_childs'}->[-2];
+          $content->{'structure'}->{'section_prev'}
+                            ->{'structure'}->{'section_next'} = $content;
         }
         if (!$unnumbered_commands{$content->{'cmdname'}}) {
           $command_numbers[$content->{'structure'}->{'section_level'}]++;
@@ -259,7 +266,8 @@ sub sectioning_structure($$$)
       # construct the number, if not below an unnumbered
       if (!$command_unnumbered[$number_top_level]) {
         my $section_number = $command_numbers[$number_top_level];
-        for (my $i = $number_top_level+1; $i <= $content->{'structure'}->{'section_level'}; $i++) {
+        for (my $i = $number_top_level+1;
+             $i <= $content->{'structure'}->{'section_level'}; $i++) {
           $section_number .= ".$command_numbers[$i]";
           # If there is an unnumbered above, then no number is added.
           if ($command_unnumbered[$i]) {
@@ -284,7 +292,8 @@ sub sectioning_structure($$$)
         $content->{'structure'}->{'toplevel_up'} = $section_top;
       }
     } elsif ($content->{'cmdname'} eq 'part'
-             and !$content->{'extra'}->{'part_associated_section'}) {
+             and not ($content->{'extra'}
+                      and $content->{'extra'}->{'part_associated_section'})) {
       $registrar->line_warn($customization_information,
         sprintf(__("no sectioning command associated with \@%s"),
           $content->{'cmdname'}), $content->{'source_info'});
@@ -299,7 +308,7 @@ sub _print_sectioning_tree($)
 {
   my $current = shift;
   my $result = ' ' x $current->{'structure'}->{'section_level'}
-     . Texinfo::Convert::Texinfo::root_heading_command_to_texinfo($current)."\n";
+   . Texinfo::Convert::Texinfo::root_heading_command_to_texinfo($current)."\n";
   foreach my $child (@{$current->{'structure'}->{'section_childs'}}) {
     $result .= _print_sectioning_tree($child);
   }
@@ -324,15 +333,18 @@ sub warn_non_empty_parts($$$)
   }
 }
 
+# $REFERENCE_NODE should always be a target element associated to
+# a label.
 sub _check_node_same_texinfo_code($$)
 {
   my $reference_node = shift;
   my $node_extra = shift;
 
   my $reference_node_texi;
-  if ($reference_node->{'extra'}->{'node_content'}) {
+  if (defined($reference_node->{'extra'}->{'normalized'})) {
+    my $label_element = Texinfo::Common::get_label_element($reference_node);
     $reference_node_texi = Texinfo::Convert::Texinfo::convert_to_texinfo(
-        {'contents' => $reference_node->{'extra'}->{'node_content'}});
+        {'contents' => $label_element->{'contents'}});
     $reference_node_texi =~ s/\s+/ /g;
   } else {
     $reference_node_texi = '';
@@ -361,34 +373,36 @@ my %direction_texts = (
  'up' => 'Up'
 );
 
-sub _check_menu_entry($$$$$)
+sub _check_menu_entry($$$$$$)
 {
   my $registrar = shift;
   my $customization_information = shift;
   my $labels = shift;
   my $command = shift;
   my $menu_content = shift;
+  my $menu_entry_node = shift;
 
-  my $normalized_menu_node
-      = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
+  if (defined($menu_entry_node->{'extra'}->{'normalized'})) {
+    my $normalized_menu_node = $menu_entry_node->{'extra'}->{'normalized'};
 
-  my $menu_node = $labels->{$normalized_menu_node};
+    my $menu_node = $labels->{$normalized_menu_node};
 
-  if (!$menu_node) {
-    $registrar->line_error($customization_information,
-      sprintf(__("\@%s reference to nonexistent node `%s'"), $command,
-           node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'})),
-      $menu_content->{'source_info'});
-  } else {
-    if (!_check_node_same_texinfo_code($menu_node,
-                           $menu_content->{'extra'}->{'menu_entry_node'})) {
-      $registrar->line_warn($customization_information,
-       sprintf(__("\@%s entry node name `%s' different from %s name `%s'"),
-         $command,
-         node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'}),
-         $menu_node->{'cmdname'},
-         node_extra_to_texi($menu_node->{'extra'})),
-       $menu_content->{'source_info'});
+    if (!$menu_node) {
+      $registrar->line_error($customization_information,
+                  sprintf(__("\@%s reference to nonexistent node `%s'"),
+                          $command,
+                          link_element_to_texi($menu_entry_node)),
+                            $menu_content->{'source_info'});
+    } else {
+      if (!_check_node_same_texinfo_code($menu_node, $menu_entry_node->{'extra'})) {
+        $registrar->line_warn($customization_information,
+        sprintf(__("\@%s entry node name `%s' different from %s name `%s'"),
+                $command,
+                link_element_to_texi($menu_entry_node),
+                $menu_node->{'cmdname'},
+                target_element_to_texi_label($menu_node)),
+                               $menu_content->{'source_info'});
+      }
     }
   }
 }
@@ -397,7 +411,8 @@ sub _check_menu_entry($$$$$)
 # to try to generate menus automatically before checking.
 sub check_nodes_are_referenced
 {
-  my ($registrar, $customization_information, $nodes_list, $top_node, $labels, $refs) = @_;
+  my ($registrar, $customization_information, $nodes_list, $top_node,
+      $labels, $refs) = @_;
 
   return undef unless ($nodes_list and scalar(@{$nodes_list}));
 
@@ -407,23 +422,37 @@ sub check_nodes_are_referenced
     # gather referenced nodes based on node pointers
     foreach my $direction (@node_directions) {
       if ($node->{'structure'}->{'node_'.$direction}
-          and not $node->{'structure'}->{'node_'.$direction}->{'extra'}->{'manual_content'}) {
+          and not $node->{'structure'}->{'node_'.$direction}
+                                             ->{'extra'}->{'manual_content'}) {
         $referenced_nodes{$node->{'structure'}->{'node_'.$direction}} = 1;
       }
     }
     if ($node->{'structure'}->{'menu_up_hash'}) {
       $referenced_nodes{$node} = 1;
     }
+    # If an automatic menu can be setup, consider that all
+    # the nodes appearing in the automatic menu are referenced.
+    # Note that the menu may not be actually setup, but
+    # it is better not to warn for nothing.
+    my $automatic_directions
+      = (not ($node->{'args'} and scalar(@{$node->{'args'}}) > 1));
+    if ($automatic_directions
+        and (not $node->{'extra'}->{'menus'}
+             or not scalar(@{$node->{'extra'}->{'menus'}}))) {
+      my @node_childs = get_node_node_childs_from_sectioning($node);
+      foreach my $node_child (@node_childs) {
+        $referenced_nodes{$node_child} = 1;
+      }
+    }
   }
 
   # consider nodes in @*ref commands to be referenced
   if (defined($refs)) {
     foreach my $ref (@$refs) {
-      my $node_arg = $ref->{'extra'}->{'node_argument'};
-      if ($node_arg and $node_arg->{'node_content'}) {
-        my $normalized =
-           Texinfo::Convert::NodeNameNormalization::normalize_node(
-              {'contents' => $node_arg->{'node_content'} });
+      if ($ref->{'args'} and scalar(@{$ref->{'args'}})
+          and $ref->{'args'}->[0]->{'extra'}
+          and defined($ref->{'args'}->[0]->{'extra'}->{'normalized'})) {
+        my $normalized = $ref->{'args'}->[0]->{'extra'}->{'normalized'};
         my $node_target = $labels->{$normalized};
         if ($node_target) {
           $referenced_nodes{$node_target} = 1;
@@ -436,7 +465,7 @@ sub check_nodes_are_referenced
     if (not exists($referenced_nodes{$node})) {
       $registrar->line_warn($customization_information,
                             sprintf(__("node `%s' unreferenced"),
-                                    node_extra_to_texi($node->{'extra'})),
+                                    target_element_to_texi_label($node)),
                             $node->{'source_info'});
     }
   }
@@ -483,44 +512,52 @@ sub set_menus_node_directions($$$$$$)
           $menu_contents = $menu->{'contents'}->[0];
         }
         foreach my $menu_content (@{$menu_contents->{'contents'}}) {
-          if ($menu_content->{'extra'}
-             and $menu_content->{'extra'}->{'menu_entry_node'}) {
+          if ($menu_content->{'type'}
+              and $menu_content->{'type'} eq 'menu_entry') {
             my $menu_node;
-            my $external_node;
-            if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
-              $menu_node = $labels->{
-                      $menu_content->{'extra'}
-                                   ->{'menu_entry_node'}->{'normalized'}};
-
-              if ($check_menu_entries) {
-                _check_menu_entry($registrar, $customization_information,
-                                  $labels, 'menu', $menu_content);
+            foreach my $arg (@{$menu_content->{'contents'}}) {
+              if ($arg->{'type'} eq 'menu_entry_node') {
+                if ($arg->{'extra'}) {
+                  if (!$arg->{'extra'}->{'manual_content'}) {
+                    if ($check_menu_entries) {
+                      _check_menu_entry($registrar, $customization_information,
+                                        $labels, 'menu', $menu_content, $arg);
+                    }
+                    if (defined($arg->{'extra'}->{'normalized'})) {
+                      # this may happen more than once for a given node if the node
+                      # is in more than one menu.  Therefore all the menu up node
+                      # are kept in $menu_node->{'structure'}->{'menu_up_hash'}
+                      $menu_node = $labels->{$arg->{'extra'}->{'normalized'}};
+                      if ($menu_node) {
+                        $menu_node->{'structure'} = {} if (!$menu_node->{'structure'});
+                        $menu_node->{'structure'}->{'menu_up'} = $node;
+                        $menu_node->{'structure'}->{'menu_up_hash'} = {}
+                            if (!$menu_node->{'structure'}->{'menu_up_hash'});
+                        $menu_node->{'structure'}->{'menu_up_hash'}
+                                    ->{$node->{'extra'}->{'normalized'}} = 1;
+                      }
+                    }
+                  } else {
+                    $menu_node = $arg;
+                  }
+                }
+                last;
               }
-              # this may happen more than once for a given node if the node
-              # is in more than one menu.  Therefore all the menu up node
-              # are kept in $menu_node->{'structure'}->{'menu_up_hash'}
-              if ($menu_node) {
-                #$menu_node->{'structure'} = {} if (!$menu_node->{'structure'});
-                $menu_node->{'structure'}->{'menu_up'} = $node;
-                #$menu_node->{'structure'}->{'menu_up_hash'} = {} if (!$menu_node->{'structure'}->{'menu_up_hash'});
-                $menu_node->{'structure'}->{'menu_up_hash'}->{$node->{'extra'}->{'normalized'}} = 1;
-              }
-            } else {
-              $external_node = 1;
-              $menu_node = {'extra' => $menu_content->{'extra'}->{'menu_entry_node'}};
             }
             if ($menu_node) {
               if ($previous_node) {
-                if (!$external_node) {
-                  #$menu_node->{'structure'} = {} if (!$menu_node->{'structure'});
+                if (!$menu_node->{'extra'}->{'manual_content'}) {
+                  $menu_node->{'structure'} = {}
+                      if (!$menu_node->{'structure'});
                   $menu_node->{'structure'}->{'menu_prev'} = $previous_node;
                 }
                 if (!$previous_node->{'extra'}->{'manual_content'}) {
-                  #$previous_node->{'structure'} = {} if (!$previous_node->{'structure'});
+                  $previous_node->{'structure'} = {}
+                      if (!$previous_node->{'structure'});
                   $previous_node->{'structure'}->{'menu_next'} = $menu_node;
                 }
               } else {
-                #$node->{'structure'} = {} if (!$node->{'structure'});
+                $node->{'structure'} = {} if (!$node->{'structure'});
                 $node->{'structure'}->{'menu_child'} = $menu_node;
               }
               $previous_node = $menu_node;
@@ -535,11 +572,14 @@ sub set_menus_node_directions($$$$$$)
     if ($global_commands->{'detailmenu'}) {
       foreach my $detailmenu (@{$global_commands->{'detailmenu'}}) {
         foreach my $menu_content (@{$detailmenu->{'contents'}}) {
-          if ($menu_content->{'extra'}
-             and $menu_content->{'extra'}->{'menu_entry_node'}) {
-            if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
-              _check_menu_entry($registrar, $customization_information,
-                                $labels, 'detailmenu', $menu_content);
+          if ($menu_content->{'type'}
+              and $menu_content->{'type'} eq 'menu_entry') {
+            foreach my $arg (@{$menu_content->{'contents'}}) {
+              if ($arg->{'type'} eq 'menu_entry_node' and $arg->{'extra'}
+                  and !$arg->{'extra'}->{'node_manual'}) {
+                _check_menu_entry($registrar, $customization_information,
+                                  $labels, 'detailmenu', $menu_content, $arg);
+              }
             }
           }
         }
@@ -562,9 +602,12 @@ sub _section_direction_associated_node($$)
        and $section->{'structure'}->{$direction_base.'_'.$direction}->{'extra'}
        and ($direction_base ne 'toplevel'
             or $direction eq 'up'
-            or $section->{'structure'}->{$direction_base.'_'.$direction}->{'cmdname'} ne 'top')
-       and $section->{'structure'}->{$direction_base.'_'.$direction}->{'extra'}->{'associated_node'}) {
-         return $section->{'structure'}->{$direction_base.'_'.$direction}->{'extra'}->{'associated_node'};
+            or $section->{'structure'}->{$direction_base.'_'.$direction}
+                                                         ->{'cmdname'} ne 'top')
+       and $section->{'structure'}->{$direction_base.'_'.$direction}
+                                             ->{'extra'}->{'associated_node'}) {
+         return $section->{'structure'}->{$direction_base.'_'.$direction}
+                                               ->{'extra'}->{'associated_node'};
     }
   }
   return undef;
@@ -583,8 +626,8 @@ sub complete_node_tree_with_menus($$$$)
   return undef unless ($nodes_list and @{$nodes_list});
   # Go through all the nodes
   foreach my $node (@{$nodes_list}) {
-    my $automatic_directions =
-      (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
+    my $automatic_directions
+      = (not ($node->{'args'} and scalar(@{$node->{'args'}}) > 1));
 
     if ($automatic_directions) {
       if ($node->{'extra'}->{'normalized'} ne 'Top') {
@@ -593,8 +636,10 @@ sub complete_node_tree_with_menus($$$$)
           if ($direction eq 'prev' and $node->{'structure'}
               and $node->{'structure'}->{'node_'.$direction}
               and $node->{'structure'}->{'node_'.$direction}->{'extra'}
-              and $node->{'structure'}->{'node_'.$direction}->{'extra'}->{'normalized'}
-              and $node->{'structure'}->{'node_'.$direction}->{'extra'}->{'normalized'} eq 'Top') {
+              and $node->{'structure'}->{'node_'.$direction}->{'extra'}
+                                                                ->{'normalized'}
+              and $node->{'structure'}->{'node_'.$direction}->{'extra'}
+                                                    ->{'normalized'} eq 'Top') {
             next;
           }
           if ($node->{'extra'}->{'associated_section'}) {
@@ -608,17 +653,23 @@ sub complete_node_tree_with_menus($$$$)
             my $direction_associated_node
               = _section_direction_associated_node($section, $direction);
             if ($direction_associated_node) {
-              if ($customization_information->get_conf('CHECK_NORMAL_MENU_STRUCTURE')) {
-                if ($section->{'structure'}->{'section_up'}{'extra'}
-          and $section->{'structure'}->{'section_up'}{'extra'}{'associated_node'}
-          and $section->{'structure'}->{'section_up'}{'extra'}{'associated_node'}{'menus'}
-          and @{$section->{'structure'}->{'section_up'}{'extra'}{'associated_node'}{'menus'}}
+              if ($customization_information->get_conf(
+                                               'CHECK_NORMAL_MENU_STRUCTURE')) {
+                if ($section->{'structure'}->{'section_up'}->{'extra'}
+          and $section->{'structure'}->{'section_up'}
+                                                ->{'extra'}->{'associated_node'}
+          and $section->{'structure'}->{'section_up'}
+                        ->{'extra'}->{'associated_node'}->{'extra'}
+          and $section->{'structure'}->{'section_up'}
+                        ->{'extra'}->{'associated_node'}->{'extra'}->{'menus'}
+          and @{$section->{'structure'}->{'section_up'}
+                        ->{'extra'}->{'associated_node'}->{'extra'}->{'menus'}}
                     and !$node->{'structure'}->{'menu_'.$direction}) {
                   $registrar->line_warn($customization_information,
            sprintf(__("node %s for `%s' is `%s' in sectioning but not in menu"),
                    $direction,
-                   node_extra_to_texi($node->{'extra'}),
-                   node_extra_to_texi($direction_associated_node->{'extra'})),
+                   target_element_to_texi_label($node),
+                   target_element_to_texi_label($direction_associated_node)),
                                         $node->{'source_info'});
                 }
               }
@@ -630,14 +681,17 @@ sub complete_node_tree_with_menus($$$$)
           if ($node->{'structure'}
               and !$node->{'structure'}->{'node_'.$direction}
               and $node->{'structure'}->{'menu_'.$direction}
-              and !$node->{'structure'}->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
-            if ($customization_information->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
+              and !$node->{'structure'}->{'menu_'.$direction}->{'extra'}
+                                                        ->{'manual_content'}) {
+            if ($customization_information->get_conf(
+                                                  'CHECK_NORMAL_MENU_STRUCTURE')
                   and $node->{'extra'}->{'associated_section'}) {
               $registrar->line_warn($customization_information,
           sprintf(__("node `%s' is %s for `%s' in menu but not in sectioning"),
-                node_extra_to_texi($node->{'structure'}->{'menu_'.$direction}->{'extra'}),
+                target_element_to_texi_label(
+                         $node->{'structure'}->{'menu_'.$direction}),
                                    $direction,
-                node_extra_to_texi($node->{'extra'}),
+                target_element_to_texi_label($node),
                   ),
                 $node->{'source_info'});
             }
@@ -649,19 +703,25 @@ sub complete_node_tree_with_menus($$$$)
                or not $node->{'structure'}->{'node_next'}) {
         # use first menu entry if available as next for Top
         if ($node->{'structure'} and $node->{'structure'}->{'menu_child'}) {
-          $node->{'structure'}->{'node_next'} = $node->{'structure'}->{'menu_child'};
+          $node->{'structure'}->{'node_next'}
+             = $node->{'structure'}->{'menu_child'};
           if (!$node->{'structure'}->{'menu_child'}->{'extra'}->{'manual_content'}
               and !$node->{'structure'}->{'menu_child'}->{'structure'}->{'node_prev'}) {
-            $node->{'structure'}->{'menu_child'}->{'structure'}->{'node_prev'} = $node;
+            $node->{'structure'}->{'menu_child'}->{'structure'}->{'node_prev'}
+                = $node;
           }
         } else {
           # use the first non top node as next for Top
           foreach my $first_non_top_node (@{$nodes_list}) {
             if ($first_non_top_node ne $node) {
-              #$node->{'structure'} = {} if (! $node->{'structure'});
+              $node->{'structure'} = {} if (! $node->{'structure'});
               $node->{'structure'}->{'node_next'} = $first_non_top_node;
-              if (scalar(@{$first_non_top_node->{'extra'}->{'nodes_manuals'}}) == 1) {
-                #$first_non_top_node->{'structure'} = {} if (! $first_non_top_node->{'structure'});
+              my $first_non_top_automatic
+                = (not ($first_non_top_node->{'args'}
+                        and scalar(@{$first_non_top_node->{'args'}}) > 1));
+              if ($first_non_top_automatic) {
+                $first_non_top_node->{'structure'} = {}
+                     if (! $first_non_top_node->{'structure'});
                 $first_non_top_node->{'structure'}->{'node_prev'} = $node;
               }
               last;
@@ -678,34 +738,38 @@ sub complete_node_tree_with_menus($$$$)
             and $node->{'structure'}->{'menu_'.$direction}
             and $node->{'structure'}->{'menu_'.$direction}
                ne $node->{'structure'}->{'node_'.$direction}
-            and not $node->{'structure'}->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
+            and not $node->{'structure'}->{'menu_'.$direction}
+                                          ->{'extra'}->{'manual_content'}) {
           $registrar->line_warn($customization_information,
             sprintf(__("node %s pointer for `%s' is `%s' but %s is `%s' in menu"),
                   $direction,
-                  node_extra_to_texi($node->{'extra'}),
-                  node_extra_to_texi($node->{'structure'}->{'node_'.$direction}->{'extra'}),
+                  target_element_to_texi_label($node),
+                  target_element_to_texi_label(
+                               $node->{'structure'}->{'node_'.$direction}),
                   $direction,
-                  node_extra_to_texi($node->{'structure'}->{'menu_'.$direction}->{'extra'})),
+                  target_element_to_texi_label(
+                      $node->{'structure'}->{'menu_'.$direction})),
                  $node->{'source_info'});
         }
       }
     }
 
     # check for node up / menu up mismatch
-    if ($customization_information->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
+    if ($customization_information->get_conf('CHECK_MISSING_MENU_ENTRY')
         and $node->{'structure'}->{'node_up'}
         # No check if node up is an external manual
         and (!$node->{'structure'}->{'node_up'}->{'extra'}->{'manual_content'})
         and (!$node->{'structure'}->{'menu_up_hash'}
-          or !$node->{'structure'}->{'menu_up_hash'}->{$node->{'structure'}->{'node_up'}->{'extra'}->{'normalized'}})) {
+          or !$node->{'structure'}->{'menu_up_hash'}->{$node->{'structure'}
+                                   ->{'node_up'}->{'extra'}->{'normalized'}})) {
       # check if up node has a menu
       if ($node->{'structure'}->{'node_up'}->{'extra'}->{'menus'}
           and @{$node->{'structure'}->{'node_up'}->{'extra'}->{'menus'}}) {
         $registrar->line_warn($customization_information,
          sprintf(
            __("node `%s' lacks menu item for `%s' despite being its Up target"),
-           node_extra_to_texi($node->{'structure'}->{'node_up'}->{'extra'}),
-           node_extra_to_texi($node->{'extra'})),
+           target_element_to_texi_label($node->{'structure'}->{'node_up'}),
+           target_element_to_texi_label($node)),
          $node->{'structure'}->{'node_up'}->{'source_info'});
       }
       # FIXME check that the menu_up_hash is not empty (except for Top)?
@@ -732,7 +796,7 @@ sub nodes_tree($$$$$)
       $top_node = $node;
     }
     my $automatic_directions
-        = (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
+      = (not ($node->{'args'} and scalar(@{$node->{'args'}}) > 1));
 
     if ($automatic_directions) {
       if ($node->{'extra'}->{'normalized'} ne 'Top') {
@@ -740,8 +804,10 @@ sub nodes_tree($$$$$)
           # prev already defined for the node first Top node menu entry
           if ($direction eq 'prev' and $node->{'node_'.$direction}
               and $node->{'structure'}->{'node_'.$direction}->{'extra'}
-              and $node->{'structure'}->{'node_'.$direction}->{'extra'}->{'normalized'}
-              and $node->{'structure'}->{'node_'.$direction}->{'extra'}->{'normalized'} eq 'Top') {
+              and $node->{'structure'}->{'node_'.$direction}->{'extra'}
+                                                             ->{'normalized'}
+              and $node->{'structure'}->{'node_'.$direction}->{'extra'}
+                                                   ->{'normalized'} eq 'Top') {
             next;
           }
           if ($node->{'extra'}->{'associated_section'}) {
@@ -755,39 +821,55 @@ sub nodes_tree($$$$$)
             my $direction_associated_node
               = _section_direction_associated_node($section, $direction);
             if ($direction_associated_node) {
-              #$node->{'structure'} = {} if (! $node->{'structure'});
-              $node->{'structure'}->{'node_'.$direction} = $direction_associated_node;
+              $node->{'structure'} = {} if (!$node->{'structure'});
+              $node->{'structure'}->{'node_'.$direction}
+                                                = $direction_associated_node;
             }
           }
         }
       } else {
         # Special case for Top node, use first section
         if ($node->{'extra'}->{'associated_section'}
-            and $node->{'extra'}->{'associated_section'}->{'structure'}->{'section_childs'}
-            and $node->{'extra'}->{'associated_section'}->{'structure'}->{'section_childs'}->[0]
-            and $node->{'extra'}->{'associated_section'}->{'structure'}->{'section_childs'}->[0]->{'extra'}->{'associated_node'}) {
+            and $node->{'extra'}->{'associated_section'}
+                                 ->{'structure'}->{'section_childs'}
+            and $node->{'extra'}->{'associated_section'}
+                                 ->{'structure'}->{'section_childs'}->[0]
+            and $node->{'extra'}->{'associated_section'}
+                             ->{'structure'}->{'section_childs'}->[0]->{'extra'}
+            and $node->{'extra'}->{'associated_section'}
+                          ->{'structure'}->{'section_childs'}->[0]
+                                             ->{'extra'}->{'associated_node'}) {
           my $top_node_section_child
-            = $node->{'extra'}->{'associated_section'}->{'structure'}->{'section_childs'}->[0]->{'extra'}->{'associated_node'};
-          #$node->{'structure'} = {} if (! $node->{'structure'});
+            = $node->{'extra'}->{'associated_section'}
+                        ->{'structure'}->{'section_childs'}->[0]
+                                             ->{'extra'}->{'associated_node'};
+          $node->{'structure'} = {} if (! $node->{'structure'});
           $node->{'structure'}->{'node_next'} = $top_node_section_child;
-          if (scalar(@{$top_node_section_child->{'extra'}->{'nodes_manuals'}}) == 1) {
-            #$top_node_section_child->{'structure'} = {} if (! $top_node_section_child->{'structure'});
+
+          my $first_section_child_automatic
+             = (not ($top_node_section_child->{'args'}
+                     and scalar(@{$top_node_section_child->{'args'}}) > 1));
+
+          if ($first_section_child_automatic) {
+            $top_node_section_child->{'structure'} = {}
+                if (! $top_node_section_child->{'structure'});
             $top_node_section_child->{'structure'}->{'node_prev'} = $node;
           }
         }
       }
     } else { # explicit directions
-      my @directions = @{$node->{'extra'}->{'nodes_manuals'}};
-      shift @directions;
-      foreach my $direction (@node_directions) {
-        my $node_direction = shift @directions;
-        next if (!defined($node_direction));
+      for (my $i = 1; $i < scalar(@{$node->{'args'}}); $i++) {
+        my $direction_element = $node->{'args'}->[$i];
+        next if (!$direction_element->{'extra'});
+        my $node_direction = $direction_element->{'extra'};
+        my $direction = $node_directions[$i-1];
 
-        #$node->{'structure'} = {} if (! $node->{'structure'});
+        $node->{'structure'} = {} if (! defined($node->{'structure'}));
         # external node
         if ($node_direction->{'manual_content'}) {
-          $node->{'structure'}->{'node_'.$direction} = { 'extra' => $node_direction };
-        } else {
+          $node->{'structure'}->{'node_'.$direction}
+                            = { 'extra' => $node_direction };
+        } elsif (defined($node_direction->{'normalized'})) {
           if ($labels->{$node_direction->{'normalized'}}) {
             my $node_target
                = $labels->{$node_direction->{'normalized'}};
@@ -798,22 +880,23 @@ sub nodes_tree($$$$$)
                                                    $node_direction)) {
               $registrar->line_warn($customization_information,
                 sprintf(
-                  __("%s pointer `%s' (for node `%s') different from %s name `%s'"),
+             __("%s pointer `%s' (for node `%s') different from %s name `%s'"),
                   $direction_texts{$direction},
-                  node_extra_to_texi($node_direction),
-                  node_extra_to_texi($node->{'extra'}),
+                  link_element_to_texi($direction_element),
+                  target_element_to_texi_label($node),
                                      $node_target->{'cmdname'},
-                  node_extra_to_texi($node_target->{'extra'})),
+                  target_element_to_texi_label($node_target)),
                 $node->{'source_info'});
             }
           } else {
             if ($customization_information->get_conf('novalidate')) {
-              $node->{'structure'}->{'node_'.$direction} = { 'extra' => $node_direction };
+              $node->{'structure'}->{'node_'.$direction}
+                           = { 'extra' => $node_direction };
             } else {
               $registrar->line_error($customization_information,
                    sprintf(__("%s reference to nonexistent `%s'"),
                       $direction_texts{$direction},
-                      node_extra_to_texi($node_direction)),
+                      link_element_to_texi($direction_element)),
                    $node->{'source_info'});
             }
           }
@@ -832,9 +915,11 @@ sub section_level_adjusted_command_name($)
 
   my $heading_level = $element->{'structure'}->{'section_level'};
   my $command;
-  if ($heading_level ne $Texinfo::Common::command_structuring_level{$element->{'cmdname'}}) {
+  if ($heading_level ne $Texinfo::Common::command_structuring_level{
+                                                       $element->{'cmdname'}}) {
     $command
-      = $Texinfo::Common::level_to_structuring_command{$element->{'cmdname'}}->[$heading_level];
+      = $Texinfo::Common::level_to_structuring_command{$element->{'cmdname'}}
+                                                            ->[$heading_level];
   } else {
     $command = $element->{'cmdname'};
   }
@@ -843,6 +928,8 @@ sub section_level_adjusted_command_name($)
 
 # Return a list of tree units to be converted into pages.  Each tree unit
 # starts with a @node as its first child (except possibly the first one).
+# It is important that this function reassociates all the root commands
+# such that the result does not depend on the previous association (if any).
 sub split_by_node($)
 {
   my $root = shift;
@@ -857,12 +944,13 @@ sub split_by_node($)
     }
     if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node') {
       if (not $current->{'extra'} or not $current->{'extra'}->{'unit_command'}) {
-        #$current->{'extra'} = {} if (! $current->{'extra'});
+        $current->{'extra'} = {} if (! $current->{'extra'});
         $current->{'extra'}->{'unit_command'} = $content;
       } else {
         $current = { 'type' => 'unit', 'extra' => {'unit_command' => $content},
                     'structure' => {'unit_prev' => $tree_units->[-1]}};
-        #$tree_units->[-1]->{'structure'} = {} if (! $tree_units->[-1]->{'structure'});
+        $tree_units->[-1]->{'structure'} = {}
+            if (! $tree_units->[-1]->{'structure'});
         $tree_units->[-1]->{'structure'}->{'unit_next'} = $current;
         push @$tree_units, $current;
       }
@@ -875,7 +963,11 @@ sub split_by_node($)
       @pending_parts = ();
     }
     push @{$current->{'contents'}}, $content;
-    #$content->{'structure'} = {} if (! $content->{'structure'});
+    #if (defined($content->{'structure'})
+    #    and defined($content->{'structure'}->{'associated_unit'})) {
+    #  print STDERR "Resetting node associated_unit for $content\n";
+    #}
+    $content->{'structure'} = {} if (! $content->{'structure'});
     $content->{'structure'}->{'associated_unit'} = $current;
   }
   if (@pending_parts) {
@@ -891,7 +983,9 @@ sub split_by_node($)
 
 # Return a list of tree units to be converted into pages.  Each tree unit
 # starts with the @node associated with a sectioning command or with the
-# sectioning command if there is no associated node
+# sectioning command if there is no associated node.
+# It is important that this function reassociates all the root commands
+# such that the result does not depend on the previous association (if any).
 sub split_by_section($)
 {
   my $root = shift;
@@ -901,8 +995,10 @@ sub split_by_section($)
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'cmdname'}
         and (($content->{'cmdname'} eq 'node'
+              and $content->{'extra'}
               and $content->{'extra'}->{'associated_section'})
              or ($content->{'cmdname'} eq 'part'
+                 and $content->{'extra'}
                  and $content->{'extra'}->{'part_associated_section'}))) {
       my $new_section;
       if ($content->{'cmdname'} eq 'node') {
@@ -912,14 +1008,15 @@ sub split_by_section($)
       }
       if (not defined($current->{'extra'})
                or not defined($current->{'extra'}->{'unit_command'})) {
-        #$current->{'extra'} = {} if (!$current->{'extra'});
+        $current->{'extra'} = {} if (!$current->{'extra'});
         $current->{'extra'}->{'unit_command'} = $new_section;
       } elsif (!$current->{'extra'}->{'unit_command'}
               or $new_section ne $current->{'extra'}->{'unit_command'}) {
         $current = { 'type' => 'unit',
                      'extra' => {'unit_command' => $new_section},
                      'structure' => {'unit_prev' => $tree_units->[-1]}};
-        #$tree_units->[-1]->{'structure'} = {} if (! $tree_units->[-1]->{'structure'});
+        $tree_units->[-1]->{'structure'} = {}
+            if (! $tree_units->[-1]->{'structure'});
         $tree_units->[-1]->{'structure'}->{'unit_next'} = $current;
         push @$tree_units, $current;
       }
@@ -927,18 +1024,23 @@ sub split_by_section($)
              and $Texinfo::Commands::root_commands{$content->{'cmdname'}}) {
       if (not defined($current->{'extra'})
                or not defined($current->{'extra'}->{'unit_command'})) {
-        #$current->{'extra'} = {} if (! $current->{'extra'});
+        $current->{'extra'} = {} if (! $current->{'extra'});
         $current->{'extra'}->{'unit_command'} = $content;
       } elsif ($current->{'extra'}->{'unit_command'} ne $content) {
         $current = {'type' => 'unit', 'extra' => {'unit_command' => $content},
                     'structure' => {'unit_prev' => $tree_units->[-1]}};
-        #$tree_units->[-1]->{'structure'} = {} if (! $tree_units->[-1]->{'structure'});
+        $tree_units->[-1]->{'structure'} = {}
+            if (! $tree_units->[-1]->{'structure'});
         $tree_units->[-1]->{'structure'}->{'unit_next'} = $current;
         push @$tree_units, $current;
       }
     }
     push @{$current->{'contents'}}, $content;
-    #$content->{'structure'} = {} if (! $content->{'structure'});
+    #if (defined($content->{'structure'})
+    #    and defined($content->{'structure'}->{'associated_unit'})) {
+    #  print STDERR "Resetting section associated_unit for $content\n";
+    #}
+    $content->{'structure'} = {} if (! $content->{'structure'});
     $content->{'structure'}->{'associated_unit'} = $current;
   }
   return $tree_units;
@@ -957,7 +1059,7 @@ sub split_pages ($$)
   my $split_level;
   if (!$split) {
     foreach my $tree_unit (@$tree_units) {
-      #$tree_unit->{'extra'} = {} if (! $tree_unit->{'extra'});
+      $tree_unit->{'extra'} = {} if (! $tree_unit->{'extra'});
       $tree_unit->{'extra'}->{'first_in_page'} = $tree_units->[0];
     }
     return;
@@ -976,28 +1078,29 @@ sub split_pages ($$)
     if (defined($section)) {
       $level = $section->{'structure'}->{'section_level'};
     }
-    #print STDERR "level($split_level) $level ".root_or_external_element_cmd_texi($tree_unit)."\n";
+    #print STDERR "level($split_level) $level "
+    #       .root_or_external_element_cmd_texi($tree_unit)."\n";
     if (!defined($split_level) or (defined($level) and $split_level >= $level)
         or !$current_first_in_page) {
       $current_first_in_page = $tree_unit;
     }
-    #$tree_unit->{'extra'} = {} if (! $tree_unit->{'extra'});
+    $tree_unit->{'extra'} = {} if (! $tree_unit->{'extra'});
     $tree_unit->{'extra'}->{'first_in_page'} = $current_first_in_page;
   }
 }
 
-# Returns an element associated to a label that can be used to setup a target
+# Returns a unit element associated to a label that can be used to setup a target
 # to the label.  If the target is an external node, create such element here,
 # if it is a node return the parent element that is supposed to be the
 # target for links to the node.  Otherwise there is no such element (yet),
 # for floats and anchor, return undef.
-sub _label_target_element($)
+sub _label_target_unit_element($)
 {
   my $label = shift;
   if ($label->{'extra'} and $label->{'extra'}->{'manual_content'}) {
     my $external_node = { 'type' => 'external_node',
       'extra' => {'manual_content' => $label->{'extra'}->{'manual_content'}}};
-  
+
     if ($label->{'extra'}->{'node_content'}) {
       $external_node->{'extra'}->{'node_content'}
         = $label->{'extra'}->{'node_content'};
@@ -1021,14 +1124,16 @@ sub _tree_unit_section($)
       or not defined($tree_unit->{'extra'}->{'unit_command'})) {
     return undef;
   }
-  if ($tree_unit->{'extra'}->{'unit_command'}->{'cmdname'} eq 'node') {
-    if ($tree_unit->{'extra'}->{'unit_command'}->{'extra'}->{'associated_section'}) {
-      return $tree_unit->{'extra'}->{'unit_command'}->{'extra'}->{'associated_section'};
+  my $tree_unit_command_element = $tree_unit->{'extra'}->{'unit_command'};
+  if ($tree_unit_command_element->{'cmdname'} eq 'node') {
+    if ($tree_unit_command_element->{'extra'}
+        and $tree_unit_command_element->{'extra'}->{'associated_section'}) {
+      return $tree_unit_command_element->{'extra'}->{'associated_section'};
     } else {
       return undef;
     }
   } else {
-    return $tree_unit->{'extra'}->{'unit_command'};
+    return $tree_unit_command_element;
   }
 }
 
@@ -1039,11 +1144,13 @@ sub _tree_unit_node($)
       or not defined($tree_unit->{'extra'}->{'unit_command'})) {
     return undef;
   }
-  if ($tree_unit->{'extra'}->{'unit_command'}->{'cmdname'} eq 'node') {
-    return $tree_unit->{'extra'}->{'unit_command'};
+  my $tree_unit_command_element = $tree_unit->{'extra'}->{'unit_command'};
+  if ($tree_unit_command_element->{'cmdname'} eq 'node') {
+    return $tree_unit_command_element;
   } else {
-    if ($tree_unit->{'extra'}->{'unit_command'}->{'extra'}->{'associated_node'}) {
-      return $tree_unit->{'extra'}->{'unit_command'}->{'extra'}->{'associated_node'}
+    if ($tree_unit_command_element->{'extra'}
+        and $tree_unit_command_element->{'extra'}->{'associated_node'}) {
+      return $tree_unit_command_element->{'extra'}->{'associated_node'}
     } else {
       return undef;
     }
@@ -1081,21 +1188,24 @@ sub elements_directions($$$)
       foreach my $direction(['NodeUp', 'node_up'], ['NodeNext', 'node_next'],
                             ['NodePrev', 'node_prev']) {
         $directions->{$direction->[0]}
-           = _label_target_element($node->{'structure'}->{$direction->[1]})
+           = _label_target_unit_element($node->{'structure'}->{$direction->[1]})
             if ($node->{'structure'}->{$direction->[1]});
       }
       # Now do NodeForward which is something like the following node.
-      my $automatic_directions =
-        (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
+      my $automatic_directions
+        = (not ($node->{'args'} and scalar(@{$node->{'args'}}) > 1));
       if ($node->{'structure'}->{'menu_child'}) {
-        $directions->{'NodeForward'} = _label_target_element($node->{'structure'}->{'menu_child'});
-      } elsif ($automatic_directions and $node->{'associated_section'}
-               and $node->{'associated_section'}->{'structure'}->{'section_childs'}
-               and $node->{'associated_section'}->{'structure'}->{'section_childs'}->[0]) {
         $directions->{'NodeForward'}
-          = $node->{'associated_section'}->{'structure'}->{'section_childs'}->[0]->{'structure'}->{'associated_unit'};
+          = _label_target_unit_element($node->{'structure'}->{'menu_child'});
+      } elsif ($automatic_directions and $node->{'associated_section'}
+       and $node->{'associated_section'}->{'structure'}->{'section_childs'}
+       and $node->{'associated_section'}->{'structure'}->{'section_childs'}->[0]) {
+        $directions->{'NodeForward'}
+          = $node->{'associated_section'}->{'structure'}
+                  ->{'section_childs'}->[0]->{'structure'}->{'associated_unit'};
       } elsif ($node->{'structure'}->{'node_next'}) {
-        $directions->{'NodeForward'} = _label_target_element($node->{'structure'}->{'node_next'});
+        $directions->{'NodeForward'}
+            = _label_target_unit_element($node->{'structure'}->{'node_next'});
       } elsif ($node->{'structure'}->{'node_up'}) {
         my $up = $node->{'structure'}->{'node_up'};
         my @up_list = ($node);
@@ -1104,7 +1214,8 @@ sub elements_directions($$$)
         while (not (grep {$up eq $_} @up_list
                     or ($node_top and $up eq $node_top))) {
           if ($up->{'structure'} and defined($up->{'structure'}->{'node_next'})) {
-            $directions->{'NodeForward'} = _label_target_element($up->{'structure'}->{'node_next'});
+            $directions->{'NodeForward'}
+              = _label_target_unit_element($up->{'structure'}->{'node_next'});
             last;
           }
           push @up_list, $up;
@@ -1112,15 +1223,19 @@ sub elements_directions($$$)
           $up = $up->{'structure'}->{'node_up'};
         }
       }
-      
+
       if ($directions->{'NodeForward'}
           and $directions->{'NodeForward'}->{'type'} eq 'unit'
           and (!$directions->{'NodeForward'}->{'structure'}
                or !$directions->{'NodeForward'}->{'structure'}->{'directions'}
-               or !$directions->{'NodeForward'}->{'structure'}->{'directions'}->{'NodeBack'})) {
-        #$directions->{'NodeForward'}->{'structure'} = {} if (! $directions->{'NodeForward'}->{'structure'});
-        #$directions->{'NodeForward'}->{'structure'}->{'directions'} = {} if (! $directions->{'NodeForward'}->{'structure'}->{'directions'});
-        $directions->{'NodeForward'}->{'structure'}->{'directions'}->{'NodeBack'} = $tree_unit;
+               or !$directions->{'NodeForward'}->{'structure'}->{'directions'}
+                                                              ->{'NodeBack'})) {
+        $directions->{'NodeForward'}->{'structure'} = {}
+            if (! $directions->{'NodeForward'}->{'structure'});
+        $directions->{'NodeForward'}->{'structure'}->{'directions'} = {}
+            if (! $directions->{'NodeForward'}->{'structure'}->{'directions'});
+        $directions->{'NodeForward'}->{'structure'}->{'directions'}
+                                                   ->{'NodeBack'} = $tree_unit;
       }
     }
     my $section = _tree_unit_section($tree_unit);
@@ -1153,16 +1268,22 @@ sub elements_directions($$$)
     } else {
       foreach my $direction(['Up', 'section_up'], ['Next', 'section_next'],
                             ['Prev', 'section_prev']) {
-        # in most cases $section->{$direction->[1]}->{'structure'}->{'associated_unit'} is defined
+        # in most cases $section->{$direction->[1]}
+        #              ->{'structure'}->{'associated_unit'} is defined
         # but it may not be the case for the up of @top.
         # The section may be its own up in cases like
         #  @part part
         #  @chapter chapter
         # in that cas the direction is not set up
-        $directions->{$direction->[0]} = $section->{'structure'}->{$direction->[1]}->{'structure'}->{'associated_unit'}
-          if ($section->{'structure'}->{$direction->[1]}
-              and $section->{'structure'}->{$direction->[1]}->{'structure'}->{'associated_unit'}
-              and $section->{'structure'}->{$direction->[1]}->{'structure'}->{'associated_unit'} ne $section->{'structure'}->{'associated_unit'});
+        $directions->{$direction->[0]}
+         = $section->{'structure'}->{$direction->[1]}
+          ->{'structure'}->{'associated_unit'}
+            if ($section->{'structure'}->{$direction->[1]}
+                and $section->{'structure'}->{$direction->[1]}
+                                           ->{'structure'}->{'associated_unit'}
+                and $section->{'structure'}->{$direction->[1]}
+                     ->{'structure'}->{'associated_unit'}
+                              ne $section->{'structure'}->{'associated_unit'});
       }
 
       my $up = $section;
@@ -1178,11 +1299,16 @@ sub elements_directions($$$)
           and $up->{'structure'}->{'section_childs'}
           and @{$up->{'structure'}->{'section_childs'}}) {
         $directions->{'FastForward'}
-           = $up->{'structure'}->{'section_childs'}->[0]->{'structure'}->{'associated_unit'};
+           = $up->{'structure'}->{'section_childs'}->[0]
+                            ->{'structure'}->{'associated_unit'};
       } elsif ($up->{'structure'}->{'toplevel_next'}) {
-        $directions->{'FastForward'} = $up->{'structure'}->{'toplevel_next'}->{'structure'}->{'associated_unit'};
+        $directions->{'FastForward'}
+          = $up->{'structure'}->{'toplevel_next'}
+                                 ->{'structure'}->{'associated_unit'};
       } elsif ($up->{'structure'}->{'section_next'}) {
-        $directions->{'FastForward'} = $up->{'structure'}->{'section_next'}->{'structure'}->{'associated_unit'};
+        $directions->{'FastForward'}
+          = $up->{'structure'}->{'section_next'}
+                              ->{'structure'}->{'associated_unit'};
       }
       # if the element isn't at the highest level, fastback is the
       # highest parent element
@@ -1192,8 +1318,10 @@ sub elements_directions($$$)
                and $directions->{'FastForward'}) {
         # the element is a top level element, we adjust the next
         # toplevel element fastback
-        #$directions->{'FastForward'}->{'structure'} = {} if (! $directions->{'FastForward'}->{'structure'});
-        #$directions->{'FastForward'}->{'structure'}->{'directions'} = {} if (! $directions->{'FastForward'}->{'structure'}->{'directions'});
+        $directions->{'FastForward'}->{'structure'} = {}
+           if (! $directions->{'FastForward'}->{'structure'});
+        $directions->{'FastForward'}->{'structure'}->{'directions'} = {}
+           if (! $directions->{'FastForward'}->{'structure'}->{'directions'});
         $directions->{'FastForward'}->{'structure'}->{'directions'}->{'FastBack'}
           = $tree_unit if ($directions and $directions->{'FastForward'});
       }
@@ -1206,21 +1334,23 @@ sub elements_directions($$$)
         and (!$node_top or ($node ne $node_top))) {
       #print STDERR "Node for up: ".root_or_external_element_cmd_texi($tree_unit)."\n";
       my $up_node_element
-        = _label_target_element($node->{'structure'}->{'node_up'});
+        = _label_target_unit_element($node->{'structure'}->{'node_up'});
       $directions->{'Up'} = $up_node_element if ($up_node_element);
     }
-    #$tree_unit->{'structure'} = {} if (! $tree_unit->{'structure'});
+    $tree_unit->{'structure'} = {} if (! $tree_unit->{'structure'});
     if ($tree_unit->{'structure'}->{'directions'}) {
-      %{$tree_unit->{'structure'}->{'directions'}} = (%{$tree_unit->{'structure'}->{'directions'}},
-                                                %$directions)
+      %{$tree_unit->{'structure'}->{'directions'}}
+        = (%{$tree_unit->{'structure'}->{'directions'}}, %$directions);
     } else {
       $tree_unit->{'structure'}->{'directions'} = $directions;
     }
   }
   if ($customization_information->get_conf('DEBUG')) {
     foreach my $tree_unit (@$tree_units) {
-      print STDERR "Directions($tree_unit): "
-         . print_element_directions($tree_unit)."\n";
+      print STDERR 'Directions'
+       # uncomment to show the perl object name
+       #  . "($tree_unit)"
+         . ': '.print_element_directions($tree_unit)."\n";
     }
   }
 }
@@ -1246,7 +1376,8 @@ sub elements_file_directions($)
       if (not defined($current_filename)
           or $filename ne $current_filename) {
         $first_element_in_file = $tree_unit;
-        @first_element_in_file_directions = keys %{$tree_unit->{'structure'}->{'directions'}};
+        @first_element_in_file_directions
+            = keys %{$tree_unit->{'structure'}->{'directions'}};
         $current_filename = $filename;
       }
       while ($current_tree_unit->{'structure'}->{'unit_prev'}) {
@@ -1280,8 +1411,10 @@ sub elements_file_directions($)
     if (defined($first_element_in_file)) {
       foreach my $first_in_file_direction
                 (@first_element_in_file_directions) {
-        $tree_unit->{'structure'}->{'directions'}->{'FirstInFile'.$first_in_file_direction}
-          = $first_element_in_file->{'structure'}->{'directions'}->{$first_in_file_direction};
+        $tree_unit->{'structure'}->{'directions'}
+                                ->{'FirstInFile'.$first_in_file_direction}
+          = $first_element_in_file->{'structure'}->{'directions'}
+                                         ->{$first_in_file_direction};
       }
     }
   }
@@ -1296,7 +1429,7 @@ sub root_or_external_element_cmd_texi($)
   }
   if (!$element->{'type'}) {
     return "element $element without type: ".
-       Texinfo::Common::debug_print_element_details($element);
+       Texinfo::Common::debug_print_element_details($element, 1);
   }
 
   if ($element->{'type'} eq 'external_node') {
@@ -1308,7 +1441,7 @@ sub root_or_external_element_cmd_texi($)
     }
     return Texinfo::Convert::Texinfo::convert_to_texinfo($command);
   }
-  
+
   my $command_element;
   if ($element->{'extra'} and $element->{'extra'}->{'unit_command'}) {
     $command_element = $element->{'extra'}->{'unit_command'};
@@ -1343,10 +1476,8 @@ sub print_element_directions($)
   return $result;
 }
 
-# For each internal reference command, set the 'normalized' key in the
-# 'menu_entry_node' for menu entries, and 'node_argument' for @*ref.
-# Set the 'label' key in the 'extra' hash of the reference tree element
-# with 'node_argument' to the associated labeled tree element.
+# For each internal reference command, set the 'normalized' key, in the
+# @*ref first argument or in 'menu_entry_node' extra.
 sub associate_internal_references($$$$$)
 {
   my $registrar = shift;
@@ -1357,46 +1488,47 @@ sub associate_internal_references($$$$$)
 
   return if (!defined($refs));
   foreach my $ref (@$refs) {
-    my $node_arg;
-    $node_arg = $ref->{'extra'}->{'menu_entry_node'};
-    
-    if (defined $node_arg) {
-      if ($node_arg->{'node_content'}) {
-        my $normalized =
-             Texinfo::Convert::NodeNameNormalization::normalize_node(
-                {'contents' => $node_arg->{'node_content'} });
-        $node_arg->{'normalized'} = $normalized
-          if (defined $normalized and $normalized ne '');
-      }
-      next;
+    my $label_element;
+    if ($ref->{'type'} and $ref->{'type'} eq 'menu_entry_node') {
+      $label_element = $ref;
+    } else {
+      $label_element = $ref->{'args'}->[0];
     }
-    
-    $node_arg = $ref->{'extra'}->{'node_argument'};
-    if ($node_arg and $node_arg->{'node_content'}) {
-      my $normalized =
-           Texinfo::Convert::NodeNameNormalization::normalize_node(
-              {'contents' => $node_arg->{'node_content'} });
-      $node_arg->{'normalized'} = $normalized;
 
-      if (!defined($labels->{$node_arg->{'normalized'}})) {
+    if ($label_element->{'extra'}
+        and $label_element->{'extra'}->{'node_content'}) {
+      my $normalized =
+        Texinfo::Convert::NodeNameNormalization::normalize_node(
+            {'contents' => $label_element->{'extra'}->{'node_content'} });
+      $label_element->{'extra'}->{'normalized'} = $normalized
+        if (defined($normalized) and $normalized ne '');
+    }
+
+    if ($ref->{'type'} and $ref->{'type'} eq 'menu_entry_node') {
+      # similar messages are output in _check_menu_entry
+      next;
+    } elsif ($label_element->{'extra'}) {
+      my $label_info = $label_element->{'extra'};
+      if (!defined($label_info->{'normalized'})
+          or !defined($labels->{$label_info->{'normalized'}})) {
         if (!$customization_information->get_conf('novalidate')) {
           $registrar->line_error($customization_information,
-              sprintf(__("\@%s reference to nonexistent node `%s'"),
-                  $ref->{'cmdname'}, node_extra_to_texi($node_arg)),
-                  $ref->{'source_info'});
+                     sprintf(__("\@%s reference to nonexistent node `%s'"),
+                             $ref->{'cmdname'},
+                             link_element_to_texi($label_element)),
+                                 $ref->{'source_info'});
         }
       } else {
-        my $node_target = $labels->{$node_arg->{'normalized'}};
-        $ref->{'extra'}->{'label'} = $node_target;
+        my $node_target = $labels->{$label_info->{'normalized'}};
         if (!$customization_information->get_conf('novalidate')
-            and !_check_node_same_texinfo_code($node_target, $node_arg)) {
+            and !_check_node_same_texinfo_code($node_target, $label_info)) {
           $registrar->line_warn($customization_information,
              sprintf(__("\@%s to `%s', different from %s name `%s'"),
-                 $ref->{'cmdname'},
-                 node_extra_to_texi($node_arg),
-                 $node_target->{'cmdname'},
-                 node_extra_to_texi($node_target->{'extra'})),
-             $ref->{'source_info'});
+                     $ref->{'cmdname'},
+                     link_element_to_texi($label_element),
+                     $node_target->{'cmdname'},
+                     target_element_to_texi_label($node_target)),
+                                $ref->{'source_info'});
         }
       }
     }
@@ -1412,14 +1544,15 @@ sub number_floats($)
     my $float_index = 0;
     foreach my $float (@{$floats->{$style}}) {
       next if (!$float->{'extra'}
-               or !defined($float->{'extra'}->{'node_content'}));
+               or !defined($float->{'extra'}->{'normalized'}));
       $float_index++;
       my $number;
       if ($float->{'extra'}->{'float_section'}) {
         my $up = $float->{'extra'}->{'float_section'};
         while ($up->{'structure'}->{'section_up'}
                and defined($up->{'structure'}->{'section_up'}->{'cmdname'})
-               and $command_structuring_level{$up->{'structure'}->{'section_up'}->{'cmdname'}}) {
+               and $command_structuring_level{
+                             $up->{'structure'}->{'section_up'}->{'cmdname'}}) {
           $up = $up->{'structure'}->{'section_up'};
         }
         if (!$unnumbered_commands{$up->{'cmdname'}}) {
@@ -1429,7 +1562,7 @@ sub number_floats($)
         }
       }
       $number = $float_index if (!defined($number));
-      #$float->{'structure'} = {} if (! $float->{'structure'});
+      $float->{'structure'} = {} if (! $float->{'structure'});
       $float->{'structure'}->{'float_number'} = $number;
     }
   }
@@ -1441,8 +1574,13 @@ sub get_node_node_childs_from_sectioning
 
   my @node_childs;
 
-  if ($node->{'extra'}->{'associated_section'}->{'structure'}->{'section_childs'}) {
-    foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'structure'}->{'section_childs'}}) {
+  if ($node->{'extra'}
+      and $node->{'extra'}->{'associated_section'}
+      and $node->{'extra'}->{'associated_section'}->{'structure'}
+      and $node->{'extra'}->{'associated_section'}
+                                      ->{'structure'}->{'section_childs'}) {
+    foreach my $child (@{$node->{'extra'}->{'associated_section'}
+                                        ->{'structure'}->{'section_childs'}}) {
       if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
         push @node_childs, $child->{'extra'}->{'associated_node'};
       }
@@ -1450,9 +1588,12 @@ sub get_node_node_childs_from_sectioning
   }
   # Special case for @top.  Gather all the children of the @part following
   # @top.
-  if ($node->{'extra'}->{'associated_section'}->{'cmdname'} eq 'top') {
+  if ($node->{'extra'}
+      and $node->{'extra'}->{'associated_section'}
+      and $node->{'extra'}->{'associated_section'}->{'cmdname'} eq 'top') {
     my $current = $node->{'extra'}->{'associated_section'};
-    while ($current->{'structure'}->{'section_next'}) {
+    while ($current->{'structure'}
+           and $current->{'structure'}->{'section_next'}) {
       $current = $current->{'structure'}->{'section_next'};
       if ($current->{'cmdname'} and $current->{'cmdname'} eq 'part'
           and $current->{'structure'}->{'section_childs'}) {
@@ -1461,7 +1602,8 @@ sub get_node_node_childs_from_sectioning
             push @node_childs, $child->{'extra'}->{'associated_node'};
           }
         }
-      } elsif ($current->{'extra'}->{'associated_node'}) {
+      } elsif ($current->{'extra'}
+               and $current->{'extra'}->{'associated_node'}) {
         # for @appendix, and what follows, as it stops a @part, but is
         # not below @top
         push @node_childs, $current->{'extra'}->{'associated_node'};
@@ -1471,18 +1613,21 @@ sub get_node_node_childs_from_sectioning
   return @node_childs;
 }
 
-# returns the texinfo tree corresponding to a single menu entry pointing to $NODE.
+# returns the texinfo tree corresponding to a single menu entry pointing
+# to $NODE.
 # if $USE_SECTIONS is set, use the section name as menu entry name.
 sub new_node_menu_entry
 {
   my ($node, $use_sections) = @_;
 
   my $node_contents;
-  $node_contents = $node->{'extra'}->{'node_content'} if ($node->{'extra'});
+  if ($node->{'extra'} and defined($node->{'extra'}->{'normalized'})) {
+    $node_contents = $node->{'args'}->[0]->{'contents'};
+  }
 
   # can happen with node without argument or with empty argument
   return undef if (not defined($node_contents));
-  
+
   my ($name_contents, $menu_entry_name);
   if ($use_sections) {
     if (defined $node->{'extra'}->{'associated_section'}) {
@@ -1505,8 +1650,7 @@ sub new_node_menu_entry
     Texinfo::Common::protect_colon_in_tree($menu_entry_name);
   }
 
-  my $entry = {'type' => 'menu_entry',
-               'extra' => {'menu_entry_name' => $menu_entry_name}};
+  my $entry = {'type' => 'menu_entry', 'extra' => {}};
 
   my $menu_entry_node = {'type' => 'menu_entry_node'};
   $menu_entry_node->{'contents'}
@@ -1528,7 +1672,7 @@ sub new_node_menu_entry
                            'parent' => $description->{'contents'}->[0]};
 
   if ($use_sections) {
-    $entry->{'args'}
+    $entry->{'contents'}
      = [{'text' => '* ', 'type' => 'menu_entry_leading_text'},
         $menu_entry_name,
         {'text' => ': ', 'type' => 'menu_entry_separator'},
@@ -1536,29 +1680,32 @@ sub new_node_menu_entry
         {'text' => '.', 'type' => 'menu_entry_separator'},
         $description];
   } else {
-    $entry->{'args'}
+    $entry->{'contents'}
      = [{'text' => '* ', 'type' => 'menu_entry_leading_text'},
         $menu_entry_node,
         {'text' => '::', 'type' => 'menu_entry_separator'},
         $description];
   }
 
-  foreach my $arg(@{$entry->{'args'}}) {
+  foreach my $arg(@{$entry->{'contents'}}) {
     $arg->{'parent'} = $entry;
   }
 
-  my $modified_node_content;
-  ($entry->{'extra'}->{'menu_entry_node'}, $modified_node_content) =
-    Texinfo::Common::parse_node_manual($menu_entry_node);
-  $menu_entry_node->{'contents'} = $modified_node_content;
-  my $content = $entry->{'extra'}->{'menu_entry_node'}->{'node_content'};
-  if ($content) {
-    $entry->{'extra'}->{'menu_entry_node'}->{'normalized'}
-     = Texinfo::Convert::NodeNameNormalization::normalize_node(
-                                        {'contents' => $content } );
-  }
+  my $parsed_node_manual
+    = Texinfo::Common::parse_node_manual($menu_entry_node, 1);
+  if (defined($parsed_node_manual)) {
+    foreach my $label_info (keys(%$parsed_node_manual)) {
+      $menu_entry_node->{'extra'} = {} if (!$menu_entry_node->{'extra'});
+      $menu_entry_node->{'extra'}->{$label_info}
+         = [@{$parsed_node_manual->{$label_info}}];
 
-  $entry->{'extra'}->{'menu_entry_description'} = $description;
+      if ($label_info eq 'node_content') {
+        $menu_entry_node->{'extra'}->{'normalized'}
+          = Texinfo::Convert::NodeNameNormalization::normalize_node(
+             {'contents' => $menu_entry_node->{'extra'}->{$label_info}});
+      }
+    }
+  }
 
   return $entry;
 }
@@ -1571,7 +1718,8 @@ sub new_block_command($$$)
 
   my $new_block = {'cmdname' => $command_name, 'parent' => $parent};
   $new_block->{'args'} = [{'type' => 'block_line_arg', 'parent' => $new_block,
-                           'extra' => { 'spaces_after_argument' => "\n",}}];
+                           'info' => { 'spaces_after_argument' =>
+                                        {'text' => "\n",}}}];
 
   foreach my $content (@$block_contents) {
     confess("new_block_command: undef \$block_contents content")
@@ -1580,10 +1728,12 @@ sub new_block_command($$$)
   }
 
   my $end = {'cmdname' => 'end', 'parent' => $new_block,
-             'extra' => {'spaces_before_argument' => ' ',
-                         'text_arg' => $command_name}};
+             'extra' => {'text_arg' => $command_name}};
+  $end->{'info'} = {'spaces_before_argument' =>
+                                         {'text' => ' '}};
   $end->{'args'} = [{'type' => 'line_arg', 'parent' => $end,
-                     'extra' => {'spaces_after_argument' => "\n"}}];
+                     'info' => {'spaces_after_argument' =>
+                                     {'text' => "\n"}}}];
   push @{$end->{'args'}->[0]->{'contents'}},
          {'text' => $command_name, 'parent' => $end->{'args'}->[0]};
 
@@ -1620,65 +1770,295 @@ sub _sort_string($$)
   my $b = shift;
   return (($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/)
               or ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/))
-              ? ($a cmp $b)
-                : (($a =~ /^[[:alpha:]]/ && 1) || -1);
+                 ? ($a cmp $b)
+                 : (($a =~ /^[[:alpha:]]/ && 1) || -1);
 }
+
+# Return ($NORMALIZED_ENTRY_NODE, $NODE) where $NODE is the node referred to
+# by menu entry $ENTRY, and $NORMALIZED_ENTRY_NODE is the name of this node.
+sub _normalized_entry_associated_internal_node($;$)
+{
+  my $entry = shift;
+  my $labels = shift;
+
+  foreach my $arg (@{$entry->{'contents'}}) {
+    if ($arg->{'type'} eq 'menu_entry_node') {
+      if (! $arg->{'extra'}->{'manual_content'}) {
+        my $normalized_entry_node = $arg->{'extra'}->{'normalized'};
+        if (defined($normalized_entry_node)) {
+          if ($labels) {
+            return ($normalized_entry_node, $labels->{$normalized_entry_node});
+          } else {
+            return ($normalized_entry_node, undef);
+          }
+        }
+      }
+      last;
+    }
+  }
+  return (undef, undef);
+}
+
+# used in Plaintext converter and tree transformations
+sub new_master_menu($$$)
+{
+  my $self = shift;
+  my $labels = shift;
+  my $menus = shift;
+
+  my @master_menu_contents;
+  if (defined($menus) and @$menus) {
+    foreach my $menu (@$menus) {
+      foreach my $entry (@{$menu->{'contents'}}) {
+        if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
+          my ($normalized_entry_node, $node)
+               = _normalized_entry_associated_internal_node($entry, $labels);
+          if (defined($node) and $node->{'extra'}) {
+            push @master_menu_contents, _print_down_menus($node, $labels);
+          }
+        }
+      }
+    }
+  }
+  if (scalar(@master_menu_contents)) {
+    my $first_preformatted = $master_menu_contents[0]->{'contents'}->[0];
+    my $master_menu_title = Texinfo::Translations::gdt($self,
+                                      ' --- The Detailed Node Listing ---');
+    my @master_menu_title_contents;
+    foreach my $content (@{$master_menu_title->{'contents'}}, {'text' => "\n"}) {
+      $content->{'parent'} = $first_preformatted;
+      push @master_menu_title_contents, $content;
+    }
+    unshift @{$first_preformatted->{'contents'}}, @master_menu_title_contents;
+    return Texinfo::Structuring::new_block_command(\@master_menu_contents, undef,
+                                                   'detailmenu');
+  } else {
+    return undef;
+  }
+}
+
+# TODO document
+sub new_complete_menu_master_menu($$$)
+{
+  my $self = shift;
+  my $labels = shift;
+  my $node = shift;
+
+  my $menu_node = new_complete_node_menu($node);
+  if ($node->{'extra'}->{'normalized'} eq 'Top'
+      and $node->{'extra'}->{'associated_section'}
+      and $node->{'extra'}->{'associated_section'}->{'cmdname'} eq 'top'
+      and $menu_node) {
+    my $detailmenu = new_master_menu($self, $labels, [$menu_node]);
+    if ($detailmenu) {
+      # add a blank line before the detailed node listing
+      my $menu_comment = {'type' => 'menu_comment',
+                          'parent' => $menu_node};
+      push @{$menu_node->{'contents'}}, $menu_comment;
+      my $preformatted = {'type' => 'preformatted',
+                          'parent' => $menu_comment};
+      push @{$menu_comment->{'contents'}}, $preformatted;
+      my $empty_line = {'type' => 'after_menu_description_line',
+                        'text' => "\n", 'parent' => $preformatted};
+      push @{$preformatted->{'contents'}}, $empty_line;
+
+      $detailmenu->{'parent'} = $menu_node;
+      push @{$menu_node->{'contents'}}, $detailmenu;
+    }
+  }
+  return $menu_node;
+}
+
+sub _print_down_menus($$);
+sub _print_down_menus($$)
+{
+  my $node = shift;
+  my $labels = shift;
+  my @menus;
+
+  if ($node->{'extra'}->{'menus'}
+        and scalar(@{$node->{'extra'}->{'menus'}})) {
+    @menus = @{$node->{'extra'}->{'menus'}};
+  } else {
+    my $section = $node->{'extra'}->{'associated_section'};
+    my $current_menu
+      = Texinfo::Structuring::new_complete_node_menu($node, undef);
+    if (defined($current_menu)) {
+      @menus = ( $current_menu );
+    }
+  }
+
+  my @master_menu_contents;
+
+  if (@menus) {
+    my @node_children;
+    foreach my $menu (@menus) {
+      foreach my $entry (@{$menu->{'contents'}}) {
+        if ($entry->{'type'} and $entry->{'type'} eq 'menu_entry') {
+          push @master_menu_contents, Texinfo::Common::copy_tree($entry);
+          # gather node children to recursively print their menus
+          my ($normalized_entry_node, $node)
+               = _normalized_entry_associated_internal_node($entry, $labels);
+          if (defined($node) and $node->{'extra'}) {
+            push @node_children, $node;
+          }
+        }
+      }
+    }
+    if (scalar(@master_menu_contents)) {
+      # Prepend node title
+      my $node_title_contents;
+      if ($node->{'extra'}->{'associated_section'}
+          and $node->{'extra'}->{'associated_section'}->{'args'}
+          and $node->{'extra'}->{'associated_section'}->{'args'}->[0]
+          and $node->{'extra'}->{'associated_section'}->{'args'}->[0]->{'contents'}) {
+        $node_title_contents
+          = Texinfo::Common::copy_contents(
+                      $node->{'extra'}->{'associated_section'}->{'args'}->[0]->{'contents'});
+      } else {
+        $node_title_contents
+           = Texinfo::Common::copy_contents($node->{'args'}->[0]->{'contents'});
+      }
+      my $menu_comment = {'type' => 'menu_comment', 'contents' => []};
+      $menu_comment->{'contents'}->[0] = {'type' => 'preformatted',
+                                          'parent' => $menu_comment};
+      $menu_comment->{'contents'}->[0]->{'contents'}
+        = [{'text' => "\n", 'type' => 'empty_line'}, @$node_title_contents,
+           {'text' => "\n", 'type' => 'empty_line'},
+           {'text' => "\n", 'type' => 'empty_line'}];
+      foreach my $content (@{$menu_comment->{'contents'}->[0]->{'contents'}}) {
+        $content->{'parent'} = $menu_comment->{'contents'}->[0];
+      }
+      unshift @master_menu_contents, $menu_comment;
+
+      # now recurse in the children
+      foreach my $child (@node_children) {
+        push @master_menu_contents, _print_down_menus($child, $labels);
+      }
+    }
+  }
+  return @master_menu_contents;
+}
+
+if (0) {
+  # it is needed to mark the translation as gdt is called like
+  # Texinfo::Translations::gdt($self, ' --- The Detailed Node Listing ---')
+  # and not like gdt(' --- The Detailed Node Listing ---')
+  gdt(' --- The Detailed Node Listing ---');
+}
+
+
+
 
 sub _sort_index_entries($$)
 {
   my $key1 = shift;
   my $key2 = shift;
-  my $a = uc($key1->{'key'});
-  my $b = uc($key2->{'key'});
-  my $res = _sort_string($a, $b);
+
+  my $key_index = 0;
+  # the keys array corresponds to th emain entry and subentries
+  foreach my $key1_str (@{$key1->{'keys'}}) {
+    my $res = _sort_string($key1_str,
+                           $key2->{'keys'}->[$key_index]);
+    if ($res != 0) {
+      return $res;
+    }
+    $key_index ++;
+    if (scalar(@{$key2->{'keys'}}) <= $key_index) {
+      last;
+    }
+  }
+  my $res = (scalar(@{$key1->{'keys'}}) <=> scalar(@{$key2->{'keys'}}));
   if ($res == 0) {
     $res = ($key1->{'number'} <=> $key2->{'number'});
   }
   # This may happen if 2 indices are merged as the number is per
-  # index name.  The @-command should be different though, for
-  # index names to be different.
+  # index name.
   if ($res == 0) {
-    $res = ($key1->{'index_at_command'} cmp $key2->{'index_at_command'});
+    $res = ($key1->{'index_name'} cmp $key2->{'index_name'});
+  }
+  return $res;
+}
+
+# This is a duplicate of the functions above, for efficiency
+sub _collator_sort_string($$$)
+{
+  my $a = shift;
+  my $b = shift;
+  my $collator = shift;
+  return (($a =~ /^[[:alpha:]]/ and $b =~ /^[[:alpha:]]/)
+              or ($a !~ /^[[:alpha:]]/ and $b !~ /^[[:alpha:]]/))
+                 ? ($collator->cmp ($a, $b))
+                 : (($a =~ /^[[:alpha:]]/ && 1) || -1);
+}
+
+sub _collator_sort_index_entries($$$)
+{
+  my $key1 = shift;
+  my $key2 = shift;
+  my $collator = shift;
+
+  my $key_index = 0;
+  # the keys array corresponds to th emain entry and subentries
+  foreach my $key1_str (@{$key1->{'keys'}}) {
+    my $res = _collator_sort_string($key1_str,
+                                    $key2->{'keys'}->[$key_index],
+                                    $collator);
+    if ($res != 0) {
+      return $res;
+    }
+    $key_index ++;
+    if (scalar(@{$key2->{'keys'}}) <= $key_index) {
+      last;
+    }
+  }
+  my $res = (scalar(@{$key1->{'keys'}}) <=> scalar(@{$key2->{'keys'}}));
+  if ($res == 0) {
+    $res = ($key1->{'number'} <=> $key2->{'number'});
+  }
+  # This may happen if 2 indices are merged as the number is per
+  # index name.
+  if ($res == 0) {
+    $res = ($key1->{'index_name'} cmp $key2->{'index_name'});
   }
   return $res;
 }
 
 sub setup_index_entry_keys_formatting($)
 {
-  my $customization_information = shift;
+  my $customization_info = shift;
 
-  # TODO it would probably be relevant to set the encoding by setting the
-  # copy_options_for_convert_text optional argument when we use
-  # Unicode::Collate to sort.  Otherwise it is better not to as the result
-  # is worse when setting it.
-  my $options = {'sort_string' => 1, 'ascii_punctuation' => 1,
-   Texinfo::Convert::Text::copy_options_for_convert_text(
-                                  $customization_information)};
+  my $options = {'ascii_punctuation' => 1,
+     Texinfo::Convert::Text::copy_options_for_convert_text(
+                                  $customization_info)};
+  if (not $customization_info->get_conf('ENABLE_ENCODING')
+      or lc($customization_info->get_conf('OUTPUT_ENCODING_NAME')) ne 'utf-8') {
+    $options->{'sort_string'} = 1;
+  }
 
   return $options;
 }
 
 # can be used for subentries
-sub index_entry_sort_string($$$$)
+sub index_entry_sort_string($$$$;$)
 {
   my $main_entry = shift;
   my $entry_tree_element = shift;
   my $sortas = shift;
   my $options = shift;
-
-  my $convert_to_text_options = {%$options};
-  $convert_to_text_options->{'code'} = $main_entry->{'in_code'};
+  my $collator = shift;
 
   my $entry_key;
   if (defined($sortas)) {
     $entry_key = $sortas;
   } else {
     $entry_key = Texinfo::Convert::Text::convert_to_text(
-                          $entry_tree_element, $convert_to_text_options);
+                          $entry_tree_element, $options);
     # FIXME do that for sortas too?
-    if (exists($main_entry->{'index_ignore_chars'})) {
-      my $ignore_chars
-         = quotemeta(join('', keys(%{$main_entry->{'index_ignore_chars'}})));
+    if (defined($main_entry->{'entry_element'}
+                       ->{'extra'}->{'index_ignore_chars'})) {
+      my $ignore_chars = quotemeta($main_entry->{'entry_element'}
+                                  ->{'extra'}->{'index_ignore_chars'});
       if ($ignore_chars ne '') {
         $entry_key =~ s/[$ignore_chars]//g;
       }
@@ -1688,66 +2068,248 @@ sub index_entry_sort_string($$$$)
   # represented internally in UTF-8.  See "the Unicode bug" in the
   # "perlunicode" man page.
   utf8::upgrade($entry_key);
+  my $sort_entry_key;
+  if ($collator) {
+    $sort_entry_key = $collator->getSortKey(uc($entry_key));
+  } else {
+    $sort_entry_key = uc($entry_key);
+  }
 
-  return $entry_key;
+  return ($entry_key, $sort_entry_key);
 }
+
+# This is a stub for the Unicode::Collate module.  Although this module is
+# a core Perl module, some distributions may install a stripped-down Perl
+# that doesn't include it, so providing this fall-back allows texi2any
+# to run in such cases.  Using this fall-back will change index sorting,
+# especially of punctuation characters and in non-English manuals.
+#
+# This fall-back also allows checking the performance impact of
+# Unicode::Collate (last checked as about a 5% increase in runtime for
+# typical Info output).
+
+package Texinfo::CollateStub;
+
+sub new($%) {
+  my $class = shift;
+  my %options = @_;
+
+  my $self = {};
+  bless $self, $class;
+  return $self;
+}
+
+sub getSortKey($$) {
+  my $self = shift;
+  my $string = shift;
+
+  return $string;
+}
+
+sub cmp($$$) {
+  my ($self, $a, $b) = @_;
+
+  return ($a cmp $b);
+}
+
+package Texinfo::Structuring;
+
+# if true pre-set collating keys
+#my $default_preset_keys = 0;
+my $default_preset_keys = 1;
 
 # the structure returned depends on $SORT_BY_LETTER being set
 # or not.  It is described in the pod documentation.
-sub sort_indices($$$;$)
+sub sort_indices($$$$;$$)
 {
   my $registrar = shift;
   my $customization_information = shift;
   my $index_entries = shift;
+  my $indices_information = shift;
   my $sort_by_letter = shift;
+  my $preset_keys = shift;
+  $preset_keys = $default_preset_keys if (!defined($preset_keys));
 
-  my $options = setup_index_entry_keys_formatting($customization_information);
+  # The 'Non-Ignorable' for variable collation elements means that they are
+  # treated as normal characters.   This allows to have spaces and punctuation
+  # marks sort before letters.
+  # http://www.unicode.org/reports/tr10/#Variable_Weighting
+  my %collate_options = ( 'variable' => 'Non-Ignorable' );
+
+  # TODO Unicode::Collate has been in perl core long enough, but
+  # Unicode::Collate::Locale is present since perl major version 5.14 only,
+  # released in 2011.  So probably better to use Unicode::Collate until 2031
+  # (and if documentlanguage is not set) and switch to Unicode::Collate::Locale
+  # at this date.
+  #my $collator = Unicode::Collate::Locale->new('locale' => $documentlanguage,
+  #                                             %collate_options);
+
+  # The Unicode::Collate sorting changes often, based on the UCA version.
+  # To test the result with a specific version, the UCA_Version should be set,
+  # and, more importantly the table should correspond to that version.
+  # To test a specific table, in tp, do
+  # wget -N http://www.unicode.org/Public/UCA/6.2.0/allkeys.txt
+  # mkdir -p Unicode/Collate/
+  # mv allkeys.txt Unicode/Collate/allkeys-6.2.0.txt
+  # The table argument leads to a very important slowdown, so the argument
+  # should only be used for checks.
+  # The test results seem to be consistent with 6.2.0, corresponding
+  # to the perl 5.18.0 Unicode::Collate
+
+  # to test for 6.2.0
+  #%collate_options = (%collate_options,
+  #                    'UCA_Version' => 24,
+  #                    'table' => 'allkeys-6.2.0.txt');
+  # To test files affected for UCA corresponding to perl 5.8.1
+  # wget -N http://www.unicode.org/Public/UCA/3.1.1/allkeys-3.1.1.txt
+  #%collate_options = (%collate_options,
+  #                   'UCA_Version' => 9,
+  #                   'table' => 'allkeys-3.1.1.txt');
+
+  # Fall back to stub if Unicode::Collate not available.
+  my $collator;
+  eval { require Unicode::Collate; Unicode::Collate->import; };
+  my $unicode_collate_loading_error = $@;
+  if ($unicode_collate_loading_error eq '') {
+    $collator = Unicode::Collate->new(%collate_options);
+  } else {
+    $collator = Texinfo::CollateStub->new();
+  }
+
+  my $entries_collator;
+  $entries_collator = $collator if $preset_keys;
   my $sorted_index_entries;
   my $index_entries_sort_strings = {};
   return $sorted_index_entries, $index_entries_sort_strings
     unless ($index_entries);
+
+  my $options = setup_index_entry_keys_formatting($customization_information);
   $sorted_index_entries = {};
   foreach my $index_name (keys(%$index_entries)) {
     # used if not $sort_by_letter
     my $sortable_index_entries = [];
     # used if $sort_by_letter
     my $index_letter_hash = {};
-    foreach my $entry (@{$index_entries->{$index_name}}) {
-      my $entry_key = index_entry_sort_string($entry,
-                                 {'contents' => $entry->{'entry_content'}},
-                                              $entry->{'sortas'}, $options);
-      $index_entries_sort_strings->{$entry} = $entry_key;
+    foreach my $index_entry (@{$index_entries->{$index_name}}) {
+      my $entry_index_name = $index_entry->{'index_name'};
+      my $main_entry_element = $index_entry->{'entry_element'};
+      my $main_entry_sortas;
+      my $convert_to_text_options = {%$options,
+        'code' => $indices_information->{$entry_index_name}->{'in_code'}};
+      $main_entry_sortas = $main_entry_element->{'extra'}->{'sortas'}
+         if ($main_entry_element->{'extra'});
+      my ($entry_key, $sort_entry_key)
+        = index_entry_sort_string($index_entry,
+                   Texinfo::Common::index_content_element($main_entry_element),
+                                  $main_entry_sortas,
+                                  $convert_to_text_options, $entries_collator);
+      my @entry_keys;
+      my @sort_entry_keys;
+      my $letter = '';
       if ($entry_key !~ /\S/) {
+        my $entry_cmdname = $main_entry_element->{'cmdname'};
+        $entry_cmdname
+          = $main_entry_element->{'extra'}->{'original_def_cmdname'}
+           if (!defined($entry_cmdname));
         $registrar->line_warn($customization_information,
                      sprintf(__("empty index key in \@%s"),
-                                 $entry->{'index_at_command'}),
-                        $entry->{'entry_element'}->{'source_info'});
+                                 $entry_cmdname),
+                        $main_entry_element->{'source_info'});
+        push @entry_keys, '';
+        push @sort_entry_keys, '';
       } else {
-        my $sortable_entry = {'entry' => $entry, 'key' => $entry_key,
-           'number' => $entry->{'entry_number'},
-           'index_at_command' => $entry->{'index_at_command'}};
-
+        push @entry_keys, $entry_key;
+        push @sort_entry_keys, $sort_entry_key;
         if ($sort_by_letter) {
-          my $letter = uc(substr($entry_key, 0, 1));
-          push @{$index_letter_hash->{$letter}}, $sortable_entry;
-        } else {
-          push @{$sortable_index_entries}, $sortable_entry;
+          # the following line leads to each accented letter being separate
+          # $letter = uc(substr($entry_key, 0, 1));
+          my $letter_string = uc(substr($entry_key, 0, 1));
+          # determine main letter by decomposing and removing diacritics
+          $letter = Unicode::Normalize::NFKD($letter_string);
+          $letter =~ s/\p{NonspacingMark}//g;
+          # following code is less good, as the upper-casing may lead to
+          # two letters in case of the german Eszett that becomes SS.  So
+          # it is better to upper-case first and remove diacritics after.
+          #my $normalized_string = Unicode::Normalize::NFKD(uc($entry_key));
+          #$normalized_string =~ s/\p{NonspacingMark}//g;
+          #$letter = substr($normalized_string, 0, 1);
         }
       }
+      my $subentry_nr = 0;
+      my $subentry = $main_entry_element;
+      while ($subentry->{'extra'} and $subentry->{'extra'}->{'subentry'}) {
+        $subentry_nr ++;
+        $subentry = $subentry->{'extra'}->{'subentry'};
+        my ($subentry_key, $sort_subentry_key)
+              = index_entry_sort_string($index_entry,
+                        {'contents' => $subentry->{'args'}->[0]->{'contents'}},
+                        $subentry->{'extra'}->{'sortas'},
+                        $convert_to_text_options,
+                        $entries_collator);
+        if ($subentry_key !~ /\S/) {
+          my $entry_cmdname = $main_entry_element->{'cmdname'};
+          $entry_cmdname
+            = $main_entry_element->{'extra'}->{'original_def_cmdname'}
+              if (!defined($entry_cmdname));
+          $registrar->line_warn($customization_information,
+                     sprintf(__("empty index sub entry %d key in \@%s"),
+                                 $subentry_nr,
+                                 $entry_cmdname),
+                        $main_entry_element->{'source_info'});
+          push @entry_keys, '';
+          push @sort_entry_keys, '';
+        } else {
+          push @entry_keys, $subentry_key;
+          push @sort_entry_keys, $sort_subentry_key;
+        }
+      }
+      foreach my $sub_entry_key (@sort_entry_keys) {
+        if ($sub_entry_key ne '') {
+          my $sortable_entry = {'entry' => $index_entry,
+                                'keys' => \@sort_entry_keys,
+                                'number' => $index_entry->{'entry_number'},
+                                'index_name' => $entry_index_name};
+          if ($sort_by_letter) {
+            push @{$index_letter_hash->{$letter}}, $sortable_entry;
+          } else {
+            push @{$sortable_index_entries}, $sortable_entry;
+          }
+          last;
+        }
+      }
+      $index_entries_sort_strings->{$index_entry} = join(', ', @entry_keys);
     }
     if ($sort_by_letter) {
-      foreach my $letter (sort _sort_string (keys %$index_letter_hash)) {
-        my @sorted_letter_entries
-           = map {$_->{'entry'}}
-               sort _sort_index_entries @{$index_letter_hash->{$letter}};
+      # need to use directly the collator here as there is no
+      # separate sort keys.
+      my @sorted_letters = sort {_collator_sort_string($a, $b, $collator)}
+                                               (keys %$index_letter_hash);
+      foreach my $letter (@sorted_letters) {
+        my @sorted_letter_entries;
+        if ($preset_keys) {
+          @sorted_letter_entries
+           = map {$_->{'entry'}} sort {_sort_index_entries($a, $b)}
+                                              @{$index_letter_hash->{$letter}};
+        } else {
+          @sorted_letter_entries
+           = map {$_->{'entry'}} sort {_collator_sort_index_entries($a, $b, $collator)}
+                                              @{$index_letter_hash->{$letter}};
+        }
         push @{$sorted_index_entries->{$index_name}},
           { 'letter' => $letter, 'entries' => \@sorted_letter_entries };
       }
     } else {
-      $sorted_index_entries->{$index_name} = [
-        map {$_->{'entry'}}
-          sort _sort_index_entries @{$sortable_index_entries}
-      ];
+      if ($preset_keys) {
+        $sorted_index_entries->{$index_name} = [
+          map {$_->{'entry'}} sort {_sort_index_entries($a, $b)}
+                                                  @{$sortable_index_entries}
+         ];
+      } else {
+        $sorted_index_entries->{$index_name} = [
+      map {$_->{'entry'}} sort {_collator_sort_index_entries($a, $b, $collator)}
+                                                  @{$sortable_index_entries}
+        ];
+      }
     }
   }
   return $sorted_index_entries, $index_entries_sort_strings;
@@ -1755,17 +2317,17 @@ sub sort_indices($$$;$)
 
 sub merge_indices($)
 {
-  my $index_names = shift;
+  my $indices_information = shift;
 
   my $merged_index_entries;
-  foreach my $index_name (keys(%$index_names)) {
-    my $index_info = $index_names->{$index_name};
+  foreach my $index_name (keys(%$indices_information)) {
+    my $index_info = $indices_information->{$index_name};
     next if ($index_info->{'merged_in'});
     foreach my $contained_index (keys (%{$index_info->{'contained_indices'}})) {
-      if ($index_names->{$contained_index}->{'index_entries'}) {
+      if ($indices_information->{$contained_index}->{'index_entries'}) {
         $merged_index_entries = {} if (! $merged_index_entries);
         push @{$merged_index_entries->{$index_name}},
-          @{$index_names->{$contained_index}->{'index_entries'}};
+          @{$indices_information->{$contained_index}->{'index_entries'}};
       }
     }
   }
@@ -1796,11 +2358,14 @@ Texinfo::Structuring - information on Texinfo::Parser tree
   my $global_commands = $parser->global_commands_information();
   set_menus_node_directions($registrar, $config, $parser_information,
                             $global_commands, $nodes_list, $labels);
-  my $top_node = nodes_tree($registrar, $config, $parser_information, $nodes_list, $labels);
+  my $top_node = nodes_tree($registrar, $config, $parser_information,
+                            $nodes_list, $labels);
   complete_node_tree_with_menus($registrar, $config, $nodes_list, $top_node);
   my $refs = $parser->internal_references_information();
-  check_nodes_are_referenced($registrar, $config, $nodes_list, $top_node, $labels, $refs);
-  associate_internal_references($registrar, $parser, $parser_information, $labels, $refs);
+  check_nodes_are_referenced($registrar, $config, $nodes_list, $top_node,
+                             $labels, $refs);
+  associate_internal_references($registrar, $parser, $parser_information,
+                                $labels, $refs);
   number_floats($parser->floats_information());
   my $tree_units;
   if ($split_at_nodes) {
@@ -1812,16 +2377,18 @@ Texinfo::Structuring - information on Texinfo::Parser tree
   elements_directions($config, $labels, $tree_units);
   elements_file_directions($tree_units);
 
-  my $index_names = $parser->indices_information();
+  my $indices_information = $parser->indices_information();
   my $merged_index_entries
-     = merge_indices($index_names);
+     = merge_indices($indices_information);
   my $index_entries_sorted;
   if ($sort_by_letter) {
     $index_entries_sorted = sort_indices($registrar, $config,
-                                       $merged_index_entries, 'by_letter');
+                             $merged_index_entries, $indices_information,
+                             'by_letter');
   } else {
     $index_entries_sorted = sort_indices($registrar, $config,
-                                         $merged_index_entries);
+                                         $merged_index_entries,
+                                         $indices_information);
   }
 
 
@@ -1832,27 +2399,28 @@ Texinfo to other formats.  There is no promise of API stability.
 
 =head1 DESCRIPTION
 
-Texinfo::Structuring first allows to collect information on a Texinfo tree.
-In most case, it also requires information from a parser object to do that
-job.  Thanks to C<sectioning_structure> the hierarchy of sectioning commands is
-determined.  The directions implied by menus are determined with
-C<set_menus_node_directions>.  The node tree is analysed with C<nodes_tree>.
-Nodes directions are completed with menu directions with
-C<complete_node_tree_with_menus>.  Floats get their standard numbering with
-C<number_floats> and internal references are matched up with nodes, floats or
-anchors with C<associate_internal_references>.
+Texinfo::Structuring first allows to collect information on a Texinfo
+tree.  In most case, it also requires information from a parser object to
+do that job.  Thanks to C<sectioning_structure> the hierarchy of
+sectioning commands is determined.  The directions implied by menus are
+determined with C<set_menus_node_directions>.  The node tree is analysed
+with C<nodes_tree>.  Nodes directions are completed with menu directions
+with C<complete_node_tree_with_menus>.  Floats get their standard
+numbering with C<number_floats> and internal references are matched up
+with nodes, floats or anchors with C<associate_internal_references>.
 
 The following methods depend on the output format, so are usually called
 from converters.
 
-It is also possible to associate top-level contents of the tree, which consist
-in nodes and sectioning commands with tree unit elements that group together
-a node and the next sectioning element.  With C<split_by_node> nodes are considered
-to be the main sectioning elements, while with C<split_by_section> the
-sectioning command elements are the main elements.  The first mode is typical
-of Info format, while the second corresponds to a traditional book.
-The elements may be further split in I<pages>, which are not pages as
-in book pages, but more like web pages, and hold series of tree unit elements.
+It is also possible to associate top-level contents of the tree, which
+consist in nodes and sectioning commands with tree unit elements that
+group together a node and the next sectioning element.  With
+C<split_by_node> nodes are considered to be the main sectioning elements,
+while with C<split_by_section> the sectioning command elements are the
+main elements.  The first mode is typical of Info format, while the second
+corresponds to a traditional book.  The elements may be further split in
+I<pages>, which are not pages as in book pages, but more like web pages,
+and hold series of tree unit elements.
 
 The elements may have directions to other elements prepared
 by C<elements_directions>.  C<elements_file_directions> should also
@@ -1867,25 +2435,24 @@ with C<sort_indices>.
 
 No method is exported in the default case.
 
-Most methods takes a L<Texinfo::Report> C<$registrar> as argument for error
-reporting.  Most also require Texinfo customization variables information,
-which means an object implementing the C<get_conf> method, in practice the main
-program configuration or a converter (L<Texinfo::Convert::Converter/Getting and
-setting customization variables>).  Other common input arguments such as parser
-information, labels or refs are obtained from a parser, see L<Texinfo::Parser>.
+Most methods takes a L<Texinfo::Report> C<$registrar> as argument for
+error reporting.  Most also require Texinfo customization variables
+information, which means an object implementing the C<get_conf> method, in
+practice the main program configuration or a converter
+(L<Texinfo::Convert::Converter/Getting and setting customization
+variables>).  Other common input arguments such as parser information,
+labels or refs are obtained from a parser, see L<Texinfo::Parser>.
 
 =over
 
 =item associate_internal_references($registrar, $customization_information, $parser_information, $labels, $refs)
 X<C<associate_internal_references>>
 
-Verify that internal references (C<@ref> and similar without
-fourth of fifth argument and menu entries) have an associated node, anchor or
-float.  Set the C<normalized> key in the C<extra> hash C<menu_entry_node> hash
-for menu entries and in the C<extra> hash C<node_argument> hash for internal
-references C<@ref> and similar @-commands.  Set the C<label> key in the
-C<extra> hash of the reference tree element to the associated labeled tree
-element.  Register errors in I<$registrar>.
+Verify that internal references (C<@ref> and similar without fourth of
+fifth argument and menu entries) have an associated node, anchor or float.
+Set the C<normalized> key in the C<extra> hash C<menu_entry_node> hash for
+menu entries and in the first argument C<extra> hash for internal
+references C<@ref> and similar @-commands.  Register errors in I<$registrar>.
 
 =item check_nodes_are_referenced($registrar, $customization_information, $nodes_list, $top_node, $labels, $refs)
 X<C<check_nodes_are_referenced>>
@@ -1954,10 +2521,10 @@ The up, next and previous section elements.
 
 =item FastBack
 
-For top level elements, the previous top level element.  For other elements
-the up top level element.  For example, for a chapter element it is the
-previous chapter, for a subsection element it is the chapter element
-that contains the subsection.
+For top level elements, the previous top level element.  For other
+elements the up top level element.  For example, for a chapter element it
+is the previous chapter, for a subsection element it is the chapter
+element that contains the subsection.
 
 =item FastForward
 
@@ -1968,9 +2535,9 @@ The next top level section element.
 =item elements_file_directions($tree_units)
 X<C<elements_file_directions>>
 
-In the directions reference described above for C<elements_directions>, sets
-the I<PrevFile> and I<NextFile> directions to the elements in previous and
-following files.
+In the directions reference described above for C<elements_directions>,
+sets the I<PrevFile> and I<NextFile> directions to the elements in
+previous and following files.
 
 It also sets I<FirstInFile*> directions for all the elements by using
 the directions of the first element in file.  So, for example,
@@ -1998,10 +2565,10 @@ I<$options> are options used for Texinfo to text conversion for
 the generation of the sort string, typically obtained from
 L<setup_index_entry_keys_formatting|/$option = setup_index_entry_keys_formatting($customization_information)>.
 
-=item $merged_entries = merge_indices($index_names)
+=item $merged_entries = merge_indices($indices_information)
 X<C<merge_indices>>
 
-Using information returned by L<Texinfo::Parser/indices_information>,
+Using information returned by L<< C<Texinfo::Parser::indices_information>|Texinfo::Parser/$indices_information = $parser->indices_information() >>,
 a structure holding all the index entries by index name is returned,
 with all the entries of merged indices merged with those of the indice
 merged into.
@@ -2022,6 +2589,14 @@ X<C<new_complete_node_menu>>
 Returns a texinfo tree menu for node I<$node>, pointing to the children
 of the node obtained with the sectioning structure.  If I<$use_sections>
 is set, use section names for the menu entry names.
+
+=item $detailmenu = new_master_menu($translations, $labels, $menus)
+X<C<new_master_menu>>
+
+Returns a detailmenu tree element formatted as a master node.
+I<$translations>, if defined, should be a L<Texinfo::Translations> object and
+should also hold customization information. I<$menus> is an array
+reference containing the regular menus of the Top node.
 
 =item $entry = new_node_menu_entry($node, $use_sections)
 X<C<new_node_menu_entry>>
@@ -2067,10 +2642,10 @@ and lowered sections, when needed.
 =item $sections_root, $sections_list = sectioning_structure($registrar, $customization_information, $tree)
 X<C<sectioning_structure>>
 
-This function goes through the tree and gather information on
-the document structure for sectioning commands.  It returns I<$sections_root>
-the root of the sectioning commands tree and a reference on the sections
-elements list.  Errors are registered in I<$registrar>.
+This function goes through the tree and gather information on the document
+structure for sectioning commands.  It returns I<$sections_root> the root
+of the sectioning commands tree and a reference on the sections elements
+list.  Errors are registered in I<$registrar>.
 
 It sets section elements C<structure> hash values:
 
@@ -2138,7 +2713,7 @@ X<C<setup_index_entry_keys_formatting>>
 
 Return options for conversion of Texinfo to text relevant for index keys sorting.
 
-=item ($index_entries_sorted, $index_entries_sort_strings) = sort_indices($registrar, $customization_information, $merged_index_entries, $sort_by_letter)
+=item ($index_entries_sorted, $index_entries_sort_strings) = sort_indices($registrar, $customization_information, $merged_index_entries, $indices_information, $sort_by_letter)
 X<C<sort_indices>>
 
 If I<$sort_by_letter> is set, sort by letter, otherwise sort all
@@ -2166,10 +2741,10 @@ the following sectioning commands.  Sectioning commands without nodes
 are also with the previous node, while nodes without sectioning commands
 are alone in their tree units.
 
-Tree units are regular tree elements with type I<unit>, the
-associated nodes and sectioning tree elements are in the array associated
-with the C<contents> key.  The associated elements have a I<associated_unit>
-key set in the C<structure> hash that points to the associated tree unit.
+Tree units are regular tree elements with type I<unit>, the associated
+nodes and sectioning tree elements are in the array associated with the
+C<contents> key.  The associated elements have a I<associated_unit> key
+set in the C<structure> hash that points to the associated tree unit.
 
 Tree units have directions in the C<structure>
 hash reference, namely I<unit_next> and I<unit_prev> pointing to the
@@ -2188,12 +2763,12 @@ The node command associated with the element.
 =item $tree_units = split_by_section($tree)
 X<C<split_by_section>>
 
-Similarly with C<split_by_node>, returns an array of tree units.  This time,
-lone nodes are associated with the previous sections and lone sections
-makes up a tree unit.
+Similarly with C<split_by_node>, returns an array of tree units.  This
+time, lone nodes are associated with the previous sections and lone
+sections makes up a tree unit.
 
-The C<structure> and C<extra> hash keys set are the same, except that I<unit_command> is
-the sectioning command associated with the element.
+The C<structure> and C<extra> hash keys set are the same, except that
+I<unit_command> is the sectioning command associated with the element.
 
 =item $pages = split_pages($tree_units, $split)
 X<C<split_pages>>

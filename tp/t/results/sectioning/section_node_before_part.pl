@@ -25,28 +25,23 @@ $result_trees{'section_node_before_part'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -62,9 +57,11 @@ $result_trees{'section_node_before_part'} = {
               'text' => 'section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => ' 
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => ' 
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -77,8 +74,11 @@ $result_trees{'section_node_before_part'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -94,16 +94,20 @@ $result_trees{'section_node_before_part'} = {
               'text' => 'part'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'part',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -114,8 +118,6 @@ $result_trees{'section_node_before_part'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_node_before_part'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'section_node_before_part'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'section_node_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'section_node_before_part'} = '
 @node Top
@@ -154,7 +156,6 @@ $result_sectioning{'section_node_before_part'} = {
       },
       {
         'cmdname' => 'part',
-        'extra' => {},
         'structure' => {
           'section_level' => 0,
           'section_up' => {}
@@ -250,6 +251,12 @@ $result_converted{'html'}->{'section_node_before_part'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -257,11 +264,11 @@ $result_converted{'html'}->{'section_node_before_part'} = '<!DOCTYPE html>
 <body lang="en">
 
 <div class="section-level-extent" id="Top">
-<h3 class="section" id="section">1 section</h3>
+<h3 class="section" id="section"><span>1 section<a class="copiable-link" href="#section"> &para;</a></span></h3>
 
 </div>
 <div class="part-level-extent" id="part">
-<h1 class="part">part</h1>
+<h1 class="part"><span>part<a class="copiable-link" href="#part"> &para;</a></span></h1>
 <hr>
 </div>
 

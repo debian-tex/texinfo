@@ -51,9 +51,11 @@ $result_trees{'table_in_code'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -72,16 +74,20 @@ $result_trees{'table_in_code'} = {
                               'text' => 'line'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -104,7 +110,7 @@ $result_trees{'table_in_code'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -117,17 +123,23 @@ $result_trees{'table_in_code'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -137,8 +149,12 @@ $result_trees{'table_in_code'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -148,7 +164,8 @@ $result_trees{'table_in_code'} = {
         },
         {
           'text' => '
-'
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'
@@ -177,15 +194,6 @@ text
 
 $result_errors{'table_in_code'} = [
   {
-    'error_line' => 'warning: @table should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@table should not appear in @code',
-    'type' => 'warning'
-  },
-  {
     'error_line' => '@code missing closing brace
 ',
     'file_name' => '',
@@ -213,6 +221,16 @@ $result_floats{'table_in_code'} = {};
 $result_converted{'plaintext'}->{'table_in_code'} = '‘ in code ’
 _line_
      text
+
+';
+
+
+$result_converted{'xml'}->{'table_in_code'} = '<para><code>
+in code
+</code></para><table commandarg="emph" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">line</itemformat></item>
+</tableterm><tableitem><para>text
+</para></tableitem></tableentry></table>
 
 ';
 

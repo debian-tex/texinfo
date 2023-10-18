@@ -48,7 +48,7 @@ $\frac{a < b @code{tex \hbox{ code }}}{b}$ ``
 my $top_in_ref_text = 
 '@node Top
 
-@node refs node
+@node chap refs node
 
 @code{@@ref@{Top,cross ref name@}} @ref{Top,cross ref name}
 @code{@@ref@{Top,,title@}} @ref{Top,,title}
@@ -136,6 +136,16 @@ Content VI
 
 ';
 
+# this is also used to check the output corresponding
+# to the '@sc content' t/nodenormalization.t test, so it should be kept in
+# sync with t/nodenormalization.t
+# Also note that @verb is protected in LaTeX by @inlinefmtifelse to get
+# valid LaTeX.
+my $string_for_upper_case = 'a @~n @aa{} @TeX{} @image{myimage} @ref{chap} @xref{(f)node}
+@ref{ext,,name,argf} @inlinefmtifelse{latex,,@verb{!inverb!}} @anchor{inanchor} @hyphenation{hyphena-te}
+@U{00ff} @math{ma+th} @footnote{infootnote} @url{la} @url{a,b} @url{ ,lb}
+@url{,,c} @email{a@@c, e} @abbr{ab, d}';
+
 my @test_cases = (
 ['accent_with_text',
 '@u{--a} @dotless{--b} @^{--@dotless{i}} @^{--@dotless{j}} @^{--a}
@@ -147,7 +157,7 @@ my @test_cases = (
 ['form_feeds',
 '@node Top
 
-@node first'."\f".'node
+@node chap'."\f".'node
 
 '."\f \f
 
@@ -161,7 +171,7 @@ cc \f dd".'
 
 @code{middle'."\f".' in code}
 
-@xref{first'."\f".'node}
+@xref{chap'."\f".'node}
 
 @example '."\f".'
 in example
@@ -172,7 +182,8 @@ in example
 
 @indicateurl{ '."\f".' in indicateurl}
 
-@deffn { '."\f".'truc } { machin }  { bidule }  { '."\f".' chose '."\f".'} {  arg'."\f".' }
+@deffn '."\f".' { '."\f".'truc } { machin }  { bidule }  { '."\f".' chose '."\f".'} {  arg'."\f".' } '."\f".'
+@deffnx '."\f".' { '."\f".'xtruc } { xmachin }  { xbidule }  { '."\f".' xchose '."\f".'} {  xarg'."\f".' } '."\f".'
 T
 @end deffn
 
@@ -181,6 +192,12 @@ a float
 @caption{'."\f".' within '."\f".' cation '."\f".'} '."\f".' Toto
 @shortcaption{'."\f".' shc within '."\f".' shortcaption '."\f".'} '."\f".' After shc
 @end float '."\f".'
+
+@float type '."\f".', fl '."\f".'
+in float
+@end float
+
+@listoffloats type '."\f".'
 
 '],
 ['some_at_commands_in_ref_nodes',
@@ -328,6 +345,34 @@ $top_in_ref_text
 @section @xref{,,,filename}. xref filename only, no spaces
 
 '],
+['link',
+'@node One
+@chapter ONEX
+
+target node
+
+@node Two
+
+xrefautomaticsectiontitle off
+@xrefautomaticsectiontitle off
+
+@link{One}
+
+@link{One, label}
+
+xrefautomaticsectiontitle on
+@xrefautomaticsectiontitle on
+
+@link{One}
+
+@link{One, label}
+
+external link
+
+@link{Introduction,,bash}
+
+@link{Introduction,Bash,bash}
+'],
 ['unknown_value',
 '@value{unknown}'],
 ['test_sp',
@@ -474,12 +519,10 @@ $inline_text, {'EXPANDED_FORMATS' => ['tex']},
 {'EXPANDED_FORMATS' => ['tex']},
 ],
 # beware that with EXPANDED_FORMATS set to an empty array no
-# format is considered to be expanded in the parser.  Therefore the second
-# argument of @inlinefmtifelse{} contents array is empty (type is 'elided').
-# In the converters, the converter format would be expanded.
-# However, since the second argument of @inlinefmtifelse{} contents array is empty,
-# there is no expansion of the second argument of @inlinefmtifelse string
-# in the end (or expansion as an empty string which gives the same result).
+# format is considered to be expanded in the parser.
+# In the converters, the converter format is expanded.
+# The first argument of @inlinefmtifelse{} contents array
+# is raw text in the tree, if it was not expanded in the parser.
 ['inlinefmtifelse',
 '@inlinefmtifelse{html,,else html no if}.
 @inlinefmtifelse{html,if html,else html}.
@@ -501,6 +544,34 @@ $inline_text, {'EXPANDED_FORMATS' => ['tex']},
 ',
 {'EXPANDED_FORMATS' => []}
 ],
+# same as above, show visually that the format being converted
+# text is the first argument and is raw text without @-command
+# expanded, while for the other formats the second argument is
+# used and the @-commands are expanded.
+['inlinefmtifelse_with_commands',
+'@inlinefmtifelse{html,if @code{html},else @code{html}}.
+
+@inlinefmtifelse{plaintext,if @emph{plaintext},else @emph{plaintext}}.
+
+@inlinefmtifelse{xml,if xml @env{empty} second arg, xml @env{else}}.
+
+@inlinefmtifelse{ docbook , if docbook @string{spaces} , else @strong{docbook spaces} }.
+
+@inlinefmtifelse{tex,if @var{tex},@var{else} tex}.
+
+@inlinefmtifelse{latex,if @sc{latex},@sc{else} latex}.
+',
+{'EXPANDED_FORMATS' => []}
+],
+# similar tests without leading/trailing spaces in t/*raw.t
+['inlinefmtspaces',
+'A @inlinefmt { plaintext , plaintext `` @lbracechar{} } a.  Now html
+@inlinefmt{ html , in <i>@acronym{HTML}</i>}.
+'],
+['inlinerawspaces',
+'A @inlineraw{ plaintext , plaintext `` @lbracechar{} } a.  Now html
+@inlineraw { html , in <i>@acronym{HTML}</i>}.
+'],
 ['inlineifsetifclear',
 '@inlineifclear{aaa, iclear first }.
 
@@ -511,6 +582,19 @@ $inline_text, {'EXPANDED_FORMATS' => ['tex']},
 @inlineifclear{aaa, ifclear second }.
 
 @inlineifset{aaa, ifset second }.
+'],
+['inlineifsetifclearspaces',
+'@inlineifclear
+{ aaa , iclear first }.
+
+@inlineifset
+{ aaa , ifset first }.
+
+@set aaa
+
+@inlineifclear { aaa , ifclear second }.
+
+@inlineifset { aaa , ifset second }.
 '],
 ['table_in_display_in_example',
 '@example
@@ -649,18 +733,18 @@ undef, {'test_file' => 'things_before_setfilename_no_element.texi'}
 '@node Top
 
 @menu
-* a@ @ ::
+* chap@ @ ::
 * b@verb{:  :}::
 * c@ ::
 @end menu
 
-@node a@ @ 
+@node chap@ @ 
 
 @node b@verb{:  :}
 
 @node c@w{  }
 
-@ref{a@ @ }
+@ref{chap@ @ }
 
 @ref{b@verb{:  :}}
 
@@ -1032,6 +1116,40 @@ deftypeop n
 defop n
 @end defop
 '],
+# this test is also used to check the output corresponding
+# to the '@sc content' t/nodenormalization.t test, so it should be modified
+# if the t/nodenormalization.t test is modified
+['commands_in_sc',
+'@node Top
+@top commands in sc
+
+@node chap
+@chapter chap
+
+@sc{'.$string_for_upper_case.'}',
+{'EXPANDED_FORMATS' => ['docbook', 'html', 'xml', 'plaintext']}],
+['commands_in_var',
+'@node Top
+@top commands in var
+
+@node chap
+@chapter chap
+
+@var{'.$string_for_upper_case.'}',
+{'EXPANDED_FORMATS' => ['docbook', 'html', 'xml', 'plaintext']}],
+# the big rule is set to be different from the normal rule to check the type
+# of rule output
+['contents_at_document_begin',
+undef, {'test_file' => 'contents_at_document_begin.texi'},
+       {'SPLIT' => '', 'BIG_RULE' => '<hr style="height: 6px;">'}],
+['contents_at_document_begin_inline',
+undef, {'test_file' => 'contents_at_document_begin.texi'},
+       {'CONTENTS_OUTPUT_LOCATION' => 'inline',
+        'SPLIT' => '', 'BIG_RULE' => '<hr style="height: 6px;">'}],
+['contents_at_document_begin_separate_element',
+undef, {'test_file' => 'contents_at_document_begin.texi',},
+       {'CONTENTS_OUTPUT_LOCATION' => 'separate_element',
+        'SPLIT' => '', 'BIG_RULE' => '<hr style="height: 6px;">'}],
 );
 
 my @html_text_cases = (
@@ -1100,6 +1218,16 @@ In Main
 );
 
 my @file_tests = (
+['setfilename_no_extension',
+'@setfilename setfilename_no_extension
+
+@node Top
+@top top
+
+@node chap
+
+Text.
+'],
 ['simplest_no_node_section',
 undef, {'test_file' => 'simplest_no_node_section.texi'}],
 ['minimal_empty_with_bye',
@@ -1110,6 +1238,19 @@ undef, {'test_file' => 'minimal_empty_with_input.texi'}],
 undef, {'test_file' => 'minimal_empty_empty.texi'}],
 ['empty',
 undef, {'test_file' => 'empty.texi'}],
+['simplest_test_prefix',
+undef,{'test_file' => 'simplest.texi',},
+{'SPLIT' => '', 'PREFIX' => 'truc'}
+],
+['indices_in_begin_tables_lists',
+undef, {'test_file' => '../../tests/formatting/indices_in_begin_tables_lists.texi'},
+{'SPLIT' => '', 'USE_NODES', 0}],
+# HTML still different from tests/indices indices_in_begin_tables_lists,
+# as there is no relate_index_entries_to_items tree transformation
+['indices_in_begin_tables_lists_entries_after_item',
+undef, {'test_file' => '../../tests/formatting/indices_in_begin_tables_lists.texi',
+        'TREE_TRANSFORMATIONS' => 'move_index_entries_after_items'},
+{'SPLIT' => '', 'USE_NODES', 0}],
 ['combined_fonts',
 '@setfilename combined_fonts.info
 
@@ -1162,17 +1303,27 @@ my %info_tests = (
  'things_before_setfilename_no_element' => 1,
  'spaces_in_node_names' => 1,
  'spaces_in_empty_node_names' => 1,
-  'non_empty_part' => 1,
+ 'non_empty_part' => 1,
+ 'contents_at_document_begin' => 1,
+ 'contents_at_document_begin_inline' => 1,
+ 'contents_at_document_begin_separate_element' => 1,
+ 'commands_in_sc' => 1,
 );
 
 my %html_tests = (
  'things_before_setfilename' => 1,
  'things_before_setfilename_no_element' => 1,
  'line_breaks' => 1,
+ 'contents_at_document_begin' => 1,
+ 'contents_at_document_begin_inline' => 1,
+ 'contents_at_document_begin_separate_element' => 1,
 );
 
 my %file_html_tests = (
-  'definition_commands' => 1,
+ 'definition_commands' => 1,
+ 'contents_at_document_begin' => 1,
+ 'contents_at_document_begin_inline' => 1,
+ 'contents_at_document_begin_separate_element' => 1,
 );
 
 my %docbooc_doc_tests = (
@@ -1180,8 +1331,8 @@ my %docbooc_doc_tests = (
 );
 
 my %file_latex_tests = (
-  'printindex_merged_indices_code_style' => 1,
-  'definition_commands' => 1,
+ 'printindex_merged_indices_code_style' => 1,
+ 'definition_commands' => 1,
 );
 
 foreach my $test (@test_cases) {

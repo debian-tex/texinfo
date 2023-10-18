@@ -12,9 +12,11 @@ $result_trees{'false_format_not_closed'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -22,11 +24,14 @@ $result_trees{'false_format_not_closed'} = {
           'cmdname' => 'html',
           'contents' => [
             {
-              'type' => 'elided_block'
-            },
-            {
-              'text' => '',
-              'type' => 'empty_line'
+              'contents' => [
+                {
+                  'text' => 'blah blah
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             }
           ],
           'source_info' => {
@@ -43,6 +48,7 @@ $result_trees{'false_format_not_closed'} = {
 };
 
 $result_texis{'false_format_not_closed'} = '@html
+blah blah
 ';
 
 

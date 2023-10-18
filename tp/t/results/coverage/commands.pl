@@ -127,8 +127,10 @@ $result_trees{'commands'} = {
                 }
               ],
               'cmdname' => 'ringaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -210,8 +212,10 @@ $result_trees{'commands'} = {
                       'text' => 'b'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -302,27 +306,26 @@ $result_trees{'commands'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -362,16 +365,20 @@ $result_trees{'commands'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'majorheading',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -385,9 +392,6 @@ $result_trees{'commands'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'commands'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'commands'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'commands'}{'contents'}[0]{'contents'}[4]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[4];
 
 $result_texis{'commands'} = '@@ @TeX{} @
 @"e @^{@dotless{i}} @~{a} @ringaccent a
@@ -439,7 +443,7 @@ $result_indices_sort_strings{'commands'} = {
 
 $result_converted{'plaintext'}->{'commands'} = '@ TeX  ë î ã å
 
-   File → Open.  b <a> ‘code --- -- \'\' ``’ — – ” “.  SMALL CAPS.
+   File → Open.  b <a> ‘code --- -- \'\' ``’ -- - " ".  SMALL CAPS.
 
 majorheading in b
 *****************
@@ -455,11 +459,11 @@ $result_converted{'html_text'}->{'commands'} = '<p>@ TeX &nbsp;&euml; &icirc; &a
 </p>
 <a class="index-entry-id" id="index-index-entry-_0060_0060in-text_0027_0027-LaTeX"></a>
 
-<h2 class="majorheading" id="majorheading-in-b">majorheading <b class="b">in b</b></h2>
+<h2 class="majorheading" id="majorheading-in-b"><span>majorheading <b class="b">in b</b><a class="copiable-link" href="#majorheading-in-b"> &para;</a></span></h2>
 ';
 
 
-$result_converted{'xml'}->{'commands'} = '<para>&arobase; &tex; <spacecmd type="nl"/><accent type="uml" bracketed="off">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="tilde">a</accent> <accent type="ring" spaces=" " bracketed="off">a</accent>
+$result_converted{'xml'}->{'commands'} = '<para>&arobase; &tex; <spacecmd type="nl"/><accent type="uml" bracketed="off">e</accent> <accent type="circ"><dotless>i</dotless></accent> <accent type="tilde">a</accent> <accent type="ring" spacesaftercmd=" " bracketed="off">a</accent>
 </para>
 <para><clicksequence>File <click command="arrow"/> Open</clicksequence>&eosperiod;
 <email><emailaddress>a</emailaddress><emailname spaces=" ">b</emailname></email> <code>code --- -- \'\' ``</code>

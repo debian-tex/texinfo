@@ -10,6 +10,85 @@ $result_trees{'double_include'} = {
     {
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'inc_file.texi'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'source_marks' => [
+                          {
+                            'counter' => 1,
+                            'element' => {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'inc_file.texi'
+                                    }
+                                  ],
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
+'
+                                    }
+                                  },
+                                  'type' => 'line_arg'
+                                }
+                              ],
+                              'cmdname' => 'include',
+                              'extra' => {
+                                'text_arg' => 'inc_file.texi'
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
+                              },
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 2,
+                                'macro' => ''
+                              }
+                            },
+                            'position' => 1,
+                            'sourcemark_type' => 'include',
+                            'status' => 'start'
+                          }
+                        ],
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'include',
+                'extra' => {
+                  'text_arg' => 'inc_file.texi'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 2,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'include',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -17,10 +96,26 @@ $result_trees{'double_include'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'In included file.
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'In included file.
 '
             }

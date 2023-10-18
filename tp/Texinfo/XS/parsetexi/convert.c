@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,6 +30,8 @@ static void convert_to_texinfo_internal (ELEMENT *e, TEXT *result);
 
 #define ADD(x) text_append (result, x)
 
+/* Currently unused, but could be used to implement link_element_to_texi
+   from Texinfo::Convert::Texinfo */
 /* Return value to be freed by caller. */
 char *
 node_extra_to_texi (NODE_SPEC_EXTRA *nse)
@@ -59,110 +61,137 @@ static void
 expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
 {
   enum command_id cmd = e->cmd;
-  KEY_PAIR *k;
+  KEY_PAIR *k, *arg_line;
+  ELEMENT *elt, *spc_before_arg;
 
   if (cmd)
     {
       ADD("@");  ADD(command_name(cmd));
+      elt = lookup_info_element (e, "spaces_after_cmd_before_arg");
+      if (elt)
+        ADD((char *)elt->text.text);
     }
 
-  // TODO extra spaces
-  k = lookup_extra (e, "spaces_before_argument");
-  if (k)
-    ADD((char *)k->value);
+  spc_before_arg = lookup_info_element (e, "spaces_before_argument");
 
-  // TODO multitable or block command
-
-  if (cmd == CM_macro || cmd == CM_rmacro)
+  arg_line = lookup_info (e, "arg_line");
+  if (arg_line)
     {
-      KEY_PAIR *k;
       char *s = 0;
-      k = lookup_extra (e, "arg_line");
-      if (k)
-        s = (char *)k->value;
+
+      if (spc_before_arg)
+        ADD((char *)spc_before_arg->text.text);
+
+      s = (char *)arg_line->value;
       if (s)
         {
           ADD(s);
-          return;
         }
     }
-
-  // TODO node
-
-  if (e->args.number > 0)
+  else if (e->args.number > 0)
     {
       int braces, arg_nr, i;
+      int with_commas = 0;
+
       braces = (e->args.list[0]->type == ET_brace_command_arg
-                || e->args.list[0]->type == ET_brace_command_context);
+                || e->args.list[0]->type == ET_brace_command_context
+                || cmd == CM_value);
       if (braces)
         ADD("{");
 
       if (e->cmd == CM_verb)
         {
-          k = lookup_extra (e, "delimiter");
+          k = lookup_info (e, "delimiter");
           ADD((char *)k->value);
         }
+
+      if (spc_before_arg)
+        ADD((char *)spc_before_arg->text.text);
+
+      if ((command_data(cmd).flags & CF_block
+           && ! (command_data(cmd).flags & CF_def
+                 || cmd == CM_multitable))
+          || cmd == CM_node
+          || (command_data(cmd).flags & CF_brace)
+          || (command_data(cmd).flags & CF_INFOENCLOSE))
+        with_commas = 1;
 
       arg_nr = 0;
       for (i = 0; i < e->args.number; i++)
         {
-          if (command_data(cmd).flags & CF_brace)
+          ELEMENT *arg = e->args.list[i];
+          if (arg->type == ET_spaces_inserted
+              || arg->type == ET_bracketed_inserted
+              || arg->type == ET_command_as_argument_inserted)
+            continue;
+
+          if (with_commas)
             {
               if (arg_nr)
                 ADD(",");
               arg_nr++;
             }
-          k = lookup_extra (e->args.list[i], "spaces_before_argument");
-          if (k)
-            ADD((char *)k->value);
-          convert_to_texinfo_internal (e->args.list[i], result);
-          k = lookup_extra (e->args.list[i], "spaces_after_argument");
-          if (k)
-            ADD((char *)k->value);
+          convert_to_texinfo_internal (arg, result);
         }
 
       if (e->cmd == CM_verb)
         {
-          k = lookup_extra (e, "delimiter");
+          k = lookup_info (e, "delimiter");
           ADD((char *)k->value);
         }
 
       if (braces)
         ADD("}");
     }
+  else
+    {
+      if (spc_before_arg)
+        ADD((char *)spc_before_arg->text.text);
+    }
 }
 
 static void
 convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
 {
-  if (e->text.end > 0)
+  ELEMENT *elt;
+
+  if (e->type == ET_spaces_inserted
+      || e->type == ET_bracketed_inserted
+      || e->type == ET_command_as_argument_inserted)
+    {}
+  else if (e->text.end > 0)
     ADD(e->text.text);
   else
     {
       if (e->cmd
-          || e->type == ET_def_line
-          || e->type == ET_menu_entry
-          || e->type == ET_menu_comment)
+          || e->type == ET_def_line)
         {
           expand_cmd_args_to_texi (e, result);
         }
 
-      if (e->type == ET_bracketed
-          || e->type == ET_bracketed_def_content)
-        {
-          KEY_PAIR *k;
-          ADD("{");
-          k = lookup_extra (e, "spaces_before_argument");
-          if (k)
-            ADD((char *)k->value);
-        }
+      if (e->type == ET_bracketed_arg || e->type == ET_bracketed_linemacro_arg)
+        ADD("{");
+      elt = lookup_info_element (e, "spaces_before_argument");
+      if (elt)
+        ADD((char *)elt->text.text);
       if (e->contents.number > 0)
         {
           int i;
           for (i = 0; i < e->contents.number; i++)
             convert_to_texinfo_internal (e->contents.list[i], result);
         }
-      if (e->type == ET_bracketed)
+
+      elt = lookup_info_element (e, "spaces_after_argument");
+      if (elt)
+        {
+          ADD((char *)elt->text.text);
+        }
+
+      elt = lookup_info_element (e, "comment_at_end");
+      if (elt)
+        convert_to_texinfo_internal (elt, result);
+
+      if (e->type == ET_bracketed_arg || e->type == ET_bracketed_linemacro_arg)
         ADD("}");
     }
 
@@ -183,10 +212,25 @@ convert_to_texinfo (ELEMENT *e)
   return result.text;
 }
 
-/* Very stripped-down version of Texinfo::Convert::Text.
+char *
+convert_contents_to_texinfo (ELEMENT *e)
+{
+  ELEMENT *tmp = new_element (ET_NONE);
+  char *result;
+
+  tmp->contents = e->contents;
+  result = convert_to_texinfo (tmp);
+  tmp->contents.list = 0;
+  destroy_element (tmp);
+
+  return result;
+}
+
+/*
    Convert the contents of E to plain text.  Suitable for specifying a file
-   name containing an at sign or braces.  Set *SUPERFLUOUS_ARG if the contents
-   of E are too complicated to convert properly. */
+   name containing an at sign or braces, but no other commands nor element
+   types.  Set *SUPERFLUOUS_ARG if the E contains other commands or element
+   types. */
 char *
 convert_to_text (ELEMENT *e, int *superfluous_arg)
 {

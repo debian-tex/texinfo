@@ -14,14 +14,16 @@
 
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter-printindex {text-decoration: none}
 span.program-in-footer {font-size: smaller}
+span:hover a.copiable-link {visibility: visible}
 td.menu-entry-description {vertical-align: top}
 td.menu-entry-destination {vertical-align: top}
 td.printindex-index-entry {vertical-align: top}
-td.printindex-index-section {vertical-align: top}
+td.printindex-index-section {vertical-align: top; padding-left: 1em}
 th.entries-header-printindex {text-align:left}
-th.sections-header-printindex {text-align:left}
+th.sections-header-printindex {text-align:left; padding-left: 1em}
 -->
 </style>
 
@@ -29,7 +31,6 @@ th.sections-header-printindex {text-align:left}
 </head>
 
 <body lang="en">
-
 <div class="top-level-extent" id="Top">
 <table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
 <tr><td>[ &lt; ]</td>
@@ -39,7 +40,7 @@ th.sections-header-printindex {text-align:left}
 <td>[<a href="#chapter" title="Index">Index</a>]</td>
 <td>[<a href="no_monolithic_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="top" id="Not-monolithic">Not monolithic</h1>
+<h1 class="top" id="Not-monolithic"><span>Not monolithic<a class="copiable-link" href="#Not-monolithic"> &para;</a></span></h1>
 
 <p>Not monolitic manual<a class="footnote" id="DOCF1" href="no_monolithic_fot.html#FOOT1"><sup>1</sup></a>.
 </p>
@@ -67,18 +68,18 @@ th.sections-header-printindex {text-align:left}
 <td>[<a href="#chapter" title="Index">Index</a>]</td>
 <td>[<a href="no_monolithic_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter" id="Chapter">1 Chapter</h1>
+<h1 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h1>
 
 <p>Chapter.
 </p>
 
 <div class="printindex cp-printindex">
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Chapter_cp_letter-T">T</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-top">top</a></td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Not monolithic</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="Chapter_cp_letter-T">T</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-top">top</a></td><td class="printindex-index-section"><a href="#Top">Not monolithic</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 </div>

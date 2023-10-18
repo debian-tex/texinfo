@@ -12,9 +12,11 @@ $result_trees{'heading_in_quotation'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -58,16 +60,20 @@ $result_trees{'heading_in_quotation'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'heading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -88,17 +94,23 @@ $result_trees{'heading_in_quotation'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -160,6 +172,12 @@ $result_converted{'html'}->{'heading_in_quotation'} = '<!DOCTYPE html>
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -167,7 +185,7 @@ $result_converted{'html'}->{'heading_in_quotation'} = '<!DOCTYPE html>
 <body lang="en">
 <blockquote class="quotation">
 
-<h3 class="heading" id="in-quotation-_0040-heading">in quotation @ <em class="emph">heading</em></h3>
+<h3 class="heading" id="in-quotation-_0040-heading"><span>in quotation @ <em class="emph">heading</em><a class="copiable-link" href="#in-quotation-_0040-heading"> &para;</a></span></h3>
 
 </blockquote>
 

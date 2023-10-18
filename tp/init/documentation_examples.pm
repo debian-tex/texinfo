@@ -18,10 +18,28 @@ if (not defined($default_footnotestyle)) {
   $main_program_footnotestyle = 'not separate '.$default_footnotestyle;
 }
 
+my %translations = (
+'fr' => {
+'error--&gt;' => {'' => 'erreur--&gt;',},
+# ...
+},
+'de' => {
+'error--&gt;' => {'' => 'Fehler--&gt;',},
+# ...
+}
+# ...
+);
+
 texinfo_register_no_arg_command_formatting('-', undef, '&shy;');
 
 texinfo_register_no_arg_command_formatting('error', undef, undef, undef,
                                            'error--&gt;');
+
+texinfo_register_no_arg_command_formatting('equiv', undef, undef, undef,
+                                         undef, 'is the @strong{same} as');
+
+$translations{'fr'}->{'is the @strong{same} as'}->{''}
+                                     = 'est la @strong{m@^eme} que';
 
 texinfo_register_style_command_formatting('sansserif', 'code', 0, 'normal');
 texinfo_register_style_command_formatting('sansserif', 'code', 0, 'preformatted');
@@ -117,10 +135,10 @@ texinfo_register_file_id_setting_function('node_file_name',
                                           \&my_node_file_name);
 
 
-sub my_label_target_name($$$) {
-  my ($converter, $label_info, $default_target) = @_;
-  if (defined($label_info->{'normalized'})) {
-    my $element = $converter->label_command($label_info->{'normalized'});
+sub my_label_target_name($$$$) {
+  my ($converter, $normalized, $node_contents, $default_target) = @_;
+  if (defined($normalized)) {
+    my $element = $converter->label_command($normalized);
     return 'prepended_to_labels-'.$element->{'extra'}->{'normalized'};
   }
   return $default_target;
@@ -129,4 +147,21 @@ sub my_label_target_name($$$) {
 texinfo_register_file_id_setting_function('label_target_name',
                                           \&my_label_target_name);
 
+sub my_format_translate_string($$$;$$$)
+{
+  my ($self, $string, $lang, $replaced_substrings,
+                             $translation_context, $type) = @_;
+  $translation_context = '' if (!defined($translation_context));
+  if (exists($translations{$lang})
+      and exists($translations{$lang}->{$string})
+      and exists($translations{$lang}->{$string}->{$translation_context})) {
+    my $translation = $translations{$lang}->{$string}->{$translation_context};
+    return $self->replace_convert_substrings($translation,
+                                                 $replaced_substrings, $type);
+  }
+  return undef;
+}
+
+texinfo_register_formatting_function('format_translate_string',
+                                          \&my_format_translate_string);
 1;

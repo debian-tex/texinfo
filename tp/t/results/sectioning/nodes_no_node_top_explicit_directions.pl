@@ -40,8 +40,15 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
               }
             ],
             'extra' => {
-              'spaces_after_argument' => '
+              'manual_content' => [
+                {}
+              ]
+            },
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -65,9 +72,11 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
           {
             'args' => [
               {
-                'extra' => {
-                  'spaces_after_argument' => '
+                'info' => {
+                  'spaces_after_argument' => {
+                    'text' => '
 '
+                  }
                 },
                 'type' => 'block_line_arg'
               }
@@ -75,7 +84,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
             'cmdname' => 'menu',
             'contents' => [
               {
-                'args' => [
+                'contents' => [
                   {
                     'text' => '* ',
                     'type' => 'menu_entry_leading_text'
@@ -86,6 +95,12 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
                         'text' => 'second node'
                       }
                     ],
+                    'extra' => {
+                      'node_content' => [
+                        {}
+                      ],
+                      'normalized' => 'second-node'
+                    },
                     'type' => 'menu_entry_node'
                   },
                   {
@@ -107,15 +122,6 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
                     'type' => 'menu_entry_description'
                   }
                 ],
-                'extra' => {
-                  'menu_entry_description' => {},
-                  'menu_entry_node' => {
-                    'node_content' => [
-                      {}
-                    ],
-                    'normalized' => 'second-node'
-                  }
-                },
                 'source_info' => {
                   'file_name' => '',
                   'line_nr' => 5,
@@ -131,17 +137,23 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
                         'text' => 'menu'
                       }
                     ],
-                    'extra' => {
-                      'spaces_after_argument' => '
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
 '
+                      }
                     },
                     'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
                 'extra' => {
-                  'spaces_before_argument' => ' ',
                   'text_arg' => 'menu'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'source_info' => {
                   'file_name' => '',
@@ -163,26 +175,12 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
           }
         ],
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'first'
-            },
-            undef,
-            undef,
-            {
-              'manual_content' => [
-                {}
-              ]
-            }
-          ],
-          'normalized' => 'first',
-          'spaces_before_argument' => ' '
+          'normalized' => 'first'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -217,6 +215,12 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
                 'text' => 'first'
               }
             ],
+            'extra' => {
+              'node_content' => [
+                {}
+              ],
+              'normalized' => 'first'
+            },
             'type' => 'line_arg'
           },
           {
@@ -226,8 +230,16 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
               }
             ],
             'extra' => {
-              'spaces_after_argument' => '
+              'node_content' => [
+                {}
+              ],
+              'normalized' => 'first'
+            },
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -245,32 +257,12 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
           }
         ],
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'second-node'
-            },
-            undef,
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'first'
-            },
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'first'
-            }
-          ],
-          'normalized' => 'second-node',
-          'spaces_before_argument' => ' '
+          'normalized' => 'second-node'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -285,16 +277,11 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
     'type' => 'unit'
   }
 ];
-$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[3];
-$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'extra'}{'unit_command'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1];
-$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0];
+$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0];
+$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'extra'}{'unit_command'} = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0];
 
 $result_texis{'nodes_no_node_top_explicit_directions'} = '@node first,,,(dir)
@@ -624,6 +611,12 @@ $result_converted{'html'}->{'nodes_no_node_top_explicit_directions'} = '<!DOCTYP
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#first" rel="start" title="first">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -633,7 +626,7 @@ $result_converted{'html'}->{'nodes_no_node_top_explicit_directions'} = '<!DOCTYP
 <p>
 Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<h4 class="node">first</h4>
+<h4 class="node"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 <p>first node
 </p>
 
@@ -642,7 +635,7 @@ Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 <p>
 Previous: <a href="#first" accesskey="p" rel="prev">first</a>, Up: <a href="#first" accesskey="u" rel="up">first</a> &nbsp; </p>
 </div>
-<h4 class="node">second node</h4>
+<h4 class="node"><span>second node<a class="copiable-link" href="#second-node"> &para;</a></span></h4>
 <p>second node
 </p>
 
@@ -666,7 +659,7 @@ $result_converted{'xml'}->{'nodes_no_node_top_explicit_directions'} = '<node nam
 <para>first node
 </para>
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">second node</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>second node</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 <node name="second-node" spaces=" "><nodename>second node</nodename><nodenext></nodenext><nodeprev>first</nodeprev><nodeup>first</nodeup></node>

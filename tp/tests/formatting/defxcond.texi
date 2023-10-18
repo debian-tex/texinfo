@@ -1,0 +1,20 @@
+\input texinfo
+
+@c test def*x in a conditional
+
+@c set this from the command line.
+@c set bar
+
+@top deffnx inside conditional
+
+@deffn foo
+
+@ifset bar
+@deffnx bar
+@end ifset
+
+Documentation.
+
+@end deffn
+
+@bye

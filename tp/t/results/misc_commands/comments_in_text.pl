@@ -19,16 +19,10 @@ $result_trees{'comments_in_text'} = {
             {
               'text' => ' lone comment
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' lone comment
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'text' => '
@@ -45,32 +39,20 @@ $result_trees{'comments_in_text'} = {
                 {
                   'text' => ' comment
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'args' => [
                 {
                   'text' => ' comment
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'text' => 'Text line after the comment followed by a comment '
@@ -80,16 +62,10 @@ $result_trees{'comments_in_text'} = {
                 {
                   'text' => ' c
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'comment',
-              'extra' => {
-                'misc_args' => [
-                  ' c
-'
-                ]
-              }
+              'cmdname' => 'comment'
             },
             {
               'text' => 'Text line after the text line followed by the comment.
@@ -113,16 +89,10 @@ $result_trees{'comments_in_text'} = {
                 {
                   'text' => ' comment
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              }
+              'cmdname' => 'c'
             }
           ],
           'type' => 'paragraph'
@@ -178,15 +148,15 @@ $result_converted{'latex'}->{'comments_in_text'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

@@ -1,6 +1,6 @@
 # Makefile.am for texinfo/doc.
 #
-# Copyright 2002-2019 Free Software Foundation, Inc.
+# Copyright 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -19,11 +19,16 @@ info_TEXINFOS = texinfo.texi info-stnd.texi texi2any_api.texi
 texinfo_TEXINFOS = pod2texi.texi
 DISTCLEANFILES = texinfo.info* info-stnd.info* texi2any_api.info*
 
-MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
-                       top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
-                       top_builddir="$(top_builddir)" ; export top_builddir ;
+TEXINFO_TEX = texinfo.tex
+
+MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 \
+                       top_srcdir="$(top_srcdir)" \
+                       top_builddir="$(top_builddir)"
 MAKEINFO = $(MAKEINFO_ENVIRONMENT) $(PERL) $(top_builddir)/tp/texi2any
-TEXI2DVI = $(top_srcdir)/util/texi2dvi
+
+TEXI2DVI_ENVIRONMENT = TEXINDEX=${abs_top_builddir}/texindex/texindex \
+                       TEXINDEX_SCRIPT=${abs_top_srcdir}/texindex/texindex.awk
+TEXI2DVI = $(TEXI2DVI_ENVIRONMENT) $(top_srcdir)/util/texi2dvi
 
 # include pod2texi in the main manual
 pod2texi_pl = $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl
@@ -52,12 +57,14 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
 		refcard/txirefcard.tex
 
+refcard/txirefcard.pdf refcard/txirefcard-a4.pdf: refcard/txirefcard.tex
+	cd $(srcdir)/refcard && make
+
 # Include our texinfo.tex, not Automake's.
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
              $(refcard_files) \
-             gendocs.chapter/gendocs_template \
 	     texinfo-tex-test.texi texinfo-tex-test.WIDOWs \
              texinfo-ja.tex short-sample-ja.texi \
              texinfo-zh.tex short-sample-zh.texi
@@ -70,7 +77,7 @@ install-data-local:
 	@echo "             texinfo.tex and txi-??.tex manually,"
 	@echo "         perhaps in TEXMF/tex/texinfo/,"
 	@echo "         where TEXMF is a root of your TeX tree."
-	@echo "         See doc/README for some considerations."
+	@echo "         See INSTALL for some considerations."
 	@echo "         You can run make TEXMF=/your/texmf install-tex to do this."
 	@echo
 	@echo "         You may also need to install epsf.tex in"
@@ -119,10 +126,6 @@ gendocs_options = --email $(gendocs_email) --html '$(gendocs_mathjax) \
 # otherwise, we could use gendocs_template_min.
 #
 gendocs_invoke = env $(gendocs_envvars) $(gendocs) $(gendocs_options)
-gendocs_invoke_chap = env $(gendocs_envvars) \
-            GENDOCS_TEMPLATE_DIR=$(abs_top_srcdir)/doc/gendocs.chapter \
-            $(gendocs) $(gendocs_options)
-
 
 manual1 = info-stnd
 manual1_title = "GNU standalone info manual"
@@ -161,7 +164,7 @@ wwwdoc-build:
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
 	&& $(gendocs_invoke) $(manual3_flags) \
 	                     -o $(manual3) $(manual3) $(manual3_title) \
-	&& $(gendocs_invoke_chap) $(manual4_flags) \
+	&& $(gendocs_invoke) $(manual4_flags) \
 	                     -o $(manual4) $(manual4) $(manual4_title) \
 	&& pod2html --podpath . --htmldir='.' --quiet $(pod2texi_pl) --outfile=./pod2texi.html \
 	&& pod2html --quiet Pod/Simple/Texinfo.pm >Pod/Simple/Texinfo.html \
@@ -171,9 +174,9 @@ wwwdoc-build:
 # http://www.gnu.org/software/texinfo/manual/
 wwwdoc-install:
 	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
-                $(doctemp)/$(manual3) $(doctemp)/$(manual4) \
-                $(doctemp)/pod2texi.html \
-                $(www_target)
+	        $(doctemp)/$(manual3) $(doctemp)/$(manual4) \
+	        $(doctemp)/pod2texi.html \
+	        $(www_target)
 	$(MKDIR_P) $(www_target)/Pod/Simple
 	cp -arf $(doctemp)/Pod/Simple/Texinfo.html $(www_target)/Pod/Simple
 	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files

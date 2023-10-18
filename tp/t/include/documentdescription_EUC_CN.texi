@@ -1,0 +1,5 @@
+@documentencoding EUC-CN
+
+@documentdescription
+Sample Ê¾Àý 
+@end documentdescription

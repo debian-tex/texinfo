@@ -11,11 +11,11 @@ Texinfo::Convert::NodeNameNormalization - Normalize and transliterate Texinfo tr
 
 @verbatim
   use Texinfo::Convert::NodeNameNormalization qw(normalize_node
-                                              transliterate_texinfo);
+                                        normalize_transliterate_texinfo);
 
   my $normalized = normalize_node({'contents' => $node_contents});
 
-  my $file_name = transliterate_texinfo({'contents'
+  my $file_name = normalize_transliterate_texinfo({'contents'
                                             => $section_contents});
 @end verbatim
 
@@ -30,14 +30,14 @@ Texinfo to other formats.  There is no promise of API stability.
 
 @code{Texinfo::Convert::NodeNameNormalization} allows to normalize node names,
 with @code{normalize_node} following the specification described in the
-Texinfo manual @emph{HTML Xref} node.  This is usefull each time one want a
-unique identifier for Texinfo content that is only composed of letter,
+Texinfo manual @emph{HTML Xref} node.  This is useful whenever one want a
+unique identifier for Texinfo content, which is only composed of letter,
 digits, @code{-} and @code{_}.  In @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}, @code{normalize_node} is used
 for @code{@@node}, @code{@@float} and @code{@@anchor} names normalization, but also @code{@@float}
 types and @code{@@acronym} and @code{@@abbr} first argument.
 
 It is also possible to transliterate non-ASCII letters, instead of mangling
-them, with @code{transliterate_texinfo}, losing the uniqueness feature of
+them, with @code{normalize_transliterate_texinfo}, losing the uniqueness feature of
 normalized node names.
 
 Another method, @code{transliterate_protect_file_name} transliterates non-ASCII
@@ -67,14 +67,23 @@ The result will be poor for Texinfo trees which are not @@-command arguments
 (on an @@-command line or in braces), for instance if the tree contains
 @code{@@node} or block commands.
 
-@item $transliterated = transliterate_texinfo($tree, $no_unidecode)
-@anchor{Texinfo@asis{::}Convert@asis{::}NodeNameNormalization $transliterated = transliterate_texinfo($tree@comma{} $no_unidecode)}
-@cindex @code{transliterate_texinfo}
+@item $transliterated = normalize_transliterate_texinfo($tree, $no_unidecode)
+@anchor{Texinfo@asis{::}Convert@asis{::}NodeNameNormalization $transliterated = normalize_transliterate_texinfo($tree@comma{} $no_unidecode)}
+@cindex @code{normalize_transliterate_texinfo}
 
 The Texinfo @emph{$tree} is returned as a string, with non-ASCII letters
 transliterated as ASCII, but otherwise similar with @code{normalize_node}
 output.  If the optional @emph{$no_unidecode} argument is set, @code{Text::Unidecode}
 is not used for characters whose transliteration is not built-in.
+
+@item $transliterated = transliterate_texinfo($tree, $no_unidecode)
+@anchor{Texinfo@asis{::}Convert@asis{::}NodeNameNormalization $transliterated = transliterate_texinfo($tree@comma{} $no_unidecode)}
+@cindex @code{transliterate_texinfo}
+
+The Texinfo @emph{$tree} is returned as a string, with non-ASCII letters
+transliterated as ASCII.  If the optional @emph{$no_unidecode} argument is set,
+@code{Text::Unidecode} is not used for characters whose transliteration is not
+built-in.
 
 @item $file_name = transliterate_protect_file_name($string, $no_unidecode)
 @anchor{Texinfo@asis{::}Convert@asis{::}NodeNameNormalization $file_name = transliterate_protect_file_name($string@comma{} $no_unidecode)}

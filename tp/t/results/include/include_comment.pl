@@ -10,8 +10,63 @@ $result_trees{'include_comment'} = {
     {
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'inc_file.texi'
+                      }
+                    ],
+                    'info' => {
+                      'comment_at_end' => {
+                        'args' => [
+                          {
+                            'text' => ' comment',
+                            'type' => 'rawline_arg'
+                          }
+                        ],
+                        'cmdname' => 'c'
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'include',
+                'extra' => {
+                  'text_arg' => 'inc_file.texi'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 1,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'include',
+              'status' => 'start'
+            }
+          ],
+          'text' => ''
+        },
+        {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'In included file.
 '
             }

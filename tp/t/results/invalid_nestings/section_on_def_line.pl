@@ -17,14 +17,40 @@ $result_trees{'section_on_def_line'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'a b '
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
+                      'text' => 'a'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
+                      'text' => 'b'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'deffn',
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
@@ -35,8 +61,10 @@ $result_trees{'section_on_def_line'} = {
               'type' => 'def_line'
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -55,9 +83,11 @@ $result_trees{'section_on_def_line'} = {
               'text' => 's'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -84,8 +114,10 @@ $result_trees{'section_on_def_line'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -96,6 +128,7 @@ $result_trees{'section_on_def_line'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'section_on_def_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'section_on_def_line'} = '@deffn a b @section s
 
@@ -104,7 +137,8 @@ Something
 ';
 
 
-$result_texts{'section_on_def_line'} = '1 s
+$result_texts{'section_on_def_line'} = 'a: b
+1 s
 ===
 
 Something
@@ -116,7 +150,6 @@ $result_sectioning{'section_on_def_line'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -140,12 +173,21 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @section should not appear in @deffn
+    'error_line' => 'warning: @section should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@section should not appear in @deffn',
+    'text' => '@section should not appear on @deffn line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
@@ -171,5 +213,32 @@ $result_errors{'section_on_def_line'} = [
 
 $result_floats{'section_on_def_line'} = {};
 
+
+$result_indices_sort_strings{'section_on_def_line'} = {
+  'fn' => [
+    'b'
+  ]
+};
+
+
+
+$result_converted{'plaintext'}->{'section_on_def_line'} = ' -- a: b
+
+1 s
+===
+
+Something
+
+';
+
+
+$result_converted{'xml'}->{'section_on_def_line'} = '<deffn spaces=" "><definitionterm><indexterm index="fn" number="1">b</indexterm><defcategory>a</defcategory> <deffunction>b</deffunction> </definitionterm>
+</deffn>
+<section spaces=" "><sectiontitle>s</sectiontitle>
+
+<para>Something
+</para>
+</section>
+';
 
 1;

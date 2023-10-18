@@ -36,17 +36,23 @@ $result_trees{'macro_in_macro_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -55,7 +61,7 @@ $result_trees{'macro_in_macro_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macroone
 '
           },
@@ -96,17 +102,23 @@ $result_trees{'macro_in_macro_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -115,7 +127,7 @@ $result_trees{'macro_in_macro_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrotwo{arg}
 '
           },
@@ -165,17 +177,23 @@ $result_trees{'macro_in_macro_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -184,7 +202,7 @@ $result_trees{'macro_in_macro_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrothree{text, arg}
 '
           },
@@ -195,6 +213,47 @@ $result_trees{'macro_in_macro_arg'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => '@macroone{}text for macro2'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macrothree'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macroone'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -202,10 +261,55 @@ $result_trees{'macro_in_macro_arg'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 2,
+                                'sourcemark_type' => 'macro_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'text for macro2'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macrotwo'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 3,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 3,
+                  'position' => 34,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'a, hello text for macro2 after arg
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 5,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '&&&& 
 '
             }

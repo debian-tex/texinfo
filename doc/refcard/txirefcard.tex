@@ -13,7 +13,7 @@
 \newcount\letterpaper
 \ifx\undefined\afour\letterpaper=1 \else\letterpaper=0 \fi
 
-% Copyright 2008-2022 Free Software Foundation, Inc.
+% Copyright 2008-2023 Free Software Foundation, Inc.
 %
 % This file is part of GNU Texinfo.
 %
@@ -48,12 +48,12 @@
 % Summary node in the Texinfo manual, originally written by Bob Chassell.
 
 \def\versionyear{2023}          % year manual was updated
-\def\versionTexinfo{7.0.2}     % version of Texinfo this manual is for
+\def\versionTexinfo{7.1}     % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
 \advance\baselineskip by 1pt
-\centerline{Copyright \copyright\ 2023 Free Software Foundation, Inc.}
+\centerline{Copyright \copyright\ 2019 Free Software Foundation, Inc.}
 \centerline{for Texinfo version \versionTexinfo, \versionyear}
 \centerline{by Robert D. Solimeno}
 \centerline{and the Texinfo maintainers}
@@ -404,7 +404,7 @@ A Texinfo file must begin with:
 {\advance\baselineskip by -3pt
 \code{\bschar input texinfo.tex}\linebreak
 \dots followed by the contents of the Texinfo document,
-ending with:\linebreak
+ending with:\linebreak}
 \code{@bye}
 
 
@@ -463,6 +463,9 @@ must be defined on the line immediately preceding \code{@top}. The
 of the Top node do not appear in printed output nor in DocBook output.}
 \txicmd{@anchor}{\ttbraced{\var{name}}}{Define \var{name} as the current location, for use as a cross-reference target.}
 \txicmd{@novalidate}{}{Suppress validation of node references and omit creation of auxiliary files with \TeX.}
+\txicmd{@nodedescription}{description}{Provide description for menu references
+to this node.}
+\txicmd{@nodedescriptionblock}{\dots\code{@end nodedescriptionblock}}{Provide description for menu references to this node across several lines.}
 
 
 \section{Chapter structuring}
@@ -517,6 +520,7 @@ of the Top node do not appear in printed output nor in DocBook output.}
 \txicmd{@xref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Makes a reference that starts with `See' in a printed manual. Follow command with punctuation. Only the first argument is mandatory.}
 \txicmd{@pxref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but starts with `see' instead of `See', and must be used inside parentheses.}
 \txicmd{@ref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but produces only the bare reference without `See' or `see'; must be followed by a punctuation mark.}
+\txicmd{@link}{\ttbraced{node, \rmbrack[label], \rmbrack[manual]}}{Make a plain link, with no visible markup.  Does nothing for Info.}
 
 References outside of the current manual, to a different Texinfo file have an \rmbrack[info-file] and/or a \rmbrack[manual] argument. The \txicmdarg{node} argument can be omitted in that case to refer to a manual as a whole.
 
@@ -823,6 +827,11 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmdx{@deftypemethod}{class data-type name arguments}{Format a description for method with a return information in object-oriented programming; equivalent to \samp{@deftypeop \ttbraced{Method on} \dots}.}
 \txicmdx{@deftypeop}{category class data-type name arguments}{Format a description for an operation with return information in object-oriented programming.}
 
+\subsection{Generic definition commands}
+\txicmd{@defblock}{\dots\code{@end ignore}}{Create a block that can contain definitions.}
+\txicmd{@defline}{category name arguments}{Like \code{@deffn}, but without creating an index entry.}
+\txicmd{@deftypeline}{category type name arguments}{Like \code{@deftypefn}, but without creating an index entry.}
+
 
 \section{Conditionally (in)visible text}
 
@@ -875,6 +884,7 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@alias}{new\code{=}existing}{Make the command \code{@new} a synonym for the existing command \code{@existing}.}
 \txicmd{@macro}{macroname \ttbraced{\var{params}} \dots\code{@end macro}}{Define a new Texinfo command \code{@\var{macroname}}.}
 \txicmd{@unmacro}{macroname}{Undefine \code{@\var{macroname}} if it is defined.}
+\txicmd{@linemacro}{macroname \ttbraced{\var{params}} \dots\code{@end linemacro}}{Define a new Texinfo command using the rest of the line for arguments.}
 
 \section{File inclusion}
 

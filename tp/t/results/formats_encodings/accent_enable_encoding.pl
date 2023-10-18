@@ -21,31 +21,26 @@ $result_trees{'accent_enable_encoding'} = {
         {
           'contents' => [
             {
-              'text' => 'Top node'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top-node'
-          }
-        ],
-        'normalized' => 'Top-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'accent_enable_encoding'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -750,8 +747,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'H',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -809,8 +808,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'dotaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -868,8 +869,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ringaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -962,8 +965,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'u',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1021,8 +1026,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ubaraccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1080,8 +1087,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'udotaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1139,8 +1148,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'v',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1198,8 +1209,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ogonek',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1257,8 +1270,10 @@ $result_trees{'accent_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ogonek',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1661,16 +1676,10 @@ $result_trees{'accent_enable_encoding'} = {
             {
               'text' => ' arg is command -- @dotless{i} is special-cased for HTML
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' arg is command -- @dotless{i} is special-cased for HTML
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'contents' => [
@@ -1877,16 +1886,10 @@ $result_trees{'accent_enable_encoding'} = {
             {
               'text' => ' arg is command -- @dotless{j}
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' arg is command -- @dotless{j}
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'contents' => [
@@ -2084,8 +2087,11 @@ $result_trees{'accent_enable_encoding'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -2096,10 +2102,8 @@ $result_trees{'accent_enable_encoding'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'accent_enable_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'accent_enable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'accent_enable_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'accent_enable_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
-$result_texis{'accent_enable_encoding'} = '@node Top node
+$result_texis{'accent_enable_encoding'} = '@node first
 @top top
 
 should be e`: @`{e} @`e
@@ -2267,7 +2271,7 @@ $result_sectioning{'accent_enable_encoding'} = {
           'associated_node' => {
             'cmdname' => 'node',
             'extra' => {
-              'normalized' => 'Top-node'
+              'normalized' => 'first'
             }
           }
         },
@@ -2290,14 +2294,14 @@ $result_nodes{'accent_enable_encoding'} = {
       'extra' => {},
       'structure' => {}
     },
-    'normalized' => 'Top-node'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'accent_enable_encoding'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top-node'
+    'normalized' => 'first'
   }
 };
 
@@ -2311,17 +2315,17 @@ $result_floats{'accent_enable_encoding'} = {};
 $result_converted{'plaintext'}->{'accent_enable_encoding'} = 'top
 ***
 
-should be e‘: è è
+should be e\': è è
 
-   should be e’: é é
+   should be e\': é é
 
    should be e^: ê ê
 
    should be u": ü ü
 
-   should be i‘: ì ì
+   should be i\': ì ì
 
-   should be i’: í í
+   should be i\': í í
 
    should be i^: î î
 
@@ -2333,7 +2337,7 @@ should be e‘: è è
 
    should be e=: ē ē
 
-   should be e’’: e̋ e̋
+   should be e\'\': e̋ e̋
 
    should be e.: ė ė
 
@@ -2369,17 +2373,17 @@ should be e‘: è è
 
    pounds sterling: £
 
-   should be dotless i‘: ì
+   should be dotless i\': ì
 
-   should be dotless i’: í
+   should be dotless i\': í
 
    should be dotless i^: î
 
    should be dotless i": ï
 
-   should be dotless j‘: j̀
+   should be dotless j\': j̀
 
-   should be dotless j’: j́
+   should be dotless j\': j́
 
    should be dotless j^: ĵ
 
@@ -2387,8 +2391,8 @@ should be e‘: è è
 ';
 
 
-$result_converted{'html_text'}->{'accent_enable_encoding'} = '<div class="top-level-extent" id="Top-node">
-<h1 class="top" id="top">top</h1>
+$result_converted{'html_text'}->{'accent_enable_encoding'} = '<div class="top-level-extent" id="first">
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> ¶</a></span></h1>
 
 <p>should be e‘: è è
 </p>
@@ -2467,7 +2471,7 @@ $result_converted{'html_text'}->{'accent_enable_encoding'} = '<div class="top-le
 ';
 
 
-$result_converted{'xml'}->{'accent_enable_encoding'} = '<node name="Top-node" spaces=" "><nodename>Top node</nodename></node>
+$result_converted{'xml'}->{'accent_enable_encoding'} = '<node name="first" spaces=" "><nodename>first</nodename></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>should be e&textlsquo;: è è
@@ -2549,7 +2553,7 @@ $result_converted{'xml'}->{'accent_enable_encoding'} = '<node name="Top-node" sp
 ';
 
 
-$result_converted{'docbook'}->{'accent_enable_encoding'} = '<chapter label="" id="Top-node">
+$result_converted{'docbook'}->{'accent_enable_encoding'} = '<chapter label="" id="first">
 <title>top</title>
 
 <para>should be e&#8216;: è è
@@ -2633,7 +2637,7 @@ $result_converted{'docbook'}->{'accent_enable_encoding'} = '<chapter label="" id
 
 $result_converted{'latex_text'}->{'accent_enable_encoding'} = '\\begin{document}
 \\part*{{top}}
-\\label{anchor:Top-node}%
+\\label{anchor:first}%
 
 should be e`: è è
 

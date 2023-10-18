@@ -19,9 +19,11 @@ $result_trees{'part_before_section'} = [
                 'text' => 'part'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -34,8 +36,11 @@ $result_trees{'part_before_section'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -51,17 +56,23 @@ $result_trees{'part_before_section'} = [
                 'text' => 'section'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => ' 
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => ' 
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',
         'extra' => {
-          'associated_part' => {},
-          'spaces_before_argument' => ' '
+          'associated_part' => {}
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -198,14 +209,14 @@ $result_directions_text{'part_before_section'} = 'element: @section section
 
 
 $result_converted{'html_text'}->{'part_before_section'} = '<div class="part-level-extent" id="part">
-<h1 class="part">part</h1>
+<h1 class="part"><span>part<a class="copiable-link" href="#part"> &para;</a></span></h1>
 <hr>
 
 <ul class="mini-toc">
 <li><a href="#section" accesskey="1">section</a></li>
 </ul>
 <div class="chapter-level-extent" id="section">
-<h2 class="chapter section-level-set-chapter">1 section</h2>
+<h2 class="chapter section-level-set-chapter"><span>1 section<a class="copiable-link" href="#section"> &para;</a></span></h2>
 </div>
 </div>
 ';

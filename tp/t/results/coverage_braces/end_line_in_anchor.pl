@@ -26,10 +26,6 @@ $result_trees{'end_line_in_anchor'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {},
-              {}
-            ],
             'normalized' => 'an-anchor'
           },
           'source_info' => {
@@ -49,8 +45,6 @@ $result_trees{'end_line_in_anchor'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 
 $result_texis{'end_line_in_anchor'} = '@anchor{an
 anchor}

@@ -1,3 +1,18 @@
+/* Copyright 2010-2023 Free Software Foundation, Inc.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+
 #ifdef HAVE_CONFIG_H
   #include <config.h>
 #endif
@@ -17,21 +32,6 @@
 #include "xspara.h"
 
 MODULE = Texinfo::Convert::Paragraph PACKAGE = Texinfo::Convert::Paragraph PREFIX = xspara_
-
-#  Copyright 2010-2020 Free Software Foundation, Inc.
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <http://www.gnu.org/licenses/>.  
 
 PROTOTYPES: ENABLE
 
@@ -75,6 +75,15 @@ xspara_end_line_count (paragraph)
     CODE:
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line_count ();
+    OUTPUT:
+        RETVAL
+
+int
+xspara_counter (paragraph)
+        SV *paragraph
+    CODE:
+        xspara_set_state (paragraph);
+        RETVAL = xspara_counter ();
     OUTPUT:
         RETVAL
 
@@ -145,22 +154,23 @@ xspara_end (paragraph)
 SV *
 xspara_add_text (paragraph, text_in)
         SV *paragraph
-        SV * text_in
+        SV *text_in
     PREINIT:
         char *text;
-        char *retval;
+        STRLEN text_len;
+        TEXT retval;
     CODE:
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
         if (!SvUTF8 (text_in))
           sv_utf8_upgrade (text_in);
 
-        text = SvPV_nolen (text_in);
+        text = SvPV (text_in, text_len);
 
         xspara_set_state (paragraph);
-        retval = xspara_add_text (text);
+        retval = xspara_add_text (text, text_len);
 
-        RETVAL = newSVpv (retval, 0);
+        RETVAL = newSVpv (retval.text ? retval.text : "", retval.end);
         SvUTF8_on (RETVAL);
 
     OUTPUT:
@@ -169,11 +179,11 @@ xspara_add_text (paragraph, text_in)
 SV *
 xspara_add_next (paragraph, text_in, ...)
         SV *paragraph
-        SV * text_in
+        SV *text_in
     PREINIT:
         char *text;
         STRLEN text_len;
-        char *retval;
+        TEXT retval;
         SV *arg_in;
         int transparent = 0;
     CODE:
@@ -195,7 +205,7 @@ xspara_add_next (paragraph, text_in, ...)
         xspara_set_state (paragraph);
         retval = xspara_add_next (text, text_len, transparent);
 
-        RETVAL = newSVpv (retval, 0);
+        RETVAL = newSVpv (retval.text ? retval.text : "", retval.end);
         SvUTF8_on (RETVAL);
 
     OUTPUT:

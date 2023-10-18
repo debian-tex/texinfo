@@ -1,0 +1,13 @@
+@documentlanguage pl
+@documentencoding ISO-8859-2
+
+@node Top
+@top top
+
+@node chap
+@chapter chap1
+
+@error{}
+
+@node appendix
+@appendix appendix 1

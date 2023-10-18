@@ -19,7 +19,7 @@ $result_trees{'multitable_not_closed_item_tab'} = {
                       'text' => 'r'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 },
                 {
                   'text' => ' '
@@ -30,12 +30,14 @@ $result_trees{'multitable_not_closed_item_tab'} = {
                       'text' => 't'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -108,22 +110,12 @@ $result_trees{'multitable_not_closed_item_tab'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 2,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              },
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -137,8 +129,6 @@ $result_trees{'multitable_not_closed_item_tab'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'multitable_not_closed_item_tab'}{'contents'}[0]{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_not_closed_item_tab'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'multitable_not_closed_item_tab'}{'contents'}[0]{'contents'}[0]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'multitable_not_closed_item_tab'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0];
 
 $result_texis{'multitable_not_closed_item_tab'} = '@multitable {r} {t}
 @item rt @tab ds

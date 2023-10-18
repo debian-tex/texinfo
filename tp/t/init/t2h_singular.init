@@ -109,7 +109,7 @@ sub singular_format_footer($$$$)
 texinfo_register_formatting_function('format_end_file' , \&singular_format_end_file);
 
 # footer of page
-sub singular_format_end_file($)
+sub singular_format_end_file($$$)
 {
   my $self = shift;
   my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');

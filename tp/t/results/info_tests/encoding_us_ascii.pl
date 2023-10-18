@@ -22,9 +22,11 @@ $result_trees{'encoding_us_ascii'} = {
                   'text' => 'US-ASCII'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -32,9 +34,12 @@ $result_trees{'encoding_us_ascii'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'us-ascii',
-            'input_perl_encoding' => 'ascii',
-            'spaces_before_argument' => ' ',
             'text_arg' => 'US-ASCII'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -58,9 +63,11 @@ $result_trees{'encoding_us_ascii'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -74,19 +81,12 @@ $result_trees{'encoding_us_ascii'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -97,8 +97,6 @@ $result_trees{'encoding_us_ascii'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'encoding_us_ascii'} = '
 @documentencoding US-ASCII

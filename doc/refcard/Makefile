@@ -1,9 +1,8 @@
-# $Id: Makefile,v 1.4 2012-09-21 17:40:44 karl Exp $
 # Makefile for texinfo/doc/refcard.
 # This is not hooked into Automake, just conveniences for working on the
 # refcard.
 #
-# Copyright 2008, 2012, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2008-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

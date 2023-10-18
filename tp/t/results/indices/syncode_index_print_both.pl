@@ -19,9 +19,11 @@ $result_trees{'syncode_index_print_both'} = {
                       'text' => 'fn cp'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -31,8 +33,12 @@ $result_trees{'syncode_index_print_both'} = {
                 'misc_args' => [
                   'fn',
                   'cp'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -59,28 +65,23 @@ $result_trees{'syncode_index_print_both'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -96,9 +97,11 @@ $result_trees{'syncode_index_print_both'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -111,8 +114,11 @@ $result_trees{'syncode_index_print_both'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -128,9 +134,11 @@ $result_trees{'syncode_index_print_both'} = {
               'text' => 'chapter index'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -138,19 +146,12 @@ $result_trees{'syncode_index_print_both'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-index'
-          }
-        ],
-        'normalized' => 'chapter-index',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-index'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -166,9 +167,11 @@ $result_trees{'syncode_index_print_both'} = {
               'text' => 'index'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -188,28 +191,27 @@ $result_trees{'syncode_index_print_both'} = {
                   'text' => 'c---oncept'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -226,28 +228,27 @@ $result_trees{'syncode_index_print_both'} = {
                   'text' => 'f---un'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 1,
-              'index_at_command' => 'findex',
-              'index_ignore_chars' => {},
-              'index_name' => 'fn',
-              'index_type_command' => 'findex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'fn',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -288,9 +289,11 @@ $result_trees{'syncode_index_print_both'} = {
                   'text' => 'fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -299,8 +302,12 @@ $result_trees{'syncode_index_print_both'} = {
           'extra' => {
             'misc_args' => [
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -335,9 +342,11 @@ $result_trees{'syncode_index_print_both'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -346,8 +355,12 @@ $result_trees{'syncode_index_print_both'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -361,8 +374,11 @@ $result_trees{'syncode_index_print_both'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -373,18 +389,8 @@ $result_trees{'syncode_index_print_both'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'syncode_index_print_both'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1];
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'syncode_index_print_both'}{'contents'}[3];
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2];
-$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'syncode_index_print_both'}{'contents'}[3];
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'syncode_index_print_both'}{'contents'}[3];
+$result_trees{'syncode_index_print_both'}{'contents'}[4]{'contents'}[2]{'extra'}{'element_node'} = $result_trees{'syncode_index_print_both'}{'contents'}[3];
 
 $result_texis{'syncode_index_print_both'} = '@syncodeindex fn cp
 
@@ -615,7 +621,7 @@ Print fn
  [index ]
 * Menu:
 
-* c—oncept:                              chapter index.         (line 6)
+* c--oncept:                             chapter index.         (line 6)
 * f---un:                                chapter index.         (line 6)
 
 
@@ -645,7 +651,7 @@ Print fn
 
 * Menu:
 
-* c—oncept:                              chapter index.         (line 6)
+* c--oncept:                             chapter index.         (line 6)
 * f---un:                                chapter index.         (line 6)
 
 ';
@@ -655,9 +661,9 @@ $result_converted{'html_text'}->{'syncode_index_print_both'} = '
 <div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
+[<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chapter-index" accesskey="1">index</a></li>
@@ -666,9 +672,9 @@ $result_converted{'html_text'}->{'syncode_index_print_both'} = '
 <div class="chapter-level-extent" id="chapter-index">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
+[<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
 </div>
-<h2 class="chapter" id="index">1 index</h2>
+<h2 class="chapter" id="index"><span>1 index<a class="copiable-link" href="#index"> &para;</a></span></h2>
 
 <a class="index-entry-id" id="index-c_002d_002d_002doncept"></a>
 <a class="index-entry-id" id="index-f_002d_002d_002dun"></a>
@@ -680,24 +686,24 @@ $result_converted{'html_text'}->{'syncode_index_print_both'} = '
 <p>Print cp
 </p>
 <div class="printindex cp-printindex">
-<table class="cp-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-C"><b>C</b></a>
+<table class="cp-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#chapter-index_cp_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-F"><b>F</b></a>
+<a class="summary-letter-printindex" href="#chapter-index_cp_letter-F"><b>F</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_cp_letter-C">C</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-c_002d_002d_002doncept">c&mdash;oncept</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_cp_letter-F">F</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-f_002d_002d_002dun"><code>f---un</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chapter-index_cp_letter-C">C</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-c_002d_002d_002doncept">c&mdash;oncept</a></td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chapter-index_cp_letter-F">F</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-f_002d_002d_002dun"><code>f---un</code></a></td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
-<table class="cp-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-C"><b>C</b></a>
+<table class="cp-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#chapter-index_cp_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-F"><b>F</b></a>
+<a class="summary-letter-printindex" href="#chapter-index_cp_letter-F"><b>F</b></a>
  &nbsp; 
 </td></tr></table>
 </div>
@@ -733,25 +739,25 @@ $result_converted{'xml'}->{'syncode_index_print_both'} = '<syncodeindex spaces="
 
 
 $result_converted{'latex'}->{'syncode_index_print_both'} = '\\documentclass{book}
-\\usepackage{imakeidx}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{imakeidx}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%
 
-% no index headers or page break
-\\indexsetup{level=\\relax,toclevel=section,noclearpage}%
+% no index headers
+\\indexsetup{level=\\relax,toclevel=section}%
 \\makeindex[name=cp,title=]%
 
 % redefine the \\mainmatter command such that it does not clear page

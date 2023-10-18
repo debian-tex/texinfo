@@ -21,9 +21,11 @@ $result_trees{'good'} = {
                           'text' => '0.4 .6 5.'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -34,8 +36,12 @@ $result_trees{'good'} = {
                       '0.4',
                       '.6',
                       '5.'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -62,8 +68,12 @@ $result_trees{'good'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -74,8 +84,12 @@ $result_trees{'good'} = {
           ],
           'extra' => {
             'columnfractions' => {},
-            'max_columns' => 3,
-            'spaces_before_argument' => ' '
+            'max_columns' => 3
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -102,5 +116,14 @@ $result_errors{'good'} = [];
 
 $result_floats{'good'} = {};
 
+
+
+$result_converted{'xml'}->{'good'} = '<multitable spaces=" " endspaces=" "><columnfractions spaces=" " line="0.4 .6 5."><columnfraction value="0.4"></columnfraction><columnfraction value=".6"></columnfraction><columnfraction value="5."></columnfraction></columnfractions>
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'good'} = '\\begin{tabular}{m{0.4\\textwidth} m{.6\\textwidth} m{5.\\textwidth}}%
+\\end{tabular}%
+';
 
 1;

@@ -96,7 +96,9 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/absolute-header.m4 \
 	$(top_srcdir)/gnulib/m4/alloca.m4 \
 	$(top_srcdir)/gnulib/m4/assert_h.m4 \
+	$(top_srcdir)/gnulib/m4/c-bool.m4 \
 	$(top_srcdir)/gnulib/m4/codeset.m4 \
+	$(top_srcdir)/gnulib/m4/eealloc.m4 \
 	$(top_srcdir)/gnulib/m4/errno_h.m4 \
 	$(top_srcdir)/gnulib/m4/exponentd.m4 \
 	$(top_srcdir)/gnulib/m4/extensions.m4 \
@@ -110,7 +112,10 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-comp.m4 \
 	$(top_srcdir)/gnulib/m4/host-cpu-c-abi.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
+	$(top_srcdir)/gnulib/m4/iconv_h.m4 \
+	$(top_srcdir)/gnulib/m4/iconv_open.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
+	$(top_srcdir)/gnulib/m4/inline.m4 \
 	$(top_srcdir)/gnulib/m4/intmax_t.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes_h.m4 \
@@ -119,16 +124,24 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/lib-prefix.m4 \
 	$(top_srcdir)/gnulib/m4/libtool.m4 \
 	$(top_srcdir)/gnulib/m4/libunistring-base.m4 \
+	$(top_srcdir)/gnulib/m4/libunistring.m4 \
 	$(top_srcdir)/gnulib/m4/limits-h.m4 \
 	$(top_srcdir)/gnulib/m4/localcharset.m4 \
+	$(top_srcdir)/gnulib/m4/locale-fr.m4 \
+	$(top_srcdir)/gnulib/m4/locale-ja.m4 \
+	$(top_srcdir)/gnulib/m4/locale-zh.m4 \
 	$(top_srcdir)/gnulib/m4/ltoptions.m4 \
 	$(top_srcdir)/gnulib/m4/ltsugar.m4 \
 	$(top_srcdir)/gnulib/m4/ltversion.m4 \
 	$(top_srcdir)/gnulib/m4/lt~obsolete.m4 \
+	$(top_srcdir)/gnulib/m4/malloca.m4 \
+	$(top_srcdir)/gnulib/m4/mbrtowc.m4 \
+	$(top_srcdir)/gnulib/m4/mbstate_t.m4 \
 	$(top_srcdir)/gnulib/m4/memchr.m4 \
 	$(top_srcdir)/gnulib/m4/mmap-anon.m4 \
 	$(top_srcdir)/gnulib/m4/multiarch.m4 \
-	$(top_srcdir)/gnulib/m4/nls.m4 \
+	$(top_srcdir)/gnulib/m4/musl.m4 $(top_srcdir)/gnulib/m4/nls.m4 \
+	$(top_srcdir)/gnulib/m4/obstack.m4 \
 	$(top_srcdir)/gnulib/m4/off_t.m4 $(top_srcdir)/gnulib/m4/po.m4 \
 	$(top_srcdir)/gnulib/m4/printf.m4 \
 	$(top_srcdir)/gnulib/m4/progtest.m4 \
@@ -225,7 +238,8 @@ am_Parsetexi_la_OBJECTS = parsetexi/Parsetexi_la-Parsetexi.lo \
 	parsetexi/Parsetexi_la-menus.lo \
 	parsetexi/Parsetexi_la-labels.lo \
 	parsetexi/Parsetexi_la-errors.lo \
-	parsetexi/Parsetexi_la-counter.lo
+	parsetexi/Parsetexi_la-counter.lo \
+	parsetexi/Parsetexi_la-source_marks.lo
 Parsetexi_la_OBJECTS = $(am_Parsetexi_la_OBJECTS)
 Parsetexi_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
@@ -282,6 +296,7 @@ am__depfiles_remade = ./$(DEPDIR)/MiscXS.Plo ./$(DEPDIR)/TestXS.Plo \
 	parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo \
 	parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo \
 	parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo \
+	parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Plo \
 	parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo \
 	parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
 am__mv = mv -f
@@ -516,16 +531,19 @@ GL_GNULIB_GETOPT_POSIX = @GL_GNULIB_GETOPT_POSIX@
 GL_GNULIB_GETPAGESIZE = @GL_GNULIB_GETPAGESIZE@
 GL_GNULIB_GETPASS = @GL_GNULIB_GETPASS@
 GL_GNULIB_GETPASS_GNU = @GL_GNULIB_GETPASS_GNU@
+GL_GNULIB_GETPROGNAME = @GL_GNULIB_GETPROGNAME@
 GL_GNULIB_GETSUBOPT = @GL_GNULIB_GETSUBOPT@
 GL_GNULIB_GETUSERSHELL = @GL_GNULIB_GETUSERSHELL@
 GL_GNULIB_GRANTPT = @GL_GNULIB_GRANTPT@
 GL_GNULIB_GROUP_MEMBER = @GL_GNULIB_GROUP_MEMBER@
+GL_GNULIB_ICONV = @GL_GNULIB_ICONV@
 GL_GNULIB_IMAXABS = @GL_GNULIB_IMAXABS@
 GL_GNULIB_IMAXDIV = @GL_GNULIB_IMAXDIV@
 GL_GNULIB_ISATTY = @GL_GNULIB_ISATTY@
 GL_GNULIB_ISWBLANK = @GL_GNULIB_ISWBLANK@
 GL_GNULIB_ISWCTYPE = @GL_GNULIB_ISWCTYPE@
 GL_GNULIB_ISWDIGIT = @GL_GNULIB_ISWDIGIT@
+GL_GNULIB_ISWPUNCT = @GL_GNULIB_ISWPUNCT@
 GL_GNULIB_ISWXDIGIT = @GL_GNULIB_ISWXDIGIT@
 GL_GNULIB_LCHOWN = @GL_GNULIB_LCHOWN@
 GL_GNULIB_LINK = @GL_GNULIB_LINK@
@@ -552,6 +570,8 @@ GL_GNULIB_MBSSEP = @GL_GNULIB_MBSSEP@
 GL_GNULIB_MBSSPN = @GL_GNULIB_MBSSPN@
 GL_GNULIB_MBSSTR = @GL_GNULIB_MBSSTR@
 GL_GNULIB_MBSTOK_R = @GL_GNULIB_MBSTOK_R@
+GL_GNULIB_MBSTOWCS = @GL_GNULIB_MBSTOWCS@
+GL_GNULIB_MBSZERO = @GL_GNULIB_MBSZERO@
 GL_GNULIB_MBTOWC = @GL_GNULIB_MBTOWC@
 GL_GNULIB_MDA_ACCESS = @GL_GNULIB_MDA_ACCESS@
 GL_GNULIB_MDA_CHDIR = @GL_GNULIB_MDA_CHDIR@
@@ -592,6 +612,7 @@ GL_GNULIB_MEMCHR = @GL_GNULIB_MEMCHR@
 GL_GNULIB_MEMMEM = @GL_GNULIB_MEMMEM@
 GL_GNULIB_MEMPCPY = @GL_GNULIB_MEMPCPY@
 GL_GNULIB_MEMRCHR = @GL_GNULIB_MEMRCHR@
+GL_GNULIB_MEMSET_EXPLICIT = @GL_GNULIB_MEMSET_EXPLICIT@
 GL_GNULIB_MKDTEMP = @GL_GNULIB_MKDTEMP@
 GL_GNULIB_MKOSTEMP = @GL_GNULIB_MKOSTEMP@
 GL_GNULIB_MKOSTEMPS = @GL_GNULIB_MKOSTEMPS@
@@ -765,12 +786,15 @@ HAVE_DECL_GETLOGIN = @HAVE_DECL_GETLOGIN@
 HAVE_DECL_GETLOGIN_R = @HAVE_DECL_GETLOGIN_R@
 HAVE_DECL_GETPAGESIZE = @HAVE_DECL_GETPAGESIZE@
 HAVE_DECL_GETUSERSHELL = @HAVE_DECL_GETUSERSHELL@
+HAVE_DECL_GETW = @HAVE_DECL_GETW@
 HAVE_DECL_IMAXABS = @HAVE_DECL_IMAXABS@
 HAVE_DECL_IMAXDIV = @HAVE_DECL_IMAXDIV@
 HAVE_DECL_INITSTATE = @HAVE_DECL_INITSTATE@
 HAVE_DECL_MEMMEM = @HAVE_DECL_MEMMEM@
 HAVE_DECL_MEMRCHR = @HAVE_DECL_MEMRCHR@
 HAVE_DECL_OBSTACK_PRINTF = @HAVE_DECL_OBSTACK_PRINTF@
+HAVE_DECL_PROGRAM_INVOCATION_NAME = @HAVE_DECL_PROGRAM_INVOCATION_NAME@
+HAVE_DECL_PUTW = @HAVE_DECL_PUTW@
 HAVE_DECL_SETENV = @HAVE_DECL_SETENV@
 HAVE_DECL_SETHOSTNAME = @HAVE_DECL_SETHOSTNAME@
 HAVE_DECL_SETSTATE = @HAVE_DECL_SETSTATE@
@@ -813,15 +837,19 @@ HAVE_GETHOSTNAME = @HAVE_GETHOSTNAME@
 HAVE_GETLOGIN = @HAVE_GETLOGIN@
 HAVE_GETPAGESIZE = @HAVE_GETPAGESIZE@
 HAVE_GETPASS = @HAVE_GETPASS@
+HAVE_GETPROGNAME = @HAVE_GETPROGNAME@
 HAVE_GETSUBOPT = @HAVE_GETSUBOPT@
 HAVE_GRANTPT = @HAVE_GRANTPT@
 HAVE_GROUP_MEMBER = @HAVE_GROUP_MEMBER@
+HAVE_IMAXABS = @HAVE_IMAXABS@
+HAVE_IMAXDIV = @HAVE_IMAXDIV@
 HAVE_IMAXDIV_T = @HAVE_IMAXDIV_T@
 HAVE_INITSTATE = @HAVE_INITSTATE@
 HAVE_INTTYPES_H = @HAVE_INTTYPES_H@
 HAVE_ISWBLANK = @HAVE_ISWBLANK@
 HAVE_ISWCNTRL = @HAVE_ISWCNTRL@
 HAVE_LCHOWN = @HAVE_LCHOWN@
+HAVE_LIBUNISTRING = @HAVE_LIBUNISTRING@
 HAVE_LINK = @HAVE_LINK@
 HAVE_LINKAT = @HAVE_LINKAT@
 HAVE_MAX_ALIGN_T = @HAVE_MAX_ALIGN_T@
@@ -833,6 +861,7 @@ HAVE_MBSNRTOWCS = @HAVE_MBSNRTOWCS@
 HAVE_MBSRTOWCS = @HAVE_MBSRTOWCS@
 HAVE_MBTOWC = @HAVE_MBTOWC@
 HAVE_MEMPCPY = @HAVE_MEMPCPY@
+HAVE_MEMSET_EXPLICIT = @HAVE_MEMSET_EXPLICIT@
 HAVE_MKDTEMP = @HAVE_MKDTEMP@
 HAVE_MKOSTEMP = @HAVE_MKOSTEMP@
 HAVE_MKOSTEMPS = @HAVE_MKOSTEMPS@
@@ -894,6 +923,7 @@ HAVE_SYS_LOADAVG_H = @HAVE_SYS_LOADAVG_H@
 HAVE_SYS_PARAM_H = @HAVE_SYS_PARAM_H@
 HAVE_SYS_TYPES_H = @HAVE_SYS_TYPES_H@
 HAVE_UNISTD_H = @HAVE_UNISTD_H@
+HAVE_UNISTRING_WOE32DLL_H = @HAVE_UNISTRING_WOE32DLL_H@
 HAVE_UNLINKAT = @HAVE_UNLINKAT@
 HAVE_UNLOCKPT = @HAVE_UNLOCKPT@
 HAVE_USLEEP = @HAVE_USLEEP@
@@ -939,6 +969,8 @@ HAVE_WMEMMOVE = @HAVE_WMEMMOVE@
 HAVE_WMEMPCPY = @HAVE_WMEMPCPY@
 HAVE_WMEMSET = @HAVE_WMEMSET@
 HAVE__EXIT = @HAVE__EXIT@
+ICONV_CONST = @ICONV_CONST@
+ICONV_H = @ICONV_H@
 INCLUDE_NEXT = @INCLUDE_NEXT@
 INCLUDE_NEXT_AS_FIRST_DIRECTIVE = @INCLUDE_NEXT_AS_FIRST_DIRECTIVE@
 INSTALL = @INSTALL@
@@ -950,6 +982,10 @@ INT32_MAX_LT_INTMAX_MAX = @INT32_MAX_LT_INTMAX_MAX@
 INT64_MAX_EQ_LONG_MAX = @INT64_MAX_EQ_LONG_MAX@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+LC_COLLATE_IMPLEMENTED = @LC_COLLATE_IMPLEMENTED@
+LC_MONETARY_IMPLEMENTED = @LC_MONETARY_IMPLEMENTED@
+LC_NUMERIC_IMPLEMENTED = @LC_NUMERIC_IMPLEMENTED@
+LC_TIME_IMPLEMENTED = @LC_TIME_IMPLEMENTED@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBICONV = @LIBICONV@
@@ -957,15 +993,23 @@ LIBINTL = @LIBINTL@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
+LIBUNISTRING = @LIBUNISTRING@
+LIBUNISTRING_PREFIX = @LIBUNISTRING_PREFIX@
+LIBUNISTRING_UNICONV_H = @LIBUNISTRING_UNICONV_H@
+LIBUNISTRING_UNISTR_H = @LIBUNISTRING_UNISTR_H@
 LIBUNISTRING_UNITYPES_H = @LIBUNISTRING_UNITYPES_H@
 LIBUNISTRING_UNIWIDTH_H = @LIBUNISTRING_UNIWIDTH_H@
 LIMITS_H = @LIMITS_H@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LOCALCHARSET_TESTS_ENVIRONMENT = @LOCALCHARSET_TESTS_ENVIRONMENT@
+LOCALE_FR_UTF8 = @LOCALE_FR_UTF8@
+LOCALE_JA = @LOCALE_JA@
+LOCALE_ZH_CN = @LOCALE_ZH_CN@
 LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
+LTLIBUNISTRING = @LTLIBUNISTRING@
 LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
@@ -977,6 +1021,7 @@ NEXT_ASSERT_H = @NEXT_ASSERT_H@
 NEXT_AS_FIRST_DIRECTIVE_ASSERT_H = @NEXT_AS_FIRST_DIRECTIVE_ASSERT_H@
 NEXT_AS_FIRST_DIRECTIVE_ERRNO_H = @NEXT_AS_FIRST_DIRECTIVE_ERRNO_H@
 NEXT_AS_FIRST_DIRECTIVE_FLOAT_H = @NEXT_AS_FIRST_DIRECTIVE_FLOAT_H@
+NEXT_AS_FIRST_DIRECTIVE_ICONV_H = @NEXT_AS_FIRST_DIRECTIVE_ICONV_H@
 NEXT_AS_FIRST_DIRECTIVE_INTTYPES_H = @NEXT_AS_FIRST_DIRECTIVE_INTTYPES_H@
 NEXT_AS_FIRST_DIRECTIVE_LIMITS_H = @NEXT_AS_FIRST_DIRECTIVE_LIMITS_H@
 NEXT_AS_FIRST_DIRECTIVE_STDDEF_H = @NEXT_AS_FIRST_DIRECTIVE_STDDEF_H@
@@ -990,6 +1035,7 @@ NEXT_AS_FIRST_DIRECTIVE_WCHAR_H = @NEXT_AS_FIRST_DIRECTIVE_WCHAR_H@
 NEXT_AS_FIRST_DIRECTIVE_WCTYPE_H = @NEXT_AS_FIRST_DIRECTIVE_WCTYPE_H@
 NEXT_ERRNO_H = @NEXT_ERRNO_H@
 NEXT_FLOAT_H = @NEXT_FLOAT_H@
+NEXT_ICONV_H = @NEXT_ICONV_H@
 NEXT_INTTYPES_H = @NEXT_INTTYPES_H@
 NEXT_LIMITS_H = @NEXT_LIMITS_H@
 NEXT_STDDEF_H = @NEXT_STDDEF_H@
@@ -1046,6 +1092,7 @@ REPLACE_COPY_FILE_RANGE = @REPLACE_COPY_FILE_RANGE@
 REPLACE_DPRINTF = @REPLACE_DPRINTF@
 REPLACE_DUP = @REPLACE_DUP@
 REPLACE_DUP2 = @REPLACE_DUP2@
+REPLACE_DUP3 = @REPLACE_DUP3@
 REPLACE_EXECL = @REPLACE_EXECL@
 REPLACE_EXECLE = @REPLACE_EXECLE@
 REPLACE_EXECLP = @REPLACE_EXECLP@
@@ -1056,6 +1103,7 @@ REPLACE_EXECVPE = @REPLACE_EXECVPE@
 REPLACE_FACCESSAT = @REPLACE_FACCESSAT@
 REPLACE_FCHOWNAT = @REPLACE_FCHOWNAT@
 REPLACE_FCLOSE = @REPLACE_FCLOSE@
+REPLACE_FDATASYNC = @REPLACE_FDATASYNC@
 REPLACE_FDOPEN = @REPLACE_FDOPEN@
 REPLACE_FFLUSH = @REPLACE_FFLUSH@
 REPLACE_FFSLL = @REPLACE_FFSLL@
@@ -1074,17 +1122,27 @@ REPLACE_GETCWD = @REPLACE_GETCWD@
 REPLACE_GETDELIM = @REPLACE_GETDELIM@
 REPLACE_GETDOMAINNAME = @REPLACE_GETDOMAINNAME@
 REPLACE_GETDTABLESIZE = @REPLACE_GETDTABLESIZE@
+REPLACE_GETENTROPY = @REPLACE_GETENTROPY@
 REPLACE_GETGROUPS = @REPLACE_GETGROUPS@
 REPLACE_GETLINE = @REPLACE_GETLINE@
+REPLACE_GETLOADAVG = @REPLACE_GETLOADAVG@
 REPLACE_GETLOGIN_R = @REPLACE_GETLOGIN_R@
 REPLACE_GETPAGESIZE = @REPLACE_GETPAGESIZE@
 REPLACE_GETPASS = @REPLACE_GETPASS@
 REPLACE_GETPASS_FOR_GETPASS_GNU = @REPLACE_GETPASS_FOR_GETPASS_GNU@
+REPLACE_GETPROGNAME = @REPLACE_GETPROGNAME@
+REPLACE_GETSUBOPT = @REPLACE_GETSUBOPT@
+REPLACE_ICONV = @REPLACE_ICONV@
+REPLACE_ICONV_OPEN = @REPLACE_ICONV_OPEN@
+REPLACE_ICONV_UTF = @REPLACE_ICONV_UTF@
+REPLACE_IMAXABS = @REPLACE_IMAXABS@
+REPLACE_IMAXDIV = @REPLACE_IMAXDIV@
 REPLACE_INITSTATE = @REPLACE_INITSTATE@
 REPLACE_ISATTY = @REPLACE_ISATTY@
 REPLACE_ISWBLANK = @REPLACE_ISWBLANK@
 REPLACE_ISWCNTRL = @REPLACE_ISWCNTRL@
 REPLACE_ISWDIGIT = @REPLACE_ISWDIGIT@
+REPLACE_ISWPUNCT = @REPLACE_ISWPUNCT@
 REPLACE_ISWXDIGIT = @REPLACE_ISWXDIGIT@
 REPLACE_ITOLD = @REPLACE_ITOLD@
 REPLACE_LCHOWN = @REPLACE_LCHOWN@
@@ -1099,15 +1157,22 @@ REPLACE_MBSINIT = @REPLACE_MBSINIT@
 REPLACE_MBSNRTOWCS = @REPLACE_MBSNRTOWCS@
 REPLACE_MBSRTOWCS = @REPLACE_MBSRTOWCS@
 REPLACE_MBSTATE_T = @REPLACE_MBSTATE_T@
+REPLACE_MBSTOWCS = @REPLACE_MBSTOWCS@
 REPLACE_MBTOWC = @REPLACE_MBTOWC@
+REPLACE_MB_CUR_MAX = @REPLACE_MB_CUR_MAX@
 REPLACE_MEMCHR = @REPLACE_MEMCHR@
 REPLACE_MEMMEM = @REPLACE_MEMMEM@
+REPLACE_MEMPCPY = @REPLACE_MEMPCPY@
+REPLACE_MKOSTEMP = @REPLACE_MKOSTEMP@
+REPLACE_MKOSTEMPS = @REPLACE_MKOSTEMPS@
 REPLACE_MKSTEMP = @REPLACE_MKSTEMP@
 REPLACE_NULL = @REPLACE_NULL@
 REPLACE_OBSTACK_PRINTF = @REPLACE_OBSTACK_PRINTF@
 REPLACE_PERROR = @REPLACE_PERROR@
+REPLACE_PIPE2 = @REPLACE_PIPE2@
 REPLACE_POPEN = @REPLACE_POPEN@
 REPLACE_POSIX_MEMALIGN = @REPLACE_POSIX_MEMALIGN@
+REPLACE_POSIX_OPENPT = @REPLACE_POSIX_OPENPT@
 REPLACE_PREAD = @REPLACE_PREAD@
 REPLACE_PRINTF = @REPLACE_PRINTF@
 REPLACE_PTSNAME = @REPLACE_PTSNAME@
@@ -1129,12 +1194,14 @@ REPLACE_RENAME = @REPLACE_RENAME@
 REPLACE_RENAMEAT = @REPLACE_RENAMEAT@
 REPLACE_RMDIR = @REPLACE_RMDIR@
 REPLACE_SETENV = @REPLACE_SETENV@
+REPLACE_SETHOSTNAME = @REPLACE_SETHOSTNAME@
 REPLACE_SETSTATE = @REPLACE_SETSTATE@
 REPLACE_SLEEP = @REPLACE_SLEEP@
 REPLACE_SNPRINTF = @REPLACE_SNPRINTF@
 REPLACE_SPRINTF = @REPLACE_SPRINTF@
 REPLACE_STDIO_READ_FUNCS = @REPLACE_STDIO_READ_FUNCS@
 REPLACE_STDIO_WRITE_FUNCS = @REPLACE_STDIO_WRITE_FUNCS@
+REPLACE_STPCPY = @REPLACE_STPCPY@
 REPLACE_STPNCPY = @REPLACE_STPNCPY@
 REPLACE_STRCASESTR = @REPLACE_STRCASESTR@
 REPLACE_STRCHRNUL = @REPLACE_STRCHRNUL@
@@ -1173,21 +1240,29 @@ REPLACE_VPRINTF = @REPLACE_VPRINTF@
 REPLACE_VSNPRINTF = @REPLACE_VSNPRINTF@
 REPLACE_VSPRINTF = @REPLACE_VSPRINTF@
 REPLACE_WCRTOMB = @REPLACE_WCRTOMB@
+REPLACE_WCSCMP = @REPLACE_WCSCMP@
 REPLACE_WCSFTIME = @REPLACE_WCSFTIME@
+REPLACE_WCSNCMP = @REPLACE_WCSNCMP@
 REPLACE_WCSNRTOMBS = @REPLACE_WCSNRTOMBS@
 REPLACE_WCSRTOMBS = @REPLACE_WCSRTOMBS@
+REPLACE_WCSSTR = @REPLACE_WCSSTR@
 REPLACE_WCSTOK = @REPLACE_WCSTOK@
 REPLACE_WCSWIDTH = @REPLACE_WCSWIDTH@
 REPLACE_WCTOB = @REPLACE_WCTOB@
 REPLACE_WCTOMB = @REPLACE_WCTOMB@
+REPLACE_WCTRANS = @REPLACE_WCTRANS@
+REPLACE_WCTYPE = @REPLACE_WCTYPE@
 REPLACE_WCWIDTH = @REPLACE_WCWIDTH@
+REPLACE_WMEMCMP = @REPLACE_WMEMCMP@
+REPLACE_WMEMPCPY = @REPLACE_WMEMPCPY@
 REPLACE_WRITE = @REPLACE_WRITE@
+REPLACE__EXIT = @REPLACE__EXIT@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 SIG_ATOMIC_T_SUFFIX = @SIG_ATOMIC_T_SUFFIX@
 SIZE_T_SUFFIX = @SIZE_T_SUFFIX@
-STDALIGN_H = @STDALIGN_H@
+STDCKDINT_H = @STDCKDINT_H@
 STDDEF_H = @STDDEF_H@
 STDINT_H = @STDINT_H@
 STRIP = @STRIP@
@@ -1270,7 +1345,7 @@ top_srcdir = @top_srcdir@
 
 # Makefile.am for XS modules
 #
-# Copyright 2015-2020 Free Software Foundation, Inc.
+# Copyright 2015-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -1286,7 +1361,7 @@ AUTOMAKE_OPTIONS = foreign subdir-objects
 EXTRA_DIST = gnulib/m4/gnulib-cache.m4 TestXS.pm TestXS.xs \
 	XSParagraph.xs MiscXS.xs $(p)/command_data.c $(p)/Parsetexi.xs \
 	$(p)/element_types.txt $(p)/element_types.awk \
-	$(p)/command_data.txt $(p)/command_data.awk
+	$(p)/command_data.awk
 
 ######################## Gnulib ################################
 
@@ -1316,7 +1391,7 @@ AM_CFLAGS = $(PERL_CONF_ccflags) $(PERL_CONF_optimize) \
 AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags) \
 	$(PLATFORM_LDFLAGS)
 XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la
-XSParagraph_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
+XSParagraph_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV) $(LTLIBUNISTRING)
 
 ########################## parsetexi
 p = parsetexi
@@ -1345,6 +1420,7 @@ Parsetexi_la_SOURCES = parsetexi/Parsetexi.c \
 		      parsetexi/context_stack.c \
 		      parsetexi/context_stack.h \
 		      parsetexi/debug.c \
+		      parsetexi/debug.h \
 		      parsetexi/convert.c \
 		      parsetexi/convert.h \
 		      parsetexi/end_line.c \
@@ -1365,10 +1441,12 @@ Parsetexi_la_SOURCES = parsetexi/Parsetexi.c \
 		      parsetexi/errors.c \
 		      parsetexi/errors.h \
 		      parsetexi/counter.c \
-		      parsetexi/counter.h
+		      parsetexi/counter.h \
+		      parsetexi/source_marks.c \
+		      parsetexi/source_marks.h
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
-Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
+Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV) $(LTLIBUNISTRING)
 
 # To locate include files under out-of-source builds.
 Parsetexi_la_CPPFLAGS = -I$(srcdir)/parsetexi $(AM_CPPFLAGS)
@@ -1524,6 +1602,8 @@ parsetexi/Parsetexi_la-errors.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
 parsetexi/Parsetexi_la-counter.lo: parsetexi/$(am__dirstamp) \
 	parsetexi/$(DEPDIR)/$(am__dirstamp)
+parsetexi/Parsetexi_la-source_marks.lo: parsetexi/$(am__dirstamp) \
+	parsetexi/$(DEPDIR)/$(am__dirstamp)
 
 Parsetexi.la: $(Parsetexi_la_OBJECTS) $(Parsetexi_la_DEPENDENCIES) $(EXTRA_Parsetexi_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(Parsetexi_la_LINK) $(am_Parsetexi_la_rpath) $(Parsetexi_la_OBJECTS) $(Parsetexi_la_LIBADD) $(LIBS)
@@ -1571,6 +1651,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo@am__quote@ # am--include-marker
 
@@ -1778,6 +1859,13 @@ parsetexi/Parsetexi_la-counter.lo: parsetexi/counter.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/counter.c' object='parsetexi/Parsetexi_la-counter.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(Parsetexi_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-counter.lo `test -f 'parsetexi/counter.c' || echo '$(srcdir)/'`parsetexi/counter.c
+
+parsetexi/Parsetexi_la-source_marks.lo: parsetexi/source_marks.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(Parsetexi_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT parsetexi/Parsetexi_la-source_marks.lo -MD -MP -MF parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Tpo -c -o parsetexi/Parsetexi_la-source_marks.lo `test -f 'parsetexi/source_marks.c' || echo '$(srcdir)/'`parsetexi/source_marks.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Tpo parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='parsetexi/source_marks.c' object='parsetexi/Parsetexi_la-source_marks.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(Parsetexi_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o parsetexi/Parsetexi_la-source_marks.lo `test -f 'parsetexi/source_marks.c' || echo '$(srcdir)/'`parsetexi/source_marks.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -2193,6 +2281,7 @@ distclean: distclean-recursive
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo
+	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
 	-rm -f Makefile
@@ -2272,6 +2361,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-multitable.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-parser.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-separator.Plo
+	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-source_marks.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-text.Plo
 	-rm -f parsetexi/$(DEPDIR)/Parsetexi_la-tree.Plo
 	-rm -f Makefile
@@ -2335,9 +2425,9 @@ $(srcdir)/$(p)/element_types.c $(srcdir)/$(p)/element_types.h: $(p)/element_type
 	$(GAWK) -v srcdir=$(srcdir)/$(p) -f $(srcdir)/$(p)/element_types.awk \
 	     $(srcdir)/$(p)/element_types.txt
 
-$(srcdir)/$(p)/command_data.c $(srcdir)/$(p)/command_ids.h: $(p)/command_data.txt $(p)/command_data.awk
+$(srcdir)/$(p)/command_data.c $(srcdir)/$(p)/command_ids.h: ../command_data.txt $(p)/command_data.awk
 	$(GAWK) -v srcdir=$(srcdir)/$(p) -f $(srcdir)/$(p)/command_data.awk \
-	     $(srcdir)/$(p)/command_data.txt
+	     $(srcdir)/../command_data.txt
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

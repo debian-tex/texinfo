@@ -21,9 +21,11 @@ $result_trees{'empty_line_in_email'} = {
                       'type' => 'empty_line'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' 
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }

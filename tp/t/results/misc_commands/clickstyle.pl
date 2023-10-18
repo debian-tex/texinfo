@@ -13,16 +13,13 @@ $result_trees{'clickstyle'} = {
           'args' => [
             {
               'text' => '@result',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'clickstyle',
-          'extra' => {
+          'info' => {
             'arg_line' => ' @result
-',
-            'misc_args' => [
-              '@result'
-            ]
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -62,6 +59,67 @@ $result_trees{'clickstyle'} = {
             }
           ],
           'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => '@equiv',
+              'type' => 'rawline_arg'
+            }
+          ],
+          'cmdname' => 'clickstyle',
+          'info' => {
+            'arg_line' => '@equiv
+'
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'text' => 'A '
+            },
+            {
+              'args' => [
+                {
+                  'type' => 'brace_command_arg'
+                }
+              ],
+              'cmdname' => 'click',
+              'extra' => {
+                'clickstyle' => 'equiv'
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => ' (equiv no space)
+'
+            }
+          ],
+          'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'
@@ -73,11 +131,20 @@ $result_trees{'clickstyle'} = {
 $result_texis{'clickstyle'} = '@clickstyle @result
 
 A @click{} (result).
+
+@clickstyle@equiv
+
+A @click{} (equiv no space)
+
 ';
 
 
 $result_texts{'clickstyle'} = '
 A => (result).
+
+
+A == (equiv no space)
+
 ';
 
 $result_errors{'clickstyle'} = [];

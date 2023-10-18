@@ -21,6 +21,11 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                           'text' => 'a'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ]
+                      },
                       'type' => 'brace_command_arg'
                     },
                     {
@@ -49,13 +54,6 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                     }
                   ],
                   'cmdname' => 'ref',
-                  'extra' => {
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ]
-                    }
-                  },
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 1,
@@ -83,9 +81,6 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'an-anchor'
                   },
                   'source_info' => {
@@ -102,8 +97,10 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                   'text' => 'on example line'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             },
@@ -117,16 +114,20 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                           'text' => 'in center'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'center',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -135,8 +136,10 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -151,17 +154,23 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -170,8 +179,10 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -185,8 +196,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'example_invalid_at_commands_arguments'} = '@example @ref{a,b,c,d} fa, @anchor{an anchor} on example line, @center in center
 @end example
@@ -197,30 +207,30 @@ $result_texts{'example_invalid_at_commands_arguments'} = '';
 
 $result_errors{'example_invalid_at_commands_arguments'} = [
   {
-    'error_line' => 'warning: @ref should not appear in @example
+    'error_line' => 'warning: @ref should not appear on @example line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@ref should not appear in @example',
+    'text' => '@ref should not appear on @example line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @example
+    'error_line' => 'warning: @anchor should not appear on @example line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor should not appear in @example',
+    'text' => '@anchor should not appear on @example line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @center should not appear in @example
+    'error_line' => 'warning: @center should not appear on @example line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@center should not appear in @example',
+    'text' => '@center should not appear on @example line',
     'type' => 'warning'
   }
 ];
@@ -274,7 +284,8 @@ $result_converted{'docbook'}->{'example_invalid_at_commands_arguments'} = '';
 
 
 $result_converted{'xml'}->{'example_invalid_at_commands_arguments'} = '<example spaces=" " endspaces=" "><examplelanguage><ref label="a" manual="d"><xrefnodename>a</xrefnodename><xrefinfoname>b</xrefinfoname><xrefprinteddesc>c</xrefprinteddesc><xrefinfofile>d</xrefinfofile></ref> fa</examplelanguage><examplearg spaces=" "><anchor name="an-anchor">an anchor</anchor> on example line</examplearg><examplearg spaces=" "><center spaces=" ">in center</center>
-</examplearg></example>
+</examplearg>
+</example>
 ';
 
 

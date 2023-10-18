@@ -18,9 +18,11 @@ $result_trees{'not_closed_item'} = {
                   'type' => 'command_as_argument_inserted'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }

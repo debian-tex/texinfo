@@ -1,6 +1,6 @@
 /* session.c -- user windowing interface to Info.
 
-   Copyright 1993-2022 Free Software Foundation, Inc.
+   Copyright 1993-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2952,23 +2952,20 @@ info_handle_pointer (char *label, WINDOW *window)
       return 0;
     }
 
-  /* If we are going up, set the cursor position to the last place it
-     was in the node. */
+  /* If we are going up, look for the current node in the menu. */
   if (strcmp (label, "Up") == 0)
     {
-      int i;
+      REFERENCE **r;
 
-      for (i = window->hist_index - 1; i >= 0; i--)
+      for (r = node->references; (*r); r++)
         {
-          NODE *p = window->hist[i]->node;
-
-          if (p->fullpath && !strcmp (p->fullpath, node->fullpath)
-              && p->nodename && !strcmp (p->nodename, node->nodename))
-            break;
+          if ((*r)->type == REFERENCE_MENU_ITEM
+              && strcmp ((*r)->nodename, window->node->nodename) == 0)
+            {
+              node->display_pos = (*r)->start;
+              break;
+            }
         }
-
-      if (i >= 0)
-        node->display_pos = window->hist[i]->point;
     }
 
   info_set_node_of_window (window, node);

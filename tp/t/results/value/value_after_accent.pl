@@ -13,21 +13,17 @@ $result_trees{'value_after_accent'} = {
           'args' => [
             {
               'text' => 'a_letter',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'a',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' a_letter a
-',
-            'misc_args' => [
-              'a_letter',
-              'a'
-            ]
+'
           }
         },
         {
@@ -44,14 +40,40 @@ $result_trees{'value_after_accent'} = {
                 }
               ],
               'cmdname' => 'ringaccent',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'element' => {
+                        'args' => [
+                          {
+                            'text' => 'a_letter'
+                          }
+                        ],
+                        'cmdname' => 'value'
+                      },
+                      'line' => 'a',
+                      'position' => 1,
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'start'
+                    }
+                  ],
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 2,
                 'macro' => ''
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ]
             },
             {
               'text' => '
@@ -69,11 +91,39 @@ $result_trees{'value_after_accent'} = {
                 }
               ],
               'cmdname' => '~',
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'element' => {
+                        'args' => [
+                          {
+                            'text' => 'a_letter'
+                          }
+                        ],
+                        'cmdname' => 'value'
+                      },
+                      'line' => 'a',
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'start'
+                    }
+                  ],
+                  'text' => ''
+                }
+              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
                 'macro' => ''
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ]
             }
           ],
           'type' => 'paragraph'

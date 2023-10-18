@@ -1,0 +1,12 @@
+
+# There is no API to set $self->{'line_break_element'}.
+
+texinfo_register_handler('setup', \&_texi2any_tests_set_line_break_element);
+
+sub _texi2any_tests_set_line_break_element
+{
+  my ($self, $tree, $stage) = @_;
+
+  $self->{'line_break_element'} = '<br >';
+  return 0;
+}

@@ -35,16 +35,20 @@ $result_trees{'heading_in_footnote'} = {
                               'text' => 'H1'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'heading',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -60,27 +64,26 @@ $result_trees{'heading_in_footnote'} = {
                               'text' => 'ind e'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'cindex',
                       'extra' => {
-                        'index_entry' => {
-                          'content_normalized' => [],
-                          'entry_content' => [],
-                          'entry_element' => {},
-                          'entry_number' => 1,
-                          'in_code' => 0,
-                          'index_at_command' => 'cindex',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'cp',
-                          'index_type_command' => 'cindex'
-                        },
-                        'spaces_before_argument' => ' '
+                        'index_entry' => [
+                          'cp',
+                          1
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -103,9 +106,11 @@ $result_trees{'heading_in_footnote'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -126,9 +131,6 @@ $result_trees{'heading_in_footnote'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'heading_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'heading_in_footnote'} = 'T@footnote{
 AAA
@@ -187,7 +189,7 @@ $result_converted{'html_text'}->{'heading_in_footnote'} = '<p>T<a class="footnot
 
 <h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>AAA
-</p><h3 class="heading" id="H1">H1</h3>
+</p><h3 class="heading" id="H1"><span>H1<a class="copiable-link" href="#H1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-ind-e"></a>
 <p>BBB
 </p>

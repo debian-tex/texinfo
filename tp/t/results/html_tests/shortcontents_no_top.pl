@@ -18,9 +18,11 @@ $result_trees{'shortcontents_no_top'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -33,8 +35,10 @@ $result_trees{'shortcontents_no_top'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -50,9 +54,11 @@ $result_trees{'shortcontents_no_top'} = {
               'text' => 'chap2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -65,8 +71,10 @@ $result_trees{'shortcontents_no_top'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -82,9 +90,11 @@ $result_trees{'shortcontents_no_top'} = {
               'text' => 'sec'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -101,7 +111,7 @@ $result_trees{'shortcontents_no_top'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'shortcontents',
@@ -112,8 +122,10 @@ $result_trees{'shortcontents_no_top'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -151,7 +163,6 @@ $result_sectioning{'shortcontents_no_top'} = {
     'section_childs' => [
       {
         'cmdname' => 'chapter',
-        'extra' => {},
         'structure' => {
           'section_level' => 1,
           'section_number' => 1,
@@ -160,12 +171,10 @@ $result_sectioning{'shortcontents_no_top'} = {
       },
       {
         'cmdname' => 'chapter',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
               'cmdname' => 'section',
-              'extra' => {},
               'structure' => {
                 'section_level' => 2,
                 'section_number' => '2.1',
@@ -212,6 +221,8 @@ $result_converted{'html'}->{'shortcontents_no_top'} = '<!DOCTYPE html>
 
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -221,17 +232,17 @@ ul.toc-numbered-mark {list-style: none}
 
 <body lang="en">
 <div class="chapter-level-extent" id="chap">
-<h2 class="chapter">1 chap</h2>
+<h2 class="chapter"><span>1 chap<a class="copiable-link" href="#chap"> &para;</a></span></h2>
 
 </div>
 <div class="chapter-level-extent" id="chap2">
-<h2 class="chapter">2 chap2</h2>
+<h2 class="chapter"><span>2 chap2<a class="copiable-link" href="#chap2"> &para;</a></span></h2>
 
 <ul class="mini-toc">
 <li><a href="#sec" accesskey="1">sec</a></li>
 </ul>
 <div class="section-level-extent" id="sec">
-<h3 class="section">2.1 sec</h3>
+<h3 class="section"><span>2.1 sec<a class="copiable-link" href="#sec"> &para;</a></span></h3>
 
 <div class="element-shortcontents" id="SEC_Shortcontents">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>

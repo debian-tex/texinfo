@@ -1,6 +1,6 @@
-texinfo/tp/t/README
+tp/t/README
 
-  Copyright 2010-2022 Free Software Foundation, Inc.
+  Copyright 2010-2023 Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
@@ -11,10 +11,16 @@ other copyright notice are hereby placed in the public domain.
 
 See also the tests in the tp/tests directory.
 
+See tp/README for the Perl module requirements for running these
+tests.
 
 These tests are run by "make check" under tp/.  (The test files are
-listed in tp/Makefile.tres, which is a generated file.)  A single .t
-test file can be run on its own with
+listed in tp/Makefile.tres, which is a generated file.)
+
+When running the tests after a git pull, if getting failures, re-run
+make to ensure XS modules are rebuilt.
+
+A single .t test file can be run on its own with
 
   perl -w t/03coverage_braces.t
 
@@ -27,8 +33,8 @@ Another way to run a test out-source is:
   s=../../tp
   srcdir=$s ../pre-inst-env perl -w $s/t/92formatting.t empty
 
-where s is the path to the srcdir.  This allows you to run a single
-sub-test, here the sub-test with name "empty".
+where s is the path to the srcdir.  This allows you to run specific
+sub-tests, here the sub-test with name "empty".
 
 Most test files use a testing infrastructure from t/test_utils.pl.
 The run_all function from that file runs the tests that have been
@@ -80,7 +86,7 @@ file, as in
 
   perl -w t/03coverage_braces.t -g
 
-To regenerate a specific test reference file, the test name should be
+To regenerate specific tests reference files, the test names should be
 given as an argument.  For example, to just regenerate the reference
 files for the "test_image" test within t/03.coverage_braces.t, run
 
@@ -112,10 +118,19 @@ tests in t_texis/$test_category/ by running something along the lines of:
 
   perl -w t/60macro.t -c
 
-to create a Texinfo file for each of the tests in t/60macro.t, or for a
-specific test, here arg_body_expansion_order:
+to create a Texinfo file for each of the tests in t/60macro.t, or for
+specific tests, here arg_body_expansion_order:
 
   perl -w t/60macro.t -c arg_body_expansion_order
+
+iWith -c, there will be a warning if there is a Top node but no @chapter
+nor equivalent @-commands nor a node which names starts by chap.  This
+is because in some output formats, and in particular in LaTeX, Top node content
+is not output, so it is possible to have useless tests for such output formats.
+If there is no @chapter nor equivalent @-commands but there are nodes
+to stop the Top node to get a usefull test, prepend their name by 'chap'
+such that they are recognized as chapter-like nodes.  Also note that it is
+not a problem if some tests cause this warning, as long as it is on purpose.
 
 The output files will be created with -o, in t/output_files/$test_category/
 

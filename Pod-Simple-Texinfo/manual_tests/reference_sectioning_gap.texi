@@ -1,0 +1,33 @@
+\input texinfo
+@settitle top
+@shorttitlepage top
+@headings on
+
+@contents
+
+@node Top
+@top top
+
+@menu
+* Th1::
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Th1
+
+* Th1 Th1::
+
+Th1
+
+* Th1 1::
+
+@asis{}
+
+* Th1 Th3::
+@end detailmenu
+@end menu
+
+@include Th1.texi
+
+@bye

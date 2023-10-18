@@ -10,13 +10,13 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [7.0.3], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [7.1], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
 dnl parallel-tests as recommended by stefano.
-AM_INIT_AUTOMAKE([1.14 dist-xz
+AM_INIT_AUTOMAKE([1.16.2 dist-xz
                  info-in-builddir parallel-tests tar-ustar])
 
 # Where to generate output; srcdir location.
@@ -33,7 +33,7 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=7.0
+TEXINFO_DTD_VERSION=7.1
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Package date.
@@ -61,16 +61,26 @@ AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
 AC_MSG_CHECKING([Perl version and modules])
-if $PERL -e "use 5.008_001; use Encode; use Data::Dumper" >/dev/null 2>&1; then
+if $PERL -e "use 5.008_001; use Encode; use Data::Dumper; use Unicode::Normalize" >/dev/null 2>&1; then
   perl_version_requirement='yes'
 else
   perl_version_requirement='no'
 fi
 AC_MSG_RESULT($perl_version_requirement)
 if test z"$perl_version_requirement" = 'zno' ; then
-  AC_MSG_ERROR([perl >= 5.8.1 with Encode and Data::Dumper required by Texinfo.])
+  AC_MSG_ERROR([perl >= 5.8.1 with Encode, Data::Dumper and Unicode::Normalize required by Texinfo.])
 fi
 
+AC_MSG_CHECKING([Unicode::Collate])
+if $PERL -e "use 5.008_001; use Unicode::Collate;" >/dev/null 2>&1; then
+  unicode_collate='yes'
+else
+  unicode_collate='no'
+fi
+AC_MSG_RESULT($unicode_collate)
+if test z"$unicode_collate" = 'zno' ; then
+  AC_MSG_WARN([Unicode::Collate not present; indices may be sorted incorrectly])
+fi
 
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 
@@ -99,6 +109,63 @@ gl_EARLY
 
 # Rest of Gnulib.
 gl_INIT
+
+ICONV_CONVERTS_EUC_CN=no
+# partly based on gnulib/m4/iconv.m4
+if test "x$am_func_iconv" = "xyes" ; then
+   AC_CACHE_CHECK([whether iconv converts EUC-CN to UTF-8], [texinfo_cv_sys_iconv_converts_euc_cn], [
+      euc_cn_save_LIBS="$LIBS"
+      #if test $am_cv_lib_iconv = yes; then
+        LIBS="$LIBS $LIBICONV"
+      #fi
+      texinfo_cv_sys_iconv_converts_euc_cn=no
+      for euc_cn_iconv_const in '' 'const'; do
+  AC_RUN_IFELSE(
+   [AC_LANG_PROGRAM(
+                  [[
+#include <iconv.h>
+#include <string.h>
+
+#ifndef ICONV_CONST
+# define ICONV_CONST $euc_cn_iconv_const
+#endif
+             ]],
+             [[int result = 0;
+  {
+    iconv_t cd_euc_cn_to_utf8 = iconv_open ("UTF-8", "EUC-CN");
+    if (cd_euc_cn_to_utf8 != (iconv_t)(-1))
+      {
+        static ICONV_CONST char input[] = "abc";
+        char buf[10];
+        ICONV_CONST char *inptr = input;
+        size_t inbytesleft = strlen (input);
+        char *outptr = buf;
+        size_t outbytesleft = sizeof (buf);
+        size_t res = iconv (cd_euc_cn_to_utf8,
+                            &inptr, &inbytesleft,
+                            &outptr, &outbytesleft);
+        if (res != 0)
+          result |= 2;
+        if (strcmp(buf, input))
+          result |= 4;
+        iconv_close (cd_euc_cn_to_utf8);
+      }
+    else
+      result |= 1;
+  }
+  return result;
+]])],
+          [texinfo_cv_sys_iconv_converts_euc_cn=yes], ,)
+        test "$texinfo_cv_sys_iconv_converts_euc_cn" = no || break
+      done
+      LIBS="$euc_cn_save_LIBS"
+   ])
+  if test "$texinfo_cv_sys_iconv_converts_euc_cn" = yes; then
+    ICONV_CONVERTS_EUC_CN=yes
+  fi
+fi
+
+AC_SUBST([ICONV_CONVERTS_EUC_CN])
 
 # To generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
@@ -319,7 +386,7 @@ AC_SUBST([USE_UNICODE])
 AC_SUBST([USE_EXTERNAL_UNIDECODE])
 
 # i18n support.  To update to a new version of gettext, run:
-#   gettextize -f --po-dir=po --po-dir=po_document 
+#   gettextize -f --po-dir=po --po-dir=po_document
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
 AM_GNU_GETTEXT_VERSION([0.21])
 AM_GNU_GETTEXT([external])
@@ -349,7 +416,7 @@ case $srcdir in
     xs_srcdir=../../../$srcdir/tp ;;
 esac
 
-# Pass on all the options we were given to the subsidiary configure 
+# Pass on all the options we were given to the subsidiary configure
 # script.
 # Don't use AC_CONFIG_SUBDIRS for this because it isn't done right away,
 # and we need it for the check that follows.
@@ -391,7 +458,15 @@ AC_SUBST([enable_xs])
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
 # Texinfo JS Interface
-npm_path="${srcdir}/js/node_modules/.bin${PATH_SEPARATOR}$PATH"
+npm_path="${srcdir}/js/node_modules/.bin"
+if test -d "$npm_path" ; then
+  # We need an absolute path to the npm programs because they are run
+  # from inside the js/ subdirectory.
+  npm_path="`cd $npm_path && pwd`"
+  npm_path="${npm_path}${PATH_SEPARATOR}${PATH}"
+else
+  npm_path="${PATH}"
+fi
 
 AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
 AM_CONDITIONAL([HAVE_ESLINT], [test "x$ac_cv_path_ESLINT" != "x"])
@@ -429,7 +504,7 @@ AC_ARG_ENABLE([tp-tests],
      elif $PERL -e "use 5.007_003; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
      then
        tp_tests='yes'
-     else  
+     else
        tp_tests='no'
      fi
     ])
@@ -450,10 +525,20 @@ AC_ARG_ENABLE([perl-api-texi-build],
      if $PERL -e "use 5.007_003; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
      then
        build_perl_api_texi='yes'
-     else  
+     else
        build_perl_api_texi='no'
      fi
     ])
+
+AC_MSG_CHECKING([Perl version for tests requiring unicode collation])
+if $PERL -e "use 5.018_001; use Unicode::Collate" >/dev/null 2>&1; then
+  perl_unicode_collation_requirement='yes'
+else
+  perl_unicode_collation_requirement='no'
+fi
+AC_MSG_RESULT($perl_unicode_collation_requirement)
+PERL_UNICODE_COLLATE_OK=$perl_unicode_collation_requirement
+AC_SUBST([PERL_UNICODE_COLLATE_OK])
 
 AC_MSG_CHECKING([Perl Texinfo API texinfo documentation build requirements])
 AC_MSG_RESULT([$build_perl_api_texi])
@@ -485,7 +570,7 @@ AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 
 host_is_windows=no
 case "$host" in
    *-mingw32 | *-mingw64 | *-msdosdjgpp )  host_is_windows=yes ;;
-esac     
+esac
 AM_CONDITIONAL([HOST_IS_WINDOWS], [test "x$host_is_windows" = "xyes"])
 HOST_IS_WINDOWS_VARIABLE=
 if test "x$host_is_windows" = "xyes" ; then
@@ -510,10 +595,10 @@ AC_CONFIG_FILES([\
   tp/Makefile
   tp/tests/Makefile
   tp/tests/many_input_files/Makefile
-  tp/tests/sectioning/Makefile
   tp/tests/formatting/Makefile
-  tp/tests/indices/Makefile
-  tp/tests/contents/Makefile   
+  tp/tests/encoded/Makefile
+  tp/tests/coverage/Makefile
+  tp/tests/customization/Makefile
   tp/tests/nested_formats/Makefile
   tp/tests/layout/Makefile
   tp/tests/tex_html/Makefile
@@ -532,4 +617,9 @@ AC_OUTPUT
 if test $have_termlib = no; then
   AC_MSG_WARN([Could not find a terminal library among ${TERMLIB_VARIANTS}])
   AC_MSG_WARN([The programs from `info' directory will not be built.])
+fi
+
+if test $unicode_collate = no; then
+  AC_MSG_WARN([Perl module Unicode::Collate was not found.])
+  AC_MSG_WARN([texi2any may sort document indices incorrectly.])
 fi

@@ -18,22 +18,16 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'type' => 'command_as_argument_inserted'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -75,17 +69,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -95,8 +95,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -117,24 +121,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'x'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -175,17 +175,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -194,8 +200,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -222,24 +230,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -280,17 +284,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -300,8 +310,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -333,24 +347,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -391,17 +401,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -411,8 +427,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -428,22 +448,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -485,17 +499,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -505,8 +525,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => '1',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => '1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -527,24 +551,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'a'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -585,17 +605,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -605,8 +631,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => 'a',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => 'a'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -633,24 +663,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' table
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' table
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -669,16 +695,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                               'text' => 'it'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -700,17 +730,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -720,8 +756,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -737,22 +777,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' quot no arg
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' quot no arg
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -777,17 +811,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -796,8 +836,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -818,24 +860,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'quotarg'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' quot arg
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' quot arg
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -859,17 +897,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -878,8 +922,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -895,22 +941,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -935,17 +975,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'group'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'group'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -954,8 +1000,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -971,22 +1019,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -1011,17 +1053,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1030,8 +1078,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1081,25 +1131,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'second arg'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' ',
-                'spaces_before_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1123,17 +1171,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1142,8 +1196,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1172,8 +1228,10 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'second'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             },
@@ -1183,25 +1241,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'third'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' ',
-                'spaces_before_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1225,17 +1281,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1244,8 +1306,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1282,8 +1346,10 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'third'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             },
@@ -1293,25 +1359,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'fourth'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' ',
-                'spaces_before_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1335,17 +1399,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1354,8 +1424,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1371,22 +1443,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -1411,17 +1477,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'display'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'display'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1430,8 +1502,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1456,24 +1530,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                           'text' => '0.4 0.6'
                         }
                       ],
-                      'extra' => {
+                      'info' => {
                         'comment_at_end' => {
                           'args' => [
                             {
                               'text' => ' comm
 ',
-                              'type' => 'misc_arg'
+                              'type' => 'rawline_arg'
                             }
                           ],
-                          'cmdname' => 'c',
-                          'extra' => {
-                            'misc_args' => [
-                              ' comm
-'
-                            ]
-                          }
+                          'cmdname' => 'c'
                         },
-                        'spaces_after_argument' => ' '
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -1483,8 +1553,12 @@ $result_trees{'comments_on_block_command_lines'} = {
                     'misc_args' => [
                       '0.4',
                       '0.6'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1570,17 +1644,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1591,8 +1671,12 @@ $result_trees{'comments_on_block_command_lines'} = {
           ],
           'extra' => {
             'columnfractions' => {},
-            'max_columns' => 2,
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1615,7 +1699,7 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'aaa'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 },
                 {
                   'text' => ' '
@@ -1626,27 +1710,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'bbb'
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' c
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' c
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1725,17 +1805,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1745,22 +1831,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 2,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              },
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1789,24 +1865,20 @@ $result_trees{'comments_on_block_command_lines'} = {
                   'text' => 'g'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1830,17 +1902,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1850,16 +1928,12 @@ $result_trees{'comments_on_block_command_lines'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'g',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'f'
+            'float_type' => 'f',
+            'normalized' => 'g'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -1876,22 +1950,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -1916,17 +1984,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'flushright'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'flushright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1935,8 +2009,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1952,22 +2028,16 @@ $result_trees{'comments_on_block_command_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comm
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -1992,17 +2062,23 @@ $result_trees{'comments_on_block_command_lines'} = {
                       'text' => 'raggedright'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'raggedright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -2011,8 +2087,10 @@ $result_trees{'comments_on_block_command_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -2036,10 +2114,6 @@ $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[4]{'
 $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[12]{'extra'}{'command_as_argument'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[30]{'extra'}{'columnfractions'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[30]{'args'}[0]{'contents'}[0];
-$result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[32]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[32]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[32]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[32]{'args'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[34]{'extra'}{'node_content'}[0] = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[34]{'args'}[1]{'contents'}[0];
-$result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[34]{'extra'}{'type'}{'content'}[0] = $result_trees{'comments_on_block_command_lines'}{'contents'}[0]{'contents'}[34]{'args'}[0]{'contents'}[0];
 
 $result_texis{'comments_on_block_command_lines'} = '@itemize @c comm
 @item itemize it
@@ -2176,15 +2250,8 @@ $result_floats{'comments_on_block_command_lines'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'g',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'f'
-            }
-          ],
-          'normalized' => 'f'
-        }
+        'float_type' => 'f',
+        'normalized' => 'g'
       },
       'structure' => {
         'float_number' => 1
@@ -2195,7 +2262,7 @@ $result_floats{'comments_on_block_command_lines'} = {
 
 
 
-$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend><!-- c comm -->
+$result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize commandarg="bullet" automaticcommandarg="on" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend><!-- c comm -->
 <listitem><prepend>&bullet;</prepend> <para>itemize it
 </para></listitem></itemize>
 
@@ -2259,7 +2326,7 @@ $result_converted{'xml'}->{'comments_on_block_command_lines'} = '<itemize comman
 <tbody><row><entry command="item"> <para>a </para></entry><entry command="tab"> <para>b
 </para></entry></row></tbody></multitable>
 
-<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">aaa</columnprototype> <columnprototype bracketed="on">bbb</columnprototype></columnprototypes><!-- c c -->
+<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">aaa</columnprototype> <columnprototype bracketed="on">bbb</columnprototype></columnprototypes> <!-- c c -->
 <tbody><row><entry command="item"> <para>aaa </para></entry><entry command="tab"> <para>bbb
 </para></entry></row></tbody></multitable>
 

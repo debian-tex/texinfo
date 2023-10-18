@@ -24,9 +24,11 @@ $result_trees{'top_no_sectioning_command'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -40,19 +42,12 @@ $result_trees{'top_no_sectioning_command'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -68,28 +63,23 @@ $result_trees{'top_no_sectioning_command'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Chapter'
-          }
-        ],
-        'normalized' => 'Chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -105,9 +95,11 @@ $result_trees{'top_no_sectioning_command'} = {
               'text' => 'Chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -129,19 +121,16 @@ $result_trees{'top_no_sectioning_command'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'pxref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -156,8 +145,11 @@ $result_trees{'top_no_sectioning_command'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -168,12 +160,7 @@ $result_trees{'top_no_sectioning_command'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'top_no_sectioning_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_no_sectioning_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_no_sectioning_command'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_no_sectioning_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_no_sectioning_command'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'top_no_sectioning_command'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_no_sectioning_command'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_no_sectioning_command'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_no_sectioning_command'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'label'} = $result_trees{'top_no_sectioning_command'}{'contents'}[1];
-$result_trees{'top_no_sectioning_command'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_no_sectioning_command'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'top_no_sectioning_command'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_no_sectioning_command'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'top_no_sectioning_command'} = '@node Top
 

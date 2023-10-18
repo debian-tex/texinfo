@@ -17,9 +17,11 @@ $result_trees{'punctuation_frenchspacing'} = {
                   'text' => 'on'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -28,8 +30,12 @@ $result_trees{'punctuation_frenchspacing'} = {
           'extra' => {
             'misc_args' => [
               'on'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -237,11 +243,11 @@ $result_converted{'plaintext'}->{'punctuation_frenchspacing'} = 'Dot. Exclam! Qu
 
    End of lines and spaces Dot. Exclam! Question? End.
 
-   With paren.) paren.) Symb.)"’] Symb.)"’] End.
+   With paren.) paren.) Symb.)"\'] Symb.)"\'] End.
 
-   End of lines paren.) Symb.)"’] End.
+   End of lines paren.) Symb.)"\'] End.
 
-   End of lines and spaces paren.) Symb.)"’] End.
+   End of lines and spaces paren.) Symb.)"\'] End.
 ';
 
 1;

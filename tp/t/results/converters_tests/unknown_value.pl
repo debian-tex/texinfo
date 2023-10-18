@@ -10,10 +10,12 @@ $result_trees{'unknown_value'} = {
     {
       'contents' => [
         {
-          'cmdname' => 'value',
-          'extra' => {
-            'flag' => 'unknown'
-          }
+          'args' => [
+            {
+              'text' => 'unknown'
+            }
+          ],
+          'cmdname' => 'value'
         }
       ],
       'type' => 'before_node_section'
@@ -44,7 +46,7 @@ $result_floats{'unknown_value'} = {};
 
 
 
-$result_converted{'plaintext'}->{'unknown_value'} = '{No value for ‘unknown’}
+$result_converted{'plaintext'}->{'unknown_value'} = '{No value for \'unknown\'}
 ';
 
 

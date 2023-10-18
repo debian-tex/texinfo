@@ -1,7 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename math_no_closed.info
-
 @node Top
 
 @math{\delta + 2

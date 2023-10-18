@@ -15,12 +15,14 @@ $result_trees{'empty_ref_arg'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -39,9 +41,15 @@ $result_trees{'empty_ref_arg'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -50,22 +58,15 @@ $result_trees{'empty_ref_arg'} = {
                       'cmdname' => ' '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -81,14 +82,22 @@ $result_trees{'empty_ref_arg'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -98,22 +107,15 @@ $result_trees{'empty_ref_arg'} = {
                       'cmdname' => ' '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -129,9 +131,15 @@ $result_trees{'empty_ref_arg'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -140,8 +148,10 @@ $result_trees{'empty_ref_arg'} = {
                       'cmdname' => ' '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -151,22 +161,15 @@ $result_trees{'empty_ref_arg'} = {
                       'cmdname' => ':'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -182,9 +185,15 @@ $result_trees{'empty_ref_arg'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -194,44 +203,36 @@ $result_trees{'empty_ref_arg'} = {
                         {
                           'text' => ' aaa
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' aaa
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
                     {
                       'text' => ' '
                     },
                     {
                       'cmdname' => ' '
-                    }
-                  ],
-                  'extra' => {
-                    'comment_at_end' => {
+                    },
+                    {
+                      'text' => '
+'
+                    },
+                    {
                       'args' => [
                         {
                           'text' => ' ggg
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' ggg
-'
-                        ]
-                      }
-                    },
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => ' '
+                      'cmdname' => 'c'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -242,50 +243,31 @@ $result_trees{'empty_ref_arg'} = {
                         {
                           'text' => ' fff
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' fff
-'
-                        ]
-                      }
-                    }
-                  ],
-                  'extra' => {
-                    'comment_at_end' => {
+                      'cmdname' => 'c'
+                    },
+                    {
                       'args' => [
                         {
                           'text' => '
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          '
-'
-                        ]
-                      }
-                    },
-                    'spaces_before_argument' => ' '
+                      'cmdname' => 'c'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -301,19 +283,12 @@ $result_trees{'empty_ref_arg'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -324,23 +299,17 @@ $result_trees{'empty_ref_arg'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'label'} = $result_trees{'empty_ref_arg'}{'contents'}[1];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'label'} = $result_trees{'empty_ref_arg'}{'contents'}[1];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'label'} = $result_trees{'empty_ref_arg'}{'contents'}[1];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'label'} = $result_trees{'empty_ref_arg'}{'contents'}[1];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_ref_arg'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'empty_ref_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
 
-$result_texis{'empty_ref_arg'} = '@node Top
+$result_texis{'empty_ref_arg'} = '@node first
 
-@ref{Top, @ }
-@ref{Top, , @ }
-@ref{Top, @ , @:}
-@ref{Top, @c aaa
+@ref{first, @ }
+@ref{first, , @ }
+@ref{first, @ , @:}
+@ref{first, @c aaa
  @ 
 @c ggg
 , @c fff
@@ -350,23 +319,23 @@ $result_texis{'empty_ref_arg'} = '@node Top
 
 
 $result_texts{'empty_ref_arg'} = '
-Top
-Top
-Top
-Top
+first
+first
+first
+first
 ';
 
 $result_nodes{'empty_ref_arg'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'empty_ref_arg'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
@@ -409,23 +378,29 @@ $result_errors{'empty_ref_arg'} = [
   },
   {
     'error_line' => 'warning: in @ref empty cross reference name after expansion `@c aaa
- @ \'
+ @ 
+@c ggg
+\'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
     'text' => 'in @ref empty cross reference name after expansion `@c aaa
- @ \'',
+ @ 
+@c ggg
+\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: in @ref empty cross reference title after expansion `@c fff
+@c
 \'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
     'text' => 'in @ref empty cross reference title after expansion `@c fff
+@c
 \'',
     'type' => 'warning'
   }
@@ -434,5 +409,19 @@ $result_errors{'empty_ref_arg'} = [
 
 $result_floats{'empty_ref_arg'} = {};
 
+
+
+$result_converted{'xml'}->{'empty_ref_arg'} = '<node name="first" spaces=" "><nodename>first</nodename></node>
+
+<para><ref label="first"><xrefnodename>first</xrefnodename><xrefinfoname spaces=" "><spacecmd type="spc"/></xrefinfoname></ref>
+<ref label="first"><xrefnodename>first</xrefnodename><xrefinfoname spaces=" "></xrefinfoname><xrefprinteddesc spaces=" "><spacecmd type="spc"/></xrefprinteddesc></ref>
+<ref label="first"><xrefnodename>first</xrefnodename><xrefinfoname spaces=" "><spacecmd type="spc"/></xrefinfoname><xrefprinteddesc spaces=" ">&noeos;</xrefprinteddesc></ref>
+<ref label="first"><xrefnodename>first</xrefnodename><xrefinfoname spaces=" "><!-- c aaa -->
+ <spacecmd type="spc"/>
+<!-- c ggg -->
+</xrefinfoname><xrefprinteddesc spaces=" "><!-- c fff -->
+<!-- c -->
+</xrefprinteddesc></ref>
+</para>';
 
 1;

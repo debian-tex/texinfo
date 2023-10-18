@@ -10,30 +10,9 @@ $result_trees{'titles'} = {
     {
       'contents' => [
         {
-          'args' => [
-            {
-              'contents' => [
-                {
-                  'text' => 'html-title.info'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'setfilename',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'html-title.info'
-          },
-          'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          }
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'args' => [
@@ -85,16 +64,20 @@ $result_trees{'titles'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'settitle',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -118,28 +101,23 @@ $result_trees{'titles'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -200,9 +178,11 @@ $result_trees{'titles'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -238,8 +218,11 @@ $result_trees{'titles'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -250,10 +233,8 @@ $result_trees{'titles'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'titles'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'titles'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'titles'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'titles'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
-$result_texis{'titles'} = '@setfilename html-title.info
+$result_texis{'titles'} = '
 @settitle @@title @sc{html} @code{test}
 
 @node Top
@@ -266,6 +247,7 @@ Second paragraph.
 
 
 $result_texts{'titles'} = '
+
 Top of @title HTML test
 ***********************
 
@@ -340,7 +322,9 @@ $result_converted{'html'}->{'titles'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 h1.settitle {text-align:center}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -351,8 +335,9 @@ h1.settitle {text-align:center}
 <h1 class="settitle">@title <small class="sc">HTML</small> <code class="code">test</code></h1>
 <hr>
 
+
 <div class="top-level-extent" id="Top">
-<h1 class="top" id="Top-of-_0040title-HTML-test">Top of @title <small class="sc">HTML</small> <code class="code">test</code></h1>
+<h1 class="top" id="Top-of-_0040title-html-test"><span>Top of @title <small class="sc">HTML</small> <code class="code">test</code><a class="copiable-link" href="#Top-of-_0040title-html-test"> &para;</a></span></h1>
 
 <p>Top.
 </p>

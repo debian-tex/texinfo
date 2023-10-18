@@ -1,7 +1,7 @@
 /* macro.h - declarations for macro.c */
 #ifndef MACRO_H
 #define MACRO_H
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -37,6 +37,9 @@ ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
 ELEMENT *handle_macro (ELEMENT *current, char **line_inout,
                        enum command_id cmd_id);
 void delete_macro (char *name);
+void unset_macro_record (MACRO *m);
+void expand_macro_body (MACRO *macro_record, ELEMENT *arguments,
+                        TEXT *expanded);
 MACRO *lookup_macro (enum command_id cmd);
 void wipe_macros (void);
 

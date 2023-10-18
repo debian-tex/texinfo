@@ -17,18 +17,19 @@ $result_trees{'space_in_anchor'} = {
                   'text' => 'anchor  name'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '   ',
-                'spaces_before_argument' => '   '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '   '
+                },
+                'spaces_before_argument' => {
+                  'text' => '   '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'anchor-name'
           },
           'source_info' => {
@@ -52,7 +53,6 @@ $result_trees{'space_in_anchor'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'space_in_anchor'}{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'space_in_anchor'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'space_in_anchor'} = '@anchor{   anchor  name   }.
 ';

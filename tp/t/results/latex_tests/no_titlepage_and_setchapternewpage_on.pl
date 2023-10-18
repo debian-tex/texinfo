@@ -19,9 +19,11 @@ $result_trees{'no_titlepage_and_setchapternewpage_on'} = {
                       'text' => 'on'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -30,8 +32,12 @@ $result_trees{'no_titlepage_and_setchapternewpage_on'} = {
               'extra' => {
                 'misc_args' => [
                   'on'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

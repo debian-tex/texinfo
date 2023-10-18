@@ -24,28 +24,23 @@ $result_trees{'titlepage_in_top_node'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'titlepage_in_top_node'} = {
               'text' => 'top sectionning'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -92,9 +89,11 @@ $result_trees{'titlepage_in_top_node'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -109,16 +108,20 @@ $result_trees{'titlepage_in_top_node'} = {
                       'text' => 'the TTitle'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'title',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -134,17 +137,23 @@ $result_trees{'titlepage_in_top_node'} = {
                       'text' => 'titlepage'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'titlepage'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -165,8 +174,11 @@ $result_trees{'titlepage_in_top_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -182,28 +194,23 @@ $result_trees{'titlepage_in_top_node'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -219,9 +226,11 @@ $result_trees{'titlepage_in_top_node'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -243,8 +252,11 @@ $result_trees{'titlepage_in_top_node'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -255,10 +267,6 @@ $result_trees{'titlepage_in_top_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'titlepage_in_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'titlepage_in_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'titlepage_in_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'titlepage_in_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'titlepage_in_top_node'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'titlepage_in_top_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'titlepage_in_top_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'titlepage_in_top_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'titlepage_in_top_node'} = '@node Top
 @top top sectionning
@@ -388,6 +396,7 @@ $result_floats{'titlepage_in_top_node'} = {};
 $result_converted{'latex_text'}->{'titlepage_in_top_node'} = '\\begin{document}
 
 \\frontmatter
+\\pagestyle{empty}%
 \\begin{titlepage}
 \\begingroup
 \\newskip\\titlepagetopglue \\titlepagetopglue = 1.5in
@@ -401,8 +410,8 @@ $result_converted{'latex_text'}->{'titlepage_in_top_node'} = '\\begin{document}
   \\vskip\\titlepagebottomglue
 \\endgroup
 \\end{titlepage}
-\\pagestyle{single}%
 \\mainmatter
+\\pagestyle{single}%
 \\label{anchor:Top}%
 \\chapter{{chap}}
 \\label{anchor:chap}%

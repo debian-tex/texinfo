@@ -36,17 +36,23 @@ $result_trees{'arg_body_expansion_order'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -55,7 +61,7 @@ $result_trees{'arg_body_expansion_order'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' othermacro
 '
           },
@@ -89,44 +95,19 @@ $result_trees{'arg_body_expansion_order'} = {
               'type' => 'raw'
             },
             {
-              'cmdname' => 'macro',
-              'contents' => [
-                {
-                  'text' => 'different
+              'text' => '@macro othermacro
 ',
-                  'type' => 'raw'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'macro'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'macro'
-                  },
-                  'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
-                  }
-                }
-              ],
-              'extra' => {
-                'arg_line' => ' othermacro
-'
-              }
+              'type' => 'raw'
+            },
+            {
+              'text' => 'different
+',
+              'type' => 'raw'
+            },
+            {
+              'text' => '@end macro
+',
+              'type' => 'raw'
             },
             {
               'text' => '\\arg\\
@@ -141,17 +122,23 @@ $result_trees{'arg_body_expansion_order'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -160,7 +147,7 @@ $result_trees{'arg_body_expansion_order'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' redefineothermacro {arg}
 '
           },
@@ -171,6 +158,30 @@ $result_trees{'arg_body_expansion_order'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => '@othermacro{}'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'redefineothermacro'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -179,16 +190,13 @@ $result_trees{'arg_body_expansion_order'} = {
           'args' => [
             {
               'text' => 'othermacro',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'unmacro',
-          'extra' => {
+          'info' => {
             'arg_line' => ' othermacro
-',
-            'misc_args' => [
-              'othermacro'
-            ]
+'
           }
         },
         {
@@ -213,17 +221,23 @@ $result_trees{'arg_body_expansion_order'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -232,7 +246,7 @@ $result_trees{'arg_body_expansion_order'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' othermacro
 '
           },
@@ -240,11 +254,43 @@ $result_trees{'arg_body_expansion_order'} = {
             'file_name' => '',
             'line_nr' => 14,
             'macro' => 'redefineothermacro'
-          }
+          },
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'othermacro'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ]
         },
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 9,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 9,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'different
 '
             }

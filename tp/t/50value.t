@@ -44,6 +44,25 @@ Say @value{-e_\'::;}.
 
 !@value{x}!, !@value{y}!, !@value{z}!, !@value{t}!
 '],
+['begin_like_comment_on_set_line',
+'@set x@come with me
+@set y some thing @commentary is it
+
+!@value{x}! !@value{y}!
+'],
+['comment_on_clear_line',
+'@set x
+@set y
+@set z g
+@set t a vv @comment@ggg
+
+@clear x@c
+@clear y @c
+@clear z g@c
+@clear t a vv @comment@ggg
+
+!@value{x}!, !@value{y}!, !@value{z}!, !@value{t}!
+'],
 ['value_zero',
 '@set zero 0
 Value
@@ -61,6 +80,16 @@ Value
 @value{myspace} 
 1
 '],
+['set_no_end_of_line',
+'@set arg'
+],
+['clear_no_end_of_line',
+'@clear jj',
+],
+['recursive_expansion_in_set',
+'@set V @value{V}
+@value{V}
+', {'MAX_MACRO_CALL_NESTING' => 100}],
 ['value_in_node',
 '@set node1 Node 1
 
@@ -136,6 +165,7 @@ after
 @set defcodeindex_entry a @var{index entry} t@\'e @^{@dotless{i}}
 
 @node Top
+@node chap
 
 @value{trucindex_command} index truc
 
@@ -155,6 +185,9 @@ value cp
 
 @node Top
 @top top @value{text}
+
+@node chap
+
 @subheading Comment like: @value{text}
 
 Text line followed by a comment on the same line and another below @c comment @value{text}
@@ -315,12 +348,12 @@ After page on it\'s own line.
 '],
 ['set_on_item_line',
 '@table @code
-@item @set a b@c
+@item @set ca b@c
 item text
 in item
-@item jj @set j@c
+@item cjj @set cj@c
 line
-@item vvv @set g@c
+@item cvvv @set cg@c
 @end table
 
 @table @code
@@ -332,6 +365,8 @@ line
 @item vvv @set g
 @end table
 '],
+# very similar with previous test, maybe the difference is that the
+# next @item is right after the @item with @set on the line
 ['set_in_item_missing_line',
 '@table @code
 @item xx @set n
@@ -339,7 +374,7 @@ line
 @end table
 
 @table @code
-@item xx @set n@c
+@item cxx @set cn@c
 @item jj
 @end table
 '],
@@ -359,7 +394,18 @@ line
 }
 
 @value{aa}.
-']
+'],
+['closing_brace_in_value_in_ignored_inline',
+'@set closebrace }
+
+@inlinefmt{html,
+truc @value{closebrace}
+machin
+
+@inlinefmt{tex,
+bidule @value{closebrace}
+after
+'],
 );
 
 run_all('value', \@test_cases);

@@ -151,7 +151,7 @@ sub chrx(@)
   return $result;
 }
 
-# some come from encodings/weird_accents.texi
+# some come from t/formats_encodings.t weird_accents
 # the results correspond to:
 #  8bit, XML named entity fallback to numeric, XML numeric entity, utf8
 foreach my $test (

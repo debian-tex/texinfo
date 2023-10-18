@@ -25,22 +25,18 @@ $result_trees{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'} 
                         {
                           'text' => ' comment
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'comment',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comment
-'
-                        ]
-                      }
+                      'cmdname' => 'comment'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 }
               ],
               'type' => 'block_line_arg'
@@ -56,17 +52,23 @@ $result_trees{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'} 
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -76,16 +78,12 @@ $result_trees{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'} 
             }
           ],
           'extra' => {
-            'max_columns' => 1,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 1
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -99,7 +97,6 @@ $result_trees{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'} 
   ],
   'type' => 'document_root'
 };
-$result_trees{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0];
 
 $result_texis{'multitable_bracketed_prototype_empty_spaces_not_closed_comment'} = '
 @multitable { @comment comment

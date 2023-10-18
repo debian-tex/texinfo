@@ -40,8 +40,12 @@ $result_trees{'empty_end'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +54,7 @@ $result_trees{'empty_end'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' foo {aaa, }
 '
           },

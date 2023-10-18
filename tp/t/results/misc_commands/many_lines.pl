@@ -28,16 +28,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'pagesizes arg'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'pagesizes',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -53,7 +57,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following afourpaper
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourpaper',
@@ -71,7 +75,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following smallbook
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'smallbook',
@@ -92,16 +96,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following headings'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'headings',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -120,16 +128,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following oddfooting'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'oddfooting',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -148,16 +160,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following everyheading'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'everyheading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -176,16 +192,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following everyfooting'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'everyfooting',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -204,16 +224,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following evenheading'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'evenheading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -232,16 +256,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following evenfooting'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'evenfooting',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -260,16 +288,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'oddheading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -291,16 +323,20 @@ $result_trees{'many_lines'} = {
                   'text' => '0.1 on line following'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'need',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -324,9 +360,11 @@ $result_trees{'many_lines'} = {
                   'text' => '0.1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -335,8 +373,12 @@ $result_trees{'many_lines'} = {
           'extra' => {
             'misc_args' => [
               '0.1'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -357,16 +399,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'on line following setchapternewpage'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setchapternewpage',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -382,7 +428,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following raisesections
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'raisesections'
@@ -395,7 +441,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following lowersections
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'lowersections'
@@ -411,16 +457,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'code something'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'kbdinputstyle',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -436,7 +486,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following afourpaper
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourpaper',
@@ -454,7 +504,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following afourlatex
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourlatex',
@@ -472,7 +522,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' on line following afourwide
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourwide',
@@ -493,9 +543,11 @@ $result_trees{'many_lines'} = {
                       'text' => 'asis'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -504,8 +556,12 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   'asis'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -524,9 +580,11 @@ $result_trees{'many_lines'} = {
                       'text' => '0'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -535,8 +593,12 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   '0'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -555,9 +617,11 @@ $result_trees{'many_lines'} = {
                       'text' => 'none'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -566,8 +630,12 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   'none'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -586,9 +654,11 @@ $result_trees{'many_lines'} = {
                       'text' => '4'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -597,8 +667,12 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   '4'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -607,19 +681,21 @@ $result_trees{'many_lines'} = {
               }
             },
             {
-              'text' => 'firstparagraphindent none '
+              'text' => 'firstparagraphindent insert '
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'text' => 'none'
+                      'text' => 'insert'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -627,9 +703,13 @@ $result_trees{'many_lines'} = {
               'cmdname' => 'firstparagraphindent',
               'extra' => {
                 'misc_args' => [
-                  'none'
-                ],
-                'spaces_before_argument' => ' '
+                  'insert'
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -638,26 +718,30 @@ $result_trees{'many_lines'} = {
               }
             },
             {
-              'text' => 'exampleindent 6 '
+              'text' => 'firstparagraphindent 3 '
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'text' => '6 on line following exampleindent'
+                      'text' => '3'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
-              'cmdname' => 'exampleindent',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'cmdname' => 'firstparagraphindent',
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -673,22 +757,23 @@ $result_trees{'many_lines'} = {
                 {
                   'contents' => [
                     {
-                      'text' => '6'
+                      'text' => '6 on line following exampleindent'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'exampleindent',
-              'extra' => {
-                'misc_args' => [
-                  '6'
-                ],
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -697,29 +782,35 @@ $result_trees{'many_lines'} = {
               }
             },
             {
-              'text' => 'footnotestyle '
+              'text' => 'exampleindent 6 '
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'text' => 'end'
+                      'text' => '6'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
-              'cmdname' => 'footnotestyle',
+              'cmdname' => 'exampleindent',
               'extra' => {
                 'misc_args' => [
-                  'end'
-                ],
-                'spaces_before_argument' => ' '
+                  '6'
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -735,12 +826,51 @@ $result_trees{'many_lines'} = {
                 {
                   'contents' => [
                     {
+                      'text' => 'end'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'footnotestyle',
+              'extra' => {
+                'misc_args' => [
+                  'end'
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 28,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'footnotestyle '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
                       'text' => 'separate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -749,12 +879,16 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   'separate'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 28,
+                'line_nr' => 29,
                 'macro' => ''
               }
             },
@@ -769,21 +903,27 @@ $result_trees{'many_lines'} = {
                       'text' => 'US-ascii encoding name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'US-ascii encoding name'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 29,
+                'line_nr' => 30,
                 'macro' => ''
               }
             },
@@ -795,9 +935,11 @@ $result_trees{'many_lines'} = {
                       'text' => 'ISO-8859-1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -805,40 +947,12 @@ $result_trees{'many_lines'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'iso-8859-1',
-                'input_perl_encoding' => 'iso-8859-1',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ISO-8859-1'
               },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 30,
-                'macro' => ''
-              }
-            },
-            {
-              'text' => 'frenchspacing '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'on'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
                 }
-              ],
-              'cmdname' => 'frenchspacing',
-              'extra' => {
-                'misc_args' => [
-                  'on'
-                ],
-                'spaces_before_argument' => ' '
               },
               'source_info' => {
                 'file_name' => '',
@@ -854,12 +968,51 @@ $result_trees{'many_lines'} = {
                 {
                   'contents' => [
                     {
+                      'text' => 'on'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'frenchspacing',
+              'extra' => {
+                'misc_args' => [
+                  'on'
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 32,
+                'macro' => ''
+              }
+            },
+            {
+              'text' => 'frenchspacing '
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
                       'text' => 'off'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -868,12 +1021,16 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   'off'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 32,
+                'line_nr' => 33,
                 'macro' => ''
               }
             },
@@ -888,9 +1045,11 @@ $result_trees{'many_lines'} = {
                       'text' => '10'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -899,12 +1058,16 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   '10'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 33,
+                'line_nr' => 34,
                 'macro' => ''
               }
             },
@@ -919,44 +1082,20 @@ $result_trees{'many_lines'} = {
                       'text' => 'bottom on line following everyheadingmarks'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'everyheadingmarks',
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 34,
-                'macro' => ''
-              }
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'false'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
                 }
-              ],
-              'cmdname' => 'allowcodebreaks',
-              'extra' => {
-                'misc_args' => [
-                  'false'
-                ],
-                'spaces_before_argument' => ' '
               },
               'source_info' => {
                 'file_name' => '',
@@ -969,12 +1108,48 @@ $result_trees{'many_lines'} = {
                 {
                   'contents' => [
                     {
+                      'text' => 'false'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'allowcodebreaks',
+              'extra' => {
+                'misc_args' => [
+                  'false'
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 36,
+                'macro' => ''
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
                       'text' => 'true'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -983,12 +1158,16 @@ $result_trees{'many_lines'} = {
               'extra' => {
                 'misc_args' => [
                   'true'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 36,
+                'line_nr' => 37,
                 'macro' => ''
               }
             }
@@ -1010,7 +1189,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'finalout'
@@ -1020,7 +1199,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'finalout'
@@ -1033,7 +1212,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'finalout'
@@ -1061,7 +1240,7 @@ $result_trees{'many_lines'} = {
                 {
                   'text' => ' a word after finalout
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'finalout'
@@ -1103,7 +1282,8 @@ paragraphindent asis @paragraphindent asis
 paragraphindent 0 @paragraphindent 0
 paragraphindent none @paragraphindent none
 paragraphindent 4 @paragraphindent 4
-firstparagraphindent none @firstparagraphindent none
+firstparagraphindent insert @firstparagraphindent insert
+firstparagraphindent 3 @firstparagraphindent 3
 exampleindent 6 @exampleindent 6 on line following exampleindent
 exampleindent 6 @exampleindent 6
 footnotestyle @footnotestyle end 
@@ -1128,7 +1308,7 @@ Line after finalout
 ';
 
 
-$result_texts{'many_lines'} = 'pagesizes afourpaper smallbook headings oddfooting everyheading everyfooting evenheading evenfooting oddheading need need setchapternewpage raisesections lowersections kbdinputstyle code afourpaper afourlatex afourwide paragraphindent asis paragraphindent 0 paragraphindent none paragraphindent 4 firstparagraphindent none exampleindent 6 exampleindent 6 footnotestyle footnotestyle documentencoding frenchspacing frenchspacing fonttextsize everyheadingmarks 
+$result_texts{'many_lines'} = 'pagesizes afourpaper smallbook headings oddfooting everyheading everyfooting evenheading evenfooting oddheading need need setchapternewpage raisesections lowersections kbdinputstyle code afourpaper afourlatex afourwide paragraphindent asis paragraphindent 0 paragraphindent none paragraphindent 4 firstparagraphindent insert firstparagraphindent 3 exampleindent 6 exampleindent 6 footnotestyle footnotestyle documentencoding frenchspacing frenchspacing fonttextsize everyheadingmarks 
 Text line followed by finalout on the same line and another below Text line after the finalout followed by a fianlout Text line after the text line followed by the finalout.
 
 Test text after finalout
@@ -1398,21 +1578,21 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exampleindent should only appear at the beginning of a line
+    'error_line' => 'warning: @firstparagraphindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 25,
     'macro' => '',
-    'text' => '@exampleindent should only appear at the beginning of a line',
+    'text' => '@firstparagraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
+    'error_line' => '@firstparagraphindent arg must be `none\' or `insert\', not `3\'
 ',
     'file_name' => '',
     'line_nr' => 25,
     'macro' => '',
-    'text' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'',
+    'text' => '@firstparagraphindent arg must be `none\' or `insert\', not `3\'',
     'type' => 'error'
   },
   {
@@ -1425,10 +1605,28 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
+    'error_line' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
+',
+    'file_name' => '',
+    'line_nr' => 26,
+    'macro' => '',
+    'text' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => 'warning: @exampleindent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 27,
+    'macro' => '',
+    'text' => '@exampleindent should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 28,
     'macro' => '',
     'text' => '@footnotestyle should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1437,7 +1635,7 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 28,
+    'line_nr' => 29,
     'macro' => '',
     'text' => '@footnotestyle should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1446,7 +1644,7 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: multiple @footnotestyle
 ',
     'file_name' => '',
-    'line_nr' => 28,
+    'line_nr' => 29,
     'macro' => '',
     'text' => 'multiple @footnotestyle',
     'type' => 'warning'
@@ -1455,7 +1653,7 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: @documentencoding should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 29,
+    'line_nr' => 30,
     'macro' => '',
     'text' => '@documentencoding should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1464,27 +1662,18 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: encoding `US-ascii encoding name\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
-    'line_nr' => 29,
+    'line_nr' => 30,
     'macro' => '',
     'text' => 'encoding `US-ascii encoding name\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `US-ascii encoding name\'
+    'error_line' => 'warning: unhandled encoding name `US-ascii encoding name\'
 ',
     'file_name' => '',
-    'line_nr' => 29,
+    'line_nr' => 30,
     'macro' => '',
-    'text' => 'unrecognized encoding name `US-ascii encoding name\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @frenchspacing should only appear at the beginning of a line
-',
-    'file_name' => '',
-    'line_nr' => 31,
-    'macro' => '',
-    'text' => '@frenchspacing should only appear at the beginning of a line',
+    'text' => 'unhandled encoding name `US-ascii encoding name\'',
     'type' => 'warning'
   },
   {
@@ -1497,10 +1686,19 @@ $result_errors{'many_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @fonttextsize should only appear at the beginning of a line
+    'error_line' => 'warning: @frenchspacing should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 33,
+    'macro' => '',
+    'text' => '@frenchspacing should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @fonttextsize should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 34,
     'macro' => '',
     'text' => '@fonttextsize should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1509,7 +1707,7 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: @everyheadingmarks should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 34,
+    'line_nr' => 35,
     'macro' => '',
     'text' => '@everyheadingmarks should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1518,7 +1716,7 @@ $result_errors{'many_lines'} = [
     'error_line' => '@everyheadingmarks arg must be `top\' or `bottom\', not `bottom on line following everyheadingmarks\'
 ',
     'file_name' => '',
-    'line_nr' => 34,
+    'line_nr' => 35,
     'macro' => '',
     'text' => '@everyheadingmarks arg must be `top\' or `bottom\', not `bottom on line following everyheadingmarks\'',
     'type' => 'error'
@@ -1527,7 +1725,7 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: @finalout should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 38,
+    'line_nr' => 39,
     'macro' => '',
     'text' => '@finalout should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1536,7 +1734,7 @@ $result_errors{'many_lines'} = [
     'error_line' => 'warning: @finalout should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 40,
+    'line_nr' => 41,
     'macro' => '',
     'text' => '@finalout should only appear at the beginning of a line',
     'type' => 'warning'

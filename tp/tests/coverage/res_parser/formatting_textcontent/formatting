@@ -1,0 +1,3520 @@
+
+
+* Truc: (formatting).           The GNU documentation truc.
+* @ é ==: (formatting).  ``--- something'' 
+                           cmd à
+
+
+
+In copying
+
+<
+>
+"
+&
+'
+`
+
+``simple-double--three---four----''
+
+code: ``simple-double--three---four----'' 
+
+asis: ``simple-double--three---four----'' 
+
+strong: ``simple-double--three---four----'' 
+
+kbd: ``simple-double--three---four----'' 
+
+
+``simple-double--three---four----''
+
+
+
+@"u ü (ü)
+@"{U} Ü (Ü) 
+@~n ñ (ñ)
+@^a â (â)
+
+@'e é (é)
+@=o ō (ō)
+@`i ì (ì)
+@'{e} é (é)
+
+@'{@dotless{i}} í (í)
+@dotless{i} ı (ı)
+@dotless{j} ȷ (ȷ)
+
+@H{a} a̋
+@dotaccent{a} ȧ (ȧ)
+@ringaccent{a} å (å)
+
+@tieaccent{a} a͡
+@u{a} ă (ă)
+@ubaraccent{a} a̲
+
+@udotaccent{a} ạ (ạ)
+@v{a} ǎ (ǎ)
+
+@,c ç (ç)
+@,{c} ç (ç)
+@ogonek{a} ą (ą)
+
+@`{@=E} Ḕ
+@l{} /l
+@,{@'C} Ḉ
+@,c@"u çü 
+
+
+@H{--a} -a̋
+@dotaccent{--a} -ȧ
+@ringaccent{--a} -å
+
+@tieaccent{--a} -a͡
+@u{--a} -ă
+@ubaraccent{--a} -a̲
+
+@udotaccent{--a} -ạ
+@v{--a} -ǎ
+@,{--c} -ç
+@ogonek{--a} -ą
+
+@U{0075} 0075
+
+@* 
+
+@ followed by a space
+ 
+@ followed by a tab
+ 
+@ followed by a new line
+ @- 
+@: 
+@! !
+@? ?
+@. .
+@& &
+@@ @
+@} }
+@{ {
+@/ 
+
+foo vs. bar. 
+colon :And something else.
+semi colon ;.
+And ? ?.
+Now ! !@
+but , ,
+
+@ampchar & (&)
+@atchar @ (@)
+@backslashchar \ (\)
+@hashchar # (#)
+@lbracechar { ({)
+@rbracechar } (})
+
+@TeX TeX
+@LaTeX LaTeX
+@bullet * (•)
+@copyright (C) (©)
+
+@dots ... (…)
+@enddots ...
+@equiv == (≡)
+
+@error error-->
+@expansion ==> (↦)
+@minus - (−)
+
+@point -!- (⋆)
+@print -| (⊣)
+@result => (⇒)
+@today a sunny day
+
+@aa aa (å)
+@AA AA (Å)
+@ae ae (æ)
+@oe oe (œ)
+@AE AE (Æ)
+@OE OE (Œ)
+@o /o (ø)
+@O /O (Ø)
+@ss ss (ß)
+@l /l (ł)
+@L /L (Ł)
+@DH D (Ð)
+@TH TH (Þ)
+@dh d (ð)
+@th th (þ)
+
+@exclamdown ! (¡)
+@questiondown ? (¿)
+@pounds # (£)
+@registeredsymbol (R) (®)
+@ordf a (ª)
+@ordm o (º)
+@comma , (,)
+@quotedblleft " (“)
+@quotedblright " (”)
+@quoteleft ` (‘)
+@quoteright ' (’)
+@quotedblbase ,, („)
+@quotesinglbase , (‚)
+@guillemetleft << («)
+@guillemetright >> (»)
+@guillemotleft << («)
+@guillemotright >> (»)
+@guilsinglleft < (‹)
+@guilsinglright > (›)
+
+@textdegree o (°)
+@euro Euro (€)
+@arrow -> (→)
+
+@leq <= (≤)
+@geq >= (≥)
+@tie a b
+
+@acronym{--a,an accronym} --aan accronym
+@acronym{--a} --a
+@abbr{@'E--. @comma{}A., @'Etude Autonome } É--. ,A.Étude Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+@asis{--a} --a
+@b{--a} --a
+@cite{--a} --a
+@code{--a} --a
+@command{--a} --a
+@dfn{--a} --a
+@dmn{--a} --a
+@email{--a,--b} --a--b
+@email{,--b} --b
+@email{--a} --a
+@emph{--a} --a
+@env{--a} --a
+@file{--a} --a
+@i{--a} --a
+@kbd{--a} --a
+@key{--a} --a
+@math{--a {\frac{1}{2}} @minus{}} --a {\frac{1}{2}} -
+@option{--a} --a
+@r{--a} --a
+@samp{--a} --a
+@sc{--a} --a
+@strong{--a} --a
+@t{--a} --a
+@sansserif{--a} --a
+@slanted{--a} --a
+@titlefont{--a} --a
+@indicateurl{--a} --a
+@uref{--a,--b} --a--b
+@uref{--a} --a
+@uref{,--b} --b
+@uref{--a,--b,--c} --a--b--c
+@uref{,--b,--c} --b--c
+@uref{--a,,--c} --a--c
+@uref{,,--c} --c
+@url{--a,--b} --a--b
+@url{--a,} --a
+@url{,--b} --b
+@var{--a} --a
+@verb{:--a:} --a
+@verb{:a  < & @ % " --    b:} a  < & @ % " --    b
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+a@sup{h}@sub{l} ahl
+@footnote{in footnote} in footnote
+@footnote{in footnote2} in footnote2
+
+@sp 2
+
+@page
+
+
+
+need 1002
+
+@clicksequence{click @click{} A} click -> A
+After clickstyle =>
+@clicksequence{click @click{} A} click => A
+
+
+disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e-{1 \over 2}\left({x-\mu \over \sigma}\right)^2
+
+``simple-double--three---four----'' aa
+``simple-double--three---four----''
+
+
+ı ȷ
+/l ç
+
+a̲ ạ ą ahl
+
+       ! @ } { 
+a sunny day
+
+->
+0075
+* (C) ... ... ==
+error--> ==> - -| =>
+AA ae oe AE OE /o /O ss /l /L D
+TH d th ! ? #
+a o , 
+
+" " 
+` ' ,, , <<
+>> << >> <
+> Euro -> <= >=
+
+b i r sc sansserif slanted
+
+default kbdinputstyle
+vtable i--tem default kbdinputstyle
+in example default kbdinputstyle
+vtable i--tem in example default kbdinputstyle
+
+code kbdinputstyle
+vtable i--tem code kbdinputstyle
+in example code kbdinputstyle
+vtable i--tem in example code kbdinputstyle
+
+example kbdinputstyle
+vtable i--tem example kbdinputstyle
+in example example kbdinputstyle
+vtable i--tem in example example kbdinputstyle
+
+distinct kbdinputstyle
+vtable i--tem distinct kbdinputstyle
+in example distinct kbdinputstyle
+vtable i--tem in example distinct kbdinputstyle
+
+A quot---ation
+
+Note
+A Note
+
+note
+A note
+
+Caution
+Caution
+
+Important
+Important
+
+Tip
+a Tip
+
+Warning
+a Warning.
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @quotation line.
+
+something, other thing
+something, other thing
+
+Note, the note
+Note, the note
+
+
+Empty
+
+
+
+
+aaa quotation author
+quotation
+
+indent in quotation
+
+exdented quotation line   and dash --- in quotation
+
+Not exdented followed by exdented
+exdented quotation line
+
+exdented quotation line
+Followed by not exdented 
+
+quotation1
+in exdented protected eol  
+following
+in exdented a @* 
+ and following
+after exdented
+
+A small quot---ation
+
+Note
+A small Note
+
+something, other thing
+something, other thing
+
+i--temize
+
+i--tem +
+
+b--ullet
+
+minu--s
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+with w a--b
+with w c--d
+
+line w a--b
+line with w c--d
+
+e--numerate
+
+first third
+second third
+
+e--numerate
+
+first c
+second c
+
+mu--ltitable headitem another tab
+mu--ltitable item multitable tab
+mu--ltitable item 2 multitable tab 2
+lone mu--ltitable item
+
+truc bidule
+
+e--xample  some
+   text
+
+first arg
+example one arg
+
+first argsecond arg
+example two args
+
+first argsecond argthird arg
+example three args
+
+first argsecond argthird argfourth arg
+example four args
+
+first argsecond argthird argfourth argfifth arg
+example five args
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @example line.
+
+example with empty args
+
+nonempty
+example with empty and non empty args mix
+
+Exam---ple
+
+Other li---ne
+not exdented
+
+exdented  and dash --- in example
+Not exdented one
+exdented two
+Not exdented two
+
+Example   Hoho.
+Nested Other line
+exdented nested other line
+
+s--mallexample
+
+@noindent after smallexample.
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain'
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain'
+Less recent versions are also present.
+
+d--isplay
+
+s--malldisplay
+
+l--isp
+
+s--malllisp
+
+f--ormat
+
+s--mallformat
+
+c--ategory d--effn_name a--rguments...
+d--effn
+
+cate--gory de--ffn_name ar--guments    more args 
+ even more so
+def--fn
+ 
+fset i a g
+cmde truc 
+Command log trap 
+Command log trap1 
+Command log trap2 
+cmde id ule truc
+cmde2 id i ule truc
+ 
+ machin
+ bidule machin
+truc machin
+truc 
+truc followed by a comment
+ 
+truc a b c d e f g h i
+truc deffnx before end deffn
+
+
+empty deffn
+
+empty deffn with deffnx
+empty deffnx
+
+fset i a g
+cmde truc 
+text in def item for second def item
+
+
+c--ategory d--efvr_name
+d--efvr
+
+c--ategory n--ame a--rguments...
+d--effn
+
+c--ategory n--ame
+d--effn no arg
+
+c--ategory t--ype d--eftypefn_name a--rguments...
+d--eftypefn
+
+c--ategory t--ype d--eftypefn_name
+d--eftypefn no arg
+
+c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+d--eftypeop
+
+c--ategory c--lass t--ype d--eftypeop_name
+d--eftypeop no arg
+
+c--ategory t--ype d--eftypevr_name
+d--eftypevr
+
+c--ategory c--lass d--efcv_name
+d--efcv
+
+c--ategory c--lass d--efcv_name a--rguments...
+d--efcv with arguments
+
+c--ategory c--lass t--ype d--eftypecv_name
+d--eftypecv
+
+c--ategory c--lass t--ype d--eftypecv_name a--rguments...
+d--eftypecv with arguments
+
+c--ategory c--lass d--efop_name a--rguments...
+d--efop
+
+c--ategory c--lass d--efop_name
+d--efop no arg
+
+c--ategory d--eftp_name a--ttributes...
+d--eftp
+
+Function d--efun_name a--rguments...
+d--efun
+
+Macro d--efmac_name a--rguments...
+d--efmac
+
+Special Form d--efspec_name a--rguments...
+d--efspec
+
+Variable d--efvar_name
+d--efvar
+
+Variable d--efvar_name arg--var arg--var1
+d--efvar with args
+
+User Option d--efopt_name
+d--efopt
+
+Function t--ype d--eftypefun_name a--rguments...
+d--eftypefun
+
+Variable t--ype d--eftypevar_name
+d--eftypevar
+
+Instance Variable c--lass d--efivar_name
+d--efivar
+
+Instance Variable c--lass t--ype d--eftypeivar_name
+d--eftypeivar
+
+Method c--lass d--efmethod_name a--rguments...
+d--efmethod
+
+Method c--lass t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
+
+
+Function data-type2 name2 arguments2...
+aaa2
+
+c--ategory2 t--ype2 d--eftypefn_name2
+d--eftypefn no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2 a--rguments2...
+d--eftypeop2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2
+d--eftypeop no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2
+d--eftypecv2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2 a--rguments2...
+d--eftypecv with arguments2
+
+fun2 arg2
+fff2
+
+
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} c---hapter@cross r---ef name@t---itle@file n---ame@ma---nual@.
+@ref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@pxref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+
+@ref{chapter} chapter
+@xref{chapter} chapter.
+@pxref{chapter} chapter
+@ref{s--ect@comma{}ion} s--ect,ion
+
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+s--ect,iona , in cross
+refa comma, in titlea comma, in filea , in manual name
+
+@ref{chapter,cross ref name} chaptercross ref name
+@ref{chapter,,title} chaptertitle
+@ref{chapter,,,file name} chapterfile name
+@ref{chapter,,,,manual} chaptermanual
+@ref{chapter,cross ref name,title,} chaptercross ref nametitle
+@ref{chapter,cross ref name,,file name} chaptercross ref namefile name
+@ref{chapter,cross ref name,,,manual} chaptercross ref namemanual
+@ref{chapter,cross ref name,title,file name} chaptercross ref nametitlefile name
+@ref{chapter,cross ref name,title,,manual} chaptercross ref nametitlemanual
+@ref{chapter,cross ref name,title, file name, manual} chaptercross ref nametitlefile namemanual
+@ref{chapter,,title,file name} chaptertitlefile name
+@ref{chapter,,title,,manual} chaptertitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{chapter,,,file name,manual} chapterfile namemanual
+
+
+@ref{(pman)anode,cross ref name} (pman)anodecross ref name
+@ref{(pman)anode,,title} (pman)anodetitle
+@ref{(pman)anode,,,file name} (pman)anodefile name
+@ref{(pman)anode,,,,manual} (pman)anodemanual
+@ref{(pman)anode,cross ref name,title,} (pman)anodecross ref nametitle
+@ref{(pman)anode,cross ref name,,file name} (pman)anodecross ref namefile name
+@ref{(pman)anode,cross ref name,,,manual} (pman)anodecross ref namemanual
+@ref{(pman)anode,cross ref name,title,file name} (pman)anodecross ref nametitlefile name
+@ref{(pman)anode,cross ref name,title,,manual} (pman)anodecross ref nametitlemanual
+@ref{(pman)anode,cross ref name,title, file name, manual} (pman)anodecross ref nametitlefile namemanual
+@ref{(pman)anode,,title,file name} (pman)anodetitlefile name
+@ref{(pman)anode,,title,,manual} (pman)anodetitlemanual
+@ref{(pman)anode,,title, file name, manual} (pman)anodetitlefile namemanual
+@ref{(pman)anode,,,file name,manual} (pman)anodefile namemanual
+
+
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+@inforef{chapter} chapter
+@inforef{chapter, cross ref name} chaptercross ref name
+@inforef{chapter,,file name} chapterfile name
+@inforef{node, cross ref name, file name} nodecross ref namefile name
+@inforef{node} node
+@inforef{node, cross ref name} nodecross ref name
+@inforef{node,,file name} nodefile name
+@inforef{chapter, cross ref name, file name, spurious arg} chaptercross ref namefile name, spurious arg
+
+@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}
+s--ect,iona , in cross
+refa comma, in file
+
+chapter.
+
+extcross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2info file with uref3 href://http/myhost.com/index3.htmluref3printed manual with uref4 href://http/myhost.com/index4.htmluref4
+chaptercross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2
+
+a--strong
+l--ine
+
+a--asis
+b
+l--ine
+
+a
+b
+l--ine
+
+Title
+a--code
+Value--table code
+
+Title
+a--samp
+a2--samp
+Value--table samp
+
+c--artouche
+
+Tit--le of box
+With title c--artouche
+
+f--lushleft
+more text
+
+f--lushright
+more text
+
+ce--ntered line
+
+r--raggedright
+more text
+
+
+in verbatim ''
+
+
+
+
+
+
+majorheading
+
+chapheading
+
+heading
+
+subheading
+
+subsubheading
+
+
+@acronym{--a,an accronym @comma{} @enddots{}} --aan accronym , ...
+@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} } É--. ,A.Étude--, Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+
+@math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
+
+
+
+
+Somehow invalid use of @,:
+
+@, ̧
+
+@,@"u ̧ü
+
+Invalid use of @':
+
+@' ́
+
+@'@"u ́ü
+
+@| 
+
+@dotless{truc} truc
+@dotless{ij} ij
+@dotless{--a} -a
+@dotless{a} a
+
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
+@TeX, but without brace TeX
+@# #
+
+@w{--a} --a
+
+@image{,1--xt} 1--xt
+@image{,,2--xt} 2--xt
+@image{,,,3--xt} 3--xt
+
+@image{f-ile,aze,,a--lt} f-ileazea--lt
+@image{f-ile,,,alt@verb{:jk _" %}} f-ilealtjk _" %@
+
+@image{f--ile} f--ile
+@image{f--ile,,,alt} f--ilealt
+@image{f--ile,,,,.e-d-xt} f--ile.e--xt
+@image{f--ile,l--i} f--ilel--i
+@image{f--ile,,l--e} f--ilel--e
+@image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
+@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
+
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
+@image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} filejk _" %@altjk _" %@
+
+
+author
+
+ü Ü ñ â é ō ì é Ḕ
+Ḉ Ḉ a̋ ȧ å a͡
+ă ǎ
+ ? .
+
+TeX LaTeX -!- aa (R) o 
+
+t 
+
+e--mph item
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+without brace w a--b
+without brace w c--d
+
+a
+l--ine
+
+a--missing style formatting
+l--ine
+
+a
+b
+l--ine
+
+fun
+truc machin bidule chose and
+truc machin bidule chose and  after
+truc machin bidule chose and 
+truc machin bidule chose and and after
+truc followed by a comment
+Various deff lines
+truc after a deff item
+
+fsetinv invalid a g
+id i ule
+
+aaa
+
+truc
+
+g--roupe
+
+@ref{node} node
+
+@ref{,cross ref name} cross ref name
+@ref{,,title} title
+@ref{,,,file name} file name
+@ref{,,,,manual} manual
+@ref{node,cross ref name} nodecross ref name
+@ref{node,,title} nodetitle
+@ref{node,,,file name} nodefile name
+@ref{node,,,,manual} nodemanual
+@ref{node,cross ref name,title,} nodecross ref nametitle
+@ref{node,cross ref name,,file name} nodecross ref namefile name
+@ref{node,cross ref name,,,manual} nodecross ref namemanual
+@ref{node,cross ref name,title,file name} nodecross ref nametitlefile name
+@ref{node,cross ref name,title,,manual} nodecross ref nametitlemanual
+@ref{node,cross ref name,title, file name, manual} nodecross ref nametitlefile namemanual
+@ref{node,,title,file name} nodetitlefile name
+@ref{node,,title,,manual} nodetitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{node,,title, file name, manual} nodetitlefile namemanual
+@ref{node,,,file name,manual} nodefile namemanual
+@ref{,cross ref name,title,} cross ref nametitle
+@ref{,cross ref name,,file name} cross ref namefile name
+@ref{,cross ref name,,,manual} cross ref namemanual
+@ref{,cross ref name,title,file name} cross ref nametitlefile name
+@ref{,cross ref name,title,,manual} cross ref nametitlemanual
+@ref{,cross ref name,title, file name, manual} cross ref nametitlefile namemanual
+@ref{,,title,file name} titlefile name
+@ref{,,title,,manual} titlemanual
+@ref{,,title, file name, manual} titlefile namemanual
+@ref{,,,file name,manual} file namemanual
+
+@inforef{,cross ref name } cross ref name
+@inforef{,,file name} file name
+@inforef{,cross ref name, file name} cross ref namefile name
+@inforef{} 
+
+
+
+title --a
+formatting subtitle --a
+subtitle 2 --a
+author1 --a with accents in name Téça
+author2 --a
+In titlepage
+
+<
+>
+"
+&
+'
+`
+
+``simple-double--three---four----''
+
+code: ``simple-double--three---four----'' 
+
+asis: ``simple-double--three---four----'' 
+
+strong: ``simple-double--three---four----'' 
+
+kbd: ``simple-double--three---four----'' 
+
+
+``simple-double--three---four----''
+
+
+
+@"u ü (ü)
+@"{U} Ü (Ü) 
+@~n ñ (ñ)
+@^a â (â)
+
+@'e é (é)
+@=o ō (ō)
+@`i ì (ì)
+@'{e} é (é)
+
+@'{@dotless{i}} í (í)
+@dotless{i} ı (ı)
+@dotless{j} ȷ (ȷ)
+
+@H{a} a̋
+@dotaccent{a} ȧ (ȧ)
+@ringaccent{a} å (å)
+
+@tieaccent{a} a͡
+@u{a} ă (ă)
+@ubaraccent{a} a̲
+
+@udotaccent{a} ạ (ạ)
+@v{a} ǎ (ǎ)
+
+@,c ç (ç)
+@,{c} ç (ç)
+@ogonek{a} ą (ą)
+
+@`{@=E} Ḕ
+@l{} /l
+@,{@'C} Ḉ
+@,c@"u çü 
+
+
+@H{--a} -a̋
+@dotaccent{--a} -ȧ
+@ringaccent{--a} -å
+
+@tieaccent{--a} -a͡
+@u{--a} -ă
+@ubaraccent{--a} -a̲
+
+@udotaccent{--a} -ạ
+@v{--a} -ǎ
+@,{--c} -ç
+@ogonek{--a} -ą
+
+@U{0075} 0075
+
+@* 
+
+@ followed by a space
+ 
+@ followed by a tab
+ 
+@ followed by a new line
+ @- 
+@: 
+@! !
+@? ?
+@. .
+@& &
+@@ @
+@} }
+@{ {
+@/ 
+
+foo vs. bar. 
+colon :And something else.
+semi colon ;.
+And ? ?.
+Now ! !@
+but , ,
+
+@ampchar & (&)
+@atchar @ (@)
+@backslashchar \ (\)
+@hashchar # (#)
+@lbracechar { ({)
+@rbracechar } (})
+
+@TeX TeX
+@LaTeX LaTeX
+@bullet * (•)
+@copyright (C) (©)
+
+@dots ... (…)
+@enddots ...
+@equiv == (≡)
+
+@error error-->
+@expansion ==> (↦)
+@minus - (−)
+
+@point -!- (⋆)
+@print -| (⊣)
+@result => (⇒)
+@today a sunny day
+
+@aa aa (å)
+@AA AA (Å)
+@ae ae (æ)
+@oe oe (œ)
+@AE AE (Æ)
+@OE OE (Œ)
+@o /o (ø)
+@O /O (Ø)
+@ss ss (ß)
+@l /l (ł)
+@L /L (Ł)
+@DH D (Ð)
+@TH TH (Þ)
+@dh d (ð)
+@th th (þ)
+
+@exclamdown ! (¡)
+@questiondown ? (¿)
+@pounds # (£)
+@registeredsymbol (R) (®)
+@ordf a (ª)
+@ordm o (º)
+@comma , (,)
+@quotedblleft " (“)
+@quotedblright " (”)
+@quoteleft ` (‘)
+@quoteright ' (’)
+@quotedblbase ,, („)
+@quotesinglbase , (‚)
+@guillemetleft << («)
+@guillemetright >> (»)
+@guillemotleft << («)
+@guillemotright >> (»)
+@guilsinglleft < (‹)
+@guilsinglright > (›)
+
+@textdegree o (°)
+@euro Euro (€)
+@arrow -> (→)
+
+@leq <= (≤)
+@geq >= (≥)
+@tie a b
+
+@acronym{--a,an accronym} --aan accronym
+@acronym{--a} --a
+@abbr{@'E--. @comma{}A., @'Etude Autonome } É--. ,A.Étude Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+@asis{--a} --a
+@b{--a} --a
+@cite{--a} --a
+@code{--a} --a
+@command{--a} --a
+@dfn{--a} --a
+@dmn{--a} --a
+@email{--a,--b} --a--b
+@email{,--b} --b
+@email{--a} --a
+@emph{--a} --a
+@env{--a} --a
+@file{--a} --a
+@i{--a} --a
+@kbd{--a} --a
+@key{--a} --a
+@math{--a {\frac{1}{2}} @minus{}} --a {\frac{1}{2}} -
+@option{--a} --a
+@r{--a} --a
+@samp{--a} --a
+@sc{--a} --a
+@strong{--a} --a
+@t{--a} --a
+@sansserif{--a} --a
+@slanted{--a} --a
+@titlefont{--a} --a
+@indicateurl{--a} --a
+@uref{--a,--b} --a--b
+@uref{--a} --a
+@uref{,--b} --b
+@uref{--a,--b,--c} --a--b--c
+@uref{,--b,--c} --b--c
+@uref{--a,,--c} --a--c
+@uref{,,--c} --c
+@url{--a,--b} --a--b
+@url{--a,} --a
+@url{,--b} --b
+@var{--a} --a
+@verb{:--a:} --a
+@verb{:a  < & @ % " --    b:} a  < & @ % " --    b
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+a@sup{h}@sub{l} ahl
+@footnote{in footnote} in footnote
+@footnote{in footnote2} in footnote2
+
+@sp 2
+
+@page
+
+
+
+need 1002
+
+@clicksequence{click @click{} A} click -> A
+After clickstyle =>
+@clicksequence{click @click{} A} click => A
+
+
+disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e-{1 \over 2}\left({x-\mu \over \sigma}\right)^2
+
+``simple-double--three---four----'' aa
+``simple-double--three---four----''
+
+
+ı ȷ
+/l ç
+
+a̲ ạ ą ahl
+
+       ! @ } { 
+a sunny day
+
+->
+0075
+* (C) ... ... ==
+error--> ==> - -| =>
+AA ae oe AE OE /o /O ss /l /L D
+TH d th ! ? #
+a o , 
+
+" " 
+` ' ,, , <<
+>> << >> <
+> Euro -> <= >=
+
+b i r sc sansserif slanted
+
+default kbdinputstyle
+vtable i--tem default kbdinputstyle
+in example default kbdinputstyle
+vtable i--tem in example default kbdinputstyle
+
+code kbdinputstyle
+vtable i--tem code kbdinputstyle
+in example code kbdinputstyle
+vtable i--tem in example code kbdinputstyle
+
+example kbdinputstyle
+vtable i--tem example kbdinputstyle
+in example example kbdinputstyle
+vtable i--tem in example example kbdinputstyle
+
+distinct kbdinputstyle
+vtable i--tem distinct kbdinputstyle
+in example distinct kbdinputstyle
+vtable i--tem in example distinct kbdinputstyle
+
+A quot---ation
+
+Note
+A Note
+
+note
+A note
+
+Caution
+Caution
+
+Important
+Important
+
+Tip
+a Tip
+
+Warning
+a Warning.
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @quotation line.
+
+something, other thing
+something, other thing
+
+Note, the note
+Note, the note
+
+
+Empty
+
+
+
+
+aaa quotation author
+quotation
+
+indent in quotation
+
+exdented quotation line   and dash --- in quotation
+
+Not exdented followed by exdented
+exdented quotation line
+
+exdented quotation line
+Followed by not exdented 
+
+quotation1
+in exdented protected eol  
+following
+in exdented a @* 
+ and following
+after exdented
+
+A small quot---ation
+
+Note
+A small Note
+
+something, other thing
+something, other thing
+
+i--temize
+
+i--tem +
+
+b--ullet
+
+minu--s
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+with w a--b
+with w c--d
+
+line w a--b
+line with w c--d
+
+e--numerate
+
+first third
+second third
+
+e--numerate
+
+first c
+second c
+
+mu--ltitable headitem another tab
+mu--ltitable item multitable tab
+mu--ltitable item 2 multitable tab 2
+lone mu--ltitable item
+
+truc bidule
+
+e--xample  some
+   text
+
+first arg
+example one arg
+
+first argsecond arg
+example two args
+
+first argsecond argthird arg
+example three args
+
+first argsecond argthird argfourth arg
+example four args
+
+first argsecond argthird argfourth argfifth arg
+example five args
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @example line.
+
+example with empty args
+
+nonempty
+example with empty and non empty args mix
+
+Exam---ple
+
+Other li---ne
+not exdented
+
+exdented  and dash --- in example
+Not exdented one
+exdented two
+Not exdented two
+
+Example   Hoho.
+Nested Other line
+exdented nested other line
+
+s--mallexample
+
+@noindent after smallexample.
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain'
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain'
+Less recent versions are also present.
+
+d--isplay
+
+s--malldisplay
+
+l--isp
+
+s--malllisp
+
+f--ormat
+
+s--mallformat
+
+c--ategory d--effn_name a--rguments...
+d--effn
+
+cate--gory de--ffn_name ar--guments    more args 
+ even more so
+def--fn
+ 
+fset i a g
+cmde truc 
+Command log trap 
+Command log trap1 
+Command log trap2 
+cmde id ule truc
+cmde2 id i ule truc
+ 
+ machin
+ bidule machin
+truc machin
+truc 
+truc followed by a comment
+ 
+truc a b c d e f g h i
+truc deffnx before end deffn
+
+
+empty deffn
+
+empty deffn with deffnx
+empty deffnx
+
+fset i a g
+cmde truc 
+text in def item for second def item
+
+
+c--ategory d--efvr_name
+d--efvr
+
+c--ategory n--ame a--rguments...
+d--effn
+
+c--ategory n--ame
+d--effn no arg
+
+c--ategory t--ype d--eftypefn_name a--rguments...
+d--eftypefn
+
+c--ategory t--ype d--eftypefn_name
+d--eftypefn no arg
+
+c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+d--eftypeop
+
+c--ategory c--lass t--ype d--eftypeop_name
+d--eftypeop no arg
+
+c--ategory t--ype d--eftypevr_name
+d--eftypevr
+
+c--ategory c--lass d--efcv_name
+d--efcv
+
+c--ategory c--lass d--efcv_name a--rguments...
+d--efcv with arguments
+
+c--ategory c--lass t--ype d--eftypecv_name
+d--eftypecv
+
+c--ategory c--lass t--ype d--eftypecv_name a--rguments...
+d--eftypecv with arguments
+
+c--ategory c--lass d--efop_name a--rguments...
+d--efop
+
+c--ategory c--lass d--efop_name
+d--efop no arg
+
+c--ategory d--eftp_name a--ttributes...
+d--eftp
+
+Function d--efun_name a--rguments...
+d--efun
+
+Macro d--efmac_name a--rguments...
+d--efmac
+
+Special Form d--efspec_name a--rguments...
+d--efspec
+
+Variable d--efvar_name
+d--efvar
+
+Variable d--efvar_name arg--var arg--var1
+d--efvar with args
+
+User Option d--efopt_name
+d--efopt
+
+Function t--ype d--eftypefun_name a--rguments...
+d--eftypefun
+
+Variable t--ype d--eftypevar_name
+d--eftypevar
+
+Instance Variable c--lass d--efivar_name
+d--efivar
+
+Instance Variable c--lass t--ype d--eftypeivar_name
+d--eftypeivar
+
+Method c--lass d--efmethod_name a--rguments...
+d--efmethod
+
+Method c--lass t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
+
+
+Function data-type2 name2 arguments2...
+aaa2
+
+c--ategory2 t--ype2 d--eftypefn_name2
+d--eftypefn no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2 a--rguments2...
+d--eftypeop2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2
+d--eftypeop no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2
+d--eftypecv2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2 a--rguments2...
+d--eftypecv with arguments2
+
+fun2 arg2
+fff2
+
+
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} c---hapter@cross r---ef name@t---itle@file n---ame@ma---nual@.
+@ref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@pxref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+
+@ref{chapter} chapter
+@xref{chapter} chapter.
+@pxref{chapter} chapter
+@ref{s--ect@comma{}ion} s--ect,ion
+
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+s--ect,iona , in cross
+refa comma, in titlea comma, in filea , in manual name
+
+@ref{chapter,cross ref name} chaptercross ref name
+@ref{chapter,,title} chaptertitle
+@ref{chapter,,,file name} chapterfile name
+@ref{chapter,,,,manual} chaptermanual
+@ref{chapter,cross ref name,title,} chaptercross ref nametitle
+@ref{chapter,cross ref name,,file name} chaptercross ref namefile name
+@ref{chapter,cross ref name,,,manual} chaptercross ref namemanual
+@ref{chapter,cross ref name,title,file name} chaptercross ref nametitlefile name
+@ref{chapter,cross ref name,title,,manual} chaptercross ref nametitlemanual
+@ref{chapter,cross ref name,title, file name, manual} chaptercross ref nametitlefile namemanual
+@ref{chapter,,title,file name} chaptertitlefile name
+@ref{chapter,,title,,manual} chaptertitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{chapter,,,file name,manual} chapterfile namemanual
+
+
+@ref{(pman)anode,cross ref name} (pman)anodecross ref name
+@ref{(pman)anode,,title} (pman)anodetitle
+@ref{(pman)anode,,,file name} (pman)anodefile name
+@ref{(pman)anode,,,,manual} (pman)anodemanual
+@ref{(pman)anode,cross ref name,title,} (pman)anodecross ref nametitle
+@ref{(pman)anode,cross ref name,,file name} (pman)anodecross ref namefile name
+@ref{(pman)anode,cross ref name,,,manual} (pman)anodecross ref namemanual
+@ref{(pman)anode,cross ref name,title,file name} (pman)anodecross ref nametitlefile name
+@ref{(pman)anode,cross ref name,title,,manual} (pman)anodecross ref nametitlemanual
+@ref{(pman)anode,cross ref name,title, file name, manual} (pman)anodecross ref nametitlefile namemanual
+@ref{(pman)anode,,title,file name} (pman)anodetitlefile name
+@ref{(pman)anode,,title,,manual} (pman)anodetitlemanual
+@ref{(pman)anode,,title, file name, manual} (pman)anodetitlefile namemanual
+@ref{(pman)anode,,,file name,manual} (pman)anodefile namemanual
+
+
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+@inforef{chapter} chapter
+@inforef{chapter, cross ref name} chaptercross ref name
+@inforef{chapter,,file name} chapterfile name
+@inforef{node, cross ref name, file name} nodecross ref namefile name
+@inforef{node} node
+@inforef{node, cross ref name} nodecross ref name
+@inforef{node,,file name} nodefile name
+@inforef{chapter, cross ref name, file name, spurious arg} chaptercross ref namefile name, spurious arg
+
+@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}
+s--ect,iona , in cross
+refa comma, in file
+
+chapter.
+
+extcross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2info file with uref3 href://http/myhost.com/index3.htmluref3printed manual with uref4 href://http/myhost.com/index4.htmluref4
+chaptercross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2
+
+a--strong
+l--ine
+
+a--asis
+b
+l--ine
+
+a
+b
+l--ine
+
+Title
+a--code
+Value--table code
+
+Title
+a--samp
+a2--samp
+Value--table samp
+
+c--artouche
+
+Tit--le of box
+With title c--artouche
+
+f--lushleft
+more text
+
+f--lushright
+more text
+
+ce--ntered line
+
+r--raggedright
+more text
+
+
+in verbatim ''
+
+
+
+
+
+
+majorheading
+
+chapheading
+
+heading
+
+subheading
+
+subsubheading
+
+
+@acronym{--a,an accronym @comma{} @enddots{}} --aan accronym , ...
+@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} } É--. ,A.Étude--, Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+
+@math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
+
+
+
+
+Somehow invalid use of @,:
+
+@, ̧
+
+@,@"u ̧ü
+
+Invalid use of @':
+
+@' ́
+
+@'@"u ́ü
+
+@| 
+
+@dotless{truc} truc
+@dotless{ij} ij
+@dotless{--a} -a
+@dotless{a} a
+
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
+@TeX, but without brace TeX
+@# #
+
+@w{--a} --a
+
+@image{,1--xt} 1--xt
+@image{,,2--xt} 2--xt
+@image{,,,3--xt} 3--xt
+
+@image{f-ile,aze,,a--lt} f-ileazea--lt
+@image{f-ile,,,alt@verb{:jk _" %}} f-ilealtjk _" %@
+
+@image{f--ile} f--ile
+@image{f--ile,,,alt} f--ilealt
+@image{f--ile,,,,.e-d-xt} f--ile.e--xt
+@image{f--ile,l--i} f--ilel--i
+@image{f--ile,,l--e} f--ilel--e
+@image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
+@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
+
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
+@image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} filejk _" %@altjk _" %@
+
+
+author
+
+ü Ü ñ â é ō ì é Ḕ
+Ḉ Ḉ a̋ ȧ å a͡
+ă ǎ
+ ? .
+
+TeX LaTeX -!- aa (R) o 
+
+t 
+
+e--mph item
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+without brace w a--b
+without brace w c--d
+
+a
+l--ine
+
+a--missing style formatting
+l--ine
+
+a
+b
+l--ine
+
+fun
+truc machin bidule chose and
+truc machin bidule chose and  after
+truc machin bidule chose and 
+truc machin bidule chose and and after
+truc followed by a comment
+Various deff lines
+truc after a deff item
+
+fsetinv invalid a g
+id i ule
+
+aaa
+
+truc
+
+g--roupe
+
+@ref{node} node
+
+@ref{,cross ref name} cross ref name
+@ref{,,title} title
+@ref{,,,file name} file name
+@ref{,,,,manual} manual
+@ref{node,cross ref name} nodecross ref name
+@ref{node,,title} nodetitle
+@ref{node,,,file name} nodefile name
+@ref{node,,,,manual} nodemanual
+@ref{node,cross ref name,title,} nodecross ref nametitle
+@ref{node,cross ref name,,file name} nodecross ref namefile name
+@ref{node,cross ref name,,,manual} nodecross ref namemanual
+@ref{node,cross ref name,title,file name} nodecross ref nametitlefile name
+@ref{node,cross ref name,title,,manual} nodecross ref nametitlemanual
+@ref{node,cross ref name,title, file name, manual} nodecross ref nametitlefile namemanual
+@ref{node,,title,file name} nodetitlefile name
+@ref{node,,title,,manual} nodetitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{node,,title, file name, manual} nodetitlefile namemanual
+@ref{node,,,file name,manual} nodefile namemanual
+@ref{,cross ref name,title,} cross ref nametitle
+@ref{,cross ref name,,file name} cross ref namefile name
+@ref{,cross ref name,,,manual} cross ref namemanual
+@ref{,cross ref name,title,file name} cross ref nametitlefile name
+@ref{,cross ref name,title,,manual} cross ref nametitlemanual
+@ref{,cross ref name,title, file name, manual} cross ref nametitlefile namemanual
+@ref{,,title,file name} titlefile name
+@ref{,,title,,manual} titlemanual
+@ref{,,title, file name, manual} titlefile namemanual
+@ref{,,,file name,manual} file namemanual
+
+@inforef{,cross ref name } cross ref name
+@inforef{,,file name} file name
+@inforef{,cross ref name, file name} cross ref namefile name
+@inforef{} 
+
+
+
+Insercopying in titlepage
+
+
+Top
+Top section
+
+* chapter::               chapter
+
+Menu comment
+
+* description:chapter2.   Chapter 2
+
+
+chapter
+chapter
+
+First para
+
+qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+
+noindent in para.
+
+unneeded indent
+
+Insertcopying in normal text
+
+Normal text
+
+<
+>
+"
+&
+'
+`
+
+``simple-double--three---four----''
+
+code: ``simple-double--three---four----'' 
+
+asis: ``simple-double--three---four----'' 
+
+strong: ``simple-double--three---four----'' 
+
+kbd: ``simple-double--three---four----'' 
+
+
+``simple-double--three---four----''
+
+
+
+@"u ü (ü)
+@"{U} Ü (Ü) 
+@~n ñ (ñ)
+@^a â (â)
+
+@'e é (é)
+@=o ō (ō)
+@`i ì (ì)
+@'{e} é (é)
+
+@'{@dotless{i}} í (í)
+@dotless{i} ı (ı)
+@dotless{j} ȷ (ȷ)
+
+@H{a} a̋
+@dotaccent{a} ȧ (ȧ)
+@ringaccent{a} å (å)
+
+@tieaccent{a} a͡
+@u{a} ă (ă)
+@ubaraccent{a} a̲
+
+@udotaccent{a} ạ (ạ)
+@v{a} ǎ (ǎ)
+
+@,c ç (ç)
+@,{c} ç (ç)
+@ogonek{a} ą (ą)
+
+@`{@=E} Ḕ
+@l{} /l
+@,{@'C} Ḉ
+@,c@"u çü 
+
+
+@H{--a} -a̋
+@dotaccent{--a} -ȧ
+@ringaccent{--a} -å
+
+@tieaccent{--a} -a͡
+@u{--a} -ă
+@ubaraccent{--a} -a̲
+
+@udotaccent{--a} -ạ
+@v{--a} -ǎ
+@,{--c} -ç
+@ogonek{--a} -ą
+
+@U{0075} 0075
+
+@* 
+
+@ followed by a space
+ 
+@ followed by a tab
+ 
+@ followed by a new line
+ @- 
+@: 
+@! !
+@? ?
+@. .
+@& &
+@@ @
+@} }
+@{ {
+@/ 
+
+foo vs. bar. 
+colon :And something else.
+semi colon ;.
+And ? ?.
+Now ! !@
+but , ,
+
+@ampchar & (&)
+@atchar @ (@)
+@backslashchar \ (\)
+@hashchar # (#)
+@lbracechar { ({)
+@rbracechar } (})
+
+@TeX TeX
+@LaTeX LaTeX
+@bullet * (•)
+@copyright (C) (©)
+
+@dots ... (…)
+@enddots ...
+@equiv == (≡)
+
+@error error-->
+@expansion ==> (↦)
+@minus - (−)
+
+@point -!- (⋆)
+@print -| (⊣)
+@result => (⇒)
+@today a sunny day
+
+@aa aa (å)
+@AA AA (Å)
+@ae ae (æ)
+@oe oe (œ)
+@AE AE (Æ)
+@OE OE (Œ)
+@o /o (ø)
+@O /O (Ø)
+@ss ss (ß)
+@l /l (ł)
+@L /L (Ł)
+@DH D (Ð)
+@TH TH (Þ)
+@dh d (ð)
+@th th (þ)
+
+@exclamdown ! (¡)
+@questiondown ? (¿)
+@pounds # (£)
+@registeredsymbol (R) (®)
+@ordf a (ª)
+@ordm o (º)
+@comma , (,)
+@quotedblleft " (“)
+@quotedblright " (”)
+@quoteleft ` (‘)
+@quoteright ' (’)
+@quotedblbase ,, („)
+@quotesinglbase , (‚)
+@guillemetleft << («)
+@guillemetright >> (»)
+@guillemotleft << («)
+@guillemotright >> (»)
+@guilsinglleft < (‹)
+@guilsinglright > (›)
+
+@textdegree o (°)
+@euro Euro (€)
+@arrow -> (→)
+
+@leq <= (≤)
+@geq >= (≥)
+@tie a b
+
+@acronym{--a,an accronym} --aan accronym
+@acronym{--a} --a
+@abbr{@'E--. @comma{}A., @'Etude Autonome } É--. ,A.Étude Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+@asis{--a} --a
+@b{--a} --a
+@cite{--a} --a
+@code{--a} --a
+@command{--a} --a
+@dfn{--a} --a
+@dmn{--a} --a
+@email{--a,--b} --a--b
+@email{,--b} --b
+@email{--a} --a
+@emph{--a} --a
+@env{--a} --a
+@file{--a} --a
+@i{--a} --a
+@kbd{--a} --a
+@key{--a} --a
+@math{--a {\frac{1}{2}} @minus{}} --a {\frac{1}{2}} -
+@option{--a} --a
+@r{--a} --a
+@samp{--a} --a
+@sc{--a} --a
+@strong{--a} --a
+@t{--a} --a
+@sansserif{--a} --a
+@slanted{--a} --a
+@titlefont{--a} --a
+@indicateurl{--a} --a
+@uref{--a,--b} --a--b
+@uref{--a} --a
+@uref{,--b} --b
+@uref{--a,--b,--c} --a--b--c
+@uref{,--b,--c} --b--c
+@uref{--a,,--c} --a--c
+@uref{,,--c} --c
+@url{--a,--b} --a--b
+@url{--a,} --a
+@url{,--b} --b
+@var{--a} --a
+@verb{:--a:} --a
+@verb{:a  < & @ % " --    b:} a  < & @ % " --    b
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+a@sup{h}@sub{l} ahl
+@footnote{in footnote} in footnote
+@footnote{in footnote2} in footnote2
+
+@sp 2
+
+@page
+
+
+
+need 1002
+
+@clicksequence{click @click{} A} click -> A
+After clickstyle =>
+@clicksequence{click @click{} A} click => A
+
+
+disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e-{1 \over 2}\left({x-\mu \over \sigma}\right)^2
+
+``simple-double--three---four----'' aa
+``simple-double--three---four----''
+
+
+ı ȷ
+/l ç
+
+a̲ ạ ą ahl
+
+       ! @ } { 
+a sunny day
+
+->
+0075
+* (C) ... ... ==
+error--> ==> - -| =>
+AA ae oe AE OE /o /O ss /l /L D
+TH d th ! ? #
+a o , 
+
+" " 
+` ' ,, , <<
+>> << >> <
+> Euro -> <= >=
+
+b i r sc sansserif slanted
+
+default kbdinputstyle
+vtable i--tem default kbdinputstyle
+in example default kbdinputstyle
+vtable i--tem in example default kbdinputstyle
+
+code kbdinputstyle
+vtable i--tem code kbdinputstyle
+in example code kbdinputstyle
+vtable i--tem in example code kbdinputstyle
+
+example kbdinputstyle
+vtable i--tem example kbdinputstyle
+in example example kbdinputstyle
+vtable i--tem in example example kbdinputstyle
+
+distinct kbdinputstyle
+vtable i--tem distinct kbdinputstyle
+in example distinct kbdinputstyle
+vtable i--tem in example distinct kbdinputstyle
+
+A quot---ation
+
+Note
+A Note
+
+note
+A note
+
+Caution
+Caution
+
+Important
+Important
+
+Tip
+a Tip
+
+Warning
+a Warning.
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @quotation line.
+
+something, other thing
+something, other thing
+
+Note, the note
+Note, the note
+
+
+Empty
+
+
+
+
+aaa quotation author
+quotation
+
+indent in quotation
+
+exdented quotation line   and dash --- in quotation
+
+Not exdented followed by exdented
+exdented quotation line
+
+exdented quotation line
+Followed by not exdented 
+
+quotation1
+in exdented protected eol  
+following
+in exdented a @* 
+ and following
+after exdented
+
+A small quot---ation
+
+Note
+A small Note
+
+something, other thing
+something, other thing
+
+i--temize
+
+i--tem +
+
+b--ullet
+
+minu--s
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+with w a--b
+with w c--d
+
+line w a--b
+line with w c--d
+
+e--numerate
+
+first third
+second third
+
+e--numerate
+
+first c
+second c
+
+mu--ltitable headitem another tab
+mu--ltitable item multitable tab
+mu--ltitable item 2 multitable tab 2
+lone mu--ltitable item
+
+truc bidule
+
+e--xample  some
+   text
+
+first arg
+example one arg
+
+first argsecond arg
+example two args
+
+first argsecond argthird arg
+example three args
+
+first argsecond argthird argfourth arg
+example four args
+
+first argsecond argthird argfourth argfifth arg
+example five args
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @example line.
+
+example with empty args
+
+nonempty
+example with empty and non empty args mix
+
+Exam---ple
+
+Other li---ne
+not exdented
+
+exdented  and dash --- in example
+Not exdented one
+exdented two
+Not exdented two
+
+Example   Hoho.
+Nested Other line
+exdented nested other line
+
+s--mallexample
+
+@noindent after smallexample.
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain'
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain'
+Less recent versions are also present.
+
+d--isplay
+
+s--malldisplay
+
+l--isp
+
+s--malllisp
+
+f--ormat
+
+s--mallformat
+
+c--ategory d--effn_name a--rguments...
+d--effn
+
+cate--gory de--ffn_name ar--guments    more args 
+ even more so
+def--fn
+ 
+fset i a g
+cmde truc 
+Command log trap 
+Command log trap1 
+Command log trap2 
+cmde id ule truc
+cmde2 id i ule truc
+ 
+ machin
+ bidule machin
+truc machin
+truc 
+truc followed by a comment
+ 
+truc a b c d e f g h i
+truc deffnx before end deffn
+
+
+empty deffn
+
+empty deffn with deffnx
+empty deffnx
+
+fset i a g
+cmde truc 
+text in def item for second def item
+
+
+c--ategory d--efvr_name
+d--efvr
+
+c--ategory n--ame a--rguments...
+d--effn
+
+c--ategory n--ame
+d--effn no arg
+
+c--ategory t--ype d--eftypefn_name a--rguments...
+d--eftypefn
+
+c--ategory t--ype d--eftypefn_name
+d--eftypefn no arg
+
+c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+d--eftypeop
+
+c--ategory c--lass t--ype d--eftypeop_name
+d--eftypeop no arg
+
+c--ategory t--ype d--eftypevr_name
+d--eftypevr
+
+c--ategory c--lass d--efcv_name
+d--efcv
+
+c--ategory c--lass d--efcv_name a--rguments...
+d--efcv with arguments
+
+c--ategory c--lass t--ype d--eftypecv_name
+d--eftypecv
+
+c--ategory c--lass t--ype d--eftypecv_name a--rguments...
+d--eftypecv with arguments
+
+c--ategory c--lass d--efop_name a--rguments...
+d--efop
+
+c--ategory c--lass d--efop_name
+d--efop no arg
+
+c--ategory d--eftp_name a--ttributes...
+d--eftp
+
+Function d--efun_name a--rguments...
+d--efun
+
+Macro d--efmac_name a--rguments...
+d--efmac
+
+Special Form d--efspec_name a--rguments...
+d--efspec
+
+Variable d--efvar_name
+d--efvar
+
+Variable d--efvar_name arg--var arg--var1
+d--efvar with args
+
+User Option d--efopt_name
+d--efopt
+
+Function t--ype d--eftypefun_name a--rguments...
+d--eftypefun
+
+Variable t--ype d--eftypevar_name
+d--eftypevar
+
+Instance Variable c--lass d--efivar_name
+d--efivar
+
+Instance Variable c--lass t--ype d--eftypeivar_name
+d--eftypeivar
+
+Method c--lass d--efmethod_name a--rguments...
+d--efmethod
+
+Method c--lass t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
+
+
+Function data-type2 name2 arguments2...
+aaa2
+
+c--ategory2 t--ype2 d--eftypefn_name2
+d--eftypefn no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2 a--rguments2...
+d--eftypeop2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2
+d--eftypeop no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2
+d--eftypecv2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2 a--rguments2...
+d--eftypecv with arguments2
+
+fun2 arg2
+fff2
+
+
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} c---hapter@cross r---ef name@t---itle@file n---ame@ma---nual@.
+@ref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@pxref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+
+@ref{chapter} chapter
+@xref{chapter} chapter.
+@pxref{chapter} chapter
+@ref{s--ect@comma{}ion} s--ect,ion
+
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+s--ect,iona , in cross
+refa comma, in titlea comma, in filea , in manual name
+
+@ref{chapter,cross ref name} chaptercross ref name
+@ref{chapter,,title} chaptertitle
+@ref{chapter,,,file name} chapterfile name
+@ref{chapter,,,,manual} chaptermanual
+@ref{chapter,cross ref name,title,} chaptercross ref nametitle
+@ref{chapter,cross ref name,,file name} chaptercross ref namefile name
+@ref{chapter,cross ref name,,,manual} chaptercross ref namemanual
+@ref{chapter,cross ref name,title,file name} chaptercross ref nametitlefile name
+@ref{chapter,cross ref name,title,,manual} chaptercross ref nametitlemanual
+@ref{chapter,cross ref name,title, file name, manual} chaptercross ref nametitlefile namemanual
+@ref{chapter,,title,file name} chaptertitlefile name
+@ref{chapter,,title,,manual} chaptertitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{chapter,,,file name,manual} chapterfile namemanual
+
+
+@ref{(pman)anode,cross ref name} (pman)anodecross ref name
+@ref{(pman)anode,,title} (pman)anodetitle
+@ref{(pman)anode,,,file name} (pman)anodefile name
+@ref{(pman)anode,,,,manual} (pman)anodemanual
+@ref{(pman)anode,cross ref name,title,} (pman)anodecross ref nametitle
+@ref{(pman)anode,cross ref name,,file name} (pman)anodecross ref namefile name
+@ref{(pman)anode,cross ref name,,,manual} (pman)anodecross ref namemanual
+@ref{(pman)anode,cross ref name,title,file name} (pman)anodecross ref nametitlefile name
+@ref{(pman)anode,cross ref name,title,,manual} (pman)anodecross ref nametitlemanual
+@ref{(pman)anode,cross ref name,title, file name, manual} (pman)anodecross ref nametitlefile namemanual
+@ref{(pman)anode,,title,file name} (pman)anodetitlefile name
+@ref{(pman)anode,,title,,manual} (pman)anodetitlemanual
+@ref{(pman)anode,,title, file name, manual} (pman)anodetitlefile namemanual
+@ref{(pman)anode,,,file name,manual} (pman)anodefile namemanual
+
+
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+@inforef{chapter} chapter
+@inforef{chapter, cross ref name} chaptercross ref name
+@inforef{chapter,,file name} chapterfile name
+@inforef{node, cross ref name, file name} nodecross ref namefile name
+@inforef{node} node
+@inforef{node, cross ref name} nodecross ref name
+@inforef{node,,file name} nodefile name
+@inforef{chapter, cross ref name, file name, spurious arg} chaptercross ref namefile name, spurious arg
+
+@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}
+s--ect,iona , in cross
+refa comma, in file
+
+chapter.
+
+extcross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2info file with uref3 href://http/myhost.com/index3.htmluref3printed manual with uref4 href://http/myhost.com/index4.htmluref4
+chaptercross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2
+
+a--strong
+l--ine
+
+a--asis
+b
+l--ine
+
+a
+b
+l--ine
+
+Title
+a--code
+Value--table code
+
+Title
+a--samp
+a2--samp
+Value--table samp
+
+c--artouche
+
+Tit--le of box
+With title c--artouche
+
+f--lushleft
+more text
+
+f--lushright
+more text
+
+ce--ntered line
+
+r--raggedright
+more text
+
+
+in verbatim ''
+
+
+
+
+
+
+majorheading
+
+chapheading
+
+heading
+
+subheading
+
+subsubheading
+
+
+@acronym{--a,an accronym @comma{} @enddots{}} --aan accronym , ...
+@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} } É--. ,A.Étude--, Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+
+@math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
+
+
+
+
+Somehow invalid use of @,:
+
+@, ̧
+
+@,@"u ̧ü
+
+Invalid use of @':
+
+@' ́
+
+@'@"u ́ü
+
+@| 
+
+@dotless{truc} truc
+@dotless{ij} ij
+@dotless{--a} -a
+@dotless{a} a
+
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
+@TeX, but without brace TeX
+@# #
+
+@w{--a} --a
+
+@image{,1--xt} 1--xt
+@image{,,2--xt} 2--xt
+@image{,,,3--xt} 3--xt
+
+@image{f-ile,aze,,a--lt} f-ileazea--lt
+@image{f-ile,,,alt@verb{:jk _" %}} f-ilealtjk _" %@
+
+@image{f--ile} f--ile
+@image{f--ile,,,alt} f--ilealt
+@image{f--ile,,,,.e-d-xt} f--ile.e--xt
+@image{f--ile,l--i} f--ilel--i
+@image{f--ile,,l--e} f--ilel--e
+@image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
+@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
+
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
+@image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} filejk _" %@altjk _" %@
+
+
+author
+
+ü Ü ñ â é ō ì é Ḕ
+Ḉ Ḉ a̋ ȧ å a͡
+ă ǎ
+ ? .
+
+TeX LaTeX -!- aa (R) o 
+
+t 
+
+e--mph item
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+without brace w a--b
+without brace w c--d
+
+a
+l--ine
+
+a--missing style formatting
+l--ine
+
+a
+b
+l--ine
+
+fun
+truc machin bidule chose and
+truc machin bidule chose and  after
+truc machin bidule chose and 
+truc machin bidule chose and and after
+truc followed by a comment
+Various deff lines
+truc after a deff item
+
+fsetinv invalid a g
+id i ule
+
+aaa
+
+truc
+
+g--roupe
+
+@ref{node} node
+
+@ref{,cross ref name} cross ref name
+@ref{,,title} title
+@ref{,,,file name} file name
+@ref{,,,,manual} manual
+@ref{node,cross ref name} nodecross ref name
+@ref{node,,title} nodetitle
+@ref{node,,,file name} nodefile name
+@ref{node,,,,manual} nodemanual
+@ref{node,cross ref name,title,} nodecross ref nametitle
+@ref{node,cross ref name,,file name} nodecross ref namefile name
+@ref{node,cross ref name,,,manual} nodecross ref namemanual
+@ref{node,cross ref name,title,file name} nodecross ref nametitlefile name
+@ref{node,cross ref name,title,,manual} nodecross ref nametitlemanual
+@ref{node,cross ref name,title, file name, manual} nodecross ref nametitlefile namemanual
+@ref{node,,title,file name} nodetitlefile name
+@ref{node,,title,,manual} nodetitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{node,,title, file name, manual} nodetitlefile namemanual
+@ref{node,,,file name,manual} nodefile namemanual
+@ref{,cross ref name,title,} cross ref nametitle
+@ref{,cross ref name,,file name} cross ref namefile name
+@ref{,cross ref name,,,manual} cross ref namemanual
+@ref{,cross ref name,title,file name} cross ref nametitlefile name
+@ref{,cross ref name,title,,manual} cross ref nametitlemanual
+@ref{,cross ref name,title, file name, manual} cross ref nametitlefile namemanual
+@ref{,,title,file name} titlefile name
+@ref{,,title,,manual} titlemanual
+@ref{,,title, file name, manual} titlefile namemanual
+@ref{,,,file name,manual} file namemanual
+
+@inforef{,cross ref name } cross ref name
+@inforef{,,file name} file name
+@inforef{,cross ref name, file name} cross ref namefile name
+@inforef{} 
+
+
+
+In example.
+
+<
+>
+"
+&
+'
+`
+
+``simple-double--three---four----''
+
+code: ``simple-double--three---four----'' 
+
+asis: ``simple-double--three---four----'' 
+
+strong: ``simple-double--three---four----'' 
+
+kbd: ``simple-double--three---four----'' 
+
+
+``simple-double--three---four----''
+
+
+
+@"u ü (ü)
+@"{U} Ü (Ü) 
+@~n ñ (ñ)
+@^a â (â)
+
+@'e é (é)
+@=o ō (ō)
+@`i ì (ì)
+@'{e} é (é)
+
+@'{@dotless{i}} í (í)
+@dotless{i} ı (ı)
+@dotless{j} ȷ (ȷ)
+
+@H{a} a̋
+@dotaccent{a} ȧ (ȧ)
+@ringaccent{a} å (å)
+
+@tieaccent{a} a͡
+@u{a} ă (ă)
+@ubaraccent{a} a̲
+
+@udotaccent{a} ạ (ạ)
+@v{a} ǎ (ǎ)
+
+@,c ç (ç)
+@,{c} ç (ç)
+@ogonek{a} ą (ą)
+
+@`{@=E} Ḕ
+@l{} /l
+@,{@'C} Ḉ
+@,c@"u çü 
+
+
+@H{--a} -a̋
+@dotaccent{--a} -ȧ
+@ringaccent{--a} -å
+
+@tieaccent{--a} -a͡
+@u{--a} -ă
+@ubaraccent{--a} -a̲
+
+@udotaccent{--a} -ạ
+@v{--a} -ǎ
+@,{--c} -ç
+@ogonek{--a} -ą
+
+@U{0075} 0075
+
+@* 
+
+@ followed by a space
+ 
+@ followed by a tab
+ 
+@ followed by a new line
+ @- 
+@: 
+@! !
+@? ?
+@. .
+@& &
+@@ @
+@} }
+@{ {
+@/ 
+
+foo vs. bar. 
+colon :And something else.
+semi colon ;.
+And ? ?.
+Now ! !@
+but , ,
+
+@ampchar & (&)
+@atchar @ (@)
+@backslashchar \ (\)
+@hashchar # (#)
+@lbracechar { ({)
+@rbracechar } (})
+
+@TeX TeX
+@LaTeX LaTeX
+@bullet * (•)
+@copyright (C) (©)
+
+@dots ... (…)
+@enddots ...
+@equiv == (≡)
+
+@error error-->
+@expansion ==> (↦)
+@minus - (−)
+
+@point -!- (⋆)
+@print -| (⊣)
+@result => (⇒)
+@today a sunny day
+
+@aa aa (å)
+@AA AA (Å)
+@ae ae (æ)
+@oe oe (œ)
+@AE AE (Æ)
+@OE OE (Œ)
+@o /o (ø)
+@O /O (Ø)
+@ss ss (ß)
+@l /l (ł)
+@L /L (Ł)
+@DH D (Ð)
+@TH TH (Þ)
+@dh d (ð)
+@th th (þ)
+
+@exclamdown ! (¡)
+@questiondown ? (¿)
+@pounds # (£)
+@registeredsymbol (R) (®)
+@ordf a (ª)
+@ordm o (º)
+@comma , (,)
+@quotedblleft " (“)
+@quotedblright " (”)
+@quoteleft ` (‘)
+@quoteright ' (’)
+@quotedblbase ,, („)
+@quotesinglbase , (‚)
+@guillemetleft << («)
+@guillemetright >> (»)
+@guillemotleft << («)
+@guillemotright >> (»)
+@guilsinglleft < (‹)
+@guilsinglright > (›)
+
+@textdegree o (°)
+@euro Euro (€)
+@arrow -> (→)
+
+@leq <= (≤)
+@geq >= (≥)
+@tie a b
+
+@acronym{--a,an accronym} --aan accronym
+@acronym{--a} --a
+@abbr{@'E--. @comma{}A., @'Etude Autonome } É--. ,A.Étude Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+@asis{--a} --a
+@b{--a} --a
+@cite{--a} --a
+@code{--a} --a
+@command{--a} --a
+@dfn{--a} --a
+@dmn{--a} --a
+@email{--a,--b} --a--b
+@email{,--b} --b
+@email{--a} --a
+@emph{--a} --a
+@env{--a} --a
+@file{--a} --a
+@i{--a} --a
+@kbd{--a} --a
+@key{--a} --a
+@math{--a {\frac{1}{2}} @minus{}} --a {\frac{1}{2}} -
+@option{--a} --a
+@r{--a} --a
+@samp{--a} --a
+@sc{--a} --a
+@strong{--a} --a
+@t{--a} --a
+@sansserif{--a} --a
+@slanted{--a} --a
+@titlefont{--a} --a
+@indicateurl{--a} --a
+@uref{--a,--b} --a--b
+@uref{--a} --a
+@uref{,--b} --b
+@uref{--a,--b,--c} --a--b--c
+@uref{,--b,--c} --b--c
+@uref{--a,,--c} --a--c
+@uref{,,--c} --c
+@url{--a,--b} --a--b
+@url{--a,} --a
+@url{,--b} --b
+@var{--a} --a
+@verb{:--a:} --a
+@verb{:a  < & @ % " --    b:} a  < & @ % " --    b
+@w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a} a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+a@sup{h}@sub{l} ahl
+@footnote{in footnote} in footnote
+@footnote{in footnote2} in footnote2
+
+@sp 2
+
+@page
+
+
+
+need 1002
+
+@clicksequence{click @click{} A} click -> A
+After clickstyle =>
+@clicksequence{click @click{} A} click => A
+
+
+disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e-{1 \over 2}\left({x-\mu \over \sigma}\right)^2
+
+``simple-double--three---four----'' aa
+``simple-double--three---four----''
+
+
+ı ȷ
+/l ç
+
+a̲ ạ ą ahl
+
+       ! @ } { 
+a sunny day
+
+->
+0075
+* (C) ... ... ==
+error--> ==> - -| =>
+AA ae oe AE OE /o /O ss /l /L D
+TH d th ! ? #
+a o , 
+
+" " 
+` ' ,, , <<
+>> << >> <
+> Euro -> <= >=
+
+b i r sc sansserif slanted
+
+default kbdinputstyle
+vtable i--tem default kbdinputstyle
+in example default kbdinputstyle
+vtable i--tem in example default kbdinputstyle
+
+code kbdinputstyle
+vtable i--tem code kbdinputstyle
+in example code kbdinputstyle
+vtable i--tem in example code kbdinputstyle
+
+example kbdinputstyle
+vtable i--tem example kbdinputstyle
+in example example kbdinputstyle
+vtable i--tem in example example kbdinputstyle
+
+distinct kbdinputstyle
+vtable i--tem distinct kbdinputstyle
+in example distinct kbdinputstyle
+vtable i--tem in example distinct kbdinputstyle
+
+A quot---ation
+
+Note
+A Note
+
+note
+A note
+
+Caution
+Caution
+
+Important
+Important
+
+Tip
+a Tip
+
+Warning
+a Warning.
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @quotation line.
+
+something, other thing
+something, other thing
+
+Note, the note
+Note, the note
+
+
+Empty
+
+
+
+
+aaa quotation author
+quotation
+
+indent in quotation
+
+exdented quotation line   and dash --- in quotation
+
+Not exdented followed by exdented
+exdented quotation line
+
+exdented quotation line
+Followed by not exdented 
+
+quotation1
+in exdented protected eol  
+following
+in exdented a @* 
+ and following
+after exdented
+
+A small quot---ation
+
+Note
+A small Note
+
+something, other thing
+something, other thing
+
+i--temize
+
+i--tem +
+
+b--ullet
+
+minu--s
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+with w a--b
+with w c--d
+
+line w a--b
+line with w c--d
+
+e--numerate
+
+first third
+second third
+
+e--numerate
+
+first c
+second c
+
+mu--ltitable headitem another tab
+mu--ltitable item multitable tab
+mu--ltitable item 2 multitable tab 2
+lone mu--ltitable item
+
+truc bidule
+
+e--xample  some
+   text
+
+first arg
+example one arg
+
+first argsecond arg
+example two args
+
+first argsecond argthird arg
+example three args
+
+first argsecond argthird argfourth arg
+example four args
+
+first argsecond argthird argfourth argfifth arg
+example five args
+
+something é TeX
+The something é TeX is here.
+
+@ at the end of line  A @ at the end of the @example line.
+
+example with empty args
+
+nonempty
+example with empty and non empty args mix
+
+Exam---ple
+
+Other li---ne
+not exdented
+
+exdented  and dash --- in example
+Not exdented one
+exdented two
+Not exdented two
+
+Example   Hoho.
+Nested Other line
+exdented nested other line
+
+s--mallexample
+
+@noindent after smallexample.
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.guess?rev=HEAD&content-type=text/plain'
+$ wget 'http://savannah.gnu.org/cgi-bin/viewcvs/config/config/config.sub?rev=HEAD&content-type=text/plain'
+Less recent versions are also present.
+
+d--isplay
+
+s--malldisplay
+
+l--isp
+
+s--malllisp
+
+f--ormat
+
+s--mallformat
+
+c--ategory d--effn_name a--rguments...
+d--effn
+
+cate--gory de--ffn_name ar--guments    more args 
+ even more so
+def--fn
+ 
+fset i a g
+cmde truc 
+Command log trap 
+Command log trap1 
+Command log trap2 
+cmde id ule truc
+cmde2 id i ule truc
+ 
+ machin
+ bidule machin
+truc machin
+truc 
+truc followed by a comment
+ 
+truc a b c d e f g h i
+truc deffnx before end deffn
+
+
+empty deffn
+
+empty deffn with deffnx
+empty deffnx
+
+fset i a g
+cmde truc 
+text in def item for second def item
+
+
+c--ategory d--efvr_name
+d--efvr
+
+c--ategory n--ame a--rguments...
+d--effn
+
+c--ategory n--ame
+d--effn no arg
+
+c--ategory t--ype d--eftypefn_name a--rguments...
+d--eftypefn
+
+c--ategory t--ype d--eftypefn_name
+d--eftypefn no arg
+
+c--ategory c--lass t--ype d--eftypeop_name a--rguments...
+d--eftypeop
+
+c--ategory c--lass t--ype d--eftypeop_name
+d--eftypeop no arg
+
+c--ategory t--ype d--eftypevr_name
+d--eftypevr
+
+c--ategory c--lass d--efcv_name
+d--efcv
+
+c--ategory c--lass d--efcv_name a--rguments...
+d--efcv with arguments
+
+c--ategory c--lass t--ype d--eftypecv_name
+d--eftypecv
+
+c--ategory c--lass t--ype d--eftypecv_name a--rguments...
+d--eftypecv with arguments
+
+c--ategory c--lass d--efop_name a--rguments...
+d--efop
+
+c--ategory c--lass d--efop_name
+d--efop no arg
+
+c--ategory d--eftp_name a--ttributes...
+d--eftp
+
+Function d--efun_name a--rguments...
+d--efun
+
+Macro d--efmac_name a--rguments...
+d--efmac
+
+Special Form d--efspec_name a--rguments...
+d--efspec
+
+Variable d--efvar_name
+d--efvar
+
+Variable d--efvar_name arg--var arg--var1
+d--efvar with args
+
+User Option d--efopt_name
+d--efopt
+
+Function t--ype d--eftypefun_name a--rguments...
+d--eftypefun
+
+Variable t--ype d--eftypevar_name
+d--eftypevar
+
+Instance Variable c--lass d--efivar_name
+d--efivar
+
+Instance Variable c--lass t--ype d--eftypeivar_name
+d--eftypeivar
+
+Method c--lass d--efmethod_name a--rguments...
+d--efmethod
+
+Method c--lass t--ype d--eftypemethod_name a--rguments...
+d--eftypemethod
+
+
+Function data-type2 name2 arguments2...
+aaa2
+
+c--ategory2 t--ype2 d--eftypefn_name2
+d--eftypefn no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2 a--rguments2...
+d--eftypeop2
+
+c--ategory2 c--lass2 t--ype2 d--eftypeop_name2
+d--eftypeop no arg2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2
+d--eftypecv2
+
+c--ategory2 c--lass2 t--ype2 d--eftypecv_name2 a--rguments2...
+d--eftypecv with arguments2
+
+fun2 arg2
+fff2
+
+
+@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@} c---hapter@cross r---ef name@t---itle@file n---ame@ma---nual@.
+@ref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@pxref{chapter, cross ref name, title, file name, manual} chaptercross ref nametitlefile namemanual
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+
+@ref{chapter} chapter
+@xref{chapter} chapter.
+@pxref{chapter} chapter
+@ref{s--ect@comma{}ion} s--ect,ion
+
+@ref{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }
+s--ect,iona , in cross
+refa comma, in titlea comma, in filea , in manual name
+
+@ref{chapter,cross ref name} chaptercross ref name
+@ref{chapter,,title} chaptertitle
+@ref{chapter,,,file name} chapterfile name
+@ref{chapter,,,,manual} chaptermanual
+@ref{chapter,cross ref name,title,} chaptercross ref nametitle
+@ref{chapter,cross ref name,,file name} chaptercross ref namefile name
+@ref{chapter,cross ref name,,,manual} chaptercross ref namemanual
+@ref{chapter,cross ref name,title,file name} chaptercross ref nametitlefile name
+@ref{chapter,cross ref name,title,,manual} chaptercross ref nametitlemanual
+@ref{chapter,cross ref name,title, file name, manual} chaptercross ref nametitlefile namemanual
+@ref{chapter,,title,file name} chaptertitlefile name
+@ref{chapter,,title,,manual} chaptertitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{chapter,,,file name,manual} chapterfile namemanual
+
+
+@ref{(pman)anode,cross ref name} (pman)anodecross ref name
+@ref{(pman)anode,,title} (pman)anodetitle
+@ref{(pman)anode,,,file name} (pman)anodefile name
+@ref{(pman)anode,,,,manual} (pman)anodemanual
+@ref{(pman)anode,cross ref name,title,} (pman)anodecross ref nametitle
+@ref{(pman)anode,cross ref name,,file name} (pman)anodecross ref namefile name
+@ref{(pman)anode,cross ref name,,,manual} (pman)anodecross ref namemanual
+@ref{(pman)anode,cross ref name,title,file name} (pman)anodecross ref nametitlefile name
+@ref{(pman)anode,cross ref name,title,,manual} (pman)anodecross ref nametitlemanual
+@ref{(pman)anode,cross ref name,title, file name, manual} (pman)anodecross ref nametitlefile namemanual
+@ref{(pman)anode,,title,file name} (pman)anodetitlefile name
+@ref{(pman)anode,,title,,manual} (pman)anodetitlemanual
+@ref{(pman)anode,,title, file name, manual} (pman)anodetitlefile namemanual
+@ref{(pman)anode,,,file name,manual} (pman)anodefile namemanual
+
+
+@inforef{chapter, cross ref name, file name} chaptercross ref namefile name
+@inforef{chapter} chapter
+@inforef{chapter, cross ref name} chaptercross ref name
+@inforef{chapter,,file name} chapterfile name
+@inforef{node, cross ref name, file name} nodecross ref namefile name
+@inforef{node} node
+@inforef{node, cross ref name} nodecross ref name
+@inforef{node,,file name} nodefile name
+@inforef{chapter, cross ref name, file name, spurious arg} chaptercross ref namefile name, spurious arg
+
+@inforef{s--ect@comma{}ion, a @comma{} in cross
+ref, a comma@comma{} in file}
+s--ect,iona , in cross
+refa comma, in file
+
+chapter.
+
+extcross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2info file with uref3 href://http/myhost.com/index3.htmluref3printed manual with uref4 href://http/myhost.com/index4.htmluref4
+chaptercross ref with uref href://http/myhost.com/index.htmluref1title with uref2 href://http/myhost.com/index2.htmluref2
+
+a--strong
+l--ine
+
+a--asis
+b
+l--ine
+
+a
+b
+l--ine
+
+Title
+a--code
+Value--table code
+
+Title
+a--samp
+a2--samp
+Value--table samp
+
+c--artouche
+
+Tit--le of box
+With title c--artouche
+
+f--lushleft
+more text
+
+f--lushright
+more text
+
+ce--ntered line
+
+r--raggedright
+more text
+
+
+in verbatim ''
+
+
+
+
+
+
+majorheading
+
+chapheading
+
+heading
+
+subheading
+
+subsubheading
+
+
+@acronym{--a,an accronym @comma{} @enddots{}} --aan accronym , ...
+@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} } É--. ,A.Étude--, Autonome
+@abbr{@'E--. @comma{}A.} É--. ,A.
+
+@math{--a@minus{} {\frac{1}{2}}} --a- {\frac{1}{2}}
+
+
+
+
+Somehow invalid use of @,:
+
+@, ̧
+
+@,@"u ̧ü
+
+Invalid use of @':
+
+@' ́
+
+@'@"u ́ü
+
+@| 
+
+@dotless{truc} truc
+@dotless{ij} ij
+@dotless{--a} -a
+@dotless{a} a
+
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
+
+@TeX, but without brace TeX
+@# #
+
+@w{--a} --a
+
+@image{,1--xt} 1--xt
+@image{,,2--xt} 2--xt
+@image{,,,3--xt} 3--xt
+
+@image{f-ile,aze,,a--lt} f-ileazea--lt
+@image{f-ile,,,alt@verb{:jk _" %}} f-ilealtjk _" %@
+
+@image{f--ile} f--ile
+@image{f--ile,,,alt} f--ilealt
+@image{f--ile,,,,.e-d-xt} f--ile.e--xt
+@image{f--ile,l--i} f--ilel--i
+@image{f--ile,,l--e} f--ilel--e
+@image{f--ile,aze,az,alt,.e--xt} f--ileazeazalt.e--xt
+@image{f--ile,aze,az,alt, f--ileazeazalt
+@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} f--ile@.azeazalt.file ext e--xt}
+
+@image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt} f--ileazeazjk _" %@ in b "e--xt
+@image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}} filejk _" %@altjk _" %@
+
+
+author
+
+ü Ü ñ â é ō ì é Ḕ
+Ḉ Ḉ a̋ ȧ å a͡
+ă ǎ
+ ? .
+
+TeX LaTeX -!- aa (R) o 
+
+t 
+
+e--mph item
+
+e--mph item
+
+i--tem 1
+i--tem 2
+
+without brace w a--b
+without brace w c--d
+
+a
+l--ine
+
+a--missing style formatting
+l--ine
+
+a
+b
+l--ine
+
+fun
+truc machin bidule chose and
+truc machin bidule chose and  after
+truc machin bidule chose and 
+truc machin bidule chose and and after
+truc followed by a comment
+Various deff lines
+truc after a deff item
+
+fsetinv invalid a g
+id i ule
+
+aaa
+
+truc
+
+g--roupe
+
+@ref{node} node
+
+@ref{,cross ref name} cross ref name
+@ref{,,title} title
+@ref{,,,file name} file name
+@ref{,,,,manual} manual
+@ref{node,cross ref name} nodecross ref name
+@ref{node,,title} nodetitle
+@ref{node,,,file name} nodefile name
+@ref{node,,,,manual} nodemanual
+@ref{node,cross ref name,title,} nodecross ref nametitle
+@ref{node,cross ref name,,file name} nodecross ref namefile name
+@ref{node,cross ref name,,,manual} nodecross ref namemanual
+@ref{node,cross ref name,title,file name} nodecross ref nametitlefile name
+@ref{node,cross ref name,title,,manual} nodecross ref nametitlemanual
+@ref{node,cross ref name,title, file name, manual} nodecross ref nametitlefile namemanual
+@ref{node,,title,file name} nodetitlefile name
+@ref{node,,title,,manual} nodetitlemanual
+@ref{chapter,,title, file name, manual} chaptertitlefile namemanual
+@ref{node,,title, file name, manual} nodetitlefile namemanual
+@ref{node,,,file name,manual} nodefile namemanual
+@ref{,cross ref name,title,} cross ref nametitle
+@ref{,cross ref name,,file name} cross ref namefile name
+@ref{,cross ref name,,,manual} cross ref namemanual
+@ref{,cross ref name,title,file name} cross ref nametitlefile name
+@ref{,cross ref name,title,,manual} cross ref nametitlemanual
+@ref{,cross ref name,title, file name, manual} cross ref nametitlefile namemanual
+@ref{,,title,file name} titlefile name
+@ref{,,title,,manual} titlemanual
+@ref{,,title, file name, manual} titlefile namemanual
+@ref{,,,file name,manual} file namemanual
+
+@inforef{,cross ref name } cross ref name
+@inforef{,,file name} file name
+@inforef{,cross ref name, file name} cross ref namefile name
+@inforef{} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Textin footnote
+
+Blah
+
+Blih
+
+
+
+truc
+
+
+codeidx
+
+
+cp
+
+fn
+
+vr
+
+ky
+
+pg
+
+tp
+
+
+
+in footnote
+
+* s--ect,ion:: s--ect,ion
+
+Menu comment
+``simple-double--three---four----''
+
+
+
+s--ect,ion
+A section
+
+* subsection:: 
+
+In detailmenu
+
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+
+subsection
+subsection
+
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+
+anchor
+subsubsection ``simple-double--
+subsubsection ``simple-double--
+
+subsubsection three---four----''
+three---four----''
+
+chapter2
+chapter 2
+
+

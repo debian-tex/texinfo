@@ -16,9 +16,11 @@ $result_trees{'no_argument_for_table'} = {
               'type' => 'command_as_argument_inserted'
             },
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -37,16 +39,20 @@ $result_trees{'no_argument_for_table'} = {
                               'text' => 'item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -69,7 +75,7 @@ $result_trees{'no_argument_for_table'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -82,17 +88,23 @@ $result_trees{'no_argument_for_table'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -131,12 +143,12 @@ In item.
 
 $result_errors{'no_argument_for_table'} = [
   {
-    'error_line' => 'table requires an argument: the formatter for @item
+    'error_line' => 'missing @table argument
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'table requires an argument: the formatter for @item',
+    'text' => 'missing @table argument',
     'type' => 'error'
   }
 ];

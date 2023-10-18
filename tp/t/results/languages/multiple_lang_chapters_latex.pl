@@ -12,31 +12,15 @@ $result_trees{'multiple_lang_chapters_latex'} = {
         {
           'contents' => [
             {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'multiple_lang_chapters.info'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'multiple_lang_chapters.info'
-              },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              }
-            },
+              'text' => '
+',
+              'type' => 'text_before_beginning'
+            }
+          ],
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'contents' => [
             {
               'args' => [
                 {
@@ -45,9 +29,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'utf-8'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -55,9 +41,12 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'utf-8',
-                'input_perl_encoding' => 'utf-8-strict',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'utf-8'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -75,16 +64,98 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                 {
                   'text' => ' @node Top is ignored in TeX and LaTeX, so switch here
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' @node Top is ignored in TeX and LaTeX, so switch here
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
 '
-                ]
-              }
+                          }
+                        },
+                        'type' => 'block_line_arg'
+                      }
+                    ],
+                    'cmdname' => 'iftex',
+                    'contents' => [
+                      {
+                        'text' => '@documentlanguage ja
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'args' => [
+                          {
+                            'contents' => [
+                              {
+                                'text' => 'iftex'
+                              }
+                            ],
+                            'info' => {
+                              'spaces_after_argument' => {
+                                'text' => '
+'
+                              }
+                            },
+                            'type' => 'line_arg'
+                          }
+                        ],
+                        'cmdname' => 'end',
+                        'extra' => {
+                          'text_arg' => 'iftex'
+                        },
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'source_info' => {
+                          'file_name' => '',
+                          'line_nr' => 7,
+                          'macro' => ''
+                        }
+                      }
+                    ],
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 5,
+                      'macro' => ''
+                    }
+                  },
+                  'sourcemark_type' => 'ignored_conditional_block'
+                },
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'block_line_arg'
+                      }
+                    ],
+                    'cmdname' => 'iflatex',
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 8,
+                      'macro' => ''
+                    }
+                  },
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'start'
+                }
+              ]
             },
             {
               'args' => [
@@ -94,23 +165,68 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'ja'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ja'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 9,
                 'macro' => ''
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'iflatex'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'iflatex'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 10,
+                      'macro' => ''
+                    }
+                  },
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ]
             },
             {
               'text' => '
@@ -131,28 +247,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -168,9 +279,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'Multi language file'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -185,9 +298,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -195,7 +310,7 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -206,6 +321,12 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter ja'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-ja'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -227,15 +348,6 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-ja'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 16,
@@ -244,7 +356,7 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -255,6 +367,12 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter en'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-en'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -276,15 +394,6 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-en'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -293,7 +402,7 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -304,6 +413,12 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter fr_FR'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-fr_005fFR'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -325,15 +440,6 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-fr_005fFR'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 18,
@@ -342,7 +448,7 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -353,6 +459,12 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter de'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-de'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -374,15 +486,6 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-de'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 19,
@@ -391,7 +494,7 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -402,6 +505,12 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter pt_BR'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-pt_005fBR'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -423,15 +532,6 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-pt_005fBR'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 20,
@@ -447,17 +547,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -485,17 +591,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'text' => 'ja'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'ja'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -504,8 +616,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -521,28 +636,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'chapter ja'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-ja'
-          }
-        ],
-        'normalized' => 'chapter-ja',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-ja'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -558,9 +668,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'ja'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -585,19 +697,16 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter ja'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-ja'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-ja'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 27,
@@ -622,7 +731,8 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'contents' => [
                         {
                           'extra' => {
-                            'documentlanguage' => 'ja'
+                            'documentlanguage' => 'ja',
+                            'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                           },
                           'text' => 'Instance Variable',
                           'type' => 'untranslated'
@@ -671,51 +781,43 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                         'def_role' => 'arg'
                       },
                       'text' => 'CCC'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'defivar',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'class' => {},
-                  'name' => {}
+                'def_index_element' => {
+                  'contents' => [
+                    {},
+                    {
+                      'text' => ' of '
+                    },
+                    {}
+                  ]
+                },
+                'def_index_ref_element' => {
+                  'contents' => [
+                    {},
+                    {
+                      'text' => ' of '
+                    },
+                    {}
+                  ]
                 },
                 'documentlanguage' => 'ja',
-                'index_entry' => {
-                  'content_normalized' => [
-                    {},
-                    {
-                      'text' => ' of '
-                    },
-                    {}
-                  ],
-                  'entry_content' => [
-                    {},
-                    {
-                      'text' => ' of '
-                    },
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'defivar',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'vr',
-                  'index_type_command' => 'defivar'
-                },
+                'element_node' => {},
+                'index_entry' => [
+                  'vr',
+                  1
+                ],
                 'original_def_cmdname' => 'defivar'
               },
               'source_info' => {
@@ -733,17 +835,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'defivar'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defivar'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -752,8 +860,10 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -774,17 +884,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'text' => 'en'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'en'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -793,8 +909,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -810,28 +929,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'chapter en'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-en'
-          }
-        ],
-        'normalized' => 'chapter-en',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-en'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -847,9 +961,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'en'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -874,19 +990,16 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter ja'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-ja'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-ja'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 35,
@@ -911,7 +1024,8 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'contents' => [
                         {
                           'extra' => {
-                            'documentlanguage' => 'en'
+                            'documentlanguage' => 'en',
+                            'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                           },
                           'text' => 'Instance Variable',
                           'type' => 'untranslated'
@@ -960,51 +1074,43 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                         'def_role' => 'arg'
                       },
                       'text' => 'CCC'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'defivar',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'class' => {},
-                  'name' => {}
+                'def_index_element' => {
+                  'contents' => [
+                    {},
+                    {
+                      'text' => ' of '
+                    },
+                    {}
+                  ]
+                },
+                'def_index_ref_element' => {
+                  'contents' => [
+                    {},
+                    {
+                      'text' => ' of '
+                    },
+                    {}
+                  ]
                 },
                 'documentlanguage' => 'en',
-                'index_entry' => {
-                  'content_normalized' => [
-                    {},
-                    {
-                      'text' => ' of '
-                    },
-                    {}
-                  ],
-                  'entry_content' => [
-                    {},
-                    {
-                      'text' => ' of '
-                    },
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 2,
-                  'in_code' => 1,
-                  'index_at_command' => 'defivar',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'vr',
-                  'index_type_command' => 'defivar'
-                },
+                'element_node' => {},
+                'index_entry' => [
+                  'vr',
+                  2
+                ],
                 'original_def_cmdname' => 'defivar'
               },
               'source_info' => {
@@ -1022,17 +1128,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'defivar'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defivar'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1041,8 +1153,10 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1063,17 +1177,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'text' => 'fr_FR'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'fr_FR'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1082,8 +1202,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1099,28 +1222,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'chapter fr_FR'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-fr_005fFR'
-          }
-        ],
-        'normalized' => 'chapter-fr_005fFR',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-fr_005fFR'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1136,9 +1254,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'fr_FR'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1161,7 +1281,8 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'contents' => [
                         {
                           'extra' => {
-                            'documentlanguage' => 'fr_FR'
+                            'documentlanguage' => 'fr_FR',
+                            'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                           },
                           'text' => 'Instance Variable',
                           'type' => 'untranslated'
@@ -1210,51 +1331,43 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                         'def_role' => 'arg'
                       },
                       'text' => 'CCC'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'defivar',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'class' => {},
-                  'name' => {}
-                },
-                'documentlanguage' => 'fr_FR',
-                'index_entry' => {
-                  'content_normalized' => [
-                    {},
-                    {
-                      'text' => ' of '
-                    },
-                    {}
-                  ],
-                  'entry_content' => [
+                'def_index_element' => {
+                  'contents' => [
                     {},
                     {
                       'text' => ' de '
                     },
                     {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 3,
-                  'in_code' => 1,
-                  'index_at_command' => 'defivar',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'vr',
-                  'index_type_command' => 'defivar'
+                  ]
                 },
+                'def_index_ref_element' => {
+                  'contents' => [
+                    {},
+                    {
+                      'text' => ' of '
+                    },
+                    {}
+                  ]
+                },
+                'documentlanguage' => 'fr_FR',
+                'element_node' => {},
+                'index_entry' => [
+                  'vr',
+                  3
+                ],
                 'original_def_cmdname' => 'defivar'
               },
               'source_info' => {
@@ -1272,17 +1385,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'defivar'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defivar'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1291,8 +1410,10 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1313,17 +1434,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'text' => 'de'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'de'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1332,8 +1459,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1349,28 +1479,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'chapter de'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-de'
-          }
-        ],
-        'normalized' => 'chapter-de',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-de'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1386,9 +1511,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'de'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1408,17 +1535,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                   'text' => 'pt_BR'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'pt_BR'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1427,8 +1560,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1444,28 +1580,23 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'chapter pt_BR'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-pt_005fBR'
-          }
-        ],
-        'normalized' => 'chapter-pt_005fBR',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-pt_005fBR'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1481,9 +1612,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
               'text' => 'pt_bR'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1508,19 +1641,16 @@ $result_trees{'multiple_lang_chapters_latex'} = {
                       'text' => 'chapter ja'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter-ja'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter-ja'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 54,
@@ -1535,8 +1665,11 @@ $result_trees{'multiple_lang_chapters_latex'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1547,63 +1680,31 @@ $result_trees{'multiple_lang_chapters_latex'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'extra'}{'menu_entry_description'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'extra'}{'menu_entry_description'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'args'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'label'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'label'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[5];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[7];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[9]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[9]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[11]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[11]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[11]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'extra'}{'label'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3];
-$result_trees{'multiple_lang_chapters_latex'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[3];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[5];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[7];
+$result_trees{'multiple_lang_chapters_latex'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'multiple_lang_chapters_latex'}{'contents'}[12]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
-$result_texis{'multiple_lang_chapters_latex'} = '@setfilename multiple_lang_chapters.info
+$result_texis{'multiple_lang_chapters_latex'} = '
 @documentencoding utf-8
 
 @c @node Top is ignored in TeX and LaTeX, so switch here

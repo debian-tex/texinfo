@@ -31,17 +31,23 @@ $result_trees{'ignored_macro_definition'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +56,7 @@ $result_trees{'ignored_macro_definition'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' mymacro{}
 '
           },
@@ -83,7 +89,18 @@ $result_trees{'ignored_macro_definition'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => '
+@unmacro mymacro
+@macro mymacro{}
+in inlinefmt tex
+@end macro
+',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlinefmt',
@@ -104,6 +121,25 @@ $result_trees{'ignored_macro_definition'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'mymacro'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -111,6 +147,14 @@ $result_trees{'ignored_macro_definition'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 7,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'outside.
 '
             }
@@ -129,7 +173,12 @@ outside
 @end macro
 
 
-@inlinefmt{tex,}
+@inlinefmt{tex,
+@unmacro mymacro
+@macro mymacro{}
+in inlinefmt tex
+@end macro
+}
 
 outside.
 ';

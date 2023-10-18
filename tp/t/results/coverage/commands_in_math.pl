@@ -17,9 +17,11 @@ $result_trees{'commands_in_math'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -135,17 +137,23 @@ $result_trees{'commands_in_math'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -168,9 +176,11 @@ $result_trees{'commands_in_math'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -868,17 +878,23 @@ $result_trees{'commands_in_math'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -901,9 +917,11 @@ $result_trees{'commands_in_math'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1525,17 +1543,23 @@ $result_trees{'commands_in_math'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1558,9 +1582,11 @@ $result_trees{'commands_in_math'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1851,17 +1877,23 @@ $result_trees{'commands_in_math'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1974,7 +2006,7 @@ a sunny day
 →
 u
 TeX LaTeX • © ... ... ≡
-error→ ↦ − ★ ⊣ ⇒
+error→ ↦ − ⋆ ⊣ ⇒
 å Å æ œ Æ Œ ø Ø ß ł Ł Ð
 Þ ð þ ¡ ¿ £
 ® ª º ,
@@ -2000,7 +2032,7 @@ a sunny day
 </em></div>
 <div class="displaymath"><em>&rarr;
 &#x0075;
-TeX LaTeX &bull; &copy; &hellip; ... &equiv;
+TeX LaTeX &bull; &copy; ... ... &equiv;
 error&rarr; &rarr; &minus; &lowast; -| &rArr;
 &aring; &Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &#322; &#321; &ETH;
 &THORN; &eth; &thorn; &iexcl; &iquest; &pound;
@@ -2094,7 +2126,7 @@ a sunny day
 <informalequation><mathphrase>&#8594;
 &#x0075;
 &tex; &latex; &#8226; &#169; &#8230; ... &#8801;
-error&#8594; &#8614; &#8722; &#9733; &#8867; &#8658;
+error&#8594; &#8614; &#8722; &#8902; &#8867; &#8658;
 &#229; &#197; &#230; &#339; &#198; &#338; &#248; &#216; &#223; &#322; &#321; &#208;
 &#222; &#240; &#254; &#161; &#191; &#163;
 &#174; &#170; &#186; &#44; 

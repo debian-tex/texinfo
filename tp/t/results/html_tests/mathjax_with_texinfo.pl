@@ -12,9 +12,11 @@ $result_trees{'mathjax_with_texinfo'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -34,7 +36,7 @@ $result_trees{'mathjax_with_texinfo'} = {
                     {
                       'contents' => [
                         {
-                          'text' => '\\xi'
+                          'text' => '{\\xi}'
                         }
                       ],
                       'source_info' => {
@@ -42,12 +44,12 @@ $result_trees{'mathjax_with_texinfo'} = {
                         'line_nr' => 2,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'phi '
+                          'text' => '{phi '
                         },
                         {
                           'args' => [
@@ -61,6 +63,9 @@ $result_trees{'mathjax_with_texinfo'} = {
                             'line_nr' => 2,
                             'macro' => ''
                           }
+                        },
+                        {
+                          'text' => '}'
                         }
                       ],
                       'source_info' => {
@@ -68,7 +73,7 @@ $result_trees{'mathjax_with_texinfo'} = {
                         'line_nr' => 2,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     }
                   ],
                   'type' => 'brace_command_arg'
@@ -114,17 +119,23 @@ $result_trees{'mathjax_with_texinfo'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

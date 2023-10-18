@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V7.1//EN" "http://www.gnu.org/software/texinfo/dtd/7.1/texinfo.dtd">
+<texinfo>
+<filename file="simplest.xml"></filename>
+<preamblebeforebeginning>\input texinfo @c -*-texinfo-*-
+
+</preamblebeforebeginning><node name="Top" spaces=" "><nodename>Top</nodename></node>
+
+<para>This is a very simple texi manual <spacecmd type="spc"/> &lt;&gt;.
+</para>
+<bye></bye>
+</texinfo>

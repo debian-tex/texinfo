@@ -10,9 +10,13 @@ $result_trees{'unknown_index_entry'} = {
     {
       'contents' => [
         {
+          'text' => ' ',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
           'contents' => [
             {
-              'text' => ' someindex entry.
+              'text' => 'someindex entry.
 '
             }
           ],
@@ -29,7 +33,7 @@ $result_texis{'unknown_index_entry'} = ' someindex entry.
 ';
 
 
-$result_texts{'unknown_index_entry'} = ' someindex entry.
+$result_texts{'unknown_index_entry'} = 'someindex entry.
 ';
 
 $result_errors{'unknown_index_entry'} = [

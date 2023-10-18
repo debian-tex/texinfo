@@ -18,9 +18,11 @@ $result_trees{'menu_title_before_entries'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -35,9 +37,11 @@ $result_trees{'menu_title_before_entries'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -59,7 +63,7 @@ $result_trees{'menu_title_before_entries'} = {
               'type' => 'menu_comment'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -67,9 +71,15 @@ $result_trees{'menu_title_before_entries'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'subnode'
+                      'text' => 'chap subnode'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap-subnode'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -91,15 +101,6 @@ $result_trees{'menu_title_before_entries'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'subnode'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -115,17 +116,23 @@ $result_trees{'menu_title_before_entries'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -147,19 +154,12 @@ $result_trees{'menu_title_before_entries'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -172,31 +172,26 @@ $result_trees{'menu_title_before_entries'} = {
         {
           'contents' => [
             {
-              'text' => 'subnode'
+              'text' => 'chap subnode'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'subnode'
-          }
-        ],
-        'normalized' => 'subnode',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap-subnode'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -207,27 +202,22 @@ $result_trees{'menu_title_before_entries'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3];
-$result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'menu_title_before_entries'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_title_before_entries'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_title_before_entries'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_title_before_entries'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'menu_title_before_entries'} = '@node Top
 
 @menu
 Horizontal space
-* subnode::
+* chap subnode::
 @end menu
 
-@node subnode
+@node chap subnode
 ';
 
 
 $result_texts{'menu_title_before_entries'} = '
 Horizontal space
-* subnode::
+* chap subnode::
 
 ';
 
@@ -245,7 +235,7 @@ $result_nodes{'menu_title_before_entries'} = {
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'subnode'
+        'normalized' => 'chap-subnode'
       },
       'structure' => {
         'node_prev' => {},
@@ -268,7 +258,7 @@ $result_menus{'menu_title_before_entries'} = {
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'subnode'
+        'normalized' => 'chap-subnode'
       },
       'structure' => {
         'menu_up' => {},
@@ -291,7 +281,7 @@ $result_floats{'menu_title_before_entries'} = {};
 $result_converted{'plaintext'}->{'menu_title_before_entries'} = '* Menu:
 
 Horizontal space
-* subnode::
+* chap subnode::
 
 ';
 
@@ -312,7 +302,9 @@ $result_converted{'html'}->{'menu_title_before_entries'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 pre.menu-comment-preformatted {font-family: serif}
+span:hover a.copiable-link {visibility: visible}
 td.menu-entry-description {vertical-align: top}
 td.menu-entry-destination {vertical-align: top}
 th.menu-comment {text-align:left}
@@ -325,22 +317,22 @@ th.menu-comment {text-align:left}
 <body lang="en">
 <a class="node-id" id="Top"></a><div class="nav-panel">
 <p>
-Next: <a href="#subnode" accesskey="n" rel="next">subnode</a> &nbsp; </p>
+Next: <a href="#chap-subnode" accesskey="n" rel="next">chap subnode</a> &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">Horizontal space
-</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="#subnode" accesskey="1">subnode</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="#chap-subnode" accesskey="1">chap subnode</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
 </td></tr>
 </table>
 
 <hr>
-<a class="node-id" id="subnode"></a><div class="nav-panel">
+<a class="node-id" id="chap-subnode"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h4 class="node">subnode</h4>
+<h4 class="node"><span>chap subnode<a class="copiable-link" href="#chap-subnode"> &para;</a></span></h4>
 
 
 
@@ -359,14 +351,14 @@ $result_converted_errors{'html'}->{'menu_title_before_entries'} = [
 
 
 
-$result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">subnode</nodenext></node>
+$result_converted{'xml'}->{'menu_title_before_entries'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap subnode</nodenext></node>
 
 <menu endspaces=" ">
 <menucomment><pre xml:space="preserve">Horizontal space
-</pre></menucomment><menuentry leadingtext="* "><menunode separator="::">subnode</menunode><menudescription><pre xml:space="preserve">
+</pre></menucomment><menuentry><menuleadingtext>* </menuleadingtext><menunode>chap subnode</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="subnode" spaces=" "><nodename>subnode</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<node name="chap-subnode" spaces=" "><nodename>chap subnode</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
 ';
 
 1;

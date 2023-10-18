@@ -1,0 +1,18 @@
+\input texinfo.tex
+
+@node Top
+@top Same transliterated names
+
+@node Prés
+@chapter Prés
+
+@node Other node
+@chapter Other chapter
+
+@anchor{Prês}
+
+@float Figure, Près
+In figure
+@end float
+
+@bye

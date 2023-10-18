@@ -34,9 +34,11 @@ $result_trees{'cpp_line_latin1'} = {
                       'text' => 'ISO-8859-1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -44,9 +46,12 @@ $result_trees{'cpp_line_latin1'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'iso-8859-1',
-                'input_perl_encoding' => 'iso-8859-1',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ISO-8859-1'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'cpp_line_latin1.texi',
@@ -73,28 +78,23 @@ $result_trees{'cpp_line_latin1'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'cpp_line_latin1.texi',
@@ -105,14 +105,48 @@ $result_trees{'cpp_line_latin1'} = {
     {
       'args' => [
         {
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {},
+      'source_info' => {
+        'file_name' => 'cpp_line_latin1.texi',
+        'line_nr' => 6,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
       'contents' => [
         {
           'text' => '
@@ -125,13 +159,9 @@ $result_trees{'cpp_line_latin1'} = {
           'type' => 'empty_line'
         },
         {
-          'contents' => [
-            {
-              'text' => '
-'
-            }
-          ],
-          'type' => 'paragraph'
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'text' => '
@@ -153,10 +183,17 @@ $result_trees{'cpp_line_latin1'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
       'source_info' => {
         'file_name' => 'cpp_line_latin1.texi',
-        'line_nr' => 6,
+        'line_nr' => 8,
         'macro' => ''
       }
     },
@@ -165,7 +202,7 @@ $result_trees{'cpp_line_latin1'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -173,8 +210,6 @@ $result_trees{'cpp_line_latin1'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'cpp_line_latin1'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cpp_line_latin1'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_line_latin1'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'cpp_line_latin1'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'cpp_line_latin1'} = '\\input texinfo
 
@@ -182,6 +217,8 @@ $result_texis{'cpp_line_latin1'} = '\\input texinfo
 
 @node Top
 @top
+
+@node chap
 
 
 
@@ -193,6 +230,7 @@ aaa
 
 
 $result_texts{'cpp_line_latin1'} = '
+
 
 
 
@@ -211,7 +249,8 @@ $result_sectioning{'cpp_line_latin1'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            }
+            },
+            'structure' => {}
           }
         },
         'structure' => {
@@ -234,14 +273,27 @@ $result_nodes{'cpp_line_latin1'} = {
       'structure' => {}
     },
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'cpp_line_latin1'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'cpp_line_latin1'};
 
 $result_menus{'cpp_line_latin1'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'cpp_line_latin1'} = [

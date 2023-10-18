@@ -1,7 +1,7 @@
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002-2022 Free Software Foundation, Inc.
+# Copyright 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -18,7 +18,8 @@ ACLOCAL_AMFLAGS = -I gnulib/m4
 noinst_SCRIPTS = pre-inst-env
 
 # Additional files to distribute.
-EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
+EXTRA_DIST = ChangeLog.46 ChangeLog.65 ChangeLog.70 \
+  INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
   djgpp
 
@@ -94,16 +95,16 @@ po-check:
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
-	  for file in $$($(CVS_LIST_EXCEPT))				\
-	              `find [a-z]* -name '*.[ch]' 			\
-		                -o -name '*.p[lm]'			\
-				-o -name '*.notyettwjr'`; do		\
+	  for file in `find [a-zA-Z]* -name '*.[ch]' 			\
+		                   -o -name '*.p[lm]'			\
+			           -o -name '*.notyettwjr'`; do		\
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\
 	      djgpp/* | man/* ) continue;;	\
 	      texinfo-*/*) continue;;					\
               tp/maintain/* ) continue;;				\
+              tp/t/results* ) continue;;				\
 	    esac;							\
 	    # if have lex/yacc sources, skip corresponding c/h files.	\
 	    case $$file in						\
@@ -117,8 +118,30 @@ po-check:
 	  # with no space or lparen; the other alternative matches the	\
 	  # usual function calls, e.g., _("..."), with or without space.\
 	  grep -E -l							\
-	    '\b[^$$]N?__?"|\b(N?__?|gdt|gettext|line_error|line_error_ext|line_warn|command_error|command_warn) *\([^)"]*("|$$)'	\
+	    '\b[^$$]N?__?"|\b(N?__?p?|gettext|line_error|line_error_ext|line_warn|command_error|command_warn) *\([^)"]*("|$$)'	\
 	    $$files | sort -u > $@-2;					\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
+
+po_document-check:
+	@if test -f po_document/POTFILES.in; then			\
+	  grep -E -v '^(#|$$)' po_document/POTFILES.in | sort > $@-1;	\
+	  files=;							\
+	  for file in `find [a-z]* -name '*.p[lm]'`; do 		\
+	    # don't look at sources from some subdirs.			\
+	    case $$file in						\
+	      contrib/* ) continue;;					\
+	      djgpp/* | man/* ) continue;;	\
+	      texinfo-*/*) continue;;					\
+	      tp/maintain/* ) continue;;				\
+	    esac;							\
+	    files="$$files $$file";					\
+	  done;								\
+	  grep -E -l							\
+	    '\b(p?gdt) *\([^)$$]*("|'"'"'|$$)'	\
+	    $$files | sort -u > $@-2;					\
+	  diff -u $@-1 $@-2 || exit 1;					\
+	  rm -f $@-1 $@-2;						\
+	fi
+

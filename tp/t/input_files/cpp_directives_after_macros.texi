@@ -1,0 +1,18 @@
+
+@macro noargsspaces
+  
+@end macro
+
+@macro emptyexpansion
+
+@end macro
+
+  #line 98 "a_test_after_spaces"
+
+@noargsspaces{}#line 46 "a_file_after_macro_call"
+
+@unknown1
+
+@emptyexpansion{}#line 75 "a_file_after_macro_call_no_spaces"
+
+@unknown2

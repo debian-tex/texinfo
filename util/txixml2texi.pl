@@ -2,7 +2,7 @@
 #
 # texixml2texi -- convert Texinfo XML to Texinfo code
 #
-# Copyright 2012 Free Software Foundation, Inc.
+# Copyright 2012-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,47 +35,50 @@ BEGIN
   my ($real_command_name, $command_directory, $command_suffix)
      = fileparse($0, '.pl');
 
-  my $datadir = '@datadir@';
-  my $package = '@PACKAGE@';
   my $updir = File::Spec->updir();
 
-  my $texinfolibdir;
-  my $lib_dir;
+  my $datadir = '@datadir@';
+  my $package = '@PACKAGE@';
+  my $xsdir = '@pkglibdir@';
 
   # in-source run
-  if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
-       and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    my $srcdir = defined $ENV{'srcdir'} ? $ENV{'srcdir'} : $command_directory;
-    $texinfolibdir = File::Spec->catdir($srcdir, $updir, 'tp');
-    $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
-    unshift @INC, $texinfolibdir;
-  } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
-           and $datadir ne '') {
-    $texinfolibdir = File::Spec->catdir($datadir, $package);
-    # try to make package relocatable, will only work if standard relative paths
-    # are used
-    if (! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm')
-        and -f File::Spec->catfile($command_directory, $updir, 'share',
-                                   'texinfo', 'Texinfo', 'Parser.pm')) {
-      $texinfolibdir = File::Spec->catdir($command_directory, $updir,
-                                          'share', 'texinfo');
-    }
-    $lib_dir = $texinfolibdir;
-    unshift @INC, $texinfolibdir;
-  }
+  if ($datadir eq '@' .'datadir@'
+      or defined($ENV{'TEXINFO_DEV_SOURCE'})
+         and $ENV{'TEXINFO_DEV_SOURCE'} ne '0') {
 
-  # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
-  # makefile using values from configure
-  if (defined($texinfolibdir)) {
-    if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'));
+    # Use uninstalled modules
+
+    if (defined($ENV{'top_builddir'})) {
+      unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
+    } else {
+      unshift @INC, File::Spec->catdir($command_directory, $updir, 'tp');
     }
-    if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'));
+
+    require Texinfo::ModulePath;
+    Texinfo::ModulePath::init(undef, undef, undef, 'updirs' => 1);
+  } else {
+    # Look for modules in their installed locations.
+    my $lib_dir = File::Spec->catdir($datadir, $package);
+    # look for package data in the installed location.
+    my $modules_pkgdatadir = $lib_dir;
+
+    # try to make package relocatable, will only work if
+    # standard relative paths are used
+    if (! -f File::Spec->catfile($lib_dir, 'Texinfo', 'Parser.pm')
+        and -f File::Spec->catfile($command_directory, $updir, 'share',
+                                   $package, 'Texinfo', 'Parser.pm')) {
+      $lib_dir = File::Spec->catdir($command_directory, $updir,
+                                          'share', $package);
+      $modules_pkgdatadir = File::Spec->catdir($command_directory, $updir,
+                                          'share', $package);
+      $xsdir = File::Spec->catdir($command_directory, $updir,
+                                          'lib', $package);
     }
-    if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-    }
+    unshift @INC, $lib_dir;
+
+    require Texinfo::ModulePath;
+    Texinfo::ModulePath::init($lib_dir, $xsdir, $modules_pkgdatadir,
+                              'installed' => 1);
   }
 }
 
@@ -89,6 +92,15 @@ my $debug = 0;
 my $result_options = Getopt::Long::GetOptions (
  'debug|d' => \$debug,
 );
+
+# to get unbuffered output
+if ($debug) {
+  my $previous_default = select(STDOUT);  # save previous default
+  $|++;                                   # autoflush STDOUT
+  select(STDERR);
+  $|++;                                   # autoflush STDERR, to be sure
+  select($previous_default);              # restore previous default
+}
 
 sub command_with_braces($)
 {
@@ -121,6 +133,7 @@ my %elements_end_attributes = (
 # reference which associates an attribute value to the formatted @-command
 # string.
 my %element_at_commands;
+
 # entities not associated to @-commands
 my %entity_texts = (
   'textldquo' => '``',
@@ -130,9 +143,11 @@ my %entity_texts = (
   'textrsquo' => "'",
   'textlsquo' => '`',
   'formfeed' => "\f",
-  # this is not used in pratice, as attrformfeed appears in an
-  # attribute and thus is already expanded to text.
+  'verticaltab' => "\x{000B}",
+  # following mappings are not used in pratice, as attrformfeed and similar
+  # appear in attributes and thus are already expanded to text.
   'attrformfeed' => "\f",
+  'attrverticaltab' => "\x{000B}",
 );
 
 # contains nobrace symbol and brace noarg commands
@@ -221,7 +236,23 @@ sub skip_until_end($$)
   }
 }
 
+sub unprotect_spaces($)
+{
+  my $spaces = shift;
+
+  if (defined($spaces)) {
+    $spaces =~ s/\\n/\n/g;
+    # convert back formfeed and other special characters
+    $spaces =~ s/\\f/\f/g;
+    $spaces =~ s/\\v/\x{000B}/g;
+    return $spaces;
+  } else {
+    return '';
+  }
+}
+
 my $eat_space = 0;
+my $skip_comment = 0;
 my @commands_with_args_stack;
 
 while ($reader->read) {
@@ -230,7 +261,7 @@ while ($reader->read) {
   if ($debug) {
     my $args_stack_str = join('|', map {'['.$_->[0].','.$_->[1].']'}
                                         @commands_with_args_stack);
-    printf STDERR "(args: $args_stack_str) (eat_space $eat_space) %d %d %s %d", (
+    printf STDERR "(args: $args_stack_str) (eat_space $eat_space) (skip_comment $skip_comment) %d %d %s %d", (
           $reader->depth, $reader->nodeType, $reader->name, $reader->isEmptyElement);
     my $value = '';
     if ($reader->hasValue()) {
@@ -274,21 +305,16 @@ while ($reader->read) {
     if ($Texinfo::Convert::TexinfoMarkup::commands_args_elements{$name}) {
       push @commands_with_args_stack, [$name, 0];
     }
-    my $spaces = $reader->getAttribute('spaces');
-    if (defined($spaces)) {
-      $spaces =~ s/\\n/\n/g;
-      $spaces =~ s/\\f/\f/g;
-    } else {
-      $spaces = '';
-    }
+    my $spaces = unprotect_spaces($reader->getAttribute('spaces'));
+    my $spaces_after_command
+      = unprotect_spaces($reader->getAttribute('spacesaftercmd'));
     if ($name eq 'accent') {
       if ($reader->hasAttributes()) {
         if (defined($reader->getAttribute('type'))) {
           my $command = $accent_type_command{$reader->getAttribute('type')};
-          print "\@$command"
+          print "\@${command}${spaces_after_command}"
             if (defined($command));
         }
-        print "$spaces";
         if (!(defined($reader->getAttribute('bracketed'))
               and $reader->getAttribute('bracketed') eq 'off')) {
           print '{';
@@ -304,11 +330,12 @@ while ($reader->read) {
         if ($reader->hasAttributes()
             and defined($reader->getAttribute($attribute))) {
           print
-            $element_at_commands{$name}->{$attribute}->{$reader->getAttribute($attribute)};
+            $element_at_commands{$name}->{$attribute}->{
+                             $reader->getAttribute($attribute)};
         }
       }
     } elsif (exists($Texinfo::Commands::brace_commands{$name})) {
-      print "\@${name}\{";
+      print "\@${name}${spaces_after_command}".'{';
       if ($name eq 'verb' and $reader->hasAttributes()
           and defined($reader->getAttribute('delimiter'))) {
         print $reader->getAttribute('delimiter');
@@ -320,7 +347,6 @@ while ($reader->read) {
         if ($reader->hasAttributes() and defined($reader->getAttribute('line'))) {
           print $reader->getAttribute('line');
         }
-        print "\n";
       } else {
         # leading spaces are already in the line attribute for (r)macro
         print "$spaces";
@@ -344,19 +370,39 @@ while ($reader->read) {
           binmode(STDOUT, ":encoding($perl_encoding)");
         }
       }
-      print "\@$name";
-      print "$spaces";
+      print "\@$name$spaces";
       if ($reader->hasAttributes() and defined($reader->getAttribute('line'))) {
         my $line = $reader->getAttribute('line');
         $line =~ s/\\\\/\x{1F}/g;
+        # convert back formfeed
         $line =~ s/\\f/\f/g;
         $line =~ s/\x{1F}/\\/g;
+        # FIXME needed?
+        #$line =~ s/\\v/\x{000B}/g;
         print $line;
       }
-      if ($name eq 'set' or $name eq 'clickstyle') {
+      my $specific_line = (defined($Texinfo::Commands::line_commands{$name})
+                and $Texinfo::Commands::line_commands{$name} eq 'specific');
+      if ($name eq 'set' or $name eq 'clickstyle' or $name eq 'columnfractions'
+          or $specific_line) {
         skip_until_end($reader, $name);
+        if ($name eq 'columnfractions' or $specific_line) {
+          # specific line commands have a line argument obtained by converting
+          # their line to Texinfo, which would include a comment on the line,
+          # and could also have a comment associated to the command appearing
+          # after the command as an XML comment.  Similar for columnfraction.
+          #
+          # We skip the possibly existing redundant XML comment following the
+          # closing element.
+          #
+          # start at 2 as there is a -1 right down at the end of
+          # the loop, and another -1 for the next element (possibly
+          # an ignored comment).
+          $skip_comment = 2;
+        }
       }
     } elsif ($arg_elements{$name}) {
+      # elements corresponding to @-commands arguments
       if ($reader->hasAttributes()
           and defined($reader->getAttribute('automatic'))
           and $reader->getAttribute('automatic') eq 'on') {
@@ -418,6 +464,12 @@ while ($reader->read) {
           print '@'.$reader->getAttribute('command');
         }
       }
+    } elsif ($name eq 'infoenclose') {
+      if ($reader->hasAttributes()
+          and defined($reader->getAttribute('command'))) {
+        my $command = $reader->getAttribute('command');
+        print "\@${command}${spaces_after_command}".'{'."$spaces";
+      }
     # def* automatic
     } elsif ($reader->hasAttributes()
              and defined($reader->getAttribute('automatic'))
@@ -433,9 +485,9 @@ while ($reader->read) {
     if ($reader->hasAttributes()) {
       if (defined($reader->getAttribute('bracketed'))
           and $reader->getAttribute('bracketed') eq 'on') {
-        print '{';
-        print "$spaces";
+        print '{'."$spaces";
       }
+      # menus 'star' and following spaces
       if (defined($reader->getAttribute('leadingtext'))) {
         print $reader->getAttribute('leadingtext');
       }
@@ -444,6 +496,9 @@ while ($reader->read) {
         and $Texinfo::Commands::block_commands{$name} eq 'item_line'
         and $reader->hasAttributes()
         and defined($reader->getAttribute('commandarg'))) {
+      # happens when formatting command argument is missing and there
+      # are no spaces.
+      print ' ' if ($spaces eq '');
       print '@'.$reader->getAttribute('commandarg');
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_END_ELEMENT) {
@@ -453,13 +508,16 @@ while ($reader->read) {
     my $trailingspaces = '';
     if ($reader->hasAttributes()
         and defined($reader->getAttribute('trailingspaces'))) {
-      $trailingspaces = $reader->getAttribute('trailingspaces');
-      $trailingspaces =~ s/\\f/\f/g;
+      $trailingspaces
+         = unprotect_spaces($reader->getAttribute('trailingspaces'));
     }
     if ($reader->hasAttributes()) {
       if (defined($reader->getAttribute('bracketed'))
           and $reader->getAttribute('bracketed') eq 'on') {
         print "$trailingspaces";
+        # such that spaces are not prepended below when prepended
+        # for elements without bracketed attribute below
+        $trailingspaces = '';
         print '}';
       }
     }
@@ -498,12 +556,17 @@ while ($reader->read) {
         print $reader->getAttribute('separator');
         print "$trailingspaces";
       }
+    } elsif ($name eq 'infoenclose') {
+      print "$trailingspaces".'}';
     } elsif ($eat_space_elements{$name}) {
       $eat_space = 1;
     } else {
       print STDERR "END UNKNOWN $name\n" if ($debug);
+      print "$trailingspaces";
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_ENTITY_REFERENCE) {
+    # for some reason XML_READER_TYPE_ENTITY is never emitted
+    #       or $reader->nodeType() eq XML_READER_TYPE_ENTITY) {
     if (defined($entity_texts{$name})) {
       print $entity_texts{$name};
     }
@@ -514,11 +577,12 @@ while ($reader->read) {
       $comment =~ s/^ (comment|c)//;
       my $command = $1;
       $comment =~ s/ $//;
-      print "\@${command}$comment";
+      print "\@${command}$comment" unless ($skip_comment);
     }
   } elsif ($reader->nodeType() eq XML_READER_TYPE_DOCUMENT_TYPE) {
     $eat_space = 1;
   }
+  $skip_comment-- if ($skip_comment);
 }
 
 1;

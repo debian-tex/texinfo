@@ -826,19 +826,22 @@ determine_file_type:
       /* Redirect stdin to the file and fork the decompression process
          reading from stdin.  This allows shell metacharacters in filenames. */
       char *command = concat (*compression_program, " -d", "");
+      FILE *f2;
 
       if (fclose (f) < 0)
         return 0;
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f2 = freopen (*opened_filename, FOPEN_RBIN, stdin);
       if (!f)
         return 0;
       f = popen (command, "r");
+      fclose (f2);
       if (!f)
         {
           /* Used for error message in calling code. */
           *opened_filename = command;
           return 0;
         }
+      free (command);
     }
   else
     {
@@ -874,7 +877,7 @@ readfile (char *filename, int *sizep,
   FILE *f;
   int filled = 0;
   int data_size = 8192;
-  char *data = xmalloc (data_size);
+  char *data = xmalloc (data_size + 1);
 
   /* If they passed the space for the file name to return, use it.  */
   f = open_possibly_compressed_file (filename, create_callback,
@@ -896,19 +899,21 @@ readfile (char *filename, int *sizep,
       if (filled == data_size)
         {
           data_size += 65536;
-          data = xrealloc (data, data_size);
+          data = xrealloc (data, data_size + 1);
         }
     }
 
   /* We need to close the stream, since on some systems the pipe created
      by popen is simulated by a temporary file which only gets removed
      inside pclose.  */
-  if (compression_program)
+  if (compression_program && *compression_program)
     pclose (f);
   else
     fclose (f);
 
   *sizep = filled;
+  data[filled] = '\0';
+
   return data;
 }
 
@@ -925,20 +930,46 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
   int n_entries_added = 0;
   int i;
   FILE *output;
+  int tempfile;
+  static char *tempname;
+  int dirfile_len;
+  mode_t um;
+
+  /* Create temporary file in the same directory as dirfile.  This ensures
+     it is on the same disk volume and can be renamed to dirfile when
+     finished. */
+  free (tempname);
+#define suffix "-XXXXXX"
+  dirfile_len = strlen (dirfile);
+  tempname = xmalloc (dirfile_len + strlen (suffix) + 1);
+  memcpy (tempname, dirfile, dirfile_len);
+  memcpy (tempname + dirfile_len, suffix, strlen (suffix) + 1);
+#undef suffix
+
+  tempfile = mkstemp (tempname);
+
+  /* Reset the mode that the file is set to.  */
+  um = umask (0022);
+  umask (um);
+  if (chmod (tempname, 0666 & ~um) < 0)
+    {
+      remove (tempname);
+      pfatal_with_name (tempname);
+    }
 
   if (compression_program)
     {
-      char *command = concat (compression_program, ">", dirfile);
+      char *command;
+      close (tempfile);
+      command = concat (compression_program, ">", tempname);
       output = popen (command, "w");
+      free (command);
     }
   else
-    output = fopen (dirfile, "w");
+    output = fdopen (tempfile, "w");
 
   if (!output)
-    {
-      perror (dirfile);
-      exit (EXIT_FAILURE);
-    }
+    pfatal_with_name (dirfile);
 
   for (i = 0; i <= dir_nlines; i++)
     {
@@ -1005,7 +1036,9 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
                 {
                   int k;
 
-                  putc ('\n', output);
+                  /* If the preceding line is not blank, add a blank line */
+                  if (i >= 1 && dir_lines[i - 1].size > 0)
+                    putc ('\n', output);
                   fputs (spec->name, output);
                   putc ('\n', output);
                   spec->missing = 0;
@@ -1047,6 +1080,19 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
     pclose (output);
   else
     fclose (output);
+
+  /* Update dir file atomically.  This stops the dir file being corrupted
+     if install-info is interrupted. */
+  if (rename (tempname, dirfile) == -1)
+    {
+      /* Try to delete target file and try again.  On some platforms you
+         may not rename to an existing file. */
+      if (remove (dirfile) == -1 || rename (tempname, dirfile) == -1)
+        {
+          remove (tempname);
+          pfatal_with_name (dirfile);
+        }
+    }
 }
 
 /* Read through the input LINES, to find the section names and the
@@ -1309,9 +1355,13 @@ mark_entry_for_deletion (struct line_data *lines, int nlines, char *name)
           /* Read menu item.  */
           while (*p != 0 && *p != ':')
             p++;
+          if (!*p)
+            continue;
           p++; /* skip : */
 
-          if (*p == ':')
+          if (!*p)
+            continue;
+          else if (*p == ':')
             { /* XEmacs-style entry, as in * Mew::Messaging.  */
               if (menu_item_equal (q, ':', name))
                 {
@@ -1325,7 +1375,7 @@ mark_entry_for_deletion (struct line_data *lines, int nlines, char *name)
               if (*p == '(')         /* if at parenthesized (FILENAME) */
                 {
                   p++;
-                  if (menu_item_equal (p, ')', name))
+                  if (*p && menu_item_equal (p, ')', name))
                     {
                       lines[i].delete = 1;
                       something_deleted = 1;
@@ -1665,6 +1715,7 @@ reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli,
 
       format_entry (name, name_len, desc, desc_len, calign, align, 
                     maxwidth, &entry->text, &entry->text_len);
+      free (name); free (desc);
     }
 }
 
@@ -1976,6 +2027,7 @@ main (int argc, char *argv[])
           {
             struct spec_entry *next;
             size_t length = strlen (optarg);
+            char *old_text;
 
             if (!entries_to_add)
               {
@@ -2006,9 +2058,11 @@ main (int argc, char *argv[])
                newline if we need one.  Prepend a space if we have no
                previous text, since eventually we will be adding the
                "* foo ()." and we want to end up with a ". " for parsing.  */
-            next->text = concat (next->text ? next->text : " ",
+            old_text = next->text;
+            next->text = concat (old_text ? old_text : " ",
                                  optarg, 
                                  optarg[length - 1] == '\n' ? "" : "\n");
+            free (old_text);
             next->text_len = strlen (next->text);
           }
           break;

@@ -39,7 +39,7 @@ $result_trees{'image_extension'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',

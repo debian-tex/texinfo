@@ -19,9 +19,11 @@ $result_trees{'top_without_node_nodes'} = [
                 'text' => 'top section'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -43,8 +45,10 @@ $result_trees{'top_without_node_nodes'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -81,34 +85,27 @@ $result_trees{'top_without_node_nodes'} = [
               }
             ],
             'extra' => {
-              'spaces_after_argument' => '
+              'manual_content' => [
+                {}
+              ]
+            },
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'second'
-            },
-            undef,
-            undef,
-            {
-              'manual_content' => [
-                {}
-              ]
-            }
-          ],
-          'normalized' => 'second',
-          'spaces_before_argument' => ' '
+          'normalized' => 'second'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -124,9 +121,11 @@ $result_trees{'top_without_node_nodes'} = [
                 'text' => 'Chapter'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -148,8 +147,11 @@ $result_trees{'top_without_node_nodes'} = [
             'type' => 'paragraph'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -164,9 +166,7 @@ $result_trees{'top_without_node_nodes'} = [
     'type' => 'unit'
   }
 ];
-$result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1];
+$result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2]{'args'}[3]{'contents'}[1];
 $result_trees{'top_without_node_nodes'}[0]{'extra'}{'unit_command'} = $result_trees{'top_without_node_nodes'}[0]{'contents'}[2];
 
 $result_texis{'top_without_node_nodes'} = '@top top section
@@ -194,7 +194,6 @@ $result_sectioning{'top_without_node_nodes'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'associated_unit' => {
             'extra' => {
@@ -431,20 +430,26 @@ $result_converted{'html'}->{'top_without_node_nodes'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#second" rel="start" title="second">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <div class="top-level-extent" id="top-section">
-<h1 class="top">top section</h1>
+<h1 class="top"><span>top section<a class="copiable-link" href="#top-section"> &para;</a></span></h1>
 <p>Top section
 </p>
 <ul class="mini-toc">
 <li><a href="#second" accesskey="1">Chapter</a></li>
 </ul>
 <div class="chapter-level-extent" id="second">
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <p>Text of chapter
 </p></div>

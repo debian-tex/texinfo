@@ -23,9 +23,11 @@ $result_trees{'table_on_item_line'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -57,22 +59,23 @@ $result_trees{'table_on_item_line'} = {
                                       'type' => 'command_as_argument'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'block_line_arg'
                                 }
                               ],
                               'cmdname' => 'table',
-                              'contents' => [
-                                {
-                                  'type' => 'before_item'
-                                }
-                              ],
                               'extra' => {
-                                'command_as_argument' => {},
-                                'spaces_before_argument' => ' '
+                                'command_as_argument' => {}
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -85,8 +88,10 @@ $result_trees{'table_on_item_line'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -104,7 +109,7 @@ $result_trees{'table_on_item_line'} = {
                       'type' => 'spaces_before_paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -121,16 +126,20 @@ $result_trees{'table_on_item_line'} = {
                               'text' => 'in nested table item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -160,7 +169,7 @@ $result_trees{'table_on_item_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -173,17 +182,23 @@ $result_trees{'table_on_item_line'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -193,8 +208,12 @@ $result_trees{'table_on_item_line'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -252,6 +271,15 @@ $result_errors{'table_on_item_line'} = [
     'line_nr' => 2,
     'macro' => '',
     'text' => '@table should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @table should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@table should not appear on @item line',
     'type' => 'warning'
   },
   {

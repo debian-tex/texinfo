@@ -13,21 +13,17 @@ $result_trees{'comma_value_in_macro_arg'} = {
           'args' => [
             {
               'text' => 'comma',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => ',',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' comma ,
-',
-            'misc_args' => [
-              'comma',
-              ','
-            ]
+'
           }
         },
         {
@@ -65,17 +61,23 @@ $result_trees{'comma_value_in_macro_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -84,7 +86,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macro1 { arg1 , arg2 }
 '
           },
@@ -95,6 +97,36 @@ $result_trees{'comma_value_in_macro_arg'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'arg1 @value{comma} arg2 '
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macro1',
+                  'spaces_after_cmd_before_arg' => {
+                    'text' => ' '
+                  },
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -109,6 +141,29 @@ $result_trees{'comma_value_in_macro_arg'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
+                              {
+                                'text' => 'comma'
+                              }
+                            ],
+                            'cmdname' => 'value'
+                          },
+                          'line' => ',',
+                          'position' => 5,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'start'
+                        },
+                        {
+                          'counter' => 1,
+                          'position' => 6,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'arg1 , arg2 '
                     }
                   ],
@@ -136,7 +191,14 @@ $result_trees{'comma_value_in_macro_arg'} = {
                 'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'macro1'
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ]
             },
             {
               'text' => '

@@ -1,5 +1,5 @@
-EXTRA_DIST = no_monolithic.texi navigation.texi formatting_regions.texi \
-	     formatting.texi simplest.texi list-of-tests res_parser \
+EXTRA_DIST = \
+	     simplest.texi list-of-tests res_parser \
  f--ile.e--xt  f--ile.jpg  f--ile.png  f--ile.txt
 
 

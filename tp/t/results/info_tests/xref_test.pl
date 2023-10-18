@@ -25,9 +25,11 @@ $result_trees{'xref_test'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -58,20 +60,18 @@ $result_trees{'xref_test'} = {
                       'text' => 'in xref'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -98,20 +98,18 @@ $result_trees{'xref_test'} = {
                       'text' => 'bad xref'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -143,20 +141,18 @@ $result_trees{'xref_test'} = {
                               'text' => 'bad nested xref'
                             }
                           ],
+                          'extra' => {
+                            'manual_content' => [
+                              {}
+                            ],
+                            'node_content' => [
+                              {}
+                            ]
+                          },
                           'type' => 'brace_command_arg'
                         }
                       ],
                       'cmdname' => 'xref',
-                      'extra' => {
-                        'node_argument' => {
-                          'manual_content' => [
-                            {}
-                          ],
-                          'node_content' => [
-                            {}
-                          ]
-                        }
-                      },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 5,
@@ -195,6 +191,14 @@ $result_trees{'xref_test'} = {
                       'text' => 'in ref ending with a dot.'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -203,23 +207,15 @@ $result_trees{'xref_test'} = {
                       'text' => 'name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -247,20 +243,18 @@ $result_trees{'xref_test'} = {
                       'text' => 'in ref followed by symbol'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -276,19 +270,12 @@ $result_trees{'xref_test'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -299,18 +286,16 @@ $result_trees{'xref_test'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[3];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[3];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[1];
-$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[3];
-$result_trees{'xref_test'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'xref_test'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[3];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[1];
+$result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'xref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[3];
 
 $result_texis{'xref_test'} = '
 @node Top

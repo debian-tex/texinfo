@@ -35,17 +35,23 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,7 +60,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macroone {arg}
 '
           },
@@ -65,45 +71,95 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'a'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'contents' => [
+                  {
+                    'text' => '@macroone{
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 7,
+                      'macro' => ''
+                    }
+                  }
+                ],
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 5,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
           'text' => '
-'
+',
+          'type' => 'empty_line'
         },
         {
           'contents' => [
             {
               'text' => 'in ifset
 '
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'ifset'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'end',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'ifset'
-              },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
-              }
             }
           ],
           'type' => 'paragraph'
@@ -121,7 +177,6 @@ $result_texis{'macro_in_ifset_end_in_arg'} = '@macro macroone {arg}
 
 
 in ifset
-@end ifset
 ';
 
 
@@ -141,12 +196,12 @@ $result_errors{'macro_in_ifset_end_in_arg'} = [
     'type' => 'error'
   },
   {
-    'error_line' => 'unmatched `@end\'
+    'error_line' => 'unmatched `@end ifset\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'unmatched `@end\'',
+    'text' => 'unmatched `@end ifset\'',
     'type' => 'error'
   }
 ];

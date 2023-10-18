@@ -39,7 +39,7 @@ Hashes are defined as @code{our} variables, and are therefore available
 outside of the module.
 
 TODO: undocumented
-%null_device_file %default_parser_customization_values %document_settable_multiple_at_commands %document_settable_unique_at_commands %default_converter_command_line_options %default_main_program_customization_options %default_converter_customization @@variable_string_settables %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command
+%null_device_file %default_parser_customization_values %document_settable_multiple_at_commands %document_settable_unique_at_commands %default_converter_command_line_options %default_main_program_customization_options %default_converter_customization @@variable_string_settables %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command %encoding_name_conversion_map
 
 @table @asis
 @item %texinfo_output_formats
@@ -68,13 +68,6 @@ following hashes are available:
 
 All the @@-commands.
 
-@item %brace_code_commands
-@anchor{Texinfo@asis{::}Common %brace_code_commands}
-@cindex @code{%brace_code_commands}
-
-Brace commands that have their argument in code style, like
-@code{@@code}.
-
 @item %def_aliases
 @anchor{Texinfo@asis{::}Common %def_aliases}
 
@@ -92,30 +85,18 @@ non-metasyntactic variables.  For instance, it is true for @code{deftypevr}
 but false for @code{defun}, since @code{@@defun} @emph{argument} is supposed to contain
 metasyntactic variables only.
 
-@item %explained_commands
-@anchor{Texinfo@asis{::}Common %explained_commands}
-@cindex @code{%explained_commands}
-
-@@-commands whose second argument explain first argument and further
-@@-command call without first argument, as @code{@@abbr} and @code{@@acronym}.
-
-@item %inline_conditional_commands
-@anchor{Texinfo@asis{::}Common %inline_conditional_commands}
-
-@item %inline_format_commands
-@anchor{Texinfo@asis{::}Common %inline_format_commands}
-@cindex @code{%inline_conditional_commands}
-@cindex @code{%inline_format_commands}
-
-Inline conditional commands, like @code{@@inlineifclear}, and inline format
-commands like @code{inlineraw} and @code{inlinefmt}.
-
 @item %nobrace_symbol_text
 @anchor{Texinfo@asis{::}Common %nobrace_symbol_text}
 @cindex @code{%nobrace_symbol_text}
 
 Values are ASCII representation of single character non-alphabetical commands
 without brace such as @code{*} or @code{:}.  The value may be an empty string.
+
+@item %non_formatted_brace_commands
+@anchor{Texinfo@asis{::}Common %non_formatted_brace_commands}
+
+Brace commands that are not immediately replaced with text, such as
+@code{anchor}, @code{caption}, @code{errormsg} and others.
 
 @item %small_block_associated_command
 @anchor{Texinfo@asis{::}Common %small_block_associated_command}
@@ -182,6 +163,13 @@ to the @@-commands names specified in the @emph{$commands_list} found
 in @emph{$tree} by traversing the tree.  The order of the @@-commands
 should be kept.
 
+@item $encoding_name = element_associated_processing_encoding($element)
+@anchor{Texinfo@asis{::}Common $encoding_name = element_associated_processing_encoding($element)}
+@cindex @code{element_associated_processing_encoding}
+
+Returns the encoding name that can be used for decoding derived
+from the encoding that was set where @emph{$element} appeared.
+
 @item $result = element_is_inline($element, $check_current)
 @anchor{Texinfo@asis{::}Common $result = element_is_inline($element@comma{} $check_current)}
 @cindex @code{element_is_inline}
@@ -221,6 +209,16 @@ Find the parent root command (sectioning command or node) of a tree element.
 The @emph{$object} argument is optional, its @code{global_commands} field is used
 to continue through @code{@@insertcopying} if in a @code{@@copying}.
 
+@item $entry_content_element = index_content_element($element, $prefer_reference_element)
+@anchor{Texinfo@asis{::}Common $entry_content_element = index_content_element($element@comma{} $prefer_reference_element)}
+
+Return a Texinfo tree element corresponding to the content of the index
+entry associated to @emph{$element}.  If @emph{$prefer_reference_element} is set,
+prefer an untranslated element.  If the element is an index command like
+@code{@@cindex} or an @code{@@ftable} @code{@@item}, the content element is the argument
+of the command.  If the element is a definition line, the index entry
+element is based on the name and class.
+
 @item $result = is_content_empty($tree, $do_not_ignore_index_entries)
 @anchor{Texinfo@asis{::}Common $result = is_content_empty($tree@comma{} $do_not_ignore_index_entries)}
 @cindex @code{is_content_empty}
@@ -240,6 +238,19 @@ directories also used to find texinfo files included in Texinfo documents.
 @emph{$file_path} should be a binary string.  @code{undef} is returned if the file was
 not found, otherwise the file found is returned as a binary string.
 
+@item ($index_entry, $index_info) = lookup_index_entry($index_entry_info, $indices_information)
+@anchor{Texinfo@asis{::}Common ($index_entry@comma{} $index_info) = lookup_index_entry($index_entry_info@comma{} $indices_information)}
+
+Returns an @emph{$index_entry} hash based on the @emph{$index_entry_info} and
+@emph{$indices_information}.  Also returns the @emph{$index_info} hash with information on
+the index associated to the index entry.  @emph{$index_entry_info} should be
+an array reference with an index name as first element and the index entry number
+in that index (1-based) as second element.  In general, the @emph{$index_entry_info}
+is an @ref{Texinfo@asis{::}Parser index_entry,, @code{extra} @emph{index_entry}} associated to an element.
+
+The @emph{$index_entry} hash is described in @ref{Texinfo@asis{::}Parser index_entries}.  The
+@emph{$index_info} hash is described in L@ref{Texinfo@asis{::}Parser $indices_information = $parser->indices_information(),, @code{Texinfo::Parser::indices_information}}.
+
 @item move_index_entries_after_items_in_tree($tree)
 @anchor{Texinfo@asis{::}Common move_index_entries_after_items_in_tree($tree)}
 @cindex @code{move_index_entries_after_items_in_tree}
@@ -247,6 +258,14 @@ not found, otherwise the file found is returned as a binary string.
 In @code{@@enumerate} and @code{@@itemize} from the tree, move index entries
 appearing just before @code{@@item} after the @code{@@item}.  Comment lines
 between index entries are moved too.
+
+@item relate_index_entries_to_table_items_in_tree($tree)
+@anchor{Texinfo@asis{::}Common relate_index_entries_to_table_items_in_tree($tree)}
+@cindex @code{relate_index_entries_to_table_items_in_tree}
+
+In tables, relate index entries preceding and following an
+entry with said item.  Reference one of them in the entry's
+@code{entry_associated_element}.
 
 @item $normalized_name = normalize_top_node_name($node_string)
 @anchor{Texinfo@asis{::}Common $normalized_name = normalize_top_node_name($node_string)}
@@ -283,14 +302,6 @@ Return a contents array reference with first parenthesis in the
 contents array reference protected.  If @emph{$contents} is undef
 a fatal error with a backtrace will be emitted.
 
-@item relate_index_entries_to_table_entries_in_tree($tree)
-@anchor{Texinfo@asis{::}Common relate_index_entries_to_table_entries_in_tree($tree)}
-@cindex @code{relate_index_entries_to_table_entries_in_tree}
-
-In @@*table @@-commands, reassociate the index entry information from an index
-@@-command appearing right after an @@item line to the @@item first element.
-Remove the index @@-command from the tree.
-
 @item $level = section_level($section)
 @anchor{Texinfo@asis{::}Common $level = section_level($section)}
 @cindex @code{section_level}
@@ -302,7 +313,7 @@ raise/lowersections.
 @anchor{Texinfo@asis{::}Common $element = set_global_document_command($customization_information@comma{} $global_commands_information@comma{} $cmdname@comma{} $command_location)}
 @cindex @code{set_global_document_command}
 
-Set the Texinfo configuration option corresponding to @emph{$cmdname} in
+Set the Texinfo customization variable corresponding to @emph{$cmdname} in
 @emph{$customization_information}.  The @emph{$global_commands_information} should
 contain information about global commands in a Texinfo document, typically obtained
 from a parser @ref{Texinfo@asis{::}Parser $commands = global_commands_information($parser),, $parser->global_commands_information()}.
@@ -330,20 +341,21 @@ sequentially to the values in the Texinfo preamble.
 @end table
 
 The @emph{$element} returned is the last element that was used to set the
-configuration value, or @code{undef} if no configuration value was found.
+customization value, or @code{undef} if no customization value was found.
 
 Notice that the only effect of this function is to set a customization
 variable value, no @@-command side effects are run, no associated customization
 variables are set.
 
-@item set_informative_command_value($customization_information, $element)
-@anchor{Texinfo@asis{::}Common set_informative_command_value($customization_information@comma{} $element)}
+@item $status = set_informative_command_value($customization_information, $element)
+@anchor{Texinfo@asis{::}Common $status = set_informative_command_value($customization_information@comma{} $element)}
 @cindex @code{set_informative_command_value}
 
-Set the Texinfo configuration option corresponding to the tree element
+Set the Texinfo customization option corresponding to the tree element
 @emph{$element}.  The command associated to the tree element should be
 a command that sets some information, such as @code{@@documentlanguage},
-@code{@@contents} or @code{@@footnotestyle} for example.
+@code{@@contents} or @code{@@footnotestyle} for example.  Return true if the command
+argument was found and the customization variable was set.
 
 @item set_output_encodings($customization_information, $parser_information)
 @anchor{Texinfo@asis{::}Common set_output_encodings($customization_information@comma{} $parser_information)}
@@ -371,14 +383,14 @@ of @code{%Texinfo::Commands::heading_spec_commands} commands such as @code{@@eve
 Remove empty spaces after commands or braces at begin and
 spaces and comments at end from a content array, modifying it.
 
-@item valid_customization_option($name)
-@anchor{Texinfo@asis{::}Common valid_customization_option($name)}
+@item $status = valid_customization_option($name)
+@anchor{Texinfo@asis{::}Common $status = valid_customization_option($name)}
 @cindex @code{valid_option}
 
 Return true if the @emph{$name} is a known customization option.
 
-@item valid_tree_transformation($name)
-@anchor{Texinfo@asis{::}Common valid_tree_transformation($name)}
+@item $status = valid_tree_transformation($name)
+@anchor{Texinfo@asis{::}Common $status = valid_tree_transformation($name)}
 @cindex @code{valid_tree_transformation}
 
 Return true if the @emph{$name} is a known tree transformation name

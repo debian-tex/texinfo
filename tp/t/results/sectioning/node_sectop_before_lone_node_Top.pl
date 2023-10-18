@@ -10,39 +10,7 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
     {
       'contents' => [
         {
-          'contents' => [
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'node_sectop_before_lone_node_Top.info'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'node_sectop_before_lone_node_Top.info'
-              },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
-              }
-            },
-            {
-              'text' => '
-',
-              'type' => 'empty_line'
-            }
-          ],
+          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -56,32 +24,27 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
               'text' => 'node before'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node-before'
-          }
-        ],
-        'normalized' => 'node-before',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node-before'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 3,
+        'line_nr' => 1,
         'macro' => ''
       }
     },
@@ -93,9 +56,11 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
               'text' => 'top sectionning'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -122,12 +87,15 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 4,
+        'line_nr' => 2,
         'macro' => ''
       }
     },
@@ -139,9 +107,11 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -169,23 +139,16 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 8,
+        'line_nr' => 6,
         'macro' => ''
       }
     },
@@ -197,32 +160,27 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 12,
+        'line_nr' => 10,
         'macro' => ''
       }
     },
@@ -234,9 +192,11 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -258,28 +218,23 @@ $result_trees{'node_sectop_before_lone_node_Top'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 13,
+        'line_nr' => 11,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_sectop_before_lone_node_Top'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 
-$result_texis{'node_sectop_before_lone_node_Top'} = '@setfilename node_sectop_before_lone_node_Top.info
-
-@node node before
+$result_texis{'node_sectop_before_lone_node_Top'} = '@node node before
 @top top sectionning
 
 in node before
@@ -295,8 +250,7 @@ in chap
 ';
 
 
-$result_texts{'node_sectop_before_lone_node_Top'} = '
-top sectionning
+$result_texts{'node_sectop_before_lone_node_Top'} = 'top sectionning
 ***************
 
 in node before
@@ -443,18 +397,23 @@ $result_converted{'html'}->{'node_sectop_before_lone_node_Top'} = '<!DOCTYPE htm
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#node-before" rel="start" title="node before">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
-
 <div class="top-level-extent" id="node-before">
 <div class="nav-panel">
 <p>
 Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
 </div>
-<h1 class="top" id="top-sectionning">top sectionning</h1>
+<h1 class="top" id="top-sectionning"><span>top sectionning<a class="copiable-link" href="#top-sectionning"> &para;</a></span></h1>
 
 <p>in node before
 </p>
@@ -466,7 +425,7 @@ Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Previous: <a href="#Top
 <p>
 Next: <a href="#node-before" accesskey="n" rel="next">top sectionning</a> &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <p>in node Top
 </p>
@@ -476,7 +435,7 @@ Next: <a href="#node-before" accesskey="n" rel="next">top sectionning</a> &nbsp;
 <p>
 Up: <a href="#node-before" accesskey="u" rel="up">top sectionning</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="chap-1">1 chap</h2>
+<h2 class="chapter" id="chap-1"><span>1 chap<a class="copiable-link" href="#chap-1"> &para;</a></span></h2>
 
 <p>in chap
 </p></div>
@@ -503,8 +462,7 @@ $result_converted{'docbook'}->{'node_sectop_before_lone_node_Top'} = '<chapter l
 ';
 
 
-$result_converted{'latex_text'}->{'node_sectop_before_lone_node_Top'} = '
-\\begin{document}
+$result_converted{'latex_text'}->{'node_sectop_before_lone_node_Top'} = '\\begin{document}
 \\part*{{top sectionning}}
 \\label{anchor:node-before}%
 

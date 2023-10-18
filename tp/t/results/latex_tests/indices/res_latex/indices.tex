@@ -1,23 +1,23 @@
 \documentclass{book}
-\usepackage{imakeidx}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage[gen]{eurosym}
-\usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \usepackage{titleps}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
 \usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \usepackage[hidelinks]{hyperref}
-\usepackage[utf8]{inputenc}
 
 \makeatletter
 \newcommand{\Texinfosettitle}{No Title}%
 
-% no index headers or page break
-\indexsetup{level=\relax,toclevel=section,noclearpage}%
+% no index headers
+\indexsetup{level=\relax,toclevel=section}%
 \makeindex[name=cp,title=]%
 \makeindex[name=fn,title=]%
 
@@ -53,7 +53,14 @@
 \chapter{{Index}}
 \label{anchor:chapter}%
 
-\index[cp]{a"!"""@b """!"@ a"" o""@$a"!"""@b$ """!"@ "\""{a} "\""{o}!a"!"""@b@sub$a"!"""@b$ sub """!"@ "\""{a} "\""{o}|seealso{$a!"@b$ "!@ \"{a} \"{o}}}%
+\index[cp]{ä ö@"\""{a} "\""{o}}%
+\index[cp]{AA@AA}%
+\index[cp]{aa@aa}%
+\index[cp]{i@i}%
+\index[cp]{Z@Z}%
+\index[cp]{î@\^{i}}%
+
+\index[cp]{a"!"""@b """!"@ ä ö@$a"!"""@b$ """!"@ "\""{a} "\""{o}!a"!"""@b@sub$a"!"""@b$ sub """!"@ "\""{a} "\""{o}|seealso{$a!"@b$ "!@ \"{a} \"{o}}}%
 \index[cp]{cmd@\textbackslash{}cmd}%
 \index[cp]{\textbackslash{}cmd@totocmd}%
 

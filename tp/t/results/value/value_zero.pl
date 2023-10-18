@@ -13,30 +13,51 @@ $result_trees{'value_zero'} = {
           'args' => [
             {
               'text' => 'zero',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '0',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' zero 0
-',
-            'misc_args' => [
-              'zero',
-              '0'
-            ]
+'
           }
         },
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'zero'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => '0',
+                  'position' => 6,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Value
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '0'
             }
           ],

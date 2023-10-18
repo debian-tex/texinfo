@@ -62,8 +62,10 @@ $result_trees{'empty_ref'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -85,8 +87,10 @@ $result_trees{'empty_ref'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -96,8 +100,10 @@ $result_trees{'empty_ref'} = {
                       'text' => 'arg'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }

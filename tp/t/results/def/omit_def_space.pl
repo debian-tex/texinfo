@@ -18,9 +18,11 @@ $result_trees{'omit_def_space'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -34,19 +36,12 @@ $result_trees{'omit_def_space'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -59,12 +54,14 @@ $result_trees{'omit_def_space'} = {
         {
           'contents' => [
             {
-              'text' => 'first'
+              'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -80,21 +77,17 @@ $result_trees{'omit_def_space'} = {
           'args' => [
             {
               'text' => 'txidefnamenospace',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' txidefnamenospace
-',
-            'misc_args' => [
-              'txidefnamenospace',
-              ''
-            ]
+'
           }
         },
         {
@@ -179,41 +172,25 @@ $result_trees{'omit_def_space'} = {
                       },
                       'text' => ')',
                       'type' => 'delimiter'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'defun',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'defun',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'defun'
-                },
+                'def_index_element' => {},
+                'element_node' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
                 'omit_def_name_space' => 1,
                 'original_def_cmdname' => 'defun'
               },
@@ -278,45 +255,33 @@ $result_trees{'omit_def_space'} = {
                       },
                       'text' => ')',
                       'type' => 'delimiter'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'defunx',
               'extra' => {
                 'def_command' => 'defun',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 2,
-                  'in_code' => 1,
-                  'index_at_command' => 'defunx',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'defun'
-                },
+                'def_index_element' => {},
+                'element_node' => {},
+                'index_entry' => [
+                  'fn',
+                  2
+                ],
                 'omit_def_name_space' => 1,
-                'original_def_cmdname' => 'defunx',
-                'spaces_before_argument' => ' '
+                'original_def_cmdname' => 'defunx'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -347,17 +312,23 @@ $result_trees{'omit_def_space'} = {
                       'text' => 'defun'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defun'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -366,8 +337,10 @@ $result_trees{'omit_def_space'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -377,19 +350,12 @@ $result_trees{'omit_def_space'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'first'
-          }
-        ],
-        'normalized' => 'first',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -400,26 +366,14 @@ $result_trees{'omit_def_space'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'omit_def_space'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'omit_def_space'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'omit_def_space'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'omit_def_space'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'omit_def_space'}{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'omit_def_space'}{'contents'}[2];
-$result_trees{'omit_def_space'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'omit_def_space'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'omit_def_space'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'omit_def_space'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'omit_def_space'}{'contents'}[2];
+$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'omit_def_space'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'omit_def_space'}{'contents'}[2];
 
 $result_texis{'omit_def_space'} = '@node Top
 
-@node first
+@node chap
 
 @set txidefnamenospace
 
@@ -447,7 +401,7 @@ $result_nodes{'omit_def_space'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'first'
+        'normalized' => 'chap'
       },
       'structure' => {
         'node_prev' => {}
@@ -514,21 +468,21 @@ strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 <body lang="en">
 <a class="node-id" id="Top"></a><div class="nav-panel">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
+Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <hr>
-<a class="node-id" id="first"></a><div class="nav-panel">
+<a class="node-id" id="chap"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
 </div>
-<h4 class="node">first</h4>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
 
 <dl class="first-deffn first-defun-alias-first-deffn">
-<dt class="deffn defun-alias-deffn" id="index-function"><span class="category-def">Function: </span><span><strong class="def-name">function</strong><var class="def-var-arguments">(arg1, arg2)</var><a class="copiable-link" href=\'#index-function\'> &para;</a></span></dt>
-<dt class="deffnx defunx-alias-deffnx def-cmd-deffn" id="index-another"><span class="category-def">Function: </span><span><strong class="def-name">another</strong><var class="def-var-arguments">(aarg)</var><a class="copiable-link" href=\'#index-another\'> &para;</a></span></dt>
+<dt class="deffn defun-alias-deffn" id="index-function"><span class="category-def">Function: </span><span><strong class="def-name">function</strong><var class="def-var-arguments">(arg1, arg2)</var><a class="copiable-link" href="#index-function"> &para;</a></span></dt>
+<dt class="deffnx defunx-alias-deffnx def-cmd-deffn" id="index-another"><span class="category-def">Function: </span><span><strong class="def-name">another</strong><var class="def-var-arguments">(aarg)</var><a class="copiable-link" href="#index-another"> &para;</a></span></dt>
 <dd><p>explain
 </p></dd></dl>
 
@@ -550,7 +504,7 @@ $result_converted_errors{'html'}->{'omit_def_space'} = [
 
 
 $result_converted{'latex_text'}->{'omit_def_space'} = '\\label{anchor:Top}%
-\\label{anchor:first}%
+\\label{anchor:chap}%
 
 
 

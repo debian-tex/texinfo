@@ -21,22 +21,16 @@ $result_trees{'good_comment'} = {
                           'text' => '0.4 .6 5.'
                         }
                       ],
-                      'extra' => {
+                      'info' => {
                         'comment_at_end' => {
                           'args' => [
                             {
                               'text' => ' comment
 ',
-                              'type' => 'misc_arg'
+                              'type' => 'rawline_arg'
                             }
                           ],
-                          'cmdname' => 'c',
-                          'extra' => {
-                            'misc_args' => [
-                              ' comment
-'
-                            ]
-                          }
+                          'cmdname' => 'c'
                         }
                       },
                       'type' => 'line_arg'
@@ -48,8 +42,12 @@ $result_trees{'good_comment'} = {
                       '0.4',
                       '.6',
                       '5.'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -76,8 +74,12 @@ $result_trees{'good_comment'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -88,8 +90,12 @@ $result_trees{'good_comment'} = {
           ],
           'extra' => {
             'columnfractions' => {},
-            'max_columns' => 3,
-            'spaces_before_argument' => ' '
+            'max_columns' => 3
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -116,5 +122,14 @@ $result_errors{'good_comment'} = [];
 
 $result_floats{'good_comment'} = {};
 
+
+
+$result_converted{'xml'}->{'good_comment'} = '<multitable spaces=" " endspaces=" "><columnfractions spaces=" " line="0.4 .6 5.@c comment"><columnfraction value="0.4"></columnfraction><columnfraction value=".6"></columnfraction><columnfraction value="5."></columnfraction></columnfractions><!-- c comment -->
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'good_comment'} = '\\begin{tabular}{m{0.4\\textwidth} m{.6\\textwidth} m{5.\\textwidth}}%
+\\end{tabular}%
+';
 
 1;

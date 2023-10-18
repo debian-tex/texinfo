@@ -1,6 +1,6 @@
 # Makefile.am for XS modules
 #
-# Copyright 2015-2020 Free Software Foundation, Inc.
+# Copyright 2015-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -82,7 +82,7 @@ AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags)
 AM_LDFLAGS += $(PLATFORM_LDFLAGS)
 
 XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la
-XSParagraph_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
+XSParagraph_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV) $(LTLIBUNISTRING)
 
 
 
@@ -120,6 +120,7 @@ Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
 		      parsetexi/context_stack.c \
 		      parsetexi/context_stack.h \
 		      parsetexi/debug.c \
+		      parsetexi/debug.h \
 		      parsetexi/convert.c \
 		      parsetexi/convert.h \
 		      parsetexi/end_line.c \
@@ -140,13 +141,15 @@ Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
 		      parsetexi/errors.c \
 		      parsetexi/errors.h \
 		      parsetexi/counter.c \
-		      parsetexi/counter.h
+		      parsetexi/counter.h \
+		      parsetexi/source_marks.c \
+		      parsetexi/source_marks.h
 EXTRA_DIST += $(p)/command_data.c
 
 EXTRA_DIST += $(p)/Parsetexi.xs
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
-Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
+Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV) $(LTLIBUNISTRING)
 
 # To locate include files under out-of-source builds.
 Parsetexi_la_CPPFLAGS = -I$(srcdir)/parsetexi $(AM_CPPFLAGS)
@@ -158,13 +161,13 @@ BUILT_SOURCES=parsetexi/element_types.c \
 
 # Need to be distributed
 EXTRA_DIST+=$(p)/element_types.txt $(p)/element_types.awk \
-	   $(p)/command_data.txt $(p)/command_data.awk
+	   $(p)/command_data.awk
 
 $(srcdir)/$(p)/element_types.c $(srcdir)/$(p)/element_types.h: $(p)/element_types.txt $(p)/element_types.awk
 	$(GAWK) -v srcdir=$(srcdir)/$(p) -f $(srcdir)/$(p)/element_types.awk \
 	     $(srcdir)/$(p)/element_types.txt
 
-$(srcdir)/$(p)/command_data.c $(srcdir)/$(p)/command_ids.h: $(p)/command_data.txt $(p)/command_data.awk
+$(srcdir)/$(p)/command_data.c $(srcdir)/$(p)/command_ids.h: ../command_data.txt $(p)/command_data.awk
 	$(GAWK) -v srcdir=$(srcdir)/$(p) -f $(srcdir)/$(p)/command_data.awk \
-	     $(srcdir)/$(p)/command_data.txt
+	     $(srcdir)/../command_data.txt
 

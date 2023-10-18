@@ -36,17 +36,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -55,7 +61,7 @@ $result_trees{'macro_in_menu'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' astar
 '
           },
@@ -92,17 +98,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -111,7 +123,7 @@ $result_trees{'macro_in_menu'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' starspaces
 '
           },
@@ -148,17 +160,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -167,7 +185,7 @@ $result_trees{'macro_in_menu'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' spaces
 '
           },
@@ -204,17 +222,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -223,7 +247,7 @@ $result_trees{'macro_in_menu'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' aspace
 '
           },
@@ -260,17 +284,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -279,7 +309,7 @@ $result_trees{'macro_in_menu'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' twocolon
 '
           },
@@ -316,17 +346,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -335,7 +371,7 @@ $result_trees{'macro_in_menu'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' acolon
 '
           },
@@ -353,9 +389,11 @@ $result_trees{'macro_in_menu'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -363,7 +401,27 @@ $result_trees{'macro_in_menu'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'starspaces'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ]
+            },
+            {
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -371,12 +429,50 @@ $result_trees{'macro_in_menu'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        },
+                        {
+                          'counter' => 2,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'twocolon'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'position' => 10,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => 'menu entry'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'menu-entry'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'position' => 2,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => ':: ',
                   'type' => 'menu_entry_separator'
                 },
@@ -395,15 +491,6 @@ $result_trees{'macro_in_menu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'menu-entry'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 27,
@@ -416,11 +503,54 @@ $result_trees{'macro_in_menu'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 3,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'spaces'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        },
+                        {
+                          'counter' => 3,
+                          'position' => 2,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => '  
 ',
                       'type' => 'after_menu_description_line'
                     },
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 4,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'astar'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'position' => 13,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => 'menu comment
 '
                     }
@@ -431,8 +561,16 @@ $result_trees{'macro_in_menu'} = {
               'type' => 'menu_comment'
             },
             {
-              'args' => [
+              'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 4,
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
                 },
@@ -442,6 +580,12 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -453,6 +597,25 @@ $result_trees{'macro_in_menu'} = {
                     {
                       'contents' => [
                         {
+                          'source_marks' => [
+                            {
+                              'counter' => 5,
+                              'element' => {
+                                'args' => [
+                                  {
+                                    'type' => 'brace_command_arg'
+                                  }
+                                ],
+                                'info' => {
+                                  'command_name' => 'astar'
+                                },
+                                'type' => 'macro_call'
+                              },
+                              'position' => 1,
+                              'sourcemark_type' => 'macro_expansion',
+                              'status' => 'start'
+                            }
+                          ],
                           'text' => '
 '
                         }
@@ -463,15 +626,6 @@ $result_trees{'macro_in_menu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 30,
@@ -480,17 +634,55 @@ $result_trees{'macro_in_menu'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 5,
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    },
+                    {
+                      'counter' => 6,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'aspace'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
                 },
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 6,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'other node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'other-node'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -512,15 +704,6 @@ $result_trees{'macro_in_menu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'other-node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 31,
@@ -529,7 +712,7 @@ $result_trees{'macro_in_menu'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -537,12 +720,91 @@ $result_trees{'macro_in_menu'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 7,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'acolon'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'position' => 16,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => 'node colon macro'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node-colon-macro'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 7,
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    },
+                    {
+                      'counter' => 8,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'acolon'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    },
+                    {
+                      'counter' => 8,
+                      'position' => 2,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    },
+                    {
+                      'counter' => 9,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'aspace'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 2,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    },
+                    {
+                      'counter' => 9,
+                      'position' => 3,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => ':: ',
                   'type' => 'menu_entry_separator'
                 },
@@ -561,15 +823,6 @@ $result_trees{'macro_in_menu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node-colon-macro'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 32,
@@ -578,7 +831,7 @@ $result_trees{'macro_in_menu'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -601,9 +854,40 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'entry'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'entry'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 10,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'aspace'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    },
+                    {
+                      'counter' => 10,
+                      'position' => 2,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => '. ',
                   'type' => 'menu_entry_separator'
                 },
@@ -622,16 +906,6 @@ $result_trees{'macro_in_menu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'entry'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 33,
@@ -647,17 +921,23 @@ $result_trees{'macro_in_menu'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -678,17 +958,11 @@ $result_trees{'macro_in_menu'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'args'}[3];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[2]{'args'}[3];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[2]{'args'}[1]{'contents'}[0];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[3]{'extra'}{'menu_entry_description'} = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[3]{'args'}[3];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[3]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[3]{'args'}[1]{'contents'}[0];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[4]{'extra'}{'menu_entry_description'} = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[4]{'args'}[3];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[4]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[4]{'args'}[1]{'contents'}[0];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'extra'}{'menu_entry_description'} = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'args'}[5];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'extra'}{'menu_entry_name'} = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'args'}[1];
-$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'args'}[3]{'contents'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[3]{'contents'}[1]{'contents'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[4]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[4]{'contents'}[1]{'contents'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[5]{'contents'}[1]{'contents'}[0];
+$result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[6]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_menu'}{'contents'}[0]{'contents'}[13]{'contents'}[6]{'contents'}[3]{'contents'}[0];
 
 $result_texis{'macro_in_menu'} = '
 @macro astar

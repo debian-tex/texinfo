@@ -14,7 +14,7 @@ $result_trees{'ref_in_sectioning'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -40,28 +40,23 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -84,55 +79,16 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'ref',
-              'extra' => {
-                'label' => {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'node'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'node',
                   'extra' => {
                     'node_content' => [
                       {}
                     ],
-                    'nodes_manuals' => [
-                      {
-                        'node_content' => [
-                          {}
-                        ],
-                        'normalized' => 'node'
-                      }
-                    ],
-                    'normalized' => 'node',
-                    'spaces_before_argument' => ' '
+                    'normalized' => 'node'
                   },
-                  'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
-                  }
-                },
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
+                  'type' => 'brace_command_arg'
                 }
-              },
+              ],
+              'cmdname' => 'ref',
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -150,19 +106,16 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'pxref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -180,6 +133,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -194,8 +152,10 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -205,20 +165,15 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'pxref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -229,9 +184,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ')'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -246,9 +203,11 @@ $result_trees{'ref_in_sectioning'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -256,7 +215,7 @@ $result_trees{'ref_in_sectioning'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -267,6 +226,12 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -288,15 +253,6 @@ $result_trees{'ref_in_sectioning'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -305,7 +261,7 @@ $result_trees{'ref_in_sectioning'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -316,6 +272,12 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'chap'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -337,15 +299,6 @@ $result_trees{'ref_in_sectioning'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chap'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -361,17 +314,23 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -392,8 +351,11 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -401,7 +363,38 @@ $result_trees{'ref_in_sectioning'} = {
         'macro' => ''
       }
     },
-    {},
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'node'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 11,
+        'macro' => ''
+      }
+    },
     {
       'args' => [
         {
@@ -414,6 +407,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -433,8 +431,10 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -444,20 +444,15 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -468,9 +463,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => '.'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -483,8 +480,11 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -500,28 +500,23 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -541,19 +536,16 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 15,
@@ -564,9 +556,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' just node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -579,8 +573,11 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -603,19 +600,16 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -633,19 +627,16 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'pxref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -663,6 +654,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -677,8 +673,10 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -688,20 +686,15 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'pxref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -712,9 +705,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ')'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -727,8 +722,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -748,6 +745,12 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -756,22 +759,15 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'cross ref name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 19,
@@ -782,9 +778,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => '  node, crossref arg2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -797,8 +795,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -833,6 +833,12 @@ $result_trees{'ref_in_sectioning'} = {
                       }
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -859,22 +865,15 @@ $result_trees{'ref_in_sectioning'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 21,
@@ -885,9 +884,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => '  code node, samptitle arg3'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -900,8 +901,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -936,6 +939,11 @@ $result_trees{'ref_in_sectioning'} = {
                       }
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -950,20 +958,15 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 23,
@@ -974,9 +977,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' code node, file name'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -989,8 +994,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1010,6 +1017,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1027,21 +1039,18 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 25,
@@ -1052,9 +1061,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' node and manual'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1067,8 +1078,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1088,6 +1101,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1105,21 +1123,18 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 27,
@@ -1130,9 +1145,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' Top and manual'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1145,8 +1162,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1178,9 +1197,13 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -1196,9 +1219,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' no node just manual'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1211,8 +1236,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1241,8 +1268,10 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -1258,9 +1287,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' no node just file name'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1273,8 +1304,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1294,6 +1327,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'a'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1302,8 +1340,10 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'b'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -1313,20 +1353,15 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'c'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'inforef',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 33,
@@ -1337,9 +1372,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ' inforef a b c'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => ' 
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => ' 
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1352,8 +1389,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1377,8 +1416,17 @@ $result_trees{'ref_in_sectioning'} = {
                     }
                   ],
                   'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                    'node_content' => [
+                      {}
+                    ]
+                  },
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -1394,21 +1442,18 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'pxref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 35,
@@ -1419,9 +1464,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ') pxref Top file name, spaces'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1434,8 +1481,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1467,9 +1516,13 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -1485,9 +1538,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ') pxref file name only, spaces'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1500,8 +1555,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1521,6 +1578,11 @@ $result_trees{'ref_in_sectioning'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1539,13 +1601,6 @@ $result_trees{'ref_in_sectioning'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 39,
@@ -1556,9 +1611,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => ', xref Top filename only, no spaces'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1571,8 +1628,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1615,9 +1674,11 @@ $result_trees{'ref_in_sectioning'} = {
               'text' => '. xref filename only, no spaces'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1630,8 +1691,10 @@ $result_trees{'ref_in_sectioning'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1642,39 +1705,24 @@ $result_trees{'ref_in_sectioning'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_sectioning'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[3];
-$result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[3] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[5]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[7]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[16]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_sectioning'}{'contents'}[18]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'ref_in_sectioning'} = '@contents
 
@@ -1825,7 +1873,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.1',
@@ -1834,7 +1881,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.2',
@@ -1844,7 +1890,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.3',
@@ -1854,7 +1899,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.4',
@@ -1864,7 +1908,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.5',
@@ -1874,7 +1917,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.6',
@@ -1884,7 +1926,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.7',
@@ -1894,7 +1935,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.8',
@@ -1904,7 +1944,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.9',
@@ -1914,7 +1953,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.10',
@@ -1924,7 +1962,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.11',
@@ -1934,7 +1971,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.12',
@@ -1944,7 +1980,6 @@ $result_sectioning{'ref_in_sectioning'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '2.13',
@@ -2196,10 +2231,8 @@ for example *note node:: (*note node::) (*note (file)Top::)
 $result_converted{'html_text'}->{'ref_in_sectioning'} = '
 <div class="top-level-extent" id="Top">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="top" id="for-example-node-_0028node_0029-_0028Top_0029">for example <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> (see <a class="pxref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a>) (see <cite class="cite"><a data-manual="file" href="file.html#Top">Manual</a></cite>)</h1>
+<h1 class="top" id="for-example-node-_0028node_0029-_0028Top_0029"><span>for example <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> (see <a class="pxref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a>) (see <cite class="cite"><a data-manual="file" href="file.html#Top">Manual</a></cite>)<a class="copiable-link" href="#for-example-node-_0028node_0029-_0028Top_0029"> &para;</a></span></h1>
 
 
 <div class="element-contents">
@@ -2219,7 +2252,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '
     <li><a id="toc-Top-Top-and-manual" href="#Top-Top-and-manual">2.6 <cite class="cite">Manual</cite> Top and manual</a></li>
     <li><a id="toc-Manual-no-node-just-manual" href="#Manual-no-node-just-manual">2.7 <cite class="cite">Manual</cite> no node just manual</a></li>
     <li><a id="toc-file-name-no-node-just-file-name" href="#file-name-no-node-just-file-name">2.8 <a data-manual="file name" href="file%20name.html#Top">(file name)</a> no node just file name</a></li>
-    <li><a id="toc-a-inforef-a-b-c" href="#a-inforef-a-b-c">2.9 See <a data-manual="c" href="c.html#a">(c)b</a> inforef a b c</a></li>
+    <li><a id="toc-a-inforef-a-b-c" href="#a-inforef-a-b-c">2.9 See <a data-manual="c" href="c.html#a">b</a> inforef a b c</a></li>
     <li><a id="toc-_0028Top_0029-pxref-Top-file-name_002c-spaces" href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.10 (see <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
     <li><a id="toc-_0028file-name_0029-pxref-file-name-only_002c-spaces" href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.11 (see <a data-manual="file name" href="file%20name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
     <li><a id="toc-Top_002c-xref-Top-filename-only_002c-no-spaces" href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.12 See <a data-manual="filename" href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
@@ -2231,19 +2264,15 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '
 <hr>
 <div class="chapter-level-extent" id="node">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h2 class="chapter" id="node_002e">1 See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</h2>
+<h2 class="chapter" id="node_002e"><span>1 See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.<a class="copiable-link" href="#node_002e"> &para;</a></span></h2>
 
 <hr>
 </div>
 <div class="chapter-level-extent" id="chap">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h2 class="chapter" id="node-just-node">2 <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> just node</h2>
+<h2 class="chapter" id="node-just-node"><span>2 <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> just node<a class="copiable-link" href="#node-just-node"> &para;</a></span></h2>
 
 <ul class="mini-toc">
 <li><a href="#for-example-node-_0028node_0029-_0028Top_0029-1" accesskey="1">for example <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> (see <a class="pxref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a>) (see <cite class="cite"><a data-manual="file" href="file.html#Top">Manual</a></cite>)</a></li>
@@ -2254,62 +2283,62 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '
 <li><a href="#Top-Top-and-manual" accesskey="6"><cite class="cite">Manual</cite> Top and manual</a></li>
 <li><a href="#Manual-no-node-just-manual" accesskey="7"><cite class="cite">Manual</cite> no node just manual</a></li>
 <li><a href="#file-name-no-node-just-file-name" accesskey="8"><a data-manual="file name" href="file%20name.html#Top">(file name)</a> no node just file name</a></li>
-<li><a href="#a-inforef-a-b-c" accesskey="9">See <a data-manual="c" href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#a-inforef-a-b-c" accesskey="9">See <a data-manual="c" href="c.html#a">b</a> inforef a b c</a></li>
 <li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">(see <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
 <li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">(see <a data-manual="file name" href="file%20name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
 <li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">See <a data-manual="filename" href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
 <li><a href="#filename_002e-xref-filename-only_002c-no-spaces">See <a data-manual="filename" href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
 </ul>
 <div class="section-level-extent" id="for-example-node-_0028node_0029-_0028Top_0029-1">
-<h3 class="section">2.1 for example <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> (see <a class="pxref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a>) (see <cite class="cite"><a data-manual="file" href="file.html#Top">Manual</a></cite>)</h3>
+<h3 class="section"><span>2.1 for example <a class="ref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a> (see <a class="pxref" href="#node">See <a data-manual="file name" href="file%20name.html#node">title</a> in <cite class="cite">Manual</cite>.</a>) (see <cite class="cite"><a data-manual="file" href="file.html#Top">Manual</a></cite>)<a class="copiable-link" href="#for-example-node-_0028node_0029-_0028Top_0029-1"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="node-node_002c-crossref-arg2">
-<h3 class="section">2.2 <a class="ref" href="#node">cross ref name</a>  node, crossref arg2</h3>
+<h3 class="section"><span>2.2 <a class="ref" href="#node">cross ref name</a>  node, crossref arg2<a class="copiable-link" href="#node-node_002c-crossref-arg2"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="node-code-node_002c-samptitle-arg3">
-<h3 class="section">2.3 <a class="ref" href="#node">&lsquo;<samp class="samp">title</samp>&rsquo;</a>  code node, samptitle arg3</h3>
+<h3 class="section"><span>2.3 <a class="ref" href="#node">&lsquo;<samp class="samp">title</samp>&rsquo;</a>  code node, samptitle arg3<a class="copiable-link" href="#node-code-node_002c-samptitle-arg3"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="node-code-node_002c-file-name">
-<h3 class="section">2.4 <a data-manual="file name" href="file%20name.html#node">(file name)<code class="code">node</code></a> code node, file name</h3>
+<h3 class="section"><span>2.4 <a data-manual="file name" href="file%20name.html#node">(file name)<code class="code">node</code></a> code node, file name<a class="copiable-link" href="#node-code-node_002c-file-name"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="node-node-and-manual">
-<h3 class="section">2.5 &lsquo;node&rsquo; in <cite class="cite">Manual</cite> node and manual</h3>
+<h3 class="section"><span>2.5 &lsquo;node&rsquo; in <cite class="cite">Manual</cite> node and manual<a class="copiable-link" href="#node-node-and-manual"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="Top-Top-and-manual">
-<h3 class="section">2.6 <cite class="cite">Manual</cite> Top and manual</h3>
+<h3 class="section"><span>2.6 <cite class="cite">Manual</cite> Top and manual<a class="copiable-link" href="#Top-Top-and-manual"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="Manual-no-node-just-manual">
-<h3 class="section">2.7 <cite class="cite">Manual</cite> no node just manual</h3>
+<h3 class="section"><span>2.7 <cite class="cite">Manual</cite> no node just manual<a class="copiable-link" href="#Manual-no-node-just-manual"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="file-name-no-node-just-file-name">
-<h3 class="section">2.8 <a data-manual="file name" href="file%20name.html#Top">(file name)</a> no node just file name</h3>
+<h3 class="section"><span>2.8 <a data-manual="file name" href="file%20name.html#Top">(file name)</a> no node just file name<a class="copiable-link" href="#file-name-no-node-just-file-name"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="a-inforef-a-b-c">
-<h3 class="section">2.9 See <a data-manual="c" href="c.html#a">(c)b</a> inforef a b c</h3>
+<h3 class="section"><span>2.9 See <a data-manual="c" href="c.html#a">b</a> inforef a b c<a class="copiable-link" href="#a-inforef-a-b-c"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">
-<h3 class="section">2.10 (see <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>) pxref Top file name, spaces</h3>
+<h3 class="section"><span>2.10 (see <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>) pxref Top file name, spaces<a class="copiable-link" href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">
-<h3 class="section">2.11 (see <a data-manual="file name" href="file%20name.html#Top">(file name)</a>) pxref file name only, spaces</h3>
+<h3 class="section"><span>2.11 (see <a data-manual="file name" href="file%20name.html#Top">(file name)</a>) pxref file name only, spaces<a class="copiable-link" href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="Top_002c-xref-Top-filename-only_002c-no-spaces">
-<h3 class="section">2.12 See <a data-manual="filename" href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</h3>
+<h3 class="section"><span>2.12 See <a data-manual="filename" href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces<a class="copiable-link" href="#Top_002c-xref-Top-filename-only_002c-no-spaces"> &para;</a></span></h3>
 
 </div>
 <div class="section-level-extent" id="filename_002e-xref-filename-only_002c-no-spaces">
-<h3 class="section">2.13 See <a data-manual="filename" href="filename.html#Top">(filename)</a>. xref filename only, no spaces</h3>
+<h3 class="section"><span>2.13 See <a data-manual="filename" href="filename.html#Top">(filename)</a>. xref filename only, no spaces<a class="copiable-link" href="#filename_002e-xref-filename-only_002c-no-spaces"> &para;</a></span></h3>
 
 </div>
 </div>
@@ -2323,8 +2352,8 @@ $result_converted{'xml'}->{'ref_in_sectioning'} = '<contents></contents>
 <top spaces=" "><sectiontitle>for example <ref label="node"><xrefnodename>node</xrefnodename></ref> (<pxref label="node"><xrefnodename>node</xrefnodename></pxref>) (<pxref label="Top" manual="file"><xrefnodename>Top</xrefnodename><xrefinfofile spaces=" ">file</xrefinfofile><xrefprintedname spaces=" ">Manual</xrefprintedname></pxref>)</sectiontitle>
 
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">node</menunode><menudescription><pre xml:space="preserve">
-</pre></menudescription></menuentry><menuentry leadingtext="* "><menunode separator="::">chap</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>node</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menuleadingtext>* </menuleadingtext><menunode>chap</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>

@@ -22,17 +22,23 @@ $result_trees{'unknown_encoding'} = {
                   'text' => 'ggg'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'ggg'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -56,9 +62,11 @@ $result_trees{'unknown_encoding'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -72,19 +80,12 @@ $result_trees{'unknown_encoding'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -95,8 +96,6 @@ $result_trees{'unknown_encoding'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'unknown_encoding'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unknown_encoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'unknown_encoding'} = '
 @documentencoding ggg
@@ -136,12 +135,12 @@ $result_errors{'unknown_encoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `ggg\'
+    'error_line' => 'warning: unhandled encoding name `ggg\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'unrecognized encoding name `ggg\'',
+    'text' => 'unhandled encoding name `ggg\'',
     'type' => 'warning'
   }
 ];

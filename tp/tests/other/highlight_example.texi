@@ -33,6 +33,23 @@ sub do ($) @{
 @}
 @end example
 
+@example perl
+my @@SECTION_BUTTONS =
+  (
+   \&singular_banner,
+   'Back', 'Forward',   'FastBack', 'FastForward',
+   'Up', 'Top', 'Contents', 'Index', 'About'
+  );
+
+texinfo_set_from_init_file ('SECTION_BUTTONS', \@@SECTION_BUTTONS);
+@end example
+
+No argument
+@example
+texinfo_set_from_init_file('NO_CSS', 1);
+@end example
+
+Unknown language
 @example unknown
 unknown language
 @end example

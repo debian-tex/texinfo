@@ -34,17 +34,23 @@ $result_trees{'macro_and_args'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -53,7 +59,7 @@ $result_trees{'macro_and_args'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' good { aaa, 2b-bb}
 '
           },
@@ -97,17 +103,23 @@ $result_trees{'macro_and_args'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -117,9 +129,11 @@ $result_trees{'macro_and_args'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' bad { ggg"@@^_ ff, nnn_b, ccc v}
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' bad { ggg"@@^_ ff, nnn_b, ccc v}
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -171,9 +185,11 @@ $result_floats{'macro_and_args'} = {};
 
 
 
-$result_converted{'xml'}->{'macro_and_args'} = '<macro name="good" line=" good { aaa, 2b-bb}" endspaces=" "><formalarg>aaa</formalarg><formalarg>2b-bb</formalarg></macro>
+$result_converted{'xml'}->{'macro_and_args'} = '<macro name="good" line=" good { aaa, 2b-bb}" endspaces=" "><formalarg>aaa</formalarg><formalarg>2b-bb</formalarg>
+</macro>
 
-<macro name="bad" line=" bad { ggg&quot;@@^_ ff, nnn_b, ccc v}" endspaces=" "><formalarg>ggg&quot;@@^_ ff</formalarg><formalarg>nnn_b</formalarg><formalarg>ccc v</formalarg></macro>
+<macro name="bad" line=" bad { ggg&quot;@@^_ ff, nnn_b, ccc v}" endspaces=" "><formalarg>ggg&quot;@@^_ ff</formalarg><formalarg>nnn_b</formalarg><formalarg>ccc v</formalarg>
+</macro>
 ';
 
 1;

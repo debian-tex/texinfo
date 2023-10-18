@@ -29,7 +29,7 @@ $result_trees{'comments'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => 'a'
               },
               'source_info' => {
@@ -43,16 +43,10 @@ $result_trees{'comments'} = {
                 {
                   'text' => ' comment
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              }
+              'cmdname' => 'c'
             }
           ],
           'type' => 'paragraph'
@@ -80,7 +74,7 @@ $result_trees{'comments'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => ','
               },
               'source_info' => {
@@ -96,15 +90,10 @@ $result_trees{'comments'} = {
               'args' => [
                 {
                   'text' => ' other comment',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' other comment'
-                ]
-              }
+              'cmdname' => 'c'
             }
           ],
           'type' => 'paragraph'

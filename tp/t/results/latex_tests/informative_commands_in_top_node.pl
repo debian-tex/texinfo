@@ -24,28 +24,23 @@ $result_trees{'informative_commands_in_top_node'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'informative_commands_in_top_node'} = {
               'text' => 'top sectionning'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -83,9 +80,11 @@ $result_trees{'informative_commands_in_top_node'} = {
                   'text' => '5'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -94,8 +93,12 @@ $result_trees{'informative_commands_in_top_node'} = {
           'extra' => {
             'misc_args' => [
               '5'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -161,16 +164,20 @@ $result_trees{'informative_commands_in_top_node'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'evenfooting',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -186,9 +193,11 @@ $result_trees{'informative_commands_in_top_node'} = {
                   'text' => '2'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -197,8 +206,12 @@ $result_trees{'informative_commands_in_top_node'} = {
           'extra' => {
             'misc_args' => [
               '2'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -212,8 +225,11 @@ $result_trees{'informative_commands_in_top_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -229,28 +245,23 @@ $result_trees{'informative_commands_in_top_node'} = {
               'text' => 'next node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'next-node'
-          }
-        ],
-        'normalized' => 'next-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'next-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -266,9 +277,11 @@ $result_trees{'informative_commands_in_top_node'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -290,8 +303,11 @@ $result_trees{'informative_commands_in_top_node'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -302,10 +318,6 @@ $result_trees{'informative_commands_in_top_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'informative_commands_in_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'informative_commands_in_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'informative_commands_in_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'informative_commands_in_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'informative_commands_in_top_node'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'informative_commands_in_top_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'informative_commands_in_top_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'informative_commands_in_top_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'informative_commands_in_top_node'} = '@node Top
 @top top sectionning
@@ -434,7 +446,7 @@ $result_converted{'latex_text'}->{'informative_commands_in_top_node'} = '\\begin
 \\label{anchor:Top}%
 \\setlength{\\parindent}{5em}
 \\newpagestyle{custom}{%
-\\setfoot[\\chaptername{} \\thechapter{} \\chaptertitle{} \\Texinfosettitle{}][][\\texttt{\\chaptertitle{}}]%
+\\setfoot[\\chaptername{} \\thechapter{} \\chaptertitle{} \\Texinfosettitle{}][\\Texinfotheinclude{}][\\texttt{\\chaptertitle{}}]%
 {}{}{}%
 }%
 \\pagestyle{custom}%

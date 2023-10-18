@@ -36,16 +36,10 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
                 {
                   'text' => ' comment
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'text' => '
@@ -66,28 +60,23 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'empty_lines_at_beginning_no_setfilename.texi',
@@ -103,9 +92,11 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -118,8 +109,11 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'empty_lines_at_beginning_no_setfilename.texi',
@@ -132,7 +126,7 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -140,8 +134,6 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_lines_at_beginning_no_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'empty_lines_at_beginning_no_setfilename'} = '\\input texinfo
 
@@ -225,6 +217,12 @@ $result_converted{'html'}->{'empty_lines_at_beginning_no_setfilename'} = '<!DOCT
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -232,7 +230,7 @@ $result_converted{'html'}->{'empty_lines_at_beginning_no_setfilename'} = '<!DOCT
 <body lang="en">
 
 <div class="top-level-extent" id="Top">
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 </div>
 

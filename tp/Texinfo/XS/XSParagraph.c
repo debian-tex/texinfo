@@ -7,6 +7,21 @@
  */
 
 #line 1 "XSParagraph.xs"
+/* Copyright 2010-2023 Free Software Foundation, Inc.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+
 #ifdef HAVE_CONFIG_H
   #include <config.h>
 #endif
@@ -25,7 +40,7 @@
 
 #include "xspara.h"
 
-#line 29 "XSParagraph.c"
+#line 44 "XSParagraph.c"
 #ifndef PERL_UNUSED_VAR
 #  define PERL_UNUSED_VAR(var) if (0) var = var
 #endif
@@ -169,7 +184,7 @@ S_croak_xs_usage(const CV *const cv, const char *const params)
 #  define newXS_deffile(a,b) Perl_newXS_deffile(aTHX_ a,b)
 #endif
 
-#line 173 "XSParagraph.c"
+#line 188 "XSParagraph.c"
 
 XS_EUPXS(XS_Texinfo__Convert__Paragraph_init); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Texinfo__Convert__Paragraph_init)
@@ -220,7 +235,7 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_new)
 #line 54 "XSParagraph.xs"
         HV *conf = 0;
         int id;
-#line 224 "XSParagraph.c"
+#line 239 "XSParagraph.c"
 	SV *	RETVAL;
 #line 57 "XSParagraph.xs"
         items--;
@@ -234,7 +249,7 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_new)
         /* Create an integer, which the other functions
            need as their first argument. */
         RETVAL = newSViv (id);
-#line 238 "XSParagraph.c"
+#line 253 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -256,7 +271,28 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_end_line_count)
 #line 76 "XSParagraph.xs"
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line_count ();
-#line 260 "XSParagraph.c"
+#line 275 "XSParagraph.c"
+	XSprePUSH; PUSHi((IV)RETVAL);
+    }
+    XSRETURN(1);
+}
+
+
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_counter); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Convert__Paragraph_counter)
+{
+    dVAR; dXSARGS;
+    if (items != 1)
+       croak_xs_usage(cv,  "paragraph");
+    {
+	SV *	paragraph = ST(0)
+;
+	int	RETVAL;
+	dXSTARG;
+#line 85 "XSParagraph.xs"
+        xspara_set_state (paragraph);
+        RETVAL = xspara_counter ();
+#line 296 "XSParagraph.c"
 	XSprePUSH; PUSHi((IV)RETVAL);
     }
     XSRETURN(1);
@@ -272,10 +308,10 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph__end_line)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 85 "XSParagraph.xs"
+#line 94 "XSParagraph.xs"
         xspara_set_state (paragraph);
         xspara__end_line ();
-#line 279 "XSParagraph.c"
+#line 315 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -292,10 +328,10 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_end_line)
 ;
 	char *	RETVAL;
 	dXSTARG;
-#line 92 "XSParagraph.xs"
+#line 101 "XSParagraph.xs"
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line ();
-#line 299 "XSParagraph.c"
+#line 335 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
@@ -313,10 +349,10 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_get_pending)
 ;
 	char *	RETVAL;
 	dXSTARG;
-#line 101 "XSParagraph.xs"
+#line 110 "XSParagraph.xs"
         xspara_set_state (paragraph);
         RETVAL = xspara_get_pending ();
-#line 320 "XSParagraph.c"
+#line 356 "XSParagraph.c"
 	sv_setpv(TARG, RETVAL); XSprePUSH; PUSHTARG;
     }
     XSRETURN(1);
@@ -332,12 +368,12 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_pending_word)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 111 "XSParagraph.xs"
+#line 120 "XSParagraph.xs"
         int add_spaces = 0;
         char *retval;
-#line 339 "XSParagraph.c"
+#line 375 "XSParagraph.c"
 	SV *	RETVAL;
-#line 114 "XSParagraph.xs"
+#line 123 "XSParagraph.xs"
         items -= 1;
         if (items > 0)
           {
@@ -351,7 +387,7 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_pending_word)
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
-#line 355 "XSParagraph.c"
+#line 391 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -368,17 +404,17 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_end)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 134 "XSParagraph.xs"
+#line 143 "XSParagraph.xs"
         char *retval;
-#line 374 "XSParagraph.c"
+#line 410 "XSParagraph.c"
 	SV *	RETVAL;
-#line 136 "XSParagraph.xs"
+#line 145 "XSParagraph.xs"
         xspara_set_state (paragraph);
         retval = xspara_end ();
 
         RETVAL = newSVpv (retval, 0);
         SvUTF8_on (RETVAL);
-#line 382 "XSParagraph.c"
+#line 418 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -397,26 +433,27 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_text)
 ;
 	SV *	text_in = ST(1)
 ;
-#line 150 "XSParagraph.xs"
+#line 159 "XSParagraph.xs"
         char *text;
-        char *retval;
-#line 404 "XSParagraph.c"
+        STRLEN text_len;
+        TEXT retval;
+#line 441 "XSParagraph.c"
 	SV *	RETVAL;
-#line 153 "XSParagraph.xs"
+#line 163 "XSParagraph.xs"
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
         if (!SvUTF8 (text_in))
           sv_utf8_upgrade (text_in);
 
-        text = SvPV_nolen (text_in);
+        text = SvPV (text_in, text_len);
 
         xspara_set_state (paragraph);
-        retval = xspara_add_text (text);
+        retval = xspara_add_text (text, text_len);
 
-        RETVAL = newSVpv (retval, 0);
+        RETVAL = newSVpv (retval.text ? retval.text : "", retval.end);
         SvUTF8_on (RETVAL);
 
-#line 420 "XSParagraph.c"
+#line 457 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -435,15 +472,15 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_next)
 ;
 	SV *	text_in = ST(1)
 ;
-#line 174 "XSParagraph.xs"
+#line 184 "XSParagraph.xs"
         char *text;
         STRLEN text_len;
-        char *retval;
+        TEXT retval;
         SV *arg_in;
         int transparent = 0;
-#line 445 "XSParagraph.c"
+#line 482 "XSParagraph.c"
 	SV *	RETVAL;
-#line 180 "XSParagraph.xs"
+#line 190 "XSParagraph.xs"
         items -= 2;
         if (items > 0)
           {
@@ -462,10 +499,10 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_next)
         xspara_set_state (paragraph);
         retval = xspara_add_next (text, text_len, transparent);
 
-        RETVAL = newSVpv (retval, 0);
+        RETVAL = newSVpv (retval.text ? retval.text : "", retval.end);
         SvUTF8_on (RETVAL);
 
-#line 469 "XSParagraph.c"
+#line 506 "XSParagraph.c"
 	RETVAL = sv_2mortal(RETVAL);
 	ST(0) = RETVAL;
     }
@@ -482,10 +519,10 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_remove_end_sentence)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 209 "XSParagraph.xs"
+#line 219 "XSParagraph.xs"
         xspara_set_state (paragraph);
         xspara_remove_end_sentence ();
-#line 489 "XSParagraph.c"
+#line 526 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -502,15 +539,15 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_add_end_sentence)
 ;
 	SV *	value = ST(1)
 ;
-#line 217 "XSParagraph.xs"
+#line 227 "XSParagraph.xs"
         int intvalue = 0;
-#line 508 "XSParagraph.c"
-#line 219 "XSParagraph.xs"
+#line 545 "XSParagraph.c"
+#line 229 "XSParagraph.xs"
         if (SvOK(value))
           intvalue = (int)SvIV(value);
         xspara_set_state (paragraph);
         xspara_add_end_sentence (intvalue);
-#line 514 "XSParagraph.c"
+#line 551 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -525,10 +562,10 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_allow_end_sentence)
     {
 	SV *	paragraph = ST(0)
 ;
-#line 228 "XSParagraph.xs"
+#line 238 "XSParagraph.xs"
         xspara_set_state (paragraph);
         xspara_allow_end_sentence ();
-#line 532 "XSParagraph.c"
+#line 569 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -545,15 +582,15 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_set_space_protection)
 ;
 	SV *	space_protection_in = ST(1)
 ;
-#line 239 "XSParagraph.xs"
+#line 249 "XSParagraph.xs"
         int space_protection = -1;
         int ignore_columns = -1;
         int keep_end_lines = -1;
         int french_spacing = -1;
         int double_width_no_break = -1;
         SV *arg_in;
-#line 556 "XSParagraph.c"
-#line 246 "XSParagraph.xs"
+#line 593 "XSParagraph.c"
+#line 256 "XSParagraph.xs"
         if (SvOK(space_protection_in))
           space_protection = (int)SvIV(space_protection_in);
         /* Get optional arguments from stack. */
@@ -591,7 +628,7 @@ XS_EUPXS(XS_Texinfo__Convert__Paragraph_set_space_protection)
         xspara_set_space_protection
           (space_protection, ignore_columns, keep_end_lines,
            french_spacing, double_width_no_break);
-#line 595 "XSParagraph.c"
+#line 632 "XSParagraph.c"
     }
     XSRETURN_EMPTY;
 }
@@ -628,6 +665,7 @@ XS_EXTERNAL(boot_Texinfo__Convert__Paragraph)
         (void)newXSproto_portable("Texinfo::Convert::Paragraph::set_state", XS_Texinfo__Convert__Paragraph_set_state, file, "$");
         (void)newXSproto_portable("Texinfo::Convert::Paragraph::new", XS_Texinfo__Convert__Paragraph_new, file, "$;@");
         (void)newXSproto_portable("Texinfo::Convert::Paragraph::end_line_count", XS_Texinfo__Convert__Paragraph_end_line_count, file, "$");
+        (void)newXSproto_portable("Texinfo::Convert::Paragraph::counter", XS_Texinfo__Convert__Paragraph_counter, file, "$");
         (void)newXSproto_portable("Texinfo::Convert::Paragraph::_end_line", XS_Texinfo__Convert__Paragraph__end_line, file, "$");
         (void)newXSproto_portable("Texinfo::Convert::Paragraph::end_line", XS_Texinfo__Convert__Paragraph_end_line, file, "$");
         (void)newXSproto_portable("Texinfo::Convert::Paragraph::get_pending", XS_Texinfo__Convert__Paragraph_get_pending, file, "$");

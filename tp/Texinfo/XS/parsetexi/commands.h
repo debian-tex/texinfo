@@ -1,7 +1,7 @@
-/* commands.h - declarations for commands.c */
+/* commands.h - declarations for commands.c and command_data.c */
 #ifndef COMMANDS_H
 #define COMMANDS_H
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -73,6 +73,7 @@ void wipe_user_commands (void);
 /* CF_internal is not used in code, but it should be kept as internal
  * commands marker */
 #define CF_internal		        0x8000
+/* command that affect the document as a whole and can appear more than once */
 #define CF_global			0x00010000
 #define CF_def		        	0x00020000
 #define CF_def_alias	        	0x00040000
@@ -82,20 +83,21 @@ void wipe_user_commands (void);
 #define CF_close_paragraph		0x00100000
 /* for commands containing simple text only, corresponding to paragraph
    text without @ref, @footnote, @titlefont, @anchor nor @verb. */
-#define CF_contain_simple_text        	0x00200000
+#define CF_contain_basic_inline        	0x00200000
 #define CF_preformatted	        	0x00400000
 #define CF_preformatted_code		0x00800000
-/* CF_item_container is not used */
-#define CF_item_container		0x01000000
-/* CF_item_line is not used */
-#define CF_item_line			0x02000000
+#define CF_no_paragraph			0x01000000
+/* a user-defined command that is referenced to by another command,
+   which should keep its place in the user_defined_command_data table */
+#define CF_REGISTERED		        0x02000000
 #define CF_nobrace			0x04000000
 /* blockitem commands have a possible content before an item */
 #define CF_blockitem			0x08000000
-/* CF_inline is not used */
-#define CF_inline			0x10000000
+/* used for REGISTERED commands before they have been set to something */
+#define CF_UNKNOWN		        0x10000000
 #define CF_MACRO 			0x20000000
 #define CF_index_entry_command  	0x40000000
+/* command that affect the document as a whole and should appear only once */
 #define CF_global_unique		0x80000000
 
 /* NOTE: We often run out of spaces for flags
@@ -104,12 +106,10 @@ void wipe_user_commands (void);
  */
 
 /* Types of line command (has CF_line flag).  Values for COMMAND.data. */
-#define LINE_special -1
-#define LINE_lineraw -2
-#define LINE_skipline -3
-#define LINE_specific -4
-#define LINE_text -6
-#define LINE_line -7
+#define LINE_lineraw -1
+#define LINE_specific -2
+#define LINE_text -3
+#define LINE_line -4
 
 /* Types of command without brace nor argument on line (has CF_nobrace flag). */
 #define NOBRACE_symbol 0
@@ -135,6 +135,7 @@ void wipe_user_commands (void);
 #define BLOCK_preformatted -12
 /* not used in code but consistent with type in perl hash */
 #define BLOCK_math -13
+#define BLOCK_other -14
 
 /* Types of brace command (CF_brace). */
 #define BRACE_arguments 1

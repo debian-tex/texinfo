@@ -1,0 +1,24 @@
+1 Chapter
+*********
+
+This is a test manual, trivially and explicitly in the public domain(1)
+(*note Top-Footnote-1::).
+
+* Menu:
+
+* Copying appendix:                      Copying and indices.   (line 0)
+* Copying this document:                 Top.                   (line 6)
+
+   This test demonstrates @anchor and indices in @copying and titlepage,
+and various wrong index entries.
+
+ -- truc:
+ -- truc:
+ -- :
+
+fun
+
+   ---------- Footnotes ----------
+
+   (1) The public domain is something you should allready know
+

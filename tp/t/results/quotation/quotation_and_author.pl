@@ -26,9 +26,11 @@ $result_trees{'quotation_and_author'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => ' 
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -43,17 +45,23 @@ $result_trees{'quotation_and_author'} = {
                       'text' => 'Some One'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'author',
               'extra' => {
-                'quotation' => {},
-                'spaces_before_argument' => ' '
+                'quotation' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -78,17 +86,23 @@ $result_trees{'quotation_and_author'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -130,9 +144,11 @@ $result_trees{'quotation_and_author'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -147,17 +163,23 @@ $result_trees{'quotation_and_author'} = {
                       'text' => 'An Author Name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'author',
               'extra' => {
-                'quotation' => {},
-                'spaces_before_argument' => ' '
+                'quotation' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -182,17 +204,23 @@ $result_trees{'quotation_and_author'} = {
                       'text' => 'smallquotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'smallquotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -225,9 +253,11 @@ $result_trees{'quotation_and_author'} = {
                   'text' => 'Note'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -242,17 +272,23 @@ $result_trees{'quotation_and_author'} = {
                       'text' => 'Some Notifier'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'author',
               'extra' => {
-                'quotation' => {},
-                'spaces_before_argument' => ' '
+                'quotation' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -277,17 +313,23 @@ $result_trees{'quotation_and_author'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -299,8 +341,12 @@ $result_trees{'quotation_and_author'} = {
           'extra' => {
             'authors' => [
               {}
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -366,16 +412,16 @@ $result_floats{'quotation_and_author'} = {};
 
 $result_converted{'plaintext'}->{'quotation_and_author'} = 'Text before quotation
 
-     A quot—ation
-                             — _Some One_
+     A quot--ation
+                             -- _Some One_
 
    Text between quotation and smallquotation
 
-     in small—quotation.
-                          — _An Author Name_
+     in small--quotation.
+                          -- _An Author Name_
 
      Note: A Note
-                           — _Some Notifier_
+                          -- _Some Notifier_
 ';
 
 
@@ -440,15 +486,15 @@ $result_converted{'latex'}->{'quotation_and_author'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

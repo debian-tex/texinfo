@@ -12,9 +12,11 @@ $result_trees{'tex_not_closed'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -29,13 +31,7 @@ $result_trees{'tex_not_closed'} = {
                   'type' => 'empty_line'
                 },
                 {
-                  'text' => 'This is some \\LaTeX'
-                },
-                {
-                  'text' => '{'
-                },
-                {
-                  'text' => '}
+                  'text' => 'This is some \\LaTeX{}
 '
                 }
               ],
@@ -61,7 +57,9 @@ This is some \\LaTeX{}
 ';
 
 
-$result_texts{'tex_not_closed'} = '';
+$result_texts{'tex_not_closed'} = '
+This is some \\LaTeX{}
+';
 
 $result_errors{'tex_not_closed'} = [
   {

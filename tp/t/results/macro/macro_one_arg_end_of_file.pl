@@ -35,17 +35,23 @@ $result_trees{'macro_one_arg_end_of_file'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,7 +60,7 @@ $result_trees{'macro_one_arg_end_of_file'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' onearg{arg}
 '
           },
@@ -65,6 +71,25 @@ $result_trees{'macro_one_arg_end_of_file'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'line_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'onearg'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -72,6 +97,14 @@ $result_trees{'macro_one_arg_end_of_file'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 5,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'Arg .'
             }
           ],

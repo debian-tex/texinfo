@@ -21,10 +21,160 @@ $result_trees{'ifset_in_command'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
+                              {
+                                'contents' => [
+                                  {
+                                    'text' => 'x'
+                                  }
+                                ],
+                                'info' => {
+                                  'spaces_after_argument' => {
+                                    'text' => '
+'
+                                  }
+                                },
+                                'type' => 'block_line_arg'
+                              }
+                            ],
+                            'cmdname' => 'ifset',
+                            'contents' => [
+                              {
+                                'text' => 'xset
+',
+                                'type' => 'raw'
+                              },
+                              {
+                                'args' => [
+                                  {
+                                    'contents' => [
+                                      {
+                                        'text' => 'ifset'
+                                      }
+                                    ],
+                                    'info' => {
+                                      'spaces_after_argument' => {
+                                        'text' => '
+'
+                                      }
+                                    },
+                                    'type' => 'line_arg'
+                                  }
+                                ],
+                                'cmdname' => 'end',
+                                'extra' => {
+                                  'text_arg' => 'ifset'
+                                },
+                                'info' => {
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
+                                },
+                                'source_info' => {
+                                  'file_name' => '',
+                                  'line_nr' => 5,
+                                  'macro' => ''
+                                }
+                              }
+                            ],
+                            'info' => {
+                              'spaces_before_argument' => {
+                                'text' => ' '
+                              }
+                            },
+                            'source_info' => {
+                              'file_name' => '',
+                              'line_nr' => 3,
+                              'macro' => ''
+                            }
+                          },
+                          'position' => 1,
+                          'sourcemark_type' => 'ignored_conditional_block'
+                        },
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
+                              {
+                                'contents' => [
+                                  {
+                                    'text' => 'x'
+                                  }
+                                ],
+                                'info' => {
+                                  'spaces_after_argument' => {
+                                    'text' => '
+'
+                                  }
+                                },
+                                'type' => 'block_line_arg'
+                              }
+                            ],
+                            'cmdname' => 'ifclear',
+                            'info' => {
+                              'spaces_before_argument' => {
+                                'text' => ' '
+                              }
+                            },
+                            'source_info' => {
+                              'file_name' => '',
+                              'line_nr' => 6,
+                              'macro' => ''
+                            }
+                          },
+                          'position' => 1,
+                          'sourcemark_type' => 'expanded_conditional_command',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => '
 '
                     },
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
+                              {
+                                'contents' => [
+                                  {
+                                    'text' => 'ifclear'
+                                  }
+                                ],
+                                'info' => {
+                                  'spaces_after_argument' => {
+                                    'text' => '
+'
+                                  }
+                                },
+                                'type' => 'line_arg'
+                              }
+                            ],
+                            'cmdname' => 'end',
+                            'extra' => {
+                              'text_arg' => 'ifclear'
+                            },
+                            'info' => {
+                              'spaces_before_argument' => {
+                                'text' => ' '
+                              }
+                            },
+                            'source_info' => {
+                              'file_name' => '',
+                              'line_nr' => 8,
+                              'macro' => ''
+                            }
+                          },
+                          'position' => 7,
+                          'sourcemark_type' => 'expanded_conditional_command',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'xclear
 '
                     }

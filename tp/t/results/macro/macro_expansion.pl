@@ -59,17 +59,23 @@ $result_trees{'macro_expansion'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -78,7 +84,7 @@ $result_trees{'macro_expansion'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macroone {arg1, arg2 }
 '
           },
@@ -96,6 +102,46 @@ $result_trees{'macro_expansion'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'first arg'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'second arg'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macroone',
+                      'spaces_after_cmd_before_arg' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 15,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => '2 simple args. result of a macro with first arg and 
 '
             }
@@ -105,9 +151,11 @@ $result_trees{'macro_expansion'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -124,20 +172,34 @@ $result_trees{'macro_expansion'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'position' => 8,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'verbatim.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -160,6 +222,30 @@ $result_trees{'macro_expansion'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'aaa @samp{a macro , } bbb'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macroone'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 18,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'comma in command. result of a macro with aaa '
             },
             {
@@ -190,9 +276,11 @@ $result_trees{'macro_expansion'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -209,20 +297,34 @@ $result_trees{'macro_expansion'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 2,
+                          'position' => 8,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'verbatim.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -245,6 +347,20 @@ $result_trees{'macro_expansion'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'info' => {
+                      'command_name' => 'macroone'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 18,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'call on the line. result of a macro with  and 
 '
             }
@@ -254,9 +370,11 @@ $result_trees{'macro_expansion'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -273,20 +391,34 @@ $result_trees{'macro_expansion'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 3,
+                          'position' => 8,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'verbatim my arg.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim my arg.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -309,6 +441,43 @@ $result_trees{'macro_expansion'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'first arg'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => '@macroone{nested second arg}'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macroone'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 16,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'recursive call. result of a macro with first arg and 
 '
             }
@@ -318,9 +487,11 @@ $result_trees{'macro_expansion'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -337,20 +508,34 @@ $result_trees{'macro_expansion'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 4,
+                          'position' => 8,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'verbatim.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -373,6 +558,43 @@ $result_trees{'macro_expansion'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 5,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'first , arg'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => '{} \\ '
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macroone'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 15,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'protect stuff. result of a macro with first , arg and 
 '
             }
@@ -382,9 +604,11 @@ $result_trees{'macro_expansion'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -401,20 +625,34 @@ $result_trees{'macro_expansion'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 5,
+                          'position' => 8,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'verbatim.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -437,6 +675,47 @@ $result_trees{'macro_expansion'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 6,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'arg 1
+
+now'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'arg3
+
+'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macroone'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 16,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'multi-line arg. result of a macro with arg 1
 '
             }
@@ -460,9 +739,11 @@ $result_trees{'macro_expansion'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -489,6 +770,14 @@ $result_trees{'macro_expansion'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 6,
+                          'position' => 8,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'verbatim.'
                     }
                   ],
@@ -497,8 +786,12 @@ $result_trees{'macro_expansion'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -633,6 +926,15 @@ $result_errors{'macro_expansion'} = [
     'macro' => 'macroone',
     'text' => 'bad argument to @end: verbatim.',
     'type' => 'error'
+  },
+  {
+    'error_line' => 'warning: use @comma{} instead of \\, in macro arg
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'use @comma{} instead of \\, in macro arg',
+    'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: verbatim. (possibly involving @macroone)

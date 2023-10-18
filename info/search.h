@@ -1,6 +1,6 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
 
-   Copyright 1993-2022 Free Software Foundation, Inc.
+   Copyright 1993-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

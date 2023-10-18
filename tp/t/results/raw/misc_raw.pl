@@ -17,9 +17,11 @@ $result_trees{'misc_raw'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => ' 
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -42,17 +44,23 @@ $result_trees{'misc_raw'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -80,9 +88,11 @@ $result_trees{'misc_raw'} = {
                   'text' => 'in tex'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -97,17 +107,23 @@ $result_trees{'misc_raw'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -116,8 +132,10 @@ $result_trees{'misc_raw'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -133,9 +151,11 @@ $result_trees{'misc_raw'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -160,17 +180,23 @@ $result_trees{'misc_raw'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -207,7 +233,7 @@ in verbatim2
 
 
 $result_texts{'misc_raw'} = '
-
+in html <br> 
 
 in  v---erbatim`` <>
 in verbatim2
@@ -222,6 +248,15 @@ $result_errors{'misc_raw'} = [
     'macro' => '',
     'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: unexpected argument on @tex line: in tex
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'unexpected argument on @tex line: in tex',
+    'type' => 'warning'
   }
 ];
 
@@ -232,6 +267,20 @@ $result_floats{'misc_raw'} = {};
 
 $result_converted{'plaintext'}->{'misc_raw'} = 'in  v---erbatim`` <>
 in verbatim2
+';
+
+
+$result_converted{'xml'}->{'misc_raw'} = '
+<html endspaces=" "> 
+in html &lt;br&gt; </html>
+
+<tex spaces=" " endspaces=" ">
+</tex>
+
+<verbatim xml:space="preserve" endspaces=" ">
+in  v---erbatim`` &lt;&gt;
+in verbatim2
+</verbatim>
 ';
 
 1;

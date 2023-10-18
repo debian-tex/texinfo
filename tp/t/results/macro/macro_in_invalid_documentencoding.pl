@@ -31,17 +31,23 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +56,7 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' badmacro
 '
           },
@@ -65,20 +71,53 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'position' => 4,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'badm'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'badm'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'badmacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -113,12 +152,12 @@ $result_errors{'macro_in_invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `badm\'
+    'error_line' => 'warning: unhandled encoding name `badm\'
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'unrecognized encoding name `badm\'',
+    'text' => 'unhandled encoding name `badm\'',
     'type' => 'warning'
   }
 ];

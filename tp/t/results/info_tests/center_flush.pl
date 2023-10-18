@@ -17,16 +17,20 @@ $result_trees{'center_flush'} = {
                   'text' => 'centered'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -42,9 +46,11 @@ $result_trees{'center_flush'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -125,9 +131,6 @@ $result_trees{'center_flush'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'anchor-in-flushleft'
                   },
                   'source_info' => {
@@ -156,17 +159,23 @@ $result_trees{'center_flush'} = {
                       'text' => 'flushleft'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'flushleft'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -189,9 +198,11 @@ $result_trees{'center_flush'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -272,9 +283,6 @@ $result_trees{'center_flush'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'anchor-in-flushright'
                   },
                   'source_info' => {
@@ -308,9 +316,6 @@ $result_trees{'center_flush'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'second-anchor-in-flushright'
                   },
                   'source_info' => {
@@ -338,17 +343,23 @@ $result_trees{'center_flush'} = {
                       'text' => 'flushright'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'flushright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -369,9 +380,6 @@ $result_trees{'center_flush'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'center_flush'}{'contents'}[0]{'contents'}[2]{'contents'}[7]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[0]{'contents'}[2]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'center_flush'}{'contents'}[0]{'contents'}[4]{'contents'}[7]{'contents'}[5]{'args'}[0]{'contents'}[0];
 
 $result_texis{'center_flush'} = '@center centered
 

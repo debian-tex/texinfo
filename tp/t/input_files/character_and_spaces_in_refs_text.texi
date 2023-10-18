@@ -1,0 +1,42 @@
+@node Top
+@top Test refs
+
+@menu
+* node to avoid DocBook or LaTeX ignored::
+* other nodes::
+@end menu
+
+@node node to avoid DocBook or LaTeX ignored
+@chapter first chapter
+
+@subheading Testing distant nodes
+
+@ref{ a  node ,,, manual}
+@ref{:,,,manual}
+@ref{ top ,,, manual}
+@ref{(texinfo)Cross References}
+@ref{node,,, ../manual/doc}
+
+@subheading Testing local nodes
+
+@ref{!_"#$%&'()*+-.}
+@ref{/;<=>?[\]^_`|~}
+@ref{ Top}
+@ref{  local   node}
+
+@node other nodes, !_"#$%&'()*+-., Top, Top
+@chapter Chapter with nodes
+
+@menu
+* !_"#$%&'()*+-.::
+* /;<=>?[\]^_`|~::
+* local node::
+@end menu
+
+@node !_"#$%&'()*+-., /;<=>?[\]^_`|~, other nodes, other nodes
+
+@node /;<=>?[\]^_`|~,local   node,!_"#$%&'()*+-., other nodes
+
+@node  local   node,,/;<=>?[\]^_`|~,other nodes
+
+@bye

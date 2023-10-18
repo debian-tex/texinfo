@@ -14,9 +14,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -40,17 +42,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           'text' => 'copying'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'copying'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -73,9 +81,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -96,16 +106,20 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           'text' => ' tested'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'title',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -127,16 +141,20 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           'text' => ' tested'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'subtitle',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -158,16 +176,20 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           'text' => ' tested'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'subtitle',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -189,17 +211,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           'text' => ' author'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'author',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'titlepage' => {}
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -254,9 +282,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
                                 {
                                   'args' => [
                                     {
-                                      'extra' => {
-                                        'spaces_after_argument' => '
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => '
 '
+                                        }
                                       },
                                       'type' => 'block_line_arg'
                                     }
@@ -269,7 +299,7 @@ $result_trees{'titlepage_with_commands_classical'} = {
                                     {
                                       'contents' => [
                                         {
-                                          'text' => 'a'
+                                          'text' => '{a}'
                                         }
                                       ],
                                       'source_info' => {
@@ -277,12 +307,12 @@ $result_trees{'titlepage_with_commands_classical'} = {
                                         'line_nr' => 15,
                                         'macro' => ''
                                       },
-                                      'type' => 'bracketed'
+                                      'type' => 'balanced_braces'
                                     },
                                     {
                                       'contents' => [
                                         {
-                                          'text' => 'b'
+                                          'text' => '{b}'
                                         }
                                       ],
                                       'source_info' => {
@@ -290,7 +320,7 @@ $result_trees{'titlepage_with_commands_classical'} = {
                                         'line_nr' => 15,
                                         'macro' => ''
                                       },
-                                      'type' => 'bracketed'
+                                      'type' => 'balanced_braces'
                                     },
                                     {
                                       'text' => '
@@ -304,17 +334,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
                                               'text' => 'displaymath'
                                             }
                                           ],
-                                          'extra' => {
-                                            'spaces_after_argument' => '
+                                          'info' => {
+                                            'spaces_after_argument' => {
+                                              'text' => '
 '
+                                            }
                                           },
                                           'type' => 'line_arg'
                                         }
                                       ],
                                       'cmdname' => 'end',
                                       'extra' => {
-                                        'spaces_before_argument' => ' ',
                                         'text_arg' => 'displaymath'
+                                      },
+                                      'info' => {
+                                        'spaces_before_argument' => {
+                                          'text' => ' '
+                                        }
                                       },
                                       'source_info' => {
                                         'file_name' => '',
@@ -341,17 +377,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'author',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'titlepage' => {}
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -364,7 +406,7 @@ $result_trees{'titlepage_with_commands_classical'} = {
                     {
                       'text' => '
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
                   'cmdname' => 'page'
@@ -374,23 +416,17 @@ $result_trees{'titlepage_with_commands_classical'} = {
                     {
                       'text' => ' The following two commands start the copyright page.
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' The following two commands start the copyright page.
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
                 {
                   'args' => [
                     {
                       'text' => '
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
                   'cmdname' => 'page'
@@ -400,23 +436,17 @@ $result_trees{'titlepage_with_commands_classical'} = {
                     {
                       'text' => ' 0pt plus 1filll
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'vskip',
-                  'extra' => {
-                    'misc_args' => [
-                      ' 0pt plus 1filll
-'
-                    ]
-                  }
+                  'cmdname' => 'vskip'
                 },
                 {
                   'args' => [
                     {
                       'text' => '
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
                   'cmdname' => 'insertcopying',
@@ -434,17 +464,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
                           'text' => 'titlepage'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'titlepage'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -478,28 +514,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -515,9 +546,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
               'text' => 'section top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -530,8 +563,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -547,28 +583,23 @@ $result_trees{'titlepage_with_commands_classical'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -584,9 +615,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -613,8 +646,11 @@ $result_trees{'titlepage_with_commands_classical'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -627,10 +663,6 @@ $result_trees{'titlepage_with_commands_classical'} = {
 };
 $result_trees{'titlepage_with_commands_classical'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[3]{'extra'}{'titlepage'} = $result_trees{'titlepage_with_commands_classical'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'titlepage_with_commands_classical'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[4]{'extra'}{'titlepage'} = $result_trees{'titlepage_with_commands_classical'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'titlepage_with_commands_classical'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'titlepage_with_commands_classical'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'titlepage_with_commands_classical'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'titlepage_with_commands_classical'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'titlepage_with_commands_classical'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'titlepage_with_commands_classical'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'titlepage_with_commands_classical'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'titlepage_with_commands_classical'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'titlepage_with_commands_classical'} = '@copying
 in Copying
@@ -771,12 +803,21 @@ $result_menus{'titlepage_with_commands_classical'} = {
 
 $result_errors{'titlepage_with_commands_classical'} = [
   {
-    'error_line' => 'warning: @footnote should not appear in @author
+    'error_line' => 'warning: @footnote should not appear on @author line
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@footnote should not appear in @author',
+    'text' => '@footnote should not appear on @author line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @displaymath should not appear on @author line
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => '',
+    'text' => '@displaymath should not appear on @author line',
     'type' => 'warning'
   }
 ];
@@ -791,6 +832,7 @@ $result_converted{'latex_text'}->{'titlepage_with_commands_classical'} = '
 \\begin{document}
 
 \\frontmatter
+\\pagestyle{empty}%
 \\begin{titlepage}
 \\begingroup
 \\newskip\\titlepagetopglue \\titlepagetopglue = 1.5in
@@ -822,8 +864,8 @@ Something about the life.
 \\vskip 0pt plus 1filll
 in Copying
 \\end{titlepage}
-\\pagestyle{single}%
 \\mainmatter
+\\pagestyle{single}%
 \\label{anchor:Top}%
 \\chapter{{Chapter}}
 \\label{anchor:chapter}%

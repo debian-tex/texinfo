@@ -23,9 +23,11 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -35,7 +37,8 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
             {
               'contents' => [
                 {
-                  'text' => ' '
+                  'text' => ' ',
+                  'type' => 'spaces_before_paragraph'
                 },
                 {
                   'contents' => [
@@ -65,17 +68,23 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -85,8 +94,12 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -110,7 +123,7 @@ Item line
 ';
 
 
-$result_texts{'invalid_command_and_brace_in_table'} = ' ,, title
+$result_texts{'invalid_command_and_brace_in_table'} = ',, title
 long title
 Item line
 ';

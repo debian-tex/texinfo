@@ -24,9 +24,43 @@ $result_trees{'cindex_in_caption'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -46,26 +80,27 @@ $result_trees{'cindex_in_caption'} = {
                   'text' => 'fl'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'fl'
+            'float_type' => 'fl'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 3,
+            'line_nr' => 4,
             'macro' => ''
           }
         },
@@ -90,10 +125,14 @@ $result_trees{'cindex_in_caption'} = {
                   'text' => 'label'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -127,32 +166,31 @@ $result_trees{'cindex_in_caption'} = {
                                   'text' => 'index entry'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_node' => {},
-                              'entry_number' => 1,
-                              'in_code' => 0,
-                              'index_at_command' => 'cindex',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'cp',
-                              'index_type_command' => 'cindex'
-                            },
-                            'spaces_before_argument' => ' '
+                            'element_node' => {},
+                            'index_entry' => [
+                              'cp',
+                              1
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 8,
+                            'line_nr' => 9,
                             'macro' => ''
                           },
                           'type' => 'index_entry_command'
@@ -170,13 +208,14 @@ $result_trees{'cindex_in_caption'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 7,
+                'line_nr' => 8,
                 'macro' => ''
               }
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'args' => [
@@ -186,42 +225,44 @@ $result_trees{'cindex_in_caption'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 10,
+                'line_nr' => 11,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
             'caption' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'label',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'fl'
+            'float_type' => 'fl',
+            'normalized' => 'label'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 5,
+            'line_nr' => 6,
             'macro' => ''
           }
         },
@@ -238,9 +279,11 @@ $result_trees{'cindex_in_caption'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -249,12 +292,16 @@ $result_trees{'cindex_in_caption'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 12,
+            'line_nr' => 13,
             'macro' => ''
           }
         },
@@ -266,42 +313,28 @@ $result_trees{'cindex_in_caption'} = {
       ],
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 1,
+        'line_nr' => 2,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'cindex_in_caption'}{'contents'}[1];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'float'} = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'caption'} = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[0];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'cindex_in_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cindex_in_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cindex_in_caption'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'cindex_in_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'cindex_in_caption'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'cindex_in_caption'}{'contents'}[2];
+$result_trees{'cindex_in_caption'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'float'} = $result_trees{'cindex_in_caption'}{'contents'}[2]{'contents'}[3];
+$result_trees{'cindex_in_caption'}{'contents'}[2]{'contents'}[3]{'extra'}{'caption'} = $result_trees{'cindex_in_caption'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
 
 $result_texis{'cindex_in_caption'} = '@node Top
+@node chap
 
 @listoffloats fl
 
@@ -323,23 +356,34 @@ fl, label
 In float.
 
 
-
 ';
 
 $result_nodes{'cindex_in_caption'} = {
   'cmdname' => 'node',
   'extra' => {
-    'isindex' => 1,
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'isindex' => 1,
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'cindex_in_caption'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'cindex_in_caption'};
 
 $result_menus{'cindex_in_caption'} = {
   'cmdname' => 'node',
   'extra' => {
-    'isindex' => 1,
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'cindex_in_caption'} = [];
@@ -356,15 +400,8 @@ $result_floats{'cindex_in_caption'} = {
             'float' => {}
           }
         },
-        'normalized' => 'label',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'fl'
-            }
-          ],
-          'normalized' => 'fl'
-        }
+        'float_type' => 'fl',
+        'normalized' => 'label'
       },
       'structure' => {
         'float_number' => 1
@@ -389,12 +426,11 @@ $result_converted{'plaintext'}->{'cindex_in_caption'} = '* Menu:
 
 In float.
 
-
 fl 1: in caption
 
 * Menu:
 
-* index entry:                           Top.                   (line 7)
+* index entry:                           chap.                  (line 6)
 
 ';
 
@@ -402,7 +438,10 @@ fl 1: in caption
 $result_converted{'info'}->{'cindex_in_caption'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Up: (dir)
+File: ,  Node: Top,  Next: chap,  Up: (dir)
+
+
+File: ,  Node: chap,  Prev: Top
 
 * Menu:
 
@@ -410,19 +449,19 @@ File: ,  Node: Top,  Up: (dir)
 
 In float.
 
-
 fl 1: in caption
 
  [index ]
 * Menu:
 
-* index entry:                           Top.                  (line 10)
+* index entry:                           chap.                  (line 9)
 
 
 
 Tag Table:
 Node: Top27
-Ref: label123
+Node: chap74
+Ref: label171
 
 End Tag Table
 
@@ -447,14 +486,16 @@ $result_converted{'html'}->{'cindex_in_caption'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
-<link href="#Top" rel="index" title="Top">
+<link href="#chap" rel="index" title="chap">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter-printindex {text-decoration: none}
+span:hover a.copiable-link {visibility: visible}
 td.printindex-index-entry {vertical-align: top}
-td.printindex-index-section {vertical-align: top}
+td.printindex-index-section {vertical-align: top; padding-left: 1em}
 th.entries-header-printindex {text-align:left}
-th.sections-header-printindex {text-align:left}
+th.sections-header-printindex {text-align:left; padding-left: 1em}
 -->
 </style>
 
@@ -462,7 +503,17 @@ th.sections-header-printindex {text-align:left}
 </head>
 
 <body lang="en">
-<h1 class="node" id="Top">Top</h1>
+<a class="node-id" id="Top"></a><div class="nav-panel">
+<p>
+Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+</div>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
+<hr>
+<a class="node-id" id="chap"></a><div class="nav-panel">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+</div>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
 <dl class="listoffloats">
 <dt><a href="#label">fl 1</a></dt><dd class="caption-in-listoffloats"><p>in caption
@@ -471,17 +522,16 @@ th.sections-header-printindex {text-align:left}
 
 <div class="float" id="label">
 <p>In float.
-</p>
-<div class="caption"><p><strong class="strong">fl 1: </strong>in caption
+</p><div class="caption"><p><strong class="strong">fl 1: </strong>in caption
 <a class="index-entry-id" id="index-index-entry"></a>
 </p></div></div>
 <div class="printindex cp-printindex">
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Top_cp_letter-I">I</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-index-entry">index entry</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_cp_letter-I">I</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-index-entry">index entry</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 
@@ -501,5 +551,93 @@ $result_converted_errors{'html'}->{'cindex_in_caption'} = [
   }
 ];
 
+
+
+$result_converted{'xml'}->{'cindex_in_caption'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap</nodenext></node>
+<node name="chap" spaces=" "><nodename>chap</nodename><nodeprev automatic="on">Top</nodeprev></node>
+
+<listoffloats type="fl" spaces=" ">fl</listoffloats>
+
+<float name="label" type="fl" number="1" spaces=" " endspaces=" "><floattype>fl</floattype><floatname spaces=" ">label</floatname>
+<para>In float.
+</para><caption><para>in caption
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry</indexterm></cindex>
+</para></caption>
+</float>
+
+<printindex spaces=" " value="cp" line="cp"></printindex>
+
+';
+
+
+$result_converted{'latex'}->{'cindex_in_caption'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{imakeidx}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% new float for type `fl\'
+\\newfloat{TexinfoFloatfl}{htb}{tfl}[chapter]
+\\floatname{TexinfoFloatfl}{}
+% no index headers
+\\indexsetup{level=\\relax,toclevel=section}%
+\\makeindex[name=cp,title=]%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+\\begin{document}
+\\label{anchor:Top}%
+\\label{anchor:chap}%
+
+\\listof{TexinfoFloatfl}{}
+
+\\begin{TexinfoFloatfl}
+In float.
+\\caption{in caption
+\\index[cp]{index entry@index entry}%
+}
+\\label{anchor:label}%
+\\end{TexinfoFloatfl}
+
+\\printindex[cp]
+
+\\end{document}
+';
 
 1;

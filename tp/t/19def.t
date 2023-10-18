@@ -123,6 +123,9 @@ d--eftypemethod
 deffn
 @end deffn
 '],
+['end_of_lines_protected_non_ascii',
+undef, {'test_file' => 'end_of_lines_protected_non_ascii.texi',},
+],
 ['empty_def_command',
 '@deffn empty deffn
 @end deffn
@@ -365,7 +368,7 @@ deffn
 '],
 ['ref_in_def',
 '
-@node Top
+@node first
 
 @deffn @ref{myanchor} @ref{myanchor} {@pxref{myanchor}} @pxref{myanchor} @pxref{myanchor}
 @deffnx @ref{myanchor} @ref{myanchor} {@pxref{myanchor}} @pxref{myanchor} @pxref{myanchor}
@@ -374,11 +377,22 @@ T
 
 @anchor{myanchor}
 '],
+['def_groupings_args',
+'@deffn a b@code{aa}c
+@end deffn
+
+@deffn a@samp{g1}
+@end deffn
+
+@deffn @var{var}c {br @samp{s}} c@code{arg})
+@end deffn
+']
 );
 
 my @test_info = (
 ['space_in_def_for_index',
 '@node Top
+@node chap
 
 @deffn { Category } { name } { argument } argument2...
 @deffnx {AAA1} {AAA2} arg3
@@ -386,7 +400,76 @@ my @test_info = (
 
 @printindex fn
 '],
+['all_empty_def',
+'@deffn
+@end deffn
+
+@defvr
+@end defvr
+
+@deftypefn
+@end deftypefn
+
+@deftypeop
+@end deftypeop
+
+@deftypevr
+@end deftypevr
+
+@defcv
+@end defcv
+
+@deftypecv
+@end deftypecv
+
+@defop
+@end defop
+
+@deftp
+@end deftp
+'],
 );
+
+my @test_defblock = (
+['defline_no_params',
+'@defblock
+@defline Builtin truc
+Description of truc
+@end defblock
+'],
+['adjacent_defline',
+'@defblock
+@defline Funoid foo (bar)
+@defline Funnyoid foo2 (bar2, baz2)
+description
+@end defblock
+'],
+['multiple_defline',
+'@defblock
+@defline Funoid foo (bar)
+description1 description1 description1 description1 description1
+description1 description1 description1 description1 description1
+@defline Funnyoid foo2 (bar2, baz2)
+description2 description2 description2 description2 description2
+description2 description2 description2 description2 description2
+@end defblock
+'],
+['defblock_no_defline',
+'@defblock
+misc text inside
+@end defblock
+'],
+['deftypeline',
+'@defblock
+@deftypeline Function {long int} foo (int @var{bar}, int @var{baz})
+@dots{}
+@end defblock
+'],
+);
+
+foreach my $test (@test_defblock) {
+  $test->[2]->{'test_formats'} = ['plaintext', 'html', 'latex', 'docbook'];
+}
 
 my @test_invalid = (
 ['no_category_or_no_name',
@@ -434,10 +517,11 @@ Text in preformatted.
 '],
 ['end_of_line_protect_at_end',
 '
-@deffn category2 deffn_name2 arguments2 @'],
+@deffn category2 deffn_name2 arguments2 @',
+{'test_formats' => ['xml'],},],
 ['end_of_line_end_file',
 '@deffn category deffn_name arguments @
-'],
+', {'test_formats' => ['xml'],},],
 # the command with type is compared with the corresponding command without type
 ['empty_deftype',
 '@deftypefun {} f (const type& x)
@@ -499,33 +583,9 @@ deffn with @}
 @deffnx{} {}
 @end deffn
 '],
-['all_empty_def',
-'@deffn
+['empty_main_def_arguments',
+'@deffn NNN
 @end deffn
-
-@defvr
-@end defvr
-
-@deftypefn
-@end deftypefn
-
-@deftypeop
-@end deftypeop
-
-@deftypevr
-@end deftypevr
-
-@defcv
-@end defcv
-
-@deftypecv
-@end deftypecv
-
-@defop
-@end defop
-
-@deftp
-@end deftp
 '],
 ['empty_deftypeop_name',
 '@deftypeop Command@code{com} {Window@code{int}} expose@var{exp}
@@ -560,7 +620,7 @@ Documentation of @code{foo}.
 ['omit_def_space',
 '@node Top
 
-@node first
+@node chap
 
 @set txidefnamenospace
 
@@ -586,6 +646,8 @@ foreach my $test (@test_cases) {
   if ($test->[0] eq 'all_commands' or $test->[0] eq 'all_commands_delimiters') {
     push @test_printindex, [$test->[0] . '_printindex',
                             '@node Top
+@node chap
+
 '. $test->[1] . '
 @heading Functions
 @printindex fn
@@ -600,7 +662,8 @@ foreach my $test (@test_cases) {
 }
 
 foreach my $test (@test_info) {
-  $test->[2]->{'test_formats'} = ['info', 'html'];
+  $test->[2]->{'test_formats'} = ['info', 'html', 'xml'];
 }
 
-run_all('def', [@test_cases, @test_info, @test_invalid, @test_printindex]);
+run_all('def', [@test_cases, @test_info, @test_defblock,
+                @test_invalid, @test_printindex]);

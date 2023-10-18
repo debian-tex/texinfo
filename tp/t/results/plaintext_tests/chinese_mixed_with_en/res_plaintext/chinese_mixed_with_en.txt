@@ -1,3 +1,11 @@
+Mixed chinese and english
+*************************
+
+Example of english and chinese, chinese aligned or not.
+
+1 Mixed english and chinese
+***************************
+
 1.  english only
 
    The Emacs mode for programming in Ada 95 with GNAT helps the user in

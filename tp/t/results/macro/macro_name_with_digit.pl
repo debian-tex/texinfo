@@ -31,17 +31,23 @@ $result_trees{'macro_name_with_digit'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +56,7 @@ $result_trees{'macro_name_with_digit'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macro1
 '
           },
@@ -91,17 +97,23 @@ $result_trees{'macro_name_with_digit'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -110,7 +122,7 @@ $result_trees{'macro_name_with_digit'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macro11 {arg}
 '
           },
@@ -121,6 +133,33 @@ $result_trees{'macro_name_with_digit'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'some thing @macro1{}'
+                      }
+                    ],
+                    'type' => 'line_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macro11',
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -128,6 +167,37 @@ $result_trees{'macro_name_with_digit'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macro1'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 18,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 2,
+                  'position' => 24,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 24,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'expand some thing macro1
 '
             }

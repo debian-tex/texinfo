@@ -16,49 +16,49 @@ $result_trees{'bad_syntax'} = {
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => '
 '
           }
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' 
 '
           }
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' ?
 '
           }
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' :-/ hey!
 '
           }
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' a@b
 '
           }
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' :-" bad
 '
           }
         },
         {
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' } no
 '
           }
@@ -70,14 +70,14 @@ $result_trees{'bad_syntax'} = {
         },
         {
           'cmdname' => 'clear',
-          'extra' => {
+          'info' => {
             'arg_line' => ' aaa ggg
 '
           }
         },
         {
           'cmdname' => 'clear',
-          'extra' => {
+          'info' => {
             'arg_line' => ' and{other
 '
           }
@@ -85,7 +85,7 @@ $result_trees{'bad_syntax'} = {
         {
           'text' => '
 ',
-          'type' => 'spaces_before_paragraph'
+          'type' => 'empty_line'
         },
         {
           'contents' => [
@@ -102,10 +102,12 @@ $result_trees{'bad_syntax'} = {
           'type' => 'empty_line'
         },
         {
-          'cmdname' => 'value',
-          'extra' => {
-            'flag' => 'unknown'
-          }
+          'args' => [
+            {
+              'text' => 'unknown'
+            }
+          ],
+          'cmdname' => 'value'
         },
         {
           'text' => '
@@ -137,6 +139,7 @@ gurgl
 
 
 $result_texts{'bad_syntax'} = '
+
 
 gurgl
 

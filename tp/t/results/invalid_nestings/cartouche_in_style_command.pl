@@ -36,9 +36,11 @@ $result_trees{'cartouche_in_style_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -62,17 +64,23 @@ $result_trees{'cartouche_in_style_command'} = {
                       'text' => 'cartouche'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'cartouche'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -89,7 +97,8 @@ $result_trees{'cartouche_in_style_command'} = {
         },
         {
           'text' => '
-'
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'
@@ -112,15 +121,6 @@ cartouche
 ';
 
 $result_errors{'cartouche_in_style_command'} = [
-  {
-    'error_line' => 'warning: @cartouche should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@cartouche should not appear in @code',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@code missing closing brace
 ',

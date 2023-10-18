@@ -36,9 +36,11 @@ $result_trees{'example_in_style_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -62,17 +64,23 @@ $result_trees{'example_in_style_command'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -106,15 +114,6 @@ example
 ';
 
 $result_errors{'example_in_style_command'} = [
-  {
-    'error_line' => 'warning: @example should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@example should not appear in @code',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@code missing closing brace
 ',

@@ -22,7 +22,7 @@ $result_trees{'image_inline_or_not'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -57,7 +57,7 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -88,28 +88,23 @@ $result_trees{'image_inline_or_not'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -125,9 +120,11 @@ $result_trees{'image_inline_or_not'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -152,7 +149,7 @@ $result_trees{'image_inline_or_not'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -187,7 +184,7 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -210,9 +207,11 @@ $result_trees{'image_inline_or_not'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -239,7 +238,7 @@ $result_trees{'image_inline_or_not'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -273,7 +272,7 @@ $result_trees{'image_inline_or_not'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -296,17 +295,23 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -343,7 +348,7 @@ $result_trees{'image_inline_or_not'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -352,9 +357,11 @@ $result_trees{'image_inline_or_not'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -374,7 +381,7 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -394,17 +401,23 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -413,8 +426,10 @@ $result_trees{'image_inline_or_not'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -441,9 +456,11 @@ $result_trees{'image_inline_or_not'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -471,7 +488,7 @@ $result_trees{'image_inline_or_not'} = {
                               ],
                               'cmdname' => 'image',
                               'extra' => {
-                                'input_perl_encoding' => 'utf-8'
+                                'input_encoding_name' => 'utf-8'
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -480,16 +497,20 @@ $result_trees{'image_inline_or_not'} = {
                               }
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -520,7 +541,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -555,7 +576,7 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'extra' => {
-                            'input_perl_encoding' => 'utf-8'
+                            'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -588,7 +609,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -601,7 +622,7 @@ $result_trees{'image_inline_or_not'} = {
 '
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -614,17 +635,23 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -634,8 +661,12 @@ $result_trees{'image_inline_or_not'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -651,9 +682,11 @@ $result_trees{'image_inline_or_not'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -661,7 +694,7 @@ $result_trees{'image_inline_or_not'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -681,7 +714,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -690,6 +723,12 @@ $result_trees{'image_inline_or_not'} = {
                       }
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'node_005fimage'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -713,7 +752,7 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'extra' => {
-                            'input_perl_encoding' => 'utf-8'
+                            'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -732,15 +771,6 @@ $result_trees{'image_inline_or_not'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'node_005fimage'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 35,
@@ -749,7 +779,7 @@ $result_trees{'image_inline_or_not'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -769,7 +799,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -808,7 +838,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -817,6 +847,15 @@ $result_trees{'image_inline_or_not'} = {
                       }
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'extnode'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -838,19 +877,6 @@ $result_trees{'image_inline_or_not'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'extnode'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 36,
@@ -880,7 +906,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -906,17 +932,23 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -937,8 +969,11 @@ $result_trees{'image_inline_or_not'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -963,7 +998,7 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -972,28 +1007,23 @@ $result_trees{'image_inline_or_not'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node_005fimage'
-          }
-        ],
-        'normalized' => 'node_005fimage',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node_005fimage'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1018,7 +1048,7 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -1027,9 +1057,11 @@ $result_trees{'image_inline_or_not'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1068,7 +1100,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1085,9 +1117,11 @@ $result_trees{'image_inline_or_not'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1135,7 +1169,7 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'extra' => {
-                            'input_perl_encoding' => 'utf-8'
+                            'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1160,9 +1194,11 @@ $result_trees{'image_inline_or_not'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1198,9 +1234,11 @@ $result_trees{'image_inline_or_not'} = {
                   'text' => 'g'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1225,7 +1263,7 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -1259,7 +1297,7 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1285,7 +1323,7 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'extra' => {
-                            'input_perl_encoding' => 'utf-8'
+                            'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1312,7 +1350,8 @@ $result_trees{'image_inline_or_not'} = {
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'args' => [
@@ -1322,17 +1361,23 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1344,16 +1389,12 @@ $result_trees{'image_inline_or_not'} = {
           'extra' => {
             'caption' => {},
             'float_section' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'g',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'F'
+            'float_type' => 'F',
+            'normalized' => 'g'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -1363,8 +1404,11 @@ $result_trees{'image_inline_or_not'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1375,22 +1419,13 @@ $result_trees{'image_inline_or_not'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'image_inline_or_not'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[10]{'extra'}{'command_as_argument'} = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'args'}[3];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'args'}[5];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'extra'}{'menu_entry_name'} = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'args'}[1];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'args'}[3]{'contents'}[3];
-$result_trees{'image_inline_or_not'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'contents'}[1];
+$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'contents'}[3];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'contents'}[4]{'extra'}{'float'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'extra'}{'caption'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'extra'}{'float_section'} = $result_trees{'image_inline_or_not'}{'contents'}[4];
-$result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'args'}[1]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'extra'}{'type'}{'content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'args'}[0]{'contents'}[0];
 
 $result_texis{'image_inline_or_not'} = '@image{A}
 
@@ -1499,7 +1534,6 @@ U
 F, g
 
 in_float
-
 
 ';
 
@@ -1612,7 +1646,8 @@ $result_menus{'image_inline_or_not'} = {
               }
             ],
             'normalized' => 'extnode'
-          }
+          },
+          'type' => 'menu_entry_node'
         },
         'menu_up' => {},
         'menu_up_hash' => {
@@ -1645,15 +1680,8 @@ $result_floats{'image_inline_or_not'} = {
             'section_number' => 1
           }
         },
-        'normalized' => 'g',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'F'
-            }
-          ],
-          'normalized' => 'F'
-        }
+        'float_type' => 'F',
+        'normalized' => 'g'
       },
       'structure' => {
         'float_number' => '1.1'
@@ -1699,8 +1727,8 @@ T
 </tableitem></tableentry></table>
 
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator=":: "><image where="inline"><imagefile>node_image</imagefile></image></menunode><menudescription><pre xml:space="preserve"><image where="inline"><imagefile>image_in_description</imagefile></image>
-</pre></menudescription></menuentry><menuentry leadingtext="* "><menutitle separator=": "><image where="inline"><imagefile>in_menu_entry_name</imagefile></image></menutitle><menunode separator=".">(somewhere)<image where="inline"><imagefile>extnode</imagefile></image></menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode><image where="inline"><imagefile>node_image</imagefile></image></menunode><menuseparator>:: </menuseparator><menudescription><pre xml:space="preserve"><image where="inline"><imagefile>image_in_description</imagefile></image>
+</pre></menudescription></menuentry><menuentry><menuleadingtext>* </menuleadingtext><menutitle><image where="inline"><imagefile>in_menu_entry_name</imagefile></image></menutitle><menuseparator>: </menuseparator><menunode>(somewhere)<image where="inline"><imagefile>extnode</imagefile></image></menunode><menuseparator>.</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 <image where="inline"><imagefile>in_menu_comment</imagefile></image>
 </pre></menucomment></menu>

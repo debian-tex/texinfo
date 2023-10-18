@@ -32,7 +32,7 @@ $result_trees{'multiline_verb_after_space'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => '*'
               },
               'source_info' => {

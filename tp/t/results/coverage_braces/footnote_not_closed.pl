@@ -46,8 +46,10 @@ $result_trees{'footnote_not_closed'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

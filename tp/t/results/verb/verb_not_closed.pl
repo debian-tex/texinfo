@@ -24,7 +24,7 @@ $result_trees{'verb_not_closed'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => '.'
               },
               'source_info' => {

@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2022 Free Software Foundation, Inc.
+# Copyright (C) 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -43,10 +43,17 @@ AC_DEFUN([gl_EARLY],
   AC_REQUIRE([gl_PROG_AR_RANLIB])
 
   # Code from module absolute-header:
+  # Code from module alignasof:
+  # Code from module alignof:
   # Code from module alloca-opt:
   # Code from module assert-h:
   # Code from module attribute:
+  # Code from module c-ctype:
+  # Code from module c-strcase:
+  # Code from module c-strcaseeq:
+  # Code from module c99:
   # Code from module errno:
+  # Code from module exitfail:
   # Code from module extensions:
   # Code from module extern-inline:
   # Code from module float:
@@ -54,14 +61,24 @@ AC_DEFUN([gl_EARLY],
   # Code from module gen-header:
   # Code from module getdelim:
   # Code from module getline:
+  # Code from module gettext-h:
+  # Code from module gperf:
   # Code from module havelib:
   # Code from module iconv:
+  # Code from module iconv-h:
+  # Code from module iconv_open:
+  # Code from module idx:
   # Code from module include_next:
+  # Code from module inline:
   # Code from module inttypes-incomplete:
+  # Code from module libunistring:
   # Code from module limits-h:
   # Code from module localcharset:
+  # Code from module malloca:
+  # Code from module mbszero:
   # Code from module memchr:
   # Code from module multiarch:
+  # Code from module obstack:
   # Code from module rawmemchr:
   # Code from module size_max:
   # Code from module snippet/_Noreturn:
@@ -69,26 +86,46 @@ AC_DEFUN([gl_EARLY],
   # Code from module snippet/c++defs:
   # Code from module snippet/warn-on-use:
   # Code from module ssize_t:
-  # Code from module stdalign:
+  # Code from module std-gnu11:
+  # Code from module stdbool:
+  # Code from module stdckdint:
   # Code from module stddef:
   # Code from module stdint:
   # Code from module stdio:
+  gl_STDIO_H_EARLY
   # Code from module stdlib:
   # Code from module strchrnul:
   # Code from module streq:
+  # Code from module striconveh:
+  # Code from module striconveha:
   # Code from module string:
   # Code from module strndup:
   # Code from module strnlen:
   # Code from module sys_types:
+  # Code from module uniconv/base:
+  # Code from module uniconv/u8-conv-from-enc:
+  # Code from module uniconv/u8-strconv-from-enc:
   # Code from module unistd:
+  # Code from module unistr/base:
+  # Code from module unistr/u8-check:
+  # Code from module unistr/u8-mblen:
+  # Code from module unistr/u8-mbsnlen:
+  # Code from module unistr/u8-mbtouc:
+  # Code from module unistr/u8-mbtouc-unsafe:
+  # Code from module unistr/u8-mbtoucr:
+  # Code from module unistr/u8-prev:
+  # Code from module unistr/u8-strlen:
+  # Code from module unistr/u8-uctomb:
   # Code from module unitypes:
   # Code from module uniwidth/base:
   # Code from module uniwidth/width:
+  # Code from module vararrays:
   # Code from module vasnprintf:
   # Code from module vasprintf:
   # Code from module wchar:
   # Code from module wctype-h:
   # Code from module wcwidth:
+  # Code from module xalloc-oversized:
   # Code from module xsize:
 ])
 
@@ -109,6 +146,7 @@ AC_DEFUN([gl_INIT],
   gl_COMMON
   gl_source_base='gnulib/lib'
   gl_source_base_prefix=
+  gl_ALIGNASOF
   gl_FUNC_ALLOCA
   gl_CONDITIONAL_HEADER([alloca.h])
   AC_PROG_MKDIR_P
@@ -143,13 +181,26 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_GETLINE
   ])
   gl_STDIO_MODULE_INDICATOR([getline])
+  AC_SUBST([LIBINTL])
+  AC_SUBST([LTLIBINTL])
   AC_DEFUN([gl_HAVE_MODULE_HAVELIB])
   AM_ICONV
   m4_ifdef([gl_ICONV_MODULE_INDICATOR],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
+  gl_ICONV_H
+  gl_ICONV_H_REQUIRE_DEFAULTS
+  gl_CONDITIONAL_HEADER([iconv.h])
+  AC_PROG_MKDIR_P
+  gl_FUNC_ICONV_OPEN
+  dnl Because of gl_REPLACE_ICONV_H:
+  gl_CONDITIONAL_HEADER([iconv.h])
+  gl_CONDITIONAL([GL_COND_OBJ_ICONV_OPEN], [test $REPLACE_ICONV_OPEN = 1])
+  gl_CONDITIONAL([GL_COND_OBJ_ICONV], [test $REPLACE_ICONV = 1])
+  gl_INLINE
   gl_INTTYPES_INCOMPLETE
   gl_INTTYPES_H_REQUIRE_DEFAULTS
   AC_PROG_MKDIR_P
+  gl_LIBUNISTRING
   gl_LIMITS_H
   gl_CONDITIONAL_HEADER([limits.h])
   AC_PROG_MKDIR_P
@@ -157,6 +208,11 @@ AC_DEFUN([gl_INIT],
   dnl For backward compatibility. Some packages still use this.
   LOCALCHARSET_TESTS_ENVIRONMENT=
   AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
+  gl_MALLOCA
+  AC_REQUIRE([AC_TYPE_MBSTATE_T])
+  gl_MBSTATE_T_BROKEN
+  gl_MUSL_LIBC
+  gl_WCHAR_MODULE_INDICATOR([mbszero])
   gl_FUNC_MEMCHR
   gl_CONDITIONAL([GL_COND_OBJ_MEMCHR], [test $REPLACE_MEMCHR = 1])
   AM_COND_IF([GL_COND_OBJ_MEMCHR], [
@@ -164,6 +220,8 @@ AC_DEFUN([gl_INIT],
   ])
   gl_STRING_MODULE_INDICATOR([memchr])
   gl_MULTIARCH
+  gl_FUNC_OBSTACK
+  gl_CONDITIONAL([GL_COND_OBJ_OBSTACK], [test "$gl_cv_func_obstack" != yes])
   gl_FUNC_RAWMEMCHR
   gl_CONDITIONAL([GL_COND_OBJ_RAWMEMCHR], [test $HAVE_RAWMEMCHR = 0])
   AM_COND_IF([GL_COND_OBJ_RAWMEMCHR], [
@@ -172,8 +230,14 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([rawmemchr])
   gl_SIZE_MAX
   gt_TYPE_SSIZE_T
-  gl_STDALIGN_H
-  gl_CONDITIONAL_HEADER([stdalign.h])
+  gl_C_BOOL
+  AC_CHECK_HEADERS_ONCE([stdckdint.h])
+  if test $ac_cv_header_stdckdint_h = yes; then
+    GL_GENERATE_STDCKDINT_H=false
+  else
+    GL_GENERATE_STDCKDINT_H=true
+  fi
+  gl_CONDITIONAL_HEADER([stdckdint.h])
   AC_PROG_MKDIR_P
   gl_STDDEF_H
   gl_STDDEF_H_REQUIRE_DEFAULTS
@@ -222,6 +286,10 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_STRCHRNUL
   ])
   gl_STRING_MODULE_INDICATOR([strchrnul])
+  if test $gl_cond_libtool = false; then
+    gl_ltlibdeps="$gl_ltlibdeps $LTLIBICONV"
+    gl_libdeps="$gl_libdeps $LIBICONV"
+  fi
   gl_STRING_H
   gl_STRING_H_REQUIRE_DEFAULTS
   AC_PROG_MKDIR_P
@@ -239,9 +307,28 @@ AC_DEFUN([gl_INIT],
   gl_SYS_TYPES_H
   gl_SYS_TYPES_H_REQUIRE_DEFAULTS
   AC_PROG_MKDIR_P
+  gl_LIBUNISTRING_LIBHEADER([0.9.11], [uniconv.h])
+  AC_PROG_MKDIR_P
+  gl_LIBUNISTRING_MODULE([0.9], [uniconv/u8-conv-from-enc])
+  gl_LIBUNISTRING_MODULE([0.9], [uniconv/u8-strconv-from-enc])
   gl_UNISTD_H
   gl_UNISTD_H_REQUIRE_DEFAULTS
   AC_PROG_MKDIR_P
+  gl_LIBUNISTRING_LIBHEADER([1.2], [unistr.h])
+  AC_PROG_MKDIR_P
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-check])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-mblen])
+  gl_LIBUNISTRING_MODULE([1.2], [unistr/u8-mbsnlen])
+  gl_MODULE_INDICATOR([unistr/u8-mbtouc])
+  gl_LIBUNISTRING_MODULE([1.2], [unistr/u8-mbtouc])
+  gl_MODULE_INDICATOR([unistr/u8-mbtouc-unsafe])
+  gl_LIBUNISTRING_MODULE([0.9.4], [unistr/u8-mbtouc-unsafe])
+  gl_MODULE_INDICATOR([unistr/u8-mbtoucr])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-mbtoucr])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-prev])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-strlen])
+  gl_MODULE_INDICATOR([unistr/u8-uctomb])
+  gl_LIBUNISTRING_MODULE([0.9], [unistr/u8-uctomb])
   gl_LIBUNISTRING_LIBHEADER([0.9.11], [unitypes.h])
   AC_PROG_MKDIR_P
   AH_VERBATIM([unitypes_restrict], [
@@ -262,6 +349,7 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_LIBHEADER([0.9.11], [uniwidth.h])
   AC_PROG_MKDIR_P
   gl_LIBUNISTRING_MODULE([1.1], [uniwidth/width])
+  AC_C_VARARRAYS
   AC_REQUIRE([AC_C_RESTRICT])
   gl_FUNC_VASNPRINTF
   gl_FUNC_VASPRINTF
@@ -453,6 +541,7 @@ AC_DEFUN([gltests_LIBSOURCES], [
 AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   lib/_Noreturn.h
+  lib/alignof.h
   lib/alloca.in.h
   lib/arg-nonnull.h
   lib/asnprintf.c
@@ -460,20 +549,48 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/assert.in.h
   lib/attribute.h
   lib/c++defs.h
+  lib/c-ctype.c
+  lib/c-ctype.h
+  lib/c-strcase.h
+  lib/c-strcasecmp.c
+  lib/c-strcaseeq.h
+  lib/c-strncasecmp.c
   lib/errno.in.h
+  lib/exitfail.c
+  lib/exitfail.h
   lib/float+.h
   lib/float.c
   lib/float.in.h
   lib/free.c
   lib/getdelim.c
   lib/getline.c
+  lib/gettext.h
+  lib/iconv.c
+  lib/iconv.in.h
+  lib/iconv_close.c
+  lib/iconv_open-aix.gperf
+  lib/iconv_open-hpux.gperf
+  lib/iconv_open-irix.gperf
+  lib/iconv_open-osf.gperf
+  lib/iconv_open-solaris.gperf
+  lib/iconv_open-zos.gperf
+  lib/iconv_open.c
+  lib/iconveh.h
+  lib/idx.h
+  lib/intprops-internal.h
   lib/inttypes.in.h
   lib/itold.c
+  lib/libunistring.valgrind
   lib/limits.in.h
   lib/localcharset.c
   lib/localcharset.h
+  lib/malloca.c
+  lib/malloca.h
+  lib/mbszero.c
   lib/memchr.c
   lib/memchr.valgrind
+  lib/obstack.c
+  lib/obstack.h
   lib/printf-args.c
   lib/printf-args.h
   lib/printf-parse.c
@@ -481,7 +598,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/rawmemchr.c
   lib/rawmemchr.valgrind
   lib/size_max.h
-  lib/stdalign.in.h
+  lib/stdckdint.in.h
   lib/stddef.in.h
   lib/stdint.in.h
   lib/stdio-read.c
@@ -491,13 +608,34 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strchrnul.c
   lib/strchrnul.valgrind
   lib/streq.h
+  lib/striconveh.c
+  lib/striconveh.h
+  lib/striconveha.c
+  lib/striconveha.h
   lib/string.in.h
   lib/strndup.c
   lib/strnlen.c
   lib/sys_types.in.h
+  lib/uniconv.in.h
+  lib/uniconv/u-strconv-from-enc.h
+  lib/uniconv/u8-conv-from-enc.c
+  lib/uniconv/u8-strconv-from-enc.c
   lib/unictype/bitmap.h
   lib/unistd.c
   lib/unistd.in.h
+  lib/unistr.in.h
+  lib/unistr/u8-check.c
+  lib/unistr/u8-mblen.c
+  lib/unistr/u8-mbsnlen.c
+  lib/unistr/u8-mbtouc-aux.c
+  lib/unistr/u8-mbtouc-unsafe-aux.c
+  lib/unistr/u8-mbtouc-unsafe.c
+  lib/unistr/u8-mbtouc.c
+  lib/unistr/u8-mbtoucr.c
+  lib/unistr/u8-prev.c
+  lib/unistr/u8-strlen.c
+  lib/unistr/u8-uctomb-aux.c
+  lib/unistr/u8-uctomb.c
   lib/unitypes.in.h
   lib/uniwidth.in.h
   lib/uniwidth/cjk.h
@@ -513,13 +651,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/wctype-h.c
   lib/wctype.in.h
   lib/wcwidth.c
+  lib/xalloc-oversized.h
   lib/xsize.c
   lib/xsize.h
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/alloca.m4
   m4/assert_h.m4
+  m4/c-bool.m4
   m4/codeset.m4
+  m4/eealloc.m4
   m4/errno_h.m4
   m4/exponentd.m4
   m4/extensions.m4
@@ -531,7 +672,10 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/host-cpu-c-abi.m4
   m4/iconv.m4
+  m4/iconv_h.m4
+  m4/iconv_open.m4
   m4/include_next.m4
+  m4/inline.m4
   m4/intmax_t.m4
   m4/inttypes.m4
   m4/inttypes_h.m4
@@ -539,18 +683,28 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lib-link.m4
   m4/lib-prefix.m4
   m4/libunistring-base.m4
+  m4/libunistring.m4
   m4/limits-h.m4
   m4/localcharset.m4
+  m4/locale-fr.m4
+  m4/locale-ja.m4
+  m4/locale-zh.m4
+  m4/malloca.m4
   m4/math_h.m4
+  m4/mbrtowc.m4
+  m4/mbstate_t.m4
   m4/memchr.m4
   m4/mmap-anon.m4
   m4/multiarch.m4
+  m4/musl.m4
+  m4/obstack.m4
   m4/off_t.m4
   m4/pid_t.m4
   m4/printf.m4
   m4/rawmemchr.m4
   m4/size_max.m4
   m4/ssize_t.m4
+  m4/std-gnu11.m4
   m4/stdalign.m4
   m4/stddef_h.m4
   m4/stdint.m4
@@ -563,6 +717,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strnlen.m4
   m4/sys_types_h.m4
   m4/unistd_h.m4
+  m4/vararrays.m4
   m4/vasnprintf.m4
   m4/vasprintf.m4
   m4/warn-on-use.m4

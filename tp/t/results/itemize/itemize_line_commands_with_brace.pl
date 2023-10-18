@@ -28,9 +28,11 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -71,17 +73,23 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -91,8 +99,12 @@ $result_trees{'itemize_line_commands_with_brace'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -124,9 +136,11 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -167,17 +181,23 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -187,8 +207,12 @@ $result_trees{'itemize_line_commands_with_brace'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -240,6 +264,16 @@ $result_converted{'html_text'}->{'itemize_line_commands_with_brace'} = '<ul clas
 <ul class="itemize mark-minus">
 <li>minus
 </li></ul>
+';
+
+
+$result_converted{'xml'}->{'itemize_line_commands_with_brace'} = '<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend>&bullet;</itemprepend>
+<listitem><prepend>&bullet;</prepend> <para>bullet
+</para></listitem></itemize>
+
+<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend>&minus;</itemprepend>
+<listitem><prepend>&minus;</prepend> <para>minus
+</para></listitem></itemize>
 ';
 
 1;

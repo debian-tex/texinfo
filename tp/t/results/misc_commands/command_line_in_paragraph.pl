@@ -23,17 +23,23 @@ $result_trees{'command_line_in_paragraph'} = {
                       'text' => 'en'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '  
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '  
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_before_argument' => '  ',
                 'text_arg' => 'en'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
               },
               'source_info' => {
                 'file_name' => '',

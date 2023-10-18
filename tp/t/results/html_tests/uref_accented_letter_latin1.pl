@@ -17,9 +17,11 @@ $result_trees{'uref_accented_letter_latin1'} = {
                   'text' => 'ISO-8859-1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -27,9 +29,12 @@ $result_trees{'uref_accented_letter_latin1'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'iso-8859-1',
-            'input_perl_encoding' => 'iso-8859-1',
-            'spaces_before_argument' => ' ',
             'text_arg' => 'ISO-8859-1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

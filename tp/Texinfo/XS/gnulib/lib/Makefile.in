@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# Copyright (C) 2002-2022 Free Software Foundation, Inc.
+# Copyright (C) 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -48,8 +48,12 @@
 #  --macro-prefix=gl \
 #  getline \
 #  iconv \
+#  libunistring \
+#  obstack \
 #  strchrnul \
 #  strndup \
+#  uniconv/u8-strconv-from-enc \
+#  unistr/u8-mbsnlen \
 #  vasprintf \
 #  wcwidth
 
@@ -134,22 +138,39 @@ host_triplet = @host@
 @GL_COND_OBJ_FREE_TRUE@am__append_3 = free.c
 @GL_COND_OBJ_GETDELIM_TRUE@am__append_4 = getdelim.c
 @GL_COND_OBJ_GETLINE_TRUE@am__append_5 = getline.c
-@GL_COND_OBJ_MEMCHR_TRUE@am__append_6 = memchr.c
-@GL_COND_OBJ_RAWMEMCHR_TRUE@am__append_7 = rawmemchr.c
-@GL_COND_OBJ_STDIO_READ_TRUE@am__append_8 = stdio-read.c
-@GL_COND_OBJ_STDIO_WRITE_TRUE@am__append_9 = stdio-write.c
-@GL_COND_OBJ_STRCHRNUL_TRUE@am__append_10 = strchrnul.c
-@GL_COND_OBJ_STRNDUP_TRUE@am__append_11 = strndup.c
-@GL_COND_OBJ_STRNLEN_TRUE@am__append_12 = strnlen.c
-@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__append_13 = uniwidth/width.c
-@GL_COND_OBJ_WCWIDTH_TRUE@am__append_14 = wcwidth.c
+@GL_COND_OBJ_ICONV_OPEN_TRUE@am__append_6 = iconv_open.c
+@GL_COND_OBJ_ICONV_TRUE@am__append_7 = iconv.c iconv_close.c
+@GL_COND_OBJ_MEMCHR_TRUE@am__append_8 = memchr.c
+@GL_COND_OBJ_OBSTACK_TRUE@am__append_9 = obstack.c
+@GL_COND_OBJ_RAWMEMCHR_TRUE@am__append_10 = rawmemchr.c
+@GL_COND_OBJ_STDIO_READ_TRUE@am__append_11 = stdio-read.c
+@GL_COND_OBJ_STDIO_WRITE_TRUE@am__append_12 = stdio-write.c
+@GL_COND_OBJ_STRCHRNUL_TRUE@am__append_13 = strchrnul.c
+@GL_COND_LIBTOOL_TRUE@am__append_14 = $(LTLIBICONV)
+@GL_COND_OBJ_STRNDUP_TRUE@am__append_15 = strndup.c
+@GL_COND_OBJ_STRNLEN_TRUE@am__append_16 = strnlen.c
+@LIBUNISTRING_COMPILE_UNICONV_U8_CONV_FROM_ENC_TRUE@am__append_17 = uniconv/u8-conv-from-enc.c
+@LIBUNISTRING_COMPILE_UNICONV_U8_STRCONV_FROM_ENC_TRUE@am__append_18 = uniconv/u8-strconv-from-enc.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_CHECK_TRUE@am__append_19 = unistr/u8-check.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBLEN_TRUE@am__append_20 = unistr/u8-mblen.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBSNLEN_TRUE@am__append_21 = unistr/u8-mbsnlen.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUC_TRUE@am__append_22 = unistr/u8-mbtouc.c unistr/u8-mbtouc-aux.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUC_UNSAFE_TRUE@am__append_23 = unistr/u8-mbtouc-unsafe.c unistr/u8-mbtouc-unsafe-aux.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUCR_TRUE@am__append_24 = unistr/u8-mbtoucr.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_PREV_TRUE@am__append_25 = unistr/u8-prev.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_STRLEN_TRUE@am__append_26 = unistr/u8-strlen.c
+@LIBUNISTRING_COMPILE_UNISTR_U8_UCTOMB_TRUE@am__append_27 = unistr/u8-uctomb.c unistr/u8-uctomb-aux.c
+@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__append_28 = uniwidth/width.c
+@GL_COND_OBJ_WCWIDTH_TRUE@am__append_29 = wcwidth.c
 subdir = gnulib/lib
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/absolute-header.m4 \
 	$(top_srcdir)/gnulib/m4/alloca.m4 \
 	$(top_srcdir)/gnulib/m4/assert_h.m4 \
+	$(top_srcdir)/gnulib/m4/c-bool.m4 \
 	$(top_srcdir)/gnulib/m4/codeset.m4 \
+	$(top_srcdir)/gnulib/m4/eealloc.m4 \
 	$(top_srcdir)/gnulib/m4/errno_h.m4 \
 	$(top_srcdir)/gnulib/m4/exponentd.m4 \
 	$(top_srcdir)/gnulib/m4/extensions.m4 \
@@ -163,7 +184,10 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/gnulib-comp.m4 \
 	$(top_srcdir)/gnulib/m4/host-cpu-c-abi.m4 \
 	$(top_srcdir)/gnulib/m4/iconv.m4 \
+	$(top_srcdir)/gnulib/m4/iconv_h.m4 \
+	$(top_srcdir)/gnulib/m4/iconv_open.m4 \
 	$(top_srcdir)/gnulib/m4/include_next.m4 \
+	$(top_srcdir)/gnulib/m4/inline.m4 \
 	$(top_srcdir)/gnulib/m4/intmax_t.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes.m4 \
 	$(top_srcdir)/gnulib/m4/inttypes_h.m4 \
@@ -172,16 +196,24 @@ am__aclocal_m4_deps = $(top_srcdir)/gnulib/m4/00gnulib.m4 \
 	$(top_srcdir)/gnulib/m4/lib-prefix.m4 \
 	$(top_srcdir)/gnulib/m4/libtool.m4 \
 	$(top_srcdir)/gnulib/m4/libunistring-base.m4 \
+	$(top_srcdir)/gnulib/m4/libunistring.m4 \
 	$(top_srcdir)/gnulib/m4/limits-h.m4 \
 	$(top_srcdir)/gnulib/m4/localcharset.m4 \
+	$(top_srcdir)/gnulib/m4/locale-fr.m4 \
+	$(top_srcdir)/gnulib/m4/locale-ja.m4 \
+	$(top_srcdir)/gnulib/m4/locale-zh.m4 \
 	$(top_srcdir)/gnulib/m4/ltoptions.m4 \
 	$(top_srcdir)/gnulib/m4/ltsugar.m4 \
 	$(top_srcdir)/gnulib/m4/ltversion.m4 \
 	$(top_srcdir)/gnulib/m4/lt~obsolete.m4 \
+	$(top_srcdir)/gnulib/m4/malloca.m4 \
+	$(top_srcdir)/gnulib/m4/mbrtowc.m4 \
+	$(top_srcdir)/gnulib/m4/mbstate_t.m4 \
 	$(top_srcdir)/gnulib/m4/memchr.m4 \
 	$(top_srcdir)/gnulib/m4/mmap-anon.m4 \
 	$(top_srcdir)/gnulib/m4/multiarch.m4 \
-	$(top_srcdir)/gnulib/m4/nls.m4 \
+	$(top_srcdir)/gnulib/m4/musl.m4 $(top_srcdir)/gnulib/m4/nls.m4 \
+	$(top_srcdir)/gnulib/m4/obstack.m4 \
 	$(top_srcdir)/gnulib/m4/off_t.m4 $(top_srcdir)/gnulib/m4/po.m4 \
 	$(top_srcdir)/gnulib/m4/printf.m4 \
 	$(top_srcdir)/gnulib/m4/progtest.m4 \
@@ -221,32 +253,68 @@ CONFIG_CLEAN_VPATH_FILES =
 LIBRARIES = $(noinst_LIBRARIES)
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 am__DEPENDENCIES_1 =
-am__libgnu_la_SOURCES_DIST = float.c itold.c free.c getdelim.c \
-	getline.c localcharset.c memchr.c rawmemchr.c size_max.h \
-	stdio-read.c stdio-write.c strchrnul.c strndup.c strnlen.c \
-	unistd.c uniwidth/width.c wctype-h.c wcwidth.c xsize.h xsize.c
+am__libgnu_la_SOURCES_DIST = c-ctype.h c-ctype.c c-strcase.h \
+	c-strcasecmp.c c-strncasecmp.c exitfail.c float.c itold.c \
+	free.c getdelim.c getline.c gettext.h iconv_open.c iconv.c \
+	iconv_close.c idx.h localcharset.c malloca.c mbszero.c \
+	memchr.c obstack.c rawmemchr.c size_max.h stdio-read.c \
+	stdio-write.c strchrnul.c striconveh.h striconveh.c \
+	striconveha.h striconveha.c strndup.c strnlen.c \
+	uniconv/u8-conv-from-enc.c uniconv/u8-strconv-from-enc.c \
+	unistd.c unistr/u8-check.c unistr/u8-mblen.c \
+	unistr/u8-mbsnlen.c unistr/u8-mbtouc.c unistr/u8-mbtouc-aux.c \
+	unistr/u8-mbtouc-unsafe.c unistr/u8-mbtouc-unsafe-aux.c \
+	unistr/u8-mbtoucr.c unistr/u8-prev.c unistr/u8-strlen.c \
+	unistr/u8-uctomb.c unistr/u8-uctomb-aux.c uniwidth/width.c \
+	wctype-h.c wcwidth.c xsize.h xsize.c
 @GL_COND_OBJ_FLOAT_TRUE@am__objects_1 = libgnu_la-float.lo
 @GL_COND_OBJ_ITOLD_TRUE@am__objects_2 = libgnu_la-itold.lo
 @GL_COND_OBJ_FREE_TRUE@am__objects_3 = libgnu_la-free.lo
 @GL_COND_OBJ_GETDELIM_TRUE@am__objects_4 = libgnu_la-getdelim.lo
 @GL_COND_OBJ_GETLINE_TRUE@am__objects_5 = libgnu_la-getline.lo
-@GL_COND_OBJ_MEMCHR_TRUE@am__objects_6 = libgnu_la-memchr.lo
-@GL_COND_OBJ_RAWMEMCHR_TRUE@am__objects_7 = libgnu_la-rawmemchr.lo
-@GL_COND_OBJ_STDIO_READ_TRUE@am__objects_8 = libgnu_la-stdio-read.lo
-@GL_COND_OBJ_STDIO_WRITE_TRUE@am__objects_9 =  \
+@GL_COND_OBJ_ICONV_OPEN_TRUE@am__objects_6 = libgnu_la-iconv_open.lo
+@GL_COND_OBJ_ICONV_TRUE@am__objects_7 = libgnu_la-iconv.lo \
+@GL_COND_OBJ_ICONV_TRUE@	libgnu_la-iconv_close.lo
+@GL_COND_OBJ_MEMCHR_TRUE@am__objects_8 = libgnu_la-memchr.lo
+@GL_COND_OBJ_OBSTACK_TRUE@am__objects_9 = libgnu_la-obstack.lo
+@GL_COND_OBJ_RAWMEMCHR_TRUE@am__objects_10 = libgnu_la-rawmemchr.lo
+@GL_COND_OBJ_STDIO_READ_TRUE@am__objects_11 = libgnu_la-stdio-read.lo
+@GL_COND_OBJ_STDIO_WRITE_TRUE@am__objects_12 =  \
 @GL_COND_OBJ_STDIO_WRITE_TRUE@	libgnu_la-stdio-write.lo
-@GL_COND_OBJ_STRCHRNUL_TRUE@am__objects_10 = libgnu_la-strchrnul.lo
-@GL_COND_OBJ_STRNDUP_TRUE@am__objects_11 = libgnu_la-strndup.lo
-@GL_COND_OBJ_STRNLEN_TRUE@am__objects_12 = libgnu_la-strnlen.lo
+@GL_COND_OBJ_STRCHRNUL_TRUE@am__objects_13 = libgnu_la-strchrnul.lo
+@GL_COND_OBJ_STRNDUP_TRUE@am__objects_14 = libgnu_la-strndup.lo
+@GL_COND_OBJ_STRNLEN_TRUE@am__objects_15 = libgnu_la-strnlen.lo
 am__dirstamp = $(am__leading_dot)dirstamp
-@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__objects_13 = uniwidth/libgnu_la-width.lo
-@GL_COND_OBJ_WCWIDTH_TRUE@am__objects_14 = libgnu_la-wcwidth.lo
-am_libgnu_la_OBJECTS = $(am__objects_1) $(am__objects_2) \
-	$(am__objects_3) $(am__objects_4) $(am__objects_5) \
-	libgnu_la-localcharset.lo $(am__objects_6) $(am__objects_7) \
-	$(am__objects_8) $(am__objects_9) $(am__objects_10) \
-	$(am__objects_11) $(am__objects_12) libgnu_la-unistd.lo \
-	$(am__objects_13) libgnu_la-wctype-h.lo $(am__objects_14) \
+@LIBUNISTRING_COMPILE_UNICONV_U8_CONV_FROM_ENC_TRUE@am__objects_16 = uniconv/libgnu_la-u8-conv-from-enc.lo
+@LIBUNISTRING_COMPILE_UNICONV_U8_STRCONV_FROM_ENC_TRUE@am__objects_17 = uniconv/libgnu_la-u8-strconv-from-enc.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_CHECK_TRUE@am__objects_18 = unistr/libgnu_la-u8-check.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBLEN_TRUE@am__objects_19 = unistr/libgnu_la-u8-mblen.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBSNLEN_TRUE@am__objects_20 = unistr/libgnu_la-u8-mbsnlen.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUC_TRUE@am__objects_21 = unistr/libgnu_la-u8-mbtouc.lo \
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUC_TRUE@	unistr/libgnu_la-u8-mbtouc-aux.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUC_UNSAFE_TRUE@am__objects_22 = unistr/libgnu_la-u8-mbtouc-unsafe.lo \
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUC_UNSAFE_TRUE@	unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_MBTOUCR_TRUE@am__objects_23 = unistr/libgnu_la-u8-mbtoucr.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_PREV_TRUE@am__objects_24 = unistr/libgnu_la-u8-prev.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_STRLEN_TRUE@am__objects_25 = unistr/libgnu_la-u8-strlen.lo
+@LIBUNISTRING_COMPILE_UNISTR_U8_UCTOMB_TRUE@am__objects_26 = unistr/libgnu_la-u8-uctomb.lo \
+@LIBUNISTRING_COMPILE_UNISTR_U8_UCTOMB_TRUE@	unistr/libgnu_la-u8-uctomb-aux.lo
+@LIBUNISTRING_COMPILE_UNIWIDTH_WIDTH_TRUE@am__objects_27 = uniwidth/libgnu_la-width.lo
+@GL_COND_OBJ_WCWIDTH_TRUE@am__objects_28 = libgnu_la-wcwidth.lo
+am_libgnu_la_OBJECTS = libgnu_la-c-ctype.lo libgnu_la-c-strcasecmp.lo \
+	libgnu_la-c-strncasecmp.lo libgnu_la-exitfail.lo \
+	$(am__objects_1) $(am__objects_2) $(am__objects_3) \
+	$(am__objects_4) $(am__objects_5) $(am__objects_6) \
+	$(am__objects_7) libgnu_la-localcharset.lo \
+	libgnu_la-malloca.lo libgnu_la-mbszero.lo $(am__objects_8) \
+	$(am__objects_9) $(am__objects_10) $(am__objects_11) \
+	$(am__objects_12) $(am__objects_13) libgnu_la-striconveh.lo \
+	libgnu_la-striconveha.lo $(am__objects_14) $(am__objects_15) \
+	$(am__objects_16) $(am__objects_17) libgnu_la-unistd.lo \
+	$(am__objects_18) $(am__objects_19) $(am__objects_20) \
+	$(am__objects_21) $(am__objects_22) $(am__objects_23) \
+	$(am__objects_24) $(am__objects_25) $(am__objects_26) \
+	$(am__objects_27) libgnu_la-wctype-h.lo $(am__objects_28) \
 	libgnu_la-xsize.lo
 libgnu_la_OBJECTS = $(am_libgnu_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -273,18 +341,30 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/libgnu_la-asnprintf.Plo \
 	./$(DEPDIR)/libgnu_la-asprintf.Plo \
+	./$(DEPDIR)/libgnu_la-c-ctype.Plo \
+	./$(DEPDIR)/libgnu_la-c-strcasecmp.Plo \
+	./$(DEPDIR)/libgnu_la-c-strncasecmp.Plo \
+	./$(DEPDIR)/libgnu_la-exitfail.Plo \
 	./$(DEPDIR)/libgnu_la-float.Plo ./$(DEPDIR)/libgnu_la-free.Plo \
 	./$(DEPDIR)/libgnu_la-getdelim.Plo \
 	./$(DEPDIR)/libgnu_la-getline.Plo \
+	./$(DEPDIR)/libgnu_la-iconv.Plo \
+	./$(DEPDIR)/libgnu_la-iconv_close.Plo \
+	./$(DEPDIR)/libgnu_la-iconv_open.Plo \
 	./$(DEPDIR)/libgnu_la-itold.Plo \
 	./$(DEPDIR)/libgnu_la-localcharset.Plo \
+	./$(DEPDIR)/libgnu_la-malloca.Plo \
+	./$(DEPDIR)/libgnu_la-mbszero.Plo \
 	./$(DEPDIR)/libgnu_la-memchr.Plo \
+	./$(DEPDIR)/libgnu_la-obstack.Plo \
 	./$(DEPDIR)/libgnu_la-printf-args.Plo \
 	./$(DEPDIR)/libgnu_la-printf-parse.Plo \
 	./$(DEPDIR)/libgnu_la-rawmemchr.Plo \
 	./$(DEPDIR)/libgnu_la-stdio-read.Plo \
 	./$(DEPDIR)/libgnu_la-stdio-write.Plo \
 	./$(DEPDIR)/libgnu_la-strchrnul.Plo \
+	./$(DEPDIR)/libgnu_la-striconveh.Plo \
+	./$(DEPDIR)/libgnu_la-striconveha.Plo \
 	./$(DEPDIR)/libgnu_la-strndup.Plo \
 	./$(DEPDIR)/libgnu_la-strnlen.Plo \
 	./$(DEPDIR)/libgnu_la-unistd.Plo \
@@ -293,6 +373,20 @@ am__depfiles_remade = ./$(DEPDIR)/libgnu_la-asnprintf.Plo \
 	./$(DEPDIR)/libgnu_la-wctype-h.Plo \
 	./$(DEPDIR)/libgnu_la-wcwidth.Plo \
 	./$(DEPDIR)/libgnu_la-xsize.Plo \
+	uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Plo \
+	uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-check.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mblen.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-prev.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-strlen.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Plo \
+	unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Plo \
 	uniwidth/$(DEPDIR)/libgnu_la-width.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -504,16 +598,19 @@ GL_GNULIB_GETOPT_POSIX = @GL_GNULIB_GETOPT_POSIX@
 GL_GNULIB_GETPAGESIZE = @GL_GNULIB_GETPAGESIZE@
 GL_GNULIB_GETPASS = @GL_GNULIB_GETPASS@
 GL_GNULIB_GETPASS_GNU = @GL_GNULIB_GETPASS_GNU@
+GL_GNULIB_GETPROGNAME = @GL_GNULIB_GETPROGNAME@
 GL_GNULIB_GETSUBOPT = @GL_GNULIB_GETSUBOPT@
 GL_GNULIB_GETUSERSHELL = @GL_GNULIB_GETUSERSHELL@
 GL_GNULIB_GRANTPT = @GL_GNULIB_GRANTPT@
 GL_GNULIB_GROUP_MEMBER = @GL_GNULIB_GROUP_MEMBER@
+GL_GNULIB_ICONV = @GL_GNULIB_ICONV@
 GL_GNULIB_IMAXABS = @GL_GNULIB_IMAXABS@
 GL_GNULIB_IMAXDIV = @GL_GNULIB_IMAXDIV@
 GL_GNULIB_ISATTY = @GL_GNULIB_ISATTY@
 GL_GNULIB_ISWBLANK = @GL_GNULIB_ISWBLANK@
 GL_GNULIB_ISWCTYPE = @GL_GNULIB_ISWCTYPE@
 GL_GNULIB_ISWDIGIT = @GL_GNULIB_ISWDIGIT@
+GL_GNULIB_ISWPUNCT = @GL_GNULIB_ISWPUNCT@
 GL_GNULIB_ISWXDIGIT = @GL_GNULIB_ISWXDIGIT@
 GL_GNULIB_LCHOWN = @GL_GNULIB_LCHOWN@
 GL_GNULIB_LINK = @GL_GNULIB_LINK@
@@ -540,6 +637,8 @@ GL_GNULIB_MBSSEP = @GL_GNULIB_MBSSEP@
 GL_GNULIB_MBSSPN = @GL_GNULIB_MBSSPN@
 GL_GNULIB_MBSSTR = @GL_GNULIB_MBSSTR@
 GL_GNULIB_MBSTOK_R = @GL_GNULIB_MBSTOK_R@
+GL_GNULIB_MBSTOWCS = @GL_GNULIB_MBSTOWCS@
+GL_GNULIB_MBSZERO = @GL_GNULIB_MBSZERO@
 GL_GNULIB_MBTOWC = @GL_GNULIB_MBTOWC@
 GL_GNULIB_MDA_ACCESS = @GL_GNULIB_MDA_ACCESS@
 GL_GNULIB_MDA_CHDIR = @GL_GNULIB_MDA_CHDIR@
@@ -580,6 +679,7 @@ GL_GNULIB_MEMCHR = @GL_GNULIB_MEMCHR@
 GL_GNULIB_MEMMEM = @GL_GNULIB_MEMMEM@
 GL_GNULIB_MEMPCPY = @GL_GNULIB_MEMPCPY@
 GL_GNULIB_MEMRCHR = @GL_GNULIB_MEMRCHR@
+GL_GNULIB_MEMSET_EXPLICIT = @GL_GNULIB_MEMSET_EXPLICIT@
 GL_GNULIB_MKDTEMP = @GL_GNULIB_MKDTEMP@
 GL_GNULIB_MKOSTEMP = @GL_GNULIB_MKOSTEMP@
 GL_GNULIB_MKOSTEMPS = @GL_GNULIB_MKOSTEMPS@
@@ -753,12 +853,15 @@ HAVE_DECL_GETLOGIN = @HAVE_DECL_GETLOGIN@
 HAVE_DECL_GETLOGIN_R = @HAVE_DECL_GETLOGIN_R@
 HAVE_DECL_GETPAGESIZE = @HAVE_DECL_GETPAGESIZE@
 HAVE_DECL_GETUSERSHELL = @HAVE_DECL_GETUSERSHELL@
+HAVE_DECL_GETW = @HAVE_DECL_GETW@
 HAVE_DECL_IMAXABS = @HAVE_DECL_IMAXABS@
 HAVE_DECL_IMAXDIV = @HAVE_DECL_IMAXDIV@
 HAVE_DECL_INITSTATE = @HAVE_DECL_INITSTATE@
 HAVE_DECL_MEMMEM = @HAVE_DECL_MEMMEM@
 HAVE_DECL_MEMRCHR = @HAVE_DECL_MEMRCHR@
 HAVE_DECL_OBSTACK_PRINTF = @HAVE_DECL_OBSTACK_PRINTF@
+HAVE_DECL_PROGRAM_INVOCATION_NAME = @HAVE_DECL_PROGRAM_INVOCATION_NAME@
+HAVE_DECL_PUTW = @HAVE_DECL_PUTW@
 HAVE_DECL_SETENV = @HAVE_DECL_SETENV@
 HAVE_DECL_SETHOSTNAME = @HAVE_DECL_SETHOSTNAME@
 HAVE_DECL_SETSTATE = @HAVE_DECL_SETSTATE@
@@ -801,15 +904,19 @@ HAVE_GETHOSTNAME = @HAVE_GETHOSTNAME@
 HAVE_GETLOGIN = @HAVE_GETLOGIN@
 HAVE_GETPAGESIZE = @HAVE_GETPAGESIZE@
 HAVE_GETPASS = @HAVE_GETPASS@
+HAVE_GETPROGNAME = @HAVE_GETPROGNAME@
 HAVE_GETSUBOPT = @HAVE_GETSUBOPT@
 HAVE_GRANTPT = @HAVE_GRANTPT@
 HAVE_GROUP_MEMBER = @HAVE_GROUP_MEMBER@
+HAVE_IMAXABS = @HAVE_IMAXABS@
+HAVE_IMAXDIV = @HAVE_IMAXDIV@
 HAVE_IMAXDIV_T = @HAVE_IMAXDIV_T@
 HAVE_INITSTATE = @HAVE_INITSTATE@
 HAVE_INTTYPES_H = @HAVE_INTTYPES_H@
 HAVE_ISWBLANK = @HAVE_ISWBLANK@
 HAVE_ISWCNTRL = @HAVE_ISWCNTRL@
 HAVE_LCHOWN = @HAVE_LCHOWN@
+HAVE_LIBUNISTRING = @HAVE_LIBUNISTRING@
 HAVE_LINK = @HAVE_LINK@
 HAVE_LINKAT = @HAVE_LINKAT@
 HAVE_MAX_ALIGN_T = @HAVE_MAX_ALIGN_T@
@@ -821,6 +928,7 @@ HAVE_MBSNRTOWCS = @HAVE_MBSNRTOWCS@
 HAVE_MBSRTOWCS = @HAVE_MBSRTOWCS@
 HAVE_MBTOWC = @HAVE_MBTOWC@
 HAVE_MEMPCPY = @HAVE_MEMPCPY@
+HAVE_MEMSET_EXPLICIT = @HAVE_MEMSET_EXPLICIT@
 HAVE_MKDTEMP = @HAVE_MKDTEMP@
 HAVE_MKOSTEMP = @HAVE_MKOSTEMP@
 HAVE_MKOSTEMPS = @HAVE_MKOSTEMPS@
@@ -882,6 +990,7 @@ HAVE_SYS_LOADAVG_H = @HAVE_SYS_LOADAVG_H@
 HAVE_SYS_PARAM_H = @HAVE_SYS_PARAM_H@
 HAVE_SYS_TYPES_H = @HAVE_SYS_TYPES_H@
 HAVE_UNISTD_H = @HAVE_UNISTD_H@
+HAVE_UNISTRING_WOE32DLL_H = @HAVE_UNISTRING_WOE32DLL_H@
 HAVE_UNLINKAT = @HAVE_UNLINKAT@
 HAVE_UNLOCKPT = @HAVE_UNLOCKPT@
 HAVE_USLEEP = @HAVE_USLEEP@
@@ -927,6 +1036,8 @@ HAVE_WMEMMOVE = @HAVE_WMEMMOVE@
 HAVE_WMEMPCPY = @HAVE_WMEMPCPY@
 HAVE_WMEMSET = @HAVE_WMEMSET@
 HAVE__EXIT = @HAVE__EXIT@
+ICONV_CONST = @ICONV_CONST@
+ICONV_H = @ICONV_H@
 INCLUDE_NEXT = @INCLUDE_NEXT@
 INCLUDE_NEXT_AS_FIRST_DIRECTIVE = @INCLUDE_NEXT_AS_FIRST_DIRECTIVE@
 INSTALL = @INSTALL@
@@ -938,6 +1049,10 @@ INT32_MAX_LT_INTMAX_MAX = @INT32_MAX_LT_INTMAX_MAX@
 INT64_MAX_EQ_LONG_MAX = @INT64_MAX_EQ_LONG_MAX@
 INTLLIBS = @INTLLIBS@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
+LC_COLLATE_IMPLEMENTED = @LC_COLLATE_IMPLEMENTED@
+LC_MONETARY_IMPLEMENTED = @LC_MONETARY_IMPLEMENTED@
+LC_NUMERIC_IMPLEMENTED = @LC_NUMERIC_IMPLEMENTED@
+LC_TIME_IMPLEMENTED = @LC_TIME_IMPLEMENTED@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBICONV = @LIBICONV@
@@ -945,15 +1060,23 @@ LIBINTL = @LIBINTL@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
+LIBUNISTRING = @LIBUNISTRING@
+LIBUNISTRING_PREFIX = @LIBUNISTRING_PREFIX@
+LIBUNISTRING_UNICONV_H = @LIBUNISTRING_UNICONV_H@
+LIBUNISTRING_UNISTR_H = @LIBUNISTRING_UNISTR_H@
 LIBUNISTRING_UNITYPES_H = @LIBUNISTRING_UNITYPES_H@
 LIBUNISTRING_UNIWIDTH_H = @LIBUNISTRING_UNIWIDTH_H@
 LIMITS_H = @LIMITS_H@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LOCALCHARSET_TESTS_ENVIRONMENT = @LOCALCHARSET_TESTS_ENVIRONMENT@
+LOCALE_FR_UTF8 = @LOCALE_FR_UTF8@
+LOCALE_JA = @LOCALE_JA@
+LOCALE_ZH_CN = @LOCALE_ZH_CN@
 LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
+LTLIBUNISTRING = @LTLIBUNISTRING@
 LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
@@ -965,6 +1088,7 @@ NEXT_ASSERT_H = @NEXT_ASSERT_H@
 NEXT_AS_FIRST_DIRECTIVE_ASSERT_H = @NEXT_AS_FIRST_DIRECTIVE_ASSERT_H@
 NEXT_AS_FIRST_DIRECTIVE_ERRNO_H = @NEXT_AS_FIRST_DIRECTIVE_ERRNO_H@
 NEXT_AS_FIRST_DIRECTIVE_FLOAT_H = @NEXT_AS_FIRST_DIRECTIVE_FLOAT_H@
+NEXT_AS_FIRST_DIRECTIVE_ICONV_H = @NEXT_AS_FIRST_DIRECTIVE_ICONV_H@
 NEXT_AS_FIRST_DIRECTIVE_INTTYPES_H = @NEXT_AS_FIRST_DIRECTIVE_INTTYPES_H@
 NEXT_AS_FIRST_DIRECTIVE_LIMITS_H = @NEXT_AS_FIRST_DIRECTIVE_LIMITS_H@
 NEXT_AS_FIRST_DIRECTIVE_STDDEF_H = @NEXT_AS_FIRST_DIRECTIVE_STDDEF_H@
@@ -978,6 +1102,7 @@ NEXT_AS_FIRST_DIRECTIVE_WCHAR_H = @NEXT_AS_FIRST_DIRECTIVE_WCHAR_H@
 NEXT_AS_FIRST_DIRECTIVE_WCTYPE_H = @NEXT_AS_FIRST_DIRECTIVE_WCTYPE_H@
 NEXT_ERRNO_H = @NEXT_ERRNO_H@
 NEXT_FLOAT_H = @NEXT_FLOAT_H@
+NEXT_ICONV_H = @NEXT_ICONV_H@
 NEXT_INTTYPES_H = @NEXT_INTTYPES_H@
 NEXT_LIMITS_H = @NEXT_LIMITS_H@
 NEXT_STDDEF_H = @NEXT_STDDEF_H@
@@ -1034,6 +1159,7 @@ REPLACE_COPY_FILE_RANGE = @REPLACE_COPY_FILE_RANGE@
 REPLACE_DPRINTF = @REPLACE_DPRINTF@
 REPLACE_DUP = @REPLACE_DUP@
 REPLACE_DUP2 = @REPLACE_DUP2@
+REPLACE_DUP3 = @REPLACE_DUP3@
 REPLACE_EXECL = @REPLACE_EXECL@
 REPLACE_EXECLE = @REPLACE_EXECLE@
 REPLACE_EXECLP = @REPLACE_EXECLP@
@@ -1044,6 +1170,7 @@ REPLACE_EXECVPE = @REPLACE_EXECVPE@
 REPLACE_FACCESSAT = @REPLACE_FACCESSAT@
 REPLACE_FCHOWNAT = @REPLACE_FCHOWNAT@
 REPLACE_FCLOSE = @REPLACE_FCLOSE@
+REPLACE_FDATASYNC = @REPLACE_FDATASYNC@
 REPLACE_FDOPEN = @REPLACE_FDOPEN@
 REPLACE_FFLUSH = @REPLACE_FFLUSH@
 REPLACE_FFSLL = @REPLACE_FFSLL@
@@ -1062,17 +1189,27 @@ REPLACE_GETCWD = @REPLACE_GETCWD@
 REPLACE_GETDELIM = @REPLACE_GETDELIM@
 REPLACE_GETDOMAINNAME = @REPLACE_GETDOMAINNAME@
 REPLACE_GETDTABLESIZE = @REPLACE_GETDTABLESIZE@
+REPLACE_GETENTROPY = @REPLACE_GETENTROPY@
 REPLACE_GETGROUPS = @REPLACE_GETGROUPS@
 REPLACE_GETLINE = @REPLACE_GETLINE@
+REPLACE_GETLOADAVG = @REPLACE_GETLOADAVG@
 REPLACE_GETLOGIN_R = @REPLACE_GETLOGIN_R@
 REPLACE_GETPAGESIZE = @REPLACE_GETPAGESIZE@
 REPLACE_GETPASS = @REPLACE_GETPASS@
 REPLACE_GETPASS_FOR_GETPASS_GNU = @REPLACE_GETPASS_FOR_GETPASS_GNU@
+REPLACE_GETPROGNAME = @REPLACE_GETPROGNAME@
+REPLACE_GETSUBOPT = @REPLACE_GETSUBOPT@
+REPLACE_ICONV = @REPLACE_ICONV@
+REPLACE_ICONV_OPEN = @REPLACE_ICONV_OPEN@
+REPLACE_ICONV_UTF = @REPLACE_ICONV_UTF@
+REPLACE_IMAXABS = @REPLACE_IMAXABS@
+REPLACE_IMAXDIV = @REPLACE_IMAXDIV@
 REPLACE_INITSTATE = @REPLACE_INITSTATE@
 REPLACE_ISATTY = @REPLACE_ISATTY@
 REPLACE_ISWBLANK = @REPLACE_ISWBLANK@
 REPLACE_ISWCNTRL = @REPLACE_ISWCNTRL@
 REPLACE_ISWDIGIT = @REPLACE_ISWDIGIT@
+REPLACE_ISWPUNCT = @REPLACE_ISWPUNCT@
 REPLACE_ISWXDIGIT = @REPLACE_ISWXDIGIT@
 REPLACE_ITOLD = @REPLACE_ITOLD@
 REPLACE_LCHOWN = @REPLACE_LCHOWN@
@@ -1087,15 +1224,22 @@ REPLACE_MBSINIT = @REPLACE_MBSINIT@
 REPLACE_MBSNRTOWCS = @REPLACE_MBSNRTOWCS@
 REPLACE_MBSRTOWCS = @REPLACE_MBSRTOWCS@
 REPLACE_MBSTATE_T = @REPLACE_MBSTATE_T@
+REPLACE_MBSTOWCS = @REPLACE_MBSTOWCS@
 REPLACE_MBTOWC = @REPLACE_MBTOWC@
+REPLACE_MB_CUR_MAX = @REPLACE_MB_CUR_MAX@
 REPLACE_MEMCHR = @REPLACE_MEMCHR@
 REPLACE_MEMMEM = @REPLACE_MEMMEM@
+REPLACE_MEMPCPY = @REPLACE_MEMPCPY@
+REPLACE_MKOSTEMP = @REPLACE_MKOSTEMP@
+REPLACE_MKOSTEMPS = @REPLACE_MKOSTEMPS@
 REPLACE_MKSTEMP = @REPLACE_MKSTEMP@
 REPLACE_NULL = @REPLACE_NULL@
 REPLACE_OBSTACK_PRINTF = @REPLACE_OBSTACK_PRINTF@
 REPLACE_PERROR = @REPLACE_PERROR@
+REPLACE_PIPE2 = @REPLACE_PIPE2@
 REPLACE_POPEN = @REPLACE_POPEN@
 REPLACE_POSIX_MEMALIGN = @REPLACE_POSIX_MEMALIGN@
+REPLACE_POSIX_OPENPT = @REPLACE_POSIX_OPENPT@
 REPLACE_PREAD = @REPLACE_PREAD@
 REPLACE_PRINTF = @REPLACE_PRINTF@
 REPLACE_PTSNAME = @REPLACE_PTSNAME@
@@ -1117,12 +1261,14 @@ REPLACE_RENAME = @REPLACE_RENAME@
 REPLACE_RENAMEAT = @REPLACE_RENAMEAT@
 REPLACE_RMDIR = @REPLACE_RMDIR@
 REPLACE_SETENV = @REPLACE_SETENV@
+REPLACE_SETHOSTNAME = @REPLACE_SETHOSTNAME@
 REPLACE_SETSTATE = @REPLACE_SETSTATE@
 REPLACE_SLEEP = @REPLACE_SLEEP@
 REPLACE_SNPRINTF = @REPLACE_SNPRINTF@
 REPLACE_SPRINTF = @REPLACE_SPRINTF@
 REPLACE_STDIO_READ_FUNCS = @REPLACE_STDIO_READ_FUNCS@
 REPLACE_STDIO_WRITE_FUNCS = @REPLACE_STDIO_WRITE_FUNCS@
+REPLACE_STPCPY = @REPLACE_STPCPY@
 REPLACE_STPNCPY = @REPLACE_STPNCPY@
 REPLACE_STRCASESTR = @REPLACE_STRCASESTR@
 REPLACE_STRCHRNUL = @REPLACE_STRCHRNUL@
@@ -1161,21 +1307,29 @@ REPLACE_VPRINTF = @REPLACE_VPRINTF@
 REPLACE_VSNPRINTF = @REPLACE_VSNPRINTF@
 REPLACE_VSPRINTF = @REPLACE_VSPRINTF@
 REPLACE_WCRTOMB = @REPLACE_WCRTOMB@
+REPLACE_WCSCMP = @REPLACE_WCSCMP@
 REPLACE_WCSFTIME = @REPLACE_WCSFTIME@
+REPLACE_WCSNCMP = @REPLACE_WCSNCMP@
 REPLACE_WCSNRTOMBS = @REPLACE_WCSNRTOMBS@
 REPLACE_WCSRTOMBS = @REPLACE_WCSRTOMBS@
+REPLACE_WCSSTR = @REPLACE_WCSSTR@
 REPLACE_WCSTOK = @REPLACE_WCSTOK@
 REPLACE_WCSWIDTH = @REPLACE_WCSWIDTH@
 REPLACE_WCTOB = @REPLACE_WCTOB@
 REPLACE_WCTOMB = @REPLACE_WCTOMB@
+REPLACE_WCTRANS = @REPLACE_WCTRANS@
+REPLACE_WCTYPE = @REPLACE_WCTYPE@
 REPLACE_WCWIDTH = @REPLACE_WCWIDTH@
+REPLACE_WMEMCMP = @REPLACE_WMEMCMP@
+REPLACE_WMEMPCPY = @REPLACE_WMEMPCPY@
 REPLACE_WRITE = @REPLACE_WRITE@
+REPLACE__EXIT = @REPLACE__EXIT@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 SIG_ATOMIC_T_SUFFIX = @SIG_ATOMIC_T_SUFFIX@
 SIZE_T_SUFFIX = @SIZE_T_SUFFIX@
-STDALIGN_H = @STDALIGN_H@
+STDCKDINT_H = @STDCKDINT_H@
 STDDEF_H = @STDDEF_H@
 STDINT_H = @STDINT_H@
 STRIP = @STRIP@
@@ -1260,49 +1414,77 @@ SUBDIRS =
 noinst_HEADERS = 
 noinst_LIBRARIES = 
 noinst_LTLIBRARIES = libgnu.la
-EXTRA_DIST = alloca.in.h assert.in.h verify.h attribute.h errno.in.h \
-	float.in.h $(top_srcdir)/./config.rpath inttypes.in.h \
-	limits.in.h localcharset.h memchr.valgrind rawmemchr.valgrind \
-	_Noreturn.h arg-nonnull.h c++defs.h warn-on-use.h \
-	stdalign.in.h stddef.in.h stdint.in.h stdio.in.h stdlib.in.h \
-	strchrnul.valgrind streq.h string.in.h sys_types.in.h \
-	unistd.in.h unitypes.in.h localcharset.h uniwidth.in.h \
-	unictype/bitmap.h uniwidth/cjk.h uniwidth/width0.h \
-	uniwidth/width2.h asnprintf.c float+.h printf-args.c \
-	printf-args.h printf-parse.c printf-parse.h vasnprintf.c \
-	vasnprintf.h asprintf.c vasprintf.c wchar.in.h wctype.in.h
+EXTRA_DIST = alignof.h alloca.in.h assert.in.h verify.h attribute.h \
+	c-strcaseeq.h errno.in.h exitfail.h float.in.h \
+	$(top_srcdir)/./config.rpath iconv.in.h iconv_open-aix.h \
+	iconv_open-hpux.h iconv_open-irix.h iconv_open-osf.h \
+	iconv_open-solaris.h iconv_open-zos.h iconv_open-aix.gperf \
+	iconv_open-hpux.gperf iconv_open-irix.gperf \
+	iconv_open-osf.gperf iconv_open-solaris.gperf \
+	iconv_open-zos.gperf inttypes.in.h libunistring.valgrind \
+	limits.in.h localcharset.h malloca.h memchr.valgrind obstack.h \
+	rawmemchr.valgrind _Noreturn.h arg-nonnull.h c++defs.h \
+	warn-on-use.h intprops-internal.h stdckdint.in.h stddef.in.h \
+	stdint.in.h stdio.in.h stdlib.in.h strchrnul.valgrind streq.h \
+	iconveh.h string.in.h sys_types.in.h iconveh.h localcharset.h \
+	striconveha.h uniconv.in.h uniconv/u-strconv-from-enc.h \
+	unistd.in.h unistr.in.h unitypes.in.h localcharset.h \
+	uniwidth.in.h unictype/bitmap.h uniwidth/cjk.h \
+	uniwidth/width0.h uniwidth/width2.h asnprintf.c float+.h \
+	printf-args.c printf-args.h printf-parse.c printf-parse.h \
+	vasnprintf.c vasnprintf.h asprintf.c vasprintf.c wchar.in.h \
+	wctype.in.h xalloc-oversized.h
 BUILT_SOURCES = $(ALLOCA_H) $(ASSERT_H) $(ERRNO_H) $(FLOAT_H) \
-	inttypes.h $(LIMITS_H) $(STDALIGN_H) $(STDDEF_H) $(STDINT_H) \
-	stdio.h stdlib.h string.h sys/types.h unistd.h \
+	$(ICONV_H) iconv_open-aix.h iconv_open-hpux.h \
+	iconv_open-irix.h iconv_open-osf.h iconv_open-solaris.h \
+	iconv_open-zos.h inttypes.h $(LIMITS_H) $(STDCKDINT_H) \
+	$(STDDEF_H) $(STDINT_H) stdio.h stdlib.h string.h sys/types.h \
+	$(LIBUNISTRING_UNICONV_H) unistd.h $(LIBUNISTRING_UNISTR_H) \
 	$(LIBUNISTRING_UNITYPES_H) $(LIBUNISTRING_UNIWIDTH_H) wchar.h \
 	wctype.h
 SUFFIXES = 
 MOSTLYCLEANFILES = core *.stackdump alloca.h alloca.h-t assert.h \
-	assert.h-t errno.h errno.h-t float.h float.h-t inttypes.h \
-	inttypes.h-t limits.h limits.h-t stdalign.h stdalign.h-t \
-	stddef.h stddef.h-t stdint.h stdint.h-t stdio.h stdio.h-t \
-	stdlib.h stdlib.h-t string.h string.h-t sys/types.h \
-	sys/types.h-t unistd.h unistd.h-t unitypes.h unitypes.h-t \
-	uniwidth.h uniwidth.h-t wchar.h wchar.h-t wctype.h wctype.h-t
+	assert.h-t errno.h errno.h-t float.h float.h-t iconv.h \
+	iconv.h-t iconv_open-aix.h-t iconv_open-hpux.h-t \
+	iconv_open-irix.h-t iconv_open-osf.h-t iconv_open-solaris.h-t \
+	iconv_open-zos.h-t inttypes.h inttypes.h-t limits.h limits.h-t \
+	stdckdint.h stdckdint.h-t stddef.h stddef.h-t stdint.h \
+	stdint.h-t stdio.h stdio.h-t1 stdio.h-t2 stdio.h-t3 stdlib.h \
+	stdlib.h-t1 stdlib.h-t2 stdlib.h-t3 string.h string.h-t1 \
+	string.h-t2 sys/types.h sys/types.h-t uniconv.h uniconv.h-t \
+	unistd.h unistd.h-t1 unistd.h-t2 unistd.h-t3 unistd.h-t4 \
+	unistr.h unistr.h-t unitypes.h unitypes.h-t uniwidth.h \
+	uniwidth.h-t wchar.h wchar.h-t1 wchar.h-t2 wchar.h-t3 wctype.h \
+	wctype.h-t
 MOSTLYCLEANDIRS = 
 CLEANFILES = 
 DISTCLEANFILES = 
-MAINTAINERCLEANFILES = 
+MAINTAINERCLEANFILES = iconv_open-aix.h iconv_open-hpux.h \
+	iconv_open-irix.h iconv_open-osf.h iconv_open-solaris.h \
+	iconv_open-zos.h
 # No GNU Make output.
 AM_CPPFLAGS = 
 AM_CFLAGS = 
-libgnu_la_SOURCES = $(am__append_1) $(am__append_2) $(am__append_3) \
-	$(am__append_4) $(am__append_5) localcharset.c $(am__append_6) \
-	$(am__append_7) size_max.h $(am__append_8) $(am__append_9) \
-	$(am__append_10) $(am__append_11) $(am__append_12) unistd.c \
-	$(am__append_13) wctype-h.c $(am__append_14) xsize.h xsize.c
+libgnu_la_SOURCES = c-ctype.h c-ctype.c c-strcase.h c-strcasecmp.c \
+	c-strncasecmp.c exitfail.c $(am__append_1) $(am__append_2) \
+	$(am__append_3) $(am__append_4) $(am__append_5) gettext.h \
+	$(am__append_6) $(am__append_7) idx.h localcharset.c malloca.c \
+	mbszero.c $(am__append_8) $(am__append_9) $(am__append_10) \
+	size_max.h $(am__append_11) $(am__append_12) $(am__append_13) \
+	striconveh.h striconveh.c striconveha.h striconveha.c \
+	$(am__append_15) $(am__append_16) $(am__append_17) \
+	$(am__append_18) unistd.c $(am__append_19) $(am__append_20) \
+	$(am__append_21) $(am__append_22) $(am__append_23) \
+	$(am__append_24) $(am__append_25) $(am__append_26) \
+	$(am__append_27) $(am__append_28) wctype-h.c $(am__append_29) \
+	xsize.h xsize.c
 libgnu_la_CFLAGS = $(AM_CFLAGS) $(GL_CFLAG_GNULIB_WARNINGS)
 libgnu_la_LIBADD = $(gl_LTLIBOBJS)
 libgnu_la_DEPENDENCIES = $(gl_LTLIBOBJS)
 EXTRA_libgnu_la_SOURCES = asnprintf.c printf-args.c printf-parse.c \
 	vasnprintf.c asprintf.c vasprintf.c
 libgnu_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(LTLIBICONV) \
-	$(LTLIBUNISTRING)
+	$(LTLIBINTL) $(LTLIBUNISTRING) $(am__append_14)
 
 # Use this preprocessor expression to decide whether #include_next works.
 # Do not rely on a 'configure'-time test for this, since the expression
@@ -1323,6 +1505,10 @@ SED_HEADER_TO_AT_t = $(SED_HEADER_STDOUT) -n -e 'w $@-t'
 
 # Use $(gl_V_at) instead of $(AM_V_GEN) or $(AM_V_at) on a line that
 gl_V_at = $(AM_V_GEN)
+GPERF = gperf
+V_GPERF = $(V_GPERF_@AM_V@)
+V_GPERF_ = $(V_GPERF_@AM_DEFAULT_V@)
+V_GPERF_0 = @echo "  GPERF   " $@;
 
 # Because this Makefile snippet defines a variable used by other
 # gnulib Makefile snippets, it must be present in all makefiles that
@@ -1391,6 +1577,46 @@ clean-noinstLTLIBRARIES:
 	  echo rm -f $${locs}; \
 	  rm -f $${locs}; \
 	}
+uniconv/$(am__dirstamp):
+	@$(MKDIR_P) uniconv
+	@: > uniconv/$(am__dirstamp)
+uniconv/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) uniconv/$(DEPDIR)
+	@: > uniconv/$(DEPDIR)/$(am__dirstamp)
+uniconv/libgnu_la-u8-conv-from-enc.lo: uniconv/$(am__dirstamp) \
+	uniconv/$(DEPDIR)/$(am__dirstamp)
+uniconv/libgnu_la-u8-strconv-from-enc.lo: uniconv/$(am__dirstamp) \
+	uniconv/$(DEPDIR)/$(am__dirstamp)
+unistr/$(am__dirstamp):
+	@$(MKDIR_P) unistr
+	@: > unistr/$(am__dirstamp)
+unistr/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) unistr/$(DEPDIR)
+	@: > unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-check.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mblen.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mbsnlen.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mbtouc.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mbtouc-aux.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mbtouc-unsafe.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-mbtoucr.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-prev.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-strlen.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-uctomb.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
+unistr/libgnu_la-u8-uctomb-aux.lo: unistr/$(am__dirstamp) \
+	unistr/$(DEPDIR)/$(am__dirstamp)
 uniwidth/$(am__dirstamp):
 	@$(MKDIR_P) uniwidth
 	@: > uniwidth/$(am__dirstamp)
@@ -1405,6 +1631,10 @@ libgnu.la: $(libgnu_la_OBJECTS) $(libgnu_la_DEPENDENCIES) $(EXTRA_libgnu_la_DEPE
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f uniconv/*.$(OBJEXT)
+	-rm -f uniconv/*.lo
+	-rm -f unistr/*.$(OBJEXT)
+	-rm -f unistr/*.lo
 	-rm -f uniwidth/*.$(OBJEXT)
 	-rm -f uniwidth/*.lo
 
@@ -1413,19 +1643,31 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-asnprintf.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-asprintf.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-c-ctype.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-c-strcasecmp.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-c-strncasecmp.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-exitfail.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-float.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-free.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-getdelim.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-getline.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-iconv.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-iconv_close.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-iconv_open.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-itold.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-localcharset.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-malloca.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-mbszero.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-memchr.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-obstack.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-printf-args.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-printf-parse.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-rawmemchr.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-stdio-read.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-stdio-write.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-strchrnul.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-striconveh.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-striconveha.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-strndup.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-strnlen.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-unistd.Plo@am__quote@ # am--include-marker
@@ -1434,6 +1676,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-wctype-h.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-wcwidth.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnu_la-xsize.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-check.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mblen.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-prev.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-strlen.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@uniwidth/$(DEPDIR)/libgnu_la-width.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -1465,6 +1721,34 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+libgnu_la-c-ctype.lo: c-ctype.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-c-ctype.lo -MD -MP -MF $(DEPDIR)/libgnu_la-c-ctype.Tpo -c -o libgnu_la-c-ctype.lo `test -f 'c-ctype.c' || echo '$(srcdir)/'`c-ctype.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-c-ctype.Tpo $(DEPDIR)/libgnu_la-c-ctype.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='c-ctype.c' object='libgnu_la-c-ctype.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-c-ctype.lo `test -f 'c-ctype.c' || echo '$(srcdir)/'`c-ctype.c
+
+libgnu_la-c-strcasecmp.lo: c-strcasecmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-c-strcasecmp.lo -MD -MP -MF $(DEPDIR)/libgnu_la-c-strcasecmp.Tpo -c -o libgnu_la-c-strcasecmp.lo `test -f 'c-strcasecmp.c' || echo '$(srcdir)/'`c-strcasecmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-c-strcasecmp.Tpo $(DEPDIR)/libgnu_la-c-strcasecmp.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='c-strcasecmp.c' object='libgnu_la-c-strcasecmp.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-c-strcasecmp.lo `test -f 'c-strcasecmp.c' || echo '$(srcdir)/'`c-strcasecmp.c
+
+libgnu_la-c-strncasecmp.lo: c-strncasecmp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-c-strncasecmp.lo -MD -MP -MF $(DEPDIR)/libgnu_la-c-strncasecmp.Tpo -c -o libgnu_la-c-strncasecmp.lo `test -f 'c-strncasecmp.c' || echo '$(srcdir)/'`c-strncasecmp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-c-strncasecmp.Tpo $(DEPDIR)/libgnu_la-c-strncasecmp.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='c-strncasecmp.c' object='libgnu_la-c-strncasecmp.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-c-strncasecmp.lo `test -f 'c-strncasecmp.c' || echo '$(srcdir)/'`c-strncasecmp.c
+
+libgnu_la-exitfail.lo: exitfail.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-exitfail.lo -MD -MP -MF $(DEPDIR)/libgnu_la-exitfail.Tpo -c -o libgnu_la-exitfail.lo `test -f 'exitfail.c' || echo '$(srcdir)/'`exitfail.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-exitfail.Tpo $(DEPDIR)/libgnu_la-exitfail.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='exitfail.c' object='libgnu_la-exitfail.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-exitfail.lo `test -f 'exitfail.c' || echo '$(srcdir)/'`exitfail.c
 
 libgnu_la-float.lo: float.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-float.lo -MD -MP -MF $(DEPDIR)/libgnu_la-float.Tpo -c -o libgnu_la-float.lo `test -f 'float.c' || echo '$(srcdir)/'`float.c
@@ -1501,6 +1785,27 @@ libgnu_la-getline.lo: getline.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-getline.lo `test -f 'getline.c' || echo '$(srcdir)/'`getline.c
 
+libgnu_la-iconv_open.lo: iconv_open.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-iconv_open.lo -MD -MP -MF $(DEPDIR)/libgnu_la-iconv_open.Tpo -c -o libgnu_la-iconv_open.lo `test -f 'iconv_open.c' || echo '$(srcdir)/'`iconv_open.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-iconv_open.Tpo $(DEPDIR)/libgnu_la-iconv_open.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='iconv_open.c' object='libgnu_la-iconv_open.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-iconv_open.lo `test -f 'iconv_open.c' || echo '$(srcdir)/'`iconv_open.c
+
+libgnu_la-iconv.lo: iconv.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-iconv.lo -MD -MP -MF $(DEPDIR)/libgnu_la-iconv.Tpo -c -o libgnu_la-iconv.lo `test -f 'iconv.c' || echo '$(srcdir)/'`iconv.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-iconv.Tpo $(DEPDIR)/libgnu_la-iconv.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='iconv.c' object='libgnu_la-iconv.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-iconv.lo `test -f 'iconv.c' || echo '$(srcdir)/'`iconv.c
+
+libgnu_la-iconv_close.lo: iconv_close.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-iconv_close.lo -MD -MP -MF $(DEPDIR)/libgnu_la-iconv_close.Tpo -c -o libgnu_la-iconv_close.lo `test -f 'iconv_close.c' || echo '$(srcdir)/'`iconv_close.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-iconv_close.Tpo $(DEPDIR)/libgnu_la-iconv_close.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='iconv_close.c' object='libgnu_la-iconv_close.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-iconv_close.lo `test -f 'iconv_close.c' || echo '$(srcdir)/'`iconv_close.c
+
 libgnu_la-localcharset.lo: localcharset.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-localcharset.lo -MD -MP -MF $(DEPDIR)/libgnu_la-localcharset.Tpo -c -o libgnu_la-localcharset.lo `test -f 'localcharset.c' || echo '$(srcdir)/'`localcharset.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-localcharset.Tpo $(DEPDIR)/libgnu_la-localcharset.Plo
@@ -1508,12 +1813,33 @@ libgnu_la-localcharset.lo: localcharset.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-localcharset.lo `test -f 'localcharset.c' || echo '$(srcdir)/'`localcharset.c
 
+libgnu_la-malloca.lo: malloca.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-malloca.lo -MD -MP -MF $(DEPDIR)/libgnu_la-malloca.Tpo -c -o libgnu_la-malloca.lo `test -f 'malloca.c' || echo '$(srcdir)/'`malloca.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-malloca.Tpo $(DEPDIR)/libgnu_la-malloca.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='malloca.c' object='libgnu_la-malloca.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-malloca.lo `test -f 'malloca.c' || echo '$(srcdir)/'`malloca.c
+
+libgnu_la-mbszero.lo: mbszero.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-mbszero.lo -MD -MP -MF $(DEPDIR)/libgnu_la-mbszero.Tpo -c -o libgnu_la-mbszero.lo `test -f 'mbszero.c' || echo '$(srcdir)/'`mbszero.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-mbszero.Tpo $(DEPDIR)/libgnu_la-mbszero.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='mbszero.c' object='libgnu_la-mbszero.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-mbszero.lo `test -f 'mbszero.c' || echo '$(srcdir)/'`mbszero.c
+
 libgnu_la-memchr.lo: memchr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-memchr.lo -MD -MP -MF $(DEPDIR)/libgnu_la-memchr.Tpo -c -o libgnu_la-memchr.lo `test -f 'memchr.c' || echo '$(srcdir)/'`memchr.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-memchr.Tpo $(DEPDIR)/libgnu_la-memchr.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='memchr.c' object='libgnu_la-memchr.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-memchr.lo `test -f 'memchr.c' || echo '$(srcdir)/'`memchr.c
+
+libgnu_la-obstack.lo: obstack.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-obstack.lo -MD -MP -MF $(DEPDIR)/libgnu_la-obstack.Tpo -c -o libgnu_la-obstack.lo `test -f 'obstack.c' || echo '$(srcdir)/'`obstack.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-obstack.Tpo $(DEPDIR)/libgnu_la-obstack.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='obstack.c' object='libgnu_la-obstack.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-obstack.lo `test -f 'obstack.c' || echo '$(srcdir)/'`obstack.c
 
 libgnu_la-rawmemchr.lo: rawmemchr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-rawmemchr.lo -MD -MP -MF $(DEPDIR)/libgnu_la-rawmemchr.Tpo -c -o libgnu_la-rawmemchr.lo `test -f 'rawmemchr.c' || echo '$(srcdir)/'`rawmemchr.c
@@ -1543,6 +1869,20 @@ libgnu_la-strchrnul.lo: strchrnul.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-strchrnul.lo `test -f 'strchrnul.c' || echo '$(srcdir)/'`strchrnul.c
 
+libgnu_la-striconveh.lo: striconveh.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-striconveh.lo -MD -MP -MF $(DEPDIR)/libgnu_la-striconveh.Tpo -c -o libgnu_la-striconveh.lo `test -f 'striconveh.c' || echo '$(srcdir)/'`striconveh.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-striconveh.Tpo $(DEPDIR)/libgnu_la-striconveh.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='striconveh.c' object='libgnu_la-striconveh.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-striconveh.lo `test -f 'striconveh.c' || echo '$(srcdir)/'`striconveh.c
+
+libgnu_la-striconveha.lo: striconveha.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-striconveha.lo -MD -MP -MF $(DEPDIR)/libgnu_la-striconveha.Tpo -c -o libgnu_la-striconveha.lo `test -f 'striconveha.c' || echo '$(srcdir)/'`striconveha.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-striconveha.Tpo $(DEPDIR)/libgnu_la-striconveha.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='striconveha.c' object='libgnu_la-striconveha.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-striconveha.lo `test -f 'striconveha.c' || echo '$(srcdir)/'`striconveha.c
+
 libgnu_la-strndup.lo: strndup.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-strndup.lo -MD -MP -MF $(DEPDIR)/libgnu_la-strndup.Tpo -c -o libgnu_la-strndup.lo `test -f 'strndup.c' || echo '$(srcdir)/'`strndup.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-strndup.Tpo $(DEPDIR)/libgnu_la-strndup.Plo
@@ -1557,12 +1897,110 @@ libgnu_la-strnlen.lo: strnlen.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-strnlen.lo `test -f 'strnlen.c' || echo '$(srcdir)/'`strnlen.c
 
+uniconv/libgnu_la-u8-conv-from-enc.lo: uniconv/u8-conv-from-enc.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT uniconv/libgnu_la-u8-conv-from-enc.lo -MD -MP -MF uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Tpo -c -o uniconv/libgnu_la-u8-conv-from-enc.lo `test -f 'uniconv/u8-conv-from-enc.c' || echo '$(srcdir)/'`uniconv/u8-conv-from-enc.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Tpo uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='uniconv/u8-conv-from-enc.c' object='uniconv/libgnu_la-u8-conv-from-enc.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o uniconv/libgnu_la-u8-conv-from-enc.lo `test -f 'uniconv/u8-conv-from-enc.c' || echo '$(srcdir)/'`uniconv/u8-conv-from-enc.c
+
+uniconv/libgnu_la-u8-strconv-from-enc.lo: uniconv/u8-strconv-from-enc.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT uniconv/libgnu_la-u8-strconv-from-enc.lo -MD -MP -MF uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Tpo -c -o uniconv/libgnu_la-u8-strconv-from-enc.lo `test -f 'uniconv/u8-strconv-from-enc.c' || echo '$(srcdir)/'`uniconv/u8-strconv-from-enc.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Tpo uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='uniconv/u8-strconv-from-enc.c' object='uniconv/libgnu_la-u8-strconv-from-enc.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o uniconv/libgnu_la-u8-strconv-from-enc.lo `test -f 'uniconv/u8-strconv-from-enc.c' || echo '$(srcdir)/'`uniconv/u8-strconv-from-enc.c
+
 libgnu_la-unistd.lo: unistd.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT libgnu_la-unistd.lo -MD -MP -MF $(DEPDIR)/libgnu_la-unistd.Tpo -c -o libgnu_la-unistd.lo `test -f 'unistd.c' || echo '$(srcdir)/'`unistd.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnu_la-unistd.Tpo $(DEPDIR)/libgnu_la-unistd.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistd.c' object='libgnu_la-unistd.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o libgnu_la-unistd.lo `test -f 'unistd.c' || echo '$(srcdir)/'`unistd.c
+
+unistr/libgnu_la-u8-check.lo: unistr/u8-check.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-check.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-check.Tpo -c -o unistr/libgnu_la-u8-check.lo `test -f 'unistr/u8-check.c' || echo '$(srcdir)/'`unistr/u8-check.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-check.Tpo unistr/$(DEPDIR)/libgnu_la-u8-check.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-check.c' object='unistr/libgnu_la-u8-check.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-check.lo `test -f 'unistr/u8-check.c' || echo '$(srcdir)/'`unistr/u8-check.c
+
+unistr/libgnu_la-u8-mblen.lo: unistr/u8-mblen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mblen.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mblen.Tpo -c -o unistr/libgnu_la-u8-mblen.lo `test -f 'unistr/u8-mblen.c' || echo '$(srcdir)/'`unistr/u8-mblen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mblen.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mblen.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mblen.c' object='unistr/libgnu_la-u8-mblen.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mblen.lo `test -f 'unistr/u8-mblen.c' || echo '$(srcdir)/'`unistr/u8-mblen.c
+
+unistr/libgnu_la-u8-mbsnlen.lo: unistr/u8-mbsnlen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mbsnlen.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Tpo -c -o unistr/libgnu_la-u8-mbsnlen.lo `test -f 'unistr/u8-mbsnlen.c' || echo '$(srcdir)/'`unistr/u8-mbsnlen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mbsnlen.c' object='unistr/libgnu_la-u8-mbsnlen.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mbsnlen.lo `test -f 'unistr/u8-mbsnlen.c' || echo '$(srcdir)/'`unistr/u8-mbsnlen.c
+
+unistr/libgnu_la-u8-mbtouc.lo: unistr/u8-mbtouc.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mbtouc.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Tpo -c -o unistr/libgnu_la-u8-mbtouc.lo `test -f 'unistr/u8-mbtouc.c' || echo '$(srcdir)/'`unistr/u8-mbtouc.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mbtouc.c' object='unistr/libgnu_la-u8-mbtouc.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mbtouc.lo `test -f 'unistr/u8-mbtouc.c' || echo '$(srcdir)/'`unistr/u8-mbtouc.c
+
+unistr/libgnu_la-u8-mbtouc-aux.lo: unistr/u8-mbtouc-aux.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mbtouc-aux.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Tpo -c -o unistr/libgnu_la-u8-mbtouc-aux.lo `test -f 'unistr/u8-mbtouc-aux.c' || echo '$(srcdir)/'`unistr/u8-mbtouc-aux.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mbtouc-aux.c' object='unistr/libgnu_la-u8-mbtouc-aux.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mbtouc-aux.lo `test -f 'unistr/u8-mbtouc-aux.c' || echo '$(srcdir)/'`unistr/u8-mbtouc-aux.c
+
+unistr/libgnu_la-u8-mbtouc-unsafe.lo: unistr/u8-mbtouc-unsafe.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mbtouc-unsafe.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Tpo -c -o unistr/libgnu_la-u8-mbtouc-unsafe.lo `test -f 'unistr/u8-mbtouc-unsafe.c' || echo '$(srcdir)/'`unistr/u8-mbtouc-unsafe.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mbtouc-unsafe.c' object='unistr/libgnu_la-u8-mbtouc-unsafe.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mbtouc-unsafe.lo `test -f 'unistr/u8-mbtouc-unsafe.c' || echo '$(srcdir)/'`unistr/u8-mbtouc-unsafe.c
+
+unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo: unistr/u8-mbtouc-unsafe-aux.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Tpo -c -o unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo `test -f 'unistr/u8-mbtouc-unsafe-aux.c' || echo '$(srcdir)/'`unistr/u8-mbtouc-unsafe-aux.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mbtouc-unsafe-aux.c' object='unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mbtouc-unsafe-aux.lo `test -f 'unistr/u8-mbtouc-unsafe-aux.c' || echo '$(srcdir)/'`unistr/u8-mbtouc-unsafe-aux.c
+
+unistr/libgnu_la-u8-mbtoucr.lo: unistr/u8-mbtoucr.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-mbtoucr.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Tpo -c -o unistr/libgnu_la-u8-mbtoucr.lo `test -f 'unistr/u8-mbtoucr.c' || echo '$(srcdir)/'`unistr/u8-mbtoucr.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Tpo unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-mbtoucr.c' object='unistr/libgnu_la-u8-mbtoucr.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-mbtoucr.lo `test -f 'unistr/u8-mbtoucr.c' || echo '$(srcdir)/'`unistr/u8-mbtoucr.c
+
+unistr/libgnu_la-u8-prev.lo: unistr/u8-prev.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-prev.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-prev.Tpo -c -o unistr/libgnu_la-u8-prev.lo `test -f 'unistr/u8-prev.c' || echo '$(srcdir)/'`unistr/u8-prev.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-prev.Tpo unistr/$(DEPDIR)/libgnu_la-u8-prev.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-prev.c' object='unistr/libgnu_la-u8-prev.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-prev.lo `test -f 'unistr/u8-prev.c' || echo '$(srcdir)/'`unistr/u8-prev.c
+
+unistr/libgnu_la-u8-strlen.lo: unistr/u8-strlen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-strlen.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-strlen.Tpo -c -o unistr/libgnu_la-u8-strlen.lo `test -f 'unistr/u8-strlen.c' || echo '$(srcdir)/'`unistr/u8-strlen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-strlen.Tpo unistr/$(DEPDIR)/libgnu_la-u8-strlen.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-strlen.c' object='unistr/libgnu_la-u8-strlen.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-strlen.lo `test -f 'unistr/u8-strlen.c' || echo '$(srcdir)/'`unistr/u8-strlen.c
+
+unistr/libgnu_la-u8-uctomb.lo: unistr/u8-uctomb.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-uctomb.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Tpo -c -o unistr/libgnu_la-u8-uctomb.lo `test -f 'unistr/u8-uctomb.c' || echo '$(srcdir)/'`unistr/u8-uctomb.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Tpo unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-uctomb.c' object='unistr/libgnu_la-u8-uctomb.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-uctomb.lo `test -f 'unistr/u8-uctomb.c' || echo '$(srcdir)/'`unistr/u8-uctomb.c
+
+unistr/libgnu_la-u8-uctomb-aux.lo: unistr/u8-uctomb-aux.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT unistr/libgnu_la-u8-uctomb-aux.lo -MD -MP -MF unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Tpo -c -o unistr/libgnu_la-u8-uctomb-aux.lo `test -f 'unistr/u8-uctomb-aux.c' || echo '$(srcdir)/'`unistr/u8-uctomb-aux.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Tpo unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unistr/u8-uctomb-aux.c' object='unistr/libgnu_la-u8-uctomb-aux.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -c -o unistr/libgnu_la-u8-uctomb-aux.lo `test -f 'unistr/u8-uctomb-aux.c' || echo '$(srcdir)/'`unistr/u8-uctomb-aux.c
 
 uniwidth/libgnu_la-width.lo: uniwidth/width.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnu_la_CFLAGS) $(CFLAGS) -MT uniwidth/libgnu_la-width.lo -MD -MP -MF uniwidth/$(DEPDIR)/libgnu_la-width.Tpo -c -o uniwidth/libgnu_la-width.lo `test -f 'uniwidth/width.c' || echo '$(srcdir)/'`uniwidth/width.c
@@ -1639,6 +2077,8 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+	-rm -rf uniconv/.libs uniconv/_libs
+	-rm -rf unistr/.libs unistr/_libs
 	-rm -rf uniwidth/.libs uniwidth/_libs
 
 # This directory's subdirectories are mostly independent; you can cd
@@ -1833,6 +2273,10 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f uniconv/$(DEPDIR)/$(am__dirstamp)
+	-rm -f uniconv/$(am__dirstamp)
+	-rm -f unistr/$(DEPDIR)/$(am__dirstamp)
+	-rm -f unistr/$(am__dirstamp)
 	-rm -f uniwidth/$(DEPDIR)/$(am__dirstamp)
 	-rm -f uniwidth/$(am__dirstamp)
 	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
@@ -1850,19 +2294,31 @@ clean-am: clean-generic clean-libtool clean-noinstLIBRARIES \
 distclean: distclean-recursive
 		-rm -f ./$(DEPDIR)/libgnu_la-asnprintf.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-asprintf.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-c-ctype.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-c-strcasecmp.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-c-strncasecmp.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-exitfail.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-float.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-free.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-getdelim.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-getline.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-iconv.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-iconv_close.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-iconv_open.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-itold.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-localcharset.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-malloca.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-mbszero.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-memchr.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-obstack.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-printf-args.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-printf-parse.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-rawmemchr.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-stdio-read.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-stdio-write.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-strchrnul.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-striconveh.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-striconveha.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-strndup.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-strnlen.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-unistd.Plo
@@ -1871,6 +2327,20 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/libgnu_la-wctype-h.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-wcwidth.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-xsize.Plo
+	-rm -f uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Plo
+	-rm -f uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-check.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mblen.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-prev.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-strlen.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Plo
 	-rm -f uniwidth/$(DEPDIR)/libgnu_la-width.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -1919,19 +2389,31 @@ installcheck-am:
 maintainer-clean: maintainer-clean-recursive
 		-rm -f ./$(DEPDIR)/libgnu_la-asnprintf.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-asprintf.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-c-ctype.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-c-strcasecmp.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-c-strncasecmp.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-exitfail.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-float.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-free.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-getdelim.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-getline.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-iconv.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-iconv_close.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-iconv_open.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-itold.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-localcharset.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-malloca.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-mbszero.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-memchr.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-obstack.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-printf-args.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-printf-parse.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-rawmemchr.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-stdio-read.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-stdio-write.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-strchrnul.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-striconveh.Plo
+	-rm -f ./$(DEPDIR)/libgnu_la-striconveha.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-strndup.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-strnlen.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-unistd.Plo
@@ -1940,6 +2422,20 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/libgnu_la-wctype-h.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-wcwidth.Plo
 	-rm -f ./$(DEPDIR)/libgnu_la-xsize.Plo
+	-rm -f uniconv/$(DEPDIR)/libgnu_la-u8-conv-from-enc.Plo
+	-rm -f uniconv/$(DEPDIR)/libgnu_la-u8-strconv-from-enc.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-check.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mblen.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbsnlen.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-aux.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe-aux.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc-unsafe.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtouc.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-mbtoucr.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-prev.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-strlen.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-uctomb-aux.Plo
+	-rm -f unistr/$(DEPDIR)/libgnu_la-u8-uctomb.Plo
 	-rm -f uniwidth/$(DEPDIR)/libgnu_la-width.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic \
@@ -2046,6 +2542,47 @@ uninstall-am:
 @GL_GENERATE_FLOAT_H_FALSE@float.h: $(top_builddir)/config.status
 @GL_GENERATE_FLOAT_H_FALSE@	rm -f $@
 
+# We need the following in order to create <iconv.h> when the system
+# doesn't have one that works with the given compiler.
+@GL_GENERATE_ICONV_H_TRUE@iconv.h: iconv.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
+@GL_GENERATE_ICONV_H_TRUE@	$(gl_V_at)$(SED_HEADER_STDOUT) \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''GUARD_PREFIX''@|GL|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''NEXT_ICONV_H''@|$(NEXT_ICONV_H)|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's/@''GNULIB_ICONV''@/$(GL_GNULIB_ICONV)/g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''ICONV_CONST''@|$(ICONV_CONST)|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''REPLACE_ICONV''@|$(REPLACE_ICONV)|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''REPLACE_ICONV_OPEN''@|$(REPLACE_ICONV_OPEN)|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e 's|@''REPLACE_ICONV_UTF''@|$(REPLACE_ICONV_UTF)|g' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
+@GL_GENERATE_ICONV_H_TRUE@	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
+@GL_GENERATE_ICONV_H_TRUE@	      $(srcdir)/iconv.in.h > $@-t
+@GL_GENERATE_ICONV_H_TRUE@	$(AM_V_at)mv $@-t $@
+@GL_GENERATE_ICONV_H_FALSE@iconv.h: $(top_builddir)/config.status
+@GL_GENERATE_ICONV_H_FALSE@	rm -f $@
+
+$(srcdir)/iconv_open-aix.h: $(srcdir)/iconv_open-aix.gperf
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/iconv_open-aix.gperf > $(srcdir)/iconv_open-aix.h-t && \
+	mv $(srcdir)/iconv_open-aix.h-t $(srcdir)/iconv_open-aix.h
+$(srcdir)/iconv_open-hpux.h: $(srcdir)/iconv_open-hpux.gperf
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/iconv_open-hpux.gperf > $(srcdir)/iconv_open-hpux.h-t && \
+	mv $(srcdir)/iconv_open-hpux.h-t $(srcdir)/iconv_open-hpux.h
+$(srcdir)/iconv_open-irix.h: $(srcdir)/iconv_open-irix.gperf
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/iconv_open-irix.gperf > $(srcdir)/iconv_open-irix.h-t && \
+	mv $(srcdir)/iconv_open-irix.h-t $(srcdir)/iconv_open-irix.h
+$(srcdir)/iconv_open-osf.h: $(srcdir)/iconv_open-osf.gperf
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/iconv_open-osf.gperf > $(srcdir)/iconv_open-osf.h-t && \
+	mv $(srcdir)/iconv_open-osf.h-t $(srcdir)/iconv_open-osf.h
+$(srcdir)/iconv_open-solaris.h: $(srcdir)/iconv_open-solaris.gperf
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/iconv_open-solaris.gperf > $(srcdir)/iconv_open-solaris.h-t && \
+	mv $(srcdir)/iconv_open-solaris.h-t $(srcdir)/iconv_open-solaris.h
+$(srcdir)/iconv_open-zos.h: $(srcdir)/iconv_open-zos.gperf
+	$(V_GPERF)$(GPERF) -m 10 $(srcdir)/iconv_open-zos.gperf > $(srcdir)/iconv_open-zos.h-t && \
+	mv $(srcdir)/iconv_open-zos.h-t $(srcdir)/iconv_open-zos.h
+
 # We need the following in order to create <inttypes.h> when the system
 # doesn't have one that works with the given compiler.
 inttypes.h: inttypes.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_USE_H) $(ARG_NONNULL_H)
@@ -2066,6 +2603,8 @@ inttypes.h: inttypes.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_U
 	      -e 's/@''HAVE_DECL_STRTOIMAX''@/$(HAVE_DECL_STRTOIMAX)/g' \
 	      -e 's/@''HAVE_DECL_STRTOUMAX''@/$(HAVE_DECL_STRTOUMAX)/g' \
 	      -e 's/@''HAVE_IMAXDIV_T''@/$(HAVE_IMAXDIV_T)/g' \
+	      -e 's/@''REPLACE_IMAXABS''@/$(REPLACE_IMAXABS)/g' \
+	      -e 's/@''REPLACE_IMAXDIV''@/$(REPLACE_IMAXDIV)/g' \
 	      -e 's/@''REPLACE_STRTOIMAX''@/$(REPLACE_STRTOIMAX)/g' \
 	      -e 's/@''REPLACE_STRTOUMAX''@/$(REPLACE_STRTOUMAX)/g' \
 	      -e 's/@''INT32_MAX_LT_INTMAX_MAX''@/$(INT32_MAX_LT_INTMAX_MAX)/g' \
@@ -2092,13 +2631,14 @@ inttypes.h: inttypes.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_U
 @GL_GENERATE_LIMITS_H_FALSE@limits.h: $(top_builddir)/config.status
 @GL_GENERATE_LIMITS_H_FALSE@	rm -f $@
 
-# We need the following in order to create <stdalign.h> when the system
-# doesn't have one that works.
-@GL_GENERATE_STDALIGN_H_TRUE@stdalign.h: stdalign.in.h $(top_builddir)/config.status
-@GL_GENERATE_STDALIGN_H_TRUE@	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/stdalign.in.h
-@GL_GENERATE_STDALIGN_H_TRUE@	$(AM_V_at)mv $@-t $@
-@GL_GENERATE_STDALIGN_H_FALSE@stdalign.h: $(top_builddir)/config.status
-@GL_GENERATE_STDALIGN_H_FALSE@	rm -f $@
+# We need the following in order to create <stdckdint.h> when the system
+# doesn't have one that works with the given compiler.
+@GL_GENERATE_STDCKDINT_H_TRUE@stdckdint.h: stdckdint.in.h $(top_builddir)/config.status
+@GL_GENERATE_STDCKDINT_H_TRUE@	$(gl_V_at)$(SED_HEADER_STDOUT) \
+@GL_GENERATE_STDCKDINT_H_TRUE@	  $(srcdir)/stdckdint.in.h > $@-t
+@GL_GENERATE_STDCKDINT_H_TRUE@	$(AM_V_at)mv $@-t $@
+@GL_GENERATE_STDCKDINT_H_FALSE@stdckdint.h: $(top_builddir)/config.status
+@GL_GENERATE_STDCKDINT_H_FALSE@	rm -f $@
 
 # We need the following in order to create <stddef.h> when the system
 # doesn't have one that works with the given compiler.
@@ -2222,14 +2762,17 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_MDA_GETW''@/$(GL_GNULIB_MDA_GETW)/g' \
 	      -e 's/@''GNULIB_MDA_PUTW''@/$(GL_GNULIB_MDA_PUTW)/g' \
 	      -e 's/@''GNULIB_MDA_TEMPNAM''@/$(GL_GNULIB_MDA_TEMPNAM)/g' \
-	      < $(srcdir)/stdio.in.h | \
-	  sed -e 's|@''HAVE_DECL_FCLOSEALL''@|$(HAVE_DECL_FCLOSEALL)|g' \
+	      < $(srcdir)/stdio.in.h > $@-t1
+	$(AM_V_at)sed \
+	      -e 's|@''HAVE_DECL_FCLOSEALL''@|$(HAVE_DECL_FCLOSEALL)|g' \
 	      -e 's|@''HAVE_DECL_FPURGE''@|$(HAVE_DECL_FPURGE)|g' \
 	      -e 's|@''HAVE_DECL_FSEEKO''@|$(HAVE_DECL_FSEEKO)|g' \
 	      -e 's|@''HAVE_DECL_FTELLO''@|$(HAVE_DECL_FTELLO)|g' \
 	      -e 's|@''HAVE_DECL_GETDELIM''@|$(HAVE_DECL_GETDELIM)|g' \
 	      -e 's|@''HAVE_DECL_GETLINE''@|$(HAVE_DECL_GETLINE)|g' \
+	      -e 's|@''HAVE_DECL_GETW''@|$(HAVE_DECL_GETW)|g' \
 	      -e 's|@''HAVE_DECL_OBSTACK_PRINTF''@|$(HAVE_DECL_OBSTACK_PRINTF)|g' \
+	      -e 's|@''HAVE_DECL_PUTW''@|$(HAVE_DECL_PUTW)|g' \
 	      -e 's|@''HAVE_DECL_SNPRINTF''@|$(HAVE_DECL_SNPRINTF)|g' \
 	      -e 's|@''HAVE_DECL_VSNPRINTF''@|$(HAVE_DECL_VSNPRINTF)|g' \
 	      -e 's|@''HAVE_DPRINTF''@|$(HAVE_DPRINTF)|g' \
@@ -2240,6 +2783,8 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''HAVE_RENAMEAT''@|$(HAVE_RENAMEAT)|g' \
 	      -e 's|@''HAVE_VASPRINTF''@|$(HAVE_VASPRINTF)|g' \
 	      -e 's|@''HAVE_VDPRINTF''@|$(HAVE_VDPRINTF)|g' \
+	      < $@-t1 > $@-t2
+	$(AM_V_at)sed \
 	      -e 's|@''REPLACE_DPRINTF''@|$(REPLACE_DPRINTF)|g' \
 	      -e 's|@''REPLACE_FCLOSE''@|$(REPLACE_FCLOSE)|g' \
 	      -e 's|@''REPLACE_FDOPEN''@|$(REPLACE_FDOPEN)|g' \
@@ -2277,8 +2822,9 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      > $@-t
-	$(AM_V_at)mv $@-t $@
+	      < $@-t2 > $@-t3
+	$(AM_V_at)rm -f $@-t1 $@-t2
+	$(AM_V_at)mv $@-t3 $@
 
 # We need the following in order to create <stdlib.h> when the system
 # doesn't have one that works with the given compiler.
@@ -2298,10 +2844,12 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's/@''GNULIB_CANONICALIZE_FILE_NAME''@/$(GL_GNULIB_CANONICALIZE_FILE_NAME)/g' \
 	      -e 's/@''GNULIB_FREE_POSIX''@/$(GL_GNULIB_FREE_POSIX)/g' \
 	      -e 's/@''GNULIB_GETLOADAVG''@/$(GL_GNULIB_GETLOADAVG)/g' \
+	      -e 's/@''GNULIB_GETPROGNAME''@/$(GL_GNULIB_GETPROGNAME)/g' \
 	      -e 's/@''GNULIB_GETSUBOPT''@/$(GL_GNULIB_GETSUBOPT)/g' \
 	      -e 's/@''GNULIB_GRANTPT''@/$(GL_GNULIB_GRANTPT)/g' \
 	      -e 's/@''GNULIB_MALLOC_GNU''@/$(GL_GNULIB_MALLOC_GNU)/g' \
 	      -e 's/@''GNULIB_MALLOC_POSIX''@/$(GL_GNULIB_MALLOC_POSIX)/g' \
+	      -e 's/@''GNULIB_MBSTOWCS''@/$(GL_GNULIB_MBSTOWCS)/g' \
 	      -e 's/@''GNULIB_MBTOWC''@/$(GL_GNULIB_MBTOWC)/g' \
 	      -e 's/@''GNULIB_MKDTEMP''@/$(GL_GNULIB_MKDTEMP)/g' \
 	      -e 's/@''GNULIB_MKOSTEMP''@/$(GL_GNULIB_MKOSTEMP)/g' \
@@ -2338,8 +2886,9 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's/@''GNULIB_MDA_GCVT''@/$(GL_GNULIB_MDA_GCVT)/g' \
 	      -e 's/@''GNULIB_MDA_MKTEMP''@/$(GL_GNULIB_MDA_MKTEMP)/g' \
 	      -e 's/@''GNULIB_MDA_PUTENV''@/$(GL_GNULIB_MDA_PUTENV)/g' \
-	      < $(srcdir)/stdlib.in.h | \
-	  sed -e 's|@''HAVE__EXIT''@|$(HAVE__EXIT)|g' \
+	      < $(srcdir)/stdlib.in.h > $@-t1
+	$(AM_V_at)sed \
+	      -e 's|@''HAVE__EXIT''@|$(HAVE__EXIT)|g' \
 	      -e 's|@''HAVE_ALIGNED_ALLOC''@|$(HAVE_ALIGNED_ALLOC)|g' \
 	      -e 's|@''HAVE_ATOLL''@|$(HAVE_ATOLL)|g' \
 	      -e 's|@''HAVE_CANONICALIZE_FILE_NAME''@|$(HAVE_CANONICALIZE_FILE_NAME)|g' \
@@ -2347,6 +2896,8 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''HAVE_DECL_FCVT''@|$(HAVE_DECL_FCVT)|g' \
 	      -e 's|@''HAVE_DECL_GCVT''@|$(HAVE_DECL_GCVT)|g' \
 	      -e 's|@''HAVE_DECL_GETLOADAVG''@|$(HAVE_DECL_GETLOADAVG)|g' \
+	      -e 's|@''HAVE_DECL_PROGRAM_INVOCATION_NAME''@|$(HAVE_DECL_PROGRAM_INVOCATION_NAME)|g' \
+	      -e 's|@''HAVE_GETPROGNAME''@|$(HAVE_GETPROGNAME)|g' \
 	      -e 's|@''HAVE_GETSUBOPT''@|$(HAVE_GETSUBOPT)|g' \
 	      -e 's|@''HAVE_GRANTPT''@|$(HAVE_GRANTPT)|g' \
 	      -e 's|@''HAVE_INITSTATE''@|$(HAVE_INITSTATE)|g' \
@@ -2382,17 +2933,28 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''HAVE_SYS_LOADAVG_H''@|$(HAVE_SYS_LOADAVG_H)|g' \
 	      -e 's|@''HAVE_UNLOCKPT''@|$(HAVE_UNLOCKPT)|g' \
 	      -e 's|@''HAVE_DECL_UNSETENV''@|$(HAVE_DECL_UNSETENV)|g' \
+	      < $@-t1 > $@-t2
+	$(AM_V_at)sed \
+	      -e 's|@''REPLACE__EXIT''@|$(REPLACE__EXIT)|g' \
 	      -e 's|@''REPLACE_ALIGNED_ALLOC''@|$(REPLACE_ALIGNED_ALLOC)|g' \
 	      -e 's|@''REPLACE_CALLOC_FOR_CALLOC_GNU''@|$(REPLACE_CALLOC_FOR_CALLOC_GNU)|g' \
 	      -e 's|@''REPLACE_CALLOC_FOR_CALLOC_POSIX''@|$(REPLACE_CALLOC_FOR_CALLOC_POSIX)|g' \
 	      -e 's|@''REPLACE_CANONICALIZE_FILE_NAME''@|$(REPLACE_CANONICALIZE_FILE_NAME)|g' \
 	      -e 's|@''REPLACE_FREE''@|$(REPLACE_FREE)|g' \
+	      -e 's|@''REPLACE_GETLOADAVG''@|$(REPLACE_GETLOADAVG)|g' \
+	      -e 's|@''REPLACE_GETPROGNAME''@|$(REPLACE_GETPROGNAME)|g' \
+	      -e 's|@''REPLACE_GETSUBOPT''@|$(REPLACE_GETSUBOPT)|g' \
 	      -e 's|@''REPLACE_INITSTATE''@|$(REPLACE_INITSTATE)|g' \
 	      -e 's|@''REPLACE_MALLOC_FOR_MALLOC_GNU''@|$(REPLACE_MALLOC_FOR_MALLOC_GNU)|g' \
 	      -e 's|@''REPLACE_MALLOC_FOR_MALLOC_POSIX''@|$(REPLACE_MALLOC_FOR_MALLOC_POSIX)|g' \
+	      -e 's|@''REPLACE_MB_CUR_MAX''@|$(REPLACE_MB_CUR_MAX)|g' \
+	      -e 's|@''REPLACE_MBSTOWCS''@|$(REPLACE_MBSTOWCS)|g' \
 	      -e 's|@''REPLACE_MBTOWC''@|$(REPLACE_MBTOWC)|g' \
+	      -e 's|@''REPLACE_MKOSTEMP''@|$(REPLACE_MKOSTEMP)|g' \
+	      -e 's|@''REPLACE_MKOSTEMPS''@|$(REPLACE_MKOSTEMPS)|g' \
 	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
 	      -e 's|@''REPLACE_POSIX_MEMALIGN''@|$(REPLACE_POSIX_MEMALIGN)|g' \
+	      -e 's|@''REPLACE_POSIX_OPENPT''@|$(REPLACE_POSIX_OPENPT)|g' \
 	      -e 's|@''REPLACE_PTSNAME''@|$(REPLACE_PTSNAME)|g' \
 	      -e 's|@''REPLACE_PTSNAME_R''@|$(REPLACE_PTSNAME_R)|g' \
 	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
@@ -2417,8 +2979,9 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e '/definition of _Noreturn/r $(_NORETURN_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      > $@-t
-	$(AM_V_at)mv $@-t $@
+	      < $@-t2 > $@-t3
+	$(AM_V_at)rm -f $@-t1 $@-t2
+	$(AM_V_at)mv $@-t3 $@
 
 # We need the following in order to create <string.h> when the system
 # doesn't have one that works with the given compiler.
@@ -2450,6 +3013,7 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's/@''GNULIB_MEMMEM''@/$(GL_GNULIB_MEMMEM)/g' \
 	      -e 's/@''GNULIB_MEMPCPY''@/$(GL_GNULIB_MEMPCPY)/g' \
 	      -e 's/@''GNULIB_MEMRCHR''@/$(GL_GNULIB_MEMRCHR)/g' \
+	      -e 's/@''GNULIB_MEMSET_EXPLICIT''@/$(GL_GNULIB_MEMSET_EXPLICIT)/g' \
 	      -e 's/@''GNULIB_RAWMEMCHR''@/$(GL_GNULIB_RAWMEMCHR)/g' \
 	      -e 's/@''GNULIB_STPCPY''@/$(GL_GNULIB_STPCPY)/g' \
 	      -e 's/@''GNULIB_STPNCPY''@/$(GL_GNULIB_STPNCPY)/g' \
@@ -2473,14 +3037,16 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's/@''GNULIB_MDA_MEMCCPY''@/$(GL_GNULIB_MDA_MEMCCPY)/g' \
 	      -e 's/@''GNULIB_MDA_STRDUP''@/$(GL_GNULIB_MDA_STRDUP)/g' \
 	      -e 's/@''GNULIB_FREE_POSIX''@/$(GL_GNULIB_FREE_POSIX)/g' \
-	      < $(srcdir)/string.in.h | \
-	  sed -e 's|@''HAVE_EXPLICIT_BZERO''@|$(HAVE_EXPLICIT_BZERO)|g' \
+	      < $(srcdir)/string.in.h > $@-t1
+	$(AM_V_at)sed \
+	      -e 's|@''HAVE_EXPLICIT_BZERO''@|$(HAVE_EXPLICIT_BZERO)|g' \
 	      -e 's|@''HAVE_FFSL''@|$(HAVE_FFSL)|g' \
 	      -e 's|@''HAVE_FFSLL''@|$(HAVE_FFSLL)|g' \
 	      -e 's|@''HAVE_MBSLEN''@|$(HAVE_MBSLEN)|g' \
 	      -e 's|@''HAVE_DECL_MEMMEM''@|$(HAVE_DECL_MEMMEM)|g' \
 	      -e 's|@''HAVE_MEMPCPY''@|$(HAVE_MEMPCPY)|g' \
 	      -e 's|@''HAVE_DECL_MEMRCHR''@|$(HAVE_DECL_MEMRCHR)|g' \
+	      -e 's|@''HAVE_MEMSET_EXPLICIT''@|$(HAVE_MEMSET_EXPLICIT)|g' \
 	      -e 's|@''HAVE_RAWMEMCHR''@|$(HAVE_RAWMEMCHR)|g' \
 	      -e 's|@''HAVE_STPCPY''@|$(HAVE_STPCPY)|g' \
 	      -e 's|@''HAVE_STPNCPY''@|$(HAVE_STPNCPY)|g' \
@@ -2501,7 +3067,9 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_FFSLL''@|$(REPLACE_FFSLL)|g' \
 	      -e 's|@''REPLACE_MEMCHR''@|$(REPLACE_MEMCHR)|g' \
 	      -e 's|@''REPLACE_MEMMEM''@|$(REPLACE_MEMMEM)|g' \
+	      -e 's|@''REPLACE_MEMPCPY''@|$(REPLACE_MEMPCPY)|g' \
 	      -e 's|@''REPLACE_FREE''@|$(REPLACE_FREE)|g' \
+	      -e 's|@''REPLACE_STPCPY''@|$(REPLACE_STPCPY)|g' \
 	      -e 's|@''REPLACE_STPNCPY''@|$(REPLACE_STPNCPY)|g' \
 	      -e 's|@''REPLACE_STRCHRNUL''@|$(REPLACE_STRCHRNUL)|g' \
 	      -e 's|@''REPLACE_STRDUP''@|$(REPLACE_STRDUP)|g' \
@@ -2519,8 +3087,9 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      > $@-t
-	$(AM_V_at)mv $@-t $@
+	      < $@-t1 > $@-t2
+	$(AM_V_at)rm -f $@-t1
+	$(AM_V_at)mv $@-t2 $@
 
 # We need the following in order to create <sys/types.h> when the system
 # doesn't have one that works with the given compiler.
@@ -2535,6 +3104,10 @@ sys/types.h: sys_types.in.h $(top_builddir)/config.status
 	      -e 's|@''WINDOWS_64_BIT_OFF_T''@|$(WINDOWS_64_BIT_OFF_T)|g' \
 	      -e 's|@''WINDOWS_STAT_INODES''@|$(WINDOWS_STAT_INODES)|g' \
 	      $(srcdir)/sys_types.in.h > $@-t
+	$(AM_V_at)mv $@-t $@
+
+uniconv.h: uniconv.in.h
+	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/uniconv.in.h
 	$(AM_V_at)mv $@-t $@
 
 # We need the following in order to create an empty placeholder for
@@ -2571,6 +3144,8 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's/@''GNULIB_FDATASYNC''@/$(GL_GNULIB_FDATASYNC)/g' \
 	      -e 's/@''GNULIB_FSYNC''@/$(GL_GNULIB_FSYNC)/g' \
 	      -e 's/@''GNULIB_FTRUNCATE''@/$(GL_GNULIB_FTRUNCATE)/g' \
+	      < $(srcdir)/unistd.in.h > $@-t1
+	$(AM_V_at)sed \
 	      -e 's/@''GNULIB_GETCWD''@/$(GL_GNULIB_GETCWD)/g' \
 	      -e 's/@''GNULIB_GETDOMAINNAME''@/$(GL_GNULIB_GETDOMAINNAME)/g' \
 	      -e 's/@''GNULIB_GETDTABLESIZE''@/$(GL_GNULIB_GETDTABLESIZE)/g' \
@@ -2632,8 +3207,9 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's/@''GNULIB_MDA_SWAB''@/$(GL_GNULIB_MDA_SWAB)/g' \
 	      -e 's/@''GNULIB_MDA_UNLINK''@/$(GL_GNULIB_MDA_UNLINK)/g' \
 	      -e 's/@''GNULIB_MDA_WRITE''@/$(GL_GNULIB_MDA_WRITE)/g' \
-	      < $(srcdir)/unistd.in.h | \
-	  sed -e 's|@''HAVE_CHOWN''@|$(HAVE_CHOWN)|g' \
+	      < $@-t1 > $@-t2
+	$(AM_V_at)sed \
+	      -e 's|@''HAVE_CHOWN''@|$(HAVE_CHOWN)|g' \
 	      -e 's|@''HAVE_COPY_FILE_RANGE''@|$(HAVE_COPY_FILE_RANGE)|g' \
 	      -e 's|@''HAVE_DUP3''@|$(HAVE_DUP3)|g' \
 	      -e 's|@''HAVE_EUIDACCESS''@|$(HAVE_EUIDACCESS)|g' \
@@ -2680,13 +3256,15 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''HAVE_DECL_TTYNAME_R''@|$(HAVE_DECL_TTYNAME_R)|g' \
 	      -e 's|@''HAVE_OS_H''@|$(HAVE_OS_H)|g' \
 	      -e 's|@''HAVE_SYS_PARAM_H''@|$(HAVE_SYS_PARAM_H)|g' \
-	  | \
-	  sed -e 's|@''REPLACE_ACCESS''@|$(REPLACE_ACCESS)|g' \
+	      < $@-t2 > $@-t3
+	$(AM_V_at)sed \
+	      -e 's|@''REPLACE_ACCESS''@|$(REPLACE_ACCESS)|g' \
 	      -e 's|@''REPLACE_CHOWN''@|$(REPLACE_CHOWN)|g' \
 	      -e 's|@''REPLACE_CLOSE''@|$(REPLACE_CLOSE)|g' \
 	      -e 's|@''REPLACE_COPY_FILE_RANGE''@|$(REPLACE_COPY_FILE_RANGE)|g' \
 	      -e 's|@''REPLACE_DUP''@|$(REPLACE_DUP)|g' \
 	      -e 's|@''REPLACE_DUP2''@|$(REPLACE_DUP2)|g' \
+	      -e 's|@''REPLACE_DUP3''@|$(REPLACE_DUP3)|g' \
 	      -e 's|@''REPLACE_EXECL''@|$(REPLACE_EXECL)|g' \
 	      -e 's|@''REPLACE_EXECLE''@|$(REPLACE_EXECLE)|g' \
 	      -e 's|@''REPLACE_EXECLP''@|$(REPLACE_EXECLP)|g' \
@@ -2696,10 +3274,12 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_EXECVPE''@|$(REPLACE_EXECVPE)|g' \
 	      -e 's|@''REPLACE_FACCESSAT''@|$(REPLACE_FACCESSAT)|g' \
 	      -e 's|@''REPLACE_FCHOWNAT''@|$(REPLACE_FCHOWNAT)|g' \
+	      -e 's|@''REPLACE_FDATASYNC''@|$(REPLACE_FDATASYNC)|g' \
 	      -e 's|@''REPLACE_FTRUNCATE''@|$(REPLACE_FTRUNCATE)|g' \
 	      -e 's|@''REPLACE_GETCWD''@|$(REPLACE_GETCWD)|g' \
 	      -e 's|@''REPLACE_GETDOMAINNAME''@|$(REPLACE_GETDOMAINNAME)|g' \
 	      -e 's|@''REPLACE_GETDTABLESIZE''@|$(REPLACE_GETDTABLESIZE)|g' \
+	      -e 's|@''REPLACE_GETENTROPY''@|$(REPLACE_GETENTROPY)|g' \
 	      -e 's|@''REPLACE_GETLOGIN_R''@|$(REPLACE_GETLOGIN_R)|g' \
 	      -e 's|@''REPLACE_GETGROUPS''@|$(REPLACE_GETGROUPS)|g' \
 	      -e 's|@''REPLACE_GETPAGESIZE''@|$(REPLACE_GETPAGESIZE)|g' \
@@ -2710,12 +3290,14 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_LINK''@|$(REPLACE_LINK)|g' \
 	      -e 's|@''REPLACE_LINKAT''@|$(REPLACE_LINKAT)|g' \
 	      -e 's|@''REPLACE_LSEEK''@|$(REPLACE_LSEEK)|g' \
+	      -e 's|@''REPLACE_PIPE2''@|$(REPLACE_PIPE2)|g' \
 	      -e 's|@''REPLACE_PREAD''@|$(REPLACE_PREAD)|g' \
 	      -e 's|@''REPLACE_PWRITE''@|$(REPLACE_PWRITE)|g' \
 	      -e 's|@''REPLACE_READ''@|$(REPLACE_READ)|g' \
 	      -e 's|@''REPLACE_READLINK''@|$(REPLACE_READLINK)|g' \
 	      -e 's|@''REPLACE_READLINKAT''@|$(REPLACE_READLINKAT)|g' \
 	      -e 's|@''REPLACE_RMDIR''@|$(REPLACE_RMDIR)|g' \
+	      -e 's|@''REPLACE_SETHOSTNAME''@|$(REPLACE_SETHOSTNAME)|g' \
 	      -e 's|@''REPLACE_SLEEP''@|$(REPLACE_SLEEP)|g' \
 	      -e 's|@''REPLACE_SYMLINK''@|$(REPLACE_SYMLINK)|g' \
 	      -e 's|@''REPLACE_SYMLINKAT''@|$(REPLACE_SYMLINKAT)|g' \
@@ -2731,7 +3313,12 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      > $@-t
+	      < $@-t3 > $@-t4
+	$(AM_V_at)rm -f $@-t1 $@-t2 $@-t3
+	$(AM_V_at)mv $@-t4 $@
+
+unistr.h: unistr.in.h
+	$(gl_V_at)$(SED_HEADER_TO_AT_t) $(srcdir)/unistr.in.h
 	$(AM_V_at)mv $@-t $@
 
 unitypes.h: unitypes.in.h
@@ -2758,6 +3345,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_BTOWC''@/$(GL_GNULIB_BTOWC)/g' \
 	      -e 's/@''GNULIB_WCTOB''@/$(GL_GNULIB_WCTOB)/g' \
 	      -e 's/@''GNULIB_MBSINIT''@/$(GL_GNULIB_MBSINIT)/g' \
+	      -e 's/@''GNULIB_MBSZERO''@/$(GL_GNULIB_MBSZERO)/g' \
 	      -e 's/@''GNULIB_MBRTOWC''@/$(GL_GNULIB_MBRTOWC)/g' \
 	      -e 's/@''GNULIB_MBRLEN''@/$(GL_GNULIB_MBRLEN)/g' \
 	      -e 's/@''GNULIB_MBSRTOWCS''@/$(GL_GNULIB_MBSRTOWCS)/g' \
@@ -2798,8 +3386,9 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_WCSFTIME''@/$(GL_GNULIB_WCSFTIME)/g' \
 	      -e 's/@''GNULIB_MDA_WCSDUP''@/$(GL_GNULIB_MDA_WCSDUP)/g' \
 	      -e 's/@''GNULIB_FREE_POSIX''@/$(GL_GNULIB_FREE_POSIX)/g' \
-	      < $(srcdir)/wchar.in.h | \
-	  sed -e 's|@''HAVE_WINT_T''@|$(HAVE_WINT_T)|g' \
+	      < $(srcdir)/wchar.in.h > $@-t1
+	$(AM_V_at)sed \
+	      -e 's|@''HAVE_WINT_T''@|$(HAVE_WINT_T)|g' \
 	      -e 's|@''HAVE_BTOWC''@|$(HAVE_BTOWC)|g' \
 	      -e 's|@''HAVE_MBSINIT''@|$(HAVE_MBSINIT)|g' \
 	      -e 's|@''HAVE_MBRTOWC''@|$(HAVE_MBRTOWC)|g' \
@@ -2842,8 +3431,9 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''HAVE_DECL_WCTOB''@|$(HAVE_DECL_WCTOB)|g' \
 	      -e 's|@''HAVE_DECL_WCSDUP''@|$(HAVE_DECL_WCSDUP)|g' \
 	      -e 's|@''HAVE_DECL_WCWIDTH''@|$(HAVE_DECL_WCWIDTH)|g' \
-	  | \
-	  sed -e 's|@''REPLACE_MBSTATE_T''@|$(REPLACE_MBSTATE_T)|g' \
+	      < $@-t1 > $@-t2
+	$(AM_V_at)sed \
+	      -e 's|@''REPLACE_MBSTATE_T''@|$(REPLACE_MBSTATE_T)|g' \
 	      -e 's|@''REPLACE_BTOWC''@|$(REPLACE_BTOWC)|g' \
 	      -e 's|@''REPLACE_WCTOB''@|$(REPLACE_WCTOB)|g' \
 	      -e 's|@''REPLACE_FREE''@|$(REPLACE_FREE)|g' \
@@ -2858,16 +3448,22 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
 	      -e 's|@''REPLACE_WCSWIDTH''@|$(REPLACE_WCSWIDTH)|g' \
 	      -e 's|@''REPLACE_WCSFTIME''@|$(REPLACE_WCSFTIME)|g' \
+	      -e 's|@''REPLACE_WCSCMP''@|$(REPLACE_WCSCMP)|g' \
+	      -e 's|@''REPLACE_WCSNCMP''@|$(REPLACE_WCSNCMP)|g' \
+	      -e 's|@''REPLACE_WCSSTR''@|$(REPLACE_WCSSTR)|g' \
 	      -e 's|@''REPLACE_WCSTOK''@|$(REPLACE_WCSTOK)|g' \
+	      -e 's|@''REPLACE_WMEMCMP''@|$(REPLACE_WMEMCMP)|g' \
+	      -e 's|@''REPLACE_WMEMPCPY''@|$(REPLACE_WMEMPCPY)|g' \
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      > $@-t
-	$(AM_V_at)mv $@-t $@
+	      < $@-t2 > $@-t3
+	$(AM_V_at)rm -f $@-t1 $@-t2
+	$(AM_V_at)mv $@-t3 $@
 
 # We need the following in order to create <wctype.h> when the system
 # doesn't have one that works with the given compiler.
-wctype.h: wctype.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_USE_H)
+wctype.h: wctype.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
 	$(gl_V_at)$(SED_HEADER_STDOUT) \
 	      -e 's|@''GUARD_PREFIX''@|GL|g' \
 	      -e 's/@''HAVE_WCTYPE_H''@/$(HAVE_WCTYPE_H)/g' \
@@ -2879,6 +3475,7 @@ wctype.h: wctype.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_USE_H
 	      -e 's/@''GNULIBHEADERS_OVERRIDE_WINT_T''@/$(GNULIBHEADERS_OVERRIDE_WINT_T)/g' \
 	      -e 's/@''GNULIB_ISWBLANK''@/$(GL_GNULIB_ISWBLANK)/g' \
 	      -e 's/@''GNULIB_ISWDIGIT''@/$(GL_GNULIB_ISWDIGIT)/g' \
+	      -e 's/@''GNULIB_ISWPUNCT''@/$(GL_GNULIB_ISWPUNCT)/g' \
 	      -e 's/@''GNULIB_ISWXDIGIT''@/$(GL_GNULIB_ISWXDIGIT)/g' \
 	      -e 's/@''GNULIB_WCTYPE''@/$(GL_GNULIB_WCTYPE)/g' \
 	      -e 's/@''GNULIB_ISWCTYPE''@/$(GL_GNULIB_ISWCTYPE)/g' \
@@ -2891,10 +3488,14 @@ wctype.h: wctype.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_USE_H
 	      -e 's/@''HAVE_WINT_T''@/$(HAVE_WINT_T)/g' \
 	      -e 's/@''REPLACE_ISWBLANK''@/$(REPLACE_ISWBLANK)/g' \
 	      -e 's/@''REPLACE_ISWDIGIT''@/$(REPLACE_ISWDIGIT)/g' \
+	      -e 's/@''REPLACE_ISWPUNCT''@/$(REPLACE_ISWPUNCT)/g' \
 	      -e 's/@''REPLACE_ISWXDIGIT''@/$(REPLACE_ISWXDIGIT)/g' \
 	      -e 's/@''REPLACE_ISWCNTRL''@/$(REPLACE_ISWCNTRL)/g' \
 	      -e 's/@''REPLACE_TOWLOWER''@/$(REPLACE_TOWLOWER)/g' \
+	      -e 's/@''REPLACE_WCTRANS''@/$(REPLACE_WCTRANS)/g' \
+	      -e 's/@''REPLACE_WCTYPE''@/$(REPLACE_WCTYPE)/g' \
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
 	      $(srcdir)/wctype.in.h > $@-t
 	$(AM_V_at)mv $@-t $@

@@ -12,9 +12,11 @@ $result_trees{'command_in_end_ignored_raw_one_char_not_in_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -22,11 +24,19 @@ $result_trees{'command_in_end_ignored_raw_one_char_not_in_command'} = {
           'cmdname' => 'html',
           'contents' => [
             {
-              'type' => 'elided_block'
-            },
-            {
-              'text' => '',
-              'type' => 'empty_line'
+              'contents' => [
+                {
+                  'text' => 'In html
+',
+                  'type' => 'raw'
+                },
+                {
+                  'text' => '@end h@asis{tml}
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             }
           ],
           'source_info' => {
@@ -43,6 +53,8 @@ $result_trees{'command_in_end_ignored_raw_one_char_not_in_command'} = {
 };
 
 $result_texis{'command_in_end_ignored_raw_one_char_not_in_command'} = '@html
+In html
+@end h@asis{tml}
 ';
 
 

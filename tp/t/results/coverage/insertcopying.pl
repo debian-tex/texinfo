@@ -12,9 +12,11 @@ $result_trees{'insertcopying'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -38,9 +40,11 @@ $result_trees{'insertcopying'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -64,17 +68,23 @@ $result_trees{'insertcopying'} = {
                           'text' => 'quotation'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'quotation'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -97,17 +107,23 @@ $result_trees{'insertcopying'} = {
                       'text' => 'copying'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'copying'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -146,7 +162,7 @@ $result_trees{'insertcopying'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'insertcopying',
@@ -238,7 +254,7 @@ $result_converted{'docbook_doc'}->{'insertcopying'} = '<?xml version="1.0"?>
   <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">
 ]>
-<book lang="en">
+<book lang="">
 <bookinfo><legalnotice><para>License.
 </para>
 <blockquote><para>You are not allowed.

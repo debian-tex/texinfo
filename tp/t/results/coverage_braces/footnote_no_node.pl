@@ -18,9 +18,11 @@ $result_trees{'footnote_no_node'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -68,8 +70,10 @@ $result_trees{'footnote_no_node'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -98,7 +102,6 @@ $result_sectioning{'footnote_no_node'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_level' => 0,
           'section_up' => {}
@@ -130,7 +133,7 @@ F(1).
 
 
 $result_converted{'html_text'}->{'footnote_no_node'} = '<div class="top-level-extent" id="top">
-<h1 class="top">top</h1>
+<h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <p>F<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p><div class="footnotes-segment">

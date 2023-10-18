@@ -5,6 +5,8 @@
 @node Top
 @top
 
+@node chap
+
 #line 100 "foo.ptèxi"
 
 @gggg

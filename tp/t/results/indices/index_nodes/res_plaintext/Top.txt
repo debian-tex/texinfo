@@ -1,0 +1,30 @@
+* Menu:
+
+* ! entry in node:                       chap first.            (line 0)
+* a concept a node:                      a node.                (line 0)
+* another:                               another.               (line 0)
+* entry a:                               Top.                   (line 0)
+* entry after printindex:                a node.                (line 0)
+* entry in node:                         chap first.            (line 0)
+* entry in node <1>:                     chap first.            (line 0)
+* something:                             another.               (line 0)
+
+* Menu:
+
+* a function:                            a node.                (line 0)
+* fun in node:                           chap first.            (line 0)
+* somewhere:                             another.               (line 0)
+
+And one one more index
+
+* Menu:
+
+* ! entry in node:                       chap first.            (line 0)
+* a concept a node:                      a node.                (line 0)
+* another:                               another.               (line 0)
+* entry a:                               Top.                   (line 0)
+* entry after printindex:                a node.                (line 0)
+* entry in node:                         chap first.            (line 0)
+* entry in node <1>:                     chap first.            (line 0)
+* something:                             another.               (line 0)
+

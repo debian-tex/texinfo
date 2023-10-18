@@ -1,0 +1,18 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top Contents at end
+
+Content at end.
+
+@menu 
+* chapter::
+@end menu
+
+@node chapter
+@chapter Chapter 1
+
+The chapter
+
+@contents
+@bye

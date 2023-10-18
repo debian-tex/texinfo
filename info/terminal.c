@@ -1,6 +1,6 @@
 /* terminal.c -- how to handle the physical terminal for Info.
 
-   Copyright 1988-2022 Free Software Foundation, Inc.
+   Copyright 1988-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -123,9 +123,6 @@ static char *term_invbeg;
 /* The string to turn off inverse mode, if this term has one. */
 static char *term_invend;
 
-/* String introducing a mouse event. */
-static char *term_Km;
-
 /* Strings entering and leaving standout mode. */
 char *term_so, *term_se;
 
@@ -173,14 +170,12 @@ terminal_begin_using_terminal (void)
   void (*sigsave) (int signum);
 
   /* Turn on mouse reporting.  This is "normal tracking mode" supported by
-     xterm.  The presence of the Km capability may not be a reliable way to
-     tell whether this mode exists, but sending the following sequence is
-     probably harmless if it doesn't.  */
-  if (mouse_protocol == MP_NORMAL_TRACKING
-      && term_Km && !strcmp (term_Km, "\033[M"))
+     xterm.
+     We used to check the presence of the Km (kmous) termcap capability, but
+     it may be set to different values (either "\033[M" or "\033[<") for
+     xterm, so we cannot rely on the value of this capability. */
+  if (mouse_protocol == MP_NORMAL_TRACKING)
     send_to_terminal ("\033[?1000h");
-  else
-    term_Km = 0;
 
   if (term_keypad_on)
       send_to_terminal (term_keypad_on);
@@ -214,7 +209,7 @@ terminal_end_using_terminal (void)
   void (*sigsave) (int signum);
 
   /* Turn off mouse reporting ("normal tracking mode"). */
-  if (term_Km)
+  if (mouse_protocol == MP_NORMAL_TRACKING)
     send_to_terminal ("\033[?1000l");
 
   if (term_keypad_off)
@@ -880,8 +875,8 @@ initialize_byte_map (void)
       add_seq_to_byte_map (keys2[i].key_id, keys2[i].byte_seq);
     }
 
-  if (term_Km)
-    add_seq_to_byte_map (KEY_MOUSE, term_Km);
+  /* In case "normal tracking mode" is on. */
+  add_seq_to_byte_map (KEY_MOUSE, "\033[M");
 
   /* Special case for ESC: Can introduce special key sequences, represent the
      Meta key being pressed, or be a key on its own. */
@@ -1039,9 +1034,6 @@ terminal_initialize_terminal (char *terminal_name)
   term_kD = tgetstr ("kD", &buffer);
 
   term_kB = tgetstr ("kB", &buffer);
-
-  /* String introducing a mouse event. */
-  term_Km = tgetstr ("Km", &buffer);
 
   initialize_byte_map ();
 

@@ -25,9 +25,11 @@ $result_trees{'space_in_node'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -42,9 +44,11 @@ $result_trees{'space_in_node'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -52,7 +56,7 @@ $result_trees{'space_in_node'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -63,6 +67,12 @@ $result_trees{'space_in_node'} = {
                       'text' => 'Chap    first here'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Chap-first-here'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -84,15 +94,6 @@ $result_trees{'space_in_node'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Chap-first-here'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -101,7 +102,7 @@ $result_trees{'space_in_node'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -124,6 +125,12 @@ $result_trees{'space_in_node'} = {
                       'text' => 'Test   title'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Test-title'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -145,16 +152,6 @@ $result_trees{'space_in_node'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Test-title'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -163,7 +160,7 @@ $result_trees{'space_in_node'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '*   ',
                   'type' => 'menu_entry_leading_text'
@@ -178,6 +175,13 @@ $result_trees{'space_in_node'} = {
                       'type' => 'space_at_end_menu_node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {},
+                      {}
+                    ],
+                    'normalized' => 'Last-with-spaces'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -199,16 +203,6 @@ $result_trees{'space_in_node'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {},
-                    {}
-                  ],
-                  'normalized' => 'Last-with-spaces'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -224,17 +218,23 @@ $result_trees{'space_in_node'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -256,19 +256,12 @@ $result_trees{'space_in_node'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -284,9 +277,11 @@ $result_trees{'space_in_node'} = {
               'text' => 'Chap first  here'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -300,19 +295,12 @@ $result_trees{'space_in_node'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Chap-first-here'
-          }
-        ],
-        'normalized' => 'Chap-first-here',
-        'spaces_before_argument' => '  '
+        'normalized' => 'Chap-first-here'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => '  '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -328,9 +316,11 @@ $result_trees{'space_in_node'} = {
               'text' => 'Test               title'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -344,19 +334,12 @@ $result_trees{'space_in_node'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Test-title'
-          }
-        ],
-        'normalized' => 'Test-title',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Test-title'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -372,28 +355,23 @@ $result_trees{'space_in_node'} = {
               'text' => 'Last with spaces'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => ' 
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => ' 
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Last-with-spaces'
-          }
-        ],
-        'normalized' => 'Last-with-spaces',
-        'spaces_before_argument' => '   '
+        'normalized' => 'Last-with-spaces'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => '   '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -404,22 +382,10 @@ $result_trees{'space_in_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[5];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_name'} = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[3];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[1] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[1];
-$result_trees{'space_in_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_node'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[0];
+$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
+$result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[1] = $result_trees{'space_in_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'space_in_node'} = '
 @node Top
@@ -610,6 +576,12 @@ $result_converted{'html'}->{'space_in_node'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -620,7 +592,7 @@ $result_converted{'html'}->{'space_in_node'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a> &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 
 <hr>
@@ -628,21 +600,21 @@ Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a> &
 <p>
 Next: <a href="#Test-title" accesskey="n" rel="next">Test               title</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h4 class="node">Chap first  here</h4>
+<h4 class="node"><span>Chap first  here<a class="copiable-link" href="#Chap-first-here"> &para;</a></span></h4>
 
 <hr>
 <a class="node-id" id="Test-title"></a><div class="nav-panel">
 <p>
 Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>, Previous: <a href="#Chap-first-here" accesskey="p" rel="prev">Chap first  here</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h4 class="node">Test               title</h4>
+<h4 class="node"><span>Test               title<a class="copiable-link" href="#Test-title"> &para;</a></span></h4>
 
 <hr>
 <a class="node-id" id="Last-with-spaces"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Test-title" accesskey="p" rel="prev">Test               title</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<h4 class="node">Last with spaces</h4>
+<h4 class="node"><span>Last with spaces<a class="copiable-link" href="#Last-with-spaces"> &para;</a></span></h4>
 
 
 
@@ -659,5 +631,22 @@ $result_converted_errors{'html'}->{'space_in_node'} = [
   }
 ];
 
+
+
+$result_converted{'xml'}->{'space_in_node'} = '
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">Chap first  here</nodenext></node>
+
+<menu endspaces=" ">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>Chap    first here</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menuleadingtext>* </menuleadingtext><menutitle>Test    title   </menutitle><menuseparator>:</menuseparator><menunode>Test   title</menunode><menuseparator>.</menuseparator><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry><menuentry><menuleadingtext>*   </menuleadingtext><menunode>Last with spaces    </menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<node name="Chap-first-here" spaces="  "><nodename>Chap first  here</nodename><nodenext automatic="on">Test               title</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+
+<node name="Test-title" spaces=" "><nodename>Test               title</nodename><nodenext automatic="on">Last with spaces</nodenext><nodeprev automatic="on">Chap first  here</nodeprev><nodeup automatic="on">Top</nodeup></node>
+
+<node name="Last-with-spaces" spaces="   "><nodename trailingspaces=" ">Last with spaces</nodename><nodeprev automatic="on">Test               title</nodeprev><nodeup automatic="on">Top</nodeup></node>
+';
 
 1;

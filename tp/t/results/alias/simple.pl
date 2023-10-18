@@ -17,9 +17,11 @@ $result_trees{'simple'} = {
                   'text' => 'myalias = code'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -29,8 +31,12 @@ $result_trees{'simple'} = {
             'misc_args' => [
               'myalias',
               'code'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -51,24 +57,20 @@ $result_trees{'simple'} = {
                   'text' => 'o-theralias=verb'
                 }
               ],
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comment
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 },
-                'spaces_after_argument' => ' '
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'line_arg'
             }
@@ -78,8 +80,12 @@ $result_trees{'simple'} = {
             'misc_args' => [
               'o-theralias',
               'verb'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -109,6 +115,9 @@ $result_trees{'simple'} = {
                 }
               ],
               'cmdname' => 'code',
+              'info' => {
+                'alias_of' => 'myalias'
+              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -145,7 +154,8 @@ $result_trees{'simple'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
+                'alias_of' => 'o-theralias',
                 'delimiter' => '!'
               },
               'source_info' => {

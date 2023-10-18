@@ -13,21 +13,17 @@ $result_trees{'not_only_characters'} = {
           'args' => [
             {
               'text' => '-e_\'::;',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'hh',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' -e_\'::; hh
-',
-            'misc_args' => [
-              '-e_\'::;',
-              'hh'
-            ]
+'
           }
         },
         {
@@ -38,6 +34,29 @@ $result_trees{'not_only_characters'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => '-e_\'::;'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'hh',
+                  'position' => 4,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 6,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'Say hh.
 '
             }

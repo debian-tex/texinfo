@@ -28,9 +28,11 @@ $result_trees{'w_argument'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -133,17 +135,23 @@ $result_trees{'w_argument'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -153,8 +161,12 @@ $result_trees{'w_argument'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -197,6 +209,13 @@ $result_converted{'html_text'}->{'w_argument'} = '<ul class="itemize mark-none">
 <li><samp class="option">--build=</samp> platform on which the program is compiled,
 </li><li><samp class="option">--target=</samp> target platform on which the program is processed.
 </li></ul>
+';
+
+
+$result_converted{'xml'}->{'w_argument'} = '<itemize commandarg="w" spaces=" " endspaces=" "><itemprepend><w></w></itemprepend>
+<listitem><prepend><w></w></prepend> <para><option>--build=</option> platform on which the program is compiled,
+</para></listitem><listitem><prepend><w></w></prepend> <para><option>--target=</option> target platform on which the program is processed.
+</para></listitem></itemize>
 ';
 
 

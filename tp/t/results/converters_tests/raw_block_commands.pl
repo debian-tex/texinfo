@@ -17,9 +17,11 @@ $result_trees{'raw_block_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -29,10 +31,7 @@ $result_trees{'raw_block_commands'} = {
             {
               'contents' => [
                 {
-                  'text' => '<blink>html</blink> ``'
-                },
-                {
-                  'text' => '}
+                  'text' => '<blink>html</blink> ``}
 '
                 }
               ],
@@ -46,17 +45,23 @@ $result_trees{'raw_block_commands'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -79,9 +84,11 @@ $result_trees{'raw_block_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -91,10 +98,7 @@ $result_trees{'raw_block_commands'} = {
             {
               'contents' => [
                 {
-                  'text' => '<para>xml</para> ``'
-                },
-                {
-                  'text' => '}
+                  'text' => '<para>xml</para> ``}
 '
                 }
               ],
@@ -108,17 +112,23 @@ $result_trees{'raw_block_commands'} = {
                       'text' => 'xml'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'xml'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -141,9 +151,11 @@ $result_trees{'raw_block_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -153,10 +165,7 @@ $result_trees{'raw_block_commands'} = {
             {
               'contents' => [
                 {
-                  'text' => '<emphasis>docbook</emphasis> ``'
-                },
-                {
-                  'text' => '}
+                  'text' => '<emphasis>docbook</emphasis> ``}
 '
                 }
               ],
@@ -170,17 +179,23 @@ $result_trees{'raw_block_commands'} = {
                       'text' => 'docbook'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'docbook'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -203,9 +218,11 @@ $result_trees{'raw_block_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -215,10 +232,7 @@ $result_trees{'raw_block_commands'} = {
             {
               'contents' => [
                 {
-                  'text' => '$\\underline'
-                },
-                {
-                  'text' => '{a < b '
+                  'text' => '$\\underline{a < b '
                 },
                 {
                   'args' => [
@@ -230,7 +244,7 @@ $result_trees{'raw_block_commands'} = {
                         {
                           'contents' => [
                             {
-                              'text' => ' code '
+                              'text' => '{ code }'
                             }
                           ],
                           'source_info' => {
@@ -238,7 +252,7 @@ $result_trees{'raw_block_commands'} = {
                             'line_nr' => 15,
                             'macro' => ''
                           },
-                          'type' => 'bracketed'
+                          'type' => 'balanced_braces'
                         }
                       ],
                       'type' => 'brace_command_arg'
@@ -266,17 +280,23 @@ $result_trees{'raw_block_commands'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -299,9 +319,11 @@ $result_trees{'raw_block_commands'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -311,10 +333,7 @@ $result_trees{'raw_block_commands'} = {
             {
               'contents' => [
                 {
-                  'text' => '$\\frac'
-                },
-                {
-                  'text' => '{a < b '
+                  'text' => '$\\frac{a < b '
                 },
                 {
                   'args' => [
@@ -326,7 +345,7 @@ $result_trees{'raw_block_commands'} = {
                         {
                           'contents' => [
                             {
-                              'text' => ' code '
+                              'text' => '{ code }'
                             }
                           ],
                           'source_info' => {
@@ -334,7 +353,7 @@ $result_trees{'raw_block_commands'} = {
                             'line_nr' => 19,
                             'macro' => ''
                           },
-                          'type' => 'bracketed'
+                          'type' => 'balanced_braces'
                         }
                       ],
                       'type' => 'brace_command_arg'
@@ -348,13 +367,7 @@ $result_trees{'raw_block_commands'} = {
                   }
                 },
                 {
-                  'text' => '}'
-                },
-                {
-                  'text' => '{b'
-                },
-                {
-                  'text' => '}$ ``
+                  'text' => '}{b}$ ``
 '
                 }
               ],
@@ -368,17 +381,23 @@ $result_trees{'raw_block_commands'} = {
                       'text' => 'latex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'latex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -424,10 +443,15 @@ $\\frac{a < b @code{tex \\hbox{ code }}}{b}$ ``
 
 
 $result_texts{'raw_block_commands'} = '
+<blink>html</blink> ``}
 
+<para>xml</para> ``}
 
+<emphasis>docbook</emphasis> ``}
 
+$\\underline{a < b tex \\hbox{ code }}$ ``
 
+$\\frac{a < b tex \\hbox{ code }}{b}$ ``
 ';
 
 $result_errors{'raw_block_commands'} = [];

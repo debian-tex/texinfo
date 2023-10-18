@@ -1,4 +1,4 @@
-/* Copyright 2010-2022 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -38,12 +38,14 @@
 #include <string.h>
 
 #include "parser.h"
+#include "debug.h"
+#include "tree.h"
 #include "input.h"
+#include "source_marks.h"
 #include "labels.h"
 #include "indices.h"
+#include "errors.h"
 #include "api.h"
-
-ELEMENT *Root;
 
 #ifdef ENABLE_NLS
 
@@ -111,12 +113,15 @@ reset_floats ()
   floats_number = 0;
 }
 
+static ELEMENT *Root;
+
 void
 reset_parser_except_conf (void)
 {
-  /* do before destroying tree because index entries usually refer to in-tree
+  /* do before destroying tree because index entries refer to in-tree
      elements. */
   wipe_indices ();
+
   if (Root)
     {
       destroy_element_and_children (Root);
@@ -127,27 +132,50 @@ reset_parser_except_conf (void)
   init_index_commands ();
   wipe_errors ();
   reset_context_stack ();
-  reset_region_stack ();
+  reset_command_stack (&nesting_context.basic_inline_stack);
+  reset_command_stack (&nesting_context.basic_inline_stack_on_line);
+  reset_command_stack (&nesting_context.basic_inline_stack_block);
+  reset_command_stack (&nesting_context.regions_stack);
+  memset (&nesting_context, 0, sizeof (nesting_context));
   reset_floats ();
   wipe_global_info ();
+  /* it is not totally obvious that is it better to reset the
+     list to avoid memory leaks rather than reuse the iconv
+     opened handlers */
+  reset_encoding_list ();
   set_input_encoding ("utf-8");
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();
+  source_marks_reset_counters ();
   free_small_strings ();
+
+  reset_obstacks ();
 
   current_node = current_section = current_part = 0;
 }
 
 void
-reset_parser (void)
+reset_parser (int debug_output)
 {
-  /* NOTE: Do not call 'malloc' or 'free' in this function or in any function
-     called in this file.  Since this file (api.c) includes the Perl headers,
+  dTHX;
+
+  /* NOTE: Do not call 'malloc' or 'free' in this function.
+
+     Since this file (api.c) includes the Perl headers,
      we get the Perl redefinitions, which we do not want, as we don't use
      them throughout the rest of the program. */
 
+  /* We cannot call debug() here, because the configuration of the previous
+     parser invokation has not been reset already, and new configuration has
+     not been read, so we need to pass the configuration information
+     directly */
+  /*
   debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
+  */
+  if (debug_output)
+    fprintf (stderr,
+          "!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!\n");
 
   reset_parser_except_conf ();
   wipe_values ();
@@ -175,7 +203,6 @@ parse_file (char *filename)
   debug_output = 0;
   */
   char *p, *q;
-  char c;
 
   int status;
   
@@ -195,10 +222,10 @@ parse_file (char *filename)
 
   if (p)
     {
-      c = *p;
+      char saved = *p;
       *p = '\0';
       add_include_directory (filename);
-      *p = c;
+      *p = saved;
     }
 
   Root = parse_texi_document ();
@@ -212,7 +239,7 @@ void
 parse_text (char *string, int line_nr)
 {
   reset_parser_except_conf ();
-  input_push_text_with_line_nos (strdup (string), line_nr);
+  input_push_text (strdup (string), line_nr, 0, 0);
   Root = parse_texi_document ();
 }
 
@@ -221,10 +248,11 @@ parse_text (char *string, int line_nr)
 void
 parse_string (char *string, int line_nr)
 {
-  ELEMENT *root_elt = new_element (ET_root_line);
+  ELEMENT *root_elt;
 
   reset_parser_except_conf ();
-  input_push_text_with_line_nos (strdup (string), line_nr);
+  root_elt = new_element (ET_root_line);
+  input_push_text (strdup (string), line_nr, 0, 0);
   Root = parse_texi (root_elt, root_elt);
 }
 
@@ -232,11 +260,13 @@ parse_string (char *string, int line_nr)
 void
 parse_piece (char *string, int line_nr)
 {
-  ELEMENT *before_node_section = setup_document_root_and_before_node_section ();
-  ELEMENT *document_root = before_node_section->parent;
+  ELEMENT *before_node_section, *document_root;
 
   reset_parser_except_conf ();
-  input_push_text_with_line_nos (strdup (string), line_nr);
+  before_node_section = setup_document_root_and_before_node_section ();
+  document_root = before_node_section->parent;
+
+  input_push_text (strdup (string), line_nr, 0, 0);
   Root = parse_texi (document_root, before_node_section);
 }
 
@@ -246,7 +276,11 @@ static void element_to_perl_hash (ELEMENT *e);
 /* Return reference to Perl array built from e.  If any of
    the elements in E don't have 'hv' set, set it to an empty
    hash table, or create it if there is no parent element, indicating the 
-   element is not in the tree. */
+   element is not in the tree.
+   Note that not having 'hv' set should be rare (actually never happen),
+   as the contents and args children are processed before the extra
+   information where build_perl_array is called.
+ */
 static SV *
 build_perl_array (ELEMENT_LIST *e)
 {
@@ -258,10 +292,9 @@ build_perl_array (ELEMENT_LIST *e)
 
   av = newAV ();
   sv = newRV_inc ((SV *) av);
+
   for (i = 0; i < e->number; i++)
     {
-      if (!e->list[i]) /* For arrays only, allow elements to be undef. */
-        av_push (av, newSV (0));
       if (!e->list[i]->hv)
         {
           if (e->list[i]->parent)
@@ -273,37 +306,9 @@ build_perl_array (ELEMENT_LIST *e)
               element_to_perl_hash (e->list[i]);
             }
         }
-      av_push (av, newRV_inc ((SV *) e->list[i]->hv));
+      av_store (av, i, newRV_inc ((SV *) e->list[i]->hv));
     }
   return sv;
-}
-
-/* Return reference to hash corresponding to VALUE. */
-static SV *
-build_node_spec (NODE_SPEC_EXTRA *value)
-{
-  HV *hv;
-
-  dTHX;
-
-  if (!value->manual_content && !value->node_content)
-    return newSV(0); /* Perl 'undef' */
-
-  hv = newHV ();
-
-  if (value->manual_content)
-    {
-      hv_store (hv, "manual_content", strlen ("manual_content"),
-                build_perl_array (&value->manual_content->contents), 0);
-    }
-
-  if (value->node_content)
-    {
-      hv_store (hv, "node_content", strlen ("node_content"),
-                build_perl_array (&value->node_content->contents), 0);
-    }
-
-  return newRV_inc ((SV *)hv);
 }
 
 /* Used to create a "Perl-internal" string that represents a sequence
@@ -319,141 +324,60 @@ newSVpv_utf8 (char *str, STRLEN len)
   return sv;
 }
 
-/* Set E->hv and 'hv' on E's descendants.  e->parent->hv is assumed
-   to already exist. */
 static void
-element_to_perl_hash (ELEMENT *e)
+store_additional_info (ELEMENT *e, ASSOCIATED_INFO* a, char *key)
 {
-  SV *sv;
-
   dTHX;
 
-  /* e->hv may already exist if there was an extra value elsewhere
-     referring to e. */
-  if (!e->hv)
-    {
-      e->hv = newHV ();
-    }
-
-  if (e->parent)
-    {
-      if (!e->parent->hv)
-        e->parent->hv = newHV ();
-      sv = newRV_inc ((SV *) e->parent->hv);
-      hv_store (e->hv, "parent", strlen ("parent"), sv, 0);
-    }
-
-  if (e->type)
-    {
-      sv = newSVpv (element_type_names[e->type], 0);
-      hv_store (e->hv, "type", strlen ("type"), sv, 0);
-    }
-
-  if (e->cmd)
-    {
-      sv = newSVpv (command_name(e->cmd), 0);
-      hv_store (e->hv, "cmdname", strlen ("cmdname"), sv, 0);
-
-      /* Note we could optimize the call to newSVpv here and
-         elsewhere by passing an appropriate second argument. */
-    }
-
-  if (e->contents.number > 0)
-    {
-      AV *av;
-      int i;
-
-      av = newAV ();
-      sv = newRV_inc ((SV *) av);
-      hv_store (e->hv, "contents", strlen ("contents"), sv, 0);
-      for (i = 0; i < e->contents.number; i++)
-        {
-          element_to_perl_hash (e->contents.list[i]);
-          sv = newRV_inc ((SV *) e->contents.list[i]->hv);
-          av_push (av, sv);
-        }
-    }
-
-  if (e->args.number > 0)
-    {
-      AV *av;
-      int i;
-
-      av = newAV ();
-      sv = newRV_inc ((SV *) av);
-      hv_store (e->hv, "args", strlen ("args"), sv, 0);
-      for (i = 0; i < e->args.number; i++)
-        {
-          element_to_perl_hash (e->args.list[i]);
-          sv = newRV_inc ((SV *) e->args.list[i]->hv);
-          av_push (av, sv);
-        }
-    }
-
-  if (e->text.space > 0)
-    {
-      sv = newSVpv_utf8 (e->text.text, e->text.end);
-      hv_store (e->hv, "text", strlen ("text"), sv, 0);
-    }
-
-  if (e->extra_number > 0)
+  if (a->info_number > 0)
     {
       HV *extra;
       int i;
-      int all_deleted = 1;
-      extra = newHV ();
+      int nr_info = 0; /* number of info type stored */
 
-      for (i = 0; i < e->extra_number; i++)
+
+      /* Use sv_2mortal so that reference count is decremented if
+         the hash is not saved. */
+      extra = (HV *) sv_2mortal((SV *)newHV ());
+
+      for (i = 0; i < a->info_number; i++)
         {
 #define STORE(sv) hv_store (extra, key, strlen (key), sv, 0)
-          char *key = e->extra[i].key;
-          ELEMENT *f = e->extra[i].value;
+          char *key = a->info[i].key;
+          ELEMENT *f = (ELEMENT *) a->info[i].value;
 
-          if (e->extra[i].type == extra_deleted)
+          if (a->info[i].type == extra_deleted)
             continue;
-          all_deleted = 0;
+          nr_info++;
 
-          switch (e->extra[i].type)
+          switch (a->info[i].type)
             {
             case extra_element:
               /* For references to other parts of the tree, create the hash so 
-                 we can point to it.  */
+                 we can point to it. */
+              /* Note that this does not happen much, as the contents
+                 and args are processed before the extra information.  It only
+                 happens for root commands (sections, nodes) and associated
+                 commands, and could also happen for subentry as it is not
+                 a children of the associated index command */
               if (!f->hv)
                 f->hv = newHV ();
               STORE(newRV_inc ((SV *)f->hv));
               break;
             case extra_element_oot:
-              if (!f->hv)
-                element_to_perl_hash (f);
+              /* Note that this is only used for info hash, with simple
+                 elements that are associated to one element only, should
+                 not be referred to elsewhere (and should not contain other
+                 commands or containers) */
+              if (f->hv)
+                fatal ("element_to_perl_hash extra_element_oot twice\n");
+              element_to_perl_hash (f);
               STORE(newRV_inc ((SV *)f->hv));
               break;
             case extra_contents:
-            case extra_contents_oot:
               {
               if (f)
                 STORE(build_perl_array (&f->contents));
-              break;
-              }
-            case extra_contents_array:
-              {
-              /* Like extra_contents, but this time output an array
-                 of arrays (instead of an array). */
-              int j;
-              AV *av;
-              av = newAV ();
-              STORE(newRV_inc ((SV *)av));
-              for (j = 0; j < f->contents.number; j++)
-                {
-                  SV *array;
-                  ELEMENT *g;
-
-                  g = f->contents.list[j];
-                  if (g)
-                    array = build_perl_array (&g->contents);
-                  else
-                    array = newSV (0); /* undef */
-                  av_push (av, array);
-                }
               break;
               }
             case extra_string:
@@ -475,88 +399,31 @@ element_to_perl_hash (ELEMENT *e)
               int j;
               AV *av;
               av = newAV ();
+              av_unshift (av, f->contents.number);
+
               STORE(newRV_inc ((SV *)av));
-              /* An array of strings. */
+              /* An array of strings or integers. */
               for (j = 0; j < f->contents.number; j++)
                 {
-                  if (f->contents.list[j]->text.end > 0)
+                  KEY_PAIR *k;
+                  k = lookup_extra (f->contents.list[j], "integer");
+                  if (k)
+                    {
+                      IV value = (IV) (intptr_t) k->value;
+                      av_store (av, j, newSViv (value));
+                    }
+                  else if (f->contents.list[j]->text.end > 0)
                     {
                       SV *sv = newSVpv_utf8 (f->contents.list[j]->text.text,
                                              f->contents.list[j]->text.end);
-                      av_push (av, sv);
+                      av_store (av, j, sv);
                     }
                   else
                     {
                       /* Empty strings permitted. */
-                      av_push (av, newSVpv ("", 0));
+                      av_store (av, j, newSVpv ("", 0));
                     }
                 }
-              break;
-              }
-            case extra_node_spec:
-              /* A complex structure - see "parse_node_manual" function
-                 in end_line.c */
-              if (f)
-                STORE(build_node_spec ((NODE_SPEC_EXTRA *) f));
-              break;
-            case extra_node_spec_array:
-              {
-              AV *av;
-              NODE_SPEC_EXTRA **array;
-              av = newAV ();
-              STORE(newRV_inc ((SV *)av));
-              array = (NODE_SPEC_EXTRA **) f;
-              while (*array)
-                {
-                  av_push (av, build_node_spec (*array));
-                  array++;
-                }
-              break;
-              }
-            case extra_index_entry:
-            /* A "index_entry" extra key on a command defining an index
-               entry.  Unlike the other keys, the value is not in the
-               main parse tree, but in the indices_information.  It would
-               be much nicer if we could get rid of the need for this key.
-               We set this afterwards in build_index_data. */
-              break;
-            case extra_def_info:
-              {
-              DEF_INFO *d = (DEF_INFO *) f;
-              HV *def_parsed_hash;
-
-              /* Create a "def_parsed_hash" extra value. */
-              def_parsed_hash = newHV ();
-              STORE(newRV_inc ((SV *)def_parsed_hash));
-
-#define SAVE_DEF(X) { if (!d->X->hv) \
-                        element_to_perl_hash (d->X); \
-                      hv_store (def_parsed_hash, #X, strlen (#X), \
-                                newRV_inc ((SV *)d->X->hv), 0) ; }
-
-              if (d->category)
-                SAVE_DEF(category)
-              if (d->class)
-                SAVE_DEF(class)
-              if (d->type)
-                SAVE_DEF(type)
-              if (d->name)
-                SAVE_DEF(name)
-              break;
-              }
-            case extra_float_type:
-              {
-              EXTRA_FLOAT_TYPE *eft = (EXTRA_FLOAT_TYPE *) f;
-              HV *type = newHV ();
-              if (eft->content)
-                hv_store (type, "content", strlen ("content"),
-                          build_perl_array (&eft->content->contents), 0);
-              if (eft->normalized)
-                {
-                  SV *sv = newSVpv_utf8 (eft->normalized, 0);
-                  hv_store (type, "normalized", strlen ("normalized"), sv, 0);
-                }
-              STORE(newRV_inc ((SV *)type));
               break;
               }
             default:
@@ -566,37 +433,250 @@ element_to_perl_hash (ELEMENT *e)
         }
 #undef STORE
 
-      if (!all_deleted)
-        hv_store (e->hv, "extra", strlen ("extra"),
+      if (nr_info > 0)
+        hv_store (e->hv, key, strlen (key),
                   newRV_inc((SV *)extra), 0);
     }
+}
+
+static void
+store_source_mark_list (ELEMENT *e)
+{
+  dTHX;
+
+  if (e->source_mark_list.number > 0)
+    {
+      AV *av;
+      SV *sv;
+      int i;
+      av = newAV ();
+      sv = newRV_noinc ((SV *) av);
+      hv_store (e->hv, "source_marks", strlen ("source_marks"), sv, 0);
+
+      for (i = 0; i < e->source_mark_list.number; i++)
+        {
+          HV *source_mark;
+          SV *sv;
+          SOURCE_MARK *s_mark = e->source_mark_list.list[i];
+          IV source_mark_position;
+          IV source_mark_counter;
+          source_mark = newHV ();
+#define STORE(key, value) hv_store (source_mark, key, strlen (key), value, 0)
+           /* A simple integer.  The intptr_t cast here prevents
+              a warning on MinGW ("cast from pointer to integer of
+              different size"). */
+          source_mark_counter = (IV) (intptr_t) s_mark->counter;
+          STORE("counter", newSViv (source_mark_counter));
+          if (s_mark->position > 0)
+            {
+              source_mark_position = (IV) (intptr_t) s_mark->position;
+              STORE("position", newSViv (source_mark_position));
+            }
+          if (s_mark->element)
+            {
+              ELEMENT *e = s_mark->element;
+              /* should only be referred to in one source mark */
+              if (e->hv)
+                fatal ("element_to_perl_hash source mark elt twice");
+              element_to_perl_hash (e);
+              STORE("element", newRV_inc ((SV *)e->hv));
+            }
+          if (s_mark->line)
+            {
+              SV *sv = newSVpv_utf8 (s_mark->line, 0);
+              STORE("line", sv);
+            }
+
+#define SAVE_S_M_STATUS(X) \
+           case SM_status_ ## X: \
+           sv = newSVpv_utf8 (#X, 0);\
+           STORE("status", sv); \
+           break;
+
+          switch (s_mark->status)
+            {
+              SAVE_S_M_STATUS (start)
+              SAVE_S_M_STATUS (end)
+
+              /* for SM_status_none */
+              default:
+                break;
+            }
+
+#define SAVE_S_M_TYPE(X) \
+           case SM_type_ ## X: \
+           sv = newSVpv_utf8 (#X, 0);\
+           STORE("sourcemark_type", sv); \
+           break;
+
+          switch (s_mark->type)
+            {
+              SAVE_S_M_TYPE (include)
+              SAVE_S_M_TYPE (setfilename)
+              SAVE_S_M_TYPE (delcomment)
+              SAVE_S_M_TYPE (defline_continuation)
+              SAVE_S_M_TYPE (macro_expansion)
+              SAVE_S_M_TYPE (linemacro_expansion)
+              SAVE_S_M_TYPE (value_expansion)
+              SAVE_S_M_TYPE (ignored_conditional_block)
+              SAVE_S_M_TYPE (expanded_conditional_command)
+
+              /* for SM_type_none */
+              default:
+                break;
+            }
+
+          av_push (av, newRV_noinc ((SV *)source_mark));
+#undef STORE
+        }
+    }
+}
+
+static int hashes_ready = 0;
+static U32 HSH_parent = 0;
+static U32 HSH_type = 0;
+static U32 HSH_cmdname = 0;
+static U32 HSH_contents = 0;
+static U32 HSH_args = 0;
+static U32 HSH_text = 0;
+static U32 HSH_extra = 0;
+static U32 HSH_info = 0;
+static U32 HSH_source_info = 0;
+static U32 HSH_file_name = 0;
+static U32 HSH_line_nr = 0;
+static U32 HSH_macro = 0;
+
+/* Set E->hv and 'hv' on E's descendants.  e->parent->hv is assumed
+   to already exist. */
+static void
+element_to_perl_hash (ELEMENT *e)
+{
+  SV *sv;
+
+  dTHX;
+
+  /* e->hv may already exist if there was an extra value elsewhere
+     referring to e. */
+  if (!e->hv)
+    {
+      e->hv = newHV ();
+    }
+
+  if (!hashes_ready)
+    {
+      hashes_ready = 1;
+      PERL_HASH(HSH_parent, "parent", strlen ("parent"));
+      PERL_HASH(HSH_type, "type", strlen ("type"));
+      PERL_HASH(HSH_cmdname, "cmdname", strlen ("cmdname"));
+      PERL_HASH(HSH_contents, "contents", strlen ("contents"));
+      PERL_HASH(HSH_args, "args", strlen ("args"));
+      PERL_HASH(HSH_text, "text", strlen ("text"));
+      PERL_HASH(HSH_extra, "extra", strlen ("extra"));
+      PERL_HASH(HSH_info, "info", strlen ("info"));
+      PERL_HASH(HSH_source_info, "source_info", strlen ("source_info"));
+
+      PERL_HASH(HSH_file_name, "file_name", strlen ("file_name"));
+      PERL_HASH(HSH_line_nr, "line_nr", strlen ("line_nr"));
+      PERL_HASH(HSH_macro, "macro", strlen ("macro"));
+    }
+
+  if (e->parent)
+    {
+      if (!e->parent->hv)
+        fatal ("parent hv not already set\n");
+      sv = newRV_inc ((SV *) e->parent->hv);
+      hv_store (e->hv, "parent", strlen ("parent"), sv, HSH_parent);
+    }
+
+  if (e->type)
+    {
+      sv = newSVpv (element_type_names[e->type], 0);
+      hv_store (e->hv, "type", strlen ("type"), sv, HSH_type);
+    }
+
+  if (e->cmd)
+    {
+      sv = newSVpv (command_name(e->cmd), 0);
+      hv_store (e->hv, "cmdname", strlen ("cmdname"), sv, HSH_cmdname);
+
+      /* Note we could optimize the call to newSVpv here and
+         elsewhere by passing an appropriate second argument. */
+    }
+
+  if (e->contents.number > 0)
+    {
+      AV *av;
+      int i;
+
+      av = newAV ();
+      sv = newRV_noinc ((SV *) av);
+      av_unshift (av, e->contents.number);
+
+      hv_store (e->hv, "contents", strlen ("contents"), sv, HSH_contents);
+      for (i = 0; i < e->contents.number; i++)
+        {
+          element_to_perl_hash (e->contents.list[i]);
+          sv = newRV_noinc ((SV *) e->contents.list[i]->hv);
+          av_store (av, i, sv);
+        }
+    }
+
+  if (e->args.number > 0)
+    {
+      AV *av;
+      int i;
+
+      av = newAV ();
+      sv = newRV_noinc ((SV *) av);
+      av_unshift (av, e->args.number);
+
+      hv_store (e->hv, "args", strlen ("args"), sv, HSH_args);
+      for (i = 0; i < e->args.number; i++)
+        {
+          element_to_perl_hash (e->args.list[i]);
+          sv = newRV_inc ((SV *) e->args.list[i]->hv);
+          av_store (av, i, sv);
+        }
+    }
+
+  if (e->text.space > 0)
+    {
+      sv = newSVpv_utf8 (e->text.text, e->text.end);
+      hv_store (e->hv, "text", strlen ("text"), sv, HSH_text);
+    }
+
+  store_additional_info (e, &e->extra_info, "extra");
+  store_additional_info (e, &e->info_info, "info");
+
+  store_source_mark_list (e);
 
   if (e->source_info.line_nr)
     {
-#define STORE(key, sv) hv_store (hv, key, strlen (key), sv, 0)
+#define STORE(key, sv, hsh) hv_store (hv, key, strlen (key), sv, hsh)
       SOURCE_INFO *source_info = &e->source_info;
       HV *hv = newHV ();
       hv_store (e->hv, "source_info", strlen ("source_info"),
-                newRV_inc((SV *)hv), 0);
+                newRV_noinc((SV *)hv), HSH_source_info);
 
       if (source_info->file_name)
         {
-          STORE("file_name", newSVpv (source_info->file_name, 0));
+          STORE("file_name", newSVpv (source_info->file_name, 0),
+                HSH_file_name);
         }
       else
-        STORE("file_name", newSVpv ("", 0));
+        STORE("file_name", newSVpv ("", 0), HSH_file_name);
 
       if (source_info->line_nr)
         {
-          STORE("line_nr", newSViv (source_info->line_nr));
+          STORE("line_nr", newSViv (source_info->line_nr), HSH_line_nr);
         }
 
       if (source_info->macro)
         {
-          STORE("macro", newSVpv_utf8 (source_info->macro, 0));
+          STORE("macro", newSVpv_utf8 (source_info->macro, 0), HSH_macro);
         }
       else
-        STORE("macro", newSVpv ("", 0));
+        STORE("macro", newSVpv ("", 0), HSH_macro);
 #undef STORE
     }
 }
@@ -618,7 +698,7 @@ build_texinfo_tree (void)
 /* Return array of target elements.  build_texinfo_tree must
    be called first. */
 AV *
-build_label_list (void)
+build_target_elements_list (void)
 {
   AV *target_array;
   SV *sv;
@@ -627,11 +707,12 @@ build_label_list (void)
   dTHX;
 
   target_array = newAV ();
+  av_unshift (target_array, labels_number);
 
   for (i = 0; i < labels_number; i++)
     {
-      sv = newRV_inc (labels_list[i].target->hv);
-      av_push (target_array, sv);
+      sv = newRV_inc (target_elements_list[i]->hv);
+      av_store (target_array, i, sv);
     }
 
   return target_array;
@@ -647,17 +728,20 @@ build_internal_xref_list (void)
   dTHX;
 
   list_av = newAV ();
+  av_unshift (list_av, internal_xref_number);
 
   for (i = 0; i < internal_xref_number; i++)
     {
       sv = newRV_inc (internal_xref_list[i]->hv);
-      av_push (list_av, sv);
+      av_store (list_av, i, sv);
     }
 
   return list_av;
 }
 
 /* Return hash for list of @float's that appeared in the file. */
+/* not used for now, since the normalization of of float type is done
+   outside of the barser. Could be done here again when possible */
 HV *
 build_float_list (void)
 {
@@ -683,7 +767,7 @@ build_float_list (void)
           hv_store (float_hash,
                     floats_list[i].type,
                     strlen (floats_list[i].type),
-                    newRV_inc ((SV *)av),
+                    newRV_noinc ((SV *)av),
                     0);
         }
       else
@@ -770,111 +854,30 @@ build_single_index_data (INDEX *i)
   if (i->index_number > 0)
     {
       entries = newAV ();
-      STORE("index_entries", newRV_inc ((SV *) entries));
-    }
+      av_unshift (entries, i->index_number);
+      STORE("index_entries", newRV_noinc ((SV *) entries));
 #undef STORE
 
-  entry_number = 1;
-  if (i->index_number > 0)
-  for (j = 0; j < i->index_number; j++)
-    {
+      entry_number = 1;
+      for (j = 0; j < i->index_number; j++)
+        {
 #define STORE2(key, value) hv_store (entry, key, strlen (key), value, 0)
-      HV *entry;
-      INDEX_ENTRY *e;
+          HV *entry;
+          INDEX_ENTRY *e;
 
-      e = &i->index_entries[j];
-      entry = newHV ();
+          e = &i->index_entries[j];
+          entry = newHV ();
 
-      STORE2("index_name", newSVpv_utf8 (i->name, 0));
-      STORE2("index_at_command",
-             newSVpv (command_name(e->index_at_command), 0));
-      STORE2("index_type_command",
-             newSVpv (command_name(e->index_type_command), 0));
-      STORE2("entry_element",
-             newRV_inc ((SV *)e->command->hv));
-      STORE2("entry_number", newSViv (entry_number));
-      if (e->region)
-        {
-          STORE2("entry_region", newRV_inc ((SV *)e->region->hv));
-        }
-      if (e->content)
-        {
-          SV **contents_array;
-          if (!e->content->hv)
-            {
-              if (e->content->parent)
-                fatal ("index element should not be in-tree");
-              element_to_perl_hash (e->content);
-            }
-          contents_array = hv_fetch (e->content->hv,
-                                    "contents", strlen ("contents"), 0);
+          STORE2("index_name", newSVpv_utf8 (i->name, 0));
+          STORE2("entry_element",
+                 newRV_inc ((SV *)e->command->hv));
+          STORE2("entry_number", newSViv (entry_number));
 
-          if (!contents_array)
-            {
-              element_to_perl_hash (e->content);
-              contents_array = hv_fetch (e->content->hv,
-                                         "contents", strlen ("contents"), 0);
-            }
+          av_store (entries, j, newRV_noinc ((SV *)entry));
 
-          if (contents_array)
-            {
-              /* Copy the reference to the array. */
-              STORE2("entry_content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
-
-              STORE2("content_normalized",
-                     newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
-            }
-          else
-            {
-              STORE2("entry_content", newRV_inc ((SV *)newAV ()));
-              STORE2("content_normalized", newRV_inc ((SV *)newAV ()));
-            }
-        }
-      else
-        ; /* will be set in Texinfo::Common::complete_indices */
-
-      if (e->node)
-        STORE2("entry_node", newRV_inc ((SV *)e->node->hv));
-      if (e->sortas)
-        STORE2("sortas", newSVpv_utf8 (e->sortas, 0));
-
-      /* Create ignored_chars hash. */
-      {
-#define STORE3(key) hv_store (hv, key, strlen (key), newSViv(1), 0)
-        HV *hv = newHV ();
-        if (e->ignored_chars.backslash)
-          STORE3("\\");
-        if (e->ignored_chars.hyphen)
-          STORE3("-");
-        if (e->ignored_chars.lessthan)
-          STORE3("<");
-        if (e->ignored_chars.atsign)
-          STORE3("@");
-#undef STORE3
-
-        STORE2("index_ignore_chars", newRV_inc ((SV *)hv));
-      }
-
-      av_push (entries, newRV_inc ((SV *)entry));
-      entry_number++;
-
-      /* We set this now because the index data structures don't
-         exist at the time that the main tree is built. */
-      {
-      SV **extra_hash;
-      extra_hash = hv_fetch (e->command->hv, "extra", strlen ("extra"), 0);
-      if (!extra_hash)
-        {
-          /* There's no guarantee that the "extra" value was set on
-             the element. */
-          extra_hash = hv_store (e->command->hv, "extra", strlen ("extra"),
-                                 newRV_inc ((SV *)newHV ()), 0);
-        }
-
-      hv_store ((HV *)SvRV(*extra_hash), "index_entry", strlen ("index_entry"),
-                newRV_inc ((SV *)entry), 0);
-      }
+          entry_number++;
 #undef STORE2
+        }
     }
 }
 
@@ -896,7 +899,7 @@ build_index_data (void)
       HV *hv2;
       build_single_index_data (idx);
       hv2 = idx->hv;
-      hv_store (hv, idx->name, strlen (idx->name), newRV_inc ((SV *)hv2), 0);
+      hv_store (hv, idx->name, strlen (idx->name), newRV_noinc ((SV *)hv2), 0);
     }
 
   return hv;
@@ -915,18 +918,15 @@ build_global_info (void)
   dTHX;
 
   hv = newHV ();
-  if (global_info.input_encoding_name)
+  if (global_input_encoding_name)
     hv_store (hv, "input_encoding_name", strlen ("input_encoding_name"),
-              newSVpv (global_info.input_encoding_name, 0), 0);
-  if (global_info.input_perl_encoding)
-    hv_store (hv, "input_perl_encoding", strlen ("input_perl_encoding"),
-              newSVpv (global_info.input_perl_encoding, 0), 0);
+              newSVpv (global_input_encoding_name, 0), 0);
 
   if (global_info.dircategory_direntry.contents.number > 0)
     {
       AV *av = newAV ();
       hv_store (hv, "dircategory_direntry", strlen ("dircategory_direntry"),
-                newRV_inc ((SV *) av), 0);
+                newRV_noinc ((SV *) av), 0);
       for (i = 0; i < global_info.dircategory_direntry.contents.number; i++)
         {
           e = contents_child_by_index (&global_info.dircategory_direntry, i);
@@ -997,10 +997,24 @@ build_global_info2 (void)
     {
       av = newAV ();
       hv_store (hv, "footnote", strlen ("footnote"),
-                newRV_inc ((SV *) av), 0);
+                newRV_noinc ((SV *) av), 0);
       for (i = 0; i < global_info.footnotes.contents.number; i++)
         {
           e = contents_child_by_index (&global_info.footnotes, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+
+  /* float is a type, it does not work there, use floats instead */
+  if (global_info.floats.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "float", strlen ("float"),
+                newRV_noinc ((SV *) av), 0);
+      for (i = 0; i < global_info.floats.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.floats, i);
           if (e->hv)
             av_push (av, newRV_inc ((SV *) e->hv));
         }
@@ -1011,7 +1025,7 @@ build_global_info2 (void)
     {                                                                   \
       av = newAV ();                                                    \
       hv_store (hv, #cmd, strlen (#cmd),                                \
-                newRV_inc ((SV *) av), 0);                              \
+                newRV_noinc ((SV *) av), 0);                              \
       for (i = 0; i < global_info.cmd.contents.number; i++)             \
         {                                                               \
           e = contents_child_by_index (&global_info.cmd, i);            \
@@ -1020,14 +1034,15 @@ build_global_info2 (void)
         }                                                               \
     }
 
+  BUILD_GLOBAL_ARRAY(author);
+  BUILD_GLOBAL_ARRAY(detailmenu);
   BUILD_GLOBAL_ARRAY(hyphenation);
   BUILD_GLOBAL_ARRAY(insertcopying);
+  BUILD_GLOBAL_ARRAY(listoffloats);
+  BUILD_GLOBAL_ARRAY(part);
   BUILD_GLOBAL_ARRAY(printindex);
   BUILD_GLOBAL_ARRAY(subtitle);
   BUILD_GLOBAL_ARRAY(titlefont);
-  BUILD_GLOBAL_ARRAY(listoffloats);
-  BUILD_GLOBAL_ARRAY(detailmenu);
-  BUILD_GLOBAL_ARRAY(part);
 
   /* from Common.pm %document_settable_multiple_at_commands */
   BUILD_GLOBAL_ARRAY(allowcodebreaks);
@@ -1118,7 +1133,7 @@ build_source_info_hash (SOURCE_INFO source_info)
                 newSVpv_utf8 ("", 0), 0);
     }
 
-  return newRV_inc ((SV *) hv);
+  return newRV_noinc ((SV *) hv);
 }
 
 static SV *
@@ -1144,7 +1159,7 @@ convert_error (int i)
   hv_store (hv, "source_info", strlen ("source_info"),
             build_source_info_hash(e.source_info), 0);
 
-  return newRV_inc ((SV *) hv);
+  return newRV_noinc ((SV *) hv);
 
 }
 

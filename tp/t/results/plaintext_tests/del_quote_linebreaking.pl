@@ -36,6 +36,11 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'noxde'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -50,8 +55,10 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -65,13 +72,6 @@ $result_trees{'del_quote_linebreaking'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -103,6 +103,11 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'noxde'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -117,8 +122,10 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -132,13 +139,6 @@ $result_trees{'del_quote_linebreaking'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -170,6 +170,11 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'noxde'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -184,8 +189,10 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -199,13 +206,6 @@ $result_trees{'del_quote_linebreaking'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -251,6 +251,11 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'no:de'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -265,8 +270,10 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -280,13 +287,6 @@ $result_trees{'del_quote_linebreaking'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 11,
@@ -318,6 +318,11 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'no:de'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -332,8 +337,10 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -347,13 +354,6 @@ $result_trees{'del_quote_linebreaking'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 13,
@@ -385,6 +385,11 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'no:de'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -399,8 +404,10 @@ $result_trees{'del_quote_linebreaking'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -414,13 +421,6 @@ $result_trees{'del_quote_linebreaking'} = {
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 15,
@@ -445,12 +445,12 @@ $result_trees{'del_quote_linebreaking'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[14]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[10]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[14]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'del_quote_linebreaking'}{'contents'}[0]{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'del_quote_linebreaking'} = 'first para
 

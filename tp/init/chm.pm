@@ -4,8 +4,7 @@
 #
 # chm.pm: convert to chm intermediate formats hhp, hhc, hhk and html files
 #
-#    Copyright 2004, 2006, 2009, 2011, 2012, 2013, 2018, 2020 Free Software
-#    Foundation, Inc.
+#    Copyright 2004, 2006, 2009, 2011-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -246,19 +245,27 @@ sub chm_init($)
 
   my ($index_entries, $index_entries_sort_strings)
        = Texinfo::Structuring::sort_indices($self, $self,
-                             $self->get_info('index_entries'));
+                             $self->get_info('index_entries'),
+                             $self->get_info('indices_information'));
   if ($index_entries) {
     foreach my $index_name (sort(keys(%$index_entries))) {
       foreach my $index_entry_ref (@{$index_entries->{$index_name}}) {
+        my $main_entry_element = $index_entry_ref->{'entry_element'};
+        my $entry_index_name = $index_entry_ref->{'index_name'};
         # do not register index entries that do not point to the document
-        next if ($index_entry_ref->{'entry_element'}->{'extra'}
-                 and ($index_entry_ref->{'entry_element'}->{'extra'}->{'seeentry'}
-                      or $index_entry_ref->{'entry_element'}->{'extra'}->{'seealso'}));
-        my $origin_href
-            = $self->command_href($index_entry_ref->{'entry_element'}, '');
+        next if ($main_entry_element->{'extra'}
+                 and ($main_entry_element->{'extra'}->{'seeentry'}
+                      or $main_entry_element->{'extra'}->{'seealso'}));
+        my $origin_href = $self->command_href($main_entry_element, '');
+        my $entry_content_element
+              = Texinfo::Common::index_content_element($main_entry_element);
+        my $indices_information = $self->get_info('indices_information');
+        my $in_code = 0;
+        $in_code = 1
+          if ($indices_information->{$index_entry_ref->{'index_name'}}->{'in_code'});
         my $entry = _chm_convert_tree_to_text($self,
-                         {'contents' => $index_entry_ref->{'entry_content'}},
-                         {'code' => $index_entry_ref->{'in_code'}});
+                         {'contents' => [$entry_content_element]},
+                         {'code' => $in_code});
         print $hhk_fh "<LI> <OBJECT type=\"text/sitemap\">\n"
                       ."<param name=\"Name\" value=\"$entry\">\n"
                       ."<param name=\"Local\" value=\"$origin_href\">\n"

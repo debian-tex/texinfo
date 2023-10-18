@@ -18,28 +18,23 @@ $result_trees{'one_subsection_and_node'} = {
               'text' => 'one node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'one-node'
-          }
-        ],
-        'normalized' => 'one-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'one-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -55,16 +50,21 @@ $result_trees{'one_subsection_and_node'} = {
               'text' => 'The subsection'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsection',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -75,8 +75,6 @@ $result_trees{'one_subsection_and_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'one_subsection_and_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'one_subsection_and_node'} = '@node one node
 @subsection The subsection
@@ -186,13 +184,19 @@ $result_converted{'html'}->{'one_subsection_and_node'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#one-node" rel="start" title="one node">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <div class="subsection-level-extent" id="one-node">
-<h4 class="subsection" id="The-subsection">1 The subsection</h4>
+<h4 class="subsection" id="The-subsection"><span>1 The subsection<a class="copiable-link" href="#The-subsection"> &para;</a></span></h4>
 </div>
 
 

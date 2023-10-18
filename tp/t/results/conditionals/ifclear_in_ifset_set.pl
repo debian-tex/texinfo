@@ -18,24 +18,101 @@ $result_trees{'ifclear_in_ifset_set'} = {
           'args' => [
             {
               'text' => 'a',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' a
-',
-            'misc_args' => [
-              'a',
-              ''
-            ]
+'
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'a'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 4,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            },
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'ok'
+                      }
+                    ],
+                    'info' => {
+                      'comment_at_end' => {
+                        'args' => [
+                          {
+                            'text' => ' - ok, ignored
+',
+                            'type' => 'rawline_arg'
+                          }
+                        ],
+                        'cmdname' => 'c'
+                      },
+                      'spaces_after_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifclear',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 5,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -48,17 +125,23 @@ $result_trees{'ifclear_in_ifset_set'} = {
                   'text' => 'junky   - ok, ignored'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'junky   - ok, ignored'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -69,44 +152,12 @@ $result_trees{'ifclear_in_ifset_set'} = {
         {
           'args' => [
             {
-              'contents' => [
-                {
-                  'text' => 'ifset'
-                }
-              ],
-              'extra' => {
-                'spaces_after_argument' => '
-'
-              },
-              'type' => 'line_arg'
-            }
-          ],
-          'cmdname' => 'end',
-          'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'ifset'
-          },
-          'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
-          }
-        },
-        {
-          'args' => [
-            {
               'text' => ' WRONG - missing @end ifset.
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' WRONG - missing @end ifset.
-'
-            ]
-          }
+          'cmdname' => 'c'
         }
       ],
       'type' => 'before_node_section'
@@ -119,7 +170,6 @@ $result_texis{'ifclear_in_ifset_set'} = '
 @set a
 
 @end junky   - ok, ignored
-@end ifset
 @c WRONG - missing @end ifset.
 ';
 
@@ -139,12 +189,12 @@ $result_errors{'ifclear_in_ifset_set'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'unmatched `@end\'
+    'error_line' => 'unmatched `@end ifset\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'unmatched `@end\'',
+    'text' => 'unmatched `@end ifset\'',
     'type' => 'error'
   },
   {

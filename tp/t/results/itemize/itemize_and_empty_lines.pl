@@ -17,9 +17,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                   'text' => 'youhou'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -63,9 +65,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -98,17 +102,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'example'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'example'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -181,9 +191,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -207,17 +219,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'example'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'example'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -235,9 +253,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -261,17 +281,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'quotation'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'quotation'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -317,9 +343,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -343,17 +371,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'quotation'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'quotation'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -386,17 +420,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -405,8 +445,10 @@ $result_trees{'itemize_and_empty_lines'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -428,9 +470,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                   'type' => 'command_as_argument_inserted'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -474,9 +518,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -509,17 +555,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'example'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'example'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -592,9 +644,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -618,17 +672,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'example'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'example'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -664,9 +724,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -690,17 +752,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'quotation'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'quotation'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -746,9 +814,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -772,17 +842,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'quotation'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'quotation'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -815,17 +891,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -871,9 +953,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -918,17 +1002,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -938,8 +1028,12 @@ $result_trees{'itemize_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -989,9 +1083,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1032,9 +1128,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                           'type' => 'command_as_argument'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -1075,17 +1173,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                               'text' => 'itemize'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'itemize'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1095,8 +1199,12 @@ $result_trees{'itemize_and_empty_lines'} = {
                     }
                   ],
                   'extra' => {
-                    'command_as_argument' => {},
-                    'spaces_before_argument' => ' '
+                    'command_as_argument' => {}
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1131,17 +1239,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1151,8 +1265,12 @@ $result_trees{'itemize_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1188,9 +1306,11 @@ $result_trees{'itemize_and_empty_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1287,17 +1407,23 @@ $result_trees{'itemize_and_empty_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1307,8 +1433,12 @@ $result_trees{'itemize_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -1578,6 +1708,89 @@ line
 </li><li>something aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaa
 b b bbbbbbbbbbbbbbbbbbbbbbb.
 </li></ul>
+';
+
+
+$result_converted{'xml'}->{'itemize_and_empty_lines'} = '<itemize spaces=" " endspaces=" "><itemprepend>youhou</itemprepend>
+<listitem><prepend>youhou</prepend> <para>first item
+</para></listitem><listitem><prepend>youhou</prepend>
+<example endspaces=" ">
+<pre xml:space="preserve">In example
+
+end example.
+</pre></example>
+</listitem><listitem><prepend>youhou</prepend>
+
+<para>empty line.
+</para></listitem><listitem><prepend>youhou</prepend>
+
+<example endspaces=" ">
+<pre xml:space="preserve">In second example
+</pre></example>
+<quotation endspaces=" ">
+<para>Quotation
+</para></quotation>
+
+</listitem><listitem><prepend>youhou</prepend>
+
+<quotation endspaces=" ">
+<para>quotation after a blank line
+</para></quotation>
+</listitem></itemize>
+
+<itemize commandarg="bullet" automaticcommandarg="on" endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend>
+<listitem><prepend>&bullet;</prepend> <para>first item
+</para></listitem><listitem><prepend>&bullet;</prepend>
+<example endspaces=" ">
+<pre xml:space="preserve">In example
+
+end example.
+</pre></example>
+</listitem><listitem><prepend>&bullet;</prepend>
+
+<para>empty line.
+</para></listitem><listitem><prepend>&bullet;</prepend>
+
+<example endspaces=" ">
+<pre xml:space="preserve">In second example
+</pre></example>
+</listitem><listitem><prepend>&bullet;</prepend>
+<quotation endspaces=" ">
+<para>Quotation
+</para></quotation>
+
+</listitem><listitem><prepend>&bullet;</prepend>
+
+<quotation endspaces=" ">
+<para>quotation after a blank line
+</para></quotation>
+</listitem></itemize>
+
+<para>An itemize
+</para><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
+<listitem><prepend>&minus;</prepend> <para>truc 
+line
+</para></listitem></itemize>
+<para>After itemize
+</para>
+
+<para>A nested itemize
+</para><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
+<listitem><prepend>&minus;</prepend> <para>truc 
+line
+</para><itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
+<listitem><prepend>&bullet;</prepend> <para>in nested itemize
+</para></listitem></itemize>
+<para>After inside nested itemize.
+</para></listitem></itemize>
+<para>After nested itemize
+</para>
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
+<listitem><prepend>&bullet;</prepend> <para>the version number of Texinfo and the program(s) or manual(s) involved.
+</para></listitem><listitem><prepend>&bullet;</prepend> <para>hardware and operating system names and versions.
+</para></listitem><listitem><prepend>&bullet;</prepend> <para>something aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaa
+b b bbbbbbbbbbbbbbbbbbbbbbb.
+</para></listitem></itemize>
 ';
 
 1;

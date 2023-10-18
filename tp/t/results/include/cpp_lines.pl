@@ -34,17 +34,23 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'cpp_lines.info'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'cpp_lines.info'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'cpp_lines.texi',
@@ -108,9 +114,43 @@ $result_trees{'cpp_lines'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => 'g_f',
+        'line_nr' => 70,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -143,9 +183,11 @@ $result_trees{'cpp_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -170,17 +212,23 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'g_f',
@@ -222,17 +270,23 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'g_f',
@@ -241,7 +295,7 @@ $result_trees{'cpp_lines'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macr
 '
           },
@@ -284,6 +338,25 @@ $result_trees{'cpp_lines'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macr'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -291,6 +364,14 @@ $result_trees{'cpp_lines'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 12,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '# line 7 "k"
 '
             }
@@ -361,17 +442,23 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'g_f',
@@ -380,7 +467,7 @@ $result_trees{'cpp_lines'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrtwo
 '
           },
@@ -423,6 +510,25 @@ $result_trees{'cpp_lines'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macrtwo'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -434,6 +540,14 @@ $result_trees{'cpp_lines'} = {
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 14,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '# line 666 "x"
 '
             }
@@ -473,6 +587,46 @@ $result_trees{'cpp_lines'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'file_with_cpp_lines.texi'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'include',
+                'extra' => {
+                  'text_arg' => 'file_with_cpp_lines.texi'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => 'g_f',
+                  'line_nr' => 74,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'include',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -515,6 +669,14 @@ $result_trees{'cpp_lines'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'position' => 1,
+              'sourcemark_type' => 'include',
+              'status' => 'end'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -572,7 +734,7 @@ $result_trees{'cpp_lines'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => ':'
               },
               'source_info' => {
@@ -647,9 +809,11 @@ $result_trees{'cpp_lines'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => 'g_f',
@@ -696,9 +860,11 @@ $result_trees{'cpp_lines'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => 'footnote',
@@ -733,9 +899,11 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'etext1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' 
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -745,11 +913,15 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'etext2'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => '
+'
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -783,9 +955,11 @@ $result_trees{'cpp_lines'} = {
                       'text' => ' no line directive mail space'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -795,11 +969,15 @@ $result_trees{'cpp_lines'} = {
                       'text' => ' no line directive text space'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => '
+'
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -833,9 +1011,11 @@ $result_trees{'cpp_lines'} = {
                       'text' => ' mail space'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' 
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -845,11 +1025,15 @@ $result_trees{'cpp_lines'} = {
                       'text' => ' text space'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => '
+'
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -885,9 +1069,11 @@ $result_trees{'cpp_lines'} = {
                       'type' => 'empty_line'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' 
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -926,13 +1112,14 @@ $result_trees{'cpp_lines'} = {
             {
               'text' => 'etext4
 '
-            },
-            {
-              'text' => '
-'
             }
           ],
           'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         },
         {
           'text' => '
@@ -962,17 +1149,23 @@ $result_trees{'cpp_lines'} = {
                   'text' => "l\x{e0}ng"
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => "l\x{e0}ng"
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => 'accentÃªd',
@@ -987,23 +1180,16 @@ $result_trees{'cpp_lines'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'g_f',
-        'line_nr' => 70,
+        'line_nr' => 71,
         'macro' => ''
       }
     },
@@ -1012,7 +1198,7 @@ $result_trees{'cpp_lines'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -1020,8 +1206,6 @@ $result_trees{'cpp_lines'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cpp_lines'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'cpp_lines'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'cpp_lines'} = '\\input texinfo
 @setfilename cpp_lines.info
@@ -1030,6 +1214,7 @@ $result_texis{'cpp_lines'} = '\\input texinfo
 @email{before top}.
 
 @node Top
+@node chap
 
 # 10 25 209
 # 1 2
@@ -1179,14 +1364,27 @@ $result_nodes{'cpp_lines'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'cpp_lines'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'cpp_lines'};
 
 $result_menus{'cpp_lines'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'cpp_lines'} = [

@@ -1,27 +1,34 @@
 texinfo/tp/README
 
-  Copyright 2011-2022 Free Software Foundation, Inc.
+  Copyright 2011-2023 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-Texinfo::Parser (hence the directory name tp) is a Perl module for
-parsing Texinfo code into a tree representing the Texinfo code
-structure and converting the tree to diverse output formats.
+texi2any is a Perl program for converting Texinfo input to to divers
+output formats.  Texinfo::Parser (hence the directory name tp) is a Perl
+module for parsing Texinfo code into a tree representing the Texinfo
+code structure.
 
 These other modules and libraries are required (all have been standard
 parts of Perl for years, at least since 5.7.3):
   Carp, Config, Data::Dumper, Encode, File::Basename, File::Spec
   Getopt::Long, Unicode::Normalize, Storable
 
-It also uses the less widely-available modules:
+Unicode::Collate (also a standard module since 5.7.3) is required for
+correct index sorting.
+
+texi2any also uses the less widely-available modules:
   Locale::Messages, Unicode::EastAsianWidth, Text::Unidecode
 For these, internal versions are included, and are installed and used as
-part of Texinfo (not disturbing the Perl installation at all).
+part of Texinfo (not disturbing the Perl installation at all) (although
+see the output of 'configure --help' for how to use externally installed
+modules).
+
 
 Archive::Zip is needed for the EPUB output format final file creation.
-It is not included in Texinfo, it is detected at runtime and an error is
+It is not included in Texinfo; it is detected at runtime and an error is
 issued if it cannot be loaded.
 
 

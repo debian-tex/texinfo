@@ -18,28 +18,23 @@ $result_trees{'no_menu'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -50,9 +45,11 @@ $result_trees{'no_menu'} = {
     {
       'args' => [
         {
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -80,28 +77,23 @@ $result_trees{'no_menu'} = {
               'text' => 'c1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'c1'
-          }
-        ],
-        'normalized' => 'c1',
-        'spaces_before_argument' => ' '
+        'normalized' => 'c1'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -117,9 +109,11 @@ $result_trees{'no_menu'} = {
               'text' => 'c1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -132,8 +126,11 @@ $result_trees{'no_menu'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -149,28 +146,23 @@ $result_trees{'no_menu'} = {
               'text' => 'c2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'c2'
-          }
-        ],
-        'normalized' => 'c2',
-        'spaces_before_argument' => ' '
+        'normalized' => 'c2'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -186,9 +178,11 @@ $result_trees{'no_menu'} = {
               'text' => 'c2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -201,8 +195,11 @@ $result_trees{'no_menu'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -218,28 +215,23 @@ $result_trees{'no_menu'} = {
               'text' => 'c3'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'c3'
-          }
-        ],
-        'normalized' => 'c3',
-        'spaces_before_argument' => ' '
+        'normalized' => 'c3'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -255,16 +247,21 @@ $result_trees{'no_menu'} = {
               'text' => 'c3'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -275,14 +272,6 @@ $result_trees{'no_menu'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'no_menu'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'no_menu'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_menu'}{'contents'}[7]{'args'}[0]{'contents'}[0];
 
 $result_texis{'no_menu'} = '@node Top
 @top
@@ -552,6 +541,12 @@ $result_converted{'html'}->{'no_menu'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -574,7 +569,7 @@ Next: <a href="#c1" accesskey="n" rel="next">c1</a> &nbsp; </p>
 <p>
 Next: <a href="#c2" accesskey="n" rel="next">c2</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="c1-1">1 c1</h2>
+<h2 class="chapter" id="c1-1"><span>1 c1<a class="copiable-link" href="#c1-1"> &para;</a></span></h2>
 
 <hr>
 </div>
@@ -583,7 +578,7 @@ Next: <a href="#c2" accesskey="n" rel="next">c2</a> &nbsp; </p>
 <p>
 Next: <a href="#c3" accesskey="n" rel="next">c3</a>, Previous: <a href="#c1" accesskey="p" rel="prev">c1</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="c2-1">2 c2</h2>
+<h2 class="chapter" id="c2-1"><span>2 c2<a class="copiable-link" href="#c2-1"> &para;</a></span></h2>
 
 <hr>
 </div>
@@ -592,7 +587,7 @@ Next: <a href="#c3" accesskey="n" rel="next">c3</a>, Previous: <a href="#c1" acc
 <p>
 Previous: <a href="#c2" accesskey="p" rel="prev">c2</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="c3-1">3 c3</h2>
+<h2 class="chapter" id="c3-1"><span>3 c3<a class="copiable-link" href="#c3-1"> &para;</a></span></h2>
 </div>
 </div>
 

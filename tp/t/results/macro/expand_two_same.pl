@@ -40,17 +40,23 @@ $result_trees{'expand_two_same'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -59,7 +65,7 @@ $result_trees{'expand_two_same'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macrotwo { arg }
 '
           },
@@ -72,6 +78,38 @@ $result_trees{'expand_two_same'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'a simple @code{
+arg}
+'
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macrotwo',
+                      'spaces_after_cmd_before_arg' => {
+                        'text' => ' '
+                      },
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 12,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Call macro2
 '
             },
@@ -137,6 +175,14 @@ $result_trees{'expand_two_same'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -149,10 +195,48 @@ $result_trees{'expand_two_same'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'arg with comma , here '
+                          }
+                        ],
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macrotwo',
+                      'spaces_after_cmd_before_arg' => {
+                        'text' => ' '
+                      },
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 24,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Call macro2 with 2 args
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 72,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'With a doubles arg arg with comma , here  and re arg with comma , here 
 '
             }

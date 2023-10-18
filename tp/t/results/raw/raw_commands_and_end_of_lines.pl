@@ -17,9 +17,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -43,17 +45,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -82,9 +90,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -112,17 +122,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'html'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'html'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -157,9 +173,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -183,17 +201,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'html'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'html'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -228,9 +252,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -254,17 +280,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'html after the closing command.'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'html after the closing command.'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -295,9 +327,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -321,17 +355,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'html'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'html'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -366,9 +406,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -392,17 +434,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'html. A symbol after the closing command.'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'html. A symbol after the closing command.'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -428,9 +476,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -454,17 +504,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -493,9 +549,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -519,17 +577,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'tex'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'tex'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -564,9 +628,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -590,17 +656,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'tex'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'tex'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -635,9 +707,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -661,17 +735,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'tex after the closing command.'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'tex after the closing command.'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -702,9 +782,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -728,17 +810,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'tex'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'tex'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -773,9 +861,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -799,17 +889,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                           'text' => 'tex. A symbol after the closing command.'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'tex. A symbol after the closing command.'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -835,9 +931,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -857,17 +955,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -899,9 +1003,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -921,17 +1027,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -971,9 +1083,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -993,17 +1107,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1043,9 +1163,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1065,17 +1187,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'verbatim after the closing command.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim after the closing command.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1106,9 +1234,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1128,17 +1258,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1178,9 +1314,11 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1200,17 +1338,23 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                       'text' => 'verbatim. A symbol after the closing command.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim. A symbol after the closing command.'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1321,26 +1465,39 @@ in block
 
 
 $result_texts{'raw_commands_and_end_of_lines'} = '
+Surrounded by empty lines.
 
 Block commands on a line
+in block
+in block l2
 end commands on a line.
 
-Before the opening command end commands on a line.
+Before the opening command in block
+end commands on a line.
 
-Before the opening command 
-Before the opening command . A symbol on a line.
+Before the opening command in block
 
-Before the opening command 
+Before the opening command in block
+. A symbol on a line.
+
+Before the opening command in block
+
+Surrounded by empty lines.
 
 Block commands on a line
+in block
 end commands on a line.
 
-Before the opening command end commands on a line.
+Before the opening command in block
+end commands on a line.
 
-Before the opening command 
-Before the opening command . A symbol on a line.
+Before the opening command in block
 
-Before the opening command 
+Before the opening command in block
+. A symbol on a line.
+
+Before the opening command in block
+
 Surrounded by empty lines.
 
 Block commands on a line
@@ -1567,6 +1724,94 @@ in block
 
    Before the opening command
 in block
+';
+
+
+$result_converted{'xml'}->{'raw_commands_and_end_of_lines'} = '
+<html endspaces=" ">
+Surrounded by empty lines.
+</html>
+
+<para>Block commands on a line
+<html endspaces=" ">
+in block
+in block l2
+</html>
+end commands on a line.
+</para>
+<para>Before the opening command <html endspaces=" ">
+in block
+</html>
+end commands on a line.
+</para>
+<para>Before the opening command <html endspaces=" ">
+in block
+</html>
+</para>
+<para>Before the opening command <html endspaces=" ">
+in block
+</html>
+. A symbol on a line.
+</para>
+<para>Before the opening command <html endspaces=" ">
+in block
+</html>
+</para>
+<tex endspaces=" ">
+Surrounded by empty lines.
+</tex>
+
+<para>Block commands on a line
+<tex endspaces=" ">
+in block
+</tex>
+end commands on a line.
+</para>
+<para>Before the opening command <tex endspaces=" ">
+in block
+</tex>
+end commands on a line.
+</para>
+<para>Before the opening command <tex endspaces=" ">
+in block
+</tex>
+</para>
+<para>Before the opening command <tex endspaces=" ">
+in block
+</tex>
+. A symbol on a line.
+</para>
+<para>Before the opening command <tex endspaces=" ">
+in block
+</tex>
+</para>
+<verbatim xml:space="preserve" endspaces=" ">
+Surrounded by empty lines.
+</verbatim>
+
+<para>Block commands on a line
+</para><verbatim xml:space="preserve" endspaces=" ">
+in block
+</verbatim>
+<para>end commands on a line.
+</para>
+<para>Before the opening command </para><verbatim xml:space="preserve" endspaces=" ">
+in block
+</verbatim>
+<para>end commands on a line.
+</para>
+<para>Before the opening command </para><verbatim xml:space="preserve" endspaces=" ">
+in block
+</verbatim>
+
+<para>Before the opening command </para><verbatim xml:space="preserve" endspaces=" ">
+in block
+</verbatim>
+<para>. A symbol on a line.
+</para>
+<para>Before the opening command </para><verbatim xml:space="preserve" endspaces=" ">
+in block
+</verbatim>
 ';
 
 1;

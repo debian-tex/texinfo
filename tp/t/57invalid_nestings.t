@@ -9,9 +9,6 @@ my @test_cases = (
 ['on_section_line',
 '@section @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 '],
-['on_node_line',
-'@node @ref{a, b, c, filename}, (@pxref{(somemanual)Top}) @anchor{in anchor}@footnote{footnote} @exdent exdent
-'],
 ['on_subheading_line',
 '@subheading @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 '],
@@ -33,15 +30,10 @@ my @test_cases = (
 ',
 {'EXPANDED_FORMATS' => ['tex']}
 ],
-['ignored_text',
-'@node before ignore @ifinfo
-in ifinfo
-@end ifinfo on the node line',
-{'EXPANDED_FORMATS' => []}
-],
 ['in_table',
 '
 @node Top
+@node chap
 
 @table @xref
 @end table
@@ -98,21 +90,6 @@ Somethin
 @cindex entry @node a, (m)b, (m)c, (h)d
 
 Content
-'],
-['section_on_def_line',
-'@deffn a b @section s
-
-Something
-
-@end deffn
-'],
-['section_on_defx_line',
-'@deffn h j k l 
-@deffnx a b @section s
-
-Something
-
-@end deffn
 '],
 ['center',
 '@center @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote}
@@ -322,17 +299,6 @@ in copying
 
 @section section
 '],
-['section_in_nested_block_commands',
-'@table @strong
-@item item
-table line
-
-@quotation
-
-in quotation
-
-@section a section
-'],
 ['section_in_footnote',
 '
 Text@footnote{
@@ -348,21 +314,6 @@ Some @math{aa {x^2
 More @math{ in math
 
 @section sec2
-'],
-['itemx_in_itemize_enumerate_in_table',
-'@table @strong
-@item item
-
-In item, nested itemize
-@itemize
-@itemx in nested itemize itemx
-@end itemize
-
-@enumerate
-@itemx in nested enumerate itemx
-@end enumerate
-
-@end table
 '],
 ['item_tab_outside_of_table_lists',
 '@itemx itemx outside.
@@ -483,7 +434,7 @@ in float
 @end float
 }'],
 ['menu_in_style_command',
-'@node Top
+'@node first
 
 @code{
 @menu
@@ -499,40 +450,40 @@ First item text
 @item second item}
 @end table
 '],
-['ref_in_anchor',
+['ref_to_top_in_anchor',
 '@node Top
 @anchor{TOP @ref{Top}}'],
 ['ref_in_ref',
-'@node Top
-@ref{@ref{Top}}'],
+'@node first
+@ref{@ref{first}}'],
 ['footnote_in_ref',
-'@node Top
+'@node first
 
-@xref{Top, Text@footnote{First para
+@xref{first, Text@footnote{First para
 
 seond para}.'],
 ['verbatim_in_ref',
-'@node Top
+'@node first
 
-@xref{Top, 
+@xref{first, 
 @verbatim
 verbat text
 @end verbatim
 
 }.'],
 ['quotation_in_ref',
-'@node Top
+'@node first
 
-@xref{Top,
+@xref{first,
 @quotation
 quotation in ref
 @end quotation
 }.
 '],
 ['ignore_in_xref',
-'@node Top
+'@node first
 
-@xref{Top,
+@xref{first,
 @ignore
 ignore me
 @end ignore
@@ -551,6 +502,9 @@ Text. @errormsg{@anchor{in anchor} @ref{in ref}}
 );
 
 my @formatted_cases = (
+['on_node_line',
+'@node @ref{a, b, c, filename}, (@pxref{(somemanual)Top}) @anchor{in anchor}@footnote{footnote} @exdent exdent
+'],
 ['table_in_code',
 '@code{
 in code
@@ -560,10 +514,96 @@ text
 @end table
 }
 '],
+['section_in_nested_block_commands',
+'@table @strong
+@item item
+table line
+
+@quotation
+
+in quotation
+
+@section a section
+'],
+['section_on_def_line',
+'@deffn a b @section s
+
+Something
+
+@end deffn
+'],
+['section_on_defx_line',
+'@deffn h j k l 
+@deffnx a b @section s
+
+Something
+
+@end deffn
+'],
+['section_on_multitable_line',
+'@multitable @section first
+
+@multitable @code{this} @section second
+
+@multitable {aaa} {bbb} @section third
+'],
+['section_on_float_line',
+'@float t, l @section first
+'],
+['section_on_enumerate_line',
+'@enumerate something @section first
+
+@enumerate 4 @section second
+'],
+['section_on_xtable_line',
+'@vtable @section first
+
+@table @TeX @section second
+
+@table @code @section third
+
+@ftable @ringaccent @section fourth
+'],
+['section_on_itemize_line',
+'@itemize @minus{} @section first
+
+@itemize @minus{} aa @section second
+
+@itemize @section third
+
+@itemize @ringaccent @section fourth
+'],
+['section_on_cartouche_line',
+'@cartouche@section first
+
+@cartouche @section second spaces
+'],
+['ignored_text',
+'@node before ignore @ifinfo
+in ifinfo
+@end ifinfo on the node line',
+{'EXPANDED_FORMATS' => []}
+],
+['itemx_in_itemize_enumerate_in_table',
+'@table @strong
+@item item
+
+In item, nested itemize
+@itemize
+@itemx in nested itemize itemx
+@end itemize
+
+@enumerate
+@itemx in nested enumerate itemx
+@end enumerate
+
+@end table
+'],
 );
 
 foreach my $test (@formatted_cases) {
-  $test->[2]->{'test_formats'} = ['plaintext'];
+  push @{$test->[2]->{'test_formats'}}, 'plaintext';
+  push @{$test->[2]->{'test_formats'}}, 'xml';
 }
 
 run_all('invalid_nestings', [@test_cases, @formatted_cases]);

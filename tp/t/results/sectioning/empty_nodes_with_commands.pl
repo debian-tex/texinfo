@@ -20,22 +20,16 @@ $result_trees{'empty_nodes_with_commands'} = {
     {
       'args' => [
         {
-          'extra' => {
+          'info' => {
             'comment_at_end' => {
               'args' => [
                 {
                   'text' => ' comment
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              }
+              'cmdname' => 'c'
             }
           },
           'type' => 'line_arg'
@@ -49,11 +43,10 @@ $result_trees{'empty_nodes_with_commands'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'nodes_manuals' => [
-          undef
-        ],
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -74,16 +67,10 @@ $result_trees{'empty_nodes_with_commands'} = {
         }
       ],
       'cmdname' => 'node',
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => '-'
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -99,24 +86,20 @@ $result_trees{'empty_nodes_with_commands'} = {
               'cmdname' => ':'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => ''
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -147,24 +130,20 @@ $result_trees{'empty_nodes_with_commands'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => '-'
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -175,9 +154,6 @@ $result_trees{'empty_nodes_with_commands'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_nodes_with_commands'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_nodes_with_commands'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_nodes_with_commands'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_nodes_with_commands'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_nodes_with_commands'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'empty_nodes_with_commands'} = '
 @node @c comment

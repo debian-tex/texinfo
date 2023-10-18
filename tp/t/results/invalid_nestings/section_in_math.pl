@@ -29,13 +29,16 @@ $result_trees{'section_in_math'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'x^2
+                          'text' => '{x^2
 '
                         },
                         {
                           'text' => '
 ',
                           'type' => 'empty_line'
+                        },
+                        {
+                          'text' => '}'
                         }
                       ],
                       'source_info' => {
@@ -43,7 +46,7 @@ $result_trees{'section_in_math'} = {
                         'line_nr' => 2,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     }
                   ],
                   'type' => 'brace_command_context'
@@ -70,9 +73,11 @@ $result_trees{'section_in_math'} = {
               'text' => 'sec1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -107,8 +112,10 @@ $result_trees{'section_in_math'} = {
                 }
               ],
               'cmdname' => 'math',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -120,8 +127,10 @@ $result_trees{'section_in_math'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -137,16 +146,20 @@ $result_trees{'section_in_math'} = {
               'text' => 'sec2'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -186,7 +199,6 @@ $result_sectioning{'section_in_math'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -195,7 +207,6 @@ $result_sectioning{'section_in_math'} = {
       },
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 2,
@@ -215,6 +226,15 @@ $result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[1]{'structu
 
 $result_errors{'section_in_math'} = [
   {
+    'error_line' => 'warning: @section should not appear anywhere inside @math
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@section should not appear anywhere inside @math',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'misplaced {
 ',
     'file_name' => '',
@@ -233,12 +253,12 @@ $result_errors{'section_in_math'} = [
     'type' => 'error'
   },
   {
-    'error_line' => 'warning: @section should not appear in @math
+    'error_line' => 'warning: @section should not appear anywhere inside @math
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => '@section should not appear in @math',
+    'text' => '@section should not appear anywhere inside @math',
     'type' => 'warning'
   },
   {

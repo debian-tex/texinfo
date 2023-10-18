@@ -36,7 +36,7 @@ $result_trees{'minimal_empty_with_bye'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'

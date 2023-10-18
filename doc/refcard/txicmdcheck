@@ -221,6 +221,7 @@ sub read_tp {
                    |(even|every|odd)(foot|head)ingmarks
                    |rmacro
                    |refill
+                   |item_LINE
                    |^\@..index
                    |\|
                   /x;

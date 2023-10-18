@@ -17,9 +17,11 @@ $result_trees{'comment_in_quotation'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -36,16 +38,10 @@ $result_trees{'comment_in_quotation'} = {
                     {
                       'text' => '
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      '
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               ],
               'type' => 'paragraph'
@@ -58,17 +54,23 @@ $result_trees{'comment_in_quotation'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -91,9 +93,11 @@ $result_trees{'comment_in_quotation'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -110,16 +114,10 @@ $result_trees{'comment_in_quotation'} = {
                     {
                       'text' => '
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      '
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               ],
               'type' => 'paragraph'
@@ -132,17 +130,23 @@ $result_trees{'comment_in_quotation'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

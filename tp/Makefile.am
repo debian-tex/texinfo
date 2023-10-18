@@ -1,6 +1,6 @@
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011-2019 Free Software Foundation, Inc.
+# Copyright 2011-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -115,6 +115,7 @@ dist_debugmodules_DATA = \
 extensionsdir = $(datadir)/texinfo/ext
 dist_extensions_DATA = \
  ext/epub3.pm \
+ ext/highlight_syntax.pm \
  ext/tex4ht.pm \
  ext/latex2html.pm
 
@@ -123,17 +124,20 @@ dist_init_DATA = \
  init/book.pm \
  init/chm.pm \
  init/documentation_examples.pm \
- init/html32.pm \
- init/highlight_syntax.pm
+ init/html32.pm
 
 test_files = \
  t/README \
  t/include/a.txt \
  t/include/aa.txt \
- t/include/my-bib-macros.texi \
+ t/include/chapter_char_latin2_latin2_in_refs.texi \
+ t/include/chapter_chinese_mixed_with_en.texi \
+ t/include/chapter_chinese_mixed_with_en_EUC_CN.texi \
+ t/include/chapter_japanese_shift_jis.texi \
  t/include/count_image.png \
  t/include/count_image.txt \
  t/include/count_image_text.txt \
+ t/include/documentdescription_EUC_CN.texi \
  t/include/f.txt \
  t/include/fdotext.ext \
  t/include/fdotext.png \
@@ -149,9 +153,12 @@ test_files = \
  t/include/image_encoded.txt \
  t/include/inc_@f--ile.texi \
  t/include/included_file_with_setfilename.texi \
+ t/include/my-bib-macros.texi \
+ t/include/text_only_image.txt \
  t/include/this_is_a_long_unknown_file.png \
  t/include/verbatim_encoded.texi \
  t/include/verbatim_encoded_latin1.texi \
+ t/include/version.texi \
  t/include/words.txt \
  t/include/f--ile.png \
  t/include/f--ile.txt \
@@ -160,6 +167,8 @@ test_files = \
  t/include/incl-incl.txi \
  t/include/macro_included.texi \
  t/include/section_file.texi \
+ t/include/section_file_no_node.texi \
+ t/include/section_file_no_node_include.texi \
  t/init/command_translation_modified.init \
  t/init/cvs.init \
  t/init/icons.init \
@@ -169,46 +178,60 @@ test_files = \
  t/init/misc_file_collision.init \
  t/init/only_toc_out.init \
  t/init/redefine_need.init \
+ t/init/redirection_file_collision_with_special.init \
+ t/init/redirection_file_collision_with_user_def.init \
+ t/init/special_element_customization.pm \
  t/init/t2h_singular.init \
  t/init/test_directions.init \
  t/init/test_renamed_nodes.init \
  t/init/translate_txiinternalvalue_macro.init \
+ t/init/translated_strings_customization.pm \
  t/init/undef_node_file_name.init \
+ t/init/spaces_in_line_breaks.init \
  t/test_utils.pl \
  t/input_files/all_spaces.texi \
  t/input_files/bib-example.texi \
- t/input_files/char_latin1_utf8_in_refs.texi \
+ t/input_files/char_utf8_latin1_in_refs.texi \
  t/input_files/char_latin1_latin1_in_refs.texi \
+ t/input_files/char_us_ascii_latin1_in_refs.texi \
  t/input_files/char_latin2_latin2_in_refs.texi \
+ t/input_files/character_and_spaces_in_refs_text.texi \
  t/input_files/chinese_mixed_with_en.texi \
+ t/input_files/chinese_mixed_with_en_EUC_CN.texi \
+ t/input_files/complex_sectioning_case.texi \
  t/input_files/cond.texi \
  t/input_files/contents_at_document_begin.texi \
- t/input_files/contents_at_end_document_after_node.texi \
- t/input_files/contents_at_end_document.texi \
- t/input_files/contents_in_document.texi \
- t/input_files/contents_no_section.texi \
+ t/input_files/contents_at_end.texi \
+ t/input_files/contents_in_middle_chapter.texi \
+ t/input_files/contents_in_middle_section.texi \
+ t/input_files/cpp_directives_after_macros.texi \
+ t/input_files/cpp_directives_in_macro.texi \
  t/input_files/cpp_line_before_first_node.texi \
  t/input_files/cpp_lines.texi \
  t/input_files/cpp_line_latin1.texi \
- t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
+ t/input_files/delcomment_followed_by_cpp_line.texi \
+ t/input_files/delcomment_on_comment.texi \
  t/input_files/direntry_dircategory.texi \
- t/input_files/documentlanguage_set.texi \
- t/input_files/double_index_entry.texi \
+ t/input_files/double_contents.texi \
  t/input_files/east_asian_in_w.texi \
  t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
  t/input_files/encoding_index_latin1.texi \
  t/input_files/encoding_index_utf8.texi \
- t/input_files/equivalent_nodes.texi \
+ t/input_files/end_of_lines_protected_non_ascii.texi \
  t/input_files/float_copying.texi \
- t/input_files/formatting.texi \
  t/input_files/glossary.texi \
  t/input_files/in_menu_only_special_spaces_node.texi \
  t/input_files/in_menu_only_special_ascii_spaces_node.texi \
  t/input_files/index_no_node.texi \
+ t/input_files/index_no_node_no_top.texi \
+ t/input_files/index_nodes.texi \
+ t/input_files/index_special_region.texi \
+ t/input_files/index_special_region_no_insertcopying.texi \
  t/input_files/index_split.texi \
+ t/input_files/index_table.texi \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
  t/input_files/manual_simple_utf8_with_error.texi \
@@ -216,7 +239,8 @@ test_files = \
  t/input_files/minimal_empty_empty.texi \
  t/input_files/minimal_empty_with_bye.texi \
  t/input_files/minimal_empty_with_input.texi \
- t/input_files/more_sections_than_nodes.texi \
+ t/input_files/minimal_only_input_line.texi \
+ t/input_files/multiple_include_encodings.texi \
  t/input_files/navigation.texi \
  t/input_files/nodequote.texi \
  t/input_files/nodes_before_top.texi \
@@ -224,35 +248,25 @@ test_files = \
  t/input_files/no_monolithic.texi \
  t/input_files/no_node.texi \
  t/input_files/node_footnote.texi \
- t/input_files/nodes_after_top_before_chapter.texi \
- t/input_files/nodes_after_top_before_section.texi \
  t/input_files/non_break_spaces.texi \
  t/input_files/one_line.texi \
- t/input_files/one_line_no_content.texi \
  t/input_files/only_special_spaces_node.texi \
- t/input_files/placed_things_before_element.texi \
+ t/input_files/pl_translated_inserted_strings_8bit.texi \
  t/input_files/punctuation_small_case_accents_latin1.texi \
  t/input_files/punctuation_small_case_accents_us_ascii.texi \
  t/input_files/punctuation_small_case_accents_utf8.texi \
  t/input_files/reference_to_only_special_spaces_node.texi \
  t/input_files/sample_utf8.texi \
- t/input_files/sectioning.texi \
+ t/input_files/section_in_unnumbered_text.texi \
  t/input_files/simplest.texi \
  t/input_files/split_chapter_index.texi \
- t/input_files/split_nocopying.texi \
  t/input_files/simplest_no_node_section.texi \
  t/input_files/special_spaces_in_nodes.texi \
  t/input_files/test_refs.texi \
- t/input_files/test_two_include.texi \
- t/input_files/top_node_up_explicit.texi \
- t/input_files/top_node_up_implicit.texi \
  t/input_files/topic_guide.texi \
- t/input_files/two_footnotes_in_nodes.texi \
  t/input_files/things_before_setfilename_no_element.texi \
  t/input_files/things_before_setfilename.texi \
- t/input_files/unknown_nodes_renamed.texi \
- t/input_files/unknown_nodes_renamed-noderename.cnf \
- t/input_files/version.texi \
+ t/input_files/transliterated_names_conflicts.texi \
  t/input_files/htmlxref.cnf \
  t/input_files/htmlxref-mono.cnf \
  t/input_files/htmlxref-split.cnf \
@@ -298,7 +312,8 @@ EXTRA_DIST = \
   $(test_files) \
   $(tp_tests) \
   $(maintenance_files) \
-  maintain/lib
+  maintain/lib \
+  Texinfo/command_data.txt
 
 # template.pod is the basis for the .pm documentation, and the script
 # invoked here updates them; to be run when template.pod changes.
@@ -319,11 +334,12 @@ Texinfo/ModulePath.pm: Texinfo/ModulePath.pm.in Makefile
 	sed -e 's|[@]USE_EXTERNAL_LIBINTL[@]|$(USE_EXTERNAL_LIBINTL)|' \
 	    -e 's|[@]USE_EXTERNAL_EASTASIANWIDTH[@]|$(USE_EXTERNAL_EASTASIANWIDTH)|' \
 	    -e 's|[@]USE_EXTERNAL_UNIDECODE[@]|$(USE_EXTERNAL_UNIDECODE)|' \
+	    -e 's|[@]ICONV_CONVERTS_EUC_CN[@]|$(ICONV_CONVERTS_EUC_CN)|' \
 	  $(srcdir)/Texinfo/ModulePath.pm.in >$@
 
-Texinfo/Commands.pm: Texinfo/XS/parsetexi/command_data.txt
+Texinfo/Commands.pm: Texinfo/command_data.txt
 	$(MKDIR_P) Texinfo
-	$(srcdir)/maintain/regenerate_commands_perl_info.pl < $(srcdir)/Texinfo/XS/parsetexi/command_data.txt
+	$(srcdir)/maintain/regenerate_commands_perl_info.pl < $(srcdir)/Texinfo/command_data.txt
 
 libsrcdir = $(srcdir)/maintain/lib
 

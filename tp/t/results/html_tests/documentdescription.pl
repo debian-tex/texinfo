@@ -12,9 +12,11 @@ $result_trees{'documentdescription'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -92,7 +94,7 @@ $result_trees{'documentdescription'} = {
                     }
                   ],
                   'cmdname' => 'verb',
-                  'extra' => {
+                  'info' => {
                     'delimiter' => ':'
                   },
                   'source_info' => {
@@ -207,17 +209,23 @@ $result_trees{'documentdescription'} = {
                       'text' => 'documentdescription'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'documentdescription'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -248,16 +256,20 @@ $result_trees{'documentdescription'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -287,7 +299,6 @@ $result_sectioning{'documentdescription'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_level' => 0,
           'section_up' => {}
@@ -319,6 +330,12 @@ $result_converted{'html'}->{'documentdescription'} = '<!DOCTYPE html>
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -326,7 +343,7 @@ $result_converted{'html'}->{'documentdescription'} = '<!DOCTYPE html>
 <body lang="en">
 
 <div class="top-level-extent" id="top">
-<h1 class="top">top</h1>
+<h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 </div>
 
 

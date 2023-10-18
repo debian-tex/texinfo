@@ -17,9 +17,11 @@ $result_trees{'verbatiminclude_and_encoding'} = {
                   'text' => 'utf-8'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -27,9 +29,12 @@ $result_trees{'verbatiminclude_and_encoding'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'utf-8',
-            'input_perl_encoding' => 'utf-8-strict',
-            'spaces_before_argument' => ' ',
             'text_arg' => 'utf-8'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -50,18 +55,24 @@ $result_trees{'verbatiminclude_and_encoding'} = {
                   'text' => 'verbatim_encoded.texi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8-strict',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'verbatim_encoded.texi'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

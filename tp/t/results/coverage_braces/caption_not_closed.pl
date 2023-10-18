@@ -17,9 +17,11 @@ $result_trees{'caption_not_closed'} = {
                   'text' => 'Text'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -101,17 +103,23 @@ $result_trees{'caption_not_closed'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -122,12 +130,11 @@ $result_trees{'caption_not_closed'} = {
           ],
           'extra' => {
             'caption' => {},
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'float_type' => 'Text'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -149,7 +156,7 @@ $result_trees{'caption_not_closed'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -159,7 +166,6 @@ $result_trees{'caption_not_closed'} = {
 };
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'float'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'caption'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'caption_not_closed'} = '@float Text
 
@@ -203,14 +209,7 @@ $result_floats{'caption_not_closed'} = {
             'float' => {}
           }
         },
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
-        }
+        'float_type' => 'Text'
       }
     }
   ]

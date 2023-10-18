@@ -1,6 +1,6 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename node_footnote.info
+@c test footnotes with nodes only
 
 @node Top
 

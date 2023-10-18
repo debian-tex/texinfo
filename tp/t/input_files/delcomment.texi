@@ -1,5 +1,4 @@
 \input texinfo
-@setfilename delcomment.info
 
 @c this tests both the del comment and a file without
 @c element.

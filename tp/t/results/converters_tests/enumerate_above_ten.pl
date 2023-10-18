@@ -17,9 +17,11 @@ $result_trees{'enumerate_above_ten'} = {
                   'text' => '14'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -60,17 +62,23 @@ $result_trees{'enumerate_above_ten'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -80,8 +88,12 @@ $result_trees{'enumerate_above_ten'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => '14',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => '14'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

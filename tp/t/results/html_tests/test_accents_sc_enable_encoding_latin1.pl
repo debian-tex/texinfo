@@ -34,9 +34,11 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
                       'text' => 'ISO-8859-1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -44,9 +46,12 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'iso-8859-1',
-                'input_perl_encoding' => 'iso-8859-1',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ISO-8859-1'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -73,28 +78,23 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -110,9 +110,11 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -125,8 +127,11 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -142,28 +147,23 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
               'text' => 'node chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node-chap'
-          }
-        ],
-        'normalized' => 'node-chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node-chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -179,9 +179,11 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1153,8 +1155,11 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -1165,10 +1170,6 @@ $result_trees{'test_accents_sc_enable_encoding_latin1'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_latin1'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'test_accents_sc_enable_encoding_latin1'} = '\\input texinfo
 
@@ -1322,10 +1323,8 @@ $result_floats{'test_accents_sc_enable_encoding_latin1'} = {};
 $result_converted{'html_text'}->{'test_accents_sc_enable_encoding_latin1'} = '
 <div class="top-level-extent" id="Top">
 <div class="nav-panel">
-<p>
-   </p>
 </div>
-<h1 class="top" id="top-section">top section</h1>
+<h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> ¶</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#node-chap" accesskey="1">chapter</a></li>
@@ -1333,10 +1332,8 @@ $result_converted{'html_text'}->{'test_accents_sc_enable_encoding_latin1'} = '
 <hr>
 <div class="chapter-level-extent" id="node-chap">
 <div class="nav-panel">
-<p>
-   </p>
 </div>
-<h2 class="chapter" id="chapter">1 chapter</h2>
+<h2 class="chapter" id="chapter"><span>1 chapter<a class="copiable-link" href="#chapter"> ¶</a></span></h2>
 
 <p>&ldquo;in double q&rdquo;. &lsquo;in simple q&rsquo;.
 </p>

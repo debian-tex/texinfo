@@ -35,17 +35,23 @@ $result_trees{'macro_expands_to_empty'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,7 +60,7 @@ $result_trees{'macro_expands_to_empty'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' foo {arg}
 '
           },
@@ -70,6 +76,51 @@ $result_trees{'macro_expands_to_empty'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'foo'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            },
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'aa'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'foo'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -77,6 +128,14 @@ $result_trees{'macro_expands_to_empty'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 2,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'aa
 '
             }

@@ -1,20 +1,20 @@
 # Texinfo.pm: output a Texinfo tree as Texinfo.
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2023 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 # Parts (also from Patrice Dumas) come from texi2html.pl or texi2html.init.
 
@@ -30,6 +30,8 @@ use Carp qw(cluck confess);
 
 # commands definitions
 use Texinfo::Commands;
+# get_label_element
+use Texinfo::Common;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
@@ -37,12 +39,13 @@ use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
 
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert_to_texinfo
-  node_extra_to_texi
+  link_element_to_texi
+  target_element_to_texi_label
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 my %brace_commands           = %Texinfo::Commands::brace_commands;
@@ -59,19 +62,29 @@ for my $a (@ignored_types) {
   $ignored_types{$a} = 1;
 }
 
-# used to put a node name in error messages.
-sub node_extra_to_texi($)
+# TODO document?
+sub link_element_to_texi($)
 {
-  my $node = shift;
+  my $element = shift;
   my $result = '';
-  if ($node->{'manual_content'}) {
+  return $result if (!$element->{'extra'});
+  if ($element->{'extra'}->{'manual_content'}) {
     $result = '('.convert_to_texinfo({'contents'
-                              => $node->{'manual_content'}}) .')';
+                         => $element->{'extra'}->{'manual_content'}}) .')';
   }
-  if ($node->{'node_content'}) {
-    $result .= convert_to_texinfo({'contents' => $node->{'node_content'}});
+  if ($element->{'extra'}->{'node_content'}) {
+    $result .= convert_to_texinfo({'contents'
+                         => $element->{'extra'}->{'node_content'}});
   }
-  return $result;
+  return $result
+}
+
+# TODO document?
+sub target_element_to_texi_label($)
+{
+  my $element = shift;
+  my $label_element = Texinfo::Common::get_label_element($element);
+  return convert_to_texinfo({'contents' => $label_element->{'contents'}});
 }
 
 # for debugging.
@@ -80,10 +93,9 @@ sub root_heading_command_to_texinfo($)
   my $element = shift;
   my $tree;
   if ($element->{'cmdname'}) {
-    if ($element->{'cmdname'} eq 'node') {
-      $tree = $element->{'extra'}->{'node_content'};
-    } elsif ($sectioning_heading_commands{$element->{'cmdname'}}
-             and $element->{'args'}->[0]->{'contents'}) {
+    if (($element->{'cmdname'} eq 'node'
+         or $sectioning_heading_commands{$element->{'cmdname'}})
+        and $element->{'args'}->[0]->{'contents'}) {
       $tree = $element->{'args'}->[0]->{'contents'};
     }
   } else {
@@ -97,15 +109,11 @@ sub root_heading_command_to_texinfo($)
 # Following subroutines deal with transforming a texinfo tree into texinfo
 # text.  Should give the text that was used parsed, except for a few cases.
 
-# the second arguments, if defined triggers replaced
-# tree item to be shown, in the default case they are
-# not shown.
 # expand a tree to the corresponding texinfo.
-sub convert_to_texinfo($;$);
-sub convert_to_texinfo($;$)
+sub convert_to_texinfo($);
+sub convert_to_texinfo($)
 {
   my $element = shift;
-  my $expand_replaced = shift;
 
   confess "convert_to_texinfo: element undef" if (!defined($element));
   confess "convert_to_texinfo: bad element type (".ref($element).") $element"
@@ -113,124 +121,105 @@ sub convert_to_texinfo($;$)
   my $result = '';
 
   return '' if ($element->{'type'}
-                and ($ignored_types{$element->{'type'}}
-                     or ($element->{'type'} eq 'replaced'
-                         and not $expand_replaced)));
+                and ($ignored_types{$element->{'type'}}));
   if (defined($element->{'text'})) {
     $result .= $element->{'text'};
   } else {
     if ($element->{'cmdname'}
-       or ($element->{'type'} and ($element->{'type'} eq 'def_line'
-                                or $element->{'type'} eq 'menu_entry'
-                                or $element->{'type'} eq 'menu_comment'))) {
-      $result .= _expand_cmd_args_to_texi($element, $expand_replaced);
-    }
-    if ($element->{'type'}
-        and ($element->{'type'} eq 'bracketed'
-             or $element->{'type'} eq 'bracketed_def_content')) {
-      $result .= '{';
-      if ($element->{'extra'}
-          and $element->{'extra'}->{'spaces_before_argument'}) {
-         $result .= $element->{'extra'}->{'spaces_before_argument'};
+        or ($element->{'type'} and $element->{'type'} eq 'def_line')) {
+      $result .= _expand_cmd_args_to_texi($element);
+    } else {
+      if ($element->{'type'}
+          and ($element->{'type'} eq 'bracketed_arg'
+               or $element->{'type'} eq 'bracketed_linemacro_arg')) {
+        $result .= '{';
+      }
+      if ($element->{'info'}
+          and $element->{'info'}->{'spaces_before_argument'}) {
+        $result .= $element->{'info'}->{'spaces_before_argument'}->{'text'};
       }
     }
     if (defined($element->{'contents'})) {
       foreach my $child (@{$element->{'contents'}}) {
-        $result .= convert_to_texinfo($child, $expand_replaced);
+        $result .= convert_to_texinfo($child);
       }
     }
-    if ($element->{'extra'} and $element->{'extra'}->{'spaces_after_argument'}) {
-      $result .= $element->{'extra'}->{'spaces_after_argument'};
+    if ($element->{'info'} and $element->{'info'}->{'spaces_after_argument'}) {
+      $result .= $element->{'info'}->{'spaces_after_argument'}->{'text'};
     }
-    if ($element->{'extra'} and $element->{'extra'}->{'comment_at_end'}) {
-      $result .= convert_to_texinfo($element->{'extra'}->{'comment_at_end'},
-                         $expand_replaced);
+    if ($element->{'info'} and $element->{'info'}->{'comment_at_end'}) {
+      $result .= convert_to_texinfo($element->{'info'}->{'comment_at_end'})
     }
     $result .= '}' if ($element->{'type'}
-                       and ($element->{'type'} eq 'bracketed'
-                            or $element->{'type'} eq 'bracketed_def_content'));
+                       and ($element->{'type'} eq 'bracketed_arg'
+                            or $element->{'type'} eq 'bracketed_linemacro_arg'));
   }
   return $result;
 }
 
 # expand a command argument as texinfo.
-sub _expand_cmd_args_to_texi($;$) {
+sub _expand_cmd_args_to_texi($) {
   my $cmd = shift;
-  my $expand_replaced = shift;
 
   my $cmdname = $cmd->{'cmdname'};
   $cmdname = '' if (!$cmd->{'cmdname'});
   my $result = '';
-  $result = '@'.$cmdname if ($cmdname);
 
-  # this is done here otherwise for some constructs, there are
-  # no 'args', and so the space is never readded.
-  if ($cmd->{'extra'} and exists ($cmd->{'extra'}->{'spaces'})) {
-    $result .= $cmd->{'extra'}->{'spaces'};
+  if ($cmdname) {
+    $result = '@'.$cmdname;
+
+    # this is done here otherwise for some constructs, there are
+    # no 'args', and so the space is never readded.
+    if ($cmd->{'info'}
+        and $cmd->{'info'}->{'spaces_after_cmd_before_arg'}) {
+      $result .= $cmd->{'info'}->{'spaces_after_cmd_before_arg'}->{'text'};
+    }
   }
-  # block line commands with arguments not separated by commas
-  if ($block_commands{$cmdname}
-         and ($def_commands{$cmdname}
-              or $block_commands{$cmdname} eq 'multitable')
-         and $cmd->{'args'}) {
-     $result .= $cmd->{'extra'}->{'spaces_before_argument'}
-       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
-     foreach my $arg (@{$cmd->{'args'}}) {
-        $result .= convert_to_texinfo($arg, $expand_replaced);
-    }
-  # arg_line set for line_commands with type special
-  } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro')
-           and defined($cmd->{'extra'}->{'arg_line'})) {
-    $result .= $cmd->{'extra'}->{'spaces_before_argument'}
-      if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
-    $result .= $cmd->{'extra'}->{'arg_line'};
-  } elsif (($block_commands{$cmdname} or $cmdname eq 'node')
-            and defined($cmd->{'args'})) {
-    $result .= $cmd->{'extra'}->{'spaces_before_argument'}
-      if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
-    foreach my $arg (@{$cmd->{'args'}}) {
-      next if $arg->{'type'} and $ignored_types{$arg->{'type'}};
-      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
-        $result .= $arg->{'extra'}->{'spaces_before_argument'};
-      }
-      $result .= convert_to_texinfo($arg);
-      $result .= ',';
-    }
-    $result =~ s/,$//;
-  } elsif (defined($cmd->{'args'})) {
+  # arg_line set for line_commands with type special and @macro
+  if ($cmd->{'info'} and defined($cmd->{'info'}->{'arg_line'})) {
+    $result .= $cmd->{'info'}->{'spaces_before_argument'}->{'text'}
+      if $cmd->{'info'} and $cmd->{'info'}->{'spaces_before_argument'};
+    $result .= $cmd->{'info'}->{'arg_line'};
+  } elsif ($cmd->{'args'}) {
     my $braces;
-    $braces = 1 if ($cmd->{'args'}->[0]->{'type'}
-                    and ($cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg'
-                         or $cmd->{'args'}->[0]->{'type'} eq 'brace_command_context'));
+    $braces = 1 if (scalar(@{$cmd->{'args'}})
+                    and ($cmd->{'args'}->[0]->{'type'}
+                          and ($cmd->{'args'}->[0]->{'type'} eq 'brace_command_arg'
+                               or $cmd->{'args'}->[0]->{'type'} eq 'brace_command_context'))
+                         or $cmdname eq 'value');
     $result .= '{' if ($braces);
     if ($cmdname eq 'verb') {
-      $result .= $cmd->{'extra'}->{'delimiter'};
+      $result .= $cmd->{'info'}->{'delimiter'};
     }
-    if ($cmd->{'extra'}
-        and $cmd->{'extra'}->{'spaces_before_argument'}) {
-      $result .= $cmd->{'extra'}->{'spaces_before_argument'};
+    $result .= $cmd->{'info'}->{'spaces_before_argument'}->{'text'}
+       if ($cmd->{'info'} and $cmd->{'info'}->{'spaces_before_argument'});
+    my $with_commas = 0;
+    if (($block_commands{$cmdname}
+         # block line commands with arguments not separated by commas
+         and not ($def_commands{$cmdname}
+                  or $block_commands{$cmdname} eq 'multitable'))
+        or $cmdname eq 'node'
+        or exists($brace_commands{$cmdname})
+        or ($cmd->{'type'} and $cmd->{'type'} eq 'definfoenclose_command')) {
+      $with_commas = 1;
     }
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
-      if (exists($brace_commands{$cmdname}) or ($cmd->{'type'}
-                    and $cmd->{'type'} eq 'definfoenclose_command')) {
+      next if $arg->{'type'} and $ignored_types{$arg->{'type'}};
+      if ($with_commas) {
         $result .= ',' if ($arg_nr);
         $arg_nr++;
-      }
-      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
-        $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
       $result .= convert_to_texinfo($arg);
     }
     if ($cmdname eq 'verb') {
-      $result .= $cmd->{'extra'}->{'delimiter'};
+      $result .= $cmd->{'info'}->{'delimiter'};
     }
     $result .= '}' if ($braces);
   } else {
-    $result .= $cmd->{'extra'}->{'spaces_before_argument'}
-      if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
+    $result .= $cmd->{'info'}->{'spaces_before_argument'}->{'text'}
+      if $cmd->{'info'} and $cmd->{'info'}->{'spaces_before_argument'};
   }
-  $result .= '{'.$cmd->{'extra'}->{'flag'}.'}' if ($cmdname eq 'value');
   return $result;
 }
 
@@ -244,7 +233,7 @@ Texinfo::Convert::Texinfo - Convert a Texinfo tree to Texinfo code
 =head1 SYNOPSIS
 
   use Texinfo::Convert::Texinfo qw(convert_to_texinfo);
-  
+
   my $texinfo_text = convert_to_texinfo($tree);
 
 =head1 NOTES

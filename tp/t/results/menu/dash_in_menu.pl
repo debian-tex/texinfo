@@ -17,9 +17,11 @@ $result_trees{'dash_in_menu'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -27,7 +29,7 @@ $result_trees{'dash_in_menu'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -59,6 +61,15 @@ $result_trees{'dash_in_menu'} = {
                       'text' => 'n---ode'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'n_002d_002d_002dode'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -80,19 +91,6 @@ $result_trees{'dash_in_menu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_name' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'n_002d_002d_002dode'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -127,17 +125,23 @@ $result_trees{'dash_in_menu'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -158,10 +162,8 @@ $result_trees{'dash_in_menu'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[5];
-$result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_name'} = $result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[1];
-$result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1];
-$result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[3];
+$result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1];
+$result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'dash_in_menu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[3];
 
 $result_texis{'dash_in_menu'} = '
 @menu
@@ -187,9 +189,9 @@ $result_floats{'dash_in_menu'} = {};
 
 $result_converted{'plaintext'}->{'dash_in_menu'} = '* Menu:
 
-* entry—in: (manual)n---ode.         description — in.
+* entry--in: (manual)n---ode.         description -- in.
 
-comment — in.
+comment -- in.
 ';
 
 
@@ -247,7 +249,7 @@ $result_converted_errors{'html'}->{'dash_in_menu'} = [
 
 $result_converted{'xml'}->{'dash_in_menu'} = '
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menutitle separator=": ">entry&textmdash;in</menutitle><menunode separator=".         ">(manual)n---ode</menunode><menudescription><pre xml:space="preserve">description &textmdash; in.
+<menuentry><menuleadingtext>* </menuleadingtext><menutitle>entry&textmdash;in</menutitle><menuseparator>: </menuseparator><menunode>(manual)n---ode</menunode><menuseparator>.         </menuseparator><menudescription><pre xml:space="preserve">description &textmdash; in.
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 comment &textmdash; in.
 </pre></menucomment></menu>

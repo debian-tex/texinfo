@@ -12,6 +12,7 @@ diffs_dir=diffs
 raw_output_dir=raw_out
 logfile=$basename.log
 stdout_file=stdout_$basename.out
+prepended_command=
 
 [ "z$srcdir" = 'z' ] && srcdir=.
 
@@ -35,8 +36,9 @@ raw_outdir=$raw_output_dir/$basename
 [ -d $raw_outdir ] && rm -rf $raw_outdir
 mkdir $basename
 : > $basename/$stdout_file
-echo "$PERL -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../ext --init-file tex4ht.pm --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2" >> $logfile
-$PERL -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../ext --init-file tex4ht.pm --iftex --out $basename/  $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2
+cmd="$prepended_command $PERL -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../ext --init-file tex4ht.pm --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+echo "$cmd" >> $logfile
+eval $cmd
 
 return_code=0
 ret=$?

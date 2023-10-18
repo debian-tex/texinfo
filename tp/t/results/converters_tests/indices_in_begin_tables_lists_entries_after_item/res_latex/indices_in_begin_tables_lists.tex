@@ -1,0 +1,226 @@
+\documentclass{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{titleps}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
+\usepackage{enumitem}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% no index headers
+\indexsetup{level=\relax,toclevel=section}%
+\makeindex[name=cp,title=]%
+\makeindex[name=fn,title=]%
+\makeindex[name=vr,title=]%
+
+% command used in \description format for samp
+\newcommand\Texinfotablestylesamp[1]{\ifstrempty{#1}{}{`\texttt{#1}'}}%
+
+% style command for var in 'cmd_text' formatting context
+\newcommand\Texinfocommandstyletextvar[1]{{\normalfont{}\textsl{#1}}}%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% set defaults for lists that match Texinfo TeX formatting
+\setlist[description]{style=nextline, font=\normalfont}
+\setlist[itemize]{label=\textbullet}
+\setlist[enumerate]{label=\arabic*.}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+\begin{document}
+\label{anchor:Top}%
+\chapter{{chap}}
+\label{anchor:chapter}%
+
+\begin{itemize}[label=-]
+\item \index[cp]{also a cindex in itemize@also a cindex in itemize}%
+e--mph item
+\end{itemize}
+
+\begin{itemize}[label=\textbullet{}]
+\item \index[cp]{index entry within itemize@index entry within itemize}%
+i--tem 1
+\item \index[cp]{index entry right after "@item@index entry right after "@item}%
+i--tem 2
+\end{itemize}
+
+\begin{itemize}
+\item T--ext before items.
+\item \index[cp]{also a cindex in itemize@also a cindex in itemize}%
+bullet item
+\end{itemize}
+
+\begin{enumerate}[start=1]
+
+\item e--numerate
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+\item 
+\index[cp]{index inter in enumerate between lines@index inter in enumerate between lines}%
+
+\item enumerate item
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+
+\item \index[cp]{index inter in enumerate after line@index inter in enumerate after line}%
+enumerate item
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+\item \index[cp]{index inter in enumerate before line@index inter in enumerate before line}%
+
+\item enumerate item
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+\item Title
+\item \index[cp]{cindex@cindex}%
+enum
+\end{enumerate}
+
+\begin{enumerate}[start=1]
+\item \index[cp]{first idx@first idx}%
+\index[cp]{sedond idx@sedond idx}%
+\index[cp]{another@another}%
+enum
+\end{enumerate}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+\texttt{acode{-}{-}b}
+\index[vr]{acode--b@\texttt{acode{-}{-}b}}%
+}}]
+l--ine
+\end{description}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+aasis--b\\
+\index[vr]{aasis--b@\texttt{aasis{-}{-}b}}%
+b
+\index[vr]{b@\texttt{b}}%
+}}]
+l--ine
+\end{description}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+\Texinfocommandstyletextvar{avar--b}\\
+\index[fn]{avar--b@\texttt{avar{-}{-}b}}%
+\index[cp]{index entry between item and itemx@index entry between item and itemx}%
+\Texinfocommandstyletextvar{b}
+\index[fn]{b@\texttt{b}}%
+}}]
+l--ine
+\item[{\parbox[b]{\linewidth}{%
+\Texinfocommandstyletextvar{c}\\
+\index[fn]{c@\texttt{c}}%
+\Texinfocommandstyletextvar{d}
+\index[fn]{d@\texttt{d}}%
+}}]
+
+\end{description}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+\index[cp]{cindex in table@cindex in table}%
+\texttt{abb}}}]
+l--ine
+\end{description}
+
+\begin{description}
+\item[] \index[cp]{cindex in table@cindex in table}%
+Texte before first item.
+\item[{\parbox[b]{\linewidth}{%
+\texttt{abb}}}]
+\end{description}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+\index[cp]{samp cindex in table@samp cindex in table}%
+\Texinfotablestylesamp{asamp{-}{-}bb}}}]
+l--ine samp
+\end{description}
+
+\begin{description}
+\item[] \index[cp]{samp cindex in table@samp cindex in table}%
+Texte before first item samp.
+\item[{\parbox[b]{\linewidth}{%
+\Texinfotablestylesamp{asamp{-}{-}bb}}}]
+\end{description}
+
+\begin{description}
+\item[] 
+\index[cp]{cindex between lines@cindex between lines}%
+
+\item[{\parbox[b]{\linewidth}{%
+\Texinfotablestylesamp{asamp{-}{-}bb1}}}]
+\end{description}
+
+\begin{description}
+\item[] \index[cp]{cindex before line@cindex before line}%
+
+\item[{\parbox[b]{\linewidth}{%
+\Texinfotablestylesamp{asamp{-}{-}bb2}}}]
+\end{description}
+
+\begin{description}
+
+\item[{\parbox[b]{\linewidth}{%
+\index[cp]{cindex after line@cindex after line}%
+\Texinfotablestylesamp{asamp{-}{-}bb2}}}]
+\end{description}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+\index[cp]{cindex first@cindex first}%
+\index[cp]{second@second}%
+\index[cp]{third@third}%
+\Texinfotablestylesamp{asamp{-}{-}bb2}}}]
+\end{description}
+
+\chapter{{printindex}}
+\label{anchor:printindex}%
+
+\printindex[cp]
+
+\printindex[vr]
+
+\printindex[fn]
+
+\end{document}

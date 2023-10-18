@@ -12,9 +12,11 @@ $result_trees{'many_conditionals'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -38,17 +40,23 @@ $result_trees{'many_conditionals'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -64,6 +72,33 @@ $result_trees{'many_conditionals'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifhtml',
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 5,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -71,6 +106,46 @@ $result_trees{'many_conditionals'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifhtml'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifhtml'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 7,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 21,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'This is ifhtml text.
 '
             }
@@ -78,6 +153,71 @@ $result_trees{'many_conditionals'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifnothtml',
+                'contents' => [
+                  {
+                    'text' => 'This is ifnothtml text.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifnothtml'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifnothtml'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 11,
+                      'macro' => ''
+                    }
+                  }
+                ],
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 9,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -88,6 +228,33 @@ $result_trees{'many_conditionals'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifinfo',
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 14,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -95,6 +262,46 @@ $result_trees{'many_conditionals'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifinfo'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifinfo'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 16,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 21,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'This is ifinfo text.
 '
             }
@@ -102,6 +309,71 @@ $result_trees{'many_conditionals'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifnotinfo',
+                'contents' => [
+                  {
+                    'text' => 'This is ifnotinfo text.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifnotinfo'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifnotinfo'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 20,
+                      'macro' => ''
+                    }
+                  }
+                ],
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 18,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -119,9 +391,11 @@ $result_trees{'many_conditionals'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -129,7 +403,14 @@ $result_trees{'many_conditionals'} = {
           'cmdname' => 'tex',
           'contents' => [
             {
-              'type' => 'elided_block'
+              'contents' => [
+                {
+                  'text' => 'This is tex text.
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             },
             {
               'args' => [
@@ -139,17 +420,23 @@ $result_trees{'many_conditionals'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -165,11 +452,103 @@ $result_trees{'many_conditionals'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 3,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'iftex',
+                'contents' => [
+                  {
+                    'text' => 'This is iftex text.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'iftex'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'iftex'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 29,
+                      'macro' => ''
+                    }
+                  }
+                ],
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 27,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 3,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifnottex',
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 31,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -177,6 +556,46 @@ $result_trees{'many_conditionals'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifnottex'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifnottex'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 33,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 23,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'This is ifnottex text.
 '
             }
@@ -203,6 +622,7 @@ This is ifinfo text.
 
 
 @tex
+This is tex text.
 @end tex
 
 
@@ -210,7 +630,8 @@ This is ifnottex text.
 ';
 
 
-$result_texts{'many_conditionals'} = '
+$result_texts{'many_conditionals'} = 'This is html text.
+
 This is ifhtml text.
 
 

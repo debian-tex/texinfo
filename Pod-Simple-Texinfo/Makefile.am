@@ -1,5 +1,5 @@
 # Makefile.am for texinfo/Pod-Simple_Texinfo.
-# Copyright 2012-2019 Free Software Foundation, Inc.
+# Copyright 2012-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -18,6 +18,7 @@ EXTRA_DIST = Changes \
  MANIFEST \
  t/Pod-Simple-Texinfo.t \
  pod2texi.pl \
+ manual_tests \
  $(test_files)
 
 modulesdir = $(pkgdatadir)/Pod-Simple-Texinfo/Pod/Simple/

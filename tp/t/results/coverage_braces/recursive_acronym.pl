@@ -45,8 +45,10 @@ $result_trees{'recursive_acronym'} = {
                       'text' => '\'s Not Unix'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -86,7 +88,7 @@ $result_floats{'recursive_acronym'} = {};
 
 
 
-$result_converted{'plaintext'}->{'recursive_acronym'} = 'GNU (GNU’s Not Unix)
+$result_converted{'plaintext'}->{'recursive_acronym'} = 'GNU (GNU\'s Not Unix)
 ';
 
 

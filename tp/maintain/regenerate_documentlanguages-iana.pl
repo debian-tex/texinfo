@@ -3,7 +3,7 @@
 # regenerate_documentlanguages-iana.pl: download the iana files language
 # and regenerate Texinfo/Documentlanguages.pm list of languages and regions
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright

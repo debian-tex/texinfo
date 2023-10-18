@@ -23,9 +23,12 @@ $result_trees{'only_documentencoding'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'iso-8859-1',
-            'input_perl_encoding' => 'iso-8859-1',
-            'spaces_before_argument' => ' ',
             'text_arg' => 'ISO-8859-1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

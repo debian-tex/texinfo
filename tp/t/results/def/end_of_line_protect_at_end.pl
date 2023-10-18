@@ -52,39 +52,23 @@ $result_trees{'end_of_line_protect_at_end'} = {
                         'def_role' => 'arg'
                       },
                       'text' => 'arguments2'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
@@ -95,8 +79,10 @@ $result_trees{'end_of_line_protect_at_end'} = {
               'type' => 'def_line'
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -110,18 +96,14 @@ $result_trees{'end_of_line_protect_at_end'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'end_of_line_protect_at_end'} = '
 @deffn category2 deffn_name2 arguments2 ';
 
 
 $result_texts{'end_of_line_protect_at_end'} = '
-category2: deffn_name2 arguments2 
+category2: deffn_name2 arguments2
 ';
 
 $result_errors{'end_of_line_protect_at_end'} = [
@@ -164,5 +146,11 @@ $result_indices_sort_strings{'end_of_line_protect_at_end'} = {
   ]
 };
 
+
+
+$result_converted{'xml'}->{'end_of_line_protect_at_end'} = '
+<deffn spaces=" "><definitionterm><indexterm index="fn" number="1">deffn_name2</indexterm><defcategory>category2</defcategory> <deffunction>deffn_name2</deffunction> <defparam>arguments2</defparam> </definitionterm>
+</deffn>
+';
 
 1;

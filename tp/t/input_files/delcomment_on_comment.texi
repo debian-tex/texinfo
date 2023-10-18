@@ -1,0 +1,6 @@
+\input texinfo
+
+some text @c a comment with del  after del.
+next line
+
+@bye

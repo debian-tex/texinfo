@@ -1,7 +1,7 @@
 #! /bin/sh
 # Run all Texinfo tests.
 # 
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -30,63 +30,74 @@ check_need_command_line_unicode ()
   if echo "$remaining" | grep 'Need command-line unicode' >/dev/null; then
     if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
       echo "S: (no reliable command-line Unicode) $current"
-       return 1
+      return 1
     fi
   fi
   return 0
 }
 
+check_unicode_collate_ok ()
+{        
+  if echo "$remaining" | grep 'Need collation compatibility' >/dev/null; then
+    if test "z$PERL_UNICODE_COLLATE_OK" = 'zno' ; then
+      echo "S: (no compatible unicode collation) $current"
+     return 1
+    fi
+  fi 
+  return 0
+}
+
 check_latex2html_and_tex4ht ()
 {
-    use_latex2html=no
-    use_tex4ht=no
-    l2h_flags=
-    maybe_use_latex2html=no
-    if echo "$remaining" | grep '[-]l2h' >/dev/null; then
-      maybe_use_latex2html=yes
+  use_latex2html=no
+  use_tex4ht=no
+  l2h_flags=
+  maybe_use_latex2html=no
+  if echo "$remaining" | grep '[-]l2h' >/dev/null; then
+    maybe_use_latex2html=yes
+  fi
+  if echo "$remaining" | grep 'HTML_MATH l2h' >/dev/null; then
+    maybe_use_latex2html=yes
+  fi
+  if [ $maybe_use_latex2html = 'yes' ]; then
+    if [ "$no_latex2html" = 'yes' ]; then
+      echo "S: (no latex2html) $current"
+      return 1
     fi
-    if echo "$remaining" | grep 'HTML_MATH l2h' >/dev/null; then
-      maybe_use_latex2html=yes
+    use_latex2html=yes
+    if test z"$tmp_dir" = 'z'; then
+       tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
+       if test z"$tmp_dir" = 'z'; then
+         echo "$0: mktemp failed" 1>&2
+         exit 1
+       fi
     fi
-    if [ $maybe_use_latex2html = 'yes' ]; then
-      if [ "$no_latex2html" = 'yes' ]; then
-        echo "S: (no latex2html) $current"
+    l2h_flags="-c L2H_CLEAN=0 -c 'L2H_TMP $tmp_dir' -c L2H_FILE=$srcdir/../t/init/l2h.init"
+  else
+    maybe_use_tex4ht=no
+    if echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
+      maybe_use_tex4ht=yes
+    fi
+    if echo "$remaining" | grep 'HTML_MATH t4h' >/dev/null; then
+      maybe_use_tex4ht=yes
+    fi
+    if [ $maybe_use_tex4ht = 'yes' ]; then
+      if test "$no_tex4ht" = 'yes' ; then
+        echo "S: (no tex4ht) $current"
         return 1
       fi
-      use_latex2html=yes
-      if test z"$tmp_dir" = 'z'; then
-         tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
-         if test z"$tmp_dir" = 'z'; then
-           echo "$0: mktemp failed" 1>&2
-           exit 1
-         fi
-      fi
-      l2h_flags="-c L2H_CLEAN=0 -c 'L2H_TMP $tmp_dir' -c L2H_FILE=$srcdir/../t/init/l2h.init"
-    else
-      maybe_use_tex4ht=no
-      if echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
-        maybe_use_tex4ht=yes
-      fi
-      if echo "$remaining" | grep 'HTML_MATH t4h' >/dev/null; then
-        maybe_use_tex4ht=yes
-      fi
-      if [ $maybe_use_tex4ht = 'yes' ]; then
-        if test "$no_tex4ht" = 'yes' ; then
-          echo "S: (no tex4ht) $current"
-          return 1
-        fi
-        use_tex4ht=yes
-      fi
+      use_tex4ht=yes
     fi
-    if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
-      if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
-       if test "$no_html2wiki" = 'yes' ; then
-         echo "S: (no html2wiki) $current"
-         return 1
-       fi
-      fi
+  fi
+  if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
+    if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
+     if test "$no_html2wiki" = 'yes' ; then
+       echo "S: (no html2wiki) $current"
+       return 1
+     fi
     fi
-    return 0
+  fi
+  return 0
 }
 
 # process the output so we can get consistent output for the comparisons
@@ -118,6 +129,7 @@ post_process_output ()
   elif test "$use_latex2html" = 'yes' ; then
     sed -e 's/^texexpand.*/texexpand /' \
         -e '/is no longer supported at.*line/d' \
+        -e '/^could not open/d' \
         -e 's/^htmlxref/.\/htmlxref/' \
         $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
     # "*"_images.pl" files are not guaranteed to be present
@@ -146,9 +158,11 @@ post_process_output ()
     rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
           ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
   else
-    # Account for variant output under MS-Windows.  This transformation
-    # is also done above.
-    sed -e 's/^htmlxref/.\/htmlxref/' \
+    # Delete error message that may have directories in file name and
+    # account for variant output under MS-Windows.  These transformations
+    # are also done above.
+    sed -e '/^could not open/d' \
+        -e 's/^htmlxref/.\/htmlxref/' \
         $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
   fi
 }
@@ -158,6 +172,8 @@ LANGUAGE=en; export LANGUAGE
 
 prepended_command=
 #prepended_command=time
+# can also be put in ../defs to also affect tests in many_input_files
+#prepended_command='valgrind -q'
 
 main_command='texi2any.pl'
 
@@ -358,8 +374,6 @@ while read line; do
       command=$main_command
       if test -n "$format"; then
         format_option="--$format"
-      else
-        format_option="-c TEXI2HTML"
       fi
     fi
     command_run=
@@ -387,6 +401,7 @@ while read line; do
     check_need_recoded_file_names || skipped_test=yes
     check_need_command_line_unicode || skipped_test=yes
     check_latex2html_and_tex4ht || skipped_test=yes
+    check_unicode_collate_ok || skipped_test=yes
     if [ "$skipped_test" = 'yes' ] ; then
       if test $one_test = 'yes' ; then
         return_code=77

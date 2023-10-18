@@ -1,4 +1,0 @@
-# Public domain.  Originally created by Patrice Dumas.
-
-sectioning_directions sectioning.texi --init test_directions.init
-sectioning_directions_split_chapter sectioning.texi --split=chapter --init test_directions.init

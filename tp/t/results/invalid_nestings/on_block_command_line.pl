@@ -28,9 +28,6 @@ $result_trees{'on_block_command_line'} = {
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
                         'normalized' => 'in-anchor'
                       },
                       'source_info' => {
@@ -40,7 +37,7 @@ $result_trees{'on_block_command_line'} = {
                       }
                     }
                   ],
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 },
                 {
                   'text' => ' '
@@ -64,9 +61,11 @@ $result_trees{'on_block_command_line'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -133,17 +132,23 @@ $result_trees{'on_block_command_line'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -153,16 +158,12 @@ $result_trees{'on_block_command_line'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 1,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 1
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -225,9 +226,6 @@ $result_trees{'on_block_command_line'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'in-quotation-anchor'
                   },
                   'source_info' => {
@@ -270,16 +268,20 @@ $result_trees{'on_block_command_line'} = {
                           'text' => 'exdent'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'exdent',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -301,17 +303,23 @@ $result_trees{'on_block_command_line'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -320,8 +328,10 @@ $result_trees{'on_block_command_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -335,9 +345,6 @@ $result_trees{'on_block_command_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'on_block_command_line'} = '@multitable {@anchor{in anchor}} @titlefont{in titlefont}
 @item @titlefont{in titlefont}
@@ -355,12 +362,21 @@ in titlefont  exdent
 
 $result_errors{'on_block_command_line'} = [
   {
-    'error_line' => 'warning: @titlefont should not appear in @multitable
+    'error_line' => 'warning: @anchor should not appear on @multitable line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@titlefont should not appear in @multitable',
+    'text' => '@anchor should not appear on @multitable line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @titlefont should not appear on @multitable line
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@titlefont should not appear on @multitable line',
     'type' => 'warning'
   },
   {
@@ -373,39 +389,39 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @indent should not appear in @quotation
+    'error_line' => 'warning: @indent should not appear on @quotation line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@indent should not appear in @quotation',
+    'text' => '@indent should not appear on @quotation line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @quotation
+    'error_line' => 'warning: @titlefont should not appear on @quotation line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@titlefont should not appear in @quotation',
+    'text' => '@titlefont should not appear on @quotation line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @quotation
+    'error_line' => 'warning: @anchor should not appear on @quotation line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@anchor should not appear in @quotation',
+    'text' => '@anchor should not appear on @quotation line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @quotation
+    'error_line' => 'warning: @footnote should not appear on @quotation line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@footnote should not appear in @quotation',
+    'text' => '@footnote should not appear on @quotation line',
     'type' => 'warning'
   },
   {
@@ -418,12 +434,12 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @quotation
+    'error_line' => 'warning: @exdent should not appear on @quotation line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@exdent should not appear in @quotation',
+    'text' => '@exdent should not appear on @quotation line',
     'type' => 'warning'
   }
 ];

@@ -1,0 +1,38 @@
+# some command-line arguments when incorrect cause texi2any to die.
+# easily tested by calling directly ./texi2any.pl and checking visually:
+# ./texi2any.pl --footnote-style=bâd
+# ./texi2any.pl --paragraph-indent=ïndent
+# check non ascii command line arguments and css files
+non_ascii_command_line osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' --html --no-split -c DO_ABOUT=1 -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --split=Mekanïk --document-language=Destruktïw -c 'Kommandöh vâl' -D TÛT -D 'vùr ké' -U ôndef -c 'FORMAT_MENU mînù' --macro-expand=@OUT_DIR@osé-texinfo.texi --internal-links=@OUT_DIR@intérnal.txt --css-include çss.css --css-include cêss.css --css-ref=rëf --css-ref=öref
+
+# test for the copying of image with non ascii characters for epub
+non_ascii_test_epub osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --init epub3.pm -c 'EPUB_CREATE_CONTAINER_FILE 0'
+
+# check that the output is right when based on @setfilename
+non_ascii_test_rawtext osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 -c TEXINFO_OUTPUT_FORMAT=rawtext
+
+# check that the output is right when based on input file name
+non_ascii_no_setfilename_test_rawtext osé_utf8_no_setfilename.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 -c TEXINFO_OUTPUT_FORMAT=rawtext
+
+non_ascii_test_info osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 --info
+
+non_ascii_test_latex osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 --latex
+
+# test of non utf8 encoded file name in non utf8 document
+# "Need recoded file names" string is used in test driving script
+# to determine that the recoding of file names need to have
+# succeeded for this test not to be skipped
+manual_include_accented_file_name_latin1 manual_include_accented_file_name_latin1.texi --info -D 'needrecodedfilenames Need recoded file names'
+
+manual_include_accented_file_name_latin1_explicit_encoding manual_include_accented_file_name_latin1.texi --info -c INPUT_FILE_NAME_ENCODING=ISO-8859-1 -D 'needrecodedfilenames Need recoded file names'
+
+# fails to find the latin1 encoded include file as the locale encoding
+# of the test suite is utf8
+manual_include_accented_file_name_latin1_use_locale_encoding manual_include_accented_file_name_latin1.texi --info -D 'needrecodedfilenames Need recoded file names' -c MESSAGE_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8
+
+# test that a file with some latin1 characters, typically used for person names
+# but no declared encoding does not give a result that is too bad, and lead
+# to a warning.  This corresponds to an actual practice when latin1 was a
+# de-facto default encoding for Texinfo manuals, before UTF-8.
+# Not enabled because perl parser and XS parser lead to different output
+#test_latin1_no_documentencoding test_latin1_no_documentencoding.texi

@@ -12,9 +12,11 @@ $result_trees{'heading_in_copying'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -58,16 +60,20 @@ $result_trees{'heading_in_copying'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'heading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -83,28 +89,27 @@ $result_trees{'heading_in_copying'} = {
                       'text' => 'cindex copying'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
               'extra' => {
-                'index_entry' => {
-                  'content_normalized' => [],
-                  'entry_content' => [],
-                  'entry_element' => {},
-                  'entry_number' => 1,
-                  'entry_region' => {},
-                  'in_code' => 0,
-                  'index_at_command' => 'cindex',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'cp',
-                  'index_type_command' => 'cindex'
-                },
-                'spaces_before_argument' => ' '
+                'element_region' => 'copying',
+                'index_entry' => [
+                  'cp',
+                  1
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -150,16 +155,20 @@ $result_trees{'heading_in_copying'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'subheading',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -175,17 +184,23 @@ $result_trees{'heading_in_copying'} = {
                       'text' => 'copying'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'copying'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -216,9 +231,43 @@ $result_trees{'heading_in_copying'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -235,47 +284,34 @@ $result_trees{'heading_in_copying'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'insertcopying',
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 11,
+            'line_nr' => 12,
             'macro' => ''
           }
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 9,
+        'line_nr' => 10,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_region'} = $result_trees{'heading_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'heading_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'heading_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'heading_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'heading_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'heading_in_copying'} = '@copying
 
@@ -286,6 +322,7 @@ $result_texis{'heading_in_copying'} = '@copying
 @end copying
 
 @node Top
+@node chap
 
 @insertcopying
 ';
@@ -299,14 +336,27 @@ $result_nodes{'heading_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'heading_in_copying'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'heading_in_copying'};
 
 $result_menus{'heading_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'heading_in_copying'} = [];
@@ -352,19 +402,35 @@ second in copying @ subheading
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 
-<h1 class="node" id="Top">Top</h1>
+<a class="node-id" id="Top"></a><div class="nav-panel">
+<p>
+Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
+</div>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
+<hr>
+<a class="node-id" id="chap"></a><div class="nav-panel">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
+</div>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
 
-<h3 class="heading" id="in-copying-_0040-heading">in copying @ <em class="emph">heading</em></h3>
+<h3 class="heading" id="in-copying-_0040-heading"><span>in copying @ <em class="emph">heading</em><a class="copiable-link" href="#in-copying-_0040-heading"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-copying-cindex-copying"></a>
 
-<h4 class="subheading" id="second-in-copying-_0040-subheading">second in copying @ <em class="emph">subheading</em></h4>
+<h4 class="subheading" id="second-in-copying-_0040-subheading"><span>second in copying @ <em class="emph">subheading</em><a class="copiable-link" href="#second-in-copying-_0040-subheading"> &para;</a></span></h4>
 
 
 

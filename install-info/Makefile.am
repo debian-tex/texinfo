@@ -1,6 +1,6 @@
 # Makefile.am for texinfo/install-info.
 #
-# Copyright 2008-2019 Free Software Foundation, Inc.
+# Copyright 2008-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -33,4 +33,8 @@ AM_CPPFLAGS = 					\
   -I$(top_srcdir)/gnulib/lib			\
   -I$(top_builddir)/gnulib/lib			\
   -DLOCALEDIR=\"$(localedir)\"
+
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL) $(LIBTHREAD)
+
+# for mkstemp gnulib module
+LDADD += $(GETRANDOM_LIB) $(CLOCK_TIME_LIB)

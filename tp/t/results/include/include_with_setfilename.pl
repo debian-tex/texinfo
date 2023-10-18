@@ -10,6 +10,84 @@ $result_trees{'include_with_setfilename'} = {
     {
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'included_file_with_setfilename.texi'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => ' 
+'
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'include',
+                'extra' => {
+                  'text_arg' => 'included_file_with_setfilename.texi'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 1,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'include',
+              'status' => 'start'
+            },
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'included_file.info'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'setfilename',
+                'extra' => {
+                  'text_arg' => 'included_file.info'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => 'included_file_with_setfilename.texi',
+                  'line_nr' => 1,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'setfilename'
+            }
+          ],
+          'text' => ''
+        },
+        {
           'text' => '
 ',
           'type' => 'empty_line'
@@ -17,6 +95,14 @@ $result_trees{'include_with_setfilename'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'In included file.
 '
             }
@@ -28,20 +114,26 @@ $result_trees{'include_with_setfilename'} = {
             {
               'contents' => [
                 {
-                  'text' => 'main_file.info'
+                  'text' => 'include_with_setfilename.info'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'main_file.info'
+            'text_arg' => 'include_with_setfilename.info'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -58,7 +150,7 @@ $result_trees{'include_with_setfilename'} = {
 
 $result_texis{'include_with_setfilename'} = '
 In included file.
-@setfilename main_file.info
+@setfilename include_with_setfilename.info
 ';
 
 
@@ -73,7 +165,7 @@ $result_floats{'include_with_setfilename'} = {};
 
 
 
-$result_converted{'info'}->{'include_with_setfilename'} = 'This is main_file.info, produced from .
+$result_converted{'info'}->{'include_with_setfilename'} = 'This is include_with_setfilename.info, produced from .
 
 In included file.
 

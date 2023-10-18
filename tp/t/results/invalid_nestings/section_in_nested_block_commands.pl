@@ -23,9 +23,11 @@ $result_trees{'section_in_nested_block_commands'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -44,16 +46,20 @@ $result_trees{'section_in_nested_block_commands'} = {
                               'text' => 'item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -83,9 +89,11 @@ $result_trees{'section_in_nested_block_commands'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -119,15 +127,19 @@ $result_trees{'section_in_nested_block_commands'} = {
                       }
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -146,16 +158,20 @@ $result_trees{'section_in_nested_block_commands'} = {
               'text' => 'a section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -195,7 +211,6 @@ $result_sectioning{'section_in_nested_block_commands'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -232,5 +247,31 @@ $result_errors{'section_in_nested_block_commands'} = [
 
 $result_floats{'section_in_nested_block_commands'} = {};
 
+
+
+$result_converted{'plaintext'}->{'section_in_nested_block_commands'} = '*item*
+     table line
+
+          in quotation
+
+1 a section
+===========
+
+';
+
+
+$result_converted{'xml'}->{'section_in_nested_block_commands'} = '<table commandarg="strong" spaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="strong">item</itemformat></item>
+</tableterm><tableitem><para>table line
+</para>
+<quotation>
+
+<para>in quotation
+</para>
+</quotation>
+</tableitem></tableentry></table>
+<section spaces=" "><sectiontitle>a section</sectiontitle>
+</section>
+';
 
 1;

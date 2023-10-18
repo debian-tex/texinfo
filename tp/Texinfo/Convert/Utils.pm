@@ -1,6 +1,6 @@
 # Utils.pm: miscellaneous functions usable in simple converters
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,8 +47,10 @@ require Exporter;
 use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
+# There is no specific reason to export those functions and not
+# other functions of the module.  It could be possible not to
+# export any function.
 %EXPORT_TAGS = ( 'all' => [ qw(
-definition_category
 expand_today
 expand_verbatiminclude
 add_heading_number
@@ -56,7 +58,7 @@ add_heading_number
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 our @MONTH_NAMES =
@@ -65,6 +67,26 @@ our @MONTH_NAMES =
      'June', 'July', 'August', 'September', 'October',
      'November', 'December'
     );
+
+# This is not used as code, but used to mark months as strings to be
+# translated
+if (0) {
+  my $self;
+  my @mark_month_for_translation = (
+   $self->gdt('January'),
+   $self->gdt('February'),
+   $self->gdt('March'),
+   $self->gdt('April'),
+   $self->gdt('May'),
+   $self->gdt('June'),
+   $self->gdt('July'),
+   $self->gdt('August'),
+   $self->gdt('September'),
+   $self->gdt('October'),
+   $self->gdt('November'),
+   $self->gdt('December')
+  );
+}
 
 # this method requires a converter.
 sub expand_today($)
@@ -90,24 +112,30 @@ sub definition_arguments_content($)
 {
   my $element = shift;
 
-  return undef if (!defined($element->{'extra'})
-                    or !defined($element->{'extra'}->{'def_parsed_hash'})
-                    or !$element->{'args'}->[0]->{'contents'});
+  my ($category, $class, $type, $name, $args);
+  return ($category, $class, $type, $name, $args)
+     if (!$element->{'args'}->[0]->{'contents'});
 
   my @args = @{$element->{'args'}->[0]->{'contents'}};
   while (@args) {
-    last if (defined($args[0]->{'extra'})
-             and defined($args[0]->{'extra'}->{'def_role'})
-             and $args[0]->{'extra'}->{'def_role'} ne 'spaces'
-             and !$element->{'extra'}->{'def_parsed_hash'}
-                       ->{$args[0]->{'extra'}->{'def_role'}});
+    my $role = $args[0]->{'extra'}->{'def_role'};
+    if ($role eq 'category') {
+      $category = shift @args;
+    } elsif ($role eq 'class') {
+      $class = shift @args;
+    } elsif ($role eq 'type') {
+      $type = shift @args;
+    } elsif ($role eq 'name') {
+      $name = shift @args;
+    } elsif ($role eq 'arg' or $role eq 'typearg' or $role eq 'delimiter') {
+      last;
+    }
     shift @args;
   }
   if (scalar(@args) > 0) {
-    return \@args;
-  } else {
-    return undef;
+    $args = \@args;
   }
+  return ($category, $class, $type, $name, $args);
 }
 
 # $SELF converter argument is optional
@@ -116,11 +144,21 @@ sub definition_category_tree($$)
   my $self = shift;
   my $current = shift;
 
-  return undef if (!$current->{'extra'}
-      or !$current->{'extra'}->{'def_parsed_hash'});
+  return undef if (!$current->{'args'}->[0]->{'contents'});
 
-  my $arg_category = $current->{'extra'}->{'def_parsed_hash'}->{'category'};
-  my $arg_class = $current->{'extra'}->{'def_parsed_hash'}->{'class'};
+  my $arg_category;
+  my $arg_class;
+  foreach my $arg (@{$current->{'args'}->[0]->{'contents'}}) {
+    my $role = $arg->{'extra'}->{'def_role'};
+    if ($role eq 'category') {
+      $arg_category = $arg;
+    } elsif ($role eq 'class') {
+      $arg_class = $arg;
+    } elsif ($role eq 'space') {
+    } elsif ($role eq 'arg' or $role eq 'typearg' or $role eq 'delimiter') {
+      last;
+    }
+  }
 
   return $arg_category
     if (!defined($arg_class));
@@ -137,6 +175,8 @@ sub definition_category_tree($$)
       or $def_command eq 'defmethod'
       or $def_command eq 'deftypemethod') {
     if ($self) {
+      # TRANSLATORS: association of a method or operation name with a class
+      # in descriptions of object-oriented programming methods or operations.
       return $self->gdt('{category} on @code{{class}}', { 'category' => $arg_category,
                                           'class' => $arg_class });
     } else {
@@ -147,6 +187,9 @@ sub definition_category_tree($$)
            or $def_command eq 'defcv'
            or $def_command eq 'deftypecv') {
     if ($self) {
+      # TRANSLATORS: association of a variable or instance variable with
+      # a class in descriptions of object-oriented programming variables
+      # or instance variable.
       return $self->gdt('{category} of @code{{class}}', { 'category' => $arg_category,
                                           'class' => $arg_class });
     } else {
@@ -212,27 +255,16 @@ sub expand_verbatiminclude($$$)
   my $customization_information = shift;
   my $current = shift;
 
-  my $input_encoding;
-
   return unless ($current->{'extra'}
                  and defined($current->{'extra'}->{'text_arg'}));
   my $file_name_text = $current->{'extra'}->{'text_arg'};
-  $input_encoding = $current->{'extra'}->{'input_perl_encoding'}
-        if (defined($current->{'extra'}->{'input_perl_encoding'}));
 
-  my $encoding;
-  my $input_file_name_encoding
-     = $customization_information->get_conf('INPUT_FILE_NAME_ENCODING');
-  if ($input_file_name_encoding) {
-    $encoding = $input_file_name_encoding;
-  } elsif ($customization_information->get_conf('DOC_ENCODING_FOR_INPUT_FILE_NAME')) {
-    $encoding = $input_encoding;
-  } else {
-    $encoding = $customization_information->get_conf('LOCALE_ENCODING');
-  }
+  my $input_encoding
+    = Texinfo::Common::element_associated_processing_encoding($current);
 
   my ($file_name, $file_name_encoding)
-      = Texinfo::Common::encode_file_name($file_name_text, $encoding);
+    = encoded_input_file_name($customization_information,
+                              $file_name_text, $input_encoding);
 
   my $file = Texinfo::Common::locate_include_file($customization_information,
                                                   $file_name);
@@ -252,7 +284,7 @@ sub expand_verbatiminclude($$$)
       }
     } else {
       if (defined($input_encoding)) {
-        binmode(VERBINCLUDE, ":encoding(" . $input_encoding . ")");
+        binmode(VERBINCLUDE, ":encoding($input_encoding)");
       }
       $verbatiminclude = { 'cmdname' => 'verbatim',
                            'parent' => $current->{'parent'},
@@ -306,11 +338,11 @@ sub add_heading_number($$$;$)
           and $current->{'structure'}->{'section_level'} == 1) {
         $result = $self->gdt('Appendix {number} {section_title}',
                    {'number' => $number, 'section_title' => $text},
-                   'translated_text');
+                   undef, 'translated_text');
       } else {
         $result = $self->gdt('{number} {section_title}',
                    {'number' => $number, 'section_title' => $text},
-                   'translated_text');
+                   undef, 'translated_text');
       }
     } else {
       $result = $text;
@@ -324,6 +356,84 @@ sub add_heading_number($$$;$)
     }
   }
   return $result;
+}
+
+# Similar to Texinfo::Common::is_content_empty
+sub find_root_command_next_heading_command($$;$$)
+{
+  my $root = shift;
+  my $expanded_format_raw = shift;
+  my $do_not_ignore_contents = shift;
+  my $do_not_ignore_index_entries = shift;
+
+  return undef if (!$root->{'contents'});
+
+  $expanded_format_raw = {} if (!defined($expanded_format_raw));
+
+  foreach my $content (@{$root->{'contents'}}) {
+    #print STDERR Texinfo::Common::debug_print_element($content)."\n";
+    if ($content->{'cmdname'}) {
+      if ($Texinfo::Commands::sectioning_heading_commands{$content->{'cmdname'}}) {
+        #print STDERR "HEADING FOUND ASSOCIATED $content->{'cmdname'}\n";
+        return $content;
+      }
+      if ($content->{'type'} and $content->{'type'} eq 'index_entry_command') {
+        if ($do_not_ignore_index_entries) {
+          return undef;
+        } else {
+          next;
+        }
+      }
+      if (exists($Texinfo::Commands::line_commands{$content->{'cmdname'}})) {
+        if ($Texinfo::Commands::formatted_line_commands{$content->{'cmdname'}}
+            or $Texinfo::Commands::formattable_line_commands{$content->{'cmdname'}}
+            or ($do_not_ignore_contents
+                and ($content->{'cmdname'} eq 'contents'
+                     or $content->{'cmdname'} eq 'shortcontents'
+                     or $content->{'cmdname'} eq 'summarycontents'))) {
+          return undef;
+        } else {
+          next;
+        }
+      } elsif (exists($Texinfo::Commands::nobrace_commands{$content->{'cmdname'}})) {
+        if ($Texinfo::Commands::formatted_nobrace_commands{$content->{'cmdname'}}) {
+          return undef;
+        } else {
+          next;
+        }
+      } elsif (exists($Texinfo::Commands::block_commands{$content->{'cmdname'}})) {
+        if ($Texinfo::Commands::non_formatted_block_commands{$content->{'cmdname'}}
+            or $Texinfo::Commands::block_commands{$content->{'cmdname'}} eq 'region'
+            # ignored conditional
+            or $Texinfo::Commands::block_commands{$content->{'cmdname'}} eq 'conditional'
+            or ($Texinfo::Commands::block_commands{$content->{'cmdname'}} eq 'format_raw'
+                and !$expanded_format_raw->{$content->{'cmdname'}})) {
+          next;
+        } else {
+          return undef;
+        }
+      # brace commands
+      } else {
+        if ($Texinfo::Common::non_formatted_brace_commands{$content->{'cmdname'}}) {
+          next;
+        } else {
+          return undef;
+        }
+      }
+    }
+    if ($content->{'type'}) {
+      if ($content->{'type'} eq 'paragraph') {
+        return undef;
+      }
+    }
+    # normally should not happen at the top level as text at top
+    # level should only contain spaces (empty lines, text before
+    # paragraphs).
+    if ($content->{'text'} and $content->{'text'} =~ /\S/) {
+      return undef;
+    }
+  }
+  return undef;
 }
 
 # this requires a converter argument
@@ -340,6 +450,33 @@ sub encoded_output_file_name($$)
     $encoding = $self->{'parser_info'}->{'input_perl_encoding'}
       if ($self->{'parser_info'}
         and defined($self->{'parser_info'}->{'input_perl_encoding'}));
+  } else {
+    $encoding = $self->get_conf('LOCALE_ENCODING');
+  }
+
+  return Texinfo::Common::encode_file_name($file_name, $encoding);
+}
+
+# this requires a converter argument
+# Reverse the decoding of the file name from the input encoding.
+sub encoded_input_file_name($$;$)
+{
+  my $self = shift;
+  my $file_name = shift;
+  my $input_file_encoding = shift;
+
+  my $encoding;
+  my $input_file_name_encoding = $self->get_conf('INPUT_FILE_NAME_ENCODING');
+  if ($input_file_name_encoding) {
+    $encoding = $input_file_name_encoding;
+  } elsif ($self->get_conf('DOC_ENCODING_FOR_INPUT_FILE_NAME')) {
+    if (defined($input_file_encoding)) {
+      $encoding = $input_file_encoding;
+    } else {
+      $encoding = $self->{'parser_info'}->{'input_perl_encoding'}
+        if ($self->{'parser_info'}
+          and defined($self->{'parser_info'}->{'input_perl_encoding'}));
+    }
   } else {
     $encoding = $self->get_conf('LOCALE_ENCODING');
   }
@@ -374,11 +511,12 @@ Texinfo::Convert::Utils - miscellaneous functions usable in all converters
 
 =head1 SYNOPSIS
 
-  use Texinfo::Convert::Utils qw(expand_today expand_verbatiminclude);
+  use Texinfo::Convert::Utils;
   
-  my $today_tree = expand_today($converter);
+  my $today_tree = Texinfo::Convert::Utils::expand_today($converter);
   my $verbatiminclude_tree
-     = expand_verbatiminclude(undef, $converter, $verbatiminclude);
+     = Texinfo::Convert::Utils::expand_verbatiminclude(undef, $converter,
+                                                       $verbatiminclude);
 
 =head1 NOTES
 
@@ -389,26 +527,45 @@ Texinfo to other formats.  There is no promise of API stability.
 
 miscellaneous methods that may be useful for backends converting texinfo
 trees.  This module contains the methods that can be used in converters
-that do not inherit L<Texinfo::Convert::Converter>.
+which do not inherit from L<Texinfo::Convert::Converter>.
 
 =head1 METHODS
 
 No method is exported in the default case.
 
-Most methods takes a I<$converter> as argument, in general optionally,
-to get some information and use methods for error reporting,
-see L<Texinfo::Convert::Converter> and L<Texinfo::Report>.
-On strings translations, see L<Texinfo::Translations>.
+Most methods takes a I<$converter> as argument, in some cases optionally,
+to get some information, see
+L<Texinfo::Convert::Converter/Getting and setting customization variables>
+and use methods for error reporting, see L<Texinfo::Convert::Converter>
+and L<Texinfo::Report>, and for
+strings translations, see L<Texinfo::Translations>.
+
+Even when the caller does not inherit from L<Texinfo::Convert::Converter>, it
+could implement the required interfaces and could also have a converter
+available in some cases, to call the functions which require a converter.
 
 =over
 
-=item $arguments = definition_arguments_content($element)
+=item $result = add_heading_number($converter, $heading_element, $heading_text, $do_number)
+X<C<add_heading_number>>
+
+The I<$converter> argument may be undef.  I<$heading_element> is
+a heading command tree element.  I<$heading_text> is the already
+formatted heading text.  if the I<$do_number> optional argument is
+defined and false, no number is used and the text is returned as is.
+This function returns the heading with a number and the appendix
+part if needed.  If I<$converter> is not defined, the resulting
+string won't be translated.
+
+=item ($category, $class, $type, $name, $arguments) = definition_arguments_content($element)
 X<C<definition_arguments_content>>
 
-I<$element> should be a C<@def*> Texinfo tree element.  Texinfo elements
+I<$element> should be a C<@def*> Texinfo tree element.  The
+I<$category>, I<$class>, I<$type>, I<$name> are elements corresponding
+to the definition @-command line.  Texinfo elements
 on the @-command line corresponding to arguments in the function
 definition are returned in the I<$arguments> array reference.
-Arguments correspond to text following the category and the name
+Arguments correspond to text following the other elements
 on the @-command line.  If there is no argument, I<$arguments>
 will be C<undef>.
 
@@ -422,49 +579,65 @@ I<$def_line> taking the class into account, if there is one.
 If I<$converter> is not defined, the resulting string won't be
 translated.
 
-=item ($encoded_name, $encoding) = $converter->encoded_output_file_name($converter, $character_string_name)
-X<C<encoded_output_file_name>>
+=item ($encoded_name, $encoding) = $converter->encoded_input_file_name($converter, $character_string_name, $input_file_encoding)
 
-Encode I<$character_string_name> in the same way as other file name are
+=item ($encoded_name, $encoding) = $converter->encoded_output_file_name($converter, $character_string_name)
+X<C<encoded_input_file_name>> X<C<encoded_output_file_name>>
+
+Encode I<$character_string_name> in the same way as other file names are
 encoded in converters, based on customization variables, and possibly
 on the input file encoding.  Return the encoded name and the encoding
-used to encode the name.  The I<$converter> argument is not optional
+used to encode the name.  The C<encoded_input_file_name> and
+C<encoded_output_file_name> functions use different customization variables to
+determine the encoding.  The I<$converter> argument is not optional
 and is used both to access to customization variables and to access to parser
 information.
+
+The <$input_file_encoding> argument is optional.  If set, it is used for
+the input file encoding.  It is useful if there is more precise information
+on the input file encoding where the file name appeared.
 
 =item $tree = expand_today($converter)
 X<C<expand_today>>
 
-Expand today's date, as a texinfo tree with translations.
+Expand today's date, as a texinfo tree with translations.  The I<$converter>
+argument is not optional and is used both to retrieve customization information
+and to translate strings.
 
 =item $tree = expand_verbatiminclude($registrar, $customization_information, $verbatiminclude)
 X<C<expand_verbatiminclude>>
 
-The I<$registrar> argument may be undef.  I<$verbatiminclude> is a
-C<@verbatiminclude> tree element.  This function returns a
-C<@verbatim> tree elements after finding the included file and
-reading it.  If I<$registrar> is not defined, errors messages are
-not registered.
+The I<$registrar> argument may be undef.  The I<$customization_information>
+argument is required and is used to retrieve customization information
+L<Texinfo::Convert::Converter/Getting and setting customization variables>.
+I<$verbatiminclude> is a C<@verbatiminclude> tree element.  This function
+returns a C<@verbatim> tree elements after finding the included file and
+reading it.  If I<$registrar> is not defined, error messages are not
+registered.
 
 =item (\@contents, \@accent_commands) = find_innermost_accent_contents($element)
 X<C<find_innermost_accent_contents>>
 
 I<$element> should be an accent command Texinfo tree element.  Returns
-an array reference containing the innermost accent command contents,
+an array reference containing the innermost accent @-command contents,
 normally a text element with one or two letter, and an array reference
 containing the accent commands nested in I<$element> (including
 I<$element>).
 
-=item $result = add_heading_number($converter, $heading_element, $heading_text, $do_number)
-X<C<add_heading_number>>
+=item $heading_element = find_root_command_next_heading_command($element, $expanded_format_raw, $do_not_ignore_contents, $do_not_ignore_index_entries)
 
-The I<$converter> argument may be undef.  I<$heading_element> is
-a heading command tree element.  I<$heading_text> is the already
-formatted heading text.  if the I<$do_number> optional argument is
-defined and false, no number is used and the text is returned as is.
-This function returns the heading with a number and the appendix
-part if needed.  If I<$converter> is not defined, the resulting
-string won't be translated.
+Return an heading element found in the I<$element> contents if it
+appears before contents that could be formatted.  I<$expanded_format_raw>
+is a hash reference with raw output formats (html, docbook, xml...) as
+keys, associated value should be set for expanded raw output formats.
+I<$do_not_ignore_contents> is optional.  If set, C<@contents> and
+C<@shortcontents> are considered to be formatted.
+I<$do_not_ignore_index_entries> is optional.  If set, index entries
+are considered to be formatted.
+
+Only heading elements corresponding to C<@heading>, C<@subheading> and similar
+@-commands that are not associated to nodes in general are found, not
+sectioning commands.
 
 =back
 

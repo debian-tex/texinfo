@@ -20,11 +20,13 @@ span.program-in-footer {font-size: smaller}
 span:hover a.copiable-link {visibility: visible}
 strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 td.button-direction-about {text-align:center}
+td.menu-entry-description {vertical-align: top}
+td.menu-entry-destination {vertical-align: top}
 td.name-direction-about {text-align:center}
 td.printindex-index-entry {vertical-align: top}
-td.printindex-index-section {vertical-align: top}
+td.printindex-index-section {vertical-align: top; padding-left: 1em}
 th.entries-header-printindex {text-align:left}
-th.sections-header-printindex {text-align:left}
+th.sections-header-printindex {text-align:left; padding-left: 1em}
 -->
 </style>
 
@@ -39,12 +41,16 @@ th.sections-header-printindex {text-align:left}
 <tr><td>[ &lt; ]</td>
 <td>[<a href="#chapter" title="Section suivante dans l&rsquo;ordre de lecture"> &gt; </a>]</td>
 <td> &nbsp; </td>
-<td>[Table des mati&egrave;res]</td>
+<td>[Contenu]</td>
 <td>[<a href="#chapter" title="Index">Index</a>]</td>
 <td>[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h1 class="top" id="top-section">top section</h1>
+<h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> &para;</a></span></h1>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td class="menu-entry-destination"><a href="#chapter" rel="index">1 Chapter</a></td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</td></tr>
+</table>
 <hr style="height: 6px;">
 <div class="chapter-level-extent" id="chapter">
 <table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
@@ -58,26 +64,26 @@ th.sections-header-printindex {text-align:left}
 <td> &nbsp; </td>
 <td> &nbsp; </td>
 <td>[<a href="#Top" title="Couverture (top) du document">Racine</a>]</td>
-<td>[Table des mati&egrave;res]</td>
+<td>[Contenu]</td>
 <td>[<a href="#chapter" title="Index">Index</a>]</td>
 <td>[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter" id="Chapter">1 Chapter</h1>
+<h1 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h1>
 
 <p>Voir <a class="xref" href="#chapter">Chapter</a>.
 </p>
 <dl class="first-deftypeop first-deftypemethod-alias-first-deftypeop">
-<dt class="deftypeop deftypemethod-alias-deftypeop" id="index-name-on-class"><span class="category-def">M&eacute;thode de <code class="code">class</code>&nbsp;: </span><span><code class="def-type">data-type</code> <strong class="def-name">name</strong> <code class="def-code-arguments">arguments</code><a class="copiable-link" href='#index-name-on-class'> &para;</a></span></dt>
+<dt class="deftypeop deftypemethod-alias-deftypeop" id="index-name-on-class"><span class="category-def">M&eacute;thode de <code class="code">class</code>&nbsp;: </span><span><code class="def-type">data-type</code> <strong class="def-name">name</strong> <code class="def-code-arguments">arguments</code><a class="copiable-link" href="#index-name-on-class"> &para;</a></span></dt>
 <dd><p>Some text.
 </p></dd></dl>
 
 <div class="printindex fn-printindex">
 <table class="fn-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Entr&eacute;e d&rsquo;index</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="Chapter_fn_letter-N">N</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-name-on-class"><code>name de class</code></a></td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter">1 Chapter</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Entr&eacute;e d&rsquo;index</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="Chapter_fn_letter-N">N</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-name-on-class"><code>name de class</code></a></td><td class="printindex-index-section"><a href="#chapter">1 Chapter</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 
@@ -87,7 +93,7 @@ th.sections-header-printindex {text-align:left}
 <div class="element-about" id="SEC_About">
 <table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
 <tr><td>[<a href="#Top" title="Couverture (top) du document">Racine</a>]</td>
-<td>[Table des mati&egrave;res]</td>
+<td>[Contenu]</td>
 <td>[<a href="#chapter" title="Index">Index</a>]</td>
 <td>[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
@@ -143,8 +149,8 @@ th.sections-header-printindex {text-align:left}
     <td> &nbsp; </td>
   </tr>
   <tr>
-    <td class="button-direction-about"> [Table des mati&egrave;res] </td>
-    <td class="name-direction-about">Table des mati&egrave;res</td>
+    <td class="button-direction-about"> [Contenu] </td>
+    <td class="name-direction-about">Contenu</td>
     <td>Table des mati&egrave;res</td>
     <td> &nbsp; </td>
   </tr>

@@ -24,9 +24,11 @@ $result_trees{'section_before_part'} = {
               'text' => 'section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => ' 
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => ' 
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -39,8 +41,10 @@ $result_trees{'section_before_part'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -56,9 +60,11 @@ $result_trees{'section_before_part'} = {
               'text' => 'part'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -75,7 +81,7 @@ $result_trees{'section_before_part'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -86,8 +92,10 @@ $result_trees{'section_before_part'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -120,7 +128,6 @@ $result_sectioning{'section_before_part'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -129,7 +136,6 @@ $result_sectioning{'section_before_part'} = {
       },
       {
         'cmdname' => 'part',
-        'extra' => {},
         'structure' => {
           'section_level' => 0,
           'section_up' => {}
@@ -192,6 +198,8 @@ $result_converted{'html'}->{'section_before_part'} = '<!DOCTYPE html>
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -201,11 +209,11 @@ ul.toc-numbered-mark {list-style: none}
 
 <body lang="en">
 <div class="section-level-extent" id="section">
-<h3 class="section">1 section</h3>
+<h3 class="section"><span>1 section<a class="copiable-link" href="#section"> &para;</a></span></h3>
 
 </div>
 <div class="part-level-extent" id="part">
-<h1 class="part">part</h1>
+<h1 class="part"><span>part<a class="copiable-link" href="#part"> &para;</a></span></h1>
 <hr>
 
 <div class="element-contents" id="SEC_Contents">

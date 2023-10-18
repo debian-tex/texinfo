@@ -19,9 +19,11 @@ $result_trees{'top_part_chapter'} = [
                 'text' => 'top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -34,8 +36,10 @@ $result_trees{'top_part_chapter'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -59,9 +63,11 @@ $result_trees{'top_part_chapter'} = [
                 'text' => 'part'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -74,8 +80,11 @@ $result_trees{'top_part_chapter'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -91,17 +100,23 @@ $result_trees{'top_part_chapter'} = [
                 'text' => 'chapter'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => ' 
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => ' 
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
         'extra' => {
-          'associated_part' => {},
-          'spaces_before_argument' => ' '
+          'associated_part' => {}
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -143,7 +158,6 @@ $result_sectioning{'top_part_chapter'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'associated_unit' => {
             'extra' => {
@@ -241,7 +255,6 @@ $result_elements{'top_part_chapter'} = [
     'extra' => {
       'unit_command' => {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'associated_unit' => {}
         }

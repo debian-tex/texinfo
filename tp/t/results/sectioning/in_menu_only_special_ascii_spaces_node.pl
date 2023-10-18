@@ -24,27 +24,22 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
               "text" => "Top"
             }
           ],
-          "extra" => {
-            "spaces_after_argument" => "\n"
+          "info" => {
+            "spaces_after_argument" => {
+              "text" => "\n"
+            }
           },
           "type" => "line_arg"
         }
       ],
       "cmdname" => "node",
       "extra" => {
-        "node_content" => [
-          {}
-        ],
-        "nodes_manuals" => [
-          {
-            "node_content" => [
-              {}
-            ],
-            "normalized" => "Top"
-          }
-        ],
-        "normalized" => "Top",
-        "spaces_before_argument" => " "
+        "normalized" => "Top"
+      },
+      "info" => {
+        "spaces_before_argument" => {
+          "text" => " "
+        }
       },
       "source_info" => {
         "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
@@ -60,8 +55,10 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
               "text" => "top"
             }
           ],
-          "extra" => {
-            "spaces_after_argument" => "\n"
+          "info" => {
+            "spaces_after_argument" => {
+              "text" => "\n"
+            }
           },
           "type" => "line_arg"
         }
@@ -75,8 +72,10 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
         {
           "args" => [
             {
-              "extra" => {
-                "spaces_after_argument" => "\n"
+              "info" => {
+                "spaces_after_argument" => {
+                  "text" => "\n"
+                }
               },
               "type" => "block_line_arg"
             }
@@ -84,7 +83,7 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
           "cmdname" => "menu",
           "contents" => [
             {
-              "args" => [
+              "contents" => [
                 {
                   "text" => "* \r",
                   "type" => "menu_entry_leading_text"
@@ -110,9 +109,6 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
                   "type" => "menu_entry_description"
                 }
               ],
-              "extra" => {
-                "menu_entry_description" => {}
-              },
               "source_info" => {
                 "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
                 "line_nr" => 5,
@@ -121,7 +117,7 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
               "type" => "menu_entry"
             },
             {
-              "args" => [
+              "contents" => [
                 {
                   "text" => "* \t\f",
                   "type" => "menu_entry_leading_text"
@@ -147,9 +143,6 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
                   "type" => "menu_entry_description"
                 }
               ],
-              "extra" => {
-                "menu_entry_description" => {}
-              },
               "source_info" => {
                 "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
                 "line_nr" => 6,
@@ -165,16 +158,22 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
                       "text" => "menu"
                     }
                   ],
-                  "extra" => {
-                    "spaces_after_argument" => "\n"
+                  "info" => {
+                    "spaces_after_argument" => {
+                      "text" => "\n"
+                    }
                   },
                   "type" => "line_arg"
                 }
               ],
               "cmdname" => "end",
               "extra" => {
-                "spaces_before_argument" => " ",
                 "text_arg" => "menu"
+              },
+              "info" => {
+                "spaces_before_argument" => {
+                  "text" => " "
+                }
               },
               "source_info" => {
                 "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
@@ -194,8 +193,11 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {
-        "spaces_before_argument" => " "
+      "extra" => {},
+      "info" => {
+        "spaces_before_argument" => {
+          "text" => " "
+        }
       },
       "source_info" => {
         "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
@@ -206,18 +208,16 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
     {
       "args" => [
         {
-          "extra" => {
-            "spaces_after_argument" => " \r\n"
+          "info" => {
+            "spaces_after_argument" => {
+              "text" => " \r\n"
+            }
           },
           "type" => "line_arg"
         }
       ],
       "cmdname" => "node",
-      "extra" => {
-        "nodes_manuals" => [
-          undef
-        ]
-      },
+      "extra" => {},
       "source_info" => {
         "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
         "line_nr" => 9,
@@ -232,8 +232,10 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
               "text" => "CARRIAGE RETURN|\r|"
             }
           ],
-          "extra" => {
-            "spaces_after_argument" => "\n"
+          "info" => {
+            "spaces_after_argument" => {
+              "text" => "\n"
+            }
           },
           "type" => "line_arg"
         }
@@ -245,8 +247,11 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {
-        "spaces_before_argument" => " "
+      "extra" => {},
+      "info" => {
+        "spaces_before_argument" => {
+          "text" => " "
+        }
       },
       "source_info" => {
         "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
@@ -257,18 +262,16 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
     {
       "args" => [
         {
-          "extra" => {
-            "spaces_after_argument" => " \t\f\n"
+          "info" => {
+            "spaces_after_argument" => {
+              "text" => " \t\f\n"
+            }
           },
           "type" => "line_arg"
         }
       ],
       "cmdname" => "node",
-      "extra" => {
-        "nodes_manuals" => [
-          undef
-        ]
-      },
+      "extra" => {},
       "source_info" => {
         "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
         "line_nr" => 12,
@@ -283,8 +286,10 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
               "text" => "CHARACTER TABULATION|\t| FORM FEED|\f|"
             }
           ],
-          "extra" => {
-            "spaces_after_argument" => "\n"
+          "info" => {
+            "spaces_after_argument" => {
+              "text" => "\n"
+            }
           },
           "type" => "line_arg"
         }
@@ -296,8 +301,11 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {
-        "spaces_before_argument" => " "
+      "extra" => {},
+      "info" => {
+        "spaces_before_argument" => {
+          "text" => " "
+        }
       },
       "source_info" => {
         "file_name" => "in_menu_only_special_ascii_spaces_node.texi",
@@ -308,10 +316,6 @@ $result_trees{'in_menu_only_special_ascii_spaces_node'} = {
   ],
   "type" => "document_root"
 };
-$result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[1]{"extra"}{"node_content"}[0] = $result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[1]{"args"}[0]{"contents"}[0];
-$result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[1]{"extra"}{"nodes_manuals"}[0]{"node_content"}[0] = $result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[1]{"args"}[0]{"contents"}[0];
-$result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[2]{"contents"}[1]{"contents"}[0]{"extra"}{"menu_entry_description"} = $result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[2]{"contents"}[1]{"contents"}[0]{"args"}[3];
-$result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[2]{"contents"}[1]{"contents"}[1]{"extra"}{"menu_entry_description"} = $result_trees{'in_menu_only_special_ascii_spaces_node'}{"contents"}[2]{"contents"}[1]{"contents"}[1]{"args"}[3];
 
 $result_texis{'in_menu_only_special_ascii_spaces_node'} = '@node Top
 @top top
@@ -337,10 +341,10 @@ $result_texts{'in_menu_only_special_ascii_spaces_node'} = 'top
 * 	::
 
 1 CARRIAGE RETURN|'."\r".'|
-********************
+*******************
 
 2 CHARACTER TABULATION|	| FORM FEED||
-**************************************
+************************************
 
 ';
 
@@ -513,10 +517,10 @@ top
 * 	::
 
 1 CARRIAGE RETURN|'."\r".'|
-********************
+*******************
 
 2 CHARACTER TABULATION|	| FORM FEED||
-**************************************
+************************************
 
 
 
@@ -546,6 +550,12 @@ $result_converted{'html'}->{'in_menu_only_special_ascii_spaces_node'} = '<!DOCTY
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -556,7 +566,7 @@ $result_converted{'html'}->{'in_menu_only_special_ascii_spaces_node'} = '<!DOCTY
 <p>
 Next: CARRIAGE RETURN|'."\r".'| &nbsp; </p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 
 <ul class="mini-toc">
@@ -569,16 +579,14 @@ Next: CARRIAGE RETURN|'."\r".'| &nbsp; </p>
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="CARRIAGE-RETURN_007c-_007c">1 CARRIAGE RETURN|'."\r".'|</h2>
+<h2 class="chapter" id="CARRIAGE-RETURN_007c-_007c"><span>1 CARRIAGE RETURN|'."\r".'|<a class="copiable-link" href="#CARRIAGE-RETURN_007c-_007c"> &para;</a></span></h2>
 
 <hr>
 </div>
 <div class="chapter-level-extent">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h2 class="chapter" id="CHARACTER-TABULATION_007c-_007c-FORM-FEED_007c-_007c">2 CHARACTER TABULATION|	| FORM FEED|&#12;|</h2>
+<h2 class="chapter" id="CHARACTER-TABULATION_007c-_007c-FORM-FEED_007c-_007c"><span>2 CHARACTER TABULATION|	| FORM FEED|&#12;|<a class="copiable-link" href="#CHARACTER-TABULATION_007c-_007c-FORM-FEED_007c-_007c"> &para;</a></span></h2>
 
 </div>
 </div>

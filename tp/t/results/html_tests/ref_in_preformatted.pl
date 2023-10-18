@@ -18,9 +18,11 @@ $result_trees{'ref_in_preformatted'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -35,9 +37,11 @@ $result_trees{'ref_in_preformatted'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -45,7 +49,7 @@ $result_trees{'ref_in_preformatted'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -53,9 +57,15 @@ $result_trees{'ref_in_preformatted'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'nnn the node name'
+                      'text' => 'chap nnn the node name'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap-nnn-the-node-name'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -77,15 +87,6 @@ $result_trees{'ref_in_preformatted'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'nnn-the-node-name'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 4,
@@ -101,17 +102,23 @@ $result_trees{'ref_in_preformatted'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -134,9 +141,11 @@ $result_trees{'ref_in_preformatted'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -153,63 +162,24 @@ $result_trees{'ref_in_preformatted'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'nnn the
+                          'text' => 'chap nnn the
 '
                         },
                         {
                           'text' => 'node name'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {},
+                          {}
+                        ],
+                        'normalized' => 'chap-nnn-the-node-name'
+                      },
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'ref',
-                  'extra' => {
-                    'label' => {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'text' => 'nnn the node name'
-                            }
-                          ],
-                          'extra' => {
-                            'spaces_after_argument' => '
-'
-                          },
-                          'type' => 'line_arg'
-                        }
-                      ],
-                      'cmdname' => 'node',
-                      'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
-                        'nodes_manuals' => [
-                          {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'nnn-the-node-name'
-                          }
-                        ],
-                        'normalized' => 'nnn-the-node-name',
-                        'spaces_before_argument' => ' '
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => ''
-                      }
-                    },
-                    'node_argument' => {
-                      'node_content' => [
-                        {},
-                        {}
-                      ],
-                      'normalized' => 'nnn-the-node-name'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 8,
@@ -231,17 +201,23 @@ $result_trees{'ref_in_preformatted'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -263,19 +239,12 @@ $result_trees{'ref_in_preformatted'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -283,39 +252,64 @@ $result_trees{'ref_in_preformatted'} = {
         'macro' => ''
       }
     },
-    {}
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap nnn the node name'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chap-nnn-the-node-name'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
+      }
+    }
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[1] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[2] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'label'};
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[1] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 
 $result_texis{'ref_in_preformatted'} = '@node Top
 
 @menu
-* nnn the node name::
+* chap nnn the node name::
 @end menu
 
 @example
-Now @ref{nnn the
+Now @ref{chap nnn the
 node name}
 @end example
 
-@node nnn the node name
+@node chap nnn the node name
 ';
 
 
 $result_texts{'ref_in_preformatted'} = '
-* nnn the node name::
+* chap nnn the node name::
 
-Now nnn the
+Now chap nnn the
 node name
 
 ';
@@ -334,7 +328,7 @@ $result_nodes{'ref_in_preformatted'} = {
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'nnn-the-node-name'
+        'normalized' => 'chap-nnn-the-node-name'
       },
       'structure' => {
         'node_prev' => {},
@@ -357,7 +351,7 @@ $result_menus{'ref_in_preformatted'} = {
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'nnn-the-node-name'
+        'normalized' => 'chap-nnn-the-node-name'
       },
       'structure' => {
         'menu_up' => {},
@@ -378,23 +372,19 @@ $result_floats{'ref_in_preformatted'} = {};
 
 
 $result_converted{'html_text'}->{'ref_in_preformatted'} = '<a class="node-id" id="Top"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 
 <div class="example">
-<pre class="example-preformatted">Now <a class="ref" href="#nnn-the-node-name">nnn the
+<pre class="example-preformatted">Now <a class="ref" href="#chap-nnn-the-node-name">chap nnn the
 node name</a>
 </pre></div>
 
 <hr>
-<a class="node-id" id="nnn-the-node-name"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
+<a class="node-id" id="chap-nnn-the-node-name"></a><div class="nav-panel">
 </div>
-<h4 class="node">nnn the node name</h4>
+<h4 class="node"><span>chap nnn the node name<a class="copiable-link" href="#chap-nnn-the-node-name"> &para;</a></span></h4>
 ';
 
 1;

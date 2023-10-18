@@ -16,7 +16,7 @@ $result_trees{'pagetype'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourpaper',
@@ -36,7 +36,7 @@ $result_trees{'pagetype'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourwide',
@@ -65,28 +65,23 @@ $result_trees{'pagetype'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -102,9 +97,11 @@ $result_trees{'pagetype'} = {
               'text' => 'section top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -117,8 +114,11 @@ $result_trees{'pagetype'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -134,28 +134,23 @@ $result_trees{'pagetype'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -171,9 +166,11 @@ $result_trees{'pagetype'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -190,7 +187,7 @@ $result_trees{'pagetype'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'smallbook',
@@ -206,9 +203,13 @@ $result_trees{'pagetype'} = {
           'type' => 'empty_line'
         },
         {
+          'text' => ' ',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
           'contents' => [
             {
-              'text' => ' In smallbook
+              'text' => 'In smallbook
 '
             }
           ],
@@ -230,7 +231,7 @@ $result_trees{'pagetype'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'afourpaper',
@@ -263,8 +264,11 @@ $result_trees{'pagetype'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -280,9 +284,11 @@ $result_trees{'pagetype'} = {
               'text' => 'afourpaper reset'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -304,8 +310,10 @@ $result_trees{'pagetype'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -316,10 +324,6 @@ $result_trees{'pagetype'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'pagetype'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'pagetype'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'pagetype'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'pagetype'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'pagetype'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'pagetype'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'pagetype'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'pagetype'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'pagetype'} = '@afourpaper
 
@@ -355,7 +359,7 @@ section top
 *********
 
 
- In smallbook
+In smallbook
 
 In smallbook
 
@@ -404,7 +408,6 @@ $result_sectioning{'pagetype'} = {
             },
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 2,

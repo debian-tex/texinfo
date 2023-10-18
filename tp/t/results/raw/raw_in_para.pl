@@ -21,9 +21,11 @@ $result_trees{'raw_in_para'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -43,17 +45,23 @@ $result_trees{'raw_in_para'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -82,9 +90,11 @@ $result_trees{'raw_in_para'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -108,17 +118,23 @@ $result_trees{'raw_in_para'} = {
                           'text' => 'html'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'html'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -154,9 +170,11 @@ $result_trees{'raw_in_para'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -189,17 +207,23 @@ $result_trees{'raw_in_para'} = {
                           'text' => 'tex'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'tex'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -264,9 +288,13 @@ $result_texts{'raw_in_para'} = 'para
 in verbatim
 
 para b html
+in html
 in para
 
 para b tex
+in tex1
+
+in tex2
 
 End.
 ';
@@ -287,5 +315,27 @@ in verbatim
 
    End.
 ';
+
+
+$result_converted{'xml'}->{'raw_in_para'} = '<para>para
+</para><verbatim xml:space="preserve" endspaces=" ">
+in verbatim
+</verbatim>
+
+<para>para b html
+<html endspaces=" ">
+in html
+</html>
+in para
+</para>
+<para>para b tex
+<tex endspaces=" ">
+in tex1
+
+in tex2
+</tex>
+</para>
+<para>End.
+</para>';
 
 1;

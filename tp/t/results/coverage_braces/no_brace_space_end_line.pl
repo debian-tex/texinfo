@@ -23,8 +23,10 @@ $result_trees{'no_brace_space_end_line'} = {
                 }
               ],
               'cmdname' => 'code',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -48,9 +50,11 @@ $result_trees{'no_brace_space_end_line'} = {
           'contents' => [
             {
               'cmdname' => 'TeX',
-              'extra' => {
-                'spaces' => '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -64,9 +68,11 @@ $result_trees{'no_brace_space_end_line'} = {
             },
             {
               'cmdname' => 'code',
-              'extra' => {
-                'spaces' => '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => '',

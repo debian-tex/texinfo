@@ -24,28 +24,23 @@ $result_trees{'subentry_and_sortas_spaces'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -56,9 +51,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
     {
       'args' => [
         {
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -86,9 +83,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
               'text' => 'chapter index'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -96,19 +95,12 @@ $result_trees{'subentry_and_sortas_spaces'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter-index'
-          }
-        ],
-        'normalized' => 'chapter-index',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter-index'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -124,9 +116,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
               'text' => 'Index'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -173,21 +167,12 @@ $result_trees{'subentry_and_sortas_spaces'} = {
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex',
-              'sortas' => 'A---S'
-            },
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              1
+            ],
             'sortas' => 'A---S',
-            'spaces_before_argument' => ' ',
             'subentry' => {
               'args' => [
                 {
@@ -214,9 +199,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                       'text' => 'bbb sort as c'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -224,14 +211,23 @@ $result_trees{'subentry_and_sortas_spaces'} = {
               'cmdname' => 'subentry',
               'extra' => {
                 'level' => 1,
-                'sortas' => 'C---S1',
-                'spaces_before_argument' => ' '
+                'sortas' => 'C---S1'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
                 'macro' => ''
               }
+            }
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -250,27 +246,21 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                   'text' => 'aaa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 2,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' ',
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              2
+            ],
             'subentry' => {
               'args' => [
                 {
@@ -294,9 +284,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -311,6 +303,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                 'line_nr' => 8,
                 'macro' => ''
               }
+            }
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -334,19 +331,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 3,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' ',
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              3
+            ],
             'subentry' => {
               'args' => [
                 {
@@ -355,8 +344,10 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                       'text' => 'bbb'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -364,7 +355,6 @@ $result_trees{'subentry_and_sortas_spaces'} = {
               'cmdname' => 'subentry',
               'extra' => {
                 'level' => 1,
-                'spaces_before_argument' => ' ',
                 'subentry' => {
                   'args' => [
                     {
@@ -391,9 +381,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -401,8 +393,12 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                   'cmdname' => 'subentry',
                   'extra' => {
                     'level' => 2,
-                    'sortas' => 'D',
-                    'spaces_before_argument' => ' '
+                    'sortas' => 'D'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -411,11 +407,21 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                   }
                 }
               },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 9,
                 'macro' => ''
               }
+            }
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -435,27 +441,21 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                   'text' => 'aaa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 4,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' ',
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              4
+            ],
             'subentry' => {
               'args' => [
                 {
@@ -470,7 +470,6 @@ $result_trees{'subentry_and_sortas_spaces'} = {
               'cmdname' => 'subentry',
               'extra' => {
                 'level' => 1,
-                'spaces_before_argument' => ' ',
                 'subentry' => {
                   'args' => [
                     {
@@ -479,17 +478,23 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                           'text' => 'ccc'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'subentry',
                   'extra' => {
-                    'level' => 2,
-                    'spaces_before_argument' => ' '
+                    'level' => 2
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -498,11 +503,21 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                   }
                 }
               },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
                 'macro' => ''
               }
+            }
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -527,9 +542,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -538,8 +555,12 @@ $result_trees{'subentry_and_sortas_spaces'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -548,8 +569,11 @@ $result_trees{'subentry_and_sortas_spaces'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -560,30 +584,14 @@ $result_trees{'subentry_and_sortas_spaces'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
+$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
 $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[2] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[1]{'extra'}{'subentry'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
+$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'extra'}{'element_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
 $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[4] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[3]{'extra'}{'subentry'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
+$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'element_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
 $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[6] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'subentry'};
 $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[7] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[5]{'extra'}{'subentry'}{'extra'}{'subentry'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'args'}[0]{'contents'};
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8];
-$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
+$result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'element_node'} = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[3];
 $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[9] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'};
 $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[10] = $result_trees{'subentry_and_sortas_spaces'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'}{'extra'}{'subentry'};
 
@@ -709,10 +717,10 @@ $result_floats{'subentry_and_sortas_spaces'} = {};
 
 $result_indices_sort_strings{'subentry_and_sortas_spaces'} = {
   'cp' => [
-    'A---S',
-    'aaa',
-    'aaa',
-    'aaa'
+    'A---S, C---S1',
+    'aaa, B---S1',
+    'aaa, bbb, ccc',
+    'aaa, bbb, D'
   ]
 };
 
@@ -781,7 +789,7 @@ $result_converted{'plaintext'}->{'subentry_and_sortas_spaces'} = '1 Index
 $result_converted{'html_text'}->{'subentry_and_sortas_spaces'} = '<div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
+[<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a class="top" id="SEC_Top"></a>
 <ul class="mini-toc">
@@ -791,25 +799,27 @@ $result_converted{'html_text'}->{'subentry_and_sortas_spaces'} = '<div class="to
 <div class="chapter-level-extent" id="chapter-index">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
+[<a href="#chapter-index" title="Index" rel="index">Index</a>]</p>
 </div>
-<h2 class="chapter" id="Index">1 Index</h2>
+<h2 class="chapter" id="Index"><span>1 Index<a class="copiable-link" href="#Index"> &para;</a></span></h2>
 
-<a class="index-entry-id" id="index-aaa"></a>
-<a class="index-entry-id" id="index-aaa-1"></a>
-<a class="index-entry-id" id="index-aaa-2"></a>
-<a class="index-entry-id" id="index-aaa-3"></a>
+<a class="index-entry-id" id="index-aaa-bbb-sort-as-c"></a>
+<a class="index-entry-id" id="index-aaa-"></a>
+<a class="index-entry-id" id="index-aaa-bbb-ccc"></a>
+<a class="index-entry-id" id="index-aaa-bbb-ccc-1"></a>
 
 <div class="printindex cp-printindex">
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_cp_letter-A">A</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa">aaa, bbb sort as c</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-1">aaa, </a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-2">aaa, bbb, ccc</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-3">aaa, bbb, ccc</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chapter-index_cp_letter-A">A</th></tr>
+<tr><td></td><td class="printindex-index-entry">aaa</td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry index-entry-level-1"><a href="#index-aaa-bbb-sort-as-c">bbb sort as c</a></td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
+<tr><td></td><td class="printindex-index-entry index-entry-level-1"><a href="#index-aaa-"></a></td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
+<tr><td></td><td class="printindex-index-entry index-entry-level-1">bbb</td><td></td></tr>
+<tr><td></td><td class="printindex-index-entry index-entry-level-2"><a href="#index-aaa-bbb-ccc-1">ccc</a></td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
+<tr><td></td><td class="printindex-index-entry index-entry-level-2"><a href="#index-aaa-bbb-ccc">ccc</a></td><td class="printindex-index-section"><a href="#chapter-index">chapter index</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 </div>
@@ -835,25 +845,25 @@ $result_converted{'xml'}->{'subentry_and_sortas_spaces'} = '<node name="Top" spa
 
 
 $result_converted{'latex'}->{'subentry_and_sortas_spaces'} = '\\documentclass{book}
-\\usepackage{imakeidx}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{imakeidx}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%
 
-% no index headers or page break
-\\indexsetup{level=\\relax,toclevel=section,noclearpage}%
+% no index headers
+\\indexsetup{level=\\relax,toclevel=section}%
 \\makeindex[name=cp,title=]%
 
 % redefine the \\mainmatter command such that it does not clear page

@@ -25,17 +25,23 @@ $result_trees{'bad_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -45,9 +51,11 @@ $result_trees{'bad_argument'} = {
             }
           ],
           'extra' => {
-            'arg_line' => '
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => '
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -82,17 +90,23 @@ $result_trees{'bad_argument'} = {
                       'text' => 'rmacro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'rmacro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -102,9 +116,11 @@ $result_trees{'bad_argument'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' abar aaa
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' abar aaa
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -143,17 +159,23 @@ $result_trees{'bad_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -163,9 +185,11 @@ $result_trees{'bad_argument'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' aftername {ggg} more
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' aftername {ggg} more  
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -194,17 +218,23 @@ $result_trees{'bad_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -214,9 +244,11 @@ $result_trees{'bad_argument'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' #badname
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' #badname
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -239,7 +271,7 @@ in macro
 in
 @end rmacro
 
-@macro aftername {ggg} more
+@macro aftername {ggg} more  
 in macro
 @end macro
 
@@ -274,21 +306,21 @@ $result_errors{'bad_argument'} = [
     'type' => 'error'
   },
   {
-    'error_line' => 'bad syntax for @macro argument: more
+    'error_line' => 'bad syntax for @macro argument: more  
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'bad syntax for @macro argument: more',
+    'text' => 'bad syntax for @macro argument: more  ',
     'type' => 'error'
   },
   {
-    'error_line' => 'bad name for @macro
+    'error_line' => '@macro requires a name
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => 'bad name for @macro',
+    'text' => '@macro requires a name',
     'type' => 'error'
   }
 ];

@@ -23,16 +23,10 @@ $result_trees{'accent_no_closed_comment'} = {
                         {
                           'text' => ' comment
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comment
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     }
                   ],
                   'type' => 'brace_command_arg'

@@ -26,8 +26,12 @@ $result_trees{'include_at_end_line'} = {
           ],
           'cmdname' => 'include',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'inc_file.texi'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

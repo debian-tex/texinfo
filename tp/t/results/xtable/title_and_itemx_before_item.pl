@@ -23,9 +23,11 @@ $result_trees{'title_and_itemx_before_item'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -58,16 +60,20 @@ $result_trees{'title_and_itemx_before_item'} = {
                               'text' => 'in itemx'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'itemx',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -89,17 +95,23 @@ $result_trees{'title_and_itemx_before_item'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -109,8 +121,12 @@ $result_trees{'title_and_itemx_before_item'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -139,13 +155,13 @@ in itemx
 
 $result_errors{'title_and_itemx_before_item'} = [
   {
-    'error_line' => 'warning: @itemx should not begin @table
+    'error_line' => '@itemx should not begin @table
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => '@itemx should not begin @table',
-    'type' => 'warning'
+    'type' => 'error'
   }
 ];
 

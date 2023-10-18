@@ -25,10 +25,12 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
 '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
-                  'type' => 'bracketed'
+                  'type' => 'bracketed_arg'
                 }
               ],
               'type' => 'block_line_arg'
@@ -44,17 +46,23 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -64,16 +72,12 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 1,
-            'prototypes' => [
-              {
-                'contents' => [
-                  {}
-                ],
-                'type' => 'bracketed_multitable_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 1
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -87,7 +91,6 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'multitable_bracketed_prototype_not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'multitable_bracketed_prototype_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0];
 
 $result_texis{'multitable_bracketed_prototype_not_closed'} = '
 @multitable { a

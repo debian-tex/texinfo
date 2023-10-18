@@ -12,9 +12,11 @@ $result_trees{'empty_documentencoding'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '   
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '   
 '
+                }
               },
               'type' => 'line_arg'
             }

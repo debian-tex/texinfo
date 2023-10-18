@@ -25,9 +25,43 @@ $result_trees{'in_table'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 2,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -47,15 +81,17 @@ $result_trees{'in_table'} = {
                   'cmdname' => 'xref',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 4,
+                    'line_nr' => 5,
                     'macro' => ''
                   },
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -70,32 +106,42 @@ $result_trees{'in_table'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 5,
+                'line_nr' => 6,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 4,
+            'line_nr' => 5,
             'macro' => ''
           }
         },
@@ -112,15 +158,17 @@ $result_trees{'in_table'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 7,
+                    'line_nr' => 8,
                     'macro' => ''
                   },
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -139,7 +187,7 @@ $result_trees{'in_table'} = {
                               'cmdname' => 'indent',
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 8,
+                                'line_nr' => 9,
                                 'macro' => ''
                               }
                             },
@@ -161,7 +209,7 @@ $result_trees{'in_table'} = {
                               'cmdname' => 'titlefont',
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 8,
+                                'line_nr' => 9,
                                 'macro' => ''
                               }
                             },
@@ -181,14 +229,11 @@ $result_trees{'in_table'} = {
                               ],
                               'cmdname' => 'anchor',
                               'extra' => {
-                                'node_content' => [
-                                  {}
-                                ],
                                 'normalized' => 'in-anchor'
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 8,
+                                'line_nr' => 9,
                                 'macro' => ''
                               }
                             },
@@ -211,7 +256,7 @@ $result_trees{'in_table'} = {
                               'cmdname' => 'footnote',
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 8,
+                                'line_nr' => 9,
                                 'macro' => ''
                               }
                             },
@@ -226,20 +271,24 @@ $result_trees{'in_table'} = {
                                       'text' => 'exdent'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'exdent',
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 8,
+                                'line_nr' => 9,
                                 'macro' => ''
                               }
                             }
@@ -248,12 +297,14 @@ $result_trees{'in_table'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 8,
+                        'line_nr' => 9,
                         'macro' => ''
                       }
                     }
@@ -286,7 +337,7 @@ $result_trees{'in_table'} = {
                           'cmdname' => 'footnote',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 9,
+                            'line_nr' => 10,
                             'macro' => ''
                           }
                         },
@@ -298,7 +349,7 @@ $result_trees{'in_table'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -331,8 +382,10 @@ $result_trees{'in_table'} = {
 '
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_before_argument' => ' '
+                                  'info' => {
+                                    'spaces_before_argument' => {
+                                      'text' => ' '
+                                    }
                                   },
                                   'type' => 'brace_command_arg'
                                 }
@@ -340,7 +393,7 @@ $result_trees{'in_table'} = {
                               'cmdname' => 'ref',
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 10,
+                                'line_nr' => 11,
                                 'macro' => ''
                               }
                             }
@@ -349,12 +402,14 @@ $result_trees{'in_table'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 10,
+                        'line_nr' => 11,
                         'macro' => ''
                       }
                     }
@@ -373,7 +428,7 @@ $result_trees{'in_table'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -394,20 +449,24 @@ $result_trees{'in_table'} = {
                                       'text' => 'centered text in item'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'center',
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 12,
+                                'line_nr' => 13,
                                 'macro' => ''
                               }
                             }
@@ -416,12 +475,14 @@ $result_trees{'in_table'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 12,
+                        'line_nr' => 13,
                         'macro' => ''
                       }
                     }
@@ -447,32 +508,31 @@ $result_trees{'in_table'} = {
                                       'text' => 'index'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_node' => {},
-                                  'entry_number' => 1,
-                                  'in_code' => 0,
-                                  'index_at_command' => 'cindex',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'cp',
-                                  'index_type_command' => 'cindex'
-                                },
-                                'spaces_before_argument' => ' '
+                                'element_node' => {},
+                                'index_entry' => [
+                                  'cp',
+                                  1
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 13,
+                                'line_nr' => 14,
                                 'macro' => ''
                               },
                               'type' => 'index_entry_command'
@@ -482,12 +542,14 @@ $result_trees{'in_table'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 13,
+                        'line_nr' => 14,
                         'macro' => ''
                       }
                     }
@@ -505,32 +567,42 @@ $result_trees{'in_table'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 14,
+                'line_nr' => 15,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 7,
+            'line_nr' => 8,
             'macro' => ''
           }
         },
@@ -547,15 +619,17 @@ $result_trees{'in_table'} = {
                   'cmdname' => 'asis',
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 16,
+                    'line_nr' => 17,
                     'macro' => ''
                   },
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -578,32 +652,31 @@ $result_trees{'in_table'} = {
                                       'text' => 'index'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_node' => {},
-                                  'entry_number' => 2,
-                                  'in_code' => 0,
-                                  'index_at_command' => 'cindex',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'cp',
-                                  'index_type_command' => 'cindex'
-                                },
-                                'spaces_before_argument' => ' '
+                                'element_node' => {},
+                                'index_entry' => [
+                                  'cp',
+                                  2
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 17,
+                                'line_nr' => 18,
                                 'macro' => ''
                               },
                               'type' => 'index_entry_command'
@@ -614,23 +687,20 @@ $result_trees{'in_table'} = {
                       ],
                       'cmdname' => 'item',
                       'extra' => {
-                        'index_entry' => {
-                          'content_normalized' => [],
-                          'entry_content' => [],
-                          'entry_element' => {},
-                          'entry_node' => {},
-                          'entry_number' => 1,
-                          'in_code' => 1,
-                          'index_at_command' => 'item',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'vr',
-                          'index_type_command' => 'vtable'
-                        },
-                        'spaces_before_argument' => ' '
+                        'element_node' => {},
+                        'index_entry' => [
+                          'vr',
+                          1
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 17,
+                        'line_nr' => 18,
                         'macro' => ''
                       }
                     }
@@ -655,7 +725,7 @@ $result_trees{'in_table'} = {
                           'cmdname' => 'option',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 18,
+                            'line_nr' => 19,
                             'macro' => ''
                           }
                         },
@@ -671,7 +741,7 @@ $result_trees{'in_table'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -692,32 +762,31 @@ $result_trees{'in_table'} = {
                                       'text' => '2 index'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_node' => {},
-                                  'entry_number' => 3,
-                                  'in_code' => 0,
-                                  'index_at_command' => 'cindex',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'cp',
-                                  'index_type_command' => 'cindex'
-                                },
-                                'spaces_before_argument' => ' '
+                                'element_node' => {},
+                                'index_entry' => [
+                                  'cp',
+                                  3
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 20,
+                                'line_nr' => 21,
                                 'macro' => ''
                               },
                               'type' => 'index_entry_command'
@@ -728,23 +797,20 @@ $result_trees{'in_table'} = {
                       ],
                       'cmdname' => 'item',
                       'extra' => {
-                        'index_entry' => {
-                          'content_normalized' => [],
-                          'entry_content' => [],
-                          'entry_element' => {},
-                          'entry_node' => {},
-                          'entry_number' => 2,
-                          'in_code' => 1,
-                          'index_at_command' => 'item',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'vr',
-                          'index_type_command' => 'vtable'
-                        },
-                        'spaces_before_argument' => ' '
+                        'element_node' => {},
+                        'index_entry' => [
+                          'vr',
+                          2
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 20,
+                        'line_nr' => 21,
                         'macro' => ''
                       }
                     }
@@ -769,7 +835,7 @@ $result_trees{'in_table'} = {
                           'cmdname' => 'option',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 21,
+                            'line_nr' => 22,
                             'macro' => ''
                           }
                         },
@@ -785,7 +851,7 @@ $result_trees{'in_table'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -798,32 +864,42 @@ $result_trees{'in_table'} = {
                       'text' => 'vtable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'vtable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 23,
+                'line_nr' => 24,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 16,
+            'line_nr' => 17,
             'macro' => ''
           }
         },
@@ -840,9 +916,11 @@ $result_trees{'in_table'} = {
                   'text' => 'fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -851,12 +929,16 @@ $result_trees{'in_table'} = {
           'extra' => {
             'misc_args' => [
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 25,
+            'line_nr' => 26,
             'macro' => ''
           }
         },
@@ -873,9 +955,11 @@ $result_trees{'in_table'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -884,70 +968,50 @@ $result_trees{'in_table'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 27,
+            'line_nr' => 28,
             'macro' => ''
           }
         }
       ],
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 2,
+        'line_nr' => 3,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'in_table'}{'contents'}[1];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'in_table'}{'contents'}[1];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'in_table'}{'contents'}[1];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'in_table'}{'contents'}[1];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'in_table'}{'contents'}[1];
-$result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'in_table'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'in_table'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'in_table'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'in_table'}{'contents'}[2];
+$result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'extra'}{'command_as_argument'} = $result_trees{'in_table'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0];
 
 $result_texis{'in_table'} = '
 @node Top
+@node chap
 
 @table @xref
 @end table
@@ -999,43 +1063,91 @@ Even more
 $result_nodes{'in_table'} = {
   'cmdname' => 'node',
   'extra' => {
-    'isindex' => 1,
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'isindex' => 1,
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'in_table'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'in_table'};
 
 $result_menus{'in_table'} = {
   'cmdname' => 'node',
   'extra' => {
-    'isindex' => 1,
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'in_table'} = [
   {
-    'error_line' => 'warning: @xref should not appear in @table
+    'error_line' => 'warning: @xref should not appear on @table line
 ',
     'file_name' => '',
-    'line_nr' => 4,
+    'line_nr' => 5,
     'macro' => '',
-    'text' => '@xref should not appear in @table',
+    'text' => '@xref should not appear on @table line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @indent should not appear in @item
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 9,
     'macro' => '',
     'text' => '@indent should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @indent should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@indent should not appear on @item line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @titlefont should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@titlefont should not appear on @item line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @anchor should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@anchor should not appear on @item line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @footnote should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@footnote should not appear on @item line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 9,
     'macro' => '',
     'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
@@ -1044,16 +1156,34 @@ $result_errors{'in_table'} = [
     'error_line' => 'warning: @exdent should not appear in @item
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 9,
     'macro' => '',
     'text' => '@exdent should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @exdent should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@exdent should not appear on @item line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @ref should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@ref should not appear on @item line',
     'type' => 'warning'
   },
   {
     'error_line' => '@ref missing closing brace
 ',
     'file_name' => '',
-    'line_nr' => 10,
+    'line_nr' => 11,
     'macro' => '',
     'text' => '@ref missing closing brace',
     'type' => 'error'
@@ -1062,7 +1192,7 @@ $result_errors{'in_table'} = [
     'error_line' => 'misplaced }
 ',
     'file_name' => '',
-    'line_nr' => 11,
+    'line_nr' => 12,
     'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
@@ -1071,43 +1201,79 @@ $result_errors{'in_table'} = [
     'error_line' => 'warning: @center should not appear in @item
 ',
     'file_name' => '',
-    'line_nr' => 12,
+    'line_nr' => 13,
     'macro' => '',
     'text' => '@center should not appear in @item',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @cindex should not appear in @item
+    'error_line' => 'warning: @center should not appear on @item line
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => '@cindex should not appear in @item',
+    'text' => '@center should not appear on @item line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @cindex should not appear in @item
 ',
     'file_name' => '',
-    'line_nr' => 17,
+    'line_nr' => 14,
     'macro' => '',
     'text' => '@cindex should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @cindex should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => '',
+    'text' => '@cindex should not appear on @item line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @cindex should not appear in @item
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 18,
     'macro' => '',
     'text' => '@cindex should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @cindex should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 18,
+    'macro' => '',
+    'text' => '@cindex should not appear on @item line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @cindex should not appear in @item
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => '@cindex should not appear in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @cindex should not appear on @item line
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => '@cindex should not appear on @item line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: empty index key in @item
 ',
     'file_name' => '',
-    'line_nr' => 17,
+    'line_nr' => 18,
     'macro' => '',
     'text' => 'empty index key in @item',
     'type' => 'warning'
@@ -1116,7 +1282,7 @@ $result_errors{'in_table'} = [
     'error_line' => 'warning: empty index key in @item
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => '',
     'text' => 'empty index key in @item',
     'type' => 'warning'

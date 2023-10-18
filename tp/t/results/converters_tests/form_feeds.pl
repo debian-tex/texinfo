@@ -18,9 +18,11 @@ $result_trees{'form_feeds'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -34,19 +36,12 @@ $result_trees{'form_feeds'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -59,12 +54,14 @@ $result_trees{'form_feeds'} = {
         {
           'contents' => [
             {
-              'text' => 'firstnode'
+              'text' => 'chapnode'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -245,22 +242,19 @@ $result_trees{'form_feeds'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'firstnode'
+                      'text' => 'chapnode'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap-node'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'first-node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -282,9 +276,11 @@ $result_trees{'form_feeds'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => ' 
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -308,17 +304,23 @@ $result_trees{'form_feeds'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -346,16 +348,20 @@ $result_trees{'form_feeds'} = {
                   'text' => 'around center'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' 
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => '  '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -371,16 +377,20 @@ $result_trees{'form_feeds'} = {
                   'text' => 'in center'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -439,16 +449,22 @@ $result_trees{'form_feeds'} = {
                         }
                       ],
                       'extra' => {
-                        'def_role' => 'category',
-                        'spaces_after_argument' => ' ',
-                        'spaces_before_argument' => ' '
+                        'def_role' => 'category'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 28,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_arg'
                     },
                     {
                       'extra' => {
@@ -464,16 +480,22 @@ $result_trees{'form_feeds'} = {
                         }
                       ],
                       'extra' => {
-                        'def_role' => 'name',
-                        'spaces_after_argument' => ' ',
-                        'spaces_before_argument' => ' '
+                        'def_role' => 'name'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 28,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_arg'
                     },
                     {
                       'extra' => {
@@ -489,16 +511,22 @@ $result_trees{'form_feeds'} = {
                         }
                       ],
                       'extra' => {
-                        'def_role' => 'arg',
-                        'spaces_after_argument' => ' ',
-                        'spaces_before_argument' => ' '
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 28,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_arg'
                     },
                     {
                       'extra' => {
@@ -514,16 +542,22 @@ $result_trees{'form_feeds'} = {
                         }
                       ],
                       'extra' => {
-                        'def_role' => 'arg',
-                        'spaces_after_argument' => ' ',
-                        'spaces_before_argument' => '  '
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '  '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 28,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_arg'
                     },
                     {
                       'extra' => {
@@ -539,56 +573,231 @@ $result_trees{'form_feeds'} = {
                         }
                       ],
                       'extra' => {
-                        'def_role' => 'arg',
-                        'spaces_after_argument' => ' ',
-                        'spaces_before_argument' => '  '
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '  '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 28,
                         'macro' => ''
                       },
-                      'type' => 'bracketed_def_content'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
+                      'type' => 'bracketed_arg'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
+                'def_index_element' => {},
+                'element_node' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 28,
+                'macro' => ''
+              },
+              'type' => 'def_line'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'xtruc'
+                        }
+                      ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed_arg'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'xmachin'
+                        }
+                      ],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed_arg'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => '  ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'xbidule'
+                        }
+                      ],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed_arg'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => '  ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'xchose'
+                        }
+                      ],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '  '
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed_arg'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'xarg'
+                        }
+                      ],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => '  '
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 29,
+                        'macro' => ''
+                      },
+                      'type' => 'bracketed_arg'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'deffnx',
+              'extra' => {
+                'def_command' => 'deffn',
+                'def_index_element' => {},
+                'element_node' => {},
+                'index_entry' => [
+                  'fn',
+                  2
+                ],
+                'original_def_cmdname' => 'deffnx'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 29,
                 'macro' => ''
               },
               'type' => 'def_line'
@@ -615,27 +824,35 @@ $result_trees{'form_feeds'} = {
                       'text' => 'deffn'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deffn'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 30,
+                'line_nr' => 31,
                 'macro' => ''
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -651,9 +868,11 @@ $result_trees{'form_feeds'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -707,12 +926,16 @@ $result_trees{'form_feeds'} = {
               ],
               'cmdname' => 'caption',
               'extra' => {
-                'float' => {},
-                'spaces_before_argument' => ' '
+                'float' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 34,
+                'line_nr' => 35,
                 'macro' => ''
               }
             },
@@ -767,12 +990,16 @@ $result_trees{'form_feeds'} = {
               ],
               'cmdname' => 'shortcaption',
               'extra' => {
-                'float' => {},
-                'spaces_before_argument' => ' '
+                'float' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 35,
+                'line_nr' => 36,
                 'macro' => ''
               }
             },
@@ -797,35 +1024,173 @@ $result_trees{'form_feeds'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 36,
+                'line_nr' => 37,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
             'caption' => {},
-            'shortcaption' => {},
-            'type' => {
-              'normalized' => ''
+            'float_type' => '',
+            'shortcaption' => {}
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 33,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'type'
+                }
+              ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
+              'type' => 'block_line_arg'
+            },
+            {
+              'contents' => [
+                {
+                  'text' => 'fl'
+                }
+              ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'float',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'in float
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'float'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 41,
+                'macro' => ''
+              }
+            }
+          ],
+          'extra' => {
+            'float_type' => 'type',
+            'normalized' => 'fl'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 32,
+            'line_nr' => 39,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'type'
+                }
+              ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
+'
+                }
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'listoffloats',
+          'extra' => {
+            'float_type' => 'type'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 43,
             'macro' => ''
           }
         },
@@ -836,19 +1201,12 @@ $result_trees{'form_feeds'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'first-node'
-          }
-        ],
-        'normalized' => 'first-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -859,26 +1217,19 @@ $result_trees{'form_feeds'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'form_feeds'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'form_feeds'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'form_feeds'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'form_feeds'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[18]{'contents'}[0]{'extra'}{'label'} = $result_trees{'form_feeds'}{'contents'}[2];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[18]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0];
-$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'form_feeds'}{'contents'}[2];
+$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[18]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[18]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'form_feeds'}{'contents'}[2];
+$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'form_feeds'}{'contents'}[2]{'contents'}[27]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'form_feeds'}{'contents'}[2];
 $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29]{'contents'}[1]{'extra'}{'float'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29];
 $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29]{'contents'}[4]{'extra'}{'float'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29];
 $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29]{'extra'}{'caption'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29]{'contents'}[1];
 $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29]{'extra'}{'shortcaption'} = $result_trees{'form_feeds'}{'contents'}[2]{'contents'}[29]{'contents'}[4];
-$result_trees{'form_feeds'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'form_feeds'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'form_feeds'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'form_feeds'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 
 $result_texis{'form_feeds'} = '@node Top
 
-@node firstnode
+@node chapnode
 
  
 
@@ -892,7 +1243,7 @@ cc  dd
 
 @code{middle in code}
 
-@xref{firstnode}
+@xref{chapnode}
 
 @example 
 in example
@@ -903,7 +1254,8 @@ in example
 
 @indicateurl{  in indicateurl}
 
-@deffn { truc } { machin }  { bidule }  {  chose } {  arg }
+@deffn  { truc } { machin }  { bidule }  {  chose } {  arg } 
+@deffnx  { xtruc } { xmachin }  { xbidule }  {  xchose } {  xarg } 
 T
 @end deffn
 
@@ -912,6 +1264,12 @@ a float
 @caption{ within  cation }  Toto
 @shortcaption{ shc within  shortcaption }  After shc
 @end float 
+
+@float type , fl 
+in float
+@end float
+
+@listoffloats type 
 
 ';
 
@@ -930,7 +1288,7 @@ end in code
 
 middle in code
 
-firstnode
+chapnode
 
 in example
 
@@ -940,11 +1298,16 @@ in center
   in indicateurl
 
 truc: machin bidule  chose arg
+xtruc: xmachin xbidule  xchose xarg
 T
 
 a float
 Toto
 After shc
+
+type, fl
+in float
+
 
 ';
 
@@ -957,7 +1320,7 @@ $result_nodes{'form_feeds'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'first-node'
+        'normalized' => 'chap-node'
       },
       'structure' => {
         'node_prev' => {}
@@ -989,15 +1352,25 @@ $result_floats{'form_feeds'} = {
             'float' => {}
           }
         },
+        'float_type' => '',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
             'float' => {}
           }
-        },
-        'type' => {
-          'normalized' => ''
         }
+      }
+    }
+  ],
+  'type' => [
+    {
+      'cmdname' => 'float',
+      'extra' => {
+        'float_type' => 'type',
+        'normalized' => 'fl'
+      },
+      'structure' => {
+        'float_number' => 1
       }
     }
   ]
@@ -1008,7 +1381,8 @@ $result_floats{'form_feeds'}{''}[0]{'extra'}{'shortcaption'}{'extra'}{'float'} =
 
 $result_indices_sort_strings{'form_feeds'} = {
   'fn' => [
-    'machin'
+    'machin',
+    'xmachin'
   ]
 };
 
@@ -1028,7 +1402,7 @@ $result_converted{'plaintext'}->{'form_feeds'} = 'aa
 
    ‘middlein code’
 
-   *Note firstnode::
+   *Note chapnode::
 
      in example
 
@@ -1038,6 +1412,7 @@ $result_converted{'plaintext'}->{'form_feeds'} = 'aa
    ‘ in indicateurl’
 
  -- truc: machin bidule chose arg
+ -- xtruc: xmachin xbidule xchose xarg
      T
 
 a float
@@ -1048,21 +1423,24 @@ within
 
 cation
 
+in float
+
+type 1
+* Menu:
+
+* type 1: fl.                            
+
 ';
 
 
 $result_converted{'html_text'}->{'form_feeds'} = '<a class="node-id" id="Top"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <hr>
-<a class="node-id" id="first-node"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
+<a class="node-id" id="chap-node"></a><div class="nav-panel">
 </div>
-<h4 class="node">first&#12;node</h4>
+<h4 class="node"><span>chap&#12;node<a class="copiable-link" href="#chap-node"> &para;</a></span></h4>
 
 &#12; &#12;
 
@@ -1076,7 +1454,7 @@ $result_converted{'html_text'}->{'form_feeds'} = '<a class="node-id" id="Top"></
 </p>
 <p><code class="code">middle&#12; in code</code>
 </p>
-<p>See <a class="xref" href="#first-node">first&#12;node</a>
+<p>See <a class="xref" href="#chap-node">chap&#12;node</a>
 </p>
 <div class="example">
 <pre class="example-preformatted">in example
@@ -1088,7 +1466,8 @@ $result_converted{'html_text'}->{'form_feeds'} = '<a class="node-id" id="Top"></
 <p>&lsquo;<code class="indicateurl"> &#12; in indicateurl</code>&rsquo;
 </p>
 <dl class="first-deffn">
-<dt class="deffn" id="index-machin"><span class="category-def">truc: </span><span><strong class="def-name">machin</strong> <var class="def-var-arguments">bidule  chose arg</var><a class="copiable-link" href=\'#index-machin\'> &para;</a></span></dt>
+<dt class="deffn" id="index-machin"><span class="category-def">truc: </span><span><strong class="def-name">machin</strong> <var class="def-var-arguments">bidule  chose arg</var><a class="copiable-link" href="#index-machin"> &para;</a></span></dt>
+<dt class="deffnx def-cmd-deffn" id="index-xmachin"><span class="category-def">xtruc: </span><span><strong class="def-name">xmachin</strong> <var class="def-var-arguments">xbidule  xchose xarg</var><a class="copiable-link" href="#index-xmachin"> &para;</a></span></dt>
 <dd><p>T
 </p></dd></dl>
 
@@ -1097,12 +1476,19 @@ $result_converted{'html_text'}->{'form_feeds'} = '<a class="node-id" id="Top"></
 </p><p>Toto
 </p><p>After shc
 </p><div class="caption"><p>within </p>&#12;<p>cation </p>&#12;</div></div>
+<div class="float" id="fl">
+<p>in float
+</p><div class="type-number-float"><p><strong class="strong">type 1</strong></p></div></div>
+<dl class="listoffloats">
+<dt><a href="#fl">type 1</a></dt><dd></dd>
+</dl>
+
 ';
 
 
-$result_converted{'xml'}->{'form_feeds'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">first&formfeed;node</nodenext></node>
+$result_converted{'xml'}->{'form_feeds'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap&formfeed;node</nodenext></node>
 
-<node name="first-node" spaces=" "><nodename>first&formfeed;node</nodename><nodeprev automatic="on">Top</nodeprev></node>
+<node name="chap-node" spaces=" "><nodename>chap&formfeed;node</nodename><nodeprev automatic="on">Top</nodeprev></node>
 
 &formfeed; &formfeed;
 
@@ -1116,7 +1502,7 @@ $result_converted{'xml'}->{'form_feeds'} = '<node name="Top" spaces=" "><nodenam
 </para>
 <para><code>middle&formfeed; in code</code>
 </para>
-<para><xref label="first-node"><xrefnodename>first&formfeed;node</xrefnodename></xref>
+<para><xref label="chap-node"><xrefnodename>chap&formfeed;node</xrefnodename></xref>
 </para>
 <example endspaces=" "> &formfeed;
 <pre xml:space="preserve">in example
@@ -1127,7 +1513,8 @@ $result_converted{'xml'}->{'form_feeds'} = '<node name="Top" spaces=" "><nodenam
 
 <para><indicateurl> &formfeed; in indicateurl</indicateurl>
 </para>
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">machin</indexterm><defcategory bracketed="on" spaces=" \\f" trailingspaces=" ">truc</defcategory> <deffunction bracketed="on" spaces=" " trailingspaces=" ">machin</deffunction>  <defparam bracketed="on" spaces=" " trailingspaces=" ">bidule</defparam>  <defparam bracketed="on" spaces=" \\f " trailingspaces=" \\f">chose</defparam> <defparam bracketed="on" spaces="  " trailingspaces="\\f ">arg</defparam></definitionterm>
+<deffn spaces=" \\f " endspaces=" "><definitionterm><indexterm index="fn" number="1">machin</indexterm><defcategory bracketed="on" spaces=" \\f" trailingspaces=" ">truc</defcategory> <deffunction bracketed="on" spaces=" " trailingspaces=" ">machin</deffunction>  <defparam bracketed="on" spaces=" " trailingspaces=" ">bidule</defparam>  <defparam bracketed="on" spaces=" \\f " trailingspaces=" \\f">chose</defparam> <defparam bracketed="on" spaces="  " trailingspaces="\\f ">arg</defparam> &formfeed;</definitionterm>
+<deffnx spaces=" \\f "><definitionterm><indexterm index="fn" number="2">xmachin</indexterm><defcategory bracketed="on" spaces=" \\f" trailingspaces=" ">xtruc</defcategory> <deffunction bracketed="on" spaces=" " trailingspaces=" ">xmachin</deffunction>  <defparam bracketed="on" spaces=" " trailingspaces=" ">xbidule</defparam>  <defparam bracketed="on" spaces=" \\f " trailingspaces=" \\f">xchose</defparam> <defparam bracketed="on" spaces="  " trailingspaces="\\f ">xarg</defparam> &formfeed;</definitionterm></deffnx>
 <definitionitem><para>T
 </para></definitionitem></deffn>
 
@@ -1137,10 +1524,16 @@ $result_converted{'xml'}->{'form_feeds'} = '<node name="Top" spaces=" "><nodenam
 </para><shortcaption spaces="\\f "><para>shc within </para>&formfeed; <para>shortcaption </para>&formfeed;</shortcaption> &formfeed; <para>After shc
 </para></float> &formfeed;
 
+<float name="fl" type="type" number="1" spaces=" " endspaces=" "><floattype trailingspaces=" \\f">type</floattype><floatname spaces=" ">fl &formfeed;</floatname>
+<para>in float
+</para></float>
+
+<listoffloats type="type" spaces=" ">type &formfeed;</listoffloats>
+
 ';
 
 
-$result_converted{'docbook'}->{'form_feeds'} = '<anchor id="first-node"/>
+$result_converted{'docbook'}->{'form_feeds'} = '<anchor id="chap-node"/>
 
    
 
@@ -1154,7 +1547,7 @@ $result_converted{'docbook'}->{'form_feeds'} = '<anchor id="first-node"/>
 </para>
 <para><literal>middle  in code</literal>
 </para>
-<para>See <link linkend="first-node">first node</link>
+<para>See <link linkend="chap-node">chap node</link>
 </para>
 <screen>in example
 </screen>
@@ -1164,17 +1557,22 @@ $result_converted{'docbook'}->{'form_feeds'} = '<anchor id="first-node"/>
 <para><literal>   in indicateurl</literal>
 </para>
 <synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function>  <emphasis role="arg">bidule</emphasis>  <emphasis role="arg">chose</emphasis> <emphasis role="arg">arg</emphasis></synopsis>
+<synopsis><indexterm role="fn"><primary>xmachin</primary></indexterm><phrase role="category"><emphasis role="bold">xtruc</emphasis>:</phrase> <function>xmachin</function>  <emphasis role="arg">xbidule</emphasis>  <emphasis role="arg">xchose</emphasis> <emphasis role="arg">xarg</emphasis></synopsis>
 <blockquote><para>T
 </para></blockquote>
 <para>a float
 </para><para>Toto
 </para><para>After shc
 </para>
+<anchor id="fl"/>
+<para>in float
+</para>
+
 ';
 
 
 $result_converted{'latex_text'}->{'form_feeds'} = '\\label{anchor:Top}%
-\\label{anchor:first-node}%
+\\label{anchor:chap-node}%
 
 \\par{}
 
@@ -1190,7 +1588,7 @@ cc \\par{}
 
 \\texttt{middle in code}
 
-See \\hyperref[anchor:first-node]{[firstnode], page~\\pageref*{anchor:first-node}}
+See \\hyperref[anchor:chap-node]{[chapnode], page~\\pageref*{anchor:chap-node}}
 
 \\begin{Texinfoindented}
 \\begin{Texinfopreformatted}%
@@ -1214,6 +1612,13 @@ in center
 \\end{tabularx}
 
 \\index[fn]{machin@\\texttt{machin}}%
+
+\\noindent\\begin{tabularx}{\\linewidth}{@{}Xr}
+\\rightskip=5em plus 1 fill \\hangindent=2em \\hyphenpenalty=10000
+\\texttt{xmachin \\EmbracOn{}\\textnormal{\\textsl{xbidule  xchose xarg}}\\EmbracOff{}}& [xtruc]
+\\end{tabularx}
+
+\\index[fn]{xmachin@\\texttt{xmachin}}%
 \\begin{quote}
 \\unskip{\\parskip=0pt\\noindent}%
 T
@@ -1229,6 +1634,13 @@ a float
 \\par{}Toto
 \\par{}After shc
 \\end{TexinfoFloat}
+
+\\begin{TexinfoFloattype}
+in float
+\\label{anchor:fl}%
+\\end{TexinfoFloattype}
+
+\\listof{TexinfoFloattype}{}
 
 ';
 

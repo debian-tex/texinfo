@@ -1,6 +1,6 @@
 install-info/tests/README
 
-  Copyright 2008-2022 Free Software Foundation, Inc.
+  Copyright 2008-2023 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -176,3 +176,7 @@ This file describes each of the numbered install-info tests.
 0055: --defsection when its value is used
 0056: --defsection when its value is not used
 0057: --maxwidth
+0058: Repeated deletion and addition of a section does not introduce
+      extra blank lines.
+0059: Deletion of section between two other sections leaves one
+      blank line between the remaining sections.

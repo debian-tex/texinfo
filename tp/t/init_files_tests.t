@@ -31,31 +31,98 @@ pt @error{}.
 );
 
 my @file_tests = (
+['customize_translations',
+'
+@contents
+
+@node Top
+@top top
+
+@node Chapter
+@chapter chap
+
+@error{}.
+
+@documentlanguage fr
+@node Chapter fr
+@chapter chap fr
+
+@error{}.
+
+@node section fr
+@section sec fr
+
+@documentlanguage de
+@node Chapter de
+@chapter chap de
+
+@error{}.
+
+@node Last chapter
+@chapter Last Chapter
+
+', {'init_files' => ['translated_strings_customization.pm']},
+   {'SPLIT' => 'chapter'}],
 ['undefined_node_filename',
 '@node Top
 
-@node Other
+@node chap Other
 ',{'init_files' => ['undef_node_file_name.init'],
 }, {'VERBOSE' => 1}],
-['documentation_examples',
+['customize_special_element',
 '
-@settitle @email{someone@@example.com, me} @sansserif{in--title} @error{}
+@footnotestyle separate
+
+@contents
+@shortcontents
 
 @node Top
+@top top
 
-@sansserif{in--text} @- p--n. @error{}
+@node Chapter
+@chapter chap
+
+@documentlanguage fr
+@node Chapter fr
+@chapter chap fr
+
+Text@footnote{In footnote}.
+', {'init_files' => ['special_element_customization.pm']}],
+['documentation_examples',
+'
+@settitle @email{someone@@example.com, me} @sansserif{in--title} @error{} @equiv{}
+
+@node Top
+@top top
+
+@node chapter
+@chapter Chapter
+
+@sansserif{in--text} @- p--n. @error{} @equiv{}
 @xref{my node}@footnote{in footnote}.
 @titlefont{in titlefont}
 @email{a@@b.c, someone}
 
-@math{@sansserif{in--math} @- a=b @error{}}
+@math{@sansserif{in--math} @- a=b @error{} @equiv{}}
 
 @example
-@sansserif{in--example} @- c. @error{}
+@sansserif{in--example} @- c. @error{} @equiv{}
 @end example
 
+@documentlanguage fr
+
+@error{}.
+
+@equiv{}
 
 @node my node
+
+@documentlanguage de
+
+@error{}.
+
+@equiv{}
+
 
 ',{'init_files' => ['documentation_examples.pm']},
 ],

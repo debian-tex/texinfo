@@ -4,7 +4,7 @@
 # and ISO 3166-1 alpha-2 codes and regenerate Texinfo/Documentlanguages.pm
 # list of languages and regions
 #
-# Copyright 2022 Free Software Foundation, Inc.
+# Copyright 2022-2023 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright

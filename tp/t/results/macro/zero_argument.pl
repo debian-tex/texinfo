@@ -31,17 +31,23 @@ $result_trees{'zero_argument'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +56,7 @@ $result_trees{'zero_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' foo {}
 '
           },
@@ -92,8 +98,12 @@ $result_trees{'zero_argument'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -102,7 +112,7 @@ $result_trees{'zero_argument'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' abar
 '
           },

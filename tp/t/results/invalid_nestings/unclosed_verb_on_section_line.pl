@@ -41,7 +41,7 @@ $result_trees{'unclosed_verb_on_section_line'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => 'T'
               },
               'source_info' => {
@@ -55,8 +55,10 @@ $result_trees{'unclosed_verb_on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -77,7 +79,7 @@ T}';
 $result_texts{'unclosed_verb_on_section_line'} = '1 in section ruc
 
 Now text.
-===========================
+=========================
 ';
 
 $result_sectioning{'unclosed_verb_on_section_line'} = {
@@ -85,7 +87,6 @@ $result_sectioning{'unclosed_verb_on_section_line'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -100,12 +101,12 @@ $result_sectioning{'unclosed_verb_on_section_line'}{'structure'}{'section_childs
 
 $result_errors{'unclosed_verb_on_section_line'} = [
   {
-    'error_line' => 'warning: @verb should not appear in @section
+    'error_line' => 'warning: @verb should not appear on @section line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@verb should not appear in @section',
+    'text' => '@verb should not appear on @section line',
     'type' => 'warning'
   },
   {

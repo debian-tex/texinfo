@@ -12,22 +12,16 @@ $result_trees{'comment_first_on_enumerate_line'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comment on enumerate line
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment on enumerate line
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -69,17 +63,23 @@ $result_trees{'comment_first_on_enumerate_line'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -89,8 +89,12 @@ $result_trees{'comment_first_on_enumerate_line'} = {
             }
           ],
           'extra' => {
-            'enumerate_specification' => '1',
-            'spaces_before_argument' => ' '
+            'enumerate_specification' => '1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -128,6 +132,12 @@ $result_converted{'plaintext'}->{'comment_first_on_enumerate_line'} = '  1. firs
 $result_converted{'html_text'}->{'comment_first_on_enumerate_line'} = '<ol class="enumerate">
 <li> first
 </li></ol>
+';
+
+
+$result_converted{'xml'}->{'comment_first_on_enumerate_line'} = '<enumerate first="1" spaces=" " endspaces=" "><!-- c comment on enumerate line -->
+<listitem> <para>first
+</para></listitem></enumerate>
 ';
 
 1;

@@ -174,21 +174,21 @@ sub _print_tree($$;$$)
     my $text = _protect_text($element->{'text'});
     $result .= "|$text|";
   }
-  if ($element->{'extra'}
-      and defined($element->{'extra'}->{'spaces_before_argument'})) {
+  if ($element->{'info'}
+      and defined($element->{'info'}->{'spaces_before_argument'})) {
     $result .= ' '
-    .'b/'._protect_text($element->{'extra'}->{'spaces_before_argument'}).'/';
+    .'b/'._protect_text($element->{'info'}->{'spaces_before_argument'}->{'text'}).'/';
   }
-  if ($element->{'extra'}
-      and defined($element->{'extra'}->{'spaces_after_argument'})) {
+  if ($element->{'info'}
+      and defined($element->{'info'}->{'spaces_after_argument'})) {
     $result .= ' '
-    .'a/'._protect_text($element->{'extra'}->{'spaces_after_argument'}).'/';
+    .'a/'._protect_text($element->{'info'}->{'spaces_after_argument'}->{'text'}).'/';
   }
   $result .= "\n";
-  if ($element->{'extra'}
-      and defined($element->{'extra'}->{'comment_at_end'})) {
+  if ($element->{'info'}
+      and defined($element->{'info'}->{'comment_at_end'})) {
     $result .= ' ' x ($level + 1).'/comment_at_end/'."\n";
-    $result .= _print_tree ($self, $element->{'extra'}->{'comment_at_end'},
+    $result .= _print_tree ($self, $element->{'info'}->{'comment_at_end'},
                             $level +2);
   }
   if ($element->{'args'}) {

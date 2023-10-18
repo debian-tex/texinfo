@@ -22,7 +22,14 @@ $result_trees{'inlineifset_false_not_closed'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' bbb
+',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlineifset',
@@ -45,7 +52,8 @@ $result_trees{'inlineifset_false_not_closed'} = {
   'type' => 'document_root'
 };
 
-$result_texis{'inlineifset_false_not_closed'} = '@inlineifset{aaa,}';
+$result_texis{'inlineifset_false_not_closed'} = '@inlineifset{aaa, bbb
+}';
 
 
 $result_texts{'inlineifset_false_not_closed'} = '';

@@ -1,10 +1,10 @@
-/* parser.h - include many other header files.  type declarations.  
-   declarations for close.c, end_line.c, debug.c, separator.c, parser.c, 
+/* parser.h - include many other header files.  type declarations.
+   declarations for close.c, end_line.c, separator.c, parser.c,
    multitable.c, extra.c and menu.c. */
 
 #ifndef PARSER_H
 #define PARSER_H
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,7 +24,6 @@
 #include "context_stack.h"
 #include "commands.h"
 #include "handle_commands.h"
-#include "def.h"
 #include "errors.h"
 #include "counter.h"
 #include "macro.h"
@@ -32,8 +31,6 @@
 
 typedef struct GLOBAL_INFO {
     char *input_file_name;
-    char *input_encoding_name;
-    char *input_perl_encoding;
     int sections_level;
     ELEMENT dircategory_direntry; /* an array of elements */
 
@@ -71,15 +68,17 @@ typedef struct GLOBAL_INFO {
     ELEMENT *smallbook;
 
     /* Arrays of elements */
+    ELEMENT author;
+    ELEMENT detailmenu;
+    ELEMENT floats;
     ELEMENT footnotes;
     ELEMENT hyphenation;
     ELEMENT insertcopying;
+    ELEMENT listoffloats;
+    ELEMENT part;
     ELEMENT printindex;
     ELEMENT subtitle;
     ELEMENT titlefont;
-    ELEMENT listoffloats;
-    ELEMENT detailmenu;
-    ELEMENT part;
 
     ELEMENT allowcodebreaks;
     ELEMENT clickstyle;
@@ -106,6 +105,9 @@ typedef struct GLOBAL_INFO {
 
 
 /* In close.c */
+int is_container_empty (ELEMENT *current);
+void remove_empty_content (ELEMENT *current);
+ELEMENT *close_container (ELEMENT *current);
 void close_command_cleanup (ELEMENT *current);
 ELEMENT *close_commands (ELEMENT *current, enum command_id closed_block_command,
                          ELEMENT **closed_element, enum command_id);
@@ -115,13 +117,16 @@ ELEMENT *close_all_style_commands (ELEMENT *current,
 ELEMENT *close_current (ELEMENT *current,
                         enum command_id closed_block_command,
                         enum command_id interrupting_command);
+ELEMENT *close_brace_command (ELEMENT *current,
+                              enum command_id closed_block_command,
+                              enum command_id interrupting_command,
+                              int missing_brace);
+void close_ignored_block_conditional (ELEMENT *current);
 
 /* In end_line.c */
-NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);
 ELEMENT *end_line (ELEMENT *current);
-ELEMENT *parse_special_misc_command (char *line, enum command_id cmd,
-                                     int *has_commment);
-int check_node_label (NODE_SPEC_EXTRA *nse, enum command_id cmd);
+ELEMENT *end_line_misc_line (ELEMENT *current);
+ELEMENT *end_line_starting_block (ELEMENT *current);
 
 typedef struct {
     char *type;
@@ -132,19 +137,24 @@ extern FLOAT_RECORD *floats_list;
 extern size_t floats_number;
 extern size_t floats_space;
 
-/* In debug.c */
-void debug (char *s, ...);
-void debug_nonl (char *s, ...);
-extern int debug_output;
 
 /* In separator.c */
-ELEMENT *handle_separator (ELEMENT *current, char separator,
-                           char **line_inout);
+ELEMENT * handle_open_brace (ELEMENT *current, char **line_inout);
+ELEMENT * handle_close_brace (ELEMENT *current, char **line_inout);
+ELEMENT * handle_comma (ELEMENT *current, char **line_inout);
 
 /* In parser.c */
+typedef struct {
+    enum command_id command;
+    SOURCE_MARK *source_mark;
+} CONDITIONAL_STACK_ITEM;
+
+size_t count_convert_u8 (char *text);
+int isascii_alnum (int c);
 ELEMENT *parse_texi (ELEMENT *root_elt, ELEMENT *current_elt);
-void push_conditional_stack (enum command_id cond);
-enum command_id pop_conditional_stack (void);
+void push_conditional_stack (enum command_id cond, SOURCE_MARK *source_mark);
+CONDITIONAL_STACK_ITEM *pop_conditional_stack (void);
+CONDITIONAL_STACK_ITEM *top_conditional_stack (void);
 extern size_t conditional_number;
 ELEMENT *parse_texi_document (void);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
@@ -160,8 +170,10 @@ ELEMENT *end_preformatted (ELEMENT *current,
                            enum command_id closed_block_command,
                            enum command_id interrupting_command);
 char *read_command_name (char **ptr);
+char *read_comment (char *line, int *has_comment);
 char *read_flag_name (char **ptr);
-ELEMENT *merge_text (ELEMENT *current, char *text);
+ELEMENT *merge_text (ELEMENT *current, char *text,
+                     ELEMENT *transfer_marks_element);
 void start_empty_line_after_command (ELEMENT *current, char **line_inout,
                                      ELEMENT *command);
 ELEMENT *begin_paragraph (ELEMENT *current);
@@ -173,14 +185,16 @@ void set_documentlanguage_override (char *value);
 void set_accept_internalvalue (void);
 char *element_type_name (ELEMENT *e);
 int check_space_element (ELEMENT *e);
+void gather_spaces_after_cmd_before_arg (ELEMENT *current);
+char *parse_command_name (char **ptr, int *single_char);
 
 /* Return values */
 #define GET_A_NEW_LINE 0
 #define STILL_MORE_TO_PROCESS 1
 #define FINISHED_TOTALLY 2
 
-
 extern const char *whitespace_chars, *whitespace_chars_except_newline;
+extern const char *linecommand_expansion_delimiters;
 extern const char *digit_chars;
 
 extern ELEMENT *current_node;
@@ -212,20 +226,20 @@ void gather_previous_item (ELEMENT *current, enum command_id next_command);
 void add_extra_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_element_oot (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_contents (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_contents_oot (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_text (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value);
-void add_extra_node_spec_array (ELEMENT *, char *, NODE_SPEC_EXTRA **value);
-void add_extra_def_info (ELEMENT *e, char *key, DEF_INFO *value);
-void add_extra_float_type (ELEMENT *e, char *key, EXTRA_FLOAT_TYPE *value);
 void add_extra_string (ELEMENT *e, char *key, char *value);
 void add_extra_string_dup (ELEMENT *e, char *key, char *value);
 void add_extra_integer (ELEMENT *e, char *key, long value);
+void add_info_string (ELEMENT *e, char *key, char *value);
+void add_info_string_dup (ELEMENT *e, char *key, char *value);
+void add_info_element_oot (ELEMENT *e, char *key, ELEMENT *value);
 KEY_PAIR *lookup_extra (ELEMENT *e, char *key);
+KEY_PAIR *lookup_info (ELEMENT *e, char *key);
+ELEMENT *lookup_extra_element (ELEMENT *e, char *key);
+ELEMENT *lookup_info_element (ELEMENT *e, char *key);
 
 /* In menus.c */
-int handle_menu (ELEMENT **current_inout, char **line_inout);
-ELEMENT *enter_menu_entry_node (ELEMENT *current);
+int handle_menu_entry_separators (ELEMENT **current_inout, char **line_inout);
+ELEMENT *end_line_menu_entry (ELEMENT *current);
 #endif

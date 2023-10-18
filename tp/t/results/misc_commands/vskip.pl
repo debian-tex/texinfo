@@ -14,16 +14,10 @@ $result_trees{'vskip'} = {
             {
               'text' => ' 0pt plus 1filll
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'vskip',
-          'extra' => {
-            'misc_args' => [
-              ' 0pt plus 1filll
-'
-            ]
-          }
+          'cmdname' => 'vskip'
         }
       ],
       'type' => 'before_node_section'
@@ -55,15 +49,15 @@ $result_converted{'latex'}->{'vskip'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

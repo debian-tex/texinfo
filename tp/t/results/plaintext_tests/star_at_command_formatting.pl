@@ -86,17 +86,23 @@ $result_trees{'star_at_command_formatting'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -105,7 +111,7 @@ $result_trees{'star_at_command_formatting'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' mymacro
 '
           },
@@ -116,6 +122,25 @@ $result_trees{'star_at_command_formatting'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'mymacro'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -334,6 +359,14 @@ $result_trees{'star_at_command_formatting'} = {
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 13,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'And end para.
 '
             }
@@ -348,9 +381,11 @@ $result_trees{'star_at_command_formatting'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -360,6 +395,25 @@ $result_trees{'star_at_command_formatting'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'mymacro'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 8,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
                   'text' => 'Example
 '
                 },
@@ -570,6 +624,14 @@ $result_trees{'star_at_command_formatting'} = {
 '
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'position' => 13,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'And end para.
 '
                 }
@@ -584,17 +646,23 @@ $result_trees{'star_at_command_formatting'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -617,9 +685,11 @@ $result_trees{'star_at_command_formatting'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -629,6 +699,25 @@ $result_trees{'star_at_command_formatting'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 3,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'mymacro'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 10,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
                   'text' => 'Quotation
 '
                 },
@@ -844,6 +933,14 @@ $result_trees{'star_at_command_formatting'} = {
 '
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 3,
+                      'position' => 13,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'And end para.
 '
                 }
@@ -858,17 +955,23 @@ $result_trees{'star_at_command_formatting'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

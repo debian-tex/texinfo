@@ -51,8 +51,10 @@ $result_trees{'recursive_acronym_definition'} = {
                                       'text' => 'is something'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_before_argument' => ' '
+                                  'info' => {
+                                    'spaces_before_argument' => {
+                                      'text' => ' '
+                                    }
                                   },
                                   'type' => 'brace_command_arg'
                                 }
@@ -68,8 +70,10 @@ $result_trees{'recursive_acronym_definition'} = {
                               'text' => '\'s Not Unix'
                             }
                           ],
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'type' => 'brace_command_arg'
                         }
@@ -85,8 +89,10 @@ $result_trees{'recursive_acronym_definition'} = {
                       'text' => '\'s Not Unix'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -126,7 +132,7 @@ $result_floats{'recursive_acronym_definition'} = {};
 
 
 
-$result_converted{'plaintext'}->{'recursive_acronym_definition'} = 'GNU (GNU (GNU (is something)’s Not Unix)’s Not Unix)
+$result_converted{'plaintext'}->{'recursive_acronym_definition'} = 'GNU (GNU (GNU (is something)\'s Not Unix)\'s Not Unix)
 ';
 
 

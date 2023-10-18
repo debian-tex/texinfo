@@ -23,8 +23,10 @@ $result_trees{'math_leading_trailing_spaces'} = {
                 }
               ],
               'cmdname' => 'math',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

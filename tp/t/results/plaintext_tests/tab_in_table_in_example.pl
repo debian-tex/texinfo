@@ -12,9 +12,11 @@ $result_trees{'tab_in_table_in_example'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -35,9 +37,11 @@ $result_trees{'tab_in_table_in_example'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -74,16 +78,20 @@ $result_trees{'tab_in_table_in_example'} = {
                                   'text' => 'table item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -119,7 +127,7 @@ $result_trees{'tab_in_table_in_example'} = {
                           'type' => 'preformatted'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -132,17 +140,23 @@ $result_trees{'tab_in_table_in_example'} = {
                           'text' => 'table'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'table'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -152,8 +166,12 @@ $result_trees{'tab_in_table_in_example'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -169,17 +187,23 @@ $result_trees{'tab_in_table_in_example'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

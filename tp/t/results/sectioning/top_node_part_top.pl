@@ -25,9 +25,11 @@ $result_trees{'top_node_part_top'} = [
                 'text' => 'Top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -41,19 +43,12 @@ $result_trees{'top_node_part_top'} = [
           }
         ],
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'Top'
-            }
-          ],
-          'normalized' => 'Top',
-          'spaces_before_argument' => ' '
+          'normalized' => 'Top'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -69,9 +64,11 @@ $result_trees{'top_node_part_top'} = [
                 'text' => 'part'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -84,8 +81,11 @@ $result_trees{'top_node_part_top'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -101,17 +101,23 @@ $result_trees{'top_node_part_top'} = [
                 'text' => 'top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
         'extra' => {
-          'associated_part' => {},
-          'spaces_before_argument' => ' '
+          'associated_part' => {}
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -126,8 +132,6 @@ $result_trees{'top_node_part_top'} = [
     'type' => 'unit'
   }
 ];
-$result_trees{'top_node_part_top'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_node_part_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_part_top'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_node_part_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_node_part_top'}[0]{'contents'}[3]{'extra'}{'associated_part'} = $result_trees{'top_node_part_top'}[0]{'contents'}[2];
 $result_trees{'top_node_part_top'}[0]{'extra'}{'unit_command'} = $result_trees{'top_node_part_top'}[0]{'contents'}[3];
 
@@ -381,6 +385,12 @@ $result_converted{'html'}->{'top_node_part_top'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -390,10 +400,10 @@ $result_converted{'html'}->{'top_node_part_top'} = '<!DOCTYPE html>
 
 </div>
 <div class="part-level-extent" id="part">
-<h1 class="part">part</h1>
+<h1 class="part"><span>part<a class="copiable-link" href="#part"> &para;</a></span></h1>
 <hr>
 
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 </div>
 
 

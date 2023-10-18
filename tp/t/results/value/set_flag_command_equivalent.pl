@@ -17,9 +17,11 @@ $result_trees{'set_flag_command_equivalent'} = {
                   'text' => 'on'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -28,8 +30,12 @@ $result_trees{'set_flag_command_equivalent'} = {
           'extra' => {
             'misc_args' => [
               'on'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -38,6 +44,29 @@ $result_trees{'set_flag_command_equivalent'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'text' => 'txicodequoteundirected'
+                  }
+                ],
+                'cmdname' => 'value'
+              },
+              'line' => '',
+              'position' => 1,
+              'sourcemark_type' => 'value_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 1,
+              'position' => 1,
+              'sourcemark_type' => 'value_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -64,9 +93,11 @@ $result_trees{'set_flag_command_equivalent'} = {
                   'text' => 'off'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -75,8 +106,12 @@ $result_trees{'set_flag_command_equivalent'} = {
           'extra' => {
             'misc_args' => [
               'off'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

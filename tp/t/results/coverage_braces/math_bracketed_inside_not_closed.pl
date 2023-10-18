@@ -18,7 +18,7 @@ $result_trees{'math_bracketed_inside_not_closed'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'x^i'
+                          'text' => '{x^i}'
                         }
                       ],
                       'source_info' => {
@@ -26,7 +26,7 @@ $result_trees{'math_bracketed_inside_not_closed'} = {
                         'line_nr' => 1,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     },
                     {
                       'text' => '\\over'
@@ -34,7 +34,7 @@ $result_trees{'math_bracketed_inside_not_closed'} = {
                     {
                       'contents' => [
                         {
-                          'text' => '\\tan'
+                          'text' => '{\\tan}'
                         }
                       ],
                       'source_info' => {
@@ -42,7 +42,7 @@ $result_trees{'math_bracketed_inside_not_closed'} = {
                         'line_nr' => 1,
                         'macro' => ''
                       },
-                      'type' => 'bracketed'
+                      'type' => 'balanced_braces'
                     }
                   ],
                   'type' => 'brace_command_context'

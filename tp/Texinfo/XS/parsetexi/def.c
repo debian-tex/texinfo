@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,9 +15,14 @@
 
 #include <config.h>
 #include <string.h>
+#include <stdbool.h>
+#include "uniconv.h"
+#include "unistr.h"
 
 #include "parser.h"
 #include "text.h"
+#include "source_marks.h"
+#include "debug.h"
 
 void
 gather_def_item (ELEMENT *current, enum command_id next_command)
@@ -26,7 +31,8 @@ gather_def_item (ELEMENT *current, enum command_id next_command)
   ELEMENT *def_item;
   int contents_count, i;
 
-  if (next_command)
+  if (next_command
+      && next_command != CM_defline && next_command != CM_deftypeline)
     type = ET_inter_def_item; /* Between @def*x and @def*. */
   else
     type = ET_def_item;
@@ -41,11 +47,13 @@ gather_def_item (ELEMENT *current, enum command_id next_command)
   if (command_data(current->cmd).flags & CF_line)
     return;
 
-  def_item = new_element (type);
+  contents_count = current->contents.number;
+  if (contents_count == 0)
+    return;
 
   /* Starting from the end, collect everything that is not a ET_def_line and
      put it into the ET_def_item. */
-  contents_count = current->contents.number;
+  def_item = new_element (type);
   for (i = 0; i < contents_count; i++)
     {
       ELEMENT *last_child, *item_content;
@@ -66,23 +74,6 @@ gather_def_item (ELEMENT *current, enum command_id next_command)
 /* Starting at I in the contents, return the next non-whitespace element,
    incrementing I.  Return null if no more elements. */
 ELEMENT *
-next_bracketed_or_word (ELEMENT *current, int *i)
-{
-  while (1)
-    {
-      if (*i == current->contents.number)
-        return 0;
-      if (current->contents.list[*i]->type != ET_spaces
-          && current->contents.list[*i]->type != ET_spaces_inserted
-          && current->contents.list[*i]->type != ET_spaces_at_end
-          && current->contents.list[*i]->type != ET_delimiter)
-        break;
-      (*i)++;
-    }
-  return current->contents.list[(*i)++];
-}
-
-ELEMENT *
 next_bracketed_or_word_agg (ELEMENT *current, int *i)
 {
   int num = 0;
@@ -96,7 +87,6 @@ next_bracketed_or_word_agg (ELEMENT *current, int *i)
       e = current->contents.list[*i];
       if (e->type == ET_spaces
           || e->type == ET_spaces_inserted
-          || e->type == ET_spaces_at_end
           || e->type == ET_delimiter)
         {
           if (num > 0)
@@ -104,26 +94,19 @@ next_bracketed_or_word_agg (ELEMENT *current, int *i)
           else
             {
               (*i)++;
-              continue;
             }
         }
-      if (e->type == ET_bracketed_def_content
-          || e->type == ET_bracketed_inserted)
+      else
         {
-          if (num > 0)
-            break;
-          else
-            {
-              (*i)++;
-              return e;
-            }
+         /* e is a text or command element or bracketed argument */
+          (*i)++;
+          num++;
         }
-      /* e is a text or command element */
-      (*i)++;
-      num++;
     }
+
   if (num == 0)
     return 0;
+
   if (num == 1)
     return current->contents.list[*i - 1];
 
@@ -144,21 +127,60 @@ typedef struct {
     enum command_id alias;
     enum command_id command;
     char *category;
+    char *translation_context;
 } DEF_ALIAS;
 
 DEF_ALIAS def_aliases[] = {
-  CM_defun, CM_deffn, "Function",
-  CM_defmac, CM_deffn, "Macro",
-  CM_defspec, CM_deffn, "Special Form",
-  CM_defvar, CM_defvr, "Variable",
-  CM_defopt, CM_defvr, "User Option",
-  CM_deftypefun, CM_deftypefn, "Function",
-  CM_deftypevar, CM_deftypevr, "Variable",
-  CM_defivar, CM_defcv, "Instance Variable",
-  CM_deftypeivar, CM_deftypecv, "Instance Variable",
-  CM_defmethod, CM_defop, "Method",
-  CM_deftypemethod, CM_deftypeop, "Method",
-  0, 0, 0
+  CM_defun, CM_deffn, "Function", "category of functions for @defun",
+  CM_defmac, CM_deffn, "Macro", 0,
+  CM_defspec, CM_deffn, "Special Form", 0,
+  CM_defvar, CM_defvr, "Variable", "category of variables for @defvar",
+  CM_defopt, CM_defvr, "User Option", 0,
+  CM_deftypefun, CM_deftypefn, "Function", "category of functions for @deftypefun",
+  CM_deftypevar, CM_deftypevr, "Variable", "category of variables in typed languages for @deftypevar",
+  CM_defivar, CM_defcv, "Instance Variable", "category of instance variables in object-oriented programming for @defivar",
+  CM_deftypeivar, CM_deftypecv, "Instance Variable", "category of instance variables with data type in object-oriented programming for @deftypeivar",
+  CM_defmethod, CM_defop, "Method", "category of methods in object-oriented programming for @defmethod",
+  CM_deftypemethod, CM_deftypeop, "Method", "category of methods with data type in object-oriented programming for @deftypemethod",
+  0, 0, 0, 0
+};
+
+typedef struct {
+    enum command_id command;
+    char **arguments;
+} DEF_MAP;
+
+  /*
+     Meaning of these:
+     CATEGORY - type of entity, e.g. "Function"
+     CLASS - class for object-oriented programming
+     TYPE - data type of a variable or function return value
+     NAME - name of entity being documented
+     ARGUMENTS - arguments to a function or macro                  */
+
+char *defline_arguments[] = {"category", "name", "arg", 0};
+char *deftypeline_arguments[] = {"category", "type", "name", "argtype", 0};
+char *defvr_arguments[] = {"category", "name", 0};
+char *deftypefn_arguments[] = {"category", "type", "name", "argtype", 0};
+char *deftypeop_arguments[] = {"category", "class" , "type", "name", "argtype", 0};
+char *deftypevr_arguments[] = {"category", "type", "name", 0};
+char *defcv_arguments[] = {"category", "class" , "name", 0};
+char *deftypecv_arguments[] = {"category", "class" , "type", "name", 0};
+char *defop_arguments[] = {"category", "class" , "name", "arg", 0};
+char *deftp_arguments[] = {"category", "name", "argtype", 0};
+
+DEF_MAP def_maps[] = {
+  CM_defline, defline_arguments,
+  CM_deftypeline, deftypeline_arguments,
+  CM_deffn, defline_arguments,
+  CM_defvr, defvr_arguments,
+  CM_deftypefn, deftypefn_arguments,
+  CM_deftypeop, deftypeop_arguments,
+  CM_deftypevr, deftypevr_arguments,
+  CM_defcv, defcv_arguments,
+  CM_deftypecv, deftypecv_arguments,
+  CM_defop, defop_arguments,
+  CM_deftp, deftp_arguments,
 };
 
 /* Split non-space text elements into strings without [ ] ( ) , and single
@@ -174,18 +196,37 @@ split_delimiters (ELEMENT *current, int starting_idx)
       char *p;
       ELEMENT *new;
       int len;
+      /* count UTF-8 encoded Unicode characters for source marks locations */
+      size_t current_position = 0;
+      uint8_t *u8_text = 0;
+      uint8_t *u8_p;
 
       if (e->type != ET_NONE
           || e->text.end == 0)
         continue;
       p = e->text.text;
 
+      if (e->source_mark_list.number)
+        u8_text = u8_strconv_from_encoding (p, "UTF-8",
+                                            iconveh_question_mark);
+      u8_p = u8_text;
+
       while (1)
         {
+          size_t u8_len = 0;
           if (strchr (chars, *p))
             {
               new = new_element (ET_delimiter);
               text_append_n (&new->text, p, 1);
+
+              if (u8_text)
+                {
+                  u8_len = u8_mbsnlen (u8_p, 1);
+                  u8_p += u8_len;
+                }
+              current_position = relocate_source_marks (&(e->source_mark_list), new,
+                                                 current_position, u8_len);
+
               insert_into_contents (current, new, i++);
               add_extra_string_dup (new, "def_role", "delimiter");
               if (!*++p)
@@ -196,18 +237,27 @@ split_delimiters (ELEMENT *current, int starting_idx)
           len = strcspn (p, chars);
           new = new_element (ET_NONE);
           text_append_n (&new->text, p, len);
+
+          if (u8_text)
+            {
+              u8_len = u8_mbsnlen (u8_p, len);
+              u8_p += u8_len;
+            }
+          current_position = relocate_source_marks (&(e->source_mark_list), new,
+                                          current_position, u8_len);
+
           insert_into_contents (current, new, i++);
           if (!*(p += len))
             break;
         }
       destroy_element (remove_from_contents (current, i--));
+      free (u8_text);
     }
 }
 
 
 /* Divide any text elements into separate elements, separating whitespace
-   and non-whitespace.  Change ET_bracketed elements to 
-   ET_bracketed_def_content. */
+   and non-whitespace. */
 static void
 split_def_args (ELEMENT *current, int starting_idx)
 {
@@ -218,57 +268,69 @@ split_def_args (ELEMENT *current, int starting_idx)
       char *p;
       ELEMENT *new;
       int len;
-      if (e->type == ET_bracketed)
+      /* count UTF-8 encoded Unicode characters for source marks locations */
+      size_t current_position = 0;
+      uint8_t *u8_text = 0;
+      uint8_t *u8_p;
+
+      if (e->type == ET_bracketed_arg)
         {
           isolate_last_space (e);
-          e->type = ET_bracketed_def_content;
           continue;
         }
+
       if (e->text.end == 0)
         continue;
+
       p = e->text.text;
+
+      if (e->source_mark_list.number)
+        u8_text = u8_strconv_from_encoding (p, "UTF-8",
+                                            iconveh_question_mark);
+      u8_p = u8_text;
 
       while (1)
         {
+          size_t u8_len = 0;
           len = strspn (p, whitespace_chars);
           if (len)
             {
               new = new_element (ET_spaces);
-              text_append_n (&new->text, p, len);
-              insert_into_contents (current, new, i++);
               add_extra_string_dup (new, "def_role", "spaces");
-              if (!*(p += len))
-                {
-                  if (new->text.end > 0
-                      && new->text.text[new->text.end - 1] == '\n')
-                    new->type = ET_spaces_at_end;
-                  break;
-                }
             }
-            
-          len = strcspn (p, whitespace_chars);
-          new = new_element (ET_NONE);
+          else
+            {
+              len = strcspn (p, whitespace_chars);
+              new = new_element (ET_NONE);
+            }
+          if (u8_text)
+            {
+              u8_len = u8_mbsnlen (u8_p, len);
+              u8_p += u8_len;
+            }
+
+          current_position = relocate_source_marks (&(e->source_mark_list), new,
+                                current_position, u8_len);
           text_append_n (&new->text, p, len);
           insert_into_contents (current, new, i++);
           if (!*(p += len))
             break;
-
         }
       destroy_element (remove_from_contents (current, i--));
+      free (u8_text);
     }
 }
 
-DEF_INFO *
+DEF_ARG **
 parse_def (enum command_id command, ELEMENT *current)
 {
-  DEF_INFO *ret;
   int contents_idx = 0;
-  int type, next_type;
-  int i;
-  ELEMENT *e, *e1; 
-
-  ret = malloc (sizeof (DEF_INFO));
-  memset (ret, 0, sizeof (DEF_INFO));
+  int type, set_type_not_arg;
+  int i, i_def;
+  int arg_types_nr;
+  ELEMENT *e, *e1;
+  DEF_ARG **result;
+  char **arguments_list;
 
   split_def_args (current, contents_idx);
 
@@ -283,7 +345,7 @@ parse_def (enum command_id command, ELEMENT *current)
             goto found;
         }
       fatal ("no alias for CF_def_alias command");
-found:
+    found:
       /* Prepended content is inserted into contents, so
          @defun is converted into @deffn Function */
 
@@ -301,6 +363,9 @@ found:
           e1->type = ET_untranslated;
           add_extra_string_dup (e1, "documentlanguage",
                                 global_documentlanguage);
+          if (def_aliases[i].translation_context)
+            add_extra_string_dup (e1, "translation_context",
+                                  def_aliases[i].translation_context);
         }
 
       e = new_element (ET_spaces_inserted);
@@ -309,54 +374,127 @@ found:
       insert_into_contents (current, e, contents_idx + 1);
     }
 
-  /* Read arguments as CATEGORY [CLASS] [TYPE] NAME [ARGUMENTS].
-  
-     Meaning of these:
-     CATEGORY - type of entity, e.g. "Function"
-     CLASS - class for object-oriented programming
-     TYPE - data type of a variable or function return value
-     NAME - name of entity being documented
-     ARGUMENTS - arguments to a function or macro                  */
-
-  /* CATEGORY */
-  ret->category = next_bracketed_or_word_agg (current, &contents_idx);
-
-  /* CLASS */
-  if (command == CM_deftypeop
-      || command == CM_defcv
-      || command == CM_deftypecv
-      || command == CM_defop)
+  /* prepare the arguments numbers and list */
+  if (command_data(command).flags & CF_MACRO)
     {
-      ret->class = next_bracketed_or_word_agg (current, &contents_idx);
+      int args_number;
+      MACRO *macro_record = lookup_macro (command);
+      ELEMENT *macro;
+      if (!macro_record)
+        fatal ("no linemacro record for arguments parsing");
+      macro = macro_record->element;
+      args_number = macro->args.number - 1;
+      arguments_list = malloc ((args_number + 1) * sizeof (char *));
+      arguments_list[args_number] = 0;
+      arg_types_nr = args_number;
+      if (args_number > 0)
+        {
+          int arg_index;
+          ELEMENT **args = macro->args.list;
+          for (arg_index = 1; arg_index <= args_number; arg_index++)
+            {
+              if (args[arg_index]->type == ET_macro_arg)
+                arguments_list[arg_index -1] = args[arg_index]->text.text;
+              else
+                arguments_list[arg_index -1] = 0;
+            }
+          /* remove one for the rest of the line argument */
+          arg_types_nr--;
+        }
+      result = malloc ((args_number+1) * sizeof (DEF_ARG *));
+    }
+  else
+    {
+     /* Read arguments as CATEGORY [CLASS] [TYPE] NAME [ARGUMENTS]. */
+
+      for (i_def = 0; i_def < sizeof (def_maps) / sizeof (*def_maps); i_def++)
+        {
+          if (def_maps[i_def].command == command)
+            goto def_found;
+        }
+      fatal ("no arguments for def command");
+     def_found:
+
+      /* determine non arg/argtype number of arguments */
+      arg_types_nr = 0;
+      arguments_list = def_maps[i_def].arguments;
+      while (arguments_list[arg_types_nr])
+        {
+          char *arg_type_name = arguments_list[arg_types_nr];
+
+          /* FIXME keep information about arg/argtype? */
+          if (!strcmp (arg_type_name, "arg")
+              || !strcmp (arg_type_name, "argtype"))
+            break;
+          arg_types_nr++;
+        }
+      result = malloc ((arg_types_nr+1) * sizeof (DEF_ARG *));
     }
 
-  /* TYPE */
-  if (command == CM_deftypefn
-      || command == CM_deftypeop
-      || command == CM_deftypevr
-      || command == CM_deftypecv)
+  for (i = 0; i < arg_types_nr; i++)
     {
-      ret->type = next_bracketed_or_word_agg (current, &contents_idx);
+      ELEMENT *e = next_bracketed_or_word_agg (current, &contents_idx);
+
+      if (e)
+        {
+          char *arg_type_name = arguments_list[i];
+          DEF_ARG *def_arg = malloc (sizeof (DEF_ARG));
+
+          result[i] = def_arg;
+          def_arg->arg_type = strdup(arg_type_name);
+          def_arg->element = e;
+        }
+      else
+        break;
     }
 
-  /* NAME */
-  ret->name = next_bracketed_or_word_agg (current, &contents_idx);
+  result[i] = 0;
+  if (command_data(command).flags & CF_MACRO)
+    {
+      while (contents_idx < current->contents.number
+             && current->contents.list[contents_idx]->type == ET_spaces)
+        contents_idx++;
+      /* note that element at contents_idx is not collected at that point */
+      /* arguments_list[i] NULL should only happen if there is no
+         argument at all for the linemacro */
+      if (contents_idx < current->contents.number && arguments_list[i])
+        {
+          DEF_ARG *def_arg = malloc (sizeof (DEF_ARG));
+          int contents_nr = current->contents.number - contents_idx;
 
-  if (ret->category)
-    {
-      add_extra_string_dup (ret->category, "def_role", "category");
+          result[i] = def_arg;
+          result[i+1] = 0;
+
+          def_arg->arg_type = strdup (arguments_list[i]);
+          if (contents_nr == 1)
+            def_arg->element = current->contents.list[contents_idx];
+          else
+            {
+              ELEMENT *new = new_element (ET_def_aggregate);
+              int j;
+              for (j = 0; j < contents_nr; j++)
+                {
+                  add_to_element_contents (new,
+                                           remove_from_contents (current,
+                                                                 contents_idx));
+                }
+              add_to_element_contents (current, new);
+              def_arg->element = new;
+            }
+        }
+      return result;
     }
-  if (ret->class)
+
+  for (i = 0; i < arg_types_nr; i++)
     {
-      add_extra_string_dup (ret->class, "def_role", "class");
-    }
-  if (ret->type)
-    {
-      add_extra_string_dup (ret->type, "def_role", "type");
-    }
-  if (ret->name)
-    {
-      add_extra_string_dup (ret->name, "def_role", "name");
+      if (result[i])
+        {
+          DEF_ARG *def_arg = result[i];
+          if (def_arg->element)
+            add_extra_string_dup (def_arg->element, "def_role", def_arg->arg_type);
+        }
+      else
+        break;
     }
 
   /* Process args */
@@ -364,36 +502,37 @@ found:
 
   /* For some commands, alternate between "arg" and "typearg". This matters for
      the DocBook output. */
-  if (command == CM_deftypefn || command == CM_deftypeop
-          || command == CM_deftp)
-    next_type = -1;
+  /* In that case set_type_not_arg is both used to set to argtype and
+     to switch sign to switch between arg and argtype */
+  if (command == CM_deftypeline || command == CM_deftypefn
+      || command == CM_deftypeop || command == CM_deftp)
+    set_type_not_arg = -1;
   else
-    next_type = 1;
+    set_type_not_arg = 1;
 
-  type = next_type;
+  type = set_type_not_arg;
   for (i = contents_idx; i < current->contents.number; i++)
     {
       e = contents_child_by_index (current, i);
       if (e->type == ET_spaces
-          || e->type == ET_spaces_inserted
-          || e->type == ET_spaces_at_end)
+          || e->type == ET_spaces_inserted)
         {
           continue;
         }
       if (e->type == ET_delimiter)
         {
-          type = next_type;
+          type = set_type_not_arg;
           continue;
         }
       if (e->cmd && e->cmd != CM_code)
         {
           add_extra_string_dup (e, "def_role", "arg");
-          type = next_type;
+          type = set_type_not_arg;
           continue;
         }
       add_extra_string_dup (e, "def_role",
                             (type == 1 ? "arg" : "typearg"));
-      type *= next_type;
+      type *= set_type_not_arg;
     }
-  return ret;
+  return result;
 }

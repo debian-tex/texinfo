@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V7.1//EN" "http://www.gnu.org/software/texinfo/dtd/7.1/texinfo.dtd">
+<texinfo>
+<filename file="indices_in_begin_tables_lists.xml"></filename>
+<preamblebeforebeginning>\input texinfo.tex
+
+</preamblebeforebeginning><node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
+
+</top>
+<node name="chapter" spaces=" "><nodename>chapter</nodename><nodenext automatic="on">printindex</nodenext><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>chap</sectiontitle>
+
+<itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
+<beforefirstitem><!-- c comment in itemize -->
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">also a cindex in itemize</indexterm></cindex>
+</beforefirstitem><listitem><prepend>&minus;</prepend> <para>e&textndash;mph item
+</para></listitem></itemize>
+
+<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="2">index entry within itemize</indexterm></cindex>
+</beforefirstitem><listitem><prepend>&bullet;</prepend> <para>i&textndash;tem 1
+</para></listitem><listitem><prepend>&bullet;</prepend> <cindex index="cp" spaces=" "><indexterm index="cp" number="3">index entry right after &arobase;item</indexterm></cindex>
+<para>i&textndash;tem 2
+</para></listitem></itemize>
+
+<itemize commandarg="bullet" automaticcommandarg="on" endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend>
+<beforefirstitem><!-- c comment in itemize -->
+<para>T&textndash;ext before items.
+<cindex index="cp" spaces=" "><indexterm index="cp" number="4">also a cindex in itemize</indexterm></cindex>
+</para></beforefirstitem><listitem><prepend>&bullet;</prepend> <para>bullet item
+</para></listitem></itemize>
+
+<enumerate first="1" endspaces=" ">
+<beforefirstitem>
+<!-- comment comment before first item in enumerate -->
+</beforefirstitem><listitem> <para>e&textndash;numerate
+</para></listitem></enumerate>
+
+<enumerate first="1" endspaces=" ">
+<beforefirstitem>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="5">index inter in enumerate between lines</indexterm></cindex>
+
+</beforefirstitem><listitem> <para>enumerate item
+</para></listitem></enumerate>
+
+<enumerate first="1" endspaces=" ">
+<beforefirstitem>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="6">index inter in enumerate after line</indexterm></cindex>
+</beforefirstitem><listitem> <para>enumerate item
+</para></listitem></enumerate>
+
+<enumerate first="1" endspaces=" ">
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="7">index inter in enumerate before line</indexterm></cindex>
+
+</beforefirstitem><listitem> <para>enumerate item
+</para></listitem></enumerate>
+
+<enumerate first="1" endspaces=" ">
+<beforefirstitem><para>Title
+<cindex index="cp" spaces=" "><indexterm index="cp" number="8">cindex</indexterm></cindex>
+</para></beforefirstitem><listitem> <para>enum
+</para></listitem></enumerate>
+
+<enumerate first="1" endspaces=" ">
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="9">first idx</indexterm></cindex>
+<!-- comment comment -->
+<cindex index="cp" spaces=" "><indexterm index="cp" number="10">sedond idx</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="11">another</indexterm></cindex>
+</beforefirstitem><listitem> <para>enum
+</para></listitem></enumerate>
+
+<vtable commandarg="code" spaces=" " endspaces=" ">
+<tableentry><tableterm><!-- c comment in table -->
+<item spaces=" "><itemformat command="code"><indexterm index="vr" number="1">acode--b</indexterm>acode--b</itemformat></item>
+</tableterm><tableitem><para>l&textndash;ine
+</para></tableitem></tableentry></vtable>
+
+<vtable commandarg="asis" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="2">aasis--b</indexterm>aasis&textndash;b</itemformat></item>
+<!-- c comment between item and itemx -->
+<itemx spaces=" "><itemformat command="asis"><indexterm index="vr" number="3">b</indexterm>b</itemformat></itemx>
+</tableterm><tableitem><para>l&textndash;ine
+</para></tableitem></tableentry></vtable>
+
+<ftable commandarg="var" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="var"><indexterm index="fn" number="1">avar--b</indexterm>avar&textndash;b</itemformat></item>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="12">index entry between item and itemx</indexterm></cindex>
+<!-- c and a comment -->
+<!-- comment and another comment -->
+<itemx spaces=" "><itemformat command="var"><indexterm index="fn" number="2">b</indexterm>b</itemformat></itemx>
+</tableterm><tableitem><para>l&textndash;ine
+</para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="var"><indexterm index="fn" number="3">c</indexterm>c</itemformat></item>
+
+<!-- c comment between lines -->
+
+<itemx spaces=" "><itemformat command="var"><indexterm index="fn" number="4">d</indexterm>d</itemformat></itemx>
+</tableterm><tableitem>
+<!-- c comment at end -->
+</tableitem></tableentry></ftable>
+
+<table commandarg="code" spaces=" " endspaces=" ">
+<tableentry><tableterm><cindex index="cp" spaces=" "><indexterm index="cp" number="13">cindex in table</indexterm></cindex> 
+<!-- c comment in table -->
+<item spaces=" "><itemformat command="code">abb</itemformat></item>
+</tableterm><tableitem><para>l&textndash;ine
+</para></tableitem></tableentry></table>
+
+<table commandarg="code" spaces=" " endspaces=" ">
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="14">cindex in table</indexterm></cindex> 
+<para>Texte before first item.
+</para></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="code">abb</itemformat></item>
+</tableterm></tableentry></table>
+
+<table commandarg="samp" spaces=" " endspaces=" ">
+<tableentry><tableterm><cindex index="cp" spaces=" "><indexterm index="cp" number="15">samp cindex in table</indexterm></cindex> 
+<!-- c samp comment in table -->
+<item spaces=" "><itemformat command="samp">asamp--bb</itemformat></item>
+</tableterm><tableitem><para>l&textndash;ine samp
+</para></tableitem></tableentry></table>
+
+<table commandarg="samp" spaces=" " endspaces=" ">
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="16">samp cindex in table</indexterm></cindex> 
+<para>Texte before first item samp.
+</para></beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="samp">asamp--bb</itemformat></item>
+</tableterm></tableentry></table>
+
+<table commandarg="samp" spaces=" " endspaces=" ">
+<beforefirstitem>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="17">cindex between lines</indexterm></cindex>
+
+</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="samp">asamp--bb1</itemformat></item>
+</tableterm></tableentry></table>
+
+<table commandarg="samp" spaces=" " endspaces=" ">
+<beforefirstitem><cindex index="cp" spaces=" "><indexterm index="cp" number="18">cindex before line</indexterm></cindex>
+
+</beforefirstitem><tableentry><tableterm><item spaces=" "><itemformat command="samp">asamp--bb2</itemformat></item>
+</tableterm></tableentry></table>
+
+<table commandarg="samp" spaces=" " endspaces=" ">
+<beforefirstitem>
+</beforefirstitem><tableentry><tableterm><cindex index="cp" spaces=" "><indexterm index="cp" number="19">cindex after line</indexterm></cindex>
+<item spaces=" "><itemformat command="samp">asamp--bb2</itemformat></item>
+</tableterm></tableentry></table>
+
+<table commandarg="samp" spaces=" " endspaces=" ">
+<tableentry><tableterm><cindex index="cp" spaces=" "><indexterm index="cp" number="20">cindex first</indexterm></cindex>
+<!-- c commant -->
+<cindex index="cp" spaces=" "><indexterm index="cp" number="21">second</indexterm></cindex>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="22">third</indexterm></cindex>
+<item spaces=" "><itemformat command="samp">asamp--bb2</itemformat></item>
+</tableterm></tableentry></table>
+
+</chapter>
+<node name="printindex" spaces=" "><nodename>printindex</nodename><nodeprev automatic="on">chapter</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>printindex</sectiontitle>
+
+<printindex spaces=" " value="cp" line="cp"></printindex>
+
+<printindex spaces=" " value="vr" line="vr"></printindex>
+
+<printindex spaces=" " value="fn" line="fn"></printindex>
+
+</chapter>
+<bye></bye>
+</texinfo>

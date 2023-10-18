@@ -59,9 +59,6 @@ $result_trees{'on_index_entry_line'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'in-anchor'
                   },
                   'source_info' => {
@@ -104,16 +101,20 @@ $result_trees{'on_index_entry_line'} = {
                           'text' => 'exdent'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'exdent',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -127,18 +128,15 @@ $result_trees{'on_index_entry_line'} = {
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -153,10 +151,6 @@ $result_trees{'on_index_entry_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'on_index_entry_line'}{'contents'}[0]{'contents'}[0];
 
 $result_texis{'on_index_entry_line'} = '@cindex @indent @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 ';
@@ -166,39 +160,39 @@ $result_texts{'on_index_entry_line'} = '';
 
 $result_errors{'on_index_entry_line'} = [
   {
-    'error_line' => 'warning: @indent should not appear in @cindex
+    'error_line' => 'warning: @indent should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@indent should not appear in @cindex',
+    'text' => '@indent should not appear on @cindex line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @cindex
+    'error_line' => 'warning: @titlefont should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@titlefont should not appear in @cindex',
+    'text' => '@titlefont should not appear on @cindex line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @cindex
+    'error_line' => 'warning: @anchor should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor should not appear in @cindex',
+    'text' => '@anchor should not appear on @cindex line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @cindex
+    'error_line' => 'warning: @footnote should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@footnote should not appear in @cindex',
+    'text' => '@footnote should not appear on @cindex line',
     'type' => 'warning'
   },
   {
@@ -211,12 +205,12 @@ $result_errors{'on_index_entry_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @cindex
+    'error_line' => 'warning: @exdent should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should not appear in @cindex',
+    'text' => '@exdent should not appear on @cindex line',
     'type' => 'warning'
   },
   {

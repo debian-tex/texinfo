@@ -35,17 +35,23 @@ $result_trees{'include_after_empty_line_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,7 +60,7 @@ $result_trees{'include_after_empty_line_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' mymacro{body}
 '
           },
@@ -65,6 +71,30 @@ $result_trees{'include_after_empty_line_arg'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => ''
+                      }
+                    ],
+                    'type' => 'line_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'mymacro'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -82,13 +112,68 @@ $result_trees{'include_after_empty_line_arg'} = {
                 'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'mymacro'
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ]
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'inc_file.texi'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'include',
+                    'extra' => {
+                      'text_arg' => 'inc_file.texi'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 6,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 1,
+                  'sourcemark_type' => 'include',
+                  'status' => 'start'
+                }
+              ],
               'text' => '
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'In included file.
 '
             }

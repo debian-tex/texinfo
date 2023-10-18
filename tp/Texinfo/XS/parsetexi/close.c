@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,24 +19,47 @@
 #include <string.h>
 
 #include "parser.h"
+#include "def.h"
+#include "debug.h"
+#include "source_marks.h"
 
-/* Possibly print an error message, and return CURRENT->parent. */
-static ELEMENT *
+/* Return CURRENT->parent.  The other arguments are used if an error message
+   should be printed. */
+ELEMENT *
 close_brace_command (ELEMENT *current,
                      enum command_id closed_block_command,
-                     enum command_id interrupting_command)
+                     enum command_id interrupting_command,
+                     int missing_brace)
 {
 
   KEY_PAIR *k;
 
+  if (command_data(current->cmd).data == BRACE_context)
+    {
+      if (current->cmd == CM_math)
+        {
+          if (pop_context () != ct_math)
+            fatal ("math context expected");
+        }
+      else if (pop_context () != ct_brace_command)
+        fatal ("context brace command context expected");
+      if (current->cmd == CM_footnote)
+        nesting_context.footnote--;
+      if (current->cmd == CM_caption || current->cmd == CM_shortcaption)
+        nesting_context.caption--;
+    }
+
+  if (command_flags(current) & CF_contain_basic_inline)
+    (void) pop_command (&nesting_context.basic_inline_stack);
+
   if (current->cmd != CM_verb)
     goto yes;
-  k = lookup_extra (current, "delimiter");
+  k = lookup_info (current, "delimiter");
   if (!k || !*(char *)k->value)
     goto yes;
   if (0)
     {
-yes:
+  yes:
       if (closed_block_command)
         command_error (current,
                         "@end %s seen before @%s closing brace",
@@ -47,12 +70,12 @@ yes:
                         "@%s seen before @%s closing brace",
                         command_name(interrupting_command),
                         command_name(current->cmd));
-      else
-        command_error (current,
+      else if (missing_brace)
+         command_error (current,
                         "@%s missing closing brace",
                         command_name(current->cmd));
     }
-  else
+  else if (missing_brace)
     {
       command_error (current,
                       "@%s missing closing delimiter sequence: %s}",
@@ -73,9 +96,88 @@ close_all_style_commands (ELEMENT *current,
   while (current->parent
          && (command_flags(current->parent) & CF_brace)
          && !(command_data(current->parent->cmd).data == BRACE_context))
-    current = close_brace_command (current->parent,
-                                   closed_block_command, interrupting_command);
+    {
+      debug ("CLOSING(all_style_commands) @%s",
+             command_name(current->parent->cmd));
+      current = close_brace_command (current->parent,
+                           closed_block_command, interrupting_command, 1);
+    }
 
+  return current;
+}
+
+int
+is_container_empty (ELEMENT *current)
+{
+  if (current->contents.number == 0
+      && current->args.number == 0
+      && current->text.end == 0
+      && current->info_info.info_number == 0)
+    return 1;
+  return 0;
+}
+
+/* remove an empty content that only holds source marks */
+void
+remove_empty_content (ELEMENT *current)
+{
+  if (current->contents.number == 1)
+    {
+      ELEMENT *child_element = last_contents_child (current);
+      if ((!child_element->cmd) && is_container_empty (child_element))
+        {
+          transfer_source_marks (child_element, current);
+
+          debug_nonl ("REMOVE empty child ");
+          debug_print_element (child_element, 0); debug_nonl (" from ");
+          debug_print_element (current, 0); debug ("");
+          destroy_element (pop_element_from_contents (current));
+        }
+    }
+}
+
+/* this should only be called for non @-command elements otherwise
+   empty command elements will be removed */
+ELEMENT *
+close_container (ELEMENT *current)
+{
+  ELEMENT *element_to_remove = 0;
+
+  remove_empty_content (current);
+
+  /* remove element without contents nor associated information */
+  if (is_container_empty (current))
+    {
+      debug_nonl ("CONTAINER EMPTY ");
+      debug_print_element (current, 1);
+      debug_nonl (" (%d source marks)",
+                  current->source_mark_list.number); debug ("");
+      if (current->source_mark_list.number > 0)
+        {
+          /* Keep the element to keep the source mark, but remove some types.
+            Keep before_item in order not to add empty table definition in
+            gather_previous_item. */
+          if (current->type != ET_before_item)
+            current->type = ET_NONE;
+        }
+      else
+        element_to_remove = current;
+    }
+
+  current = current->parent;
+  if (element_to_remove)
+    {
+      ELEMENT *last_child = last_contents_child (current);
+      /* this is to avoid removing empty containers in args,
+         happens with brace commands not closed at the end of
+         a manual */
+      if (last_child == element_to_remove)
+        {
+          debug_nonl ("REMOVE empty type ");
+          debug_print_element (last_child, 1); debug ("");
+          destroy_element (pop_element_from_contents (current));
+        }
+    }
   return current;
 }
 
@@ -142,7 +244,8 @@ close_command_cleanup (ELEMENT *current)
 
   /* Put everything after the last @def*x command in a def_item type
      container. */
-  if (command_data(current->cmd).flags & CF_def)
+  if (command_data(current->cmd).flags & CF_def
+      || current->cmd == CM_defblock)
     {
       gather_def_item (current, 0);
     }
@@ -186,7 +289,8 @@ close_command_cleanup (ELEMENT *current)
             }
 
           /* Now if the ET_before_item is empty, remove it. */
-          if (before_item->contents.number == 0)
+          if (is_container_empty (before_item)
+              && before_item->source_mark_list.number == 0)
             {
               destroy_element (remove_from_contents (current,
                                                 have_leading_spaces ? 1 : 0));
@@ -215,11 +319,11 @@ close_command_cleanup (ELEMENT *current)
                       ELEMENT *e = current->contents.list[i];
                       if (e == before_item)
                         continue;
-                      if (e->cmd != CM_NONE
-                          && (e->cmd != CM_c && e->cmd != CM_comment
-                              && e->cmd != CM_end)
-                          || e->type != ET_NONE
-                          && e->type != ET_ignorable_spaces_after_command)
+                      if ((e->cmd != CM_NONE
+                           && (e->cmd != CM_c && e->cmd != CM_comment
+                               && e->cmd != CM_end))
+                          || (e->type != ET_NONE
+                              && e->type != ET_ignorable_spaces_after_command))
                         {
                           empty_format = 0;
                           break;
@@ -256,8 +360,20 @@ pop_block_command_contexts (enum command_id cmd)
     }
   else if (command_data(cmd).data == BLOCK_region)
     {
-      pop_region ();
+      (void) pop_command (&nesting_context.regions_stack);
     }
+}
+
+void
+close_ignored_block_conditional (ELEMENT *current)
+{
+  SOURCE_MARK *source_mark
+    = new_source_mark (SM_type_ignored_conditional_block);
+  ELEMENT *conditional = pop_element_from_contents (current);
+
+  conditional->parent = 0;
+  source_mark->element = conditional;
+  register_source_mark (current, source_mark);
 }
 
 ELEMENT *
@@ -268,55 +384,38 @@ close_current (ELEMENT *current,
   /* Element is a command */
   if (current->cmd)
     {
-      debug ("CLOSING (close_current) %s", command_name(current->cmd));
+      enum command_id cmd = current->cmd;
+      debug ("CLOSING(close_current) @%s", command_name(cmd));
       if (command_flags(current) & CF_brace)
         {
-          if (command_data(current->cmd).data == BRACE_context)
-            {
-              if (current->cmd == CM_math)
-                {
-                  if (pop_context () != ct_math)
-                    fatal ("math context expected");
-                }
-              else if (pop_context () != ct_brace_command)
-                fatal ("context brace command context expected");
-            }
           current = close_brace_command (current, closed_block_command,
-                                         interrupting_command);
+                                         interrupting_command, 1);
         }
       else if (command_flags(current) & CF_block)
         {
-          enum command_id cmd = current->cmd;
-          ELEMENT *parent = 0;
           if (closed_block_command)
             {
               line_error ("`@end' expected `%s', but saw `%s'",
-                          command_name(current->cmd),
+                          command_name(cmd),
                           command_name(closed_block_command));
             }
           else if (interrupting_command)
             {
               line_error ("@%s seen before @end %s",
                           command_name(interrupting_command),
-                          command_name(current->cmd));
+                          command_name(cmd));
             }
           else
             {
               line_error ("no matching `@end %s'",
-                          command_name(current->cmd));
+                          command_name(cmd));
 
-              /* Ignored conditional. */
-              if (command_data(current->cmd).data == BLOCK_conditional)
-                {
-                  parent = current->parent;
-                  destroy_element_and_children (pop_element_from_contents
-                                                          (parent));
-                }
             }
           pop_block_command_contexts (cmd);
-          if (!parent)
-            parent = current->parent;
-          current = parent;
+          current = current->parent;
+          /* In ignored conditional. */
+          if (command_data(cmd).data == BLOCK_conditional)
+            close_ignored_block_conditional (current);
         }
       else
         {
@@ -327,11 +426,24 @@ close_current (ELEMENT *current,
     }
   else if (current->type != ET_NONE)
     {
-      enum context c;
-      debug ("CLOSING type %s", element_type_names[current->type]);
+      ELEMENT *close_brace;
+
+      debug ("CLOSING type %s", element_type_name (current));
+
       switch (current->type)
         {
-        case ET_bracketed:
+        case ET_balanced_braces:
+          close_brace = new_element (ET_NONE);
+          command_error (current, "misplaced {");
+          /* We prefer adding an element to merging because we may
+             be at the end of the document after an empty line we
+             do not want to modify */
+          /* current = merge_text (current, "}", 0); */
+          text_append (&close_brace->text, "}");
+          add_to_element_contents (current, close_brace);
+          current = current->parent;
+          break;
+        case ET_bracketed_arg:
           command_error (current, "misplaced {");
           if (current->contents.number > 0
               && current->contents.list[0]->type
@@ -339,35 +451,17 @@ close_current (ELEMENT *current,
             {
               /* remove spaces element from tree and update extra values */
               abort_empty_line (&current, 0);
-           }
-          current = current->parent;
-
-          break;
-        case ET_menu_comment:
-        case ET_menu_entry_description:
-          /* Remove empty menu_comment */
-          if (current->type == ET_menu_comment
-              && current->contents.number == 0)
-            {
-              current = current->parent;
-              destroy_element (pop_element_from_contents (current));
             }
-          else
-            current = current->parent;
-
+          current = current->parent;
           break;
         case ET_line_arg:
+          current = end_line_misc_line (current);
+          break;
         case ET_block_line_arg:
-          c = pop_context ();
-          if (c != ct_line && c != ct_def)
-            {
-              /* error */
-              fatal ("line or def context expected");
-            }
-          current = current->parent;
+          current = end_line_starting_block (current);
           break;
         default:
-          current = current->parent;
+          current = close_container (current);
           break;
         }
     }
@@ -413,10 +507,23 @@ close_commands (ELEMENT *current, enum command_id closed_block_command,
       pop_block_command_contexts (current->cmd);
       *closed_element = current;
       current = current->parent;
+
+      if (command_data((*closed_element)->cmd).data == BLOCK_conditional)
+        /* In ignored conditional. */
+        close_ignored_block_conditional (current);
     }
-  else if (closed_block_command)
+  else
     {
-      line_error ("unmatched `@end %s'", command_name(closed_block_command));
+      if (closed_block_command)
+        line_error ("unmatched `@end %s'", command_name(closed_block_command));
+      if (! ((current->cmd && command_flags(current) & CF_root)
+             || (current->type == ET_before_node_section)
+             || (current->type == ET_root_line)
+             || (current->type == ET_document_root)))
+        {
+          debug_nonl ("close_commands unexpectedly stopped ");
+          debug_print_element (current, 1); debug ("");
+        }
     }
 
   return current;

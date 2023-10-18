@@ -18,15 +18,10 @@ $result_trees{'text_comment'} = {
               'args' => [
                 {
                   'text' => ' comment',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment'
-                ]
-              }
+              'cmdname' => 'c'
             }
           ],
           'type' => 'paragraph'

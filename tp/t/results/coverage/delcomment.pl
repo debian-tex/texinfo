@@ -12,82 +12,39 @@ $result_trees{'delcomment'} = {
         {
           'contents' => [
             {
-              'contents' => [
-                {
-                  'text' => '\\input texinfo
+              'text' => '\\input texinfo
 ',
-                  'type' => 'text_before_beginning'
-                }
-              ],
-              'type' => 'preamble_before_beginning'
+              'type' => 'text_before_beginning'
+            },
+            {
+              'text' => '
+',
+              'type' => 'text_before_beginning'
             }
           ],
-          'type' => 'preamble_before_setfilename'
+          'type' => 'preamble_before_beginning'
         },
         {
           'contents' => [
             {
               'args' => [
                 {
-                  'contents' => [
-                    {
-                      'text' => 'delcomment.info'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'delcomment.info'
-              },
-              'source_info' => {
-                'file_name' => 'delcomment.texi',
-                'line_nr' => 2,
-                'macro' => ''
-              }
-            },
-            {
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
-              'args' => [
-                {
                   'text' => ' this tests both the del comment and a file without
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' this tests both the del comment and a file without
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'args' => [
                 {
                   'text' => ' element.
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' element.
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'text' => '
@@ -95,6 +52,14 @@ $result_trees{'delcomment'} = {
               'type' => 'empty_line'
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'line' => ' this is a comment.
+',
+                  'sourcemark_type' => 'delcomment'
+                }
+              ],
               'text' => '
 ',
               'type' => 'empty_line'
@@ -124,7 +89,7 @@ $result_trees{'delcomment'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -134,7 +99,6 @@ $result_trees{'delcomment'} = {
 };
 
 $result_texis{'delcomment'} = '\\input texinfo
-@setfilename delcomment.info
 
 @c this tests both the del comment and a file without
 @c element.
@@ -147,7 +111,6 @@ This line is the only output.
 
 
 $result_texts{'delcomment'} = '
-
 
 This line is the only output.
 

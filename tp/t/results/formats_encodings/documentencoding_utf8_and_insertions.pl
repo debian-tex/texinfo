@@ -17,9 +17,11 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
                   'text' => 'utf-8'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -27,9 +29,12 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'input_encoding_name' => 'utf-8',
-            'input_perl_encoding' => 'utf-8-strict',
-            'spaces_before_argument' => ' ',
             'text_arg' => 'utf-8'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -101,9 +106,11 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -169,17 +176,23 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -224,7 +237,7 @@ $result_floats{'documentencoding_utf8_and_insertions'} = {};
 
 
 
-$result_converted{'plaintext'}->{'documentencoding_utf8_and_insertions'} = '– — ” “ ‘ ’ ‘in code’.  ẽ.
+$result_converted{'plaintext'}->{'documentencoding_utf8_and_insertions'} = '- -- " " \' \' ‘in code’.  ẽ.
 
      -- --- \'\' `` ` \' in code. ẽ.
 ';

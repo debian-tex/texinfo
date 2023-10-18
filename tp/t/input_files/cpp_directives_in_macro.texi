@@ -1,0 +1,13 @@
+
+@macro simplemacro{out}
+\out\
+@end macro
+
+@simplemacro{
+#line 100 "in_arg_file"
+
+@unknownin
+}
+
+@unknownout
+

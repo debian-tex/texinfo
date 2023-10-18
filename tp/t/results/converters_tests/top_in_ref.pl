@@ -18,9 +18,11 @@ $result_trees{'top_in_ref'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -34,19 +36,12 @@ $result_trees{'top_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -59,12 +54,14 @@ $result_trees{'top_in_ref'} = {
         {
           'contents' => [
             {
-              'text' => 'refs node'
+              'text' => 'chap refs node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -119,6 +116,12 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -131,15 +134,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -191,6 +185,12 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -206,15 +206,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -266,6 +257,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -284,13 +280,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -342,6 +331,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -363,13 +357,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -421,6 +408,12 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -444,15 +437,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 9,
@@ -504,6 +488,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -527,13 +516,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -585,6 +567,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -611,13 +598,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 11,
@@ -669,6 +649,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -697,13 +682,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -755,6 +733,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -786,13 +769,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 13,
@@ -844,6 +820,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -868,8 +849,10 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -879,20 +862,15 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 14,
@@ -944,6 +922,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -967,13 +950,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 15,
@@ -1025,6 +1001,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1051,13 +1032,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 16,
@@ -1109,6 +1083,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1128,8 +1107,10 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -1139,20 +1120,15 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 17,
@@ -1204,6 +1180,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1230,13 +1211,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 18,
@@ -1307,6 +1281,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1319,16 +1301,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 20,
@@ -1389,6 +1361,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1404,16 +1384,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 21,
@@ -1474,6 +1444,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1492,16 +1470,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 22,
@@ -1562,6 +1530,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1583,16 +1559,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 23,
@@ -1653,6 +1619,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1676,16 +1650,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 24,
@@ -1746,6 +1710,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1769,16 +1741,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 25,
@@ -1839,6 +1801,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1865,16 +1835,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 26,
@@ -1935,6 +1895,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -1963,16 +1931,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 27,
@@ -2033,6 +1991,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2064,16 +2030,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 28,
@@ -2134,6 +2090,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2158,8 +2122,10 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -2169,23 +2135,15 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 29,
@@ -2246,6 +2204,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2269,16 +2235,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 30,
@@ -2339,6 +2295,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2365,16 +2329,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 31,
@@ -2435,6 +2389,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2454,8 +2416,10 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -2465,23 +2429,15 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 32,
@@ -2542,6 +2498,14 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ],
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2568,16 +2532,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'node_argument' => {
-                  'manual_content' => [
-                    {}
-                  ],
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 33,
@@ -2639,6 +2593,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2647,8 +2606,10 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'cross ref name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -2658,20 +2619,15 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'file name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'inforef',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 35,
@@ -2723,17 +2679,16 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'inforef',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 36,
@@ -2785,6 +2740,12 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Top'
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2793,20 +2754,15 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'cross ref name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'inforef',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 37,
@@ -2858,6 +2814,11 @@ $result_trees{'top_in_ref'} = {
                       'text' => 'Top'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'brace_command_arg'
                 },
                 {
@@ -2873,13 +2834,6 @@ $result_trees{'top_in_ref'} = {
                 }
               ],
               'cmdname' => 'inforef',
-              'extra' => {
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 38,
@@ -2895,19 +2849,12 @@ $result_trees{'top_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'refs-node'
-          }
-        ],
-        'normalized' => 'refs-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap-refs-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -2918,63 +2865,56 @@ $result_trees{'top_in_ref'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'label'} = $result_trees{'top_in_ref'}{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'extra'}{'label'} = $result_trees{'top_in_ref'}{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[14]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[18]{'extra'}{'label'} = $result_trees{'top_in_ref'}{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[18]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[22]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[22]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[26]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[26]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[30]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[34]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[34]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[38]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[38]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[42]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[42]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[46]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[46]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[50]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[50]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[54]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[54]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'args'}[0]{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'args'}[0]{'contents'}[3];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[10]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[14]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[18]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[22]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[22]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[26]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[26]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[30]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[34]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[34]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[38]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[38]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[42]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[42]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[46]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[46]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[50]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[50]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[54]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[1]{'contents'}[54]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[14]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[22]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[26]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[30]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[34]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[38]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[42]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[46]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[50]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'args'}[0]{'extra'}{'manual_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[3]{'contents'}[54]{'args'}[0]{'contents'}[3];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[10]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[10]{'args'}[0]{'contents'}[0];
+$result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'args'}[0]{'contents'}[0];
 
 $result_texis{'top_in_ref'} = '@node Top
 
-@node refs node
+@node chap refs node
 
 @code{@@ref@{Top,cross ref name@}} @ref{Top,cross ref name}
 @code{@@ref@{Top,,title@}} @ref{Top,,title}
@@ -3060,7 +3000,7 @@ $result_nodes{'top_in_ref'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'refs-node'
+        'normalized' => 'chap-refs-node'
       },
       'structure' => {
         'node_prev' => {}
@@ -3161,58 +3101,54 @@ name)Top::
 
 
 $result_converted{'html_text'}->{'top_in_ref'} = '<a class="node-id" id="Top"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <hr>
-<a class="node-id" id="refs-node"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
+<a class="node-id" id="chap-refs-node"></a><div class="nav-panel">
 </div>
-<h4 class="node">refs node</h4>
+<h4 class="node"><span>chap refs node<a class="copiable-link" href="#chap-refs-node"> &para;</a></span></h4>
 
 <p><code class="code">@ref{Top,cross ref name}</code> <a class="ref" href="#Top">cross ref name</a>
 <code class="code">@ref{Top,,title}</code> <a class="ref" href="#Top">title</a>
 <code class="code">@ref{Top,,,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>
 <code class="code">@ref{Top,,,,manual}</code> <cite class="cite">manual</cite>
 <code class="code">@ref{Top,cross ref name,title,}</code> <a class="ref" href="#Top">title</a>
-<code class="code">@ref{Top,cross ref name,,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)cross ref name</a>
+<code class="code">@ref{Top,cross ref name,,file name}</code> <a data-manual="file name" href="file%20name.html#Top">cross ref name</a>
 <code class="code">@ref{Top,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite class="cite">manual</cite>
-<code class="code">@ref{Top,cross ref name,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)title</a>
+<code class="code">@ref{Top,cross ref name,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">title</a>
 <code class="code">@ref{Top,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite class="cite">manual</cite>
 <code class="code">@ref{Top,cross ref name,title, file name, manual}</code> <a data-manual="file name" href="file%20name.html#Top">title</a> in <cite class="cite">manual</cite>
-<code class="code">@ref{Top,,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)title</a>
+<code class="code">@ref{Top,,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">title</a>
 <code class="code">@ref{Top,,title,,manual}</code> &lsquo;title&rsquo; in <cite class="cite">manual</cite>
 <code class="code">@ref{Top,,title, file name, manual}</code> <a data-manual="file name" href="file%20name.html#Top">title</a> in <cite class="cite">manual</cite>
 <code class="code">@ref{Top,,,file name,manual}</code> <cite class="cite"><a data-manual="file name" href="file%20name.html#Top">manual</a></cite>
 </p>
-<p><code class="code">@ref{(pman)Top,cross ref name}</code> <a data-manual="pman" href="pman.html#Top">(pman)cross ref name</a>
-<code class="code">@ref{(pman)Top,,title}</code> <a data-manual="pman" href="pman.html#Top">(pman)title</a>
+<p><code class="code">@ref{(pman)Top,cross ref name}</code> <a data-manual="pman" href="pman.html#Top">cross ref name</a>
+<code class="code">@ref{(pman)Top,,title}</code> <a data-manual="pman" href="pman.html#Top">title</a>
 <code class="code">@ref{(pman)Top,,,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>
 <code class="code">@ref{(pman)Top,,,,manual}</code> <a data-manual="pman" href="pman.html#Top">(pman)Top</a> in <cite class="cite">manual</cite>
-<code class="code">@ref{(pman)Top,cross ref name,title,}</code> <a data-manual="pman" href="pman.html#Top">(pman)title</a>
-<code class="code">@ref{(pman)Top,cross ref name,,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)cross ref name</a>
+<code class="code">@ref{(pman)Top,cross ref name,title,}</code> <a data-manual="pman" href="pman.html#Top">title</a>
+<code class="code">@ref{(pman)Top,cross ref name,,file name}</code> <a data-manual="file name" href="file%20name.html#Top">cross ref name</a>
 <code class="code">@ref{(pman)Top,cross ref name,,,manual}</code> <a data-manual="pman" href="pman.html#Top">cross ref name</a> in <cite class="cite">manual</cite>
-<code class="code">@ref{(pman)Top,cross ref name,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)title</a>
+<code class="code">@ref{(pman)Top,cross ref name,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">title</a>
 <code class="code">@ref{(pman)Top,cross ref name,title,,manual}</code> <a data-manual="pman" href="pman.html#Top">title</a> in <cite class="cite">manual</cite>
 <code class="code">@ref{(pman)Top,cross ref name,title, file name, manual}</code> <a data-manual="file name" href="file%20name.html#Top">title</a> in <cite class="cite">manual</cite>
-<code class="code">@ref{(pman)Top,,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">(file name)title</a>
+<code class="code">@ref{(pman)Top,,title,file name}</code> <a data-manual="file name" href="file%20name.html#Top">title</a>
 <code class="code">@ref{(pman)Top,,title,,manual}</code> <a data-manual="pman" href="pman.html#Top">title</a> in <cite class="cite">manual</cite>
 <code class="code">@ref{(pman)Top,,title, file name, manual}</code> <a data-manual="file name" href="file%20name.html#Top">title</a> in <cite class="cite">manual</cite>
 <code class="code">@ref{(pman)Top,,,file name,manual}</code> <a data-manual="file name" href="file%20name.html#Top">(pman)Top</a> in <cite class="cite">manual</cite>
 </p>
-<p><code class="code">@inforef{Top, cross ref name, file name}</code> See <a data-manual="file name" href="file%20name.html#Top">(file name)cross ref name</a>
+<p><code class="code">@inforef{Top, cross ref name, file name}</code> See <a data-manual="file name" href="file%20name.html#Top">cross ref name</a>
 <code class="code">@inforef{Top}</code> 
 <code class="code">@inforef{Top, cross ref name}</code> See &lsquo;cross ref name&rsquo;
 <code class="code">@inforef{Top,,file name}</code> See <a data-manual="file name" href="file%20name.html#Top">(file name)Top</a>
 </p>';
 
 
-$result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">refs node</nodenext></node>
+$result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap refs node</nodenext></node>
 
-<node name="refs-node" spaces=" "><nodename>refs node</nodename><nodeprev automatic="on">Top</nodeprev></node>
+<node name="chap-refs-node" spaces=" "><nodename>chap refs node</nodename><nodeprev automatic="on">Top</nodeprev></node>
 
 <para><code>&arobase;ref&lbrace;Top,cross ref name&rbrace;</code> <ref label="Top"><xrefnodename>Top</xrefnodename><xrefinfoname>cross ref name</xrefinfoname></ref>
 <code>&arobase;ref&lbrace;Top,,title&rbrace;</code> <ref label="Top"><xrefnodename>Top</xrefnodename><xrefprinteddesc>title</xrefprinteddesc></ref>
@@ -3251,7 +3187,7 @@ $result_converted{'xml'}->{'top_in_ref'} = '<node name="Top" spaces=" "><nodenam
 </para>';
 
 
-$result_converted{'docbook'}->{'top_in_ref'} = '<anchor id="refs-node"/>
+$result_converted{'docbook'}->{'top_in_ref'} = '<anchor id="chap-refs-node"/>
 
 <para><literal>@ref{Top,cross ref name}</literal> <link linkend="Top">cross ref name</link>
 <literal>@ref{Top,,title}</literal> <link linkend="Top">title</link>
@@ -3291,7 +3227,7 @@ $result_converted{'docbook'}->{'top_in_ref'} = '<anchor id="refs-node"/>
 
 
 $result_converted{'latex_text'}->{'top_in_ref'} = '\\label{anchor:Top}%
-\\label{anchor:refs-node}%
+\\label{anchor:chap-refs-node}%
 
 \\texttt{@ref\\{Top,cross ref name\\}} \\hyperref[anchor:Top]{[Top], page~\\pageref*{anchor:Top}}
 \\texttt{@ref\\{Top{,}{,}title\\}} \\hyperref[anchor:Top]{[title], page~\\pageref*{anchor:Top}}

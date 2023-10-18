@@ -131,17 +131,23 @@ $result_trees{'table_nested'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -150,7 +156,7 @@ $result_trees{'table_nested'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' myvtable
 '
           },
@@ -177,15 +183,38 @@ $result_trees{'table_nested'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
           ],
           'cmdname' => 'quotation',
           'contents' => [
+            {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'myvtable'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
+              'text' => ''
+            },
             {
               'args' => [
                 {
@@ -200,9 +229,11 @@ $result_trees{'table_nested'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -221,27 +252,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'first item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 1,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              1
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -257,27 +287,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'second itemx'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'itemx',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 2,
-                              'in_code' => 1,
-                              'index_at_command' => 'itemx',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              2
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -310,7 +339,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'empty_line'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -327,27 +356,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'second item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 3,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              3
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -380,7 +408,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'empty_line'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -397,27 +425,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'last'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 4,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              4
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -439,17 +466,23 @@ $result_trees{'table_nested'} = {
                           'text' => 'vtable'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'vtable'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -459,8 +492,12 @@ $result_trees{'table_nested'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -496,9 +533,11 @@ $result_trees{'table_nested'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -517,16 +556,20 @@ $result_trees{'table_nested'} = {
                                   'text' => 'in item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -549,7 +592,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'paragraph'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -566,16 +609,20 @@ $result_trees{'table_nested'} = {
                                   'text' => 'second item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -598,7 +645,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'paragraph'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -611,17 +658,23 @@ $result_trees{'table_nested'} = {
                           'text' => 'table'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'table'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -631,8 +684,12 @@ $result_trees{'table_nested'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -643,6 +700,14 @@ $result_trees{'table_nested'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'position' => 12,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'After table.
 '
                 }
@@ -657,17 +722,23 @@ $result_trees{'table_nested'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -699,15 +770,37 @@ $result_trees{'table_nested'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
           ],
           'cmdname' => 'example',
           'contents' => [
+            {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'myvtable'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ]
+            },
             {
               'args' => [
                 {
@@ -722,9 +815,11 @@ $result_trees{'table_nested'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -743,27 +838,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'first item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 5,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              5
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -779,27 +873,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'second itemx'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'itemx',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 6,
-                              'in_code' => 1,
-                              'index_at_command' => 'itemx',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              6
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -832,7 +925,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'preformatted'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -849,27 +942,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'second item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 7,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              7
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -902,7 +994,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'preformatted'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -919,27 +1011,26 @@ $result_trees{'table_nested'} = {
                                   'text' => 'last'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_number' => 8,
-                              'in_code' => 1,
-                              'index_at_command' => 'item',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'vtable'
-                            },
-                            'spaces_before_argument' => ' '
+                            'index_entry' => [
+                              'vr',
+                              8
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -961,17 +1052,23 @@ $result_trees{'table_nested'} = {
                           'text' => 'vtable'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'vtable'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -981,8 +1078,12 @@ $result_trees{'table_nested'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1018,9 +1119,11 @@ $result_trees{'table_nested'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -1039,16 +1142,20 @@ $result_trees{'table_nested'} = {
                                   'text' => 'in item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1071,7 +1178,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'preformatted'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -1088,16 +1195,20 @@ $result_trees{'table_nested'} = {
                                   'text' => 'second item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1120,7 +1231,7 @@ $result_trees{'table_nested'} = {
                           'type' => 'preformatted'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -1133,17 +1244,23 @@ $result_trees{'table_nested'} = {
                           'text' => 'table'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'table'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1153,8 +1270,12 @@ $result_trees{'table_nested'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1165,6 +1286,14 @@ $result_trees{'table_nested'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'position' => 12,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'After table.
 '
                 }
@@ -1179,17 +1308,23 @@ $result_trees{'table_nested'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1221,9 +1356,11 @@ $result_trees{'table_nested'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1233,15 +1370,38 @@ $result_trees{'table_nested'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
               ],
               'cmdname' => 'quotation',
               'contents' => [
+                {
+                  'source_marks' => [
+                    {
+                      'counter' => 3,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'myvtable'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
+                  'text' => ''
+                },
                 {
                   'args' => [
                     {
@@ -1256,9 +1416,11 @@ $result_trees{'table_nested'} = {
                           'type' => 'command_as_argument'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -1277,27 +1439,26 @@ $result_trees{'table_nested'} = {
                                       'text' => 'first item'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_number' => 9,
-                                  'in_code' => 1,
-                                  'index_at_command' => 'item',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'vr',
-                                  'index_type_command' => 'vtable'
-                                },
-                                'spaces_before_argument' => ' '
+                                'index_entry' => [
+                                  'vr',
+                                  9
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1313,27 +1474,26 @@ $result_trees{'table_nested'} = {
                                       'text' => 'second itemx'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'itemx',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_number' => 10,
-                                  'in_code' => 1,
-                                  'index_at_command' => 'itemx',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'vr',
-                                  'index_type_command' => 'vtable'
-                                },
-                                'spaces_before_argument' => ' '
+                                'index_entry' => [
+                                  'vr',
+                                  10
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1366,7 +1526,7 @@ $result_trees{'table_nested'} = {
                               'type' => 'empty_line'
                             }
                           ],
-                          'type' => 'table_item'
+                          'type' => 'table_definition'
                         }
                       ],
                       'type' => 'table_entry'
@@ -1383,27 +1543,26 @@ $result_trees{'table_nested'} = {
                                       'text' => 'second item'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_number' => 11,
-                                  'in_code' => 1,
-                                  'index_at_command' => 'item',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'vr',
-                                  'index_type_command' => 'vtable'
-                                },
-                                'spaces_before_argument' => ' '
+                                'index_entry' => [
+                                  'vr',
+                                  11
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1436,7 +1595,7 @@ $result_trees{'table_nested'} = {
                               'type' => 'empty_line'
                             }
                           ],
-                          'type' => 'table_item'
+                          'type' => 'table_definition'
                         }
                       ],
                       'type' => 'table_entry'
@@ -1453,27 +1612,26 @@ $result_trees{'table_nested'} = {
                                       'text' => 'last'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
                               'extra' => {
-                                'index_entry' => {
-                                  'content_normalized' => [],
-                                  'entry_content' => [],
-                                  'entry_element' => {},
-                                  'entry_number' => 12,
-                                  'in_code' => 1,
-                                  'index_at_command' => 'item',
-                                  'index_ignore_chars' => {},
-                                  'index_name' => 'vr',
-                                  'index_type_command' => 'vtable'
-                                },
-                                'spaces_before_argument' => ' '
+                                'index_entry' => [
+                                  'vr',
+                                  12
+                                ]
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1495,17 +1653,23 @@ $result_trees{'table_nested'} = {
                               'text' => 'vtable'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'vtable'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1515,8 +1679,12 @@ $result_trees{'table_nested'} = {
                     }
                   ],
                   'extra' => {
-                    'command_as_argument' => {},
-                    'spaces_before_argument' => ' '
+                    'command_as_argument' => {}
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1552,9 +1720,11 @@ $result_trees{'table_nested'} = {
                           'type' => 'command_as_argument'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -1573,16 +1743,20 @@ $result_trees{'table_nested'} = {
                                       'text' => 'in item'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1605,7 +1779,7 @@ $result_trees{'table_nested'} = {
                               'type' => 'paragraph'
                             }
                           ],
-                          'type' => 'table_item'
+                          'type' => 'table_definition'
                         }
                       ],
                       'type' => 'table_entry'
@@ -1622,16 +1796,20 @@ $result_trees{'table_nested'} = {
                                       'text' => 'second item'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1654,7 +1832,7 @@ $result_trees{'table_nested'} = {
                               'type' => 'paragraph'
                             }
                           ],
-                          'type' => 'table_item'
+                          'type' => 'table_definition'
                         }
                       ],
                       'type' => 'table_entry'
@@ -1667,17 +1845,23 @@ $result_trees{'table_nested'} = {
                               'text' => 'table'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'table'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1687,8 +1871,12 @@ $result_trees{'table_nested'} = {
                     }
                   ],
                   'extra' => {
-                    'command_as_argument' => {},
-                    'spaces_before_argument' => ' '
+                    'command_as_argument' => {}
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1699,6 +1887,14 @@ $result_trees{'table_nested'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 3,
+                          'position' => 12,
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => 'After table.
 '
                     }
@@ -1713,17 +1909,23 @@ $result_trees{'table_nested'} = {
                           'text' => 'quotation'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'quotation'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1746,17 +1948,23 @@ $result_trees{'table_nested'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1777,48 +1985,12 @@ $result_trees{'table_nested'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'table_nested'} = '@macro myvtable
 @vtable @asis
@@ -2179,18 +2351,18 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <p>Quotation
 </p><blockquote class="quotation">
 <dl class="vtable">
-<dt id=\'index-first-item\'><span>first item<a class="copiable-link" href=\'#index-first-item\'> &para;</a></span></dt>
-<dt id=\'index-second-itemx\'><span>second itemx<a class="copiable-link" href=\'#index-second-itemx\'> &para;</a></span></dt>
+<dt><a id="index-first-item"></a><span>first item<a class="copiable-link" href="#index-first-item"> &para;</a></span></dt>
+<dt><a id="index-second-itemx"></a><span>second itemx<a class="copiable-link" href="#index-second-itemx"> &para;</a></span></dt>
 <dd>
 <p>Text.
 </p>
 </dd>
-<dt id=\'index-second-item\'><span>second item<a class="copiable-link" href=\'#index-second-item\'> &para;</a></span></dt>
+<dt><a id="index-second-item"></a><span>second item<a class="copiable-link" href="#index-second-item"> &para;</a></span></dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
-<dt id=\'index-last\'><span>last<a class="copiable-link" href=\'#index-last\'> &para;</a></span></dt>
+<dt><a id="index-last"></a><span>last<a class="copiable-link" href="#index-last"> &para;</a></span></dt>
 </dl>
 
 <p>Something.
@@ -2208,20 +2380,20 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <p>Example
 </p><div class="example">
 <dl class="vtable">
-<dt id=\'index-first-item-1\'><span><code class="table-term-preformatted-code">first item</code><a class="copiable-link" href=\'#index-first-item-1\'> &para;</a></span></dt>
-<dt id=\'index-second-itemx-1\'><span><code class="table-term-preformatted-code">second itemx</code><a class="copiable-link" href=\'#index-second-itemx-1\'> &para;</a></span></dt>
+<dt><a id="index-first-item-1"></a><span><code class="table-term-preformatted-code">first item</code><a class="copiable-link" href="#index-first-item-1"> &para;</a></span></dt>
+<dt><a id="index-second-itemx-1"></a><span><code class="table-term-preformatted-code">second itemx</code><a class="copiable-link" href="#index-second-itemx-1"> &para;</a></span></dt>
 <dd><pre class="example-preformatted">
 
 Text.
 
 </pre></dd>
-<dt id=\'index-second-item-1\'><span><code class="table-term-preformatted-code">second item</code><a class="copiable-link" href=\'#index-second-item-1\'> &para;</a></span></dt>
+<dt><a id="index-second-item-1"></a><span><code class="table-term-preformatted-code">second item</code><a class="copiable-link" href="#index-second-item-1"> &para;</a></span></dt>
 <dd><pre class="example-preformatted">
 
 Text 2
 
 </pre></dd>
-<dt id=\'index-last-1\'><span><code class="table-term-preformatted-code">last</code><a class="copiable-link" href=\'#index-last-1\'> &para;</a></span></dt>
+<dt><a id="index-last-1"></a><span><code class="table-term-preformatted-code">last</code><a class="copiable-link" href="#index-last-1"> &para;</a></span></dt>
 </dl>
 <pre class="example-preformatted">
 
@@ -2241,18 +2413,18 @@ Something.
 </p><blockquote class="quotation">
 <blockquote class="quotation">
 <dl class="vtable">
-<dt id=\'index-first-item-2\'><span>first item<a class="copiable-link" href=\'#index-first-item-2\'> &para;</a></span></dt>
-<dt id=\'index-second-itemx-2\'><span>second itemx<a class="copiable-link" href=\'#index-second-itemx-2\'> &para;</a></span></dt>
+<dt><a id="index-first-item-2"></a><span>first item<a class="copiable-link" href="#index-first-item-2"> &para;</a></span></dt>
+<dt><a id="index-second-itemx-2"></a><span>second itemx<a class="copiable-link" href="#index-second-itemx-2"> &para;</a></span></dt>
 <dd>
 <p>Text.
 </p>
 </dd>
-<dt id=\'index-second-item-2\'><span>second item<a class="copiable-link" href=\'#index-second-item-2\'> &para;</a></span></dt>
+<dt><a id="index-second-item-2"></a><span>second item<a class="copiable-link" href="#index-second-item-2"> &para;</a></span></dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
-<dt id=\'index-last-2\'><span>last<a class="copiable-link" href=\'#index-last-2\'> &para;</a></span></dt>
+<dt><a id="index-last-2"></a><span>last<a class="copiable-link" href="#index-last-2"> &para;</a></span></dt>
 </dl>
 
 <p>Something.
@@ -2270,7 +2442,8 @@ Something.
 ';
 
 
-$result_converted{'xml'}->{'table_nested'} = '<macro name="myvtable" line=" myvtable" endspaces=" ">@vtable @asis
+$result_converted{'xml'}->{'table_nested'} = '<macro name="myvtable" line=" myvtable" endspaces=" ">
+@vtable @asis
 @item first item
 @itemx second itemx
 
@@ -2370,5 +2543,65 @@ Something.
 </para></quotation>
 </quotation>
 ';
+
+
+$result_converted{'docbook'}->{'table_nested'} = '
+<para>Quotation
+</para><blockquote><variablelist><varlistentry><term><indexterm role="vr"><primary>first item</primary></indexterm>first item
+</term><term><indexterm role="vr"><primary>second itemx</primary></indexterm>second itemx
+</term><listitem>
+<para>Text.
+</para>
+</listitem></varlistentry><varlistentry><term><indexterm role="vr"><primary>second item</primary></indexterm>second item
+</term><listitem>
+<para>Text 2
+</para>
+</listitem></varlistentry><varlistentry><term><indexterm role="vr"><primary>last</primary></indexterm>last
+</term></varlistentry></variablelist>
+<para>Something.
+</para><variablelist><varlistentry><term><emphasis>in item</emphasis>
+</term><listitem><para>Text without blank line
+</para></listitem></varlistentry><varlistentry><term><emphasis>second item</emphasis>
+</term><listitem><para>Text without blank line 2
+</para></listitem></varlistentry></variablelist><para>After table.
+</para></blockquote>
+<para>Example
+</para><variablelist><varlistentry><term><indexterm role="vr"><primary>first item</primary></indexterm>first item
+</term><term><indexterm role="vr"><primary>second itemx</primary></indexterm>second itemx
+</term><listitem><screen>
+Text.
+
+</screen></listitem></varlistentry><varlistentry><term><indexterm role="vr"><primary>second item</primary></indexterm>second item
+</term><listitem><screen>
+Text 2
+
+</screen></listitem></varlistentry><varlistentry><term><indexterm role="vr"><primary>last</primary></indexterm>last
+</term></varlistentry></variablelist><screen>
+Something.
+</screen><variablelist><varlistentry><term><emphasis>in item</emphasis>
+</term><listitem><screen>Text without blank line
+</screen></listitem></varlistentry><varlistentry><term><emphasis>second item</emphasis>
+</term><listitem><screen>Text without blank line 2
+</screen></listitem></varlistentry></variablelist><screen>After table.
+</screen>
+<para>Double quotation
+</para><blockquote><blockquote><variablelist><varlistentry><term><indexterm role="vr"><primary>first item</primary></indexterm>first item
+</term><term><indexterm role="vr"><primary>second itemx</primary></indexterm>second itemx
+</term><listitem>
+<para>Text.
+</para>
+</listitem></varlistentry><varlistentry><term><indexterm role="vr"><primary>second item</primary></indexterm>second item
+</term><listitem>
+<para>Text 2
+</para>
+</listitem></varlistentry><varlistentry><term><indexterm role="vr"><primary>last</primary></indexterm>last
+</term></varlistentry></variablelist>
+<para>Something.
+</para><variablelist><varlistentry><term><emphasis>in item</emphasis>
+</term><listitem><para>Text without blank line
+</para></listitem></varlistentry><varlistentry><term><emphasis>second item</emphasis>
+</term><listitem><para>Text without blank line 2
+</para></listitem></varlistentry></variablelist><para>After table.
+</para></blockquote></blockquote>';
 
 1;

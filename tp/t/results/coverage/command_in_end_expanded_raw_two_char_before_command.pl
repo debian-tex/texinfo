@@ -12,9 +12,11 @@ $result_trees{'command_in_end_expanded_raw_two_char_before_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -54,17 +56,23 @@ $result_trees{'command_in_end_expanded_raw_two_char_before_command'} = {
                       'text' => 'x'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -92,7 +100,8 @@ In TeX
 ';
 
 
-$result_texts{'command_in_end_expanded_raw_two_char_before_command'} = '';
+$result_texts{'command_in_end_expanded_raw_two_char_before_command'} = 'In TeX
+';
 
 $result_errors{'command_in_end_expanded_raw_two_char_before_command'} = [
   {

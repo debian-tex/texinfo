@@ -10,8 +10,77 @@ $result_trees{'ifnot_format_conditional'} = {
     {
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifnottex',
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 1,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ],
+          'text' => ''
+        },
+        {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifnottex'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifnottex'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 3,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 8,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'not tex
 '
             }

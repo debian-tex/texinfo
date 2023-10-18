@@ -1,6 +1,6 @@
 # Config.pm: namespace used for user configuration (init files) evaluation
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -121,22 +121,47 @@ sub _GNUT_document_warn($) {
                    "%s: warning: %s"), $real_command_name, $text)."\n"));
 }
 
+sub _GNUT_document_fatal($) {
+  my $text = shift;
+  chomp ($text);
+  warn(_GNUT_encode_message(
+        sprintf(__p("program name: error_message",
+                   "%s: %s"), $real_command_name, $text)."\n"));
+  exit 1 unless (texinfo_get_conf('FORCE'));
+}
+
+# used to register messages by the user with texinfo_register_init_loading_*
 my @init_file_loading_messages;
+
 # called from texi2any.pl main program and t/test_utils.pl.
 # eval $FILE in the Texinfo::Config namespace. $FILE should be a binary string.
 sub GNUT_load_init_file($) {
   my $file = shift;
   push @init_file_loading_messages, [];
-  eval { require($file) ;};
-  my $e = $@;
-  if ($e ne '') {
-    # $e may not be correctly encoded, but it is not clear what is to
-    # be expected.  In the eval documentation there is only information
-    # on the string eval case, not the block eval used here, and the
-    # information is not particularly clear.
-    _GNUT_document_warn(sprintf(__("error loading %s: %s"),
-                _GNUT_decode_input($file), $e));
+
+  my $result = do($file);
+
+  my $message = $@;
+  my $read_error = $!;
+
+  if (!defined($result)) {
+    if (defined($message) and $message ne '') {
+      _GNUT_document_fatal(sprintf
+                 (__("error parsing %s: %s"),
+                  _GNUT_decode_input($file), $message));
+    } elsif (defined($read_error)) {
+      _GNUT_document_fatal(sprintf
+                 (__("error reading %s: %s"),
+                  _GNUT_decode_input($file), $read_error));
+    }
   }
+
+  # Note: $message or $read_error may be incorrectly "double encoded" if they
+  # are encoded byte strings.  However, it appears that they are unencoded
+  # character strings if the init file uses the "use utf8" pragma to mark the
+  # file as UTF-8 encoded, which may become the default in the future according
+  # to the Perl documentation.
+
   my $file_loading_messages = pop @init_file_loading_messages;
   my $error_nr = 0;
   for my $error (@{$file_loading_messages}) {
@@ -170,7 +195,7 @@ sub texinfo_register_init_loading_error($) {
                                             'text' => $message};
 }
 
-# called from init files in case for warnings during loading.
+# called from init files in case of warnings at loading.
 sub texinfo_register_init_loading_warning($) {
   my $message = shift;
   push @{$init_file_loading_messages[-1]}, {'type' => 'warning',
@@ -353,13 +378,20 @@ my @possible_stages = ('setup', 'structure', 'init', 'finish');
 
 my $default_priority = 'default';
 
-# FIXME add another level with format?  Not needed now as HTML is
+# TODO add another level with format?  Not needed now as HTML is
 # the only customizable format for now.
-my $GNUT_stage_handlers = {};
+my $GNUT_stage_handlers;
 
-foreach my $stage (@possible_stages) {
-  $GNUT_stage_handlers->{$stage} = {};
+sub _GNUT_initialize_stage_handlers()
+{
+  $GNUT_stage_handlers = {};
+
+  foreach my $stage (@possible_stages) {
+    $GNUT_stage_handlers->{$stage} = {};
+  }
 }
+
+_GNUT_initialize_stage_handlers();
 
 sub texinfo_register_handler($$;$)
 {
@@ -396,6 +428,8 @@ my $GNUT_no_arg_commands_formatting_strings = {};
 my $GNUT_style_commands_formatting_info = {};
 my $GNUT_accent_command_formatting_info = {};
 my $GNUT_types_formatting_info = {};
+my $GNUT_direction_string_info = {};
+my $GNUT_special_element_info = {};
 
 # called from init files
 sub texinfo_register_file_id_setting_function($$)
@@ -497,26 +531,54 @@ sub GNUT_get_formatting_special_element_body_references()
 }
 
 my $default_formatting_context = 'normal';
-foreach my $possible_formatting_context (($default_formatting_context,
-                       'preformatted', 'string', 'css_string')) {
-  $GNUT_no_arg_commands_formatting_strings->{$possible_formatting_context} = {};
-  $GNUT_style_commands_formatting_info->{$possible_formatting_context} = {};
+my @all_possible_formatting_context = ($default_formatting_context,
+                               'preformatted', 'string', 'css_string');
+
+sub _GNUT_initialize_no_arg_commands_formatting_strings()
+{
+  $GNUT_no_arg_commands_formatting_strings = {};
+  foreach my $possible_formatting_context (@all_possible_formatting_context) {
+    $GNUT_no_arg_commands_formatting_strings->{$possible_formatting_context} = {};
+  }
 }
 
-# $translated_string is supposed to be already formatted.
+_GNUT_initialize_no_arg_commands_formatting_strings();
+
+sub _GNUT_initialize_style_commands_formatting_info()
+{
+  $GNUT_style_commands_formatting_info = {};
+  foreach my $possible_formatting_context (@all_possible_formatting_context) {
+    $GNUT_style_commands_formatting_info->{$possible_formatting_context} = {};
+  }
+}
+
+_GNUT_initialize_style_commands_formatting_info();
+
+my @all_special_element_info_types = ('class', 'direction', 'heading', 'order',
+                             'file_string', 'target');
+
+sub _GNUT_initialize_special_element_info()
+{
+  $GNUT_special_element_info = {};
+  foreach my $possible_type (@all_special_element_info_types) {
+    $GNUT_special_element_info->{$possible_type} = {};
+  }
+}
+
+_GNUT_initialize_special_element_info();
+
+# $translated_converted_string is supposed to be already formatted.
 # It may also be relevant to be able to pass a 'tree'
 # directly (it is actually handled by the converter code).
-# Passing a texinfo string that can be translated (like
-# the 'translated_commands' customization variable) may also
-# be interesting.
-sub texinfo_register_no_arg_command_formatting($$;$$$)
+sub texinfo_register_no_arg_command_formatting($$;$$$$)
 {
   my $command = shift;
   my $context = shift;
   my $text = shift;
   # html element
   my $element = shift;
-  my $translated_string = shift;
+  my $translated_converted_string = shift;
+  my $translated_to_convert_string = shift;
 
   if (!defined($context)) {
     $context = $default_formatting_context;
@@ -532,9 +594,17 @@ sub texinfo_register_no_arg_command_formatting($$;$$$)
   if (defined($element)) {
     $specification->{'element'} = $element;
   }
-  if (defined($translated_string)) {
-    $specification->{'translated'} = $translated_string;
+  if (defined($translated_converted_string)) {
+    $specification->{'translated_converted'} = $translated_converted_string;
     # NOTE unset 'text'?  A priori not needed, it will be overwritten
+  }
+  if (defined($translated_to_convert_string)) {
+    # only need to register in normal context, as the Texinfo code
+    # will be converted in the appropriate context.
+    if ($context ne $default_formatting_context) {
+      return 0;
+    }
+    $specification->{'translated_to_convert'} = $translated_to_convert_string;
   }
   $GNUT_no_arg_commands_formatting_strings->{$context}->{$command} = $specification;
   return 1;
@@ -644,6 +714,81 @@ sub GNUT_get_types_formatting_info()
   return { %$GNUT_types_formatting_info };
 }
 
+# no check on type and direction, but only the ones known in the HTML
+# converted will be used
+sub texinfo_register_direction_string_info($$;$$$)
+{
+  my $direction = shift;
+  my $type = shift;
+  my $converted_string = shift;
+  my $string_to_convert = shift;
+  my $context = shift;
+
+  $context = 'normal' if (!defined($context));
+
+  $GNUT_direction_string_info->{$type} = {}
+    if (not exists($GNUT_direction_string_info->{$type}));
+  $GNUT_direction_string_info->{$type}->{$direction} = {}
+    if (not exists($GNUT_direction_string_info->{$type}->{$direction}));
+  $GNUT_direction_string_info->{$type}->{$direction}->{'to_convert'}
+     = $string_to_convert;
+  if (defined($converted_string)) {
+    $GNUT_direction_string_info->{$type}->{$direction}->{'converted'} = {}
+      if (!defined($GNUT_direction_string_info->{$type}->{$direction}->{'converted'}));
+    $GNUT_direction_string_info->{$type}->{$direction}->{'converted'}->{$context}
+      = $converted_string;
+  }
+}
+
+sub GNUT_get_direction_string_info()
+{
+  return { %$GNUT_direction_string_info };
+}
+
+sub texinfo_register_special_element_info($$$)
+{
+  my $type = shift;
+  my $variety = shift;
+  my $thing = shift;
+
+  if (not defined($GNUT_special_element_info->{$type})) {
+    _GNUT_document_warn(
+         sprintf(__("%s: unknown special element information type %s\n"),
+                  'texinfo_register_special_element_info', $type));
+    return 0;
+  }
+  $GNUT_special_element_info->{$type}->{$variety} = {}
+    if (not exists($GNUT_special_element_info->{$type}->{$variety}));
+  $GNUT_special_element_info->{$type}->{$variety} = $thing;
+  return 1;
+}
+
+sub GNUT_get_special_element_info()
+{
+  return { %$GNUT_special_element_info };
+}
+
+
+# Not needed from the main program, as the init files should affect all
+# the manuals, but needed for tests, to have isolated tests.
+
+sub GNUT_reinitialize_init_files()
+{
+  @init_file_loading_messages = ();
+  foreach my $reference ($init_files_options,
+     $GNUT_file_id_setting_references,
+     $GNUT_formatting_references, $GNUT_formatting_special_element_body,
+     $GNUT_commands_conversion, $GNUT_commands_open, $GNUT_types_conversion,
+     $GNUT_types_open, $GNUT_accent_command_formatting_info,
+     $GNUT_types_formatting_info, $GNUT_direction_string_info) {
+    $reference = {};
+  }
+  _GNUT_initialize_stage_handlers();
+  _GNUT_initialize_no_arg_commands_formatting_strings();
+  _GNUT_initialize_style_commands_formatting_info();
+  _GNUT_initialize_special_element_info();
+}
+
 
 #####################################################################
 # the objective of this small package is to be in another
@@ -709,6 +854,8 @@ sub set_conf($$$)
   my $var = shift;
   my $val = shift;
   $self->{'config'}->{$var} = $val;
+
+  return 1;
 }
 
 

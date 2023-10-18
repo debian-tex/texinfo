@@ -3,7 +3,7 @@
 # end of converter modules, with the output format name suitably defined.
 # This file should be run when maintain/template.pod is modified.
 #
-# Copyright 2011-2019 Free Software Foundation, Inc.
+# Copyright 2011-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

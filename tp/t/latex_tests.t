@@ -118,6 +118,60 @@ Cop. @anchor{a in copying}. Ying.
 '],
 );
 
+my $indices_text = '
+@set txiindexbackslashignore
+
+@node Top
+@top top section
+
+@node chapter
+@chapter Index
+
+@cindex @"a @"{o}
+@cindex AA
+@cindex aa
+@cindex i
+@cindex Z
+@cindex @^i
+
+@cindex @math{a!"@@b} "!@@ @"a @"{o} @subentry @sortas{a!"@@b} sub@math{a!"@@b} sub "!@@ @"a @"{o} @seealso{@math{a!"@@b} "!@@ @"a @"{o}}
+@cindex \cmd
+@cindex totocmd @sortas{\cmd}
+
+@clear txiindexbackslashignore
+
+@cindex \some\command{} for @file{file} @c comment
+
+@findex the @r{person} index @file{aa}
+
+@printindex cp
+
+@printindex fn
+';
+
+my $include_chapters_test = '@node Top
+@top top sectionning
+
+@contents
+
+@node in main
+@chapter chap in main
+
+@set do-top
+@include section_file.texi
+
+@include section_file_no_node.texi
+
+@include section_file_no_node_include.texi
+
+@include section_file_no_node.texi
+
+@node last chap
+@chapter A last
+
+'
+;
+
 my @file_tests = (
 ['settitle_and_headings',
 '@settitle Title @* for a manual
@@ -198,6 +252,17 @@ in titlepage
 in titlepage
 @end titlepage
 '],
+['setchapternewpage_on_odd_titlepage_set_headings',
+'@setchapternewpage on
+
+@setchapternewpage odd
+
+@titlepage
+in titlepage
+@end titlepage
+
+@headings off
+', {}, {'headings' => 'singleafter'}],
 ['custom_headings',
 '
 @evenheading @thispage @thissectionname @| @thissectionnum @thissection @| @thischaptername @thischapternum
@@ -238,6 +303,18 @@ after everyheading before chap 3 second page
 @everyfooting aa @| bb @| cc @| dd
 
 '
+],
+['custom_heading_with_include',
+'@setchapternewpage odd
+@everyheading @thispage @| @thisfile @| @thischapter
+
+'.$include_chapters_test
+],
+['custom_heading_with_include_in_command',
+'@setchapternewpage odd
+@everyheading @thischapter @emph{@thisfile} @| @| @thispage
+
+'.$include_chapters_test
 ],
 ['titlepage_in_top_node',
 '@node Top
@@ -540,6 +617,15 @@ In afourpaper reset
 
 @pagesizes , 
 '],
+['customize_informative_commands',
+'@chapter chap
+', {}, {'pagesizes' => '200mm,150mm',
+        'frenchspacing' => 'on',
+        'microtype' => 'off',
+        'firstparagraphindent' => 'insert',
+        'fonttextsize' => '11',
+        'paragraphindent' => 4,
+        'afivepaper' => ''}],
 ['verbatim_in_smallformat',
 '@smallformat
 @verbatim
@@ -560,6 +646,16 @@ New para
 /usr/local/share/emacs
 @end example
 @end cartouche
+'],
+['verb',
+'@verb{!a!}
+
+@verb{!a!a!}
+
+@verb{!a
+b!}
+
+@verb{%a%|!:@b%}
 '],
 ['nested_itemize',
 '@itemize
@@ -631,30 +727,15 @@ New para
 @end enumerate
 
 '],
+# in the the output pdf file obtained with pdflatex, the index entries
+# with accented characters are at the end and not together with the non
+# accented letters
 ['indices',
-'
-@set txiindexbackslashignore
-
-@node Top
-@top top section
-
-@node chapter
-@chapter Index
-
-@cindex @math{a!"@@b} "!@@ @"a @"{o} @subentry @sortas{a!"@@b} sub@math{a!"@@b} sub "!@@ @"a @"{o} @seealso{@math{a!"@@b} "!@@ @"a @"{o}}
-@cindex \cmd
-@cindex totocmd @sortas{\cmd}
-
-@clear txiindexbackslashignore
-
-@cindex \some\command{} for @file{file} @c comment
-
-@findex the @r{person} index @file{aa}
-
-@printindex cp
-
-@printindex fn
-'],
+$indices_text
+],
+['indices_disable_encoding',
+$indices_text, {ENABLE_ENCODING => 0,}, {ENABLE_ENCODING => 0,}
+],
 ['error_in_sectioning_command',
 '@contents
 

@@ -1,7 +1,6 @@
 # Makefile.am for texinfo/info.
 #
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
-# 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software Foundation, Inc.
+# Copyright 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -25,7 +24,16 @@ AM_CPPFLAGS =                                   \
   -DINFODIR=\"$(infodir)\"                      \
   -DINFODIR2=\"$(datadir)/info\"
 
-LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL) $(LIBICONV) $(LIBTHREAD)
+LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS)
+
+# for various gnulib modules
+LDADD += $(LIBINTL) $(LIBICONV) $(LIBC32CONV) $(LIBUNISTRING) $(LIBTHREAD)
+
+# for hard-locale gnulib module which is brought in indirectly
+LDADD += $(HARD_LOCALE_LIB) $(SETLOCALE_NULL_LIB)
+
+# for mbrtowc gnulib module which is brought in indirectly
+LDADD += $(MBRTOWC_LIB)
 
 EXTRA_DIST = pcterm.c
 
@@ -132,6 +140,7 @@ TESTS = \
 	t/window-split-dir.sh \
 	t/last-node-not-top-level.sh \
 	t/adjust-anchors.sh \
+	t/recode-C-locale.sh \
 	t/xref-to-anchor.sh \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \

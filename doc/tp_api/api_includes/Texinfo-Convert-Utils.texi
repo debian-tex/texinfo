@@ -10,11 +10,12 @@ Texinfo::Convert::Utils - miscellaneous functions usable in all converters
 @section Texinfo::Convert::Utils SYNOPSIS
 
 @verbatim
-  use Texinfo::Convert::Utils qw(expand_today expand_verbatiminclude);
+  use Texinfo::Convert::Utils;
   
-  my $today_tree = expand_today($converter);
+  my $today_tree = Texinfo::Convert::Utils::expand_today($converter);
   my $verbatiminclude_tree
-     = expand_verbatiminclude(undef, $converter, $verbatiminclude);
+     = Texinfo::Convert::Utils::expand_verbatiminclude(undef, $converter,
+                                                       $verbatiminclude);
 @end verbatim
 
 @node Texinfo@asis{::}Convert@asis{::}Utils NOTES
@@ -28,27 +29,47 @@ Texinfo to other formats.  There is no promise of API stability.
 
 miscellaneous methods that may be useful for backends converting texinfo
 trees.  This module contains the methods that can be used in converters
-that do not inherit @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.
+which do not inherit from @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.
 
 @node Texinfo@asis{::}Convert@asis{::}Utils METHODS
 @section Texinfo::Convert::Utils METHODS
 
 No method is exported in the default case.
 
-Most methods takes a @emph{$converter} as argument, in general optionally,
-to get some information and use methods for error reporting,
-see @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} and @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report}.
-On strings translations, see @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.
+Most methods takes a @emph{$converter} as argument, in some cases optionally,
+to get some information, see
+@ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and setting customization variables}
+and use methods for error reporting, see @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}
+and @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report}, and for
+strings translations, see @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.
+
+Even when the caller does not inherit from @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}, it
+could implement the required interfaces and could also have a converter
+available in some cases, to call the functions which require a converter.
 
 @table @asis
-@item $arguments = definition_arguments_content($element)
-@anchor{Texinfo@asis{::}Convert@asis{::}Utils $arguments = definition_arguments_content($element)}
+@item $result = add_heading_number($converter, $heading_element, $heading_text, $do_number)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $result = add_heading_number($converter@comma{} $heading_element@comma{} $heading_text@comma{} $do_number)}
+@cindex @code{add_heading_number}
+
+The @emph{$converter} argument may be undef.  @emph{$heading_element} is
+a heading command tree element.  @emph{$heading_text} is the already
+formatted heading text.  if the @emph{$do_number} optional argument is
+defined and false, no number is used and the text is returned as is.
+This function returns the heading with a number and the appendix
+part if needed.  If @emph{$converter} is not defined, the resulting
+string won't be translated.
+
+@item ($category, $class, $type, $name, $arguments) = definition_arguments_content($element)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils ($category@comma{} $class@comma{} $type@comma{} $name@comma{} $arguments) = definition_arguments_content($element)}
 @cindex @code{definition_arguments_content}
 
-@emph{$element} should be a @code{@@def*} Texinfo tree element.  Texinfo elements
+@emph{$element} should be a @code{@@def*} Texinfo tree element.  The
+@emph{$category}, @emph{$class}, @emph{$type}, @emph{$name} are elements corresponding
+to the definition @@-command line.  Texinfo elements
 on the @@-command line corresponding to arguments in the function
 definition are returned in the @emph{$arguments} array reference.
-Arguments correspond to text following the category and the name
+Arguments correspond to text following the other elements
 on the @@-command line.  If there is no argument, @emph{$arguments}
 will be @code{undef}.
 
@@ -63,54 +84,72 @@ returns a texinfo tree corresponding to the category of the
 If @emph{$converter} is not defined, the resulting string won't be
 translated.
 
+@item ($encoded_name, $encoding) = $converter->encoded_input_file_name($converter, $character_string_name, $input_file_encoding)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_input_file_name($converter@comma{} $character_string_name@comma{} $input_file_encoding)}
+
 @item ($encoded_name, $encoding) = $converter->encoded_output_file_name($converter, $character_string_name)
 @anchor{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($converter@comma{} $character_string_name)}
+@cindex @code{encoded_input_file_name}
 @cindex @code{encoded_output_file_name}
 
-Encode @emph{$character_string_name} in the same way as other file name are
+Encode @emph{$character_string_name} in the same way as other file names are
 encoded in converters, based on customization variables, and possibly
 on the input file encoding.  Return the encoded name and the encoding
-used to encode the name.  The @emph{$converter} argument is not optional
+used to encode the name.  The @code{encoded_input_file_name} and
+@code{encoded_output_file_name} functions use different customization variables to
+determine the encoding.  The @emph{$converter} argument is not optional
 and is used both to access to customization variables and to access to parser
 information.
+
+The <$input_file_encoding> argument is optional.  If set, it is used for
+the input file encoding.  It is useful if there is more precise information
+on the input file encoding where the file name appeared.
 
 @item $tree = expand_today($converter)
 @anchor{Texinfo@asis{::}Convert@asis{::}Utils $tree = expand_today($converter)}
 @cindex @code{expand_today}
 
-Expand today's date, as a texinfo tree with translations.
+Expand today's date, as a texinfo tree with translations.  The @emph{$converter}
+argument is not optional and is used both to retrieve customization information
+and to translate strings.
 
 @item $tree = expand_verbatiminclude($registrar, $customization_information, $verbatiminclude)
 @anchor{Texinfo@asis{::}Convert@asis{::}Utils $tree = expand_verbatiminclude($registrar@comma{} $customization_information@comma{} $verbatiminclude)}
 @cindex @code{expand_verbatiminclude}
 
-The @emph{$registrar} argument may be undef.  @emph{$verbatiminclude} is a
-@code{@@verbatiminclude} tree element.  This function returns a
-@code{@@verbatim} tree elements after finding the included file and
-reading it.  If @emph{$registrar} is not defined, errors messages are
-not registered.
+The @emph{$registrar} argument may be undef.  The @emph{$customization_information}
+argument is required and is used to retrieve customization information
+@ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and setting customization variables}.
+@emph{$verbatiminclude} is a @code{@@verbatiminclude} tree element.  This function
+returns a @code{@@verbatim} tree elements after finding the included file and
+reading it.  If @emph{$registrar} is not defined, error messages are not
+registered.
 
 @item (\@@contents, \@@accent_commands) = find_innermost_accent_contents($element)
 @anchor{Texinfo@asis{::}Convert@asis{::}Utils (\@@contents@comma{} \@@accent_commands) = find_innermost_accent_contents($element)}
 @cindex @code{find_innermost_accent_contents}
 
 @emph{$element} should be an accent command Texinfo tree element.  Returns
-an array reference containing the innermost accent command contents,
+an array reference containing the innermost accent @@-command contents,
 normally a text element with one or two letter, and an array reference
 containing the accent commands nested in @emph{$element} (including
 @emph{$element}).
 
-@item $result = add_heading_number($converter, $heading_element, $heading_text, $do_number)
-@anchor{Texinfo@asis{::}Convert@asis{::}Utils $result = add_heading_number($converter@comma{} $heading_element@comma{} $heading_text@comma{} $do_number)}
-@cindex @code{add_heading_number}
+@item $heading_element = find_root_command_next_heading_command($element, $expanded_format_raw, $do_not_ignore_contents, $do_not_ignore_index_entries)
+@anchor{Texinfo@asis{::}Convert@asis{::}Utils $heading_element = find_root_command_next_heading_command($element@comma{} $expanded_format_raw@comma{} $do_not_ignore_contents@comma{} $do_not_ignore_index_entries)}
 
-The @emph{$converter} argument may be undef.  @emph{$heading_element} is
-a heading command tree element.  @emph{$heading_text} is the already
-formatted heading text.  if the @emph{$do_number} optional argument is
-defined and false, no number is used and the text is returned as is.
-This function returns the heading with a number and the appendix
-part if needed.  If @emph{$converter} is not defined, the resulting
-string won't be translated.
+Return an heading element found in the @emph{$element} contents if it
+appears before contents that could be formatted.  @emph{$expanded_format_raw}
+is a hash reference with raw output formats (html, docbook, xml...) as
+keys, associated value should be set for expanded raw output formats.
+@emph{$do_not_ignore_contents} is optional.  If set, @code{@@contents} and
+@code{@@shortcontents} are considered to be formatted.
+@emph{$do_not_ignore_index_entries} is optional.  If set, index entries
+are considered to be formatted.
+
+Only heading elements corresponding to @code{@@heading}, @code{@@subheading} and similar
+@@-commands that are not associated to nodes in general are found, not
+sectioning commands.
 
 @end table
 

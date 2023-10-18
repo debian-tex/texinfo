@@ -12,9 +12,11 @@ $result_trees{'command_in_end_ignored_raw_command_after'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -22,7 +24,14 @@ $result_trees{'command_in_end_ignored_raw_command_after'} = {
           'cmdname' => 'html',
           'contents' => [
             {
-              'type' => 'elided_block'
+              'contents' => [
+                {
+                  'text' => 'In html
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             },
             {
               'args' => [
@@ -50,17 +59,23 @@ $result_trees{'command_in_end_ignored_raw_command_after'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -83,6 +98,7 @@ $result_trees{'command_in_end_ignored_raw_command_after'} = {
 };
 
 $result_texis{'command_in_end_ignored_raw_command_after'} = '@html
+In html
 @end html@asis{asis}
 ';
 

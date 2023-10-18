@@ -17,6 +17,7 @@
       <item id="unit5" media-type="application/xhtml+xml" href="xhtml/subsubsection-_0060_0060simple_002ddouble_002d_002d.xhtml" properties="scripted"/>
       <item id="unit6" media-type="application/xhtml+xml" href="xhtml/subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027.xhtml" properties="scripted"/>
       <item id="unit7" media-type="application/xhtml+xml" href="xhtml/chapter2.xhtml" properties="scripted"/>
+      <item id="unit8" media-type="application/xhtml+xml" href="xhtml/formatting_fot.xhtml" properties="scripted"/>
       <item id="jsweblabels" media-type="application/xhtml+xml" href="xhtml/js_licenses.xhtml"/>
       <item id="image1" media-type="e--xt/image" href="images/11-f--ile.e--xt"/>
       <item id="image2" media-type="image/png" href="images/15-f--ile.png"/>
@@ -70,6 +71,7 @@
       <itemref idref="unit5"/>
       <itemref idref="unit6"/>
       <itemref idref="unit7"/>
+      <itemref idref="unit8"/>
       <itemref idref="jsweblabels" linear="no"/>
    </spine>
 </package>

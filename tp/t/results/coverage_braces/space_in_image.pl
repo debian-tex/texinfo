@@ -17,9 +17,13 @@ $result_trees{'space_in_image'} = {
                   'text' => 'a'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' ',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'brace_command_arg'
             },
@@ -37,8 +41,10 @@ $result_trees{'space_in_image'} = {
                   'text' => 'cc'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'brace_command_arg'
             },
@@ -48,8 +54,10 @@ $result_trees{'space_in_image'} = {
                   'text' => 'dd'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'brace_command_arg'
             },
@@ -59,15 +67,17 @@ $result_trees{'space_in_image'} = {
                   'text' => '.e'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -88,16 +98,20 @@ $result_trees{'space_in_image'} = {
                       'text' => 'f'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',

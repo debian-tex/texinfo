@@ -23,9 +23,11 @@ $result_trees{'set_in_item_missing_line'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -47,21 +49,17 @@ $result_trees{'set_in_item_missing_line'} = {
                               'args' => [
                                 {
                                   'text' => 'n',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => '',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
+                              'info' => {
                                 'arg_line' => ' n
-',
-                                'misc_args' => [
-                                  'n',
-                                  ''
-                                ]
+'
                               }
                             }
                           ],
@@ -69,8 +67,10 @@ $result_trees{'set_in_item_missing_line'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -96,16 +96,20 @@ $result_trees{'set_in_item_missing_line'} = {
                               'text' => 'jj'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -127,17 +131,23 @@ $result_trees{'set_in_item_missing_line'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -147,8 +157,12 @@ $result_trees{'set_in_item_missing_line'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -175,9 +189,11 @@ $result_trees{'set_in_item_missing_line'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -193,51 +209,77 @@ $result_trees{'set_in_item_missing_line'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'xx '
+                              'text' => 'cxx '
                             },
                             {
                               'args' => [
                                 {
-                                  'text' => 'n',
-                                  'type' => 'misc_arg'
+                                  'text' => 'cn',
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => '',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
-                                'arg_line' => ' n@c
-',
-                                'misc_args' => [
-                                  'n',
-                                  ''
-                                ]
+                              'info' => {
+                                'arg_line' => ' cn@c
+'
                               }
-                            },
-                            {
-                              'text' => ' ',
-                              'type' => 'ignorable_spaces_after_command'
-                            },
+                            }
+                          ],
+                          'type' => 'line_arg'
+                        }
+                      ],
+                      'cmdname' => 'item',
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 7,
+                        'macro' => ''
+                      }
+                    }
+                  ],
+                  'type' => 'table_term'
+                }
+              ],
+              'type' => 'table_entry'
+            },
+            {
+              'contents' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
                             {
                               'text' => 'jj'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 7,
+                        'line_nr' => 8,
                         'macro' => ''
                       }
                     }
@@ -255,17 +297,23 @@ $result_trees{'set_in_item_missing_line'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -275,8 +323,12 @@ $result_trees{'set_in_item_missing_line'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -299,8 +351,8 @@ $result_texis{'set_in_item_missing_line'} = '@table @code
 @end table
 
 @table @code
-@item xx @set n@c
- jj
+@item cxx @set cn@c
+@item jj
 @end table
 ';
 
@@ -308,27 +360,28 @@ $result_texis{'set_in_item_missing_line'} = '@table @code
 $result_texts{'set_in_item_missing_line'} = 'xx 
 jj
 
-xx jj
+cxx 
+jj
 ';
 
 $result_errors{'set_in_item_missing_line'} = [
   {
-    'error_line' => 'warning: @item should not appear in @item
+    'error_line' => 'warning: @set should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 2,
     'macro' => '',
-    'text' => '@item should not appear in @item',
+    'text' => '@set should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => '@item outside of table or list
+    'error_line' => 'warning: @set should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 8,
+    'line_nr' => 7,
     'macro' => '',
-    'text' => '@item outside of table or list',
-    'type' => 'error'
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
   }
 ];
 

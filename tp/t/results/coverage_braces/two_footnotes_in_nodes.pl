@@ -24,28 +24,23 @@ $result_trees{'two_footnotes_in_nodes'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'two_footnotes_in_nodes'} = {
               'text' => '2 footnotes in 2 nodes'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -186,9 +183,11 @@ $result_trees{'two_footnotes_in_nodes'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -196,7 +195,7 @@ $result_trees{'two_footnotes_in_nodes'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -207,6 +206,12 @@ $result_trees{'two_footnotes_in_nodes'} = {
                       'text' => 'chapter'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -228,15 +233,6 @@ $result_trees{'two_footnotes_in_nodes'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 13,
@@ -252,17 +248,23 @@ $result_trees{'two_footnotes_in_nodes'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -283,8 +285,11 @@ $result_trees{'two_footnotes_in_nodes'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -300,28 +305,23 @@ $result_trees{'two_footnotes_in_nodes'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -337,9 +337,11 @@ $result_trees{'two_footnotes_in_nodes'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -460,8 +462,11 @@ $result_trees{'two_footnotes_in_nodes'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -472,12 +477,7 @@ $result_trees{'two_footnotes_in_nodes'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[3];
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'two_footnotes_in_nodes'} = '@node Top
 @top 2 footnotes in 2 nodes
@@ -658,6 +658,12 @@ $result_converted{'html'}->{'two_footnotes_in_nodes'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -668,7 +674,7 @@ $result_converted{'html'}->{'two_footnotes_in_nodes'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
-<h1 class="top" id="g_t2-footnotes-in-2-nodes">2 footnotes in 2 nodes</h1>
+<h1 class="top" id="g_t2-footnotes-in-2-nodes"><span>2 footnotes in 2 nodes<a class="copiable-link" href="#g_t2-footnotes-in-2-nodes"> &para;</a></span></h1>
 
 <p>A<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -684,7 +690,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">2 footnotes in 2 nodes</a>, Up: <a href="#Top" accesskey="u" rel="up">2 footnotes in 2 nodes</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="chapter-1">1 chapter</h2>
+<h2 class="chapter" id="chapter-1"><span>1 chapter<a class="copiable-link" href="#chapter-1"> &para;</a></span></h2>
 
 <p>C<a class="footnote" id="DOCF3" href="#FOOT3"><sup>3</sup></a>
 </p>
@@ -820,59 +826,6 @@ C(1)
 
    para2
 
-';
-
-
-$result_converted{'html_text'}->{'two_footnotes_in_nodes'} = '<div class="top-level-extent" id="Top">
-<div class="nav-panel">
-<p>
- &nbsp; </p>
-</div>
-<h1 class="top" id="g_t2-footnotes-in-2-nodes">2 footnotes in 2 nodes</h1>
-
-<p>A<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>
-</p>
-<p>B<a class="footnote" id="DOCF2" href="#FOOT2"><sup>2</sup></a>
-</p>
-
-<ul class="mini-toc">
-<li><a href="#chapter" accesskey="1">chapter</a></li>
-</ul>
-<hr>
-<div class="chapter-level-extent" id="chapter">
-<div class="nav-panel">
-<p>
- &nbsp; </p>
-</div>
-<h2 class="chapter" id="chapter-1">1 chapter</h2>
-
-<p>C<a class="footnote" id="DOCF3" href="#FOOT3"><sup>3</sup></a>
-</p>
-<p>D<a class="footnote" id="DOCF4" href="#FOOT4"><sup>4</sup></a>
-</p>
-</div>
-</div>
-<div class="footnotes-segment">
-<hr>
-<h4 class="footnotes-heading">Footnotes</h4>
-
-<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
-<p>Footnote Top/1
-</p>
-<p>para2</p>
-<h5 class="footnote-body-heading"><a id="FOOT2" href="#DOCF2">(2)</a></h5>
-<p>Footnote Top/2
-</p>
-<p>para2</p>
-<h5 class="footnote-body-heading"><a id="FOOT3" href="#DOCF3">(3)</a></h5>
-<p>Footnote chapter/1
-</p>
-<p>para2</p>
-<h5 class="footnote-body-heading"><a id="FOOT4" href="#DOCF4">(4)</a></h5>
-<p>Footnote chapter/2
-</p>
-<p>para2</p>
-</div>
 ';
 
 

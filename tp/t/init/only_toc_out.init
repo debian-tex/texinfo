@@ -12,7 +12,7 @@ sub toc_out_element_file_name($$$$$)
 
     my $prefix = $converter->{'document_name'};
     my $type = $element->{'extra'}->{'special_element_variety'};
-    if ($type and $type ne 'Contents')
+    if ($type and $type ne 'contents')
     {
         $filename = "$prefix.".$converter->get_conf('EXTENSION');
     }

@@ -14,16 +14,10 @@ $result_trees{'invalid_documentencoding'} = {
             {
               'text' => ' this one is valid
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' this one is valid
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'args' => [
@@ -46,17 +40,23 @@ $result_trees{'invalid_documentencoding'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'us-ascii'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -95,17 +95,23 @@ $result_trees{'invalid_documentencoding'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'latin1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -121,17 +127,23 @@ $result_trees{'invalid_documentencoding'} = {
                   'text' => 'YS-ASCII'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'YS-ASCII'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -155,17 +167,23 @@ $result_trees{'invalid_documentencoding'} = {
                       'text' => 'bad encoding name'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'bad encoding name'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -181,17 +199,23 @@ $result_trees{'invalid_documentencoding'} = {
                       'text' => '1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => '1'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -207,17 +231,23 @@ $result_trees{'invalid_documentencoding'} = {
                       'text' => '%'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => '%'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -233,17 +263,23 @@ $result_trees{'invalid_documentencoding'} = {
                       'cmdname' => '@'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => '@'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -272,17 +308,23 @@ $result_trees{'invalid_documentencoding'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'AAA'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -316,17 +358,23 @@ $result_trees{'invalid_documentencoding'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'BBB'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -408,12 +456,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `YS-ASCII\'
+    'error_line' => 'warning: unhandled encoding name `YS-ASCII\'
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'unrecognized encoding name `YS-ASCII\'',
+    'text' => 'unhandled encoding name `YS-ASCII\'',
     'type' => 'warning'
   },
   {
@@ -435,12 +483,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `bad encoding name\'
+    'error_line' => 'warning: unhandled encoding name `bad encoding name\'
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => 'unrecognized encoding name `bad encoding name\'',
+    'text' => 'unhandled encoding name `bad encoding name\'',
     'type' => 'warning'
   },
   {
@@ -453,48 +501,30 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `1\'
+    'error_line' => 'warning: unhandled encoding name `1\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => 'unrecognized encoding name `1\'',
+    'text' => 'unhandled encoding name `1\'',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: encoding `%\' is not a canonical texinfo encoding
+    'error_line' => 'warning: bad encoding name `%\'
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => 'encoding `%\' is not a canonical texinfo encoding',
+    'text' => 'bad encoding name `%\'',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `%\'
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => 'unrecognized encoding name `%\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: encoding `@\' is not a canonical texinfo encoding
+    'error_line' => 'warning: bad encoding name `@\'
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'encoding `@\' is not a canonical texinfo encoding',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: unrecognized encoding name `@\'
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'unrecognized encoding name `@\'',
+    'text' => 'bad encoding name `@\'',
     'type' => 'warning'
   },
   {

@@ -19,9 +19,11 @@ $result_trees{'setchapternewpage_on_odd_titlepage'} = {
                       'text' => 'on'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -30,8 +32,12 @@ $result_trees{'setchapternewpage_on_odd_titlepage'} = {
               'extra' => {
                 'misc_args' => [
                   'on'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -52,9 +58,11 @@ $result_trees{'setchapternewpage_on_odd_titlepage'} = {
                       'text' => 'odd'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -63,8 +71,12 @@ $result_trees{'setchapternewpage_on_odd_titlepage'} = {
               'extra' => {
                 'misc_args' => [
                   'odd'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -80,9 +92,11 @@ $result_trees{'setchapternewpage_on_odd_titlepage'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -106,17 +120,23 @@ $result_trees{'setchapternewpage_on_odd_titlepage'} = {
                           'text' => 'titlepage'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'titlepage'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -175,14 +195,17 @@ $result_floats{'setchapternewpage_on_odd_titlepage'} = {};
 $result_converted{'latex_text'}->{'setchapternewpage_on_odd_titlepage'} = '\\makeatletter
 \\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
 \\makeatother
+\\pagestyle{single}%
 
 \\makeatletter
 \\patchcmd{\\chapter}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{}{}
 \\makeatother
+\\pagestyle{double}%
 
 \\begin{document}
 
 \\frontmatter
+\\pagestyle{empty}%
 \\begin{titlepage}
 \\begingroup
 \\newskip\\titlepagetopglue \\titlepagetopglue = 1.5in
@@ -193,8 +216,8 @@ $result_converted{'latex_text'}->{'setchapternewpage_on_odd_titlepage'} = '\\mak
 in titlepage
 \\endgroup
 \\end{titlepage}
-\\pagestyle{double}%
 \\mainmatter
+\\pagestyle{double}%
 ';
 
 1;

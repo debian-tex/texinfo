@@ -321,7 +321,12 @@ After quotation sp b a
 ['cartouche',
 '@cartouche
 in cartouche.
-@end cartouche'],
+@end cartouche
+
+@cartouche @emph{Title of box}
+Out of main text
+@end cartouche
+'],
 ['indentedblock',
 '@indentedblock
   indented block
@@ -333,7 +338,17 @@ Text
 '@cartouche @c comment
 in cartouche.
 @end cartouche
+
+@cartouche @emph{Title of box} @c comment
+Out of main text
+@end cartouche
 '],
+['cartouche_title_and_content',
+'@cartouche Box title on @emph{documentation}
+Text on documentation explaining something important out of the main
+flow of the text.
+@end cartouche
+',],
 ['comment_on_group_line',
 '@group @c comment
 in group.
@@ -585,9 +600,26 @@ In float with caption.
 ['at_after_accent_command',
 '@ringaccent @@. @^@@.
 '],
+['spaces_after_braced_command',
+'@code {b}
+
+@samp
+{v}
+
+@AA
+ {}
+
+@email
+{a, b 
+ }
+
+@TeX
+
+{}
+'],
 ['setfilename_in_paragraph',
 'Some text
-@setfilename filename.info
+@setfilename setfilename_in_paragraph.info
 '],
 ['invalid_U',
 '@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
@@ -646,6 +678,18 @@ In float with caption.
 @guilsinglright{} @textdegree{} @euro{} @arrow{} @leq{} @geq{}
 @end displaymath
 '],
+# also tests no space after @end cartouche before @bye
+['bye_on_end_command_line',
+'@cartouche
+in cartouche.
+@end cartouche@bye
+'],
+['minimal_only_input_line',
+  undef, {'test_file' => 'minimal_only_input_line.texi',},
+],
+['one_line',
+  undef, {'test_file' => 'one_line.texi',},
+],
 );
 
 my @test_tree = (
@@ -684,23 +728,6 @@ continue on other line}
 @indicateurl{http://begin2
 
 cut by blank line}
-'],
-['spaces_after_braced_command',
-'@code {b}
-
-@samp
-{v}
-
-@AA
- {}
-
-@email
-{a, b 
- }
-
-@TeX
-
-{}
 '],
 ['spaces_no_brace_after_braced_command',
 '@code b
@@ -973,11 +1000,19 @@ before first vtable
 before first multitable
 @end multitable
 '],
-['delcomment', undef, {'test_file' => 'delcomment.texi'}
-],
 ['group_beginning_and_end_on_line',
 '@group within @end group
 '],
+['delcomment', undef, {'test_file' => 'delcomment.texi'}
+],
+# this test shows that after a del comment starting at the
+# line beginning a cpp line directive is ignored
+['delcomment_followed_by_cpp_line',
+undef, {'test_file' => 'delcomment_followed_by_cpp_line.texi'}
+],
+['delcomment_on_comment', undef,
+{'test_file' => 'delcomment_on_comment.texi'},
+],
 );
 
 my %docbooc_doc_tests = (

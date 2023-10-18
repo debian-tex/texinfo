@@ -1,9 +1,14 @@
 \input texinfo
 @documentencoding utf-8
-@setfilename chinese_mixed_with_en.info
 @settitle chinese mixed with english
 
 @node Top
+@top Mixed chinese and english
+
+Example of english and chinese, chinese aligned or not.
+
+@node Mixed english and chinese
+@chapter Mixed english and chinese
 
 1. english only
 

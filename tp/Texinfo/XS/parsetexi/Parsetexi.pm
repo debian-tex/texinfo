@@ -1,4 +1,4 @@
-# Copyright 2014-2022 Free Software Foundation, Inc.
+# Copyright 2014-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@
 
 package Texinfo::Parser;
 
-use 5.00405;
+use 5.008;
 use strict;
 use warnings;
 
@@ -54,6 +54,7 @@ use warnings;
 
 use Storable qw(dclone); # standard in 5.007003
 use Encode qw(decode);
+use File::Basename; # for fileparse
 
 use Texinfo::Common;
 use Texinfo::Report;
@@ -94,7 +95,6 @@ sub parser (;$$)
 
   my $parser = dclone(\%parser_default_configuration);
 
-  reset_parser ();
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
       # Copy conf to parser object.
@@ -104,28 +104,42 @@ sub parser (;$$)
       } else {
         $parser->{$key} = $conf->{$key};
       }
+    }
+  }
 
+  # pass directly DEBUG configuration to reset_parser to override previous
+  # parser configuration, as the configuration isn't already reset and the new
+  # configuration is set afterwards.
+  my $debug = 0;
+  $debug = $parser->{'DEBUG'} if ($parser->{'DEBUG'});
+  reset_parser ($debug);
+
+  if (defined($conf)) {
+    foreach my $key (keys (%$conf)) {
       if ($key eq 'INCLUDE_DIRECTORIES') {
+        # the directories from the command line or the input file name
+        # are already byte strings (or ascii).  The encoding was detected
+        # as COMMAND_LINE_ENCODING, but it is not useful for the XS parser.
         foreach my $d (@{$conf->{'INCLUDE_DIRECTORIES'}}) {
           add_include_directory ($d);
         }
       } elsif ($key eq 'values') {
-        for my $v (keys %{$conf->{'values'}}) {
-          if (ref($conf->{'values'}->{$v}) eq '') {
-            store_value ($v, $conf->{'values'}->{$v});
-          } else {
-            warn "bug: non-scalar \@value\n";
-          }
+        for my $flag (keys %{$conf->{'values'}}) {
+          my $bytes_flag = Encode::encode('utf-8', $flag);
+          my $bytes_value = Encode::encode('utf-8', $conf->{'values'}->{$flag});
+          store_value ($bytes_flag, $bytes_value);
         }
       } elsif ($key eq 'EXPANDED_FORMATS') {
         clear_expanded_formats ();
 
         for my $f (@{$conf->{$key}}) {
-          add_expanded_format ($f);
+          my $utf8_bytes = Encode::encode('utf-8', $f);
+          add_expanded_format ($utf8_bytes);
         }
       } elsif ($key eq 'documentlanguage') {
         if (defined ($conf->{$key})) {
-          conf_set_documentlanguage_override ($conf->{$key});
+          my $utf8_bytes = Encode::encode('utf-8', $conf->{$key});
+          conf_set_documentlanguage_override ($utf8_bytes);
         }
       } elsif ($key eq 'FORMAT_MENU') {
         if ($conf->{$key} eq 'menu') {
@@ -137,14 +151,18 @@ sub parser (;$$)
         conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME ($conf->{$key});
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
         conf_set_CPP_LINE_DIRECTIVES($conf->{$key});
+      } elsif ($key eq 'MAX_MACRO_CALL_NESTING') {
+        conf_set_MAX_MACRO_CALL_NESTING($conf->{$key});
       } elsif ($key eq 'DEBUG') {
         set_debug($conf->{$key}) if $conf->{$key};
       } elsif ($key eq 'DOC_ENCODING_FOR_INPUT_FILE_NAME') {
         set_DOC_ENCODING_FOR_INPUT_FILE_NAME ($conf->{$key});
       } elsif ($key eq 'INPUT_FILE_NAME_ENCODING' and defined($conf->{$key})) {
-        conf_set_input_file_name_encoding ($conf->{$key});
+        my $utf8_bytes = Encode::encode('utf-8', $conf->{$key});
+        conf_set_input_file_name_encoding ($utf8_bytes);
       } elsif ($key eq 'LOCALE_ENCODING' and defined($conf->{$key})) {
-        conf_set_locale_encoding ($conf->{$key});
+        my $utf8_bytes = Encode::encode('utf-8', $conf->{$key});
+        conf_set_locale_encoding ($utf8_bytes);
       } elsif ($key eq 'accept_internalvalue') {
         set_accept_internalvalue();
       } elsif ($key eq 'registrar' or $key eq 'COMMAND_LINE_ENCODING') {
@@ -175,18 +193,18 @@ sub _find_menus_of_node {
   }
 }
 
-# Set 'menus' array for each node.  This accounts for malformed input where
-# the number of sectioning commands between @node and @menu is not exactly 1.
+# Set 'menus' array for each node.  This accounts for input where
+# the number of sectioning commands between @node and @menu is not 1.
 sub _associate_node_menus {
   my $self = shift;
   my $root = shift;
 
-  my $node;
+  my $current_node;
   foreach my $child (@{$root->{'contents'}}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'node') {
-      $node = $child;
+      $current_node = $child;
     }
-    _find_menus_of_node ($node, $child) unless !defined $node;
+    _find_menus_of_node ($current_node, $child) if (defined($current_node));
   }
 }
 
@@ -207,13 +225,14 @@ sub _set_errors_node_lists_labels_indices($)
 {
   my $self = shift;
 
-  my $TARGETS = build_label_list ();
+  my $TARGETS = build_target_elements_list ();
   $self->{'targets'} = $TARGETS;
 
   _get_errors ($self);
   # Setup labels info and nodes list based on 'targets'
   Texinfo::Convert::NodeNameNormalization::set_nodes_list_labels($self,
                                            $self->{'registrar'}, $self);
+  Texinfo::Convert::NodeNameNormalization::set_float_types($self);
 
   my $INDEX_NAMES = build_index_data ();
   $self->{'index_names'} = $INDEX_NAMES;
@@ -226,27 +245,39 @@ sub get_parser_info {
   my ($INTL_XREFS, $FLOATS, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
 
   $INTL_XREFS = build_internal_xref_list ();
-  $FLOATS = build_float_list ();
+  # done for now in _set_errors_node_lists_labels_indices, could
+  # be redone here when float types are set in the parser
+  #$FLOATS = build_float_list ();
   $GLOBAL_INFO = build_global_info ();
   $GLOBAL_INFO2 = build_global_info2 ();
 
   $self->{'internal_references'} = $INTL_XREFS;
-  $self->{'floats'} = $FLOATS;
+  #$self->{'floats'} = $FLOATS;
   $self->{'info'} = $GLOBAL_INFO;
   $self->{'commands_info'} = $GLOBAL_INFO2;
 
   _set_errors_node_lists_labels_indices($self);
+
+  my ($registrar, $configuration_information)
+     = _get_error_registrar($self);
+
+  $self->{'info'}->{'input_perl_encoding'} = 'utf-8';
+  my $perl_encoding
+    = Texinfo::Common::get_perl_encoding($self->{'commands_info'},
+                              $registrar, $configuration_information);
+  $self->{'info'}->{'input_perl_encoding'} = $perl_encoding
+     if (defined($perl_encoding));
 }
 
-use File::Basename; # for fileparse
-
-# Replacement for Texinfo::Parser::parse_texi_file
 sub parse_texi_file ($$)
 {
   my $self = shift;
   my $input_file_path = shift;
   my $tree_stream;
 
+  # the file is already a byte string, taken as is from the command
+  # line.  The encoding was detected as COMMAND_LINE_ENCODING, but
+  # it is not useful for the XS parser.
   my $status = parse_file ($input_file_path);
   if ($status) {
     my ($registrar, $configuration_information) = _get_error_registrar($self);
@@ -287,40 +318,36 @@ sub _get_errors($)
   my $ERRORS = get_errors ();
 
   for my $error (@{$ERRORS}) {
+    # The message output in case of debugging set is already issued by
+    # the parser, therefore we set the optional argument to silence
+    # the same message that could be output here.
     if ($error->{'type'} eq 'error') {
       $registrar->line_error ($configuration_information,
-                              $error->{'message'}, $error->{'source_info'});
+                              $error->{'message'}, $error->{'source_info'},
+                              undef, 1);
     } else {
       $registrar->line_warn ($configuration_information,
-                             $error->{'message'}, $error->{'source_info'});
+                             $error->{'message'}, $error->{'source_info'},
+                             undef, 1);
     }
   }
 }
 
 
-# Replacement for Texinfo::Parser::parse_texi_piece
-#
 # Used in tests under tp/t.
-sub parse_texi_piece($$;$$$$)
+sub parse_texi_piece($$;$)
 {
-  my $self = shift;
-  my $text = shift;
-  my $lines_nr = shift;
-  my $file = shift;
-  my $macro = shift;
-  my $fixed_line_number = shift;
+  my ($self, $text, $line_nr) = @_;
 
   return undef if (!defined($text));
 
-  $lines_nr = 1 if (not defined($lines_nr));
+  $line_nr = 1 if (not defined($line_nr));
 
   $self = parser() if (!defined($self));
 
-  # make sure that internal byte buffer is in UTF-8 before we pass
-  # it in to the XS code.
-  utf8::upgrade($text);
-
-  parse_piece($text, $lines_nr);
+  # pass a binary UTF-8 encoded string to C code
+  my $utf8_bytes = Encode::encode('utf-8', $text);
+  parse_piece($utf8_bytes, $line_nr);
   my $tree = build_texinfo_tree ();
 
   get_parser_info($self);
@@ -329,29 +356,20 @@ sub parse_texi_piece($$;$$$$)
   return $tree;
 }
 
-# Replacement for Texinfo::Parser::parse_texi_text
-#
 # Used in tests under tp/t.
-sub parse_texi_text($$;$$$$)
+sub parse_texi_text($$;$)
 {
-  my $self = shift;
-  my $text = shift;
-  my $lines_nr = shift;
-  my $file = shift;
-  my $macro = shift;
-  my $fixed_line_number = shift;
+  my ($self, $text, $line_nr) = @_;
 
   return undef if (!defined($text));
 
-  $lines_nr = 1 if (not defined($lines_nr));
+  $line_nr = 1 if (not defined($line_nr));
 
   $self = parser() if (!defined($self));
 
-  # make sure that internal byte buffer is in UTF-8 before we pass
-  # it in to the XS code.
-  utf8::upgrade($text);
-
-  parse_text($text, $lines_nr);
+  # pass a binary UTF-8 encoded string to C code
+  my $utf8_bytes = Encode::encode('utf-8', $text);
+  parse_text($utf8_bytes, $line_nr);
   my $tree = build_texinfo_tree ();
 
   get_parser_info($self);
@@ -364,23 +382,19 @@ sub parse_texi_text($$;$$$$)
   return $tree;
 }
 
-# Replacement for Texinfo::Parser::parse_texi_line
-sub parse_texi_line($$;$$$$)
+sub parse_texi_line($$;$)
 {
-  my $self = shift;
-  my $text = shift;
-  my $lines_nr = shift;
-  my $file = shift;
-  my $macro = shift;
-  my $fixed_line_number = shift;
+  my ($self, $text, $line_nr) = @_;
 
   return undef if (!defined($text));
 
-  $lines_nr = 1 if (not defined($lines_nr));
+  $line_nr = 1 if (not defined($line_nr));
 
   $self = parser() if (!defined($self));
-  utf8::upgrade($text);
-  parse_string($text, $lines_nr);
+
+  # pass a binary UTF-8 encoded string to C code
+  my $utf8_bytes = Encode::encode('utf-8', $text);
+  parse_string($utf8_bytes, $line_nr);
   my $tree = build_texinfo_tree ();
 
   _set_errors_node_lists_labels_indices($self);
@@ -388,7 +402,7 @@ sub parse_texi_line($$;$$$$)
   return $tree;
 }
 
-# Public interfaces of Texinfo::Parser
+# Public interfaces of Texinfo::Parser to gather information
 sub indices_information($)
 {
   my $self = shift;

@@ -18,16 +18,20 @@ $result_trees{'character_number_leading_toc_stoc'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -43,16 +47,20 @@ $result_trees{'character_number_leading_toc_stoc'} = {
               'text' => '0'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -68,16 +76,20 @@ $result_trees{'character_number_leading_toc_stoc'} = {
               'text' => '_'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -93,9 +105,11 @@ $result_trees{'character_number_leading_toc_stoc'} = {
               'text' => '?'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -112,7 +126,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -132,7 +146,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'shortcontents',
@@ -148,8 +162,10 @@ $result_trees{'character_number_leading_toc_stoc'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -191,12 +207,10 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 1,
@@ -207,12 +221,10 @@ $result_sectioning{'character_number_leading_toc_stoc'} = {
             },
             {
               'cmdname' => 'unnumbered',
-              'extra' => {},
               'structure' => {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_up' => {}
@@ -268,6 +280,8 @@ $result_converted{'html'}->{'character_number_leading_toc_stoc'} = '<!DOCTYPE ht
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -277,7 +291,17 @@ ul.toc-numbered-mark {list-style: none}
 
 <body lang="en">
 <div class="top-level-extent" id="top">
-<h1 class="top">top</h1>
+<h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
+<div class="element-shortcontents" id="SEC_Shortcontents">
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
+
+<div class="shortcontents">
+<ul class="toc-numbered-mark">
+<li><a id="stoc-0" href="#toc-0">1 0</a></li>
+<li><a id="stoc-_005f" href="#toc-_005f">_</a></li>
+</ul>
+</div>
+</div>
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -292,26 +316,16 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
-<div class="element-shortcontents" id="SEC_Shortcontents">
-<h2 class="shortcontents-heading">Short Table of Contents</h2>
-
-<div class="shortcontents">
-<ul class="toc-numbered-mark">
-<li><a id="stoc-0" href="#toc-0">1 0</a></li>
-<li><a id="stoc-_005f" href="#toc-_005f">_</a></li>
-</ul>
-</div>
-</div>
 <div class="chapter-level-extent" id="g_t0">
-<h2 class="chapter">1 0</h2>
+<h2 class="chapter"><span>1 0<a class="copiable-link" href="#g_t0"> &para;</a></span></h2>
 </div>
 <div class="unnumbered-level-extent" id="g_t_005f">
-<h2 class="unnumbered">_</h2>
+<h2 class="unnumbered"><span>_<a class="copiable-link" href="#g_t_005f"> &para;</a></span></h2>
 <ul class="mini-toc">
 <li><a href="#g_t_003f" accesskey="1">?</a></li>
 </ul>
 <div class="section-level-extent" id="g_t_003f">
-<h3 class="section">?</h3>
+<h3 class="section"><span>?<a class="copiable-link" href="#g_t_003f"> &para;</a></span></h3>
 
 
 

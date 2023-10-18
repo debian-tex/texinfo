@@ -24,9 +24,11 @@ $result_trees{'empty_label_no_space'} = {
               'type' => 'block_line_arg'
             },
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -41,17 +43,23 @@ $result_trees{'empty_label_no_space'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -61,12 +69,11 @@ $result_trees{'empty_label_no_space'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Type'
+            'float_type' => 'Type'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -81,7 +88,6 @@ $result_trees{'empty_label_no_space'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_label_no_space'}{'contents'}[0]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'empty_label_no_space'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'empty_label_no_space'} = '@float Type,
 @end float
@@ -99,14 +105,7 @@ $result_floats{'empty_label_no_space'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Type'
-            }
-          ],
-          'normalized' => 'Type'
-        }
+        'float_type' => 'Type'
       }
     }
   ]
@@ -114,8 +113,7 @@ $result_floats{'empty_label_no_space'} = {
 
 
 
-$result_converted{'plaintext'}->{'empty_label_no_space'} = 'Type
-';
+$result_converted{'plaintext'}->{'empty_label_no_space'} = 'Type';
 
 
 $result_converted{'html'}->{'empty_label_no_space'} = '<!DOCTYPE html>
@@ -137,8 +135,7 @@ $result_converted{'html'}->{'empty_label_no_space'} = '<!DOCTYPE html>
 
 <body lang="en">
 <div class="float">
-<div class="type-number-float"><p><strong class="strong">Type
-</strong></p></div></div>
+<div class="type-number-float"><p><strong class="strong">Type</strong></p></div></div>
 
 
 </body>
@@ -154,5 +151,63 @@ $result_converted_errors{'html'}->{'empty_label_no_space'} = [
   }
 ];
 
+
+
+$result_converted{'xml'}->{'empty_label_no_space'} = '<float type="Type" spaces=" " endspaces=" "><floattype>Type</floattype><floatname></floatname>
+</float>
+';
+
+
+$result_converted{'latex'}->{'empty_label_no_space'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% new float for type `Type\'
+\\newfloat{TexinfoFloatType}{htb}{tfl}[chapter]
+\\floatname{TexinfoFloatType}{}
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+\\begin{document}
+\\begin{TexinfoFloatType}
+\\end{TexinfoFloatType}
+\\end{document}
+';
 
 1;

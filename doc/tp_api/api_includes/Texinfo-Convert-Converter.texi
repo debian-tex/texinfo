@@ -166,12 +166,13 @@ format, like the splitting for example.
 
 Returns the value of the Texinfo customization variable @emph{$variable_name}.
 
-@item $converter->set_conf($variable_name, $variable_value)
-@anchor{Texinfo@asis{::}Convert@asis{::}Converter $converter->set_conf($variable_name@comma{} $variable_value)}
+@item $status = $converter->set_conf($variable_name, $variable_value)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $status = $converter->set_conf($variable_name@comma{} $variable_value)}
 @cindex @code{set_conf}
 
 Set the Texinfo customization option @emph{$variable_name} to @emph{$variable_value} if
-not set as a converter option.
+not set as a converter option.  Returns false if the customization options
+was not set.
 
 @end table
 
@@ -245,23 +246,25 @@ in converters that do not inherit from @code{Texinfo::Convert::Converter},
 see @ref{Texinfo@asis{::}Convert@asis{::}Utils NAME,, Texinfo::Convert::Utils}.
 
 @table @asis
-@item $contents_array = $converter->comma_index_subentries_tree($entry)
-@anchor{Texinfo@asis{::}Convert@asis{::}Converter $contents_array = $converter->comma_index_subentries_tree($entry)}
+@item $contents_element = $converter->comma_index_subentries_tree($entry, $separator)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $contents_element = $converter->comma_index_subentries_tree($entry@comma{} $separator)}
 @cindex @code{comma_index_subentries_tree}
 
 @emph{$entry} is a Texinfo tree index entry element. The function sets up
-an array with the @code{@@subentry} contents, separated by commas.  The
-array reference is returned as @emph{$contents_array}, or @code{undef} if there
-is no such content.
+an array with the @code{@@subentry} contents.  The result is returned as
+@code{contents} in the @emph{$contents_element} element, or @code{undef} if there is no
+such content.  @emph{$separator} is an optional separator argument used, if given,
+instead of the default: a comma followed by a space.
 
-@item $result = $converter->convert_accents($accent_command, \&format_accents, $in_upper_case)
-@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->convert_accents($accent_command@comma{} \&format_accents@comma{} $in_upper_case)}
+@item $result = $converter->convert_accents($accent_command, \&format_accents, $output_encoded_characters, $in_upper_case)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->convert_accents($accent_command@comma{} \&format_accents@comma{} $output_encoded_characters@comma{} $in_upper_case)}
 @cindex @code{convert_accents}
 
 @emph{$accent_command} is an accent command, which may have other accent
 commands nested.  The function returns the accents formatted either
-as encoded letters, or formatted using @emph{\&format_accents}.
-If @emph{$in_upper_case} is set, the result should be uppercased.
+as encoded letters if @emph{$output_encoded_characters} is set, or formatted
+using @emph{\&format_accents}.  If @emph{$in_upper_case} is set, the result should be
+uppercased.
 
 @item $result = $converter->convert_document_sections($root, $file_handler)
 @anchor{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->convert_document_sections($root@comma{} $file_handler)}
@@ -307,23 +310,29 @@ with the file name portion only (without directory).
 
 The strings returned are text strings.
 
-@item ($encoded_name, $encoding) = $converter->encoded_input_file_name($character_string_name)
-@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($encoded_name@comma{} $encoding) = $converter->encoded_input_file_name($character_string_name)}
+@item ($encoded_name, $encoding) = $converter->encoded_input_file_name($character_string_name, $input_file_encoding)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter ($encoded_name@comma{} $encoding) = $converter->encoded_input_file_name($character_string_name@comma{} $input_file_encoding)}
 
 @item ($encoded_name, $encoding) = $converter->encoded_output_file_name($character_string_name)
 @anchor{Texinfo@asis{::}Convert@asis{::}Converter ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($character_string_name)}
 @cindex @code{encoded_input_file_name}
 @cindex @code{encoded_output_file_name}
 
-Encode @emph{$character_string_name} in the same way as other file name are
+Encode @emph{$character_string_name} in the same way as other file names are
 encoded in the converter, based on customization variables, and possibly
 on the input file encoding.  Return the encoded name and the encoding
 used to encode the name.  The @code{encoded_input_file_name} and
 @code{encoded_output_file_name} functions use different customization variables to
 determine the encoding.
 
+The <$input_file_encoding> argument is optional.  If set, it is used for
+the input file encoding.  It is useful if there is more precise information
+on the input file encoding where the file name appeared.
+
 Note that @code{encoded_output_file_name} is a wrapper around the
-function with the same name in @ref{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($converter@comma{} $character_string_name),, Texinfo::Convert::Utils::encoded_output_file_name}.
+function with the same name in @ref{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_output_file_name($converter@comma{} $character_string_name),, Texinfo::Convert::Utils::encoded_output_file_name},
+and @code{encoded_input_file_name} is a wrapper around the
+function with the same name in @ref{Texinfo@asis{::}Convert@asis{::}Utils ($encoded_name@comma{} $encoding) = $converter->encoded_input_file_name($converter@comma{} $character_string_name@comma{} $input_file_encoding),, Texinfo::Convert::Utils::encoded_input_file_name}.
 
 @item ($caption, $prepended) = $converter->float_name_caption($float)
 @anchor{Texinfo@asis{::}Convert@asis{::}Converter ($caption@comma{} $prepended) = $converter->float_name_caption($float)}
@@ -352,12 +361,12 @@ better formatted with new lines added independently of the presence
 of newline or comment in the initial Texinfo line, so most converters
 are better off not using this method.
 
-@item $filename = sub $converter->node_information_filename($node_info)
-@anchor{Texinfo@asis{::}Convert@asis{::}Converter $filename = sub $converter->node_information_filename($node_info)}
+@item $filename = sub $converter->node_information_filename($normalized, $node_contents)
+@anchor{Texinfo@asis{::}Convert@asis{::}Converter $filename = sub $converter->node_information_filename($normalized@comma{} $node_contents)}
 @cindex @code{node_information_filename}
 
-Returns the normalized file name corresponding to the @emph{$node_info}
-node element tree @code{extra} field.
+Returns the normalized file name corresponding to the @emph{$normalized}
+node name and to the @emph{$node_contents} node name contents.
 
 @item ($normalized_name, $filename) = $converter->normalized_sectioning_command_filename($element)
 @anchor{Texinfo@asis{::}Convert@asis{::}Converter ($normalized_name@comma{} $filename) = $converter->normalized_sectioning_command_filename($element)}

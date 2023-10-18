@@ -15,12 +15,14 @@ $result_trees{'menu_in_style_command'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -59,9 +61,11 @@ $result_trees{'menu_in_style_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -69,7 +73,7 @@ $result_trees{'menu_in_style_command'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -86,6 +90,11 @@ $result_trees{'menu_in_style_command'} = {
                       'text' => ')'
                     }
                   ],
+                  'extra' => {
+                    'manual_content' => [
+                      {}
+                    ]
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -107,14 +116,6 @@ $result_trees{'menu_in_style_command'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'manual_content' => [
-                    {}
-                  ]
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -130,17 +131,23 @@ $result_trees{'menu_in_style_command'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -157,19 +164,12 @@ $result_trees{'menu_in_style_command'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -180,12 +180,9 @@ $result_trees{'menu_in_style_command'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[3];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_node'}{'manual_content'}[0] = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 
-$result_texis{'menu_in_style_command'} = '@node Top
+$result_texis{'menu_in_style_command'} = '@node first
 
 @code{
 }@menu
@@ -207,7 +204,7 @@ $result_nodes{'menu_in_style_command'} = {
         'cmdname' => 'menu'
       }
     ],
-    'normalized' => 'Top'
+    'normalized' => 'first'
   },
   'structure' => {
     'menu_child' => {
@@ -217,17 +214,16 @@ $result_nodes{'menu_in_style_command'} = {
             'text' => 'truc'
           }
         ]
-      }
-    },
-    'node_next' => {}
+      },
+      'type' => 'menu_entry_node'
+    }
   }
 };
-$result_nodes{'menu_in_style_command'}{'structure'}{'node_next'} = $result_nodes{'menu_in_style_command'}{'structure'}{'menu_child'};
 
 $result_menus{'menu_in_style_command'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   },
   'structure' => {
     'menu_child' => {
@@ -237,21 +233,13 @@ $result_menus{'menu_in_style_command'} = {
             'text' => 'truc'
           }
         ]
-      }
+      },
+      'type' => 'menu_entry_node'
     }
   }
 };
 
 $result_errors{'menu_in_style_command'} = [
-  {
-    'error_line' => 'warning: @menu should not appear in @code
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@menu should not appear in @code',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@code missing closing brace
 ',

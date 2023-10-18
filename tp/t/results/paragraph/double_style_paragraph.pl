@@ -62,17 +62,19 @@ $result_trees{'double_style_paragraph'} = {
             {
               'text' => 'Second para.
 '
-            },
-            {
-              'text' => '
-'
-            },
-            {
-              'text' => '
-'
             }
           ],
           'type' => 'paragraph'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'

@@ -1,6 +1,6 @@
 # Report.pm: prepare error messages.
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -70,88 +70,108 @@ sub errors($)
 }
 
 # format a line warning
-sub line_warn($$$$)
+sub line_warn($$$$;$$)
 {
   my $self = shift;
   my $configuration_information = shift;
   my $text = shift;
-  chomp ($text);
   my $error_location_info = shift;
+  my $continuation = shift;
+  my $silent = shift;
+
   return if (!defined($error_location_info));
+
+  chomp ($text);
+
   my $warn_line;
 
   if (defined($error_location_info->{'macro'})
       and $error_location_info->{'macro'} ne '') {
     $warn_line = sprintf(__p("Texinfo source file warning",
-                             "warning: %s (possibly involving \@%s)\n"),
+                             "warning: %s (possibly involving \@%s)")."\n",
                          $text, $error_location_info->{'macro'});
   } else {
     $warn_line = sprintf(__p("Texinfo source file warning",
-                             "warning: %s\n"),
+                             "warning: %s")."\n",
                          $text);
   }
   warn $warn_line if (defined($configuration_information)
-                      and $configuration_information->get_conf('DEBUG'));
+                      and $configuration_information->get_conf('DEBUG')
+                      and not $silent);
   my %location_info = %{$error_location_info};
   delete $location_info{'file_name'} if (exists ($location_info{'file_name'})
                                   and not defined($location_info{'file_name'}));
-  push @{$self->{'errors_warnings'}},
-       { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line,
+  my $warning
+    = { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line,
          %location_info };
+  $warning->{'continuation'} = $continuation if ($continuation);
+  push @{$self->{'errors_warnings'}}, $warning;
 }
 
 # format a line error
-sub line_error($$$$)
+sub line_error($$$$;$)
 {
   my $self = shift;
   my $configuration_information = shift;
   my $text = shift;
-  chomp ($text);
   my $error_location_info = shift;
+  my $continuation = shift;
+  my $silent = shift;
+
+  chomp ($text);
+
   if (defined($error_location_info)) {
     my $macro_text = '';
     $macro_text = " (possibly involving \@$error_location_info->{'macro'})"
        if ($error_location_info->{'macro'} ne '');
     my $error_text = "$text$macro_text\n";
     warn $error_text if (defined($configuration_information)
-                         and $configuration_information->get_conf('DEBUG'));
+                         and $configuration_information->get_conf('DEBUG')
+                         and not $silent);
     my %location_info = %{$error_location_info};
     delete $location_info{'file_name'} if (exists ($location_info{'file_name'})
                                   and not defined($location_info{'file_name'}));
-    push @{$self->{'errors_warnings'}},
-         { 'type' => 'error', 'text' => $text,
+    my $error = { 'type' => 'error', 'text' => $text,
            'error_line' => $error_text,
            %{$error_location_info} };
+    $error->{'continuation'} = $continuation if ($continuation);
+    push @{$self->{'errors_warnings'}}, $error;
   }
-  $self->{'error_nrs'}++;
+  $self->{'error_nrs'}++ unless ($continuation);
 }
 
-sub document_warn($$$)
+sub document_warn($$$;$)
 {
   my $self = shift;
   my $configuration_information = shift;
   my $text = shift;
+  my $continuation = shift;
+
   chomp($text);
 
   my $warn_line;
   if (defined($configuration_information)
       and defined($configuration_information->get_conf('PROGRAM'))
       and $configuration_information->get_conf('PROGRAM') ne '') {
-    $warn_line = sprintf(__p("whole document warning", "%s: warning: %s\n"),
+    $warn_line = sprintf(__p("whole document warning", "%s: warning: %s")."\n",
                   $configuration_information->get_conf('PROGRAM'), $text);
   } else {
-    $warn_line = sprintf(__p("whole document warning", "warning: %s\n"),
+    $warn_line = sprintf(__p("whole document warning", "warning: %s")."\n",
                          $text);
   }
-  push @{$self->{'errors_warnings'}},
-    { 'type' => 'warning', 'text' => $text, 'error_line' => $warn_line };
+  my $warning = { 'type' => 'warning', 'text' => $text,
+                  'error_line' => $warn_line };
+  $warning->{'continuation'} = $continuation if ($continuation);
+  push @{$self->{'errors_warnings'}}, $warning;
 }
 
-sub document_error($$$)
+sub document_error($$$;$)
 {
   my $self = shift;
   my $configuration_information = shift;
   my $text = shift;
+  my $continuation = shift;
+
   chomp($text);
   my $error_line;
   if (defined($configuration_information)
@@ -162,9 +182,11 @@ sub document_error($$$)
   } else {
     $error_line = "$text\n";
   }
-  push @{$self->{'errors_warnings'}},
-    { 'type' => 'error', 'text' => $text, 'error_line' => $error_line };
-  $self->{'error_nrs'}++;
+  my $error = { 'type' => 'error', 'text' => $text,
+                'error_line' => $error_line, };
+  $error->{'continuation'} = $continuation if ($continuation);
+  push @{$self->{'errors_warnings'}}, $error;
+  $self->{'error_nrs'}++ unless ($continuation);
 }
 
 1;
@@ -269,9 +291,9 @@ the error or warning.
 
 =back
 
-=item $registrar->line_warn($text, $configuration_information, $error_location_info)
+=item $registrar->line_warn($text, $configuration_information, $error_location_info, $continuation, $silent)
 
-=item $registrar->line_error($text, $configuration_information, $error_location_info)
+=item $registrar->line_error($text, $configuration_information, $error_location_info, $continuation, $silent)
 X<C<line_warn>>
 X<C<line_error>>
 
@@ -285,18 +307,26 @@ be setup to point to a file name, using the C<file_name> key and
 to a line number, using the C<line_nr> key.  The C<file_name> key value
 should be a binary string.
 
+The I<$continuation> optional arguments, if true, conveys that
+the line is a continuation line of a message.
+
+The I<$silent> optional arguments, if true, suppresses the output of
+a message that is output immediatly if debugging is set.
+
 The I<source_info> key of Texinfo tree elements is described
 in more details in L<Texinfo::Parser/source_info>.
 
-=item $registrar->document_warn($configuration_information, $text)
+=item $registrar->document_warn($configuration_information, $text, $continuation)
 
-=item $registrar->document_error($configuration_information, $text)
+=item $registrar->document_error($configuration_information, $text, $continuation)
 X<C<document_warn>>
 X<C<document_error>>
 
 Register a document-wide error or warning.  I<$text> is the error or
 warning message.  The I<$configuration_information> object gives
 some information that can modify the messages or their delivery.
+The I<$continuation> optional arguments, if true, conveys that
+the line is a continuation line of a message.
 
 =back
 

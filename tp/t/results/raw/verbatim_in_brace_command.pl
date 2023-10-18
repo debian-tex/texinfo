@@ -36,9 +36,11 @@ $result_trees{'verbatim_in_brace_command'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -58,17 +60,23 @@ $result_trees{'verbatim_in_brace_command'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -85,7 +93,8 @@ $result_trees{'verbatim_in_brace_command'} = {
         },
         {
           'text' => '
-'
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'
@@ -108,15 +117,6 @@ in verbatim
 ';
 
 $result_errors{'verbatim_in_brace_command'} = [
-  {
-    'error_line' => 'warning: @verbatim should not appear in @samp
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@verbatim should not appear in @samp',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@samp missing closing brace
 ',
@@ -144,6 +144,14 @@ $result_floats{'verbatim_in_brace_command'} = {};
 
 $result_converted{'plaintext'}->{'verbatim_in_brace_command'} = '‘ ’
 in verbatim
+
+';
+
+
+$result_converted{'xml'}->{'verbatim_in_brace_command'} = '<para><samp>
+</samp></para><verbatim xml:space="preserve" endspaces=" ">
+in verbatim
+</verbatim>
 
 ';
 

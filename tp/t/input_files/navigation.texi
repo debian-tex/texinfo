@@ -1,7 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename navigation.info
-
 @node Top
 @top File used for navigation testing
 

@@ -10,6 +10,48 @@ $result_trees{'macro_definition_in_include'} = {
     {
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'macro_included.texi'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'include',
+                'extra' => {
+                  'text_arg' => 'macro_included.texi'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 1,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'include',
+              'status' => 'start'
+            }
+          ],
+          'text' => ''
+        },
+        {
           'args' => [
             {
               'text' => 'themacro',
@@ -31,17 +73,23 @@ $result_trees{'macro_definition_in_include'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'macro_included.texi',
@@ -50,7 +98,7 @@ $result_trees{'macro_definition_in_include'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' themacro
 '
           },
@@ -58,7 +106,14 @@ $result_trees{'macro_definition_in_include'} = {
             'file_name' => 'macro_included.texi',
             'line_nr' => 1,
             'macro' => ''
-          }
+          },
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'sourcemark_type' => 'include',
+              'status' => 'end'
+            }
+          ]
         },
         {
           'text' => '
@@ -68,10 +123,37 @@ $result_trees{'macro_definition_in_include'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'themacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 11,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Call macro
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 11,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'in themacro
 '
             }

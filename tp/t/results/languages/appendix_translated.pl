@@ -19,17 +19,23 @@ $result_trees{'appendix_translated'} = {
                       'text' => 'fr'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'fr'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -56,28 +62,23 @@ $result_trees{'appendix_translated'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -93,9 +94,11 @@ $result_trees{'appendix_translated'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -108,8 +111,11 @@ $result_trees{'appendix_translated'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -125,9 +131,11 @@ $result_trees{'appendix_translated'} = {
               'text' => 'dernier'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -144,7 +152,7 @@ $result_trees{'appendix_translated'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -155,8 +163,10 @@ $result_trees{'appendix_translated'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -167,8 +177,6 @@ $result_trees{'appendix_translated'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'appendix_translated'} = '@documentlanguage fr
 
@@ -207,7 +215,6 @@ $result_sectioning{'appendix_translated'} = {
           'section_childs' => [
             {
               'cmdname' => 'appendix',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 'A',
@@ -309,6 +316,8 @@ $result_converted{'html'}->{'appendix_translated'} = '<!DOCTYPE html>
 <link href="#SEC_Contents" rel="contents" title="Table des mati&egrave;res">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -319,7 +328,7 @@ ul.toc-numbered-mark {list-style: none}
 <body lang="fr">
 
 <div class="top-level-extent" id="Top">
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table des mati&egrave;res</h2>
@@ -332,7 +341,7 @@ ul.toc-numbered-mark {list-style: none}
 </div>
 </div>
 <div class="appendix-level-extent" id="dernier">
-<h2 class="appendix">Annexe A dernier</h2>
+<h2 class="appendix"><span>Annexe A dernier<a class="copiable-link" href="#dernier"> &para;</a></span></h2>
 
 </div>
 </div>

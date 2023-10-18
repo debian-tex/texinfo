@@ -1,8 +1,7 @@
 \input texinfo
-@setfilename split-nocopying.info
 
 @node Top
-@top Top
+@top Test file used to test split Info without @@copying
 
 This is the top node.
 

@@ -12,9 +12,11 @@ $result_trees{'xml_protected_in_verb'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -34,17 +36,23 @@ $result_trees{'xml_protected_in_verb'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -79,7 +87,7 @@ $result_trees{'xml_protected_in_verb'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => '.'
               },
               'source_info' => {
@@ -108,18 +116,24 @@ $result_trees{'xml_protected_in_verb'} = {
                   'text' => 'file_with_xml_chars.texi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'file_with_xml_chars.texi'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -177,7 +191,7 @@ $result_converted{'html'}->{'xml_protected_in_verb'} = '<!DOCTYPE html>
 <body lang="en">
 <pre class="verbatim">&lt;a&gt;
 </pre>
-<p><code class="verb"> &lt;i&gt; </code>.
+<p><code class="verb">&nbsp;&lt;i&gt;&nbsp;</code>.
 </p>
 <pre class="verbatim">&lt;bidule truc=&quot;ff &amp;amp;&quot;&gt; &amp; &lt;/bidule&gt;
 </pre>

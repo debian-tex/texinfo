@@ -19,9 +19,11 @@ $result_trees{'three_setchapternewpage_on_odd_off'} = {
                       'text' => 'on'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -30,8 +32,12 @@ $result_trees{'three_setchapternewpage_on_odd_off'} = {
               'extra' => {
                 'misc_args' => [
                   'on'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -52,9 +58,11 @@ $result_trees{'three_setchapternewpage_on_odd_off'} = {
                       'text' => 'odd'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -63,8 +71,12 @@ $result_trees{'three_setchapternewpage_on_odd_off'} = {
               'extra' => {
                 'misc_args' => [
                   'odd'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -85,9 +97,11 @@ $result_trees{'three_setchapternewpage_on_odd_off'} = {
                       'text' => 'off'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -96,8 +110,12 @@ $result_trees{'three_setchapternewpage_on_odd_off'} = {
               'extra' => {
                 'misc_args' => [
                   'off'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -166,7 +184,7 @@ $result_converted{'latex_text'}->{'three_setchapternewpage_on_odd_off'} = '\\mak
 \\makeatletter
 \\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}}{}{}
 \\makeatother
-\\pagestyle{single}%
+\\pagestyle{empty}%
 \\begin{document}
 ';
 

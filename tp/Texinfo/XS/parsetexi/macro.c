@@ -1,4 +1,4 @@
-/* Copyright 2010-2022 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,12 +17,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdio.h>
 
 #include "parser.h"
+#include "debug.h"
 #include "tree.h"
 #include "text.h"
 #include "input.h"
 #include "convert.h"
+#include "source_marks.h"
+#include "macro.h"
+
+COUNTER count_toplevel_braces;
 
 static MACRO *macro_list;
 static size_t macro_number;
@@ -31,30 +37,54 @@ static size_t macro_space;
 
 /* Macro definition. */
 
+MACRO *
+lookup_macro_and_slot (enum command_id cmd, size_t *free_slot)
+{
+  int i;
+  if (free_slot)
+    *free_slot = 0;
+
+  for (i = 0; i < macro_number; i++)
+    {
+      if (macro_list[i].cmd == cmd)
+        return &macro_list[i];
+      if (free_slot && !*free_slot && macro_list[i].cmd == 0)
+        *free_slot = i;
+    }
+  return 0;
+}
+
 void
 new_macro (char *name, ELEMENT *macro)
 {
   enum command_id new;
   MACRO *m = 0;
-  ELEMENT tmp;
+  size_t free_slot = 0;
 
   /* Check for an existing definition first for us to overwrite. */
   new = lookup_command (name);
   if (new)
-    m = lookup_macro (new);
+    m = lookup_macro_and_slot (new, &free_slot);
   if (!m)
     {
-      if (macro_number == macro_space)
+      size_t macro_index;
+      if (free_slot)
+        macro_index = free_slot;
+      else
         {
-          macro_list = realloc (macro_list,
-                                (macro_space += 5) * sizeof (MACRO));
-          if (!macro_list)
-            fatal ("realloc failed");
+          if (macro_number == macro_space)
+            {
+              macro_list = realloc (macro_list,
+                              (macro_space += 5) * sizeof (MACRO));
+              if (!macro_list)
+                fatal ("realloc failed");
+            }
+          macro_index = macro_number;
+          macro_number++;
         }
       new = add_texinfo_command (name);
-      m = &macro_list[macro_number];
+      m = &macro_list[macro_index];
       m->cmd = new;
-      macro_number++;
       new &= ~USER_COMMAND_BIT;
       user_defined_command_data[new].flags |= CF_MACRO;
     }
@@ -66,9 +96,7 @@ new_macro (char *name, ELEMENT *macro)
   m->macro_name = strdup (name);
   m->element = macro;
 
-  memset (&tmp, 0, sizeof (ELEMENT));
-  tmp.contents = macro->contents;
-  m->macrobody = convert_to_texinfo (&tmp);
+  m->macrobody = convert_contents_to_texinfo (macro);
 }
 
 /* CMD will be either CM_macro or CM_rmacro.  Read the line defining a macro's 
@@ -87,25 +115,28 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   macro->cmd = cmd;
   macro->source_info = current_source_info;
 
-  add_extra_string (macro, "arg_line", strdup (line));
-  /* Note this extra value isn't used much, so it might be possible
-     to get rid of it. */
+  add_info_string_dup (macro, "arg_line", line);
 
   line += strspn (line, whitespace_chars);
   name = read_command_name (&line);
 
-  if (*line && *line != '{' && !strchr (whitespace_chars, *line))
-    {
-      line_error ("bad name for @%s", command_name (cmd));
-      add_extra_integer (macro, "invalid_syntax", 1);
-      return macro;
-    }
-  else if (!name)
+  if (!name)
     {
       line_error ("@%s requires a name", command_name (cmd));
       add_extra_integer (macro, "invalid_syntax", 1);
       return macro;
     }
+
+  if (*line && *line != '{' && *line != '@'
+      && !strchr (whitespace_chars, *line))
+    {
+      line_error ("bad name for @%s", command_name (cmd));
+      add_extra_integer (macro, "invalid_syntax", 1);
+      free (name);
+      return macro;
+    }
+
+  debug ("MACRO @%s %s", command_name (cmd), name);
 
   macro_name = new_element (ET_macro_name);
   text_append (&macro_name->text, name);
@@ -173,12 +204,12 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
               char *p;
               for (p = args_ptr; p < q2; p++)
                 {
-                  if (!isalnum (*p) && *p != '_' && *p != '-')
+                  if (!isascii_alnum (*p) && *p != '_' && *p != '-')
                     {
-                      char c = *q2; *q2 = 0;
+                      char saved = *q2; *q2 = 0;
                       line_error ("bad or empty @%s formal argument: %s",
                                   command_name(cmd), args_ptr);
-                      *q2 = c;
+                      *q2 = saved;
                       add_extra_integer (macro, "invalid_syntax", 1);
                       break;
                     }
@@ -194,13 +225,20 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
       index++;
     }
 
-check_trailing:
+ check_trailing:
   line = args_ptr;
   line += strspn (line, whitespace_chars);
   if (*line && *line != '@')
     {
+      char *argument_str = strdup (line);
+      /* remove new line for the message */
+      char *end_line = strchr (argument_str, '\n');
+
+      if (end_line)
+            *end_line = '\0';
       line_error ("bad syntax for @%s argument: %s",
-                  command_name(cmd), line);
+                  command_name(cmd), argument_str);
+      free (argument_str);
       add_extra_integer (macro, "invalid_syntax", 1);
     }
   //line += strlen (line); /* Discard rest of line. */
@@ -236,26 +274,57 @@ lookup_macro_parameter (char *name, ELEMENT *macro)
   return -1;
 }
 
-/* LINE points the first non-whitespace character after the opening brace in a 
-   macro invocation.  CMD is the command identifier of the macro command.  
-   Return array of the arguments.  Return value to be freed by caller.  */
-char **
-expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
+/* not done by _close_container as argument is in args and not in
+   contents. */
+/* Currently unused */
+ELEMENT *
+remove_empty_arg (ELEMENT *argument)
+{
+  ELEMENT *current = close_container (argument);
+  if (is_container_empty (argument)
+      && argument->source_mark_list.number == 0)
+    {
+      ELEMENT *last_child = last_args_child (current);
+      if (last_child == argument)
+        destroy_element (pop_element_from_args (current));
+    }
+  return current;
+}
+
+/* LINE points the opening brace in a macro invocation.  CMD is the command
+   identifier of the macro command.  Return array of the arguments.  Return
+   value to be freed by caller.  */
+void
+expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd,
+                        ELEMENT *current)
 {
   char *line = *line_inout;
   char *pline = line;
-  TEXT arg;
+  TEXT *arg;
   int braces_level = 1;
   int args_total;
+  int whitespaces_len;
+  ELEMENT *argument = new_element (ET_brace_command_arg);
+  ELEMENT *argument_content = new_element (ET_NONE);
 
-  char **arg_list = 0;
-  size_t arg_number = 0;
-  size_t arg_space = 0;
+  add_to_element_args (current, argument);
+  text_append_n (&argument_content->text, "", 0);
+  add_to_element_contents (argument, argument_content);
+  arg = &(argument_content->text);
 
-  arg_list = malloc (sizeof (char *));
   args_total = macro->args.number - 1;
 
-  text_init (&arg);
+  /* *pline is '{', advance past the open brace, start at braces_level = 1 */
+  pline++;
+  whitespaces_len = strspn (pline, whitespace_chars);
+  if (whitespaces_len > 0)
+    {
+      ELEMENT *spaces_element = new_element (ET_NONE);
+      text_append_n (&spaces_element->text, pline, whitespaces_len);
+      add_info_element_oot (current, "spaces_before_argument",
+                            spaces_element);
+      pline += whitespaces_len;
+    }
 
   while (braces_level > 0)
     {
@@ -267,114 +336,327 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
       if (!*sep)
         {
           debug ("MACRO ARG end of line");
-          text_append (&arg, pline);
-          line = new_line ();
+          text_append (arg, pline);
+          line = new_line (argument);
           if (!line)
             {
-              line_error ("@%s missing closing brace", command_name(cmd));
+              line_error ("@%s missing closing brace", command_name (cmd));
+              remove_empty_content (argument);
               line = "\n";
-              free (arg.text);
               goto funexit;
             }
           pline = line;
           continue;
         }
 
-      text_append_n (&arg, pline, sep - pline);
+      text_append_n (arg, pline, sep - pline);
 
       switch (*sep)
         {
         case '\\':
           if (!strchr ("\\{},", sep[1]))
-            text_append_n (&arg, sep, 1);
+            text_append_n (arg, sep, 1);
           if (sep[1])
             {
-              text_append_n (&arg, &sep[1], 1);
+              text_append_n (arg, &sep[1], 1);
               pline = sep + 2;
+              if (sep[1] == ',')
+                line_warn ("use %s instead of %s in macro arg",
+                           "@comma{}", "\\,");
             }
           else
             pline = sep + 1;
           break;
         case '{':
           braces_level++;
-          text_append_n (&arg, sep, 1);
+          text_append_n (arg, sep, 1);
           pline = sep + 1;
           break;
         case '}':
           braces_level--;
           if (braces_level > 0)
-            {
-              text_append_n (&arg, sep, 1);
-              pline = sep + 1;
-              break;
-            }
-
-          /* Fall through to add argument. */
+            text_append_n (arg, sep, 1);
+          else
+            /* end of arguments */
+            remove_empty_content (argument);
+          pline = sep + 1;
+          break;
         case ',':
+          pline = sep + 1;
           if (braces_level > 1)
-            {
-              text_append_n (&arg, sep, 1);
-              pline = sep + 1;
-              break;
-            }
-
-          // check for too many args
-          if (*sep == '}' || arg_number < args_total - 1)
-            {
-              /* Add the last argument read to the list. */
-              if (arg_number == arg_space)
-                {
-                  arg_list = realloc (arg_list,
-                                      (1+(arg_space += 5)) * sizeof (char *));
-                  /* Include space for terminating null element. */
-                  if (!arg_list)
-                    fatal ("realloc failed");
-                }
-              if (arg.space > 0)
-                arg_list[arg_number++] = arg.text;
-              else
-                arg_list[arg_number++] = strdup ("");
-              text_init (&arg);
-
-              debug ("MACRO NEW ARG");
-              pline = sep + 1;
-
-              if (*sep == ',')
-                pline += strspn (pline, whitespace_chars);
-            }
+            text_append_n (arg, sep, 1);
           else
             {
-              if (args_total != 1)
-                line_error ("macro `%s' called with too many args",
-                            command_name(cmd));
-              text_append_n (&arg, ",", 1);
-              pline = sep + 1;
+              if (current->args.number < args_total)
+                {
+                  char *p = pline;
+
+                  remove_empty_content (argument);
+
+                  /* new argument */
+                  argument = new_element (ET_brace_command_arg);
+                  argument_content = new_element (ET_NONE);
+                  add_to_element_args (current, argument);
+                  text_append_n (&argument_content->text, "", 0);
+                  add_to_element_contents (argument, argument_content);
+                  arg = &(argument_content->text);
+                  pline += strspn (pline, whitespace_chars);
+                  if (pline - p)
+                    {
+                      ELEMENT *spaces_element = new_element (ET_NONE);
+                      text_append_n (&spaces_element->text, p, pline - p);
+                      add_info_element_oot (argument, "spaces_before_argument",
+                                            spaces_element);
+                    }
+                  debug ("MACRO NEW ARG");
+                }
+              else
+                /* too many args */
+                {
+                  if (args_total != 1)
+                    line_error ("macro `%s' called with too many args",
+                                command_name(cmd));
+                  text_append_n (arg, sep, 1);
+                }
             }
           break;
         }
     }
 
-  debug ("END MACRO ARGS EXPANSION");
   line = pline;
 
-  if (args_total == 0 && arg_number > 0
-      && arg_list[0] && *arg_list[0])
+  if (args_total == 0
+      && (current->args.number > 1
+          || current->args.list[0]->contents.number > 0))
     {
       line_error
         ("macro `%s' declared without argument called with an argument",
          command_name(cmd));
     }
+  debug ("END MACRO ARGS EXPANSION");
 
 funexit:
   *line_inout = line;
-  arg_list[arg_number] = 0;
-  return arg_list;
 }
 
-/* ARGUMENTS are the arguments used in the macro invocation.  EXPANDED gets the 
-   result of the expansion. */
-static void
-expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
+void
+set_toplevel_braces_nr (COUNTER *counter, ELEMENT* element)
+{
+  int toplevel_braces_nr = counter_value (counter,
+                                          element);
+  if (toplevel_braces_nr)
+    add_extra_integer (element,
+                       "toplevel_braces_nr",
+                       toplevel_braces_nr);
+  counter_pop (counter);
+}
+
+void
+expand_linemacro_arguments (ELEMENT *macro, char **line_inout,
+                            enum command_id cmd, ELEMENT *current)
+{
+  char *line = *line_inout;
+  char *pline = line;
+  TEXT *arg;
+  int braces_level = 0;
+  int args_total;
+  int spaces_nr;
+  int i;
+  ELEMENT *argument = new_element (ET_NONE);
+  ELEMENT *argument_content = new_element (ET_NONE);
+  counter_push (&count_toplevel_braces, argument_content, 0);
+
+  add_to_element_args (current, argument);
+  text_append_n (&argument_content->text, "", 0);
+  add_to_element_contents (argument, argument_content);
+  arg = &(argument_content->text);
+
+  spaces_nr = strspn (pline, whitespace_chars_except_newline);
+  if (spaces_nr)
+    {
+      ELEMENT *spaces_element = new_element (ET_NONE);
+      text_append_n (&spaces_element->text, line, spaces_nr);
+      add_info_element_oot (argument, "spaces_before_argument",
+                            spaces_element);
+
+      pline += spaces_nr;
+    }
+
+  args_total = macro->args.number - 1;
+
+  while (1)
+    {
+      char *sep;
+
+      sep = pline + strcspn (pline, linecommand_expansion_delimiters);
+      if (!*sep)
+        {
+          debug_nonl ("LINEMACRO ARGS no separator %d '", braces_level);
+          debug_print_protected_string (pline); debug ("'");
+          if (braces_level > 0)
+            {
+              text_append (arg, pline);
+
+              line = new_line (argument);
+              if (!line)
+                {
+                  line_error ("@%s missing closing brace", command_name (cmd));
+                  line = "";
+                  goto funexit;
+                }
+            }
+          else
+            {
+              int text_len = strcspn (pline, "\n");
+              line = pline + text_len;
+              text_append_n (arg, pline, text_len);
+              if (! *line)
+                {
+                  /* happens when @ protects the end of line, at the very end
+                     of a text fragment and with macro expansion */
+                  line = new_line (argument);
+                  if (!line)
+                    {
+                      debug ("LINEMACRO ARGS end no EOL");
+                      line = "";
+                      goto funexit;
+                    }
+                }
+              else
+                {
+                  /* end of macro call with an end of line */
+                  goto funexit;
+                }
+            }
+          pline = line;
+          continue;
+        }
+
+      text_append_n (arg, pline, sep - pline);
+
+      switch (*sep)
+        {
+          int single_char;
+          char *command;
+          int whitespaces_len;
+        case '@':
+          pline = sep + 1;
+          command = parse_command_name (&pline, &single_char);
+          if (command)
+            {
+              enum command_id cmd = lookup_command (command);
+              if (braces_level <= 0 && cmd
+                  && (cmd == CM_comment || cmd == CM_c))
+                {
+                  line = sep;
+                  goto funexit;
+                }
+              text_append_n (arg, sep, 1);
+              text_append (arg, command);
+              if (cmd && (command_data(cmd).flags & CF_brace)
+                  && strchr (whitespace_chars, *pline)
+                  && ((command_flags(current) & CF_accent)
+                   || conf.ignore_space_after_braced_command_name))
+                {
+                  int whitespaces_len = strspn (pline, whitespace_chars);
+                  text_append_n (arg, pline, whitespaces_len);
+                  pline += whitespaces_len;
+                }
+              free (command);
+            }
+          else
+            {
+              text_append_n (arg, sep, 1);
+            }
+          break;
+        case '{':
+          braces_level++;
+          text_append_n (arg, sep, 1);
+          pline = sep + 1;
+          break;
+        case '}':
+          braces_level--;
+          text_append_n (arg, sep, 1);
+          pline = sep + 1;
+          if (braces_level == 0)
+            counter_inc (&count_toplevel_braces);
+          break;
+        /* spaces */
+        default:
+          pline = sep;
+          whitespaces_len = strspn (pline, whitespace_chars_except_newline);
+
+          if (braces_level > 0
+              || current->args.number >= args_total)
+            {
+              text_append_n (arg, pline, whitespaces_len);
+            }
+          else
+            {
+              ELEMENT *spaces_element = new_element (ET_NONE);
+
+              set_toplevel_braces_nr (&count_toplevel_braces,
+                                      argument_content);
+
+              argument = new_element (ET_NONE);
+              argument_content = new_element (ET_NONE);
+              counter_push (&count_toplevel_braces, argument_content, 0);
+
+              add_to_element_args (current, argument);
+              text_append_n (&argument_content->text, "", 0);
+              add_to_element_contents (argument, argument_content);
+              arg = &(argument_content->text);
+
+              text_append_n (&spaces_element->text, pline,
+                             whitespaces_len);
+              add_info_element_oot (argument, "spaces_before_argument",
+                                    spaces_element);
+              debug ("LINEMACRO NEW ARG");
+            }
+          pline += whitespaces_len;
+          break;
+        }
+    }
+
+ funexit:
+  set_toplevel_braces_nr (&count_toplevel_braces,
+                          argument_content);
+  for (i = 0; i < current->args.number; i++)
+    {
+      ELEMENT *argument_content = current->args.list[i]->contents.list[0];
+      KEY_PAIR *k = lookup_extra (argument_content, "toplevel_braces_nr");
+      if (k)
+        {
+          if ((intptr_t) k->value == 1)
+            {
+              int text_len = strlen(argument_content->text.text);
+              if (argument_content->text.text[0] == '{'
+                  && argument_content->text.text[text_len -1] == '}')
+                {
+                  char *braced_text = strdup (argument_content->text.text);
+                  debug_nonl ("TURN to bracketed %d ", i);
+                  debug_print_element (argument_content, 0); debug ("");
+
+                  text_reset (&argument_content->text);
+                  text_append_n (&argument_content->text,
+                                 braced_text+1, text_len -2);
+                  free(braced_text);
+                  argument_content->type = ET_bracketed_linemacro_arg;
+                }
+            }
+
+          k->key = "";
+          k->type = extra_deleted;
+        }
+    }
+  debug ("END LINEMACRO ARGS EXPANSION");
+
+  *line_inout = line;
+}
+/* ARGUMENTS element holds the arguments used in the macro invocation.
+   EXPANDED gets the result of the expansion. */
+void
+expand_macro_body (MACRO *macro_record, ELEMENT *arguments, TEXT *expanded)
 {
   int pos; /* Index into arguments. */
   ELEMENT *macro;
@@ -384,7 +666,7 @@ expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
   macro = macro_record->element;
 
   macrobody = macro_record->macrobody;
-  
+
   /* Initialize TEXT object. */
   expanded->end = 0;
 
@@ -402,7 +684,7 @@ expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
       bs = strchrnul (ptext, '\\');
       text_append_n (expanded, ptext, bs - ptext);
       if (!*bs)
-        break; /* End of line. */
+        break; /* End of body. */
 
       ptext = bs + 1;
       if (*ptext == '\\')
@@ -415,7 +697,8 @@ expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
           bs = strchr (ptext, '\\');
           if (!bs)
             {
-              /* malformed input - unpaired backslash */
+              /* unpaired backslash */
+              text_append (expanded, ptext);
               return;
             }
 
@@ -432,8 +715,14 @@ expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
             }
           else
             {
-              if (arguments && arguments[pos])
-                text_append (expanded, arguments[pos]);
+              if (arguments && pos < arguments->args.number)
+                {
+                  ELEMENT *argument = args_child_by_index (arguments, pos);
+                  if (argument->contents.number > 0)
+                    text_append (expanded,
+                      last_contents_child (
+                        args_child_by_index (arguments, pos))->text.text);
+                }
             }
           *bs = '\\';
           ptext = bs + 1;
@@ -455,6 +744,20 @@ lookup_macro (enum command_id cmd)
 }
 
 void
+unset_macro_record (MACRO *m)
+{
+  if (!m)
+    return;
+
+  m->cmd = 0;
+  free (m->macro_name);
+  m->macro_name = 0;
+  free (m->macrobody);
+  m->macrobody = 0;
+  m->element = 0;
+}
+
+void
 delete_macro (char *name)
 {
   enum command_id cmd;
@@ -463,14 +766,7 @@ delete_macro (char *name)
   if (!cmd)
     return;
   m = lookup_macro (cmd);
-  if (!m)
-    return;
-  m->cmd = 0;
-  free (m->macro_name);
-  m->macro_name = strdup ("");
-  free (m->macrobody);
-  m->macrobody = 0;
-  m->element = 0;
+  unset_macro_record (m);
   remove_texinfo_command (cmd);
 }
 
@@ -487,7 +783,9 @@ wipe_macros (void)
   macro_number = 0;
 }
 
-/* Handle macro expansion.  CMD is the macro command. */
+/* Handle macro expansion.  CMD is the macro command.
+   The returned element is an out of tree element holding the call
+   arguments also associated to the macro expansion source mark */
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
@@ -495,8 +793,11 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
   MACRO *macro_record;
   ELEMENT *macro;
   TEXT expanded;
-  char **arguments = 0;
+  char *expanded_macro_text;
   int args_number;
+  SOURCE_MARK *macro_source_mark;
+  ELEMENT *macro_call_element = new_element (ET_NONE);
+  int error = 0;
 
   line = *line_inout;
   text_init (&expanded);
@@ -506,100 +807,186 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
     fatal ("no macro record");
   macro = macro_record->element;
 
-  /* Get number of args. - 1 for the macro name. */
-  args_number = macro->args.number - 1;
-
-  p = line + strspn (line, whitespace_chars);
-  if (*p == '{')
-    {
-      line = p;
-      line++;
-      line += strspn (line, whitespace_chars);
-      arguments = expand_macro_arguments (macro, &line, cmd);
-    }
-  /* Warning depending on the number of arguments this macro
-     is supposed to take. */
-  else if (args_number != 1)
-    {
-      if (args_number > 1)
-        line_warn ("@%s defined with zero or more than one argument should "
-                   "be invoked with {}", command_name(cmd));
-      /* As agreed on the bug-texinfo mailing list, no warn when zero
-         arg and not called with {}. */
-    }
-  else
-    {
-      char *p;
-      /* If it takes a single line of input, and we don't have a full line of 
-         input already, call new_line. */
-      if (!strchr (line, '\n'))
-        {
-          line = new_line ();
-          if (!line)
-            line = "";
-        }
-      line += strspn (line, whitespace_chars_except_newline);
-
-      arguments = malloc (sizeof (char *) * 2);
-      arguments[0] = strdup (line);
-      arguments[1] = 0;
-
-      p = strchr (arguments[0], '\n');
-      if (p)
-        {
-          *p = '\0';
-          line = "\n";
-        }
-    }
-
-  expand_macro_body (macro_record, arguments, &expanded);
-  debug ("MACROBODY: %s||||||", expanded.text);
-
-  if (expanded.end > 0 && expanded.text[expanded.end - 1] == '\n')
-    expanded.text[--expanded.end] = '\0';
-
-  if (input_number >= 1000)
-    {
-      line_warn (
-         "macro call nested too deeply "
-         "(set MAX_NESTED_MACROS to override; current value %d)", 1000);
-      goto funexit;
-      /* TODO: actually check MAX_NESTED_MACROS? */
-    }
-
   if (macro->cmd == CM_macro)
+    macro_call_element->type = ET_macro_call;
+  else if (macro->cmd == CM_rmacro)
+    macro_call_element->type = ET_rmacro_call;
+  else if (macro->cmd == CM_linemacro)
+    macro_call_element->type = ET_linemacro_call;
+
+  add_info_string_dup (macro_call_element, "command_name", command_name(cmd));
+
+  /* It is important to check for expansion before the expansion and
+     not after, as during the expansion, the text may go past the
+     call.  In particular for user defined linemacro which generally
+     get the final new line from following text.
+  */
+
+  macro_expansion_nr++;
+  debug ("MACRO EXPANSION NUMBER %d %s", macro_expansion_nr, command_name(cmd));
+
+  if (macro->cmd != CM_rmacro)
     {
       if (expanding_macro (command_name(cmd)))
         {
           line_error ("recursive call of macro %s is not allowed; "
                       "use @rmacro if needed", command_name(cmd));
-          expanded.text[0] = '\0';
-          expanded.end = 0;
+          error = 1;
         }
     }
 
-  /* Free arguments. */
-  if (arguments)
+  if (conf.max_macro_call_nesting
+      && macro_expansion_nr > conf.max_macro_call_nesting)
     {
-      char **s = arguments;
-      while (*s)
-        {
-          free (*s);
-          s++;
-        }
-      free (arguments);
+      line_warn (
+         "macro call nested too deeply "
+         "(set MAX_MACRO_CALL_NESTING to override; current value %d)",
+                conf.max_macro_call_nesting);
+      error = 1;
     }
 
-  // 3958 Pop macro stack
+  if (macro->cmd == CM_linemacro)
+    {
+      expand_linemacro_arguments (macro, &line, cmd, macro_call_element);
+    }
+  else
+    {
+      /* Get number of args. - 1 for the macro name. */
+      args_number = macro->args.number - 1;
+
+      p = line + strspn (line, whitespace_chars);
+      if (*p == '{')
+        {
+          if (p - line > 0)
+            {
+              ELEMENT *spaces_element = new_element (ET_NONE);
+              text_append_n (&spaces_element->text, line, p - line);
+              add_info_element_oot (macro_call_element, "spaces_after_cmd_before_arg",
+                                    spaces_element);
+
+            }
+          line = p;
+          expand_macro_arguments (macro, &line, cmd, macro_call_element);
+        }
+      /* Warning depending on the number of arguments this macro
+         is supposed to take. */
+      else if (args_number != 1)
+        {
+          if (args_number > 1)
+            line_warn ("@%s defined with zero or more than one argument should "
+                       "be invoked with {}", command_name(cmd));
+          /* As agreed on the bug-texinfo mailing list, no warn when zero
+             arg and not called with {}. */
+        }
+      else
+        {
+          ELEMENT *arg_elt = new_element (ET_line_arg);
+          add_to_element_args (macro_call_element, arg_elt);
+
+          while (1)
+            {
+              if (*line == '\0')
+                {
+                /* If it takes a single line of input, and we don't have a
+                   full line of input already, call new_line. */
+                  line = new_line (arg_elt);
+                  if (!line)
+                    {
+                      line = "";
+                      break;
+                    }
+                }
+              else
+                {
+                  int leading_spaces_added = 0;
+                  if (arg_elt->contents.number == 0)
+                    {
+                      int leading_spaces_nr = strspn (line,
+                                               whitespace_chars_except_newline);
+                      if (leading_spaces_nr)
+                        {
+                          ELEMENT *internal_space
+                            = new_element (ET_internal_spaces_before_argument);
+                          text_append_n (&internal_space->text, line,
+                                         leading_spaces_nr);
+                          add_extra_element (internal_space,
+                                             "spaces_associated_command",
+                                             macro_call_element);
+                          add_to_element_contents (arg_elt, internal_space);
+
+                          line += leading_spaces_nr;
+
+                          leading_spaces_added = 1;
+                        }
+                    }
+                  if (! leading_spaces_added)
+                    {
+                      char *p = strchr (line, '\n');
+                      if (!p)
+                        {
+                          arg_elt = merge_text (arg_elt, line, 0);
+                          line += strlen(line);
+                        }
+                      else
+                        {
+                          *p = '\0';
+                          arg_elt = merge_text (arg_elt, line, 0);
+                          line = "\n";
+                          break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+  if (error)
+    {
+      macro_expansion_nr--;
+      destroy_element_and_children (macro_call_element);
+      macro_call_element = 0;
+      goto funexit;
+    }
+
+  expand_macro_body (macro_record, macro_call_element, &expanded);
+
+  if (expanded.text)
+    {
+      if (expanded.text[expanded.end - 1] == '\n')
+        expanded.text[--expanded.end] = '\0';
+      expanded_macro_text = expanded.text;
+    }
+  else
+    /* we want to always have a text for the source mark */
+    expanded_macro_text = strdup ("");
+
+  debug ("MACROBODY: %s||||||", expanded_macro_text);
+
+  if (macro->cmd == CM_linemacro)
+    macro_source_mark = new_source_mark (SM_type_linemacro_expansion);
+  else
+    macro_source_mark = new_source_mark (SM_type_macro_expansion);
+  macro_source_mark->status = SM_status_start;
+  macro_source_mark->element = macro_call_element;
+  register_source_mark (current, macro_source_mark);
+
+  /* first put the line that was interrupted by the macro call
+     on the input pending text stack */
+  input_push_text (strdup (line), current_source_info.line_nr, 0, 0);
 
   /* Put expansion in front of the current line. */
-  input_push_text (strdup (line), 0);
-  line = strchr (line, '\0');
-  input_push_text (expanded.text, command_name(cmd));
+  input_push_text (expanded_macro_text, current_source_info.line_nr,
+                   command_name(cmd), 0);
 
-funexit:
+  set_input_source_mark (macro_source_mark);
+
+  /* not really important as line is ignored by the caller if there
+     was no macro expansion error */
+  line = strchr (line, '\0');
+
+ funexit:
   *line_inout = line;
-  return current;
+  return macro_call_element;
 }
 
 

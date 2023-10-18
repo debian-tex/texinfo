@@ -424,11 +424,11 @@ $result_converted{'plaintext'}->{'punctuation_commands'} = 'Dot.  Exclam!  Quest
 
    End of lines and spaces Dot.  Exclam!  Question?  Enddots...  End.
 
-   With paren.)  paren.)  Symb.)"’] Symb.)"’] End.
+   With paren.)  paren.)  Symb.)"\']  Symb.)"\']  End.
 
-   End of lines paren.)  Symb.)"’] End.
+   End of lines paren.)  Symb.)"\']  End.
 
-   End of lines and spaces paren.)  Symb.)"’] End.
+   End of lines and spaces paren.)  Symb.)"\']  End.
 ';
 
 1;

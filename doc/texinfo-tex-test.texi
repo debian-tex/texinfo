@@ -1,6 +1,6 @@
 % texinfo-tex-test.texi -- test file for texinfo.tex
 %
-% Copyright 2015-2019 Free Software Foundation, Inc.
+% Copyright 2015-2023 Free Software Foundation, Inc.
 %
 % This file is free software: you can redistribute it and/or
 % modify it under the terms of the GNU General Public License as
@@ -176,132 +176,233 @@ line
 @paragraphindent 0
 
 @chapter Macros
+
+Each line should occur twice throughout, first line uses macro, second
+line should be the output.
+
 @section Backslashes in macro arguments
 
 @macro Mac{x}
-A\x\A
+(\x\)
 @end macro
 
+@Mac{}
+
+()
+
+@Mac{a}
+
+(a)
+
+@Mac{a}X
+
+(a)X
+
+@Mac{a\\}
+
+(a\)
+
+@Mac{a\}X
+
+(a\)X
+
+@Mac{b\\}X
+
+(b\)X
+
+@Mac{c\\\}X
+
+(c\\)X
+
+@Mac{\}X
+
+(\)X
+
+@Mac{\a}X
+
+(\a)X
+
+@Mac{\\b}X
+
+(\b)X
+
+@Mac{\\}X
+
+(\)X
+
+@Mac{\\\}X
+
+(\\)X
+
+@Mac{\\\aaa\}X
+
+(\\aaa\)X
+
+@Mac{\a\\b}X
+
+(\a\b)X
+
+@subsection Line arguments
+
+
+@Mac a
+
+(a)
+
+@Mac a\
+
+(a\)
+
+@Mac a\\
+
+(a\\)
+
+@Mac a\\\
+
+(a\\\)
+
+@Mac \a\\b
+
+(\a\\b)
+
+@subsection In @t{@@code}
+
+@code{@Mac{a\}}
+
+@code{(a\)}
+
+@code{@Mac{b\\}}
+
+@code{(b\)}
+
+@code{@Mac{c\\\}}
+
+@code{(c\\)}
+
+@code{@Mac{\\\\d}}
+
+@code{(\\d)}
+
+
+
+@subsection Macros with two arguments
+
 @macro Mactwo{x, y}
-<\x\>.<\y\>@.
+<\x\>.<\y\>
 @end macro
 
 @rmacro RMac{x}
 Z\x\Z
 @end rmacro
 
-The number refers to the number of backslashes that should appear
-
-0 @Mac{}
-
-0 @Mac{a}
-
-0 @Mac{a}X
-
-1 @Mac{a\\}
-
-1 @Mac{a\}X
-
-1 @Mac{a\\}X
-
-2 @Mac{a\\\}X
-
-1 @Mac{\}X
-
-1 @Mac{\a}X
-
-1 @Mac{\\a}X
-
-1 @Mac{\\}X
-
-2 @Mac{\\\}X
-
-2 and 1 @Mac{\\\aaa\}X
-
-1 and 1 @Mac{\a\\b}X
-
-one backslash outside \
-
-two backslashes outside \\
-
-three backslashes outside \\\
-
-0 @Mac a 
-
-1 @Mac a\
-
-2 @Mac a\\ 
-
-3 @Mac a\\\
-
-1 and 2 @Mac \a\\b
-
-in @@code:@*
-1 @code{@Mac{\}}@*
-1 @code{@Mac{\\}}@*
-2 @code{@Mac{\\\}}@*
-2 @code{@Mac{\\\\}}
-
-one backslash outside \
-
-two backslashes outside \\
-
-three backslashes outside \\\
-
-Macros with two arguments:
-0+0 @Mactwo{A,B}
-0+0 @Mactwo{A, B}
-1+0 @Mactwo{\A, B}
-0+1 @Mactwo{A, \\B}
-2+1 @Mactwo{\\\A, \\B}
-2+2 @Mactwo{\\\A, \\\\B}
-
-Space between macro name and opening brace (thus: @samp{@@Mactwo @{}):
-
-0+0 @Mactwo {A,B}
-0+0 @Mactwo {A, B}
-1+0 @Mactwo {\A, B}
-0+1 @Mactwo {A, \\B}
-2+1 @Mactwo {\\\A, \\B}
-2+2 @Mactwo {\\\A, \\\\B}
-
-space between backslashes: @Mac{\ \}@*
-space between backslashes line arg: @Mac \ \
-
-space after backslashes, two arguments:@*
-@Mactwo{\ \\, \ \\}@*
-@Mactwo{\\ \\, \\ \\}@*
-@Mactwo{\\ a, \\ b}@*
-@Mactwo{\ a, \ b}@*
-
-other spaces:@*
-@Mactwo{h \\, i \\}@*
-@Mactwo{h \\, i \\}@*
-@Mactwo{h a, i b}@*
 
 
-@section Special characters in macro argument
+@Mactwo{A,B}
 
-Braceless single line macro invocation with special characters.  Compare:
+<A>.<B>
+
+@Mactwo{A, C}
+
+<A>.<C>
+
+@Mactwo{\A, B}
+
+<\A>.<B>
+
+@Mactwo{A, \\B}
+
+<A>.<\B>
+
+@Mactwo{\\\A, \\B}
+
+<\\A>.<\B>
+
+@Mactwo{\\\A, \\\\B}
+
+<\\A>.<\\B>
+
+@subsubsection Space between macro name and opening brace
+
+@Mactwo {A,B}
+
+<A>.<B>
+
+@Mactwo {A, C}
+
+<A>.<C>
+
+@Mactwo {\A, B}
+
+<\A>.<B>
+
+@Mactwo {A, \\B}
+
+<A>.<\B>
+
+@Mactwo {\\\A, \\B}
+
+<\\A>.<\B>
+
+@Mactwo {\\\A, \\\\B}
+
+<\\A>.<\\B>
+
+
+@subsection Spaces and backslashes
+
+@Mac{\ \}
+
+(\ \)
+
+@Mac \ \x
+
+(\ \x)
+
+@Mactwo{\ \\, \ \\}
+
+<\ \>.<\ \>
+
+x@Mactwo{\\ \\, \\ \\}
+
+x<\ \>.<\ \>
+
+@Mactwo{\\ a, \\ b}
+
+<\ a>.<\ b>
+
+y@Mactwo{\ a, \ b}
+
+y<\ a>.<\ b>
+
+@Mactwo{h \\, i \\}
+
+<h \>.<i \>
+
+@Mactwo{h a, i b}
+
+<h a>.<i b>
+
+
+@section Braceless single line macro invocation with special characters
 
 @Mac "+<>^+|~@@@{@}
 
-A"+<>^+|~@@@{@}A
+("+<>^+|~@@@{@})
 
 
 @section Spaces in macro bodies
-
-Distance between the two x's should be the same
 
 @macro Mac
 @example
 x  x
 @end example
 @end macro
+
+@Mac
+
 @example
 x  x
 @end example
-@Mac
 
 @section Macro use inside macro argument
 
@@ -315,28 +416,21 @@ xx \arg\ xx
 @end macro
 
 @Outermac{@Innermac{e}}
-should be@*
+
 xx e xx
 
 @section Closing brace following empty macro argument
 
 @macro Mac{x}
-A@acronym{\x\}A
+(@acronym{\x\})
 @end macro
 
 @Mac{}
 
-AA
+()
 
 @page
 @section Trailing newlines in macro bodies
-
-Output should be doubled:
-
-1y
-
-z
-x2
 
 @macro nbsp
 y
@@ -347,8 +441,14 @@ x
 
 1@nbsp{}2
 
-Output should be doubled:
+1y
 
+z
+x2
+
+@example
+1@nbsp{}2
+@end example
 
 @example
 1y
@@ -357,9 +457,6 @@ z
 x2
 @end example
 
-@example
-1@nbsp{}2
-@end example
 
 @section Open or close a group in a macro
 
@@ -429,28 +526,51 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxx
 value
 @end macro
 
-Okay, we are here. The @Mac
-on next line now.
+A @Mac
+BB.
 
-With spaces and newline. The @Mac       
-on next line now.
+A valueBB.
 
-With braces. The @Mac{}
-on next line now.
+C @Mac       
+DD.
 
-With space and braces. The @Mac {}
-on next line now.
+C valueDD.
 
-With two spaces and braces. The @Mac  {}
-on next line now.
+E@Mac{}
+F
 
-With braces and two newlines. The @Mac{}
+Evalue F
 
-in next paragraph now.
+E @Mac {}
+F
 
-With two newlines. The @Mac
+E value F
 
-in next paragraph now.
+EE @Mac  {}
+FF
+
+EE value FF
+
+GG @Mac{}
+
+HHH
+
+GG value
+
+HHH
+
+II JJ @Mac
+
+KLM
+
+II JJ valueKLM
+
+KK LL @Mac
+
+
+MMM
+
+KK LL valueMMM
 
 @section @,c in macro argument
 
@@ -470,6 +590,8 @@ Fran@,cois+.
 @end macro
 
 exceeds @math{@frak{1,16}} pt
+
+exceeds @math{1 @over 16} pt
 
 
 @section Trim whitespace from macro arguments
@@ -531,6 +653,1007 @@ And multiple paragraphs.
 Like an argument to @b{@@footnote}.
 }
 
+@section Substitution into @t{@@example}
+
+@macro Twoarg {arg,argtwo}
+@example
+@result{}\arg\@result{}
+@end example
+@end macro
+
+@Twoarg{bbbbb, 22222222222}
+
+@example
+@result{}bbbbb@result{}
+@end example
+
+
+
+
+@chapter Line macros
+
+@linemacro noarg
+@example
+@expansion{} this is the expansion
+@end example
+@end linemacro
+
+@noarg
+
+@example
+@expansion{} this is the expansion
+@end example
+
+@linemacro bs
+A\\B
+@end linemacro
+
+@bs
+
+A\B
+
+@linemacro noargii {}
+@example
+@expansion{}another test
+@end example
+@end linemacro
+
+@noargii
+
+@example
+@expansion{}another test
+@end example
+
+@linemacro onearg {arg}
+@result{}\arg\@result{}
+@end linemacro
+ 
+@onearg aaaaa
+
+@result{}aaaaa@result{}
+
+@linemacro twoargs {one, two}
+foo @samp{\one\} `\two\' bar
+@end linemacro
+
+@twoargs AA BB
+
+foo @samp{AA} `BB' bar
+
+@twoargs AA {}
+
+foo @samp{AA} `' bar
+
+@linemacro two {arg, argii}
+@example
+@expansion{}\arg\@expansion{}\argii\@pounds{}
+@end example
+@end linemacro
+
+@two AA {}
+
+@example
+@expansion{}AA@expansion{}@pounds{}
+@end example
+
+@two BB CC
+
+@example
+@expansion{}BB@expansion{}CC@pounds{}
+@end example
+
+@linemacro nospace{one, two, three}
+\three\@bullet{}\two\@minus{}\one\
+@end linemacro
+
+@nospace X Y Z
+
+Z@bullet{}Y@minus{}X
+
+@linemacro test {first, rest}
+@deffn Function \first\ \rest\
+something
+@end deffn
+@end linemacro
+
+@test foo (bar, baz)@
+continuation line
+
+@deffn Function foo (bar, baz)continuation line
+something
+@end deffn
+
+@test foo (bar, baz) @
+continuation line
+
+@deffn Function foo (bar, baz) continuation line
+something
+@end deffn
+
+
+
+@heading With @code{@@defblock}
+
+@defcodeindex BI
+@linemacro defbuiltin {symbol, rest}
+@BIindex \symbol\
+@defline Builtin \symbol\ \rest\
+@end linemacro
+
+@defblock
+@defbuiltin One (more)
+one
+@defbuiltin Nothing {}
+two
+@end defblock
+
+
+
+@defblock
+@defline Builtin One (more)
+one
+@defline Builtin Nothing
+two
+@end defblock
+
+@printindex BI
+
+
+@linemacro defmacro {name, params}
+@defline Makro \name\ \params\
+@end linemacro
+
+@defblock
+@defmacro mac1 (arg1, arg2,@
+line continuation
+description
+@end defblock
+
+@defblock
+@defline Makro mac1 (arg1, arg2,@
+line continuation
+description
+@end defblock
+
+@linemacro param {param, type}
+@defline Parameter @var{\param\} @code{ : \type\}
+@end linemacro
+@linemacro returns {param, type}
+@defline {Return Value} @var{\param\} @code{ : \type\}
+@end linemacro
+@linemacro raises {exception}
+@defline {Raises} \exception\
+@end linemacro
+
+@set txidefnamenospace
+@clear txicodevaristt
+
+@defblock
+@defline Function fft.fft (a, n=@code{None}, axis=@code{-1}, norm=@code{None})
+Compute the one-dimensional discrete Fourier Transform.
+
+@defblock
+@param a array_like
+Input array, can be complex.
+
+@param n int, optional
+Length of the transformed axis of the output.
+If @var{n} is smaller than the length of the input, the input is cropped.
+
+@param axis int, optional
+Axis over which to compute the FFT.
+
+@returns out complex ndarray
+The truncated or zero-padded input.
+
+@raises IndexError
+If @var{axis} is not a valid axis of @var{a}.
+
+@end defblock
+
+@end defblock
+
+@c from https://numpy.org/doc/1.24/reference/generated/numpy.fft.fft.html#numpy.fft.fft
+
+
+
+
+@part Another part@*Note no headline on this page
+
+@chapter First chapter after a part page
+
+Have a look at the headline.
+
+
+@chapter Test of non-alphanumeric characters
+
+Not in code: @{@}@@#\
+
+In code @t{@{@}@@#\}
+
+
+@chapter Test of auxiliary files
+
+
+@section Values
+
+Need to test with @command{texi2dvi}.
+
+Undefined value in anchor: @anchor{@value{ho} ho}
+
+Xref to said anchor: @xref{@value{ho} ho}.
+
+@set auxvalue this is the value
+Defined value in anchor: @anchor{@value{auxvalue} ho}
+
+Xref to said anchor: @xref{@value{auxvalue} ho}.  (Should definitely 
+work.)
+
+@defindex ax
+
+value in index entry
+@axindex @value{ho} in index entry
+
+defined value in index entry (this should definitely work)
+@axindex @value{auxvalue} in index entry
+
+value in index entry, but only defined afterwards
+@axindex @value{definedafter} index entry
+
+@axindex @b{another}
+
+@set complex @code{foo@b{b@'ar}}
+test of texinfo commands in value in index entry
+@axindex @value{complex} index entry
+
+test of value change after index command
+@set changed original
+@axindex `@value{changed}' should be `original'
+@set changed new
+
+test of underscore in value
+@set underscore _
+@axindex `@value{underscore}' should be `_'
+
+some more text.
+
+test of macro in index entry:
+@macro MyMac {arg}
+ffff\arg\ggggg
+@end macro
+
+@axindex @MyMac{bah}
+
+@page
+
+@set definedafter Defining this now
+@set definedafter Defining this again
+
+@printindex ax
+
+
+@ignore
+@c This section doesn't work while we use \ as the escape character
+@c in the index files.
+
+@section Test of macros with @samp{@@} in index
+
+@defindex BB
+
+@macro Mac {arg}
+\arg\@}
+@end macro
+
+@macro MacTwo {arg}
+@{@}
+@end macro
+
+@BBindex @Mac{CCCC @@}
+
+@BBindex @MacTwo{DDDD @@}
+@printindex BB
+@end ignore
+
+
+@section Test of certain characters in index
+
+@defindex CC
+@CCindex \, backslash
+@CCindex @{, open brace
+@CCindex @}, close brace
+@CCindex @@, at sign
+@CCindex @backslashchar{}, backslash 2
+@CCindex @lbracechar{}, open brace 2
+@CCindex @rbracechar{}, close brace 2
+@CCindex @atchar{}, at sign 2
+
+@printindex CC
+
+
+@section Test of @code{@@synindex}
+
+@defindex foo
+@defindex bar
+
+@synindex foo bar
+
+@fooindex One
+@barindex Two
+
+Should be two entries, not one below.
+
+@printindex bar
+
+
+@section Test of index sort keys
+
+@defindex SK
+
+@SKindex @sortas{A} bbbbbbb (first)
+@SKindex @sortas{B} aaaaaaa (second)
+
+@printindex SK
+
+
+@page
+@section Test of characters in node names for PDF
+
+@ifx@pdfescapestring@thisisundefined
+
+This test requires newer @command{pdfetex}.
+
+@else
+
+@anchor{anchor}.
+
+@anchor{backslash \}.
+
+@anchor{closing bracket )}.
+
+@anchor{opening bracket (}.
+
+@xref{anchor}.
+
+@xref{backslash \}.
+
+@xref{closing bracket )}.
+
+@xref{opening bracket (}.
+
+@fi
+
+
+@chapter @code{@@set} and @code{@@value}
+
+@section Another test of @t{@@value}
+
+Underscores and hyphens in value
+
+@set foo-bar_ neenaw
+
+The value is @value{foo-bar_}.
+
+
+@chapter Cross-references
+
+@section Comma insertion
+
+Check commas surrounding page number:
+
+@noindent
+@xref{Target}, for more information (@code{@@xref})@*
+@xref{Target} for more information@*
+@xref{Target}	for more information@*
+@xref{Target}
+for more information@*
+@xref{Target}.@*
+@xref{Target}@ for more info.@*
+@xref{Target}@
+for more info.@*
+@xref{Target}@*
+for more info.@*
+@xref{Target}@	for more info.@*
+@xref{Target} --- for more info. (comma)@*
+@xref{Target}@: --- for more info. (no comma)@*
+See @ref{Target}, for more information (@code{@@ref})@*
+See @ref{Target} for more information@*
+See @ref{Target}.@*
+(@pxref{Target}) (@code{@@pxref})@*
+(@pxref{Target,, Hurricanes})
+
+
+@node Target
+@section Target
+
+@section Non-existent target
+
+@xref{blllllllrrrrrrghhh}.
+
+@chapter Copying and captions
+
+@section Copying
+
+@documentencoding UTF-8
+
+@copying
+This manual is for blah-de-blah.@*
+Backslash \@*
+Brace commands @{ @{ @}
+
+Copyrite @copyright{} 201X@*
+þ þ þ þ þ þ þ þ
+@end copying
+
+Now for the @@insertcopying:
+
+@insertcopying
+
+
+@section Captions
+
+
+There's a float in this section.
+
+@float Figure,fig:ex1
+This is a float.
+
+@caption{This is a caption.
+Multiple paragraphs are allowed here.  Here are some ``special'' 
+characters: \ à.
+
+Paragraph breaks allowed.
+}
+
+@shortcaption{short caption text.}
+
+This float should have a caption somewhere.
+@end float
+
+List of floats now:
+
+@listoffloats Figure
+
+
+@chapter Environments
+
+@section @code{@@verbatim}
+
+@verbatim
+                   ‘MENU’
+                   ------
+
+chicken		pizza	beefburger	hotdog
+£0.44		$2.50	€1.50		42¢
+
+“Please come again”
+@end verbatim
+
+@section @code{@@multitable}
+
+Nested in @@quotation:
+
+before before before before before before before before
+before before before before before before before before
+before before before before before before before before
+before before before before before before before before
+
+@quotation
+@multitable @columnfractions 0.5 0.5
+@item
+left left left left left left left left
+left left left left left left left left
+left left left left left left left left
+left left left left left left left left
+@tab
+right right right right right right right right
+right right right right right right right right
+right right right right right right right right
+right right right right right right right right
+@end multitable
+@end quotation
+
+@noindent With more columns:
+
+@quotation
+@multitable {@w{@code{português} or}} {@code{do} @code{re}/@code{re} @code{mi} @code{fa} @code{sol} @code{la} @code{sib} @code{si}}
+@item @code{català} or@*@ @code{catalan}
+  @tab @code{do} @code{re} @code{mi} @code{fa} @code{sol} @code{la} @code{sib} @code{si}
+@end multitable
+@end quotation
+
+after after after after after after after after
+after after after after after after after after
+after after after after after after after after
+after after after after after after after after
+
+in @t{@@raggedright} (check warnings re @samp{Underful \hbox} etc.):
+
+@raggedright
+@multitable @columnfractions 0.2 0.2 0.2
+@item foofoo foofoo foofoo foofoo
+  @tab barbar barbar barbar barbar
+  @tab bazbaz bazbaz bazbaz bazbaz
+@end multitable
+@end raggedright
+
+
+@section @code{@@cartouche}
+
+check right margin lines up
+
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+
+@cartouche
+@math{@var{foo}\over@var{bar}} finds the quotient of @var{foo} by
+@var{bar}.  @math{\sqrt{@var{radicand}}} finds the square root of
+@var{radicand}.
+@end cartouche
+
+@noindent
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+
+@quotation
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+
+@cartouche
+@math{@var{foo}\over@var{bar}} finds the quotient of @var{foo} by
+@var{bar}.  @math{\sqrt{@var{radicand}}} finds the square root of
+@var{radicand}.
+@end cartouche
+
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
+@end quotation
+
+
+
+
+@section Definitions
+
+Check that spacing does not vary after the `?'@: punctuation on the
+definition line, but spacing does vary inside the definition body and
+afterwards.
+
+@clear txidefnamenospace
+
+@defun foo bar? bar bar
+@defunx foo bar?@: bar bar
+a. b@*
+a.@: b
+@end defun
+
+@noindent
+a. b@*
+a.@: b
+
+@defun foo bar?@: bar bar
+a. b@*
+a.@: b
+@end defun
+
+Check explicit bold with @code{@@r@{@@b@{...} on def line
+
+@defun foo @r{@b{&rest}} (b(sdf)az)
+hello 
+@end defun
+
+Check typewriter [ and ] on def line with @code{@@t}:
+
+@defun foo @t{\f[}font@t{]}
+Do something depending on @var{font}.
+@end defun
+
+With @code{@@deftypefnnewline}
+
+@deftypefnnewline on
+
+@deftypefn {Functionoid} {long int} foo (int @var{bar})
+@dots{} do something with @var{bar}
+@end deftypefn
+
+With @code{@@set txidefnamenospace}
+
+@deftypefnnewline off
+@set txidefnamenospace
+
+@deftypefn {Functionoid} {long int} foo2 (int @var{bar})
+@dots{} do something with @var{bar}
+@end deftypefn
+
+
+
+@chapter Test of @code{@@displaymath}
+
+Alignment in @@displaymath:
+
+@displaymath
+\leqalignno{
+   \int v(t)\, dt &= u(t) + C&[3.1]\cr
+   \int v(t)\, dt &= u(t) + H&[3.2]\cr
+}
+@end displaymath
+
+test of \eqno
+@displaymath
+   v(t) = {d \over dt} u(t)\eqno{[3.1]}
+@end displaymath
+
+
+
+
+@chapter Style commands
+
+@code{@@var} should reset space factor, while
+@code{@@dfn} doesn't, so second line should have slightly larger space.
+
+@var{Stop.} Following text.
+
+@dfn{Stop.} Following text.
+
+@section Code quote
+
+@code{`foo'}
+
+@codequoteundirected on
+@codequotebacktick on
+
+@code{`foo'}
+
+@codequoteundirected off
+@codequotebacktick off
+
+@code{`foo'}
+
+
+
+
+
+@chapter Document encoding
+
+
+@documentencoding UTF-8
+
+
+Test of a few UTF-8 sequences.
+
+∃x∈X, x < ∞, s.t. x ∧ y
+
+A∩B=C
+
+(spacing here doesn't matter because we're not in math mode)
+
+Greek text:
+
+Η Πρώτη σύνοδος της Κωνσταντινούπολης, γνωστή ως Β΄ οικουμενική, ήταν η 
+εκκλησιαστική σύνοδος που διενεργήθηκε το 381 μ.Χ. και συγκλήθηκε από 
+τον αυτοκράτορα Θεοδόσιο, μετά από προτροπή του Μελετίου Αντιοχείας.  
+Στόχος της ήταν η εκκλησιαστική ειρήνευση, αλλά και η «επίλυση των 
+αναφυέντων εν τη εκκλησία κρίσιμων θεολογικών και διοικητικών 
+προβλημάτων».
+
+(random text copied from Wikipedia)
+
+double accent --- ταΐζω
+
+
+@section Test of characters in section title
+
+Check table of contents.
+
+For PDF output, check the bookmarks pane in the reader.
+(Currently plain ASCII approximations are used for the UTF-8 encoding.)
+
+@section --- übersicht
+
+@section --- @"Ubersicht
+
+@section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
+
+This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
+
+
+@node Special characters
+@section ~[]"_|<>$#&%+\
+
+This section should be called @code{~[]"_|<>$#&%+\} (in Roman type).
+
+@xrefautomaticsectiontitle on
+@xref{Special characters} is a cross-reference using
+@code{@@xrefautomaticsectiontitle on}.
+@xrefautomaticsectiontitle off
+
+
+
+@chapter PDF link colours
+
+For PDF only.
+
+
+Check that
+colour change continues on next page
+for @acronym{URL} split across pages,
+and doesn't change the colour of the heading line.
+
+Push down to end of page
+
+par
+
+@tex
+\global\def\urlcolor{0.32 0.39 0.50}%
+@end tex
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+@uref{aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/}
+
+par
+
+@chapter URL line breaking
+
+Some use of @code{@@url}.  Ragged-right output should only be used where
+necessary.
+
+In a different way, the full range of colors defined for
+@uref{https://en.wikipedia.org/wiki/X11_color_names, defined for X11}
+can be accessed by using the Scheme function @code{x11-color}.
+That function takes one argument.
+
+see the 
+@url{https://www.gnu.org/software/libc/manual/html_node/Message-catalogs-with-gettext.html} 
+
+foo foo foo foo foo foo foof see the @url{https://www.gnu.org/software/libc/manual/html_node/}
+
+In case of problem, please read the @file{INSTALL} file carefully
+before reporting a bug, in particular section ``In case of problem''.
+Some problems are due to bad configuration on the user side (not
+specific to MPFR)@. Problems are also mentioned in the FAQ
+@url{https://www.mpfr.org/faq.html}.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234567890123.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234567890.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234567.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+Initial text to test the justification of the line containing the
+first part of the URL: blah blah blah blah blah blah blah blah.
+@url{https://www.1234567890123456789012345678901234.invalid}.
+Text to test the justification of the line containing the last part
+of the URL: blah blah blah blah blah blah blah blah.
+
+@chapter Nested URL
+
+In @command{@@lisp}
+
+@lisp
+one
+@url{www.gnu.org}
+three
+four
+
+six
+
+
+nine @url{http://example.com/} nine
+@end lisp
+
+in footnote@footnote{see @url{http://example.com/}.}. after footnote
+
+next para.
+
+next para.
+
+
+
+
+@setchapternewpage off
+@everyheadingmarks top
+@everyheading @thissection
+@chapter Headings and footings
+
+test of @samp{@@everyheadingmarks top}
+@c due to the way that @chapter outputs a pair of marks, possibly one on 
+@c the page before, following @page directly by @chapter can cause the 
+@c wrong chapter in the heading line, because then both marks are output 
+@c on the new page.
+
+@section One
+
+one
+
+@page
+
+two
+
+@section Two
+
+@section Three
+
+@page
+
+ffffff
+
+@section Four
+
+@page
+
+test of @samp{@@everyheadingmarks bottom}
+
+@everyheading @thissection
+@everyheadingmarks bottom
+
+@page
+
+@section One
+
+@section Two
+
+@section Three
+
+@page
+
+ffffff
+
+@section Four
+
+@page
+
+@setchapternewpage odd
+@chapter Test of @code{@@*heading}
+
+@headings off
+@oddheading @today{} @| @thispage @| @thischapter{}
+@evenheading @thischapter @| @thispage @| @today{}
+chapter text (date at left)
+
+@page
+next page
+(date at right)
+
+@page
+
+@oddfooting @thistitle @| @thispage @| @thissection
+@evenfooting @thissection @| @thispage @| @thistitle
+@everyfootingmarks top
+
+@chapter Test of @code{@@*footing}
+
+aaa
+
+@section AA
+
+bbb
+
+@page
+
+ccc
+
+@section DD
+
+ee
+
+@page
+
+
 
 @tex
 \gdef \commenceindexnopage{%
@@ -553,6 +1676,18 @@ Like an argument to @b{@@footnote}.
 \hrule
 }
 @end tex
+
+@headingsoff
+@everyheading @thischapter @| @| @thissection{} p@thispage
+
+@chapter TOC display
+
+Check in contents at start.  Manual break with @t{@@/} in section name.
+
+
+@section Sec
+@subsection foofoo@code{\DeclareRobustCommand@{@var{cmd}@}[@var{num}][@var{default}]@/@{@var{definition}@} }
+
 
 @chapter Index display
 
@@ -1413,796 +2548,6 @@ line line line line line line}{9, 42}
 @initial{@}}
 @initial{F}
 @finishindex
-
-
-
-@part Another part@*Note no headline on this page
-
-@chapter First chapter after a part page
-
-Have a look at the headline.
-
-
-@chapter Test of non-alphanumeric characters
-
-Not in code: @{@}@@#\
-
-In code @t{@{@}@@#\}
-
-
-@chapter Test of auxiliary files
-
-
-@section Values
-
-Need to test with @command{texi2dvi}.
-
-Undefined value in anchor: @anchor{@value{ho} ho}
-
-Xref to said anchor: @xref{@value{ho} ho}.
-
-@set auxvalue this is the value
-Defined value in anchor: @anchor{@value{auxvalue} ho}
-
-Xref to said anchor: @xref{@value{auxvalue} ho}.  (Should definitely 
-work.)
-
-@defindex ax
-
-value in index entry
-@axindex @value{ho} in index entry
-
-defined value in index entry (this should definitely work)
-@axindex @value{auxvalue} in index entry
-
-value in index entry, but only defined afterwards
-@axindex @value{definedafter} index entry
-
-@axindex @b{another}
-
-@set complex @code{foo@b{b@'ar}}
-test of texinfo commands in value in index entry
-@axindex @value{complex} index entry
-
-test of value change after index command
-@set changed original
-@axindex `@value{changed}' should be `original'
-@set changed new
-
-test of underscore in value
-@set underscore _
-@axindex `@value{underscore}' should be `_'
-
-some more text.
-
-test of macro in index entry:
-@macro MyMac {arg}
-ffff\arg\ggggg
-@end macro
-
-@axindex @MyMac{bah}
-
-@page
-
-@set definedafter Defining this now
-@set definedafter Defining this again
-
-@printindex ax
-
-
-@ignore
-@c This section doesn't work while we use \ as the escape character
-@c in the index files.
-
-@section Test of macros with @samp{@@} in index
-
-@defindex BB
-
-@macro Mac {arg}
-\arg\@}
-@end macro
-
-@macro MacTwo {arg}
-@{@}
-@end macro
-
-@BBindex @Mac{CCCC @@}
-
-@BBindex @MacTwo{DDDD @@}
-@printindex BB
-@end ignore
-
-
-@section Test of certain characters in index
-
-@defindex CC
-@CCindex \, backslash
-@CCindex @{, open brace
-@CCindex @}, close brace
-@CCindex @@, at sign
-@CCindex @backslashchar{}, backslash 2
-@CCindex @lbracechar{}, open brace 2
-@CCindex @rbracechar{}, close brace 2
-@CCindex @atchar{}, at sign 2
-
-@printindex CC
-
-
-@section Test of @code{@@synindex}
-
-@defindex foo
-@defindex bar
-
-@synindex foo bar
-
-@fooindex One
-@barindex Two
-
-Should be two entries, not one below.
-
-@printindex bar
-
-
-@section Test of index sort keys
-
-@defindex SK
-
-@SKindex @sortas{A} bbbbbbb (first)
-@SKindex @sortas{B} aaaaaaa (second)
-
-@printindex SK
-
-
-@page
-@section Test of characters in node names for PDF
-
-@ifx@pdfescapestring@thisisundefined
-
-This test requires newer @command{pdfetex}.
-
-@else
-
-@anchor{anchor}.
-
-@anchor{backslash \}.
-
-@anchor{closing bracket )}.
-
-@anchor{opening bracket (}.
-
-@xref{anchor}.
-
-@xref{backslash \}.
-
-@xref{closing bracket )}.
-
-@xref{opening bracket (}.
-
-@fi
-
-
-@chapter @code{@@set} and @code{@@value}
-
-@section Another test of @t{@@value}
-
-Underscores and hyphens in value
-
-@set foo-bar_ neenaw
-
-The value is @value{foo-bar_}.
-
-
-@chapter Cross-references
-
-@section Comma insertion
-
-Check commas surrounding page number:
-
-@noindent
-@xref{Target}, for more information (@code{@@xref})@*
-@xref{Target} for more information@*
-@xref{Target}	for more information@*
-@xref{Target}
-for more information@*
-@xref{Target}.@*
-@xref{Target}@ for more info.@*
-@xref{Target}@
-for more info.@*
-@xref{Target}@*
-for more info.@*
-@xref{Target}@	for more info.@*
-@xref{Target} --- for more info. (comma)@*
-@xref{Target}@: --- for more info. (no comma)@*
-See @ref{Target}, for more information (@code{@@ref})@*
-See @ref{Target} for more information@*
-See @ref{Target}.@*
-(@pxref{Target}) (@code{@@pxref})@*
-(@pxref{Target,, Hurricanes})
-
-
-@node Target
-@section Target
-
-@section Non-existent target
-
-@xref{blllllllrrrrrrghhh}.
-
-@chapter Copying and captions
-
-@section Copying
-
-@documentencoding UTF-8
-
-@copying
-This manual is for blah-de-blah.@*
-Backslash \@*
-Brace commands @{ @{ @}
-
-Copyrite @copyright{} 201X@*
-þ þ þ þ þ þ þ þ
-@end copying
-
-Now for the @@insertcopying:
-
-@insertcopying
-
-
-@section Captions
-
-
-There's a float in this section.
-
-@float Figure,fig:ex1
-This is a float.
-
-@caption{This is a caption.
-Multiple paragraphs are allowed here.  Here are some ``special'' 
-characters: \ à.
-
-Paragraph breaks allowed.
-}
-
-@shortcaption{short caption text.}
-
-This float should have a caption somewhere.
-@end float
-
-List of floats now:
-
-@listoffloats Figure
-
-
-@chapter Environments
-
-@section @code{@@verbatim}
-
-@verbatim
-                   ‘MENU’
-                   ------
-
-chicken		pizza	beefburger	hotdog
-£0.44		$2.50	€1.50		42¢
-
-“Please come again”
-@end verbatim
-
-@section @code{@@multitable}
-
-Nested in @@quotation:
-
-before before before before before before before before
-before before before before before before before before
-before before before before before before before before
-before before before before before before before before
-
-@quotation
-@multitable @columnfractions 0.5 0.5
-@item
-left left left left left left left left
-left left left left left left left left
-left left left left left left left left
-left left left left left left left left
-@tab
-right right right right right right right right
-right right right right right right right right
-right right right right right right right right
-right right right right right right right right
-@end multitable
-@end quotation
-
-@noindent With more columns:
-
-@quotation
-@multitable {@w{@code{português} or}} {@code{do} @code{re}/@code{re} @code{mi} @code{fa} @code{sol} @code{la} @code{sib} @code{si}}
-@item @code{català} or@*@ @code{catalan}
-  @tab @code{do} @code{re} @code{mi} @code{fa} @code{sol} @code{la} @code{sib} @code{si}
-@end multitable
-@end quotation
-
-after after after after after after after after
-after after after after after after after after
-after after after after after after after after
-after after after after after after after after
-
-in @t{@@raggedright} (check warnings re @samp{Underful \hbox} etc.):
-
-@raggedright
-@multitable @columnfractions 0.2 0.2 0.2
-@item foofoo foofoo foofoo foofoo
-  @tab barbar barbar barbar barbar
-  @tab bazbaz bazbaz bazbaz bazbaz
-@end multitable
-@end raggedright
-
-
-@section @code{@@cartouche}
-
-check right margin lines up
-
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-
-@cartouche
-@math{@var{foo}\over@var{bar}} finds the quotient of @var{foo} by
-@var{bar}.  @math{\sqrt{@var{radicand}}} finds the square root of
-@var{radicand}.
-@end cartouche
-
-@noindent
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-
-@quotation
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-
-@cartouche
-@math{@var{foo}\over@var{bar}} finds the quotient of @var{foo} by
-@var{bar}.  @math{\sqrt{@var{radicand}}} finds the square root of
-@var{radicand}.
-@end cartouche
-
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss ss
-@end quotation
-
-
-
-
-@section Definitions
-
-Check that spacing does not vary after the `?'@: punctuation on the
-definition line, but spacing does vary inside the definition body and
-afterwards.
-
-@defun foo bar? bar bar
-@defunx foo bar?@: bar bar
-a. b@*
-a.@: b
-@end defun
-
-@noindent
-a. b@*
-a.@: b
-
-@defun foo bar?@: bar bar
-a. b@*
-a.@: b
-@end defun
-
-Check explicit bold with @code{@@r@{@@b@{...} on def line
-
-@defun foo @r{@b{&rest}} (b(sdf)az)
-hello 
-@end defun
-
-Check typewriter [ and ] on def line with @code{@@t}:
-
-@defun foo @t{\f[}font@t{]}
-Do something depending on @var{font}.
-@end defun
-
-With @code{@@deftypefnnewline}
-
-@deftypefnnewline on
-
-@deftypefn {Functionoid} {long int} foo (int @var{bar})
-@dots{} do something with @var{bar}
-@end deftypefn
-
-With @code{@@set txidefnamenospace}
-
-@deftypefnnewline off
-@set txidefnamenospace
-
-@deftypefn {Functionoid} {long int} foo2 (int @var{bar})
-@dots{} do something with @var{bar}
-@end deftypefn
-
-
-
-
-@chapter Style commands
-
-@code{@@var} should reset space factor, while
-@code{@@dfn} doesn't, so second line should have slightly larger space.
-
-@var{Stop.} Following text.
-
-@dfn{Stop.} Following text.
-
-@section Code quote
-
-@code{`foo'}
-
-@codequoteundirected on
-@codequotebacktick on
-
-@code{`foo'}
-
-@codequoteundirected off
-@codequotebacktick off
-
-@code{`foo'}
-
-
-
-
-
-@chapter Document encoding
-
-
-@documentencoding UTF-8
-
-
-Test of a few UTF-8 sequences.
-
-∃x∈X, x < ∞, s.t. x ∧ y
-
-A∩B=C
-
-(spacing here doesn't matter because we're not in math mode)
-
-Greek text:
-
-Η Πρώτη σύνοδος της Κωνσταντινούπολης, γνωστή ως Β΄ οικουμενική, ήταν η 
-εκκλησιαστική σύνοδος που διενεργήθηκε το 381 μ.Χ. και συγκλήθηκε από 
-τον αυτοκράτορα Θεοδόσιο, μετά από προτροπή του Μελετίου Αντιοχείας.  
-Στόχος της ήταν η εκκλησιαστική ειρήνευση, αλλά και η «επίλυση των 
-αναφυέντων εν τη εκκλησία κρίσιμων θεολογικών και διοικητικών 
-προβλημάτων».
-
-(random text copied from Wikipedia)
-
-double accent --- ταΐζω
-
-
-@section Test of characters in section title
-
-Check table of contents.
-
-For PDF output, check the bookmarks pane in the reader.
-(Currently plain ASCII approximations are used for the UTF-8 encoding.)
-
-@section --- übersicht
-
-@section --- @"Ubersicht
-
-@section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
-
-This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
-
-
-@node Special characters
-@section ~[]"_|<>$#&%+\
-
-This section should be called @code{~[]"_|<>$#&%+\} (in Roman type).
-
-@xrefautomaticsectiontitle on
-@xref{Special characters} is a cross-reference using
-@code{@@xrefautomaticsectiontitle on}.
-@xrefautomaticsectiontitle off
-
-
-
-@chapter PDF link colours
-
-For PDF only.
-
-
-Check that
-colour change continues on next page
-for @acronym{URL} split across pages,
-and doesn't change the colour of the heading line.
-
-Push down to end of page
-
-par
-
-@tex
-\global\def\urlcolor{0.32 0.39 0.50}%
-@end tex
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-par
-
-@uref{aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/
-aaaaa/bbbbb/aaaaa/bbbbb/}
-
-par
-
-@chapter URL line breaking
-
-Some use of @code{@@url}.  Ragged-right output should only be used where
-necessary.
-
-In a different way, the full range of colors defined for
-@uref{https://en.wikipedia.org/wiki/X11_color_names, defined for X11}
-can be accessed by using the Scheme function @code{x11-color}.
-That function takes one argument.
-
-see the 
-@url{https://www.gnu.org/software/libc/manual/html_node/Message-catalogs-with-gettext.html} 
-
-foo foo foo foo foo foo foof see the @url{https://www.gnu.org/software/libc/manual/html_node/}
-
-In case of problem, please read the @file{INSTALL} file carefully
-before reporting a bug, in particular section ``In case of problem''.
-Some problems are due to bad configuration on the user side (not
-specific to MPFR)@. Problems are also mentioned in the FAQ
-@url{https://www.mpfr.org/faq.html}.
-
-Initial text to test the justification of the line containing the
-first part of the URL: blah blah blah blah blah blah blah blah.
-@url{https://www.1234567890123456789012345678901234567890123.invalid}.
-Text to test the justification of the line containing the last part
-of the URL: blah blah blah blah blah blah blah blah.
-
-Initial text to test the justification of the line containing the
-first part of the URL: blah blah blah blah blah blah blah blah.
-@url{https://www.1234567890123456789012345678901234567890.invalid}.
-Text to test the justification of the line containing the last part
-of the URL: blah blah blah blah blah blah blah blah.
-
-Initial text to test the justification of the line containing the
-first part of the URL: blah blah blah blah blah blah blah blah.
-@url{https://www.1234567890123456789012345678901234567.invalid}.
-Text to test the justification of the line containing the last part
-of the URL: blah blah blah blah blah blah blah blah.
-
-Initial text to test the justification of the line containing the
-first part of the URL: blah blah blah blah blah blah blah blah.
-@url{https://www.1234567890123456789012345678901234.invalid}.
-Text to test the justification of the line containing the last part
-of the URL: blah blah blah blah blah blah blah blah.
-
-@chapter Nested URL
-
-In @command{@@lisp}
-
-@lisp
-one
-@url{www.gnu.org}
-three
-four
-
-six
-
-
-nine @url{http://example.com/} nine
-@end lisp
-
-in footnote@footnote{see @url{http://example.com/}.}. after footnote
-
-next para.
-
-next para.
-
-
-
-
-@chapter Headings and footings
-
-test of @samp{@@everyheadingmarks top}
-@c due to the way that @chapter outputs a pair of marks, possibly one on 
-@c the page before, following @page directly by @chapter can cause the 
-@c wrong chapter in the heading line, because then both marks are output 
-@c on the new page.
-
-@everyheading @thischapter
-@everyheadingmarks top
-@setchapternewpage off
-
-@chapter One
-
-one
-
-@page
-
-two
-
-@chapter Two
-
-@chapter Three
-
-@page
-
-ffffff
-
-@chapter Four
-
-@page
-
-test of @samp{@@everyheadingmarks bottom}
-
-@everyheading @thischapter
-@everyheadingmarks bottom
-
-@page
-
-@chapter One
-
-@chapter Two
-
-@chapter Three
-
-@page
-
-ffffff
-
-@chapter Four
-
-
-@setchapternewpage odd
-@chapter Test of @code{@@*heading}
-
-@headings off
-@oddheading @today{} @| @thispage @| @thischapter{}
-@evenheading @thischapter @| @thispage @| @today{}
-chapter text (date at left)
-
-@page
-next page
-(date at right)
-
-
-@chapter Test of @code{@@*footing}
-@oddfooting @thistitle @| @thispage @| @thissection
-@evenfooting @thissection @| @thispage @| @thistitle
-@everyfootingmarks top
-
-aaa
-
-@section AA
-
-bbb
-
-@page
-
-ccc
-
-@section DD
-
-ee
-
-
-@chapter Test of @code{@@displaymath}
-
-Alignment in @@displaymath:
-
-@displaymath
-\leqalignno{
-   \int v(t)\, dt &= u(t) + C&[3.1]\cr
-   \int v(t)\, dt &= u(t) + H&[3.2]\cr
-}
-@end displaymath
-
-test of \eqno
-@displaymath
-   v(t) = {d \over dt} u(t)\eqno{[3.1]}
-@end displaymath
 
 
 

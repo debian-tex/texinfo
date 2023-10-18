@@ -1,6 +1,6 @@
 /* pcterm.c -- How to handle the PC terminal for Info under MS-DOS/MS-Windows.
 
-   Copyright 1998-2022 Free Software Foundation, Inc.
+   Copyright 1998-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -949,6 +949,15 @@ pc_set_bg_color (int color)
 {
   textbackground (convert_color (color) | (norm_attr & BACKGROUND_INTENSITY));
 }
+
+#ifdef MAX
+#undef MAX
+#endif
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#ifdef MIN
+#undef MIN
+#endif
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
 
 /* Move the cursor up one line. */
 static void

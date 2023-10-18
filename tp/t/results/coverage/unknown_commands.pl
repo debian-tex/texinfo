@@ -10,11 +10,12 @@ $result_trees{'unknown_commands'} = {
     {
       'contents' => [
         {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
           'contents' => [
-            {
-              'text' => '
-'
-            },
             {
               'text' => '#
 '

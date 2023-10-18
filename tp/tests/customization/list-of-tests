@@ -1,0 +1,18 @@
+
+# api
+texi_ignore_and_comments ignore_and_comments.texi --init ignore_and_comments_output.init -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
+ignore_and_comments_output ignore_and_comments.texi --html --no-split --init ignore_and_comments_output.init
+test_redefine_need test_need.texi --html --no-split --init redefine_need.init
+
+# sectioning.texi also used in t/*.t
+sectioning_directions sectioning.texi --html --no-split -c 'HEADER_IN_TABLE=1' -c 'USE_NODES=0' -c 'FORMAT_MENU=menu' -c 'NODE_NAME_IN_MENU=0' -c 'DO_ABOUT=undef' -c 'CONTENTS_OUTPUT_LOCATION=separate_element' --init test_directions.init
+sectioning_directions_split_chapter sectioning.texi --html --split=chapter -c 'HEADER_IN_TABLE=1' -c 'USE_NODES=0' -c 'FORMAT_MENU=menu' -c 'NODE_NAME_IN_MENU=0' -c 'DO_ABOUT=undef' -c 'CONTENTS_OUTPUT_LOCATION=separate_element' --init test_directions.init
+sectioning_without_anchors sectioning.texi --html --no-split -c 'COPIABLE_LINKS=0'
+
+# many other tests using double_contents.texi are in t/*.t, but customization
+# variables set in init files are not used in the t/*.t test suite, so there cannot
+# be proper testing with book.pm
+double_contents_book ../../t/input_files/double_contents.texi --html --no-split -c FORMAT_MENU=nomenu --init book.pm
+double_contents_after_title_book ../../t/input_files/double_contents.texi --html --no-split --init book.pm -c 'CONTENTS_OUTPUT_LOCATION after_title'
+double_contents_after_title_book_chapter ../../t/input_files/double_contents.texi --html --init book.pm --split chapter -c 'CONTENTS_OUTPUT_LOCATION after_title'
+

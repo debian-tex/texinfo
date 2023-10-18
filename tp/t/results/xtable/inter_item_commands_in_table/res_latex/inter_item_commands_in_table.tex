@@ -1,24 +1,24 @@
 \documentclass{book}
-\usepackage{imakeidx}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage[gen]{eurosym}
-\usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{etoolbox}
-\usepackage{enumitem}
 \usepackage{titleps}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
+\usepackage{enumitem}
 \usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \usepackage[hidelinks]{hyperref}
-\usepackage[utf8]{inputenc}
 
 \makeatletter
 \newcommand{\Texinfosettitle}{No Title}%
 
-% no index headers or page break
-\indexsetup{level=\relax,toclevel=section,noclearpage}%
+% no index headers
+\indexsetup{level=\relax,toclevel=section}%
 \makeindex[name=cp,title=]%
 \makeindex[name=fn,title=]%
 \makeindex[name=vr,title=]%
@@ -100,8 +100,19 @@ l--ine
 \end{description}
 
 \begin{description}
-\item[] \index[cp]{cindex in table@cindex in table}%
 \item[{\parbox[b]{\linewidth}{%
+\emph{a}\\
+\index[fn]{a@\texttt{a}}%
+\index[cp]{index entry between item and itemx@index entry between item and itemx}%
+\emph{b}
+\index[fn]{b@\texttt{b}}%
+}}]
+l--ine
+\end{description}
+
+\begin{description}
+\item[{\parbox[b]{\linewidth}{%
+\index[cp]{cindex in table@cindex in table}%
 \texttt{abb}}}]
 l--ine
 \end{description}
@@ -114,8 +125,8 @@ Texte before first item.
 \end{description}
 
 \begin{description}
-\item[] \index[cp]{samp cindex in table@samp cindex in table}%
 \item[{\parbox[b]{\linewidth}{%
+\index[cp]{samp cindex in table@samp cindex in table}%
 \Texinfotablestylesamp{asamp{-}{-}bb}}}]
 l--ine samp
 \end{description}
@@ -143,17 +154,17 @@ Texte before first item samp.
 \end{description}
 
 \begin{description}
-\item[] 
-\index[cp]{cindex after line@cindex after line}%
+
 \item[{\parbox[b]{\linewidth}{%
+\index[cp]{cindex after line@cindex after line}%
 \Texinfotablestylesamp{asamp{-}{-}bb2}}}]
 \end{description}
 
 \begin{description}
-\item[] \index[cp]{cindex first@cindex first}%
+\item[{\parbox[b]{\linewidth}{%
+\index[cp]{cindex first@cindex first}%
 \index[cp]{second@second}%
 \index[cp]{third@third}%
-\item[{\parbox[b]{\linewidth}{%
 \Texinfotablestylesamp{asamp{-}{-}bb2}}}]
 \end{description}
 

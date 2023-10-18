@@ -23,9 +23,11 @@ $result_trees{'set_on_item_line'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -43,38 +45,29 @@ $result_trees{'set_on_item_line'} = {
                             {
                               'args' => [
                                 {
-                                  'text' => 'a',
-                                  'type' => 'misc_arg'
+                                  'text' => 'ca',
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => 'b',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
-                                'arg_line' => ' a b@c
-',
-                                'misc_args' => [
-                                  'a',
-                                  'b'
-                                ]
+                              'info' => {
+                                'arg_line' => ' ca b@c
+'
                               }
-                            },
-                            {
-                              'text' => 'item text'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
-'
-                          },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -90,6 +83,10 @@ $result_trees{'set_on_item_line'} = {
                     {
                       'contents' => [
                         {
+                          'text' => 'item text
+'
+                        },
+                        {
                           'text' => 'in item
 '
                         }
@@ -97,7 +94,7 @@ $result_trees{'set_on_item_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -111,43 +108,34 @@ $result_trees{'set_on_item_line'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'jj '
+                              'text' => 'cjj '
                             },
                             {
                               'args' => [
                                 {
-                                  'text' => 'j',
-                                  'type' => 'misc_arg'
+                                  'text' => 'cj',
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => '',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
-                                'arg_line' => ' j@c
-',
-                                'misc_args' => [
-                                  'j',
-                                  ''
-                                ]
+                              'info' => {
+                                'arg_line' => ' cj@c
+'
                               }
-                            },
-                            {
-                              'text' => 'line'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
-'
-                          },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -157,6 +145,20 @@ $result_trees{'set_on_item_line'} = {
                     }
                   ],
                   'type' => 'table_term'
+                },
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'line
+'
+                        }
+                      ],
+                      'type' => 'paragraph'
+                    }
+                  ],
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -170,27 +172,23 @@ $result_trees{'set_on_item_line'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'vvv '
+                              'text' => 'cvvv '
                             },
                             {
                               'args' => [
                                 {
-                                  'text' => 'g',
-                                  'type' => 'misc_arg'
+                                  'text' => 'cg',
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => '',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
-                                'arg_line' => ' g@c
-',
-                                'misc_args' => [
-                                  'g',
-                                  ''
-                                ]
+                              'info' => {
+                                'arg_line' => ' cg@c
+'
                               }
                             }
                           ],
@@ -198,8 +196,10 @@ $result_trees{'set_on_item_line'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -221,17 +221,23 @@ $result_trees{'set_on_item_line'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -241,8 +247,12 @@ $result_trees{'set_on_item_line'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -269,9 +279,11 @@ $result_trees{'set_on_item_line'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -290,21 +302,17 @@ $result_trees{'set_on_item_line'} = {
                               'args' => [
                                 {
                                   'text' => 'a',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => 'b',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
+                              'info' => {
                                 'arg_line' => ' a b
-',
-                                'misc_args' => [
-                                  'a',
-                                  'b'
-                                ]
+'
                               }
                             }
                           ],
@@ -312,8 +320,10 @@ $result_trees{'set_on_item_line'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -340,7 +350,7 @@ $result_trees{'set_on_item_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -360,21 +370,17 @@ $result_trees{'set_on_item_line'} = {
                               'args' => [
                                 {
                                   'text' => 'j',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => '',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
+                              'info' => {
                                 'arg_line' => ' j
-',
-                                'misc_args' => [
-                                  'j',
-                                  ''
-                                ]
+'
                               }
                             }
                           ],
@@ -382,8 +388,10 @@ $result_trees{'set_on_item_line'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -406,7 +414,7 @@ $result_trees{'set_on_item_line'} = {
                       'type' => 'paragraph'
                     }
                   ],
-                  'type' => 'table_item'
+                  'type' => 'table_definition'
                 }
               ],
               'type' => 'table_entry'
@@ -426,21 +434,17 @@ $result_trees{'set_on_item_line'} = {
                               'args' => [
                                 {
                                   'text' => 'g',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 },
                                 {
                                   'text' => '',
-                                  'type' => 'misc_arg'
+                                  'type' => 'rawline_arg'
                                 }
                               ],
                               'cmdname' => 'set',
-                              'extra' => {
+                              'info' => {
                                 'arg_line' => ' g
-',
-                                'misc_args' => [
-                                  'g',
-                                  ''
-                                ]
+'
                               }
                             }
                           ],
@@ -448,8 +452,10 @@ $result_trees{'set_on_item_line'} = {
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -471,17 +477,23 @@ $result_trees{'set_on_item_line'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -491,8 +503,12 @@ $result_trees{'set_on_item_line'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -510,12 +526,12 @@ $result_trees{'set_on_item_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'comman
 $result_trees{'set_on_item_line'}{'contents'}[0]{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'set_on_item_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 
 $result_texis{'set_on_item_line'} = '@table @code
-@item @set a b@c
+@item @set ca b@c
 item text
 in item
-@item jj @set j@c
+@item cjj @set cj@c
 line
-@item vvv @set g@c
+@item cvvv @set cg@c
 @end table
 
 @table @code
@@ -529,10 +545,12 @@ line
 ';
 
 
-$result_texts{'set_on_item_line'} = 'item text
+$result_texts{'set_on_item_line'} = '
+item text
 in item
-jj line
-vvv 
+cjj 
+line
+cvvv 
 
 
 item text
@@ -542,7 +560,44 @@ line
 vvv 
 ';
 
-$result_errors{'set_on_item_line'} = [];
+$result_errors{'set_on_item_line'} = [
+  {
+    'error_line' => 'warning: @set should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @set should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 7,
+    'macro' => '',
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @set should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 14,
+    'macro' => '',
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @set should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 16,
+    'macro' => '',
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'set_on_item_line'} = {};

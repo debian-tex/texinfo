@@ -19,9 +19,11 @@ $result_trees{'index_below'} = [
                 'text' => 'top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -34,8 +36,10 @@ $result_trees{'index_below'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -59,9 +63,11 @@ $result_trees{'index_below'} = [
                 'text' => 'chap'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -74,8 +80,10 @@ $result_trees{'index_below'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -99,9 +107,11 @@ $result_trees{'index_below'} = [
                 'text' => 'sec'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -121,27 +131,26 @@ $result_trees{'index_below'} = [
                     'text' => 'entry'
                   }
                 ],
-                'extra' => {
-                  'spaces_after_argument' => '
+                'info' => {
+                  'spaces_after_argument' => {
+                    'text' => '
 '
+                  }
                 },
                 'type' => 'line_arg'
               }
             ],
             'cmdname' => 'cindex',
             'extra' => {
-              'index_entry' => {
-                'content_normalized' => [],
-                'entry_content' => [],
-                'entry_element' => {},
-                'entry_number' => 1,
-                'in_code' => 0,
-                'index_at_command' => 'cindex',
-                'index_ignore_chars' => {},
-                'index_name' => 'cp',
-                'index_type_command' => 'cindex'
-              },
-              'spaces_before_argument' => ' '
+              'index_entry' => [
+                'cp',
+                1
+              ]
+            },
+            'info' => {
+              'spaces_before_argument' => {
+                'text' => ' '
+              }
             },
             'source_info' => {
               'file_name' => '',
@@ -158,9 +167,11 @@ $result_trees{'index_below'} = [
                     'text' => 'cp'
                   }
                 ],
-                'extra' => {
-                  'spaces_after_argument' => '
+                'info' => {
+                  'spaces_after_argument' => {
+                    'text' => '
 '
+                  }
                 },
                 'type' => 'line_arg'
               }
@@ -169,8 +180,12 @@ $result_trees{'index_below'} = [
             'extra' => {
               'misc_args' => [
                 'cp'
-              ],
-              'spaces_before_argument' => ' '
+              ]
+            },
+            'info' => {
+              'spaces_before_argument' => {
+                'text' => ' '
+              }
             },
             'source_info' => {
               'file_name' => '',
@@ -179,8 +194,10 @@ $result_trees{'index_below'} = [
             }
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -197,9 +214,6 @@ $result_trees{'index_below'} = [
 ];
 $result_trees{'index_below'}[0]{'extra'}{'unit_command'} = $result_trees{'index_below'}[0]{'contents'}[1];
 $result_trees{'index_below'}[1]{'extra'}{'unit_command'} = $result_trees{'index_below'}[1]{'contents'}[0];
-$result_trees{'index_below'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'index_below'}[2]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'index_below'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'index_below'}[2]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'index_below'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'index_below'}[2]{'contents'}[0]{'contents'}[1];
 $result_trees{'index_below'}[2]{'extra'}{'unit_command'} = $result_trees{'index_below'}[2]{'contents'}[0];
 
 $result_texis{'index_below'} = '@top top
@@ -229,7 +243,6 @@ $result_sectioning{'index_below'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'associated_unit' => {
             'extra' => {
@@ -241,13 +254,11 @@ $result_sectioning{'index_below'} = {
                   'extra' => {
                     'unit_command' => {
                       'cmdname' => 'chapter',
-                      'extra' => {},
                       'structure' => {
                         'associated_unit' => {},
                         'section_childs' => [
                           {
                             'cmdname' => 'section',
-                            'extra' => {},
                             'structure' => {
                               'associated_unit' => {
                                 'extra' => {
@@ -352,7 +363,6 @@ $result_elements{'index_below'} = [
     'extra' => {
       'unit_command' => {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'associated_unit' => {}
         }
@@ -364,7 +374,6 @@ $result_elements{'index_below'} = [
           'extra' => {
             'unit_command' => {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'associated_unit' => {},
                 'section_number' => 1
@@ -379,7 +388,6 @@ $result_elements{'index_below'} = [
                 'extra' => {
                   'unit_command' => {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'associated_unit' => {},
                       'section_number' => '1.1'
@@ -464,11 +472,13 @@ $result_converted{'html'}->{'index_below'} = '<!DOCTYPE html>
 <link href="#chap" rel="index" title="1 chap">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter-printindex {text-decoration: none}
+span:hover a.copiable-link {visibility: visible}
 td.printindex-index-entry {vertical-align: top}
-td.printindex-index-section {vertical-align: top}
+td.printindex-index-section {vertical-align: top; padding-left: 1em}
 th.entries-header-printindex {text-align:left}
-th.sections-header-printindex {text-align:left}
+th.sections-header-printindex {text-align:left; padding-left: 1em}
 -->
 </style>
 
@@ -479,9 +489,9 @@ th.sections-header-printindex {text-align:left}
 <div class="top-level-extent" id="top">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h1 class="top">top</h1>
+<h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chap" accesskey="1">chap</a></li>
@@ -492,7 +502,7 @@ th.sections-header-printindex {text-align:left}
 <p>
  Up : <a href="#top" accesskey="u" rel="up">top</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h2 class="chapter">1 chap</h2>
+<h2 class="chapter"><span>1 chap<a class="copiable-link" href="#chap"> &para;</a></span></h2>
 
 <ul class="mini-toc">
 <li><a href="#sec" accesskey="1">sec</a></li>
@@ -503,16 +513,16 @@ th.sections-header-printindex {text-align:left}
 <p>
  Up : <a href="#chap" accesskey="u" rel="up">chap</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h3 class="section">1.1 sec</h3>
+<h3 class="section"><span>1.1 sec<a class="copiable-link" href="#sec"> &para;</a></span></h3>
 
 <a class="index-entry-id" id="index-entry"></a>
 <div class="printindex cp-printindex">
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="sec_cp_letter-E">E</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-entry">entry</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#sec">1.1 sec</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="sec_cp_letter-E">E</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-entry">entry</a></td><td class="printindex-index-section"><a href="#sec">1.1 sec</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 </div>

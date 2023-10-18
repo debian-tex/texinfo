@@ -1,6 +1,6 @@
 /* info.c -- Display nodes of Info files in multiple windows.
 
-   Copyright 1993-2022 Free Software Foundation, Inc.
+   Copyright 1993-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -174,6 +174,19 @@ get_initial_file (int *argc, char ***argv, char **error)
 {
   REFERENCE *entry;
 
+  /* If --file was not used and there is a slash in the first non-option
+     argument (e.g. "info subdir/file.info"), do not search the dir files
+     for a matching entry. */
+  if (!user_filename
+        && (*argv)[0]
+        && HAS_SLASH ((*argv)[0])
+        && (*argv)[0][0] != '(') /* don't treat "(manual)node" as a filename */
+    {
+      user_filename = xstrdup ((*argv)[0]);
+      (*argv)++; /* Advance past first remaining argument. */
+      (*argc)--;
+    }
+
   /* User used "--file". */
   if (user_filename)
     {
@@ -226,7 +239,7 @@ get_initial_file (int *argc, char ***argv, char **error)
                                                         info_parsed_nodename),
                                     ref_index, ref_list, ref_slots, 2);
               /* Remove this argument from the argument list. */
-              memmove (*argv, *argv + 1, *argc-- * sizeof (char *));
+              memmove (*argv, *argv + 1, (*argc)-- * sizeof (char *));
               return;
             }
         }
@@ -873,21 +886,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
   argc -= optind;
   argv += optind;
-  
-  /* If --file was not used and there is a slash in the first non-option
-     argument (e.g. "info subdir/file.info"), do not search the dir files
-     for a matching entry. */
-  if (!user_filename && argv[0] && HAS_SLASH (argv[0]))
-    {
-      user_filename = xstrdup (argv[0]);
-      argv++; /* Advance past first remaining argument. */
-      argc--;
-    }
-
-  /* If the user specified a particular filename, add the path of that
-     file to the contents of INFOPATH. */
-  if (user_filename)
-    add_file_directory_to_path (user_filename);
 
   /* Load custom key mappings and variable settings */
   initialize_terminal_and_keymaps (init_file);
@@ -922,9 +920,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
   ref_index--;
 
+  /* --all */
   if (all_matches_p && !index_search_p)
     {
-      /* --all */
       if (!user_filename && argv[0])
         {
           user_filename = xstrdup (argv[0]);
@@ -968,6 +966,11 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
         }
 
       get_initial_file (&argc, &argv, &error);
+
+      /* If the user specified a particular filename, add the path of that file
+         to the contents of INFOPATH, for '--variable follow-strategy=path'. */
+      if (user_filename)
+        add_file_directory_to_path (user_filename);
 
       /* If the user specified `--index-search=STRING --all', create
          and display the menu of results. */

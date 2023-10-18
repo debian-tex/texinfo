@@ -1,5 +1,5 @@
 @echo off
-REM Copyright 2016 Free Software Foundation, Inc.
+REM Copyright 2016-2023 Free Software Foundation, Inc.
 REM
 REM This program is free software; you can redistribute it and/or modify
 REM it under the terms of the GNU General Public License as published by

@@ -7,6 +7,21 @@
  */
 
 #line 1 "parsetexi/Parsetexi.xs"
+/* Copyright 2014-2023 Free Software Foundation, Inc.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+
 #include <config.h>
 
 /* Avoid namespace conflicts. */
@@ -15,6 +30,9 @@
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
+#if defined _WIN32 && !defined __CYGWIN__
+# undef free
+#endif
 #include "XSUB.h"
 
 #undef context
@@ -26,7 +44,7 @@
 #include "indices.h"
 #include "input.h"
 
-#line 30 "parsetexi/Parsetexi.c"
+#line 48 "parsetexi/Parsetexi.c"
 #ifndef PERL_UNUSED_VAR
 #  define PERL_UNUSED_VAR(var) if (0) var = var
 #endif
@@ -170,7 +188,7 @@ S_croak_xs_usage(const CV *const cv, const char *const params)
 #  define newXS_deffile(a,b) Perl_newXS_deffile(aTHX_ a,b)
 #endif
 
-#line 174 "parsetexi/Parsetexi.c"
+#line 192 "parsetexi/Parsetexi.c"
 
 XS_EUPXS(XS_Texinfo__Parser_init); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Texinfo__Parser_init)
@@ -181,8 +199,7 @@ XS_EUPXS(XS_Texinfo__Parser_init)
     {
 	int	texinfo_uninstalled = (int)SvIV(ST(0))
 ;
-	char *	srcdir = (char *)SvPV_nolen(ST(1))
-;
+	char *	srcdir = (char *)SvPVbyte_nolen(ST(1));
 	int	RETVAL;
 	dXSTARG;
 
@@ -214,8 +231,7 @@ XS_EUPXS(XS_Texinfo__Parser_parse_file)
     if (items != 1)
        croak_xs_usage(cv,  "filename");
     {
-	char *	filename = (char *)SvPV_nolen(ST(0))
-;
+	char *	filename = (char *)SvPVbyte_nolen(ST(0));
 	int	RETVAL;
 	dXSTARG;
 
@@ -233,8 +249,7 @@ XS_EUPXS(XS_Texinfo__Parser_parse_piece)
     if (items != 2)
        croak_xs_usage(cv,  "string, line_nr");
     {
-	char *	string = (char *)SvPV_nolen(ST(0))
-;
+	char *	string = (char *)SvPVbyte_nolen(ST(0));
 	int	line_nr = (int)SvIV(ST(1))
 ;
 
@@ -251,8 +266,7 @@ XS_EUPXS(XS_Texinfo__Parser_parse_string)
     if (items != 2)
        croak_xs_usage(cv,  "string, line_nr");
     {
-	char *	string = (char *)SvPV_nolen(ST(0))
-;
+	char *	string = (char *)SvPVbyte_nolen(ST(0));
 	int	line_nr = (int)SvIV(ST(1))
 ;
 
@@ -269,8 +283,7 @@ XS_EUPXS(XS_Texinfo__Parser_parse_text)
     if (items != 2)
        croak_xs_usage(cv,  "string, line_nr");
     {
-	char *	string = (char *)SvPV_nolen(ST(0))
-;
+	char *	string = (char *)SvPVbyte_nolen(ST(0));
 	int	line_nr = (int)SvIV(ST(1))
 ;
 
@@ -287,10 +300,8 @@ XS_EUPXS(XS_Texinfo__Parser_store_value)
     if (items != 2)
        croak_xs_usage(cv,  "name, value");
     {
-	char *	name = (char *)SvPV_nolen(ST(0))
-;
-	char *	value = (char *)SvPV_nolen(ST(1))
-;
+	char *	name = (char *)SvPVbyte_nolen(ST(0));
+	char *	value = (char *)SvPVbyte_nolen(ST(1));
 
 	store_value(name, value);
     }
@@ -347,8 +358,7 @@ XS_EUPXS(XS_Texinfo__Parser_add_include_directory)
     if (items != 1)
        croak_xs_usage(cv,  "filename");
     {
-	char *	filename = (char *)SvPV_nolen(ST(0))
-;
+	char *	filename = (char *)SvPVbyte_nolen(ST(0));
 
 	add_include_directory(filename);
     }
@@ -377,8 +387,8 @@ XS_EUPXS(XS_Texinfo__Parser_build_texinfo_tree)
 }
 
 
-XS_EUPXS(XS_Texinfo__Parser_build_label_list); /* prototype to pass -Wmissing-prototypes */
-XS_EUPXS(XS_Texinfo__Parser_build_label_list)
+XS_EUPXS(XS_Texinfo__Parser_build_target_elements_list); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Parser_build_target_elements_list)
 {
     dVAR; dXSARGS;
     if (items != 0)
@@ -386,7 +396,7 @@ XS_EUPXS(XS_Texinfo__Parser_build_label_list)
     {
 	AV *	RETVAL;
 
-	RETVAL = build_label_list();
+	RETVAL = build_target_elements_list();
 	{
 	    SV * RETVALSV;
 	    RETVALSV = newRV((SV*)RETVAL);
@@ -507,11 +517,13 @@ XS_EUPXS(XS_Texinfo__Parser_reset_parser); /* prototype to pass -Wmissing-protot
 XS_EUPXS(XS_Texinfo__Parser_reset_parser)
 {
     dVAR; dXSARGS;
-    if (items != 0)
-       croak_xs_usage(cv,  "");
+    if (items != 1)
+       croak_xs_usage(cv,  "debug_output");
     {
+	int	debug_output = (int)SvIV(ST(0))
+;
 
-	reset_parser();
+	reset_parser(debug_output);
     }
     XSRETURN_EMPTY;
 }
@@ -538,8 +550,7 @@ XS_EUPXS(XS_Texinfo__Parser_add_expanded_format)
     if (items != 1)
        croak_xs_usage(cv,  "format");
     {
-	char *	format = (char *)SvPV_nolen(ST(0))
-;
+	char *	format = (char *)SvPVbyte_nolen(ST(0));
 
 	add_expanded_format(format);
     }
@@ -595,6 +606,22 @@ XS_EUPXS(XS_Texinfo__Parser_conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME)
 }
 
 
+XS_EUPXS(XS_Texinfo__Parser_conf_set_MAX_MACRO_CALL_NESTING); /* prototype to pass -Wmissing-prototypes */
+XS_EUPXS(XS_Texinfo__Parser_conf_set_MAX_MACRO_CALL_NESTING)
+{
+    dVAR; dXSARGS;
+    if (items != 1)
+       croak_xs_usage(cv,  "i");
+    {
+	int	i = (int)SvIV(ST(0))
+;
+
+	conf_set_MAX_MACRO_CALL_NESTING(i);
+    }
+    XSRETURN_EMPTY;
+}
+
+
 XS_EUPXS(XS_Texinfo__Parser_set_DOC_ENCODING_FOR_INPUT_FILE_NAME); /* prototype to pass -Wmissing-prototypes */
 XS_EUPXS(XS_Texinfo__Parser_set_DOC_ENCODING_FOR_INPUT_FILE_NAME)
 {
@@ -618,8 +645,7 @@ XS_EUPXS(XS_Texinfo__Parser_conf_set_input_file_name_encoding)
     if (items != 1)
        croak_xs_usage(cv,  "value");
     {
-	char *	value = (char *)SvPV_nolen(ST(0))
-;
+	char *	value = (char *)SvPVbyte_nolen(ST(0));
 
 	conf_set_input_file_name_encoding(value);
     }
@@ -634,8 +660,7 @@ XS_EUPXS(XS_Texinfo__Parser_conf_set_locale_encoding)
     if (items != 1)
        croak_xs_usage(cv,  "value");
     {
-	char *	value = (char *)SvPV_nolen(ST(0))
-;
+	char *	value = (char *)SvPVbyte_nolen(ST(0));
 
 	conf_set_locale_encoding(value);
     }
@@ -650,8 +675,7 @@ XS_EUPXS(XS_Texinfo__Parser_conf_set_documentlanguage_override)
     if (items != 1)
        croak_xs_usage(cv,  "value");
     {
-	char *	value = (char *)SvPV_nolen(ST(0))
-;
+	char *	value = (char *)SvPVbyte_nolen(ST(0));
 
 	conf_set_documentlanguage_override(value);
     }
@@ -749,18 +773,19 @@ XS_EXTERNAL(boot_Texinfo__Parser)
         (void)newXSproto_portable("Texinfo::Parser::init_index_commands", XS_Texinfo__Parser_init_index_commands, file, "");
         (void)newXSproto_portable("Texinfo::Parser::add_include_directory", XS_Texinfo__Parser_add_include_directory, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::build_texinfo_tree", XS_Texinfo__Parser_build_texinfo_tree, file, "");
-        (void)newXSproto_portable("Texinfo::Parser::build_label_list", XS_Texinfo__Parser_build_label_list, file, "");
+        (void)newXSproto_portable("Texinfo::Parser::build_target_elements_list", XS_Texinfo__Parser_build_target_elements_list, file, "");
         (void)newXSproto_portable("Texinfo::Parser::build_internal_xref_list", XS_Texinfo__Parser_build_internal_xref_list, file, "");
         (void)newXSproto_portable("Texinfo::Parser::build_float_list", XS_Texinfo__Parser_build_float_list, file, "");
         (void)newXSproto_portable("Texinfo::Parser::build_index_data", XS_Texinfo__Parser_build_index_data, file, "");
         (void)newXSproto_portable("Texinfo::Parser::build_global_info", XS_Texinfo__Parser_build_global_info, file, "");
         (void)newXSproto_portable("Texinfo::Parser::build_global_info2", XS_Texinfo__Parser_build_global_info2, file, "");
-        (void)newXSproto_portable("Texinfo::Parser::reset_parser", XS_Texinfo__Parser_reset_parser, file, "");
+        (void)newXSproto_portable("Texinfo::Parser::reset_parser", XS_Texinfo__Parser_reset_parser, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::clear_expanded_formats", XS_Texinfo__Parser_clear_expanded_formats, file, "");
         (void)newXSproto_portable("Texinfo::Parser::add_expanded_format", XS_Texinfo__Parser_add_expanded_format, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_show_menu", XS_Texinfo__Parser_conf_set_show_menu, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_CPP_LINE_DIRECTIVES", XS_Texinfo__Parser_conf_set_CPP_LINE_DIRECTIVES, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME", XS_Texinfo__Parser_conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME, file, "$");
+        (void)newXSproto_portable("Texinfo::Parser::conf_set_MAX_MACRO_CALL_NESTING", XS_Texinfo__Parser_conf_set_MAX_MACRO_CALL_NESTING, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::set_DOC_ENCODING_FOR_INPUT_FILE_NAME", XS_Texinfo__Parser_set_DOC_ENCODING_FOR_INPUT_FILE_NAME, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_input_file_name_encoding", XS_Texinfo__Parser_conf_set_input_file_name_encoding, file, "$");
         (void)newXSproto_portable("Texinfo::Parser::conf_set_locale_encoding", XS_Texinfo__Parser_conf_set_locale_encoding, file, "$");

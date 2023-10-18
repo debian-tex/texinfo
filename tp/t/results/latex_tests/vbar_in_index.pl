@@ -21,27 +21,26 @@ $result_trees{'vbar_in_index'} = {
                   'text' => 'A|B'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 1,
-              'index_at_command' => 'findex',
-              'index_ignore_chars' => {},
-              'index_name' => 'fn',
-              'index_type_command' => 'findex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'fn',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -58,27 +57,26 @@ $result_trees{'vbar_in_index'} = {
                   'text' => 'C|D'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -93,12 +91,6 @@ $result_trees{'vbar_in_index'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[1];
-$result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'vbar_in_index'}{'contents'}[0]{'contents'}[2];
 
 $result_texis{'vbar_in_index'} = '@findex A|B
 @cindex C|D

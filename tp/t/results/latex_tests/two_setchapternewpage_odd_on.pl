@@ -19,9 +19,11 @@ $result_trees{'two_setchapternewpage_odd_on'} = {
                       'text' => 'odd'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -30,8 +32,12 @@ $result_trees{'two_setchapternewpage_odd_on'} = {
               'extra' => {
                 'misc_args' => [
                   'odd'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -52,9 +58,11 @@ $result_trees{'two_setchapternewpage_odd_on'} = {
                       'text' => 'on'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -63,8 +71,12 @@ $result_trees{'two_setchapternewpage_odd_on'} = {
               'extra' => {
                 'misc_args' => [
                   'on'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

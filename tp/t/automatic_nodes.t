@@ -33,7 +33,7 @@ sub test_new_node($$$$)
   # $labels, $nodes_list, $targets_list are modified
   my $node = Texinfo::Transformations::_new_node($node_tree, $nodes_list,
                                                  $targets_list, $labels);
-  
+
   my ($texi_result, $normalized);
   if (defined($node)) {
     $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo($node);
@@ -67,9 +67,9 @@ test_new_node ('(in paren(too  aaa', '_0028in-paren_0028too-aaa',
 '@node @asis{(}in paren(too  aaa
 ', 'with parenthesis');
 test_new_node ('changed @ref{ @code{node}} and (@pxref{ ,, , @samp{file}})',
-'changed-node-and-_0028file_0029', 
+'changed-node-and-_0028file_0029',
 '@node changed @code{node} and (@samp{file})
-', 
+',
 'ref in new node');
 test_new_node ('@asis{}', '-1', '@node @asis{} 1
 ', 'empty node');
@@ -92,7 +92,7 @@ is ('@node a node 1
 ',  Texinfo::Convert::Texinfo::convert_to_texinfo($node), 'duplicate node added');
 #print STDERR Texinfo::Convert::Texinfo::convert_to_texinfo($node);
 
-my $sections_text = 
+my $sections_text =
 '@top top section
 
 @part part
@@ -119,7 +119,7 @@ Text.
 
 @bye';
 
-my $reference = 
+my $reference =
 '@node Top
 @top top section
 
@@ -193,7 +193,7 @@ Texinfo::Structuring::associate_internal_references($registrar, $parser,
    = Texinfo::Transformations::insert_nodes_for_sectioning_commands($tree,
                                         $nodes_list, $targets_list, $labels);
 $tree->{'contents'} = $new_content;
-my ($index_names, $merged_indices) = $parser->indices_information();
+my ($indices_information, $merged_indices) = $parser->indices_information();
 ok (($labels->{'chap'}->{'extra'}->{'menus'} and @{$labels->{'chap'}->{'extra'}->{'menus'}}
      and scalar(@{$labels->{'chap'}->{'extra'}->{'menus'}}) == 1
      and !exists($labels->{'Top'}->{'extra'}->{'menus'})), 'new node has a menu');
@@ -202,31 +202,10 @@ is (Texinfo::Convert::Texinfo::convert_to_texinfo($labels->{'chap'}->{'extra'}->
 * (some_manual)::
 @end menu
 ', 'reassociated menu is correct');
-#print STDERR join('|', keys(%{$index_names->{'cp'}->{'index_entries'}}))."\n";
-is ($labels->{'chap'}, $index_names->{'cp'}->{'index_entries'}->[0]->{'entry_node'}, 
+#print STDERR join('|',
+#               keys(%{$indices_information->{'cp'}->{'index_entries'}}))."\n";
+is ($labels->{'chap'}, $indices_information->{'cp'}->{'index_entries'}->[0]
+                              ->{'entry_element'}->{'extra'}->{'element_node'},
   'index entry reassociated');
 #print STDERR Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
-
-# Note: this test doesn't pass anymore because we only notice duplicate
-# nodes at the end.
-# $parser = Texinfo::Parser::parser();
-# my $text_duplicate_nodes = 
-# '@node NAME
-# @section DESCRIPTION
-# 
-# @node NAME
-# @section SEE ALSO
-# 
-# @cindex entry
-# ';
-# $tree = $parser->parse_texi_piece($text_duplicate_nodes);
-# # In fact, here we also check that there is no debugging message...
-# ($labels, $targets_list, $nodes_list) = $parser->labels_information();
-# ($new_content, $added_nodes)
-#    = Texinfo::Transformations::insert_nodes_for_sectioning_commands($tree,
-#                                       $nodes_list, $targets_list, $labels);
-# ($index_names, $merged_indices) = $parser->indices_information();
-# ($labels, $targets_list, $nodes_list) = $parser->labels_information();
-# is ($labels->{'SEE-ALSO'}, $index_names->{'cp'}->{'index_entries'}->[0]->{'entry_node'},
-#   'index entry reassociated duplicate node ignored');
 

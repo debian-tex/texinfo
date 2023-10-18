@@ -22,9 +22,11 @@ $result_trees{'raw_expanded_in_style'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -48,17 +50,23 @@ $result_trees{'raw_expanded_in_style'} = {
                                   'text' => 'html'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'html'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -102,6 +110,7 @@ in html
 
 
 $result_texts{'raw_expanded_in_style'} = '
+in html
 ';
 
 $result_errors{'raw_expanded_in_style'} = [];
@@ -115,6 +124,11 @@ $result_converted{'plaintext'}->{'raw_expanded_in_style'} = '‘
 in html
 ’
 ';
+
+
+$result_converted{'xml'}->{'raw_expanded_in_style'} = '<para><code>
+in html
+</code></para>';
 
 
 $result_converted{'html_text'}->{'raw_expanded_in_style'} = '<p><code class="code">

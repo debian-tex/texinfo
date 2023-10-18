@@ -1,6 +1,6 @@
 /* filesys.c -- filesystem specific functions.
 
-   Copyright 1993-2022 Free Software Foundation, Inc.
+   Copyright 1993-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,7 +43,6 @@ typedef struct
 static char *info_suffixes[] = {
   ".info",
   "-info",
-  "/index",
   ".inf",       /* 8+3 file on filesystem which supports long file names */
 #ifdef __MSDOS__
   /* 8+3 file names strike again...  */

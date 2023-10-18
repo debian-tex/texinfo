@@ -91,14 +91,6 @@ A simple menu has no @emph{menu_comment}, @emph{menu_entry} or @emph{menu_entry_
 container anymore, their content are merged directly in the menu in
 @emph{preformatted} container.
 
-@item $detailmenu = new_master_menu($translations, $labels)
-@anchor{Texinfo@asis{::}Transformations $detailmenu = new_master_menu($translations@comma{} $labels)}
-@cindex @code{new_master_menu}
-
-Returns a detailmenu tree element formatted as a master node.
-@emph{$translations}, if defined, should be a @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations} object and
-should also hold customization information.
-
 @item protect_hashchar_at_line_beginning($registrar, $customization_information, $tree)
 @anchor{Texinfo@asis{::}Transformations protect_hashchar_at_line_beginning($registrar@comma{} $customization_information@comma{} $tree)}
 @cindex @code{protect_hashchar_at_line_beginning}

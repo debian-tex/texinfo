@@ -33,7 +33,7 @@ $result_trees{'contents'} = {
             {
               'text' => ' line following first content
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -62,7 +62,7 @@ $result_trees{'contents'} = {
             {
               'text' => ' line following second content
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -86,7 +86,7 @@ $result_trees{'contents'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -113,7 +113,7 @@ $result_trees{'contents'} = {
             {
               'text' => ' eol
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'shortcontents',
@@ -136,7 +136,7 @@ $result_trees{'contents'} = {
             {
               'text' => ' eol
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'shortcontents',
@@ -159,7 +159,7 @@ $result_trees{'contents'} = {
             {
               'text' => ' line following summarycontents
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'summarycontents',

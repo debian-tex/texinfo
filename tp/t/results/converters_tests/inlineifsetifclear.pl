@@ -27,8 +27,10 @@ $result_trees{'inlineifsetifclear'} = {
                       'text' => 'iclear first '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -69,7 +71,13 @@ $result_trees{'inlineifsetifclear'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' ifset first ',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlineifset',
@@ -98,21 +106,17 @@ $result_trees{'inlineifsetifclear'} = {
           'args' => [
             {
               'text' => 'aaa',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' aaa
-',
-            'misc_args' => [
-              'aaa',
-              ''
-            ]
+'
           }
         },
         {
@@ -133,7 +137,13 @@ $result_trees{'inlineifsetifclear'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' ifclear second ',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlineifclear',
@@ -176,8 +186,10 @@ $result_trees{'inlineifsetifclear'} = {
                       'text' => 'ifset second '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -209,11 +221,11 @@ $result_trees{'inlineifsetifclear'} = {
 
 $result_texis{'inlineifsetifclear'} = '@inlineifclear{aaa, iclear first }.
 
-@inlineifset{aaa,}.
+@inlineifset{aaa, ifset first }.
 
 @set aaa
 
-@inlineifclear{aaa,}.
+@inlineifclear{aaa, ifclear second }.
 
 @inlineifset{aaa, ifset second }.
 ';
@@ -259,11 +271,11 @@ $result_converted{'html_text'}->{'inlineifsetifclear'} = '<p>iclear first .
 
 $result_converted{'xml'}->{'inlineifsetifclear'} = '<para><inlineifclear><inlineifclearformat>aaa</inlineifclearformat><inlineifclearcontent spaces=" ">iclear first </inlineifclearcontent></inlineifclear>.
 </para>
-<para><inlineifset><inlineifsetformat>aaa</inlineifsetformat></inlineifset>.
+<para><inlineifset><inlineifsetformat>aaa</inlineifsetformat><inlineifsetcontent> ifset first </inlineifsetcontent></inlineifset>.
 </para>
 <set name="aaa" line=" aaa"></set>
 
-<para><inlineifclear><inlineifclearformat>aaa</inlineifclearformat></inlineifclear>.
+<para><inlineifclear><inlineifclearformat>aaa</inlineifclearformat><inlineifclearcontent> ifclear second </inlineifclearcontent></inlineifclear>.
 </para>
 <para><inlineifset><inlineifsetformat>aaa</inlineifsetformat><inlineifsetcontent spaces=" ">ifset second </inlineifsetcontent></inlineifset>.
 </para>';

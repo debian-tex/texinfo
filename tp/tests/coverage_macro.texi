@@ -20,22 +20,52 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @findex ``
 @findex --foption
 
-@@"u @"u 
-@@"@{U@} @"{U} 
-@@~n @~n
-@@^a @^a
-@@'e @'e
-@@=o @=o
-@@`i @`i
-@@'@{e@} @'{e}
-@@'@{@@dotless@{i@}@} @'{@dotless{i}} 
-@@dotless@{i@} @dotless{i}
-@@dotless@{j@} @dotless{j}
-@@`@{@@=E@} @`{@=E} 
+@@"u @"u (ü)
+@@"@{U@} @"{U} (Ü) 
+@@~n @~n (ñ)
+@@^a @^a (â)
+
+@@'e @'e (é)
+@@=o @=o (ō)
+@@`i @`i (ì)
+@@'@{e@} @'{e} (é)
+
+@@'@{@@dotless@{i@}@} @'{@dotless{i}} (í)
+@@dotless@{i@} @dotless{i} (ı)
+@@dotless@{j@} @dotless{j} (ȷ)
+
+@code{@@H@{a@}} @H{a}
+@code{@@dotaccent@{a@}} @dotaccent{a} (ȧ)
+@code{@@ringaccent@{a@}} @ringaccent{a} (å)
+
+@code{@@tieaccent@{a@}} @tieaccent{a}
+@code{@@u@{a@}} @u{a} (ă)
+@code{@@ubaraccent@{a@}} @ubaraccent{a}
+
+@code{@@udotaccent@{a@}} @udotaccent{a} (ạ)
+@code{@@v@{a@}} @v{a} (ǎ)
+
+@@,c @,c (ç)
+@code{@@,@{c@}} @,{c} (ç)
+@code{@@ogonek@{a@}} @ogonek{a} (ą)
+
+@@`@{@@=E@} @`{@=E}
 @@l@{@} @l{}
 @@,@{@@'C@} @,{@'C}
-@@,c @,c
 @@,c@@"u @,c@"u @*
+
+@code{@@H@{--a@}} @H{--a}
+@code{@@dotaccent@{--a@}} @dotaccent{--a}
+@code{@@ringaccent@{--a@}} @ringaccent{--a}
+
+@code{@@tieaccent@{--a@}} @tieaccent{--a}
+@code{@@u@{--a@}} @u{--a}
+@code{@@ubaraccent@{--a@}} @ubaraccent{--a}
+
+@code{@@udotaccent@{--a@}} @udotaccent{--a}
+@code{@@v@{--a@}} @v{--a}
+@code{@@,@{--c@}} @,{--c}
+@code{@@ogonek@{--a@}} @ogonek{--a}
 
 @@U@{0075@} @U{0075}
 
@@ -51,6 +81,7 @@ kbd: @kbd{``simple-double--three---four----''} @*
 @code{@@!} @!
 @code{@@?} @?
 @code{@@.} @.
+@code{@@&} @&
 @code{@@@@} @@
 @code{@@@}} @}
 @code{@@@{} @{
@@ -63,62 +94,73 @@ And ? ?@:.
 Now ! !@:@@
 but , ,@:
 
+@@ampchar @ampchar{} (&)
+@@atchar @atchar{} (@@)
+@@backslashchar @backslashchar{} (\\)
+@@hashchar @hashchar{} (#)
+@@lbracechar @lbracechar{} (@{)
+@@rbracechar @rbracechar{} (@})
+
 @@TeX @TeX{}
 @@LaTeX @LaTeX{}
-@@bullet @bullet{}
-@@copyright @copyright{}
-@@dots @dots{}
+@@bullet @bullet{} (•)
+@@copyright @copyright{} (©)
+
+@@dots @dots{} (…)
 @@enddots @enddots{}
-@@equiv @equiv{}
+@@equiv @equiv{} (≡)
+
 @@error @error{}
-@@expansion @expansion{}
-@@minus @minus{}
-@@point @point{}
-@@print @print{}
-@@result @result{}
+@@expansion @expansion{} (↦)
+@@minus @minus{} (−)
+
+@@point @point{} (⋆)
+@@print @print{} (⊣)
+@@result @result{} (⇒)
 @@today @today{}
 
-@@aa @aa{}
-@@AA @AA{}
-@@ae @ae{}
-@@oe @oe{}
-@@AE @AE{}
-@@OE @OE{}
-@@o @o{}
-@@O @O{}
-@@ss @ss{}
-@@l @l{}
-@@L @L{}
-@@DH @DH{}
-@@TH @TH{}
-@@dh @dh{}
-@@th @th{}
+@@aa @aa{} (å)
+@@AA @AA{} (Å)
+@@ae @ae{} (æ)
+@@oe @oe{} (œ)
+@@AE @AE{} (Æ)
+@@OE @OE{} (Œ)
+@@o @o{} (ø)
+@@O @O{} (Ø)
+@@ss @ss{} (ß)
+@@l @l{} (ł)
+@@L @L{} (Ł)
+@@DH @DH{} (Ð)
+@@TH @TH{} (Þ)
+@@dh @dh{} (ð)
+@@th @th{} (þ)
 
-@@exclamdown @exclamdown{}
-@@questiondown @questiondown{}
-@@pounds @pounds{}
-@@registeredsymbol @registeredsymbol{}
-@@ordf @ordf{}
-@@ordm @ordm{}
-@@comma @comma{}
-@@quotedblleft @quotedblleft{}
-@@quotedblright @quotedblright{}
-@@quoteleft @quoteleft{}
-@@quoteright @quoteright{}
-@@quotedblbase @quotedblbase{}
-@@quotesinglbase @quotesinglbase{}
-@@guillemetleft @guillemetleft{}
-@@guillemetright @guillemetright{}
-@@guillemotleft @guillemotleft{}
-@@guillemotright @guillemotright{}
-@@guilsinglleft @guilsinglleft{}
-@@guilsinglright @guilsinglright{}
+@@exclamdown @exclamdown{} (¡)
+@@questiondown @questiondown{} (¿)
+@@pounds @pounds{} (£)
+@@registeredsymbol @registeredsymbol{} (®)
+@@ordf @ordf{} (ª)
+@@ordm @ordm{} (º)
+@@comma @comma{} (,)
+@@quotedblleft @quotedblleft{} (“)
+@@quotedblright @quotedblright{} (”)
+@@quoteleft @quoteleft{} (‘)
+@@quoteright @quoteright{} (’)
+@@quotedblbase @quotedblbase{} („)
+@@quotesinglbase @quotesinglbase{} (‚)
+@@guillemetleft @guillemetleft{} («)
+@@guillemetright @guillemetright{} (»)
+@@guillemotleft @guillemotleft{} («)
+@@guillemotright @guillemotright{} (»)
+@@guilsinglleft @guilsinglleft{} (‹)
+@@guilsinglright @guilsinglright{} (›)
 
-@@textdegree @textdegree{}
-@@euro @euro{}
-@@arrow @arrow{}
-@@leq @leq{}
-@@geq @geq{}
+@@textdegree @textdegree{} (°)
+@@euro @euro{} (€)
+@@arrow @arrow{} (→)
+
+@@leq @leq{} (≤)
+@@geq @geq{} (≥)
 @@tie a@tie{}b
 
 @code{@@acronym@{--a,an accronym@}} @acronym{--a,an accronym}
@@ -166,26 +208,6 @@ but , ,@:
 @code{@@verb@{:--a:@}} @verb{:--a:}
 @code{@@verb@{:a  < & @@ % " --    b:@}} @verb{:a  < & @ % " --    b:}
 @code{@@w@{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a@}} @w{a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a}
-@code{@@H@{a@}} @H{a}
-@code{@@H@{--a@}} @H{--a}
-@code{@@dotaccent@{a@}} @dotaccent{a}
-@code{@@dotaccent@{--a@}} @dotaccent{--a}
-@code{@@ringaccent@{a@}} @ringaccent{a}
-@code{@@ringaccent@{--a@}} @ringaccent{--a}
-@code{@@tieaccent@{a@}} @tieaccent{a}
-@code{@@tieaccent@{--a@}} @tieaccent{--a}
-@code{@@u@{a@}} @u{a}
-@code{@@u@{--a@}} @u{--a}
-@code{@@ubaraccent@{a@}} @ubaraccent{a}
-@code{@@ubaraccent@{--a@}} @ubaraccent{--a}
-@code{@@udotaccent@{a@}} @udotaccent{a}
-@code{@@udotaccent@{--a@}} @udotaccent{--a}
-@code{@@v@{a@}} @v{a}
-@code{@@v@{--a@}} @v{--a}
-@code{@@,@{c@}} @,{c}
-@code{@@,@{--c@}} @,{--c}
-@code{@@ogonek@{a@}} @ogonek{a}
-@code{@@ogonek@{--a@}} @ogonek{--a}
 @code{a@@sup@{h@}@@sub@{l@}} a@sup{h}@sub{l}
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
@@ -208,11 +230,8 @@ After clickstyle @result{}
 
 @c TeX does not like @displamath in @example, the error is
 @c  Missing $ inserted.
-@c Therefore, if inexample is set, condition on valid.  Not that
-@c This type of nesting may not be valid.
-@ifset inexample
-@ifclear valid
-@end ifset
+@c Therefore, condition on validinexample.
+@ifclear validinexample
 @ignore
 in the displaymath below, as in math, backslash are doubled because 
 we are in a macro.
@@ -230,6 +249,7 @@ f(x) = {1 \\over \\sigma \\sqrt{2\\pi}}e@sup{-{1 \\over 2}\\left({x-\\mu \\over 
 @displaymath
 @dotless{i} @dotless{j}
 @l{} @,c
+
 @ubaraccent{a} @udotaccent{a} @ogonek{a} a@sup{h}@sub{l}
 @* @ @  @
 @- @| @! @@ @} @{ @/
@@ -256,24 +276,18 @@ f(x) = {1 \\over \\sigma \\sqrt{2\\pi}}e@sup{-{1 \\over 2}\\left({x-\\mu \\over 
 @displaymath
 @b{b} @i{i} @r{r} @sc{sc} @sansserif{sansserif} @slanted{slanted}
 @end displaymath
-@ifset inexample
 @end ifclear
-@end ifset
 
 @c as documented, TeX does not like @vtable in @example
 @c  This command won't work in this context; perhaps the 
 @c  problem is that we are in environment @example.
 @kbd{default kbdinputstyle}
 @c when called in @example
-@ifset inexample
-@ifclear valid
-@end ifset
+@ifclear validinexample
 @vtable @kbd
 @item vtable i--tem default kbdinputstyle
 @end vtable
-@ifset inexample
 @end ifclear
-@end ifset
 @example
 @kbd{in example default kbdinputstyle}
 @c no @vtable in @example
@@ -286,15 +300,11 @@ f(x) = {1 \\over \\sigma \\sqrt{2\\pi}}e@sup{-{1 \\over 2}\\left({x-\\mu \\over 
 
 @kbdinputstyle code
 @kbd{code kbdinputstyle}
-@ifset inexample
-@ifclear valid
-@end ifset
+@ifclear validinexample
 @vtable @kbd
 @item vtable i--tem code kbdinputstyle
 @end vtable
-@ifset inexample
 @end ifclear
-@end ifset
 @example
 @kbd{in example code kbdinputstyle}
 @c no @vtable in @example
@@ -307,15 +317,11 @@ f(x) = {1 \\over \\sigma \\sqrt{2\\pi}}e@sup{-{1 \\over 2}\\left({x-\\mu \\over 
 
 @kbdinputstyle example
 @kbd{example kbdinputstyle}
-@ifset inexample
-@ifclear valid
-@end ifset
+@ifclear validinexample
 @vtable @kbd
 @item vtable i--tem example kbdinputstyle
 @end vtable
-@ifset inexample
 @end ifclear
-@end ifset
 @example
 @kbd{in example example kbdinputstyle}
 @c no @vtable in @example
@@ -328,15 +334,11 @@ f(x) = {1 \\over \\sigma \\sqrt{2\\pi}}e@sup{-{1 \\over 2}\\left({x-\\mu \\over 
 
 @kbdinputstyle distinct
 @kbd{distinct kbdinputstyle}
-@ifset inexample
-@ifclear valid
-@end ifset
+@ifclear validinexample
 @vtable @kbd
 @item vtable i--tem distinct kbdinputstyle
 @end vtable
-@ifset inexample
 @end ifclear
-@end ifset
 @example
 @kbd{in example distinct kbdinputstyle}
 @c no @vtable in @example
@@ -873,9 +875,7 @@ ref, a comma@comma{} in file}
 @c as documented The @table command is not supported inside @display
 @c  This command won't work in this context; perhaps the 
 @c  problem is that we are in environment @example.
-@ifset inexample
-@ifclear valid
-@end ifset
+@ifclear validinexample
 @table @strong
 @c comment in table
 @item a--strong
@@ -908,12 +908,14 @@ Title
 @itemx a2--samp
 Value--table samp
 @end table
-@ifset inexample
 @end ifclear
-@end ifset
 
 @cartouche
 c--artouche
+@end cartouche
+
+@cartouche Tit--le @emph{of box}
+With title c--artouche
 @end cartouche
 
 @flushleft

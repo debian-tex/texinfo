@@ -31,7 +31,7 @@ $result_trees{'nested'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => '/'
                       },
                       'source_info' => {

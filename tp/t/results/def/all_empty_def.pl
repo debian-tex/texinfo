@@ -15,6 +15,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -37,17 +43,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'deffn'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deffn'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -56,10 +68,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -77,6 +85,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -99,17 +113,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'defvr'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defvr'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -118,10 +138,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 4,
@@ -139,6 +155,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -161,17 +183,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'deftypefn'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deftypefn'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -180,10 +208,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 7,
@@ -201,6 +225,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -223,17 +253,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'deftypeop'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deftypeop'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -242,10 +278,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 10,
@@ -263,6 +295,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -285,17 +323,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'deftypevr'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deftypevr'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -304,10 +348,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 13,
@@ -325,6 +365,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -347,17 +393,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'defcv'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defcv'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -366,10 +418,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 16,
@@ -387,6 +435,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -409,17 +463,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'deftypecv'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deftypecv'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -428,10 +488,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 19,
@@ -449,6 +505,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -471,17 +533,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'defop'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defop'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -490,10 +558,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 22,
@@ -511,6 +575,12 @@ $result_trees{'all_empty_def'} = {
             {
               'args' => [
                 {
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
@@ -533,17 +603,23 @@ $result_trees{'all_empty_def'} = {
                       'text' => 'deftp'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deftp'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -552,10 +628,6 @@ $result_trees{'all_empty_def'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '
-'
-          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 25,
@@ -695,5 +767,130 @@ $result_errors{'all_empty_def'} = [
 
 $result_floats{'all_empty_def'} = {};
 
+
+
+$result_converted{'info'}->{'all_empty_def'} = 'This is , produced from .
+
+
+
+Tag Table:
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
+';
+
+$result_converted_errors{'info'}->{'all_empty_def'} = [
+  {
+    'error_line' => 'warning: document without nodes
+',
+    'text' => 'document without nodes',
+    'type' => 'warning'
+  }
+];
+
+
+
+$result_converted{'html'}->{'all_empty_def'} = '<!DOCTYPE html>
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+</head>
+
+<body lang="en">
+<dl class="first-deffn">
+<dt class="deffn"></dt>
+</dl>
+
+<dl class="first-defvr">
+<dt class="defvr"></dt>
+</dl>
+
+<dl class="first-deftypefn">
+<dt class="deftypefn"></dt>
+</dl>
+
+<dl class="first-deftypeop">
+<dt class="deftypeop"></dt>
+</dl>
+
+<dl class="first-deftypevr">
+<dt class="deftypevr"></dt>
+</dl>
+
+<dl class="first-defcv">
+<dt class="defcv"></dt>
+</dl>
+
+<dl class="first-deftypecv">
+<dt class="deftypecv"></dt>
+</dl>
+
+<dl class="first-defop">
+<dt class="defop"></dt>
+</dl>
+
+<dl class="first-deftp">
+<dt class="deftp"></dt>
+</dl>
+
+
+
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'all_empty_def'} = [
+  {
+    'error_line' => 'warning: must specify a title with a title command or @top
+',
+    'text' => 'must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
+
+$result_converted{'xml'}->{'all_empty_def'} = '<deffn endspaces=" "><definitionterm></definitionterm>
+</deffn>
+
+<defvr endspaces=" "><definitionterm></definitionterm>
+</defvr>
+
+<deftypefn endspaces=" "><definitionterm></definitionterm>
+</deftypefn>
+
+<deftypeop endspaces=" "><definitionterm></definitionterm>
+</deftypeop>
+
+<deftypevr endspaces=" "><definitionterm></definitionterm>
+</deftypevr>
+
+<defcv endspaces=" "><definitionterm></definitionterm>
+</defcv>
+
+<deftypecv endspaces=" "><definitionterm></definitionterm>
+</deftypecv>
+
+<defop endspaces=" "><definitionterm></definitionterm>
+</defop>
+
+<deftp endspaces=" "><definitionterm></definitionterm>
+</deftp>
+';
 
 1;

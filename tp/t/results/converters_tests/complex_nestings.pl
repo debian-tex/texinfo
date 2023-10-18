@@ -18,28 +18,23 @@ $result_trees{'complex_nestings'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -55,9 +50,11 @@ $result_trees{'complex_nestings'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -70,8 +67,11 @@ $result_trees{'complex_nestings'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -87,28 +87,23 @@ $result_trees{'complex_nestings'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -124,9 +119,11 @@ $result_trees{'complex_nestings'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -141,9 +138,11 @@ $result_trees{'complex_nestings'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -198,7 +197,7 @@ $result_trees{'complex_nestings'} = {
                             'line_nr' => 9,
                             'macro' => ''
                           },
-                          'type' => 'bracketed_def_content'
+                          'type' => 'bracketed_arg'
                         },
                         {
                           'extra' => {
@@ -263,41 +262,25 @@ $result_trees{'complex_nestings'} = {
                             'line_nr' => 9,
                             'macro' => ''
                           }
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
-                          'text' => '
-',
-                          'type' => 'spaces_at_end'
                         }
                       ],
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
+'
+                        }
+                      },
                       'type' => 'block_line_arg'
                     }
                   ],
                   'extra' => {
                     'def_command' => 'defun',
-                    'def_parsed_hash' => {
-                      'category' => {},
-                      'name' => {}
-                    },
-                    'index_entry' => {
-                      'content_normalized' => [
-                        {}
-                      ],
-                      'entry_content' => [
-                        {}
-                      ],
-                      'entry_element' => {},
-                      'entry_node' => {},
-                      'entry_number' => 1,
-                      'in_code' => 1,
-                      'index_at_command' => 'defun',
-                      'index_ignore_chars' => {},
-                      'index_name' => 'fn',
-                      'index_type_command' => 'defun'
-                    },
+                    'def_index_element' => {},
+                    'element_node' => {},
+                    'index_entry' => [
+                      'fn',
+                      1
+                    ],
                     'original_def_cmdname' => 'defun'
                   },
                   'source_info' => {
@@ -343,7 +326,7 @@ $result_trees{'complex_nestings'} = {
                             'line_nr' => 10,
                             'macro' => ''
                           },
-                          'type' => 'bracketed_def_content'
+                          'type' => 'bracketed_arg'
                         },
                         {
                           'extra' => {
@@ -370,44 +353,32 @@ $result_trees{'complex_nestings'} = {
                             'def_role' => 'arg'
                           },
                           'text' => 'args'
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
-                          'text' => '
-',
-                          'type' => 'spaces_at_end'
                         }
                       ],
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
+'
+                        }
+                      },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'defunx',
                   'extra' => {
                     'def_command' => 'defun',
-                    'def_parsed_hash' => {
-                      'category' => {},
-                      'name' => {}
-                    },
-                    'index_entry' => {
-                      'content_normalized' => [
-                        {}
-                      ],
-                      'entry_content' => [
-                        {}
-                      ],
-                      'entry_element' => {},
-                      'entry_node' => {},
-                      'entry_number' => 2,
-                      'in_code' => 1,
-                      'index_at_command' => 'defunx',
-                      'index_ignore_chars' => {},
-                      'index_name' => 'fn',
-                      'index_type_command' => 'defun'
-                    },
-                    'original_def_cmdname' => 'defunx',
-                    'spaces_before_argument' => ' '
+                    'def_index_element' => {},
+                    'element_node' => {},
+                    'index_entry' => [
+                      'fn',
+                      2
+                    ],
+                    'original_def_cmdname' => 'defunx'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -439,7 +410,7 @@ $result_trees{'complex_nestings'} = {
                                     'line_nr' => 11,
                                     'macro' => ''
                                   },
-                                  'type' => 'bracketed_def_content'
+                                  'type' => 'bracketed_arg'
                                 },
                                 {
                                   'extra' => {
@@ -462,7 +433,7 @@ $result_trees{'complex_nestings'} = {
                                     'line_nr' => 11,
                                     'macro' => ''
                                   },
-                                  'type' => 'bracketed_def_content'
+                                  'type' => 'bracketed_arg'
                                 },
                                 {
                                   'extra' => {
@@ -515,41 +486,25 @@ $result_trees{'complex_nestings'} = {
                                     'def_role' => 'arg'
                                   },
                                   'text' => 'args'
-                                },
-                                {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
-                                  },
-                                  'text' => '
-',
-                                  'type' => 'spaces_at_end'
                                 }
                               ],
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
+'
+                                }
+                              },
                               'type' => 'block_line_arg'
                             }
                           ],
                           'extra' => {
                             'def_command' => 'deffn',
-                            'def_parsed_hash' => {
-                              'category' => {},
-                              'name' => {}
-                            },
-                            'index_entry' => {
-                              'content_normalized' => [
-                                {}
-                              ],
-                              'entry_content' => [
-                                {}
-                              ],
-                              'entry_element' => {},
-                              'entry_node' => {},
-                              'entry_number' => 3,
-                              'in_code' => 1,
-                              'index_at_command' => 'deffn',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'fn',
-                              'index_type_command' => 'deffn'
-                            },
+                            'def_index_element' => {},
+                            'element_node' => {},
+                            'index_entry' => [
+                              'fn',
+                              3
+                            ],
                             'original_def_cmdname' => 'deffn'
                           },
                           'source_info' => {
@@ -600,7 +555,7 @@ $result_trees{'complex_nestings'} = {
                                             'line_nr' => 12,
                                             'macro' => ''
                                           },
-                                          'type' => 'bracketed_def_content'
+                                          'type' => 'bracketed_arg'
                                         },
                                         {
                                           'extra' => {
@@ -614,41 +569,25 @@ $result_trees{'complex_nestings'} = {
                                             'def_role' => 'arg'
                                           },
                                           'text' => 'variable-name'
-                                        },
-                                        {
-                                          'extra' => {
-                                            'def_role' => 'spaces'
-                                          },
-                                          'text' => '
-',
-                                          'type' => 'spaces_at_end'
                                         }
                                       ],
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => '
+'
+                                        }
+                                      },
                                       'type' => 'block_line_arg'
                                     }
                                   ],
                                   'extra' => {
                                     'def_command' => 'defvar',
-                                    'def_parsed_hash' => {
-                                      'category' => {},
-                                      'name' => {}
-                                    },
-                                    'index_entry' => {
-                                      'content_normalized' => [
-                                        {}
-                                      ],
-                                      'entry_content' => [
-                                        {}
-                                      ],
-                                      'entry_element' => {},
-                                      'entry_node' => {},
-                                      'entry_number' => 1,
-                                      'in_code' => 1,
-                                      'index_at_command' => 'defvar',
-                                      'index_ignore_chars' => {},
-                                      'index_name' => 'vr',
-                                      'index_type_command' => 'defvar'
-                                    },
+                                    'def_index_element' => {},
+                                    'element_node' => {},
+                                    'index_entry' => [
+                                      'vr',
+                                      1
+                                    ],
                                     'original_def_cmdname' => 'defvar'
                                   },
                                   'source_info' => {
@@ -709,7 +648,7 @@ $result_trees{'complex_nestings'} = {
                                             'line_nr' => 14,
                                             'macro' => ''
                                           },
-                                          'type' => 'bracketed_def_content'
+                                          'type' => 'bracketed_arg'
                                         },
                                         {
                                           'extra' => {
@@ -723,44 +662,32 @@ $result_trees{'complex_nestings'} = {
                                             'def_role' => 'arg'
                                           },
                                           'text' => 'other-variable'
-                                        },
-                                        {
-                                          'extra' => {
-                                            'def_role' => 'spaces'
-                                          },
-                                          'text' => '
-',
-                                          'type' => 'spaces_at_end'
                                         }
                                       ],
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => '
+'
+                                        }
+                                      },
                                       'type' => 'line_arg'
                                     }
                                   ],
                                   'cmdname' => 'defvarx',
                                   'extra' => {
                                     'def_command' => 'defvar',
-                                    'def_parsed_hash' => {
-                                      'category' => {},
-                                      'name' => {}
-                                    },
-                                    'index_entry' => {
-                                      'content_normalized' => [
-                                        {}
-                                      ],
-                                      'entry_content' => [
-                                        {}
-                                      ],
-                                      'entry_element' => {},
-                                      'entry_node' => {},
-                                      'entry_number' => 2,
-                                      'in_code' => 1,
-                                      'index_at_command' => 'defvarx',
-                                      'index_ignore_chars' => {},
-                                      'index_name' => 'vr',
-                                      'index_type_command' => 'defvar'
-                                    },
-                                    'original_def_cmdname' => 'defvarx',
-                                    'spaces_before_argument' => ' '
+                                    'def_index_element' => {},
+                                    'element_node' => {},
+                                    'index_entry' => [
+                                      'vr',
+                                      2
+                                    ],
+                                    'original_def_cmdname' => 'defvarx'
+                                  },
+                                  'info' => {
+                                    'spaces_before_argument' => {
+                                      'text' => ' '
+                                    }
                                   },
                                   'source_info' => {
                                     'file_name' => '',
@@ -803,9 +730,11 @@ $result_trees{'complex_nestings'} = {
                                               'type' => 'command_as_argument'
                                             }
                                           ],
-                                          'extra' => {
-                                            'spaces_after_argument' => '
+                                          'info' => {
+                                            'spaces_after_argument' => {
+                                              'text' => '
 '
+                                            }
                                           },
                                           'type' => 'block_line_arg'
                                         }
@@ -824,16 +753,20 @@ $result_trees{'complex_nestings'} = {
                                                           'text' => 'item'
                                                         }
                                                       ],
-                                                      'extra' => {
-                                                        'spaces_after_argument' => '
+                                                      'info' => {
+                                                        'spaces_after_argument' => {
+                                                          'text' => '
 '
+                                                        }
                                                       },
                                                       'type' => 'line_arg'
                                                     }
                                                   ],
                                                   'cmdname' => 'item',
-                                                  'extra' => {
-                                                    'spaces_before_argument' => ' '
+                                                  'info' => {
+                                                    'spaces_before_argument' => {
+                                                      'text' => ' '
+                                                    }
                                                   },
                                                   'source_info' => {
                                                     'file_name' => '',
@@ -865,7 +798,7 @@ $result_trees{'complex_nestings'} = {
                                                   'type' => 'preformatted'
                                                 }
                                               ],
-                                              'type' => 'table_item'
+                                              'type' => 'table_definition'
                                             }
                                           ],
                                           'type' => 'table_entry'
@@ -882,16 +815,20 @@ $result_trees{'complex_nestings'} = {
                                                           'text' => 'second item'
                                                         }
                                                       ],
-                                                      'extra' => {
-                                                        'spaces_after_argument' => '
+                                                      'info' => {
+                                                        'spaces_after_argument' => {
+                                                          'text' => '
 '
+                                                        }
                                                       },
                                                       'type' => 'line_arg'
                                                     }
                                                   ],
                                                   'cmdname' => 'item',
-                                                  'extra' => {
-                                                    'spaces_before_argument' => ' '
+                                                  'info' => {
+                                                    'spaces_before_argument' => {
+                                                      'text' => ' '
+                                                    }
                                                   },
                                                   'source_info' => {
                                                     'file_name' => '',
@@ -913,17 +850,23 @@ $result_trees{'complex_nestings'} = {
                                                   'text' => 'table'
                                                 }
                                               ],
-                                              'extra' => {
-                                                'spaces_after_argument' => '
+                                              'info' => {
+                                                'spaces_after_argument' => {
+                                                  'text' => '
 '
+                                                }
                                               },
                                               'type' => 'line_arg'
                                             }
                                           ],
                                           'cmdname' => 'end',
                                           'extra' => {
-                                            'spaces_before_argument' => ' ',
                                             'text_arg' => 'table'
+                                          },
+                                          'info' => {
+                                            'spaces_before_argument' => {
+                                              'text' => ' '
+                                            }
                                           },
                                           'source_info' => {
                                             'file_name' => '',
@@ -933,8 +876,12 @@ $result_trees{'complex_nestings'} = {
                                         }
                                       ],
                                       'extra' => {
-                                        'command_as_argument' => {},
-                                        'spaces_before_argument' => ' '
+                                        'command_as_argument' => {}
+                                      },
+                                      'info' => {
+                                        'spaces_before_argument' => {
+                                          'text' => ' '
+                                        }
                                       },
                                       'source_info' => {
                                         'file_name' => '',
@@ -967,17 +914,23 @@ $result_trees{'complex_nestings'} = {
                                           'text' => 'defvar'
                                         }
                                       ],
-                                      'extra' => {
-                                        'spaces_after_argument' => '
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => '
 '
+                                        }
                                       },
                                       'type' => 'line_arg'
                                     }
                                   ],
                                   'cmdname' => 'end',
                                   'extra' => {
-                                    'spaces_before_argument' => ' ',
                                     'text_arg' => 'defvar'
+                                  },
+                                  'info' => {
+                                    'spaces_before_argument' => {
+                                      'text' => ' '
+                                    }
                                   },
                                   'source_info' => {
                                     'file_name' => '',
@@ -986,8 +939,10 @@ $result_trees{'complex_nestings'} = {
                                   }
                                 }
                               ],
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -1006,17 +961,23 @@ $result_trees{'complex_nestings'} = {
                                   'text' => 'deffn'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'deffn'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1025,8 +986,10 @@ $result_trees{'complex_nestings'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1045,17 +1008,23 @@ $result_trees{'complex_nestings'} = {
                           'text' => 'defun'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'defun'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -1064,8 +1033,10 @@ $result_trees{'complex_nestings'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1091,17 +1062,23 @@ $result_trees{'complex_nestings'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1117,8 +1094,11 @@ $result_trees{'complex_nestings'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -1129,40 +1109,16 @@ $result_trees{'complex_nestings'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'complex_nestings'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2];
-$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'def_index_element'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
+$result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'element_node'} = $result_trees{'complex_nestings'}{'contents'}[3];
 $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'complex_nestings'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'complex_nestings'} = '@node Top
@@ -1364,10 +1320,8 @@ $result_converted{'plaintext'}->{'complex_nestings'} = 'top
 
 $result_converted{'html_text'}->{'complex_nestings'} = '<div class="top-level-extent" id="Top">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chap" accesskey="1">Chapter</a></li>
@@ -1375,23 +1329,21 @@ $result_converted{'html_text'}->{'complex_nestings'} = '<div class="top-level-ex
 <hr>
 <div class="chapter-level-extent" id="chap">
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <div class="example">
 <pre class="example-preformatted">deffs
 </pre><dl class="first-deffn first-defun-alias-first-deffn">
-<dt class="deffn defun-alias-deffn" id="index-my-def"><span class="category-def">Function: </span><span><strong class="def-name">my def</strong> <var class="def-var-arguments">args <var class="var">arg</var> &hellip;</var><a class="copiable-link" href=\'#index-my-def\'> &para;</a></span></dt>
-<dt class="deffnx defunx-alias-deffnx def-cmd-deffn" id="index-other-def"><span class="category-def">Function: </span><span><strong class="def-name">other def</strong> <var class="def-var-arguments">no args</var><a class="copiable-link" href=\'#index-other-def\'> &para;</a></span></dt>
+<dt class="deffn defun-alias-deffn" id="index-my-def"><span class="category-def">Function: </span><span><strong class="def-name">my def</strong> <var class="def-var-arguments">args <var class="var">arg</var> ...</var><a class="copiable-link" href="#index-my-def"> &para;</a></span></dt>
+<dt class="deffnx defunx-alias-deffnx def-cmd-deffn" id="index-other-def"><span class="category-def">Function: </span><span><strong class="def-name">other def</strong> <var class="def-var-arguments">no args</var><a class="copiable-link" href="#index-other-def"> &para;</a></span></dt>
 <dd><dl class="first-deffn">
-<dt class="deffn" id="index-name"><span class="category-def">type: </span><span><strong class="def-name">name</strong> <var class="def-var-arguments">and now the args</var><a class="copiable-link" href=\'#index-name\'> &para;</a></span></dt>
+<dt class="deffn" id="index-name"><span class="category-def">type: </span><span><strong class="def-name">name</strong> <var class="def-var-arguments">and now the args</var><a class="copiable-link" href="#index-name"> &para;</a></span></dt>
 <dd><dl class="first-defvr first-defvar-alias-first-defvr">
-<dt class="defvr defvar-alias-defvr" id="index-variables"><span class="category-def">Variable: </span><span><strong class="def-name">variables</strong> <var class="def-var-arguments">variable-name</var><a class="copiable-link" href=\'#index-variables\'> &para;</a></span></dt>
+<dt class="defvr defvar-alias-defvr" id="index-variables"><span class="category-def">Variable: </span><span><strong class="def-name">variables</strong> <var class="def-var-arguments">variable-name</var><a class="copiable-link" href="#index-variables"> &para;</a></span></dt>
 <dd><pre class="example-preformatted">
 
-</pre></dd><dt class="defvrx defvarx-alias-defvrx def-cmd-defvr" id="index-variables-too"><span class="category-def">Variable: </span><span><strong class="def-name">variables too</strong> <var class="def-var-arguments">other-variable</var><a class="copiable-link" href=\'#index-variables-too\'> &para;</a></span></dt>
+</pre></dd><dt class="defvrx defvarx-alias-defvrx def-cmd-defvr" id="index-variables-too"><span class="category-def">Variable: </span><span><strong class="def-name">variables too</strong> <var class="def-var-arguments">other-variable</var><a class="copiable-link" href="#index-variables-too"> &para;</a></span></dt>
 <dd><pre class="example-preformatted">THis is the defvar
 
 A table within the def

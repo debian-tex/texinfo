@@ -1,6 +1,6 @@
 This is the todo list for texi2any
 
-  Copyright 2012, 2013, 2014, 2015 Free Software Foundation.
+  Copyright 2012-2023 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -20,8 +20,6 @@ Issues
 ------
 
 Some private function used in conversion
- _convert_informative_command
-  _translate_names
  _convert_printindex_command
   _new_document_context
 
@@ -29,14 +27,16 @@ Some private function used in conversion
 Missing documentation
 =====================
 
+HTML API ignore_notice _noticed_line_warn.  Add to API before?
+
 Tree documentation in ParserNonXS.pm
 ------------------------------------
 
-replaced, elided, elided_block types.
+elided_rawpreformatted, elided_brace_command_arg types.
 
-'extra'->'file' in replaced @include.
-extra->'comment_at_end'
-likely in many line commands
+'comment_at_end' in info hash
+
+source marks.
 
 Other
 -----
@@ -44,43 +44,26 @@ Other
 For converter writers,
 'output_init_conf' and 'converter_init_conf'.
 
-'translated_commands' in converters is not documented anywhere nor is there
-a clean way to set it from user code with an API.  Not urgent, as long as
-it is not possible for users to register translated strings and provide with
-translations.
-
 
 Delayed bugs
 ============
 
-See message/thread from Reißner Ernst: Feature request: api docs
+From https://www.gnu.org/software/libc/manual/html_node/Using-gettextized-software.html
+For locales, the encoding part is normalized in a specific way.  It
+seems that iconv in the C library follows the same convention at least to
+some extent, though it is not visibly documented.
+Should we use fully the normalization of documentencoding following in some
+context (gdt?):
+  The normalized codeset value is generated from the user-provided character set name by applying the following rules:
 
-In @inline* ignore arguments, @value and user macros should not be
-expanded.  For example
+    Remove all characters besides numbers and letters.
+    Fold letters to lowercase.
+    If the same only contains digits prepend the string "iso".
 
- @set closebrace }
-
- @inlinefmt{html,
- truc @value{closebrace}
- machin
-
-In Plaintext, @quotation text should have the right margin narrowed.
-
-Text after @bye should be kept as is when redoing Texinfo.
-
-Sorting of index entries should be language dependent and sort properly
-unicode sorting.  Unicode::Collate has been in perl core long enough, but
-Unicode::Collate::Locale is present since perl major version 5.14 only,
-released in 2011.  So probably better to use Unicode::Collate until 2031
-(and if documentlanguage is not set) and switch to Unicode::Collate::Locale
-at this date.
-my $collator = Unicode::Collate::Locale->new('locale' => $documentlanguage, 'normalization' => 'NFKD')
-@sorted = $collator->sort(@not_sorted);
+  So all of the above names will be normalized to iso88591. This allows the program user much more freedom in choosing the locale name.
 
 
-in hyphenation: only text and accent commands, and should
-only appear in toplevel.  Not the only command with only
-text and accent commands, there is a FIXME in Common.pm.
+hyphenation: should only appear in toplevel.
 
 
 Some dubious nesting could be warned against.  The parsers context
@@ -88,15 +71,7 @@ command stacks could be used for that.
 
 Some erroneous constructs not already warned against:
 
- @chapter @code{@anchor{TTO}}
-
- @chapter @anchor{TTez}
-
  @table in @menu
-
- @caption in @caption
-
- nested footnotes
 
  @example
  @heading A heading
@@ -106,11 +81,6 @@ Some erroneous constructs not already warned against:
  @group outside of @example  (maybe there is no need for command stack for
                               this one if @group can only appear directly
                               in @example).
-
-maybe checking for incorrectly nested @titlepage, @copying and
-@documentdescription (which is already done in the "regions stack")
-could be done the same way.
-
 
 There is no warning with a block command between @def* and @def*x,
 only for paragraph.  Not sure that this can be detected with
@@ -128,41 +98,8 @@ the context command stack.
  @end defun
 
 
-
-Punctuation and spaces before @image do not lead to a doubling of space.
-In fact @image is completly formatted outside of usual formatting containers.
-Not sure what should be the right way?
-test in info_test/image_and_punctuation
-
-There should be a warning for block commands without argument
-that have an argument on their line, like:
-@blockcmd text
-...
-
-Image on sectioning command line haven't their length ignored correctly.
-Not sure it is a big deal.  An example in sectioning/at_commands_in_refs.
-
-warn when a @noindent/@indent appears within a paragraph.
-
-in info_tests/error_in_footnote there is an error message for each
-listoffloats;  Line numbers are right, though, so maybe this is not
-an issue.
-
-converters_tests/things_before_setfilename there is no error
-for anchor and footnote before setfilename.  It is not completly
-clear that there should be, though.
-
-Recursive expansion of @value may lead to an infinite loop.  Wait for
-marksource to proceed.
- https://bugzilla.redhat.com/show_bug.cgi?id=744878
-
-
-Some @-commands do not have an element with a class associated, or the
-association is not perfect.  There is @author in @quotation, @-command
-affected by @definfoenclose.  @pxref and similar @-commands have no class
-for references to external nodes, and don't have the 'See ' in the
-element for references to internal nodes.  In general, it is because
-gdt() is used instead of direct HTML.
+Modules included in tp/maintain/lib/ need to be updated from time to
+time.
 
 
 HTML5 validation tidy errors that do not need fixing
@@ -196,10 +133,6 @@ as CSS because it is not style, but table or even line specific formatting.
 Missing tests
 =============
 
-Test node files that differ only in case.  This may be rather complicated,
-however, as http://savannah.gnu.org/bugs/?38380 shows.  This may be linked
-to a possible test of CASE_INSENSITIVE_FILENAMES.
-
 Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
 
 anchor in flushright, on an empty line, with a current byte offset.
@@ -208,7 +141,35 @@ anchor in flushright, on an empty line, with a current byte offset.
 Future features
 ===============
 
-Add in_math (for /) as flag in command_data.txt?
+For converters in C, agreed with Gavin that it is better not to
+translate a perl tree in input, but access directly the C tree that
+was setup by the XS parser.
+
+
+It would probably be good and maybe ease C converters to have a
+Texinfo::Document package which encapsulates the information associated
+to a document, the tree, and all the other information given by
+the parser, indices_information, floats_information,
+internal_references_information, global_commands_information,
+global_information and labels_information as they are a property of a Texinfo
+Document, in addition to being, in general, states of a parser.  The
+information set by some calls to Structuring would also probably fit there
+naturally.  A member of the package/class would be initialized after the
+parsing, but not necessarily for all the function, maybe only parse_texi_text
+and parse_texi_file.
+
+
+For Paragraph, improvements and synchronizations of
+the two implementations.  It would be nice to change the XS code
+to operate on multiple spans of characters at once when relevant,
+we'd have an extra step of keeping track of how long each span of
+text is, and then processing that span of text together (in the loop
+in xspara_add_text).  It could potentiall have performance benefits
+(e.g. reducing the number of function calls) and be easier to debug,
+with fewer steps in the processing to trace.  The XS code is easier
+to read for the ens of sentence handling part, so for that part, it
+could be relevant to use the XS code as reference and change the perl
+Paragraph.
 
 
 From Gavin on the preamble_before_beginning implementation:
@@ -225,21 +186,9 @@ all the text in this preamble as one long string - it wouldn't have to be
 line by line.
 
 
-Update Unicode-EastAsianWidth.  The new version has improved tests
-and a new license, but no functional change.  So maybe wait a
-bit to update.
+See message/thread from Reißner Ernst: Feature request: api docs
 
-Add some elements of texinfo that are not of interest in the
-tree, like beginning and end of included file, @ protecting
-end of line in @def*, begin and end of user defined macro
-or value expansion.  For @include @-commands, which are kept,
-the type is set to 'replaced'.  Could add 'sourcemark'
-instead of 'type' for the marks that are not associated with
-@-commands.
-
-In a similar way, keep the information about aliases in the tree?
-And about @setfilename in included files which is for now completly
-removed (consistently with documentation).
+Add in_math (for \) as flag in command_data.txt?
 
 Right now VERBOSE is almost not used.
 
@@ -254,6 +203,35 @@ For plaintext, implement an effect of NO_TOP_NODE_OUTPUT
   and do not output the Top node.
 * if false, current output is ok
 Default is false.
+
+In Plaintext, @quotation text could have the right margin narrowed to be more
+in line with other output formats.
+
+Punctuation and spaces before @image do not lead to a doubling of space.
+In fact @image is completly formatted outside of usual formatting containers.
+Not sure what should be the right way?
+test in info_test/image_and_punctuation
+
+in info_tests/error_in_footnote there is an error message for each
+listoffloats;  Line numbers are right, though, so maybe this is not
+an issue.
+
+converters_tests/things_before_setfilename there is no error
+for anchor and footnote before setfilename.  It is not completly
+clear that there should be, though.
+
+In Info, image special directive on sectioning command line length
+is taken into account for the underlying characters line count inserted
+below the section title.  There is no reason to underline the image
+special directive.  Since the image rendering and length of replacement
+text depends on the Info viewer, howere, there is no way to know in
+advance the lenght of text to underline (if any).  It is therefore unclear
+what would be the correct underlying characters count.
+An example in formats_encodings/at_commands_in_refs.
+
+Many strings in debugging output are not encoded.  Not clear that it is
+an issue.  For example with
+/usr/bin/perl -w ./..//texi2any.pl  --force --conf-dir ./../t/init/ --conf-dir ./../init --conf-dir ./../ext -I ./coverage/ -I coverage// -I ./ -I . -I built_input --error-limit=1000 -c TEST=1  --output coverage//out_parser/formatting_macro_expand/ --macro-expand=coverage//out_parser/formatting_macro_expand/formatting.texi -c TEXINFO_OUTPUT_FORMAT=structure ./coverage//formatting.texi --debug=1 2>t.err
 
 
 DocBook
@@ -442,8 +420,8 @@ résultat/encodé.txt file name encoded in utf8
 char_latin1_latin1_in_refs_tree.txt content encoded in latin1
 
 
-Notes
-=====
+Notes on classes names in HTML
+==============================
 
 In january 2022 the classes in HTML elements were normalized.  There are no
 rules, but here is descriptions of the choices made at that time in case one
@@ -477,6 +455,14 @@ the specific command name used.
 
 For the classes not associated with @-commands, the names were selected to
 correspond to the role in the document rather than to the formatting style.
+
+
+In HTML, some @-commands do not have an element with a class associated, or the
+association is not perfect.  There is @author in @quotation, @-command affected
+by @definfoenclose.  @pxref and similar @-commands have no class for references
+to external nodes, and don't have the 'See ' in the element for references to
+internal nodes.  In general, it is because gdt() is used instead of direct
+HTML.
 
 
 Notes on protection of punctuation in nodes (done)
@@ -582,8 +568,6 @@ The @FIGURE @macro is, for html:
 @end html
 @end macro
 
-Add @value to the corresponding commands categories?
-
 Use of specialized synopsis in DocBook is not a priority and it is not even
 obvious that it is interesting to do so.  The following notes explain the
 possibilities and issues extensively.
@@ -644,49 +628,10 @@ defvr (defvar, defopt), deftypevr (deftypevar)
 deftp
 
 
-
-Missing test outputs as files in t/
-===================================
-
-output files split (node or not split) could be interesting +texi2html
-style for some tests.  However, the test suite is already too long to
-run so such additions should be done with caution.
-
-t/30sectioning.t
- chapter_between_nodes (more_nodes_than_sections renamed)
- more_sections_than_nodes
- two_nodes_between_chapters
- two_nodes_at_the_end
- character_and_spaces_in_refs
- character_and_spaces_in_node
- some_at_commands_in_ref_nodes
- at_commands_in_refs
- character_and_spaces_in_refs <- mono/chapter
- rec_nodes (with USE_NODES and without)
- loop_nodes?
- nodes_before_top?
- no_element
- top_node_no_menu_direction? (with USE_NODES and without?)
- anchor_in_footnote
- anchor_in_footnote_separate
- placed_things_before_node    (with USE_NODES and without?)
- placed_things_before_element (with USE_NODES and without?)
- top_no_argument_and_node
- top_no_argument_and_top_node
- nodes_after_top_before_chapter_(nodes/sections) (with USE_NODES and --split chapter)
- nodes_after_top_before_section_(nodes/sections) (with USE_NODES and --split chapter and only --split chapter)
- sectioning_part_appendix   (--split chapter)
- nodes_no_node_top_explicit_directions (with USE_NODES and without)
- one_node_explicit_directions_anchor (with USE_NODES and without) Really useful?
- top_without_node_sections
-
-t/info_tests.t
- space_in_setfilename
-
-
 Misc notes
 ==========
 
+Test validity of Texinfo XML or docbook
 export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
 xmllint --nonet --noout --valid commands.xml
 
@@ -703,6 +648,10 @@ Test with 8bit locale:
 export LANG=fr_FR; export LANGUAGE=fr_FR; export LC_ALL=fr_FR
 xterm &
 
+Turkish locale, interesting as ASCII upper-case letter I can become
+a (non-ASCII) dotless i when lower casing.  (Eli recommendation).
+export LANG=tr_TR.UTF-8; export LANGUAGE=tr_TR.UTF-8; export LC_ALL=tr_TR.UTF-8
+
 convert to pdf from docbook
 xsltproc -o intermediate-fo-file.fo /usr/share/xml/docbook/stylesheet/docbook-xsl/fo/docbook.xsl texinfo.xml
 fop -r -pdf texinfo-dbk.pdf -fo intermediate-fo-file.fo
@@ -711,3 +660,21 @@ dblatex -o texinfo-dblatex.pdf texinfo.xml
 
 Open a specific info file in Emacs Info reader: C-u C-h i
 
+In tp/tests/, generate Texinfo file for Texinfo TeX coverage
+../texi2any.pl --force --error=100000 -c TEXINFO_OUTPUT_FORMAT=plaintexinfo -D valid layout/formatting.texi > formatting_valid.texi
+
+From doc/
+texi2pdf -I ../tp/tests/layout/ ../tp/tests/formatting_valid.texi
+
+mkdir -p val_res
+for file in t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind -q perl -w $file > val_res/$bfile.out 2>&1 ; done
+
+For tests in tp/tests, a way to have valgrind -q prependend is to add, in tp/defs:
+prepended_command='valgrind -q'
+
+rm -rf t/check_debug_differences/
+mkdir t/check_debug_differences/
+for file in t/*.t ; do bfile=`basename $file .t`; perl -w $file -d 1 2>t/check_debug_differences/XS_$bfile.err ; done
+export TEXINFO_XS_PARSER=0
+for file in t/*.t ; do bfile=`basename $file .t`; perl -w $file -d 1 2>t/check_debug_differences/PL_$bfile.err ; done
+for file in t/*.t ; do bfile=`basename $file .t`; diff -u t/check_debug_differences/PL_$bfile.err t/check_debug_differences/XS_$bfile.err > t/check_debug_differences/debug_$bfile.diff; done

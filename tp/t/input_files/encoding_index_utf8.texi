@@ -1,9 +1,10 @@
 
-@setfilename encoding_index_utf8.info
 @documentencoding utf-8
 
 @node Top
-@top top
+@top encoding index utf8
+
+@node chap
 
 @cindex é é
 @cindex @"{i} @"{i}@"{i}@"{i}

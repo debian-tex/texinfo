@@ -34,9 +34,11 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
                       'text' => 'US-ASCII'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -44,9 +46,12 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'us-ascii',
-                'input_perl_encoding' => 'ascii',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'US-ASCII'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'punctuation_small_case_accents_us_ascii.texi',
@@ -73,28 +78,23 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_us_ascii.texi',
@@ -110,9 +110,11 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -125,8 +127,11 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_us_ascii.texi',
@@ -142,28 +147,23 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
               'text' => 'node chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node-chap'
-          }
-        ],
-        'normalized' => 'node-chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node-chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_us_ascii.texi',
@@ -179,9 +179,11 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1174,8 +1176,11 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_us_ascii.texi',
@@ -1186,10 +1191,6 @@ $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_accents_sc_enable_encoding_to_utf8_usascii'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'test_accents_sc_enable_encoding_to_utf8_usascii'} = '\\input texinfo
 
@@ -1343,10 +1344,8 @@ $result_floats{'test_accents_sc_enable_encoding_to_utf8_usascii'} = {};
 $result_converted{'html_text'}->{'test_accents_sc_enable_encoding_to_utf8_usascii'} = '
 <div class="top-level-extent" id="Top">
 <div class="nav-panel">
-<p>
-   </p>
 </div>
-<h1 class="top" id="top-section">top section</h1>
+<h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> ¶</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#node-chap" accesskey="1">chapter</a></li>
@@ -1354,10 +1353,8 @@ $result_converted{'html_text'}->{'test_accents_sc_enable_encoding_to_utf8_usasci
 <hr>
 <div class="chapter-level-extent" id="node-chap">
 <div class="nav-panel">
-<p>
-   </p>
 </div>
-<h2 class="chapter" id="chapter">1 chapter</h2>
+<h2 class="chapter" id="chapter"><span>1 chapter<a class="copiable-link" href="#chapter"> ¶</a></span></h2>
 
 <p>“in double q”. ‘in simple q’.
 </p>

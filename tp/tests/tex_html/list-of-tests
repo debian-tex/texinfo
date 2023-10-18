@@ -1,38 +1,38 @@
 # tex
-block_EOL_tex block_EOL.texi -c 'HTML_MATH l2h' --iftex
-simplest_httex ../formatting/simplest.texi --init tex4ht.pm --iftex
-tex_notex tex.texi
-tex tex.texi -c 'HTML_MATH l2h' --iftex
-tex_l2h_latex tex.texi -c 'HTML_MATH l2h' --iflatex
-tex_l2h_tex_latex tex.texi -c 'HTML_MATH l2h' --iftex --iflatex
-tex_httex tex.texi --init tex4ht.pm --iftex
-tex_httex_latex tex.texi --init tex4ht.pm --iflatex
-tex_httex_latex_math tex.texi -c T4H_MATH_CONVERSION=latex -c 'HTML_MATH t4h' --iflatex
-tex_httex_tex_latex tex.texi --init tex4ht.pm --iftex --iflatex
-tex_httex_tex_latex_math tex.texi -c T4H_MATH_CONVERSION=latex -c 'HTML_MATH t4h' --iflatex --iftex
-tex_accents_httex tex_accents.texi --init tex4ht.pm --iftex
-tex_accents_l2h tex_accents.texi -c 'HTML_MATH l2h' --iftex
-tex_gdef_httex tex_gdef.texi --init tex4ht.pm --iftex -D tex4ht
-tex_gdef_l2h tex_gdef.texi -c 'HTML_MATH l2h' --iftex
-tex_mathjax tex.texi -c HTML_MATH=mathjax --iftex
-tex_gdef_mathjax tex_gdef.texi -c HTML_MATH=mathjax --iftex
+block_EOL_tex block_EOL.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+simplest_httex ../formatting/simplest.texi --html --no-split --init tex4ht.pm --iftex
+tex_notex tex.texi --html --no-split
+tex tex.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_l2h_latex tex.texi --html --no-split -c 'HTML_MATH l2h' --iflatex
+tex_l2h_tex_latex tex.texi --html --no-split -c 'HTML_MATH l2h' --iftex --iflatex
+tex_httex tex.texi --html --no-split --init tex4ht.pm --iftex
+tex_httex_latex tex.texi --html --no-split --init tex4ht.pm --iflatex
+tex_httex_latex_math tex.texi --html --no-split -c T4H_MATH_CONVERSION=latex -c 'HTML_MATH t4h' --iflatex
+tex_httex_tex_latex tex.texi --html --no-split --init tex4ht.pm --iftex --iflatex
+tex_httex_tex_latex_math tex.texi --html --no-split -c T4H_MATH_CONVERSION=latex -c 'HTML_MATH t4h' --iflatex --iftex
+tex_accents_httex tex_accents.texi --html --no-split --init tex4ht.pm --iftex
+tex_accents_l2h tex_accents.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_gdef_httex tex_gdef.texi --html --no-split --init tex4ht.pm --iftex -D tex4ht
+tex_gdef_l2h tex_gdef.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_mathjax tex.texi --html --no-split -c HTML_MATH=mathjax --iftex
+tex_gdef_mathjax tex_gdef.texi --html --no-split -c HTML_MATH=mathjax --iftex
 # No mediawki tests for now
 #tex_mediawiki tex.texi --init mediawiki.pm --iftex
 #tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
 #tex_l2h_mediawiki tex.texi --html -c 'HTML_MATH l2h' --iftex --init mediawiki.pm
-tex_complex_httex tex_complex.texi --init tex4ht.pm --iftex
-tex_complex_l2h tex_complex.texi -c 'HTML_MATH l2h' --iftex
-tex_eqalign_httex tex_eqalign.texi -c 'HTML_MATH t4h' --iftex
-tex_eqalign_l2h tex_eqalign.texi -c 'HTML_MATH l2h' --iftex
-math_not_closed math_not_closed.texi -c 'HTML_MATH l2h' --iftex
-tex_not_closed tex_not_closed.texi -c 'HTML_MATH l2h' --iftex
-tex_in_copying tex_in_copying.texi -c 'HTML_MATH l2h' --iftex
-tex_encoded_utf8_l2h tex_encodé_utf8.texi -c 'HTML_MATH l2h' --iftex -c 'COMMAND_LINE_ENCODING UTF-8' -c OUTPUT_FILE_NAME_ENCODING=UTF-8
-tex_encoded_utf8_httex tex_encodé_utf8.texi --init tex4ht.pm --iftex -c 'COMMAND_LINE_ENCODING UTF-8' -c OUTPUT_FILE_NAME_ENCODING=UTF-8
-tex_encoded_latin1_l2h tex_encode_latin1.texi -c 'HTML_MATH l2h' --iftex
-tex_encoded_latin1_httex tex_encode_latin1.texi --init tex4ht.pm --iftex
-formatting_singular ../layout/formatting.texi --init-file t2h_singular.init -c 'HTML_MATH l2h' -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose
+tex_complex_httex tex_complex.texi --html --no-split --init tex4ht.pm --iftex
+tex_complex_l2h tex_complex.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_eqalign_httex tex_eqalign.texi --html --no-split -c 'HTML_MATH t4h' --iftex
+tex_eqalign_l2h tex_eqalign.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+math_not_closed math_not_closed.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_not_closed tex_not_closed.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_in_copying tex_in_copying.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_encoded_utf8_l2h tex_encodé_utf8.texi --html --no-split -c 'HTML_MATH l2h' --iftex -c 'COMMAND_LINE_ENCODING UTF-8' -c OUTPUT_FILE_NAME_ENCODING=UTF-8
+tex_encoded_utf8_httex tex_encodé_utf8.texi --html --no-split --init tex4ht.pm --iftex -c 'COMMAND_LINE_ENCODING UTF-8' -c OUTPUT_FILE_NAME_ENCODING=UTF-8
+tex_encoded_latin1_l2h tex_encode_latin1.texi --html --no-split -c 'HTML_MATH l2h' --iftex
+tex_encoded_latin1_httex tex_encode_latin1.texi --html --no-split --init tex4ht.pm --iftex
+formatting_singular ../coverage/formatting.texi -c 'TEXI2HTML=1' -D 'needcollationcompat Need collation compatibility' --init-file t2h_singular.init -c 'HTML_MATH l2h' -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose
 # The following could be added, mainly to test the full 
 # ../layout/formatting.texi processing with tex4ht, but
 # also to check that singular style is compatible with tex4ht
-#formatting_singular_tex4ht ../layout/formatting.texi --init-file t2h_singular.init --init tex4ht.pm -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose
+#formatting_singular_tex4ht ../layout/formatting.texi -c 'TEXI2HTML=1' -D 'needcollationcompat Need collation compatibility' --init-file t2h_singular.init --init tex4ht.pm -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose

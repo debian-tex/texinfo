@@ -1,5 +1,5 @@
 /* Determine the number of screen columns needed for a string.
-   Copyright (C) 2000-2022 Free Software Foundation, Inc.
+   Copyright (C) 2000-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,11 +29,11 @@
 /* Get isprint().  */
 #include <ctype.h>
 
-/* Get mbstate_t, mbrtowc(), mbsinit(), wcwidth().  */
+/* Get mbstate_t, mbsinit().  */
 #include <wchar.h>
 
-/* Get iswcntrl().  */
-#include <wctype.h>
+/* Get char32_t, mbrtoc32(), c32iscntrl(), c32width().  */
+#include <uchar.h>
 
 /* Get INT_MAX.  */
 #include <limits.h>
@@ -66,20 +66,20 @@ mbsnwidth (const char *string, size_t nbytes, int flags)
       while (p < plimit)
         switch (*p)
           {
-            case ' ': case '!': case '"': case '#': case '%':
+            case ' ': case '!': case '"': case '#': case '$': case '%':
             case '&': case '\'': case '(': case ')': case '*':
             case '+': case ',': case '-': case '.': case '/':
             case '0': case '1': case '2': case '3': case '4':
             case '5': case '6': case '7': case '8': case '9':
             case ':': case ';': case '<': case '=': case '>':
-            case '?':
+            case '?': case '@':
             case 'A': case 'B': case 'C': case 'D': case 'E':
             case 'F': case 'G': case 'H': case 'I': case 'J':
             case 'K': case 'L': case 'M': case 'N': case 'O':
             case 'P': case 'Q': case 'R': case 'S': case 'T':
             case 'U': case 'V': case 'W': case 'X': case 'Y':
             case 'Z':
-            case '[': case '\\': case ']': case '^': case '_':
+            case '[': case '\\': case ']': case '^': case '_': case '`':
             case 'a': case 'b': case 'c': case 'd': case 'e':
             case 'f': case 'g': case 'h': case 'i': case 'j':
             case 'k': case 'l': case 'm': case 'n': case 'o':
@@ -94,14 +94,14 @@ mbsnwidth (const char *string, size_t nbytes, int flags)
               /* If we have a multibyte sequence, scan it up to its end.  */
               {
                 mbstate_t mbstate;
-                memset (&mbstate, 0, sizeof mbstate);
-                do
+                mbszero (&mbstate);
+                for (;;)
                   {
-                    wchar_t wc;
+                    char32_t wc;
                     size_t bytes;
                     int w;
 
-                    bytes = mbrtowc (&wc, p, plimit - p, &mbstate);
+                    bytes = mbrtoc32 (&wc, p, plimit - p, &mbstate);
 
                     if (bytes == (size_t) -1)
                       /* An invalid multibyte sequence was encountered.  */
@@ -132,8 +132,12 @@ mbsnwidth (const char *string, size_t nbytes, int flags)
                     if (bytes == 0)
                       /* A null wide character was encountered.  */
                       bytes = 1;
+                    #if !GNULIB_MBRTOC32_REGULAR
+                    else if (bytes == (size_t) -3)
+                      bytes = 0;
+                    #endif
 
-                    w = wcwidth (wc);
+                    w = c32width (wc);
                     if (w >= 0)
                       /* A printable multibyte character.  */
                       {
@@ -145,7 +149,7 @@ mbsnwidth (const char *string, size_t nbytes, int flags)
                       /* An unprintable multibyte character.  */
                       if (!(flags & MBSW_REJECT_UNPRINTABLE))
                         {
-                          if (!iswcntrl (wc))
+                          if (!c32iscntrl (wc))
                             {
                               if (width == INT_MAX)
                                 goto overflow;
@@ -156,8 +160,11 @@ mbsnwidth (const char *string, size_t nbytes, int flags)
                         return -1;
 
                     p += bytes;
+                    #if !GNULIB_MBRTOC32_REGULAR
+                    if (mbsinit (&mbstate))
+                    #endif
+                      break;
                   }
-                while (! mbsinit (&mbstate));
               }
               break;
           }

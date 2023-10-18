@@ -12,22 +12,16 @@ $result_trees{'comment_on_cartouche_line'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comment
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -52,17 +46,23 @@ $result_trees{'comment_on_cartouche_line'} = {
                       'text' => 'cartouche'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'cartouche'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -71,12 +71,115 @@ $result_trees{'comment_on_cartouche_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
+            'macro' => ''
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'args' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'Title of box'
+                        }
+                      ],
+                      'type' => 'brace_command_arg'
+                    }
+                  ],
+                  'cmdname' => 'emph',
+                  'source_info' => {
+                    'file_name' => '',
+                    'line_nr' => 5,
+                    'macro' => ''
+                  }
+                }
+              ],
+              'info' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'text' => ' comment
+',
+                      'type' => 'rawline_arg'
+                    }
+                  ],
+                  'cmdname' => 'c'
+                },
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'cartouche',
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'Out of main text
+'
+                }
+              ],
+              'type' => 'paragraph'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'cartouche'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'text_arg' => 'cartouche'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'source_info' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              }
+            }
+          ],
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
+          },
+          'source_info' => {
+            'file_name' => '',
+            'line_nr' => 5,
             'macro' => ''
           }
         }
@@ -90,10 +193,17 @@ $result_trees{'comment_on_cartouche_line'} = {
 $result_texis{'comment_on_cartouche_line'} = '@cartouche @c comment
 in cartouche.
 @end cartouche
+
+@cartouche @emph{Title of box} @c comment
+Out of main text
+@end cartouche
 ';
 
 
 $result_texts{'comment_on_cartouche_line'} = 'in cartouche.
+
+Title of box
+Out of main text
 ';
 
 $result_errors{'comment_on_cartouche_line'} = [];
@@ -104,11 +214,19 @@ $result_floats{'comment_on_cartouche_line'} = {};
 
 
 $result_converted{'plaintext'}->{'comment_on_cartouche_line'} = 'in cartouche.
+
+                            _Title of box_
+   Out of main text
 ';
 
 
 $result_converted{'html_text'}->{'comment_on_cartouche_line'} = '<table class="cartouche" border="1"><tr><td>
 <p>in cartouche.
+</p></td></tr></table>
+
+<table class="cartouche" border="1"><tr><th>
+<em class="emph">Title of box</em></th></tr><tr><td>
+<p>Out of main text
 </p></td></tr></table>
 ';
 
@@ -116,16 +234,27 @@ $result_converted{'html_text'}->{'comment_on_cartouche_line'} = '<table class="c
 $result_converted{'xml'}->{'comment_on_cartouche_line'} = '<cartouche spaces=" " endspaces=" "><!-- c comment -->
 <para>in cartouche.
 </para></cartouche>
+
+<cartouche spaces=" " endspaces=" "><cartouchetitle><emph>Title of box</emph> </cartouchetitle><!-- c comment -->
+<para>Out of main text
+</para></cartouche>
 ';
 
 
 $result_converted{'latex_text'}->{'comment_on_cartouche_line'} = '\\begin{mdframed}[style=Texinfocartouche]
 in cartouche.
 \\end{mdframed}
+
+\\begin{mdframed}[style=Texinfocartouche, frametitle={\\emph{Title of box}}]
+Out of main text
+\\end{mdframed}
 ';
 
 
-$result_converted{'docbook'}->{'comment_on_cartouche_line'} = '<para>in cartouche.
-</para>';
+$result_converted{'docbook'}->{'comment_on_cartouche_line'} = '<sidebar><para>in cartouche.
+</para></sidebar>
+<sidebar><title><emphasis>Title of box</emphasis></title>
+<para>Out of main text
+</para></sidebar>';
 
 1;

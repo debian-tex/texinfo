@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,30 +19,30 @@
 #include "parser.h"
 
 static void
-add_extra_key (ELEMENT *e, char *key, ELEMENT *value,
-               enum extra_type type)
+add_associated_info_key (ASSOCIATED_INFO *a, char *key, intptr_t value,
+                         enum extra_type type)
 {
   int i;
-  for (i = 0; i < e->extra_number; i++)
+  for (i = 0; i < a->info_number; i++)
     {
-      if (!strcmp (e->extra[i].key, key))
+      if (!strcmp (a->info[i].key, key))
         break;
     }
-  if (i == e->extra_number)
+  if (i == a->info_number)
     {
-      if (e->extra_number == e->extra_space)
+      if (a->info_number == a->info_space)
         {
-          e->extra = realloc (e->extra,
-                              (e->extra_space += 5) * sizeof (KEY_PAIR));
-          if (!e->extra)
+          a->info = realloc (a->info,
+                              (a->info_space += 5) * sizeof (KEY_PAIR));
+          if (!a->info)
             fatal ("realloc failed");
         }
-      e->extra_number++;
+      a->info_number++;
     }
 
-  e->extra[i].key = key;
-  e->extra[i].value = value;
-  e->extra[i].type = type;
+  a->info[i].key = key;
+  a->info[i].value = value;
+  a->info[i].type = type;
 }
 
 /* Add an extra key that is a reference to another element (for example, 
@@ -50,15 +50,26 @@ add_extra_key (ELEMENT *e, char *key, ELEMENT *value,
 void
 add_extra_element (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_element);
+  add_associated_info_key (&e->extra_info, key,
+                           (intptr_t) value, extra_element);
 }
 
 /* Add an extra key that is a reference to another element that is
-   out-of-tree, i.e., not referenced anywhere in the tree. */
+   out-of-tree, i.e., not referenced anywhere in the tree.
+   Unused in 2023.
+*/
 void
 add_extra_element_oot (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_element_oot);
+  add_associated_info_key (&e->extra_info,
+                           key, (intptr_t) value, extra_element_oot);
+}
+
+void
+add_info_element_oot (ELEMENT *e, char *key, ELEMENT *value)
+{
+  add_associated_info_key (&e->info_info,
+                           key, (intptr_t) value, extra_element_oot);
 }
 
 /* Add an extra key that is a reference to the contents array of another
@@ -66,21 +77,8 @@ add_extra_element_oot (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_contents (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_contents);
-}
-
-/* Like add_extra_contents but all of the contents are out-of-tree. */
-void
-add_extra_contents_oot (ELEMENT *e, char *key, ELEMENT *value)
-{
-  add_extra_key (e, key, value, extra_contents_oot);
-}
-
-/* An array of content arrays. */
-void
-add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
-{
-  add_extra_key (e, key, value, extra_contents_array);
+  add_associated_info_key (&e->extra_info,
+                           key, (intptr_t) value, extra_contents);
 }
 
 /* Add an extra key that is a reference to the text field of another
@@ -88,77 +86,93 @@ add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_text (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_text);
+  add_associated_info_key (&e->extra_info, key, (intptr_t) value, extra_text);
 }
-
-#if 0
-/* Function not used */
-void
-add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
-{
-  add_extra_key (e, key, (ELEMENT *) value, extra_index_entry);
-}
-#endif
 
 void
 add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value)
 {
   if (!value) return;
-  add_extra_key (e, key, value, extra_misc_args);
-}
-
-void
-add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value)
-{
-  add_extra_key (e, key, (ELEMENT *) value, extra_node_spec);
-}
-
-/* Used for 'node_manuals' array for the arguments given on a
-   @node line.  Argument is a null-terminated array of pointers. */
-void
-add_extra_node_spec_array (ELEMENT *e, char *key, NODE_SPEC_EXTRA **value)
-{
-  add_extra_key (e, key, (ELEMENT *) value, extra_node_spec_array);
-}
-
-void
-add_extra_def_info (ELEMENT *e, char *key, DEF_INFO *value)
-{
-  add_extra_key (e, key, (ELEMENT *) value, extra_def_info);
-}
-
-void
-add_extra_float_type (ELEMENT *e, char *key, EXTRA_FLOAT_TYPE *value)
-{
-  add_extra_key (e, key, (ELEMENT *) value, extra_float_type);
+  add_associated_info_key (&e->extra_info,
+                           key, (intptr_t) value, extra_misc_args);
 }
 
 void
 add_extra_string (ELEMENT *e, char *key, char *value)
 {
-  add_extra_key (e, key, (ELEMENT *) value, extra_string);
+  add_associated_info_key (&e->extra_info, key,
+                           (intptr_t) value, extra_string);
+}
+
+void
+add_info_string (ELEMENT *e, char *key, char *value)
+{
+  add_associated_info_key (&e->info_info, key, (intptr_t) value, extra_string);
 }
 
 void
 add_extra_string_dup (ELEMENT *e, char *key, char *value)
 {
-  add_extra_key (e, key, (ELEMENT *) strdup (value), extra_string);
+  add_associated_info_key (&e->extra_info,
+                           key, (intptr_t) strdup (value), extra_string);
+}
+
+void
+add_info_string_dup (ELEMENT *e, char *key, char *value)
+{
+  add_associated_info_key (&e->info_info,
+                           key, (intptr_t) strdup (value), extra_string);
 }
 
 void
 add_extra_integer (ELEMENT *e, char *key, long value)
 {
-  add_extra_key (e, key, (ELEMENT *) value, extra_integer);
+  add_associated_info_key (&e->extra_info,
+                           key, (intptr_t) value, extra_integer);
+}
+
+KEY_PAIR *
+lookup_associated_info (ASSOCIATED_INFO *a, char *key)
+{
+  int i;
+  for (i = 0; i < a->info_number; i++)
+    {
+      if (!strcmp (a->info[i].key, key))
+        return &a->info[i];
+    }
+  return 0;
+}
+
+ELEMENT *
+lookup_extra_element (ELEMENT *e, char *key)
+{
+  KEY_PAIR *k;
+  k = lookup_associated_info (&e->extra_info, key);
+  if (!k)
+    return 0;
+  return (ELEMENT *) k->value;
 }
 
 KEY_PAIR *
 lookup_extra (ELEMENT *e, char *key)
 {
-  int i;
-  for (i = 0; i < e->extra_number; i++)
-    {
-      if (!strcmp (e->extra[i].key, key))
-        return &e->extra[i];
-    }
-  return 0;
+  return lookup_associated_info (&e->extra_info, key);
 }
+
+ELEMENT *
+lookup_info_element (ELEMENT *e, char *key)
+{
+  KEY_PAIR *k;
+  k = lookup_associated_info (&e->info_info, key);
+  if (!k)
+    return 0;
+  return (ELEMENT *) k->value;
+}
+
+
+KEY_PAIR *
+lookup_info (ELEMENT *e, char *key)
+{
+  return lookup_associated_info (&e->info_info, key);
+}
+

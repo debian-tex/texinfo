@@ -19,21 +19,35 @@ $result_trees{'node_on_index_entry_line'} = {
             {
               'contents' => [
                 {
-                  'text' => 'entry '
+                  'text' => 'entry'
                 }
               ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 2,
             'macro' => ''
-          }
+          },
+          'type' => 'index_entry_command'
         }
       ],
       'type' => 'before_node_section'
@@ -64,7 +78,18 @@ $result_trees{'node_on_index_entry_line'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'manual_content' => [
+              {}
+            ],
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'b'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -84,7 +109,18 @@ $result_trees{'node_on_index_entry_line'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'manual_content' => [
+              {}
+            ],
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'c'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -104,9 +140,22 @@ $result_trees{'node_on_index_entry_line'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'manual_content' => [
+              {}
+            ],
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'd'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
@@ -129,46 +178,12 @@ $result_trees{'node_on_index_entry_line'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'a'
-          },
-          {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'b'
-          },
-          {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'c'
-          },
-          {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'd'
-          }
-        ],
-        'normalized' => 'a',
-        'spaces_before_argument' => ' '
+        'normalized' => 'a'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -179,14 +194,12 @@ $result_trees{'node_on_index_entry_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[3];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[1];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[3];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[3];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[1];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[3];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'extra'}{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[1];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[3];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[3];
 
 $result_texis{'node_on_index_entry_line'} = '
 @cindex entry @node a, (m)b, (m)c, (h)d
@@ -258,18 +271,34 @@ $result_errors{'node_on_index_entry_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @node should not appear in @cindex
+    'error_line' => 'warning: @node should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@node should not appear in @cindex',
+    'text' => '@node should not appear on @cindex line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];
 
 
 $result_floats{'node_on_index_entry_line'} = {};
+
+
+$result_indices_sort_strings{'node_on_index_entry_line'} = {
+  'cp' => [
+    'entry'
+  ]
+};
 
 
 1;

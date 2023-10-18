@@ -19,9 +19,14 @@ $result_trees{'beginning_and_end_on_line'} = {
             {
               'contents' => [
                 {
-                  'text' => 'in tex '
+                  'text' => 'in tex'
                 }
               ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
               'type' => 'block_line_arg'
             }
           ],
@@ -35,17 +40,23 @@ $result_trees{'beginning_and_end_on_line'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -54,8 +65,10 @@ $result_trees{'beginning_and_end_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -73,9 +86,14 @@ $result_trees{'beginning_and_end_on_line'} = {
             {
               'contents' => [
                 {
-                  'text' => 'in verbatim '
+                  'text' => 'in verbatim'
                 }
               ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
               'type' => 'block_line_arg'
             }
           ],
@@ -89,17 +107,23 @@ $result_trees{'beginning_and_end_on_line'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -108,8 +132,10 @@ $result_trees{'beginning_and_end_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -127,9 +153,14 @@ $result_trees{'beginning_and_end_on_line'} = {
             {
               'contents' => [
                 {
-                  'text' => 'in html '
+                  'text' => 'in html'
                 }
               ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
               'type' => 'block_line_arg'
             }
           ],
@@ -143,17 +174,23 @@ $result_trees{'beginning_and_end_on_line'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -162,8 +199,10 @@ $result_trees{'beginning_and_end_on_line'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -203,12 +242,30 @@ $result_errors{'beginning_and_end_on_line'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => 'warning: unexpected argument on @tex line: in tex
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'unexpected argument on @tex line: in tex',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'warning: @end should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
     'text' => '@end should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: unexpected argument on @verbatim line: in verbatim
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'unexpected argument on @verbatim line: in verbatim',
     'type' => 'warning'
   },
   {
@@ -219,11 +276,36 @@ $result_errors{'beginning_and_end_on_line'} = [
     'macro' => '',
     'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: unexpected argument on @html line: in html
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'unexpected argument on @html line: in html',
+    'type' => 'warning'
   }
 ];
 
 
 $result_floats{'beginning_and_end_on_line'} = {};
 
+
+
+$result_converted{'plaintext'}->{'beginning_and_end_on_line'} = '
+';
+
+
+$result_converted{'xml'}->{'beginning_and_end_on_line'} = '
+<tex spaces=" " endspaces=" "> 
+</tex>
+
+<verbatim xml:space="preserve" spaces=" " endspaces=" "> 
+</verbatim>
+
+<html spaces=" " endspaces=" "> 
+</html>
+';
 
 1;

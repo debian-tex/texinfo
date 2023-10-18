@@ -18,21 +18,17 @@ $result_trees{'macro_in_ifset_set'} = {
           'args' => [
             {
               'text' => 'a',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' a
-',
-            'misc_args' => [
-              'a',
-              ''
-            ]
+'
           }
         },
         {
@@ -62,17 +58,23 @@ $result_trees{'macro_in_ifset_set'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -81,7 +83,7 @@ $result_trees{'macro_in_ifset_set'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' truc {}
 '
           },
@@ -92,6 +94,43 @@ $result_trees{'macro_in_ifset_set'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'a'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 8,
+                  'macro' => ''
+                }
+              },
+              'position' => 1,
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -100,16 +139,13 @@ $result_trees{'macro_in_ifset_set'} = {
           'args' => [
             {
               'text' => 'truc',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'unmacro',
-          'extra' => {
+          'info' => {
             'arg_line' => ' truc
-',
-            'misc_args' => [
-              'truc'
-            ]
+'
           }
         },
         {
@@ -134,17 +170,23 @@ $result_trees{'macro_in_ifset_set'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -153,7 +195,7 @@ $result_trees{'macro_in_ifset_set'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' truc{}
 '
           },
@@ -161,9 +203,67 @@ $result_trees{'macro_in_ifset_set'} = {
             'file_name' => '',
             'line_nr' => 10,
             'macro' => ''
-          }
+          },
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'ifset'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'line_arg'
+                  }
+                ],
+                'cmdname' => 'end',
+                'extra' => {
+                  'text_arg' => 'ifset'
+                },
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 13,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'end'
+            }
+          ]
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'truc'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -171,6 +271,14 @@ $result_trees{'macro_in_ifset_set'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 8,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'in ifset
 '
             }

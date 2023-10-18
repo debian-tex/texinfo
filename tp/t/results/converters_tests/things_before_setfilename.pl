@@ -39,9 +39,6 @@ $result_trees{'things_before_setfilename'} = {
               ],
               'cmdname' => 'anchor',
               'extra' => {
-                'node_content' => [
-                  {}
-                ],
                 'normalized' => 'An-anchor'
               },
               'source_info' => {
@@ -74,19 +71,16 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'An anchor'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'An-anchor'
+                      },
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'ref',
-                  'extra' => {
-                    'label' => {},
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'An-anchor'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
                     'line_nr' => 6,
@@ -119,42 +113,16 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'Anchor in footnote'
                         }
                       ],
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'ref',
-                  'extra' => {
-                    'label' => {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'text' => 'Anchor in footnote'
-                            }
-                          ],
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'anchor',
                       'extra' => {
                         'node_content' => [
                           {}
                         ],
                         'normalized' => 'Anchor-in-footnote'
                       },
-                      'source_info' => {
-                        'file_name' => 'things_before_setfilename.texi',
-                        'line_nr' => 13,
-                        'macro' => ''
-                      }
-                    },
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'Anchor-in-footnote'
+                      'type' => 'brace_command_arg'
                     }
-                  },
+                  ],
+                  'cmdname' => 'ref',
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
                     'line_nr' => 9,
@@ -193,7 +161,27 @@ $result_trees{'things_before_setfilename'} = {
 ',
                           'type' => 'empty_line'
                         },
-                        {},
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'Anchor in footnote'
+                                }
+                              ],
+                              'type' => 'brace_command_arg'
+                            }
+                          ],
+                          'cmdname' => 'anchor',
+                          'extra' => {
+                            'normalized' => 'Anchor-in-footnote'
+                          },
+                          'source_info' => {
+                            'file_name' => 'things_before_setfilename.texi',
+                            'line_nr' => 13,
+                            'macro' => ''
+                          }
+                        },
                         {
                           'text' => '
 ',
@@ -218,19 +206,16 @@ $result_trees{'things_before_setfilename'} = {
                                       'text' => 'An anchor'
                                     }
                                   ],
+                                  'extra' => {
+                                    'node_content' => [
+                                      {}
+                                    ],
+                                    'normalized' => 'An-anchor'
+                                  },
                                   'type' => 'brace_command_arg'
                                 }
                               ],
                               'cmdname' => 'ref',
-                              'extra' => {
-                                'label' => {},
-                                'node_argument' => {
-                                  'node_content' => [
-                                    {}
-                                  ],
-                                  'normalized' => 'An-anchor'
-                                }
-                              },
                               'source_info' => {
                                 'file_name' => 'things_before_setfilename.texi',
                                 'line_nr' => 16,
@@ -278,10 +263,14 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'float anchor'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -305,17 +294,23 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'float'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'float'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
@@ -325,13 +320,12 @@ $result_trees{'things_before_setfilename'} = {
                 }
               ],
               'extra' => {
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'float-anchor',
-                'spaces_before_argument' => ' ',
-                'type' => {
-                  'normalized' => ''
+                'float_type' => '',
+                'normalized' => 'float-anchor'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
                 }
               },
               'source_info' => {
@@ -359,19 +353,16 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'float anchor'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'float-anchor'
+                      },
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'ref',
-                  'extra' => {
-                    'label' => {},
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'float-anchor'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
                     'line_nr' => 24,
@@ -406,10 +397,14 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'ta'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -458,7 +453,8 @@ $result_trees{'things_before_setfilename'} = {
                 },
                 {
                   'text' => '
-'
+',
+                  'type' => 'spaces_after_close_brace'
                 },
                 {
                   'args' => [
@@ -468,17 +464,23 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'float'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'float'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
@@ -489,16 +491,12 @@ $result_trees{'things_before_setfilename'} = {
               ],
               'extra' => {
                 'caption' => {},
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'ta',
-                'spaces_before_argument' => ' ',
-                'type' => {
-                  'content' => [
-                    {}
-                  ],
-                  'normalized' => 'Text'
+                'float_type' => 'Text',
+                'normalized' => 'ta'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
                 }
               },
               'source_info' => {
@@ -517,7 +515,7 @@ $result_trees{'things_before_setfilename'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'contents',
@@ -535,9 +533,11 @@ $result_trees{'things_before_setfilename'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -545,7 +545,7 @@ $result_trees{'things_before_setfilename'} = {
               'cmdname' => 'menu',
               'contents' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
                       'text' => '* ',
                       'type' => 'menu_entry_leading_text'
@@ -556,6 +556,12 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'An anchor'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'An-anchor'
+                      },
                       'type' => 'menu_entry_node'
                     },
                     {
@@ -577,15 +583,6 @@ $result_trees{'things_before_setfilename'} = {
                       'type' => 'menu_entry_description'
                     }
                   ],
-                  'extra' => {
-                    'menu_entry_description' => {},
-                    'menu_entry_node' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'An-anchor'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
                     'line_nr' => 35,
@@ -601,17 +598,23 @@ $result_trees{'things_before_setfilename'} = {
                           'text' => 'menu'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'menu'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => 'things_before_setfilename.texi',
@@ -639,27 +642,26 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'index entry'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
               'extra' => {
-                'index_entry' => {
-                  'content_normalized' => [],
-                  'entry_content' => [],
-                  'entry_element' => {},
-                  'entry_number' => 1,
-                  'in_code' => 0,
-                  'index_at_command' => 'cindex',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'cp',
-                  'index_type_command' => 'cindex'
-                },
-                'spaces_before_argument' => ' '
+                'index_entry' => [
+                  'cp',
+                  1
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'things_before_setfilename.texi',
@@ -681,9 +683,11 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'cp'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -692,8 +696,12 @@ $result_trees{'things_before_setfilename'} = {
               'extra' => {
                 'misc_args' => [
                   'cp'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'things_before_setfilename.texi',
@@ -714,21 +722,22 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'Text'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'listoffloats',
               'extra' => {
-                'spaces_before_argument' => ' ',
-                'type' => {
-                  'content' => [
-                    {}
-                  ],
-                  'normalized' => 'Text'
+                'float_type' => 'Text'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
                 }
               },
               'source_info' => {
@@ -755,17 +764,23 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'things_before_setfilename.info'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'things_before_setfilename.info'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'things_before_setfilename.texi',
@@ -792,28 +807,23 @@ $result_trees{'things_before_setfilename'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'things_before_setfilename.texi',
@@ -829,9 +839,11 @@ $result_trees{'things_before_setfilename'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -844,8 +856,11 @@ $result_trees{'things_before_setfilename'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'things_before_setfilename.texi',
@@ -861,28 +876,23 @@ $result_trees{'things_before_setfilename'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'things_before_setfilename.texi',
@@ -898,9 +908,11 @@ $result_trees{'things_before_setfilename'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -926,19 +938,16 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'An anchor'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'An-anchor'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'An-anchor'
-                }
-              },
               'source_info' => {
                 'file_name' => 'things_before_setfilename.texi',
                 'line_nr' => 53,
@@ -971,19 +980,16 @@ $result_trees{'things_before_setfilename'} = {
                       'text' => 'Anchor in footnote'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Anchor-in-footnote'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Anchor-in-footnote'
-                }
-              },
               'source_info' => {
                 'file_name' => 'things_before_setfilename.texi',
                 'line_nr' => 56,
@@ -1003,8 +1009,11 @@ $result_trees{'things_before_setfilename'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'things_before_setfilename.texi',
@@ -1015,35 +1024,15 @@ $result_trees{'things_before_setfilename'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[2] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[10]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[10]{'args'}[1]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[12]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[10];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[12]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'contents'}[2]{'extra'}{'float'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14];
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'extra'}{'caption'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'contents'}[2];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'extra'}{'type'}{'content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[18]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[18]{'contents'}[0]{'args'}[3];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[18]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[18]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20];
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[24]{'extra'}{'type'}{'content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[24]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[3]{'contents'}[1]{'extra'}{'label'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[6]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[3]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[18]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[18]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[3]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'things_before_setfilename'}{'contents'}[4]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'things_before_setfilename'} = '\\input texinfo
 
@@ -1122,7 +1111,6 @@ float anchor.
 
 Text, ta
 In float
-
 
 
 
@@ -1263,10 +1251,8 @@ $result_floats{'things_before_setfilename'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'float-anchor',
-        'type' => {
-          'normalized' => ''
-        }
+        'float_type' => '',
+        'normalized' => 'float-anchor'
       },
       'structure' => {
         'float_number' => 1
@@ -1283,15 +1269,8 @@ $result_floats{'things_before_setfilename'} = {
             'float' => {}
           }
         },
-        'normalized' => 'ta',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
-        }
+        'float_type' => 'Text',
+        'normalized' => 'ta'
       },
       'structure' => {
         'float_number' => 1
@@ -1341,6 +1320,8 @@ $result_converted{'html'}->{'things_before_setfilename'} = '<!DOCTYPE html>
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -1355,7 +1336,7 @@ ul.toc-numbered-mark {list-style: none}
 <p>
 Next: <a href="#chap" accesskey="n" rel="next">Chapter</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<h1 class="top" id="top-section">top section</h1>
+<h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> &para;</a></span></h1>
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -1373,7 +1354,7 @@ Next: <a href="#chap" accesskey="n" rel="next">Chapter</a> &nbsp; [<a href="#SEC
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top section</a>, Up: <a href="#Top" accesskey="u" rel="up">top section</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <p>Ref to anchor
 <a class="ref" href="#An-anchor">An anchor</a>
@@ -1425,7 +1406,7 @@ $result_converted{'xml'}->{'things_before_setfilename'} = '<preamblebeforebeginn
 <contents></contents>
 
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::                ">An anchor</menunode><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>An anchor</menunode><menuseparator>::                </menuseparator><menudescription><pre xml:space="preserve">menu entry pointing to the anchor.
 </pre></menudescription></menuentry></menu>
 
 <cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry</indexterm></cindex>

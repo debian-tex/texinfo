@@ -1,7 +1,7 @@
 This is the README file for the GNU Texinfo distribution.  Texinfo is
 the preferred documentation format for GNU software.
 
-  Copyright 1992-2022 Free Software Foundation, Inc.
+  Copyright 1992-2023 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -24,7 +24,7 @@ many forms of output:
 - a LaTeX file, which can then be used to create a PDF
 - a Docbook file
 
-See ./INSTALL* for installation instructions.
+See INSTALL* for installation instructions.
 
 To get started with Texinfo, you can read the Texinfo manual
 online at https://www.gnu.org/software/texinfo/manual/texinfo.
@@ -77,7 +77,7 @@ Texinfo documentation files
                            much else.
 
     doc/info-stnd.texi     How to use the standalone GNU Info reader that is
-                           included in this distribution (./info).
+                           included in this distribution.
 
 Printing-related files:
     doc/texinfo.tex        This implements Texinfo in TeX, to typeset a
@@ -93,6 +93,7 @@ Source directories:
   gnulib/                  Support files from Gnulib.
   info/                    Standalone Info reader.
   install-info/            Maintain the Info dir file.
+  js/                      Enhanced browsing of HTML manuals with JavaScript.
   tp/                      Texinfo Parser in Perl, includes texi2any.
   texindex/                The `texindex' program that generates
                            sorted indices used by TeX when

@@ -19,9 +19,11 @@ $result_trees{'fonttextsize'} = {
                       'text' => '10'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -30,8 +32,12 @@ $result_trees{'fonttextsize'} = {
               'extra' => {
                 'misc_args' => [
                   '10'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -58,28 +64,23 @@ $result_trees{'fonttextsize'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -95,9 +96,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'section top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -110,8 +113,11 @@ $result_trees{'fonttextsize'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -127,28 +133,23 @@ $result_trees{'fonttextsize'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -164,9 +165,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -179,8 +182,11 @@ $result_trees{'fonttextsize'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -196,9 +202,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -211,8 +219,10 @@ $result_trees{'fonttextsize'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -228,9 +238,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'Subsection 10pts'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -259,9 +271,11 @@ $result_trees{'fonttextsize'} = {
                   'text' => '11'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -270,8 +284,12 @@ $result_trees{'fonttextsize'} = {
           'extra' => {
             'misc_args' => [
               '11'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -280,8 +298,10 @@ $result_trees{'fonttextsize'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -297,9 +317,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'Subsection 11pts'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -333,16 +355,20 @@ $result_trees{'fonttextsize'} = {
                   'text' => '8'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'fonttextsize',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -351,8 +377,10 @@ $result_trees{'fonttextsize'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -368,9 +396,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'Subsection 8pts'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -404,16 +434,20 @@ $result_trees{'fonttextsize'} = {
                   'text' => '15'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'fonttextsize',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -422,8 +456,10 @@ $result_trees{'fonttextsize'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -439,9 +475,11 @@ $result_trees{'fonttextsize'} = {
               'text' => 'Subsection 15pts'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -463,8 +501,10 @@ $result_trees{'fonttextsize'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -475,10 +515,6 @@ $result_trees{'fonttextsize'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'fonttextsize'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'fonttextsize'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'fonttextsize'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'fonttextsize'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'fonttextsize'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'fonttextsize'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'fonttextsize'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'fonttextsize'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'fonttextsize'} = '@fonttextsize 10
 
@@ -571,12 +607,10 @@ $result_sectioning{'fonttextsize'} = {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_childs' => [
                         {
                           'cmdname' => 'subsection',
-                          'extra' => {},
                           'structure' => {
                             'section_level' => 3,
                             'section_number' => '1.1.1',
@@ -585,7 +619,6 @@ $result_sectioning{'fonttextsize'} = {
                         },
                         {
                           'cmdname' => 'subsection',
-                          'extra' => {},
                           'structure' => {
                             'section_level' => 3,
                             'section_number' => '1.1.2',
@@ -595,7 +628,6 @@ $result_sectioning{'fonttextsize'} = {
                         },
                         {
                           'cmdname' => 'subsection',
-                          'extra' => {},
                           'structure' => {
                             'section_level' => 3,
                             'section_number' => '1.1.3',
@@ -605,7 +637,6 @@ $result_sectioning{'fonttextsize'} = {
                         },
                         {
                           'cmdname' => 'subsection',
-                          'extra' => {},
                           'structure' => {
                             'section_level' => 3,
                             'section_number' => '1.1.4',

@@ -27,17 +27,23 @@ $result_trees{'bad_documentlanguage'} = {
                       'text' => 'en'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_before_argument' => '  ',
                 'text_arg' => 'en'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -68,17 +74,23 @@ $result_trees{'bad_documentlanguage'} = {
                           'text' => 'en'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '  
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '  
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'documentlanguage',
                   'extra' => {
-                    'spaces_before_argument' => '  ',
                     'text_arg' => 'en'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => '  '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -92,8 +104,12 @@ $result_trees{'bad_documentlanguage'} = {
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => '  ',
             'text_arg' => 'en '
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -114,17 +130,23 @@ $result_trees{'bad_documentlanguage'} = {
                   'text' => 'en  after documentlanguage'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => '  ',
             'text_arg' => 'en  after documentlanguage'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',

@@ -62,6 +62,7 @@ Ceci est notre premi@`ere entr@\'ee.
 '],
 ['footnote_in_caption',
 '@node Top
+@node chap
 
 @listoffloats fl
 
@@ -72,6 +73,7 @@ In float.
 '],
 ['footnote_in_caption_and_error',
 '@node Top
+@node chap
 
 @listoffloats fl
 
@@ -82,6 +84,7 @@ In float.
 '],
 ['anchor_in_caption',
 '@node Top
+@node chap
 
 @listoffloats fl
 
@@ -92,6 +95,7 @@ In float.
 '],
 ['cindex_in_caption',
 '@node Top
+@node chap
 
 @listoffloats fl
 
@@ -259,6 +263,26 @@ A footnote 2.
 @end float
 
 @xref{text with a lot of features}.
+
+'],
+['float_in_block_commands',
+'@example
+@float Text, in example
+@caption{float in example}
+@end float
+@end example
+
+@quotation
+@float Text, in quotation
+@caption{float in quotation}
+@end float
+@end quotation
+
+@cartouche
+@float Text, in cartouche
+@caption{float in cartouche}
+@end float
+@end cartouche
 
 '],
 ['numbering_captions_listoffloats',
@@ -533,13 +557,28 @@ see @ref{Copying and floats}.
 '],
 ['comment_space_comand_in_float',
 '@node Top
+@node chap
 
 @float Text @ , label @ @c float
 Float
 @end float
 
 @listoffloats Text @ @c listoffloats
-']
+'],
+['special_characters_in_float_type',
+'@node Top
+@top top
+
+@node chap
+@chapter chap
+
+@float A < " `` ` \' \' \\aaa @. --- @var{in var}, L < " `` ` \' \' \\aaa @. --- @var{in var}
+F
+@caption{float A < " `` ` \' \' \\aaa @. --- @var{in var}}
+@end float
+
+@listoffloats A < " `` ` \' \' \\aaa @. --- @var{in var}
+'],
 );
 
 my %info_tests = (
@@ -548,6 +587,7 @@ my %info_tests = (
   'cindex_in_caption' => 1,
   'float_copying' => 1,
   'comment_space_comand_in_float' => 1,
+  'special_characters_in_float_type' => 1,
 );
 
 foreach my $test (@test_cases) {
@@ -556,6 +596,8 @@ foreach my $test (@test_cases) {
     push @{$test->[2]->{'test_formats'}}, 'info';
   }
   push @{$test->[2]->{'test_formats'}}, 'html';
+  push @{$test->[2]->{'test_formats'}}, 'xml';
+  push @{$test->[2]->{'test_formats'}}, 'latex';
   $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
 }
 

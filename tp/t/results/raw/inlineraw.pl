@@ -46,8 +46,10 @@ $result_trees{'inlineraw'} = {
                       'text' => ' '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -104,8 +106,10 @@ $result_trees{'inlineraw'} = {
                       'text' => '</i>'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -140,8 +144,8 @@ $result_texis{'inlineraw'} = 'A @inlineraw{plaintext, plaintext `` @lbracechar{}
 ';
 
 
-$result_texts{'inlineraw'} = 'A  a.  Now html
-.
+$result_texts{'inlineraw'} = 'A plaintext `` {  a.  Now html
+in <i>HTML</i>.
 ';
 
 $result_errors{'inlineraw'} = [];
@@ -153,5 +157,10 @@ $result_floats{'inlineraw'} = {};
 
 $result_converted{'plaintext'}->{'inlineraw'} = 'A plaintext `` { a.  Now html .
 ';
+
+
+$result_converted{'xml'}->{'inlineraw'} = '<para>A <inlineraw><inlinerawformat>plaintext</inlinerawformat><inlinerawcontent spaces=" ">plaintext &textldquo; &lbracechar; </inlinerawcontent></inlineraw> a.  Now html
+<inlineraw><inlinerawformat>html</inlinerawformat><inlinerawcontent spaces=" ">in &lt;i&gt;<acronym><acronymword>HTML</acronymword></acronym>&lt;/i&gt;</inlinerawcontent></inlineraw>.
+</para>';
 
 1;

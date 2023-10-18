@@ -1,7 +1,6 @@
 # IXINSXML.pm: output IXIN with Texinfo tree content converted to SXML.
 #
-# Copyright 2013, 2014, 2015, 2016, 2017, 2018, 2022 Free Software
-# Foundation, Inc.
+# Copyright 2013-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,20 +38,22 @@ use Carp qw(cluck);
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::TexinfoSXML Texinfo::Convert::IXIN);
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 my %defaults = (
-  'ENABLE_ENCODING'      => 0,
-  'FORMAT_MENU'          => 'menu',
-  'EXTENSION'            => 'ixin',
-  'OUTPUT_ENCODING_NAME' => 'utf-8',
+  # Not customization option variables
   # next two are replaced by the main program value if called from
   # the main program.  'output_format' is also 'ixinsxml' when set by
   # the main program, but 'converted_format' is set to 'ixinsxml'.
   # More on that subject below.
   'converted_format'     => 'texinfosxml',
   'output_format'        => 'ixinsxml',
+
+  # Customization option variables
+  'FORMAT_MENU'          => 'menu',
+  'EXTENSION'            => 'ixin',
+  'OUTPUT_ENCODING_NAME' => 'utf-8',
   'SPLIT'                => 0,
   'documentlanguage'     => 'en',
   'USE_NODES'            => 1,
@@ -72,7 +73,7 @@ sub converter_defaults($$)
 # inheriting format specific functions is used to select the output format,
 # but it could theoretically be needed for a flexible conversion
 # (since the IXIN project is inactive, the corresponding code is not updated
-# acively either, so it is unlikely to change, though).
+# actively either, so it is unlikely to change, though).
 sub converter_initialize($) { my $self = shift;
 
   $self->{'converted_format'} = $defaults{'converted_format'};

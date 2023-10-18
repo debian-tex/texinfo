@@ -13,21 +13,17 @@ $result_trees{'value_in_macro_body'} = {
           'args' => [
             {
               'text' => 'bodyarg',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '\\arg\\',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' bodyarg \\arg\\ 
-',
-            'misc_args' => [
-              'bodyarg',
-              '\\arg\\'
-            ]
+'
           }
         },
         {
@@ -61,17 +57,23 @@ $result_trees{'value_in_macro_body'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -80,7 +82,7 @@ $result_trees{'value_in_macro_body'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' testvaluebody { arg }
 '
           },
@@ -91,6 +93,30 @@ $result_trees{'value_in_macro_body'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'macro_arg1'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'testvaluebody'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -105,6 +131,29 @@ $result_trees{'value_in_macro_body'} = {
                 {
                   'contents' => [
                     {
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
+                              {
+                                'text' => 'bodyarg'
+                              }
+                            ],
+                            'cmdname' => 'value'
+                          },
+                          'line' => '\\arg\\',
+                          'position' => 1,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'start'
+                        },
+                        {
+                          'counter' => 1,
+                          'position' => 6,
+                          'sourcemark_type' => 'value_expansion',
+                          'status' => 'end'
+                        }
+                      ],
                       'text' => '\\\\arg\\  '
                     }
                   ],
@@ -116,7 +165,14 @@ $result_trees{'value_in_macro_body'} = {
                 'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'testvaluebody'
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ]
             },
             {
               'text' => '

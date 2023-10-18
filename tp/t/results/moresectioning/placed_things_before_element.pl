@@ -10,87 +10,6 @@ $result_trees{'placed_things_before_element'} = {
     {
       'contents' => [
         {
-          'contents' => [
-            {
-              'contents' => [
-                {
-                  'text' => '\\input texinfo
-',
-                  'type' => 'text_before_beginning'
-                }
-              ],
-              'type' => 'preamble_before_beginning'
-            }
-          ],
-          'type' => 'preamble_before_setfilename'
-        },
-        {
-          'contents' => [
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'placed_things_before_element.info'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'placed_things_before_element.info'
-              },
-              'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 2,
-                'macro' => ''
-              }
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'before element test'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'settitle',
-              'extra' => {
-                'spaces_before_argument' => ' '
-              },
-              'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 3,
-                'macro' => ''
-              }
-            },
-            {
-              'text' => '
-',
-              'type' => 'empty_line'
-            },
-            {
-              'text' => '
-',
-              'type' => 'empty_line'
-            }
-          ],
-          'type' => 'preamble_before_content'
-        },
-        {
           'args' => [
             {
               'contents' => [
@@ -103,14 +22,11 @@ $result_trees{'placed_things_before_element'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'An-anchor'
           },
           'source_info' => {
-            'file_name' => 'placed_things_before_element.texi',
-            'line_nr' => 6,
+            'file_name' => '',
+            'line_nr' => 1,
             'macro' => ''
           }
         },
@@ -138,22 +54,19 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'An anchor'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'An-anchor'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'An-anchor'
-                }
-              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 9,
+                'file_name' => '',
+                'line_nr' => 4,
                 'macro' => ''
               }
             },
@@ -183,45 +96,19 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'Anchor in footnote'
                     }
                   ],
-                  'type' => 'brace_command_arg'
-                }
-              ],
-              'cmdname' => 'ref',
-              'extra' => {
-                'label' => {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'Anchor in footnote'
-                        }
-                      ],
-                      'type' => 'brace_command_arg'
-                    }
-                  ],
-                  'cmdname' => 'anchor',
                   'extra' => {
                     'node_content' => [
                       {}
                     ],
                     'normalized' => 'Anchor-in-footnote'
                   },
-                  'source_info' => {
-                    'file_name' => 'placed_things_before_element.texi',
-                    'line_nr' => 16,
-                    'macro' => ''
-                  }
-                },
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Anchor-in-footnote'
+                  'type' => 'brace_command_arg'
                 }
-              },
+              ],
+              'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 12,
+                'file_name' => '',
+                'line_nr' => 7,
                 'macro' => ''
               }
             },
@@ -257,7 +144,27 @@ $result_trees{'placed_things_before_element'} = {
 ',
                       'type' => 'empty_line'
                     },
-                    {},
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'Anchor in footnote'
+                            }
+                          ],
+                          'type' => 'brace_command_arg'
+                        }
+                      ],
+                      'cmdname' => 'anchor',
+                      'extra' => {
+                        'normalized' => 'Anchor-in-footnote'
+                      },
+                      'source_info' => {
+                        'file_name' => '',
+                        'line_nr' => 11,
+                        'macro' => ''
+                      }
+                    },
                     {
                       'text' => '
 ',
@@ -282,22 +189,19 @@ $result_trees{'placed_things_before_element'} = {
                                   'text' => 'An anchor'
                                 }
                               ],
+                              'extra' => {
+                                'node_content' => [
+                                  {}
+                                ],
+                                'normalized' => 'An-anchor'
+                              },
                               'type' => 'brace_command_arg'
                             }
                           ],
                           'cmdname' => 'ref',
-                          'extra' => {
-                            'label' => {},
-                            'node_argument' => {
-                              'node_content' => [
-                                {}
-                              ],
-                              'normalized' => 'An-anchor'
-                            }
-                          },
                           'source_info' => {
-                            'file_name' => 'placed_things_before_element.texi',
-                            'line_nr' => 19,
+                            'file_name' => '',
+                            'line_nr' => 14,
                             'macro' => ''
                           }
                         },
@@ -314,8 +218,8 @@ $result_trees{'placed_things_before_element'} = {
               ],
               'cmdname' => 'footnote',
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 14,
+                'file_name' => '',
+                'line_nr' => 9,
                 'macro' => ''
               }
             },
@@ -342,10 +246,14 @@ $result_trees{'placed_things_before_element'} = {
                   'text' => 'float anchor'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -369,38 +277,43 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
               },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 24,
+                'file_name' => '',
+                'line_nr' => 19,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'float-anchor',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'normalized' => ''
+            'float_type' => '',
+            'normalized' => 'float-anchor'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => 'placed_things_before_element.texi',
-            'line_nr' => 22,
+            'file_name' => '',
+            'line_nr' => 17,
             'macro' => ''
           }
         },
@@ -423,22 +336,19 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'float anchor'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'float-anchor'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'float-anchor'
-                }
-              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 27,
+                'file_name' => '',
+                'line_nr' => 22,
                 'macro' => ''
               }
             },
@@ -457,9 +367,11 @@ $result_trees{'placed_things_before_element'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -467,7 +379,7 @@ $result_trees{'placed_things_before_element'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -478,6 +390,12 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'An anchor'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'An-anchor'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -499,18 +417,9 @@ $result_trees{'placed_things_before_element'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'An-anchor'
-                }
-              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 30,
+                'file_name' => '',
+                'line_nr' => 25,
                 'macro' => ''
               },
               'type' => 'menu_entry'
@@ -523,28 +432,34 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
               },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 31,
+                'file_name' => '',
+                'line_nr' => 26,
                 'macro' => ''
               }
             }
           ],
           'source_info' => {
-            'file_name' => 'placed_things_before_element.texi',
-            'line_nr' => 29,
+            'file_name' => '',
+            'line_nr' => 24,
             'macro' => ''
           }
         },
@@ -561,31 +476,30 @@ $result_trees{'placed_things_before_element'} = {
                   'text' => 'index entry'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
-            'file_name' => 'placed_things_before_element.texi',
-            'line_nr' => 33,
+            'file_name' => '',
+            'line_nr' => 28,
             'macro' => ''
           },
           'type' => 'index_entry_command'
@@ -606,9 +520,11 @@ $result_trees{'placed_things_before_element'} = {
               'text' => 'section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -634,22 +550,19 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'An anchor'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'An-anchor'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'An-anchor'
-                }
-              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 38,
+                'file_name' => '',
+                'line_nr' => 33,
                 'macro' => ''
               }
             },
@@ -679,22 +592,19 @@ $result_trees{'placed_things_before_element'} = {
                       'text' => 'Anchor in footnote'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Anchor-in-footnote'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Anchor-in-footnote'
-                }
-              },
               'source_info' => {
-                'file_name' => 'placed_things_before_element.texi',
-                'line_nr' => 41,
+                'file_name' => '',
+                'line_nr' => 36,
                 'macro' => ''
               }
             },
@@ -704,62 +614,31 @@ $result_trees{'placed_things_before_element'} = {
             }
           ],
           'type' => 'paragraph'
-        },
-        {
-          'text' => '
-',
-          'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
-        'file_name' => 'placed_things_before_element.texi',
-        'line_nr' => 35,
+        'file_name' => '',
+        'line_nr' => 30,
         'macro' => ''
       }
-    },
-    {
-      'args' => [
-        {
-          'text' => '
-',
-          'type' => 'misc_arg'
-        }
-      ],
-      'cmdname' => 'bye'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[2];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[2] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'label'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[2];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[11]{'args'}[1]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[13]{'contents'}[1]{'extra'}{'label'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[11];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[13]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[13]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[15]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[15]{'contents'}[0]{'args'}[3];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[15]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[15]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[17]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[17]{'args'}[0]{'contents'};
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[17]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[17]{'args'}[0]{'contents'};
-$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[17]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[17];
-$result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'label'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[2];
-$result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'label'} = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'extra'}{'label'};
-$result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[11]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[11]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'placed_things_before_element'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
-$result_texis{'placed_things_before_element'} = '\\input texinfo
-@setfilename placed_things_before_element.info
-@settitle before element test
-
-
-@anchor{An anchor}
+$result_texis{'placed_things_before_element'} = '@anchor{An anchor}
 
 Ref to the anchor:
 @ref{An anchor}
@@ -795,14 +674,10 @@ Ref to anchor
 
 Ref to footnote anchor
 @ref{Anchor in footnote}
-
-@bye
 ';
 
 
 $result_texts{'placed_things_before_element'} = '
-
-
 Ref to the anchor:
 An anchor
 
@@ -828,7 +703,6 @@ An anchor
 
 Ref to footnote anchor
 Anchor in footnote
-
 ';
 
 $result_sectioning{'placed_things_before_element'} = {
@@ -836,7 +710,6 @@ $result_sectioning{'placed_things_before_element'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -853,8 +726,8 @@ $result_errors{'placed_things_before_element'} = [
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => 'placed_things_before_element.texi',
-    'line_nr' => 33,
+    'file_name' => '',
+    'line_nr' => 28,
     'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
@@ -867,10 +740,8 @@ $result_floats{'placed_things_before_element'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'float-anchor',
-        'type' => {
-          'normalized' => ''
-        }
+        'float_type' => '',
+        'normalized' => 'float-anchor'
       },
       'structure' => {
         'float_number' => 1
@@ -885,6 +756,185 @@ $result_indices_sort_strings{'placed_things_before_element'} = {
     'index entry'
   ]
 };
+
+
+
+$result_converted{'info'}->{'placed_things_before_element'} = 'This is , produced from .
+
+Ref to the anchor: *note An anchor::
+
+   Ref to the anchor in footnote: *note Anchor in footnote::.
+
+   (1)
+
+In float
+
+1
+   Ref to float *note 1: float anchor.
+
+* Menu:
+
+* An anchor::                menu entry pointing to the anchor.
+
+1 section
+=========
+
+Ref to anchor *note An anchor::
+
+   Ref to footnote anchor *note Anchor in footnote::
+
+   ---------- Footnotes ----------
+
+   (1) In footnote.
+
+   Ref to main text anchor *note An anchor::
+
+
+
+Tag Table:
+Ref: An anchor0
+Ref: float anchor109
+Ref: Anchor in footnote400
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
+';
+
+$result_converted_errors{'info'}->{'placed_things_before_element'} = [
+  {
+    'error_line' => 'warning: document without nodes
+',
+    'text' => 'document without nodes',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @anchor outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @footnote outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@footnote outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @float outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => '@float outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @anchor outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
+  }
+];
+
+
+
+$result_converted{'html'}->{'placed_things_before_element'} = '<!DOCTYPE html>
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+td.menu-entry-description {vertical-align: top}
+td.menu-entry-destination {vertical-align: top}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a class="anchor" id="An-anchor"></a>
+<p>Ref to the anchor:
+<a class="ref" href="#An-anchor">An anchor</a>
+</p>
+<p>Ref to the anchor in footnote:
+<a class="ref" href="#Anchor-in-footnote">Anchor in footnote</a>.
+</p>
+<p><a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>
+</p>
+<div class="float" id="float-anchor">
+<p>In float
+</p><div class="type-number-float"><p><strong class="strong">1</strong></p></div></div>
+<p>Ref to float
+<a class="ref" href="#float-anchor">1</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td class="menu-entry-destination">&bull; <a href="#An-anchor" accesskey="1">An anchor</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">menu entry pointing to the anchor.
+</td></tr>
+</table>
+
+<a class="index-entry-id" id="index-index-entry"></a>
+
+<div class="section-level-extent" id="section">
+<h3 class="section"><span>1 section<a class="copiable-link" href="#section"> &para;</a></span></h3>
+
+<p>Ref to anchor
+<a class="ref" href="#An-anchor">An anchor</a>
+</p>
+<p>Ref to footnote anchor
+<a class="ref" href="#Anchor-in-footnote">Anchor in footnote</a>
+</p><div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<p>In footnote.
+</p>
+<a class="anchor" id="Anchor-in-footnote"></a>
+<p>Ref to main text anchor
+<a class="ref" href="#An-anchor">An anchor</a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'placed_things_before_element'} = [
+  {
+    'error_line' => 'warning: must specify a title with a title command or @top
+',
+    'text' => 'must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
 
 
 1;

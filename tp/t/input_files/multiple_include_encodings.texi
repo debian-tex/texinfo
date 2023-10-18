@@ -1,0 +1,31 @@
+\input texinfo.tex
+@documentencoding ISO-8859-1
+
+@copying
+Télé.
+@end copying
+
+@include documentdescription_EUC_CN.texi
+
+@documentencoding ISO-8859-1
+
+@node Top
+@top include files with multiple encodings
+
+@include verbatim_encoded_latin1.texi
+
+@node ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
+@chapter ä ë ï ö ü ÿ Ä Ë Ï Ö Ü
+
+@include chapter_japanese_shift_jis.texi
+
+@include chapter_char_latin2_latin2_in_refs.texi
+
+@include chapter_chinese_mixed_with_en_EUC_CN.texi
+
+@c need to finish with an encoding that can accept all the
+@c codepoints used in the other encodings
+
+@include chapter_chinese_mixed_with_en.texi
+
+@bye

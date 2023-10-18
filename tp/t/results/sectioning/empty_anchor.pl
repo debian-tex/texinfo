@@ -31,8 +31,10 @@ $result_trees{'empty_anchor'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_before_argument' => '   '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => '   '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }

@@ -62,9 +62,6 @@ $result_trees{'on_subheading_line'} = {
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'in-anchor'
                   },
                   'source_info' => {
@@ -107,16 +104,20 @@ $result_trees{'on_subheading_line'} = {
                           'text' => 'exdent'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'exdent',
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -129,8 +130,10 @@ $result_trees{'on_subheading_line'} = {
             }
           ],
           'cmdname' => 'subheading',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -144,7 +147,6 @@ $result_trees{'on_subheading_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'on_subheading_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'on_subheading_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 
 $result_texis{'on_subheading_line'} = '@subheading @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 ';
@@ -156,39 +158,39 @@ $result_texts{'on_subheading_line'} = 'Text in titlefont  exdent
 
 $result_errors{'on_subheading_line'} = [
   {
-    'error_line' => 'warning: @noindent should not appear in @subheading
+    'error_line' => 'warning: @noindent should not appear on @subheading line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@noindent should not appear in @subheading',
+    'text' => '@noindent should not appear on @subheading line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @subheading
+    'error_line' => 'warning: @titlefont should not appear on @subheading line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@titlefont should not appear in @subheading',
+    'text' => '@titlefont should not appear on @subheading line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @subheading
+    'error_line' => 'warning: @anchor should not appear on @subheading line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor should not appear in @subheading',
+    'text' => '@anchor should not appear on @subheading line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @subheading
+    'error_line' => 'warning: @footnote should not appear on @subheading line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@footnote should not appear in @subheading',
+    'text' => '@footnote should not appear on @subheading line',
     'type' => 'warning'
   },
   {
@@ -201,12 +203,12 @@ $result_errors{'on_subheading_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @subheading
+    'error_line' => 'warning: @exdent should not appear on @subheading line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should not appear in @subheading',
+    'text' => '@exdent should not appear on @subheading line',
     'type' => 'warning'
   }
 ];

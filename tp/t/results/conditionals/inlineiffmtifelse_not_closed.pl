@@ -22,7 +22,14 @@ $result_trees{'inlineiffmtifelse_not_closed'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => '
+',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -46,7 +53,8 @@ $result_trees{'inlineiffmtifelse_not_closed'} = {
   'type' => 'document_root'
 };
 
-$result_texis{'inlineiffmtifelse_not_closed'} = '@inlinefmtifelse{html,}';
+$result_texis{'inlineiffmtifelse_not_closed'} = '@inlinefmtifelse{html,
+}';
 
 
 $result_texts{'inlineiffmtifelse_not_closed'} = '';

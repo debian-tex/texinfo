@@ -39,17 +39,23 @@ $result_trees{'macro_name_with_hyphen'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -58,7 +64,7 @@ $result_trees{'macro_name_with_hyphen'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' macro-one {arg-one, arg2}
 '
           },
@@ -69,6 +75,43 @@ $result_trees{'macro_name_with_hyphen'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'blah'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  },
+                  {
+                    'contents' => [
+                      {
+                        'text' => '@code{bli-bli}'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'macro-one'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -97,6 +140,14 @@ $result_trees{'macro_name_with_hyphen'} = {
               }
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '.
 '
             }

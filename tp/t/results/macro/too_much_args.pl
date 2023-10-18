@@ -44,17 +44,23 @@ $result_trees{'too_much_args'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -63,7 +69,7 @@ $result_trees{'too_much_args'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' twoargs {first, second}
 '
           },
@@ -74,6 +80,43 @@ $result_trees{'too_much_args'} = {
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'one'
+                      }
+                    ],
+                    'type' => 'brace_command_arg'
+                  },
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'two, three'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'twoargs'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -85,6 +128,14 @@ $result_trees{'too_much_args'} = {
 '
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 22,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'second arg: two, three.
 '
             }

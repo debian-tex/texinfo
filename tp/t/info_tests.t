@@ -273,7 +273,12 @@ ref to anchor1@footnote{another footnote}, which is before @@node Top: @ref{anch
 @printindex cp
 
 '],
-['image_quotes', 
+['image_text_file_only_and_alt',
+'@node Top
+
+@image{text_only_image,,,alt}
+'],
+['image_quotes',
 '@node Top
 
 @image{f--ile,,,alt""\\}
@@ -512,7 +517,7 @@ V@footnote{F2}
 # here, in fact.
 ['split_no_copying',
 '\input texinfo
-@setfilename split-nocopying.info
+@setfilename split_no_copying.info
 
 @node Top
 @top Top
@@ -930,6 +935,10 @@ HHH
 @image{figure, , , ,txt} JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
 @end flushright
 '],
+['empty_copying_not_ended',
+'
+@copying
+'],
 ['empty_arguments',
 '
 @strong{}
@@ -957,6 +966,29 @@ aa
 
 @listoffloats a
 '],
+# not clearly useful, the mix of counted things in one node
+# may not be found elsewhere.
+['one_node_counted_elements',
+'Garbage
+@cindex before nodes
+
+@node one node,,,(dir)
+Top node
+@cindex Top node
+
+anchor ref @anchor{ref}.
+
+@menu
+* (some_manual_name_with_gcc):: ref to gcc
+@end menu
+
+
+ref to ref @ref{ref}.
+
+Some text.
+
+@printindex cp
+'],
 );
 
 my @file_tests = (
@@ -981,7 +1013,7 @@ In chap1.
 
 ',{},{'SPLIT_SIZE' => 10}],
 ['split_test_before_first_node_no_empty_line',
-'@setfilename split_test_before_first_node.info
+'@setfilename split_test_before_first_node_no_empty_line.info
 
 truc machin et reuc machin  ze aze zea zae eaz eaz zae
 @node Top
@@ -999,6 +1031,17 @@ In top node
 In chap1.
 
 ',{},{'SPLIT_SIZE' => 10}],
+['split_nocopying',
+  undef, {'test_file' => '../../tests/formatting/split_nocopying.texi',},
+],
+['split_nocopying_split',
+  undef, {'test_file' => '../../tests/formatting/split_nocopying.texi',},
+  {'SPLIT_SIZE' => 10},
+],
+['direntry_dircategory',
+  undef, {'test_file' => 'direntry_dircategory.texi'},
+  {'SPLIT_SIZE' => 1}
+],
 ['quote_node_names_info',
 undef, {'test_file' => 'nodequote.texi',},
 {'INFO_SPECIAL_CHARS_QUOTE' => 1,
@@ -1039,6 +1082,11 @@ text @* f     nl Something? @* After punct
 * what @* is: ankh p.
 @end menu
 '],
+['chinese_mixed_with_en_EUC_CN',
+undef, {'test_file' => 'chinese_mixed_with_en_EUC_CN.texi',
+        'skip' => $Texinfo::ModulePath::conversion_from_euc_cn ne 'yes'
+                   ? 'No conversion from EUC-CN' : undef, }
+],
 );
 
 my $colons_in_index_entries_and_node = 
@@ -1071,7 +1119,7 @@ node one
 
 ';
 
-push @file_tests, 
+push @file_tests,
 ['colons_in_index_entries_and_node',
 $colons_in_index_entries_and_node,
 undef, {'INFO_SPECIAL_CHARS_QUOTE' => 1,

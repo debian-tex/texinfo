@@ -16,22 +16,16 @@ $result_trees{'empty_comment'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
+                      'info' => {
                         'comment_at_end' => {
                           'args' => [
                             {
                               'text' => '
 ',
-                              'type' => 'misc_arg'
+                              'type' => 'rawline_arg'
                             }
                           ],
-                          'cmdname' => 'c',
-                          'extra' => {
-                            'misc_args' => [
-                              '
-'
-                            ]
-                          }
+                          'cmdname' => 'c'
                         }
                       },
                       'type' => 'line_arg'
@@ -39,8 +33,12 @@ $result_trees{'empty_comment'} = {
                   ],
                   'cmdname' => 'columnfractions',
                   'extra' => {
-                    'missing_argument' => 1,
-                    'spaces_before_argument' => ' '
+                    'missing_argument' => 1
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -67,8 +65,12 @@ $result_trees{'empty_comment'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -78,8 +80,12 @@ $result_trees{'empty_comment'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 0,
-            'spaces_before_argument' => ' '
+            'max_columns' => 0
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -115,5 +121,14 @@ $result_errors{'empty_comment'} = [
 
 $result_floats{'empty_comment'} = {};
 
+
+
+$result_converted{'xml'}->{'empty_comment'} = '<multitable spaces=" " endspaces=" "><columnfractions spaces=" " line="@c"></columnfractions><!-- c -->
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'empty_comment'} = '\\begin{tabular}{}%
+\\end{tabular}%
+';
 
 1;

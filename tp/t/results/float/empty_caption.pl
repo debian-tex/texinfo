@@ -29,10 +29,14 @@ $result_trees{'empty_caption'} = {
                   'text' => 'b'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -77,17 +81,23 @@ $result_trees{'empty_caption'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -98,16 +108,12 @@ $result_trees{'empty_caption'} = {
           ],
           'extra' => {
             'caption' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'b',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'a'
+            'float_type' => 'a',
+            'normalized' => 'b'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -132,10 +138,14 @@ $result_trees{'empty_caption'} = {
                   'text' => 'c'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -180,17 +190,23 @@ $result_trees{'empty_caption'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -200,14 +216,13 @@ $result_trees{'empty_caption'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'float_type' => '',
             'normalized' => 'c',
-            'shortcaption' => {},
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'normalized' => ''
+            'shortcaption' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -224,9 +239,11 @@ $result_trees{'empty_caption'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -292,17 +309,23 @@ $result_trees{'empty_caption'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -313,10 +336,8 @@ $result_trees{'empty_caption'} = {
           ],
           'extra' => {
             'caption' => {},
-            'shortcaption' => {},
-            'type' => {
-              'normalized' => ''
-            }
+            'float_type' => '',
+            'shortcaption' => {}
           },
           'source_info' => {
             'file_name' => '',
@@ -332,10 +353,7 @@ $result_trees{'empty_caption'} = {
 };
 $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[3];
-$result_trees{'empty_caption'}{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[3]{'args'}[1]{'contents'}[0];
 $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[3]{'extra'}{'shortcaption'} = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[5];
 $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[5]{'contents'}[3]{'extra'}{'float'} = $result_trees{'empty_caption'}{'contents'}[0]{'contents'}[5];
@@ -377,15 +395,13 @@ $result_floats{'empty_caption'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_type' => '',
         'normalized' => 'c',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
             'float' => {}
           }
-        },
-        'type' => {
-          'normalized' => ''
         }
       },
       'structure' => {
@@ -401,14 +417,12 @@ $result_floats{'empty_caption'} = {
             'float' => {}
           }
         },
+        'float_type' => '',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
             'float' => {}
           }
-        },
-        'type' => {
-          'normalized' => ''
         }
       }
     }
@@ -423,15 +437,8 @@ $result_floats{'empty_caption'} = {
             'float' => {}
           }
         },
-        'normalized' => 'b',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'a'
-            }
-          ],
-          'normalized' => 'a'
-        }
+        'float_type' => 'a',
+        'normalized' => 'b'
       },
       'structure' => {
         'float_number' => 1
@@ -499,5 +506,93 @@ $result_converted_errors{'html'}->{'empty_caption'} = [
   }
 ];
 
+
+
+$result_converted{'xml'}->{'empty_caption'} = '<float name="b" type="a" number="1" spaces=" " endspaces=" "><floattype>a</floattype><floatname spaces=" ">b</floatname>
+<para>In float A, B
+</para><caption></caption>
+</float>
+
+<float name="c" type="" number="1" spaces=" " endspaces=" "><floatname spaces=" ">c</floatname>
+<para>In float , C
+</para><shortcaption></shortcaption>
+</float>
+
+<float type="" endspaces=" ">
+<para>In float
+</para><shortcaption></shortcaption>
+<caption></caption>
+</float>
+';
+
+
+$result_converted{'latex'}->{'empty_caption'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% new float for type `\'
+\\newfloat{TexinfoFloat}{htb}{tfl}[chapter]
+\\floatname{TexinfoFloat}{}
+% new float for type `a\'
+\\newfloat{TexinfoFloata}{htb}{tfl}[chapter]
+\\floatname{TexinfoFloata}{}
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+\\begin{document}
+\\begin{TexinfoFloata}
+In float A, B
+\\caption{}
+\\label{anchor:b}%
+\\end{TexinfoFloata}
+
+\\begin{TexinfoFloat}
+In float , C
+\\caption{}
+\\label{anchor:c}%
+\\end{TexinfoFloat}
+
+\\begin{TexinfoFloat}
+In float
+\\caption{}
+\\end{TexinfoFloat}
+\\end{document}
+';
 
 1;

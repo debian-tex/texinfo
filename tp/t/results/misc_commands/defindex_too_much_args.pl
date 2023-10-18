@@ -21,8 +21,10 @@ $result_trees{'defindex_too_much_args'} = {
             }
           ],
           'cmdname' => 'defindex',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

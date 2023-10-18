@@ -23,9 +23,11 @@ $result_trees{'empty_item_itemx'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -68,27 +70,26 @@ $result_trees{'empty_item_itemx'} = {
                               'text' => 'first item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
                       'extra' => {
-                        'index_entry' => {
-                          'content_normalized' => [],
-                          'entry_content' => [],
-                          'entry_element' => {},
-                          'entry_number' => 1,
-                          'in_code' => 1,
-                          'index_at_command' => 'item',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'vr',
-                          'index_type_command' => 'vtable'
-                        },
-                        'spaces_before_argument' => ' '
+                        'index_entry' => [
+                          'vr',
+                          1
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -99,9 +100,11 @@ $result_trees{'empty_item_itemx'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
@@ -124,27 +127,26 @@ $result_trees{'empty_item_itemx'} = {
                               'text' => 'after an empty itemx, before an empty item'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'itemx',
                       'extra' => {
-                        'index_entry' => {
-                          'content_normalized' => [],
-                          'entry_content' => [],
-                          'entry_element' => {},
-                          'entry_number' => 2,
-                          'in_code' => 1,
-                          'index_at_command' => 'itemx',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'vr',
-                          'index_type_command' => 'vtable'
-                        },
-                        'spaces_before_argument' => ' '
+                        'index_entry' => [
+                          'vr',
+                          2
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -165,9 +167,11 @@ $result_trees{'empty_item_itemx'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => ' 
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => ' 
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
@@ -200,27 +204,26 @@ $result_trees{'empty_item_itemx'} = {
                               'text' => 'in item before end table'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
                       'extra' => {
-                        'index_entry' => {
-                          'content_normalized' => [],
-                          'entry_content' => [],
-                          'entry_element' => {},
-                          'entry_number' => 3,
-                          'in_code' => 1,
-                          'index_at_command' => 'item',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'vr',
-                          'index_type_command' => 'vtable'
-                        },
-                        'spaces_before_argument' => ' '
+                        'index_entry' => [
+                          'vr',
+                          3
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -242,17 +245,23 @@ $result_trees{'empty_item_itemx'} = {
                       'text' => 'vtable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'vtable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -262,8 +271,12 @@ $result_trees{'empty_item_itemx'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -277,15 +290,6 @@ $result_trees{'empty_item_itemx'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0];
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'empty_item_itemx'} = '@vtable @asis
@@ -386,9 +390,9 @@ $result_converted{'html_text'}->{'empty_item_itemx'} = '<dl class="vtable">
 <p>VTable
 </p>
 </dd>
-<dt id=\'index-first-item\'><span>first item<a class="copiable-link" href=\'#index-first-item\'> &para;</a></span></dt>
-<dt id=\'index-after-an-empty-itemx_002c-before-an-empty-item\'><span>after an empty itemx, before an empty item<a class="copiable-link" href=\'#index-after-an-empty-itemx_002c-before-an-empty-item\'> &para;</a></span></dt>
-<dt id=\'index-in-item-before-end-table\'><span>in item before end table<a class="copiable-link" href=\'#index-in-item-before-end-table\'> &para;</a></span></dt>
+<dt><a id="index-first-item"></a><span>first item<a class="copiable-link" href="#index-first-item"> &para;</a></span></dt>
+<dt><a id="index-after-an-empty-itemx_002c-before-an-empty-item"></a><span>after an empty itemx, before an empty item<a class="copiable-link" href="#index-after-an-empty-itemx_002c-before-an-empty-item"> &para;</a></span></dt>
+<dt><dt><a id="index-in-item-before-end-table"></a><span>in item before end table<a class="copiable-link" href="#index-in-item-before-end-table"> &para;</a></span></dt>
 </dl>
 ';
 
@@ -404,5 +408,16 @@ $result_converted{'xml'}->{'empty_item_itemx'} = '<vtable commandarg="asis" spac
 </tableterm></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis"><indexterm index="vr" number="3">in item before end table</indexterm>in item before end table</itemformat></item>
 </tableterm></tableentry></vtable>
 ';
+
+
+$result_converted{'docbook'}->{'empty_item_itemx'} = '<variablelist>
+<para>VTable
+</para>
+<varlistentry><term><indexterm role="vr"><primary>first item</primary></indexterm>first item
+</term><term>
+</term><term><indexterm role="vr"><primary>after an empty itemx, before an empty item</primary></indexterm>after an empty itemx, before an empty item
+</term></varlistentry><varlistentry><term>
+</term></varlistentry><varlistentry><term><indexterm role="vr"><primary>in item before end table</primary></indexterm>in item before end table
+</term></varlistentry></variablelist>';
 
 1;

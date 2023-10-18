@@ -1,0 +1,159 @@
+\input texinfo.tex
+
+@node Top
+@top top
+
+@node chapter
+@chapter chap
+
+@itemize @minus
+@c comment in itemize
+@cindex also a cindex in itemize
+@item e--mph item
+@end itemize
+
+@itemize @bullet
+@cindex index entry within itemize
+@item i--tem 1
+@item @cindex index entry right after @@item
+i--tem 2
+@end itemize
+
+@itemize
+@c comment in itemize
+T--ext before items.
+@cindex also a cindex in itemize
+@item bullet item
+@end itemize
+
+@enumerate
+
+@comment comment before first item in enumerate
+@item e--numerate
+@end enumerate
+
+@enumerate
+
+@cindex index inter in enumerate between lines
+
+@item enumerate item
+@end enumerate
+
+@enumerate
+
+@cindex index inter in enumerate after line
+@item enumerate item
+@end enumerate
+
+@enumerate
+@cindex index inter in enumerate before line
+
+@item enumerate item
+@end enumerate
+
+@enumerate
+Title
+@cindex cindex
+@item enum
+@end enumerate
+
+@enumerate
+@cindex first idx
+@comment comment
+@cindex sedond idx
+@cindex another
+@item enum
+@end enumerate
+
+@vtable @code
+@c comment in table
+@item acode--b
+l--ine
+@end vtable
+
+@vtable @asis
+@item aasis--b
+@c comment between item and itemx
+@itemx b
+l--ine
+@end vtable
+
+@ftable @var
+@item avar--b
+@cindex index entry between item and itemx
+@c and a comment
+@comment and another comment
+@itemx b
+l--ine
+@item c
+
+@c comment between lines
+
+@itemx d
+
+@c comment at end
+@end ftable
+
+@table @code
+@cindex cindex in table 
+@c comment in table
+@item abb
+l--ine
+@end table
+
+@table @code
+@cindex cindex in table 
+Texte before first item.
+@item abb
+@end table
+
+@table @samp
+@cindex samp cindex in table 
+@c samp comment in table
+@item asamp--bb
+l--ine samp
+@end table
+
+@table @samp
+@cindex samp cindex in table 
+Texte before first item samp.
+@item asamp--bb
+@end table
+
+@table @samp
+
+@cindex cindex between lines
+
+@item asamp--bb1
+@end table
+
+@table @samp
+@cindex cindex before line
+
+@item asamp--bb2
+@end table
+
+@table @samp
+
+@cindex cindex after line
+@item asamp--bb2
+@end table
+
+@table @samp
+@cindex cindex first
+@c commant
+@cindex second
+@cindex third
+@item asamp--bb2
+@end table
+
+@node printindex
+@chapter printindex
+
+@printindex cp
+
+@printindex vr
+
+@printindex fn
+
+@bye

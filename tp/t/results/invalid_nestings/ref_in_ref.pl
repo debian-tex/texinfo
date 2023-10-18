@@ -15,12 +15,14 @@ $result_trees{'ref_in_ref'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -38,22 +40,19 @@ $result_trees{'ref_in_ref'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'Top'
+                              'text' => 'first'
                             }
                           ],
+                          'extra' => {
+                            'node_content' => [
+                              {}
+                            ],
+                            'normalized' => 'first'
+                          },
                           'type' => 'brace_command_arg'
                         }
                       ],
                       'cmdname' => 'ref',
-                      'extra' => {
-                        'label' => {},
-                        'node_argument' => {
-                          'node_content' => [
-                            {}
-                          ],
-                          'normalized' => 'Top'
-                        }
-                      },
                       'source_info' => {
                         'file_name' => '',
                         'line_nr' => 2,
@@ -61,19 +60,16 @@ $result_trees{'ref_in_ref'} = {
                       }
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'first'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Top'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 2,
@@ -85,19 +81,12 @@ $result_trees{'ref_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -108,50 +97,46 @@ $result_trees{'ref_in_ref'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_ref'}{'contents'}[1];
-$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'ref_in_ref'}{'contents'}[1];
-$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_ref'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
-$result_texis{'ref_in_ref'} = '@node Top
-@ref{@ref{Top}}';
+$result_texis{'ref_in_ref'} = '@node first
+@ref{@ref{first}}';
 
 
-$result_texts{'ref_in_ref'} = 'Top';
+$result_texts{'ref_in_ref'} = 'first';
 
 $result_nodes{'ref_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'ref_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_errors{'ref_in_ref'} = [
   {
-    'error_line' => 'warning: @ref should not appear in @ref
+    'error_line' => 'warning: @ref should not appear anywhere inside @ref
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@ref should not appear in @ref',
+    'text' => '@ref should not appear anywhere inside @ref',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @ref to `@ref{Top}\', different from node name `Top\'
+    'error_line' => 'warning: @ref to `@ref{first}\', different from node name `first\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@ref to `@ref{Top}\', different from node name `Top\'',
+    'text' => '@ref to `@ref{first}\', different from node name `first\'',
     'type' => 'warning'
   }
 ];

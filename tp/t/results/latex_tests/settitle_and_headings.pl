@@ -25,16 +25,20 @@ $result_trees{'settitle_and_headings'} = {
                       'text' => ' for a manual'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'settitle',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -55,9 +59,11 @@ $result_trees{'settitle_and_headings'} = {
                       'text' => 'double'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -66,8 +72,12 @@ $result_trees{'settitle_and_headings'} = {
               'extra' => {
                 'misc_args' => [
                   'double'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -94,9 +104,11 @@ $result_trees{'settitle_and_headings'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -113,7 +125,7 @@ $result_trees{'settitle_and_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -142,7 +154,7 @@ $result_trees{'settitle_and_headings'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'page'
@@ -162,8 +174,10 @@ $result_trees{'settitle_and_headings'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -210,7 +224,6 @@ $result_sectioning{'settitle_and_headings'} = {
     'section_childs' => [
       {
         'cmdname' => 'chapter',
-        'extra' => {},
         'structure' => {
           'section_level' => 1,
           'section_number' => 1,

@@ -27,9 +27,19 @@ $result_trees{'double_top'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
@@ -43,25 +53,12 @@ $result_trees{'double_top'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -88,6 +85,12 @@ $result_trees{'double_top'} = {
               'text' => 'ToP'
             }
           ],
+          'extra' => {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          },
           'type' => 'line_arg'
         },
         {
@@ -97,8 +100,16 @@ $result_trees{'double_top'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -122,7 +133,6 @@ $result_trees{'double_top'} = {
             }
           ],
           'cmdname' => 'anchor',
-          'extra' => {},
           'source_info' => {
             'file_name' => '',
             'line_nr' => 5,
@@ -139,29 +149,10 @@ $result_trees{'double_top'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          },
-          undef,
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -172,12 +163,9 @@ $result_trees{'double_top'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_top'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[2]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[2]{'contents'}[0];
-$result_trees{'double_top'}{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'contents'}[0];
+$result_trees{'double_top'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'double_top'}{'contents'}[2]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[2]{'contents'}[0];
+$result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'double_top'}{'contents'}[2]{'args'}[3]{'contents'}[0];
 
 $result_texis{'double_top'} = '@node ToP, top
 
@@ -222,6 +210,7 @@ $result_errors{'double_top'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @node
 ',
     'file_name' => '',
@@ -240,6 +229,7 @@ $result_errors{'double_top'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @node
 ',
     'file_name' => '',
@@ -298,6 +288,12 @@ $result_converted{'html'}->{'double_top'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="ToP">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -307,12 +303,10 @@ $result_converted{'html'}->{'double_top'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#Top" accesskey="n" rel="next">ToP</a> &nbsp; </p>
 </div>
-<h1 class="node">ToP</h1>
+<h1 class="node"><span>ToP<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <hr>
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
 
 <p>.

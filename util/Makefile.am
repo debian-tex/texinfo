@@ -1,7 +1,7 @@
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
-# Copyright 2005-2019 Free Software Foundation, Inc.
+# Copyright 2005-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

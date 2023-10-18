@@ -1,0 +1,28 @@
+\input texinfo @c -*-texinfo-*-
+
+@node Top
+@top top
+
+@node chap
+@chapter Chapter
+
+@table @code
+
+@cindex A
+@cindex B
+@cindex C
+@item A
+@itemx B
+@itemx C
+
+body
+
+@item D
+
+body2
+
+@end table
+
+@printindex cp
+
+@bye

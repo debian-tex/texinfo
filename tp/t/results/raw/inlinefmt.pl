@@ -46,8 +46,10 @@ $result_trees{'inlinefmt'} = {
                       'text' => ' '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -104,8 +106,10 @@ $result_trees{'inlinefmt'} = {
                       'text' => '</i>'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -140,8 +144,8 @@ $result_texis{'inlinefmt'} = 'A @inlinefmt{plaintext, plaintext `` @lbracechar{}
 ';
 
 
-$result_texts{'inlinefmt'} = 'A  a.  Now html
-.
+$result_texts{'inlinefmt'} = 'A plaintext " {  a.  Now html
+in <i>HTML</i>.
 ';
 
 $result_errors{'inlinefmt'} = [];
@@ -151,7 +155,12 @@ $result_floats{'inlinefmt'} = {};
 
 
 
-$result_converted{'plaintext'}->{'inlinefmt'} = 'A plaintext “ { a.  Now html .
+$result_converted{'plaintext'}->{'inlinefmt'} = 'A plaintext " { a.  Now html .
 ';
+
+
+$result_converted{'xml'}->{'inlinefmt'} = '<para>A <inlinefmt><inlinefmtformat>plaintext</inlinefmtformat><inlinefmtcontent spaces=" ">plaintext &textldquo; &lbracechar; </inlinefmtcontent></inlinefmt> a.  Now html
+<inlinefmt><inlinefmtformat>html</inlinefmtformat><inlinefmtcontent spaces=" ">in &lt;i&gt;<acronym><acronymword>HTML</acronymword></acronym>&lt;/i&gt;</inlinefmtcontent></inlinefmt>.
+</para>';
 
 1;

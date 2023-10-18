@@ -12,9 +12,11 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -26,12 +28,19 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'a'
+                      'contents' => [
+                        {
+                          'text' => 'a'
+                        }
+                      ],
+                      'type' => 'bracketed_arg'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -140,17 +149,23 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
                           'text' => 'multitable'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'multitable'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -160,14 +175,12 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
                 }
               ],
               'extra' => {
-                'max_columns' => 1,
-                'prototypes' => [
-                  {
-                    'text' => 'a',
-                    'type' => 'row_prototype'
-                  }
-                ],
-                'spaces_before_argument' => ' '
+                'max_columns' => 1
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -183,17 +196,23 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -216,7 +235,7 @@ $result_trees{'multitable_in_example_extraneous_tab'} = {
 };
 
 $result_texis{'multitable_in_example_extraneous_tab'} = '@example
-@multitable a
+@multitable {a}
 @item ita  tmp
 @item secit 
 @end multitable

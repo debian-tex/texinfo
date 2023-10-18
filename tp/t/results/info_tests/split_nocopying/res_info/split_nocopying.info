@@ -1,0 +1,34 @@
+This is split_nocopying.info, produced from split_nocopying.texi.
+
+
+File: split_nocopying.info,  Node: Top,  Next: Ch1,  Up: (dir)
+
+Test file used to test split Info without @copying
+**************************************************
+
+This is the top node.
+
+* Menu:
+
+* Ch1::
+
+
+File: split_nocopying.info,  Node: Ch1,  Prev: Top,  Up: Top
+
+1 Ch1
+*****
+
+First chapter.
+
+
+
+Tag Table:
+Node: Top67
+Node: Ch1277
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

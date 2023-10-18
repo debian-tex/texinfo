@@ -86,6 +86,7 @@ TEXINFO TREE
 
 * Texinfo@asis{::}Parser Element keys::
 * Texinfo@asis{::}Parser Element types::
+* Texinfo@asis{::}Parser Information available in the @code{info} key::
 * Texinfo@asis{::}Parser Information available in the @code{extra} key::
 
 Element types

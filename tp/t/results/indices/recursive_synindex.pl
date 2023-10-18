@@ -17,9 +17,11 @@ $result_trees{'recursive_synindex'} = {
                   'text' => 'aaa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -28,8 +30,12 @@ $result_trees{'recursive_synindex'} = {
           'extra' => {
             'misc_args' => [
               'aaa'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -45,9 +51,11 @@ $result_trees{'recursive_synindex'} = {
                   'text' => 'bbb'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -56,8 +64,12 @@ $result_trees{'recursive_synindex'} = {
           'extra' => {
             'misc_args' => [
               'bbb'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -73,9 +85,11 @@ $result_trees{'recursive_synindex'} = {
                   'text' => 'aaa bbb'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -85,8 +99,12 @@ $result_trees{'recursive_synindex'} = {
             'misc_args' => [
               'aaa',
               'bbb'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -106,8 +124,10 @@ $result_trees{'recursive_synindex'} = {
             }
           ],
           'cmdname' => 'synindex',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

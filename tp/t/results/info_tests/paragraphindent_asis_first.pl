@@ -40,9 +40,11 @@ $result_trees{'paragraphindent_asis_first'} = {
                   'text' => 'asis'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -51,8 +53,12 @@ $result_trees{'paragraphindent_asis_first'} = {
           'extra' => {
             'misc_args' => [
               'asis'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

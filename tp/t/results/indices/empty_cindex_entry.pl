@@ -24,28 +24,23 @@ $result_trees{'empty_cindex_entry'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -58,12 +53,14 @@ $result_trees{'empty_cindex_entry'} = {
         {
           'contents' => [
             {
-              'text' => 'node'
+              'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -73,9 +70,11 @@ $result_trees{'empty_cindex_entry'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -92,19 +91,12 @@ $result_trees{'empty_cindex_entry'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node'
-          }
-        ],
-        'normalized' => 'node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -115,13 +107,9 @@ $result_trees{'empty_cindex_entry'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_cindex_entry'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_cindex_entry'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 
 $result_texis{'empty_cindex_entry'} = '@node Top
-@node node
+@node chap
 @cindex
 ';
 
@@ -137,7 +125,7 @@ $result_nodes{'empty_cindex_entry'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'node'
+        'normalized' => 'chap'
       },
       'structure' => {
         'node_prev' => {}
@@ -175,16 +163,16 @@ $result_floats{'empty_cindex_entry'} = {};
 $result_converted{'info'}->{'empty_cindex_entry'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: node,  Up: (dir)
+File: ,  Node: Top,  Next: chap,  Up: (dir)
 
 
-File: ,  Node: node,  Prev: Top
+File: ,  Node: chap,  Prev: Top
 
 
 
 Tag Table:
 Node: Top27
-Node: node74
+Node: chap74
 
 End Tag Table
 
@@ -199,21 +187,17 @@ $result_converted{'plaintext'}->{'empty_cindex_entry'} = '';
 
 
 $result_converted{'html_text'}->{'empty_cindex_entry'} = '<a class="node-id" id="Top"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 <hr>
-<a class="node-id" id="node"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
+<a class="node-id" id="chap"></a><div class="nav-panel">
 </div>
-<h4 class="node">node</h4>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 ';
 
 
-$result_converted{'xml'}->{'empty_cindex_entry'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">node</nodenext></node>
-<node name="node" spaces=" "><nodename>node</nodename><nodeprev automatic="on">Top</nodeprev></node>
+$result_converted{'xml'}->{'empty_cindex_entry'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap</nodenext></node>
+<node name="chap" spaces=" "><nodename>chap</nodename><nodeprev automatic="on">Top</nodeprev></node>
 <cindex></cindex>
 ';
 
@@ -222,15 +206,15 @@ $result_converted{'latex'}->{'empty_cindex_entry'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%
@@ -263,7 +247,7 @@ $result_converted{'latex'}->{'empty_cindex_entry'} = '\\documentclass{book}
 
 \\begin{document}
 \\label{anchor:Top}%
-\\label{anchor:node}%
+\\label{anchor:chap}%
 \\end{document}
 ';
 

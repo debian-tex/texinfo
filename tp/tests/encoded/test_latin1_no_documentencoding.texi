@@ -1,0 +1,8 @@
+\include texinfo
+
+@node Top
+@top
+
+This manual is by Tommy Müller.
+
+@bye

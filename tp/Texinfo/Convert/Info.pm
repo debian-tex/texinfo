@@ -1,6 +1,6 @@
 # Info.pm: output tree as Info.
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,12 +36,13 @@ use Texinfo::Convert::Paragraph;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Plaintext);
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 my $STDIN_DOCU_NAME = 'stdin';
 
 my %defaults = Texinfo::Convert::Plaintext::converter_defaults(undef, undef);
+# Customization option variables
 $defaults{'FORMAT_MENU'} = 'menu';
 $defaults{'EXTENSION'} = 'info';
 $defaults{'USE_SETFILENAME_EXTENSION'} = 1;
@@ -253,7 +254,8 @@ sub output($)
   my %seen_anchors;
   foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
     next unless ($label->{'root'} and $label->{'root'}->{'extra'}
-                   and defined($label->{'root'}->{'extra'}->{'node_content'}));
+                 and defined($label->{'root'}->{'extra'}->{'normalized'}));
+    my $label_element = Texinfo::Common::get_label_element($label->{'root'});
     my $prefix;
     
     if ($label->{'root'}->{'cmdname'} eq 'node') {
@@ -264,10 +266,11 @@ sub output($)
     my ($label_text, $byte_count) = $self->node_line($label->{'root'});
 
     if ($seen_anchors{$label_text}) {
-      $self->converter_line_error($self, sprintf(__("\@%s output more than once: %s"),
+      $self->converter_line_error($self,
+                                  sprintf(__("\@%s output more than once: %s"),
           $label->{'root'}->{'cmdname'},
           Texinfo::Convert::Texinfo::convert_to_texinfo({'contents' =>
-              $label->{'root'}->{'extra'}->{'node_content'}})),
+                                                  $label_element->{'contents'}})),
         $label->{'root'}->{'source_info'});
       next;
     } else {
@@ -430,9 +433,15 @@ sub format_node($$)
 {
   my $self = shift;
   my $node = shift;
-  
+
   my $result = '';
-  return '' if (!defined($node->{'extra'}->{'node_content'}));
+  return '' if (not $node->{'extra'}
+                or not defined($node->{'extra'}->{'normalized'}));
+
+  my ($node_text, $byte_count) = $self->node_line($node);
+  # check not needed most probably because of the test of 'normalized'.
+  #return '' if ($node_text eq '');
+
   if (!$self->{'empty_lines_count'}) {
     $result .= "\n";
     $self->add_text_to_count("\n");
@@ -457,7 +466,6 @@ sub format_node($$)
   my $node_begin = "\x{1F}\nFile: $output_filename,  Node: ";
   $result .= $node_begin;
   $self->add_text_to_count($node_begin);
-  my ($node_text, $byte_count) = $self->node_line($node);
   my $pre_quote = '';
   my $post_quote = '';
   if ($node_text =~ /,/) {
@@ -486,7 +494,7 @@ sub format_node($$)
                              @{$node_direction->{'extra'}->{'manual_content'}},
                                           {'text' => ')'}]});
       }
-      if ($node_direction->{'extra'}->{'node_content'}) {
+      if (defined($node_direction->{'extra'}->{'normalized'})) {
         my $pre_quote = '';
         my $post_quote = '';
         my ($node_text, $byte_count) = $self->node_line($node_direction);
@@ -511,7 +519,8 @@ sub format_node($$)
         }
         $result .= $pre_quote . $node_text . $post_quote;
       }
-    } elsif ($direction eq 'Up' and $node->{'extra'}->{'normalized'} eq 'Top') {
+    } elsif ($direction eq 'Up'
+             and $node->{'extra'}->{'normalized'} eq 'Top') {
       # add an up direction for Top node
       my $text = ",  $direction: ".$self->get_conf('TOP_NODE_UP');
       $self->add_text_to_count($text);
@@ -566,6 +575,8 @@ sub format_image($$)
       }
     }
     my ($text, $width) = $self->txt_image_text($element, $basefile);
+    # remove last end of line
+    chomp($text) if (defined($text));
     my $alt;
     if (defined($element->{'args'}->[3])
         and $element->{'args'}->[3]->{'contents'}
@@ -578,11 +589,15 @@ sub format_image($$)
     my $result;
 
     if (defined($image_file) or (defined($text) and defined($alt))) {
-      $image_file =~ s/\\/\\\\/g;
-      $image_file =~ s/\"/\\\"/g;
+      if (defined($image_file)) {
+        $image_file =~ s/\\/\\\\/g;
+        $image_file =~ s/\"/\\\"/g;
+      } else {
+        $image_file = '';
+      }
       $result = "\x{00}\x{08}[image src=\"$image_file\"";
 
-      if ($alt) {
+      if (defined($alt) and $alt ne '') {
         $alt =~ s/\\/\\\\/g;
         $alt =~ s/\"/\\\"/g;
         $result .= " alt=\"$alt\"";
@@ -596,12 +611,12 @@ sub format_image($$)
       if ($self->{'formatters'}->[-1]->{'_top_formatter'}) {
         $result .= "\n";
       }
-      my $image_lines_count = ($result =~ tr/\n/\n/) +1;
-      $self->add_image($element, $image_lines_count, $width, 1);
+      $lines_count = ($result =~ tr/\n/\n/);
+      $self->add_image($element, $lines_count +1, $width, 1);
     } else {
       $result = $self->image_formatted_text($element, $basefile, $text);
       $lines_count = ($result =~ tr/\n/\n/);
-      $self->add_image($element, $lines_count+1, $width);
+      $self->add_image($element, $lines_count +1, $width);
     }
     return ($result, $lines_count);
   }

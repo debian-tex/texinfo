@@ -17,16 +17,18 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
                   'text' => 'a'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -51,16 +53,18 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
                   'text' => 'a'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' 
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -93,16 +97,18 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
                   'text' => 'b'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -135,16 +141,18 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
                   'text' => 'b'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' 
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -177,16 +185,18 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
                   'text' => ' b'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -219,16 +229,18 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
                   'text' => ' b'
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' 
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'brace_command_arg'
             }
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',

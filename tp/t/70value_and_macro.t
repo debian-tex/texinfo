@@ -17,6 +17,7 @@ b
 
 flagab: @value{flagab}
 '],
+# NOTE this tests more generally value in macro argument, not in any other test
 ['comma_value_in_macro_arg',
 '@set comma ,
 

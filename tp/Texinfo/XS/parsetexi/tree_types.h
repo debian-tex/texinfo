@@ -1,7 +1,7 @@
 /* tree_types.h - types for the parse tree that are used in many places */
 #ifndef TREE_TYPES_H
 #define TREE_TYPES_H
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "command_ids.h"
 #include "element_types.h"
@@ -26,24 +27,44 @@ enum extra_type {
     extra_element,
     extra_element_oot,
     extra_contents,
-    extra_contents_oot,
-    extra_contents_array,
     extra_text,
-    extra_index_entry,
     extra_misc_args,
-    extra_node_spec,
-    extra_node_spec_array,
     extra_string,
     extra_integer,
-    extra_def_info,
-    extra_float_type,
     extra_deleted
+};
+
+/* the *_none enums are not necessarily used, they may also
+   be there to avoid using 0, for a code easier to debug */
+
+#define SM_TYPES_LIST \
+   sm_type(none) \
+   sm_type(include) \
+   sm_type(setfilename) \
+   sm_type(delcomment) \
+   sm_type(defline_continuation) \
+   sm_type(macro_expansion) \
+   sm_type(linemacro_expansion) \
+   sm_type(value_expansion) \
+   sm_type(ignored_conditional_block) \
+   sm_type(expanded_conditional_command) \
+
+enum source_mark_type {
+  #define sm_type(name) SM_type_ ## name,
+    SM_TYPES_LIST
+  #undef sm_type
+};
+
+enum source_mark_status {
+    SM_status_none,
+    SM_status_start,
+    SM_status_end,
 };
 
 typedef struct KEY_PAIR {
     char *key;
     enum extra_type type;
-    struct ELEMENT *value;
+    intptr_t value;
 } KEY_PAIR;
 
 typedef struct ELEMENT_LIST {
@@ -58,23 +79,46 @@ typedef struct SOURCE_INFO {
     char *macro;
 } SOURCE_INFO;
 
+typedef struct ASSOCIATED_INFO {
+    KEY_PAIR *info;
+    size_t info_number;
+    size_t info_space;
+} ASSOCIATED_INFO;
+
+typedef struct SOURCE_MARK {
+    enum source_mark_type type;
+    enum source_mark_status status;
+    size_t position;
+    int counter;
+    struct ELEMENT *element; /* needed for elements removed
+                                from the tree */
+    char *line;  /* used when the information is not available as
+                    an element, for DEL comments, for instance */
+} SOURCE_MARK;
+
+typedef struct SOURCE_MARK_LIST {
+    struct SOURCE_MARK **list;
+    size_t number;
+    size_t space;
+} SOURCE_MARK_LIST;
+
 typedef struct ELEMENT {
+    /* Used when building Perl tree only. This should be HV *hv,
+       but we don't want to include the Perl headers everywhere; */
+    void *hv;
+
+    enum element_type type;
     enum command_id cmd;
     TEXT text;
-    enum element_type type;
     ELEMENT_LIST args;
     ELEMENT_LIST contents;
     struct ELEMENT *parent;
     SOURCE_INFO source_info;
 
-    KEY_PAIR *extra;
-    size_t extra_number;
-    size_t extra_space;
+    ASSOCIATED_INFO extra_info;
+    ASSOCIATED_INFO info_info;
 
-    /********* Used when building Perl tree only ********************/
-    void *hv;
-    /* This should be HV *hv, but we don't want to include the Perl headers 
-       everywhere; */
+    SOURCE_MARK_LIST source_mark_list;
 } ELEMENT;
 
 typedef struct IGNORED_CHARS {
@@ -85,19 +129,8 @@ typedef struct IGNORED_CHARS {
 } IGNORED_CHARS;
 
 typedef struct {
-    char *index_name;
-    char *index_prefix;
-    enum command_id index_at_command;
-    enum command_id index_type_command;
-
-    /* content->contents is the index entry text */
-    ELEMENT *content;
+    char *index_name; /* kept with the entry as the indices may be merged */
     ELEMENT *command;
-    ELEMENT *node;
-    int number; /* Index of entry in containing index, 1-based. */
-    ELEMENT *region;
-    char *sortas; /* the sort key for the index */
-    IGNORED_CHARS ignored_chars;
 } INDEX_ENTRY;
 
 typedef struct INDEX {
@@ -120,20 +153,12 @@ typedef struct INDEX {
 typedef struct {
     ELEMENT *manual_content;
     ELEMENT *node_content;
+    ELEMENT **out_of_tree_elements;
 } NODE_SPEC_EXTRA;
 
-/* For 'def_parsed_hash'. */
 typedef struct {
-    ELEMENT *category;
-    ELEMENT *class;
-    ELEMENT *type;
-    ELEMENT *name;
-} DEF_INFO;
-
-typedef struct {
-    ELEMENT *content;
-    char *normalized;
-} EXTRA_FLOAT_TYPE;
-
+    char *arg_type;
+    ELEMENT *element;
+} DEF_ARG;
 
 #endif

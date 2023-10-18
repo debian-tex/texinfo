@@ -13,21 +13,17 @@ $result_trees{'value_in_invalid_documentencoding'} = {
           'args' => [
             {
               'text' => 'badvalue',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'bad',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' badvalue bad
-',
-            'misc_args' => [
-              'badvalue',
-              'bad'
-            ]
+'
           }
         },
         {
@@ -35,20 +31,51 @@ $result_trees{'value_in_invalid_documentencoding'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'position' => 3,
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'bad'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'bad'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'badvalue'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'bad',
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                }
+              ],
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -81,12 +108,12 @@ $result_errors{'value_in_invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: unrecognized encoding name `bad\'
+    'error_line' => 'warning: unhandled encoding name `bad\'
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'unrecognized encoding name `bad\'',
+    'text' => 'unhandled encoding name `bad\'',
     'type' => 'warning'
   }
 ];

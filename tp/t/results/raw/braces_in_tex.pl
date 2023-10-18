@@ -17,9 +17,11 @@ $result_trees{'braces_in_tex'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -33,13 +35,7 @@ $result_trees{'braces_in_tex'} = {
 '
                 },
                 {
-                  'text' => '\\chi^2 = \\sum_'
-                },
-                {
-                  'text' => '{i=1'
-                },
-                {
-                  'text' => '}^N
+                  'text' => '\\chi^2 = \\sum_{i=1}^N
 '
                 },
                 {
@@ -65,17 +61,23 @@ $result_trees{'braces_in_tex'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -103,9 +105,11 @@ $result_trees{'braces_in_tex'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -117,9 +121,11 @@ $result_trees{'braces_in_tex'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -133,13 +139,7 @@ $result_trees{'braces_in_tex'} = {
 '
                         },
                         {
-                          'text' => '\\chi^2 = \\sum_'
-                        },
-                        {
-                          'text' => '{i=1'
-                        },
-                        {
-                          'text' => '}^N
+                          'text' => '\\chi^2 = \\sum_{i=1}^N
 '
                         },
                         {
@@ -165,17 +165,23 @@ $result_trees{'braces_in_tex'} = {
                               'text' => 'tex'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'tex'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -201,17 +207,23 @@ $result_trees{'braces_in_tex'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -262,8 +274,18 @@ $$
 
 
 $result_texts{'braces_in_tex'} = '
+$$ 
+\\chi^2 = \\sum_{i=1}^N
+\\left(y_i - (a + b x_i)
+\\over \\sigma_i\\right)^2 
+$$
 
 
+$$ 
+\\chi^2 = \\sum_{i=1}^N
+\\left(y_i - (a + b x_i)
+\\over \\sigma_i\\right)^2 
+$$
 
 ';
 
@@ -275,6 +297,29 @@ $result_floats{'braces_in_tex'} = {};
 
 
 $result_converted{'plaintext'}->{'braces_in_tex'} = '
+';
+
+
+$result_converted{'xml'}->{'braces_in_tex'} = '
+<tex endspaces=" ">
+$$ 
+\\chi^2 = \\sum_{i=1}^N
+\\left(y_i - (a + b x_i)
+\\over \\sigma_i\\right)^2 
+$$
+</tex>
+
+
+<example endspaces=" ">
+<pre xml:space="preserve"><tex endspaces=" ">
+$$ 
+\\chi^2 = \\sum_{i=1}^N
+\\left(y_i - (a + b x_i)
+\\over \\sigma_i\\right)^2 
+$$
+</tex>
+</pre></example>
+
 ';
 
 1;

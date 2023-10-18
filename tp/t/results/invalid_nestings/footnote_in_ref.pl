@@ -15,12 +15,14 @@ $result_trees{'footnote_in_ref'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -39,7 +41,7 @@ $result_trees{'footnote_in_ref'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
                   'type' => 'brace_command_arg'
@@ -90,8 +92,10 @@ $result_trees{'footnote_in_ref'} = {
                       'text' => '.'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -108,19 +112,12 @@ $result_trees{'footnote_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -131,41 +128,39 @@ $result_trees{'footnote_in_ref'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'footnote_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'footnote_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'footnote_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'footnote_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
-$result_texis{'footnote_in_ref'} = '@node Top
+$result_texis{'footnote_in_ref'} = '@node first
 
-@xref{Top, Text@footnote{First para
+@xref{first, Text@footnote{First para
 
 seond para}.}';
 
 
 $result_texts{'footnote_in_ref'} = '
-Top';
+first';
 
 $result_nodes{'footnote_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'footnote_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_errors{'footnote_in_ref'} = [
   {
-    'error_line' => 'warning: @footnote should not appear in @xref
+    'error_line' => 'warning: @footnote should not appear anywhere inside @xref
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@footnote should not appear in @xref',
+    'text' => '@footnote should not appear anywhere inside @xref',
     'type' => 'warning'
   },
   {

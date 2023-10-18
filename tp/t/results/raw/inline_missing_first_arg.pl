@@ -14,13 +14,21 @@ $result_trees{'inline_missing_first_arg'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' aaa',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlinefmt',
@@ -42,7 +50,13 @@ $result_trees{'inline_missing_first_arg'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' bbb',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlineraw',
@@ -69,7 +83,7 @@ $result_trees{'inline_missing_first_arg'} = {
   'type' => 'document_root'
 };
 
-$result_texis{'inline_missing_first_arg'} = '@inlinefmt{ ,}. @inlineraw{,}.
+$result_texis{'inline_missing_first_arg'} = '@inlinefmt{ , aaa}. @inlineraw{, bbb}.
 ';
 
 

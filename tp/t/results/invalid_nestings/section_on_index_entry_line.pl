@@ -14,21 +14,35 @@ $result_trees{'section_on_index_entry_line'} = {
             {
               'contents' => [
                 {
-                  'text' => 'a '
+                  'text' => 'a'
                 }
               ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
+              },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'spaces_before_argument' => ' '
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 1,
             'macro' => ''
-          }
+          },
+          'type' => 'index_entry_command'
         }
       ],
       'type' => 'before_node_section'
@@ -41,9 +55,11 @@ $result_trees{'section_on_index_entry_line'} = {
               'text' => 'b'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -65,8 +81,10 @@ $result_trees{'section_on_index_entry_line'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -95,7 +113,6 @@ $result_sectioning{'section_on_index_entry_line'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -119,18 +136,34 @@ $result_errors{'section_on_index_entry_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @section should not appear in @cindex
+    'error_line' => 'warning: @section should not appear on @cindex line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@section should not appear in @cindex',
+    'text' => '@section should not appear on @cindex line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];
 
 
 $result_floats{'section_on_index_entry_line'} = {};
+
+
+$result_indices_sort_strings{'section_on_index_entry_line'} = {
+  'cp' => [
+    'a'
+  ]
+};
 
 
 1;

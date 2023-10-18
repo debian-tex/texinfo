@@ -1,11 +1,13 @@
 EXTRA_DIST = \
  simplest.texi documentlanguage.texi \
- ignore_and_comments.texi   split_nocopying.texi \
- inc_file.texi              test_need.texi \
+ defxcond.texi \
+ split_nocopying.texi \
+ indices_in_begin_tables_lists.texi \
+ index_entries_relate_to_item.texi \
+ inc_file.texi \
  lightweight_markups.texi   japanese_long_name.texi  \
- osé_utf8.texi osé_utf8_no_setfilename.texi \
- manual_include_accented_file_name_latin1.texi \
- çss.css cêss.css file.css an_ïmage.png list-of-tests  res_parser
+ no_content.texi \
+ file.css list-of-tests  res_parser
 
 DISTCLEANFILES = tests.log tests.out
 

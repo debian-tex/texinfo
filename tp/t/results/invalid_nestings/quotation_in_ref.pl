@@ -15,12 +15,14 @@ $result_trees{'quotation_in_ref'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -39,15 +41,17 @@ $result_trees{'quotation_in_ref'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'Top'
+                      'text' => 'first'
                     }
                   ],
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'extra' => {
-                    'spaces_before_argument' => '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -65,9 +69,11 @@ $result_trees{'quotation_in_ref'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -91,17 +97,23 @@ $result_trees{'quotation_in_ref'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -127,19 +139,12 @@ $result_trees{'quotation_in_ref'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -150,12 +155,10 @@ $result_trees{'quotation_in_ref'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'quotation_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'quotation_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'quotation_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'quotation_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
-$result_texis{'quotation_in_ref'} = '@node Top
+$result_texis{'quotation_in_ref'} = '@node first
 
-@xref{Top,
+@xref{first,
 }@quotation
 quotation in ref
 @end quotation
@@ -164,34 +167,25 @@ quotation in ref
 
 
 $result_texts{'quotation_in_ref'} = '
-Topquotation in ref
+firstquotation in ref
 .
 ';
 
 $result_nodes{'quotation_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_menus{'quotation_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   }
 };
 
 $result_errors{'quotation_in_ref'} = [
-  {
-    'error_line' => 'warning: @quotation should not appear in @xref
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@quotation should not appear in @xref',
-    'type' => 'warning'
-  },
   {
     'error_line' => '@xref missing closing brace
 ',

@@ -21,24 +21,20 @@ $result_trees{'good_space_comment'} = {
                           'text' => '0 1'
                         }
                       ],
-                      'extra' => {
+                      'info' => {
                         'comment_at_end' => {
                           'args' => [
                             {
                               'text' => ' space comment
 ',
-                              'type' => 'misc_arg'
+                              'type' => 'rawline_arg'
                             }
                           ],
-                          'cmdname' => 'c',
-                          'extra' => {
-                            'misc_args' => [
-                              ' space comment
-'
-                            ]
-                          }
+                          'cmdname' => 'c'
                         },
-                        'spaces_after_argument' => '  '
+                        'spaces_after_argument' => {
+                          'text' => '  '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -48,8 +44,12 @@ $result_trees{'good_space_comment'} = {
                     'misc_args' => [
                       '0',
                       '1'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -76,8 +76,12 @@ $result_trees{'good_space_comment'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -88,8 +92,12 @@ $result_trees{'good_space_comment'} = {
           ],
           'extra' => {
             'columnfractions' => {},
-            'max_columns' => 2,
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -116,5 +124,14 @@ $result_errors{'good_space_comment'} = [];
 
 $result_floats{'good_space_comment'} = {};
 
+
+
+$result_converted{'xml'}->{'good_space_comment'} = '<multitable spaces=" " endspaces=" "><columnfractions spaces=" " line="0 1  @c space comment"><columnfraction value="0"></columnfraction><columnfraction value="1"></columnfraction></columnfractions><!-- c space comment -->
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'good_space_comment'} = '\\begin{tabular}{m{0\\textwidth} m{1\\textwidth}}%
+\\end{tabular}%
+';
 
 1;

@@ -1,0 +1,11 @@
+
+@chapter Chapter in included file
+
+@section Section
+
+@subsection Subsection
+
+@ifset subsub
+@subsubsection Subsubsection
+@end ifset
+

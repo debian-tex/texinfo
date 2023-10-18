@@ -1,6 +1,6 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
 
-   Copyright 1993-2022 Free Software Foundation, Inc.
+   Copyright 1993-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,21 +44,12 @@ typedef struct line_map_struct
   long *map;       /* The map itself */
 } LINE_MAP;
 
-/* The exact same elements are used within the WINDOW_STATE structure and a
-   subsection of the WINDOW structure.  We could define a structure which
-   contains this elements, and include that structure in each of WINDOW_STATE
-   and WINDOW.  But that would lead references in the code such as
-   window->state->node which we would like to avoid.  Instead, we #define the
-   elements here, and simply include the define in both data structures. Thus,
-   if you need to change window state information, here is where you would
-   do it.  NB> The last element does NOT end with a semi-colon. */
-#define WINDOW_STATE_DECL \
-   NODE *node;          /* The node displayed in this window. */ \
-   long pagetop;        /* LINE_STARTS[PAGETOP] is first line in WINDOW. */ \
-   long point           /* Offset within NODE of the cursor position. */
-
+/* Note: The same elements are used within the WINDOW_STATE structure and a
+   subsection of the WINDOW structure. */
 typedef struct {
-  WINDOW_STATE_DECL;            /* What gets saved. */
+   NODE *node;          /* The node displayed in this window. */
+   long pagetop;        /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
+   long point;          /* Offset within NODE of the cursor position. */
 } WINDOW_STATE;
 
 typedef struct match_struct
@@ -87,7 +78,9 @@ typedef struct window_struct
   long first_row;       /* Offset of the first line in the_screen. */
   long goal_column;     /* Column to place the cursor in when moving it up and 
                            down.  -1 means the column it is currently in. */
-  WINDOW_STATE_DECL;    /* Node, pagetop and point. */
+  NODE *node;           /* The node displayed in this window. */
+  long pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
+  long point;           /* Offset within NODE of the cursor position. */
   LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */
   long *line_starts;    /* Offsets of printed line starts in node->contents.*/

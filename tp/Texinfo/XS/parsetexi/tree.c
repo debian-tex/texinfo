@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,140 +16,139 @@
 #include <config.h>
 #include <stdlib.h>
 #include <string.h>
+#include "obstack.h"
 
 #include "errors.h"
 #include "tree.h"
+#include "source_marks.h"
+/* for debug */
+#include "parser.h"
 
-//int element_counter;
+static struct obstack obs_element;
+static int *obs_element_first = 0;
+
+/* Used with destroy_element to reuse storage, e.g. from
+   abort_empty_line.  Reduces memory use slightly (about 5% from testing)
+   for large manuals. */
+static ELEMENT *spare_element;
+
+#define obstack_chunk_alloc malloc
+#define obstack_chunk_free free
+
+void
+reset_obstacks (void)
+{
+  spare_element = 0;
+
+  if (obs_element_first)
+    obstack_free (&obs_element, obs_element_first);
+  else
+    obstack_init (&obs_element);
+
+  obs_element_first = obstack_alloc (&obs_element, sizeof (int));
+}
+
+static ELEMENT *alloc_element (void)
+{
+  ELEMENT *e;
+  e = (ELEMENT *) obstack_alloc (&obs_element, sizeof (ELEMENT));
+  memset (e, 0, sizeof (ELEMENT));
+  return e;
+}
 
 ELEMENT *
 new_element (enum element_type type)
 {
-  ELEMENT *e = malloc (sizeof (ELEMENT));
+  ELEMENT *e;
 
-  //element_counter++;
-
-  /* Zero all elements */
-  memset (e, 0, sizeof (*e));
+  if (spare_element)
+    {
+      e = spare_element;
+      spare_element = 0;
+      memset (e, 0, sizeof (ELEMENT));
+    }
+  else
+    {
+      e = alloc_element ();
+      /* alloc_element zeroes *e.  We assume null pointers have bit
+         representation of all zeroes. */
+    }
 
   e->type = type;
-  e->cmd = CM_NONE;
-  e->args.list = 0;
-  e->args.space = 0;
-  e->args.number = 0;
-  e->contents.list = 0;
-  e->contents.space = 0;
-  e->contents.number = 0;
-  e->parent = 0;
-  e->extra = 0;
 
   return e;
 }
 
 void
-destroy_element (ELEMENT *e)
+destroy_associated_info (ASSOCIATED_INFO *a)
 {
   int i;
-  free (e->text.text);
 
-  /* Note the pointers in these lists are not themselves freed. */
-  free (e->contents.list);
-  free (e->args.list);
-
-  for (i = 0; i < e->extra_number; i++)
+  for (i = 0; i < a->info_number; i++)
     {
-      switch (e->extra[i].type)
+      switch (a->info[i].type)
         {
         case extra_string:
-        case extra_index_entry:
-          free (e->extra[i].value);
+          free ((char *) a->info[i].value);
           break;
         case extra_element_oot:
-          destroy_element_and_children (e->extra[i].value);
+          destroy_element_and_children ((ELEMENT *) a->info[i].value);
           break;
         case extra_contents:
-          if (e->extra[i].value)
-            destroy_element ((ELEMENT *) e->extra[i].value);
+          if (a->info[i].value)
+            destroy_element ((ELEMENT *) a->info[i].value);
           break;
-        case extra_contents_oot:
-          {
-            /* Only used for 'prototypes' */
-            /* Free each element in the array, but not any children
-               of each element. */
-            int j;
-            ELEMENT *array = e->extra[i].value;
-            for (j = 0 ; j < array->contents.number; j++)
-              {
-                if (array->contents.list[j])
-                  {
-                    free (array->contents.list[j]->text.text);
-                    free (array->contents.list[j]);
-                  }
-              }
-            destroy_element (array);
-            break;
-          }
-        case extra_contents_array:
-          {
-            int j;
-            ELEMENT *array = e->extra[i].value;
-            for (j = 0 ; j < array->contents.number; j++)
-              {
-                if (array->contents.list[j])
-                  destroy_element (array->contents.list[j]);
-              }
-            destroy_element (array);
-          break;
-          }
-        case extra_node_spec:
-            {
-              NODE_SPEC_EXTRA *nse = (NODE_SPEC_EXTRA *) e->extra[i].value;
-
-              if (nse->manual_content)
-                destroy_element (nse->manual_content);
-              if (nse->node_content)
-                destroy_element (nse->node_content);
-              free (nse);
-              break;
-            }
-        case extra_node_spec_array:
-            {
-              NODE_SPEC_EXTRA **array = (NODE_SPEC_EXTRA **) e->extra[i].value;
-              NODE_SPEC_EXTRA **nse;
-
-              for (nse = array; (*nse); nse++)
-                {
-                  if ((*nse)->manual_content)
-                    destroy_element ((*nse)->manual_content);
-                  if ((*nse)->node_content)
-                    destroy_element ((*nse)->node_content);
-                  free (*nse);
-                }
-              free (array);
-              break;
-            }
-        case extra_float_type:
-          {
-            EXTRA_FLOAT_TYPE *eft = (EXTRA_FLOAT_TYPE *) e->extra[i].value;
-            free (eft->normalized);
-
-            free (eft);
-            break;
-          }
         case extra_misc_args:
-          destroy_element_and_children (e->extra[i].value);
-          break;
-        case extra_def_info:
-          free (e->extra[i].value);
+          destroy_element_and_children ((ELEMENT *) a->info[i].value);
           break;
 
         default:
           break;
         }
     }
-  free (e->extra);
+  free (a->info);
+}
 
-  free (e);
+void
+destroy_source_mark (SOURCE_MARK *source_mark)
+{
+  if (source_mark->element)
+    destroy_element_and_children (source_mark->element);
+  if (source_mark->line)
+    free (source_mark->line);
+  free (source_mark);
+}
+
+void
+destroy_source_mark_list (SOURCE_MARK_LIST *source_mark_list)
+{
+  int i;
+  for (i = 0; i < source_mark_list->number; i++)
+    destroy_source_mark (source_mark_list->list[i]);
+
+  source_mark_list->number = 0;
+  free (source_mark_list->list);
+  source_mark_list->space = 0;
+}
+
+void
+destroy_element (ELEMENT *e)
+{
+  free (e->text.text);
+
+  /* Note the pointers in these lists are not themselves freed. */
+  free (e->contents.list);
+  free (e->args.list);
+
+  destroy_source_mark_list (&(e->source_mark_list));
+
+  destroy_associated_info (&e->extra_info);
+  destroy_associated_info (&e->info_info);
+
+  spare_element = e;
+
+  /* freed in reset_obstacks */
+  /* free (e); */
 }
 
 /* Recursively destroy this element and all data in its descendants. */
@@ -301,6 +300,18 @@ remove_from_contents (ELEMENT *parent, int where)
   return removed;
 }
 
+/* Remove elements from START inclusive to END exclusive.  Do not
+   free any of them. */
+void
+remove_slice_from_contents (ELEMENT *parent, int start, int end)
+{
+  memmove (&parent->contents.list[start],
+           &parent->contents.list[end],
+           (parent->contents.number - end) * sizeof (ELEMENT *));
+
+  parent->contents.number -= (end - start);
+}
+
 
 ELEMENT *
 pop_element_from_args (ELEMENT *parent)
@@ -314,8 +325,11 @@ ELEMENT *
 pop_element_from_contents (ELEMENT *parent)
 {
   ELEMENT_LIST *list = &parent->contents;
+  ELEMENT *popped_element = list->list[list->number -1];
 
-  return list->list[--list->number];
+  list->number--;
+
+  return popped_element;
 }
 
 ELEMENT *
@@ -358,4 +372,26 @@ args_child_by_index (ELEMENT *e, int index)
     return 0;
 
   return e->args.list[index];
+}
+
+/* should only be used if the nse->manual_content
+   and nse->node_content are not already in the tree,
+   in practice when the node spec was created by
+   parse_node_manual (., 0); */
+void
+destroy_node_spec (NODE_SPEC_EXTRA *nse)
+{
+  if (nse->out_of_tree_elements)
+    {
+      int i;
+      for (i = 0; i < 3; i++)
+        if (nse->out_of_tree_elements[i])
+          destroy_element (nse->out_of_tree_elements[i]);
+      free (nse->out_of_tree_elements);
+    }
+  if (nse->manual_content)
+    destroy_element (nse->manual_content);
+  if (nse->node_content)
+    destroy_element (nse->node_content);
+  free (nse);
 }

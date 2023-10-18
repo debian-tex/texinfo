@@ -162,9 +162,11 @@ $result_trees{'paragraph_command'} = {
                   'text' => 'foo,\\,//'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -175,8 +177,12 @@ $result_trees{'paragraph_command'} = {
               'foo',
               '\\',
               '//'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

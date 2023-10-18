@@ -258,45 +258,33 @@ $result_trees{'double_command'} = {
                               },
                               'text' => ')',
                               'type' => 'delimiter'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => '
-',
-                              'type' => 'spaces_at_end'
                             }
                           ],
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
+'
+                            }
+                          },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'deffnx',
                       'extra' => {
                         'def_command' => 'deffn',
-                        'def_parsed_hash' => {
-                          'category' => {},
-                          'name' => {}
-                        },
+                        'def_index_element' => {},
                         'def_role' => 'arg',
-                        'index_entry' => {
-                          'content_normalized' => [
-                            {}
-                          ],
-                          'entry_content' => [
-                            {}
-                          ],
-                          'entry_element' => {},
-                          'entry_number' => 1,
-                          'in_code' => 1,
-                          'index_at_command' => 'deffnx',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'fn',
-                          'index_type_command' => 'deffn'
-                        },
+                        'index_entry' => [
+                          'fn',
+                          1
+                        ],
                         'not_after_command' => 1,
-                        'original_def_cmdname' => 'deffnx',
-                        'spaces_before_argument' => ' '
+                        'original_def_cmdname' => 'deffnx'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -311,25 +299,11 @@ $result_trees{'double_command'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_number' => 2,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  2
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
@@ -361,17 +335,23 @@ $result_trees{'double_command'} = {
                       'text' => 'deffn'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deffn'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -380,8 +360,10 @@ $result_trees{'double_command'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -465,40 +447,24 @@ $result_trees{'double_command'} = {
                                     'def_role' => 'name'
                                   },
                                   'text' => 'd--efvr_name'
-                                },
-                                {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
-                                  },
-                                  'text' => '
-',
-                                  'type' => 'spaces_at_end'
                                 }
                               ],
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
+'
+                                }
+                              },
                               'type' => 'block_line_arg'
                             }
                           ],
                           'extra' => {
                             'def_command' => 'defvr',
-                            'def_parsed_hash' => {
-                              'category' => {},
-                              'name' => {}
-                            },
-                            'index_entry' => {
-                              'content_normalized' => [
-                                {}
-                              ],
-                              'entry_content' => [
-                                {}
-                              ],
-                              'entry_element' => {},
-                              'entry_number' => 1,
-                              'in_code' => 1,
-                              'index_at_command' => 'defvr',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'vr',
-                              'index_type_command' => 'defvr'
-                            },
+                            'def_index_element' => {},
+                            'index_entry' => [
+                              'vr',
+                              1
+                            ],
                             'original_def_cmdname' => 'defvr'
                           },
                           'source_info' => {
@@ -510,8 +476,12 @@ $result_trees{'double_command'} = {
                         }
                       ],
                       'extra' => {
-                        'def_role' => 'arg',
-                        'spaces_before_argument' => ' '
+                        'def_role' => 'arg'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -525,25 +495,11 @@ $result_trees{'double_command'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_number' => 3,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  3
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
@@ -575,17 +531,23 @@ $result_trees{'double_command'} = {
                       'text' => 'deffn'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'deffn'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -594,8 +556,10 @@ $result_trees{'double_command'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -609,26 +573,10 @@ $result_trees{'double_command'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[0];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
+$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[2];
+$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'double_command'} = '@deffn func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
 aaa
@@ -660,12 +608,12 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @deffnx should not appear in @deffn
+    'error_line' => 'warning: @deffnx should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@deffnx should not appear in @deffn',
+    'text' => '@deffnx should not appear on @deffn line',
     'type' => 'warning'
   },
   {
@@ -705,12 +653,12 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @defvr should not appear in @deffn
+    'error_line' => 'warning: @defvr should not appear on @deffn line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@defvr should not appear in @deffn',
+    'text' => '@defvr should not appear on @deffn line',
     'type' => 'warning'
   },
   {

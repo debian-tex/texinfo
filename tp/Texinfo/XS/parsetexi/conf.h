@@ -1,7 +1,7 @@
 /* conf.h - declarations for conf.c */
 #ifndef CONF_H
 #define CONF_H
-/* Copyright 2010-2021 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ typedef struct CONF {
     int show_menu;
     int cpp_line_directives;
     int ignore_space_after_braced_command_name;
+    int max_macro_call_nesting;
     int doc_encoding_for_input_file_name;
 } CONF;
 
@@ -28,6 +29,7 @@ extern CONF conf;
 void conf_set_show_menu (int i);
 void conf_set_CPP_LINE_DIRECTIVES (int i);
 void conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i);
+void conf_set_MAX_MACRO_CALL_NESTING (int i);
 void reset_conf (void);
 
 #endif

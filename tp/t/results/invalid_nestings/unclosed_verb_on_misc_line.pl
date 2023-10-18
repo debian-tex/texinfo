@@ -29,7 +29,7 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
                     }
                   ],
                   'cmdname' => 'verb',
-                  'extra' => {
+                  'info' => {
                     'delimiter' => 'f'
                   },
                   'source_info' => {
@@ -44,7 +44,12 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_before_argument' => ' '
+            'text_arg' => 'name '
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -81,6 +86,15 @@ $result_errors{'unclosed_verb_on_misc_line'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => '@verb missing closing delimiter sequence: f}',
+    'type' => 'error'
+  },
+  {
+    'error_line' => 'bad argument to @setfilename: name @verb{file.texif}
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: name @verb{file.texif}',
     'type' => 'error'
   }
 ];

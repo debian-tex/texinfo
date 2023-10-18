@@ -12,9 +12,11 @@ $result_trees{'flushright_not_closed_and_format'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -38,9 +40,11 @@ $result_trees{'flushright_not_closed_and_format'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -64,17 +68,23 @@ $result_trees{'flushright_not_closed_and_format'} = {
                           'text' => 'quotation'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'quotation'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -136,7 +146,7 @@ $result_floats{'flushright_not_closed_and_format'} = {};
 
 $result_converted{'plaintext'}->{'flushright_not_closed_and_format'} = '                                                             flushright
 
-                                                           A quot—ation
+                                                          A quot--ation
 ';
 
 1;

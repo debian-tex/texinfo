@@ -1,4 +1,4 @@
-# Time-stamp: "Sat Jul 14 00:27:22 2001 by Automatic Bizooty (__blocks2pm.plx)"
+# Time-stamp: "2016-07-25 06:52:21 MDT"
 $Text::Unidecode::Char[0x13] = [
 'ja', 'ju', 'ji', 'jaa', 'jee', 'je', 'jo', 'jwa', 'ga', 'gu', 'gi', 'gaa', 'gee', 'ge', 'go', '[?]',
 'gwa', '[?]', 'gwi', 'gwaa', 'gwee', 'gwe', '[?]', '[?]', 'gga', 'ggu', 'ggi', 'ggaa', 'ggee', 'gge', 'ggo', '[?]',
@@ -15,6 +15,10 @@ $Text::Unidecode::Char[0x13] = [
 'nah', 'ne', 'ni', 'no', 'nu', 'nv', 'qua', 'que', 'qui', 'quo', 'quu', 'quv', 'sa', 's', 'se', 'si',
 'so', 'su', 'sv', 'da', 'ta', 'de', 'te', 'di', 'ti', 'do', 'du', 'dv', 'dla', 'tla', 'tle', 'tli',
 'tlo', 'tlu', 'tlv', 'tsa', 'tse', 'tsi', 'tso', 'tsu', 'tsv', 'wa', 'we', 'wi', 'wo', 'wu', 'wv', 'ya',
-'ye', 'yi', 'yo', 'yu', 'yv', '[?]', '[?]', '[?]', '[?]', '[?]', '[?]', '[?]', '[?]', '[?]', '[?]',
+
+'ye', 'yi', 'yo', 'yu',
+'yv', 'MV', '[?]', '[?]',
+'ye', 'yi', 'yo', 'yu',
+'yv', 'mv', '[?]', '[?]', 
 ];
 1;

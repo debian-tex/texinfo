@@ -24,28 +24,23 @@ $result_trees{'chapter_between_nodes'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'chapter_between_nodes'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -87,9 +84,11 @@ $result_trees{'chapter_between_nodes'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -97,7 +96,7 @@ $result_trees{'chapter_between_nodes'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -108,6 +107,12 @@ $result_trees{'chapter_between_nodes'} = {
                       'text' => 'section node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'section-node'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -129,15 +134,6 @@ $result_trees{'chapter_between_nodes'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'section-node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -153,17 +149,23 @@ $result_trees{'chapter_between_nodes'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -184,8 +186,11 @@ $result_trees{'chapter_between_nodes'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -201,9 +206,11 @@ $result_trees{'chapter_between_nodes'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -230,8 +237,10 @@ $result_trees{'chapter_between_nodes'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -262,35 +271,28 @@ $result_trees{'chapter_between_nodes'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'section-node'
-          },
-          undef,
-          undef,
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'section-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'section-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -306,9 +308,11 @@ $result_trees{'chapter_between_nodes'} = {
               'text' => 'section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -339,7 +343,7 @@ $result_trees{'chapter_between_nodes'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -350,8 +354,11 @@ $result_trees{'chapter_between_nodes'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -362,13 +369,8 @@ $result_trees{'chapter_between_nodes'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'chapter_between_nodes'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'chapter_between_nodes'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'chapter_between_nodes'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'chapter_between_nodes'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'args'}[3];
-$result_trees{'chapter_between_nodes'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'chapter_between_nodes'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'chapter_between_nodes'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'chapter_between_nodes'}{'contents'}[4]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[4]{'args'}[3]{'contents'}[0];
+$result_trees{'chapter_between_nodes'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'chapter_between_nodes'}{'contents'}[4]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'chapter_between_nodes'}{'contents'}[4]{'args'}[3]{'contents'}[0];
 
 $result_texis{'chapter_between_nodes'} = '@node Top
 @top top section
@@ -427,7 +429,6 @@ $result_sectioning{'chapter_between_nodes'} = {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_childs' => [
                   {
@@ -598,6 +599,8 @@ $result_converted{'html'}->{'chapter_between_nodes'} = '<!DOCTYPE html>
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -611,7 +614,7 @@ ul.toc-numbered-mark {list-style: none}
 <p>
 Next: <a href="#section-node" accesskey="n" rel="next">section</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<h1 class="top" id="top-section">top section</h1>
+<h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> &para;</a></span></h1>
 <p>Top node
 </p>
 
@@ -619,7 +622,7 @@ Next: <a href="#section-node" accesskey="n" rel="next">section</a> &nbsp; [<a hr
 <li><a href="#Chapter" accesskey="1">Chapter</a></li>
 </ul>
 <div class="chapter-level-extent" id="Chapter">
-<h2 class="chapter">1 Chapter</h2>
+<h2 class="chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <p>In chapter
 </p>
@@ -632,7 +635,7 @@ Next: <a href="#section-node" accesskey="n" rel="next">section</a> &nbsp; [<a hr
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top section</a>, Up: <a href="#Top" accesskey="u" rel="up">top section</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<h3 class="section" id="section">1.1 section</h3>
+<h3 class="section" id="section"><span>1.1 section<a class="copiable-link" href="#section"> &para;</a></span></h3>
 
 <p>section.
 </p>
@@ -665,7 +668,7 @@ $result_converted{'xml'}->{'chapter_between_nodes'} = '<node name="Top" spaces="
 <para>Top node
 </para>
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">section node</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>section node</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
 </top>

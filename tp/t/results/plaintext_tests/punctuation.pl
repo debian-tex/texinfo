@@ -208,11 +208,11 @@ $result_converted{'plaintext'}->{'punctuation'} = 'Dot.  Exclam!  Question?  Dot
 
    End of lines and spaces Dot.  Exclam!  Question?  End.
 
-   With paren.)  paren.)  Symb.)"’] Symb.)"’] End.
+   With paren.)  paren.)  Symb.)"\']  Symb.)"\']  End.
 
-   End of lines paren.)  Symb.)"’] End.
+   End of lines paren.)  Symb.)"\']  End.
 
-   End of lines and spaces paren.)  Symb.)"’] End.
+   End of lines and spaces paren.)  Symb.)"\']  End.
 ';
 
 1;

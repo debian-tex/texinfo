@@ -11,7 +11,7 @@ Texinfo::Convert::Texinfo - Convert a Texinfo tree to Texinfo code
 
 @verbatim
   use Texinfo::Convert::Texinfo qw(convert_to_texinfo);
-  
+
   my $texinfo_text = convert_to_texinfo($tree);
 @end verbatim
 

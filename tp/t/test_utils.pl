@@ -1,6 +1,6 @@
 # t/* test support for the Perl modules.
 #
-# Copyright 2010-2021 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -165,9 +165,9 @@ my %extensions = (
   'latex_text' => 'tex',
 );
 
-#my %xml_converter_defaults
-#    = Texinfo::Convert::TexinfoXML::converter_defaults(undef, undef);
-#my $XML_DTD_VERSION = $xml_converter_defaults{'TEXINFO_DTD_VERSION'};
+# This is, in general, different from the documented version, which
+# is set in the texi2any main program.  This value should only be
+# used in t/*.t tests.
 my $XML_DTD_VERSION
   = $Texinfo::Common::default_converter_customization{'TEXINFO_DTD_VERSION'};
 
@@ -194,11 +194,15 @@ my $arg_output;
 my $nr_comparisons = 9;
 
 Getopt::Long::Configure("gnu_getopt");
-# complete: output a complete texinfo file based on the test
+# complete: output a complete texinfo file based on the test.  Does not
+#           run the tests at all.
+# generate: run the tests and reset reference results instead of comparing
+#           with reference results.
+# output: run the test, compare with references, and output the test results
+#         (even if not the same as references) in output files per output
+#         format.
 GetOptions('g|generate' => \$arg_generate, 'd|debug=i' => \$arg_debug,
            'c|complete' => \$arg_complete, 'o|output' => \$arg_output);
-
-my $arg_test_case = shift @ARGV;
 
 sub protect_perl_string($)
 {
@@ -218,17 +222,19 @@ sub unsplit($)
       or !$root->{'contents'}) {
     return;
   }
+  my $unsplit_needed = 0;
   foreach my $content (@{$root->{'contents'}}) {
     if ($content->{'structure'}) {
       if ($content->{'structure'}->{'associated_unit'}) {
         delete $content->{'structure'}->{'associated_unit'};
+        $unsplit_needed = 1;
       }
       if (scalar(keys(%{$content->{'structure'}})) == 0) {
         delete $content->{'structure'};
       }
     }
   }
-  return;
+  return $unsplit_needed;
 }
 
 sub compare_dirs_files($$;$)
@@ -364,6 +370,7 @@ sub remove_keys($$;$)
   return $root;
 }
 
+# currently unused, but could be used again.
 sub duplicate_key_array($$)
 {
   my $element = shift;
@@ -394,31 +401,6 @@ sub _duplicate_element_keys($$)
       $new_source_info->{$key} = $current->{'source_info'}->{$key};
     }
     $current->{'source_info'} = $new_source_info;
-  }
-
-  if (exists($current->{'extra'})) {
-    if (exists($current->{'extra'}->{'nodes_manuals'})
-        and defined($current->{'extra'}->{'nodes_manuals'})) {
-      foreach my $node_manual (@{$current->{'extra'}->{'nodes_manuals'}}) {
-        duplicate_key_array($node_manual, 'node_content');
-      }
-    }
-    if (exists($current->{'extra'}->{'type'})) {
-      duplicate_key_array($current->{'extra'}->{'type'}, 'content');
-    }
-    # only need to duplicate for @def* index entries
-    # in that case they are not duplicated in the XS parser output
-    if (exists($current->{'extra'}->{'index_entry'})
-        and exists($current->{'extra'}->{'def_command'})) {
-      duplicate_key_array($current->{'extra'}->{'index_entry'},
-        'content_normalized');
-    }
-    if (exists($current->{'extra'}->{'prototypes'})
-        and (defined($current->{'extra'}->{'prototypes'}))) {
-      foreach my $prototype (@{$current->{'extra'}->{'prototypes'}}) {
-        duplicate_key_array($prototype, 'contents');
-      }
-    }
   }
 
   return ($current);
@@ -457,10 +439,10 @@ sub new_test($;$$$)
   return $test;
 }
 
-my @contents_keys = ('contents', 'args', 'parent',
-  'source_info', 'node_content',  'nodes_manuals', 'misc_content',
-  'invalid_nesting', 'block_command_line_contents', 'spaces_after_command',
-  'spaces_before_argument', 'text_arg');
+# keys under 'info' are not needed here.
+my @contents_keys = ('contents', 'args', 'parent', 'source_info',
+  'node_content', 'invalid_nesting', 'info', 'text_arg',
+  'node_description', 'node_long_description');
 my @menus_keys = ('menu_next', 'menu_up', 'menu_prev', 'menu_up_hash');
 # 'section_number' is kept in other results as it may be the only clue
 # to know which section element it is.
@@ -473,11 +455,13 @@ my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus',
 
 # in general, the 'parent' keys adds lot of non legible information,
 # however to punctually test for regressions on this information, the
-# best is to add it in @avoided_keys_tree
+# best is to add it in tree tests by removing from @avoided_keys_tree.
 my %avoided_keys_tree;
 my @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys,
+  # FIXME remaining_args should not be present in the final tree, but they are
+    'remaining_args',
     'structure', 'menu_child', 'unit_next', 'directions', 'page_next',
-    'remaining_args', 'parent');
+    'parent');
 foreach my $avoided_key(@avoided_keys_tree) {
   $avoided_keys_tree{$avoided_key} = 1;
 }
@@ -499,7 +483,6 @@ foreach my $avoided_key(@avoided_keys_nodes) {
 }
 sub filter_nodes_keys { [grep {!$avoided_keys_nodes{$_}}
    ( sort keys %{$_[0]} )] }
-#my @avoided_compare_nodes = (@avoided_keys_nodes, 'node_up', 'node_prev');
 
 my %avoided_keys_menus;
 my @avoided_keys_menus = (@sections_keys, @contents_keys, @node_keys);
@@ -573,8 +556,14 @@ sub convert_to_plaintext($$$$$$;$)
                                     $main_configuration, $format);
   if (!defined($converter_options->{'OUTFILE'})
       and defined($converter_options->{'SUBDIR'})) {
-    $converter_options->{'OUTFILE'}
-      = $converter_options->{'SUBDIR'}.$test_name.".txt";
+    # need to set OUTFILE in any case otherwise the default of -
+    # will be used
+    if ($converter_options->{'SPLIT'}) {
+      $converter_options->{'OUTFILE'} = undef;
+    } else {
+      $converter_options->{'OUTFILE'}
+        = $converter_options->{'SUBDIR'}.$test_name.".txt";
+    }
   }
   
   my $converter =
@@ -583,7 +572,8 @@ sub convert_to_plaintext($$$$$$;$)
                                              'converted_format' => 'plaintext',
                                              %$converter_options });
   my $result;
-  if ($converter_options->{'OUTFILE'} eq '') {
+  if (defined($converter_options->{'OUTFILE'})
+      and $converter_options->{'OUTFILE'} eq '') {
     $result = $converter->convert($tree);
   } else {
     $result = $converter->output($tree);
@@ -872,11 +862,19 @@ sub test($$)
     $test_input_file_name = $parser_options->{'test_input_file_name'};
     delete $parser_options->{'test_input_file_name'};
   }
-  my $split = '';
+  # test_split should not interfere with output formats conversion
+  # as it is applied after the output formats.  Splitting should not interfere
+  # with conversion anyway.  Output formats using information added by
+  # splitting split themselves and reassociate all the root commands.
+  # Splitting means associating root commands to a unit element in the structure
+  # hash.  Converters that do not split can ignore this structure hash key and
+  # therefore should not be affected either.
+
+  my $test_split = '';
   if ($parser_options->{'test_split'}) {
-    $split = $parser_options->{'test_split'};
-    if ($split ne 'node' and $split ne 'section') {
-      warn "In test_utils.pl, test_split should be node or section, not $split\n";
+    $test_split = $parser_options->{'test_split'};
+    if ($test_split ne 'node' and $test_split ne 'section') {
+      warn "test_utils.pl: test_split should be node or section: $test_split\n";
     }
     delete $parser_options->{'test_split'};
   }
@@ -903,11 +901,13 @@ sub test($$)
     delete $parser_options->{'TREE_TRANSFORMATIONS'};
   }
 
-  # always set FORMAT_MENU to menu, which is the default for parser
-  my $added_main_configurations = {'FORMAT_MENU' => 'menu'};
+  # set FORMAT_MENU default to menu, which is the default for the parser.
+  # get the same structuring warnings as texi2any.
+  my $added_main_configurations = {'FORMAT_MENU' => 'menu',
+                                   'CHECK_MISSING_MENU_ENTRY' => 1};
   
   # this is only used for index keys sorting in structuring
-  foreach my $structuring_and_converter_option (('ENABLE_ENCODING')) {
+  foreach my $structuring_and_converter_option ('ENABLE_ENCODING') {
     if (defined($parser_options->{$structuring_and_converter_option})) {
       $added_main_configurations->{$structuring_and_converter_option}
         = $parser_options->{$structuring_and_converter_option};
@@ -917,7 +917,8 @@ sub test($$)
     }
   }
 
-  foreach my $structuring_option (('CHECK_NORMAL_MENU_STRUCTURE')) {
+  foreach my $structuring_option ('CHECK_NORMAL_MENU_STRUCTURE',
+                                                    'FORMAT_MENU') {
     if (defined($parser_options->{$structuring_option})) {
       $added_main_configurations->{$structuring_option}
         = $parser_options->{$structuring_option};
@@ -926,10 +927,12 @@ sub test($$)
   }
 
   if ($parser_options->{'skip'}) {
+    if (!$self->{'generate'}) {
       SKIP: {
         skip "$test_name: $parser_options->{'skip'}", 1;
         ok 1, $test_name;
       }
+    }
     return 1;
   } elsif (exists($parser_options->{'skip'})) {
     delete $parser_options->{'skip'};
@@ -952,6 +955,8 @@ sub test($$)
     delete $parser_options->{'test_formats'};
   }
 
+  # reset Texinfo::Config informations to have isolated tests
+  Texinfo::Config::GNUT_reinitialize_init_files();
   my $init_file_directories = [$srcdir.'init/', $srcdir.'t/init/'];
   # the init file names are supposed to be binary strings.  Since they
   # are not encoded anywhere, probably only non ascii file names should
@@ -1047,12 +1052,14 @@ sub test($$)
     $main_configuration->set_conf('novalidate', 1);
   }
 
-  if ($tree_transformations{'move_index_entries_after_items'}) {
-    Texinfo::Common::move_index_entries_after_items_in_tree($tree);
+  my $indices_information = $parser->indices_information();
+  if ($tree_transformations{'relate_index_entries_to_items'}) {
+    Texinfo::Common::relate_index_entries_to_table_items_in_tree($tree,
+                                                     $indices_information);
   }
 
-  if ($tree_transformations{'relate_index_entries_to_table_entries'}) {
-    Texinfo::Common::relate_index_entries_to_table_entries_in_tree($tree);
+  if ($tree_transformations{'move_index_entries_after_items'}) {
+    Texinfo::Common::move_index_entries_after_items_in_tree($tree);
   }
 
   if ($tree_transformations{'insert_nodes_for_sectioning_commands'}) {
@@ -1106,7 +1113,9 @@ sub test($$)
     $structure_information->{'top_node'} = $top_node;
   }
 
-  if (defined($nodes_list)) {
+  if (defined($nodes_list)
+      and (not defined($main_configuration->get_conf('FORMAT_MENU'))
+           or $main_configuration->get_conf('FORMAT_MENU') eq 'menu')) {
     Texinfo::Structuring::complete_node_tree_with_menus($registrar,
                                 $main_configuration, $nodes_list, $top_node);
     Texinfo::Structuring::check_nodes_are_referenced($registrar,
@@ -1117,15 +1126,14 @@ sub test($$)
   Texinfo::Structuring::number_floats($floats);
 
   my ($errors, $error_nrs) = $registrar->errors();
-  my $index_names = $parser->indices_information();
   # FIXME maybe it would be good to compare $merged_index_entries?
   my $merged_index_entries
-     = Texinfo::Structuring::merge_indices($index_names);
+     = Texinfo::Structuring::merge_indices($indices_information);
   
   # only print indices information if it differs from the default
   # indices
   my $indices;
-  my $trimmed_index_names = remove_keys($index_names, ['index_entries']);
+  my $trimmed_index_names = remove_keys($indices_information, ['index_entries']);
   $indices = {'index_names' => $trimmed_index_names}
     unless (Data::Compare::Compare($trimmed_index_names, $initial_index_names));
 
@@ -1135,7 +1143,8 @@ sub test($$)
     ($sorted_index_entries, $index_entries_sort_strings)
       = Texinfo::Structuring::sort_indices($registrar,
                                    $main_configuration,
-                                   $merged_index_entries);
+                                   $merged_index_entries,
+                                   $indices_information);
     $indices_sorted_sort_strings = {};
     foreach my $index_name (keys(%$sorted_index_entries)) {
       # index entries sort strings sorted in the order of the index entries
@@ -1149,8 +1158,19 @@ sub test($$)
     }
   }
 
+  # use the parser expanded formats to be similar to the main program,
+  # and also to avoid having @inline* and raw output format @-commands
+  # with elided contents especially parsed because they are ignored
+  # and appearing as raw content in the tree in the output.
+  my %expanded_formats_hash;
+  if ($parser_options->{'EXPANDED_FORMATS'}) {
+    foreach my $expanded_format (@{$parser_options->{'EXPANDED_FORMATS'}}) {
+      $expanded_formats_hash{$expanded_format} = 1;
+    }
+  }
   my $converted_text
-      = Texinfo::Convert::Text::convert_to_text($tree, {'TEST' => 1});
+      = Texinfo::Convert::Text::convert_to_text($tree, {'TEST' => 1,
+                          'expanded_formats_hash' => \%expanded_formats_hash});
 
   my %converted;
   my %converted_errors;
@@ -1242,22 +1262,16 @@ sub test($$)
           if (!open (OUTFILE, ">$outfile")) {
             warn "ERROR: open $outfile: $!\n";
           } else {
-            my $output_file_encoding;
-            # FIXME do all the converters implement get_conf?  Otherwise
-            # the OUTPUT_PERL_ENCODING could ve determined from
-            # $format_converter_options->{'OUTPUT_ENCODING_NAME'} using the
-            # same code as in Texinfo/Common.pm set_output_encodings
-            my $output_perl_encoding = $converter->get_conf('OUTPUT_PERL_ENCODING');
-            if (defined($output_perl_encoding)) {
-              $output_file_encoding = $output_perl_encoding;
-            } else {
-              my $info = $parser->global_information();
-              $output_file_encoding = $info->{'input_perl_encoding'}
-                if ($info and $info->{'input_perl_encoding'});
-            }
+            # Texinfo::Convert::Converter::converter() calls
+            # Texinfo::Common::set_output_encodings, so OUTPUT_PERL_ENCODING
+            # should be set if possible in all the formats converters.
+            my $output_file_encoding
+                      = $converter->get_conf('OUTPUT_PERL_ENCODING');
             if (defined($output_file_encoding)
                    and $output_file_encoding ne '') {
               binmode(OUTFILE, ":encoding($output_file_encoding)");
+            } else {
+              warn "WARNING: $self->{'name'}: $test_name: $format: no encoding\n";
             }
             if ($outfile_preamble{$format}) {
               if (ref($outfile_preamble{$format}) eq 'CODE') {
@@ -1303,20 +1317,30 @@ sub test($$)
     }
   }
   my $directions_text;
-  # re-associate top level command with the document_root in case a converter
-  # split the document, by resetting their 'parent' key.
+  # remove the association of top-level commands with element units, in case
+  # a converter split the document.
   # It may be noticed that this is only done after all conversions.  This
   # means that depending on the order of converters call, trees feed to
-  # converters may have a document_root as top level command parent or
-  # elements.  All the converters will have the document_root as argument.
-  unsplit($tree);
+  # converters may have element units.  All the converters will have the
+  # document_root as argument.
+  # It could be possible to unsplit before each converter call, but it is
+  # better to check that this does not have an effect on conversion.
+  # Any conversion to Info, Plaintext or HTML (both with output and convert)
+  # leads to splitting by the converter, and generally the tests order is
+  # first plaintext or info then html, so splitting not having an effect
+  # on conversion should be fairly well tested.  See above the comment
+  # near test_split with more explanation on why previous splitting should
+  # not interfere with conversion.
+  my $unsplit_needed = unsplit($tree);
+  print STDERR "  UNSPLIT: $test_name\n"
+    if ($self->{'DEBUG'} and $unsplit_needed);
   my $elements;
-  if ($split eq 'node') {
+  if ($test_split eq 'node') {
     $elements = Texinfo::Structuring::split_by_node($tree);
-  } elsif ($split eq 'section') {
+  } elsif ($test_split eq 'section') {
     $elements = Texinfo::Structuring::split_by_section($tree);
   }
-  if ($split) {
+  if ($test_split) {
     Texinfo::Structuring::elements_directions($parser, $labels, $elements);
     $directions_text = '';
     foreach my $element (@$elements) {
@@ -1578,11 +1602,14 @@ sub run_all($$)
 
   my $test = new_test($name, $arg_generate, $arg_debug);
   my $ran_tests;
-  if (defined($arg_test_case)) {
-    foreach my $test_case (@$test_cases) {
-      if ($test_case->[0] eq $arg_test_case) {
-        $ran_tests = [ $test_case ];
-        last;
+  if (scalar(@ARGV)) {
+    $ran_tests = [];
+    foreach my $arg_test_case (@ARGV) {
+      foreach my $test_case (@$test_cases) {
+        if ($test_case->[0] eq $arg_test_case) {
+          push @$ran_tests, $test_case;
+          last;
+        }
       }
     }
   } else {
@@ -1623,15 +1650,20 @@ sub output_texi_file($)
   mkdir $dir or die
      unless (-d $dir);
   my $file = "${dir}$test_name.texi";
+  print STDERR "texi: $test_name\n" if ($arg_debug);
   open (OUTFILE, ">$file") or die ("Open $file: $!\n");
 
+  my $encode = 1;
   my $first_line = "\\input texinfo \@c -*-texinfo-*-";
+  my $from_file;
   if (!defined($test_text)) {
+    $from_file = 1;
     # We do not decode to character strings in internal perl encoding,
     # we get bytes and output bytes already encoded, mixing with
     # character strings containing ascii characters only.
     my $test_file;
     if ($test_options and $test_options->{'test_file'}) {
+      $encode = 0;
       $test_file = $input_files_dir . $test_options->{'test_file'};
       if (open (INFILE, $test_file)) {
         my $holdTerminator = $/;
@@ -1640,10 +1672,6 @@ sub output_texi_file($)
         $/ = $holdTerminator;
       } else {
         die "Open $test_file: $!\n";
-      }
-      if ($test_text =~ /^\\input texinfo *\@/m
-          or $test_text =~ /^\\input texinfo *$/m) {
-        $first_line = "";
       }
     }
   }
@@ -1657,26 +1685,46 @@ sub output_texi_file($)
       $node_top .= "\@top $test_name\n";
     }
   }
-  # add a chapter too for LaTeX as Top node is ignored.
   my $added_chapter = '';
   unless ($test_text =~ /^\@(chapter|unnumbered|appendix)\s/m
-     or $test_text =~ /^\@(chapter|unnumbered|appendix) *$/m) {
-    $added_chapter = "\@node chapter\n\@chapter chapter\n";
+          or $test_text =~ /^\@(chapter|unnumbered|appendix) *$/m
+          or $test_text =~ /^\@node +chap/mi) {
+    # need a chapter or node after Top for LaTeX as Top node is ignored.
+    if ($node_top ne '') {
+      $added_chapter = "\@node chapter\n\@chapter chapter\n";
+    } else {
+      print STDERR "WARNING: $test_name: top in test, no chapter added\n";
+    }
+  }
+  if ($from_file) {
+    if ($node_top ne '' or $added_chapter ne '') {
+         # \A matches beginning of string, even with /m
+      if ($test_text =~ s/\A(\s*\\input texinfo(\.tex)? *\@.*)(\n|$)//m
+          or $test_text =~ s/\A(\s*\\input texinfo(\.tex)? *)(\n|$)//m) {
+        $first_line = $1;
+      }
+    } elsif ($test_text =~ /^\s*\\input texinfo(\.tex)? *\@/
+             or $test_text =~ /\A\s*\\input texinfo(\.tex)? *$/m) {
+      $first_line = "";
+    }
   }
   my $bye = '';
-  if ($test_text !~ /^\@bye *$/m) {
+  if ($test_text !~ /\@bye *$/m
+      and $test_text !~ /\@bye[\@ ]/) {
     $bye = '@bye';
   }
   foreach my $output ($first_line, $node_top, $added_chapter) {
     print OUTFILE "$output\n"
       if ($output ne '');
   }
-  # NOTE $test_text is already encoded if read from a file, but if it is
-  # a test string from a *.t file code, it is a perl character string.
-  # Therefore there should not be non ascii characters, or alternatively,
-  # there should be a way to get the encoding, maybe a regexp on the
-  # test string, or a key in $test_options in order to encode $test_text.
-  print OUTFILE $test_text;
+  # $test_text is already encoded if read from a file, but if it is
+  # a test string from a *.t file code, it is a perl character string
+  # and is encoded here, to UTF-8 as it is the default Texinfo encoding.
+  $test_text = Encode::encode('UTF-8', $test_text) if ($encode);
+  # Always add a newline in the end.  There may not be a newline for tests
+  # defined as strings ending right after a character.
+  chomp($test_text);
+  print OUTFILE $test_text."\n";
   print OUTFILE "$bye\n" if ($bye ne '');
   close (OUTFILE) or die "Close $file: $!\n";
 }

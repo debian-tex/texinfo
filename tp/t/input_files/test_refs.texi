@@ -1,6 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename test_refs.info
 @node Top
 @top Test refs
 

@@ -19,17 +19,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                       'text' => 'fr'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'fr'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -45,9 +51,11 @@ $result_trees{'multiple_in_preamble_before_node'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -65,7 +73,8 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                               'contents' => [
                                 {
                                   'extra' => {
-                                    'documentlanguage' => 'fr'
+                                    'documentlanguage' => 'fr',
+                                    'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                                   },
                                   'text' => 'Instance Variable',
                                   'type' => 'untranslated'
@@ -114,51 +123,43 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                                 'def_role' => 'arg'
                               },
                               'text' => 'b'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => '
-',
-                              'type' => 'spaces_at_end'
                             }
                           ],
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
+'
+                            }
+                          },
                           'type' => 'block_line_arg'
                         }
                       ],
                       'extra' => {
                         'def_command' => 'defivar',
-                        'def_parsed_hash' => {
-                          'category' => {},
-                          'class' => {},
-                          'name' => {}
-                        },
-                        'documentlanguage' => 'fr',
-                        'index_entry' => {
-                          'content_normalized' => [
-                            {},
-                            {
-                              'text' => ' of '
-                            },
-                            {}
-                          ],
-                          'entry_content' => [
+                        'def_index_element' => {
+                          'contents' => [
                             {},
                             {
                               'text' => ' de '
                             },
                             {}
-                          ],
-                          'entry_element' => {},
-                          'entry_number' => 1,
-                          'entry_region' => {},
-                          'in_code' => 1,
-                          'index_at_command' => 'defivar',
-                          'index_ignore_chars' => {},
-                          'index_name' => 'vr',
-                          'index_type_command' => 'defivar'
+                          ]
                         },
+                        'def_index_ref_element' => {
+                          'contents' => [
+                            {},
+                            {
+                              'text' => ' of '
+                            },
+                            {}
+                          ]
+                        },
+                        'documentlanguage' => 'fr',
+                        'element_region' => 'copying',
+                        'index_entry' => [
+                          'vr',
+                          1
+                        ],
                         'original_def_cmdname' => 'defivar'
                       },
                       'source_info' => {
@@ -203,17 +204,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                               'text' => 'defivar'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'defivar'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -222,8 +229,10 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -239,17 +248,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                           'text' => 'copying'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'copying'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -277,17 +292,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                       'text' => 'hr'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'hr'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -325,17 +346,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                   'text' => 'de'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'de'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -359,28 +386,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -396,9 +418,11 @@ $result_trees{'multiple_in_preamble_before_node'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -411,8 +435,11 @@ $result_trees{'multiple_in_preamble_before_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -428,28 +455,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -465,9 +487,11 @@ $result_trees{'multiple_in_preamble_before_node'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -490,7 +514,8 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                       'contents' => [
                         {
                           'extra' => {
-                            'documentlanguage' => 'de'
+                            'documentlanguage' => 'de',
+                            'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                           },
                           'text' => 'Instance Variable',
                           'type' => 'untranslated'
@@ -539,51 +564,43 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                         'def_role' => 'arg'
                       },
                       'text' => 'CCC'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'defivar',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'class' => {},
-                  'name' => {}
-                },
-                'documentlanguage' => 'de',
-                'index_entry' => {
-                  'content_normalized' => [
-                    {},
-                    {
-                      'text' => ' of '
-                    },
-                    {}
-                  ],
-                  'entry_content' => [
+                'def_index_element' => {
+                  'contents' => [
                     {},
                     {
                       'text' => ' von '
                     },
                     {}
-                  ],
-                  'entry_element' => {},
-                  'entry_node' => {},
-                  'entry_number' => 2,
-                  'in_code' => 1,
-                  'index_at_command' => 'defivar',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'vr',
-                  'index_type_command' => 'defivar'
+                  ]
                 },
+                'def_index_ref_element' => {
+                  'contents' => [
+                    {},
+                    {
+                      'text' => ' of '
+                    },
+                    {}
+                  ]
+                },
+                'documentlanguage' => 'de',
+                'element_node' => {},
+                'index_entry' => [
+                  'vr',
+                  2
+                ],
                 'original_def_cmdname' => 'defivar'
               },
               'source_info' => {
@@ -628,17 +645,23 @@ $result_trees{'multiple_in_preamble_before_node'} = {
                       'text' => 'defivar'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'defivar'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -647,8 +670,10 @@ $result_trees{'multiple_in_preamble_before_node'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -657,8 +682,11 @@ $result_trees{'multiple_in_preamble_before_node'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -669,28 +697,15 @@ $result_trees{'multiple_in_preamble_before_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_region'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'class'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0];
-$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[3];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'multiple_in_preamble_before_node'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'multiple_in_preamble_before_node'}{'contents'}[3];
 
 $result_texis{'multiple_in_preamble_before_node'} = '@documentlanguage fr
 
@@ -854,7 +869,7 @@ top section
 
 $result_converted{'info'}->{'multiple_in_preamble_before_node'} = 'This is , produced from .
 
- -- Primjer varijable od copying: a b
+ -- Primjerak varijable od copying: a b
      greška→
 
    Text ending the preamble
@@ -880,8 +895,8 @@ File: ,  Node: chapter,  Prev: Top,  Up: Top
 
 
 Tag Table:
-Node: Top111
-Node: chapter208
+Node: Top113
+Node: chapter210
 
 End Tag Table
 
@@ -897,7 +912,7 @@ $result_converted{'html'}->{'multiple_in_preamble_before_node'} = '<!DOCTYPE htm
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- Primjer varijable od copying: a b
+<!-- Primjerak varijable od copying: a b
 greška→ -->
 <title>top section</title>
 
@@ -931,7 +946,7 @@ strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 <p>
 Nächste: <a href="#chapter" accesskey="n" rel="next">chap</a> &nbsp; </p>
 </div>
-<h1 class="top" id="top-section">top section</h1>
+<h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chapter" accesskey="1">chap</a></li>
@@ -942,10 +957,10 @@ Nächste: <a href="#chapter" accesskey="n" rel="next">chap</a> &nbsp; </p>
 <p>
 Vorige: <a href="#Top" accesskey="p" rel="prev">top section</a>, Nach oben: <a href="#Top" accesskey="u" rel="up">top section</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="chap">1 chap</h2>
+<h2 class="chapter" id="chap"><span>1 chap<a class="copiable-link" href="#chap"> &para;</a></span></h2>
 
 <dl class="first-defcv first-defivar-alias-first-defcv">
-<dt class="defcv defivar-alias-defcv" id="index-BBB-of-c"><span class="category-def">Instanzvariable of <code class="code">c</code>: </span><span><strong class="def-name">BBB</strong> <var class="def-var-arguments">CCC</var><a class="copiable-link" href=\'#index-BBB-of-c\'> &para;</a></span></dt>
+<dt class="defcv defivar-alias-defcv" id="index-BBB-of-c"><span class="category-def">Instanzvariable of <code class="code">c</code>: </span><span><strong class="def-name">BBB</strong> <var class="def-var-arguments">CCC</var><a class="copiable-link" href="#index-BBB-of-c"> &para;</a></span></dt>
 <dd><p>error&rarr;
 </p></dd></dl>
 </div>

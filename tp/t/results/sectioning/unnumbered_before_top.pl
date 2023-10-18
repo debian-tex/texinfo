@@ -18,9 +18,11 @@ $result_trees{'unnumbered_before_top'} = {
               'text' => 'before top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -33,8 +35,10 @@ $result_trees{'unnumbered_before_top'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -50,16 +54,20 @@ $result_trees{'unnumbered_before_top'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -89,7 +97,6 @@ $result_sectioning{'unnumbered_before_top'} = {
     'section_childs' => [
       {
         'cmdname' => 'unnumbered',
-        'extra' => {},
         'structure' => {
           'section_level' => 1,
           'section_up' => {}
@@ -97,7 +104,6 @@ $result_sectioning{'unnumbered_before_top'} = {
       },
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_level' => 1,
           'section_prev' => {},

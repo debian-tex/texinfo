@@ -22,7 +22,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => '',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -59,7 +65,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => 'if html',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -106,10 +118,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
-                },
-                {
-                  'type' => 'brace_command_arg'
+                  'contents' => [
+                    {
+                      'text' => 'if plaintext no second arg',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -138,7 +153,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => 'if plaintext',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -185,7 +206,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => 'if xml empty second arg',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'type' => 'brace_command_arg'
@@ -224,14 +251,24 @@ $result_trees{'inlinefmtifelse'} = {
                       'text' => 'docbook'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' if docbook spaces ',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -239,8 +276,10 @@ $result_trees{'inlinefmtifelse'} = {
                       'text' => 'else docbook spaces '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -278,14 +317,24 @@ $result_trees{'inlinefmtifelse'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => ' if tex spaces ',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -293,8 +342,10 @@ $result_trees{'inlinefmtifelse'} = {
                       'text' => 'else tex spaces '
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -335,7 +386,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => 'if docbook',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -382,7 +439,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => 'if tex',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -429,7 +492,13 @@ $result_trees{'inlinefmtifelse'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => 'if latex',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 },
                 {
                   'contents' => [
@@ -466,22 +535,22 @@ $result_trees{'inlinefmtifelse'} = {
 };
 
 $result_texis{'inlinefmtifelse'} = '@inlinefmtifelse{html,,else html no if}.
-@inlinefmtifelse{html,,else html}.
+@inlinefmtifelse{html,if html,else html}.
 
-@inlinefmtifelse{plaintext,,}.
-@inlinefmtifelse{plaintext,,else plaintext}.
+@inlinefmtifelse{plaintext,if plaintext no second arg}.
+@inlinefmtifelse{plaintext,if plaintext,else plaintext}.
 
-@inlinefmtifelse{xml,,}.
+@inlinefmtifelse{xml,if xml empty second arg,}.
 
-@inlinefmtifelse{ docbook ,, else docbook spaces }.
+@inlinefmtifelse{ docbook , if docbook spaces , else docbook spaces }.
 
-@inlinefmtifelse{ tex ,, else tex spaces }.
+@inlinefmtifelse{ tex , if tex spaces , else tex spaces }.
 
-@inlinefmtifelse{docbook,,else docbook}.
+@inlinefmtifelse{docbook,if docbook,else docbook}.
 
-@inlinefmtifelse{tex,,else tex}.
+@inlinefmtifelse{tex,if tex,else tex}.
 
-@inlinefmtifelse{latex,,else latex}.
+@inlinefmtifelse{latex,if latex,else latex}.
 ';
 
 
@@ -513,7 +582,7 @@ $result_floats{'inlinefmtifelse'} = {};
 
 $result_converted{'plaintext'}->{'inlinefmtifelse'} = 'else html no if.  else html.
 
-   .  .
+   if plaintext no second arg.  if plaintext.
 
    .
 
@@ -530,7 +599,7 @@ $result_converted{'plaintext'}->{'inlinefmtifelse'} = 'else html no if.  else ht
 
 
 $result_converted{'html_text'}->{'inlinefmtifelse'} = '<p>.
-.
+if html.
 </p>
 <p>.
 else plaintext.
@@ -550,22 +619,22 @@ else plaintext.
 
 
 $result_converted{'xml'}->{'inlinefmtifelse'} = '<para><inlinefmtifelse><inlinefmtifelseformat>html</inlinefmtifelseformat><inlinefmtifelsecontentelse>else html no if</inlinefmtifelsecontentelse></inlinefmtifelse>.
-<inlinefmtifelse><inlinefmtifelseformat>html</inlinefmtifelseformat><inlinefmtifelsecontentelse>else html</inlinefmtifelsecontentelse></inlinefmtifelse>.
+<inlinefmtifelse><inlinefmtifelseformat>html</inlinefmtifelseformat><inlinefmtifelsecontentif>if html</inlinefmtifelsecontentif><inlinefmtifelsecontentelse>else html</inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
-<para><inlinefmtifelse><inlinefmtifelseformat>plaintext</inlinefmtifelseformat></inlinefmtifelse>.
-<inlinefmtifelse><inlinefmtifelseformat>plaintext</inlinefmtifelseformat><inlinefmtifelsecontentelse>else plaintext</inlinefmtifelsecontentelse></inlinefmtifelse>.
+<para><inlinefmtifelse><inlinefmtifelseformat>plaintext</inlinefmtifelseformat><inlinefmtifelsecontentif>if plaintext no second arg</inlinefmtifelsecontentif></inlinefmtifelse>.
+<inlinefmtifelse><inlinefmtifelseformat>plaintext</inlinefmtifelseformat><inlinefmtifelsecontentif>if plaintext</inlinefmtifelsecontentif><inlinefmtifelsecontentelse>else plaintext</inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
 <para>.
 </para>
-<para><inlinefmtifelse><inlinefmtifelseformat spaces=" ">docbook </inlinefmtifelseformat><inlinefmtifelsecontentelse spaces=" ">else docbook spaces </inlinefmtifelsecontentelse></inlinefmtifelse>.
+<para><inlinefmtifelse><inlinefmtifelseformat spaces=" ">docbook </inlinefmtifelseformat><inlinefmtifelsecontentif> if docbook spaces </inlinefmtifelsecontentif><inlinefmtifelsecontentelse spaces=" ">else docbook spaces </inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
-<para><inlinefmtifelse><inlinefmtifelseformat spaces=" ">tex </inlinefmtifelseformat><inlinefmtifelsecontentelse spaces=" ">else tex spaces </inlinefmtifelsecontentelse></inlinefmtifelse>.
+<para><inlinefmtifelse><inlinefmtifelseformat spaces=" ">tex </inlinefmtifelseformat><inlinefmtifelsecontentif> if tex spaces </inlinefmtifelsecontentif><inlinefmtifelsecontentelse spaces=" ">else tex spaces </inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
-<para><inlinefmtifelse><inlinefmtifelseformat>docbook</inlinefmtifelseformat><inlinefmtifelsecontentelse>else docbook</inlinefmtifelsecontentelse></inlinefmtifelse>.
+<para><inlinefmtifelse><inlinefmtifelseformat>docbook</inlinefmtifelseformat><inlinefmtifelsecontentif>if docbook</inlinefmtifelsecontentif><inlinefmtifelsecontentelse>else docbook</inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
-<para><inlinefmtifelse><inlinefmtifelseformat>tex</inlinefmtifelseformat><inlinefmtifelsecontentelse>else tex</inlinefmtifelsecontentelse></inlinefmtifelse>.
+<para><inlinefmtifelse><inlinefmtifelseformat>tex</inlinefmtifelseformat><inlinefmtifelsecontentif>if tex</inlinefmtifelsecontentif><inlinefmtifelsecontentelse>else tex</inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
-<para><inlinefmtifelse><inlinefmtifelseformat>latex</inlinefmtifelseformat><inlinefmtifelsecontentelse>else latex</inlinefmtifelsecontentelse></inlinefmtifelse>.
+<para><inlinefmtifelse><inlinefmtifelseformat>latex</inlinefmtifelseformat><inlinefmtifelsecontentif>if latex</inlinefmtifelsecontentif><inlinefmtifelsecontentelse>else latex</inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>';
 
 
@@ -577,11 +646,11 @@ else plaintext.
 </para>
 <para>.
 </para>
-<para>.
+<para> if docbook spaces .
 </para>
 <para>else tex spaces .
 </para>
-<para>.
+<para>if docbook.
 </para>
 <para>else tex.
 </para>
@@ -605,7 +674,7 @@ else docbook.
 
 else tex.
 
-.
+if latex.
 ';
 
 1;

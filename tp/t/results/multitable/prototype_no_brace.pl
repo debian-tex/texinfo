@@ -38,9 +38,11 @@ $result_trees{'prototype_no_brace'} = {
                   'text' => ' b    cc'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -55,17 +57,23 @@ $result_trees{'prototype_no_brace'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -75,22 +83,12 @@ $result_trees{'prototype_no_brace'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 3,
-            'prototypes' => [
-              {
-                'text' => 'aa',
-                'type' => 'row_prototype'
-              },
-              {
-                'text' => 'b',
-                'type' => 'row_prototype'
-              },
-              {
-                'text' => 'cc',
-                'type' => 'row_prototype'
-              }
-            ],
-            'spaces_before_argument' => ' '
+            'max_columns' => 0
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -121,6 +119,15 @@ $result_errors{'prototype_no_brace'} = [
     'macro' => '',
     'text' => 'unexpected argument on @multitable line: @var{FF}',
     'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: empty multitable
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'empty multitable',
+    'type' => 'warning'
   }
 ];
 
@@ -135,7 +142,7 @@ $result_converted{'plaintext'}->{'prototype_no_brace'} = '';
 $result_converted{'html_text'}->{'prototype_no_brace'} = '';
 
 
-$result_converted{'xml'}->{'prototype_no_brace'} = '<multitable spaces=" " endspaces=" "><columnprototypes><columnprototype>aa</columnprototype><columnprototype><var>FF</var></columnprototype> <columnprototype>b</columnprototype>    <columnprototype>cc</columnprototype></columnprototypes>
+$result_converted{'xml'}->{'prototype_no_brace'} = '<multitable spaces=" " endspaces=" "><columnprototypes>aa<var>FF</var> b    cc</columnprototypes>
 </multitable>
 ';
 

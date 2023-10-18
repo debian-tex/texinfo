@@ -17,9 +17,11 @@ $result_trees{'quote_dash_in_display'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -48,17 +50,23 @@ $result_trees{'quote_dash_in_display'} = {
                       'text' => 'display'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'display'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -100,7 +108,7 @@ $result_floats{'quote_dash_in_display'} = {};
 
 
 
-$result_converted{'plaintext'}->{'quote_dash_in_display'} = '     and now – yes—now and “so”.
+$result_converted{'plaintext'}->{'quote_dash_in_display'} = '     and now - yes--now and "so".
 
 ';
 

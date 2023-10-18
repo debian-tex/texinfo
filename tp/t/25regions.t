@@ -42,6 +42,7 @@ Published
 @end titlepage
 
 @node Top
+@node chap
 
 ';
 
@@ -72,7 +73,7 @@ Copying.
 
 @node Top
 
-@node node
+@node chap
 
 @insertcopying
 
@@ -93,7 +94,7 @@ In footnote.
 
 @node Top
 
-@node node
+@node chap
 
 @insertcopying
 
@@ -161,7 +162,7 @@ $anchor_in_titlepage_text, {}, {'SHOW_TITLE' => 1}
 @node Top
 @top top
 
-@node node
+@node chap
 
 @insertcopying
 ',{},{'TEST' => 1}],

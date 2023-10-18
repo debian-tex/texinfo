@@ -16,9 +16,11 @@ $result_trees{'empty'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => ' 
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' 
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -52,8 +54,12 @@ $result_trees{'empty'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -63,8 +69,12 @@ $result_trees{'empty'} = {
             }
           ],
           'extra' => {
-            'max_columns' => 0,
-            'spaces_before_argument' => ' '
+            'max_columns' => 0
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -100,5 +110,14 @@ $result_errors{'empty'} = [
 
 $result_floats{'empty'} = {};
 
+
+
+$result_converted{'xml'}->{'empty'} = '<multitable spaces=" " endspaces=" "><columnfractions line=" "></columnfractions>
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'empty'} = '\\begin{tabular}{}%
+\\end{tabular}%
+';
 
 1;

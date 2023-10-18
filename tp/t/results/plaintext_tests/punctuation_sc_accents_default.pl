@@ -39,28 +39,23 @@ $result_trees{'punctuation_sc_accents_default'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_utf8.texi',
@@ -76,9 +71,11 @@ $result_trees{'punctuation_sc_accents_default'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -91,8 +88,11 @@ $result_trees{'punctuation_sc_accents_default'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_utf8.texi',
@@ -108,28 +108,23 @@ $result_trees{'punctuation_sc_accents_default'} = {
               'text' => 'node chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node-chap'
-          }
-        ],
-        'normalized' => 'node-chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node-chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_utf8.texi',
@@ -145,9 +140,11 @@ $result_trees{'punctuation_sc_accents_default'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1119,8 +1116,11 @@ $result_trees{'punctuation_sc_accents_default'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_utf8.texi',
@@ -1131,10 +1131,6 @@ $result_trees{'punctuation_sc_accents_default'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'punctuation_sc_accents_default'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'punctuation_sc_accents_default'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_sc_accents_default'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'punctuation_sc_accents_default'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_sc_accents_default'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'punctuation_sc_accents_default'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_sc_accents_default'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'punctuation_sc_accents_default'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'punctuation_sc_accents_default'} = '\\input texinfo
 

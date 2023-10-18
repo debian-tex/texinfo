@@ -25,28 +25,23 @@ $result_trees{'node_line_arguments'} = {
               'text' => 'one arg1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => ' 
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => ' 
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'one-arg1'
-          }
-        ],
-        'normalized' => 'one-arg1',
-        'spaces_before_argument' => ' '
+        'normalized' => 'one-arg1'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -71,34 +66,31 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'two-arg'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'one-arg2'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'two-arg'
-          }
-        ],
-        'normalized' => 'one-arg2',
-        'spaces_before_argument' => ' '
+        'normalized' => 'one-arg2'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -123,7 +115,15 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'two-arg'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -134,40 +134,31 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'three-arg'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'one-arg3'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'two-arg'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'three-arg'
-          }
-        ],
-        'normalized' => 'one-arg3',
-        'spaces_before_argument' => ' '
+        'normalized' => 'one-arg3'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -192,7 +183,15 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'two-arg'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -203,7 +202,15 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'three-arg'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -214,46 +221,31 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'four-arg'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'one-arg4'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'two-arg'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'three-arg'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'four-arg'
-          }
-        ],
-        'normalized' => 'one-arg4',
-        'spaces_before_argument' => ' '
+        'normalized' => 'one-arg4'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -278,7 +270,15 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'two-arg'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -289,7 +289,15 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'three-arg'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -300,9 +308,19 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
-',
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'four-arg-five-arg'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
@@ -316,37 +334,12 @@ $result_trees{'node_line_arguments'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'one-arg5'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'two-arg'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'three-arg'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'four-arg-five-arg'
-          }
-        ],
-        'normalized' => 'one-arg5',
-        'spaces_before_argument' => ' '
+        'normalized' => 'one-arg5'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -362,24 +355,20 @@ $result_trees{'node_line_arguments'} = {
               'text' => 'comment'
             }
           ],
-          'extra' => {
+          'info' => {
             'comment_at_end' => {
               'args' => [
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'comment',
-              'extra' => {
-                'misc_args' => [
-                  '
-'
-                ]
-              }
+              'cmdname' => 'comment'
             },
-            'spaces_after_argument' => ' '
+            'spaces_after_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
@@ -393,19 +382,12 @@ $result_trees{'node_line_arguments'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'comment'
-          }
-        ],
-        'normalized' => 'comment',
-        'spaces_before_argument' => ' '
+        'normalized' => 'comment'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -464,7 +446,16 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' '
+            'node_content' => [
+              {},
+              {}
+            ],
+            'normalized' => '_00e7edilla'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -490,60 +481,40 @@ $result_trees{'node_line_arguments'} = {
             }
           ],
           'extra' => {
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'comma-in-strong_002c'
+          },
+          'info' => {
             'comment_at_end' => {
               'args' => [
                 {
                   'text' => ' comma , end
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comma , end
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
-            'spaces_after_argument' => ' ',
-            'spaces_before_argument' => ' '
+            'spaces_after_argument' => {
+              'text' => ' '
+            },
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {},
-          {},
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {},
-              {},
-              {}
-            ],
-            'normalized' => 'arg1-_002c-arg2'
-          },
-          {
-            'node_content' => [
-              {},
-              {}
-            ],
-            'normalized' => '_00e7edilla'
-          },
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'comma-in-strong_002c'
-          }
-        ],
-        'normalized' => 'arg1-_002c-arg2',
-        'spaces_before_argument' => ' '
+        'normalized' => 'arg1-_002c-arg2'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -554,36 +525,18 @@ $result_trees{'node_line_arguments'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_line_arguments'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[2]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[2]{'args'}[1]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[3]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[1]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[3]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[2]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[4]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[1]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[4]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[2]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[4]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[3]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[5]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[1]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[5]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[2]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[5]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[3]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[6]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[6]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'node_content'}[1] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[0]{'contents'}[1];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'node_content'}[2] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[0]{'contents'}[2];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[1] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[0]{'contents'}[1];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[2] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[0]{'contents'}[2];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[1]{'contents'}[0];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'nodes_manuals'}[1]{'node_content'}[1] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[1]{'contents'}[1];
-$result_trees{'node_line_arguments'}{'contents'}[7]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[2]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[2]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[2]{'args'}[1]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[1]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[3]{'args'}[2]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[1]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[2]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[4]{'args'}[3]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[1]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[2]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[5]{'args'}[3]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[1]{'contents'}[0];
+$result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[1]{'extra'}{'node_content'}[1] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[1]{'contents'}[1];
+$result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_line_arguments'}{'contents'}[7]{'args'}[2]{'contents'}[0];
 
 $result_texis{'node_line_arguments'} = '
 @node one arg1 

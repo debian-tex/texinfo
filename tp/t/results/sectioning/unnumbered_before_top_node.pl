@@ -19,9 +19,11 @@ $result_trees{'unnumbered_before_top_node'} = [
                 'text' => 'before nodes'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -34,8 +36,11 @@ $result_trees{'unnumbered_before_top_node'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -51,9 +56,11 @@ $result_trees{'unnumbered_before_top_node'} = [
                 'text' => 'Top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -98,19 +105,12 @@ $result_trees{'unnumbered_before_top_node'} = [
           }
         ],
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'Top'
-            }
-          ],
-          'normalized' => 'Top',
-          'spaces_before_argument' => ' '
+          'normalized' => 'Top'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -125,8 +125,6 @@ $result_trees{'unnumbered_before_top_node'} = [
     'type' => 'unit'
   }
 ];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'unit_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
 
 $result_texis{'unnumbered_before_top_node'} = '@unnumbered before nodes
@@ -307,15 +305,21 @@ $result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <div class="unnumbered-level-extent" id="before-nodes">
-<h2 class="unnumbered">before nodes</h2>
+<h2 class="unnumbered"><span>before nodes<a class="copiable-link" href="#before-nodes"> &para;</a></span></h2>
 
-<h1 class="node" id="Top">Top</h1>
+<h1 class="node" id="Top"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 <p>Top node
 </p>
 <h1 class="titlefont">Title titlefont</h1>

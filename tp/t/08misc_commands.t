@@ -30,7 +30,8 @@ paragraphindent asis @paragraphindent asis
 paragraphindent 0 @paragraphindent 0
 paragraphindent none @paragraphindent none
 paragraphindent 4 @paragraphindent 4
-firstparagraphindent none @firstparagraphindent none
+firstparagraphindent insert @firstparagraphindent insert
+firstparagraphindent 3 @firstparagraphindent 3
 exampleindent 6 @exampleindent 6 on line following exampleindent
 exampleindent 6 @exampleindent 6
 footnotestyle @footnotestyle end 
@@ -52,6 +53,9 @@ Text line after the text line followed by the finalout.
 Test text after finalout
 @finalout a word after finalout
 Line after finalout
+'],
+['documentencoding_zero',
+'@documentencoding 0
 '],
 ['also_not_line',
 '
@@ -92,7 +96,15 @@ Text line after the text line followed by the sp.
 '@clickstyle @result
 
 A @click{} (result).
+
+@clickstyle@equiv
+
+A @click{} (equiv no space)
+
 '],
+['clickstyle_no_end_of_line',
+'@clickstyle @result',
+],
 ['bye',
 '@bye
 '],
@@ -114,6 +126,15 @@ A @click{} (nocmd).
 @clickstyle something
 
 A @click{} (something).
+'],
+['clickstyle_and_comments',
+'@clickstyle@comment a
+@clickstyle @comment b
+@clickstyle nocmd@comment c
+@clickstyle more than one word @comment d
+@clickstyle @result@comment e
+@clickstyle @result   @comment f
+@clickstyle @result on the same line @comment g
 '],
 ['contents','
 first @@contents @contents line following first content
@@ -207,6 +228,13 @@ my @converted_test_cases = (
 @setfilename @ @verb{: name :}@ 
 
 ', {'full_document' => 1}],
+# this tests seems somewhat pointless, but it is not, as in perl
+# utf8 may mean a lax handling of UTF-8.  We want to avoid using
+# that lax handling of UTF-8, better get errors early.
+['documentencoding_utf8',
+'@documentencoding utf8
+
+'],
 ['definfoenclose',
 '
 definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
@@ -300,6 +328,9 @@ after noindent2.
 
 aaa
 '],
+['indent_in_command_in_paragraph',
+'In para @code{@indent}.  @asis{@b{in double command@noindent}}.
+'],
 ['empty_center',
 '@center 
 '],
@@ -318,6 +349,20 @@ aaa
 @center @ref{Top, ,title
 very long}
 ', {'full_document' => 1}],
+['nodedescription',
+'@nodedescription out of any node
+
+@node Top
+@top top
+
+@node chap
+@chapter Chapter
+
+@nodedescription @emph{first description} of chapter
+
+@nodedescription second description @
+  of chapter
+'],
 ['footnote_in_center',
 '@center Centered text with a footnote@footnote{This footnote
 shows an important feature of the centered text.
@@ -332,6 +377,7 @@ line
 '],
 ['test_allowcodebreaks',
 '@node Top
+@node chap
 
 @macro testallowcodebreakspara {nr}
 Out of code --- out-of-code.
@@ -554,12 +600,15 @@ in example
 '],
 );
 
+# info and xml
 my %info_tests = (
   'comment_space_command_on_line' => 1,
   'setfilename' => 1,
+  'documentencoding_utf8' => 1,
 );
 
 my %xml_tests = (
+  'codequoteundirected_codequotebacktick' => 1,
   'definfoenclose_with_empty_arg' => 1,
   'vskip' => 1,
 );

@@ -13,21 +13,17 @@ $result_trees{'empty_set'} = {
           'args' => [
             {
               'text' => 'myspace',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' myspace
-',
-            'misc_args' => [
-              'myspace',
-              ''
-            ]
+'
           }
         },
         {
@@ -38,6 +34,29 @@ $result_trees{'empty_set'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'myspace'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => '',
+                  'position' => 2,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 2,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '1  1
 '
             }

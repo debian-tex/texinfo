@@ -16,6 +16,7 @@ my @test_cases = (
 @end copying
 
 @node Top
+@node chap
 
 @insertcopying
 '],

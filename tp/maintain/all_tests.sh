@@ -1,7 +1,7 @@
 #! /bin/sh
 # Helper script for tests.
 #
-# Copyright 2011-2019 Free Software Foundation, Inc.
+# Copyright 2011-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -63,6 +63,7 @@ else
     done
   elif [ "$command" = 'texis' ]; then
     for file in t/*.t; do
+      echo "$file"
       $PERL -w $file -c
     done
   else

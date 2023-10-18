@@ -8,6 +8,79 @@ use utf8;
 $result_trees{'end_conditional_not_at_line_begining'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifhtml',
+                'contents' => [
+                  {
+                    'text' => 'inhtml
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '  ',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifhtml'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifhtml'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 3,
+                      'macro' => ''
+                    }
+                  }
+                ],
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 1,
+                  'macro' => ''
+                }
+              },
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ],
+          'text' => ''
+        }
+      ],
       'type' => 'before_node_section'
     }
   ],

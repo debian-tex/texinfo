@@ -1,0 +1,28 @@
+\input texinfo.tex
+
+@node Top
+@top Tôp
+
+@node Chaptêur
+@chapter Chapteùr
+
+@ifset TÛT
+isset TÛT
+@end ifset
+
+value vùr @value{vùr}.
+
+@include included_akçentêd.texi
+
+@image{an_ïmage,,,öld}
+@image{an_@"{@dotless{i}}mage,,,@"old}
+
+@image{txt_çimage}
+
+@image{dîrectory/imàge,,,âlt,.êxt}
+
+@include not_existïng.téxi
+
+@verbatiminclude included_akçentêd.texi
+
+@verbatiminclude vi_not_existïng.téxi

@@ -2,7 +2,7 @@
 
 # epub3.pm: setup an EPUB publication
 #
-#    Copyright 2021 Free Software Foundation, Inc.
+#    Copyright 2021-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -142,6 +142,13 @@ texinfo_set_from_init_file('NO_TOP_NODE_OUTPUT', 1);
 # no mini_toc nor menus in the default case, to be more like a book.
 texinfo_set_from_init_file('FORMAT_MENU', 'nomenu');
 
+# use sections in printindex
+# unsetting NODE_NAME_IN_INDEX is not sufficient, as in that case the
+# element is used to determine the name used, which will still be the
+# node in the default case
+texinfo_set_from_init_file('USE_NODES', 0);
+#texinfo_set_from_init_file('NODE_NAME_IN_INDEX', 0);
+
 # a footer gets in the way of navigation.  It is not set in the default
 # case anyway, but it is set in texi2html style.
 texinfo_set_from_init_file('PROGRAM_NAME_IN_FOOTER', 0);
@@ -192,6 +199,8 @@ texinfo_register_formatting_function('format_navigation_panel', \&epub_noop);
 texinfo_register_command_formatting('image', \&epub_convert_image_command);
 
 texinfo_register_type_formatting('unit', \&epub_convert_tree_unit_type);
+texinfo_register_type_formatting('special_element',
+                                 \&epub_convert_special_element_type);
 
 my %epub_images_extensions_mimetypes = (
   '.png' =>  'image/png',
@@ -246,9 +255,9 @@ sub epub_convert_image_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  if (defined($args->[0]->{'monospacetext'})
-      and $args->[0]->{'monospacetext'} ne '') {
-    my $basefile = $args->[0]->{'monospacetext'};
+  if (defined($args->[0]->{'filenametext'})
+      and $args->[0]->{'filenametext'} ne '') {
+    my $basefile = $args->[0]->{'filenametext'};
     return $basefile if ($self->in_string());
 
     my ($image_file, $image_basefile, $image_extension, $image_path,
@@ -346,7 +355,7 @@ sub epub_convert_image_command($$$$)
   return '';
 }
 
-my @epub_output_filenames;
+my @epub_tree_units_output_filenames;
 # collect filenames in units order
 sub epub_convert_tree_unit_type($$$$)
 {
@@ -355,9 +364,27 @@ sub epub_convert_tree_unit_type($$$$)
   my $element = shift;
   my $content = shift;
 
-  push @epub_output_filenames, $element->{'structure'}->{'unit_filename'}
+  push @epub_tree_units_output_filenames,
+   $element->{'structure'}->{'unit_filename'}
     unless grep {$_ eq $element->{'structure'}->{'unit_filename'}}
-            @epub_output_filenames;
+            @epub_tree_units_output_filenames;
+  return &{$self->default_type_conversion($type)}($self,
+                                      $type, $element, $content);
+}
+
+my @epub_special_elements_filenames;
+# collect filenames in order
+sub epub_convert_special_element_type($$$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $element = shift;
+  my $content = shift;
+
+  push @epub_special_elements_filenames,
+   $element->{'structure'}->{'unit_filename'}
+    unless grep {$_ eq $element->{'structure'}->{'unit_filename'}}
+            @epub_special_elements_filenames;
   return &{$self->default_type_conversion($type)}($self,
                                       $type, $element, $content);
 }
@@ -406,7 +433,8 @@ sub epub_setup($)
   $epub_destination_directory = undef;
   $epub_document_destination_directory = undef;
   $encoded_epub_destination_directory = undef;
-  @epub_output_filenames = ();
+  @epub_tree_units_output_filenames = ();
+  @epub_special_elements_filenames = ();
   %epub_images = ();
   $nav_filename = $default_nav_filename;
   $epub_file_nr = 1;
@@ -536,6 +564,9 @@ sub epub_finish($$)
 {
   my $self = shift;
   my $document_root = shift;
+
+  my @epub_output_filenames = (@epub_tree_units_output_filenames,
+                               @epub_special_elements_filenames);
 
   if (scalar(@epub_output_filenames) == 0) {
     if (defined($self->{'current_filename'})) {

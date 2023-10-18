@@ -71,6 +71,13 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                   'extra' => {
                                     'def_role' => 'spaces'
                                   },
+                                  'source_marks' => [
+                                    {
+                                      'counter' => 1,
+                                      'position' => 1,
+                                      'sourcemark_type' => 'defline_continuation'
+                                    }
+                                  ],
                                   'text' => '    ',
                                   'type' => 'spaces'
                                 },
@@ -90,6 +97,13 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                 {
                                   'contents' => [
                                     {
+                                      'source_marks' => [
+                                        {
+                                          'counter' => 2,
+                                          'position' => 5,
+                                          'sourcemark_type' => 'defline_continuation'
+                                        }
+                                      ],
                                       'text' => 'args   with end of line within'
                                     }
                                   ],
@@ -101,7 +115,7 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                     'line_nr' => 3,
                                     'macro' => ''
                                   },
-                                  'type' => 'bracketed_def_content'
+                                  'type' => 'bracketed_arg'
                                 },
                                 {
                                   'extra' => {
@@ -153,7 +167,13 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                   'cmdname' => '@',
                                   'extra' => {
                                     'def_role' => 'arg'
-                                  }
+                                  },
+                                  'source_marks' => [
+                                    {
+                                      'counter' => 3,
+                                      'sourcemark_type' => 'defline_continuation'
+                                    }
+                                  ]
                                 },
                                 {
                                   'extra' => {
@@ -176,41 +196,25 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                     'line_nr' => 5,
                                     'macro' => ''
                                   },
-                                  'type' => 'bracketed_def_content'
-                                },
-                                {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
-                                  },
-                                  'text' => '
-',
-                                  'type' => 'spaces_at_end'
+                                  'type' => 'bracketed_arg'
                                 }
                               ],
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
+'
+                                }
+                              },
                               'type' => 'block_line_arg'
                             }
                           ],
                           'extra' => {
                             'def_command' => 'deffn',
-                            'def_parsed_hash' => {
-                              'category' => {},
-                              'name' => {}
-                            },
-                            'index_entry' => {
-                              'content_normalized' => [
-                                {}
-                              ],
-                              'entry_content' => [
-                                {}
-                              ],
-                              'entry_element' => {},
-                              'entry_number' => 1,
-                              'in_code' => 1,
-                              'index_at_command' => 'deffn',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'fn',
-                              'index_type_command' => 'deffn'
-                            },
+                            'def_index_element' => {},
+                            'index_entry' => [
+                              'fn',
+                              1
+                            ],
                             'original_def_cmdname' => 'deffn'
                           },
                           'source_info' => {
@@ -242,17 +246,23 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                                   'text' => 'deffn'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'deffn'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -261,8 +271,10 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -275,9 +287,11 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                 }
               ],
               'cmdname' => 'footnote',
-              'extra' => {
-                'spaces_before_argument' => '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '
 '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -298,11 +312,7 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'end_of_lines_protected_in_footnote'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'end_of_lines_protected_in_footnote'} = '@footnote{
 @deffn category deffn_name arguments arg2    more {args   with end of line within} with 3 @@ @@ {one last arg}

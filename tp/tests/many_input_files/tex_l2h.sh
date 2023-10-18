@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright 2012, 2013 Free Software Foundation, Inc.
+# Copyright 2012-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -24,6 +24,7 @@ diffs_dir=diffs
 raw_output_dir=raw_out
 logfile=$basename.log
 stdout_file=stdout_$basename.out
+prepended_command=
 
 [ "z$srcdir" = 'z' ] && srcdir=.
 
@@ -53,8 +54,9 @@ raw_outdir=$raw_output_dir/$basename
 [ -d $raw_outdir ] && rm -rf $raw_outdir
 mkdir $basename
 : > $basename/$stdout_file
-echo "$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'HTML_MATH l2h' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2" >> $logfile
-$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'HTML_MATH l2h' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init  --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2
+cmd="$prepended_command $PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --set-customization-variable L2H_TMP=$tmp_dir --conf-dir $srcdir/../../init --set-customization-variable 'HTML_MATH l2h' --set-customization-variable L2H_FILE=$srcdir/../../t/init/l2h.init --set-customization-variable 'L2H_CLEAN=0' --iftex --out $basename/ $srcdir/../tex_html/tex_complex.texi $srcdir/../tex_html/tex.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+echo "$cmd" >> $logfile
+eval $cmd
 
 return_code=0
 ret=$?

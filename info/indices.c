@@ -1,6 +1,6 @@
 /* indices.c -- deal with an Info file index.
 
-   Copyright 1993-2022 Free Software Foundation, Inc.
+   Copyright 1993-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -90,6 +90,22 @@ add_index_to_index_nodenames (REFERENCE **array, NODE *node)
                         index_nodenames_slots, 10);
 }
 
+static void
+clear_index_nodenames (void)
+{
+  int i;
+  if (!index_nodenames)
+    return;
+  for (i = 0; index_nodenames[i]; i++)
+    {
+      free (index_nodenames[i]->name);
+      free (index_nodenames[i]);
+    }
+
+  index_nodenames_index = 0;
+  index_nodenames[0] = NULL;
+}
+
 /* Find and concatenate the indices of FILE_BUFFER, saving the result in 
    INDEX_INDEX.  The indices are defined as the first node in the file 
    containing the word "Index" and any immediately following nodes whose names 
@@ -127,17 +143,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
   initial_index_filename = NULL;
   initial_index_nodename = NULL;
 
-  if (index_nodenames)
-    {
-      for (i = 0; index_nodenames[i]; i++)
-        {
-          free (index_nodenames[i]->name);
-          free (index_nodenames[i]);
-        }
-
-      index_nodenames_index = 0;
-      index_nodenames[0] = NULL;
-    }
+  clear_index_nodenames ();
 
   /* Grovel the names of the nodes found in this file. */
   if (file_buffer->tags)
@@ -157,11 +163,14 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
               if (!node)
                 continue;
 
-              if (!initial_index_filename)
+              if ((node->flags & N_IsIndex) && !initial_index_filename)
                 {
                   /* Remember the filename and nodename of this index. */
                   initial_index_filename = xstrdup (file_buffer->filename);
                   initial_index_nodename = xstrdup (tag->nodename);
+
+                  /* Clear list in case earlier node had "Index" in name. */
+                  clear_index_nodenames ();
                 }
 
               menu = node->references;

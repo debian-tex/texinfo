@@ -24,9 +24,11 @@ $result_trees{'something_before_columnfractions'} = {
                           'text' => '0.3 0.7'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -36,8 +38,12 @@ $result_trees{'something_before_columnfractions'} = {
                     'misc_args' => [
                       '0.3',
                       '0.7'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -64,8 +70,12 @@ $result_trees{'something_before_columnfractions'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -76,8 +86,12 @@ $result_trees{'something_before_columnfractions'} = {
           ],
           'extra' => {
             'columnfractions' => {},
-            'max_columns' => 2,
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -104,5 +118,14 @@ $result_errors{'something_before_columnfractions'} = [];
 
 $result_floats{'something_before_columnfractions'} = {};
 
+
+
+$result_converted{'xml'}->{'something_before_columnfractions'} = '<multitable spaces=" " endspaces=" "><columnfractions spaces=" " line="0.3 0.7"><columnfraction value="0.3"></columnfraction><columnfraction value="0.7"></columnfraction></columnfractions>
+</multitable>';
+
+
+$result_converted{'latex_text'}->{'something_before_columnfractions'} = '\\begin{tabular}{m{0.3\\textwidth} m{0.7\\textwidth}}%
+\\end{tabular}%
+';
 
 1;

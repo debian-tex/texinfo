@@ -15,12 +15,14 @@ $result_trees{'equivalent_labels'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -60,9 +62,6 @@ $result_trees{'equivalent_labels'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'anch'
           },
           'source_info' => {
@@ -101,10 +100,14 @@ $result_trees{'equivalent_labels'} = {
                   'text' => 'floa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -128,17 +131,23 @@ $result_trees{'equivalent_labels'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -148,16 +157,12 @@ $result_trees{'equivalent_labels'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'floa',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'truc'
+            'float_type' => 'truc',
+            'normalized' => 'floa'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -174,9 +179,11 @@ $result_trees{'equivalent_labels'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -184,7 +191,7 @@ $result_trees{'equivalent_labels'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -195,6 +202,12 @@ $result_trees{'equivalent_labels'} = {
                       'text' => 'anch'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'anch'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -216,15 +229,6 @@ $result_trees{'equivalent_labels'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'anch'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -233,7 +237,7 @@ $result_trees{'equivalent_labels'} = {
               'type' => 'menu_entry'
             },
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -259,6 +263,12 @@ $result_trees{'equivalent_labels'} = {
                       }
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'floa'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -280,15 +290,6 @@ $result_trees{'equivalent_labels'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'floa'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 11,
@@ -304,17 +305,23 @@ $result_trees{'equivalent_labels'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -331,19 +338,12 @@ $result_trees{'equivalent_labels'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -354,17 +354,10 @@ $result_trees{'equivalent_labels'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'extra'}{'type'}{'content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[3];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'args'}[3];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 
-$result_texis{'equivalent_labels'} = '@node Top
+$result_texis{'equivalent_labels'} = '@node first
 
 @anchor{@samp{anch}}.
 
@@ -397,7 +390,7 @@ $result_nodes{'equivalent_labels'} = {
         'cmdname' => 'menu'
       }
     ],
-    'normalized' => 'Top'
+    'normalized' => 'first'
   },
   'structure' => {
     'menu_child' => {
@@ -405,20 +398,15 @@ $result_nodes{'equivalent_labels'} = {
       'extra' => {
         'normalized' => 'anch'
       },
-      'structure' => {
-        'node_prev' => {}
-      }
-    },
-    'node_next' => {}
+      'structure' => {}
+    }
   }
 };
-$result_nodes{'equivalent_labels'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'equivalent_labels'};
-$result_nodes{'equivalent_labels'}{'structure'}{'node_next'} = $result_nodes{'equivalent_labels'}{'structure'}{'menu_child'};
 
 $result_menus{'equivalent_labels'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   },
   'structure' => {
     'menu_child' => {
@@ -430,28 +418,21 @@ $result_menus{'equivalent_labels'} = {
         'menu_next' => {
           'cmdname' => 'float',
           'extra' => {
-            'normalized' => 'floa',
-            'type' => {
-              'content' => [
-                {
-                  'text' => 'truc'
-                }
-              ],
-              'normalized' => 'truc'
-            }
+            'float_type' => 'truc',
+            'normalized' => 'floa'
           },
           'structure' => {
             'float_number' => 1,
             'menu_prev' => {},
             'menu_up' => {},
             'menu_up_hash' => {
-              'Top' => 1
+              'first' => 1
             }
           }
         },
         'menu_up' => {},
         'menu_up_hash' => {
-          'Top' => 1
+          'first' => 1
         }
       }
     }
@@ -488,15 +469,8 @@ $result_floats{'equivalent_labels'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'floa',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'truc'
-            }
-          ],
-          'normalized' => 'truc'
-        }
+        'float_type' => 'truc',
+        'normalized' => 'floa'
       },
       'structure' => {
         'float_number' => 1
@@ -510,14 +484,13 @@ $result_floats{'equivalent_labels'} = {
 $result_converted{'info'}->{'equivalent_labels'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: anch,  Up: (dir)
+File: ,  Node: first
 
 .
 
 In float
 
 truc 1
-
 * Menu:
 
 * anch::
@@ -525,9 +498,9 @@ truc 1
 
 
 Tag Table:
-Node: Top27
-Ref: anch74
-Ref: floa77
+Node: first27
+Ref: anch51
+Ref: floa54
 
 End Tag Table
 
@@ -536,6 +509,16 @@ Local Variables:
 coding: utf-8
 End:
 ';
+
+$result_converted_errors{'info'}->{'equivalent_labels'} = [
+  {
+    'error_line' => 'warning: document without Top node
+',
+    'text' => 'document without Top node',
+    'type' => 'warning'
+  }
+];
+
 
 
 $result_converted{'html'}->{'equivalent_labels'} = '<!DOCTYPE html>
@@ -551,20 +534,25 @@ $result_converted{'html'}->{'equivalent_labels'} = '<!DOCTYPE html>
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<link href="#Top" rel="start" title="Top">
+<link href="#first" rel="start" title="first">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
-<h1 class="node" id="Top">Top</h1>
+<h4 class="node" id="first"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 
 <a class="anchor" id="anch"></a><p>.
 </p>
 <div class="float" id="floa">
 <p>In float
-</p><div class="type-number-float"><p><strong class="strong">truc 1
-</strong></p></div></div>
+</p><div class="type-number-float"><p><strong class="strong">truc 1</strong></p></div></div>
 
 
 

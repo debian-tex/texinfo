@@ -24,28 +24,23 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -76,8 +73,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -93,9 +93,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -103,19 +105,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -131,9 +126,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -153,9 +150,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'cp fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -165,8 +164,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
             'misc_args' => [
               'cp',
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -187,9 +190,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'vr fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -199,8 +204,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
             'misc_args' => [
               'vr',
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -221,28 +230,27 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'c``b'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -264,28 +272,27 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'v``j'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'vindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'vindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'vr',
-              'index_type_command' => 'vindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'vr',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -307,28 +314,27 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'f``g'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 1,
-              'index_at_command' => 'findex',
-              'index_ignore_chars' => {},
-              'index_name' => 'fn',
-              'index_type_command' => 'findex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'fn',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -350,9 +356,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'cdi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -361,8 +369,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'misc_args' => [
               'cdi'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -383,9 +395,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'cdi fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -395,8 +409,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
             'misc_args' => [
               'cdi',
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -417,28 +435,27 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'cdi``h'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cdiindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cdiindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cdi',
-              'index_type_command' => 'cdiindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cdi',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -460,9 +477,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'ddi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -471,8 +490,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'misc_args' => [
               'ddi'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -493,9 +516,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'ddi cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -505,8 +530,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
             'misc_args' => [
               'ddi',
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -527,28 +556,27 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'ddi``g'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'ddiindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 1,
-              'index_at_command' => 'ddiindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'ddi',
-              'index_type_command' => 'ddiindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'ddi',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -570,9 +598,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
                   'text' => 'fn'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -581,8 +611,12 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'misc_args' => [
               'fn'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -591,8 +625,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -603,30 +640,11 @@ $result_trees{'printindex_merged_indices_code_style'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'args'}[0]{'contents'};
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[5]{'extra'}{'element_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[7]{'extra'}{'element_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[9]{'extra'}{'element_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[15]{'extra'}{'element_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[4]{'contents'}[21]{'extra'}{'element_node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[3];
 
 $result_texis{'printindex_merged_indices_code_style'} = '@node Top
 @top top
@@ -855,11 +873,11 @@ $result_converted{'plaintext'}->{'printindex_merged_indices_code_style'} = 'top
 
 * Menu:
 
-* c“b:                                   chap.                  (line 6)
-* cdi“h:                                 chap.                  (line 6)
+* c"b:                                   chap.                  (line 6)
+* cdi"h:                                 chap.                  (line 6)
 * ddi``g:                                chap.                  (line 6)
 * f``g:                                  chap.                  (line 6)
-* v“j:                                   chap.                  (line 6)
+* v"j:                                   chap.                  (line 6)
 
 ';
 
@@ -867,9 +885,9 @@ $result_converted{'plaintext'}->{'printindex_merged_indices_code_style'} = 'top
 $result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chap" accesskey="1">Chapter</a></li>
@@ -878,9 +896,9 @@ $result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<div
 <div class="chapter-level-extent" id="chap">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 
 
@@ -899,39 +917,39 @@ $result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<div
 <a class="index-entry-id" id="index-ddi_0060_0060g"></a>
 
 <div class="printindex fn-printindex">
-<table class="fn-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_fn_letter-C"><b>C</b></a>
+<table class="fn-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#chap_fn_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_fn_letter-D"><b>D</b></a>
+<a class="summary-letter-printindex" href="#chap_fn_letter-D"><b>D</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_fn_letter-F"><b>F</b></a>
+<a class="summary-letter-printindex" href="#chap_fn_letter-F"><b>F</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_fn_letter-V"><b>V</b></a>
+<a class="summary-letter-printindex" href="#chap_fn_letter-V"><b>V</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="fn-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_fn_letter-C">C</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-c_0060_0060b">c&ldquo;b</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-cdi_0060_0060h">cdi&ldquo;h</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_fn_letter-D">D</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-ddi_0060_0060g"><code>ddi``g</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_fn_letter-F">F</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-f_0060_0060g"><code>f``g</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_fn_letter-V">V</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-v_0060_0060j">v&ldquo;j</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_fn_letter-C">C</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-c_0060_0060b">c&ldquo;b</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-cdi_0060_0060h">cdi&ldquo;h</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_fn_letter-D">D</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-ddi_0060_0060g"><code>ddi``g</code></a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_fn_letter-F">F</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-f_0060_0060g"><code>f``g</code></a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_fn_letter-V">V</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-v_0060_0060j">v&ldquo;j</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
-<table class="fn-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_fn_letter-C"><b>C</b></a>
+<table class="fn-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#chap_fn_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_fn_letter-D"><b>D</b></a>
+<a class="summary-letter-printindex" href="#chap_fn_letter-D"><b>D</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_fn_letter-F"><b>F</b></a>
+<a class="summary-letter-printindex" href="#chap_fn_letter-F"><b>F</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_fn_letter-V"><b>V</b></a>
+<a class="summary-letter-printindex" href="#chap_fn_letter-V"><b>V</b></a>
  &nbsp; 
 </td></tr></table>
 </div>

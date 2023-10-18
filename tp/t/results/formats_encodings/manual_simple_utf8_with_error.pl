@@ -39,28 +39,23 @@ $result_trees{'manual_simple_utf8_with_error'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'manual_simple_utf8_with_error.texi',
@@ -76,9 +71,11 @@ $result_trees{'manual_simple_utf8_with_error'} = {
               'text' => "Test\x{e9}"
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -91,8 +88,11 @@ $result_trees{'manual_simple_utf8_with_error'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'manual_simple_utf8_with_error.texi',
@@ -108,9 +108,11 @@ $result_trees{'manual_simple_utf8_with_error'} = {
               'text' => "\x{e9}sseul\x{e9}"
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -124,19 +126,12 @@ $result_trees{'manual_simple_utf8_with_error'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => '_00e9sseul_00e9'
-          }
-        ],
-        'normalized' => '_00e9sseul_00e9',
-        'spaces_before_argument' => ' '
+        'normalized' => '_00e9sseul_00e9'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'manual_simple_utf8_with_error.texi',
@@ -152,28 +147,23 @@ $result_trees{'manual_simple_utf8_with_error'} = {
               'text' => "Chapitr\x{e9}"
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Chapitr_00e9'
-          }
-        ],
-        'normalized' => 'Chapitr_00e9',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Chapitr_00e9'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'manual_simple_utf8_with_error.texi',
@@ -189,9 +179,11 @@ $result_trees{'manual_simple_utf8_with_error'} = {
               'text' => "Chapitr\x{e9}"
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -204,18 +196,23 @@ $result_trees{'manual_simple_utf8_with_error'} = {
           'type' => 'empty_line'
         },
         {
-          'cmdname' => 'value',
-          'extra' => {
-            'flag' => "non_conn\x{f9}e"
-          }
+          'args' => [
+            {
+              'text' => "non_conn\x{f9}e"
+            }
+          ],
+          'cmdname' => 'value'
         },
         {
           'text' => '
 '
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'manual_simple_utf8_with_error.texi',
@@ -226,12 +223,6 @@ $result_trees{'manual_simple_utf8_with_error'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'manual_simple_utf8_with_error'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'manual_simple_utf8_with_error'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'manual_simple_utf8_with_error'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'manual_simple_utf8_with_error'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'manual_simple_utf8_with_error'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'manual_simple_utf8_with_error'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'manual_simple_utf8_with_error'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'manual_simple_utf8_with_error'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'manual_simple_utf8_with_error'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'manual_simple_utf8_with_error'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'manual_simple_utf8_with_error'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'manual_simple_utf8_with_error'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'manual_simple_utf8_with_error'} = '\\input texinfo.tex
 

@@ -13,21 +13,17 @@ $result_trees{'ignored_value_definition'} = {
           'args' => [
             {
               'text' => 'aa',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'outside',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' aa outside
-',
-            'misc_args' => [
-              'aa',
-              'outside'
-            ]
+'
           }
         },
         {
@@ -48,7 +44,15 @@ $result_trees{'ignored_value_definition'} = {
                   'type' => 'brace_command_arg'
                 },
                 {
-                  'type' => 'elided'
+                  'contents' => [
+                    {
+                      'text' => '
+@set aa in inlinefmt tex
+',
+                      'type' => 'raw'
+                    }
+                  ],
+                  'type' => 'elided_brace_command_arg'
                 }
               ],
               'cmdname' => 'inlinefmt',
@@ -69,6 +73,23 @@ $result_trees{'ignored_value_definition'} = {
           'type' => 'paragraph'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'text' => 'aa'
+                  }
+                ],
+                'cmdname' => 'value'
+              },
+              'line' => 'outside',
+              'position' => 1,
+              'sourcemark_type' => 'value_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -76,6 +97,14 @@ $result_trees{'ignored_value_definition'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 7,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'outside.
 '
             }
@@ -91,7 +120,9 @@ $result_trees{'ignored_value_definition'} = {
 
 $result_texis{'ignored_value_definition'} = '@set aa outside
 
-@inlinefmt{tex,}
+@inlinefmt{tex,
+@set aa in inlinefmt tex
+}
 
 outside.
 ';

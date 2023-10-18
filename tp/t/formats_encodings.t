@@ -6,7 +6,7 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 require 't/test_utils.pl';
 
 # do not use @node Top as it is ignored in LaTeX output
-my $accents_text = '@node Top node
+my $accents_text = '@node first
 @top top
 
 should be e`: @`{e} @`e
@@ -324,8 +324,34 @@ $weird_accents_text, {'ENABLE_ENCODING' => 0}
 $accents_text
 ],
 ['accent_enable_encoding',
-$accents_text, {'ENABLE_ENCODING' => 1}
+$accents_text, {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}
 ],
+['accent_argument_non_ascii',
+'@node Top
+@top top
+
+@node chap
+@chapter Chapter
+'."\@'{\x{00EA}}
+\@'\x{00EA}
+"],
+['dotless_argument_non_ascii',
+'@node Top
+@top top
+
+@node chap
+@chapter Chapter
+'."\@dotless{\x{00EA}}
+\@dotless \x{00EA}
+"],
+['verb_delimiter_not_ascii',
+'@node Top
+@top top
+
+@node chap
+@chapter Chapter
+'."\@verb{\x{00EA} some text \x{00EA}}
+"],
 # numerous LaTeX formatting errors
 ['at_commands_in_refs',
 $at_commands_in_refs_text, 
@@ -335,16 +361,19 @@ $at_commands_in_refs_text,
 
 my @html_text_cases = (
 ['accentenc_enable_encoding',
-$latin1_accents_text, {'ENABLE_ENCODING' => 1}
+$latin1_accents_text, {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}
 ],
 );
 
 my @file_tests = (
-['char_latin1_utf8_in_refs',
-undef, {'test_file' => 'char_latin1_utf8_in_refs.texi'}
+['char_utf8_latin1_in_refs',
+undef, {'test_file' => 'char_utf8_latin1_in_refs.texi'}
 ],
 ['char_latin1_latin1_in_refs',
 undef, {'test_file' => 'char_latin1_latin1_in_refs.texi'}
+],
+['char_us_ascii_latin1_in_refs',
+undef, {'test_file' => 'char_us_ascii_latin1_in_refs.texi'}
 ],
 ['char_latin2_latin2_in_refs',
 undef, {'test_file' => 'char_latin2_latin2_in_refs.texi'}
@@ -360,6 +389,14 @@ undef, {'test_file' => 'manual_simple_utf8_with_error.texi'}
 ],
 ['manual_simple_latin1_with_error',
 undef, {'test_file' => 'manual_simple_latin1_with_error.texi'}
+],
+['multiple_include_encodings',
+undef, {'test_file' => 'multiple_include_encodings.texi',
+        'skip' => $Texinfo::ModulePath::conversion_from_euc_cn ne 'yes'
+                   ? 'No conversion from EUC-CN' : undef, }
+],
+['8bit_document_translations',
+undef, {'test_file' => 'pl_translated_inserted_strings_8bit.texi'}
 ],
 ['at_commands_in_refs_utf8',
 '@setfilename at_commands_in_refs_utf8.info

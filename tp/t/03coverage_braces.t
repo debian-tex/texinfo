@@ -84,9 +84,9 @@ my @test_cases = (
 @indicateurl{ http://example.com } @U{ 1234 } @w{ w } @verb{: verb :}.
 '],
 ['verb_in_xref',
-'@node Top
+'@anchor{point}
 
-@xref{Top, @verb{*with
+@xref{point, @verb{*with
 verb
 
 ggg *}}.
@@ -187,6 +187,7 @@ Text in copying.
 @end copying
 
 @node Top
+@node chapter
 
 @files-char{}
 
@@ -258,7 +259,28 @@ text
 ['form_feed_in_brace_commands',
 '@option{ aa} @anchor{aa}something @email{aaa,  fff}@footnote{ 
  f1 } @footnote{  ggjj}.
-', {'test_formats' => ['xml']}]
+', {'test_formats' => ['xml']}],
+# here even if invalid as we want to see how the @sortas is in index
+['contain_plain_text_nestings',
+'@node Top
+@top top
+
+@node chap
+@chapter Chap
+
+Text @w{@code{code in w} text}.
+@hyphenation{@code{code in hyphenation} text}
+@key{@code{code in key} text}
+@cindex ii @sortas{@code{code in sortas} text}
+
+@c no warning for @ref in @w
+Text @w{@ref{Top, cross in w} text}.
+@hyphenation{@ref{Top, cross in hyphenation} text}
+@key{@ref{Top, cross in key} text}
+@cindex ii @sortas{@ref{Top, cross in sortas} text}
+
+@printindex cp
+'],
 );
 
 my @test_invalid = (
@@ -314,6 +336,17 @@ b}'],
 
 '],
 ['math_leading_trailing_spaces','@math{ a = b }'],
+['empty_line_in_braces_in_math',
+'@math{a{bb
+
+c}d}'],
+['empty_line_in_braces_in_math_at_begin_line',
+'@math{a
+
+{b
+
+} c
+}'],
 ['unknown_command_with_braces',
 'Unknown thing @thing{}
 
@@ -346,12 +379,13 @@ third}
 '
 @ref{,,,manual} @ref{,,, , Manual} @inforef{,,imanual}
 @xref{ , Bidule, Truc, file, Printed}.
-']
+'],
 );
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
-  push @{$test->[2]->{'test_formats'}}, 'html_text';
+  push @{$test->[2]->{'test_formats'}}, 'html_text'
+    unless grep {$_ eq 'html'} @{$test->[2]->{'test_formats'}};
   push @{$test->[2]->{'test_formats'}}, 'latex_text';
 }
 

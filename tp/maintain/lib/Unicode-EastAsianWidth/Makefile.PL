@@ -1,18 +1,16 @@
-#!/usr/bin/perl
-
+#!/usr/bin/env perl
 use strict;
-use inc::Module::Install;
+use warnings;
 
-my $DefaultVersion  = 'v5.0.0';
-my $DefaultDate     = '2006-02-15';
+use lib 'inc/';
+use Module::Package 'Au:dry 1';
+
+license('cc0');
+
+my $DefaultVersion  = 'v12.0.0';
+my $DefaultDate     = '2019-01-21';
 
 _build_pm();
-
-name        'Unicode-EastAsianWidth';
-all_from    'lib/Unicode/EastAsianWidth.pm';
-
-auto_provides;
-sign; WriteAll;
 
 sub _build_pm {
     my $file;

@@ -14,9 +14,11 @@ $result_trees{'format_in_titlepage_titlepage'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -31,9 +33,11 @@ $result_trees{'format_in_titlepage_titlepage'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -57,17 +61,23 @@ $result_trees{'format_in_titlepage_titlepage'} = {
                               'text' => 'format'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'format'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -95,17 +105,23 @@ $result_trees{'format_in_titlepage_titlepage'} = {
                           'text' => 'titlepage'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'titlepage'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -139,9 +155,43 @@ $result_trees{'format_in_titlepage_titlepage'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 9,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -155,31 +205,22 @@ $result_trees{'format_in_titlepage_titlepage'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 9,
+        'line_nr' => 10,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'format_in_titlepage_titlepage'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'format_in_titlepage_titlepage'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'format_in_titlepage_titlepage'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'format_in_titlepage_titlepage'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'format_in_titlepage_titlepage'} = '@titlepage
 
@@ -190,6 +231,7 @@ Published
 @end titlepage
 
 @node Top
+@node chap
 
 ';
 
@@ -202,14 +244,27 @@ $result_nodes{'format_in_titlepage_titlepage'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'format_in_titlepage_titlepage'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'format_in_titlepage_titlepage'};
 
 $result_menus{'format_in_titlepage_titlepage'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'format_in_titlepage_titlepage'} = [];
@@ -222,12 +277,16 @@ $result_floats{'format_in_titlepage_titlepage'} = {};
 $result_converted{'info'}->{'format_in_titlepage_titlepage'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Up: (dir)
+File: ,  Node: Top,  Next: chap,  Up: (dir)
+
+
+File: ,  Node: chap,  Prev: Top
 
 
 
 Tag Table:
 Node: Top27
+Node: chap74
 
 End Tag Table
 
@@ -254,7 +313,9 @@ $result_converted{'html'}->{'format_in_titlepage_titlepage'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 pre.format-preformatted {font-family: inherit}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -269,7 +330,17 @@ pre.format-preformatted {font-family: inherit}
 
 <hr>
 
-<h1 class="node" id="Top">Top</h1>
+<a class="node-id" id="Top"></a><div class="nav-panel">
+<p>
+Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
+</div>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
+<hr>
+<a class="node-id" id="chap"></a><div class="nav-panel">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
+</div>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
 
 
@@ -293,6 +364,7 @@ $result_converted{'latex_text'}->{'format_in_titlepage_titlepage'} = '
 \\begin{document}
 
 \\frontmatter
+\\pagestyle{empty}%
 \\begin{titlepage}
 \\begingroup
 \\newskip\\titlepagetopglue \\titlepagetopglue = 1.5in
@@ -307,9 +379,11 @@ Published
 
 \\endgroup
 \\end{titlepage}
-\\pagestyle{single}%
 \\mainmatter
+\\pagestyle{single}%
 \\label{anchor:Top}%
+\\label{anchor:chap}%
+
 ';
 
 1;

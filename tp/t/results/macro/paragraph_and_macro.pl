@@ -26,17 +26,23 @@ $result_trees{'paragraph_and_macro'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -45,7 +51,7 @@ $result_trees{'paragraph_and_macro'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' aempty
 '
           },
@@ -82,17 +88,23 @@ $result_trees{'paragraph_and_macro'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -101,7 +113,7 @@ $result_trees{'paragraph_and_macro'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' aspace
 '
           },
@@ -138,17 +150,23 @@ $result_trees{'paragraph_and_macro'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -157,7 +175,7 @@ $result_trees{'paragraph_and_macro'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' word
 '
           },
@@ -173,6 +191,29 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'aempty'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -183,6 +224,31 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'aempty'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 2,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 2,
+              'position' => 2,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '    
 ',
           'type' => 'empty_line'
@@ -193,6 +259,29 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 3,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'aempty'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 3,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => ' ',
           'type' => 'spaces_before_paragraph'
         },
@@ -211,6 +300,30 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 4,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'aspace'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 4,
+              'position' => 3,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '   
 ',
           'type' => 'empty_line'
@@ -221,6 +334,31 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 5,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'aspace'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 2,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 5,
+              'position' => 5,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '       
 ',
           'type' => 'empty_line'
@@ -231,6 +369,30 @@ $result_trees{'paragraph_and_macro'} = {
           'type' => 'empty_line'
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 6,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'aspace'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 6,
+              'position' => 3,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'end'
+            }
+          ],
           'text' => '    ',
           'type' => 'spaces_before_paragraph'
         },

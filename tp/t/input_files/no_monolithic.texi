@@ -1,7 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 
-@setfilename no_monolithic.info
-
 @node Top
 @top Not monolithic
 

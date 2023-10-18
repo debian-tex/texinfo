@@ -71,17 +71,23 @@ $result_trees{'nested_ifset_ifclear'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -90,7 +96,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' conditionals{}
 '
           },
@@ -109,47 +115,284 @@ $result_trees{'nested_ifset_ifclear'} = {
           'args' => [
             {
               'text' => 'somevar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' somevar
-',
-            'misc_args' => [
-              'somevar',
-              ''
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'anothervar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' anothervar
-',
-            'misc_args' => [
-              'anothervar',
-              ''
-            ]
-          }
+'
+          },
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'conditionals'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'somevar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 15,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            },
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'anothervar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 15,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ]
         },
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 15,
+                      'macro' => 'conditionals'
+                    }
+                  },
+                  'position' => 37,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'anothervar'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'block_line_arg'
+                      }
+                    ],
+                    'cmdname' => 'ifclear',
+                    'contents' => [
+                      {
+                        'text' => 'Somevar is set, anothervar is not.
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'args' => [
+                          {
+                            'contents' => [
+                              {
+                                'text' => 'ifclear'
+                              }
+                            ],
+                            'info' => {
+                              'spaces_after_argument' => {
+                                'text' => '
+'
+                              }
+                            },
+                            'type' => 'line_arg'
+                          }
+                        ],
+                        'cmdname' => 'end',
+                        'extra' => {
+                          'text_arg' => 'ifclear'
+                        },
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'source_info' => {
+                          'file_name' => '',
+                          'line_nr' => 15,
+                          'macro' => 'conditionals'
+                        }
+                      }
+                    ],
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 15,
+                      'macro' => 'conditionals'
+                    }
+                  },
+                  'position' => 37,
+                  'sourcemark_type' => 'ignored_conditional_block'
+                },
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 1,
+                                'position' => 5,
+                                'sourcemark_type' => 'macro_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 15,
+                      'macro' => 'conditionals'
+                    }
+                  },
+                  'position' => 37,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'Both somevar and anothervar are set.
 '
             }
@@ -165,42 +408,279 @@ $result_trees{'nested_ifset_ifclear'} = {
           'args' => [
             {
               'text' => 'somevar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' somevar
-',
-            'misc_args' => [
-              'somevar',
-              ''
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'anothervar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'clear',
-          'extra' => {
+          'info' => {
             'arg_line' => ' anothervar
+'
+          },
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'conditionals'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 3,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'somevar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 19,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            },
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'anothervar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'contents' => [
+                  {
+                    'text' => 'Both somevar and anothervar are set.
 ',
-            'misc_args' => [
-              'anothervar'
-            ]
-          }
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 19,
+                      'macro' => 'conditionals'
+                    }
+                  }
+                ],
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 19,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'ignored_conditional_block'
+            },
+            {
+              'counter' => 4,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'anothervar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifclear',
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 19,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'expanded_conditional_command',
+              'status' => 'start'
+            }
+          ]
         },
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'ifclear'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifclear'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 19,
+                      'macro' => 'conditionals'
+                    }
+                  },
+                  'position' => 35,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                },
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 2,
+                                'position' => 5,
+                                'sourcemark_type' => 'macro_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 19,
+                      'macro' => 'conditionals'
+                    }
+                  },
+                  'position' => 35,
+                  'sourcemark_type' => 'expanded_conditional_command',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'Somevar is set, anothervar is not.
 '
             }
@@ -216,38 +696,190 @@ $result_trees{'nested_ifset_ifclear'} = {
           'args' => [
             {
               'text' => 'somevar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'clear',
-          'extra' => {
+          'info' => {
             'arg_line' => ' somevar
-',
-            'misc_args' => [
-              'somevar'
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'anothervar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => '',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' anothervar
+'
+          },
+          'source_marks' => [
+            {
+              'counter' => 3,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'conditionals'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 4,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'somevar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'contents' => [
+                  {
+                    'source_marks' => [
+                      {
+                        'counter' => 3,
+                        'element' => {
+                          'cmdname' => 'ifset',
+                          'contents' => [
+                            {
+                              'text' => 'Both somevar and anothervar are set.
 ',
-            'misc_args' => [
-              'anothervar',
-              ''
-            ]
-          }
+                              'type' => 'raw'
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'ifset'
+                                    }
+                                  ],
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
+'
+                                    }
+                                  },
+                                  'type' => 'line_arg'
+                                }
+                              ],
+                              'cmdname' => 'end',
+                              'extra' => {
+                                'text_arg' => 'ifset'
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
+                              },
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 23,
+                                'macro' => 'conditionals'
+                              }
+                            }
+                          ]
+                        },
+                        'sourcemark_type' => 'ignored_conditional_block'
+                      }
+                    ],
+                    'text' => ''
+                  },
+                  {
+                    'text' => '@ifclear anothervar
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => 'Somevar is set, anothervar is not.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end ifclear
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 3,
+                                'position' => 5,
+                                'sourcemark_type' => 'macro_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 23,
+                      'macro' => 'conditionals'
+                    }
+                  }
+                ],
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 23,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ]
         },
         {
           'text' => '
@@ -258,33 +890,186 @@ $result_trees{'nested_ifset_ifclear'} = {
           'args' => [
             {
               'text' => 'somevar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'clear',
-          'extra' => {
+          'info' => {
             'arg_line' => ' somevar
-',
-            'misc_args' => [
-              'somevar'
-            ]
+'
           }
         },
         {
           'args' => [
             {
               'text' => 'anothervar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'clear',
-          'extra' => {
+          'info' => {
             'arg_line' => ' anothervar
+'
+          },
+          'source_marks' => [
+            {
+              'counter' => 4,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'conditionals'
+                },
+                'type' => 'macro_call'
+              },
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            },
+            {
+              'counter' => 6,
+              'element' => {
+                'args' => [
+                  {
+                    'contents' => [
+                      {
+                        'text' => 'somevar'
+                      }
+                    ],
+                    'info' => {
+                      'spaces_after_argument' => {
+                        'text' => '
+'
+                      }
+                    },
+                    'type' => 'block_line_arg'
+                  }
+                ],
+                'cmdname' => 'ifset',
+                'contents' => [
+                  {
+                    'source_marks' => [
+                      {
+                        'counter' => 5,
+                        'element' => {
+                          'cmdname' => 'ifset',
+                          'contents' => [
+                            {
+                              'text' => 'Both somevar and anothervar are set.
 ',
-            'misc_args' => [
-              'anothervar'
-            ]
-          }
+                              'type' => 'raw'
+                            },
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'ifset'
+                                    }
+                                  ],
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
+'
+                                    }
+                                  },
+                                  'type' => 'line_arg'
+                                }
+                              ],
+                              'cmdname' => 'end',
+                              'extra' => {
+                                'text_arg' => 'ifset'
+                              },
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
+                              },
+                              'source_info' => {
+                                'file_name' => '',
+                                'line_nr' => 27,
+                                'macro' => 'conditionals'
+                              }
+                            }
+                          ]
+                        },
+                        'sourcemark_type' => 'ignored_conditional_block'
+                      }
+                    ],
+                    'text' => ''
+                  },
+                  {
+                    'text' => '@ifclear anothervar
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => 'Somevar is set, anothervar is not.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end ifclear
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 4,
+                                'position' => 5,
+                                'sourcemark_type' => 'macro_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'ifset'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'end',
+                    'extra' => {
+                      'text_arg' => 'ifset'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 27,
+                      'macro' => 'conditionals'
+                    }
+                  }
+                ],
+                'info' => {
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
+                },
+                'source_info' => {
+                  'file_name' => '',
+                  'line_nr' => 27,
+                  'macro' => 'conditionals'
+                }
+              },
+              'sourcemark_type' => 'ignored_conditional_block'
+            }
+          ]
         }
       ],
       'type' => 'before_node_section'

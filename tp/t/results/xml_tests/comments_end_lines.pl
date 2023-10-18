@@ -18,9 +18,11 @@ $result_trees{'comments_end_lines'} = {
                   'type' => 'command_as_argument_inserted'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -61,32 +63,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comment itemize
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comment itemize
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => '  '
+                    'spaces_after_argument' => {
+                      'text' => '  '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -112,9 +114,11 @@ $result_trees{'comments_end_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -129,32 +133,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'enumerate'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -191,9 +195,11 @@ $result_trees{'comments_end_lines'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -212,16 +218,20 @@ $result_trees{'comments_end_lines'} = {
                               'text' => 'it'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -243,32 +253,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'table'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' table
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' table
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'table'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -278,8 +288,12 @@ $result_trees{'comments_end_lines'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -295,9 +309,11 @@ $result_trees{'comments_end_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -321,32 +337,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'quotation'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' quot no arg
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' quot no arg
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -369,9 +385,11 @@ $result_trees{'comments_end_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -395,32 +413,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'group'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'group'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -443,9 +461,11 @@ $result_trees{'comments_end_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -469,32 +489,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -526,9 +546,11 @@ $result_trees{'comments_end_lines'} = {
                           'text' => '0.4 0.6'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
@@ -538,8 +560,12 @@ $result_trees{'comments_end_lines'} = {
                     'misc_args' => [
                       '0.4',
                       '0.6'
-                    ],
-                    'spaces_before_argument' => ' '
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -625,32 +651,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'multitable'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'multitable'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -661,8 +687,12 @@ $result_trees{'comments_end_lines'} = {
           ],
           'extra' => {
             'columnfractions' => {},
-            'max_columns' => 2,
-            'spaces_before_argument' => ' '
+            'max_columns' => 2
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -691,9 +721,11 @@ $result_trees{'comments_end_lines'} = {
                   'text' => 'g'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -717,32 +749,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => '  '
+                    'spaces_after_argument' => {
+                      'text' => '  '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -752,16 +784,12 @@ $result_trees{'comments_end_lines'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'g',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'f'
+            'float_type' => 'f',
+            'normalized' => 'g'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -778,9 +806,11 @@ $result_trees{'comments_end_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -804,32 +834,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'flushright'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'flushright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -852,9 +882,11 @@ $result_trees{'comments_end_lines'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -878,32 +910,32 @@ $result_trees{'comments_end_lines'} = {
                       'text' => 'raggedright'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comm
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comm
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'raggedright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -927,8 +959,6 @@ $result_trees{'comments_end_lines'} = {
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[12]{'extra'}{'columnfractions'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'contents'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[14]{'extra'}{'node_content'}[0] = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[14]{'extra'}{'type'}{'content'}[0] = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0];
 
 $result_texis{'comments_end_lines'} = '@itemize
 @item itemize it
@@ -1000,15 +1030,8 @@ $result_floats{'comments_end_lines'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'g',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'f'
-            }
-          ],
-          'normalized' => 'f'
-        }
+        'float_type' => 'f',
+        'normalized' => 'g'
       },
       'structure' => {
         'float_number' => 1
@@ -1019,7 +1042,7 @@ $result_floats{'comments_end_lines'} = {
 
 
 
-$result_converted{'xml'}->{'comments_end_lines'} = '<itemize commandarg="bullet" endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend>
+$result_converted{'xml'}->{'comments_end_lines'} = '<itemize commandarg="bullet" automaticcommandarg="on" endspaces=" "><itemprepend><formattingcommand command="bullet" automatic="on"/></itemprepend>
 <listitem><prepend>&bullet;</prepend> <para>itemize it
 </para></listitem></itemize>  <!-- c comment itemize -->
 

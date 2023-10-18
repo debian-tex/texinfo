@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -41,11 +41,18 @@ conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i)
 }
 
 void
+conf_set_MAX_MACRO_CALL_NESTING (int i)
+{
+  conf.max_macro_call_nesting = i;
+}
+
+void
 reset_conf (void)
 {
   memset (&conf, 0, sizeof (conf));
   conf.show_menu = 1;
   conf.cpp_line_directives = 1;
   conf.ignore_space_after_braced_command_name = 1;
+  conf.max_macro_call_nesting = 100000;
   conf.doc_encoding_for_input_file_name = 1;
 }

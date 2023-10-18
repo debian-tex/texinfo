@@ -24,9 +24,11 @@ $result_trees{'double_index_entry'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -46,28 +48,27 @@ $result_trees{'double_index_entry'} = {
                   'text' => 'aaa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -103,28 +104,27 @@ $result_trees{'double_index_entry'} = {
                   'text' => 'aaa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 2,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              2
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -141,9 +141,11 @@ $result_trees{'double_index_entry'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -151,7 +153,7 @@ $result_trees{'double_index_entry'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -159,9 +161,15 @@ $result_trees{'double_index_entry'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'other node'
+                      'text' => 'chap other node'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chap-other-node'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -183,15 +191,6 @@ $result_trees{'double_index_entry'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'other-node'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -207,17 +206,23 @@ $result_trees{'double_index_entry'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -239,19 +244,12 @@ $result_trees{'double_index_entry'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -264,7 +262,7 @@ $result_trees{'double_index_entry'} = {
         {
           'contents' => [
             {
-              'text' => 'other node'
+              'text' => 'chap other node'
             }
           ],
           'type' => 'line_arg'
@@ -282,8 +280,16 @@ $result_trees{'double_index_entry'} = {
             }
           ],
           'extra' => {
-            'spaces_after_argument' => '
+            'node_content' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          },
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -303,28 +309,27 @@ $result_trees{'double_index_entry'} = {
                   'text' => 'aaa'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 3,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              3
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -346,9 +351,11 @@ $result_trees{'double_index_entry'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -357,8 +364,12 @@ $result_trees{'double_index_entry'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -369,27 +380,12 @@ $result_trees{'double_index_entry'} = {
       ],
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'other-node'
-          },
-          undef,
-          undef,
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'other-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap-other-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -400,25 +396,11 @@ $result_trees{'double_index_entry'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1];
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'double_index_entry'}{'contents'}[1];
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5];
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'double_index_entry'}{'contents'}[1];
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[3];
-$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1];
-$result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'double_index_entry'}{'contents'}[2];
-$result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'double_index_entry'}{'contents'}[2]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[3]{'contents'}[0];
+$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'double_index_entry'}{'contents'}[1];
+$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[5]{'extra'}{'element_node'} = $result_trees{'double_index_entry'}{'contents'}[1];
+$result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[1]{'contents'}[7]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'double_index_entry'}{'contents'}[2]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'double_index_entry'}{'contents'}[2]{'args'}[3]{'contents'}[0];
+$result_trees{'double_index_entry'}{'contents'}[2]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'double_index_entry'}{'contents'}[2];
 
 $result_texis{'double_index_entry'} = '@node Top
 
@@ -429,10 +411,10 @@ Text
 @cindex aaa
 
 @menu
-* other node::
+* chap other node::
 @end menu
 
-@node other node,,,Top
+@node chap other node,,,Top
 
 @cindex aaa
 
@@ -445,7 +427,7 @@ $result_texts{'double_index_entry'} = '
 Text
 
 
-* other node::
+* chap other node::
 
 
 
@@ -466,7 +448,7 @@ $result_nodes{'double_index_entry'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'normalized' => 'other-node'
+        'normalized' => 'chap-other-node'
       },
       'structure' => {
         'node_prev' => {},
@@ -490,7 +472,7 @@ $result_menus{'double_index_entry'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'normalized' => 'other-node'
+        'normalized' => 'chap-other-node'
       },
       'structure' => {
         'menu_up' => {},
@@ -522,29 +504,29 @@ $result_indices_sort_strings{'double_index_entry'} = {
 $result_converted{'info'}->{'double_index_entry'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: other node,  Up: (dir)
+File: ,  Node: Top,  Next: chap other node,  Up: (dir)
 
 Text
 
 * Menu:
 
-* other node::
+* chap other node::
 
 
-File: ,  Node: other node,  Prev: Top,  Up: Top
+File: ,  Node: chap other node,  Prev: Top,  Up: Top
 
  [index ]
 * Menu:
 
 * aaa:                                   Top.                   (line 3)
 * aaa <1>:                               Top.                   (line 5)
-* aaa <2>:                               other node.            (line 3)
+* aaa <2>:                               chap other node.       (line 3)
 
 
 
 Tag Table:
 Node: Top27
-Node: other node111
+Node: chap other node121
 
 End Tag Table
 
@@ -561,16 +543,16 @@ $result_converted{'plaintext'}->{'double_index_entry'} = 'Text
 
 * aaa:                                   Top.                   (line 0)
 * aaa <1>:                               Top.                   (line 2)
-* aaa <2>:                               other node.            (line 2)
+* aaa <2>:                               chap other node.       (line 2)
 
 ';
 
 
 $result_converted{'html_text'}->{'double_index_entry'} = '<a class="node-id" id="Top"></a><div class="nav-panel">
 <p>
- &nbsp; [<a href="#other-node" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap-other-node" title="Index" rel="index">Index</a>]</p>
 </div>
-<h1 class="node">Top</h1>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 <a class="index-entry-id" id="index-aaa"></a>
 
@@ -580,29 +562,29 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<a class="node-id" id=
 
 
 <hr>
-<a class="node-id" id="other-node"></a><div class="nav-panel">
+<a class="node-id" id="chap-other-node"></a><div class="nav-panel">
 <p>
- &nbsp; [<a href="#other-node" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap-other-node" title="Index" rel="index">Index</a>]</p>
 </div>
-<h4 class="node">other node</h4>
+<h4 class="node"><span>chap other node<a class="copiable-link" href="#chap-other-node"> &para;</a></span></h4>
 
 <a class="index-entry-id" id="index-aaa-2"></a>
 
 <div class="printindex cp-printindex">
 <table class="cp-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_cp_letter-A">A</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa">aaa</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-1">aaa</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-2">aaa</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#other-node">other node</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap-other-node_cp_letter-A">A</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa">aaa</a></td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-1">aaa</a></td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-2">aaa</a></td><td class="printindex-index-section"><a href="#chap-other-node">chap other node</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
 </div>
 ';
 
 
-$result_converted{'xml'}->{'double_index_entry'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">other node</nodenext></node>
+$result_converted{'xml'}->{'double_index_entry'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap other node</nodenext></node>
 
 <cindex index="cp" spaces=" "><indexterm index="cp" number="1">aaa</indexterm></cindex>
 
@@ -611,10 +593,10 @@ $result_converted{'xml'}->{'double_index_entry'} = '<node name="Top" spaces=" ">
 <cindex index="cp" spaces=" "><indexterm index="cp" number="2">aaa</indexterm></cindex>
 
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">other node</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>chap other node</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>
 
-<node name="other-node" spaces=" "><nodename>other node</nodename><nodenext></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+<node name="chap-other-node" spaces=" "><nodename>chap other node</nodename><nodenext></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
 
 <cindex index="cp" spaces=" "><indexterm index="cp" number="3">aaa</indexterm></cindex>
 

@@ -135,9 +135,6 @@ $result_trees{'accents'} = {
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
                         'normalized' => 'truc'
                       },
                       'source_info' => {
@@ -170,7 +167,6 @@ $result_trees{'accents'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'accents'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'accents'}{'contents'}[0]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'accents'} = 'Valid
 @~{@TeX{}}. @~{@@}.

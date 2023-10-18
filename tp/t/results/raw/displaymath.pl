@@ -12,9 +12,11 @@ $result_trees{'displaymath'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -27,7 +29,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => '\\nabla\\cdot'
+                  'text' => '{\\nabla\\cdot}'
                 }
               ],
               'source_info' => {
@@ -35,7 +37,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 2,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => ' F)dV=\\int_'
@@ -43,7 +45,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => '\\partial D'
+                  'text' => '{\\partial D}'
                 }
               ],
               'source_info' => {
@@ -51,7 +53,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 2,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => ' F\\cdot ndS
@@ -65,17 +67,23 @@ $result_trees{'displaymath'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -107,9 +115,11 @@ $result_trees{'displaymath'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -122,7 +132,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => '\\nabla\\cdot'
+                  'text' => '{\\nabla\\cdot}'
                 }
               ],
               'source_info' => {
@@ -130,7 +140,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 7,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => ' F)dV=\\int_'
@@ -138,7 +148,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => '\\partial D'
+                  'text' => '{\\partial D}'
                 }
               ],
               'source_info' => {
@@ -146,7 +156,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 7,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => ' F\\cdot ndS
@@ -160,17 +170,23 @@ $result_trees{'displaymath'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -292,5 +308,17 @@ $result_converted{'plaintext'}->{'displaymath'} = '\\int_D ({\\nabla\\cdot} F)dV
 \\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
    after
 ';
+
+
+$result_converted{'xml'}->{'displaymath'} = '<displaymath endspaces=" ">
+\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+</displaymath>
+
+<para>before
+</para><displaymath endspaces=" ">
+\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+</displaymath>
+<para>after
+</para>';
 
 1;

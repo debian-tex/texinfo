@@ -4,9 +4,9 @@ top section
 1 chapter
 *********
 
-“in double q”.  ‘in simple q’.
+"in double q".  'in simple q'.
 
-   é, — “def” – ‘in code’.  ‘in samp’ aé.  , ¡.  ...
+   é, -- “def” - ‘in code’.  ‘in samp’ aé.  , ¡.  ...
 
    ≥ ...  Å é Ȧ ł.  ©.  error→.  “ in quotes ”.  ↦ − ®
 

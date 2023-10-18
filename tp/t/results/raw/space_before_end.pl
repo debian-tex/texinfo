@@ -12,9 +12,11 @@ $result_trees{'space_before_end'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -41,17 +43,23 @@ $result_trees{'space_before_end'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => '  ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -74,9 +82,11 @@ $result_trees{'space_before_end'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -100,17 +110,23 @@ $result_trees{'space_before_end'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => '  ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -133,9 +149,11 @@ $result_trees{'space_before_end'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -143,7 +161,14 @@ $result_trees{'space_before_end'} = {
           'cmdname' => 'html',
           'contents' => [
             {
-              'type' => 'elided_block'
+              'contents' => [
+                {
+                  'text' => 'in html
+',
+                  'type' => 'raw'
+                }
+              ],
+              'type' => 'elided_rawpreformatted'
             },
             {
               'text' => '   '
@@ -156,17 +181,23 @@ $result_trees{'space_before_end'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -197,11 +228,13 @@ in verbatim
     @end  verbatim
 
 @html
+in html
    @end html
 ';
 
 
-$result_texts{'space_before_end'} = '
+$result_texts{'space_before_end'} = 'in tex
+    
 in verbatim
     
 ';
@@ -221,5 +254,25 @@ $result_errors{'space_before_end'} = [
 
 $result_floats{'space_before_end'} = {};
 
+
+
+$result_converted{'plaintext'}->{'space_before_end'} = 'in verbatim
+    
+
+';
+
+
+$result_converted{'xml'}->{'space_before_end'} = '<tex endspaces="  ">
+in tex
+    </tex>
+
+<verbatim xml:space="preserve" endspaces="  ">
+in verbatim
+    </verbatim>
+
+<html endspaces=" ">
+in html
+   </html>
+';
 
 1;

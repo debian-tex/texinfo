@@ -17,9 +17,11 @@ $result_trees{'spaces_info_lost'} = {
                   'text' => 'text on display line'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' 
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' 
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -43,17 +45,23 @@ $result_trees{'spaces_info_lost'} = {
                       'text' => 'display'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => '  ',
                 'text_arg' => 'display'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -62,8 +70,10 @@ $result_trees{'spaces_info_lost'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '  '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -79,9 +89,11 @@ $result_trees{'spaces_info_lost'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '  
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '  
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -101,17 +113,23 @@ $result_trees{'spaces_info_lost'} = {
                       'text' => 'verbatim'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' 
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => '  ',
                 'text_arg' => 'verbatim'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => '  '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -148,7 +166,17 @@ $result_texts{'spaces_info_lost'} = 'in bad display
 in verbatim @g 
 ';
 
-$result_errors{'spaces_info_lost'} = [];
+$result_errors{'spaces_info_lost'} = [
+  {
+    'error_line' => 'warning: unexpected argument on @display line: text on display line
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'unexpected argument on @display line: text on display line',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'spaces_info_lost'} = {};

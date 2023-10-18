@@ -66,9 +66,11 @@ $result_trees{'close_paragraph_command'} = {
                   'text' => '4'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -77,8 +79,12 @@ $result_trees{'close_paragraph_command'} = {
           'extra' => {
             'misc_args' => [
               '4'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

@@ -1,6 +1,6 @@
 INSTALL file for texinfo.
 
-     Copyright 1992-2021 Free Software Foundation, Inc.
+     Copyright 1992-2023 Free Software Foundation, Inc.
 
      Copying and distribution of this file, with or without modification,
      are permitted in any medium without royalty provided the copyright
@@ -12,16 +12,45 @@ Automake-based distribution, please read the file `INSTALL.generic'.
 Installation notes specific to Texinfo:
 
 * texinfo.tex and the other *.tex files are not installed by
-  `make install', because there is no reliable way to know where to
-  install them.  Instead, you have to run an additional make command
+  `make install', because TeX installations vary so widely.
+  Installing them in the wrong place would give a false sense of
+  security.   Instead, you have to run an additional make command
   after the normal make install:
-    make TEXMF=/your/texmf install-tex
-  texinfo.tex is installed in ${TEXMF}/tex/texinfo/texinfo.tex, etc.
-  More information is available in doc/README.
 
-* On the other hand, if you're maintaining a TeX distribution and
-  keeping the files up to date yourself, you may not want to see the
-  installation warnings.
+    make TEXMF=/your/texmf install-tex
+
+  where TEXMF is a root of a TeX hierachy that follows the TeX
+  Directory Structure standard (http://tug.org/tds/).
+  texinfo.tex is installed in ${TEXMF}/tex/texinfo, epsf.tex
+  in ${TEXMF}/tex/generic/epsf/, etc.
+
+  (Alternatively, you can simply cp *.tex to the appropriate places.)
+
+  For information on how or where to install files, see your TeX
+  documentation in general (i.e. web2c and kpathsea manuals), and the
+  texmf.cnf file.
+
+  It is possible to put these .tex files in a `local' place instead of
+  overwriting existing ones.  You might find where this is by running
+  `kpsewhich -var-value TEXMFLOCAL'.
+
+  If you add files to your TeX installations, not just replace existing
+  ones, you very likely will also have to update your ls-R file; do this
+  by running the mktexlsr command.
+
+  An alternative is to copy texinfo.tex to the same directory as your
+  Texinfo manual, but this is not especially recommended.
+
+  You can get the latest texinfo.tex from
+  https://ftp.gnu.org/gnu/texinfo/texinfo.tex (and all GNU mirrors)
+  ftp://tug.org/tex/texinfo.tex (and all CTAN mirrors)
+  or from the gnulib project on Savannah (among other places).
+  If you have problems with the texinfo.tex in this distribution, please
+  check for a newer version.
+
+* If you're maintaining a TeX distribution and keeping the files up to
+  date yourself, you may not want to see the installation warnings.
+
   For that, run configure --disable-install-warnings, or set
   enable_install_warnings=no in the environment.
 

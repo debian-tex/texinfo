@@ -226,7 +226,7 @@ Para
 ',
 {'EXPANDED_FORMATS' => ['tex', 'xml']}
 ],
-['node_no_section',
+['top_node_no_section',
 '@node Top
 '],
 ['macro_and_args',
@@ -335,13 +335,18 @@ b}
 @image{a, 
  b}
 '],
-['node_and_bye',
+['top_node_and_bye',
 '@node Top
 
 @bye
 ', {'test_split' => 'section'}],
 ['lone_bye',
 '@bye
+'],
+['inlineifset_empty_second_arg',
+'Toto @inlineifset{flag,}. After.
+
+Again with space @inlineifset{flag, }. After.
 '],
 );
 

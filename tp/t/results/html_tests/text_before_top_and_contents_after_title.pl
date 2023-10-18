@@ -39,28 +39,23 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -76,9 +71,11 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -105,8 +102,11 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -122,9 +122,11 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
               'text' => 'the chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -141,7 +143,7 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
@@ -157,8 +159,10 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -169,8 +173,6 @@ $result_trees{'text_before_top_and_contents_after_title'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'text_before_top_and_contents_after_title'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'text_before_top_and_contents_after_title'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'text_before_top_and_contents_after_title'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'text_before_top_and_contents_after_title'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'text_before_top_and_contents_after_title'} = '
 Some text before top
@@ -218,7 +220,6 @@ $result_sectioning{'text_before_top_and_contents_after_title'} = {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_level' => 1,
                 'section_number' => 1,
@@ -284,6 +285,8 @@ $result_converted{'html'}->{'text_before_top_and_contents_after_title'} = '<!DOC
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -307,7 +310,7 @@ ul.toc-numbered-mark {list-style: none}
 <p>Some text before top
 </p>
 <div class="top-level-extent" id="Top">
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <p>In top.
 </p>
@@ -315,7 +318,7 @@ ul.toc-numbered-mark {list-style: none}
 <li><a href="#the-chap" accesskey="1">the chap</a></li>
 </ul>
 <div class="chapter-level-extent" id="the-chap">
-<h2 class="chapter">1 the chap</h2>
+<h2 class="chapter"><span>1 the chap<a class="copiable-link" href="#the-chap"> &para;</a></span></h2>
 
 
 </div>

@@ -23,20 +23,26 @@ $result_trees{'split_no_copying'} = {
             {
               'contents' => [
                 {
-                  'text' => 'split-nocopying.info'
+                  'text' => 'split_no_copying.info'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'text_arg' => 'split-nocopying.info'
+            'text_arg' => 'split_no_copying.info'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -60,28 +66,23 @@ $result_trees{'split_no_copying'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -97,9 +98,11 @@ $result_trees{'split_no_copying'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -128,9 +131,11 @@ $result_trees{'split_no_copying'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -138,7 +143,7 @@ $result_trees{'split_no_copying'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -149,6 +154,12 @@ $result_trees{'split_no_copying'} = {
                       'text' => 'Ch1'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Ch1'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -170,15 +181,6 @@ $result_trees{'split_no_copying'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Ch1'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -194,17 +196,23 @@ $result_trees{'split_no_copying'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -225,8 +233,11 @@ $result_trees{'split_no_copying'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -242,28 +253,23 @@ $result_trees{'split_no_copying'} = {
               'text' => 'Ch1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Ch1'
-          }
-        ],
-        'normalized' => 'Ch1',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Ch1'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -279,9 +285,11 @@ $result_trees{'split_no_copying'} = {
               'text' => 'Ch1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -308,8 +316,11 @@ $result_trees{'split_no_copying'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -322,23 +333,28 @@ $result_trees{'split_no_copying'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
+    },
+    {
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'text_after_end'
+        }
+      ],
+      'type' => 'postamble_after_end'
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'split_no_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'split_no_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[3];
-$result_trees{'split_no_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'split_no_copying'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'split_no_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'split_no_copying'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'split_no_copying'} = '\\input texinfo
-@setfilename split-nocopying.info
+@setfilename split_no_copying.info
 
 @node Top
 @top Top
@@ -355,6 +371,7 @@ This is the top node.
 First chapter.
 
 @bye
+
 ';
 
 
@@ -492,12 +509,12 @@ $result_floats{'split_no_copying'} = {};
 
 
 
-$result_converted{'info'}->{'split_no_copying'} = 'This is split-nocopying.info, produced from .
+$result_converted{'info'}->{'split_no_copying'} = 'This is split_no_copying.info, produced from .
 
 \\input texinfo
 
 
-File: split-nocopying.info,  Node: Top,  Next: Ch1,  Up: (dir)
+File: split_no_copying.info,  Node: Top,  Next: Ch1,  Up: (dir)
 
 Top
 ***
@@ -509,7 +526,7 @@ This is the top node.
 * Ch1::
 
 
-File: split-nocopying.info,  Node: Ch1,  Prev: Top,  Up: Top
+File: split_no_copying.info,  Node: Ch1,  Prev: Top,  Up: Top
 
 1 Ch1
 *****
@@ -519,8 +536,8 @@ First chapter.
 
 
 Tag Table:
-Node: Top63
-Node: Ch1179
+Node: Top64
+Node: Ch1181
 
 End Tag Table
 

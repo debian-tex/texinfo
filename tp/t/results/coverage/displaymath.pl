@@ -21,9 +21,11 @@ $result_trees{'displaymath'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -36,7 +38,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => 'x^i'
+                  'text' => '{x^i}'
                 }
               ],
               'source_info' => {
@@ -44,7 +46,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => '\\over'
@@ -52,7 +54,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => '\\tan y'
+                  'text' => '{\\tan y}'
                 }
               ],
               'source_info' => {
@@ -60,7 +62,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => '
@@ -74,17 +76,23 @@ $result_trees{'displaymath'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -122,9 +130,11 @@ $result_trees{'displaymath'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -203,17 +213,23 @@ $result_trees{'displaymath'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -245,9 +261,11 @@ $result_trees{'displaymath'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -260,6 +278,9 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
+                  'text' => '{'
+                },
+                {
                   'args' => [
                     {
                       'contents' => [
@@ -269,7 +290,7 @@ $result_trees{'displaymath'} = {
                         {
                           'contents' => [
                             {
-                              'text' => ' code '
+                              'text' => '{ code }'
                             }
                           ],
                           'source_info' => {
@@ -277,7 +298,7 @@ $result_trees{'displaymath'} = {
                             'line_nr' => 13,
                             'macro' => ''
                           },
-                          'type' => 'bracketed'
+                          'type' => 'balanced_braces'
                         }
                       ],
                       'type' => 'brace_command_arg'
@@ -289,6 +310,9 @@ $result_trees{'displaymath'} = {
                     'line_nr' => 13,
                     'macro' => ''
                   }
+                },
+                {
+                  'text' => '}'
                 }
               ],
               'source_info' => {
@@ -296,7 +320,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 13,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => ' '
@@ -310,7 +334,7 @@ $result_trees{'displaymath'} = {
             {
               'contents' => [
                 {
-                  'text' => 'i'
+                  'text' => '{i}'
                 }
               ],
               'source_info' => {
@@ -318,17 +342,17 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 13,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'contents' => [
                 {
-                  'text' => '\\underline'
+                  'text' => '{\\underline'
                 },
                 {
                   'contents' => [
                     {
-                      'text' => 'f'
+                      'text' => '{f}'
                     }
                   ],
                   'source_info' => {
@@ -336,7 +360,10 @@ $result_trees{'displaymath'} = {
                     'line_nr' => 13,
                     'macro' => ''
                   },
-                  'type' => 'bracketed'
+                  'type' => 'balanced_braces'
+                },
+                {
+                  'text' => '}'
                 }
               ],
               'source_info' => {
@@ -344,7 +371,7 @@ $result_trees{'displaymath'} = {
                 'line_nr' => 13,
                 'macro' => ''
               },
-              'type' => 'bracketed'
+              'type' => 'balanced_braces'
             },
             {
               'text' => '
@@ -358,17 +385,23 @@ $result_trees{'displaymath'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -400,9 +433,11 @@ $result_trees{'displaymath'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -414,16 +449,10 @@ $result_trees{'displaymath'} = {
                 {
                   'text' => ' comment in displaymath
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment in displaymath
-'
-                ]
-              }
+              'cmdname' => 'c'
             },
             {
               'text' => 'a/2
@@ -437,17 +466,23 @@ $result_trees{'displaymath'} = {
                       'text' => 'displaymath'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'displaymath'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

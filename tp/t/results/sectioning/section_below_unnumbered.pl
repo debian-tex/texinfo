@@ -26,7 +26,7 @@ $result_trees{'section_below_unnumbered'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'contents',
@@ -55,28 +55,23 @@ $result_trees{'section_below_unnumbered'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -92,9 +87,11 @@ $result_trees{'section_below_unnumbered'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -123,9 +120,11 @@ $result_trees{'section_below_unnumbered'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -133,7 +132,7 @@ $result_trees{'section_below_unnumbered'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -144,6 +143,12 @@ $result_trees{'section_below_unnumbered'} = {
                       'text' => 'Unn'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Unn'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -165,15 +170,6 @@ $result_trees{'section_below_unnumbered'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Unn'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -189,17 +185,23 @@ $result_trees{'section_below_unnumbered'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -225,8 +227,11 @@ $result_trees{'section_below_unnumbered'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -242,28 +247,23 @@ $result_trees{'section_below_unnumbered'} = {
               'text' => 'Unn'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Unn'
-          }
-        ],
-        'normalized' => 'Unn',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Unn'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -279,9 +279,11 @@ $result_trees{'section_below_unnumbered'} = {
               'text' => 'Unn'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -296,9 +298,11 @@ $result_trees{'section_below_unnumbered'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -306,7 +310,7 @@ $result_trees{'section_below_unnumbered'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -317,6 +321,12 @@ $result_trees{'section_below_unnumbered'} = {
                       'text' => 'Sec'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Sec'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -338,15 +348,6 @@ $result_trees{'section_below_unnumbered'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Sec'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 18,
@@ -362,17 +363,23 @@ $result_trees{'section_below_unnumbered'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -393,8 +400,11 @@ $result_trees{'section_below_unnumbered'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -410,28 +420,23 @@ $result_trees{'section_below_unnumbered'} = {
               'text' => 'Sec'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Sec'
-          }
-        ],
-        'normalized' => 'Sec',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Sec'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -447,9 +452,11 @@ $result_trees{'section_below_unnumbered'} = {
               'text' => 'Sec'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -476,8 +483,11 @@ $result_trees{'section_below_unnumbered'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -490,7 +500,7 @@ $result_trees{'section_below_unnumbered'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -498,16 +508,8 @@ $result_trees{'section_below_unnumbered'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_below_unnumbered'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'section_below_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[3];
-$result_trees{'section_below_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'section_below_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'section_below_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'section_below_unnumbered'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'section_below_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'section_below_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'section_below_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'section_below_unnumbered'} = '
 @contents
@@ -762,6 +764,8 @@ $result_converted{'html'}->{'section_below_unnumbered'} = '<!DOCTYPE html>
 <link href="#SEC_Contents" rel="contents" title="Table of Contents">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -776,7 +780,7 @@ ul.toc-numbered-mark {list-style: none}
 <p>
 Next: <a href="#Unn" accesskey="n" rel="next">Unn</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<h1 class="top" id="Top-1">Top</h1>
+<h1 class="top" id="Top-1"><span>Top<a class="copiable-link" href="#Top-1"> &para;</a></span></h1>
 
 <p>Top node.
 </p>
@@ -801,7 +805,7 @@ Next: <a href="#Unn" accesskey="n" rel="next">Unn</a> &nbsp; [<a href="#SEC_Cont
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<h2 class="unnumbered" id="Unn-1">Unn</h2>
+<h2 class="unnumbered" id="Unn-1"><span>Unn<a class="copiable-link" href="#Unn-1"> &para;</a></span></h2>
 
 
 <ul class="mini-toc">
@@ -813,7 +817,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <p>
 Up: <a href="#Unn" accesskey="u" rel="up">Unn</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<h3 class="section" id="Sec-1">Sec</h3>
+<h3 class="section" id="Sec-1"><span>Sec<a class="copiable-link" href="#Sec-1"> &para;</a></span></h3>
 
 <p>Should be unnumbered.
 </p>

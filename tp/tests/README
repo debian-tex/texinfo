@@ -1,6 +1,6 @@
-texinfo/tp/tests/README
+tp/tests/README
 
-  Copyright 2010-2022 Free Software Foundation, Inc.
+  Copyright 2010-2023 Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
@@ -36,8 +36,8 @@ Checking test results
 ---------------------
 The test results are in the out_parser directories; the reference
 results are in res_parser directories.  There can be these pairs.
-- out_parser/ and res_parser/ for html output in texi2html style;
-- out_parser_html/ and res_parser_html/ for html output in texi2any style;
+- out_parser/ and res_parser/ for the default setting;
+- out_parser_html/ and res_parser_html/ for html output;
 - out_parser_info/ and res_parser_info/ for info results;
 and diffs are put in the diffs/ subdir.
 
@@ -53,7 +53,7 @@ Also look in the layout/diffs directory.
 If the test results are as expected, copy the output files onto the 
 reference files.  Otherwise, if they need more investigation, see "Tests 
 specification" below, to find out what input file, etc. was used for the 
-test.  Sometimes you need to use "makeinfo -F" to force an output file 
+test.  Sometimes you need to use "texi2any -F" to force an output file 
 to be created.
 
 When running tests via parser_tests.sh or run_parser_all.sh, then
@@ -85,6 +85,7 @@ below for more.
 Regenerating test results
 =========================
 To update the test results, first the tests must be run as above.
+A quick way to update all the tests is to run "make -k check copy-tests".
 
 Giving -copy as the first argument to ../run_parser_all.sh or
 parser_tests.sh will cause the reference results to be copied
@@ -165,14 +166,13 @@ The very first comment line of the file can be special, with
 # formats :_html
 which says which formats to generate.  If no format is specified, like
 # formats :
-texi2html style is assumed, -c TEXI2HTML is passed, which sets html
-to be output and some formatting options.  Multiple formats can be
+no format is set on the command line.  Multiple formats can be
 specified, like
 # formats : :_info
-in which texi2html html style and info are both generated.  If no format is
+in which no format and info are both generated.  If no format is
 specified on the first line, the default formats specification which is
 # formats :
-is used, which means a texi2html style html format generation.
+is used.
 
 Otherwise, each non-empty non-comment line describes a test.  The first
 word on the line is the test name which corresponds also with the

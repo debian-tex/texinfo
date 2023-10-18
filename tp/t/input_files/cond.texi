@@ -1,7 +1,6 @@
 \input texinfo
-@setfilename cond.info
 
-@node Top
+@c test conditions
 
 @html
 This is html text.
@@ -14,6 +13,11 @@ This is ifhtml text.
 @ifnothtml
 This is ifnothtml text.
 @end ifnothtml
+
+@node Top
+@top conditionals
+
+@node chap
 
 
 @ifinfo

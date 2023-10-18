@@ -1,0 +1,16 @@
+1 first node chapter, with ftable and vtable
+********************************************
+
+Some text
+
+var1
+var2
+     var1 et var2
+
+   an ftable
+fun1
+fun2
+     fun1 et fun2
+more fun
+     and even more
+

@@ -23,9 +23,11 @@ $result_trees{'asis_as_itemize_argument'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -66,17 +68,23 @@ $result_trees{'asis_as_itemize_argument'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -86,8 +94,12 @@ $result_trees{'asis_as_itemize_argument'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -126,6 +138,12 @@ $result_converted{'plaintext'}->{'asis_as_itemize_argument'} = '     as is
 $result_converted{'html_text'}->{'asis_as_itemize_argument'} = '<ul class="itemize">
 <li>as is
 </li></ul>
+';
+
+
+$result_converted{'xml'}->{'asis_as_itemize_argument'} = '<itemize commandarg="asis" spaces=" " endspaces=" ">
+<listitem><prepend></prepend> <para>as is
+</para></listitem></itemize>
 ';
 
 1;

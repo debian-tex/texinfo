@@ -18,28 +18,23 @@ $result_trees{'no_top_node'} = {
               'text' => 'node Top not Top node'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node-Top-not-Top-node'
-          }
-        ],
-        'normalized' => 'node-Top-not-Top-node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node-Top-not-Top-node'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -50,8 +45,6 @@ $result_trees{'no_top_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_top_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_top_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'no_top_node'} = '@node node Top not Top node
 ';

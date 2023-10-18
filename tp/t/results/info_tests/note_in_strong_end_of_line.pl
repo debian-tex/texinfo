@@ -18,9 +18,11 @@ $result_trees{'note_in_strong_end_of_line'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -103,19 +105,12 @@ $result_trees{'note_in_strong_end_of_line'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -126,8 +121,6 @@ $result_trees{'note_in_strong_end_of_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'note_in_strong_end_of_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'note_in_strong_end_of_line'} = '@node Top
 

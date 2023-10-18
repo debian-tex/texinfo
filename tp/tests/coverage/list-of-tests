@@ -1,0 +1,32 @@
+
+formatting_macro_expand formatting.texi --macro-expand=@OUT_DIR@formatting.texi -c TEXINFO_OUTPUT_FORMAT=structure
+# the output should be the same as just above, but is less interesting
+# to test as above also tests the not otherwise tested 'structure' format
+# and also tests --macro-expand.
+#formatting_macro_expand formatting.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
+formatting_info formatting.texi -D 'needcollationcompat Need collation compatibility' --info
+formatting_plaintext formatting.texi -D 'needcollationcompat Need collation compatibility' --plaintext
+formatting_docbook formatting.texi --docbook
+formatting_xml formatting.texi --xml
+formatting_html_no_split formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split
+formatting_latex formatting.texi --latex
+formatting_epub formatting.texi -D 'needcollationcompat Need collation compatibility' --epub3 -c 'EPUB_CREATE_CONTAINER_FILE 0'
+
+# used to remove commands, for instance to count words
+formatting_textcontent formatting.texi -c TEXINFO_OUTPUT_FORMAT=textcontent
+# used to format text fragments in converters, minimal formatting
+formatting_rawtext formatting.texi -c TEXINFO_OUTPUT_FORMAT=rawtext
+
+# formats present in the documentation not tested: debugtree and texinfosxml
+#formatting_sxml formatting.texi -c TEXINFO_OUTPUT_FORMAT=texinfosxml
+
+# formats not directly available as command line option.
+# output of --init html32.pm is not true HTML3.2 but has no
+# CSS, so can be used to have an idea of output in browser that
+# do not handle CSS, for example text-only browsers.
+formatting_html32 formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c FORMAT_MENU=menu -c SHOW_TITLE=1 -c DO_ABOUT=1 --init html32.pm
+formatting_xhtml formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c SHOW_TITLE=1 -c DO_ABOUT=1 -c DOCTYPE='<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">' -c 'USE_XML_SYNTAX 1' -c 'NO_CUSTOM_HTML_ATTRIBUTE 1' -c 'HTML_ROOT_ELEMENT_ATTRIBUTES xmlns="http://www.w3.org/1999/xhtml"'
+formatting_chm formatting.texi -D 'needcollationcompat Need collation compatibility' -c USE_NODES=0 -c SHOW_TITLE=1 -c CONTENTS_OUTPUT_LOCATION=separate_element -c FORMAT_MENU=nomenu --init chm.pm
+
+# Not sure about the difference with formatting
+formatting_regions formatting_regions.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c SHOW_TITLE=1

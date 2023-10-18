@@ -13,24 +13,37 @@ $result_trees{'simple'} = {
           'args' => [
             {
               'text' => 'a-_5b',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'the value @b{b}',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' a-_5b the value @b{b} @c comment
-',
-            'misc_args' => [
-              'a-_5b',
-              'the value @b{b}'
-            ]
+'
           }
         },
         {
+          'source_marks' => [
+            {
+              'counter' => 1,
+              'element' => {
+                'args' => [
+                  {
+                    'text' => 'a-_5b'
+                  }
+                ],
+                'cmdname' => 'value'
+              },
+              'line' => 'the value @b{b}',
+              'position' => 1,
+              'sourcemark_type' => 'value_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -56,7 +69,14 @@ $result_trees{'simple'} = {
                 'file_name' => '',
                 'line_nr' => 3,
                 'macro' => ''
-              }
+              },
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ]
             },
             {
               'text' => ' After value.

@@ -13,21 +13,17 @@ $result_trees{'value_in_macro_formal_arg'} = {
           'args' => [
             {
               'text' => 'argument',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'arg',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' argument arg 
-',
-            'misc_args' => [
-              'argument',
-              'arg'
-            ]
+'
           }
         },
         {
@@ -65,17 +61,23 @@ $result_trees{'value_in_macro_formal_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -85,9 +87,11 @@ $result_trees{'value_in_macro_formal_arg'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' testvalue { arg , the@value{argument} }
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' testvalue { arg , the@value{argument} }
+'
           },
           'source_info' => {
             'file_name' => '',

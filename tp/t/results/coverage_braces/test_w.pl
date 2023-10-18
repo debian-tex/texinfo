@@ -680,26 +680,26 @@ $result_floats{'test_w'} = {};
 
 
 
-$result_converted{'plaintext'}->{'test_w'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb . ccc dddd.
+$result_converted{'plaintext'}->{'test_w'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .  ccc dddd.
 
    a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
 
    
 
-    a rr      ggg.
+    a rr ggg.
 
    AAbbb.
 
    FFdnnn.
 
-   aa  f  fggg.
+   aa f fggg.
 
-   aa2  f  f ggg2.
+   aa2 f f ggg2.
 
-   aa3   f  f ggg3.
+   aa3  f f ggg3.
 
-   aa4   f  f  ggg4.
+   aa4  f f  ggg4.
 
    aa5  ggg5.
 
@@ -722,21 +722,21 @@ $result_converted{'html_text'}->{'test_w'} = '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 <p><!-- /@w -->
 </p>
-<p>&nbsp;a&nbsp;rr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ggg.<!-- /@w -->
+<p>&nbsp;a&nbsp;rr&nbsp;&nbsp;ggg.<!-- /@w -->
 </p>
 <p>AA<!-- /@w -->bbb.
 </p>
 <p>FFd<!-- /@w -->nnn.
 </p>
-<p>aa&nbsp;&nbsp;f&nbsp;&nbsp;f<!-- /@w -->ggg.
+<p>aa&nbsp;f&nbsp;f<!-- /@w -->ggg.
 </p>
-<p>aa2&nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;<!-- /@w -->ggg2.
-</p>
-
-<p>aa3 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;<!-- /@w -->ggg3.
+<p>aa2&nbsp;f&nbsp;f&nbsp;<!-- /@w -->ggg2.
 </p>
 
-<p>aa4 &nbsp;&nbsp;f&nbsp;&nbsp;f&nbsp;<!-- /@w --> ggg4.
+<p>aa3 &nbsp;f&nbsp;f&nbsp;<!-- /@w -->ggg3.
+</p>
+
+<p>aa4 &nbsp;f&nbsp;f&nbsp;<!-- /@w --> ggg4.
 </p>
 <p>aa5 <!-- /@w --> ggg5.
 </p>

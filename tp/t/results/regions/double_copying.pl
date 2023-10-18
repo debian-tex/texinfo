@@ -12,9 +12,11 @@ $result_trees{'double_copying'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -43,9 +45,11 @@ $result_trees{'double_copying'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -69,17 +73,23 @@ $result_trees{'double_copying'} = {
                           'text' => 'copying'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'copying'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -102,17 +112,23 @@ $result_trees{'double_copying'} = {
                       'text' => 'copying'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'copying'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -149,13 +165,13 @@ $result_texts{'double_copying'} = '';
 
 $result_errors{'double_copying'} = [
   {
-    'error_line' => 'region copying inside region copying is not allowed
+    'error_line' => 'warning: @copying should not appear in @copying block
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => 'region copying inside region copying is not allowed',
-    'type' => 'error'
+    'text' => '@copying should not appear in @copying block',
+    'type' => 'warning'
   },
   {
     'error_line' => 'warning: multiple @copying

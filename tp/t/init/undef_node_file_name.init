@@ -10,7 +10,7 @@ sub _undef_node_file_name($$$)
       and $element->{'extra'}->{'normalized'}) {
     my $normalized_node_name
        = $element->{'extra'}->{'normalized'};
-    if ($normalized_node_name eq 'Other') {
+    if ($normalized_node_name eq 'chap-Other') {
       return undef;
     }
   }

@@ -12,9 +12,11 @@ $result_trees{'raw_html'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -38,17 +40,23 @@ $result_trees{'raw_html'} = {
                       'text' => 'html'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'html'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -76,7 +84,8 @@ $result_texis{'raw_html'} = '@html
 ';
 
 
-$result_texts{'raw_html'} = '';
+$result_texts{'raw_html'} = '<i>
+';
 
 $result_errors{'raw_html'} = [];
 

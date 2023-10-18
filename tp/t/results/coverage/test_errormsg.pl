@@ -84,9 +84,13 @@ $result_trees{'test_errormsg'} = {
                       'text' => 'with surrounding spaces'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '   ',
-                    'spaces_before_argument' => '  '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '   '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => '  '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }

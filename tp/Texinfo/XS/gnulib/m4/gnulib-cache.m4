@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2022 Free Software Foundation, Inc.
+# Copyright (C) 2002-2023 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,8 +39,12 @@
 #  --macro-prefix=gl \
 #  getline \
 #  iconv \
+#  libunistring \
+#  obstack \
 #  strchrnul \
 #  strndup \
+#  uniconv/u8-strconv-from-enc \
+#  unistr/u8-mbsnlen \
 #  vasprintf \
 #  wcwidth
 
@@ -49,8 +53,12 @@ gl_LOCAL_DIR([])
 gl_MODULES([
   getline
   iconv
+  libunistring
+  obstack
   strchrnul
   strndup
+  uniconv/u8-strconv-from-enc
+  unistr/u8-mbsnlen
   vasprintf
   wcwidth
 ])

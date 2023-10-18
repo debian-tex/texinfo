@@ -44,17 +44,23 @@ $result_trees{'bad_formal_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -64,9 +70,11 @@ $result_trees{'bad_formal_arg'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' bad  { , not_empty}
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' bad  { , not_empty}
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -109,17 +117,23 @@ $result_trees{'bad_formal_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -129,9 +143,11 @@ $result_trees{'bad_formal_arg'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' badspace{first, in 2arg}
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' badspace{first, in 2arg}
+'
           },
           'source_info' => {
             'file_name' => '',
@@ -163,44 +179,19 @@ $result_trees{'bad_formal_arg'} = {
               'type' => 'raw'
             },
             {
-              'cmdname' => 'macro',
-              'contents' => [
-                {
-                  'text' => 'in macro foo
+              'text' => '@macro foo {? aaa}
 ',
-                  'type' => 'raw'
-                },
-                {
-                  'args' => [
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'macro'
-                        }
-                      ],
-                      'extra' => {
-                        'spaces_after_argument' => '
-'
-                      },
-                      'type' => 'line_arg'
-                    }
-                  ],
-                  'cmdname' => 'end',
-                  'extra' => {
-                    'spaces_before_argument' => ' ',
-                    'text_arg' => 'macro'
-                  },
-                  'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 14,
-                    'macro' => ''
-                  }
-                }
-              ],
-              'extra' => {
-                'arg_line' => ' foo {? aaa}
-'
-              }
+              'type' => 'raw'
+            },
+            {
+              'text' => 'in macro foo
+',
+              'type' => 'raw'
+            },
+            {
+              'text' => '@end macro
+',
+              'type' => 'raw'
             },
             {
               'args' => [
@@ -210,17 +201,23 @@ $result_trees{'bad_formal_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -230,9 +227,11 @@ $result_trees{'bad_formal_arg'} = {
             }
           ],
           'extra' => {
-            'arg_line' => ' abar {:::}
-',
             'invalid_syntax' => 1
+          },
+          'info' => {
+            'arg_line' => ' abar {:::}
+'
           },
           'source_info' => {
             'file_name' => '',

@@ -29,7 +29,7 @@ $result_trees{'space_in_setfilename'} = {
                     }
                   ],
                   'cmdname' => 'verb',
-                  'extra' => {
+                  'info' => {
                     'delimiter' => ':'
                   },
                   'source_info' => {
@@ -42,17 +42,23 @@ $result_trees{'space_in_setfilename'} = {
                   'cmdname' => ' '
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'missing_argument' => 1,
-            'spaces_before_argument' => ' '
+            'missing_argument' => 1
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -76,28 +82,23 @@ $result_trees{'space_in_setfilename'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -108,8 +109,6 @@ $result_trees{'space_in_setfilename'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'space_in_setfilename'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'space_in_setfilename'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'space_in_setfilename'} = '@setfilename @ @verb{: name :}@ 
 

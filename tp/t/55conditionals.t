@@ -35,6 +35,27 @@ Y5
 Y6
 @end ifset
 '],
+['ignore_spaces_and_comments',
+'@ignore
+No space no comment
+@end ignore
+
+@ignore  
+Spaces no comment
+@end ignore
+
+@ignore@c no space comment
+Comment
+@end ignore
+
+@ignore  @comment space comment
+Space Comment
+@end ignore
+
+@ignore @c
+Space Comment no argument
+@end ignore
+'],
 ['nested_ignore',
 '@ignore
 @ignore
@@ -51,6 +72,41 @@ Y6
 @ifclear
 @end ignore
 '],
+['nested_ignore_with_comments',
+'@ignore
+@ignore
+No space no comment
+@end ignore
+
+@ignore  
+Spaces no comment
+@end ignore
+
+@ignore@c no space comment
+Comment
+@end ignore
+
+@ignore @c
+Comment no argument
+@end ignore
+
+@ignore  @c space comment
+Space Comment
+@end ignore
+
+@ignore something @comment comment after text
+Text comment
+@end ignore
+
+@ignore some @code{variable} @comment comment after command
+Command comment
+@end ignore
+
+@end ignore
+'],
+['nested_ignore_comment_no_eol',
+'@ignore
+@ignore @c comment'],
 ['empty_set_in_ifset',
 '@set a
 
@@ -127,6 +183,59 @@ This is iftex text.
 This is ifnottex text.
 @end ifnottex
 ', { 'EXPANDED_FORMATS' => ['info', 'html'] }],
+# same conditionals as in many_conditionals, but from file
+# with preambule and with some output
+['cond_ifhtml_ifinfo',
+  # same conditions as in many_conditionals
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['html'],
+    'EXPANDED_FORMATS' => ['html', 'info'],
+  },
+],
+['cond',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['html'],
+  },
+],
+['cond_xml',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['xml'],
+    'EXPANDED_FORMATS' => ['xml'],
+  },
+],
+['cond_no-ifhtml_no-ifinfo_no-iftex',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['html'],
+    'EXPANDED_FORMATS' => [],
+  },
+],
+['cond_ifhtml_ifinfo_iftex',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['html'],
+    'EXPANDED_FORMATS' => ['html', 'info', 'tex'],
+  },
+  {'EXPANDED_FORMATS' => ['html', 'info', 'tex'], },
+],
+['cond_info',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['info'],
+    'EXPANDED_FORMATS' => ['info', 'plaintext'],
+  },
+],
+['cond_info_no-ifhtml_no-ifinfo_no-iftex',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['info'],
+    'EXPANDED_FORMATS' => [],
+  },
+  {'EXPANDED_FORMATS' => []}
+],
+['cond_info_ifhtml_ifinfo_iftex',
+  undef, {'test_file' => 'cond.texi',
+    'test_formats' => ['info'],
+    'EXPANDED_FORMATS' => ['info', 'html', 'tex'],
+  },
+  {'EXPANDED_FORMATS' => ['info', 'html', 'tex'],}
+],
 ['commands_in_ifset',
 '
 @ifset notset
@@ -262,6 +371,13 @@ text
 @verbatim
 @ifset
 @end verbatim
+@end ifset
+'],
+['nested_ifset_prepended_to_command_name',
+'@ifset a
+@ifsettoto b
+GG
+@end ifset
 @end ifset
 '],
 ['macro_in_ifset',
@@ -495,6 +611,17 @@ user internalvalue
 '@ifset A/B
 @end ifset
 '],
+# there is a similar test of the command line in tests/formatting
+['defcondx_Dbar',
+  undef, {'test_file' => '../../tests/formatting/defxcond.texi',
+  'test_formats' => ['file_html'],
+  'values' => {'bar' => 1}}, {'SPLIT' => ''},
+],
+['defcondx_Ubar',
+  undef, {'test_file' => '../../tests/formatting/defxcond.texi',
+  'test_formats' => ['file_html'],
+  'values' => {}}, {'SPLIT' => ''},
+],
 );
 
 for my $test (@test_cases) {

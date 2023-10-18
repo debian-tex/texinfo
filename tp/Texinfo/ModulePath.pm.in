@@ -6,6 +6,8 @@
 # 'use Texinfo::ModulePath' should only occur once per program so that
 # the initialization is only done once.  This makes the way this module
 # is used very unusual.
+#
+# Also used to pass other information from configure to modules.
 
 package Texinfo::ModulePath;
 
@@ -30,6 +32,9 @@ our $top_srcdir;
 
 # installed locations paths, if not $Texinfo::ModulePath::texinfo_uninstalled
 our $pkgdatadir;
+
+# Other information passed to modules from configure
+our $conversion_from_euc_cn = '@ICONV_CONVERTS_EUC_CN@';
 
 # If $LIB_DIR and $LIBEXEC_DIR are given,
 # (likely the installation directories)

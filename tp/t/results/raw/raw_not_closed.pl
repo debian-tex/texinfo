@@ -12,9 +12,11 @@ $result_trees{'raw_not_closed'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -60,7 +62,10 @@ This is some html
 ';
 
 
-$result_texts{'raw_not_closed'} = '';
+$result_texts{'raw_not_closed'} = '
+This is some html
+<address> my address </address>
+';
 
 $result_errors{'raw_not_closed'} = [
   {

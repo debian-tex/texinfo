@@ -18,28 +18,23 @@ $result_trees{'acronym_in_node_and_section'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -55,9 +50,11 @@ $result_trees{'acronym_in_node_and_section'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -70,8 +67,11 @@ $result_trees{'acronym_in_node_and_section'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -87,28 +87,23 @@ $result_trees{'acronym_in_node_and_section'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chap'
-          }
-        ],
-        'normalized' => 'chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -124,9 +119,11 @@ $result_trees{'acronym_in_node_and_section'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -139,8 +136,11 @@ $result_trees{'acronym_in_node_and_section'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -156,28 +156,23 @@ $result_trees{'acronym_in_node_and_section'} = {
               'text' => 'sec define'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'sec-define'
-          }
-        ],
-        'normalized' => 'sec-define',
-        'spaces_before_argument' => ' '
+        'normalized' => 'sec-define'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -193,9 +188,11 @@ $result_trees{'acronym_in_node_and_section'} = {
               'text' => 'define'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -225,8 +222,10 @@ $result_trees{'acronym_in_node_and_section'} = {
                       'text' => 'Good Hypo Jolly'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -251,8 +250,11 @@ $result_trees{'acronym_in_node_and_section'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -286,30 +288,23 @@ $result_trees{'acronym_in_node_and_section'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {},
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {},
-              {}
-            ],
-            'normalized' => 'sec-here-is-GHJ'
-          }
-        ],
-        'normalized' => 'sec-here-is-GHJ',
-        'spaces_before_argument' => ' '
+        'normalized' => 'sec-here-is-GHJ'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -343,9 +338,11 @@ $result_trees{'acronym_in_node_and_section'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -388,8 +385,11 @@ $result_trees{'acronym_in_node_and_section'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -400,16 +400,6 @@ $result_trees{'acronym_in_node_and_section'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'acronym_in_node_and_section'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'extra'}{'node_content'}[1] = $result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'args'}[0]{'contents'}[1];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'}[1] = $result_trees{'acronym_in_node_and_section'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 
 $result_texis{'acronym_in_node_and_section'} = '@node top
 @top top
@@ -597,6 +587,12 @@ $result_converted{'html'}->{'acronym_in_node_and_section'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -607,7 +603,7 @@ $result_converted{'html'}->{'acronym_in_node_and_section'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
 </div>
-<h1 class="top" id="top">top</h1>
+<h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
 <li><a href="#chap" accesskey="1">chap</a></li>
@@ -618,7 +614,7 @@ Next: <a href="#chap" accesskey="n" rel="next">chap</a> &nbsp; </p>
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="chap-1">1 chap</h2>
+<h2 class="chapter" id="chap-1"><span>1 chap<a class="copiable-link" href="#chap-1"> &para;</a></span></h2>
 
 <ul class="mini-toc">
 <li><a href="#sec-define" accesskey="1">define</a></li>
@@ -630,7 +626,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 <p>
 Next: <a href="#sec-here-is-GHJ" accesskey="n" rel="next">here is <abbr class="acronym">GHJ</abbr></a>, Up: <a href="#chap" accesskey="u" rel="up">chap</a> &nbsp; </p>
 </div>
-<h3 class="section" id="define">1.1 define</h3>
+<h3 class="section" id="define"><span>1.1 define<a class="copiable-link" href="#define"> &para;</a></span></h3>
 
 <p><abbr class="acronym" title="Good Hypo Jolly">GHJ</abbr> (Good Hypo Jolly)
 </p>
@@ -641,7 +637,7 @@ Next: <a href="#sec-here-is-GHJ" accesskey="n" rel="next">here is <abbr class="a
 <p>
 Previous: <a href="#sec-define" accesskey="p" rel="prev">define</a>, Up: <a href="#chap" accesskey="u" rel="up">chap</a> &nbsp; </p>
 </div>
-<h3 class="section" id="here-is-GHJ">1.2 here is <abbr class="acronym">GHJ</abbr></h3>
+<h3 class="section" id="here-is-GHJ"><span>1.2 here is <abbr class="acronym">GHJ</abbr><a class="copiable-link" href="#here-is-GHJ"> &para;</a></span></h3>
 
 <p>In text <abbr class="acronym" title="Good Hypo Jolly">GHJ</abbr>.
 </p></div>

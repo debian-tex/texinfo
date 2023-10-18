@@ -29,9 +29,11 @@ $result_trees{'no_empty_line_after_section'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -53,8 +55,10 @@ $result_trees{'no_empty_line_after_section'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -70,9 +74,11 @@ $result_trees{'no_empty_line_after_section'} = {
               'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -84,16 +90,10 @@ $result_trees{'no_empty_line_after_section'} = {
             {
               'text' => ' comment
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' comment
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'text' => '
@@ -111,23 +111,19 @@ $result_trees{'no_empty_line_after_section'} = {
                 {
                   'text' => ' c
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
-              'cmdname' => 'comment',
-              'extra' => {
-                'misc_args' => [
-                  ' c
-'
-                ]
-              }
+              'cmdname' => 'comment'
             }
           ],
           'type' => 'paragraph'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -143,9 +139,11 @@ $result_trees{'no_empty_line_after_section'} = {
               'text' => 'sec'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -192,9 +190,11 @@ $result_trees{'no_empty_line_after_section'} = {
                   'text' => '3'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -203,8 +203,12 @@ $result_trees{'no_empty_line_after_section'} = {
           'extra' => {
             'misc_args' => [
               '3'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -213,8 +217,10 @@ $result_trees{'no_empty_line_after_section'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -230,9 +236,11 @@ $result_trees{'no_empty_line_after_section'} = {
               'text' => 'after sp'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -270,8 +278,10 @@ $result_trees{'no_empty_line_after_section'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -330,17 +340,14 @@ $result_sectioning{'no_empty_line_after_section'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'extra' => {},
               'structure' => {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '1.1',
@@ -349,7 +356,6 @@ $result_sectioning{'no_empty_line_after_section'} = {
                   },
                   {
                     'cmdname' => 'section',
-                    'extra' => {},
                     'structure' => {
                       'section_level' => 2,
                       'section_number' => '1.2',

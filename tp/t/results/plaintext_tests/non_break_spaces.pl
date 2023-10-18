@@ -19,9 +19,11 @@ $result_trees{'non_break_spaces'} = {
                       'text' => 'utf-8'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -29,9 +31,12 @@ $result_trees{'non_break_spaces'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'utf-8',
-                'input_perl_encoding' => 'utf-8-strict',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'utf-8'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'non_break_spaces.texi',
@@ -58,9 +63,11 @@ $result_trees{'non_break_spaces'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -87,19 +94,12 @@ $result_trees{'non_break_spaces'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'non_break_spaces.texi',
@@ -110,8 +110,6 @@ $result_trees{'non_break_spaces'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'non_break_spaces'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'non_break_spaces'} = '@documentencoding utf-8
 

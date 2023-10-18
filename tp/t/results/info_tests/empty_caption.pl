@@ -25,9 +25,11 @@ $result_trees{'empty_caption'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -55,9 +57,11 @@ $result_trees{'empty_caption'} = {
                   'text' => 'b'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -102,17 +106,23 @@ $result_trees{'empty_caption'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -123,16 +133,12 @@ $result_trees{'empty_caption'} = {
           ],
           'extra' => {
             'caption' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'b',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'a'
+            'float_type' => 'a',
+            'normalized' => 'b'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -154,21 +160,22 @@ $result_trees{'empty_caption'} = {
                   'text' => 'a'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'a'
+            'float_type' => 'a'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -179,19 +186,12 @@ $result_trees{'empty_caption'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -204,11 +204,6 @@ $result_trees{'empty_caption'} = {
 };
 $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'float'} = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1];
 $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_caption'}{'contents'}[1]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_caption'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_caption'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'empty_caption'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'empty_caption'} = '
 @node Top
@@ -257,15 +252,8 @@ $result_floats{'empty_caption'} = {
             'float' => {}
           }
         },
-        'normalized' => 'b',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'a'
-            }
-          ],
-          'normalized' => 'a'
-        }
+        'float_type' => 'a',
+        'normalized' => 'b'
       },
       'structure' => {
         'float_number' => 1

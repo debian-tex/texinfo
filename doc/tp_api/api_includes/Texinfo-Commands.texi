@@ -40,7 +40,7 @@ outside of the module.
 @cindex @code{%index_names}
 
 Hash describing the default Texinfo indices.  The format of this hash is
-described in @ref{Texinfo@asis{::}Parser indices_information}.
+described in @ref{Texinfo@asis{::}Parser $indices_information = $parser->indices_information(),, @code{Texinfo::Parser::indices_information}}.
 
 @end table
 
@@ -144,20 +144,19 @@ Commands delimiting a region of the document out of the main processing:
 
 @end table
 
-@item %commands_args_number
-@anchor{Texinfo@asis{::}Commands %commands_args_number}
-@cindex @code{%commands_args_number}
+@item %blockitem_commands
+@anchor{Texinfo@asis{::}Commands %blockitem_commands}
+@cindex @code{%blockitem_commands}
 
-Set to the number of arguments separated by commas that may appear in braces or
-on the @@-command line.  That means 0 or unset for most block commands,
-including @code{@@example} which has an unlimited (variadic) number of arguments, 1
-for @code{@@quotation}, 2 for @code{@@float}, 1 for most brace commands, 2 for @code{@@email}
-or @code{@@abbr}, 5 for @code{@@image} of @code{@@ref}.
+Block commands containing @code{@@item} with possible content before an @code{@@item},
+like @code{@@itemize}, @code{@@table} or @code{@@multitable}.
 
-Values are not necessarily set for all the commands, as commands are
-also classified by type of command, some type of commands implying a
-number of arguments, and the number of arguments may not be set if it
-corresponds to the default (0 for block commands, 1 for other commands).
+@item %brace_code_commands
+@anchor{Texinfo@asis{::}Commands %brace_code_commands}
+@cindex @code{%brace_code_commands}
+
+Brace commands that have their argument in code style, like
+@code{@@code}.
 
 @item %brace_commands
 @anchor{Texinfo@asis{::}Commands %brace_commands}
@@ -166,6 +165,43 @@ corresponds to the default (0 for block commands, 1 for other commands).
 The commands that take braces. Value is @emph{noarg} for brace commands without
 argument such as @code{@@AA}, @code{@@TeX}, or @code{@@equiv}.  Other values include
 @emph{accent}, @emph{arguments}, @emph{context} and other values.
+
+@item %close_paragraph_commands
+@anchor{Texinfo@asis{::}Commands %close_paragraph_commands}
+@cindex @code{%close_paragraph_commands}
+
+Commands that stop a paragraph.  Root commands are not specified here,
+but they also close paragraphs.
+
+@item %commands_args_number
+@anchor{Texinfo@asis{::}Commands %commands_args_number}
+@cindex @code{%commands_args_number}
+
+Set to the number of arguments separated by commas that may appear in braces or
+on the @@-command line.  That means 0 or unset for most block commands,
+including @code{@@example} which has an unlimited (variadic) number of arguments, 1
+for @code{@@quotation}, 2 for @code{@@float}, 1 for most brace commands, 2 for @code{@@email}
+and @code{@@abbr}, 5 for @code{@@image} and @code{@@ref}.
+
+Values are not necessarily set for all the commands, as commands are
+also classified by type of command, some type of commands implying a
+number of arguments, and the number of arguments may not be set if it
+corresponds to the default (0 for block commands, 1 for other commands
+that take arguments).
+
+@item %contain_basic_inline_commands
+@anchor{Texinfo@asis{::}Commands %contain_basic_inline_commands}
+@cindex @code{%contain_basic_inline_commands}
+
+Commands containing simple text only, much like paragraph text, but
+without @code{@@ref}, @code{@@footnote}, @code{@@titlefont}, @code{@@anchor} nor @code{@@verb}.
+
+@item %contain_plain_text_commands
+@anchor{Texinfo@asis{::}Commands %contain_plain_text_commands}
+@cindex @code{%contain_plain_text}
+
+Commands accepting only plain text with accent, symbol and glyph
+commands.
 
 @item %def_commands
 @anchor{Texinfo@asis{::}Commands %def_commands}
@@ -180,6 +216,43 @@ Definition commands.
 Index entry commands corresponding to default indices. For example
 @code{@@cindex}.
 
+@item %explained_commands
+@anchor{Texinfo@asis{::}Commands %explained_commands}
+@cindex @code{%explained_commands}
+
+@@-commands whose second argument explain first argument and further
+@@-command call without first argument, as @code{@@abbr} and @code{@@acronym}.
+
+@item %formattable_line_commands
+@anchor{Texinfo@asis{::}Commands %formattable_line_commands}
+@cindex @code{%formattable_line_commands}
+
+Line commands which may be formatted as text, but that require constructing
+some replacement text, for example @code{@@printindex}, @code{@@need} or
+@code{@@verbatiminclude}.  @code{@@contents} and @code{@@shortcontents} are not in this hash,
+since they are in a corresponding situation only when the tables of contents
+are formatted where the commands are.
+
+@item %formatted_nobrace_commands
+@anchor{Texinfo@asis{::}Commands %formatted_nobrace_commands}
+@cindex @code{%formatted_nobrace_commands}
+
+Commands not taking brace formatted as text or with text in the main
+document body, corresponding to symbol commands such as @code{@@@@} or @code{@@:} and
+commands such as @code{@@item}.  @@-commands appearing only in headers are not
+in this hash, but in in @code{%in_heading_spec_commands}.
+
+@item %formatted_line_commands
+@anchor{Texinfo@asis{::}Commands %formatted_line_commands}
+@cindex @code{%formatted_line_commands}
+
+Line commands which arguments may be formatted as text, such as
+@code{@@center}, @code{@@author}, @code{@@item}, @code{@@node}, @code{@@chapter} and other.
+Index commands may be formatted as text too, but they may be added
+with @code{@@def*index}, therefore they are not in that hash.  Also,
+in general, they are not formatted as text where they appear, only
+when an index is printed.
+
 @item %heading_spec_commands
 @anchor{Texinfo@asis{::}Commands %heading_spec_commands}
 @cindex @code{%heading_spec_commands}
@@ -190,8 +263,24 @@ Index entry commands corresponding to default indices. For example
 @anchor{Texinfo@asis{::}Commands %in_heading_spec_commands}
 @cindex @code{%in_heading_spec_commands}
 
-Special @@-commands appearing in custom headings, such as @code{@@thischapter}
-or @code{@@thistitle}.
+Special @@-commands appearing in custom headings, such as @code{@@thischapter},
+@code{@@thistitle} or @code{@@|}.
+
+@item %in_index_commands
+@anchor{Texinfo@asis{::}Commands %in_index_commands}
+
+@@-commands only valid in index entries, such as @code{@@sortas} or @code{@@subentry}.
+
+@item %inline_conditional_commands
+@anchor{Texinfo@asis{::}Commands %inline_conditional_commands}
+
+@item %inline_format_commands
+@anchor{Texinfo@asis{::}Commands %inline_format_commands}
+@cindex @code{%inline_conditional_commands}
+@cindex @code{%inline_format_commands}
+
+Inline conditional commands, like @code{@@inlineifclear}, and inline format
+commands like @code{@@inlineraw} and @code{@@inlinefmt}.
 
 @item %letter_no_arg_commands
 @anchor{Texinfo@asis{::}Commands %letter_no_arg_commands}
@@ -210,13 +299,19 @@ like @code{@@AA@{@}} or @code{@@ss@{@}} or @code{@@o@{@}}.
 @anchor{Texinfo@asis{::}Commands %line_commands}
 @cindex @code{%line_commands}
 
-Command that do not take braces, take arguments on the command line and are
+Commands that do not take braces, take arguments on the command line and are
 not block commands either, like @code{@@node}, @code{@@chapter}, @code{@@cindex}, @code{@@deffnx},
 @code{@@end}, @code{@@footnotestyle}, @code{@@set}, @code{@@settitle}, @code{@@itemx},
 @code{@@definfoenclose}, @code{@@comment} and many others.
 
 Note that @code{@@item} is in @code{%line_commands} for its role in @code{@@table} and
 similar @@-commands.
+
+@item %no_paragraph_commands
+@anchor{Texinfo@asis{::}Commands %no_paragraph_commands}
+@cindex @code{%no_paragraph_commands}
+
+Commands that do not start a paragraph.
 
 @item %nobrace_commands
 @anchor{Texinfo@asis{::}Commands %nobrace_commands}
@@ -229,6 +324,18 @@ include @code{@@indent}, @code{@@tab} or @code{@@thissection}.
 
 Note that @code{@@item} is in @code{%nobrace_commands} for its role in @code{@@multitable},
 @code{@@itemize} and @code{@@enumerate}.
+
+@item %non_formatted_block_commands
+@anchor{Texinfo@asis{::}Commands %non_formatted_block_commands}
+@cindex @code{%non_formatted_block_commands}
+
+Block commands not formatted as text, such as @code{@@ignore} or @code{@@macro}.
+
+@item %preamble_commands
+@anchor{Texinfo@asis{::}Commands %preamble_commands}
+@cindex @code{%preamble_commands}
+
+@@-commands that do not stop the preamble.
 
 @item %preformatted_commands
 @anchor{Texinfo@asis{::}Commands %preformatted_commands}
@@ -246,7 +353,7 @@ for code, it is also in @emph{%preformatted_code_commands}, like @code{@@example
 @anchor{Texinfo@asis{::}Commands %ref_commands}
 @cindex @code{%ref_commands}
 
-Cross reference @@-command referencing nodes, like @code{@@xref}.
+Cross reference @@-command referencing nodes, like @code{@@xref} or @code{@@link}.
 
 @item %root_commands
 @anchor{Texinfo@asis{::}Commands %root_commands}
@@ -273,7 +380,7 @@ Commands with unlimited arguments, like @code{@@example}.
 @node Texinfo@asis{::}Commands SEE ALSO
 @section Texinfo::Commands SEE ALSO
 
-@ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}, @ref{Texinfo@asis{::}Common NAME,, Texinfo::Common}.
+@ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}.
 
 @node Texinfo@asis{::}Commands AUTHOR
 @section Texinfo::Commands AUTHOR

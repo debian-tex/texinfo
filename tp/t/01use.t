@@ -11,25 +11,20 @@ plan tests => 2;
 
 ok(1, "modules loading"); # If we made it this far, we're ok.
 
-#########################
-
-# Insert your test code below, the Test::More module is use()ed here so read
-# its man page ( perldoc Test::More ) for help writing this test script.
-
-use vars qw($manual_tree $manual_tree_result);
-
-$manual_tree = { 'cmdname' => 'multitable',
+# Note that this tree is not necessarily updated when the tree elements
+# change, so it generally uses obsolete constructs.
+my $manual_tree = { 'cmdname' => 'multitable',
   'args' => [
         { 'type' => 'block_line_arg',
           'contents' => [
              { 'text' => ' ' },
-             { 'type' => 'bracketed',
+             { 'type' => 'bracketed_arg',
                'contents' => [
                                {'text' => 'aaaa'},
                             ]
              },
              { 'text' => ' ' },
-             { 'type' => 'bracketed',
+             { 'type' => 'bracketed_arg',
                'contents' => [
                                {'text' => 'xx'},
                                {'cmdname' => 'b',
@@ -47,10 +42,9 @@ $manual_tree = { 'cmdname' => 'multitable',
              {'text' => " ccc\n"},
           ],
        } ],
-  'extra' => { 'number_of_columns' => 3,
-               'end_command' => {} },
+  'extra' => { 'max_columns' => 3, },
   'contents' => [
-           { 'type' => 'multitable_title',
+           { 'type' => 'before_item',
              'contents' => [
                              { 'type' => 'paragraph',
                                'contents' => [
@@ -63,7 +57,7 @@ $manual_tree = { 'cmdname' => 'multitable',
                                                                 ],
                                                                 'type' => 'brace_command_arg',
                                                             } ],
-                                                  'extra' => {
+                                                  'info' => {
                                                     'delimiter' => ':'
                                                   }
                                                 },
@@ -73,57 +67,55 @@ $manual_tree = { 'cmdname' => 'multitable',
                              }
                            ]
            },
-           { 'cmdname' => 'item',
-             'type' => 'multitable_row',
-             'extra' => {'row_number' => 1},
+           {
+             'type' => 'multitable_body',
              'contents' => [
-                             {  
-                                'type' => 'multitable_cell',
-                                'extra' => {'col_number' => 1,
-                                            'row_number' => 1},
-                                'contents' => [ {'text' => " \n" } ]
-                              }
+                             {
+                               'type' => 'row',
+                               'extra' => {'row_number' => 1},
+                               'contents' => [
+                                               {
+                                                 'cmdname' => 'item',
+                                                 'extra' => {'cell_number' => 1,},
+                                                 'contents' => [ {'text' => " \n" } ]
+                                               }
+                                             ]
+                             },
                            ]
            },
-           { 'cmdname' => 'end',
-             'extra' => {'command_argument' => 'multitable',
+           {
+             'cmdname' => 'end',
+             'info' => {
+                         'spaces_before_argument' => {'text' => ' '},
+                       },
+             'extra' => {
                          'text_arg' => 'multitable',
-                         },
-            'args' => [
+                        },
+             'args' => [
                 {
+                  'type' => 'line_arg',
                   'contents' => [
                     {
-                      'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
-                      'parent' => {},
                       'text' => 'multitable'
                     },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
-                    }
                   ],
-                  'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'info' => {
+                              'spaces_after_argument' => {'text' => '
+',},
+                            },
                 }
               ],
 
            }
   ]
-  
 };
 
-$manual_tree_result = '@multitable {aaaa} {xx@b{rr}} ccc
+my $manual_tree_result = '@multitable {aaaa} {xx@b{rr}} ccc
 title@verb{: in verb } :}@@.
 @item 
 @end multitable
 ';
 
-is (Texinfo::Convert::Texinfo::convert_to_texinfo($manual_tree), 
+is (Texinfo::Convert::Texinfo::convert_to_texinfo($manual_tree),
      $manual_tree_result, "tree_to_texi on a manually written tree");
 

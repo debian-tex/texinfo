@@ -23,9 +23,11 @@ $result_trees{'table_in_itemize'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -80,9 +82,11 @@ $result_trees{'table_in_itemize'} = {
                           'type' => 'command_as_argument'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -101,16 +105,20 @@ $result_trees{'table_in_itemize'} = {
                                       'text' => 'table one'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -147,7 +155,7 @@ $result_trees{'table_in_itemize'} = {
                               'type' => 'paragraph'
                             }
                           ],
-                          'type' => 'table_item'
+                          'type' => 'table_definition'
                         }
                       ],
                       'type' => 'table_entry'
@@ -164,16 +172,20 @@ $result_trees{'table_in_itemize'} = {
                                       'text' => 'table two'
                                     }
                                   ],
-                                  'extra' => {
-                                    'spaces_after_argument' => '
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
 '
+                                    }
                                   },
                                   'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'item',
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'source_info' => {
                                 'file_name' => '',
@@ -210,7 +222,7 @@ $result_trees{'table_in_itemize'} = {
                               'type' => 'paragraph'
                             }
                           ],
-                          'type' => 'table_item'
+                          'type' => 'table_definition'
                         }
                       ],
                       'type' => 'table_entry'
@@ -223,17 +235,23 @@ $result_trees{'table_in_itemize'} = {
                               'text' => 'table'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'table'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -243,8 +261,12 @@ $result_trees{'table_in_itemize'} = {
                     }
                   ],
                   'extra' => {
-                    'command_as_argument' => {},
-                    'spaces_before_argument' => ' '
+                    'command_as_argument' => {}
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -301,8 +323,12 @@ $result_trees{'table_in_itemize'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -312,8 +338,12 @@ $result_trees{'table_in_itemize'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -396,5 +426,22 @@ $result_converted{'html_text'}->{'table_in_itemize'} = '<ul class="itemize mark-
 </li><li>item three
 </li></ul>
 ';
+
+
+$result_converted{'xml'}->{'table_in_itemize'} = '<itemize commandarg="bullet" spaces=" " endspaces=" "><itemprepend><formattingcommand command="bullet"/></itemprepend>
+<listitem><prepend>&bullet;</prepend> <para>item one
+</para></listitem><listitem><prepend>&bullet;</prepend>
+<table commandarg="asis" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="asis">table one</itemformat></item>
+</tableterm><tableitem><para>aaaaa
+</para>
+<para>New para.
+</para></tableitem></tableentry><tableentry><tableterm><item spaces=" "><itemformat command="asis">table two</itemformat></item>
+</tableterm><tableitem><para>Five
+</para>
+<para>New para.
+</para></tableitem></tableentry></table>
+</listitem><listitem><prepend>&bullet;</prepend> <para>item three
+</para></listitem></itemize>';
 
 1;

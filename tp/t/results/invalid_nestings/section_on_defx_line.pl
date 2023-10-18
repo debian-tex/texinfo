@@ -60,40 +60,24 @@ $result_trees{'section_on_defx_line'} = {
                         'def_role' => 'arg'
                       },
                       'text' => 'l'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' 
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' 
+'
+                    }
+                  },
                   'type' => 'block_line_arg'
                 }
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_parsed_hash' => {
-                  'category' => {},
-                  'name' => {}
-                },
-                'index_entry' => {
-                  'content_normalized' => [
-                    {}
-                  ],
-                  'entry_content' => [
-                    {}
-                  ],
-                  'entry_element' => {},
-                  'entry_number' => 1,
-                  'in_code' => 1,
-                  'index_at_command' => 'deffn',
-                  'index_ignore_chars' => {},
-                  'index_name' => 'fn',
-                  'index_type_command' => 'deffn'
-                },
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
@@ -108,17 +92,47 @@ $result_trees{'section_on_defx_line'} = {
                 {
                   'contents' => [
                     {
-                      'text' => 'a b '
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
+                      'text' => 'a'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
+                      'text' => 'b'
                     }
                   ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
+                  },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'deffnx',
               'extra' => {
                 'def_command' => 'deffn',
-                'original_def_cmdname' => 'deffnx',
-                'spaces_before_argument' => ' '
+                'def_index_element' => {},
+                'index_entry' => [
+                  'fn',
+                  2
+                ],
+                'original_def_cmdname' => 'deffnx'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -128,8 +142,10 @@ $result_trees{'section_on_defx_line'} = {
               'type' => 'def_line'
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -148,9 +164,11 @@ $result_trees{'section_on_defx_line'} = {
               'text' => 's'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -177,8 +195,10 @@ $result_trees{'section_on_defx_line'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -189,11 +209,8 @@ $result_trees{'section_on_defx_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_content'}[0] = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'section_on_defx_line'} = '@deffn h j k l 
 @deffnx a b @section s
@@ -204,6 +221,7 @@ Something
 
 
 $result_texts{'section_on_defx_line'} = 'h: j k l
+a: b
 1 s
 ===
 
@@ -216,7 +234,6 @@ $result_sectioning{'section_on_defx_line'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -249,12 +266,21 @@ $result_errors{'section_on_defx_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @section should not appear in @deffnx
+    'error_line' => 'warning: @section should not appear on @deffnx line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@section should not appear in @deffnx',
+    'text' => '@section should not appear on @deffnx line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: entry for index `fn\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
@@ -283,9 +309,32 @@ $result_floats{'section_on_defx_line'} = {};
 
 $result_indices_sort_strings{'section_on_defx_line'} = {
   'fn' => [
+    'b',
     'j'
   ]
 };
 
+
+
+$result_converted{'plaintext'}->{'section_on_defx_line'} = ' -- h: j k l
+ -- a: b
+
+1 s
+===
+
+Something
+
+';
+
+
+$result_converted{'xml'}->{'section_on_defx_line'} = '<deffn spaces=" "><definitionterm><indexterm index="fn" number="1">j</indexterm><defcategory>h</defcategory> <deffunction>j</deffunction> <defparam>k</defparam> <defparam>l</defparam> </definitionterm>
+<deffnx spaces=" "><definitionterm><indexterm index="fn" number="2">b</indexterm><defcategory>a</defcategory> <deffunction>b</deffunction> </definitionterm></deffnx>
+</deffn>
+<section spaces=" "><sectiontitle>s</sectiontitle>
+
+<para>Something
+</para>
+</section>
+';
 
 1;

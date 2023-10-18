@@ -18,9 +18,11 @@ $result_trees{'image_and_spaces_formatting'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -45,7 +47,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -69,7 +71,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -93,7 +95,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -117,7 +119,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -141,7 +143,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -165,7 +167,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -189,7 +191,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
@@ -224,7 +226,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -248,7 +250,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -272,7 +274,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -296,7 +298,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -320,7 +322,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -344,7 +346,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -368,7 +370,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -406,7 +408,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -430,7 +432,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -454,7 +456,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -478,7 +480,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -502,7 +504,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -526,7 +528,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -550,7 +552,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -588,7 +590,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -626,7 +628,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -664,7 +666,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -688,7 +690,7 @@ $result_trees{'image_and_spaces_formatting'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
@@ -710,19 +712,12 @@ $result_trees{'image_and_spaces_formatting'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -733,8 +728,6 @@ $result_trees{'image_and_spaces_formatting'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'image_and_spaces_formatting'} = '@node Top
 

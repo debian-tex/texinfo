@@ -1,0 +1,26 @@
+use strict;
+
+texinfo_register_file_id_setting_function('tree_unit_file_name',
+                                          \&test_redirection_collision_file_name);
+
+sub test_redirection_collision_file_name($$$$)
+{
+  my $converter = shift;
+  my $element = shift;
+  my $filename = shift;
+  my $filepath = shift;
+
+  return ($filename, $filepath) if (defined($filepath));
+
+  my $extension = $converter->get_conf('EXTENSION');
+  my $extension_string = '';
+  if (defined($extension)) {
+    $extension_string = ".$extension";
+  }
+  if (!defined($filepath) and $filename eq 'Chapter-2'.$extension_string) {
+    return ('myanchor'.$extension_string, undef);
+  }
+  return (undef, undef);
+}
+
+1;

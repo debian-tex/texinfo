@@ -24,28 +24,23 @@ $result_trees{'recursive_self_section_reference'} = {
               'text' => 'sharp'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'sharp'
-          }
-        ],
-        'normalized' => 'sharp',
-        'spaces_before_argument' => ' '
+        'normalized' => 'sharp'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -65,19 +60,16 @@ $result_trees{'recursive_self_section_reference'} = {
                       'text' => 'sharp'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'sharp'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'ref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'sharp'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 2,
@@ -88,16 +80,21 @@ $result_trees{'recursive_self_section_reference'} = {
               'text' => ' tuple'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -108,10 +105,7 @@ $result_trees{'recursive_self_section_reference'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'recursive_self_section_reference'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'recursive_self_section_reference'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'recursive_self_section_reference'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'recursive_self_section_reference'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'recursive_self_section_reference'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'label'} = $result_trees{'recursive_self_section_reference'}{'contents'}[1];
-$result_trees{'recursive_self_section_reference'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'recursive_self_section_reference'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'recursive_self_section_reference'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'recursive_self_section_reference'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'recursive_self_section_reference'} = '@node sharp
 @chapter @ref{sharp} tuple
@@ -195,13 +189,19 @@ $result_converted{'html'}->{'recursive_self_section_reference'} = '<!DOCTYPE htm
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#sharp" rel="start" title="sharp">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <div class="chapter-level-extent" id="sharp">
-<h2 class="chapter" id="sharp-tuple">1 <a class="ref" href="#sharp">sharp</a> tuple</h2>
+<h2 class="chapter" id="sharp-tuple"><span>1 <a class="ref" href="#sharp">sharp</a> tuple<a class="copiable-link" href="#sharp-tuple"> &para;</a></span></h2>
 </div>
 
 

@@ -12,22 +12,16 @@ $result_trees{'raw_and_comments'} = {
         {
           'args' => [
             {
-              'extra' => {
+              'info' => {
                 'comment_at_end' => {
                   'args' => [
                     {
                       'text' => ' comment
 ',
-                      'type' => 'misc_arg'
+                      'type' => 'rawline_arg'
                     }
                   ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment
-'
-                    ]
-                  }
+                  'cmdname' => 'c'
                 }
               },
               'type' => 'block_line_arg'
@@ -52,32 +46,32 @@ $result_trees{'raw_and_comments'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' other comment
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'comment',
-                      'extra' => {
-                        'misc_args' => [
-                          ' other comment
-'
-                        ]
-                      }
+                      'cmdname' => 'comment'
                     },
-                    'spaces_after_argument' => '  '
+                    'spaces_after_argument' => {
+                      'text' => '  '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'tex'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -86,8 +80,10 @@ $result_trees{'raw_and_comments'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => '  '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -109,22 +105,16 @@ $result_trees{'raw_and_comments'} = {
             {
               'args' => [
                 {
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' in xml comment
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' in xml comment
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     }
                   },
                   'type' => 'block_line_arg'
@@ -149,32 +139,32 @@ $result_trees{'raw_and_comments'} = {
                           'text' => 'xml'
                         }
                       ],
-                      'extra' => {
+                      'info' => {
                         'comment_at_end' => {
                           'args' => [
                             {
                               'text' => ' end xml comment
 ',
-                              'type' => 'misc_arg'
+                              'type' => 'rawline_arg'
                             }
                           ],
-                          'cmdname' => 'comment',
-                          'extra' => {
-                            'misc_args' => [
-                              ' end xml comment
-'
-                            ]
-                          }
+                          'cmdname' => 'comment'
                         },
-                        'spaces_after_argument' => '  '
+                        'spaces_after_argument' => {
+                          'text' => '  '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'xml'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -183,8 +173,10 @@ $result_trees{'raw_and_comments'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -213,8 +205,10 @@ Para
 ';
 
 
-$result_texts{'raw_and_comments'} = '
+$result_texts{'raw_and_comments'} = 'in <tex>
+
 Para
+<in />
 ';
 
 $result_errors{'raw_and_comments'} = [];

@@ -17,9 +17,11 @@ $result_trees{'definfoenclose_nestings'} = {
                   'text' => 'phoo,//,\\'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -30,8 +32,12 @@ $result_trees{'definfoenclose_nestings'} = {
               'phoo',
               '//',
               '\\'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -185,16 +191,20 @@ $result_trees{'definfoenclose_nestings'} = {
                   'text' => 'in center in phoo'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -204,7 +214,8 @@ $result_trees{'definfoenclose_nestings'} = {
         },
         {
           'text' => '
-'
+',
+          'type' => 'empty_line'
         }
       ],
       'type' => 'before_node_section'
@@ -252,15 +263,6 @@ $result_errors{'definfoenclose_nestings'} = [
     'line_nr' => 3,
     'macro' => '',
     'text' => '@phoo should not appear in @code',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @center should not appear in @phoo
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@center should not appear in @phoo',
     'type' => 'warning'
   },
   {
@@ -313,15 +315,15 @@ $result_converted{'latex'}->{'definfoenclose_nestings'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

@@ -24,7 +24,7 @@ $result_trees{'macro_not_closed'} = {
               'type' => 'raw'
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' name
 '
           },

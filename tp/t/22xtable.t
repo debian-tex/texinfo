@@ -16,6 +16,26 @@ my @test_cases = (
 @item acc brace first item
 @item no at-command @code{code acc brace}
 @end table
+
+@table @~@comment
+@item acc comment first item
+@end table
+
+@table @~ 
+@item acc space first item
+@end table
+
+@table @ringaccent
+@item cmdacc first item
+@end table
+
+@table @ringaccent{}
+@item cmdacc braces first item
+@end table
+
+@table @ringaccent{a}
+@item cmdacc braces arg first item
+@end table
 '],
 ['definfoenclose_on_table_line',
 '@definfoenclose phi,:,:
@@ -38,6 +58,10 @@ VTable
 @item 
 @item in item before end table
 @end vtable
+'],
+['empty_table',
+'@table @code
+@end table
 '],
 ['long_item',
 '@table @emph
@@ -81,6 +105,13 @@ l--ine
 @itemx d
 
 @c comment at end
+@end ftable
+
+@ftable @emph
+@item a
+@cindex index entry between item and itemx
+@itemx b
+l--ine
 @end ftable
 
 @table @code
@@ -153,9 +184,71 @@ l--ine
 @end table
 @end example
 '],
+['index_command_before_end_table',
+'
+@table @code
+@item in item
+@itemx in itemx
+aaaaa
+
+@vindex var
+@end table
+'],
+['item_index_transformation',
+'@node chap
+@chapter Chapter
+
+@table @asis
+@cindex Before1
+@item one
+@itemx onex
+@itemx oney
+@cindex After1
+@cindex After2
+AAA
+@item two
+BBB
+@end table
+
+@table @asis
+@item three
+@itemx threex
+@itemx zzzz
+@cindex after1
+@cindex after2
+CCCC
+@item zzzz2
+DDDDD
+@end table
+
+@table @asis
+@cindex before1
+@cindex before2
+@item four
+@itemx fourx
+EEEE
+@item foour
+FFFFf
+@end table
+
+@table @asis
+@item five
+GGGG
+@item six
+@itemx sixx
+@cindex after6
+@cindex after7
+HHHHHH
+@end table
+',
+{'TREE_TRANSFORMATIONS' => 'relate_index_entries_to_items'}
+],
 ['block_commands_in_table',
 '@node Top
 @top Element
+
+@node chap
+@chapter Chapter
 
 @table @emph
 @item first item
@@ -319,6 +412,7 @@ foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html_text';
   push @{$test->[2]->{'test_formats'}}, 'xml';
+  push @{$test->[2]->{'test_formats'}}, 'docbook';
   if (grep {$_ eq $test->[0]} @file_latex_tests_cases_tests) {
     push @{$test->[2]->{'test_formats'}}, 'file_latex';
     $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';

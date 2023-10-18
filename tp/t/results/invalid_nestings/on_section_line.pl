@@ -63,9 +63,6 @@ $result_trees{'on_section_line'} = {
               ],
               'cmdname' => 'anchor',
               'extra' => {
-                'node_content' => [
-                  {}
-                ],
                 'normalized' => 'in-anchor'
               },
               'source_info' => {
@@ -108,16 +105,20 @@ $result_trees{'on_section_line'} = {
                       'text' => 'exdent'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'exdent',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -130,8 +131,10 @@ $result_trees{'on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -142,7 +145,6 @@ $result_trees{'on_section_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 
 $result_texis{'on_section_line'} = '@section @noindent Text @titlefont{in titlefont} @anchor{in anchor}@footnote{footnote} @exdent exdent
 ';
@@ -157,7 +159,6 @@ $result_sectioning{'on_section_line'} = {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'extra' => {},
         'structure' => {
           'section_level' => 2,
           'section_number' => 1,
@@ -172,39 +173,39 @@ $result_sectioning{'on_section_line'}{'structure'}{'section_childs'}[0]{'structu
 
 $result_errors{'on_section_line'} = [
   {
-    'error_line' => 'warning: @noindent should not appear in @section
+    'error_line' => 'warning: @noindent should not appear on @section line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@noindent should not appear in @section',
+    'text' => '@noindent should not appear on @section line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @titlefont should not appear in @section
+    'error_line' => 'warning: @titlefont should not appear on @section line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@titlefont should not appear in @section',
+    'text' => '@titlefont should not appear on @section line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @anchor should not appear in @section
+    'error_line' => 'warning: @anchor should not appear on @section line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor should not appear in @section',
+    'text' => '@anchor should not appear on @section line',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @footnote should not appear in @section
+    'error_line' => 'warning: @footnote should not appear on @section line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@footnote should not appear in @section',
+    'text' => '@footnote should not appear on @section line',
     'type' => 'warning'
   },
   {
@@ -217,12 +218,12 @@ $result_errors{'on_section_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @exdent should not appear in @section
+    'error_line' => 'warning: @exdent should not appear on @section line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@exdent should not appear in @section',
+    'text' => '@exdent should not appear on @section line',
     'type' => 'warning'
   }
 ];

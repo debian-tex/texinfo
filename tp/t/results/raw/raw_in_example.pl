@@ -12,9 +12,11 @@ $result_trees{'raw_in_example'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -26,9 +28,11 @@ $result_trees{'raw_in_example'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -52,17 +56,23 @@ $result_trees{'raw_in_example'} = {
                               'text' => 'html'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'html'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -88,17 +98,23 @@ $result_trees{'raw_in_example'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -121,9 +137,11 @@ $result_trees{'raw_in_example'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -140,9 +158,11 @@ $result_trees{'raw_in_example'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -176,17 +196,23 @@ $result_trees{'raw_in_example'} = {
                               'text' => 'html'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'html'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -209,9 +235,11 @@ $result_trees{'raw_in_example'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -230,13 +258,7 @@ $result_trees{'raw_in_example'} = {
 '
                         },
                         {
-                          'text' => '\\chi^2 = \\sum_'
-                        },
-                        {
-                          'text' => '{i=1'
-                        },
-                        {
-                          'text' => '}^N
+                          'text' => '\\chi^2 = \\sum_{i=1}^N
 '
                         },
                         {
@@ -267,17 +289,23 @@ $result_trees{'raw_in_example'} = {
                               'text' => 'tex'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'tex'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -308,17 +336,23 @@ $result_trees{'raw_in_example'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -374,8 +408,19 @@ $$
 ';
 
 
-$result_texts{'raw_in_example'} = '
+$result_texts{'raw_in_example'} = 'in html
 
+
+
+Some html <code>some code</code>.
+
+
+
+$$ 
+\\chi^2 = \\sum_{i=1}^N
+\\left(y_i - (a + b x_i)
+\\over \\sigma_i\\right)^2 
+$$
 
 
 
@@ -392,6 +437,35 @@ $result_converted{'plaintext'}->{'raw_in_example'} = '
 
 
 
+
+';
+
+
+$result_converted{'xml'}->{'raw_in_example'} = '<example endspaces=" ">
+<pre xml:space="preserve"><html endspaces=" ">
+in html
+</html>
+</pre></example>
+
+<example endspaces=" ">
+<pre xml:space="preserve">
+<html endspaces=" ">
+
+Some html &lt;code&gt;some code&lt;/code&gt;.
+
+</html>
+
+<tex endspaces=" ">
+
+$$ 
+\\chi^2 = \\sum_{i=1}^N
+\\left(y_i - (a + b x_i)
+\\over \\sigma_i\\right)^2 
+$$
+
+</tex>
+
+</pre></example>
 
 ';
 

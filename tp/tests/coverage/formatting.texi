@@ -1,0 +1,232 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename formatting.info
+
+@c valid Texinfo variable can be set to test only valid constructs.
+@c in practice it can be used to output with TeX
+@c  texi2pdf -I layout/ -t '@set valid' layout/formatting.texi
+
+@dircategory Formatting @'e @code{@@ @TeX{}} test
+@direntry
+* Truc: (formatting).           The GNU documentation truc.
+* @code{@@ @'e @equiv{}}: (formatting).  ``@asis{--- something}'' 
+                           @command{cmd} @`a
+@end direntry
+
+@defindex truc
+@defcodeindex codeidx
+
+@include coverage_macro.texi
+
+@copying
+In copying
+@mymacro{}
+@end copying
+
+@titlepage
+@title title --a
+@subtitle formatting subtitle --a
+@subtitle subtitle 2 --a
+@author author1 --a with accents in name T@'e@,ca
+@author author2 --a
+In titlepage
+@mymacro{}
+
+Insercopying in titlepage
+@insertcopying
+@end titlepage
+
+@latex
+\DeclareUnicodeCharacter{0227}{\.{a}}
+\DeclareUnicodeCharacter{1EA1}{\d{a}}
+\DeclareUnicodeCharacter{2261}{$\equiv$}
+\DeclareUnicodeCharacter{21A6}{$\mapsto$}
+\DeclareUnicodeCharacter{2212}{-}
+\DeclareUnicodeCharacter{22C6}{$\star$}
+\DeclareUnicodeCharacter{22A3}{$\dashv$}
+\DeclareUnicodeCharacter{21D2}{$\Rightarrow$}
+\DeclareUnicodeCharacter{2264}{$\leq$}
+\DeclareUnicodeCharacter{2265}{$\geq$}
+@end latex
+
+@node Top
+@top Top section
+
+@menu
+* chapter::               chapter
+
+Menu comment
+
+* description:chapter2.   Chapter 2
+@end menu
+
+
+@node chapter
+@chapter chapter
+
+@indent
+First para
+
+@noindent
+qsddsqkdsqkkmljsqjsqodmmdsqdsmqj dqs sdq sqd sdq dsq sdq sqd sqd sdq sdq 
+qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
+
+@noindent noindent in para.
+
+@indent unneeded indent
+
+Insertcopying in normal text
+@insertcopying
+
+Normal text
+@mymacro{}
+
+In example.
+@example
+@ifset valid
+@set validinexample 1
+@end ifset
+@mymacro{}
+@end example
+
+@clear validinexample
+
+@cindex t--ruc
+@cindex T--ruc
+@cindex .
+@cindex ?
+@cindex a
+@findex t--ruc
+@findex T--ruc
+@findex .
+@findex ?
+@findex a
+
+@cindex a---a
+@cindex b---b @subentry c---c
+@cindex d---dd @subentry e---ee @subentry f---ff
+
+@findex f---aa
+@findex f---bb @subentry f---cc
+@findex f---ddd @subentry f---eee @subentry ffff
+
+@cindex aaa @seeentry{bbb}
+@cindex ddd @seealso{ccc}
+
+@findex f---aaa @seeentry{f---bbb}
+@findex f---ddd @seealso{f---ccc}
+
+@cindex aaa @sortas{A---S} @subentry @sortas{B---S1} bbb
+
+@findex xxx @sortas{X---S} @subentry @sortas{X---S1} zzz
+
+@cindex
+@findex @w{}
+
+@codeidxindex a @var{index---entry} t@~e --- @^{@dotless{i}}
+
+@trucindex truc
+
+@ifclear valid
+@c error with texindex: Bad entry; expected 3 to 5 fields, not 6
+@cindex g---gg @subentry h---hh jjj @subentry k---kk @subentry l---ll
+
+@findex f---ggg @subentry f---hhh fjjj @subentry f---kkk @subentry f---lll
+
+@c incorrect order.  Cryptic error in TeX
+@c  File ended while scanning use of @initialx.
+@cindex @seealso{ccc} ddd
+
+@findex @seealso{f---ccc} f---ddd
+@end ifclear
+
+@syncodeindex vr cp
+
+Text@footnote{in footnote
+@cindex index entry in footnote
+
+Blah
+
+Blih
+
+@cindex counting entry
+}
+
+truc
+
+@printindex truc
+
+codeidx
+
+@printindex codeidx
+
+cp
+@printindex cp
+
+fn
+@printindex fn
+
+vr
+@printindex vr
+
+ky
+@printindex ky
+
+pg
+@printindex pg
+
+tp
+@printindex tp
+
+
+
+@footnote{in footnote}
+
+@format
+@menu 
+* s--ect@comma{}ion:: s--ect@comma{}ion
+
+Menu comment
+``simple-double--three---four----''@*
+
+@end menu
+@end format
+
+@node s--ect@comma{}ion
+@section A section
+
+@menu
+* subsection:: 
+
+@detailmenu
+In detailmenu
+
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+@end detailmenu
+@end menu
+
+@node subsection
+@subsection subsection
+
+@menu
+* subsubsection ``simple-double--::
+* subsubsection three---four----''::
+@end menu
+
+@anchor{anchor}
+
+@node subsubsection ``simple-double--
+@subsubsection subsubsection ``simple-double--
+
+@node subsubsection three---four----''
+@subsubsection three---four----''
+
+@node chapter2
+@centerchap chapter 2
+
+@printindex cp
+@printindex fn
+
+@contents
+@shortcontents
+@bye

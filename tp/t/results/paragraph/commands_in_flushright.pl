@@ -12,9 +12,11 @@ $result_trees{'commands_in_flushright'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -29,9 +31,11 @@ $result_trees{'commands_in_flushright'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -55,17 +59,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'group'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'group'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -93,9 +103,11 @@ $result_trees{'commands_in_flushright'} = {
                       'text' => 'type'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -119,17 +131,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'quotation'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'quotation'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -138,8 +156,10 @@ $result_trees{'commands_in_flushright'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -155,9 +175,11 @@ $result_trees{'commands_in_flushright'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -229,17 +251,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'enumerate'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'enumerate'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -276,9 +304,11 @@ $result_trees{'commands_in_flushright'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -297,16 +327,20 @@ $result_trees{'commands_in_flushright'} = {
                                   'text' => 'table item'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -322,16 +356,20 @@ $result_trees{'commands_in_flushright'} = {
                                   'text' => 'table itemx'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'itemx',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -368,7 +406,7 @@ $result_trees{'commands_in_flushright'} = {
                           'type' => 'paragraph'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -381,17 +419,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'table'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'table'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -401,8 +445,12 @@ $result_trees{'commands_in_flushright'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -427,9 +475,11 @@ $result_trees{'commands_in_flushright'} = {
                               'text' => '0.5 0.5'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
@@ -439,8 +489,12 @@ $result_trees{'commands_in_flushright'} = {
                         'misc_args' => [
                           '0.5',
                           '0.5'
-                        ],
-                        'spaces_before_argument' => ' '
+                        ]
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -606,17 +660,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'multitable'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'multitable'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -627,8 +687,12 @@ $result_trees{'commands_in_flushright'} = {
               ],
               'extra' => {
                 'columnfractions' => {},
-                'max_columns' => 2,
-                'spaces_before_argument' => ' '
+                'max_columns' => 2
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -657,10 +721,14 @@ $result_trees{'commands_in_flushright'} = {
                       'text' => 'type'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -714,7 +782,8 @@ $result_trees{'commands_in_flushright'} = {
                 },
                 {
                   'text' => '
-'
+',
+                  'type' => 'spaces_after_close_brace'
                 },
                 {
                   'args' => [
@@ -724,17 +793,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'float'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'float'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -745,16 +820,12 @@ $result_trees{'commands_in_flushright'} = {
               ],
               'extra' => {
                 'caption' => {},
-                'node_content' => [
-                  {}
-                ],
-                'normalized' => 'type',
-                'spaces_before_argument' => ' ',
-                'type' => {
-                  'content' => [
-                    {}
-                  ],
-                  'normalized' => 'label'
+                'float_type' => 'label',
+                'normalized' => 'type'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
                 }
               },
               'source_info' => {
@@ -785,9 +856,11 @@ $result_trees{'commands_in_flushright'} = {
                       'text' => '2'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -796,8 +869,12 @@ $result_trees{'commands_in_flushright'} = {
               'extra' => {
                 'misc_args' => [
                   '2'
-                ],
-                'spaces_before_argument' => ' '
+                ]
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -813,9 +890,11 @@ $result_trees{'commands_in_flushright'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -839,17 +918,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'smallexample'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'smallexample'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -872,9 +957,11 @@ $result_trees{'commands_in_flushright'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -898,17 +985,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'format'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'format'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -931,9 +1024,11 @@ $result_trees{'commands_in_flushright'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -957,17 +1052,23 @@ $result_trees{'commands_in_flushright'} = {
                           'text' => 'flushleft'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'flushleft'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -995,16 +1096,20 @@ $result_trees{'commands_in_flushright'} = {
                       'text' => 'in center'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
-              'extra' => {
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1025,17 +1130,23 @@ $result_trees{'commands_in_flushright'} = {
                       'text' => 'flushright'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'flushright'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1060,8 +1171,6 @@ $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[9]{'extra'}{'columnfractions'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'contents'}[3]{'extra'}{'float'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11];
 $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'extra'}{'caption'} = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'contents'}[3];
-$result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'args'}[1]{'contents'}[0];
-$result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'extra'}{'type'}{'content'}[0] = $result_trees{'commands_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0];
 
 $result_texis{'commands_in_flushright'} = '@flushright
 
@@ -1153,7 +1262,6 @@ label, type
 in float
 
 
-
 Sp:
 
 
@@ -1182,15 +1290,8 @@ $result_floats{'commands_in_flushright'} = {
             'float' => {}
           }
         },
-        'normalized' => 'type',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'label'
-            }
-          ],
-          'normalized' => 'label'
-        }
+        'float_type' => 'label',
+        'normalized' => 'type'
       },
       'structure' => {
         'float_number' => 1
@@ -1222,7 +1323,6 @@ _table itemx_
                     in multitable
 
 in float
-
 
 label 1: in caption
 
@@ -1275,7 +1375,6 @@ $result_converted{'html_text'}->{'commands_in_flushright'} = '<div class="flushr
 
 <p>in float
 </p>
-
 <div class="caption"><p><strong class="strong">label 1: </strong>in caption</p></div></div>
 <p class="flushright-paragraph">Sp:
 </p><br>

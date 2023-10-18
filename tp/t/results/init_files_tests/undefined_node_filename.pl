@@ -18,9 +18,11 @@ $result_trees{'undefined_node_filename'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -34,19 +36,12 @@ $result_trees{'undefined_node_filename'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -59,31 +54,26 @@ $result_trees{'undefined_node_filename'} = {
         {
           'contents' => [
             {
-              'text' => 'Other'
+              'text' => 'chap Other'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Other'
-          }
-        ],
-        'normalized' => 'Other',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap-Other'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -94,14 +84,10 @@ $result_trees{'undefined_node_filename'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'undefined_node_filename'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'undefined_node_filename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'undefined_node_filename'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'undefined_node_filename'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'undefined_node_filename'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'undefined_node_filename'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'undefined_node_filename'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'undefined_node_filename'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 
 $result_texis{'undefined_node_filename'} = '@node Top
 
-@node Other
+@node chap Other
 ';
 
 
@@ -117,7 +103,7 @@ $result_nodes{'undefined_node_filename'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
-        'normalized' => 'Other'
+        'normalized' => 'chap-Other'
       },
       'structure' => {
         'node_prev' => {}
@@ -143,9 +129,9 @@ $result_floats{'undefined_node_filename'} = {};
 
 $result_converted_errors{'file_html'}->{'undefined_node_filename'} = [
   {
-    'error_line' => 'warning: user-defined node file name not set for `Other.html\'
+    'error_line' => 'warning: user-defined node file name not set for `chap-Other.html\'
 ',
-    'text' => 'user-defined node file name not set for `Other.html\'',
+    'text' => 'user-defined node file name not set for `chap-Other.html\'',
     'type' => 'warning'
   },
   {

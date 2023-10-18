@@ -1,4 +1,4 @@
-/* Copyright 2010-2022 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@
 #include "errors.h"
 #include "input.h"
 #include "text.h"
+#include "debug.h"
 
 /* wrappers for asprintf and vasprintf */
 int
@@ -59,6 +60,22 @@ void fatal (char *message)
   abort ();
 }
 
+/* these are not full line messages, but the part that are output along
+   with debug messages, as is done in Texinfo::Register::line_warn/line_error
+   called by the perl parser.  Here without using the gettext framework
+   for the translation of 'warning'*/
+void
+debug_error_warning_message (ERROR_MESSAGE *error_message)
+{
+  if (error_message->type == warning)
+    fprintf (stderr, "warning: ");
+
+  if (error_message->source_info.macro)
+    fprintf (stderr, "%s (possibly involving @%s)\n",
+             error_message->message, error_message->source_info.macro);
+  else
+    fprintf (stderr, "%s\n", error_message->message);
+}
 
 ERROR_MESSAGE *error_list = 0;
 size_t error_number = 0;
@@ -93,6 +110,9 @@ line_error_internal (enum error_type type, SOURCE_INFO *cmd_source_info,
     }
   else
     error_list[error_number++].source_info = current_source_info;
+
+  if (debug_output)
+    debug_error_warning_message (&error_list[error_number -1]);
 }
 
 void
@@ -176,3 +196,4 @@ bug_message (char *format, ...)
   va_start (v, format);
   bug_message_internal (format, v);
 }
+

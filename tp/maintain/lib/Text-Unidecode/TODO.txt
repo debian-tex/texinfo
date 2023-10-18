@@ -1,10 +1,78 @@
-Text::Unidecode Transliteration Notes -- TODO FILE
+# -*-coding:utf-8;-*- ··················································
+# Last Modified Time-stamp: "2015-10-16 03:34:44 MDT sburke@cpan.org"
+#======================================================================
+
+	      ~~  Text::Unidecode TODO file  ~~
+
+TODO: make the table files be built from the Unicode character
+database, transitioning from the values in the current table files.
+I used to have a whole bunch of concise files that compiled to
+the xXX.pm table files.  But they're in a file format I
+haven't dealt with since 2001, so screw it all, I'm starting
+from zero and it will be... well, you'll see.
+
+(Presumably the Hangul and the Unihan blocks are outside the
+scope of that whole ruckus of named characters.)
 
 
+TODO GTD:
+Keep plugging in suggestions from Tomaž Šolc's message
 
-============================== BLOCK 03 ==============================
 
-Coptic things I'm unsure of: Khei=kh, Gangia=g, Shima=ch, Dei=ti.
+TODO:
+Figure out how to courteously declare dependencies in my Makefile.PL
+
+TODO:
+Bundle with a "unidecode" util that calls a routine in Unidecode.pm?
+Or maybe just show it as a one-liner in the POD?
+
+TODO:
+Also show it with an example use with iconv
+
+TODO:
+Plow through more bug reports, applying patches etc,
+especially stuff from that nice Tomaž Šolc man.
+
+TODO:
+
+***DEFINITELY*** Make it handle stuff in Astral Plane (over U+FFFF)
+Take that plunge, or ascend into the plane, or whatever.  DOIT.
+
+TODO:
+
+Currently, all the files are in Unix newline format (LF).
+Maybe CR+LF is technically more universal, and I could switch
+to that.  But so far I've gotten no complaints that I should
+go do that.
+
+TODO:
+
+THEN re-run the thing that reads the Unihan database and generates
+all the Text/Unidecode/__.pm files.
+(Do the hyperspace handling first, because lots of Unihan
+stuff is up there.)
+
+TODO:
+
+Look to see whether I need to deal with the Arabic stuff in
+the U+FBxx etc blocks.  I thought it was always just
+font-internal stuff, but I'm starting to suspect that it may
+be encountered in the real world
+
+TODO:
+
+Of course:
+- Check for new glyphs in existing tables.
+- Look at whole new tables (like the Philippine scripts) in
+normal space (x < U+FFFF)
+- Look at the wild wilderness in hyperspace (x > U+FFFF
+
+
+======================================================================
+======================================================================
+
+########################################################################
+Below here is TODOs from the Unicode version in 2001.  Yes, that long ago.
 
 
 ============================== BLOCK 09 ==============================
@@ -98,6 +166,5 @@ Arabic Presentation Forms-B (FE70-FEFF) -- do I need to
 do these, or are they never actually found in text files?
 
 
-
---
-26 TODOs at Sat Jul 14 00:27:44 2001
+======================================================================
+(end)

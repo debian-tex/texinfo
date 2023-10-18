@@ -14,9 +14,11 @@ $result_trees{'anchor_in_titlepage'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -37,16 +39,13 @@ $result_trees{'anchor_in_titlepage'} = {
                         }
                       ],
                       'extra' => {
-                        'region' => {}
+                        'element_region' => 'titlepage'
                       },
                       'type' => 'brace_command_arg'
                     }
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
                     'normalized' => 'in-titlepage'
                   },
                   'source_info' => {
@@ -68,17 +67,23 @@ $result_trees{'anchor_in_titlepage'} = {
                           'text' => 'titlepage'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'titlepage'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -112,16 +117,20 @@ $result_trees{'anchor_in_titlepage'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -137,9 +146,11 @@ $result_trees{'anchor_in_titlepage'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -153,19 +164,12 @@ $result_trees{'anchor_in_titlepage'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -181,16 +185,21 @@ $result_trees{'anchor_in_titlepage'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -206,9 +215,11 @@ $result_trees{'anchor_in_titlepage'} = {
               'text' => 'nchap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -230,19 +241,16 @@ $result_trees{'anchor_in_titlepage'} = {
                       'text' => 'in titlepage'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'in-titlepage'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'in-titlepage'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -258,19 +266,12 @@ $result_trees{'anchor_in_titlepage'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'nchap'
-          }
-        ],
-        'normalized' => 'nchap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'nchap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -281,14 +282,7 @@ $result_trees{'anchor_in_titlepage'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'anchor_in_titlepage'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'region'} = $result_trees{'anchor_in_titlepage'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'anchor_in_titlepage'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_titlepage'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_titlepage'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_titlepage'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'label'} = $result_trees{'anchor_in_titlepage'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'anchor_in_titlepage'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_titlepage'}{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_titlepage'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_titlepage'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'anchor_in_titlepage'} = '@titlepage
 
@@ -320,7 +314,6 @@ $result_sectioning{'anchor_in_titlepage'} = {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'extra' => {},
         'structure' => {
           'section_childs' => [
             {
@@ -441,6 +434,12 @@ $result_converted{'html'}->{'anchor_in_titlepage'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
@@ -452,19 +451,19 @@ $result_converted{'html'}->{'anchor_in_titlepage'} = '<!DOCTYPE html>
 <p>
 Next: <a href="#nchap" accesskey="n" rel="next">nchap</a> &nbsp; </p>
 </div>
-<h1 class="top">top</h1>
+<h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 <ul class="mini-toc">
 <li><a href="#Top" accesskey="1">Chapter</a></li>
 </ul>
 <div class="chapter-level-extent" id="Top">
 
-<h2 class="chapter" id="Chapter">1 Chapter</h2>
+<h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 <hr>
 <a class="node-id" id="nchap"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Chapter</a> &nbsp; </p>
 </div>
-<h4 class="node">nchap</h4>
+<h4 class="node"><span>nchap<a class="copiable-link" href="#nchap"> &para;</a></span></h4>
 
 <p>See <a class="xref" href="#in-titlepage">in titlepage</a>.
 </p></div>
@@ -481,6 +480,7 @@ $result_converted{'latex_text'}->{'anchor_in_titlepage'} = '
 \\begin{document}
 
 \\frontmatter
+\\pagestyle{empty}%
 \\begin{titlepage}
 \\begingroup
 \\newskip\\titlepagetopglue \\titlepagetopglue = 1.5in
@@ -492,8 +492,8 @@ $result_converted{'latex_text'}->{'anchor_in_titlepage'} = '
 \\label{anchor:in-titlepage}%
 \\endgroup
 \\end{titlepage}
-\\pagestyle{single}%
 \\mainmatter
+\\pagestyle{single}%
 \\part*{{top}}
 \\label{anchor:Top}%
 \\label{anchor:nchap}%

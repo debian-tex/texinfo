@@ -1,4 +1,4 @@
-/* Copyright 2010-2022 Free Software Foundation, Inc.
+/* Copyright 2010-2023 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -71,7 +71,9 @@ add_index_command (char *cmdname, INDEX *idx)
 {
   enum command_id new = add_texinfo_command (cmdname);
   user_defined_command_data[new & ~USER_COMMAND_BIT].flags
-    = CF_line | CF_index_entry_command;
+    |= CF_line | CF_index_entry_command | CF_contain_basic_inline
+    /*  | CF_close_paragraph */
+      | CF_no_paragraph;
   user_defined_command_data[new & ~USER_COMMAND_BIT].data = LINE_line;
   associate_command_to_index (new, idx);
 }
@@ -115,10 +117,11 @@ index_by_name (char *name)
 void
 add_index (char *name, int in_code)
 {
-  INDEX *idx;
+  INDEX *idx = index_by_name (name);
   char *cmdname;
 
-  idx = add_index_internal (name, in_code);
+  if (!idx)
+    idx = add_index_internal (strdup (name), in_code);
 
   /* For example, "rq" -> "rqindex". */
   xasprintf (&cmdname, "%s%s", name, "index");
@@ -129,15 +132,6 @@ add_index (char *name, int in_code)
 static void
 wipe_index (INDEX *idx)
 {
-  int i;
-  INDEX_ENTRY *ie;
-  for (i = 0; i < idx->index_number; i++)
-    {
-      ie = &idx->index_entries[i];
-      /* Destroy element if it is not in the main tree */
-      if (ie->content && !ie->content->parent)
-        destroy_element (ie->content);
-    }
   free (idx->name);
   free (idx->index_entries);
 }
@@ -261,24 +255,19 @@ typedef struct {
 } INDEX_ENTRY_REF;
 
 
-/* INDEX_TYPE_COMMAND is used to determine which index to enter the entry in.
-   INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.
-   CONTENT is an element whose contents represent the text of the
-   index entry.  CURRENT is the element in the main body of the manual that
-   the index entry refers to.
-
-   CONTENT_NORMALIZED would be "the index entry content, independent
-   of the current language." */
+/* INDEX_TYPE_CMD is used to determine which index to enter the entry in.
+   index entry.  ELEMENT is the element in the main body of the manual that
+   the index entry refers/belongs to.
+*/
 void
-enter_index_entry (enum command_id index_type_command,
-                   enum command_id index_at_command,
-                   ELEMENT *current, ELEMENT *content)
+enter_index_entry (enum command_id index_type_cmd,
+                   ELEMENT *element)
 {
   INDEX *idx;
   INDEX_ENTRY *entry;
-  KEY_PAIR *k;
+  TEXT ignored_chars;
 
-  idx = index_of_command (index_type_command);
+  idx = index_of_command (index_type_cmd);
   if (idx->index_number == idx->index_space)
     {
       idx->index_entries = realloc (idx->index_entries,
@@ -290,38 +279,50 @@ enter_index_entry (enum command_id index_type_command,
   memset (entry, 0, sizeof (INDEX_ENTRY));
 
   entry->index_name = idx->name;
-  entry->index_at_command = index_at_command;
-  entry->index_type_command = index_type_command;
-  entry->index_prefix = idx->prefix;
-  entry->content = content;
-  entry->command = current;
+  /* not needed, the position in the index is directly used
   entry->number = idx->index_number;
-  entry->ignored_chars = global_info.ignored_chars;
+  */
+  entry->command = element;
 
-  k = lookup_extra (current, "sortas");
-  if (k)
-    entry->sortas = (char *) k->value;
+  /* Create ignored_chars string. */
+  text_init (&ignored_chars);
+  if (global_info.ignored_chars.backslash)
+    text_append (&ignored_chars, "\\");
+  if (global_info.ignored_chars.hyphen)
+    text_append (&ignored_chars, "-");
+  if (global_info.ignored_chars.lessthan)
+    text_append (&ignored_chars, "<");
+  if (global_info.ignored_chars.atsign)
+    text_append (&ignored_chars, "@");
+  if (ignored_chars.end > 0)
+    {
+      add_extra_string_dup (element, "index_ignore_chars", ignored_chars.text);
+      free (ignored_chars.text);
+    }
 
-  if (current_region ())
-    entry->region = current_region ();
-  else
-    entry->node = current_node;
-
-  entry->number = idx->index_number;
-
-#if 0
-  /* This reference is not used in api.c when the Perl tree is output. */
+  /* index_entry is an array with two elements.  Use
+     extra_misc_args to pass that information as an array */
   {
-  INDEX_ENTRY_REF *ier;
-  ier = malloc (sizeof (INDEX_ENTRY_REF));
-  ier->index = idx;
-  ier->entry = idx->index_number - 1;
-
-  add_extra_index_entry (current, "index_entry", ier);
+    ELEMENT *index_entry = new_element (ET_NONE);
+    ELEMENT *e = new_element (ET_NONE);
+    text_append (&e->text, idx->name);
+    add_to_element_contents (index_entry, e);
+    e = new_element (ET_NONE);
+    add_extra_integer (e, "integer", idx->index_number);
+    add_to_element_contents (index_entry, e);
+    add_extra_misc_args (element, "index_entry", index_entry);
   }
-#endif
 
-  if (!current_region () && !current_node && !current_section)
+  if (nesting_context.regions_stack.top > 0)
+    {
+      enum command_id region = top_command (&nesting_context.regions_stack);
+      add_extra_string_dup (element, "element_region", command_name (region));
+    }
+  else if (current_node)
+    add_extra_element (element, "element_node", current_node);
+
+  if (nesting_context.regions_stack.top == 0
+      && !current_node && !current_section)
     line_warn ("entry for index `%s' outside of any node", idx->name);
 }
 

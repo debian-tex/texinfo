@@ -1,46 +1,22 @@
-no_monolithic_only_toc_out no_monolithic.texi -c 'MONOLITHIC 0' --init only_toc_out.init
-navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
 
-formatting_macro_expand formatting.texi --macro-expand=@OUT_DIR@formatting.texi -c TEXINFO_OUTPUT_FORMAT=structure
-# the output should be the same as just above, but is less interesting
-# to test as above also tests the not otherwise tested 'structure' format
-# and also tests --macro-expand.
-#formatting_macro_expand formatting.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
-formatting_docbook formatting.texi --docbook
-formatting_xml formatting.texi --xml
-formatting_html formatting.texi --html --no-split
-formatting_html_nodes formatting.texi --html --split node --node-files -c 'TOP_FILE index.html'
-# this is the default html output
-formatting_html_no_texi2html formatting.texi --html --no-split -c TEXI2HTML=undef
-formatting_info formatting.texi --info -c ASCII_PUNCTUATION=1
-formatting_plaintext formatting.texi -c FORMAT_MENU=nomenu --plaintext -c ASCII_PUNCTUATION=1
-formatting_latex formatting.texi --latex
+formatting_texi2html ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html -c TEXI2HTML=1 --no-split --internal-links=@OUT_DIR@internal_links_formatting.txt
+formatting_texi2html_nodes ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html -c TEXI2HTML=1 --split node --node-files -c 'TOP_FILE index.html' --internal-links=@OUT_DIR@internal_links_formatting.txt
+formatting_info_ascii_punctuation ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --info -c ASCII_PUNCTUATION=1
+formatting_info_disable_encoding ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --info --disable-encoding
+formatting_plaintext_ascii_punctuation ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --plaintext -c ASCII_PUNCTUATION=1
 
-# used to remove commands, for instance to count words
-formatting_textcontent formatting.texi -c TEXINFO_OUTPUT_FORMAT=textcontent
-# used to format text fragments in converters, minimal formatting
-formatting_rawtext formatting.texi -c TEXINFO_OUTPUT_FORMAT=rawtext
+# count words
+formatting_sort_element_counts ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c USE_NODES=0 -c SORT_ELEMENT_COUNT=@OUT_DIR@formatting_elt_counts.txt
 
-# formats present in the documentation not tested: debugtree and texinfosxml
-#formatting_sxml formatting.texi -c TEXINFO_OUTPUT_FORMAT=texinfosxml
-
-formatting_nodes formatting.texi --split node
-formatting_mathjax formatting.texi --html -c HTML_MATH=mathjax
-#formatting_mediawiki formatting.texi --init mediawiki.pm
-formatting_weird_quotes formatting.texi -c 'OPEN_QUOTE_SYMBOL @' -c "CLOSE_QUOTE_SYMBOL '&lsquo;"
-formatting_html32 formatting.texi --init html32.pm
-formatting_regions formatting_regions.texi
-formatting_numerical_entities formatting.texi -c 'USE_NUMERIC_ENTITY 1'
-formatting_enable_encoding formatting.texi --enable-encoding
-formatting_xhtml formatting.texi -c DOCTYPE='<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">' -c 'USE_XML_SYNTAX 1' -c 'NO_CUSTOM_HTML_ATTRIBUTE 1' -c 'HTML_ROOT_ELEMENT_ATTRIBUTES xmlns="http://www.w3.org/1999/xhtml"'
-formatting_exotic formatting.texi --split section --no-header --no-number-sections -c 'TOC_LINKS 1' -c 'DEF_TABLE 1' -c 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null -c 'USE_TITLEPAGE_FOR_TITLE 0'
+formatting_mathjax ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c SHOW_TITLE=1 -c HTML_MATH=mathjax
+formatting_weird_quotes ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html -c FORMAT_MENU=menu -c SHOW_TITLE=1 -c DO_ABOUT=1 --no-split -c 'OPEN_QUOTE_SYMBOL @' -c "CLOSE_QUOTE_SYMBOL '&lsquo;"
+formatting_numerical_entities ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c FORMAT_MENU=menu -c SHOW_TITLE=1 -c DO_ABOUT=1 -c 'USE_NUMERIC_ENTITY 1'
+formatting_enable_encoding ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c FORMAT_MENU=menu -c SHOW_TITLE=1 -c DO_ABOUT=1 --enable-encoding -c OUTPUT_CHARACTERS=1
+formatting_exotic ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' -c TEXI2HTML=1 --split section --no-header --no-number-sections -c 'TOC_LINKS 1' -c 'DEF_TABLE 1' -c 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null -c 'USE_TITLEPAGE_FOR_TITLE 0'
 # use of the doctype is to be able to use W3C old validator, it
 # could be removed when validation can be done differently
-formatting_inline_css formatting.texi -c 'INLINE_CSS_STYLE 1' -c DOCTYPE='<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'
-formatting_fr_icons formatting.texi --document-language fr --init icons.init
-formatting_chm formatting.texi -c FORMAT_MENU=nomenu --init chm.pm
-formatting_epub formatting.texi --epub3 -c 'EPUB_CREATE_CONTAINER_FILE 0'
-formatting_epub_nodes formatting.texi --split node --init epub3.pm -c 'EPUB_CREATE_CONTAINER_FILE 0' -c INFO_JS_DIR=js
-formatting formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
-
-#lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.pm
+formatting_inline_css ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --html --no-split -c SHOW_TITLE=1 -c DO_ABOUT=1 -c CONTENTS_OUTPUT_LOCATION=separate_element -c FORMAT_MENU=menu -c 'INLINE_CSS_STYLE 1' -c DOCTYPE='<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'
+formatting_fr ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' -c TEXI2HTML=1 --document-language fr
+formatting_fr_info ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --info --document-language fr
+formatting_fr_icons ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' -c TEXI2HTML=1 --document-language fr --init icons.init
+formatting_epub_nodes ../coverage/formatting.texi -D 'needcollationcompat Need collation compatibility' --split node --init epub3.pm -c 'EPUB_CREATE_CONTAINER_FILE 0' -c INFO_JS_DIR=js -c 'footnotestyle separate'

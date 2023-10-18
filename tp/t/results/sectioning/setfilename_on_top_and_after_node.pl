@@ -24,28 +24,23 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -68,17 +63,23 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
                       'text' => 'very badly placed setfilename'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'very badly placed setfilename'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -105,17 +106,23 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
                   'text' => 'a bit too late'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_before_argument' => ' ',
             'text_arg' => 'a bit too late'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -124,8 +131,11 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -136,8 +146,6 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'setfilename_on_top_and_after_node'} = '@node Top
 @top In top @setfilename very badly placed setfilename
@@ -205,12 +213,12 @@ $result_errors{'setfilename_on_top_and_after_node'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @setfilename should not appear in @top
+    'error_line' => 'warning: @setfilename should not appear on @top line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@setfilename should not appear in @top',
+    'text' => '@setfilename should not appear on @top line',
     'type' => 'warning'
   },
   {
@@ -267,13 +275,19 @@ $result_converted{'html'}->{'setfilename_on_top_and_after_node'} = '<!DOCTYPE ht
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <div class="top-level-extent" id="Top">
-<h1 class="top" id="In-top-">In top </h1>
+<h1 class="top" id="In-top-"><span>In top <a class="copiable-link" href="#In-top-"> &para;</a></span></h1>
 
 </div>
 

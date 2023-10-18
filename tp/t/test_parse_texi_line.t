@@ -28,6 +28,8 @@ sub test_line($$$$)
     $parser = Texinfo::Parser::parser();
   }
 
+  #$parser->{'DEBUG'} = 1; print STDERR "\n$test_explanation\n\n";
+
   my $tree = $parser->parse_texi_line($texinfo_line);
   my $check_texinfo = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
   is ($texinfo_line, $check_texinfo, $test_explanation);
@@ -101,7 +103,7 @@ foreach my $test_string_explanation (@tests) {
   test_line(undef, $texi_string, $explanation, $error_messages);
 }
 
-# test with the same aprser reused
+# test with the same parser reused
 my $parser = Texinfo::Parser::parser();
 
 my @concatenated_error_messages = ();

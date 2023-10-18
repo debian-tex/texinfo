@@ -22,9 +22,11 @@ $result_trees{'raw_in_style'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -48,17 +50,23 @@ $result_trees{'raw_in_style'} = {
                                   'text' => 'html'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'html'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -102,6 +110,7 @@ in html
 
 
 $result_texts{'raw_in_style'} = '
+in html
 ';
 
 $result_errors{'raw_in_style'} = [];
@@ -113,6 +122,13 @@ $result_floats{'raw_in_style'} = {};
 
 $result_converted{'plaintext'}->{'raw_in_style'} = '‘ ’
 ';
+
+
+$result_converted{'xml'}->{'raw_in_style'} = '<para><code>
+<html endspaces=" ">
+in html
+</html>
+</code></para>';
 
 
 $result_converted{'html_text'}->{'raw_in_style'} = '<p><code class="code">

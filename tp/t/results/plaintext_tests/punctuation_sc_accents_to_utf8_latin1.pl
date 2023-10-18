@@ -34,9 +34,11 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
                       'text' => 'ISO-8859-1'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
@@ -44,9 +46,12 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
               'cmdname' => 'documentencoding',
               'extra' => {
                 'input_encoding_name' => 'iso-8859-1',
-                'input_perl_encoding' => 'iso-8859-1',
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'ISO-8859-1'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -73,28 +78,23 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
               'text' => 'top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -110,9 +110,11 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
               'text' => 'top section'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -125,8 +127,11 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -142,28 +147,23 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
               'text' => 'node chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node-chap'
-          }
-        ],
-        'normalized' => 'node-chap',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node-chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -179,9 +179,11 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -1153,8 +1155,11 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'punctuation_small_case_accents_latin1.texi',
@@ -1165,10 +1170,6 @@ $result_trees{'punctuation_sc_accents_to_utf8_latin1'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'punctuation_sc_accents_to_utf8_latin1'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'punctuation_sc_accents_to_utf8_latin1'} = '\\input texinfo
 

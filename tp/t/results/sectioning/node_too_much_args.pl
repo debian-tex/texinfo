@@ -15,20 +15,24 @@ $result_trees{'node_too_much_args'} = {
         {
           'contents' => [
             {
-              'text' => 'Top'
+              'text' => 'first'
             }
           ],
           'type' => 'line_arg'
         },
         {
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
         {
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'type' => 'line_arg'
         },
@@ -45,33 +49,26 @@ $result_trees{'node_too_much_args'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => '  '
+            'manual_content' => [
+              {}
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => '  '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          },
-          undef,
-          undef,
-          {
-            'manual_content' => [
-              {}
-            ]
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'first'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -82,11 +79,9 @@ $result_trees{'node_too_much_args'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'node_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
 
-$result_texis{'node_too_much_args'} = '@node Top, , ,  (dir)';
+$result_texis{'node_too_much_args'} = '@node first, , ,  (dir)';
 
 
 $result_texts{'node_too_much_args'} = '';
@@ -94,7 +89,7 @@ $result_texts{'node_too_much_args'} = '';
 $result_nodes{'node_too_much_args'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   },
   'structure' => {
     'node_up' => {
@@ -112,7 +107,7 @@ $result_nodes{'node_too_much_args'} = {
 $result_menus{'node_too_much_args'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'first'
   },
   'structure' => {}
 };

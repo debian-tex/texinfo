@@ -1,10 +1,9 @@
 \input texinfo
-@setfilename char_latin2_latin2_in_refs.info
 
 @documentencoding ISO-8859-2
 
 @node Top
-@top top
+@top char latin2 latin2 in refs
 
 @ref{¡ ± ² Ê ê}.
 

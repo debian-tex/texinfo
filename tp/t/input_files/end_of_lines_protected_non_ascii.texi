@@ -1,0 +1,8 @@
+
+@deffn catégorie deffn_nùme àrguments @
+   more {àrgs @
+  with end ôf line within} with 3 @@ @@@
+ {one last arg}
+deffn
+@end deffn
+

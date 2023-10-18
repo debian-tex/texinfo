@@ -49,9 +49,11 @@ $result_trees{'paragraphindent'} = {
                   'text' => 'asis'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -60,8 +62,12 @@ $result_trees{'paragraphindent'} = {
           'extra' => {
             'misc_args' => [
               'asis'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -100,9 +106,11 @@ $result_trees{'paragraphindent'} = {
                   'text' => '0'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -111,8 +119,12 @@ $result_trees{'paragraphindent'} = {
           'extra' => {
             'misc_args' => [
               '0'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -151,9 +163,11 @@ $result_trees{'paragraphindent'} = {
                   'text' => '7'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -162,8 +176,12 @@ $result_trees{'paragraphindent'} = {
           'extra' => {
             'misc_args' => [
               '7'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

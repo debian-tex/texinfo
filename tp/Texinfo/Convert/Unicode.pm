@@ -1,6 +1,6 @@
 # Unicode.pm: handle conversion to unicode.
 #
-# Copyright 2010-2022 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,10 +19,9 @@
 
 package Texinfo::Convert::Unicode;
 
-# Seems to be the Perl version required for Encode:
-# http://cpansearch.perl.org/src/DANKOGAI/Encode-2.47/Encode/README.e2x
-# http://coding.derkeiler.com/Archive/Perl/comp.lang.perl.misc/2005-12/msg00833.html
-use 5.007_003;
+# Documentation of earlier releases for perluniintro is missing.
+# charnames::vianame is not documented in 5.6.0.
+use 5.008;
 use strict;
 
 # To check if there is no erroneous autovivification
@@ -33,6 +32,9 @@ use Carp qw(cluck);
 use Encode;
 use Unicode::Normalize;
 use Unicode::EastAsianWidth;
+# To obtain unicode characters based on code points represented as
+# strings
+use charnames ();
 
 use Texinfo::MiscXS;
 
@@ -64,7 +66,7 @@ use vars qw($VERSION @EXPORT_OK %EXPORT_TAGS);
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 our %unicode_diacritics = (
@@ -544,7 +546,11 @@ our %extra_unicode_map = (
                'arrow'             => '2192',
                'minus'             => '2212', # in mathematical operators
 #               'minus'             => '002D', # in latin1
-               'point'             => '2605',
+               'point'             => '22C6', # another candidate is 2605
+                                              # corresponding to a bigger star
+                                              # (and to \bigstar in LaTeX)
+                                              # but less consistent with TeX
+                                              # \star
                'print'             => '22A3',
                'result'            => '21D2',
                'quotedblleft'      => '201C',
@@ -559,10 +565,17 @@ our %extra_unicode_map = (
 %unicode_map = (%unicode_map, %extra_unicode_map);
 
 # set the %unicode_character_brace_no_arg_commands value to the character
-# corresponding to the hex value in %unicode_map.
+# corresponding to the textual hex value in %unicode_map.
 our %unicode_character_brace_no_arg_commands;
 foreach my $command (keys(%unicode_map)) {
   if ($unicode_map{$command} ne '') {
+# FIXME Using charnames::vianame as in the following is the clean documented
+# way to create an unicode character at runtime.  However, in tests of perl
+# 5.10.1 (on solaris), if charnames::vianame is used for @aa{} '00E5', uc()
+# on the resulting character does not leads to \x{00C5} (@AA{}) (when
+# formatting @sc{@aa{}} or @var{@aa{}} in plaintext).
+#    $unicode_character_brace_no_arg_commands{$command}
+#      = charnames::vianame("U+$unicode_map{$command}");
     my $char_nr = hex($unicode_map{$command});
     if ($char_nr > 126 and $char_nr < 255) {
       # this is very strange, indeed.  The reason lies certainly in the
@@ -585,6 +598,43 @@ foreach my $command (keys(%unicode_map)) {
 
 
 our %transliterate_map = (
+  # Text::Unicode starting from version 1.25_01 maps C1 controls in the
+  # 0080 to 009F range to Windows-1252 characters.  We still consider
+  # the Unicode standard to rule and keep on transliterating to empty
+  # strings
+               '0080'  => '',
+               '0081'  => '',
+               '0082'  => '',
+               '0083'  => '',
+               '0084'  => '',
+               '0085'  => '',
+               '0086'  => '',
+               '0087'  => '',
+               '0088'  => '',
+               '0089'  => '',
+               '008A'  => '',
+               '008B'  => '',
+               '008C'  => '',
+               '008D'  => '',
+               '008E'  => '',
+               '008F'  => '',
+               '0090'  => '',
+               '0091'  => '',
+               '0092'  => '',
+               '0093'  => '',
+               '0094'  => '',
+               '0095'  => '',
+               '0096'  => '',
+               '0097'  => '',
+               '0098'  => '',
+               '0099'  => '',
+               '009A'  => '',
+               '009B'  => '',
+               '009C'  => '',
+               '009D'  => '',
+               '009E'  => '',
+               '009F'  => '',
+               # explicit transliterations
                '00C5'  => 'AA',
                '00E5'  => 'aa',
                '00D8'  => 'O',
@@ -656,6 +706,12 @@ foreach my $command (keys(%unicode_accented_letters)) {
   }
 }
 
+# Note that the values are not actually used anywhere, they are there
+# to mark unicode codepoints that exist in the encoding.  It is important
+# to get them right, though, as the values are shown when debugging.
+# Also note that values below A0, which correspond to the ascii range
+# are not in the values and therefore should be handled differently by the
+# codes using the hash.
 my %unicode_to_eight_bit = (
    'iso-8859-1' => {
       '00A0' => 'A0',
@@ -1259,6 +1315,8 @@ sub unicode_accent($$)
   if (defined($unicode_diacritics{$accent})) {
     my $diacritic = chr(hex($unicode_diacritics{$accent}));
     if ($accent ne 'tieaccent') {
+      # FIXME with a malformed string, there can be an infinite loop
+      # in Unicode::Normalize::NFC.
       return Unicode::Normalize::NFC($text . $diacritic);
     } else {
       # tieaccent diacritic is naturally and correctly composed
@@ -1289,15 +1347,16 @@ sub unicode_text {
   return $text;
 }
 
-# return the 8 bit, if it exists, and the unicode codepoint
+# return the hexadecimal 8 bit string, if it exists, and the unicode codepoint
 sub _eight_bit_and_unicode_point($$)
 {
   my $char = shift;
   my $encoding = shift;
 
   my ($eight_bit, $codepoint);
-  if (ord($char) <= 128) {
-    # 7bit ascii characters, the same in every 8bit encodings
+  if (ord($char) < 127) {
+    # 7bit ascii characters (excluding 127, \x{7F}, DEL), the same in every
+    # 8bit encodings
     $eight_bit = uc(sprintf("%02x",ord($char)));
     $codepoint = uc(sprintf("%04x",ord($char)));
   } elsif (ord($char) <= hex(0xFFFF)) {
@@ -1385,36 +1444,36 @@ sub _format_eight_bit_accents_stack($$$$$;$)
       my $command = 'TEXT';
       $command = $partial_result->[1]->{'cmdname'} if ($partial_result->[1]);
       if (defined($partial_result->[0])) {
-        print STDERR "   -> ".Encode::encode('utf8', $partial_result->[0])
+        print STDERR "   -> ".Encode::encode('utf-8', $partial_result->[0])
                             ."|$command\n";
       } else {
-        print STDERR "   -> NO UTF8 |$command\n";
+        print STDERR "   -> NO accented character |$command\n";
       }
     }
   }
 
-  # At this point we have the utf8 encoded results for the accent
+  # At this point we have the unicode character results for the accent
   # commands stack, with all the intermediate results.
   # For each one we'll check if it is possible to encode it in the
   # current eight bit output encoding table and, if so set the result
   # to the character.
 
-  my $eight_bit = '';
+  my $prev_eight_bit = '';
 
   while (@results_stack) {
     my $char = $results_stack[0]->[0];
     last if (!defined($char));
 
-    my ($new_eight_bit, $new_codepoint)
+    my ($new_eight_bit, $codepoint)
       = _eight_bit_and_unicode_point($char, $encoding);
     if ($debug) {
       my $command = 'TEXT';
       $command = $results_stack[0]->[1]->{'cmdname'}
         if ($results_stack[0]->[1]);
-      my $new_eight_bit_txt = 'UNDEF';
-      $new_eight_bit_txt = $new_eight_bit if (defined($new_eight_bit));
-      print STDERR "" . Encode::encode('utf8', $char)
-        . " ($command) new_codepoint: $new_codepoint 8bit: $new_eight_bit_txt old: $eight_bit\n";
+      print STDERR "" . Encode::encode('utf-8', $char) . " ($command) "
+        . "codepoint: $codepoint "
+        ."8bit: ". (defined($new_eight_bit) ? $new_eight_bit : 'UNDEF')
+        . " prev: $prev_eight_bit\n";
     }
 
     # no corresponding eight bit character found for a composed character
@@ -1429,7 +1488,7 @@ sub _format_eight_bit_accents_stack($$$$$;$)
     #    appending or prepending a character. For example this happens for
     #    @={@,{@~{n}}}, where @,{@~{n}} is expanded to a 2 character:
     #    n with a tilde, followed by a ,
-    #    In that case, the additional utf8 diacritic is appended, which
+    #    In that case, the additional diacritic is appended, which
     #    means that it is composed with the , and leaves n with a tilde
     #    untouched.
     # -> the diacritic is appended but the normal form doesn't lead
@@ -1437,11 +1496,11 @@ sub _format_eight_bit_accents_stack($$$$$;$)
     #    of the string is unchanged. This, for example, happens for
     #    @ubaraccent{a} since there is no composed accent with a and an
     #    underbar.
-    last if ($new_eight_bit eq $eight_bit
+    last if ($new_eight_bit eq $prev_eight_bit
              and !($results_stack[0]->[1]->{'cmdname'} eq 'dotless'
                    and $char eq 'i'));
     $result = $results_stack[0]->[0];
-    $eight_bit = $new_eight_bit;
+    $prev_eight_bit = $new_eight_bit;
     shift @results_stack;
   }
 
@@ -1502,7 +1561,9 @@ sub unicode_point_decoded_in_encoding($$) {
 
     return 1 if ($encoding eq 'utf-8'
                     or ($unicode_to_eight_bit{$encoding}
-                        and $unicode_to_eight_bit{$encoding}->{$unicode_point}));
+                        and ($unicode_to_eight_bit{$encoding}->{$unicode_point}
+                             # excludes 127 \x{7F} DEL
+                             or hex($unicode_point) < 127)));
   }
   return 0;
 }
@@ -1536,8 +1597,44 @@ sub check_unicode_point_conversion($;$)
   # The warning about non-characters is only given when the code
   # point is attempted to be output, not just manipulated.
   # http://stackoverflow.com/questions/5127725/how-could-i-catch-an-unicode-non-character-warning
+  # In perl 5.36.0, Encoding and printing also do not give a warning, so
+  # no warning for:
   #
-  # Therefore, we have to try to output it within an eval.
+  # my ($fh, $string);
+  # open($fh, ">", \$string);
+  # my $char = chr(hex("110000"));
+  # print $fh Encode::encode("utf-8", $char);
+  #
+  # but there is a warning if going through an encoding layer as below.
+  #
+  # In perl 5.10.1 on solaris 11, but not on solaris 10, the warning all does
+  # not catch the nonchar warning (this warning seems to be defined on
+  # 5.13.10 or newer).  This may be a consequence of what is described in
+  # http://stackoverflow.com/questions/5127725/how-could-i-catch-an-unicode-non-character-warning
+  # as a compiler bug, but it is unclear.  This does not happen with the
+  # lax conversion to utf8, but we prefer to use a strict conversion.
+  #
+  # To avoid outputting a warning, we do not even try to encode the string
+  # in the 5.10.0 5.13.8 range.
+  #
+  # We still use an eval to catch $arg that are illegal for hex
+  if ($] >= 5.010 and $] <= 5.013008) {
+    eval {
+      use warnings FATAL => qw(all);
+      my $var;
+      if (hex($arg) > 0x10FFFF) {
+        $var = 1;
+      }
+    };
+    if ($@) {
+      warn "Unicode hex($arg) eval failed: $@\n" if ($output_debug);
+      return 0;
+    } elsif (hex($arg) > 0x10FFFF) {
+      return 0;
+    }
+  }
+  #
+  # For the other cases, we have to try to output it within an eval.
   # Since opening /dev/null or a temporary file means
   # more system-dependent checks, use a string as our
   # filehandle.
@@ -1545,7 +1642,7 @@ sub check_unicode_point_conversion($;$)
     use warnings FATAL => qw(all);
     my ($fh, $string);
     open($fh, ">", \$string) || die "open(U string eval) failed: $!";
-    binmode($fh, ":utf8") || die "binmode(U string eval) failed: $!";
+    binmode($fh, ":encoding(utf-8)") || die "binmode(U string eval) failed: $!";
     print $fh chr(hex("$arg"));
   };
   if ($@) {
@@ -1569,15 +1666,14 @@ sub string_width($)
   # Optimise for the common case where we can just return the length
   # of the string.  These regexes are faster than making the substitutions
   # below.
-  if ($string =~ /^[\p{IsPrint}\p{IsSpace}]*$/
-      and $string !~ /[\p{InFullwidth}\pM]/) {
+  # IsPrint without \pM
+  if ($string =~ /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]*$/
+      and $string !~ /[\p{InFullwidth}]/) {
     return length($string);
   }
 
   $string =~ s/\p{InFullwidth}/\x{02}/g;
-  $string =~ s/\pM/\x{00}/g;
-  $string =~ s/\p{IsPrint}/\x{01}/g;
-  $string =~ s/\p{IsSpace}/\x{01}/g;
+  $string =~ s/[\p{L}\p{N}\p{P}\p{S}\p{Zs}]/\x{01}/g;
   $string =~ s/[^\x{01}\x{02}]/\x{00}/g;
 
   # This sums up the byte values of the bytes in $string, which now are
@@ -1592,16 +1688,10 @@ sub string_width($)
   foreach my $character(split '', $string) {
     if ($character =~ /\p{InFullwidth}/) {
       $width += 2;
-    } elsif ($character =~ /\pM/) {
-      # a mark set at length 0
-    } elsif ($character =~ /\p{IsPrint}/ or $character =~ /\p{IsSpace}/) {
-      # newlines are not {IsPrint} in v5.14.2
+    } elsif ($character =~ /[\p{L}\p{N}\p{P}\p{S}\p{Zs}]/) {
       $width += 1;
-    } elsif ($character =~ /\p{IsControl}/) {
-      # Control chars may be added, for instance, as part of @image formatting
-    #} elsif ($character eq '') { # could that happen?
     } else {
-      #print STDERR "unknown char`$character'\n";
+      # zero width character: \pC (including controls), \pM, \p{Zl}, \p{Zp}
     }
   }
   return $width;
@@ -1618,6 +1708,7 @@ Texinfo::Convert::Unicode - Representation as Unicode characters
 
   use Texinfo::Convert::Unicode qw(unicode_accent encoded_accents
                                    unicode_text);
+  use Texinfo::Convert::Text qw(convert_to_text);
 
   my ($innermost_contents, $stack)
       = Texinfo::Convert::Utils::find_innermost_accent_contents($accent);
@@ -1639,10 +1730,11 @@ C<Texinfo::Convert::Unicode> provides methods dealing with Unicode representatio
 and conversion of Unicode code points, to be used in converters.
 
 When an encoding supported in Texinfo is given as argument of a method of the
-module, the accented letters or characters should only be represented by Unicode
-code points if it is known that Perl should manage to convert the Unicode code
-points to encoded characters in the encoding character set.  Note that the
-actual conversion is done by Perl, not by the module.
+module, the accented letters or characters returned by the method should only
+be represented by Unicode code points if it is known that Perl should manage
+to convert the Unicode code points to encoded characters in the encoding
+character set.  Note that the actual conversion is done by Perl, not by the
+module.
 
 =head1 METHODS
 

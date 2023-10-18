@@ -41,17 +41,23 @@ $result_trees{'test_image'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -60,7 +66,7 @@ $result_trees{'test_image'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' files-char
 '
           },
@@ -78,9 +84,11 @@ $result_trees{'test_image'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -90,6 +98,25 @@ $result_trees{'test_image'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'files-char'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'position' => 17,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
                   'text' => 'Text in copying.
 '
                 },
@@ -140,7 +167,7 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
@@ -150,8 +177,10 @@ $result_trees{'test_image'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -209,7 +238,7 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
@@ -224,7 +253,7 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -296,7 +325,7 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
@@ -306,8 +335,10 @@ $result_trees{'test_image'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -325,8 +356,10 @@ $result_trees{'test_image'} = {
                           'text' => '1cm'
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -420,7 +453,7 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
@@ -430,9 +463,13 @@ $result_trees{'test_image'} = {
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '  ',
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '  '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -481,7 +518,7 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
@@ -496,7 +533,7 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -505,6 +542,14 @@ $result_trees{'test_image'} = {
                   }
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 1,
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => '.
 '
                 }
@@ -519,17 +564,23 @@ $result_trees{'test_image'} = {
                       'text' => 'copying'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'copying'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -560,9 +611,43 @@ $result_trees{'test_image'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 12,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chapter'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -570,6 +655,25 @@ $result_trees{'test_image'} = {
       'cmdname' => 'node',
       'contents' => [
         {
+          'source_marks' => [
+            {
+              'counter' => 2,
+              'element' => {
+                'args' => [
+                  {
+                    'type' => 'brace_command_arg'
+                  }
+                ],
+                'info' => {
+                  'command_name' => 'files-char'
+                },
+                'type' => 'macro_call'
+              },
+              'position' => 1,
+              'sourcemark_type' => 'macro_expansion',
+              'status' => 'start'
+            }
+          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -621,18 +725,20 @@ $result_trees{'test_image'} = {
                     }
                   ],
                   'cmdname' => 'verb',
-                  'extra' => {
+                  'info' => {
                     'delimiter' => ':'
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 14,
+                    'line_nr' => 15,
                     'macro' => 'files-char'
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'brace_command_arg'
             },
@@ -690,12 +796,12 @@ $result_trees{'test_image'} = {
                     }
                   ],
                   'cmdname' => 'verb',
-                  'extra' => {
+                  'info' => {
                     'delimiter' => ':'
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 14,
+                    'line_nr' => 15,
                     'macro' => 'files-char'
                   }
                 }
@@ -705,11 +811,11 @@ $result_trees{'test_image'} = {
           ],
           'cmdname' => 'image',
           'extra' => {
-            'input_perl_encoding' => 'utf-8'
+            'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 14,
+            'line_nr' => 15,
             'macro' => 'files-char'
           }
         },
@@ -774,18 +880,20 @@ $result_trees{'test_image'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => ':'
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 14,
+                        'line_nr' => 15,
                         'macro' => 'files-char'
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -803,8 +911,10 @@ $result_trees{'test_image'} = {
                       'text' => '1cm'
                     }
                   ],
-                  'extra' => {
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -835,7 +945,7 @@ $result_trees{'test_image'} = {
                                       'cmdname' => 'dotless',
                                       'source_info' => {
                                         'file_name' => '',
-                                        'line_nr' => 14,
+                                        'line_nr' => 15,
                                         'macro' => 'files-char'
                                       }
                                     }
@@ -846,7 +956,7 @@ $result_trees{'test_image'} = {
                               'cmdname' => '^',
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 14,
+                                'line_nr' => 15,
                                 'macro' => 'files-char'
                               }
                             },
@@ -869,7 +979,7 @@ $result_trees{'test_image'} = {
                       'cmdname' => 'b',
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 14,
+                        'line_nr' => 15,
                         'macro' => 'files-char'
                       }
                     },
@@ -898,19 +1008,23 @@ $result_trees{'test_image'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => ':'
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 14,
+                        'line_nr' => 15,
                         'macro' => 'files-char'
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '  ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '  '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -959,12 +1073,12 @@ $result_trees{'test_image'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => ':'
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 14,
+                        'line_nr' => 15,
                         'macro' => 'files-char'
                       }
                     }
@@ -974,15 +1088,23 @@ $result_trees{'test_image'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 14,
+                'line_nr' => 15,
                 'macro' => 'files-char'
               }
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 1,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '.
 '
             }
@@ -1008,13 +1130,13 @@ $result_trees{'test_image'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'insertcopying',
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 17,
+            'line_nr' => 18,
             'macro' => ''
           }
         },
@@ -1026,9 +1148,11 @@ $result_trees{'test_image'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -1037,6 +1161,27 @@ $result_trees{'test_image'} = {
           'contents' => [
             {
               'contents' => [
+                {
+                  'source_marks' => [
+                    {
+                      'counter' => 3,
+                      'element' => {
+                        'args' => [
+                          {
+                            'type' => 'brace_command_arg'
+                          }
+                        ],
+                        'info' => {
+                          'command_name' => 'files-char'
+                        },
+                        'type' => 'macro_call'
+                      },
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
+                  'text' => ''
+                },
                 {
                   'args' => [
                     {
@@ -1084,18 +1229,20 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 20,
+                            'line_nr' => 21,
                             'macro' => 'files-char'
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1153,12 +1300,12 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 20,
+                            'line_nr' => 21,
                             'macro' => 'files-char'
                           }
                         }
@@ -1168,11 +1315,11 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 20,
+                    'line_nr' => 21,
                     'macro' => 'files-char'
                   }
                 },
@@ -1235,18 +1382,20 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 20,
+                            'line_nr' => 21,
                             'macro' => 'files-char'
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1264,8 +1413,10 @@ $result_trees{'test_image'} = {
                           'text' => '1cm'
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1296,7 +1447,7 @@ $result_trees{'test_image'} = {
                                           'cmdname' => 'dotless',
                                           'source_info' => {
                                             'file_name' => '',
-                                            'line_nr' => 20,
+                                            'line_nr' => 21,
                                             'macro' => 'files-char'
                                           }
                                         }
@@ -1307,7 +1458,7 @@ $result_trees{'test_image'} = {
                                   'cmdname' => '^',
                                   'source_info' => {
                                     'file_name' => '',
-                                    'line_nr' => 20,
+                                    'line_nr' => 21,
                                     'macro' => 'files-char'
                                   }
                                 },
@@ -1330,7 +1481,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'b',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 20,
+                            'line_nr' => 21,
                             'macro' => 'files-char'
                           }
                         },
@@ -1359,19 +1510,23 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 20,
+                            'line_nr' => 21,
                             'macro' => 'files-char'
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '  ',
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '  '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1420,12 +1575,12 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 20,
+                            'line_nr' => 21,
                             'macro' => 'files-char'
                           }
                         }
@@ -1435,15 +1590,23 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 20,
+                    'line_nr' => 21,
                     'macro' => 'files-char'
                   }
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 3,
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => '.
 '
                 }
@@ -1458,28 +1621,34 @@ $result_trees{'test_image'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 21,
+                'line_nr' => 22,
                 'macro' => ''
               }
             }
           ],
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 19,
+            'line_nr' => 20,
             'macro' => ''
           }
         },
@@ -1504,16 +1673,41 @@ $result_trees{'test_image'} = {
                   'text' => 'Image with commands'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
           ],
           'cmdname' => 'float',
           'contents' => [
+            {
+              'source_marks' => [
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_command_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'files-char'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
+              'text' => ''
+            },
             {
               'args' => [
                 {
@@ -1561,18 +1755,20 @@ $result_trees{'test_image'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => ':'
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 24,
+                        'line_nr' => 25,
                         'macro' => 'files-char'
                       }
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 },
@@ -1630,12 +1826,12 @@ $result_trees{'test_image'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => ':'
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 24,
+                        'line_nr' => 25,
                         'macro' => 'files-char'
                       }
                     }
@@ -1645,11 +1841,11 @@ $result_trees{'test_image'} = {
               ],
               'cmdname' => 'image',
               'extra' => {
-                'input_perl_encoding' => 'utf-8'
+                'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 24,
+                'line_nr' => 25,
                 'macro' => 'files-char'
               }
             },
@@ -1714,18 +1910,20 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 24,
+                            'line_nr' => 25,
                             'macro' => 'files-char'
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1743,8 +1941,10 @@ $result_trees{'test_image'} = {
                           'text' => '1cm'
                         }
                       ],
-                      'extra' => {
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1775,7 +1975,7 @@ $result_trees{'test_image'} = {
                                           'cmdname' => 'dotless',
                                           'source_info' => {
                                             'file_name' => '',
-                                            'line_nr' => 24,
+                                            'line_nr' => 25,
                                             'macro' => 'files-char'
                                           }
                                         }
@@ -1786,7 +1986,7 @@ $result_trees{'test_image'} = {
                                   'cmdname' => '^',
                                   'source_info' => {
                                     'file_name' => '',
-                                    'line_nr' => 24,
+                                    'line_nr' => 25,
                                     'macro' => 'files-char'
                                   }
                                 },
@@ -1809,7 +2009,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'b',
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 24,
+                            'line_nr' => 25,
                             'macro' => 'files-char'
                           }
                         },
@@ -1838,19 +2038,23 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 24,
+                            'line_nr' => 25,
                             'macro' => 'files-char'
                           }
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '  ',
-                        'spaces_before_argument' => ' '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '  '
+                        },
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'type' => 'brace_command_arg'
                     },
@@ -1899,12 +2103,12 @@ $result_trees{'test_image'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => ':'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 24,
+                            'line_nr' => 25,
                             'macro' => 'files-char'
                           }
                         }
@@ -1914,15 +2118,23 @@ $result_trees{'test_image'} = {
                   ],
                   'cmdname' => 'image',
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8'
+                    'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
                     'file_name' => '',
-                    'line_nr' => 24,
+                    'line_nr' => 25,
                     'macro' => 'files-char'
                   }
                 },
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 4,
+                      'position' => 1,
+                      'sourcemark_type' => 'macro_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => '.
 '
                 }
@@ -1938,6 +2150,27 @@ $result_trees{'test_image'} = {
               'args' => [
                 {
                   'contents' => [
+                    {
+                      'source_marks' => [
+                        {
+                          'counter' => 5,
+                          'element' => {
+                            'args' => [
+                              {
+                                'type' => 'brace_command_arg'
+                              }
+                            ],
+                            'info' => {
+                              'command_name' => 'files-char'
+                            },
+                            'type' => 'macro_call'
+                          },
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
+                      'text' => ''
+                    },
                     {
                       'args' => [
                         {
@@ -1985,18 +2218,20 @@ $result_trees{'test_image'} = {
                                 }
                               ],
                               'cmdname' => 'verb',
-                              'extra' => {
+                              'info' => {
                                 'delimiter' => ':'
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 26,
+                                'line_nr' => 27,
                                 'macro' => 'files-char'
                               }
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => ' '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'type' => 'brace_command_arg'
                         },
@@ -2054,12 +2289,12 @@ $result_trees{'test_image'} = {
                                 }
                               ],
                               'cmdname' => 'verb',
-                              'extra' => {
+                              'info' => {
                                 'delimiter' => ':'
                               },
                               'source_info' => {
                                 'file_name' => '',
-                                'line_nr' => 26,
+                                'line_nr' => 27,
                                 'macro' => 'files-char'
                               }
                             }
@@ -2069,11 +2304,11 @@ $result_trees{'test_image'} = {
                       ],
                       'cmdname' => 'image',
                       'extra' => {
-                        'input_perl_encoding' => 'utf-8'
+                        'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
                         'file_name' => '',
-                        'line_nr' => 26,
+                        'line_nr' => 27,
                         'macro' => 'files-char'
                       }
                     },
@@ -2138,18 +2373,20 @@ $result_trees{'test_image'} = {
                                     }
                                   ],
                                   'cmdname' => 'verb',
-                                  'extra' => {
+                                  'info' => {
                                     'delimiter' => ':'
                                   },
                                   'source_info' => {
                                     'file_name' => '',
-                                    'line_nr' => 26,
+                                    'line_nr' => 27,
                                     'macro' => 'files-char'
                                   }
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => ' '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'type' => 'brace_command_arg'
                             },
@@ -2167,8 +2404,10 @@ $result_trees{'test_image'} = {
                                   'text' => '1cm'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'type' => 'brace_command_arg'
                             },
@@ -2199,7 +2438,7 @@ $result_trees{'test_image'} = {
                                                   'cmdname' => 'dotless',
                                                   'source_info' => {
                                                     'file_name' => '',
-                                                    'line_nr' => 26,
+                                                    'line_nr' => 27,
                                                     'macro' => 'files-char'
                                                   }
                                                 }
@@ -2210,7 +2449,7 @@ $result_trees{'test_image'} = {
                                           'cmdname' => '^',
                                           'source_info' => {
                                             'file_name' => '',
-                                            'line_nr' => 26,
+                                            'line_nr' => 27,
                                             'macro' => 'files-char'
                                           }
                                         },
@@ -2233,7 +2472,7 @@ $result_trees{'test_image'} = {
                                   'cmdname' => 'b',
                                   'source_info' => {
                                     'file_name' => '',
-                                    'line_nr' => 26,
+                                    'line_nr' => 27,
                                     'macro' => 'files-char'
                                   }
                                 },
@@ -2262,19 +2501,23 @@ $result_trees{'test_image'} = {
                                     }
                                   ],
                                   'cmdname' => 'verb',
-                                  'extra' => {
+                                  'info' => {
                                     'delimiter' => ':'
                                   },
                                   'source_info' => {
                                     'file_name' => '',
-                                    'line_nr' => 26,
+                                    'line_nr' => 27,
                                     'macro' => 'files-char'
                                   }
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '  ',
-                                'spaces_before_argument' => ' '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '  '
+                                },
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
                               'type' => 'brace_command_arg'
                             },
@@ -2323,12 +2566,12 @@ $result_trees{'test_image'} = {
                                     }
                                   ],
                                   'cmdname' => 'verb',
-                                  'extra' => {
+                                  'info' => {
                                     'delimiter' => ':'
                                   },
                                   'source_info' => {
                                     'file_name' => '',
-                                    'line_nr' => 26,
+                                    'line_nr' => 27,
                                     'macro' => 'files-char'
                                   }
                                 }
@@ -2338,15 +2581,23 @@ $result_trees{'test_image'} = {
                           ],
                           'cmdname' => 'image',
                           'extra' => {
-                            'input_perl_encoding' => 'utf-8'
+                            'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
                             'file_name' => '',
-                            'line_nr' => 26,
+                            'line_nr' => 27,
                             'macro' => 'files-char'
                           }
                         },
                         {
+                          'source_marks' => [
+                            {
+                              'counter' => 5,
+                              'position' => 1,
+                              'sourcemark_type' => 'macro_expansion',
+                              'status' => 'end'
+                            }
+                          ],
                           'text' => '.'
                         }
                       ],
@@ -2362,13 +2613,14 @@ $result_trees{'test_image'} = {
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 26,
+                'line_nr' => 27,
                 'macro' => ''
               }
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'args' => [
@@ -2378,42 +2630,44 @@ $result_trees{'test_image'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
-                'line_nr' => 27,
+                'line_nr' => 28,
                 'macro' => ''
               }
             }
           ],
           'extra' => {
             'caption' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Image-with-commands',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Image'
+            'float_type' => 'Image',
+            'normalized' => 'Image-with-commands'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 23,
+            'line_nr' => 24,
             'macro' => ''
           }
         },
@@ -2430,26 +2684,27 @@ $result_trees{'test_image'} = {
                   'text' => 'Image'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Image'
+            'float_type' => 'Image'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 29,
+            'line_nr' => 30,
             'macro' => ''
           }
         },
@@ -2460,36 +2715,24 @@ $result_trees{'test_image'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 12,
+        'line_nr' => 13,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'contents'}[5]{'extra'}{'float'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[11];
-$result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'extra'}{'caption'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'contents'}[5];
-$result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'extra'}{'node_content'}[0] = $result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'args'}[1]{'contents'}[0];
-$result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'extra'}{'type'}{'content'}[0] = $result_trees{'test_image'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0];
-$result_trees{'test_image'}{'contents'}[1]{'contents'}[13]{'extra'}{'type'}{'content'}[0] = $result_trees{'test_image'}{'contents'}[1]{'contents'}[13]{'args'}[0]{'contents'}[0];
-$result_trees{'test_image'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'test_image'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'test_image'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'test_image'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'test_image'}{'contents'}[2]{'contents'}[11]{'contents'}[6]{'extra'}{'float'} = $result_trees{'test_image'}{'contents'}[2]{'contents'}[11];
+$result_trees{'test_image'}{'contents'}[2]{'contents'}[11]{'extra'}{'caption'} = $result_trees{'test_image'}{'contents'}[2]{'contents'}[11]{'contents'}[6];
 
 $result_texis{'test_image'} = '@macro files-char
 @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
@@ -2505,6 +2748,7 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
 @end copying
 
 @node Top
+@node chapter
 
 @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
@@ -2554,247 +2798,259 @@ In text f@i--le..  a@<"%@  < & @ % " .
 
 
 
-
 ';
 
 $result_nodes{'test_image'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chapter'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'test_image'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'test_image'};
 
 $result_menus{'test_image'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'test_image'} = [
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @verb should not appear in @image (possibly involving @files-char)
+    'error_line' => 'warning: @verb should not appear anywhere inside @image (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
-    'text' => '@verb should not appear in @image',
+    'text' => '@verb should not appear anywhere inside @image',
     'type' => 'warning'
   }
 ];
@@ -2811,15 +3067,8 @@ $result_floats{'test_image'} = {
             'float' => {}
           }
         },
-        'normalized' => 'Image-with-commands',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Image'
-            }
-          ],
-          'normalized' => 'Image'
-        }
+        'float_type' => 'Image',
+        'normalized' => 'Image-with-commands'
       },
       'structure' => {
         'float_number' => 1
@@ -2851,7 +3100,9 @@ In text f@i-le..  a@<"%@  < & @ % " . -->
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -2861,43 +3112,52 @@ div.example {margin-left: 3.2em}
 <body lang="en">
 
 
-<h1 class="node" id="Top">Top</h1>
+<a class="node-id" id="Top"></a><div class="nav-panel">
+<p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
+</div>
+<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
+<hr>
+<a class="node-id" id="chapter"></a><div class="nav-panel">
+<p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; </p>
+</div>
+<h4 class="node"><span>chapter<a class="copiable-link" href="#chapter"> &para;</a></span></h4>
 
-<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">
 
 <p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">.
 </p>
 <p>Insertcopying
 </p><p>Text in copying.
-<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">
 </p>
 <p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">.
 </p>
 <div class="example">
-<pre class="example-preformatted"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<pre class="example-preformatted"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">
 
 In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">.
 </pre></div>
 
 <div class="float" id="Image-with-commands">
-<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">
 
 <p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
+&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">.
 </p>
-
-<div class="caption"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<div class="caption"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">
 
 <p><strong class="strong">Image 1: </strong>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></div></div>
+&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">.</p></div></div>
 <dl class="listoffloats">
-<dt><a href="#Image-with-commands">Image 1</a></dt><dd class="caption-in-listoffloats"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
+<dt><a href="#Image-with-commands">Image 1</a></dt><dd class="caption-in-listoffloats"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">
 
 <p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></dd>
+&lt;&quot;%@&nbsp;&nbsp;&lt;&nbsp;&amp;&nbsp;@&nbsp;%&nbsp;&quot;&nbsp;">.</p></dd>
 </dl>
 
 
@@ -2918,7 +3178,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2927,16 +3187,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 9,
+    'line_nr' => 15,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2954,7 +3205,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 9,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2963,7 +3214,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2972,7 +3223,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 21,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2981,7 +3232,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2990,7 +3241,7 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 25,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -2999,7 +3250,16 @@ $result_converted_errors{'html'}->{'test_image'} = [
     'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 27,
     'macro' => 'files-char',
     'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
@@ -3029,7 +3289,6 @@ In text [alt î-le..  a
 In text [alt î-le..  a
 <"%@  < & @ % " ].
 
-
 Image 1: [f@i--le..  a@<"%@  < & @ % " ]
 
 In text [alt î-le..  a
@@ -3046,7 +3305,7 @@ $result_converted_errors{'plaintext'}->{'test_image'} = [
     'error_line' => 'warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 14,
+    'line_nr' => 15,
     'macro' => 'files-char',
     'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning'
@@ -3064,7 +3323,7 @@ $result_converted_errors{'plaintext'}->{'test_image'} = [
     'error_line' => 'warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 20,
+    'line_nr' => 21,
     'macro' => 'files-char',
     'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning'
@@ -3073,7 +3332,7 @@ $result_converted_errors{'plaintext'}->{'test_image'} = [
     'error_line' => 'warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 25,
     'macro' => 'files-char',
     'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning'
@@ -3082,7 +3341,7 @@ $result_converted_errors{'plaintext'}->{'test_image'} = [
     'error_line' => 'warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
     'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
     'type' => 'warning'
@@ -3091,147 +3350,9 @@ $result_converted_errors{'plaintext'}->{'test_image'} = [
     'error_line' => 'warning: could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text (possibly involving @files-char)
 ',
     'file_name' => '',
-    'line_nr' => 26,
+    'line_nr' => 27,
     'macro' => 'files-char',
     'text' => 'could not find @image file `f@i--le..  a@<"%@  < & @ % " .txt\' nor alternate text',
-    'type' => 'warning'
-  }
-];
-
-
-
-$result_converted{'html_text'}->{'test_image'} = '
-
-<h1 class="node" id="Top">Top</h1>
-
-<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
-
-<p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
-</p>
-<p>Insertcopying
-</p><p>Text in copying.
-<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
-</p>
-<p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
-</p>
-<div class="example">
-<pre class="example-preformatted"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
-
-In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
-</pre></div>
-
-<div class="float" id="Image-with-commands">
-<img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
-
-<p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.
-</p>
-
-<div class="caption"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
-
-<p><strong class="strong">Image 1: </strong>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></div></div>
-<dl class="listoffloats">
-<dt><a href="#Image-with-commands">Image 1</a></dt><dd class="caption-in-listoffloats"><img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
-
-<p>In text <img class="image" src="f%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20.ext%40i--le..%20%20a%40%3c%22%25%40%20%20%3c%20%26%20%40%20%25%20%22%20" alt="alt &icirc;&ndash;le..  a
-&lt;&quot;%@  &lt; &amp; @ % &quot; ">.</p></dd>
-</dl>
-
-';
-
-$result_converted_errors{'html_text'}->{'test_image'} = [
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 14,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 14,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 20,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 20,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 24,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 24,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 26,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \' (possibly involving @files-char)
-',
-    'file_name' => '',
-    'line_nr' => 26,
-    'macro' => 'files-char',
-    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for HTML) not found, using `f@i--le..  a@<"%@  < & @ % " .ext@i--le..  a@<"%@  < & @ % " \'',
     'type' => 'warning'
   }
 ];
@@ -3241,7 +3362,133 @@ $result_converted_errors{'html_text'}->{'test_image'} = [
 $result_converted{'latex_text'}->{'test_image'} = '
 
 \\label{anchor:Top}%
+\\label{anchor:chapter}%
+
+\\includegraphics{f@i--le..  a@<"\\%@  < & @ \\% " }
+
+In text \\includegraphics[width=1in,height=1cm]{f@i--le..  a@<"\\%@  < & @ \\% " }.
+
+Insertcopying
+Text in copying.
+\\includegraphics{f@i--le..  a@<"\\%@  < & @ \\% " }
+
+In text \\includegraphics[width=1in,height=1cm]{f@i--le..  a@<"\\%@  < & @ \\% " }.
+
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily \\includegraphics{f@i--le..  a@<"\\%@  < & @ \\% " }
+
+In text \\includegraphics[width=1in,height=1cm]{f@i--le..  a@<"\\%@  < & @ \\% " }.
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+\\begin{TexinfoFloatImage}
+\\includegraphics{f@i--le..  a@<"\\%@  < & @ \\% " }
+
+In text \\includegraphics[width=1in,height=1cm]{f@i--le..  a@<"\\%@  < & @ \\% " }.
+
+\\caption{\\includegraphics{f@i--le..  a@<"\\%@  < & @ \\% " }
+
+In text \\includegraphics[width=1in,height=1cm]{f@i--le..  a@<"\\%@  < & @ \\% " }.}
 \\label{anchor:Image-with-commands}%
+\\end{TexinfoFloatImage}
+
+\\listof{TexinfoFloatImage}{}
+
 ';
+
+$result_converted_errors{'latex_text'}->{'test_image'} = [
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 27,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found (possibly involving @files-char)
+',
+    'file_name' => '',
+    'line_nr' => 27,
+    'macro' => 'files-char',
+    'text' => '@image file `f@i--le..  a@<"%@  < & @ % " \' (for LaTeX) not found',
+    'type' => 'warning'
+  }
+];
+
 
 1;

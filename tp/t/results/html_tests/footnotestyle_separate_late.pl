@@ -19,28 +19,23 @@ $result_trees{'footnotestyle_separate_late'} = [
                 'text' => 'Top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'Top'
-            }
-          ],
-          'normalized' => 'Top',
-          'spaces_before_argument' => ' '
+          'normalized' => 'Top'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -56,9 +51,11 @@ $result_trees{'footnotestyle_separate_late'} = [
                 'text' => 'top'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -71,8 +68,11 @@ $result_trees{'footnotestyle_separate_late'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -96,28 +96,23 @@ $result_trees{'footnotestyle_separate_late'} = [
                 'text' => 'chap f'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'chap-f'
-            }
-          ],
-          'normalized' => 'chap-f',
-          'spaces_before_argument' => ' '
+          'normalized' => 'chap-f'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -133,9 +128,11 @@ $result_trees{'footnotestyle_separate_late'} = [
                 'text' => 'Chapter f'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -185,8 +182,11 @@ $result_trees{'footnotestyle_separate_late'} = [
             'type' => 'empty_line'
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -210,28 +210,23 @@ $result_trees{'footnotestyle_separate_late'} = [
                 'text' => 'chap s'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
         'extra' => {
-          'node_content' => [
-            {}
-          ],
-          'nodes_manuals' => [
-            {
-              'node_content' => [
-                {}
-              ],
-              'normalized' => 'chap-s'
-            }
-          ],
-          'normalized' => 'chap-s',
-          'spaces_before_argument' => ' '
+          'normalized' => 'chap-s'
+        },
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -247,9 +242,11 @@ $result_trees{'footnotestyle_separate_late'} = [
                 'text' => 'Chapter s'
               }
             ],
-            'extra' => {
-              'spaces_after_argument' => '
+            'info' => {
+              'spaces_after_argument' => {
+                'text' => '
 '
+              }
             },
             'type' => 'line_arg'
           }
@@ -306,9 +303,11 @@ $result_trees{'footnotestyle_separate_late'} = [
                     'text' => 'separate'
                   }
                 ],
-                'extra' => {
-                  'spaces_after_argument' => '
+                'info' => {
+                  'spaces_after_argument' => {
+                    'text' => '
 '
+                  }
                 },
                 'type' => 'line_arg'
               }
@@ -317,8 +316,12 @@ $result_trees{'footnotestyle_separate_late'} = [
             'extra' => {
               'misc_args' => [
                 'separate'
-              ],
-              'spaces_before_argument' => ' '
+              ]
+            },
+            'info' => {
+              'spaces_before_argument' => {
+                'text' => ' '
+              }
             },
             'source_info' => {
               'file_name' => '',
@@ -327,8 +330,11 @@ $result_trees{'footnotestyle_separate_late'} = [
             }
           }
         ],
-        'extra' => {
-          'spaces_before_argument' => ' '
+        'extra' => {},
+        'info' => {
+          'spaces_before_argument' => {
+            'text' => ' '
+          }
         },
         'source_info' => {
           'file_name' => '',
@@ -343,14 +349,8 @@ $result_trees{'footnotestyle_separate_late'} = [
     'type' => 'unit'
   }
 ];
-$result_trees{'footnotestyle_separate_late'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'footnotestyle_separate_late'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'footnotestyle_separate_late'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'footnotestyle_separate_late'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnotestyle_separate_late'}[0]{'extra'}{'unit_command'} = $result_trees{'footnotestyle_separate_late'}[0]{'contents'}[1];
-$result_trees{'footnotestyle_separate_late'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'footnotestyle_separate_late'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'footnotestyle_separate_late'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'footnotestyle_separate_late'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'footnotestyle_separate_late'}[1]{'extra'}{'unit_command'} = $result_trees{'footnotestyle_separate_late'}[1]{'contents'}[0];
-$result_trees{'footnotestyle_separate_late'}[2]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'footnotestyle_separate_late'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'footnotestyle_separate_late'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'footnotestyle_separate_late'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'footnotestyle_separate_late'}[2]{'extra'}{'unit_command'} = $result_trees{'footnotestyle_separate_late'}[2]{'contents'}[0];
 
 $result_texis{'footnotestyle_separate_late'} = '@node Top

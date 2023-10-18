@@ -18,9 +18,11 @@ $result_trees{'double_node_anchor_float'} = {
               'text' => 'node1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -34,19 +36,12 @@ $result_trees{'double_node_anchor_float'} = {
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node1'
-          }
-        ],
-        'normalized' => 'node1',
-        'spaces_before_argument' => ' '
+        'normalized' => 'node1'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -62,9 +57,11 @@ $result_trees{'double_node_anchor_float'} = {
               'text' => 'node1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -118,9 +115,6 @@ $result_trees{'double_node_anchor_float'} = {
           ],
           'cmdname' => 'anchor',
           'extra' => {
-            'node_content' => [
-              {}
-            ],
             'normalized' => 'anchor1'
           },
           'source_info' => {
@@ -140,16 +134,11 @@ $result_trees{'double_node_anchor_float'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node1'
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -165,9 +154,11 @@ $result_trees{'double_node_anchor_float'} = {
               'text' => 'anchor1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -195,10 +186,14 @@ $result_trees{'double_node_anchor_float'} = {
                   'text' => 'node1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -213,17 +208,23 @@ $result_trees{'double_node_anchor_float'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -233,12 +234,11 @@ $result_trees{'double_node_anchor_float'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'float_type' => 'Text'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -268,10 +268,14 @@ $result_trees{'double_node_anchor_float'} = {
                   'text' => 'anchor1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -286,17 +290,23 @@ $result_trees{'double_node_anchor_float'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -306,12 +316,11 @@ $result_trees{'double_node_anchor_float'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'float_type' => 'Text'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -341,10 +350,14 @@ $result_trees{'double_node_anchor_float'} = {
                   'text' => 'float1'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -359,17 +372,23 @@ $result_trees{'double_node_anchor_float'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -379,16 +398,12 @@ $result_trees{'double_node_anchor_float'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'float1',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'float_type' => 'Text',
+            'normalized' => 'float1'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -403,16 +418,11 @@ $result_trees{'double_node_anchor_float'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'anchor1'
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -428,24 +438,21 @@ $result_trees{'double_node_anchor_float'} = {
               'text' => 'float1'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
-      'extra' => {
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'float1'
-          }
-        ],
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -456,16 +463,6 @@ $result_trees{'double_node_anchor_float'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_node_anchor_float'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[3]{'extra'}{'type'}{'content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[5]{'extra'}{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[5]{'args'}[1]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[5]{'extra'}{'type'}{'content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[3]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'double_node_anchor_float'}{'contents'}[4]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_node_anchor_float'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 
 $result_texis{'double_node_anchor_float'} = '@node node1
 
@@ -528,6 +525,7 @@ $result_errors{'double_node_anchor_float'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @node
 ',
     'file_name' => '',
@@ -546,6 +544,7 @@ $result_errors{'double_node_anchor_float'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @node
 ',
     'file_name' => '',
@@ -564,6 +563,7 @@ $result_errors{'double_node_anchor_float'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @anchor
 ',
     'file_name' => '',
@@ -582,6 +582,7 @@ $result_errors{'double_node_anchor_float'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @node
 ',
     'file_name' => '',
@@ -600,6 +601,7 @@ $result_errors{'double_node_anchor_float'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @anchor
 ',
     'file_name' => '',
@@ -618,6 +620,7 @@ $result_errors{'double_node_anchor_float'} = [
     'type' => 'error'
   },
   {
+    'continuation' => 1,
     'error_line' => 'here is the previous definition as @float
 ',
     'file_name' => '',
@@ -634,41 +637,20 @@ $result_floats{'double_node_anchor_float'} = {
     {
       'cmdname' => 'float',
       'extra' => {
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
-        }
+        'float_type' => 'Text'
       }
     },
     {
       'cmdname' => 'float',
       'extra' => {
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
-        }
+        'float_type' => 'Text'
       }
     },
     {
       'cmdname' => 'float',
       'extra' => {
-        'normalized' => 'float1',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
-        }
+        'float_type' => 'Text',
+        'normalized' => 'float1'
       },
       'structure' => {
         'float_number' => 1
@@ -685,17 +667,14 @@ $result_converted{'info'}->{'double_node_anchor_float'} = 'This is , produced fr
 File: ,  Node: node1
 
 Text
-
 Text
-
 Text 1
-
 
 
 Tag Table:
 Node: node127
 Ref: anchor151
-Ref: float163
+Ref: float161
 
 End Tag Table
 
@@ -730,44 +709,39 @@ $result_converted{'html'}->{'double_node_anchor_float'} = '<!DOCTYPE html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <link href="#node1" rel="start" title="node1">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
 
 
 </head>
 
 <body lang="en">
 <a class="node-id" id="node1"></a><div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
-<h4 class="node">node1</h4>
+<h4 class="node"><span>node1<a class="copiable-link" href="#node1"> &para;</a></span></h4>
 
 <hr>
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
 
 
 <a class="anchor" id="anchor1"></a>
 <hr>
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
 
 <div class="float">
-<div class="type-number-float"><p><strong class="strong">Text
-</strong></p></div></div>
+<div class="type-number-float"><p><strong class="strong">Text</strong></p></div></div>
 <div class="float">
-<div class="type-number-float"><p><strong class="strong">Text
-</strong></p></div></div>
+<div class="type-number-float"><p><strong class="strong">Text</strong></p></div></div>
 <div class="float" id="float1">
-<div class="type-number-float"><p><strong class="strong">Text 1
-</strong></p></div></div>
+<div class="type-number-float"><p><strong class="strong">Text 1</strong></p></div></div>
 <hr>
 <div class="nav-panel">
-<p>
- &nbsp; </p>
 </div>
 
 

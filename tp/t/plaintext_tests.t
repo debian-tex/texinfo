@@ -84,6 +84,10 @@ Before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 @exdent before samp. @samp{a}. after samp, w @w{in   w. after dot}  afterw
 @end quotation
 '],
+# This tests all the possibilities for end sentence related characters
+# ans splitting by commands (also tested in other tests)
+['split_punctuation_detection_in_commands',
+'Before @asis{B}@asis{)}@asis{.}]]? Afte@strong{R}@emph{"!}\'? Last'],
 ['html_expanded',
 'Before
 @html
@@ -383,6 +387,10 @@ and in emph.}
 'Text.@asis{)
 follows}.
 '],
+# tests that upper case letter in code ends a sentence
+['code_commands_and_punctuation',
+'@code{AA}. @samp{aa}. After.
+'],
 ['sc_with_utf8_enable_encoding',
 '@documentencoding utf-8
 @sc{in sc}.
@@ -458,9 +466,6 @@ end footnote}
 '],
 ['command_brace_no_arg_punctuation',
 '@TeX{}. And @LaTeX{}. @copyright{}. @registeredsymbol{}. End.
-'],
-['code_commands_and_punctuation',
-'@code{AA}. @samp{aa}. After.
 '],
 ['sp_with_text_before_in_example',
 '
@@ -553,6 +558,14 @@ Para indented.
 bb*}.
 '],
 ['multitable_in_example_extraneous_tab',
+'@example
+@multitable {a}
+@item ita @tab tmp
+@item secit @tab
+@end multitable
+@end example
+'],
+['multitable_in_example_extraneous_item_tab',
 '@example
 @multitable a
 @item ita @tab tmp
@@ -1021,37 +1034,37 @@ undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'}],
 ['punctuation_sc_accents_disable_encoding',
 undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi',
         'ENABLE_ENCODING' => 0}],
-['punctuation_sc_accents_ascii_punct',
+['punctuation_sc_accents_ascii_glyph',
 undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'},
-        {'ASCII_PUNCTUATION' => 1}],
+        {'ASCII_GLYPH' => 1}],
 ['punctuation_sc_accents_default_latin1',
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'}],
 ['punctuation_sc_accents_disable_encoding_latin1',
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',
         'ENABLE_ENCODING' => 0}],
-['punctuation_sc_accents_ascii_punct_latin1',
+['punctuation_sc_accents_ascii_glyph_latin1',
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
-        {'ASCII_PUNCTUATION' => 1}],
+        {'ASCII_GLYPH' => 1}],
 ['punctuation_sc_accents_default_usascii',
 undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'}],
 ['punctuation_sc_accents_disable_encoding_usascii',
 undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',
         'ENABLE_ENCODING' => 0}],
-['punctuation_sc_accents_ascii_punct_usascii',
+['punctuation_sc_accents_ascii_glyph_usascii',
 undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'},
-        {'ASCII_PUNCTUATION' => 1}],
+        {'ASCII_GLYPH' => 1}],
 ['punctuation_sc_accents_to_utf8_latin1',
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
         {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 ['punctuation_sc_accents_to_utf8_usascii',
 undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'},
         {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
-['punctuation_sc_accents_to_utf8_ascii_punct_latin1',
+['punctuation_sc_accents_to_utf8_ascii_glyph_latin1',
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
-        {'ASCII_PUNCTUATION' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
-['punctuation_sc_accents_to_utf8_ascii_punct_usascii',
+        {'ASCII_GLYPH' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+['punctuation_sc_accents_to_utf8_ascii_glyph_usascii',
 undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'},
-        {'ASCII_PUNCTUATION' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+        {'ASCII_GLYPH' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 );
 
 foreach my $test (@test_cases) {

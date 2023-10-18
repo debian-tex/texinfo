@@ -41,16 +41,20 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'} = {
                   'text' => 'centered'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'center',
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => 'empty_lines_at_beginning_no_setfilename_no_element.texi',
@@ -85,7 +89,7 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'

@@ -2,7 +2,7 @@
 #
 # latex2html.pm: interface to LaTeX2HTML
 #
-#    Copyright (C) 1999, 2000, 2003, 2005, 2006, 2009, 2011, 2013
+#    Copyright (C) 1999, 2000, 2003, 2005, 2006, 2009, 2011-2023
 #                  Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -161,7 +161,7 @@ my $latex_to_convert_count;
 my $latex_converted_count;
 my $html_converted_count;
 
-# our because the file lexicals are not visible is the do loading the cache
+# our because the file lexicals are not visible in the do loading the cache
 our %l2h_cache;
 my @l2h_from_html;
 
@@ -268,7 +268,7 @@ sub l2h_process($$)
         if ($tree->{'contents'}->[0]
             and $tree->{'contents'}->[0]->{'type'}
             and ($tree->{'contents'}->[0]->{'type'} eq 'empty_line_after_command'
-                 or $tree->{'contents'}->[0]->{'type'} eq 'elided_block')) {
+                 or $tree->{'contents'}->[0]->{'type'} eq 'elided_rawpreformatted')) {
           shift @{$tree->{'contents'}};
         }
         if ($tree->{'contents'}->[-1]->{'cmdname'}

@@ -13,21 +13,17 @@ $result_trees{'value_expansion_in_include'} = {
           'args' => [
             {
               'text' => 'testvar',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'incl-incl.txi',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' testvar incl-incl.txi
-',
-            'misc_args' => [
-              'testvar',
-              'incl-incl.txi'
-            ]
+'
           }
         },
         {
@@ -40,36 +36,26 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'text' => ' test - in the variable name, and concatenation of text after.
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' test - in the variable name, and concatenation of text after.
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'args' => [
             {
               'text' => 'test-var',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'incl-incl.tx',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' test-var incl-incl.tx
-',
-            'misc_args' => [
-              'test-var',
-              'incl-incl.tx'
-            ]
+'
           }
         },
         {
@@ -82,36 +68,26 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'text' => ' test - in the variable name, and concatenation of text before and after.
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' test - in the variable name, and concatenation of text before and after.
-'
-            ]
-          }
+          'cmdname' => 'c'
         },
         {
           'args' => [
             {
               'text' => 'test_var',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             },
             {
               'text' => 'ncl-incl.tx',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'set',
-          'extra' => {
+          'info' => {
             'arg_line' => ' test_var ncl-incl.tx
-',
-            'misc_args' => [
-              'test_var',
-              'ncl-incl.tx'
-            ]
+'
           }
         },
         {
@@ -135,9 +111,43 @@ $result_trees{'value_expansion_in_include'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'file_name' => '',
+        'line_nr' => 10,
+        'macro' => ''
+      }
+    },
+    {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'chap'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
           },
           'type' => 'line_arg'
         }
@@ -152,6 +162,71 @@ $result_trees{'value_expansion_in_include'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 1,
+                                'position' => 13,
+                                'sourcemark_type' => 'value_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'incl-incl.txi'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'include',
+                    'extra' => {
+                      'text_arg' => 'incl-incl.txi'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'source_marks' => [
+                          {
+                            'counter' => 1,
+                            'element' => {
+                              'args' => [
+                                {
+                                  'text' => 'testvar'
+                                }
+                              ],
+                              'cmdname' => 'value'
+                            },
+                            'line' => 'incl-incl.txi',
+                            'position' => 1,
+                            'sourcemark_type' => 'value_expansion',
+                            'status' => 'start'
+                          }
+                        ],
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 13,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 17,
+                  'sourcemark_type' => 'include',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'testvar include: This is the '
             },
             {
@@ -173,6 +248,14 @@ $result_trees{'value_expansion_in_include'} = {
               }
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'position' => 36,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => ' file (include-value2.txi) <> ---. 
 '
             }
@@ -197,25 +280,56 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'position' => 13,
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'incl-incl.txi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'incl-incl.txi'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'testvar'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'incl-incl.txi',
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                }
+              ],
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 14,
+            'line_nr' => 15,
             'macro' => ''
           }
         },
@@ -232,6 +346,71 @@ $result_trees{'value_expansion_in_include'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 3,
+                                'position' => 12,
+                                'sourcemark_type' => 'value_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'incl-incl.txi'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'include',
+                    'extra' => {
+                      'text_arg' => 'incl-incl.txi'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'source_marks' => [
+                          {
+                            'counter' => 3,
+                            'element' => {
+                              'args' => [
+                                {
+                                  'text' => 'test-var'
+                                }
+                              ],
+                              'cmdname' => 'value'
+                            },
+                            'line' => 'incl-incl.tx',
+                            'position' => 1,
+                            'sourcemark_type' => 'value_expansion',
+                            'status' => 'start'
+                          }
+                        ],
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 18,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'test-var include: This is the '
             },
             {
@@ -253,6 +432,14 @@ $result_trees{'value_expansion_in_include'} = {
               }
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'position' => 36,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => ' file (include-value2.txi) <> ---. 
 '
             }
@@ -277,25 +464,56 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 4,
+                      'position' => 12,
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'incl-incl.txi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'incl-incl.txi'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'source_marks' => [
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'text' => 'test-var'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'incl-incl.tx',
+                  'position' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                }
+              ],
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 19,
+            'line_nr' => 20,
             'macro' => ''
           }
         },
@@ -312,6 +530,69 @@ $result_trees{'value_expansion_in_include'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'source_marks' => [
+                              {
+                                'counter' => 5,
+                                'element' => {
+                                  'args' => [
+                                    {
+                                      'text' => 'test_var'
+                                    }
+                                  ],
+                                  'cmdname' => 'value'
+                                },
+                                'line' => 'ncl-incl.tx',
+                                'position' => 1,
+                                'sourcemark_type' => 'value_expansion',
+                                'status' => 'start'
+                              },
+                              {
+                                'counter' => 5,
+                                'position' => 12,
+                                'sourcemark_type' => 'value_expansion',
+                                'status' => 'end'
+                              }
+                            ],
+                            'text' => 'incl-incl.txi'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'cmdname' => 'include',
+                    'extra' => {
+                      'text_arg' => 'incl-incl.txi'
+                    },
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 23,
+                      'macro' => ''
+                    }
+                  },
+                  'position' => 18,
+                  'sourcemark_type' => 'include',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'test_var include: This is the '
             },
             {
@@ -333,6 +614,14 @@ $result_trees{'value_expansion_in_include'} = {
               }
             },
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'position' => 36,
+                  'sourcemark_type' => 'include',
+                  'status' => 'end'
+                }
+              ],
               'text' => ' file (include-value2.txi) <> ---. 
 '
             }
@@ -357,55 +646,75 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'contents' => [
                 {
+                  'source_marks' => [
+                    {
+                      'counter' => 6,
+                      'element' => {
+                        'args' => [
+                          {
+                            'text' => 'test_var'
+                          }
+                        ],
+                        'cmdname' => 'value'
+                      },
+                      'line' => 'ncl-incl.tx',
+                      'position' => 1,
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'start'
+                    },
+                    {
+                      'counter' => 6,
+                      'position' => 12,
+                      'sourcemark_type' => 'value_expansion',
+                      'status' => 'end'
+                    }
+                  ],
                   'text' => 'incl-incl.txi'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8',
-            'spaces_before_argument' => ' ',
+            'input_encoding_name' => 'utf-8',
             'text_arg' => 'incl-incl.txi'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
-            'line_nr' => 24,
+            'line_nr' => 25,
             'macro' => ''
           }
         }
       ],
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
-        'line_nr' => 10,
+        'line_nr' => 11,
         'macro' => ''
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'value_expansion_in_include'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'value_expansion_in_include'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'value_expansion_in_include'} = '@set testvar incl-incl.txi
 
@@ -417,6 +726,7 @@ $result_texis{'value_expansion_in_include'} = '@set testvar incl-incl.txi
 
 
 @node Top
+@node chap
 
 testvar include: This is the @emph{included} file (include-value2.txi) <> ---. 
 
@@ -455,14 +765,27 @@ $result_nodes{'value_expansion_in_include'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
+  },
+  'structure' => {
+    'node_next' => {
+      'cmdname' => 'node',
+      'extra' => {
+        'normalized' => 'chap'
+      },
+      'structure' => {
+        'node_prev' => {}
+      }
+    }
   }
 };
+$result_nodes{'value_expansion_in_include'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'value_expansion_in_include'};
 
 $result_menus{'value_expansion_in_include'} = {
   'cmdname' => 'node',
   'extra' => {
     'normalized' => 'Top'
-  }
+  },
+  'structure' => {}
 };
 
 $result_errors{'value_expansion_in_include'} = [
@@ -470,27 +793,54 @@ $result_errors{'value_expansion_in_include'} = [
     'error_line' => 'warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 12,
+    'line_nr' => 13,
     'macro' => '',
     'text' => '@include should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @verbatiminclude should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => '@verbatiminclude should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 17,
+    'line_nr' => 18,
     'macro' => '',
     'text' => '@include should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @verbatiminclude should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => '',
+    'text' => '@verbatiminclude should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 22,
+    'line_nr' => 23,
     'macro' => '',
     'text' => '@include should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @verbatiminclude should only appear at the beginning of a line
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => '',
+    'text' => '@verbatiminclude should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

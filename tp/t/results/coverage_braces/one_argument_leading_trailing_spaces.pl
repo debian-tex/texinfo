@@ -104,9 +104,13 @@ $result_trees{'one_argument_leading_trailing_spaces'} = {
                       'text' => 'a-b c-d'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -152,9 +156,13 @@ $result_trees{'one_argument_leading_trailing_spaces'} = {
                       'text' => '1234'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => ' ',
-                    'spaces_before_argument' => ' '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    },
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'brace_command_arg'
                 }
@@ -203,7 +211,7 @@ $result_trees{'one_argument_leading_trailing_spaces'} = {
                 }
               ],
               'cmdname' => 'verb',
-              'extra' => {
+              'info' => {
                 'delimiter' => ':'
               },
               'source_info' => {
@@ -248,7 +256,7 @@ $result_converted{'plaintext'}->{'one_argument_leading_trailing_spaces'} = '‘ 
 
 
 $result_converted{'html_text'}->{'one_argument_leading_trailing_spaces'} = '<p><code class="code"> in code </code> <i class="slanted"> in slanted </i> <var class="var"> var </var> <sub class="sub"> sub </sub>
-&lsquo;<code class="indicateurl"> http://example.com </code>&rsquo; &#x1234; &nbsp;w&nbsp;<!-- /@w --> <code class="verb"> verb </code>.
+&lsquo;<code class="indicateurl"> http://example.com </code>&rsquo; &#x1234; &nbsp;w&nbsp;<!-- /@w --> <code class="verb">&nbsp;verb&nbsp;</code>.
 </p>';
 
 

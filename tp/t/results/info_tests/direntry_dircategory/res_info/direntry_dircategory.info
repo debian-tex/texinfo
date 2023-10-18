@@ -1,0 +1,37 @@
+This is direntry_dircategory.info, produced from
+direntry_dircategory.texi.
+
+INFO-DIR-SECTION "category--TH ERE?"
+START-INFO-DIR-ENTRY
+* foo: (foo).   "hello--THERE?"
+END-INFO-DIR-ENTRY
+
+INFO-DIR-SECTION cat2
+START-INFO-DIR-ENTRY
+* aaa ::               aaaa
+                   bbbbb
+
+menutitle
+END-INFO-DIR-ENTRY
+
+INFO-DIR-SECTION in text
+START-INFO-DIR-ENTRY
+* in text: (in_text). in text
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+direntry_dircategory.info-1: 410
+direntry_dircategory.info-2: 984
+
+Tag Table:
+(Indirect)
+Node: Top410
+Node: chapter984
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

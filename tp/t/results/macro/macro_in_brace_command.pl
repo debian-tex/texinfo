@@ -31,17 +31,23 @@ $result_trees{'macro_in_brace_command'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -50,7 +56,7 @@ $result_trees{'macro_in_brace_command'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' foo
 '
           },
@@ -87,17 +93,23 @@ $result_trees{'macro_in_brace_command'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -106,7 +118,7 @@ $result_trees{'macro_in_brace_command'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' abar
 '
           },
@@ -135,9 +147,11 @@ $result_trees{'macro_in_brace_command'} = {
                   'type' => 'command_as_argument'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -158,12 +172,67 @@ $result_trees{'macro_in_brace_command'} = {
                         {
                           'contents' => [
                             {
+                              'source_marks' => [
+                                {
+                                  'counter' => 1,
+                                  'element' => {
+                                    'args' => [
+                                      {
+                                        'type' => 'brace_command_arg'
+                                      }
+                                    ],
+                                    'info' => {
+                                      'command_name' => 'foo'
+                                    },
+                                    'type' => 'macro_call'
+                                  },
+                                  'sourcemark_type' => 'macro_expansion',
+                                  'status' => 'start'
+                                }
+                              ],
+                              'text' => ''
+                            },
+                            {
+                              'source_marks' => [
+                                {
+                                  'counter' => 1,
+                                  'position' => 13,
+                                  'sourcemark_type' => 'macro_expansion',
+                                  'status' => 'end'
+                                }
+                              ],
                               'text' => 'foo-expansion'
                             },
                             {
-                              'cmdname' => '@'
+                              'cmdname' => '@',
+                              'source_marks' => [
+                                {
+                                  'counter' => 2,
+                                  'element' => {
+                                    'args' => [
+                                      {
+                                        'type' => 'brace_command_arg'
+                                      }
+                                    ],
+                                    'info' => {
+                                      'command_name' => 'abar'
+                                    },
+                                    'type' => 'macro_call'
+                                  },
+                                  'sourcemark_type' => 'macro_expansion',
+                                  'status' => 'start'
+                                }
+                              ]
                             },
                             {
+                              'source_marks' => [
+                                {
+                                  'counter' => 2,
+                                  'position' => 13,
+                                  'sourcemark_type' => 'macro_expansion',
+                                  'status' => 'end'
+                                }
+                              ],
                               'text' => 'bar-expansion'
                             }
                           ],
@@ -206,17 +275,23 @@ $result_trees{'macro_in_brace_command'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -226,8 +301,12 @@ $result_trees{'macro_in_brace_command'} = {
             }
           ],
           'extra' => {
-            'command_as_argument' => {},
-            'spaces_before_argument' => ' '
+            'command_as_argument' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',

@@ -17,9 +17,11 @@ $result_trees{'enumerate_in_example'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -29,9 +31,11 @@ $result_trees{'enumerate_in_example'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -107,17 +111,23 @@ $result_trees{'enumerate_in_example'} = {
                           'text' => 'enumerate'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'enumerate'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -143,17 +153,23 @@ $result_trees{'enumerate_in_example'} = {
                       'text' => 'example'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'example'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -217,6 +233,18 @@ $result_converted{'html_text'}->{'enumerate_in_example'} = '
 still second
 </pre></li></ol>
 </div>
+';
+
+
+$result_converted{'xml'}->{'enumerate_in_example'} = '
+<example endspaces=" ">
+<enumerate first="1" endspaces=" ">
+<listitem><pre xml:space="preserve"> first item
+</pre></listitem><listitem><pre xml:space="preserve"> second  item
+
+still second
+</pre></listitem></enumerate>
+</example>
 ';
 
 

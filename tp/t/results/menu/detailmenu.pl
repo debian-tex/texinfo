@@ -17,9 +17,11 @@ $result_trees{'detailmenu'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -27,7 +29,7 @@ $result_trees{'detailmenu'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -38,6 +40,12 @@ $result_trees{'detailmenu'} = {
                       'text' => 'Copying Conditions'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'Copying-Conditions'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -59,15 +67,6 @@ $result_trees{'detailmenu'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'Copying-Conditions'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -93,9 +92,11 @@ $result_trees{'detailmenu'} = {
             {
               'args' => [
                 {
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -103,7 +104,7 @@ $result_trees{'detailmenu'} = {
               'cmdname' => 'detailmenu',
               'contents' => [
                 {
-                  'args' => [
+                  'contents' => [
                     {
                       'text' => '* ',
                       'type' => 'menu_entry_leading_text'
@@ -114,6 +115,12 @@ $result_trees{'detailmenu'} = {
                           'text' => 'detailmenu'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'detailmenu'
+                      },
                       'type' => 'menu_entry_node'
                     },
                     {
@@ -135,15 +142,6 @@ $result_trees{'detailmenu'} = {
                       'type' => 'menu_entry_description'
                     }
                   ],
-                  'extra' => {
-                    'menu_entry_description' => {},
-                    'menu_entry_node' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'detailmenu'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 6,
@@ -159,17 +157,23 @@ $result_trees{'detailmenu'} = {
                           'text' => 'detailmenu'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'detailmenu'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -192,17 +196,23 @@ $result_trees{'detailmenu'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -223,10 +233,8 @@ $result_trees{'detailmenu'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[3];
-$result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[3];
-$result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[0];
+$result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'detailmenu'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'detailmenu'} = '
 @menu
@@ -315,10 +323,10 @@ $result_converted_errors{'html'}->{'detailmenu'} = [
 
 $result_converted{'xml'}->{'detailmenu'} = '
 <menu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::          ">Copying Conditions</menunode><menudescription><pre xml:space="preserve">Your rights.
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>Copying Conditions</menunode><menuseparator>::          </menuseparator><menudescription><pre xml:space="preserve">Your rights.
 </pre></menudescription></menuentry><menucomment><pre xml:space="preserve">
 </pre></menucomment><detailmenu endspaces=" ">
-<menuentry leadingtext="* "><menunode separator="::">detailmenu</menunode><menudescription><pre xml:space="preserve">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>detailmenu</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></detailmenu>
 </menu>
 ';

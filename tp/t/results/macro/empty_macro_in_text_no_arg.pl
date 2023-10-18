@@ -26,17 +26,23 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -45,7 +51,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' texnl{}
 '
           },
@@ -67,6 +73,26 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'info' => {
+                      'command_name' => 'texnl'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 5,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'position' => 5,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'This.  It.
 '
             }
@@ -95,17 +121,23 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
                       'text' => 'macro'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'macro'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -114,7 +146,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
               }
             }
           ],
-          'extra' => {
+          'info' => {
             'arg_line' => ' texnltwo
 '
           },
@@ -132,6 +164,26 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'info' => {
+                      'command_name' => 'texnltwo'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'position' => 11,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 2,
+                  'position' => 11,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => 'This 2 see.  A.
 '
             }

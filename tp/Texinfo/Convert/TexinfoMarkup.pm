@@ -1,20 +1,20 @@
 # TexinfoMarkup.pm: output tree keeping Texinfo code information
 #
-# Copyright 2011, 2012, 2013, 2016, 2017, 2018 Free Software Foundation, Inc.
-# 
+# Copyright 2011-2023 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
 #
@@ -47,7 +47,7 @@ use Carp qw(cluck);
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 # our because it is used in the xml to texi translator and subclasses.
@@ -57,7 +57,8 @@ our %no_arg_commands_formatting = (
            "\t" => ['spacecmd', ['type', 'tab']],
            "\n" => ['spacecmd', ['type', 'nl']],
            '-' => 'hyphenbreak',  # hyphenation hint
-           '|' => ['divideheading'],  # used in formatting commands @evenfooting and friends
+           '|' => ['divideheading'],  # used in formatting commands
+                                      # @evenfooting and friends
            '/' => 'slashbreak',
            ':' => 'noeos',
            '!' => 'eosexcl',
@@ -66,7 +67,8 @@ our %no_arg_commands_formatting = (
            '@' => 'arobase',
            '{' => 'lbrace',
            '}' => 'rbrace',
-           '&' => 'amp',
+           '&' => 'ampsymbol',  # avoid amp as it is already the entity for
+                                # & in text in XML
            '\\' => 'backslash',  # should only appear in math
 
            'TeX' => 'tex',
@@ -182,12 +184,14 @@ our %commands_args_elements = (
   'email' => ['emailaddress', 'emailname'],
   'uref' => ['urefurl', 'urefdesc', 'urefreplacement'],
   'url' => ['urefurl', 'urefdesc', 'urefreplacement'],
+  'link' => ['linknodename', 'linkrefname', 'linkinfofile'],
   'inforef' => ['inforefnodename', 'inforefrefname', 'inforefinfoname'],
   'image' => ['imagefile', 'imagewidth', 'imageheight',
               'alttext', 'imageextension'],
   # * means that the previous element is variadic, ie can appear indefinitely
   'example' => ['examplelanguage', 'examplearg', '*'],
   'quotation' => ['quotationtype'],
+  'cartouche' => ['cartouchetitle'],
   'float' => ['floattype', 'floatname'],
   'itemize' => ['itemprepend'],
   'enumerate' => ['enumeratefirst'],
@@ -199,7 +203,7 @@ foreach my $ref_cmd ('pxref', 'xref', 'ref') {
        'xrefprintedname'];
 }
 
-foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
+foreach my $explained_command (keys(%Texinfo::Commands::explained_commands)) {
   $commands_args_elements{$explained_command} = ["${explained_command}word",
                                                  "${explained_command}desc"];
 }
@@ -218,6 +222,8 @@ foreach my $brace_command (keys(%Texinfo::Commands::brace_commands)) {
 }
 
 my %defcommand_name_type = (
+ 'defline'   => 'symbol',
+ 'deftypeline' => 'symbol',
  'deffn'     => 'function',
  'defvr'     => 'variable',
  'deftypefn' => 'function',
@@ -229,24 +235,19 @@ my %defcommand_name_type = (
  'deftp'     => 'datatype',
 );
 
-my %ignored_types;
-foreach my $type (
-            # @-commands replaced in the tree
-            'replaced',
-  ) {
-  $ignored_types{$type} = 1;
-}
-
 my %type_elements = (
   'paragraph' => 'para',
   'preformatted' => 'pre',
   'menu_entry' => 'menuentry',
+  'menu_entry_leading_text' => 'menuleadingtext',
   'menu_entry_node' => 'menunode',
+  'menu_entry_separator' => 'menuseparator',
   'menu_comment' => 'menucomment',
   'menu_entry_description' => 'menudescription',
   'menu_entry_name' => 'menutitle',
+  'postamble_after_end' => 'postambleafterend',
   'preamble_before_beginning' => 'preamblebeforebeginning',
-  'table_item' => 'tableitem',
+  'table_definition' => 'tableitem',
   'table_entry' => 'tableentry',
   'table_term' => 'tableterm',
   'row' => 'row',
@@ -316,19 +317,18 @@ sub output($$)
   my $result = '';
   $result .= $self->write_or_return($self->txi_markup_header(), $fh);
   $result
-    .= $self->write_or_return($self->txi_markup_open_element('texinfo')."\n", $fh);
+    .= $self->write_or_return($self->txi_markup_open_element('texinfo')."\n",
+                              $fh);
   if ($output_file ne '') {
     my $filename_element = $self->txi_markup_open_element('filename',
                                                   [['file', $output_filename]])
              .$self->txi_markup_close_element('filename')."\n";
     $result .= $self->write_or_return($filename_element, $fh);
   }
-  if ($self->get_conf('USE_NODES')) {
-    $result .= $self->convert_document_nodes($root, $fh);
-  } else {
-    $result .= $self->convert_document_sections($root, $fh);
-  }
-  $result .= $self->write_or_return($self->txi_markup_close_element('texinfo')."\n", $fh);
+  $result .= $self->write_or_return($self->convert_tree($root), $fh);
+  $result
+    .= $self->write_or_return($self->txi_markup_close_element('texinfo')."\n",
+                              $fh);
   # FIXME add txi_markup_footer() to format a footer for the file?
   if ($fh and $output_file ne '-') {
     Texinfo::Common::output_files_register_closed(
@@ -370,29 +370,28 @@ sub _index_entry($$)
   my $self = shift;
   my $element = shift;
   if ($element->{'extra'} and $element->{'extra'}->{'index_entry'}) {
-    my $index_entry = $element->{'extra'}->{'index_entry'};
+    my ($index_entry, $index_info)
+     = Texinfo::Common::lookup_index_entry($element->{'extra'}->{'index_entry'},
+                                           $self->{'indices_information'});
     my $attribute = [['index', $index_entry->{'index_name'}]];
     push @$attribute, ['number', $index_entry->{'entry_number'}]
         if (defined($index_entry->{'entry_number'}));
     # in case the index is not a default index, or the style of the
     # entry (in code or not) is not the default for this index
-    if ($self->{'indices_information'}) {
-      my $in_code
-         = $self->{'indices_information'}->{$index_entry->{'index_name'}}->{'in_code'};
-      if (!$Texinfo::Commands::index_names{$index_entry->{'index_name'}}
-          or $in_code != $Texinfo::Commands::index_names{$index_entry->{'index_name'}}->{'in_code'}) {
-        push @$attribute, ['incode', $in_code];
-      }
-      if ($self->{'indices_information'}->{$index_entry->{'index_name'}}->{'merged_in'}) {
-        push @$attribute, ['mergedindex',
-         $self->{'indices_information'}->{$index_entry->{'index_name'}}->{'merged_in'}];
-      }
+    my $entry_index_name = $index_entry->{'index_name'};
+    my $in_code = $index_info->{'in_code'};
+    if (!$Texinfo::Commands::index_names{$entry_index_name}
+        or $in_code != $Texinfo::Commands::index_names{$entry_index_name}->{'in_code'}) {
+      push @$attribute, ['incode', $in_code];
+    }
+    if ($index_info->{'merged_in'}) {
+      push @$attribute, ['mergedindex', $index_info->{'merged_in'}];
     }
     my $result = $self->txi_markup_open_element('indexterm', $attribute);
     push @{$self->{'document_context'}}, {'monospace' => [0]};
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
-      if ($index_entry->{'in_code'});
-    $result .= $self->_convert({'contents' => $index_entry->{'entry_content'}});
+      if ($in_code);
+    $result .= $self->_convert(Texinfo::Common::index_content_element($element));
     pop @{$self->{'document_context'}};
     $result .= $self->txi_markup_close_element('indexterm');
     return $result;
@@ -432,8 +431,8 @@ sub convert($$)
 {
   my $self = shift;
   my $root = shift;
-  
-  return $self->convert_document_sections($root);
+
+  return $self->convert_tree($root);
 }
 
 sub convert_tree($$)
@@ -444,22 +443,12 @@ sub convert_tree($$)
   return $self->_convert($root);
 }
 
-# FIXME is that function markup format specific or not?
-sub _protect_in_spaces_attribute_text($)
-{
-  my $text = shift;
-  $text =~ s/\n/\\n/g;
-  $text =~ s/\f/\\f/g;
-  return $text;
-}
-
 sub _leading_spaces_arg($)
 {
   my $element = shift;
-  if ($element->{'extra'} and $element->{'extra'}->{'spaces_before_argument'}
-      and $element->{'extra'}->{'spaces_before_argument'} ne '') {
-    return ['spaces', _protect_in_spaces_attribute_text(
-                            $element->{'extra'}->{'spaces_before_argument'})];
+  if ($element->{'info'} and $element->{'info'}->{'spaces_before_argument'}
+      and $element->{'info'}->{'spaces_before_argument'}->{'text'} ne '') {
+    return ['spaces', $element->{'info'}->{'spaces_before_argument'}->{'text'}];
   } else {
     return ();
   }
@@ -474,22 +463,24 @@ sub _end_line_spaces
 
   my $end_spaces = '';
   if ($element->{'args'}->[-1]
-      and $element->{'args'}->[-1]->{'extra'}
-      and $element->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'}) {
+      and $element->{'args'}->[-1]->{'info'}
+      and $element->{'args'}->[-1]->{'info'}->{'spaces_after_argument'}) {
     # spaces and form feeds only, protection is needed for form feeds
-    my $spaces = $element->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'};
+    my $spaces
+      = $element->{'args'}->[-1]->{'info'}->{'spaces_after_argument'}->{'text'};
     chomp $spaces;
     $end_spaces = $self->txi_markup_protect_text($spaces);
   }
   return $end_spaces;
 }
 
+# no end of line
 sub _arg_line($)
 {
   my $self = shift;
   my $element = shift;
-  if ($element->{'extra'} and defined($element->{'extra'}->{'arg_line'})) {
-    my $line = $element->{'extra'}->{'arg_line'};
+  if ($element->{'info'} and defined($element->{'info'}->{'arg_line'})) {
+    my $line = $element->{'info'}->{'arg_line'};
     chomp($line);
     if ($line ne '') {
       return ['line', $line];
@@ -503,13 +494,13 @@ sub _arg_line($)
 sub _trailing_spaces_arg($)
 {
   my $element = shift;
-  
-  if ($element->{'extra'} and
-      $element->{'extra'}->{'spaces_after_argument'}) {
-    my $spaces = $element->{'extra'}->{'spaces_after_argument'};
+
+  if ($element->{'info'} and
+      $element->{'info'}->{'spaces_after_argument'}) {
+    my $spaces = $element->{'info'}->{'spaces_after_argument'}->{'text'};
     chomp($spaces);
     if ($spaces ne '') {
-      return ['trailingspaces', _protect_in_spaces_attribute_text($spaces)];
+      return ['trailingspaces', $spaces];
     }
   }
   return ();
@@ -540,6 +531,29 @@ sub _texinfo_line($$)
   return ();
 }
 
+sub _format_columnfractions($$)
+{
+  my $self = shift;
+  my $element = shift;
+
+  my $attribute = [_leading_spaces_arg($element),
+                   $self->_texinfo_line($element)];
+  my $result = '';
+  $result .= $self->txi_markup_open_element('columnfractions', $attribute);
+  if ($element
+      and $element->{'extra'}
+      and $element->{'extra'}->{'misc_args'}) {
+    foreach my $fraction (@{$element->{'extra'}->{'misc_args'}}) {
+      $result .= $self->txi_markup_open_element('columnfraction',
+                                    [['value', $fraction]])
+                 .$self->txi_markup_close_element('columnfraction');
+    }
+  }
+  $result .= $self->txi_markup_close_element('columnfractions');
+  $result .= $self->format_comment_or_return_end_line($element);
+  return $result;
+}
+
 sub _convert_argument_and_end_line($$)
 {
   my $self = shift;
@@ -549,6 +563,23 @@ sub _convert_argument_and_end_line($$)
   my $end_space = _end_line_spaces($self, $element);
   my $end_line = $self->format_comment_or_return_end_line($element);
   return ($converted, $end_space, $end_line);
+}
+
+# used in brace commands
+# NOTE not really needed now that comment_at_end are not generated
+# for brace commands.
+sub _convert_comment_at_end
+{
+  my $self = shift;
+  my $element = shift;
+
+  my $comment = $element->{'info'}->{'comment_at_end'}
+    if $element->{'info'};
+
+  if ($comment) {
+    return $self->convert_tree($comment);
+  }
+  return '';
 }
 
 my @node_directions = ('Next', 'Prev', 'Up');
@@ -577,12 +608,21 @@ sub _convert($$;$)
     #  if (defined($element->{'extra'}) and $element->{'extra'}->{'def_command'});
   }
 
-  return '' if ($element->{'type'} and $ignored_types{$element->{'type'}});
   if (defined($element->{'text'})) {
     if ($self->{'document_context'}->[-1]->{'raw'}) {
       return $element->{'text'};
     }
-    return $self->txi_markup_convert_text($element);
+    my $result = '';
+    my $text_element;
+    if ($element->{'type'} and defined($type_elements{$element->{'type'}})) {
+      $text_element = $type_elements{$element->{'type'}};
+      $result .= $self->txi_markup_open_element($text_element);
+    }
+    $result .= $self->txi_markup_convert_text($element);
+    if ($text_element) {
+      $result .= $self->txi_markup_close_element($text_element);
+    }
+    return $result;
   }
 
   my @close_format_elements;
@@ -607,8 +647,8 @@ sub _convert($$;$)
       }
       return $self->_format_command($element->{'cmdname'});
     } elsif ($accent_types{$element->{'cmdname'}}) {
-      if ($self->get_conf('ENABLE_ENCODING')) {
-        return $self->convert_accents($element, \&_accent);
+      if ($self->get_conf('OUTPUT_CHARACTERS')) {
+        return $self->convert_accents($element, \&_accent, 1);
       } else {
         my $attributes = [];
         my $arg;
@@ -616,16 +656,19 @@ sub _convert($$;$)
           $arg = '';
         } else {
           $arg = $self->_convert($element->{'args'}->[0]);
-          if ($element->{'extra'} and $element->{'extra'}->{'spaces'}) {
-            push @$attributes, ['spaces', $element->{'extra'}->{'spaces'}];
+          if ($element->{'info'}
+              and $element->{'info'}->{'spaces_after_cmd_before_arg'}) {
+            push @$attributes, ['spacesaftercmd',
+               $element->{'info'}->{'spaces_after_cmd_before_arg'}->{'text'}];
           }
-          if ($element->{'args'}->[0]->{'type'} eq 'following_arg') {
-             push @$attributes, ['bracketed', 'off'];
+          if ($element->{'args'}->[0]->{'type'} ne 'brace_command_arg') {
+            push @$attributes, ['bracketed', 'off'];
           }
         }
         return $self->_accent($arg, $element, undef, $attributes);
       }
-    } elsif ($element->{'cmdname'} eq 'item' or $element->{'cmdname'} eq 'itemx'
+    } elsif ($element->{'cmdname'} eq 'item'
+             or $element->{'cmdname'} eq 'itemx'
              or $element->{'cmdname'} eq 'headitem'
              or $element->{'cmdname'} eq 'tab') {
       if ($element->{'cmdname'} eq 'item'
@@ -642,7 +685,8 @@ sub _convert($$;$)
             .$self->txi_markup_close_element('prepend');
         }
         unshift @close_format_elements, 'listitem';
-      } elsif (($element->{'cmdname'} eq 'item' or $element->{'cmdname'} eq 'itemx')
+      } elsif (($element->{'cmdname'} eq 'item'
+                or $element->{'cmdname'} eq 'itemx')
                and $element->{'parent'}->{'type'}
                and $element->{'parent'}->{'type'} eq 'table_term') {
         my $table_command = $element->{'parent'}->{'parent'}->{'parent'};
@@ -653,13 +697,15 @@ sub _convert($$;$)
           $format_item_command
             = $table_command->{'extra'}->{'command_as_argument'}->{'cmdname'};
           $attribute
-           = [$self->_infoenclose_attribute($table_command->{'extra'}->{'command_as_argument'})];
+           = [$self->_infoenclose_attribute(
+                $table_command->{'extra'}->{'command_as_argument'})];
         }
-        my $line_item_result = $self->txi_markup_open_element($element->{'cmdname'},
-                                                     [_leading_spaces_arg($element)]);
+        my $line_item_result
+          = $self->txi_markup_open_element($element->{'cmdname'},
+                                            [_leading_spaces_arg($element)]);
         if ($format_item_command) {
           $line_item_result .= $self->txi_markup_open_element('itemformat',
-                                         [['command', $format_item_command], @$attribute]);
+                              [['command', $format_item_command], @$attribute]);
         }
         $line_item_result .= $self->_index_entry($element);
         my $in_code;
@@ -694,21 +740,21 @@ sub _convert($$;$)
         $line_item_result
            .= $self->txi_markup_close_element($element->{'cmdname'}).$end_line;
         return $line_item_result;
-      } else {
-        unless (($element->{'cmdname'} eq 'item'
-                     or $element->{'cmdname'} eq 'headitem'
-                     or $element->{'cmdname'} eq 'tab')
-                    and $element->{'parent'}->{'type'}
-                    and $element->{'parent'}->{'type'} eq 'row') {
-          print STDERR "BUG: multitable cell command not in a row "
-            .Texinfo::Common::debug_print_element($element);
-        }
-        
+      } elsif (($element->{'cmdname'} eq 'item'
+                or $element->{'cmdname'} eq 'headitem'
+                or $element->{'cmdname'} eq 'tab')
+               and $element->{'parent'}->{'type'}
+               and $element->{'parent'}->{'type'} eq 'row') {
         $result .= $self->txi_markup_open_element('entry',
-               [['command', $element->{'cmdname'}], _leading_spaces_arg($element)]);
+                                          [['command', $element->{'cmdname'}],
+                                                _leading_spaces_arg($element)]);
         unshift @close_format_elements, 'entry';
-      }
+      } # otherwise we have an incorrect construct, for instance
+        # out of block commands @item, @itemx in enumerate or multitable...
     } elsif ($element->{'type'} and $element->{'type'} eq 'index_entry_command') {
+      my ($index_entry, $index_info)
+        = Texinfo::Common::lookup_index_entry($element->{'extra'}->{'index_entry'},
+                                              $self->{'indices_information'});
       my $format_element;
       my $attribute = [];
       if (exists $line_commands{$element->{'cmdname'}}) {
@@ -717,7 +763,8 @@ sub _convert($$;$)
         $format_element = 'indexcommand';
         $attribute = [['command', $element->{'cmdname'}]];
       }
-      push @$attribute, ['index', $element->{'extra'}->{'index_entry'}->{'index_name'}];
+      push @$attribute, ['index',
+                         $index_entry->{'index_name'}];
       push @$attribute, _leading_spaces_arg($element);
 
       # this is important to get the spaces before a @subentry
@@ -735,7 +782,8 @@ sub _convert($$;$)
         return '' if ($cmdname eq 'end');
         my $attribute;
         if ($line_command_line_attributes{$cmdname}) {
-          if ($element->{'extra'} and defined($element->{'extra'}->{'text_arg'})) {
+          if ($element->{'extra'}
+              and defined($element->{'extra'}->{'text_arg'})) {
             push @$attribute, [$line_command_line_attributes{$cmdname},
                   $element->{'extra'}->{'text_arg'}];
           }
@@ -743,7 +791,8 @@ sub _convert($$;$)
         my ($arg, $end_space, $end_line)
               = $self->_convert_argument_and_end_line($element);
         push @$attribute, _leading_spaces_arg($element);
-        return $self->txi_markup_open_element($cmdname, $attribute).$arg.$end_space
+        return $self->txi_markup_open_element($cmdname, $attribute)
+                .$arg.$end_space
                 .$self->txi_markup_close_element($cmdname).${end_line};
       } elsif ($type eq 'line') {
         if ($cmdname eq 'node') {
@@ -753,41 +802,51 @@ sub _convert($$;$)
           } else {
             $nodename = '';
           }
-          $result .= $self->txi_markup_open_element('node', [['name', $nodename],
-                                         _leading_spaces_arg($element)]);
+          $result .= $self->txi_markup_open_element('node',
+                          [['name', $nodename], _leading_spaces_arg($element)]);
           push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
           $result .= $self->txi_markup_open_element('nodename',
-                                    [_trailing_spaces_arg($element->{'args'}->[0])])
-             .$self->_convert({'contents' => $element->{'extra'}->{'node_content'}})
-             .$self->txi_markup_close_element('nodename');
+                               [_trailing_spaces_arg($element->{'args'}->[0])]);
+          $result .= $self->_convert({'contents'
+                                  => $element->{'args'}->[0]->{'contents'}})
+            if ($nodename ne '');
+          $result .= $self->txi_markup_close_element('nodename');
           # first arg is the node name, directions start at 1.
           my $direction_index = 1;
           my $pending_empty_directions = '';
           foreach my $direction(@node_directions) {
             my $format_element = 'node'.lc($direction);
-            if ($element->{'structure'}->{'node_'.lc($direction)}) {
-              my $node_direction = $element->{'structure'}->{'node_'.lc($direction)};
+            if ($element->{'structure'}
+                and $element->{'structure'}->{'node_'.lc($direction)}) {
+              my $node_direction
+                     = $element->{'structure'}->{'node_'.lc($direction)};
               my $node_name = '';
               my $attributes = [];
-              if (! defined($element->{'extra'}->{'nodes_manuals'}->[$direction_index])) {
-                push @$attributes, ['automatic', 'on'];
-              }
               if ($element->{'args'}->[$direction_index]) {
                 push @$attributes, _leading_trailing_spaces_arg(
                                  $element->{'args'}->[$direction_index]);
               }
-              if ($node_direction->{'extra'}->{'manual_content'}) {
-                $node_name .= $self->_convert({
-                             'contents' => [{'text' => '('},
-                             @{$node_direction->{'extra'}->{'manual_content'}},
-                                          {'text' => ')'}]});
-              }
-              if ($node_direction->{'extra'}->{'node_content'}) {
-                $node_name .= Texinfo::Common::normalize_top_node_name($self->_convert({
-                  'contents' => $node_direction->{'extra'}->{'node_content'}}));
+              if (!$element->{'args'}
+                  or scalar(@{$element->{'args'}}) < $direction_index +1
+                  or !defined($element->{'args'}->[$direction_index]->{'extra'})
+                  or !(defined($element->{'args'}->[$direction_index]
+                                                    ->{'extra'}->{'manual_node'}
+                       or defined($element->{'args'}->[$direction_index]
+                                                     ->{'extra'}->{'normalized'})))) {
+                push @$attributes, ['automatic', 'on'];
+
+                if (defined($node_direction->{'extra'}->{'normalized'})) {
+                  $node_name .= Texinfo::Common::normalize_top_node_name(
+                    $self->_convert({'contents'
+                             => $node_direction->{'args'}->[0]->{'contents'}}));
+                }
+              } else {
+                $node_name
+                  = $self->_convert($element->{'args'}->[$direction_index]);
               }
               $result .= "$pending_empty_directions".
-                $self->txi_markup_open_element($format_element, $attributes).$node_name.
+                $self->txi_markup_open_element($format_element, $attributes)
+                .$node_name.
                 $self->txi_markup_close_element($format_element);
               $pending_empty_directions = '';
             } else {
@@ -826,7 +885,8 @@ sub _convert($$;$)
           if ($element->{'args'} and $element->{'args'}->[0]) {
             my ($arg, $end_space, $end_line)
                = $self->_convert_argument_and_end_line($element);
-            $result .= $self->txi_markup_open_element('sectiontitle').$arg.$end_space
+            $result .= $self->txi_markup_open_element('sectiontitle')
+                      .$arg.$end_space
                       .$self->txi_markup_close_element('sectiontitle')
                       .$closed_section_element.$end_line;
           } else {
@@ -834,47 +894,29 @@ sub _convert($$;$)
           }
         } else {
           my $attribute = [_leading_spaces_arg($element)];
-          if ($cmdname eq 'listoffloats' and $element->{'extra'}
-              and $element->{'extra'}->{'type'}
-              and defined($element->{'extra'}->{'type'}->{'normalized'})) {
-            unshift @$attribute, ['type', $element->{'extra'}->{'type'}->{'normalized'}];
+          if ($cmdname eq 'listoffloats') {
+            unshift @$attribute, ['type',
+                                  $element->{'extra'}->{'float_type'}];
           }
           my ($arg, $end_space, $end_line)
                 = $self->_convert_argument_and_end_line($element);
-          return $self->txi_markup_open_element($cmdname, $attribute).$arg.$end_space
+          return $self->txi_markup_open_element($cmdname, $attribute)
+               .$arg.$end_space
                .$self->txi_markup_close_element($cmdname).$end_line;
         }
-      } elsif ($type eq 'skipline') {
-        # the command associated with an element is closed at the end of the
-        # element. @bye is withing the element, but we want it to appear after
-        # the command closing.  So we delay the output of @bye, and store it.
-        if ($cmdname eq 'bye' and $element->{'structure'}
-            and $element->{'structure'}->{'associated_unit'}
-            and $element->{'structure'}->{'associated_unit'}->{'extra'}
-            and defined($element->{'structure'}->{'associated_unit'}->{'extra'}->{'unit_command'})) {
-          $self->{'pending_bye'} = $self->txi_markup_open_element($cmdname)
-                    .$self->txi_markup_close_element($cmdname)."\n";
-          return '';
-        }
-        my $attribute = [];
-        if ($element->{'args'} and $element->{'args'}->[0]
-            and defined($element->{'args'}->[0]->{'text'})) {
-          my $line = $element->{'args'}->[0]->{'text'};
-          chomp($line);
-          $attribute = [['line', $line]]
-             if ($line ne '');
-        }
-        return $self->txi_markup_open_element($cmdname, $attribute)
-                 .$self->txi_markup_close_element($cmdname)."\n";
-      } elsif ($type eq 'special') {
-        if ($cmdname eq 'clear' or $cmdname eq 'set') {
+      } elsif ($type eq 'lineraw') {
+        if ($cmdname eq 'c' or $cmdname eq 'comment') {
+          return $self->txi_markup_comment(
+                         " $cmdname".$element->{'args'}->[0]->{'text'})
+        } elsif ($cmdname eq 'clear' or $cmdname eq 'set') {
           my $attribute = [];
           if ($element->{'args'} and $element->{'args'}->[0]
               and defined($element->{'args'}->[0]->{'text'})) {
             push @$attribute, ['name', $element->{'args'}->[0]->{'text'}];
           }
           my $value = '';
-          if ($cmdname eq 'set' and $element->{'args'} and $element->{'args'}->[1]
+          if ($cmdname eq 'set' and $element->{'args'}
+              and $element->{'args'}->[1]
               and defined($element->{'args'}->[1]->{'text'})) {
             $value
               = $self->txi_markup_protect_text($element->{'args'}->[1]->{'text'});
@@ -895,8 +937,7 @@ sub _convert($$;$)
           };
           return $self->txi_markup_open_element($cmdname, $attribute)
                          .$value.$self->txi_markup_close_element($cmdname)."\n";
-        } else {
-          # should only be unmacro
+        } elsif ($cmdname eq 'unmacro') {
           my $attribute = [$self->_arg_line($element)];
           if ($element->{'args'} and $element->{'args'}->[0]
               and defined($element->{'args'}->[0]->{'text'})) {
@@ -904,12 +945,7 @@ sub _convert($$;$)
           }
           return $self->txi_markup_open_element($cmdname, $attribute)
                     .$self->txi_markup_close_element($cmdname)."\n";
-        }
-      } elsif ($type eq 'lineraw') {
-        if ($cmdname eq 'c' or $cmdname eq 'comment') {
-          return $self->txi_markup_comment(
-                         " $cmdname".$element->{'args'}->[0]->{'text'})
-        } else {
+        } elsif ($Texinfo::Commands::commands_args_number{$cmdname}) {
           my $value = '';
           if ($element->{'args'} and $element->{'args'}->[0]
               and defined($element->{'args'}->[0]->{'text'})) {
@@ -919,13 +955,28 @@ sub _convert($$;$)
           chomp ($value);
           return $self->txi_markup_open_element($cmdname).$value
                     .$self->txi_markup_close_element($cmdname)."\n";
+        } else {
+          my $attribute = [];
+          if ($element->{'args'} and $element->{'args'}->[0]
+              and defined($element->{'args'}->[0]->{'text'})) {
+            my $line = $element->{'args'}->[0]->{'text'};
+            chomp($line);
+            $attribute = [['line', $line]]
+               if ($line ne '');
+          }
+          my $result = $self->txi_markup_open_element($cmdname, $attribute)
+                   .$self->txi_markup_close_element($cmdname)."\n";
+          return $result;
         }
       } else {
         print STDERR "BUG: unknown line_command style $type\n"
            if ($type ne 'specific');
         my $args_attributes;
         if ($line_command_numbered_arguments_attributes{$cmdname}) {
-          $args_attributes = $line_command_numbered_arguments_attributes{$cmdname};
+          $args_attributes
+             = $line_command_numbered_arguments_attributes{$cmdname};
+        } elsif ($cmdname eq 'columnfractions') {
+          return _format_columnfractions($self, $element);
         } else {
           $args_attributes = ['value'];
         }
@@ -977,12 +1028,13 @@ sub _convert($$;$)
       my $command_result = $self->txi_markup_open_element('infoenclose',
                                           [['command', $element->{'cmdname'}],
                                        $self->_infoenclose_attribute($element)])
-                 .$arg.$self->txi_markup_close_element('infoenclose');
+                 .$arg.$self->_convert_comment_at_end($element->{'args'}->[0]).
+                 $self->txi_markup_close_element('infoenclose');
       return $command_result;
     } elsif ($element->{'args'}
              and exists($brace_commands{$element->{'cmdname'}})) {
 
-      if ($Texinfo::Common::inline_format_commands{$element->{'cmdname'}}
+      if ($Texinfo::Commands::inline_format_commands{$element->{'cmdname'}}
           and $element->{'extra'} and $element->{'extra'}->{'format'}
           and $self->{'expanded_formats_hash'}->{$element->{'extra'}->{'format'}}) {
         if ($element->{'cmdname'} eq 'inlineraw') {
@@ -1001,6 +1053,9 @@ sub _convert($$;$)
           pop @{$self->{'document_context'}};
         }
         return $command_result;
+      } elsif ($element->{'cmdname'} eq 'value') {
+        # value in tree corresponds to an unknown flag, ignored here
+        return '';
       }
 
 
@@ -1008,7 +1063,7 @@ sub _convert($$;$)
       # first argument
       my $attribute = [];
       if ($element->{'cmdname'} eq 'verb') {
-        push @$attribute, ['delimiter', $element->{'extra'}->{'delimiter'}];
+        push @$attribute, ['delimiter', $element->{'info'}->{'delimiter'}];
       } elsif ($element->{'cmdname'} eq 'anchor') {
         my $anchor_name;
         if (defined($element->{'extra'}->{'normalized'})) {
@@ -1017,6 +1072,13 @@ sub _convert($$;$)
           $anchor_name = '';
         }
         push @$attribute, ['name', $anchor_name];
+      }
+
+      my $space_after_command_attribute;
+      if ($element->{'info'}
+          and $element->{'info'}->{'spaces_after_cmd_before_arg'}) {
+        $space_after_command_attribute = ['spacesaftercmd',
+                $element->{'info'}->{'spaces_after_cmd_before_arg'}->{'text'}];
       }
 
       my @format_elements;
@@ -1033,6 +1095,8 @@ sub _convert($$;$)
         # leading spaces are directly associated to the @-command for @-command
         # in context brace_commands
         push @$attribute, _leading_spaces_arg($element);
+        push @$attribute, $space_after_command_attribute
+           if (defined($space_after_command_attribute));
       }
 
       if ($Texinfo::Commands::brace_commands{$element->{'cmdname'}} eq 'context') {
@@ -1059,30 +1123,34 @@ sub _convert($$;$)
             $in_monospace_not_normal
               if (defined($in_monospace_not_normal));
           my $arg = $self->_convert($element->{'args'}->[$arg_index]);
+          my $comment_at_end
+            = $self->_convert_comment_at_end($element->{'args'}->[$arg_index]);
           pop @{$self->{'document_context'}->[-1]->{'monospace'}}
             if (defined($in_monospace_not_normal));
 
-          if ($element->{'args'}->[$arg_index]->{'extra'}
-              and $element->{'args'}->[$arg_index]->{'extra'}->{'spaces_after_argument'}) {
+          if ($element->{'args'}->[$arg_index]->{'info'}
+              and $element->{'args'}->[$arg_index]
+                                      ->{'info'}->{'spaces_after_argument'}) {
             $arg .= $element->{'args'}->[$arg_index]
-                   ->{'extra'}->{'spaces_after_argument'};
+                   ->{'info'}->{'spaces_after_argument'}->{'text'};
           }
 
-          if (!defined($main_cmdname) or $arg ne '' or scalar(@$attribute) > 0) {
+          if (!defined($main_cmdname) or $arg ne '' or scalar(@$attribute) > 0
+              or $comment_at_end ne '') {
             $args_or_one_arg_cmd .=
-                 $self->txi_markup_open_element($format_element, $attribute).$arg
+                 $self->txi_markup_open_element($format_element, $attribute)
+                      .$arg.$comment_at_end
                       .$self->txi_markup_close_element($format_element);
             $last_empty_element = undef;
           # we keep the last empty argument to be able to prepend it to be able
-          # to reconstitute trailing empty arguments in the original Texinfo code.
+          # to reconstitute trailing empty arguments in the original Texinfo
+          # code.
           # For example, for @bracecmd{a,b,,c,,} we keep the last (6th argument)
           # empty element.
-          # Not if in inline conditionals as we are not interested in empty ignored
-          # inline conditional arguments.
-          } elsif (defined($main_cmdname)
-                   and not $brace_commands{$element->{'cmdname'}} eq 'inline') {
-            $last_empty_element = $self->txi_markup_open_element($format_element)
-                                  .$self->txi_markup_close_element($format_element);
+          } elsif (defined($main_cmdname)) {
+            $last_empty_element
+               = $self->txi_markup_open_element($format_element)
+                           .$self->txi_markup_close_element($format_element);
           }
           $attribute = [];
         } else {
@@ -1102,6 +1170,8 @@ sub _convert($$;$)
       }
       # This is for the main command
       $attribute = [];
+      push @$attribute, $space_after_command_attribute
+           if (defined($space_after_command_attribute));
       if ($element->{'cmdname'} eq 'image') {
         if (Texinfo::Common::element_is_inline($element)) {
           push @$attribute, ['where', 'inline'];
@@ -1109,16 +1179,17 @@ sub _convert($$;$)
       } elsif ($Texinfo::Commands::ref_commands{$element->{'cmdname'}}) {
         if ($element->{'args'}) {
           my $normalized;
-          if ($element->{'extra'}
-              and $element->{'extra'}->{'node_argument'}
-              and $element->{'extra'}->{'node_argument'}->{'node_content'}) {
+          my $node_arg = $element->{'args'}->[0];
+          if ($node_arg and $node_arg->{'extra'}
+              and $node_arg->{'extra'}->{'node_content'}) {
             my $normalized;
-            if (defined($element->{'extra'}->{'node_argument'}->{'normalized'})) {
-              $normalized = $element->{'extra'}->{'node_argument'}->{'normalized'};
+            if (defined($node_arg->{'extra'}->{'normalized'})) {
+              $normalized = $node_arg->{'extra'}->{'normalized'};
             } else {
               $normalized
                = Texinfo::Convert::NodeNameNormalization::normalize_node(
-              {'contents' => $element->{'extra'}->{'node_argument'}->{'node_content'}});
+                  {'contents' =>
+                     $node_arg->{'extra'}->{'node_content'}});
             }
             if ($normalized) {
               push @$attribute, ['label', $normalized];
@@ -1126,7 +1197,8 @@ sub _convert($$;$)
           }
           my $manual;
           my $manual_arg_index = 3;
-          if ($element->{'cmdname'} eq 'inforef') {
+          if ($element->{'cmdname'} eq 'link'
+                or $element->{'cmdname'} eq 'inforef') {
             $manual_arg_index = 2;
           }
           if (defined($element->{'args'}->[$manual_arg_index])
@@ -1134,22 +1206,22 @@ sub _convert($$;$)
               and @{$element->{'args'}->[$manual_arg_index]->{'contents'}}) {
             $manual = Texinfo::Convert::Text::convert_to_text({'contents'
                      => $element->{'args'}->[$manual_arg_index]->{'contents'}},
-                 {'code' => 1,
-                  Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)});
+             {'code' => 1,
+               Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)});
           }
-          if (!defined($manual) and $element->{'extra'}
-              and $element->{'extra'}->{'node_argument'}
-              and $element->{'extra'}->{'node_argument'}->{'manual_content'}) {
+          if (!defined($manual) and $node_arg
+              and $node_arg->{'extra'}
+              and $node_arg->{'extra'}->{'manual_content'}) {
             $manual = Texinfo::Convert::Text::convert_to_text({'contents'
-                   => $element->{'extra'}->{'node_argument'}->{'manual_content'}},
-                 {'code' => 1,
-                  Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)});
+                   => $node_arg->{'extra'}->{'manual_content'}},
+               {'code' => 1,
+                Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)});
           }
           if (defined($manual)) {
             my $manual_base = $manual;
             $manual_base =~ s/\.[^\.]*$//;
             $manual_base =~ s/^.*\///;
-            
+
             push @$attribute, ['manual', $manual_base]
                   if ($manual_base ne '');
           }
@@ -1161,7 +1233,8 @@ sub _convert($$;$)
       # if a context brace_commands, therefore they are with the first argument.
       push @$attribute, _leading_spaces_arg($element);
       return $self->txi_markup_open_element($main_cmdname, $attribute)
-                 .$args_or_one_arg_cmd.$self->txi_markup_close_element($main_cmdname);
+                 .$args_or_one_arg_cmd
+                 .$self->txi_markup_close_element($main_cmdname);
     } elsif (exists($Texinfo::Commands::block_commands{$element->{'cmdname'}})) {
       if ($self->{'context_block_commands'}->{$element->{'cmdname'}}) {
         push @{$self->{'document_context'}}, {'monospace' => [0]};
@@ -1174,35 +1247,37 @@ sub _convert($$;$)
         push @$attribute,
          (['commandarg', $command_as_arg->{'cmdname'}],
              $self->_infoenclose_attribute($command_as_arg));
+        if ($command_as_arg->{'type'}
+            and $command_as_arg->{'type'} eq 'command_as_argument_inserted') {
+          push @$attribute, ['automaticcommandarg', 'on'];
+        }
       } elsif ($element->{'extra'}
                and $element->{'extra'}->{'enumerate_specification'}) {
-        push @$attribute, ['first', $element->{'extra'}->{'enumerate_specification'}];
+        push @$attribute, ['first',
+                           $element->{'extra'}->{'enumerate_specification'}];
       } elsif ($element->{'cmdname'} eq 'float' and $element->{'extra'}) {
-        if (defined($element->{'extra'}->{'node_content'})) {
-          my $normalized =
-            Texinfo::Convert::NodeNameNormalization::normalize_node (
-                   { 'contents' => $element->{'extra'}->{'node_content'} });
-          push @$attribute, ['name', $normalized];
+        if (defined($element->{'extra'}->{'normalized'})) {
+          push @$attribute, ['name', $element->{'extra'}->{'normalized'}];
         }
-        if ($element->{'extra'}->{'type'} and
-            defined($element->{'extra'}->{'type'}->{'normalized'})) {
-          push @$attribute, ['type', $element->{'extra'}->{'type'}->{'normalized'}];
-        }
+        push @$attribute, ['type',
+                           $element->{'extra'}->{'float_type'}];
         if ($element->{'structure'}
             and defined($element->{'structure'}->{'float_number'})) {
-          push @$attribute, ['number', $element->{'structure'}->{'float_number'}];
+          push @$attribute, ['number',
+                             $element->{'structure'}->{'float_number'}];
         }
       } elsif ($element->{'cmdname'} eq 'verbatim') {
         push @$attribute, ['space', 'preserve'];
       } elsif ($element->{'cmdname'} eq 'macro'
-               or $element->{'cmdname'} eq 'rmacro') {
+               or $element->{'cmdname'} eq 'rmacro'
+               or $element->{'cmdname'} eq 'linemacro') {
         if (defined($element->{'args'})) {
           my @args = @{$element->{'args'}};
           my $name_arg = shift @args;
           if (defined($name_arg) and defined($name_arg->{'text'})) {
             push @$attribute, ['name', $name_arg->{'text'}];
           }
-          
+
           while (@args) {
             my $formal_arg = shift @args;
             $prepended_elements .= $self->txi_markup_open_element('formalarg')
@@ -1215,14 +1290,14 @@ sub _convert($$;$)
       if ($self->{'expanded_formats_hash'}->{$element->{'cmdname'}}) {
         $self->{'document_context'}->[-1]->{'raw'} = 1;
       } else {
+        my @end_command_spaces;
         my $end_command;
         if ($element->{'contents'} and scalar(@{$element->{'contents'}}) > 0
             and $element->{'contents'}->[-1]->{'cmdname'}
             and $element->{'contents'}->[-1]->{'cmdname'} eq 'end') {
           $end_command = $element->{'contents'}->[-1];
+          push @end_command_spaces, _leading_spaces_arg($end_command);
         }
-        my @end_command_spaces;
-        push @end_command_spaces, _leading_spaces_arg($end_command);
         if (scalar(@end_command_spaces)) {
           $end_command_spaces[0]->[0] = 'endspaces';
         }
@@ -1271,32 +1346,44 @@ sub _convert($$;$)
                                                                ->[$arg_index]);
                 push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
                   if ($in_code);
+                if ($arg_index != 0) {
+                  push @$spaces, _leading_spaces_arg($arg_element);
+                }
                 if ($arg_index+1 eq scalar(@{$element->{'args'}})) {
                   # last argument
                   ($arg, $end_space, $end_line)
                     = $self->_convert_argument_and_end_line($element);
+                  # happens for @-commands interrupted by other commands
+                  # incorrectly present on the line
+                  $end_line = "\n" if ($end_line eq '');
                 } else {
                   $arg = $self->_convert($arg_element);
+                  push @$spaces, _trailing_spaces_arg($arg_element);
                 }
                 pop @{$self->{'document_context'}->[-1]->{'monospace'}}
                   if ($in_code);
-                if ($arg_index != 0) {
-                  push @$spaces, _leading_spaces_arg($arg_element);
-                }
               }
-              # must add every variadic argument even if empty to get the correct count
+              # must add every variadic argument even if empty to get the
+              # correct count
               if ($arg ne '' or scalar(@$spaces) or $variadic_element) {
-                $result .= $self->txi_markup_open_element($format_element, $spaces)
-                                   .$arg.$end_space
-                                   .$self->txi_markup_close_element($format_element);
+                $result .= $self->txi_markup_open_element($format_element,
+                                                          $spaces)
+                            .$arg.$end_space
+                            .$self->txi_markup_close_element($format_element);
                 $last_empty_element = undef;
               } else {
-                $result .= $end_space;
                 if ($arg_index > 0) {
-                  # we keep the last empty argument to be able to prepend it to be able
-                  # to reconstitute trailing empty arguments in the original Texinfo code.
-                  $last_empty_element = $self->txi_markup_open_element($format_element)
-                                .$self->txi_markup_close_element($format_element);
+                  if ($end_space ne '') {
+                    push @$spaces, ['spaces', $end_space];
+                  }
+                  # we keep the last empty argument to be able to prepend
+                  # it to be able to reconstitute trailing empty arguments
+                  # in the original Texinfo code.
+                  $last_empty_element
+                     = $self->txi_markup_open_element($format_element, $spaces)
+                              .$self->txi_markup_close_element($format_element);
+                } else {
+                  $result .= $end_space;
                 }
               }
               $arg_index++;
@@ -1306,108 +1393,77 @@ sub _convert($$;$)
             }
             $result .= $end_line;
           } else {
-
             # in that case the end of line is in the columnfractions line
             # or in the columnprototypes.
             if ($element->{'cmdname'} eq 'multitable') {
-              my @prototype_line;
-              if (not $element->{'extra'}->{'columnfractions'}) {
-                # Like 'prototypes' extra value, but keeping spaces information
-                if (defined $element->{'args'}->[0]
-                    and defined $element->{'args'}->[0]->{'type'}
-                    and $element->{'args'}->[0]->{'type'} eq 'block_line_arg'
-                    and $element->{'args'}->[0]->{'contents'}) {
-                  foreach my $content (@{$element->{'args'}->[0]->{'contents'}}) {
-                    if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
-                      push @prototype_line, $content;
-                    } elsif ($content->{'text'}) {
-                      # The regexp breaks between characters, with a non space
-                      # followed by a space or a space followed by non space.
-                      # It is like \b, but for \s \S, and not \w \W.
-                      foreach my $prototype_or_space (
-                          split /(?<=\S)(?=\s)|(?=\S)(?<=\s)/, $content->{'text'}) {
-                        if ($prototype_or_space =~ /\S/) {
-                          push @prototype_line, {'text' => $prototype_or_space,
-                            'type' => 'row_prototype' };
-                        } elsif ($prototype_or_space =~ /\s/) {
-                          push @prototype_line, {'text' => $prototype_or_space,
-                            'type' => 'prototype_space' };
-                        }
-                      }
-                    # $content->{'cmdname'} should be defined at this point, if not,
-                    # there should be a perl warning
-                    } elsif ($content->{'cmdname'} eq 'c'
-                             or $content->{'cmdname'} eq 'comment') {
-                      # NOTE it does not happen right now, because a comment
-                      # will be in extra comment_at_end.  If comments are back
-                      # in the tree, they should be ignored here, as they would
-                      # better be handled in format_comment_or_return_end_line
-                    } else { # a command
-                      push @prototype_line, $content;
-                    }
-                  }
-                }
-              }
-
-              if (scalar(@prototype_line) > 0) {
-                $result .= $self->txi_markup_open_element('columnprototypes');
-                my $first_proto = 1;
-                foreach my $prototype (@prototype_line) {
-                  if ($prototype->{'text'} and $prototype->{'text'} !~ /\S/) {
-                    if (!$first_proto) {
-                      my $spaces = $prototype->{'text'};
-                      chomp($spaces);
-                      $result .= $spaces;
-                    }
-                  } else {
-                    my $attributes = [];
-                    if ($prototype->{'type'}
-                        and $prototype->{'type'} eq 'bracketed') {
-                      push @$attributes, ['bracketed', 'on'];
-                      push @$attributes,
-                                  _leading_spaces_arg($prototype);
-                    }
-                    $result .= $self->txi_markup_open_element('columnprototype',
-                                                              $attributes)
-                           .$self->_convert($prototype)
-                           .$self->txi_markup_close_element('columnprototype');
-                  }
-                  $first_proto = 0;
-                }
-                $result .= $self->txi_markup_close_element('columnprototypes');
-                $result .= $self->format_comment_or_return_end_line($element);
-              } elsif ($element->{'extra'}
-                       and $element->{'extra'}->{'columnfractions'}
-                       and $element->{'args'}->[0]->{'contents'}) {
-                my $cmd;
+              if ($element->{'args'} and $element->{'args'}->[0]
+                       and $element->{'args'}->[0]->{'contents'}
+                       and (($element->{'extra'}
+                             and $element->{'extra'}->{'columnfractions'})
+                            # case of bogus/empty @columnfractions
+                            or ($element->{'args'}->[0]->{'contents'}->[0]
+                                and $element->{'args'}->[0]->{'contents'}
+                                                           ->[0]->{'cmdname'}
+                                and $element->{'args'}->[0]->{'contents'}
+                                   ->[0]->{'cmdname'} eq 'columnfractions'))) {
+                my $columnfractions_element;
                 foreach my $content (@{$element->{'args'}->[0]->{'contents'}}) {
                   if ($content->{'cmdname'}
                       and $content->{'cmdname'} eq 'columnfractions') {
-                    $cmd = $content;
+                    $columnfractions_element = $content;
                     last;
                   }
                 }
-                my $attribute = [_leading_spaces_arg($cmd),
-                                 $self->_texinfo_line($cmd)];
-                $result .= $self->txi_markup_open_element('columnfractions', $attribute);
-                foreach my $fraction (@{$element->{'extra'}->{'columnfractions'}
-                                             ->{'extra'}->{'misc_args'}}) {
-                  $result .= $self->txi_markup_open_element('columnfraction',
-                                                [['value', $fraction]])
-                             .$self->txi_markup_close_element('columnfraction');
+                $result
+                 .= _format_columnfractions($self, $columnfractions_element);
+              } elsif ($element->{'args'} and scalar(@{$element->{'args'}})
+                       and $element->{'args'}->[0]->{'contents'}) {
+                $result .= $self->txi_markup_open_element('columnprototypes');
+                foreach my $arg (@{$element->{'args'}->[0]->{'contents'}}) {
+                  if ($arg->{'type'}
+                      and $arg->{'type'} eq 'bracketed_arg') {
+                    my $attributes = [];
+                    push @$attributes, ['bracketed', 'on'];
+                    push @$attributes,
+                                  _leading_spaces_arg($arg);
+                    $result .= $self->txi_markup_open_element('columnprototype',
+                                                              $attributes)
+                           .$self->_convert($arg)
+                           .$self->txi_markup_close_element('columnprototype');
+                  } else {
+                    $result .= $self->_convert($arg);
+                  }
                 }
-                $result .= $self->txi_markup_close_element('columnfractions');
-                $result .= $self->format_comment_or_return_end_line($cmd);
+                $result .= $self->txi_markup_close_element('columnprototypes');
+                my $end_space
+                  = _end_line_spaces($self, $element);
+                $result .= $end_space
+                          .$self->format_comment_or_return_end_line($element);
+                # happens for multitable line with prototypes interrupted
+                # by another @-command
+                $result .= "\n" unless ($result =~ /\n/);
               } else { # bogus multitable
                 $result .= "\n";
               }
             } else {
-              # get end of lines from @*table and block @-commands with
-              # no argument that have a bogus argument.
+              # get end of lines from @*table and block @-commands that
+              # usually have arguments but with missing or bogus arguments,
+              # and from block @-commands without argument.
               $result .= _end_line_spaces($self, $element);
               $result .= $self->format_comment_or_return_end_line($element);
+              # systematic for @(r)macro as _arg_line removes the end of line,
+              # also happens for commands interrupted on the line
+              $result .= "\n" unless ($result =~ /\n/);
             }
           }
+        # @def* line args are in the first def contents, the def_line type
+        # and processed below.
+        } elsif (not
+           exists($Texinfo::Commands::def_commands{$element->{'cmdname'}})) {
+          # happens for bogus empty @macro immediately followed by
+          # newline.
+          #print STDERR "no args: $element->{'cmdname'}\n";
+          $result .= "\n";
         }
         unshift @close_format_elements, $element->{'cmdname'};
       }
@@ -1419,15 +1475,6 @@ sub _convert($$;$)
       my $attribute = [];
       if ($element->{'type'} eq 'preformatted') {
         push @$attribute, ['space', 'preserve'];
-      } elsif ($element->{'type'} eq 'menu_entry') {
-        push @$attribute, ['leadingtext',
-                           $self->_convert($element->{'args'}->[0])];
-      } elsif (($element->{'type'} eq 'menu_entry_node'
-                or $element->{'type'} eq 'menu_entry_name')
-               and $self->{'pending_menu_entry_separator'}) {
-        push @$attribute, ['separator',
-               $self->_convert($self->{'pending_menu_entry_separator'})];
-        delete $self->{'pending_menu_entry_separator'};
       }
       $result
         .= $self->txi_markup_open_element($type_elements{$element->{'type'}},
@@ -1435,38 +1482,33 @@ sub _convert($$;$)
     }
     if ($element->{'type'} eq 'def_line') {
       if ($element->{'cmdname'}) {
-        my $leading_spaces_attribute_spec = [];
-        if ($element->{'extra'}
-            and $element->{'extra'}->{'spaces_before_argument'}
-            and $element->{'extra'}->{'spaces_before_argument'} ne '') {
-          my $leading_spaces = $element->{'extra'}->{'spaces_before_argument'};
-          # may happen without any argument, remove as a \n is added below
-          $leading_spaces =~ s/\n//;
-          $leading_spaces_attribute_spec = [['spaces',
-                          _protect_in_spaces_attribute_text($leading_spaces)]]
-            if ($leading_spaces ne '');
-        }
+        # @def*x command has the command associated with def_line.
+        my $attribute = [];
+        push @$attribute, _leading_spaces_arg($element);
         $result .= $self->txi_markup_open_element($element->{'cmdname'},
-                                                  $leading_spaces_attribute_spec);
+                                                  $attribute);
       }
       $result .= $self->txi_markup_open_element('definitionterm');
       $result .= $self->_index_entry($element);
       push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
+      my $def_command = $element->{'extra'}->{'def_command'};
       if ($element->{'args'} and @{$element->{'args'}}
           and $element->{'args'}->[0]->{'contents'}) {
         my $main_command;
         my $alias;
-        if ($Texinfo::Common::def_aliases{$element->{'extra'}->{'def_command'}}) {
+        if ($Texinfo::Common::def_aliases{$def_command}) {
           $main_command
-            = $Texinfo::Common::def_aliases{$element->{'extra'}->{'def_command'}};
+            = $Texinfo::Common::def_aliases{$def_command};
           $alias = 1;
         } else {
-          $main_command = $element->{'extra'}->{'def_command'};
+          $main_command = $def_command;
           $alias = 0;
         }
         foreach my $arg (@{$element->{'args'}->[0]->{'contents'}}) {
+          # should only happen for dubious trees in which the def line
+          # was not split in def roles
+          next if (not $arg->{'extra'} or not $arg->{'extra'}->{'def_role'});
           my $type = $arg->{'extra'}->{'def_role'};
-          next if !$type and $arg->{'type'} eq 'spaces';
           my $content = $self->_convert($arg);
           if ($type eq 'spaces') {
             $content =~ s/\n$//;
@@ -1487,7 +1529,7 @@ sub _convert($$;$)
               $format_element = $type;
             }
             if ($arg->{'type'}
-                and ($arg->{'type'} eq 'bracketed_def_content'
+                and ($arg->{'type'} eq 'bracketed_arg'
                   or ($arg->{'type'} eq 'bracketed_inserted'))) {
               push @$attribute, ['bracketed', 'on'];
               push @$attribute, _leading_trailing_spaces_arg($arg);
@@ -1500,6 +1542,7 @@ sub _convert($$;$)
         }
       }
       pop @{$self->{'document_context'}->[-1]->{'monospace'}};
+      $result .= _end_line_spaces($self, $element);
       $result .= $self->txi_markup_close_element('definitionterm');
       if ($element->{'cmdname'}) {
         $result .= $self->txi_markup_close_element($element->{'cmdname'});
@@ -1510,9 +1553,10 @@ sub _convert($$;$)
   }
   if ($element->{'contents'}) {
     my $in_code;
-    if ($element->{'cmdname'}
-        and ($Texinfo::Commands::preformatted_code_commands{$element->{'cmdname'}}
-             or $Texinfo::Commands::math_commands{$element->{'cmdname'}})) {
+    if (($element->{'cmdname'}
+         and ($Texinfo::Commands::preformatted_code_commands{$element->{'cmdname'}}
+              or $Texinfo::Commands::math_commands{$element->{'cmdname'}}))
+         or $element->{'type'} and $element->{'type'} eq 'menu_entry_node') {
       $in_code = 1;
     }
     push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
@@ -1526,42 +1570,13 @@ sub _convert($$;$)
     pop @{$self->{'document_context'}->[-1]->{'monospace'}}
       if ($in_code);
   }
-  my $arg_nr = -1;
-  if ($element->{'type'} and $element->{'type'} eq 'menu_entry') {
-    foreach my $arg (@{$element->{'args'}}) {
-      $arg_nr++;
-      # menu_entry_leading_text is added as attribute leadingtext of menu_entry
-      # menu_entry_separator is recorded here and then added ass attribute
-      # separator
-      next if ($arg->{'type'} eq 'menu_entry_leading_text'
-               or $arg->{'type'} eq 'menu_entry_separator');
-      if ($element->{'args'}->[$arg_nr +1]
-          and $element->{'args'}->[$arg_nr +1]->{'type'}
-          and $element->{'args'}->[$arg_nr +1]->{'type'} eq 'menu_entry_separator') {
-        $self->{'pending_menu_entry_separator'} = $element->{'args'}->[$arg_nr +1];
-      }
-      my $in_code;
-      if ($arg->{'type'} eq 'menu_entry_node') {
-        $in_code = 1;
-      }
-      push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1
-        if ($in_code);
-      $result .= $self->_convert($arg);
-      pop @{$self->{'document_context'}->[-1]->{'monospace'}}
-        if ($in_code);
-    }
-  }
   if ($element->{'type'}) {
     if (defined($type_elements{$element->{'type'}})) {
       $result
         .= $self->txi_markup_close_element($type_elements{$element->{'type'}});
     }
   }
-  $result = '{'.$result.'}'
-     if ($element->{'type'} and $element->{'type'} eq 'bracketed'
-         and (!$element->{'parent'}->{'type'} or
-              ($element->{'parent'}->{'type'} ne 'block_line_arg'
-               and $element->{'parent'}->{'type'} ne 'line_arg')));
+
   foreach my $format_element (@close_format_elements) {
     $result .= $self->txi_markup_close_element($format_element);
   }
@@ -1575,29 +1590,18 @@ sub _convert($$;$)
         my $end_command = $element->{'contents'}->[-1];
         $result .= _end_line_spaces($self, $end_command);
         $result .= $self->format_comment_or_return_end_line($end_command);
+      } else {
+        # missing @end, add an end of line after the closing markup element.
+        $result .= "\n";
       }
     }
     if ($self->{'context_block_commands'}->{$element->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
     }
-  # The command is closed either when the corresponding tree element
-  # is done, and the command is not associated to an element, or when
-  # the element is closed.
-  } elsif ((($element->{'type'} and $element->{'type'} eq 'unit'
-             and $element->{'extra'} and $element->{'extra'}->{'unit_command'}
-             and !($element->{'extra'}->{'unit_command'}->{'cmdname'}
-                   and $element->{'extra'}->{'unit_command'}->{'cmdname'} eq 'node'))
-            or ($element->{'cmdname'}
-                and $Texinfo::Commands::root_commands{$element->{'cmdname'}}
-                and $element->{'cmdname'} ne 'node'
-                and !($element->{'structure'}->{'associated_unit'}
-                     and $element->{'structure'}->{'associated_unit'}->{'extra'}
-                     and $element->{'structure'}->{'associated_unit'}->{'extra'}->{'unit_command'}
-                     and $element->{'structure'}->{'associated_unit'}->{'extra'}->{'unit_command'} eq $element)))
+  } elsif ($element->{'cmdname'}
+           and $Texinfo::Commands::root_commands{$element->{'cmdname'}}
+           and $element->{'cmdname'} ne 'node'
            and !$self->get_conf('USE_NODES')) {
-    if ($element->{'type'} and $element->{'type'} eq 'unit') {
-      $element = $element->{'extra'}->{'unit_command'};
-    }
     my $level_adjusted_cmdname
        = Texinfo::Structuring::section_level_adjusted_command_name($element);
     if (!($element->{'structure'}->{'section_childs'}
@@ -1611,34 +1615,20 @@ sub _convert($$;$)
              and $current->{'structure'}->{'section_up'}->{'cmdname'}
              and !$current->{'structure'}->{'section_next'}
              and Texinfo::Structuring::section_level_adjusted_command_name(
-                                     $current->{'structure'}->{'section_up'}) ne 'top') {
+                            $current->{'structure'}->{'section_up'}) ne 'top') {
         $current = $current->{'structure'}->{'section_up'};
         my $level_adjusted_current_cmdname
-            = Texinfo::Structuring::section_level_adjusted_command_name($current);
-        $result .= $self->txi_markup_close_element($level_adjusted_current_cmdname) ."\n";
+          = Texinfo::Structuring::section_level_adjusted_command_name($current);
+        $result
+          .= $self->txi_markup_close_element($level_adjusted_current_cmdname)
+               ."\n";
       }
     }
-    if ($self->{'pending_bye'}) {
-      $result .= $self->{'pending_bye'};
-      delete $self->{'pending_bye'};
-    }
-  } elsif ((($element->{'type'} and $element->{'type'} eq 'unit'
-             and $element->{'extra'} and $element->{'extra'}->{'unit_command'}
-             and $element->{'extra'}->{'unit_command'}->{'cmdname'}
-             and $element->{'extra'}->{'unit_command'}->{'cmdname'} eq 'node')
-            or ($element->{'cmdname'}
-                and $element->{'cmdname'} eq 'node'
-                and !($element->{'structure'}->{'associated_unit'}
-                     and $element->{'structure'}->{'associated_unit'}->{'extra'}
-                     and $element->{'structure'}->{'associated_unit'}->{'extra'}->{'unit_command'}
-                     and $element->{'structure'}->{'associated_unit'}->{'extra'}->{'unit_command'} eq $element)))
+  } elsif ($element->{'cmdname'}
+           and $element->{'cmdname'} eq 'node'
            and $self->get_conf('USE_NODES')) {
     $result .= $self->txi_markup_close_element('node');
-    
-    if ($self->{'pending_bye'}) {
-      $result .= $self->{'pending_bye'};
-      delete $self->{'pending_bye'};
-    }
+
   }
   return $result;
 }

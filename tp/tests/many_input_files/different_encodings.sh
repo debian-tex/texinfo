@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright 2022 Free Software Foundation, Inc.
+# Copyright 2022-2023 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -19,10 +19,16 @@ diffs_dir=diffs
 raw_output_dir=raw_out
 logfile=$basename.log
 stdout_file=stdout_$basename.out
+prepended_command=
 
 [ "z$srcdir" = 'z' ] && srcdir=.
 
 . ../../defs || exit 1
+
+if test "z$PERL_UNICODE_COLLATE_OK" = 'zno' ; then
+  echo "Skipping tests that require compatible unicode collation"
+  exit 77
+fi
 
 [ -d $diffs_dir ] || mkdir $diffs_dir
 staging_dir=$diffs_dir/staging
@@ -36,8 +42,10 @@ raw_outdir=$raw_output_dir/$basename
 [ -d $raw_outdir ] && rm -rf $raw_outdir
 mkdir $basename
 : > $basename/$stdout_file
-echo "$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split --set-customization-variable 'TEST 1' --enable-encoding --conf-dir $srcdir/../../init --out $basename/ $srcdir/../../t/input_files/char_latin1_latin1_in_refs.texi $srcdir/../../t/input_files/char_latin1_utf8_in_refs.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2" >> $logfile
-$PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split --set-customization-variable 'TEST 1' --enable-encoding --conf-dir $srcdir/../../init --out $basename/ $srcdir/../../t/input_files/char_latin1_latin1_in_refs.texi $srcdir/../../t/input_files/char_latin1_utf8_in_refs.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2
+set -x
+cmd="$prepended_command $PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split --set-customization-variable 'TEST 1' --enable-encoding -c OUTPUT_CHARACTERS=1 --conf-dir $srcdir/../../init --out $basename/ $srcdir/../../t/input_files/char_latin1_latin1_in_refs.texi $srcdir/../../t/input_files/char_utf8_latin1_in_refs.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+echo "$cmd" >> $logfile
+eval $cmd
 
 return_code=0
 ret=$?

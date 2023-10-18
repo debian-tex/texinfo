@@ -17,9 +17,11 @@ $result_trees{'block_command_alias'} = {
                   'text' => 'lang=lisp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -29,8 +31,12 @@ $result_trees{'block_command_alias'} = {
             'misc_args' => [
               'lang',
               'lisp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -46,9 +52,11 @@ $result_trees{'block_command_alias'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -69,17 +77,23 @@ $result_trees{'block_command_alias'} = {
                           'text' => 'lang'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'lang'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -91,6 +105,9 @@ $result_trees{'block_command_alias'} = {
               'type' => 'preformatted'
             }
           ],
+          'info' => {
+            'alias_of' => 'lang'
+          },
           'source_info' => {
             'file_name' => '',
             'line_nr' => 3,

@@ -19,22 +19,16 @@ $result_trees{'setfilename'} = {
                       'text' => 'file_comment'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comment
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comment
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     }
                   },
                   'type' => 'line_arg'
@@ -42,8 +36,12 @@ $result_trees{'setfilename'} = {
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'file_comment'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -59,17 +57,23 @@ $result_trees{'setfilename'} = {
                       'text' => 'file_and_spaces'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '   
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '   
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'file_and_spaces'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -85,32 +89,32 @@ $result_trees{'setfilename'} = {
                       'text' => 'file_space_comment'
                     }
                   ],
-                  'extra' => {
+                  'info' => {
                     'comment_at_end' => {
                       'args' => [
                         {
                           'text' => ' comment
 ',
-                          'type' => 'misc_arg'
+                          'type' => 'rawline_arg'
                         }
                       ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comment
-'
-                        ]
-                      }
+                      'cmdname' => 'c'
                     },
-                    'spaces_after_argument' => ' '
+                    'spaces_after_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'file_space_comment'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -138,7 +142,7 @@ $result_trees{'setfilename'} = {
                         }
                       ],
                       'cmdname' => 'verb',
-                      'extra' => {
+                      'info' => {
                         'delimiter' => ':'
                       },
                       'source_info' => {
@@ -151,17 +155,23 @@ $result_trees{'setfilename'} = {
                       'cmdname' => ' '
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'missing_argument' => 1,
-                'spaces_before_argument' => ' '
+                'missing_argument' => 1
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -259,15 +269,15 @@ $result_converted{'latex'}->{'setfilename'} = '\\documentclass{book}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%

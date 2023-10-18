@@ -24,28 +24,23 @@ $result_trees{'complex_float'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -61,9 +56,11 @@ $result_trees{'complex_float'} = {
               'text' => 'Test floats'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -92,21 +89,22 @@ $result_trees{'complex_float'} = {
                   'text' => 'Text'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'float_type' => 'Text'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -132,9 +130,11 @@ $result_trees{'complex_float'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -142,7 +142,7 @@ $result_trees{'complex_float'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -153,6 +153,12 @@ $result_trees{'complex_float'} = {
                       'text' => 'chapter'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -174,15 +180,6 @@ $result_trees{'complex_float'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 9,
@@ -198,17 +195,23 @@ $result_trees{'complex_float'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -244,10 +247,14 @@ $result_trees{'complex_float'} = {
                   'text' => 'text with a lot of features'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -289,16 +296,129 @@ $result_trees{'complex_float'} = {
                 {
                   'text' => ' makeinfo --docbook segfaults
 ',
-                  'type' => 'misc_arg'
+                  'type' => 'rawline_arg'
                 }
               ],
               'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' makeinfo --docbook segfaults
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'texi2html'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_after_argument' => {
+                            'text' => '
 '
-                ]
-              }
+                          }
+                        },
+                        'type' => 'block_line_arg'
+                      }
+                    ],
+                    'cmdname' => 'ifset',
+                    'contents' => [
+                      {
+                        'text' => 'An example.
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '@example 
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => 'example
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '@end example
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => 'A multitable.
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '@multitable {truc} {bidule}
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '@item truc @tab bidule
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '@item truc @tab bidule
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'text' => '@end multitable
+',
+                        'type' => 'raw'
+                      },
+                      {
+                        'args' => [
+                          {
+                            'contents' => [
+                              {
+                                'text' => 'ifset'
+                              }
+                            ],
+                            'info' => {
+                              'spaces_after_argument' => {
+                                'text' => '
+'
+                              }
+                            },
+                            'type' => 'line_arg'
+                          }
+                        ],
+                        'cmdname' => 'end',
+                        'extra' => {
+                          'text_arg' => 'ifset'
+                        },
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'source_info' => {
+                          'file_name' => '',
+                          'line_nr' => 27,
+                          'macro' => ''
+                        }
+                      }
+                    ],
+                    'info' => {
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'source_info' => {
+                      'file_name' => '',
+                      'line_nr' => 16,
+                      'macro' => ''
+                    }
+                  },
+                  'sourcemark_type' => 'ignored_conditional_block'
+                }
+              ]
             },
             {
               'text' => '
@@ -319,28 +439,27 @@ $result_trees{'complex_float'} = {
                           'text' => 'float example'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'cindex',
                   'extra' => {
-                    'index_entry' => {
-                      'content_normalized' => [],
-                      'entry_content' => [],
-                      'entry_element' => {},
-                      'entry_node' => {},
-                      'entry_number' => 1,
-                      'in_code' => 0,
-                      'index_at_command' => 'cindex',
-                      'index_ignore_chars' => {},
-                      'index_name' => 'cp',
-                      'index_type_command' => 'cindex'
-                    },
-                    'spaces_before_argument' => ' '
+                    'element_node' => {},
+                    'index_entry' => [
+                      'cp',
+                      1
+                    ]
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -380,9 +499,11 @@ $result_trees{'complex_float'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -401,16 +522,20 @@ $result_trees{'complex_float'} = {
                                   'text' => 'truc'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => ' 
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => ' 
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
-                          'extra' => {
-                            'spaces_before_argument' => ' '
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -433,7 +558,7 @@ $result_trees{'complex_float'} = {
                           'type' => 'paragraph'
                         }
                       ],
-                      'type' => 'table_item'
+                      'type' => 'table_definition'
                     }
                   ],
                   'type' => 'table_entry'
@@ -446,17 +571,23 @@ $result_trees{'complex_float'} = {
                           'text' => 'table'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'table'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -466,8 +597,12 @@ $result_trees{'complex_float'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -503,9 +638,11 @@ $result_trees{'complex_float'} = {
                       'type' => 'command_as_argument'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'block_line_arg'
                 }
@@ -550,17 +687,23 @@ $result_trees{'complex_float'} = {
                           'text' => 'itemize'
                         }
                       ],
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'spaces_before_argument' => ' ',
                     'text_arg' => 'itemize'
+                  },
+                  'info' => {
+                    'spaces_before_argument' => {
+                      'text' => ' '
+                    }
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -570,8 +713,12 @@ $result_trees{'complex_float'} = {
                 }
               ],
               'extra' => {
-                'command_as_argument' => {},
-                'spaces_before_argument' => ' '
+                'command_as_argument' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -598,6 +745,12 @@ $result_trees{'complex_float'} = {
                           'text' => 'Top'
                         }
                       ],
+                      'extra' => {
+                        'node_content' => [
+                          {}
+                        ],
+                        'normalized' => 'Top'
+                      },
                       'type' => 'brace_command_arg'
                     },
                     {
@@ -610,15 +763,6 @@ $result_trees{'complex_float'} = {
                     }
                   ],
                   'cmdname' => 'xref',
-                  'extra' => {
-                    'label' => {},
-                    'node_argument' => {
-                      'node_content' => [
-                        {}
-                      ],
-                      'normalized' => 'Top'
-                    }
-                  },
                   'source_info' => {
                     'file_name' => '',
                     'line_nr' => 45,
@@ -825,7 +969,7 @@ $result_trees{'complex_float'} = {
                     }
                   ],
                   'cmdname' => 'verb',
-                  'extra' => {
+                  'info' => {
                     'delimiter' => '!'
                   },
                   'source_info' => {
@@ -919,9 +1063,11 @@ $result_trees{'complex_float'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => ' 
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => ' 
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -945,17 +1091,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'example'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'example'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -988,9 +1140,6 @@ $result_trees{'complex_float'} = {
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
                         'normalized' => 'Anchor-in-caption'
                       },
                       'source_info' => {
@@ -1032,9 +1181,11 @@ $result_trees{'complex_float'} = {
                               'type' => 'command_as_argument'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -1053,16 +1204,20 @@ $result_trees{'complex_float'} = {
                                           'text' => 'truc'
                                         }
                                       ],
-                                      'extra' => {
-                                        'spaces_after_argument' => ' 
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => ' 
 '
+                                        }
                                       },
                                       'type' => 'line_arg'
                                     }
                                   ],
                                   'cmdname' => 'item',
-                                  'extra' => {
-                                    'spaces_before_argument' => ' '
+                                  'info' => {
+                                    'spaces_before_argument' => {
+                                      'text' => ' '
+                                    }
                                   },
                                   'source_info' => {
                                     'file_name' => '',
@@ -1085,7 +1240,7 @@ $result_trees{'complex_float'} = {
                                   'type' => 'paragraph'
                                 }
                               ],
-                              'type' => 'table_item'
+                              'type' => 'table_definition'
                             }
                           ],
                           'type' => 'table_entry'
@@ -1098,17 +1253,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'table'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'table'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1118,8 +1279,12 @@ $result_trees{'complex_float'} = {
                         }
                       ],
                       'extra' => {
-                        'command_as_argument' => {},
-                        'spaces_before_argument' => ' '
+                        'command_as_argument' => {}
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1151,7 +1316,7 @@ $result_trees{'complex_float'} = {
                                   'text' => 'truc'
                                 }
                               ],
-                              'type' => 'bracketed'
+                              'type' => 'bracketed_arg'
                             },
                             {
                               'text' => ' '
@@ -1162,12 +1327,14 @@ $result_trees{'complex_float'} = {
                                   'text' => 'bidule'
                                 }
                               ],
-                              'type' => 'bracketed'
+                              'type' => 'bracketed_arg'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -1305,17 +1472,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'multitable'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'multitable'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1325,22 +1498,12 @@ $result_trees{'complex_float'} = {
                         }
                       ],
                       'extra' => {
-                        'max_columns' => 2,
-                        'prototypes' => [
-                          {
-                            'contents' => [
-                              {}
-                            ],
-                            'type' => 'bracketed_multitable_prototype'
-                          },
-                          {
-                            'contents' => [
-                              {}
-                            ],
-                            'type' => 'bracketed_multitable_prototype'
-                          }
-                        ],
-                        'spaces_before_argument' => ' '
+                        'max_columns' => 2
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1362,28 +1525,27 @@ $result_trees{'complex_float'} = {
                                   'text' => 'float example in caption'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_node' => {},
-                              'entry_number' => 2,
-                              'in_code' => 0,
-                              'index_at_command' => 'cindex',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'cp',
-                              'index_type_command' => 'cindex'
-                            },
-                            'spaces_before_argument' => ' '
+                            'element_node' => {},
+                            'index_entry' => [
+                              'cp',
+                              2
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1423,9 +1585,11 @@ $result_trees{'complex_float'} = {
                               'type' => 'command_as_argument'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -1470,17 +1634,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'itemize'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'itemize'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -1490,8 +1660,12 @@ $result_trees{'complex_float'} = {
                         }
                       ],
                       'extra' => {
-                        'command_as_argument' => {},
-                        'spaces_before_argument' => ' '
+                        'command_as_argument' => {}
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -1518,6 +1692,12 @@ $result_trees{'complex_float'} = {
                                   'text' => 'Top'
                                 }
                               ],
+                              'extra' => {
+                                'node_content' => [
+                                  {}
+                                ],
+                                'normalized' => 'Top'
+                              },
                               'type' => 'brace_command_arg'
                             },
                             {
@@ -1530,15 +1710,6 @@ $result_trees{'complex_float'} = {
                             }
                           ],
                           'cmdname' => 'xref',
-                          'extra' => {
-                            'label' => {},
-                            'node_argument' => {
-                              'node_content' => [
-                                {}
-                              ],
-                              'normalized' => 'Top'
-                            }
-                          },
                           'source_info' => {
                             'file_name' => '',
                             'line_nr' => 80,
@@ -1745,7 +1916,7 @@ $result_trees{'complex_float'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => '!'
                           },
                           'source_info' => {
@@ -1804,8 +1975,12 @@ $result_trees{'complex_float'} = {
               ],
               'cmdname' => 'caption',
               'extra' => {
-                'float' => {},
-                'spaces_before_argument' => ' '
+                'float' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -1815,7 +1990,8 @@ $result_trees{'complex_float'} = {
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'text' => '
@@ -1983,7 +2159,7 @@ $result_trees{'complex_float'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => '!'
                           },
                           'source_info' => {
@@ -2051,7 +2227,8 @@ $result_trees{'complex_float'} = {
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'text' => '
@@ -2066,17 +2243,23 @@ $result_trees{'complex_float'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -2088,17 +2271,13 @@ $result_trees{'complex_float'} = {
           'extra' => {
             'caption' => {},
             'float_section' => {},
-            'node_content' => [
-              {}
-            ],
+            'float_type' => 'Text',
             'normalized' => 'text-with-a-lot-of-features',
-            'shortcaption' => {},
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'shortcaption' => {}
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -2113,8 +2292,11 @@ $result_trees{'complex_float'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -2130,28 +2312,23 @@ $result_trees{'complex_float'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -2167,9 +2344,11 @@ $result_trees{'complex_float'} = {
               'text' => 'A chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -2197,10 +2376,14 @@ $result_trees{'complex_float'} = {
                   'text' => 'float with a lot of features and no shortcaption'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -2262,9 +2445,11 @@ $result_trees{'complex_float'} = {
                     {
                       'args' => [
                         {
-                          'extra' => {
-                            'spaces_after_argument' => ' 
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => ' 
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -2288,17 +2473,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'example'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'example'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -2341,9 +2532,11 @@ $result_trees{'complex_float'} = {
                               'type' => 'command_as_argument'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -2362,16 +2555,20 @@ $result_trees{'complex_float'} = {
                                           'text' => 'truc 2'
                                         }
                                       ],
-                                      'extra' => {
-                                        'spaces_after_argument' => ' 
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => ' 
 '
+                                        }
                                       },
                                       'type' => 'line_arg'
                                     }
                                   ],
                                   'cmdname' => 'item',
-                                  'extra' => {
-                                    'spaces_before_argument' => ' '
+                                  'info' => {
+                                    'spaces_before_argument' => {
+                                      'text' => ' '
+                                    }
                                   },
                                   'source_info' => {
                                     'file_name' => '',
@@ -2394,7 +2591,7 @@ $result_trees{'complex_float'} = {
                                   'type' => 'paragraph'
                                 }
                               ],
-                              'type' => 'table_item'
+                              'type' => 'table_definition'
                             }
                           ],
                           'type' => 'table_entry'
@@ -2407,17 +2604,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'table'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'table'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -2427,8 +2630,12 @@ $result_trees{'complex_float'} = {
                         }
                       ],
                       'extra' => {
-                        'command_as_argument' => {},
-                        'spaces_before_argument' => ' '
+                        'command_as_argument' => {}
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -2460,7 +2667,7 @@ $result_trees{'complex_float'} = {
                                   'text' => 'truc'
                                 }
                               ],
-                              'type' => 'bracketed'
+                              'type' => 'bracketed_arg'
                             },
                             {
                               'text' => ' '
@@ -2471,12 +2678,14 @@ $result_trees{'complex_float'} = {
                                   'text' => 'bidule'
                                 }
                               ],
-                              'type' => 'bracketed'
+                              'type' => 'bracketed_arg'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -2614,17 +2823,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'multitable'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'multitable'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -2634,22 +2849,12 @@ $result_trees{'complex_float'} = {
                         }
                       ],
                       'extra' => {
-                        'max_columns' => 2,
-                        'prototypes' => [
-                          {
-                            'contents' => [
-                              {}
-                            ],
-                            'type' => 'bracketed_multitable_prototype'
-                          },
-                          {
-                            'contents' => [
-                              {}
-                            ],
-                            'type' => 'bracketed_multitable_prototype'
-                          }
-                        ],
-                        'spaces_before_argument' => ' '
+                        'max_columns' => 2
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -2671,28 +2876,27 @@ $result_trees{'complex_float'} = {
                                   'text' => 'float example in caption 2'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
                           'extra' => {
-                            'index_entry' => {
-                              'content_normalized' => [],
-                              'entry_content' => [],
-                              'entry_element' => {},
-                              'entry_node' => {},
-                              'entry_number' => 3,
-                              'in_code' => 0,
-                              'index_at_command' => 'cindex',
-                              'index_ignore_chars' => {},
-                              'index_name' => 'cp',
-                              'index_type_command' => 'cindex'
-                            },
-                            'spaces_before_argument' => ' '
+                            'element_node' => {},
+                            'index_entry' => [
+                              'cp',
+                              3
+                            ]
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -2732,9 +2936,11 @@ $result_trees{'complex_float'} = {
                               'type' => 'command_as_argument'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'block_line_arg'
                         }
@@ -2779,17 +2985,23 @@ $result_trees{'complex_float'} = {
                                   'text' => 'itemize'
                                 }
                               ],
-                              'extra' => {
-                                'spaces_after_argument' => '
+                              'info' => {
+                                'spaces_after_argument' => {
+                                  'text' => '
 '
+                                }
                               },
                               'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
                           'extra' => {
-                            'spaces_before_argument' => ' ',
                             'text_arg' => 'itemize'
+                          },
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
                           },
                           'source_info' => {
                             'file_name' => '',
@@ -2799,8 +3011,12 @@ $result_trees{'complex_float'} = {
                         }
                       ],
                       'extra' => {
-                        'command_as_argument' => {},
-                        'spaces_before_argument' => ' '
+                        'command_as_argument' => {}
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -2826,9 +3042,6 @@ $result_trees{'complex_float'} = {
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
                         'normalized' => 'Anchor-in-caption-2'
                       },
                       'source_info' => {
@@ -2861,6 +3074,12 @@ $result_trees{'complex_float'} = {
                                   'text' => 'Top'
                                 }
                               ],
+                              'extra' => {
+                                'node_content' => [
+                                  {}
+                                ],
+                                'normalized' => 'Top'
+                              },
                               'type' => 'brace_command_arg'
                             },
                             {
@@ -2873,15 +3092,6 @@ $result_trees{'complex_float'} = {
                             }
                           ],
                           'cmdname' => 'xref',
-                          'extra' => {
-                            'label' => {},
-                            'node_argument' => {
-                              'node_content' => [
-                                {}
-                              ],
-                              'normalized' => 'Top'
-                            }
-                          },
                           'source_info' => {
                             'file_name' => '',
                             'line_nr' => 127,
@@ -3088,7 +3298,7 @@ $result_trees{'complex_float'} = {
                             }
                           ],
                           'cmdname' => 'verb',
-                          'extra' => {
+                          'info' => {
                             'delimiter' => '!'
                           },
                           'source_info' => {
@@ -3147,8 +3357,12 @@ $result_trees{'complex_float'} = {
               ],
               'cmdname' => 'caption',
               'extra' => {
-                'float' => {},
-                'spaces_before_argument' => ' '
+                'float' => {}
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -3158,7 +3372,8 @@ $result_trees{'complex_float'} = {
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'text' => '
@@ -3173,17 +3388,23 @@ $result_trees{'complex_float'} = {
                       'text' => 'float'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -3195,16 +3416,12 @@ $result_trees{'complex_float'} = {
           'extra' => {
             'caption' => {},
             'float_section' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'float-with-a-lot-of-features-and-no-shortcaption',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Text'
+            'float_type' => 'Text',
+            'normalized' => 'float-with-a-lot-of-features-and-no-shortcaption'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -3228,19 +3445,16 @@ $result_trees{'complex_float'} = {
                       'text' => 'text with a lot of features'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'text-with-a-lot-of-features'
+                  },
                   'type' => 'brace_command_arg'
                 }
               ],
               'cmdname' => 'xref',
-              'extra' => {
-                'label' => {},
-                'node_argument' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'text-with-a-lot-of-features'
-                }
-              },
               'source_info' => {
                 'file_name' => '',
                 'line_nr' => 136,
@@ -3260,8 +3474,11 @@ $result_trees{'complex_float'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -3272,57 +3489,28 @@ $result_trees{'complex_float'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'complex_float'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[2]{'extra'}{'type'}{'content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[3];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_float'}{'contents'}[1];
+$result_trees{'complex_float'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'complex_float'}{'contents'}[1];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[10]{'extra'}{'command_as_argument'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[12]{'contents'}[1]{'extra'}{'label'} = $result_trees{'complex_float'}{'contents'}[1];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[12]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[10]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[10]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[10]{'args'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_float'}{'contents'}[1];
+$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[11]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'complex_float'}{'contents'}[1];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[14]{'extra'}{'command_as_argument'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[16]{'contents'}[1]{'extra'}{'label'} = $result_trees{'complex_float'}{'contents'}[1];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[16]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[16]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[16]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'args'}[0]{'contents'}[16]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16]{'extra'}{'float'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[19]{'extra'}{'float'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'extra'}{'caption'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[16];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'extra'}{'float_section'} = $result_trees{'complex_float'}{'contents'}[2];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'args'}[1]{'contents'}[0];
 $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'extra'}{'shortcaption'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'contents'}[19];
-$result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'extra'}{'type'}{'content'}[0] = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[7]{'extra'}{'prototypes'}[0]{'contents'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[7]{'extra'}{'prototypes'}[1]{'contents'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[2]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'};
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'complex_float'}{'contents'}[3];
+$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[8]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'complex_float'}{'contents'}[3];
 $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[11]{'extra'}{'command_as_argument'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[13]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[13]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[16]{'contents'}[1]{'extra'}{'label'} = $result_trees{'complex_float'}{'contents'}[1];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[16]{'contents'}[1]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[16]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[16]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[16]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3]{'extra'}{'float'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1];
 $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'contents'}[3];
 $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'extra'}{'float_section'} = $result_trees{'complex_float'}{'contents'}[4];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'extra'}{'label'} = $result_trees{'complex_float'}{'contents'}[2]{'contents'}[7];
-$result_trees{'complex_float'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'complex_float'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'complex_float'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'complex_float'} = '@node Top
 @top Test floats
@@ -3484,15 +3672,12 @@ TeX and te\'i^an_url AND it is @verb  a word !@ AE.
 
 
 
-
-
 1 A chapter
 ***********
 
 Text, float with a lot of features and no shortcaption
 
 Float text of a float with a lot of features.
-
 
 
 
@@ -3611,7 +3796,17 @@ $result_menus{'complex_float'} = {
 };
 $result_menus{'complex_float'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'complex_float'};
 
-$result_errors{'complex_float'} = [];
+$result_errors{'complex_float'} = [
+  {
+    'error_line' => 'warning: @verb should not appear anywhere inside @shortcaption
+',
+    'file_name' => '',
+    'line_nr' => 87,
+    'macro' => '',
+    'text' => '@verb should not appear anywhere inside @shortcaption',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'complex_float'} = {
@@ -3630,20 +3825,13 @@ $result_floats{'complex_float'} = {
           'extra' => {},
           'structure' => {}
         },
+        'float_type' => 'Text',
         'normalized' => 'text-with-a-lot-of-features',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
             'float' => {}
           }
-        },
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
         }
       },
       'structure' => {
@@ -3666,15 +3854,8 @@ $result_floats{'complex_float'} = {
             'section_number' => 1
           }
         },
-        'normalized' => 'float-with-a-lot-of-features-and-no-shortcaption',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Text'
-            }
-          ],
-          'normalized' => 'Text'
-        }
+        'float_type' => 'Text',
+        'normalized' => 'float-with-a-lot-of-features-and-no-shortcaption'
       },
       'structure' => {
         'float_number' => '1.1'
@@ -3725,8 +3906,6 @@ A ref.  *Note xref Text with features: Top.  A footnote.  (1).
 
 TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
-
-
 Text 1: An example of float caption...  An example.
      example
 
@@ -3756,7 +3935,6 @@ TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 ***********
 
 Float text of a float with a lot of features.
-
 
 Text 1.1: An example of float caption...  2 An example 2.
      example 2
@@ -3805,7 +3983,9 @@ $result_converted{'html'}->{'complex_float'} = '<!DOCTYPE html>
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
 ul.mark-minus {list-style-type: "\\2212"}
 -->
 </style>
@@ -3819,11 +3999,11 @@ ul.mark-minus {list-style-type: "\\2212"}
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">A chapter</a> &nbsp; </p>
 </div>
-<h1 class="top" id="Test-floats">Test floats</h1>
+<h1 class="top" id="Test-floats"><span>Test floats<a class="copiable-link" href="#Test-floats"> &para;</a></span></h1>
 
 <p>A list of floats at the beginning.
 </p><dl class="listoffloats">
-<dt><a href="#text-with-a-lot-of-features">Text 1</a></dt><dd class="shortcaption-in-listoffloats"><p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it is @verb</code> &nbsp;a word !@ &AElig;.</p></dd>
+<dt><a href="#text-with-a-lot-of-features">Text 1</a></dt><dd class="shortcaption-in-listoffloats"><p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it&nbsp;is&nbsp;@verb</code> &nbsp;a word !@ &AElig;.</p></dd>
 <dt><a href="#float-with-a-lot-of-features-and-no-shortcaption">Text 1.1</a></dt><dd class="caption-in-listoffloats"><p>An example of float caption<small class="enddots">...</small> 2
 An example 2.
 </p><div class="example">
@@ -3857,7 +4037,7 @@ See <a class="xref" href="#Top">xref Text with features caption</a>.
 A footnote 2.
 <a class="footnote" id="t_flistoffloats_DOCF3_1" href="#t_flistoffloats_FOOT3_1"><sup>1</sup></a>.
 </p>
-<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it is @verb</code> &nbsp;a word !@ &AElig;.
+<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it&nbsp;is&nbsp;@verb</code> &nbsp;a word !@ &AElig;.
 </p></dd>
 </dl>
 
@@ -3888,10 +4068,8 @@ See <a class="xref" href="#Top">xref Text with features</a>.
 A footnote.
 <a class="footnote" id="DOCF1" href="#FOOT1"><sup>2</sup></a>.
 </p>
-<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it is @verb</code> &nbsp;a word !@ &AElig;.
+<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it&nbsp;is&nbsp;@verb</code> &nbsp;a word !@ &AElig;.
 </p>
-
-
 
 
 <div class="caption"><p><strong class="strong">Text 1: </strong>An example of float caption<small class="enddots">...</small>
@@ -3928,7 +4106,7 @@ See <a class="xref" href="#Top">xref Text with features caption</a>.
 A footnote.
 <a class="footnote" id="DOCF2" href="#FOOT2"><sup>3</sup></a>.
 </p>
-<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it is @verb</code> &nbsp;a word !@ &AElig;.
+<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it&nbsp;is&nbsp;@verb</code> &nbsp;a word !@ &AElig;.
 </p></div></div>
 <ul class="mini-toc">
 <li><a href="#chapter" accesskey="1">A chapter</a></li>
@@ -3939,13 +4117,12 @@ A footnote.
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Test floats</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
-<h2 class="chapter" id="A-chapter">1 A chapter</h2>
+<h2 class="chapter" id="A-chapter"><span>1 A chapter<a class="copiable-link" href="#A-chapter"> &para;</a></span></h2>
 
 <div class="float" id="float-with-a-lot-of-features-and-no-shortcaption">
 
 <p>Float text of a float with a lot of features.
 </p>
-
 
 <div class="caption"><p><strong class="strong">Text 1.1: </strong>An example of float caption<small class="enddots">...</small> 2
 An example 2.
@@ -3981,7 +4158,7 @@ See <a class="xref" href="#Top">xref Text with features caption</a>.
 A footnote 2.
 <a class="footnote" id="DOCF3" href="#FOOT3"><sup>4</sup></a>.
 </p>
-<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it is @verb</code> &nbsp;a word !@ &AElig;.
+<p>TeX and <em class="emph"><b class="b">t&eacute;&icirc;</b><a class="url" href="an_url">an_url</a></em> <small class="sc">AND</small> <code class="verb">it&nbsp;is&nbsp;@verb</code> &nbsp;a word !@ &AElig;.
 </p></div></div>
 <p>See <a class="xref" href="#text-with-a-lot-of-features">Text 1</a>.
 </p>
@@ -4005,6 +4182,252 @@ A footnote 2.
 
 </body>
 </html>
+';
+
+
+$result_converted{'xml'}->{'complex_float'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chapter</nodenext></node>
+<top spaces=" "><sectiontitle>Test floats</sectiontitle>
+
+<para>A list of floats at the beginning.
+</para><listoffloats type="Text" spaces=" ">Text</listoffloats>
+
+<para>After the listoffloats.
+</para><menu endspaces=" ">
+<menuentry><menuleadingtext>* </menuleadingtext><menunode>chapter</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
+</pre></menudescription></menuentry></menu>
+
+<float name="text-with-a-lot-of-features" type="Text" number="1" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">text with a lot of features</floatname>
+<para>An example of float &enddots;
+</para>
+<!-- c makeinfo -docbook segfaults -->
+
+<para>An index entry
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">float example</indexterm></cindex>
+</para>
+<para>A table.
+</para><table commandarg="emph" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">truc </itemformat></item>
+</tableterm><tableitem><para>line
+</para></tableitem></tableentry></table>
+
+<para>An itemize.
+</para><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
+<listitem><prepend>&minus;</prepend> <para>truc 
+line
+</para></listitem></itemize>
+
+<para>A ref.
+<xref label="Top"><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features</xrefinfoname></xref>.
+A footnote.
+<footnote><para>footnote Text with features</para></footnote>.
+</para>
+<para>&tex; and <emph><b>t<accent type="acute" bracketed="off">e</accent><accent type="circ"><dotless>i</dotless></accent></b><url><urefurl>an_url</urefurl></url></emph> <sc>and</sc> <verb delimiter="!">it is @verb</verb> <spacecmd type="spc"/>a wo&hyphenbreak;rd &eosexcl;&arobase; &AElig;.
+</para>
+<caption spaces=" "><para>An example of float caption&enddots;
+An example.
+</para><example endspaces=" "> 
+<pre xml:space="preserve">example
+</pre></example>
+
+<anchor name="Anchor-in-caption">Anchor in caption</anchor>
+
+<para>A table.
+</para><table commandarg="emph" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">truc </itemformat></item>
+</tableterm><tableitem><para>line
+</para></tableitem></tableentry></table>
+
+<para>A multitable.
+</para><multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
+<tbody><row><entry command="item"> <para>truc </para></entry><entry command="tab"> <para>bidule
+</para></entry></row><row><entry command="item"> <para>truc </para></entry><entry command="tab"> <para>bidule
+</para></entry></row></tbody></multitable>
+<para>An index entry
+<cindex index="cp" spaces=" "><indexterm index="cp" number="2">float example in caption</indexterm></cindex>
+</para>
+<para>An itemize.
+</para><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
+<listitem><prepend>&minus;</prepend> <para>truc 
+line
+</para></listitem></itemize>
+
+<para>A ref.
+<xref label="Top"><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features caption</xrefinfoname></xref>.
+A footnote.
+<footnote><para>footnote Text with features caption</para></footnote>.
+</para>
+<para>&tex; and <emph><b>t<accent type="acute" bracketed="off">e</accent><accent type="circ"><dotless>i</dotless></accent></b><url><urefurl>an_url</urefurl></url></emph> <sc>and</sc> <verb delimiter="!">it is @verb</verb> <spacecmd type="spc"/>a wo&hyphenbreak;rd &eosexcl;&arobase; &AElig;.
+</para></caption>
+
+<shortcaption><para>&tex; and <emph><b>t<accent type="acute" bracketed="off">e</accent><accent type="circ"><dotless>i</dotless></accent></b><url><urefurl>an_url</urefurl></url></emph> <sc>and</sc> <verb delimiter="!">it is @verb</verb> <spacecmd type="spc"/>a wo&hyphenbreak;rd &eosexcl;&arobase; &AElig;.</para></shortcaption>
+
+</float>
+
+</top>
+<node name="chapter" spaces=" "><nodename>chapter</nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>A chapter</sectiontitle>
+
+<float name="float-with-a-lot-of-features-and-no-shortcaption" type="Text" number="1.1" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">float with a lot of features and no shortcaption</floatname>
+
+<para>Float text of a float with a lot of features.
+</para>
+<caption spaces=" "><para>An example of float caption&enddots; 2
+An example 2.
+</para><example endspaces=" "> 
+<pre xml:space="preserve">example 2
+</pre></example>
+
+<para>A table 2.
+</para><table commandarg="emph" spaces=" " endspaces=" ">
+<tableentry><tableterm><item spaces=" "><itemformat command="emph">truc 2 </itemformat></item>
+</tableterm><tableitem><para>line 2
+</para></tableitem></tableentry></table>
+
+<para>A multitable 2.
+</para><multitable spaces=" " endspaces=" "><columnprototypes><columnprototype bracketed="on">truc</columnprototype> <columnprototype bracketed="on">bidule</columnprototype></columnprototypes>
+<tbody><row><entry command="item"> <para>truc 2 </para></entry><entry command="tab"> <para>bidule
+</para></entry></row><row><entry command="item"> <para>truc 2 </para></entry><entry command="tab"> <para>bidule
+</para></entry></row></tbody></multitable>
+<para>An index entry 2
+<cindex index="cp" spaces=" "><indexterm index="cp" number="3">float example in caption 2</indexterm></cindex>
+</para>
+<para>An itemize 2.
+</para><itemize commandarg="minus" spaces=" " endspaces=" "><itemprepend><formattingcommand command="minus"/></itemprepend>
+<listitem><prepend>&minus;</prepend> <para>truc 2
+line
+</para></listitem></itemize>
+
+<anchor name="Anchor-in-caption-2">Anchor in caption 2</anchor>
+
+<para>A ref 2.
+<xref label="Top"><xrefnodename>Top</xrefnodename><xrefinfoname>xref Text with features caption</xrefinfoname></xref>.
+A footnote 2.
+<footnote><para>footnote Text with features caption 2</para></footnote>.
+</para>
+<para>&tex; and <emph><b>t<accent type="acute" bracketed="off">e</accent><accent type="circ"><dotless>i</dotless></accent></b><url><urefurl>an_url</urefurl></url></emph> <sc>and</sc> <verb delimiter="!">it is @verb</verb> <spacecmd type="spc"/>a wo&hyphenbreak;rd &eosexcl;&arobase; &AElig;.
+</para></caption>
+
+</float>
+
+<para><xref label="text-with-a-lot-of-features"><xrefnodename>text with a lot of features</xrefnodename></xref>.
+</para>
+</chapter>
+';
+
+
+$result_converted{'latex'}->{'complex_float'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{imakeidx}
+\\usepackage{array}
+\\usepackage{enumitem}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% new float for type `Text\'
+\\newfloat{TexinfoFloatText}{htb}{tfl}[chapter]
+\\floatname{TexinfoFloatText}{}
+% no index headers
+\\indexsetup{level=\\relax,toclevel=section}%
+\\makeindex[name=cp,title=]%
+
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+
+% set defaults for lists that match Texinfo TeX formatting
+\\setlist[description]{style=nextline, font=\\normalfont}
+\\setlist[itemize]{label=\\textbullet}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+\\begin{document}
+\\label{anchor:Top}%
+\\label{anchor:text-with-a-lot-of-features}%
+\\chapter{{A chapter}}
+\\label{anchor:chapter}%
+
+\\begin{TexinfoFloatText}
+
+Float text of a float with a lot of features.
+
+\\caption{An example of float caption\\dots{} 2
+An example 2.
+\\begin{Texinfoindented}
+\\begin{Texinfopreformatted}%
+\\ttfamily example 2
+\\end{Texinfopreformatted}
+\\end{Texinfoindented}
+
+A table 2.
+\\begin{description}
+\\item[{\\parbox[b]{\\linewidth}{%
+\\emph{truc 2}}}]
+line 2
+\\end{description}
+
+A multitable 2.
+\\begin{tabular}{m{0.4\\textwidth} m{0.6\\textwidth}}%
+truc 2 &bidule\\\\
+truc 2 &bidule\\\\
+\\end{tabular}%
+An index entry 2
+\\index[cp]{float example in caption 2@float example in caption 2}%
+
+An itemize 2.
+\\begin{itemize}[label=-]
+\\item truc 2
+line
+\\end{itemize}
+
+\\label{anchor:Anchor-in-caption-2}%
+
+A ref 2.
+See \\hyperref[anchor:Top]{\\chaptername~\\ref*{anchor:Top} [Top], page~\\pageref*{anchor:Top}}.
+A footnote 2.
+\\footnote{footnote Text with features caption 2}.
+
+\\TeX{} and \\emph{\\textbf{t\\\'{e}\\^{\\i{}}}\\url{an_url}} \\textsc{and} \\verb!it is @verb! \\ {}a wo\\-{}rd \\@!@ \\AE{}.
+}
+
+\\label{anchor:float-with-a-lot-of-features-and-no-shortcaption}%
+\\end{TexinfoFloatText}
+
+See \\hyperref[anchor:text-with-a-lot-of-features]{Text~\\ref*{anchor:text-with-a-lot-of-features}}.
+
+\\end{document}
 ';
 
 1;

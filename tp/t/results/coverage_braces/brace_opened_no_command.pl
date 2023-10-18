@@ -33,9 +33,6 @@ $result_trees{'brace_opened_no_command'} = {
               ],
               'cmdname' => 'anchor',
               'extra' => {
-                'node_content' => [
-                  {}
-                ],
                 'normalized' => 'truc'
               },
               'source_info' => {
@@ -58,7 +55,7 @@ $result_trees{'brace_opened_no_command'} = {
       'args' => [
         {
           'text' => '',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -66,7 +63,6 @@ $result_trees{'brace_opened_no_command'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'brace_opened_no_command'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 
 $result_texis{'brace_opened_no_command'} = 'anchortruc@} @anchor{truc}.
 @bye';

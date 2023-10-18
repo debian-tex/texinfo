@@ -1,6 +1,6 @@
 # TexinfoSXML.pm: output tree as Texinfo SXML.
 #
-# Copyright 2013, 2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright 2013-2023 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,16 +31,18 @@ use Carp qw(cluck);
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::TexinfoMarkup);
 
-$VERSION = '7.0.3';
+$VERSION = '7.1';
 
 
 # SXML specific
 my %defaults = (
-  'ENABLE_ENCODING'      => 0,
+  # Not a customization option variable
+  'converted_format'     => 'texinfosxml',
+
+  # Customization option variables
   'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'sxml',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'converted_format'     => 'texinfosxml',
   'SPLIT'                => 0,
   'documentlanguage'     => 'en',
 );
@@ -50,7 +52,7 @@ sub converter_defaults($$)
   return %defaults;
 }
 
-
+# TODO protect formfeeds, end of lines and other special spaces as in TexinfoXML?
 sub txi_markup_protect_text($$)
 {
   my $self = shift;

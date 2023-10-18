@@ -1,4 +1,4 @@
-# Copyright 2010-2021 Free Software Foundation, Inc.
+# Copyright 2010-2023 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -142,10 +142,47 @@ END {
         }
 
         if (commands[c] != "") {
-            flags = "CF_" commands[c]
-            gsub (/,/, " | CF_", flags)
-        } else {
+            split(commands[c], flags_array, ",")
+            flags_str = ""
+            for (flag_idx in flags_array) {
+              if (flag_idx == 1) {
+                # first flag is always kept, corresponds to the category
+                flags_str = flags_array[flag_idx]
+                # all the line and block commands have the no_paragraph flag
+                if (flags_str == "line" || flags_str == "block") {
+                  old_str = flags_str
+                  flags_str = old_str "," "no_paragraph"
+                }
+              } else {
+                # filter out flags not relevant for the XS parser.  Use
+                # an array and not a regexp because word boundary matching
+                # does not seems to be portable and we want to be sure to
+                # match correctly even if an ignored flag is a substring of
+                # another flag
+                if (flags_array[flag_idx] != "letter_no_arg" \
+                    && flags_array[flag_idx] != "inline_format" \
+                    && flags_array[flag_idx] != "inline_conditional" \
+                    && flags_array[flag_idx] != "in_index" \
+                    && flags_array[flag_idx] != "in_def" \
+                    && flags_array[flag_idx] != "brace_code" \
+                    && flags_array[flag_idx] != "explained" \
+                    && flags_array[flag_idx] != "formatted_line" \
+                    && flags_array[flag_idx] != "formatted_nobrace" \
+                    && flags_array[flag_idx] != "formattable_line" \
+                    && flags_array[flag_idx] != "non_formatted_block" \
+                    && flags_array[flag_idx] != "preamble") {
+                  old_str = flags_str
+                  flags_str = old_str "," flags_array[flag_idx]
+                }
+              }
+            }
+        }
+
+        if (flags_str == "") {
             flags = "0"
+        } else {
+            flags = "CF_" flags_str
+            gsub (/,/, " | CF_", flags)
         }
 
         if (data[c] != "") {
@@ -157,23 +194,17 @@ END {
         if (args_nr[c] != "") {
             args_nr_data = args_nr[c]
         } else {
-            # backward compatibility, remove when updated
-            where_digit = match(data[c], /^[0-9]$/)
-            if (where_digit != 0) {
-              args_nr_data = data[c]
+            where = 0
+            if (commands[c] != "") {
+              where = match(commands[c], /block/)
+              if (where == 0) {
+                where = match(command_data, /^NOBRACE_/)
+              }
+            }
+            if (where != 0 || command_data == "BRACE_noarg" || command_data == "LINE_lineraw" ) {
+              args_nr_data = "0"
             } else {
-              where = 0
-              if (commands[c] != "") {
-                where = match(commands[c], /block/)
-                if (where == 0) {
-                  where = match(commands[c], /^nobrace$/)
-                }
-              }
-              if (where != 0 || command_data == "BRACE_noarg") {
-                args_nr_data = "0"
-              } else {
-                args_nr_data = "1"
-              }
+              args_nr_data = "1"
             }
         }
         print "\"" c2 "\", " flags ", " command_data ", " args_nr_data "," > CD

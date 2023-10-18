@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="indices_in_begin_tables_lists.xml" lang="">
+<chapter label="1" id="chapter">
+<title>chap</title>
+
+<itemizedlist><!-- comment in itemize -->
+<listitem><indexterm role="cp"><primary>also a cindex in itemize</primary></indexterm>
+<para>&#8722; e&#8211;mph item
+</para></listitem></itemizedlist>
+<itemizedlist><listitem><indexterm role="cp"><primary>index entry within itemize</primary></indexterm>
+<para>i&#8211;tem 1
+</para></listitem><listitem><indexterm role="cp"><primary>index entry right after @item</primary></indexterm>
+<para>i&#8211;tem 2
+</para></listitem></itemizedlist>
+<itemizedlist><!-- comment in itemize -->
+<para>T&#8211;ext before items.
+</para><listitem><indexterm role="cp"><primary>also a cindex in itemize</primary></indexterm>
+<para>bullet item
+</para></listitem></itemizedlist>
+<orderedlist numeration="arabic">
+<!-- comment before first item in enumerate -->
+<listitem><para>e&#8211;numerate
+</para></listitem></orderedlist>
+<orderedlist numeration="arabic">
+<indexterm role="cp"><primary>index inter in enumerate between lines</primary></indexterm>
+
+<listitem><para>enumerate item
+</para></listitem></orderedlist>
+<orderedlist numeration="arabic">
+<listitem><indexterm role="cp"><primary>index inter in enumerate after line</primary></indexterm>
+<para>enumerate item
+</para></listitem></orderedlist>
+<orderedlist numeration="arabic"><indexterm role="cp"><primary>index inter in enumerate before line</primary></indexterm>
+
+<listitem><para>enumerate item
+</para></listitem></orderedlist>
+<orderedlist numeration="arabic"><para>Title
+</para><listitem><indexterm role="cp"><primary>cindex</primary></indexterm>
+<para>enum
+</para></listitem></orderedlist>
+<orderedlist numeration="arabic"><listitem><indexterm role="cp"><primary>first idx</primary></indexterm>
+<!-- comment -->
+<indexterm role="cp"><primary>sedond idx</primary></indexterm>
+<indexterm role="cp"><primary>another</primary></indexterm>
+<para>enum
+</para></listitem></orderedlist>
+<variablelist><varlistentry><term><!-- comment in table -->
+<indexterm role="vr"><primary>acode--b</primary></indexterm><literal>acode--b</literal>
+</term><listitem><para>l&#8211;ine
+</para></listitem></varlistentry></variablelist>
+<variablelist><varlistentry><term><indexterm role="vr"><primary>aasis--b</primary></indexterm>aasis&#8211;b
+</term><!-- comment between item and itemx -->
+<term><indexterm role="vr"><primary>b</primary></indexterm>b
+</term><listitem><para>l&#8211;ine
+</para></listitem></varlistentry></variablelist>
+<variablelist><varlistentry><term><indexterm role="fn"><primary>avar--b</primary></indexterm><replaceable>avar&#8211;b</replaceable>
+</term><indexterm role="cp"><primary>index entry between item and itemx</primary></indexterm>
+<!-- and a comment -->
+<!-- and another comment -->
+<term><indexterm role="fn"><primary>b</primary></indexterm><replaceable>b</replaceable>
+</term><listitem><para>l&#8211;ine
+</para></listitem></varlistentry><varlistentry><term><indexterm role="fn"><primary>c</primary></indexterm><replaceable>c</replaceable>
+</term>
+<!-- comment between lines -->
+
+<term><indexterm role="fn"><primary>d</primary></indexterm><replaceable>d</replaceable>
+</term><listitem>
+<!-- comment at end -->
+</listitem></varlistentry></variablelist>
+<variablelist><varlistentry><term><indexterm role="cp"><primary>cindex in table</primary></indexterm>
+<!-- comment in table -->
+<literal>abb</literal>
+</term><listitem><para>l&#8211;ine
+</para></listitem></varlistentry></variablelist>
+<variablelist><indexterm role="cp"><primary>cindex in table</primary></indexterm>
+<para>Texte before first item.
+</para><varlistentry><term><literal>abb</literal>
+</term></varlistentry></variablelist>
+<variablelist><varlistentry><term><indexterm role="cp"><primary>samp cindex in table</primary></indexterm>
+<!-- samp comment in table -->
+&#8216;<literal>asamp--bb</literal>&#8217;
+</term><listitem><para>l&#8211;ine samp
+</para></listitem></varlistentry></variablelist>
+<variablelist><indexterm role="cp"><primary>samp cindex in table</primary></indexterm>
+<para>Texte before first item samp.
+</para><varlistentry><term>&#8216;<literal>asamp--bb</literal>&#8217;
+</term></varlistentry></variablelist>
+<variablelist>
+<indexterm role="cp"><primary>cindex between lines</primary></indexterm>
+
+<varlistentry><term>&#8216;<literal>asamp--bb1</literal>&#8217;
+</term></varlistentry></variablelist>
+<variablelist><indexterm role="cp"><primary>cindex before line</primary></indexterm>
+
+<varlistentry><term>&#8216;<literal>asamp--bb2</literal>&#8217;
+</term></varlistentry></variablelist>
+<variablelist>
+<varlistentry><term><indexterm role="cp"><primary>cindex after line</primary></indexterm>
+&#8216;<literal>asamp--bb2</literal>&#8217;
+</term></varlistentry></variablelist>
+<variablelist><varlistentry><term><indexterm role="cp"><primary>cindex first</primary></indexterm>
+<!-- commant -->
+<indexterm role="cp"><primary>second</primary></indexterm>
+<indexterm role="cp"><primary>third</primary></indexterm>
+&#8216;<literal>asamp--bb2</literal>&#8217;
+</term></varlistentry></variablelist>
+</chapter>
+<chapter label="2" id="printindex">
+<title>printindex</title>
+
+<index role="cp"></index>
+
+<index role="vr"></index>
+
+<index role="fn"></index>
+
+</chapter>
+</book>

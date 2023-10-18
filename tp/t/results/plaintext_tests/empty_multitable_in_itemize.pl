@@ -17,9 +17,11 @@ $result_trees{'empty_multitable_in_itemize'} = {
                   'text' => 'a--n itemize line'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -50,9 +52,11 @@ $result_trees{'empty_multitable_in_itemize'} = {
                 {
                   'args' => [
                     {
-                      'extra' => {
-                        'spaces_after_argument' => '
+                      'info' => {
+                        'spaces_after_argument' => {
+                          'text' => '
 '
+                        }
                       },
                       'type' => 'block_line_arg'
                     }
@@ -67,17 +71,23 @@ $result_trees{'empty_multitable_in_itemize'} = {
                               'text' => 'multitable'
                             }
                           ],
-                          'extra' => {
-                            'spaces_after_argument' => '
+                          'info' => {
+                            'spaces_after_argument' => {
+                              'text' => '
 '
+                            }
                           },
                           'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
                       'extra' => {
-                        'spaces_before_argument' => ' ',
                         'text_arg' => 'multitable'
+                      },
+                      'info' => {
+                        'spaces_before_argument' => {
+                          'text' => ' '
+                        }
                       },
                       'source_info' => {
                         'file_name' => '',
@@ -87,8 +97,7 @@ $result_trees{'empty_multitable_in_itemize'} = {
                     }
                   ],
                   'extra' => {
-                    'max_columns' => 0,
-                    'prototypes' => []
+                    'max_columns' => 0
                   },
                   'source_info' => {
                     'file_name' => '',
@@ -119,17 +128,23 @@ $result_trees{'empty_multitable_in_itemize'} = {
                       'text' => 'itemize'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'itemize'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -138,8 +153,10 @@ $result_trees{'empty_multitable_in_itemize'} = {
               }
             }
           ],
-          'extra' => {
-            'spaces_before_argument' => ' '
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -186,7 +203,7 @@ $result_floats{'empty_multitable_in_itemize'} = {};
 
 
 
-$result_converted{'plaintext'}->{'empty_multitable_in_itemize'} = '   a–n itemize line in macro
+$result_converted{'plaintext'}->{'empty_multitable_in_itemize'} = '   a-n itemize line in macro
 
 ';
 

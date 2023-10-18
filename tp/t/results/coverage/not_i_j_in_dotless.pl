@@ -23,8 +23,10 @@ $result_trees{'not_i_j_in_dotless'} = {
                 }
               ],
               'cmdname' => 'dotless',
-              'extra' => {
-                'spaces' => ' '
+              'info' => {
+                'spaces_after_cmd_before_arg' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',

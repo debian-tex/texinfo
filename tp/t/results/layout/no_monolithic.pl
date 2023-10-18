@@ -12,57 +12,20 @@ $result_trees{'no_monolithic'} = {
         {
           'contents' => [
             {
-              'contents' => [
-                {
-                  'text' => '\\input texinfo @c -*-texinfo-*-
+              'text' => '\\input texinfo @c -*-texinfo-*-
 ',
-                  'type' => 'text_before_beginning'
-                },
-                {
-                  'text' => '
-',
-                  'type' => 'text_before_beginning'
-                }
-              ],
-              'type' => 'preamble_before_beginning'
-            }
-          ],
-          'type' => 'preamble_before_setfilename'
-        },
-        {
-          'contents' => [
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'text' => 'no_monolithic.info'
-                    }
-                  ],
-                  'extra' => {
-                    'spaces_after_argument' => '
-'
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'setfilename',
-              'extra' => {
-                'spaces_before_argument' => ' ',
-                'text_arg' => 'no_monolithic.info'
-              },
-              'source_info' => {
-                'file_name' => 'no_monolithic.texi',
-                'line_nr' => 3,
-                'macro' => ''
-              }
+              'type' => 'text_before_beginning'
             },
             {
               'text' => '
 ',
-              'type' => 'empty_line'
+              'type' => 'text_before_beginning'
             }
           ],
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -76,32 +39,27 @@ $result_trees{'no_monolithic'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'no_monolithic.texi',
-        'line_nr' => 5,
+        'line_nr' => 3,
         'macro' => ''
       }
     },
@@ -113,9 +71,11 @@ $result_trees{'no_monolithic'} = {
               'text' => 'Not monolithic'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -151,7 +111,7 @@ $result_trees{'no_monolithic'} = {
               'cmdname' => 'footnote',
               'source_info' => {
                 'file_name' => 'no_monolithic.texi',
-                'line_nr' => 8,
+                'line_nr' => 6,
                 'macro' => ''
               }
             },
@@ -175,32 +135,31 @@ $result_trees{'no_monolithic'} = {
                   'text' => 'top'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'cindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'cp',
-              'index_type_command' => 'cindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'cp',
+              1
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => 'no_monolithic.texi',
-            'line_nr' => 10,
+            'line_nr' => 8,
             'macro' => ''
           },
           'type' => 'index_entry_command'
@@ -213,9 +172,11 @@ $result_trees{'no_monolithic'} = {
         {
           'args' => [
             {
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -223,7 +184,7 @@ $result_trees{'no_monolithic'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'args' => [
+              'contents' => [
                 {
                   'text' => '* ',
                   'type' => 'menu_entry_leading_text'
@@ -234,6 +195,12 @@ $result_trees{'no_monolithic'} = {
                       'text' => 'chapter'
                     }
                   ],
+                  'extra' => {
+                    'node_content' => [
+                      {}
+                    ],
+                    'normalized' => 'chapter'
+                  },
                   'type' => 'menu_entry_node'
                 },
                 {
@@ -255,18 +222,9 @@ $result_trees{'no_monolithic'} = {
                   'type' => 'menu_entry_description'
                 }
               ],
-              'extra' => {
-                'menu_entry_description' => {},
-                'menu_entry_node' => {
-                  'node_content' => [
-                    {}
-                  ],
-                  'normalized' => 'chapter'
-                }
-              },
               'source_info' => {
                 'file_name' => 'no_monolithic.texi',
-                'line_nr' => 13,
+                'line_nr' => 11,
                 'macro' => ''
               },
               'type' => 'menu_entry'
@@ -279,28 +237,34 @@ $result_trees{'no_monolithic'} = {
                       'text' => 'menu'
                     }
                   ],
-                  'extra' => {
-                    'spaces_after_argument' => '
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
 '
+                    }
                   },
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'menu'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => 'no_monolithic.texi',
-                'line_nr' => 14,
+                'line_nr' => 12,
                 'macro' => ''
               }
             }
           ],
           'source_info' => {
             'file_name' => 'no_monolithic.texi',
-            'line_nr' => 12,
+            'line_nr' => 10,
             'macro' => ''
           }
         },
@@ -310,12 +274,15 @@ $result_trees{'no_monolithic'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'no_monolithic.texi',
-        'line_nr' => 6,
+        'line_nr' => 4,
         'macro' => ''
       }
     },
@@ -327,9 +294,11 @@ $result_trees{'no_monolithic'} = {
               'text' => 'chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -337,23 +306,16 @@ $result_trees{'no_monolithic'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'chapter'
-          }
-        ],
-        'normalized' => 'chapter',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chapter'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'no_monolithic.texi',
-        'line_nr' => 16,
+        'line_nr' => 14,
         'macro' => ''
       }
     },
@@ -365,9 +327,11 @@ $result_trees{'no_monolithic'} = {
               'text' => 'Chapter'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -398,13 +362,13 @@ $result_trees{'no_monolithic'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'contents',
           'source_info' => {
             'file_name' => 'no_monolithic.texi',
-            'line_nr' => 21,
+            'line_nr' => 19,
             'macro' => ''
           }
         },
@@ -413,13 +377,13 @@ $result_trees{'no_monolithic'} = {
             {
               'text' => '
 ',
-              'type' => 'misc_arg'
+              'type' => 'rawline_arg'
             }
           ],
           'cmdname' => 'shortcontents',
           'source_info' => {
             'file_name' => 'no_monolithic.texi',
-            'line_nr' => 22,
+            'line_nr' => 20,
             'macro' => ''
           }
         },
@@ -436,9 +400,11 @@ $result_trees{'no_monolithic'} = {
                   'text' => 'cp'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -447,22 +413,29 @@ $result_trees{'no_monolithic'} = {
           'extra' => {
             'misc_args' => [
               'cp'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => 'no_monolithic.texi',
-            'line_nr' => 24,
+            'line_nr' => 22,
             'macro' => ''
           }
         }
       ],
-      'extra' => {
-        'spaces_before_argument' => ' '
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => 'no_monolithic.texi',
-        'line_nr' => 17,
+        'line_nr' => 15,
         'macro' => ''
       }
     },
@@ -471,7 +444,7 @@ $result_trees{'no_monolithic'} = {
         {
           'text' => '
 ',
-          'type' => 'misc_arg'
+          'type' => 'rawline_arg'
         }
       ],
       'cmdname' => 'bye'
@@ -479,20 +452,10 @@ $result_trees{'no_monolithic'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'no_monolithic'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'no_monolithic'}{'contents'}[1];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_description'} = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[3];
-$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'no_monolithic'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[3]{'extra'}{'element_node'} = $result_trees{'no_monolithic'}{'contents'}[1];
+$result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'no_monolithic'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'no_monolithic'} = '\\input texinfo @c -*-texinfo-*-
-
-@setfilename no_monolithic.info
 
 @node Top
 @top Not monolithic
@@ -518,8 +481,7 @@ Chapter.
 ';
 
 
-$result_texts{'no_monolithic'} = '
-Not monolithic
+$result_texts{'no_monolithic'} = 'Not monolithic
 **************
 
 Not monolitic manual.

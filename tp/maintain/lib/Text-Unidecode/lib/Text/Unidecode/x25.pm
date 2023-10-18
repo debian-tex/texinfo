@@ -1,4 +1,4 @@
-# Time-stamp: "Sat Jul 14 00:27:23 2001 by Automatic Bizooty (__blocks2pm.plx)"
+# Time-stamp: "2016-07-25 07:04:30 MDT"
 $Text::Unidecode::Char[0x25] = [
 qq{-}, qq{-}, qq{|}, qq{|}, qq{-}, qq{-}, qq{|}, qq{|}, qq{-}, qq{-}, qq{|}, qq{|}, qq{+}, qq{+}, qq{+}, qq{+},
 qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+}, qq{+},
@@ -15,6 +15,10 @@ qq{#}, qq{#}, qq{^}, qq{^}, qq{^}, qq{^}, qq{>}, qq{>}, qq{>}, qq{>}, qq{>}, qq{
 qq{<}, qq{<}, qq{<}, qq{<}, qq{<}, qq{<}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*},
 qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*},
 qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{*}, qq{#}, qq{#}, qq{#}, qq{#}, qq{#}, qq{^}, qq{^}, qq{^}, 'O',
-qq{#}, qq{#}, qq{#}, qq{#}, qq{#}, qq{#}, qq{#}, qq{#}, '[?]', '[?]', '[?]', '[?]', '[?]', '[?]', '[?]',
+
+qq{#}, qq{#}, qq{#}, qq{#},
+qq{O}, qq{O}, qq{O}, qq{O},
+'/', '\\', '\\', '#',
+'#', '#', '#', '/',
 ];
 1;

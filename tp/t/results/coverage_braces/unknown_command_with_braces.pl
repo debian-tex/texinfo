@@ -52,9 +52,13 @@ $result_trees{'unknown_command_with_braces'} = {
           'type' => 'empty_line'
         },
         {
+          'text' => ' ',
+          'type' => 'spaces_before_paragraph'
+        },
+        {
           'contents' => [
             {
-              'text' => ' first paragraph
+              'text' => 'first paragraph
 '
             }
           ],
@@ -115,7 +119,7 @@ Unknown macro  first paragraph
 
 second paragraph
 
- first paragraph
+first paragraph
 
 second paragraph
 

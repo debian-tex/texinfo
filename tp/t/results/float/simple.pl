@@ -29,10 +29,14 @@ $result_trees{'simple'} = {
                   'text' => 'Label'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
-',
-                'spaces_before_argument' => ' '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                },
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'type' => 'block_line_arg'
             }
@@ -81,7 +85,8 @@ $result_trees{'simple'} = {
             },
             {
               'text' => '
-'
+',
+              'type' => 'spaces_after_close_brace'
             },
             {
               'args' => [
@@ -96,8 +101,12 @@ $result_trees{'simple'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
               },
               'source_info' => {
                 'file_name' => '',
@@ -108,16 +117,12 @@ $result_trees{'simple'} = {
           ],
           'extra' => {
             'caption' => {},
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Label',
-            'spaces_before_argument' => ' ',
-            'type' => {
-              'content' => [
-                {}
-              ],
-              'normalized' => 'Type'
+            'float_type' => 'Type',
+            'normalized' => 'Label'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
             }
           },
           'source_info' => {
@@ -134,8 +139,6 @@ $result_trees{'simple'} = {
 };
 $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'extra'}{'float'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[1];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'extra'}{'caption'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'extra'}{'type'}{'content'}[0] = $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'simple'} = '@float Type, Label
 
@@ -147,7 +150,6 @@ In float.
 $result_texts{'simple'} = 'Type, Label
 
 In float.
-
 ';
 
 $result_errors{'simple'} = [];
@@ -164,15 +166,8 @@ $result_floats{'simple'} = {
             'float' => {}
           }
         },
-        'normalized' => 'Label',
-        'type' => {
-          'content' => [
-            {
-              'text' => 'Type'
-            }
-          ],
-          'normalized' => 'Type'
-        }
+        'float_type' => 'Type',
+        'normalized' => 'Label'
       },
       'structure' => {
         'float_number' => 1
@@ -185,7 +180,6 @@ $result_floats{'simple'}{'Type'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $res
 
 
 $result_converted{'plaintext'}->{'simple'} = 'In float.
-
 
 Type 1: Caption.
 ';
@@ -212,8 +206,7 @@ $result_converted{'html'}->{'simple'} = '<!DOCTYPE html>
 <div class="float" id="Label">
 
 <p>In float.
-</p>
-<div class="caption"><p><strong class="strong">Type 1: </strong>Caption.</p></div></div>
+</p><div class="caption"><p><strong class="strong">Type 1: </strong>Caption.</p></div></div>
 
 
 </body>
@@ -229,5 +222,69 @@ $result_converted_errors{'html'}->{'simple'} = [
   }
 ];
 
+
+
+$result_converted{'xml'}->{'simple'} = '<float name="Label" type="Type" number="1" spaces=" " endspaces=" "><floattype>Type</floattype><floatname spaces=" ">Label</floatname>
+
+<para>In float.
+</para><caption><para>Caption.</para></caption>
+</float>';
+
+
+$result_converted{'latex'}->{'simple'} = '\\documentclass{book}
+\\usepackage{amsfonts}
+\\usepackage{amsmath}
+\\usepackage[gen]{eurosym}
+\\usepackage{textcomp}
+\\usepackage{graphicx}
+\\usepackage{etoolbox}
+\\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\\usepackage[hidelinks]{hyperref}
+
+\\makeatletter
+\\newcommand{\\Texinfosettitle}{No Title}%
+
+% new float for type `Type\'
+\\newfloat{TexinfoFloatType}{htb}{tfl}[chapter]
+\\floatname{TexinfoFloatType}{}
+% redefine the \\mainmatter command such that it does not clear page
+% as if in double page
+\\renewcommand\\mainmatter{\\clearpage\\@mainmattertrue\\pagenumbering{arabic}}
+\\newenvironment{Texinfopreformatted}{%
+  \\par\\GNUTobeylines\\obeyspaces\\frenchspacing\\parskip=\\z@\\parindent=\\z@}{}
+{\\catcode`\\^^M=13 \\gdef\\GNUTobeylines{\\catcode`\\^^M=13 \\def^^M{\\null\\par}}}
+\\newenvironment{Texinfoindented}{\\begin{list}{}{}\\item\\relax}{\\end{list}}
+
+% used for substitutions in commands
+\\newcommand{\\Texinfoplaceholder}[1]{}
+
+\\newpagestyle{single}{\\sethead[\\chaptername{} \\thechapter{} \\chaptertitle{}][][\\thepage]
+                              {\\chaptername{} \\thechapter{} \\chaptertitle{}}{}{\\thepage}}
+
+% allow line breaking at underscore
+\\let\\Texinfounderscore\\_
+\\renewcommand{\\_}{\\Texinfounderscore\\discretionary{}{}{}}
+\\renewcommand{\\includegraphics}[1]{\\fbox{FIG \\detokenize{#1}}}
+
+\\makeatother
+% set default for @setchapternewpage
+\\makeatletter
+\\patchcmd{\\chapter}{\\if@openright\\cleardoublepage\\else\\clearpage\\fi}{\\Texinfoplaceholder{setchapternewpage placeholder}\\clearpage}{}{}
+\\makeatother
+\\pagestyle{single}%
+
+\\begin{document}
+\\begin{TexinfoFloatType}
+
+In float.
+\\caption{Caption.}
+\\label{anchor:Label}%
+\\end{TexinfoFloatType}
+\\end{document}
+';
 
 1;

@@ -24,28 +24,23 @@ $result_trees{'explicit_sort_key'} = {
               'text' => 'Top'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
       'extra' => {
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'Top'
-          }
-        ],
-        'normalized' => 'Top',
-        'spaces_before_argument' => ' '
+        'normalized' => 'Top'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -56,9 +51,11 @@ $result_trees{'explicit_sort_key'} = {
     {
       'args' => [
         {
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -83,12 +80,14 @@ $result_trees{'explicit_sort_key'} = {
         {
           'contents' => [
             {
-              'text' => 'node'
+              'text' => 'chap'
             }
           ],
-          'extra' => {
-            'spaces_after_argument' => '
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
 '
+            }
           },
           'type' => 'line_arg'
         }
@@ -108,9 +107,11 @@ $result_trees{'explicit_sort_key'} = {
                   'text' => 'SK'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -119,8 +120,12 @@ $result_trees{'explicit_sort_key'} = {
           'extra' => {
             'misc_args' => [
               'SK'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -163,30 +168,28 @@ $result_trees{'explicit_sort_key'} = {
                   'text' => 'bbbbbbb (first)'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'SKindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 1,
-              'in_code' => 0,
-              'index_at_command' => 'SKindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'SK',
-              'index_type_command' => 'SKindex',
-              'sortas' => 'A'
-            },
-            'sortas' => 'A',
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'SK',
+              1
+            ],
+            'sortas' => 'A'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -225,30 +228,28 @@ $result_trees{'explicit_sort_key'} = {
                   'text' => 'aaaaaaa (second)'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'SKindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 2,
-              'in_code' => 0,
-              'index_at_command' => 'SKindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'SK',
-              'index_type_command' => 'SKindex',
-              'sortas' => 'B'
-            },
-            'sortas' => 'B',
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'SK',
+              2
+            ],
+            'sortas' => 'B'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -287,30 +288,28 @@ $result_trees{'explicit_sort_key'} = {
                   'text' => 'zero sort key'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'SKindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 3,
-              'in_code' => 0,
-              'index_at_command' => 'SKindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'SK',
-              'index_type_command' => 'SKindex',
-              'sortas' => '0'
-            },
-            'sortas' => '0',
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'SK',
+              3
+            ],
+            'sortas' => '0'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -360,28 +359,27 @@ $result_trees{'explicit_sort_key'} = {
                   }
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'SKindex',
           'extra' => {
-            'index_entry' => {
-              'content_normalized' => [],
-              'entry_content' => [],
-              'entry_element' => {},
-              'entry_node' => {},
-              'entry_number' => 4,
-              'in_code' => 0,
-              'index_at_command' => 'SKindex',
-              'index_ignore_chars' => {},
-              'index_name' => 'SK',
-              'index_type_command' => 'SKindex'
-            },
-            'spaces_before_argument' => ' '
+            'element_node' => {},
+            'index_entry' => [
+              'SK',
+              4
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -567,9 +565,11 @@ $result_trees{'explicit_sort_key'} = {
                   'text' => 'SK'
                 }
               ],
-              'extra' => {
-                'spaces_after_argument' => '
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
 '
+                }
               },
               'type' => 'line_arg'
             }
@@ -578,8 +578,12 @@ $result_trees{'explicit_sort_key'} = {
           'extra' => {
             'misc_args' => [
               'SK'
-            ],
-            'spaces_before_argument' => ' '
+            ]
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
           },
           'source_info' => {
             'file_name' => '',
@@ -590,19 +594,12 @@ $result_trees{'explicit_sort_key'} = {
       ],
       'extra' => {
         'isindex' => 1,
-        'node_content' => [
-          {}
-        ],
-        'nodes_manuals' => [
-          {
-            'node_content' => [
-              {}
-            ],
-            'normalized' => 'node'
-          }
-        ],
-        'normalized' => 'node',
-        'spaces_before_argument' => ' '
+        'normalized' => 'chap'
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
       },
       'source_info' => {
         'file_name' => '',
@@ -613,31 +610,15 @@ $result_trees{'explicit_sort_key'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'explicit_sort_key'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'extra'}{'index_entry'}{'entry_content'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'args'}[0]{'contents'};
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'extra'}{'index_entry'}{'entry_element'} = $result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'extra'}{'index_entry'}{'entry_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[3]{'extra'}{'element_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
+$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[4]{'extra'}{'element_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
+$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[5]{'extra'}{'element_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
+$result_trees{'explicit_sort_key'}{'contents'}[3]{'contents'}[6]{'extra'}{'element_node'} = $result_trees{'explicit_sort_key'}{'contents'}[3];
 
 $result_texis{'explicit_sort_key'} = '@node Top
 @top
 
-@node node
+@node chap
 
 @defindex SK
 
@@ -706,7 +687,7 @@ $result_nodes{'explicit_sort_key'} = {
       'cmdname' => 'node',
       'extra' => {
         'isindex' => 1,
-        'normalized' => 'node'
+        'normalized' => 'chap'
       },
       'structure' => {
         'node_prev' => {}
@@ -854,10 +835,10 @@ $result_indices_sort_strings{'explicit_sort_key'} = {
 $result_converted{'info'}->{'explicit_sort_key'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: node,  Up: (dir)
+File: ,  Node: Top,  Next: chap,  Up: (dir)
 
 
-File: ,  Node: node,  Prev: Top
+File: ,  Node: chap,  Prev: Top
 
 in a reuglar para .  ‘inside another ’.
 
@@ -866,16 +847,16 @@ in a reuglar para .  ‘inside another ’.
  [index ]
 * Menu:
 
-* zero sort key:                         node.                  (line 3)
-* bbbbbbb (first):                       node.                  (line 3)
-* aaa :                                  node.                  (line 3)
-* aaaaaaa (second):                      node.                  (line 3)
+* zero sort key:                         chap.                  (line 3)
+* bbbbbbb (first):                       chap.                  (line 3)
+* aaa :                                  chap.                  (line 3)
+* aaaaaaa (second):                      chap.                  (line 3)
 
 
 
 Tag Table:
 Node: Top27
-Node: node74
+Node: chap74
 
 End Tag Table
 
@@ -892,10 +873,10 @@ $result_converted{'plaintext'}->{'explicit_sort_key'} = 'in a reuglar para .  �
 
 * Menu:
 
-* zero sort key:                         node.                  (line 0)
-* bbbbbbb (first):                       node.                  (line 0)
-* aaa :                                  node.                  (line 0)
-* aaaaaaa (second):                      node.                  (line 0)
+* zero sort key:                         chap.                  (line 0)
+* bbbbbbb (first):                       chap.                  (line 0)
+* aaa :                                  chap.                  (line 0)
+* aaaaaaa (second):                      chap.                  (line 0)
 
 ';
 
@@ -903,15 +884,15 @@ $result_converted{'plaintext'}->{'explicit_sort_key'} = 'in a reuglar para .  �
 $result_converted{'html_text'}->{'explicit_sort_key'} = '<div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
- &nbsp; [<a href="#node" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <a class="top" id="SEC_Top"></a>
 <hr>
-<a class="node-id" id="node"></a><div class="nav-panel">
+<a class="node-id" id="chap"></a><div class="nav-panel">
 <p>
- &nbsp; [<a href="#node" title="Index" rel="index">Index</a>]</p>
+[<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
-<h4 class="node">node</h4>
+<h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
 
 <a class="index-entry-id" id="index-bbbbbbb-_0028first_0029"></a>
@@ -925,34 +906,34 @@ $result_converted{'html_text'}->{'explicit_sort_key'} = '<div class="top-level-e
 <a class="url" href="and%20cmd%20">and cmd </a>.
 </p>
 <div class="printindex SK-printindex">
-<table class="SK-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_SK_symbol-1"><b>0</b></a>
+<table class="SK-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#chap_SK_symbol-1"><b>0</b></a>
  &nbsp; 
 <br>
-<a class="summary-letter-printindex" href="#t_i_SK_letter-A"><b>A</b></a>
+<a class="summary-letter-printindex" href="#chap_SK_letter-A"><b>A</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_SK_letter-B"><b>B</b></a>
+<a class="summary-letter-printindex" href="#chap_SK_letter-B"><b>B</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="SK-entries-printindex" border="0">
-<tr><td></td><th class="entries-header-printindex">Index Entry</th><td>&nbsp;</td><th class="sections-header-printindex"> Section</th></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_SK_symbol-1">0</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-zero-sort-key">zero sort key</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#node">node</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_SK_letter-A">A</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-bbbbbbb-_0028first_0029">bbbbbbb (first)</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#node">node</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-"><b class="b">aaa </b></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#node">node</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
-<tr><th id="t_i_SK_letter-B">B</th><td></td><td></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-aaaaaaa-_0028second_0029">aaaaaaa (second)</a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#node">node</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
+<tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_SK_symbol-1">0</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-zero-sort-key">zero sort key</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_SK_letter-A">A</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-bbbbbbb-_0028first_0029">bbbbbbb (first)</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-aaa-"><b class="b">aaa </b></a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
+<tr><th id="chap_SK_letter-B">B</th></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-aaaaaaa-_0028second_0029">aaaaaaa (second)</a></td><td class="printindex-index-section"><a href="#chap">chap</a></td></tr>
+<tr><td colspan="3"><hr></td></tr>
 </table>
-<table class="SK-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_SK_symbol-1"><b>0</b></a>
+<table class="SK-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#chap_SK_symbol-1"><b>0</b></a>
  &nbsp; 
 <br>
-<a class="summary-letter-printindex" href="#t_i_SK_letter-A"><b>A</b></a>
+<a class="summary-letter-printindex" href="#chap_SK_letter-A"><b>A</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_SK_letter-B"><b>B</b></a>
+<a class="summary-letter-printindex" href="#chap_SK_letter-B"><b>B</b></a>
  &nbsp; 
 </td></tr></table>
 </div>
@@ -960,10 +941,11 @@ $result_converted{'html_text'}->{'explicit_sort_key'} = '<div class="top-level-e
 ';
 
 
-$result_converted{'xml'}->{'explicit_sort_key'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">node</nodenext></node>
+$result_converted{'xml'}->{'explicit_sort_key'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap</nodenext></node>
 <top><sectiontitle></sectiontitle>
 
-<node name="node" spaces=" "><nodename>node</nodename><nodeprev automatic="on">Top</nodeprev></node>
+</top>
+<node name="chap" spaces=" "><nodename>chap</nodename><nodeprev automatic="on">Top</nodeprev></node>
 
 <defindex spaces=" " value="SK" line="SK"></defindex>
 
@@ -978,30 +960,29 @@ $result_converted{'xml'}->{'explicit_sort_key'} = '<node name="Top" spaces=" "><
 <url><urefurl>and cmd <sortas>inside</sortas></urefurl></url>.
 </para>
 <printindex spaces=" " value="SK" line="SK"></printindex>
-</top>
 ';
 
 
 $result_converted{'latex'}->{'explicit_sort_key'} = '\\documentclass{book}
-\\usepackage{imakeidx}
 \\usepackage{amsfonts}
 \\usepackage{amsmath}
 \\usepackage[gen]{eurosym}
-\\usepackage[T1]{fontenc}
 \\usepackage{textcomp}
 \\usepackage{graphicx}
 \\usepackage{etoolbox}
 \\usepackage{titleps}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{imakeidx}
 \\usepackage{float}
 % use hidelinks to remove boxes around links to be similar to Texinfo TeX
 \\usepackage[hidelinks]{hyperref}
-\\usepackage[utf8]{inputenc}
 
 \\makeatletter
 \\newcommand{\\Texinfosettitle}{No Title}%
 
-% no index headers or page break
-\\indexsetup{level=\\relax,toclevel=section,noclearpage}%
+% no index headers
+\\indexsetup{level=\\relax,toclevel=section}%
 \\makeindex[name=SK,title=]%
 
 % redefine the \\mainmatter command such that it does not clear page
@@ -1032,7 +1013,7 @@ $result_converted{'latex'}->{'explicit_sort_key'} = '\\documentclass{book}
 
 \\begin{document}
 \\label{anchor:Top}%
-\\label{anchor:node}%
+\\label{anchor:chap}%
 
 
 \\index[SK]{A@bbbbbbb (first)}%

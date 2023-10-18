@@ -1,5 +1,6 @@
-texinfo (7.0.3-3) UNRELEASED; urgency=medium
+texinfo (7.1-1) UNRELEASED; urgency=medium
 
+  * New upstream release, refresh patches.
   * Remove some generated from built tree during clean. This
     addresses parts of #1046800.
 

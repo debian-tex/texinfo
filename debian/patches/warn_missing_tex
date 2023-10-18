@@ -4,9 +4,9 @@
  util/texi2dvi |    3 +++
  1 file changed, 3 insertions(+)
 
---- texinfo.orig/util/texi2dvi
-+++ texinfo/util/texi2dvi
-@@ -1837,6 +1837,9 @@
+--- texinfo_71.orig/util/texi2dvi
++++ texinfo_71/util/texi2dvi
+@@ -1790,6 +1790,9 @@
  
  For information about obtaining TeX, please see http://tug.org/texlive,
  or do a web search for TeX and your operating system or distro.

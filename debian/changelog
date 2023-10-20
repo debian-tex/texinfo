@@ -1,7 +1,7 @@
 texinfo (7.1-1) UNRELEASED; urgency=medium
 
   * New upstream release, refresh patches.
-  * Remove some generated from built tree during clean. This
+  * Remove some generated files from built tree during clean. This
     addresses parts of #1046800.
 
  -- Hilmar Preusse <hille42@web.de>  Tue, 12 Sep 2023 23:22:46 +0200

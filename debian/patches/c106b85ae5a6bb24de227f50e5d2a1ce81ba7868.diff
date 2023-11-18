@@ -1,0 +1,39 @@
+From c106b85ae5a6bb24de227f50e5d2a1ce81ba7868 Mon Sep 17 00:00:00 2001
+From: Gavin Smith <gavinsmith0123@gmail.com>
+Date: Wed, 15 Nov 2023 18:09:43 +0000
+Subject: Further obstack alignment fix for sparc64
+
+* tp/Texinfo/XS/gnulib/lib/obstack.h: Add defines using rpl_
+prefix for gnulib functions.  Investigation and fix by Bruno Haible.
+
+* tp/Texinfo/XS/parsetexi/tree.c: Revert change from 2023-11-13.
+---
+ ChangeLog                          | 9 +++++++++
+ tp/Texinfo/XS/gnulib/lib/obstack.h | 6 ++++++
+ tp/Texinfo/XS/parsetexi/tree.c     | 7 +------
+ 3 files changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index 0dcdb1a..2145deb 100644
+diff --git a/tp/Texinfo/XS/gnulib/lib/obstack.h b/tp/Texinfo/XS/gnulib/lib/obstack.h
+index cb080c3..af8c5ba 100644
+--- a/tp/Texinfo/XS/gnulib/lib/obstack.h
++++ b/tp/Texinfo/XS/gnulib/lib/obstack.h
+@@ -164,6 +164,12 @@
+ # endif
+ #endif
+ 
++#define _obstack_begin rpl_obstack_begin
++#define _obstack_newchunk rpl_obstack_newchunk
++#define _obstack_allocated_p rpl_obstack_allocated_p
++#define _obstack_free rpl_obstack_free
++#define _obstack_memory_used rpl_obstack_memory_used
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+diff --git a/tp/Texinfo/XS/parsetexi/tree.c b/tp/Texinfo/XS/parsetexi/tree.c
+index 09db6fc..f2d69e0 100644
+-- 
+cgit v1.1
+

@@ -1,7 +1,2 @@
-install-stamp
-build-stamp
-check-stamp
-intl/libintl.h
-config.log
 doc/info-stnd_html/
 doc/texinfo_html/

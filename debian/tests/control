@@ -4,4 +4,4 @@ Depends: build-essential,
 	gettext,
 	libtext-unidecode-perl,
 	libperl-dev
-Restrictions: build-needed
+Restrictions: build-needed, allow-stderr

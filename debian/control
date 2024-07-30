@@ -4,7 +4,7 @@ Priority: standard
 Maintainer: Debian TeX Task Force <debian-tex-maint@lists.debian.org>
 Uploaders: Norbert Preining <norbert@preining.info>,
 	   Frank Küster <frank@debian.org>,
-	   Hilmar Preusse <hille42@web.de>
+	   Hilmar Preuße <hille42@debian.org>
 Build-Depends: debhelper-compat (= 13),
 	libncurses-dev,
 	gettext,

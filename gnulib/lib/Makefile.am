@@ -1,6 +1,6 @@
 ## DO NOT EDIT! GENERATED AUTOMATICALLY!
 ## Process this file with automake to produce Makefile.in.
-# Copyright (C) 2002-2023 Free Software Foundation, Inc.
+# Copyright (C) 2002-2024 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,6 +61,7 @@ SUBDIRS =
 noinst_HEADERS =
 noinst_LIBRARIES =
 noinst_LTLIBRARIES =
+pkgdata_DATA =
 EXTRA_DIST =
 BUILT_SOURCES =
 SUFFIXES =
@@ -582,6 +583,7 @@ SED_HEADER_STDOUT = sed -e 1h -e '1$(SED_HEADER_NOEDIT)' -e 1G
 SED_HEADER_TO_AT_t = $(SED_HEADER_STDOUT) -n -e 'w $@-t'
 
 # Use $(gl_V_at) instead of $(AM_V_GEN) or $(AM_V_at) on a line that
+# is its recipe's first line if and only if @NMD@ lines are absent.
 gl_V_at = $(AM_V_GEN)
 
 ## end   gnulib module gen-header
@@ -925,7 +927,7 @@ locale.h: locale.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's/@''GNULIB_SETLOCALE''@/$(GL_GNULIB_SETLOCALE)/g' \
 	      -e 's/@''GNULIB_SETLOCALE_NULL''@/$(GL_GNULIB_SETLOCALE_NULL)/g' \
 	      -e 's/@''GNULIB_DUPLOCALE''@/$(GL_GNULIB_DUPLOCALE)/g' \
-	      -e 's/@''GNULIB_LOCALENAME''@/$(GL_GNULIB_LOCALENAME)/g' \
+	      -e 's/@''GNULIB_LOCALENAME_UNSAFE''@/$(GL_GNULIB_LOCALENAME_UNSAFE)/g' \
 	      -e 's|@''HAVE_NEWLOCALE''@|$(HAVE_NEWLOCALE)|g' \
 	      -e 's|@''HAVE_DUPLOCALE''@|$(HAVE_DUPLOCALE)|g' \
 	      -e 's|@''HAVE_FREELOCALE''@|$(HAVE_FREELOCALE)|g' \
@@ -1210,6 +1212,14 @@ EXTRA_DIST += windows-initguard.h
 
 ## end   gnulib module nl_langinfo
 
+## begin gnulib module once
+
+if gl_GNULIB_ENABLED_once
+libgnu_a_SOURCES += glthread/once.h glthread/once.c
+
+endif
+## end   gnulib module once
+
 ## begin gnulib module open
 
 if gl_GNULIB_ENABLED_open
@@ -1228,6 +1238,167 @@ endif
 EXTRA_DIST += pathmax.h
 
 ## end   gnulib module pathmax
+
+## begin gnulib module pthread-h
+
+if gl_GNULIB_ENABLED_94ea50e7ff7c2508f8a5894b17b1211c
+BUILT_SOURCES += pthread.h
+
+# We need the following in order to create <pthread.h> when the system
+# doesn't have one that works with the given compiler.
+pthread.h: pthread.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(_NORETURN_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
+	$(gl_V_at)$(SED_HEADER_STDOUT) \
+	      -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''HAVE_PTHREAD_H''@|$(HAVE_PTHREAD_H)|g' \
+	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
+	      -e 's|@''NEXT_PTHREAD_H''@|$(NEXT_PTHREAD_H)|g' \
+	      -e 's/@''GNULIB_PTHREAD_THREAD''@/$(GL_GNULIB_PTHREAD_THREAD)/g' \
+	      -e 's/@''GNULIB_PTHREAD_ONCE''@/$(GL_GNULIB_PTHREAD_ONCE)/g' \
+	      -e 's/@''GNULIB_PTHREAD_MUTEX''@/$(GL_GNULIB_PTHREAD_MUTEX)/g' \
+	      -e 's/@''GNULIB_PTHREAD_RWLOCK''@/$(GL_GNULIB_PTHREAD_RWLOCK)/g' \
+	      -e 's/@''GNULIB_PTHREAD_COND''@/$(GL_GNULIB_PTHREAD_COND)/g' \
+	      -e 's/@''GNULIB_PTHREAD_TSS''@/$(GL_GNULIB_PTHREAD_TSS)/g' \
+	      -e 's/@''GNULIB_PTHREAD_SPIN''@/$(GL_GNULIB_PTHREAD_SPIN)/g' \
+	      -e 's/@''GNULIB_PTHREAD_MUTEX_TIMEDLOCK''@/$(GL_GNULIB_PTHREAD_MUTEX_TIMEDLOCK)/g' \
+	      -e 's|@''HAVE_PTHREAD_T''@|$(HAVE_PTHREAD_T)|g' \
+	      -e 's|@''HAVE_PTHREAD_SPINLOCK_T''@|$(HAVE_PTHREAD_SPINLOCK_T)|g' \
+	      -e 's|@''HAVE_PTHREAD_CREATE_DETACHED''@|$(HAVE_PTHREAD_CREATE_DETACHED)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_RECURSIVE''@|$(HAVE_PTHREAD_MUTEX_RECURSIVE)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_ROBUST''@|$(HAVE_PTHREAD_MUTEX_ROBUST)|g' \
+	      -e 's|@''HAVE_PTHREAD_PROCESS_SHARED''@|$(HAVE_PTHREAD_PROCESS_SHARED)|g' \
+	      -e 's|@''HAVE_PTHREAD_CREATE''@|$(HAVE_PTHREAD_CREATE)|g' \
+	      -e 's|@''HAVE_PTHREAD_ATTR_INIT''@|$(HAVE_PTHREAD_ATTR_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_ATTR_GETDETACHSTATE''@|$(HAVE_PTHREAD_ATTR_GETDETACHSTATE)|g' \
+	      -e 's|@''HAVE_PTHREAD_ATTR_SETDETACHSTATE''@|$(HAVE_PTHREAD_ATTR_SETDETACHSTATE)|g' \
+	      -e 's|@''HAVE_PTHREAD_ATTR_DESTROY''@|$(HAVE_PTHREAD_ATTR_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_SELF''@|$(HAVE_PTHREAD_SELF)|g' \
+	      -e 's|@''HAVE_PTHREAD_EQUAL''@|$(HAVE_PTHREAD_EQUAL)|g' \
+	      -e 's|@''HAVE_PTHREAD_DETACH''@|$(HAVE_PTHREAD_DETACH)|g' \
+	      -e 's|@''HAVE_PTHREAD_JOIN''@|$(HAVE_PTHREAD_JOIN)|g' \
+	      -e 's|@''HAVE_PTHREAD_EXIT''@|$(HAVE_PTHREAD_EXIT)|g' \
+	      < $(srcdir)/pthread.in.h > $@-t1
+	$(AM_V_at)sed \
+	      -e 's|@''HAVE_PTHREAD_ONCE''@|$(HAVE_PTHREAD_ONCE)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_INIT''@|$(HAVE_PTHREAD_MUTEX_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEXATTR_INIT''@|$(HAVE_PTHREAD_MUTEXATTR_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEXATTR_GETTYPE''@|$(HAVE_PTHREAD_MUTEXATTR_GETTYPE)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEXATTR_SETTYPE''@|$(HAVE_PTHREAD_MUTEXATTR_SETTYPE)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEXATTR_GETROBUST''@|$(HAVE_PTHREAD_MUTEXATTR_GETROBUST)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEXATTR_SETROBUST''@|$(HAVE_PTHREAD_MUTEXATTR_SETROBUST)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEXATTR_DESTROY''@|$(HAVE_PTHREAD_MUTEXATTR_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_LOCK''@|$(HAVE_PTHREAD_MUTEX_LOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_TRYLOCK''@|$(HAVE_PTHREAD_MUTEX_TRYLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_TIMEDLOCK''@|$(HAVE_PTHREAD_MUTEX_TIMEDLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_UNLOCK''@|$(HAVE_PTHREAD_MUTEX_UNLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_MUTEX_DESTROY''@|$(HAVE_PTHREAD_MUTEX_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_INIT''@|$(HAVE_PTHREAD_RWLOCK_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCKATTR_INIT''@|$(HAVE_PTHREAD_RWLOCKATTR_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCKATTR_DESTROY''@|$(HAVE_PTHREAD_RWLOCKATTR_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_RDLOCK''@|$(HAVE_PTHREAD_RWLOCK_RDLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_WRLOCK''@|$(HAVE_PTHREAD_RWLOCK_WRLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_TRYRDLOCK''@|$(HAVE_PTHREAD_RWLOCK_TRYRDLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_TRYWRLOCK''@|$(HAVE_PTHREAD_RWLOCK_TRYWRLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_TIMEDRDLOCK''@|$(HAVE_PTHREAD_RWLOCK_TIMEDRDLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_TIMEDWRLOCK''@|$(HAVE_PTHREAD_RWLOCK_TIMEDWRLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_UNLOCK''@|$(HAVE_PTHREAD_RWLOCK_UNLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_RWLOCK_DESTROY''@|$(HAVE_PTHREAD_RWLOCK_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_COND_INIT''@|$(HAVE_PTHREAD_COND_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_CONDATTR_INIT''@|$(HAVE_PTHREAD_CONDATTR_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_CONDATTR_DESTROY''@|$(HAVE_PTHREAD_CONDATTR_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_COND_WAIT''@|$(HAVE_PTHREAD_COND_WAIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_COND_TIMEDWAIT''@|$(HAVE_PTHREAD_COND_TIMEDWAIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_COND_SIGNAL''@|$(HAVE_PTHREAD_COND_SIGNAL)|g' \
+	      -e 's|@''HAVE_PTHREAD_COND_BROADCAST''@|$(HAVE_PTHREAD_COND_BROADCAST)|g' \
+	      -e 's|@''HAVE_PTHREAD_COND_DESTROY''@|$(HAVE_PTHREAD_COND_DESTROY)|g' \
+	      -e 's|@''HAVE_PTHREAD_KEY_CREATE''@|$(HAVE_PTHREAD_KEY_CREATE)|g' \
+	      -e 's|@''HAVE_PTHREAD_SETSPECIFIC''@|$(HAVE_PTHREAD_SETSPECIFIC)|g' \
+	      -e 's|@''HAVE_PTHREAD_GETSPECIFIC''@|$(HAVE_PTHREAD_GETSPECIFIC)|g' \
+	      -e 's|@''HAVE_PTHREAD_KEY_DELETE''@|$(HAVE_PTHREAD_KEY_DELETE)|g' \
+	      -e 's|@''HAVE_PTHREAD_SPIN_INIT''@|$(HAVE_PTHREAD_SPIN_INIT)|g' \
+	      -e 's|@''HAVE_PTHREAD_SPIN_LOCK''@|$(HAVE_PTHREAD_SPIN_LOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_SPIN_TRYLOCK''@|$(HAVE_PTHREAD_SPIN_TRYLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_SPIN_UNLOCK''@|$(HAVE_PTHREAD_SPIN_UNLOCK)|g' \
+	      -e 's|@''HAVE_PTHREAD_SPIN_DESTROY''@|$(HAVE_PTHREAD_SPIN_DESTROY)|g' \
+	      < $@-t1 > $@-t2
+	$(AM_V_at)sed \
+	      -e 's|@''REPLACE_PTHREAD_CREATE''@|$(REPLACE_PTHREAD_CREATE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_ATTR_INIT''@|$(REPLACE_PTHREAD_ATTR_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_ATTR_GETDETACHSTATE''@|$(REPLACE_PTHREAD_ATTR_GETDETACHSTATE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_ATTR_SETDETACHSTATE''@|$(REPLACE_PTHREAD_ATTR_SETDETACHSTATE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_ATTR_DESTROY''@|$(REPLACE_PTHREAD_ATTR_DESTROY)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SELF''@|$(REPLACE_PTHREAD_SELF)|g' \
+	      -e 's|@''REPLACE_PTHREAD_EQUAL''@|$(REPLACE_PTHREAD_EQUAL)|g' \
+	      -e 's|@''REPLACE_PTHREAD_DETACH''@|$(REPLACE_PTHREAD_DETACH)|g' \
+	      -e 's|@''REPLACE_PTHREAD_JOIN''@|$(REPLACE_PTHREAD_JOIN)|g' \
+	      -e 's|@''REPLACE_PTHREAD_EXIT''@|$(REPLACE_PTHREAD_EXIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_ONCE''@|$(REPLACE_PTHREAD_ONCE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEX_INIT''@|$(REPLACE_PTHREAD_MUTEX_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEXATTR_INIT''@|$(REPLACE_PTHREAD_MUTEXATTR_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEXATTR_GETTYPE''@|$(REPLACE_PTHREAD_MUTEXATTR_GETTYPE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEXATTR_SETTYPE''@|$(REPLACE_PTHREAD_MUTEXATTR_SETTYPE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEXATTR_GETROBUST''@|$(REPLACE_PTHREAD_MUTEXATTR_GETROBUST)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEXATTR_SETROBUST''@|$(REPLACE_PTHREAD_MUTEXATTR_SETROBUST)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEXATTR_DESTROY''@|$(REPLACE_PTHREAD_MUTEXATTR_DESTROY)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEX_LOCK''@|$(REPLACE_PTHREAD_MUTEX_LOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEX_TRYLOCK''@|$(REPLACE_PTHREAD_MUTEX_TRYLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEX_TIMEDLOCK''@|$(REPLACE_PTHREAD_MUTEX_TIMEDLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEX_UNLOCK''@|$(REPLACE_PTHREAD_MUTEX_UNLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_MUTEX_DESTROY''@|$(REPLACE_PTHREAD_MUTEX_DESTROY)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_INIT''@|$(REPLACE_PTHREAD_RWLOCK_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCKATTR_INIT''@|$(REPLACE_PTHREAD_RWLOCKATTR_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCKATTR_DESTROY''@|$(REPLACE_PTHREAD_RWLOCKATTR_DESTROY)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_RDLOCK''@|$(REPLACE_PTHREAD_RWLOCK_RDLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_WRLOCK''@|$(REPLACE_PTHREAD_RWLOCK_WRLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_TRYRDLOCK''@|$(REPLACE_PTHREAD_RWLOCK_TRYRDLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_TRYWRLOCK''@|$(REPLACE_PTHREAD_RWLOCK_TRYWRLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_TIMEDRDLOCK''@|$(REPLACE_PTHREAD_RWLOCK_TIMEDRDLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_TIMEDWRLOCK''@|$(REPLACE_PTHREAD_RWLOCK_TIMEDWRLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_UNLOCK''@|$(REPLACE_PTHREAD_RWLOCK_UNLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_RWLOCK_DESTROY''@|$(REPLACE_PTHREAD_RWLOCK_DESTROY)|g' \
+	      < $@-t2 > $@-t3
+	$(AM_V_at)sed \
+	      -e 's|@''REPLACE_PTHREAD_COND_INIT''@|$(REPLACE_PTHREAD_COND_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_CONDATTR_INIT''@|$(REPLACE_PTHREAD_CONDATTR_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_CONDATTR_DESTROY''@|$(REPLACE_PTHREAD_CONDATTR_DESTROY)|g' \
+	      -e 's|@''REPLACE_PTHREAD_COND_WAIT''@|$(REPLACE_PTHREAD_COND_WAIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_COND_TIMEDWAIT''@|$(REPLACE_PTHREAD_COND_TIMEDWAIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_COND_SIGNAL''@|$(REPLACE_PTHREAD_COND_SIGNAL)|g' \
+	      -e 's|@''REPLACE_PTHREAD_COND_BROADCAST''@|$(REPLACE_PTHREAD_COND_BROADCAST)|g' \
+	      -e 's|@''REPLACE_PTHREAD_COND_DESTROY''@|$(REPLACE_PTHREAD_COND_DESTROY)|g' \
+	      -e 's|@''REPLACE_PTHREAD_KEY_CREATE''@|$(REPLACE_PTHREAD_KEY_CREATE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SETSPECIFIC''@|$(REPLACE_PTHREAD_SETSPECIFIC)|g' \
+	      -e 's|@''REPLACE_PTHREAD_GETSPECIFIC''@|$(REPLACE_PTHREAD_GETSPECIFIC)|g' \
+	      -e 's|@''REPLACE_PTHREAD_KEY_DELETE''@|$(REPLACE_PTHREAD_KEY_DELETE)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SPIN_INIT''@|$(REPLACE_PTHREAD_SPIN_INIT)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SPIN_LOCK''@|$(REPLACE_PTHREAD_SPIN_LOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SPIN_TRYLOCK''@|$(REPLACE_PTHREAD_SPIN_TRYLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SPIN_UNLOCK''@|$(REPLACE_PTHREAD_SPIN_UNLOCK)|g' \
+	      -e 's|@''REPLACE_PTHREAD_SPIN_DESTROY''@|$(REPLACE_PTHREAD_SPIN_DESTROY)|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
+	      -e '/definition of _Noreturn/r $(_NORETURN_H)' \
+	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
+	      < $@-t3 > $@-t4
+	$(AM_V_at)rm -f $@-t1 $@-t2 $@-t3
+	$(AM_V_at)mv $@-t4 $@
+MOSTLYCLEANFILES += pthread.h pthread.h-t1 pthread.h-t2 pthread.h-t3 pthread.h-t4
+
+endif
+EXTRA_DIST += pthread.in.h
+
+## end   gnulib module pthread-h
+
+## begin gnulib module pthread-once
+
+if gl_GNULIB_ENABLED_e0dc424e76447be3f4b8566d84038f5a
+if GL_COND_OBJ_PTHREAD_ONCE
+libgnu_a_SOURCES += pthread-once.c
+endif
+
+endif
+## end   gnulib module pthread-once
 
 ## begin gnulib module realloc-gnu
 
@@ -1267,6 +1438,37 @@ EXTRA_libgnu_a_SOURCES += regcomp.c regex_internal.c regexec.c
 
 ## end   gnulib module regex
 
+## begin gnulib module sched
+
+if gl_GNULIB_ENABLED_sched
+BUILT_SOURCES += sched.h
+
+# We need the following in order to create a replacement for <sched.h> when
+# the system doesn't have one.
+sched.h: sched.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_USE_H)
+	$(gl_V_at)$(SED_HEADER_STDOUT) \
+	      -e 's|@''GUARD_PREFIX''@|GL|g' \
+	      -e 's|@''HAVE_SCHED_H''@|$(HAVE_SCHED_H)|g' \
+	      -e 's|@''HAVE_SYS_CDEFS_H''@|$(HAVE_SYS_CDEFS_H)|g' \
+	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
+	      -e 's|@''NEXT_SCHED_H''@|$(NEXT_SCHED_H)|g' \
+	      -e 's|@''HAVE_STRUCT_SCHED_PARAM''@|$(HAVE_STRUCT_SCHED_PARAM)|g' \
+	      -e 's/@''GNULIB_SCHED_YIELD''@/$(GL_GNULIB_SCHED_YIELD)/g' \
+	      -e 's|@''HAVE_SCHED_YIELD''@|$(HAVE_SCHED_YIELD)|g' \
+	      -e 's|@''REPLACE_SCHED_YIELD''@|$(REPLACE_SCHED_YIELD)|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
+	      $(srcdir)/sched.in.h > $@-t
+	$(AM_V_at)mv $@-t $@
+MOSTLYCLEANFILES += sched.h sched.h-t
+
+endif
+EXTRA_DIST += sched.in.h
+
+## end   gnulib module sched
+
 ## begin gnulib module setlocale-null
 
 if gl_GNULIB_ENABLED_e7e881d32ca02f1c997b13c737c64bbd
@@ -1279,6 +1481,16 @@ endif
 EXTRA_DIST += setlocale_null.h windows-initguard.h
 
 ## end   gnulib module setlocale-null
+
+## begin gnulib module setlocale-null-unlocked
+
+if gl_GNULIB_ENABLED_e7ab648fbf42deb155fb024e2402e26d
+libgnu_a_SOURCES += setlocale_null-unlocked.c
+
+endif
+EXTRA_DIST += setlocale_null.h
+
+## end   gnulib module setlocale-null-unlocked
 
 ## begin gnulib module size_max
 
@@ -1421,9 +1633,10 @@ stddef.h: stddef.in.h $(top_builddir)/config.status
 	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
 	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
 	      -e 's|@''NEXT_STDDEF_H''@|$(NEXT_STDDEF_H)|g' \
-	      -e 's|@''HAVE_MAX_ALIGN_T''@|$(HAVE_MAX_ALIGN_T)|g' \
-	      -e 's|@''HAVE_WCHAR_T''@|$(HAVE_WCHAR_T)|g' \
+	      -e 's|@''NULLPTR_T_NEEDS_STDDEF''@|$(NULLPTR_T_NEEDS_STDDEF)|g' \
+	      -e 's|@''STDDEF_NOT_IDEMPOTENT''@|$(STDDEF_NOT_IDEMPOTENT)|g' \
 	      -e 's|@''REPLACE_NULL''@|$(REPLACE_NULL)|g' \
+	      -e 's|@''HAVE_MAX_ALIGN_T''@|$(HAVE_MAX_ALIGN_T)|g' \
 	      $(srcdir)/stddef.in.h > $@-t
 	$(AM_V_at)mv $@-t $@
 else
@@ -1498,6 +1711,7 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
 	      -e 's|@''NEXT_STDIO_H''@|$(NEXT_STDIO_H)|g' \
 	      -e 's/@''GNULIB_DPRINTF''@/$(GL_GNULIB_DPRINTF)/g' \
+	      -e 's/@''GNULIB_DZPRINTF''@/$(GL_GNULIB_DZPRINTF)/g' \
 	      -e 's/@''GNULIB_FCLOSE''@/$(GL_GNULIB_FCLOSE)/g' \
 	      -e 's/@''GNULIB_FDOPEN''@/$(GL_GNULIB_FDOPEN)/g' \
 	      -e 's/@''GNULIB_FFLUSH''@/$(GL_GNULIB_FFLUSH)/g' \
@@ -1518,12 +1732,14 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_FTELL''@/$(GL_GNULIB_FTELL)/g' \
 	      -e 's/@''GNULIB_FTELLO''@/$(GL_GNULIB_FTELLO)/g' \
 	      -e 's/@''GNULIB_FWRITE''@/$(GL_GNULIB_FWRITE)/g' \
+	      -e 's/@''GNULIB_FZPRINTF''@/$(GL_GNULIB_FZPRINTF)/g' \
 	      -e 's/@''GNULIB_GETC''@/$(GL_GNULIB_GETC)/g' \
 	      -e 's/@''GNULIB_GETCHAR''@/$(GL_GNULIB_GETCHAR)/g' \
 	      -e 's/@''GNULIB_GETDELIM''@/$(GL_GNULIB_GETDELIM)/g' \
 	      -e 's/@''GNULIB_GETLINE''@/$(GL_GNULIB_GETLINE)/g' \
 	      -e 's/@''GNULIB_OBSTACK_PRINTF''@/$(GL_GNULIB_OBSTACK_PRINTF)/g' \
 	      -e 's/@''GNULIB_OBSTACK_PRINTF_POSIX''@/$(GL_GNULIB_OBSTACK_PRINTF_POSIX)/g' \
+	      -e 's/@''GNULIB_OBSTACK_ZPRINTF''@/$(GL_GNULIB_OBSTACK_ZPRINTF)/g' \
 	      -e 's/@''GNULIB_PCLOSE''@/$(GL_GNULIB_PCLOSE)/g' \
 	      -e 's/@''GNULIB_PERROR''@/$(GL_GNULIB_PERROR)/g' \
 	      -e 's/@''GNULIB_POPEN''@/$(GL_GNULIB_POPEN)/g' \
@@ -1537,20 +1753,29 @@ stdio.h: stdio.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_RENAMEAT''@/$(GL_GNULIB_RENAMEAT)/g' \
 	      -e 's/@''GNULIB_SCANF''@/$(GL_GNULIB_SCANF)/g' \
 	      -e 's/@''GNULIB_SNPRINTF''@/$(GL_GNULIB_SNPRINTF)/g' \
+	      -e 's/@''GNULIB_SNZPRINTF''@/$(GL_GNULIB_SNZPRINTF)/g' \
 	      -e 's/@''GNULIB_SPRINTF_POSIX''@/$(GL_GNULIB_SPRINTF_POSIX)/g' \
 	      -e 's/@''GNULIB_STDIO_H_NONBLOCKING''@/$(GL_GNULIB_STDIO_H_NONBLOCKING)/g' \
 	      -e 's/@''GNULIB_STDIO_H_SIGPIPE''@/$(GL_GNULIB_STDIO_H_SIGPIPE)/g' \
+	      -e 's/@''GNULIB_SZPRINTF''@/$(GL_GNULIB_SZPRINTF)/g' \
 	      -e 's/@''GNULIB_TMPFILE''@/$(GL_GNULIB_TMPFILE)/g' \
 	      -e 's/@''GNULIB_VASPRINTF''@/$(GL_GNULIB_VASPRINTF)/g' \
+	      -e 's/@''GNULIB_VASZPRINTF''@/$(GL_GNULIB_VASZPRINTF)/g' \
 	      -e 's/@''GNULIB_VDPRINTF''@/$(GL_GNULIB_VDPRINTF)/g' \
+	      -e 's/@''GNULIB_VDZPRINTF''@/$(GL_GNULIB_VDZPRINTF)/g' \
 	      -e 's/@''GNULIB_VFPRINTF''@/$(GL_GNULIB_VFPRINTF)/g' \
 	      -e 's/@''GNULIB_VFPRINTF_POSIX''@/$(GL_GNULIB_VFPRINTF_POSIX)/g' \
+	      -e 's/@''GNULIB_VFZPRINTF''@/$(GL_GNULIB_VFZPRINTF)/g' \
 	      -e 's/@''GNULIB_VFSCANF''@/$(GL_GNULIB_VFSCANF)/g' \
 	      -e 's/@''GNULIB_VSCANF''@/$(GL_GNULIB_VSCANF)/g' \
 	      -e 's/@''GNULIB_VPRINTF''@/$(GL_GNULIB_VPRINTF)/g' \
 	      -e 's/@''GNULIB_VPRINTF_POSIX''@/$(GL_GNULIB_VPRINTF_POSIX)/g' \
 	      -e 's/@''GNULIB_VSNPRINTF''@/$(GL_GNULIB_VSNPRINTF)/g' \
+	      -e 's/@''GNULIB_VSNZPRINTF''@/$(GL_GNULIB_VSNZPRINTF)/g' \
 	      -e 's/@''GNULIB_VSPRINTF_POSIX''@/$(GL_GNULIB_VSPRINTF_POSIX)/g' \
+	      -e 's/@''GNULIB_VSZPRINTF''@/$(GL_GNULIB_VSZPRINTF)/g' \
+	      -e 's/@''GNULIB_VZPRINTF''@/$(GL_GNULIB_VZPRINTF)/g' \
+	      -e 's/@''GNULIB_ZPRINTF''@/$(GL_GNULIB_ZPRINTF)/g' \
 	      -e 's/@''GNULIB_MDA_FCLOSEALL''@/$(GL_GNULIB_MDA_FCLOSEALL)/g' \
 	      -e 's/@''GNULIB_MDA_FDOPEN''@/$(GL_GNULIB_MDA_FDOPEN)/g' \
 	      -e 's/@''GNULIB_MDA_FILENO''@/$(GL_GNULIB_MDA_FILENO)/g' \
@@ -1648,6 +1873,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
 	      -e 's|@''NEXT_STDLIB_H''@|$(NEXT_STDLIB_H)|g' \
 	      -e 's/@''GNULIB__EXIT''@/$(GL_GNULIB__EXIT)/g' \
+	      -e 's/@''GNULIB_ABORT_DEBUG''@/$(GL_GNULIB_ABORT_DEBUG)/g' \
 	      -e 's/@''GNULIB_ALIGNED_ALLOC''@/$(GL_GNULIB_ALIGNED_ALLOC)/g' \
 	      -e 's/@''GNULIB_ATOLL''@/$(GL_GNULIB_ATOLL)/g' \
 	      -e 's/@''GNULIB_CALLOC_GNU''@/$(GL_GNULIB_CALLOC_GNU)/g' \
@@ -1673,6 +1899,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's/@''GNULIB_PTSNAME_R''@/$(GL_GNULIB_PTSNAME_R)/g' \
 	      -e 's/@''GNULIB_PUTENV''@/$(GL_GNULIB_PUTENV)/g' \
 	      -e 's/@''GNULIB_QSORT_R''@/$(GL_GNULIB_QSORT_R)/g' \
+	      -e 's/@''GNULIB_RAND''@/$(GL_GNULIB_RAND)/g' \
 	      -e 's/@''GNULIB_RANDOM''@/$(GL_GNULIB_RANDOM)/g' \
 	      -e 's/@''GNULIB_RANDOM_R''@/$(GL_GNULIB_RANDOM_R)/g' \
 	      -e 's/@''GNULIB_REALLOC_GNU''@/$(GL_GNULIB_REALLOC_GNU)/g' \
@@ -1682,7 +1909,9 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's/@''GNULIB_RPMATCH''@/$(GL_GNULIB_RPMATCH)/g' \
 	      -e 's/@''GNULIB_SECURE_GETENV''@/$(GL_GNULIB_SECURE_GETENV)/g' \
 	      -e 's/@''GNULIB_SETENV''@/$(GL_GNULIB_SETENV)/g' \
+	      -e 's/@''GNULIB_STACK_TRACE''@/$(GL_GNULIB_STACK_TRACE)/g' \
 	      -e 's/@''GNULIB_STRTOD''@/$(GL_GNULIB_STRTOD)/g' \
+	      -e 's/@''GNULIB_STRTOF''@/$(GL_GNULIB_STRTOF)/g' \
 	      -e 's/@''GNULIB_STRTOL''@/$(GL_GNULIB_STRTOL)/g' \
 	      -e 's/@''GNULIB_STRTOLD''@/$(GL_GNULIB_STRTOLD)/g' \
 	      -e 's/@''GNULIB_STRTOLL''@/$(GL_GNULIB_STRTOLL)/g' \
@@ -1735,6 +1964,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''HAVE_SETSTATE''@|$(HAVE_SETSTATE)|g' \
 	      -e 's|@''HAVE_DECL_SETSTATE''@|$(HAVE_DECL_SETSTATE)|g' \
 	      -e 's|@''HAVE_STRTOD''@|$(HAVE_STRTOD)|g' \
+	      -e 's|@''HAVE_STRTOF''@|$(HAVE_STRTOF)|g' \
 	      -e 's|@''HAVE_STRTOL''@|$(HAVE_STRTOL)|g' \
 	      -e 's|@''HAVE_STRTOLD''@|$(HAVE_STRTOLD)|g' \
 	      -e 's|@''HAVE_STRTOLL''@|$(HAVE_STRTOLL)|g' \
@@ -1747,6 +1977,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      < $@-t1 > $@-t2
 	$(AM_V_at)sed \
 	      -e 's|@''REPLACE__EXIT''@|$(REPLACE__EXIT)|g' \
+	      -e 's|@''REPLACE_ABORT''@|$(REPLACE_ABORT)|g' \
 	      -e 's|@''REPLACE_ALIGNED_ALLOC''@|$(REPLACE_ALIGNED_ALLOC)|g' \
 	      -e 's|@''REPLACE_CALLOC_FOR_CALLOC_GNU''@|$(REPLACE_CALLOC_FOR_CALLOC_GNU)|g' \
 	      -e 's|@''REPLACE_CALLOC_FOR_CALLOC_POSIX''@|$(REPLACE_CALLOC_FOR_CALLOC_POSIX)|g' \
@@ -1770,6 +2001,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''REPLACE_PTSNAME_R''@|$(REPLACE_PTSNAME_R)|g' \
 	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
 	      -e 's|@''REPLACE_QSORT_R''@|$(REPLACE_QSORT_R)|g' \
+	      -e 's|@''REPLACE_RAND''@|$(REPLACE_RAND)|g' \
 	      -e 's|@''REPLACE_RANDOM''@|$(REPLACE_RANDOM)|g' \
 	      -e 's|@''REPLACE_RANDOM_R''@|$(REPLACE_RANDOM_R)|g' \
 	      -e 's|@''REPLACE_REALLOC_FOR_REALLOC_GNU''@|$(REPLACE_REALLOC_FOR_REALLOC_GNU)|g' \
@@ -1779,6 +2011,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''REPLACE_SETENV''@|$(REPLACE_SETENV)|g' \
 	      -e 's|@''REPLACE_SETSTATE''@|$(REPLACE_SETSTATE)|g' \
 	      -e 's|@''REPLACE_STRTOD''@|$(REPLACE_STRTOD)|g' \
+	      -e 's|@''REPLACE_STRTOF''@|$(REPLACE_STRTOF)|g' \
 	      -e 's|@''REPLACE_STRTOL''@|$(REPLACE_STRTOL)|g' \
 	      -e 's|@''REPLACE_STRTOLD''@|$(REPLACE_STRTOLD)|g' \
 	      -e 's|@''REPLACE_STRTOLL''@|$(REPLACE_STRTOLL)|g' \
@@ -1786,6 +2019,7 @@ stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
 	      -e 's|@''REPLACE_STRTOULL''@|$(REPLACE_STRTOULL)|g' \
 	      -e 's|@''REPLACE_UNSETENV''@|$(REPLACE_UNSETENV)|g' \
 	      -e 's|@''REPLACE_WCTOMB''@|$(REPLACE_WCTOMB)|g' \
+	      -e 's|@''CAN_PRINT_STACK_TRACE''@|$(CAN_PRINT_STACK_TRACE)|g' \
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _Noreturn/r $(_NORETURN_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
@@ -1962,6 +2196,7 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_MEMCHR''@|$(REPLACE_MEMCHR)|g' \
 	      -e 's|@''REPLACE_MEMMEM''@|$(REPLACE_MEMMEM)|g' \
 	      -e 's|@''REPLACE_MEMPCPY''@|$(REPLACE_MEMPCPY)|g' \
+	      -e 's|@''REPLACE_MEMSET_EXPLICIT''@|$(REPLACE_MEMSET_EXPLICIT)|g' \
 	      -e 's|@''REPLACE_FREE''@|$(REPLACE_FREE)|g' \
 	      -e 's|@''REPLACE_STPCPY''@|$(REPLACE_STPCPY)|g' \
 	      -e 's|@''REPLACE_STPNCPY''@|$(REPLACE_STPNCPY)|g' \
@@ -1977,6 +2212,7 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_STRERROR_R''@|$(REPLACE_STRERROR_R)|g' \
 	      -e 's|@''REPLACE_STRERRORNAME_NP''@|$(REPLACE_STRERRORNAME_NP)|g' \
 	      -e 's|@''REPLACE_STRSIGNAL''@|$(REPLACE_STRSIGNAL)|g' \
+	      -e 's|@''REPLACE_STRVERSCMP''@|$(REPLACE_STRVERSCMP)|g' \
 	      -e 's|@''UNDEFINE_STRTOK_R''@|$(UNDEFINE_STRTOK_R)|g' \
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
@@ -2187,10 +2423,12 @@ sys/types.h: sys_types.in.h $(top_builddir)/config.status
 	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
 	      -e 's|@''NEXT_SYS_TYPES_H''@|$(NEXT_SYS_TYPES_H)|g' \
 	      -e 's|@''WINDOWS_64_BIT_OFF_T''@|$(WINDOWS_64_BIT_OFF_T)|g' \
+	      -e 's|@''HAVE_OFF64_T''@|$(HAVE_OFF64_T)|g' \
 	      -e 's|@''WINDOWS_STAT_INODES''@|$(WINDOWS_STAT_INODES)|g' \
 	      $(srcdir)/sys_types.in.h > $@-t
 	$(AM_V_at)mv $@-t $@
 MOSTLYCLEANFILES += sys/types.h sys/types.h-t
+MOSTLYCLEANDIRS += sys
 
 EXTRA_DIST += sys_types.in.h
 
@@ -2240,6 +2478,7 @@ time.h: time.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(
 	      -e 's/@''GNULIB_TIMESPEC_GETRES''@/$(GL_GNULIB_TIMESPEC_GETRES)/g' \
 	      -e 's/@''GNULIB_TIME_R''@/$(GL_GNULIB_TIME_R)/g' \
 	      -e 's/@''GNULIB_TIME_RZ''@/$(GL_GNULIB_TIME_RZ)/g' \
+	      -e 's/@''GNULIB_TZNAME''@/$(GL_GNULIB_TZNAME)/g' \
 	      -e 's/@''GNULIB_TZSET''@/$(GL_GNULIB_TZSET)/g' \
 	      -e 's/@''GNULIB_MDA_TZSET''@/$(GL_GNULIB_MDA_TZSET)/g' \
 	      -e 's|@''HAVE_DECL_LOCALTIME_R''@|$(HAVE_DECL_LOCALTIME_R)|g' \
@@ -2259,6 +2498,7 @@ time.h: time.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(
 	      -e 's|@''REPLACE_TIME''@|$(REPLACE_TIME)|g' \
 	      -e 's|@''REPLACE_TIMEGM''@|$(REPLACE_TIMEGM)|g' \
 	      -e 's|@''REPLACE_TIMESPEC_GET''@|$(REPLACE_TIMESPEC_GET)|g' \
+	      -e 's|@''REPLACE_TIMESPEC_GETRES''@|$(REPLACE_TIMESPEC_GETRES)|g' \
 	      -e 's|@''REPLACE_TZSET''@|$(REPLACE_TZSET)|g' \
 	      -e 's|@''PTHREAD_H_DEFINES_STRUCT_TIMESPEC''@|$(PTHREAD_H_DEFINES_STRUCT_TIMESPEC)|g' \
 	      -e 's|@''SYS_TIME_H_DEFINES_STRUCT_TIMESPEC''@|$(SYS_TIME_H_DEFINES_STRUCT_TIMESPEC)|g' \
@@ -2463,6 +2703,8 @@ unictype.h: unictype.in.h
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_OTHER_ID_CONTINUE_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_OTHER_ID_CONTINUE_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_XID_START_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_XID_START_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_XID_CONTINUE_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_XID_CONTINUE_DLL_VARIABLE)/g' \
+	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_ID_COMPAT_MATH_START_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_ID_COMPAT_MATH_START_DLL_VARIABLE)/g' \
+	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_ID_COMPAT_MATH_CONTINUE_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_ID_COMPAT_MATH_CONTINUE_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_PATTERN_WHITE_SPACE_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_PATTERN_WHITE_SPACE_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_PATTERN_SYNTAX_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_PATTERN_SYNTAX_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_JOIN_CONTROL_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_JOIN_CONTROL_DLL_VARIABLE)/g' \
@@ -2494,6 +2736,7 @@ unictype.h: unictype.in.h
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_IDEOGRAPHIC_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_IDEOGRAPHIC_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_UNIFIED_IDEOGRAPH_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_UNIFIED_IDEOGRAPH_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_RADICAL_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_RADICAL_DLL_VARIABLE)/g' \
+	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_IDS_UNARY_OPERATOR_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_IDS_UNARY_OPERATOR_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_IDS_BINARY_OPERATOR_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_IDS_BINARY_OPERATOR_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_IDS_TRINARY_OPERATOR_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_IDS_TRINARY_OPERATOR_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_EMOJI_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_EMOJI_DLL_VARIABLE)/g' \
@@ -2507,6 +2750,7 @@ unictype.h: unictype.in.h
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_NON_BREAK_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_NON_BREAK_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_ISO_CONTROL_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_ISO_CONTROL_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_FORMAT_CONTROL_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_FORMAT_CONTROL_DLL_VARIABLE)/g' \
+	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_PREPENDED_CONCATENATION_MARK_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_PREPENDED_CONCATENATION_MARK_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_DASH_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_DASH_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_HYPHEN_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_HYPHEN_DLL_VARIABLE)/g' \
 	      -e 's/@''GNULIB_UNICTYPE_PROPERTY_PUNCTUATION_DLL_VARIABLE''@/$(GL_GNULIB_UNICTYPE_PROPERTY_PUNCTUATION_DLL_VARIABLE)/g' \
@@ -2844,6 +3088,7 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_EXECVP''@|$(REPLACE_EXECVP)|g' \
 	      -e 's|@''REPLACE_EXECVPE''@|$(REPLACE_EXECVPE)|g' \
 	      -e 's|@''REPLACE_FACCESSAT''@|$(REPLACE_FACCESSAT)|g' \
+	      -e 's|@''REPLACE_FCHDIR''@|$(REPLACE_FCHDIR)|g' \
 	      -e 's|@''REPLACE_FCHOWNAT''@|$(REPLACE_FCHOWNAT)|g' \
 	      -e 's|@''REPLACE_FDATASYNC''@|$(REPLACE_FDATASYNC)|g' \
 	      -e 's|@''REPLACE_FTRUNCATE''@|$(REPLACE_FTRUNCATE)|g' \
@@ -2856,6 +3101,7 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_GETPAGESIZE''@|$(REPLACE_GETPAGESIZE)|g' \
 	      -e 's|@''REPLACE_GETPASS''@|$(REPLACE_GETPASS)|g' \
 	      -e 's|@''REPLACE_GETPASS_FOR_GETPASS_GNU''@|$(REPLACE_GETPASS_FOR_GETPASS_GNU)|g' \
+	      -e 's|@''REPLACE_GETUSERSHELL''@|$(REPLACE_GETUSERSHELL)|g' \
 	      -e 's|@''REPLACE_ISATTY''@|$(REPLACE_ISATTY)|g' \
 	      -e 's|@''REPLACE_LCHOWN''@|$(REPLACE_LCHOWN)|g' \
 	      -e 's|@''REPLACE_LINK''@|$(REPLACE_LINK)|g' \
@@ -3017,6 +3263,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_WCSTOK''@/$(GL_GNULIB_WCSTOK)/g' \
 	      -e 's/@''GNULIB_WCSWIDTH''@/$(GL_GNULIB_WCSWIDTH)/g' \
 	      -e 's/@''GNULIB_WCSFTIME''@/$(GL_GNULIB_WCSFTIME)/g' \
+	      -e 's/@''GNULIB_WGETCWD''@/$(GL_GNULIB_WGETCWD)/g' \
 	      -e 's/@''GNULIB_MDA_WCSDUP''@/$(GL_GNULIB_MDA_WCSDUP)/g' \
 	      -e 's/@''GNULIB_FREE_POSIX''@/$(GL_GNULIB_FREE_POSIX)/g' \
 	      < $(srcdir)/wchar.in.h > $@-t1

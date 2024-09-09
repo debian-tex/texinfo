@@ -35,7 +35,7 @@ use Texinfo::Convert::Converter;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::TexinfoMarkup Texinfo::Convert::Converter);
 
-$VERSION = '7.1';
+$VERSION = '7.1.1';
 
 
 # TexinfoXML specific

@@ -993,7 +993,7 @@ pc_clear_to_eol (void)
 
 /* Set the global variables SCREENWIDTH and SCREENHEIGHT. */
 static void
-pc_get_screen_size(void)
+pc_get_screen_size (void)
 {
   /* Current screen dimensions are the default.  */
   if (!outside_info.screenheight)	/* paranoia */
@@ -1012,16 +1012,14 @@ pc_get_screen_size(void)
 
 /* Move the cursor to the terminal location of X and Y. */
 static void
-pc_goto_xy (x, y)
-     int x, y;
+pc_goto_xy (int x, int y)
 {
   ScreenSetCursor (y, x); /* yes, pc.h says ScreenSetCursor (row, column) !! */
 }
 
 /* Print STRING to the terminal at the current position. */
 static void
-pc_put_text (string)
-     char *string;
+pc_put_text (char *string)
 {
   if (speech_friendly)
     fputs (string, stdout);
@@ -1038,7 +1036,7 @@ pc_put_text (string)
 /* Ring the terminal bell.  The bell is rung visibly if the terminal is
    capable of doing that, and if terminal_use_visible_bell_p is non-zero. */
 static void
-pc_ring_bell(void)
+pc_ring_bell (void)
 {
   if (terminal_has_visible_bell_p && terminal_use_visible_bell_p)
     ScreenVisualBell ();
@@ -1051,9 +1049,7 @@ pc_ring_bell(void)
 
 /* Print NCHARS from STRING to the terminal at the current position. */
 static void
-pc_write_chars (string, nchars)
-    char *string;
-    int nchars;
+pc_write_chars (char *string, int nchars)
 {
   if (!nchars)
     return;
@@ -1076,8 +1072,7 @@ pc_write_chars (string, nchars)
    bottom of the screen.  The lines of the old region which do not
    overlap the new region are cleared, to mimic terminal operation.  */
 static void
-pc_scroll_terminal (start, end, amount)
-    int start, end, amount;
+pc_scroll_terminal (int start, int end, int amount)
 {
   int line_to_clear = amount > 0 ? start : end + amount;
 
@@ -1169,8 +1164,7 @@ pc_unprep_terminal (void)
    to the dimensions that this terminal actually has.  Finally, the
    terminal screen is cleared. */
 static void
-pc_initialize_terminal (term_name)
-    char *term_name;
+pc_initialize_terminal (char *term_name)
 {
   char *info_colors;
 

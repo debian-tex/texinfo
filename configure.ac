@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 #
-# Copyright 2002-2023 Free Software Foundation, Inc.
+# Copyright 2002-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [7.1], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [7.1.1], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -197,7 +197,6 @@ DIFF_U_OPTION=
 if test "z$diff_accepts_u_option" = 'zyes' ; then
   DIFF_U_OPTION=-u
 fi
-AC_SUBST([DIFF_U_OPTION])
 
 # check whether diff accepts the -a option (only needed for GNU diff).
 AC_MSG_CHECKING(whether diff accepts -a)
@@ -215,7 +214,28 @@ DIFF_A_OPTION=
 if test "z$diff_accepts_a_option" = 'zyes' ; then
   DIFF_A_OPTION=-a
 fi
-AC_SUBST([DIFF_A_OPTION])
+
+# check whether diff should have --strip-trailing-cr (may be needed on MinGW)
+diff_accepts_cr_option=no
+if echo $host_os | grep mingw >/dev/null ; then
+  AC_MSG_CHECKING(whether diff accepts --strip-trailing-cr)
+  echo foo >conftest.dtx
+  echo foo | diff --strip-trailing-cr - conftest.dtx >/dev/null 2>&1
+  error_status_diff_cr=$?
+  if test $error_status_diff_cr = 0; then
+    diff_accepts_cr_option=yes
+  fi
+  AC_MSG_RESULT($diff_accepts_cr_option)
+  rm -f conftest.dtx
+fi
+
+DIFF_CR_OPTION=
+if test "z$diff_accepts_cr_option" = 'zyes' ; then
+  DIFF_CR_OPTION='--strip-trailing-cr'
+fi
+
+DIFF_OPTIONS="$DIFF_A_OPTION $DIFF_U_OPTION $DIFF_CR_OPTION"
+AC_SUBST([DIFF_OPTIONS])
 
 # Checks for header files.
 AC_CHECK_HEADERS(io.h pwd.h \

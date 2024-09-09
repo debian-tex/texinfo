@@ -27,6 +27,13 @@ EXTRA_DIST = ChangeLog.46 ChangeLog.65 ChangeLog.70 \
 # distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 
+# Ensure that this file is built early, as it is needed to run texi2any
+# and pod2texi in rules under "man" and "doc".  This helps in running
+# "make dist" without running "make" first.
+BUILT_SOURCES = tp/Texinfo/ModulePath.pm
+tp/Texinfo/ModulePath.pm:
+	cd tp && $(MAKE) $(AM_MAKEFLAGS) Texinfo/ModulePath.pm
+
 # One special target for installers to use by hand if desired.
 install-tex:
 	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex

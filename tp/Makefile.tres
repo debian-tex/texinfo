@@ -626,6 +626,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/html_tests/footnotestyle_separate_html_text_no_monolithic.pl \
   t/results/html_tests/footnotestyle_separate_late.pl \
   t/results/html_tests/footnotestyle_separate_late/res_html \
+  t/results/html_tests/fractions_rounding.pl \
   t/results/html_tests/headings_after_lone_nodes.pl \
   t/results/html_tests/html_in_copying.pl \
   t/results/html_tests/image_link_prefix.pl \
@@ -735,6 +736,7 @@ test_files_generated_list = $(test_tap_files_generated_list) \
   t/results/include/double_include.pl \
   t/results/include/include_at_end_line.pl \
   t/results/include/include_comment.pl \
+  t/results/include/include_in_removed_before_item.pl \
   t/results/include/include_setfilename_on_setfilename_line.pl \
   t/results/include/include_space.pl \
   t/results/include/include_space_comment.pl \

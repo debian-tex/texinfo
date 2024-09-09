@@ -486,6 +486,7 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
               BOLD_MASK, 0,                 "nobold",
               BLINK_MASK, BLINK_MASK,       "blink",
               BLINK_MASK, 0,                "noblink",
+              0, 0,                         NULL,
           };
           int i;
           char *component;

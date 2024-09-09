@@ -70,6 +70,7 @@ dist_modules_DATA = \
  Texinfo/Report.pm \
  Texinfo/Common.pm \
  Texinfo/Commands.pod \
+ Texinfo/Commands.pm \
  Texinfo/Structuring.pm \
  Texinfo/Transformations.pm \
  Texinfo/Translations.pm \
@@ -81,8 +82,7 @@ dist_noinst_DATA = \
  Texinfo/ModulePath.pm.in
 
 modules_DATA = \
- Texinfo/ModulePath.pm \
- Texinfo/Commands.pm
+ Texinfo/ModulePath.pm
 
 convertersdir = $(pkgdatadir)/Texinfo/Convert
 dist_converters_DATA = \
@@ -166,6 +166,7 @@ test_files = \
  t/include/inc_file.texi \
  t/include/incl-incl.txi \
  t/include/macro_included.texi \
+ t/include/only_comment.texi \
  t/include/section_file.texi \
  t/include/section_file_no_node.texi \
  t/include/section_file_no_node_include.texi \
@@ -337,9 +338,8 @@ Texinfo/ModulePath.pm: Texinfo/ModulePath.pm.in Makefile
 	    -e 's|[@]ICONV_CONVERTS_EUC_CN[@]|$(ICONV_CONVERTS_EUC_CN)|' \
 	  $(srcdir)/Texinfo/ModulePath.pm.in >$@
 
-Texinfo/Commands.pm: Texinfo/command_data.txt
-	$(MKDIR_P) Texinfo
-	$(srcdir)/maintain/regenerate_commands_perl_info.pl < $(srcdir)/Texinfo/command_data.txt
+$(srcdir)/Texinfo/Commands.pm: Texinfo/command_data.txt
+	$(srcdir)/maintain/regenerate_commands_perl_info.pl $(srcdir)/Texinfo/Commands.pm < $(srcdir)/Texinfo/command_data.txt
 
 libsrcdir = $(srcdir)/maintain/lib
 
@@ -385,4 +385,5 @@ distclean-local:
 	rm -rf po po_document
 
 CLEANFILES = texi2any makeinfo Texinfo/ModulePath.pm
-DISTCLEANFILES = maintain/catalog.xml Texinfo/Commands.pm
+DISTCLEANFILES = maintain/catalog.xml
+MAINTAINERCLEANFILES = Texinfo/Commands.pm

@@ -65,10 +65,6 @@ extern int errno;
 #include <perror.h>
 #endif
 
-#ifndef HAVE_DECL_STRERROR
-extern char *strerror ();
-#endif
-
 #include <limits.h>
 
 #ifndef PATH_MAX

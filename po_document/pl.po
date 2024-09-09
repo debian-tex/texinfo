@@ -1,14 +1,14 @@
 # Polish translation for texinfo_document
-# Copyright (C) 2013, 2017, 2021, 2022, 2023 Free Software Foundation, Inc.
+# Copyright (C) 2013, 2017, 2021, 2022, 2023, 2024 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2013-2023.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2013-2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 7.0.92\n"
+"Project-Id-Version: texinfo_document 7.1.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-10-18 14:21+0100\n"
-"PO-Revision-Date: 2023-09-26 18:23+0200\n"
+"POT-Creation-Date: 2024-09-07 18:40+0100\n"
+"PO-Revision-Date: 2024-06-09 09:02+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -844,18 +844,16 @@ msgstr "`{section}'"
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and is used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5670
-#, fuzzy, perl-brace-format
-#| msgid "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+#, perl-brace-format
 msgid "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
-msgstr "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+msgstr "@code{{main_index_entry}}, @emph{Patrz@:} @code{{seenentry}}"
 
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5677
-#, fuzzy, perl-brace-format
-#| msgid "{main_index_entry}, @emph{See} {seenentry}"
+#, perl-brace-format
 msgid "{main_index_entry}, @emph{See@:} {seenentry}"
-msgstr "{main_index_entry}, @emph{See} {seenentry}"
+msgstr "{main_index_entry}, @emph{Patrz@:} {seenentry}"
 
 #. TRANSLATORS: refer to another index entry
 #: tp/Texinfo/Convert/HTML.pm:5694

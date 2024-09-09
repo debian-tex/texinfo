@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the texinfo package.
 #
 #
-# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017, 2019, 2021, 2022.
+# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017, 2019, 2021, 2022, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU texinfo_document 7.0.92\n"
+"Project-Id-Version: GNU texinfo_document 7.1.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-10-18 14:21+0100\n"
-"PO-Revision-Date: 2023-09-20 10:48+0200\n"
+"POT-Creation-Date: 2024-09-07 18:40+0100\n"
+"PO-Revision-Date: 2024-06-16 18:03-0700\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -849,18 +849,16 @@ msgstr "„{section}“"
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and is used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5670
-#, fuzzy, perl-brace-format
-#| msgid "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+#, perl-brace-format
 msgid "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
-msgstr "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+msgstr "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
 
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5677
-#, fuzzy, perl-brace-format
-#| msgid "{main_index_entry}, @emph{See} {seenentry}"
+#, perl-brace-format
 msgid "{main_index_entry}, @emph{See@:} {seenentry}"
-msgstr "{main_index_entry}, @emph{See} {seenentry}"
+msgstr "{main_index_entry}, @emph{See@:} {seenentry}"
 
 #. TRANSLATORS: refer to another index entry
 #: tp/Texinfo/Convert/HTML.pm:5694

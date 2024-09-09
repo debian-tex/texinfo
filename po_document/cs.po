@@ -2,7 +2,7 @@
 # Copyright (C) 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 # Based on Czech translation of texinfo-6.0.90.
-# Petr Pisar <petr.pisar@atlas.cz>, 2015, 2016, 2017, 2021, 2022, 2023.
+# Petr Pisar <petr.pisar@atlas.cz>, 2015, 2016, 2017, 2021, 2022, 2023, 2024.
 #
 # Note: 2 messages untranslated, it's ok.
 # gnulib messages copied from gnulib-3.0.0.6062.a6b16.
@@ -17,10 +17,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 7.0.92\n"
+"Project-Id-Version: texinfo_document 7.1.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-10-18 14:21+0100\n"
-"PO-Revision-Date: 2023-09-26 21:13+02:00\n"
+"POT-Creation-Date: 2024-09-07 18:40+0100\n"
+"PO-Revision-Date: 2024-06-09 21:34+02:00\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -857,19 +857,17 @@ msgstr "„{section}“"
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and is used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5670
-#, fuzzy, perl-brace-format
-#| msgid "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+#, perl-brace-format
 msgid "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
-msgstr "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+msgstr "@code{{main_index_entry}}, @emph{Vizte@:} @code{{seenentry}}"
 
 # FIXME: "See" should be translatable, but gettext insists that it's an identifier.
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5677
-#, fuzzy, perl-brace-format
-#| msgid "{main_index_entry}, @emph{See} {seenentry}"
+#, perl-brace-format
 msgid "{main_index_entry}, @emph{See@:} {seenentry}"
-msgstr "{main_index_entry}, @emph{See} {seenentry}"
+msgstr "{main_index_entry}, @emph{Vizte@:} {seenentry}"
 
 #. TRANSLATORS: refer to another index entry
 #: tp/Texinfo/Convert/HTML.pm:5694

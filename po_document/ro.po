@@ -1,21 +1,22 @@
 # Mesajele în limba română pentru pachetul texinfo_document.
-# Copyright © 2022, 2023 Free Software Foundation, Inc.
+# Copyright © 2022, 2023, 2024 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
-# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022 - 2023.
+# Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>, 2022, 2023, 2024.
 #
 # Cronologia traducerii fișierului „texinfo_document”:
 # Traducerea inițială, făcută de R-GC, pentru versiunea texinfo_document 6.7.91, iun-2022.
 # Actualizare a traducerii pentru versiunea 6.8.90, făcută de R-GC, oct-2022.
 # Actualizare a traducerii pentru versiunea 7.0.92, făcută de R-GC, sep-2023.
+# Actualizare a traducerii pentru versiunea 7.1.0.90, făcută de R-GC, iun-2024.
 # Actualizare a traducerii pentru versiunea Y, făcută de X, Z(luna-anul).
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 7.0.92\n"
+"Project-Id-Version: texinfo_document 7.1.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-10-18 14:21+0100\n"
-"PO-Revision-Date: 2023-09-20 00:28+0200\n"
+"POT-Creation-Date: 2024-09-07 18:40+0100\n"
+"PO-Revision-Date: 2024-06-10 18:10+0200\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
 "n%100<=19) ? 1 : 2);\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #: tp/ext/epub3.pm:672
 msgid "Table of contents"
@@ -859,18 +860,16 @@ msgstr "„{section}“"
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and is used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5670
-#, fuzzy, perl-brace-format
-#| msgid "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+#, perl-brace-format
 msgid "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
-msgstr "@code{{main_index_entry}}, @emph{See} @code{{seenentry}}"
+msgstr "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
 
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5677
-#, fuzzy, perl-brace-format
-#| msgid "{main_index_entry}, @emph{See} {seenentry}"
+#, perl-brace-format
 msgid "{main_index_entry}, @emph{See@:} {seenentry}"
-msgstr "{main_index_entry}, @emph{See} {seenentry}"
+msgstr "{main_index_entry}, @emph{See@:} {seenentry}"
 
 #. TRANSLATORS: refer to another index entry
 #: tp/Texinfo/Convert/HTML.pm:5694

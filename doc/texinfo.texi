@@ -80,8 +80,8 @@ Texts.  A copy of the license is included in the section entitled
 
 @sp 1
 Published by the Free Software Foundation @*
-51 Franklin St, Fifth Floor @*
-Boston, MA 02110-1301 @*
+31 Milk St # 960789 @*
+Boston, MA 02196 @*
 USA @*
 ISBN 1-882114-67-1 @c for version 4.0, September 1999.
 @c ISBN 1-882114-65-5 is for version 3.12, March 1998.

@@ -1,0 +1,574 @@
+@node Texinfo@asis{::}Document
+@chapter Texinfo::Document
+
+@node Texinfo@asis{::}Document NAME
+@section Texinfo::Document NAME
+
+Texinfo::Document - Texinfo document tree and information
+
+@node Texinfo@asis{::}Document SYNOPSIS
+@section Texinfo::Document SYNOPSIS
+
+@verbatim
+  use Texinfo::Parser;
+
+  my $parser = Texinfo::Parser::parser();
+  my $document = $parser->parse_texi_file("somefile.texi");
+
+  my $indices_information = $document->indices_information();
+  my $float_types_arrays = $document->floats_information();
+  my $internal_references_array
+    = $parser->internal_references_information();
+
+  # $identifier_target is an hash reference on normalized
+  # node/float/anchor names.
+  my $identifier_target = $document->labels_information();
+
+  # A hash reference, keys are @-command names, value is an
+  # array reference holding all the corresponding @-commands.
+  # Also contains dircategory and direntry list.
+  my $global_commands_information
+                 = $document->global_commands_information();
+
+  # a hash reference on document information (encodings,
+  # input file name, for example).
+  my $global_information = $document->global_information();
+@end verbatim
+
+@node Texinfo@asis{::}Document NOTES
+@section Texinfo::Document NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Document DESCRIPTION
+@section Texinfo::Document DESCRIPTION
+
+This module is used to represent parsed Texinfo documents, with the Texinfo
+tree and associated information.  In general a document is obtained from
+a Texinfo parser call, there is no need to setup the document.
+
+@node Texinfo@asis{::}Document METHODS
+@section Texinfo::Document METHODS
+
+@node Texinfo@asis{::}Document Getting document information
+@subsection Getting document information
+
+The main purpose of Texinfo::Document methods is to retrieve information
+on a Texinfo document.
+
+The Texinfo tree obtained by parsing a Texinfo document is available through
+@code{tree}:
+
+@table @asis
+@item $tree = tree($document, $handler_only)
+@anchor{Texinfo@asis{::}Document $tree = tree($document@comma{} $handler_only)}
+@cindex @code{tree}
+
+The @emph{$tree} is a hash reference.  It is described in
+@ref{Texinfo@asis{::}Parser TEXINFO TREE}.
+
+If @emph{$handler_only} is set and XS extensions are used, the returned
+tree holds a reference to the C Texinfo tree data only, but no actual
+Perl Texinfo tree.  This avoids building the Perl tree if all the
+functions called with the tree as argument have XS interfaces and
+directly use the C data and do not use the Perl tree.
+
+@end table
+
+Some global information is available through @code{global_information}:
+
+@table @asis
+@item $info = global_information($document)
+@anchor{Texinfo@asis{::}Document $info = global_information($document)}
+@cindex @code{global_information}
+
+The @emph{$info} returned is a hash reference.  The possible keys are
+
+@table @asis
+@item included_files
+@anchor{Texinfo@asis{::}Document included_files}
+
+An array of included file paths as they appear in the document.  Binary
+strings.  From both @code{@@include} and @code{@@verbatiminclude}.
+
+@item input_encoding_name
+@anchor{Texinfo@asis{::}Document input_encoding_name}
+
+@item input_perl_encoding
+@anchor{Texinfo@asis{::}Document input_perl_encoding}
+
+@code{input_encoding_name} string is the encoding name used for the
+Texinfo code.
+@code{input_perl_encoding} string is a corresponding Perl encoding name.
+
+@item input_file_name
+@anchor{Texinfo@asis{::}Document input_file_name}
+
+@item input_directory
+@anchor{Texinfo@asis{::}Document input_directory}
+
+The name of the main Texinfo input file and the associated directory.
+Binary strings.  In @code{texi2any}, they should come from the command line
+(and can be decoded with the encoding in the customization variable
+@code{COMMAND_LINE_ENCODING}).
+
+@end table
+
+@end table
+
+Some command lists are available, such that it is possible to go through
+the corresponding tree elements without walking the tree.  They are
+available through @code{global_commands_information}:
+
+@table @asis
+@item $commands = global_commands_information($document)
+@anchor{Texinfo@asis{::}Document $commands = global_commands_information($document)}
+@cindex @code{global_commands_information}
+
+@emph{$commands} is an hash reference.  The keys are @@-command names.  The
+associated values are array references containing all the corresponding
+tree elements.
+
+The following list of commands is also available as a key:
+
+@table @asis
+@item dircategory_direntry
+@anchor{Texinfo@asis{::}Document dircategory_direntry}
+
+An array of successive @code{@@dircategory} and @code{@@direntry} as they appear
+in the document.
+
+@end table
+
+@end table
+
+All the @@-commands that have an associated label (so can be the
+target of cross references) @asis{}-@asis{}-@asis{} @code{@@node}, @code{@@anchor} and @code{@@float} with
+label @asis{}-@asis{}-@asis{} have a normalized name associated, constructed as described in the
+@emph{HTML Xref} node in the Texinfo documentation.  Those normalized labels and
+the association with @@-commands is available through @code{labels_information}:
+
+@table @asis
+@item $identifier_target = labels_information($document)
+@anchor{Texinfo@asis{::}Document $identifier_target = labels_information($document)}
+@cindex @code{labels_information}
+
+@emph{$identifier_target} is a hash reference whose keys are normalized
+labels, and the associated value is the corresponding @@-command.
+
+@item $labels_list = labels_list ($document)
+@anchor{Texinfo@asis{::}Document $labels_list = labels_list ($document)}
+@cindex @code{labels_list}
+
+@emph{$labels_list} is a list of Texinfo tree command elements that
+could be the target of cross references.
+
+@end table
+
+Information on @code{@@float} grouped by type of floats, each type corresponding
+to potential @code{@@listoffloats} is available through @code{floats_information}.
+
+@table @asis
+@item $float_types = floats_information($document)
+@anchor{Texinfo@asis{::}Document $float_types = floats_information($document)}
+@cindex @code{floats_information}
+
+@emph{$float_types} is a hash reference whose keys are normalized float
+types (the first float argument, or the @code{@@listoffloats} argument).
+The normalization is the same as for the first step of node names
+normalization. The value is the list of float tree elements appearing
+in the texinfo document.
+
+@end table
+
+Internal references, nodes and section lists may also be available.
+
+@table @asis
+@item $internal_references_array = internal_references_information($document)
+@anchor{Texinfo@asis{::}Document $internal_references_array = internal_references_information($document)}
+@cindex @code{internal_references_information}
+
+The function returns an array reference of cross-reference commands referring
+to the same document with @@-commands that refer to node, anchors or floats.
+
+@item $nodes_list = nodes_list($document)
+@anchor{Texinfo@asis{::}Document $nodes_list = nodes_list($document)}
+
+Returns an array reference containing the document nodes.  In general set to
+the nodes list returned by @ref{Texinfo@asis{::}Structuring $nodes_list = nodes_tree($document),, Texinfo::Structuring
+nodes_tree}, by a call
+to @ref{Texinfo@asis{::}Document register_document_nodes_list ($document@comma{}
+$nodes_list),, register_document_nodes_list}.
+
+@item $sections_list = sections_list($document)
+@anchor{Texinfo@asis{::}Document $sections_list = sections_list($document)}
+
+Returns an array reference containing the document sections.  In general set to the sections list returned by
+@ref{Texinfo@asis{::}Structuring $sections_list = sectioning_structure($document),, Texinfo::Structuring sectioning_structure},
+by a call to @ref{Texinfo@asis{::}Document register_document_sections_list ($document@comma{} $sections_list),, register_document_sections_list}.
+
+@end table
+
+Information about defined indices, indices merging and index entries is
+available through @code{indices_information}.
+
+@table @asis
+@item $indices_information = $document->indices_information()
+@anchor{Texinfo@asis{::}Document $indices_information = $document->indices_information()}
+@cindex @code{indices_information}
+
+@emph{$indices_information} is a hash reference.  The keys are
+
+@table @asis
+@item in_code
+@anchor{Texinfo@asis{::}Document in_code}
+
+1 if the index entries should be formatted as code, 0 in the opposite case.
+
+@item name
+@anchor{Texinfo@asis{::}Document name}
+
+The index name.
+
+@item prefix
+@anchor{Texinfo@asis{::}Document prefix}
+
+An array reference of prefix associated to the index.
+
+@item merged_in
+@anchor{Texinfo@asis{::}Document merged_in}
+
+In case the index is merged to another index, this key holds the name of
+the index the index is merged into.  It takes into account indirectly
+merged indices.
+
+@item index_entries
+@anchor{Texinfo@asis{::}Document index_entries}
+
+An array reference containing index entry structures for index entries
+associated with the index.  The index entry could be associated to
+@@-commands like @code{@@cindex}, or @code{@@item} in @code{@@vtable}, or definition
+commands entries like @code{@@deffn}.
+
+The keys of the index entry structures are
+
+@table @asis
+@item index_name
+@anchor{Texinfo@asis{::}Document index_name}
+
+The index name associated to the command.  Not modified if the corresponding
+index is merged in another index (with @code{@@synindex}, for example).
+
+@item entry_element
+@anchor{Texinfo@asis{::}Document entry_element}
+
+The element in the parsed tree associated with the @@-command holding the
+index entry.
+
+@item entry_number
+@anchor{Texinfo@asis{::}Document entry_number}
+
+The number of the index entry.
+
+@end table
+
+@end table
+
+The following shows the references corresponding to the default indexes
+@emph{cp} and @emph{fn}, the @emph{fn} index having its entries formatted as code and
+the indices corresponding to the following texinfo
+
+@verbatim
+  @defindex some
+  @defcodeindex code
+
+  $index_names = {'cp' => {'name' => 'cp', 'in_code' => 0, },
+                  'fn' => {'name' => 'fn', 'in_code' => 1, },
+                  'some' => {'in_code' => 0},
+                  'code' => {'in_code' => 1}};
+@end verbatim
+
+If @code{name} is not set, it is set to the index name.
+
+@end table
+
+@node Texinfo@asis{::}Document Merging and sorting indices
+@subsection Merging and sorting indices
+
+Merged and sorted document indices are also available.  Parsed indices
+are not merged nor sorted, @ref{Texinfo@asis{::}Indices NAME,, Texinfo::Indices} functions are
+called to merge or sort the indices the first time the following
+methods are called.  The results are afterwards associated to the
+document and simply returned.
+
+In general, those methods should not be called directly, instead
+@ref{Texinfo@asis{::}Convert@asis{::}Converter Index sorting} Converter methods should be
+used, which already call the following functions.
+
+@table @asis
+@item $merged_indices = $document->merged_indices()
+@anchor{Texinfo@asis{::}Document $merged_indices = $document->merged_indices()}
+@cindex @code{merged_indices}
+
+Merge indices if needed and return merged indices.  The @emph{$merged_indices}
+returned is a hash reference whose keys are the index names and values arrays
+of index entry structures described in @ref{Texinfo@asis{::}Document index_entries,, index_entries}.
+
+@ref{Texinfo@asis{::}Indices $merged_indices = merge_indices($indices_information),, @code{Texinfo::Indices::merge_indices}}
+is used to merge the indices.
+
+In general, it is not useful to call this function directly, as it is already
+called by index sorting functions.
+
+@item $sorted_indices = $document->sorted_indices_by_index($customization_information, $use_unicode_collation, $locale_lang)
+@anchor{Texinfo@asis{::}Document $sorted_indices = $document->sorted_indices_by_index($customization_information@comma{} $use_unicode_collation@comma{} $locale_lang)}
+
+@item $sorted_indices = $document->sorted_indices_by_letter($customization_information, $use_unicode_collation, $locale_lang)
+@anchor{Texinfo@asis{::}Document $sorted_indices = $document->sorted_indices_by_letter($customization_information@comma{} $use_unicode_collation@comma{} $locale_lang)}
+@cindex @code{sorted_indices_by_index}
+@cindex @code{sorted_indices_by_letter}
+
+@code{sorted_indices_by_letter} returns the indices sorted by index and letter,
+while @code{sorted_indices_by_index} returns the indices with all entries
+of an index together.
+
+By default, indices are sorted according to the @emph{Unicode Collation Algorithm}
+defined in the @url{http://www.unicode.org/reports/tr10/, Unicode Technical Standard
+#10}, without language-specific collation
+tailoring.  If @emph{$use_unicode_collation} is set to 0, the sorting will not use
+the @emph{Unicode Collation Algorithm} and simply sort according to the codepoints.
+If @emph{$locale_lang} is set, the language is used for linguistic tailoring of the
+sorting, if possible.
+
+When sorting by letter, an array reference of letter hash references is
+associated with each index name.  Each letter hash reference has two
+keys, a @emph{letter} key with the letter, and an @emph{entries} key with an array
+reference of sorted index entries beginning with the letter.  The letter
+is a character string suitable for sorting letters, but is not necessarily
+the best to use for output.
+
+When simply sorting, the array of the sorted index entries is associated
+with the index name.
+
+The optional @emph{$customization_information} argument is used for
+error reporting, both to find the @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} object to use for error
+reporting and Texinfo customization variables information.  In general, it
+should be a converter (@ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and setting
+customization variables}) or a document @ref{Texinfo@asis{::}Document Getting
+customization options values registered in document}).
+
+@ref{Texinfo@asis{::}Indices $index_entries_sorted = sort_indices_by_index($document@comma{} $registrar@comma{} $customization_information@comma{} $use_unicode_collation@comma{} $locale_lang),, @code{Texinfo::Indices::sort_indices_by_index}}
+and @ref{Texinfo@asis{::}Indices $index_entries_sorted = sort_indices_by_letter($document@comma{} $registrar@comma{} $customization_information@comma{} $use_unicode_collation@comma{} $locale_lang),, @code{Texinfo::Indices::sort_indices_by_letter}}
+are used to sort the indices, if needed.
+
+In general, those methods should not be called directly, instead
+@ref{Texinfo@asis{::}Convert@asis{::}Converter $sorted_indices = $converter->get_converter_indices_sorted_by_index(),, @code{Texinfo::Convert::Converter::get_converter_indices_sorted_by_index}}
+and @ref{Texinfo@asis{::}Convert@asis{::}Converter $sorted_indices = $converter->get_converter_indices_sorted_by_letter(),, @code{Texinfo::Convert::Converter::get_converter_indices_sorted_by_letter}}
+should be used.  The @code{Texinfo::Convert::Converter} methods call
+@code{sorted_indices_by_index} and @code{sorted_indices_by_letter}.
+
+@end table
+
+@node Texinfo@asis{::}Document Getting errors and error registering object
+@subsection Getting errors and error registering object
+
+A document has a @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} objet associated, that is used to
+register errors and warning messages in.  To get the errors registered
+in the document, the @code{errors} method should be called.
+It is also possible to get the document associated @code{Texinfo::Report} objet
+by calling the @code{registrar} accessor method.
+
+@table @asis
+@item $registrar = registrar($document)
+@anchor{Texinfo@asis{::}Document $registrar = registrar($document)}
+
+Returns the @code{Texinfo::Report} object associated with the @emph{$document}.
+
+In general, this is not needed as most functions use the document associated
+@code{Texinfo::Report} object automatically.  However, for some functions a
+@code{Texinfo::Report} object is passed in argument, being able to
+get the document registrar object is interesting in those cases.
+
+@item ($error warnings list, $error count) = errors($document)
+@anchor{Texinfo@asis{::}Document ($error warnings list@comma{} $error count) = errors($document)}
+
+This function returns as @emph{$error_count} the count of errors since setting
+up the @emph{$document} (or calling the function). The returned
+@emph{$error_warnings_list} is an array of hash references
+one for each error, warning or error line continuation.  The format of
+these hash references is described
+in @ref{Texinfo@asis{::}Report ($error_warnings_list@comma{} $error_count) = errors($registrar),, @code{Texinfo::Report::errors}}.
+
+@end table
+
+@node Texinfo@asis{::}Document Getting customization options values registered in document
+@subsection Getting customization options values registered in document
+
+By default, customization information is registered in a document object
+just after parsing the Texinfo code. Structuring and tree transformation
+methods then get customization variables values from the document object
+they have in argument. The customization variables set by default may be a
+subset selected to be useful for structuring and tree transformation codes.
+
+To retrieve Texinfo customization variables you can call @code{get_conf}:
+
+@table @asis
+@item $value = $document->get_conf($variable_name)
+@anchor{Texinfo@asis{::}Document $value = $document->get_conf($variable_name)}
+
+Returns the value of the Texinfo customization variable @emph{$variable_name}
+(possibly @code{undef}), if the variable value was registered in the document,
+or @code{undef}.
+
+@end table
+
+@node Texinfo@asis{::}Document Registering document and information in document
+@subsection Registering document and information in document
+
+The setup of a document is described next, it should only be used in
+parsers codes.
+
+@table @asis
+@item $document = Texinfo::Document::register($tree, $global_information, $indices_information, $floats_information, $internal_references_information, $global_commands_information, $identifier_target, $labels_list, $parser_registrar)
+@anchor{Texinfo@asis{::}Document $document = Texinfo@asis{::}Document@asis{::}register($tree@comma{} $global_information@comma{} $indices_information@comma{} $floats_information@comma{} $internal_references_information@comma{} $global_commands_information@comma{} $identifier_target@comma{} $labels_list@comma{} $parser_registrar)}
+
+Setup a document. There is no reason to call this method out of parsers, as
+it is already done by the Texinfo parsers.  The arguments are gathered
+during parsing and correspond to information returned by the other methods.
+
+@end table
+
+Further information can be registered in the document.
+
+@table @asis
+@item register_document_nodes_list ($document, $nodes_list)
+@anchor{Texinfo@asis{::}Document register_document_nodes_list ($document@comma{} $nodes_list)}
+@cindex @code{register_document_nodes_list}
+
+Register the @emph{$nodes_list} array reference as @emph{$document} nodes
+list.  This method should be called after the processing of document
+structure.
+
+@item register_document_options ($document, $options)
+@anchor{Texinfo@asis{::}Document register_document_options ($document@comma{} $options)}
+@cindex @code{register_document_options}
+
+The @emph{$options} hash reference holds options for the document. These options
+should be Texinfo customization options.  Usually, the options registered in
+the document contain those useful for structuring and tree transformation
+getting place between Texinfo code parsing and conversion to output formats.
+Indeed, document customization options are mainly accessed by structuring and
+tree transformation methods (by calling @ref{Texinfo@asis{::}Document $value = $document->get_conf($variable_name),, @code{get_conf}}). The options should in general be registered before
+the calls to @code{get_conf}.
+
+@item register_document_sections_list ($document, $sections_list)
+@anchor{Texinfo@asis{::}Document register_document_sections_list ($document@comma{} $sections_list)}
+@cindex @code{register_document_sections_list}
+
+Register the @emph{$sections_list} array reference as @emph{$document} sections
+list.  This method should be called after the processing of document
+structure.
+
+@item set_document_global_info($document, $key, $value)
+@anchor{Texinfo@asis{::}Document set_document_global_info($document@comma{} $key@comma{} $value)}
+@cindex @code{set_document_global_info}
+
+Add @emph{$value} @emph{$key} global information to @emph{$document}.  This method
+should not be generally useful, as document global information is already
+set by the Texinfo parser.  The information set should be available through
+the next calls to @ref{Texinfo@asis{::}Document $info = global_information($document),, global_information}.
+The method should in general be called before the calls to
+@code{global_information}.
+
+@end table
+
+@node Texinfo@asis{::}Document Methods for Perl and C code interactions
+@subsection Methods for Perl and C code interactions
+
+The parsing of Texinfo code, structuring and transformations of the tree
+called through Texinfo Perl modules may be done by pure Perl modules or
+by C code called through XS interfaces.  In general, it makes no difference
+whether pure Perl or C code is used.  When the document and tree are
+modified by C code, the Perl structures are automatically rebuilt when
+calling the accessors described previously.  In some cases, however, specific
+functions need to be called to pass information from C to Perl or perform
+actions related to C data.
+
+The methods can always be called on pure Perl modules even if they do nothing.
+Therefore it is, in general, better to call them assuming that modules
+setting up C data were called, even when it is not the case.
+
+First, @code{document_descriptor} can be called to get the document identifier
+document used by C code to retrieve the document data in C.  In general
+this identifier is directly and transparently taken from the document, but may
+need to be set on other objects in rare cases.
+
+@table @asis
+@item $document_descriptor = $document->document_descriptor()
+@anchor{Texinfo@asis{::}Document $document_descriptor = $document->document_descriptor()}
+@cindex @code{document_descriptor}
+
+Returns the document descriptor if the document is available as C data,
+0 or @code{undef} if not.
+
+@end table
+
+When the tree is directly accessed in Perl (not through a document)
+but is modified by C code, for instance called through @ref{Texinfo@asis{::}Common NAME,, Texinfo::Common} or
+@ref{Texinfo@asis{::}Transformations NAME,, Texinfo::Transformations} methods, the Perl structures need to be rebuilt
+from the C data with @code{rebuild_tree}:
+
+@table @asis
+@item $rebuilt_tree = rebuild_tree($tree, $no_store)
+@anchor{Texinfo@asis{::}Document $rebuilt_tree = rebuild_tree($tree@comma{} $no_store)}
+@cindex @code{rebuild_tree}
+
+Return a @emph{$rebuilt_tree}, rebuilt from C data if needed.  If there
+is no C data, the tree is returned as is.  The tree rebuilt is
+based on the Texinfo parsed document associated to the Texinfo
+tree @emph{$tree}.
+
+If the optional @emph{$no_store} argument is set, remove the C data.
+
+@end table
+
+Note that the Perl tree associated to a document is rebuilt from C data
+when calling @code{$document->tree()}.  Similarly, the tree is rebuilt when
+calling other accessors that depend on the document tree.  Therefore
+@code{rebuild_tree} should only be called when there is no document associated to a
+tree and @code{$document->tree()} cannot be called to rebuild the tree.
+
+Some methods allow to release the memory held by C data associated
+to a Texinfo parsed document:
+
+@table @asis
+@item remove_document($document)
+@anchor{Texinfo@asis{::}Document remove_document($document)}
+@cindex @code{remove_document}
+
+Remove the C data corresponding to @emph{$document}.
+
+@end table
+
+@node Texinfo@asis{::}Document SEE ALSO
+@section Texinfo::Document SEE ALSO
+
+@ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser}. @ref{Texinfo@asis{::}Structuring NAME,, Texinfo::Structuring}.
+
+@node Texinfo@asis{::}Document AUTHOR
+@section Texinfo::Document AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Document COPYRIGHT AND LICENSE
+@section Texinfo::Document COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

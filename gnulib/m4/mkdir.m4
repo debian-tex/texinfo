@@ -1,9 +1,9 @@
-# serial 19
-
-# Copyright (C) 2001, 2003-2004, 2006, 2008-2023 Free Software Foundation, Inc.
-# This file is free software; the Free Software Foundation
-# gives unlimited permission to copy and/or distribute it,
-# with or without modifications, as long as this notice is preserved.
+# mkdir.m4
+# serial 20
+dnl Copyright (C) 2001, 2003-2004, 2006, 2008-2024 Free Software Foundation, Inc.
+dnl This file is free software; the Free Software Foundation
+dnl gives unlimited permission to copy and/or distribute it,
+dnl with or without modifications, as long as this notice is preserved.
 
 # On some systems, mkdir ("foo/", 0700) fails because of the trailing slash.
 # On others, mkdir ("foo/./", 0700) mistakenly succeeds.
@@ -32,7 +32,6 @@ AC_DEFUN([gl_FUNC_MKDIR],
                              # Guess yes on glibc systems.
           *-gnu* | gnu*)     gl_cv_func_mkdir_trailing_slash_works="guessing yes" ;;
                              # Guess yes on MSVC, no on mingw.
-          windows*-gnu*)     gl_cv_func_mkdir_trailing_slash_works="guessing no" ;;
           windows*-msvc*)    gl_cv_func_mkdir_trailing_slash_works="guessing yes" ;;
           mingw* | windows*) AC_EGREP_CPP([Known], [
 #ifdef _MSC_VER

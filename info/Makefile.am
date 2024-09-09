@@ -35,6 +35,10 @@ LDADD += $(HARD_LOCALE_LIB) $(SETLOCALE_NULL_LIB)
 # for mbrtowc gnulib module which is brought in indirectly
 LDADD += $(MBRTOWC_LIB)
 
+# Needed if make has not run in the "gnulib" directory yet
+../gnulib/lib/libgnu.a:
+	cd ../gnulib/lib && $(MAKE) $(AM_MAKEFLAGS)
+
 EXTRA_DIST = pcterm.c
 
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \

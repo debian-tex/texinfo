@@ -168,6 +168,9 @@ init_interactive_test ()
   LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 }
 
+# test timeouts in seconds
+true ${TEXINFO_INFO_TESTS_TIMEOUT:=10}
+
 run_ginfo ()
 {
   init_interactive_test
@@ -177,6 +180,6 @@ run_ginfo ()
     exec $ginfo "$@" 0<>$pts_device 1<&0 ;
   ) &
   ginfo_pid=$!
-  (sleep 5 ; kill $ginfo_pid) &
+  (sleep $TEXINFO_INFO_TESTS_TIMEOUT ; kill $ginfo_pid) &
   killer_pid=$!
 }

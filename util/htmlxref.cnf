@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2023-04-02.12; # UTC
+htmlxrefversion=2024-08-25.10; # UTC
 
-# Copyright 2010-2023 Free Software Foundation, Inc.
+# Copyright 2010-2024 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -20,7 +20,7 @@ htmlxrefversion=2023-04-02.12; # UTC
 # - have a unique file name (e.g., manual identifier), i.e., be related to the
 #   package name.  Things like "refman" or "tutorial" don't work.
 # - follow the naming convention for nodes described at
-# http://www.gnu.org/software/texinfo/manual/texinfo/html_node/HTML-Xref.html
+# https://www.gnu.org/software/texinfo/manual/texinfo/html_node/HTML-Xref.html
 #   This is what makeinfo and texi2html implement.
 # 
 # Unless the above criteria are met, it's not possible to generate
@@ -174,6 +174,9 @@ emacs		node	${EMACS}/html_node/emacs/
  ediff		mono	${EMACS}/html_mono/ediff.html
  ediff		node	${EMACS}/html_node/ediff/
  #
+ eglot		mono	${EMACS}/html_mono/eglot.html
+ eglot		node	${EMACS}/html_node/eglot/
+ #
  eieio		mono	${EMACS}/html_mono/eieio.html
  eieio		node	${EMACS}/html_node/eieio/
  #
@@ -282,8 +285,8 @@ emacs		node	${EMACS}/html_node/emacs/
  sieve		mono	${EMACS}/html_mono/sieve.html
  sieve		node	${EMACS}/html_node/sieve/
  #
- smtp		mono	${EMACS}/html_mono/smtpmail.html
- smtp		node	${EMACS}/html_node/smtpmail/
+ smtpmail	mono	${EMACS}/html_mono/smtpmail.html
+ smtpmail	node	${EMACS}/html_node/smtpmail/
  #
  speedbar	mono	${EMACS}/html_mono/speedbar.html
  speedbar	node	${EMACS}/html_node/speedbar/
@@ -299,6 +302,9 @@ emacs		node	${EMACS}/html_node/emacs/
  #
  url		mono	${EMACS}/html_mono/url.html
  url		node	${EMACS}/html_node/url/
+ #
+ use-package   mono    ${EMACS}/html_mono/use-package.html
+ use-package   node    ${EMACS}/html_node/use-package/
  #
  vhdl-mode	mono	${EMACS}/html_mono/vhdl-mode.html
  vhdl-mode	node	${EMACS}/html_node/vhdl-mode/
@@ -656,13 +662,14 @@ pspp		node	${GS}/pspp/manual/html_node/
 pyconfigure	mono	${GS}/pyconfigure/manual/pyconfigure.html
 pyconfigure	node	${GS}/pyconfigure/manual/html_node/
 
-R = https://cran.r-project.org/doc/manuals
+R = https://CRAN.R-project.org/doc/manuals
  R-intro	mono	${R}/R-intro.html
  R-lang		mono	${R}/R-lang.html
  R-exts		mono	${R}/R-exts.html
  R-data		mono	${R}/R-data.html
  R-admin	mono	${R}/R-admin.html
  R-ints		mono	${R}/R-ints.html
+ R-FAQ		mono	${R}/R-FAQ.html
 
 rcs		mono	${GS}/rcs/manual/rcs.html
 rcs		node	${GS}/rcs/manual/html_node/

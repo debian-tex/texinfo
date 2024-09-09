@@ -117,7 +117,7 @@ sub import {
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.1';
+$VERSION = '7.1.1';
 
 
 # these are the default values for the parser state
@@ -3813,11 +3813,12 @@ sub _end_line_misc_line($$$)
       } else {
         $source_mark = { 'sourcemark_type' => $command };
       }
-      # this is in order to keep source marks that are within a
-      # removed element.  For the XS parser it is also easier to
+      # keep the elements, also keeping source marks that are within
+      # removed elements.  For the XS parser it is also easier to
       # manage the source mark memory which can stay associated
       # to the element.
       my $removed_element = _pop_element_from_contents($self, $current);
+      delete $removed_element->{'parent'};
       $source_mark->{'element'} = $removed_element;
       _register_source_mark($self, $current, $source_mark);
     }

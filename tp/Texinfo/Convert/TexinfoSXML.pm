@@ -31,7 +31,7 @@ use Carp qw(cluck);
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::TexinfoMarkup);
 
-$VERSION = '7.1';
+$VERSION = '7.1.1';
 
 
 # SXML specific

@@ -53,32 +53,33 @@ extern int tputs ();
    function is called when appropriate instead of its namesake.  Your
    function is called with exactly the same arguments that were passed
    to the namesake function. */
-VFunction *terminal_begin_inverse_hook = NULL;
-VFunction *terminal_end_inverse_hook = NULL;
-VFunction *terminal_begin_standout_hook = NULL;
-VFunction *terminal_end_standout_hook = NULL;
-VFunction *terminal_begin_underline_hook = NULL;
-VFunction *terminal_end_underline_hook = NULL;
-VFunction *terminal_begin_bold_hook = NULL;
-VFunction *terminal_begin_blink_hook = NULL;
-VFunction *terminal_end_all_modes_hook = NULL;
-VFunction *terminal_default_colour_hook = NULL;
-VFunction *terminal_set_colour_hook = NULL;
-VFunction *terminal_set_bgcolour_hook = NULL;
-VFunction *terminal_prep_terminal_hook = NULL;
-VFunction *terminal_unprep_terminal_hook = NULL;
-VFunction *terminal_up_line_hook = NULL;
-VFunction *terminal_down_line_hook = NULL;
-VFunction *terminal_clear_screen_hook = NULL;
-VFunction *terminal_clear_to_eol_hook = NULL;
-VFunction *terminal_get_screen_size_hook = NULL;
-VFunction *terminal_goto_xy_hook = NULL;
-VFunction *terminal_initialize_terminal_hook = NULL;
-VFunction *terminal_new_terminal_hook = NULL;
-VFunction *terminal_put_text_hook = NULL;
-VFunction *terminal_ring_bell_hook = NULL;
-VFunction *terminal_write_chars_hook = NULL;
-VFunction *terminal_scroll_terminal_hook = NULL;
+
+void (*terminal_initialize_terminal_hook) (char *terminal_name) = NULL;
+void (*terminal_get_screen_size_hook) (void) = NULL;
+int (*terminal_prep_terminal_hook) (void) = NULL;
+void (*terminal_unprep_terminal_hook) (void) = NULL;
+void (*terminal_new_terminal_hook) (char *terminal_name) = NULL;
+void (*terminal_goto_xy_hook) (int x, int y) = NULL;
+void (*terminal_put_text_hook) (char *string) = NULL;
+void (*terminal_write_chars_hook) (char *string, int nchars) = NULL;
+void (*terminal_clear_to_eol_hook) (void) = NULL;
+void (*terminal_clear_screen_hook) (void) = NULL;
+void (*terminal_up_line_hook) (void) = NULL;
+void (*terminal_down_line_hook) (void) = NULL;
+void (*terminal_begin_inverse_hook) (void) = NULL;
+void (*terminal_end_inverse_hook) (void) = NULL;
+void (*terminal_begin_standout_hook) (void) = NULL;
+void (*terminal_end_standout_hook) (void) = NULL;
+void (*terminal_begin_underline_hook) (void) = NULL;
+void (*terminal_end_underline_hook) (void) = NULL;
+void (*terminal_scroll_terminal_hook) (int start, int end, int amount) = NULL;
+void (*terminal_ring_bell_hook) (void) = NULL;
+void (*terminal_begin_bold_hook) (void) = NULL;
+void (*terminal_begin_blink_hook) (void) = NULL;
+void (*terminal_default_colour_hook) (void) = NULL;
+void (*terminal_set_colour_hook) (int) = NULL;
+void (*terminal_set_bgcolour_hook) (int) = NULL;
+void (*terminal_end_all_modes_hook) (void) = NULL;
 
 /* User variable 'mouse'.  Values can be MP_* constants in terminal.h. */
 int mouse_protocol = MP_NONE;

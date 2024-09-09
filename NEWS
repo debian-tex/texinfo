@@ -9,6 +9,24 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+7.1.1 (7 September 2024)
+This is a bug-fix release with minimal changes.
+
+* texi2any
+  . fix potential crash when @include is used inside a table
+  . do not complain about presence of @anchor inside @item in a table
+  . C source files that are generated from *.xs files are no no longer
+    distributed, so xsubpp from Perl is needed to build XS modules.
+  . fix bug that led to memory alignment error on SPARC
+  . performance improvement and fixes for MinGW
+  . test failures due to floating point rounding error fixed (observed
+    on IBM POWER9 processor)
+
+* info
+  . crash when setting style to invalid value fixed
+  . potential call of memcpy with null argument fixed
+
+
 7.1 (18 October 2023)
 * Language
  . new generic definition commands, @defblock, @defline and @deftypeline,

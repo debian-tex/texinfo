@@ -35,7 +35,7 @@ This @command{texindex} program (version @VERSION@, @UPDATED@) sorts the
 raw index files created by @file{texinfo.tex}.  (This Texinfo source is
 a literate program written using TexiWeb@tie{}Jr., not a user manual.)
 
-Copyright @copyright{} 2014-2023 Free Software Foundation, Inc.
+Copyright @copyright{} 2014-2024 Free Software Foundation, Inc.
 
 @quotation
 This program is free software: you can redistribute it and/or modify
@@ -1877,7 +1877,7 @@ Every program needs a copyright statement.
 
 @<GPL v3 copyright statement@>=
 #
-# Copyright 2014-2023 Free Software Foundation, Inc.
+# Copyright 2014-2024 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Texinfo.
 # 
@@ -2202,7 +2202,7 @@ function version()
 {
 	print "texindex (GNU texinfo)", Texindex_version
 	print ""
-	printf _"Copyright (C) %s Free Software Foundation, Inc.\n", "2023"
+	printf _"Copyright (C) %s Free Software Foundation, Inc.\n", "2024"
 	print _"License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>"
 	print _"This is free software: you are free to change and redistribute it."
 	print _"There is NO WARRANTY, to the extent permitted by law."

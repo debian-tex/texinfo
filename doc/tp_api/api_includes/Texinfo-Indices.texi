@@ -1,0 +1,196 @@
+@node Texinfo@asis{::}Indices
+@chapter Texinfo::Indices
+
+@node Texinfo@asis{::}Indices NAME
+@section Texinfo::Indices NAME
+
+Texinfo::Indices - merging and sorting indices from Texinfo
+
+@node Texinfo@asis{::}Indices SYNOPSIS
+@section Texinfo::Indices SYNOPSIS
+
+@verbatim
+  use Texinfo::Indices;
+
+  # $document is a parsed Texinfo::Document document.
+  my $indices_information = $document->indices_information();
+  my $merged_index_entries
+     = Texinfo::Indices::merge_indices($indices_information);
+
+  # $registrar is a Texinfo::Report object.  $config is an object
+  # implementing the get_conf() method.
+  my $index_entries_sorted;
+  if ($sort_by_letter) {
+    $index_entries_sorted
+      = Texinfo::Indices::sort_indices_by_letter($document, $registrar,
+                                                   $config);
+  } else {
+    $index_entries_sorted
+      = Texinfo::Indices::sort_indices_by_index($document, $registrar,
+                                                  $config);
+  }
+@end verbatim
+
+@node Texinfo@asis{::}Indices NOTES
+@section Texinfo::Indices NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}Indices DESCRIPTION
+@section Texinfo::Indices DESCRIPTION
+
+@code{merge_indices} may be used to merge indices.  Document indices may be sorted
+with @code{sort_indices_by_index} or @code{sort_indices_by_letter}.  Other functions
+deal with formatting of index entries as text or getting information on
+index entry.
+
+Note that, in general, the functions used to merge or sort indices
+should not be called directly, corresponding functions
+in @ref{Texinfo@asis{::}Document NAME,, Texinfo::Document} already call the functions in this module, and,
+in addition, cache the result with the document.  Furthermore, it should
+be even better to call converter functions, which call document functions.
+
+@node Texinfo@asis{::}Indices METHODS
+@section Texinfo::Indices METHODS
+
+No method is exported.
+
+@table @asis
+@item $sort_string = index_entry_element_sort_string($document_info, $main_entry, $index_entry_element, $options, $prefer_reference_element)
+@anchor{Texinfo@asis{::}Indices $sort_string = index_entry_element_sort_string($document_info@comma{} $main_entry@comma{} $index_entry_element@comma{} $options@comma{} $prefer_reference_element)}
+@cindex @code{index_entry_element_sort_string}
+
+Return a string suitable as a sort string, for index entries.
+@emph{$document_info} is used by C code to retrieve the document data,
+using the @code{document_descriptor} key.  @emph{$document_info} can be a
+converter based on @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}, a @ref{Texinfo@asis{::}Document NAME,, Texinfo::Document}
+document, otherwise @code{document_descriptor} need, in general, to be
+set up explicitely.
+
+The tree element index entry processed is @emph{$index_entry_element},
+and can be a @code{@@subentry}.  @emph{$main_entry} is the main index entry
+that can be used to gather information.
+
+The @emph{$options} are options used for Texinfo to text conversion for the
+generation of the sort string.  If the sort string is supposed to be output,
+the @emph{$options} are typically obtained from
+@ref{Texinfo@asis{::}Indices $option = setup_index_entry_keys_formatting($customization_information),, setup_index_entry_keys_formatting}.
+
+If @emph{$prefer_reference_element} is set, prefer an untranslated
+element for the formatting as sort string.
+
+@item ($text, $command) = index_entry_first_letter_text_or_command($index_entry)
+@anchor{Texinfo@asis{::}Indices ($text@comma{} $command) = index_entry_first_letter_text_or_command($index_entry)}
+
+Return the @emph{$index_entry} leading text @emph{$text} or textual command Texinfo
+tree hash reference @emph{$command}.  Here textual commands means accent
+commands, brace commands without arguments used for character and glyph
+insertion and @code{@@U}.
+
+This method can in particular be used to format the leading letter
+of an index entry using @emph{$command} instead of the sort string set by
+@code{sort_indices_by_letter}.
+
+@item $merged_indices = merge_indices($indices_information)
+@anchor{Texinfo@asis{::}Indices $merged_indices = merge_indices($indices_information)}
+@cindex @code{merge_indices}
+
+Returns a structure holding all the index entries by index name
+with all the entries of merged indices merged with those of the indice
+merged into.  The @emph{$indices_information} argument should be an hash reference
+with indices information, it is described in details in
+@ref{Texinfo@asis{::}Document $indices_information = $document->indices_information(),, @code{Texinfo::Document::indices_information}}.
+
+The @emph{$merged_indices} returned is a hash reference whose
+keys are the index names and values arrays of index entry structures
+described in details in @ref{Texinfo@asis{::}Document index_entries}.
+
+In general, this method should not be called directly, instead
+@ref{Texinfo@asis{::}Document $merged_indices = $document->merged_indices(),, @code{Texinfo::Document::merged_indices}}
+should be called on a document, which calls @code{merge_indices} if needed and
+associate the merged indices to the document.
+
+@item $option = setup_index_entry_keys_formatting($customization_information)
+@anchor{Texinfo@asis{::}Indices $option = setup_index_entry_keys_formatting($customization_information)}
+@cindex @code{setup_index_entry_keys_formatting}
+
+Return options relevant for index keys sorting for conversion of Texinfo
+to text to be output.
+
+@item $index_entries_sorted = sort_indices_by_index($document, $registrar, $customization_information, $use_unicode_collation, $locale_lang)
+@anchor{Texinfo@asis{::}Indices $index_entries_sorted = sort_indices_by_index($document@comma{} $registrar@comma{} $customization_information@comma{} $use_unicode_collation@comma{} $locale_lang)}
+
+@item $index_entries_sorted = sort_indices_by_letter($document, $registrar, $customization_information, $use_unicode_collation, $locale_lang)
+@anchor{Texinfo@asis{::}Indices $index_entries_sorted = sort_indices_by_letter($document@comma{} $registrar@comma{} $customization_information@comma{} $use_unicode_collation@comma{} $locale_lang)}
+@cindex @code{sort_indices_by_index}
+@cindex @code{sort_indices_by_letter}
+
+@code{sort_indices_by_letter} sorts by index and letter, while
+@code{sort_indices_by_index} sort all entries of an index together.
+Indices are obtained from @emph{$document}, and should have been merged
+previously, in general by using
+@ref{Texinfo@asis{::}Document $merged_indices = $document->merged_indices(),, @code{Texinfo::Document::merged_indices}}.
+In both cases, a hash reference with index names as keys @emph{$index_entries_sorted}
+is returned.
+
+By default, indices are sorted according to the @emph{Unicode Collation Algorithm}
+defined in the @url{http://www.unicode.org/reports/tr10/, Unicode Technical Standard
+#10}, without language-specific collation
+tailoring.  If @emph{$use_unicode_collation} is set to 0, the sorting will not use
+the @emph{Unicode Collation Algorithm} and simply sort according to the codepoints.
+If @emph{$locale_lang} is set, the language is used for linguistic tailoring of the
+sorting, if possible.
+
+When sorting by letter, an array reference of letter hash references is
+associated with each index name.  Each letter hash reference has two
+keys, a @emph{letter} key with the letter, and an @emph{entries} key with an array
+reference of sorted index entries beginning with the letter.  The letter
+is a character string suitable for sorting letters, but is not necessarily
+the best to use for output.
+
+When simply sorting, the array of the sorted index entries is associated
+with the index name.
+
+The @emph{$registrar} argument can be set to a @ref{Texinfo@asis{::}Report NAME,, Texinfo::Report} object.
+Error reporting also requires Texinfo customization variables
+information, which means an object implementing the @code{get_conf} method, a
+converter (@ref{Texinfo@asis{::}Convert@asis{::}Converter Getting and setting customization
+variables}) or a document @ref{Texinfo@asis{::}Document Getting customization options
+values registered in document}) as @emph{$customization_information} argument.  If
+the @emph{$registrar} argument is not set, the object used to get customization
+information is assumed to be a converter, and the error reporting uses
+converters error messages reporting functions
+(@ref{Texinfo@asis{::}Convert@asis{::}Converter Registering error and warning messages}).
+
+In general, those methods should not be called directly, instead
+@ref{Texinfo@asis{::}Document $sorted_indices = $document->sorted_indices_by_index($customization_information@comma{} $use_unicode_collation@comma{} $locale_lang),, @code{Texinfo::Document::sorted_indices_by_index}}
+or @ref{Texinfo@asis{::}Document $sorted_indices = $document->sorted_indices_by_letter($customization_information@comma{} $use_unicode_collation@comma{} $locale_lang),, @code{Texinfo::Document::sorted_indices_by_letter}}
+should be called on a document. The @code{Texinfo::Document} functions call
+@code{sort_indices_by_index} or @code{sort_indices_by_letter} if needed and associate
+the sorted indices to the document.
+
+@end table
+
+@node Texinfo@asis{::}Indices SEE ALSO
+@section Texinfo::Indices SEE ALSO
+
+@url{http://www.gnu.org/s/texinfo/manual/texinfo/, Texinfo manual},
+@ref{Texinfo@asis{::}Document NAME,, Texinfo::Document}.
+
+@node Texinfo@asis{::}Indices AUTHOR
+@section Texinfo::Indices AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}Indices COPYRIGHT AND LICENSE
+@section Texinfo::Indices COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

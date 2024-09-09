@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 6.4.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-10-18 14:21+0100\n"
+"POT-Creation-Date: 2024-09-07 18:40+0100\n"
 "PO-Revision-Date: 2018-01-20 14:27+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -31,7 +31,6 @@ msgid "{explained_string} ({explanation})"
 msgstr "{explained_string} ({explanation})"
 
 #: tp/Texinfo/Common.pm:638
-#| msgid "Function"
 msgctxt "category of functions for @defun"
 msgid "Function"
 msgstr "Függvény"
@@ -47,7 +46,6 @@ msgid "Special Form"
 msgstr "Speciális űrlap"
 
 #: tp/Texinfo/Common.pm:645
-#| msgid "Variable"
 msgctxt "category of variables for @defvar"
 msgid "Variable"
 msgstr "Változó"
@@ -58,26 +56,22 @@ msgid "User Option"
 msgstr "Felhasználói beállítás"
 
 #: tp/Texinfo/Common.pm:650
-#| msgid "Function"
 msgctxt "category of functions for @deftypefun"
 msgid "Function"
 msgstr "Függvény"
 
 #: tp/Texinfo/Common.pm:653
-#| msgid "Variable"
 msgctxt "category of variables in typed languages for @deftypevar"
 msgid "Variable"
 msgstr "Változó"
 
 #: tp/Texinfo/Common.pm:656
-#| msgid "Instance Variable"
 msgctxt ""
 "category of instance variables in object-oriented programming for @defivar"
 msgid "Instance Variable"
 msgstr "Példányváltozó"
 
 #: tp/Texinfo/Common.pm:659
-#| msgid "Instance Variable"
 msgctxt ""
 "category of instance variables with data type in object-oriented programming "
 "for @deftypeivar"
@@ -85,13 +79,11 @@ msgid "Instance Variable"
 msgstr "Példányváltozó"
 
 #: tp/Texinfo/Common.pm:662
-#| msgid "Method"
 msgctxt "category of methods in object-oriented programming for @defmethod"
 msgid "Method"
 msgstr "Metódus"
 
 #: tp/Texinfo/Common.pm:665
-#| msgid "Method"
 msgctxt ""
 "category of methods with data type in object-oriented programming for "
 "@deftypemethod"
@@ -468,379 +460,316 @@ msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "@tie{}-- {category} - {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/HTML.pm:2010
-#| msgid "About This Document"
 msgctxt "about section heading"
 msgid "About This Document"
 msgstr "Ezen dokumentum névjegye"
 
 #: tp/Texinfo/Convert/HTML.pm:2012
-#| msgid "Table of Contents"
 msgctxt "contents section heading"
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
 #: tp/Texinfo/Convert/HTML.pm:2015
-#| msgid "Short Table of Contents"
 msgctxt "shortcontents section heading"
 msgid "Short Table of Contents"
 msgstr "Rövid tartalomjegyzék"
 
 #: tp/Texinfo/Convert/HTML.pm:2017
-#| msgid "Footnotes"
 msgctxt "footnotes section heading"
 msgid "Footnotes"
 msgstr "Lábjegyzet"
 
 #: tp/Texinfo/Convert/HTML.pm:2121
-#| msgid "Top"
 msgctxt "Top direction string"
 msgid "Top"
 msgstr "Címoldal"
 
 #: tp/Texinfo/Convert/HTML.pm:2123
-#| msgid "Contents"
 msgctxt "Contents direction string"
 msgid "Contents"
 msgstr "Tartalom"
 
 #: tp/Texinfo/Convert/HTML.pm:2126
-#| msgid "Overview"
 msgctxt "Overview direction string"
 msgid "Overview"
 msgstr "Áttekintés"
 
 #: tp/Texinfo/Convert/HTML.pm:2128
-#| msgid "Index"
 msgctxt "Index direction string"
 msgid "Index"
 msgstr "Tárgymutató"
 
 #: tp/Texinfo/Convert/HTML.pm:2131
-#| msgid "current"
 msgctxt "This (current section) direction string"
 msgid "current"
 msgstr "jelenlegi"
 
 #: tp/Texinfo/Convert/HTML.pm:2135
-#| msgid "Prev"
 msgctxt "Prev direction string"
 msgid "Prev"
 msgstr "Előző"
 
 #: tp/Texinfo/Convert/HTML.pm:2137
-#| msgid " Up "
 msgctxt "Up direction string"
 msgid " Up "
 msgstr " Fel "
 
 #: tp/Texinfo/Convert/HTML.pm:2139
-#| msgid "Next"
 msgctxt "Next direction string"
 msgid "Next"
 msgstr "Következő"
 
 #: tp/Texinfo/Convert/HTML.pm:2141
-#| msgid "Up"
 msgctxt "NodeUp direction string"
 msgid "Up"
 msgstr "Fel"
 
 #: tp/Texinfo/Convert/HTML.pm:2143
-#| msgid "Next"
 msgctxt "NodeNext direction string"
 msgid "Next"
 msgstr "Következő"
 
 #: tp/Texinfo/Convert/HTML.pm:2145
-#| msgid "Previous"
 msgctxt "NodePrev direction string"
 msgid "Previous"
 msgstr "Előző"
 
 #: tp/Texinfo/Convert/HTML.pm:2147
-#| msgid "Forward node"
 msgctxt "NodeForward direction string"
 msgid "Forward node"
 msgstr "Elülső csomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2149
-#| msgid "Back node"
 msgctxt "NodeBack direction string"
 msgid "Back node"
 msgstr "Hátsó csomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2156
-#| msgid "Next file"
 msgctxt "NextFile direction string"
 msgid "Next file"
 msgstr "Következő fájl"
 
 #: tp/Texinfo/Convert/HTML.pm:2158
-#| msgid "Previous file"
 msgctxt "PrevFile direction string"
 msgid "Previous file"
 msgstr "Előző fájl"
 
 #: tp/Texinfo/Convert/HTML.pm:2163
-#| msgid "Cover (top) of document"
 msgctxt "Top direction description"
 msgid "Cover (top) of document"
 msgstr "Dokumentum borítója (címoldala)"
 
 #: tp/Texinfo/Convert/HTML.pm:2166
-#| msgid "Table of contents"
 msgctxt "Contents direction description"
 msgid "Table of contents"
 msgstr "Tartalomjegyzék"
 
 #: tp/Texinfo/Convert/HTML.pm:2169
-#| msgid "Short table of contents"
 msgctxt "Overview direction description"
 msgid "Short table of contents"
 msgstr "Rövid tartalomjegyzék"
 
 #: tp/Texinfo/Convert/HTML.pm:2171
-#| msgid "Index"
 msgctxt "Index direction description"
 msgid "Index"
 msgstr "Tárgymutató"
 
 #: tp/Texinfo/Convert/HTML.pm:2174
-#| msgid "Current section"
 msgctxt "This (current section) direction description"
 msgid "Current section"
 msgstr "Jelenlegi szakasz"
 
 #: tp/Texinfo/Convert/HTML.pm:2177
-#| msgid "Previous section in reading order"
 msgctxt "Back direction description"
 msgid "Previous section in reading order"
 msgstr "Előző szakasz az olvasási sorrendben"
 
 #: tp/Texinfo/Convert/HTML.pm:2180
-#| msgid "Beginning of this chapter or previous chapter"
 msgctxt "FastBack direction description"
 msgid "Beginning of this chapter or previous chapter"
 msgstr "Ezen fejezet eleje vagy előző fejezet"
 
 #: tp/Texinfo/Convert/HTML.pm:2183
-#| msgid "Previous section on same level"
 msgctxt "Prev direction description"
 msgid "Previous section on same level"
 msgstr "Előző szakasz ugyanazon a szinten"
 
 #: tp/Texinfo/Convert/HTML.pm:2185
-#| msgid "Up section"
 msgctxt "Up direction description"
 msgid "Up section"
 msgstr "Szülő szakasz"
 
 #: tp/Texinfo/Convert/HTML.pm:2187
-#| msgid "Next section on same level"
 msgctxt "Next direction description"
 msgid "Next section on same level"
 msgstr "Következő szakasz ugyanazon a szinten"
 
 #: tp/Texinfo/Convert/HTML.pm:2189
-#| msgid "Up node"
 msgctxt "NodeUp direction description"
 msgid "Up node"
 msgstr "Szülő csomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2191
-#| msgid "Next node"
 msgctxt "NodeNext direction description"
 msgid "Next node"
 msgstr "Következő csomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2193
-#| msgid "Previous node"
 msgctxt "NodePrev direction description"
 msgid "Previous node"
 msgstr "Előző csomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2196
-#| msgid "Next node in node reading order"
 msgctxt "NodeForward direction description"
 msgid "Next node in node reading order"
 msgstr "Következő csomópont a csomópont olvasási sorrendben"
 
 #: tp/Texinfo/Convert/HTML.pm:2199
-#| msgid "Previous node in node reading order"
 msgctxt "NodeBack direction description"
 msgid "Previous node in node reading order"
 msgstr "Előző csomópont a csomópont olvasási sorrendben"
 
 #: tp/Texinfo/Convert/HTML.pm:2202
-#| msgid "Next section in reading order"
 msgctxt "Forward direction description"
 msgid "Next section in reading order"
 msgstr "Következő szakasz az olvasási sorrendben"
 
 #: tp/Texinfo/Convert/HTML.pm:2204
-#| msgid "Next chapter"
 msgctxt "FastForward direction description"
 msgid "Next chapter"
 msgstr "Következő fejezet"
 
 #: tp/Texinfo/Convert/HTML.pm:2206
-#| msgid "About (help)"
 msgctxt "About direction description"
 msgid "About (help)"
 msgstr "Névjegy (súgó)"
 
 #: tp/Texinfo/Convert/HTML.pm:2209
-#| msgid "First section in reading order"
 msgctxt "First direction description"
 msgid "First section in reading order"
 msgstr "Első szakasz az olvasási sorrendben"
 
 #: tp/Texinfo/Convert/HTML.pm:2212
-#| msgid "Last section in reading order"
 msgctxt "Last direction description"
 msgid "Last section in reading order"
 msgstr "Utolsó szakasz az olvasási sorrendben"
 
 #: tp/Texinfo/Convert/HTML.pm:2215
-#| msgid "Forward section in next file"
 msgctxt "NextFile direction description"
 msgid "Forward section in next file"
 msgstr "Elülső szakasz a következő fájlban"
 
 #: tp/Texinfo/Convert/HTML.pm:2218
-#| msgid "Back section in previous file"
 msgctxt "PrevFile direction description"
 msgid "Back section in previous file"
 msgstr "Hátsó szakasz az előző fájlban"
 
 #: tp/Texinfo/Convert/HTML.pm:2224
-#| msgid "Top"
 msgctxt "Top direction button label"
 msgid "Top"
 msgstr "Címoldal"
 
 #: tp/Texinfo/Convert/HTML.pm:2226
-#| msgid "Contents"
 msgctxt "Contents direction button label"
 msgid "Contents"
 msgstr "Tartalom"
 
 #: tp/Texinfo/Convert/HTML.pm:2228
-#| msgid "Overview"
 msgctxt "Overview direction button label"
 msgid "Overview"
 msgstr "Áttekintés"
 
 #: tp/Texinfo/Convert/HTML.pm:2230
-#| msgid "Index"
 msgctxt "Index direction button label"
 msgid "Index"
 msgstr "Tárgymutató"
 
 #: tp/Texinfo/Convert/HTML.pm:2232
-#| msgid "This"
 msgctxt "This direction button label"
 msgid "This"
 msgstr "Ez a(z)"
 
 #: tp/Texinfo/Convert/HTML.pm:2234
-#| msgid "Back"
 msgctxt "Back direction button label"
 msgid "Back"
 msgstr "Vissza"
 
 #: tp/Texinfo/Convert/HTML.pm:2236
-#| msgid "FastBack"
 msgctxt "FastBack direction button label"
 msgid "FastBack"
 msgstr "Visszaugrás"
 
 #: tp/Texinfo/Convert/HTML.pm:2238
-#| msgid "Prev"
 msgctxt "Prev direction button label"
 msgid "Prev"
 msgstr "Előző"
 
 #: tp/Texinfo/Convert/HTML.pm:2240
-#| msgid "Up"
 msgctxt "Up direction button label"
 msgid "Up"
 msgstr "Fel"
 
 #: tp/Texinfo/Convert/HTML.pm:2242
-#| msgid "Next"
 msgctxt "Next direction button label"
 msgid "Next"
 msgstr "Következő"
 
 #: tp/Texinfo/Convert/HTML.pm:2244
-#| msgid "NodeUp"
 msgctxt "NodeUp direction button label"
 msgid "NodeUp"
 msgstr "SzülőCsomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2246
-#| msgid "NodeNext"
 msgctxt "NodeNext direction button label"
 msgid "NodeNext"
 msgstr "KövetkezőCsomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2248
-#| msgid "NodePrev"
 msgctxt "NodePrev direction button label"
 msgid "NodePrev"
 msgstr "ElőzőCsomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2250
-#| msgid "NodeForward"
 msgctxt "NodeForward direction button label"
 msgid "NodeForward"
 msgstr "ElülsőCsomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2252
-#| msgid "NodeBack"
 msgctxt "NodeBack direction button label"
 msgid "NodeBack"
 msgstr "HátsóCsomópont"
 
 #: tp/Texinfo/Convert/HTML.pm:2254
-#| msgid "Forward"
 msgctxt "Forward direction button label"
 msgid "Forward"
 msgstr "Előre"
 
 #: tp/Texinfo/Convert/HTML.pm:2256
-#| msgid "FastForward"
 msgctxt "FastForward direction button label"
 msgid "FastForward"
 msgstr "Előreugrás"
 
 #: tp/Texinfo/Convert/HTML.pm:2258
-#| msgid "About"
 msgctxt "About direction button label"
 msgid "About"
 msgstr "Névjegy"
 
 #: tp/Texinfo/Convert/HTML.pm:2260
-#| msgid "First"
 msgctxt "First direction button label"
 msgid "First"
 msgstr "Első"
 
 #: tp/Texinfo/Convert/HTML.pm:2262
-#| msgid "Last"
 msgctxt "Last direction button label"
 msgid "Last"
 msgstr "Utolsó"
 
 #: tp/Texinfo/Convert/HTML.pm:2264
-#| msgid "NextFile"
 msgctxt "NextFile direction button label"
 msgid "NextFile"
 msgstr "KövetkezőFájl"
 
 #: tp/Texinfo/Convert/HTML.pm:2266
-#| msgid "PrevFile"
 msgctxt "PrevFile direction button label"
 msgid "PrevFile"
 msgstr "ElőzőFájl"

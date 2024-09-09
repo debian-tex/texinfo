@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2023 Free Software Foundation, Inc.
+# Copyright (C) 2002-2024 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -55,6 +55,10 @@ AC_DEFUN([gl_EARLY],
   # Code from module errno:
   # Code from module exitfail:
   # Code from module extensions:
+  # This is actually already done in the pre-early phase.
+  # AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module extensions-aix:
+  AC_REQUIRE([gl_USE_AIX_EXTENSIONS])
   # Code from module extern-inline:
   # Code from module float:
   # Code from module free-posix:
@@ -102,6 +106,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module strndup:
   # Code from module strnlen:
   # Code from module sys_types:
+  AC_REQUIRE([AC_USE_SYSTEM_EXTENSIONS])
   # Code from module uniconv/base:
   # Code from module uniconv/u8-conv-from-enc:
   # Code from module uniconv/u8-strconv-from-enc:
@@ -160,8 +165,11 @@ AC_DEFUN([gl_INIT],
   gl_FLOAT_H
   gl_CONDITIONAL_HEADER([float.h])
   AC_PROG_MKDIR_P
-  gl_CONDITIONAL([GL_COND_OBJ_FLOAT], [test $REPLACE_FLOAT_LDBL = 1])
+  gl_CONDITIONAL([GL_COND_OBJ_FLOAT],
+                 [test $REPLACE_FLOAT_LDBL = 1 || test $REPLACE_FLOAT_SNAN = 1])
   gl_CONDITIONAL([GL_COND_OBJ_ITOLD], [test $REPLACE_ITOLD = 1])
+  dnl Prerequisites of lib/float.c.
+  AC_REQUIRE([gl_BIGENDIAN])
   gl_FUNC_FREE
   gl_CONDITIONAL([GL_COND_OBJ_FREE], [test $REPLACE_FREE = 1])
   AM_COND_IF([GL_COND_OBJ_FREE], [
@@ -221,7 +229,10 @@ AC_DEFUN([gl_INIT],
   gl_STRING_MODULE_INDICATOR([memchr])
   gl_MULTIARCH
   gl_FUNC_OBSTACK
-  gl_CONDITIONAL([GL_COND_OBJ_OBSTACK], [test "$gl_cv_func_obstack" != yes])
+  gl_CONDITIONAL_HEADER([obstack.h])
+  gl_CONDITIONAL([GL_COND_OBJ_OBSTACK],
+                 [test $HAVE_OBSTACK = 0 || test $REPLACE_OBSTACK = 1])
+  AC_PROG_MKDIR_P
   gl_FUNC_RAWMEMCHR
   gl_CONDITIONAL([GL_COND_OBJ_RAWMEMCHR], [test $HAVE_RAWMEMCHR = 0])
   AM_COND_IF([GL_COND_OBJ_RAWMEMCHR], [
@@ -348,7 +359,7 @@ AC_DEFUN([gl_INIT],
   ])
   gl_LIBUNISTRING_LIBHEADER([0.9.11], [uniwidth.h])
   AC_PROG_MKDIR_P
-  gl_LIBUNISTRING_MODULE([1.1], [uniwidth/width])
+  gl_LIBUNISTRING_MODULE([1.2], [uniwidth/width])
   AC_C_VARARRAYS
   AC_REQUIRE([AC_C_RESTRICT])
   gl_FUNC_VASNPRINTF
@@ -590,7 +601,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/memchr.c
   lib/memchr.valgrind
   lib/obstack.c
-  lib/obstack.h
+  lib/obstack.in.h
   lib/printf-args.c
   lib/printf-args.h
   lib/printf-parse.c
@@ -663,6 +674,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/eealloc.m4
   m4/errno_h.m4
   m4/exponentd.m4
+  m4/extensions-aix.m4
   m4/extensions.m4
   m4/extern-inline.m4
   m4/float_h.m4
@@ -698,6 +710,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/multiarch.m4
   m4/musl.m4
   m4/obstack.m4
+  m4/off64_t.m4
   m4/off_t.m4
   m4/pid_t.m4
   m4/printf.m4
@@ -722,7 +735,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/vasprintf.m4
   m4/warn-on-use.m4
   m4/wchar_h.m4
-  m4/wchar_t.m4
   m4/wctype_h.m4
   m4/wcwidth.m4
   m4/wint_t.m4

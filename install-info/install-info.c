@@ -1,6 +1,6 @@
 /* install-info -- merge Info directory entries from an Info file.
 
-   Copyright 1996-2023 Free Software Foundation, Inc.
+   Copyright 1996-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -2262,7 +2262,7 @@ main (int argc, char *argv[])
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
 There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2023");
+              "2024");
           exit (EXIT_SUCCESS);
 
         case 'W':

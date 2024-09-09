@@ -58,7 +58,7 @@ add_heading_number
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-$VERSION = '7.1';
+$VERSION = '7.1.1';
 
 
 our @MONTH_NAMES =

@@ -55,7 +55,7 @@ else
     rm -rf $staging_dir/${dir}_res
     cp -pr "$srcdir/${dir}_res" $staging_dir
     chmod -R u+w "$staging_dir/${dir}_res"
-    diff $DIFF_U_OPTION -r "$staging_dir/${dir}_res" "$outdir" 2>>$logfile > "$diffs_dir/$dir.diff"
+    diff $DIFF_OPTIONS -r "$staging_dir/${dir}_res" "$outdir" 2>>$logfile > "$diffs_dir/$dir.diff"
     dif_ret=$?
     if [ $dif_ret != 0 ]; then
       echo "D: $diffs_dir/$dir.diff"

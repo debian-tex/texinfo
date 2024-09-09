@@ -141,6 +141,13 @@ macro_included.texi
 '@include inc_file.texi@
 
 After.'],
+['include_in_removed_before_item',
+'@table @code
+@c source mark holder comment
+@include only_comment.texi
+@item FOO
+@end table
+'],
 ['include_with_setfilename',
 # for now the plaintext expansion do not test anything as the setfilename in
 # included files is removed from the tree.  But this may change in the future.

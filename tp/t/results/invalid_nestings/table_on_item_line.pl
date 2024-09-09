@@ -274,15 +274,6 @@ $result_errors{'table_on_item_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: @table should not appear on @item line
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@table should not appear on @item line',
-    'type' => 'warning'
-  },
-  {
     'error_line' => 'no matching `@end table\'
 ',
     'file_name' => '',

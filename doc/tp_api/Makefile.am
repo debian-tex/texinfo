@@ -1,6 +1,6 @@
 # Makefile.am for texinfo/doc/tp_api.
 #
-# Copyright 2012-2022 Free Software Foundation, Inc.
+# Copyright 2012-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -14,10 +14,12 @@
 # texi2any_internals_indices.texi soes not appear in any menu.
 AM_MAKEINFOFLAGS = -c INFO_SPECIAL_CHARS_WARNING=0 -c TREE_TRANSFORMATIONS=complete_tree_nodes_menus
 
-# Use the programs built in our distribution, taking account of possible
-# cross-compiling.  The first -I is there to find Texinfo::ModulePath in
-# out-of-source builds.
-MAKEINFO = $(PERL) -I $(top_builddir)/tp/ -I $(top_srcdir)/tp/ $(top_srcdir)/tp/texi2any.pl
+# Use the programs built in our distribution.  Use absolute directory
+# names so we can run from a different working directory.
+MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 \
+                       top_srcdir="$(abs_top_srcdir)" \
+                       top_builddir="$(abs_top_builddir)"
+MAKEINFO = $(MAKEINFO_ENVIRONMENT) $(PERL) $(top_srcdir)/tp/texi2any.pl
 
 TEXI2DVI_ENVIRONMENT = TEXINDEX=${abs_top_builddir}/texindex/texindex \
                        TEXINDEX_SCRIPT=${abs_top_srcdir}/texindex/texindex.awk
@@ -37,6 +39,10 @@ TEXINFO_TEX = ../texinfo.tex
 # Most dependencies are in api_includes/ directory but we do not want
 # to list them explicitly
 texi2any_internals_TEXINFOS = texi2any_internals_indices.texi
+DISTCLEANFILES = texi2any_internals.info*
+
+# Do not create info files for distribution.
+dist-info:
 
 # texi2any_internals_preamble.texi is not included but passed on the
 # standard input when building texi2any_internals.texi.
@@ -48,28 +54,39 @@ BUILT_SOURCES = texi2any_internals.texi
 
 # all the modules with some interesting public interfaces.
 # The order matters for the result.
+# Note that these relative file names are correct from srcdir, and will be
+# found from builddir in VPATH builds.
 texi2any_internals_dependencies = \
-  $(top_srcdir)/tp/Texinfo/Commands.pod \
-  $(top_srcdir)/tp/Texinfo/Common.pm \
-  $(top_srcdir)/tp/Texinfo/ParserNonXS.pm \
-  $(top_srcdir)/tp/Texinfo/Structuring.pm \
-  $(top_srcdir)/tp/Texinfo/Report.pm \
-  $(top_srcdir)/tp/Texinfo/Translations.pm \
-  $(top_srcdir)/tp/Texinfo/Transformations.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Texinfo.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Utils.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Unicode.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/NodeNameNormalization.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Text.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Converter.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Info.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/HTML.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/DocBook.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/TexinfoMarkup.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/TexinfoXML.pm \
-  $(top_srcdir)/tp/Texinfo/Convert/Plaintext.pm
+  ../../tp/Texinfo/Commands.pod \
+  ../../tp/Texinfo/Common.pm \
+  ../../tp/Texinfo/ParserNonXS.pm \
+  ../../tp/Texinfo/Structuring.pm \
+  ../../tp/Texinfo/Report.pm \
+  ../../tp/Texinfo/Translations.pm \
+  ../../tp/Texinfo/Transformations.pm \
+  ../../tp/Texinfo/Convert/Texinfo.pm \
+  ../../tp/Texinfo/Convert/Utils.pm \
+  ../../tp/Texinfo/Convert/Unicode.pm \
+  ../../tp/Texinfo/Convert/NodeNameNormalization.pm \
+  ../../tp/Texinfo/Convert/Text.pm \
+  ../../tp/Texinfo/Convert/Converter.pm \
+  ../../tp/Texinfo/Convert/Info.pm \
+  ../../tp/Texinfo/Convert/HTML.pm \
+  ../../tp/Texinfo/Convert/DocBook.pm \
+  ../../tp/Texinfo/Convert/TexinfoMarkup.pm \
+  ../../tp/Texinfo/Convert/TexinfoXML.pm \
+  ../../tp/Texinfo/Convert/Plaintext.pm
 
-texi2any_internals.texi: $(texi2any_internals_dependencies) texi2any_internals_indices.texi texi2any_internals_preamble.texi
-	$(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ -I $(top_srcdir)/tp/ -I $(top_srcdir)/tp/maintain/lib/Text-Unidecode/lib/ -I $(top_srcdir)/tp/maintain/lib/libintl-perl/lib/ -I $(top_srcdir)/tp/maintain/lib/Unicode-EastAsianWidth/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=section --preamble - --subdir=api_includes $(texi2any_internals_dependencies) < $(srcdir)/texi2any_internals_preamble.texi | sed -e 's/^@bye/@__bye/' | sed -e '/^@__bye/r $(srcdir)/texi2any_internals_indices.texi' | sed -e 's/^@__bye//' > $@
+$(srcdir)/texi2any_internals.texi: $(texi2any_internals_dependencies) $(srcdir)/texi2any_internals_indices.texi $(srcdir)/texi2any_internals_preamble.texi
+	cd $(srcdir) ; \
+	target=texi2any_internals.texi ; \
+	if $(MAKEINFO_ENVIRONMENT) $(PERL) -I ../../Pod-Simple-Texinfo/lib/ ../../Pod-Simple-Texinfo/pod2texi.pl --base-level=section --preamble - --subdir=api_includes $(texi2any_internals_dependencies) < texi2any_internals_preamble.texi >$${target}.tmp ; then \
+	  cat $${target}.tmp  | sed -e 's/^@bye/@__bye/' | sed -e '/^@__bye/r texi2any_internals_indices.texi' | sed -e 's/^@__bye//' > $${target} ; \
+	fi ; rm -f $${target}.tmp
 
 endif
+
+maintainerclean-local:
+	rm -rf api_includes
+
+MAINTAINERCLEANFILES = texi2any_internals.texi

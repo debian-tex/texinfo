@@ -1,5 +1,5 @@
 /* ANSI-C code produced by gperf version 3.1 */
-/* Command-line: gperf -m 10 ./iconv_open-irix.gperf  */
+/* Command-line: gperf -m 10 iconv_open-irix.gperf  */
 /* Computed positions: -k'1,$' */
 
 #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
@@ -29,7 +29,7 @@
 #error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gperf@gnu.org>."
 #endif
 
-#line 17 "./iconv_open-irix.gperf"
+#line 17 "iconv_open-irix.gperf"
 struct mapping { int standard_name; const char vendor_name[10 + 1]; };
 
 #define TOTAL_KEYWORDS 19
@@ -130,43 +130,43 @@ static const struct stringpool_t stringpool_contents =
 static const struct mapping mappings[] =
   {
     {-1}, {-1}, {-1}, {-1}, {-1},
-#line 40 "./iconv_open-irix.gperf"
+#line 40 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str5, "DOS855"},
-#line 45 "./iconv_open-irix.gperf"
+#line 45 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str6, "eucTW"},
-#line 44 "./iconv_open-irix.gperf"
+#line 44 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str7, "eucKR"},
-#line 41 "./iconv_open-irix.gperf"
+#line 41 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str8, "WIN1251"},
-#line 46 "./iconv_open-irix.gperf"
+#line 46 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str9, "sjis"},
-#line 33 "./iconv_open-irix.gperf"
+#line 33 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str10, "ISO8859-5"},
-#line 38 "./iconv_open-irix.gperf"
+#line 38 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str11, "ISO8859-15"},
-#line 29 "./iconv_open-irix.gperf"
+#line 29 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str12, "ISO8859-1"},
-#line 43 "./iconv_open-irix.gperf"
+#line 43 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str13, "eucJP"},
-#line 39 "./iconv_open-irix.gperf"
+#line 39 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str14, "KOI8"},
-#line 30 "./iconv_open-irix.gperf"
+#line 30 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str15, "ISO8859-2"},
-#line 42 "./iconv_open-irix.gperf"
+#line 42 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str16, "eucCN"},
-#line 37 "./iconv_open-irix.gperf"
+#line 37 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str17, "ISO8859-9"},
-#line 36 "./iconv_open-irix.gperf"
+#line 36 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str18, "ISO8859-8"},
-#line 35 "./iconv_open-irix.gperf"
+#line 35 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str19, "ISO8859-7"},
-#line 34 "./iconv_open-irix.gperf"
+#line 34 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str20, "ISO8859-6"},
-#line 32 "./iconv_open-irix.gperf"
+#line 32 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str21, "ISO8859-4"},
-#line 31 "./iconv_open-irix.gperf"
+#line 31 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str22, "ISO8859-3"},
-#line 47 "./iconv_open-irix.gperf"
+#line 47 "iconv_open-irix.gperf"
     {(int)(size_t)&((struct stringpool_t *)0)->stringpool_str23, "TIS620"}
   };
 

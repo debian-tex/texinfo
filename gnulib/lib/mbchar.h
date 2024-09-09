@@ -1,5 +1,5 @@
 /* Multibyte character data type.
-   Copyright (C) 2001, 2005-2007, 2009-2023 Free Software Foundation, Inc.
+   Copyright (C) 2001, 2005-2007, 2009-2024 Free Software Foundation, Inc.
 
    This file is free software: you can redistribute it and/or modify
    it under the terms of the GNU Lesser General Public License as
@@ -156,6 +156,11 @@ _GL_INLINE_HEADER_BEGIN
 #ifndef MBCHAR_INLINE
 # define MBCHAR_INLINE _GL_INLINE
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* The longest multibyte characters, nowadays, are 4 bytes long.
    Regardless of the values of MB_CUR_MAX and MB_LEN_MAX.  */
@@ -366,6 +371,11 @@ is_basic (char c)
     }
 }
 
+#endif
+
+
+#ifdef __cplusplus
+}
 #endif
 
 _GL_INLINE_HEADER_END

@@ -80,7 +80,7 @@ require Exporter;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.1';
+$VERSION = '7.1.1';
 
 our $module_loaded = 0;
 sub import {
@@ -5256,9 +5256,9 @@ sub _convert_tab_command($$$$$)
   my $cf = $multitable->{'extra'}->{'columnfractions'};
   if ($cf) {
     if (exists($cf->{'extra'}->{'misc_args'}->[$cell_nr-1])) {
-      my $fraction = sprintf('%d',
-                             100*$cf->{'extra'}->{'misc_args'}->[$cell_nr-1]);
-      $fractions = " width=\"$fraction%\"";
+      my $percent = sprintf('%.0f',
+                            100. * $cf->{'extra'}->{'misc_args'}->[$cell_nr-1]);
+      $fractions = " width=\"$percent%\"";
     }
   }
 

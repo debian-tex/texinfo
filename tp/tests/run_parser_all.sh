@@ -434,7 +434,7 @@ while read line; do
       post_process_output
 
       if test "z$res_dir_used" != 'z' ; then
-        diff $DIFF_A_OPTION $DIFF_U_OPTION -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
+        diff $DIFF_OPTIONS -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
           echo "D: $testdir/$diffs_dir/$diff_base.diff (printed below)"

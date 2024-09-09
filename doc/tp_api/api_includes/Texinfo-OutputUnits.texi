@@ -1,0 +1,305 @@
+@node Texinfo@asis{::}OutputUnits
+@chapter Texinfo::OutputUnits
+
+@node Texinfo@asis{::}OutputUnits NAME
+@section Texinfo::OutputUnits NAME
+
+Texinfo::OutputUnits - setup and manage Texinfo document output units
+
+@node Texinfo@asis{::}OutputUnits SYNOPSIS
+@section Texinfo::OutputUnits SYNOPSIS
+
+@verbatim
+  use Texinfo::OutputUnits qw(split_by_node split_by_section split_pages
+    units_directions units_file_directions);
+
+  # $document is a parsed Texinfo::Document document.
+  # When customization variables information is needed, it is obtained
+  # from the $document by calling the get_conf() method.
+  my $identifier_target = $document->labels_information();
+  my $output_units;
+  if ($split_at_nodes) {
+    $output_units = split_by_node($document);
+  } else {
+    $output_units = split_by_section($document);
+  }
+  split_pages($output_units, $split);
+  units_directions($identifier_target, $output_units,
+                   $document->get_conf('DEBUG'));
+  units_file_directions($output_units);
+@end verbatim
+
+@node Texinfo@asis{::}OutputUnits NOTES
+@section Texinfo::OutputUnits NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}OutputUnits DESCRIPTION
+@section Texinfo::OutputUnits DESCRIPTION
+
+You can convert a Texinfo parsed document to an output format in a Converter
+code by first splitting the nodes and sectioning commands in units and then
+converting those units.  We will call the main unit of output documents an
+@emph{output unit}.  Usually a node is associated with a following sectioning
+command, while a sectioning command is associated with a previous node; they
+both together make up the output unit.  Either the node or the sectioning
+command is considered to be the main element component.
+
+The module provides methods to setup output units associated with
+node and sectioning commands of a Texinfo parsed document. With
+@code{split_by_node} nodes are used as the main component for the separation of
+output units, while with @code{split_by_section} the sectioning command elements
+are used to separate output units.  The first mode is typical of Info format,
+while the second corresponds better to a traditional book.  Note that the
+result is different when there are unassociated sectioning commands or nodes,
+in the usual case of each node being associated with a sectioning command and
+each sectioning command being associated with a node, splitting by node or by
+section does not make much difference as each output unit will consist of the
+node and the associated section in both cases.
+
+Output units are used for conversion to HTML and Info output formats.  See
+@ref{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->convert_output_unit($output_unit),, @code{Texinfo::Convert::Converter::convert_output_unit}}
+for more information on conversion of output units in Converters.  Output units
+are not relevant for all the formats, the Texinfo tree can also be converted
+directly, see @ref{Texinfo@asis{::}Convert@asis{::}Converter $result = $converter->output_tree($document),, @code{Texinfo::Convert::Converter::output_tree}}.
+
+The output units may be further grouped in @emph{pages}, which are not pages as
+in book pages, but more like web pages, and hold series of output units.
+The output units may have directions to other output units prepared
+by @code{units_directions}.  @code{units_file_directions} should also
+set direction related to files, provided files are associated with
+output units by the user.
+
+@node Texinfo@asis{::}OutputUnits METHODS
+@section Texinfo::OutputUnits METHODS
+
+No method is exported in the default case.
+
+@node Texinfo@asis{::}OutputUnits Output units creation
+@subsection Output units creation
+
+Output units are hash references created with the following keys:
+
+@table @asis
+@item @code{type}
+@anchor{Texinfo@asis{::}OutputUnits @code{type}}
+
+The type of the output unit.  Set to @code{unit} for output units associated
+with nodes and sectioning commands.
+
+@item @code{unit_command}
+@anchor{Texinfo@asis{::}OutputUnits @code{unit_command}}
+
+Main node or sectioning command associated with the output unit.
+
+@item @code{unit_contents}
+@anchor{Texinfo@asis{::}OutputUnits @code{unit_contents}}
+
+This array reference holds all the nodes and sectioning commands Texinfo tree
+elements associated with the output unit (in order).  The Texinfo tree nodes
+and sectioning commands elements have an @code{associated_unit} key set that points
+to the output unit.
+
+@item @code{tree_unit_directions}
+@anchor{Texinfo@asis{::}OutputUnits @code{tree_unit_directions}}
+
+Hash reference with @emph{next} and @emph{prev} pointing to the
+previous and the next output unit.
+
+@end table
+
+Call one of the following methods to create output units and associate them
+with nodes and sectioning command Texinfo tree elements:
+
+@table @asis
+@item $output_units = split_by_node($document)
+@anchor{Texinfo@asis{::}OutputUnits $output_units = split_by_node($document)}
+@cindex @code{split_by_node}
+
+Returns a reference array of output units where a node is associated with
+the following sectioning commands.  Sectioning commands without nodes
+are also with the previous node, while nodes without sectioning commands
+are alone in their output units.
+
+Each output unit @emph{unit_command} key points to the node command
+associated with the output unit.
+
+@item $output_units = split_by_section($document)
+@anchor{Texinfo@asis{::}OutputUnits $output_units = split_by_section($document)}
+@cindex @code{split_by_section}
+
+Similarly with @code{split_by_node}, returns an array of output units.  This
+time, lone nodes are associated with the previous sections and lone
+sections makes up an output unit.
+
+Output units @emph{unit_command} keys point to the sectioning command associated
+with the output unit.
+
+@end table
+
+@node Texinfo@asis{::}OutputUnits Grouping output units in pages
+@subsection Grouping output units in pages
+
+You can call @code{split_pages} to group together output units:
+
+@table @asis
+@item split_pages($output_units, $split)
+@anchor{Texinfo@asis{::}OutputUnits split_pages($output_units@comma{} $split)}
+@cindex @code{split_pages}
+
+Add the @emph{first_in_page} key to each output unit in the array
+reference argument @emph{$output_units}, set to the first output unit in the group.
+
+The first output unit in the group is based on the value of @emph{$split}:
+
+@table @asis
+@item @code{chapter}
+@anchor{Texinfo@asis{::}OutputUnits @code{chapter}}
+
+The output units are grouped at chapter or other toplevel sectioning commands.
+
+@item @code{node}
+@anchor{Texinfo@asis{::}OutputUnits @code{node}}
+
+Each output unit is on its own.
+
+@item @code{section}
+@anchor{Texinfo@asis{::}OutputUnits @code{section}}
+
+The output units are grouped at sectioning commands below chapter.
+
+@item empty string
+@anchor{Texinfo@asis{::}OutputUnits empty string}
+
+No splitting, all the output units are together.
+
+@end table
+
+@end table
+
+@node Texinfo@asis{::}OutputUnits Setting output units directions
+@subsection Setting output units directions
+
+You can call the following methods to set output units directions:
+
+@table @asis
+@item units_directions($identifier_target, $output_units, $print_debug)
+@anchor{Texinfo@asis{::}OutputUnits units_directions($identifier_target@comma{} $output_units@comma{} $print_debug)}
+@cindex @code{units_directions}
+
+The @emph{$identifier_target} argument associates identifiers with target elements
+and is generally obtained from a parsed document,
+@ref{Texinfo@asis{::}Document $identifier_target = labels_information($document),, @code{Texinfo::Document::labels_information}}.
+Directions are set up for the output units in the array reference
+@emph{$output_units} given in argument. The corresponding hash is associated
+with the @emph{directions} key. In this hash, keys correspond to directions
+while values are output units.
+
+@emph{$print_debug} is optional.  If set, some debugging information is printed.
+
+The following directions are set up:
+
+@table @asis
+@item This
+@anchor{Texinfo@asis{::}OutputUnits This}
+
+The output unit itself.
+
+@item Forward
+@anchor{Texinfo@asis{::}OutputUnits Forward}
+
+Unit next.
+
+@item Back
+@anchor{Texinfo@asis{::}OutputUnits Back}
+
+Previous output unit.
+
+@item NodeForward
+@anchor{Texinfo@asis{::}OutputUnits NodeForward}
+
+Following node output unit in reading order.  It is the next node unit, or the
+first in menu or the next of the up node.
+
+@item NodeBack
+@anchor{Texinfo@asis{::}OutputUnits NodeBack}
+
+Preceding node output unit.
+
+@item NodeUp
+@anchor{Texinfo@asis{::}OutputUnits NodeUp}
+
+@item NodeNext
+@anchor{Texinfo@asis{::}OutputUnits NodeNext}
+
+@item NodePrev
+@anchor{Texinfo@asis{::}OutputUnits NodePrev}
+
+The up, next and previous node output unit.
+
+@item Up
+@anchor{Texinfo@asis{::}OutputUnits Up}
+
+@item Next
+@anchor{Texinfo@asis{::}OutputUnits Next}
+
+@item Prev
+@anchor{Texinfo@asis{::}OutputUnits Prev}
+
+The up, next and previous section output unit.
+
+@item FastBack
+@anchor{Texinfo@asis{::}OutputUnits FastBack}
+
+For top level output units, the previous top level output unit.  For other
+output units the up top level unit.  For example, for a chapter output unit it
+is the previous chapter output unit, for a subsection output unit it is the
+chapter output unit that contains the subsection.
+
+@item FastForward
+@anchor{Texinfo@asis{::}OutputUnits FastForward}
+
+The next top level output unit.
+
+@end table
+
+@item units_file_directions($output_units)
+@anchor{Texinfo@asis{::}OutputUnits units_file_directions($output_units)}
+@cindex @code{units_file_directions}
+
+In the directions reference described above for @code{units_directions},
+sets the @emph{PrevFile} and @emph{NextFile} directions to the output units in
+previous and following files.
+
+It also sets @emph{FirstInFile*} directions for all the output units by using
+the directions of the first output unit in file.  So, for example,
+@emph{FirstInFileNodeNext} is the output unit associated with the next node
+of the first output unit node in the file for each output unit in the file.
+
+The API for association of pages/output units to files is not defined yet.
+
+@end table
+
+@node Texinfo@asis{::}OutputUnits SEE ALSO
+@section Texinfo::OutputUnits SEE ALSO
+
+@url{http://www.gnu.org/s/texinfo/manual/texinfo/, Texinfo manual},
+@ref{Texinfo@asis{::}Document NAME,, Texinfo::Document}, @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.
+
+@node Texinfo@asis{::}OutputUnits AUTHOR
+@section Texinfo::OutputUnits AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}OutputUnits COPYRIGHT AND LICENSE
+@section Texinfo::OutputUnits COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

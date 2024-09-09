@@ -1,3 +1,387 @@
+2024-09-07  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Texinfo 7.1.1
+
+2024-09-07  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/parsetexi/api.c: wrap include of <libintl.h> in
+	#ifdef ENABLE_NLS.  Report from Nelson Beebe and fix from Patrice.
+
+2024-09-07  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Increase version
+
+	* NEWS,
+	* configure.ac,
+	* js/info.js,
+	* util/texi2dvi,
+	* util/texi2pdf: Incread version to 7.1.1.
+
+2024-09-03  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Update FSF address
+
+	* doc/texinfo.texi,
+	* doc/info-fr.texi,
+	* doc/refcard/txirefcard.tex,
+	* texindex/jrtangle,
+	* texindex/jrweave:
+	Update FSF address or replace with link to website
+
+	* doc/refcard/txirefcard.tex: remove defunct www.gnupress.org link
+
+2024-09-01  Gavin Smith <gavinsmith0123@gmail.com>
+
+	pretest 7.1.0.91
+
+2024-09-01  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* NEWS: add an item
+
+2024-08-31  Gavin Smith <gavinsmith0123@gmail.com>
+
+	gettext infrastructure upgrade
+
+	* tp/Texinfo/XS/configure.ac: specify AM_GNU_GETTEXT_VERSION([0.21])
+	* tp/Texinfo/XS: run autopoint -f to upgrapde to gettext 0.21,
+	and revert any file downgrades
+
+	* autogen.sh: set AUTOPOINT=true when running autoreconf under
+	tp/Texinfo/XS in order to avoid overwriting files with older
+	versions
+
+	Report from Bruno Haible, bug-texinfo, 2024-08-06.
+
+2024-08-31  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* configure.ac: bump to version 7.1.0.91.
+
+2024-08-31  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: propagate from master
+
+2024-08-31  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* (top-level), tp/Texinfo/XS: run gnulib-tool --add-import
+
+2024-06-16  Patrice Dumas  <pertusus@free.fr>
+
+	* system.h: remove strerror definition, the prototype looks wrong and
+	the conditional is not set anywhere.
+
+2024-08-09  Patrice Dumas  <pertusus@free.fr>
+
+	Use prototypes instead of old style K&R definitions
+
+	* info/pcterm.c (pc_goto_xy, pc_put_text, pc_write_chars)
+	(pc_scroll_terminal, pc_initialize_terminal): use prototypes instead
+	of old style K&R definitions.
+
+	Changes in spacing.
+
+2024-08-09  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Remove VFunction.
+
+	* info/terminal.c, info/terminal.h
+	(terminal_begin_blink_hook, terminal_begin_bold_hook)
+	(terminal_begin_inverse_hook, terminal_begin_standout_hook)
+	(terminal_begin_underline_hook, terminal_clear_screen_hook)
+	(terminal_clear_to_eol_hook, terminal_default_colour_hook)
+	(terminal_down_line_hook, terminal_end_all_modes_hook)
+	(terminal_end_inverse_hook, terminal_end_standout_hook)
+	(terminal_end_underline_hook, terminal_get_screen_size_hook)
+	(terminal_goto_xy_hook, terminal_initialize_terminal_hook)
+	(terminal_new_terminal_hook, terminal_prep_terminal_hook)
+	(terminal_put_text_hook, terminal_ring_bell_hook)
+	(terminal_scroll_terminal_hook, terminal_set_bgcolour_hook,)
+	(terminal_set_colour_hook, terminal_unprep_terminal_hook,)
+	(terminal_up_line_hook, terminal_write_chars_hook):
+	Declare with explicit variable list.
+	(VFunction): Remove.
+
+	C23 does not allow a variable list to be left undefined as ().
+	Report from Jeffrey Cliff <jeffrey.cliff@gmail.com>.
+
+2024-08-15  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/pm_to_blib: Remove empty, apparently useless
+	file.
+
+2024-08-22  Gavin Smith <gavinsmith0123@gmail.com>
+
+	No 'local' in shell script
+
+	* install-info/tests/defs.in (findprog): Remove use of
+	'local' for saving the value of IFS (input field separator).
+
+2024-08-08  Bruno Haible  <bruno@clisp.org>
+
+	* texindex/Makefile.am (texindex.awk): Move the generated
+	texindex.awk from the build dir to the source dir.
+
+	* man/Makefile.am (man/Makefile.am): Set environment variable
+	TEXINDEX_SCRIPT, so that the texindex program find its
+	texindex.awk script.
+
+2024-07-26  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/Makefile.am (MAINTAINERCLEANFILES): set generated Texinfo files
+	as MAINTAINERCLEANFILES.
+
+	* tp/Texinfo/XS/Makefile.am (MAINTAINERCLEANFILES): set generated
+	source files as MAINTAINERCLEANFILES.
+
+2024-07-26  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/tp_api/Makefile.am (DISTCLEANFILES, dist-info): do not
+	distribute Info files.
+
+	* doc/tp_api/Makefile.am (maintainerclean-local)
+	(MAINTAINERCLEANFILES): remove generated Texinfo file with
+	maintainerclean.
+
+2023-10-22  Patrice Dumas  <pertusus@free.fr>
+
+	* man/Makefile.am (generated_mans, MAINTAINERCLEANFILES): distinguish
+	generated man pages in generated_mans variable and
+	MAINTAINERCLEANFILES, manually written man pages should not be
+	cleaned.
+
+2024-08-27  Gavin Smith <gavinsmith0123@gmail.com>
+
+	texi2any_internals.texi build fixes
+
+	* doc/tp_api/Makefile.am (texi2any_internals.texi):
+	Generate .info file in builddir.  Change working directory to
+	$(srcdir) before running pod2texi.  This allows pod2texi to
+	generate @include directives correctly with the --subdir option.
+	(texi2any_internals_dependencies): List dependencies with
+	../../ prefix instead of $(top_srcdir)/.
+	(MAKEINFO_ENVIRONMENT): Use abs_top_srcdir and abs_top_buildir
+	instead of top_srcdir and top_buildir.
+
+	Report from Bruno Haible and analysis by Patrice.
+
+	* tp/Makefile.am (Texinfo/Commands.pm): Generate in srcdir.
+	Remove from modules_DATA and DISTCLEANFILES, and add to
+	dist_modules_DATA and MAINTAINERCLEANFILES.
+	* tp/maintain/regenerate_commands_perl_info.pl:
+	Receive generated file name as argument.
+	(Based on Patrice's change to git 'master' branch on 2023-10-22,
+	commit 3cc99724; and 2023-10-19, commit bec1b4b3).
+
+2024-08-08  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* Makefile.am (BUILT_SOURCES): Add tp/Texinfo/ModulePath.pm along
+	with rule to generate it.  This helps in running "make dist"
+	without running "make" first.  Report from Bruno.
+
+2024-08-07  Patrice Dumas  <pertusus@free.fr>
+
+	* info/Makefile.am (../gnulib/lib/libgnu.a):
+	Add rule to allow running "make dist" without running "make"
+	first.  Report from Bruno Haible.
+
+2024-08-20  Bruno Haible <bruno@clisp.org>
+
+	build: Fix failure of all install-info tests on Solaris 11.4.
+
+	* install-info/tests/defs.in (DIFF_OPTIONS): New variable.
+	(diff): Remove variable.
+	* install-info/tests/ii-*-test: Use diff $DIFF_OPTIONS instead
+	of ${diff}.
+
+2024-08-20  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Check for diff --strip-trailing-cr.
+
+	* configure.ac (DIFF_OPTIONS, DIFF_U_OPTION, DIFF_A_OPTION):
+	Do not AC_SUBST DIFF_U_OPTION or DIFF_A_OPTION, using DIFF_OPTIONS
+	instead.
+	(DIFF_CR_OPTION) [mingw]: Check if --strip-trailing-cr option
+	works and include it in DIFF_OPTIONS if so.
+
+	* tp/tests/run_parser_all.sh,
+	* tp/defs.in,
+	* tp/tests/many_input_files/different_encodings.sh,
+	* tp/tests/many_input_files/different_languages_gen_master_menu.sh,
+	* tp/tests/many_input_files/input_dir_non_ascii.sh,
+	* tp/tests/many_input_files/output_dir_file_non_ascii.sh,
+	* tp/tests/many_input_files/output_dir_non_ascii.sh,
+	* tp/tests/many_input_files/tex_l2h.sh,
+	* tp/tests/many_input_files/tex_l2h_output_dir_non_ascii.sh,
+	* tp/tests/many_input_files/tex_t4ht.sh,
+	* tp/tests/many_input_files/tex_t4ht_output_dir_non_ascii.sh,
+	Use DIFF_OPTIONS instead of DIFF_A_OPTION and/or DIFF_U_OPTION
+	in order to have --strip-trailing-cr possibly included.
+
+	* install-info/defs.in: Remove handling of --strip-trailing-cr,
+	using DIFF_OPTIONS instead.
+
+	Test failures due to carriage returns on mingw reported by
+	Bruno Haible, bug-texinfo 2024-06-09.
+
+2024-07-20  Andreas Schwab  <schwab@linux-m68k.org>
+
+	* info/variables.c (set_variable_to_value): Add end marker to
+	styles array.
+
+	(fix on bug-texinfo, 2024-02-09)
+
+2024-06-17  Patrice Dumas  <pertusus@free.fr>
+
+	Fix out-of-source build of pod2texi.texi
+
+	* doc/Makefile.am (pod2texi.texi): use
+	MAKEINFO_ENVIRONMENT environment variable to have ModulePath.pm
+	work correctly.  Remove -I options now unneeded.  Create
+	pod2texi.texi in $(srcdir) by passing the --subdir option.
+
+2024-06-17  Patrice Dumas  <pertusus@free.fr>
+
+	* doc/tp_api/Makefile.am
+	(MAKEINFO_ENVIRONMENT, MAKEINFO, texi2any_internals.texi): set/use
+	environment variables to have ModulePath.pm work correctly.  Remove -I
+	options now unneeded.
+
+2024-06-17  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Fix out-of-source build of texi2any_internals.texi
+
+        Pass  "-I $(top_builddir)/tp" to perl to find generated modules.
+        Filter output through sed by outputting a temporary file rather
+        than piping output - this allows detecting if perl run failed.
+
+2024-06-17  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Info tests timeout
+
+	* info/t/Init-test.inc (TEXINFO_INFO_TESTS_TIMEOUT, run_ginfo):
+	Use environment variable to allow changing tests timeout
+	from the environment.  Increase default timeout from 5 to 10
+	seconds. This is to support running the tests on slow systems,
+	such as under CPU emulation.  Report of test timeouts from Nelson.
+
+2024-06-10  Bruno Haible  <bruno@clisp.org>
+
+	man: Add support for VPATH builds with OpenBSD 'make'.
+
+	* man/Makefile.am: In the rules that use HELP2MAN, prefix the
+	target file names with '$(srcdir)/'.
+
+2024-06-08  Gavin Smith <gavinsmith0123@gmail.com>
+
+	pretest 7.1.0.90
+
+2024-06-08  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* NEWS: add items for 7.1.1
+
+2024-06-08  Gavin Smith <gavinsmith0123@gmail.com>
+
+	prepare for 7.1.0.90 pretest
+
+	* configure.ac,
+	* info/info.c,
+	* install-info/install-info.c,
+	* js/info.js,
+	* util/texi2dvi,
+	* util/texi2pdf,
+	* texindex/ti.twjr,
+	* tp/texi2any.pl,
+	* util/texi2dvi,
+	* util/texi2pdf: bump version to 7.1.0.90.  2024.
+	* po_document/ka.po, po_document/LINGUAS: new Georgian translation.
+
+2024-01-22  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_tab_command): round using
+	%.0f to be more accurate than with %d.
+
+	* tp/Makefile.tres, tp/t/html_tests.t (fractions_rounding): add a test
+	that shows an incorrect percent rounding with %d with perl.
+
+2024-05-01  Patrice Dumas  <pertusus@free.fr>
+
+	Remove parent of @include or @setfilename source mark elements
+
+	* tp/Texinfo/ParserNonXS.pm (_end_line_misc_line),
+	tp/Texinfo/XS/parsetexi/end_line.c (end_line_misc_line): remove parent
+	of @include or @setfilename element removed from the tree and
+	registered as source mark element.
+
+	* tp/Makefile.am (test_files), tp/Makefile.tres, tp/t/80include.t
+	(include_in_removed_before_item): add test of @include in @table
+	before_item after a comment that holds the source mark, with
+	before_item removed from the tree.
+
+	Report from Christoph.
+
+2023-12-17  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Do not distribute xsubpp-generated files
+
+	* tp/Texinfo/XS/Makefile.am (TestXS_la_SOURCES, MiscXS_la_SOURCES)
+	(XSParagraph_la_SOURCES, Parsetexi_la_SOURCES):
+	Do not distribute *.c files generated from *.xs files by
+	xsubpp.  List these files in the corresponding nodist_* variable.
+	(CLEANFILES): Add these *.c files.
+	(.xs.c): Generate in builddir not srcdir.
+
+	This avoids the possibility of one of the distributed
+	files being overwritten with no way to get back the original
+	contents, while users expect "make distclean" to restore the
+	original state of a distribution.
+
+	Report from Hilmar Preuße <hille42@web.de>.
+
+2023-11-15  Gavin Smith <gavinsmith0123@gmail.com>
+
+	Further obstack alignment fix for sparc64
+
+	* tp/Texinfo/XS/gnulib/lib/obstack.h: Add defines using rpl_
+	prefix for gnulib functions.  Investigation and fix by Bruno Haible.
+
+	* tp/Texinfo/XS/parsetexi/tree.c: Revert change from 2023-11-13.
+
+2023-11-14  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/command_data.txt
+	(item_LINE, itemx, defblock, defline, deftypeline):
+	Remove contain_basic_inline flag.  There is no reason an @anchor
+	should not occur inside @item, inside @table, or the other
+	commands, as no index entry is being created with the @anchor.
+
+	Report from Ihor Radchenko <yantar92@posteo.net> for Org mode manual.
+
+2023-11-13  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/parsetexi/tree.c (reset_obstacks):
+	Call obstack_alignment_mask to use 8-byte alignment.  Needed
+	for Debian on sparc64.  Report of "Bus error" from
+	John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>.
+
+2023-11-04  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* info/scan.c (write_tag_contents): Check if added text is of
+	zero length in order to avoid subsequently calling memcpy with
+	a null source argument.  Report with -fsanitize=undefined on amd64
+	from Sam James <sam@gentoo.org>.
+
+2023-10-25  Eli Zaretskii <eliz@gnu.org>
+
+	* tp/Texinfo/XS/xspara.c (xspara__add_next): Do not pass
+	pointer to wint_t as a pointer to wchar_t, as the two types
+	may be of different sizes.
+
+2023-10-23  Gavin Smith <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/xspara.c (get_utf8_codepoint):
+	Wrapper for mbrtowc/btowc.
+	[_WIN32]: Do not call btowc, as it was tested to be very slow
+	on MinGW.  Report from Eli Zaretskii.
+
 2023-10-18  Gavin Smith <gavinsmith0123@gmail.com>
 
 	Texinfo 7.1

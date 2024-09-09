@@ -1,23 +1,23 @@
 # Slovak translation of texinfo_document
 # Copyright (C) 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# Marek Felšöci <marek@felsoci.sk>, 2023.
+# Marek Felšöci <marek@felsoci.sk>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 6.8.90\n"
+"Project-Id-Version: texinfo_document 7.1.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2023-10-18 14:21+0100\n"
-"PO-Revision-Date: 2023-01-19 18:48+0100\n"
+"POT-Creation-Date: 2024-09-07 18:40+0100\n"
+"PO-Revision-Date: 2024-09-06 14:11+0200\n"
 "Last-Translator: Marek Felšöci <marek@felsoci.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 2.3\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: tp/ext/epub3.pm:672
 msgid "Table of contents"
@@ -30,7 +30,6 @@ msgid "{explained_string} ({explanation})"
 msgstr "{explained_string} ({explanation})"
 
 #: tp/Texinfo/Common.pm:638
-#| msgid "Function"
 msgctxt "category of functions for @defun"
 msgid "Function"
 msgstr "Funkcia"
@@ -46,7 +45,6 @@ msgid "Special Form"
 msgstr "Zvláštny tvar"
 
 #: tp/Texinfo/Common.pm:645
-#| msgid "Variable"
 msgctxt "category of variables for @defvar"
 msgid "Variable"
 msgstr "Premenná"
@@ -57,26 +55,22 @@ msgid "User Option"
 msgstr "Užívateľská voľba"
 
 #: tp/Texinfo/Common.pm:650
-#| msgid "Function"
 msgctxt "category of functions for @deftypefun"
 msgid "Function"
 msgstr "Funkcia"
 
 #: tp/Texinfo/Common.pm:653
-#| msgid "Variable"
 msgctxt "category of variables in typed languages for @deftypevar"
 msgid "Variable"
 msgstr "Premenná"
 
 #: tp/Texinfo/Common.pm:656
-#| msgid "Instance Variable"
 msgctxt ""
 "category of instance variables in object-oriented programming for @defivar"
 msgid "Instance Variable"
 msgstr "Inštančná premenná"
 
 #: tp/Texinfo/Common.pm:659
-#| msgid "Instance Variable"
 msgctxt ""
 "category of instance variables with data type in object-oriented programming "
 "for @deftypeivar"
@@ -84,13 +78,11 @@ msgid "Instance Variable"
 msgstr "Inštančná premenná"
 
 #: tp/Texinfo/Common.pm:662
-#| msgid "Method"
 msgctxt "category of methods in object-oriented programming for @defmethod"
 msgid "Method"
 msgstr "Postup"
 
 #: tp/Texinfo/Common.pm:665
-#| msgid "Method"
 msgctxt ""
 "category of methods with data type in object-oriented programming for "
 "@deftypemethod"
@@ -322,10 +314,9 @@ msgid "@t{<{url}>}"
 msgstr "@t{<{url}>}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2787
-#, fuzzy, perl-brace-format
-#| msgid "@center --- @emph{{author}}"
+#, perl-brace-format
 msgid "@center @b{{cartouche_arg}}"
-msgstr "@center --- @emph{{author}}"
+msgstr "@center @b{{cartouche_arg}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3196
 #, perl-brace-format
@@ -448,379 +439,316 @@ msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "@tie{}-- {category} triedy {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/HTML.pm:2010
-#| msgid "About This Document"
 msgctxt "about section heading"
 msgid "About This Document"
 msgstr "O tomto dokumente"
 
 #: tp/Texinfo/Convert/HTML.pm:2012
-#| msgid "Table of Contents"
 msgctxt "contents section heading"
 msgid "Table of Contents"
 msgstr "Obsah"
 
 #: tp/Texinfo/Convert/HTML.pm:2015
-#| msgid "Short Table of Contents"
 msgctxt "shortcontents section heading"
 msgid "Short Table of Contents"
 msgstr "Stručný obsah"
 
 #: tp/Texinfo/Convert/HTML.pm:2017
-#| msgid "Footnotes"
 msgctxt "footnotes section heading"
 msgid "Footnotes"
 msgstr "Poznámky pod čiarou"
 
 #: tp/Texinfo/Convert/HTML.pm:2121
-#| msgid "Top"
 msgctxt "Top direction string"
 msgid "Top"
 msgstr "Hore"
 
 #: tp/Texinfo/Convert/HTML.pm:2123
-#| msgid "Contents"
 msgctxt "Contents direction string"
 msgid "Contents"
 msgstr "Obsah"
 
 #: tp/Texinfo/Convert/HTML.pm:2126
-#| msgid "Overview"
 msgctxt "Overview direction string"
 msgid "Overview"
 msgstr "Prehľad"
 
 #: tp/Texinfo/Convert/HTML.pm:2128
-#| msgid "Index"
 msgctxt "Index direction string"
 msgid "Index"
 msgstr "Register"
 
 #: tp/Texinfo/Convert/HTML.pm:2131
-#| msgid "current"
 msgctxt "This (current section) direction string"
 msgid "current"
 msgstr "súčasný"
 
 #: tp/Texinfo/Convert/HTML.pm:2135
-#| msgid "Prev"
 msgctxt "Prev direction string"
 msgid "Prev"
 msgstr "Predchádzajúci"
 
 #: tp/Texinfo/Convert/HTML.pm:2137
-#| msgid " Up "
 msgctxt "Up direction string"
 msgid " Up "
 msgstr " Nahor "
 
 #: tp/Texinfo/Convert/HTML.pm:2139
-#| msgid "Next"
 msgctxt "Next direction string"
 msgid "Next"
 msgstr "Nasledujúci"
 
 #: tp/Texinfo/Convert/HTML.pm:2141
-#| msgid "Up"
 msgctxt "NodeUp direction string"
 msgid "Up"
 msgstr "Nahor"
 
 #: tp/Texinfo/Convert/HTML.pm:2143
-#| msgid "Next"
 msgctxt "NodeNext direction string"
 msgid "Next"
 msgstr "Nasledujúci"
 
 #: tp/Texinfo/Convert/HTML.pm:2145
-#| msgid "Previous"
 msgctxt "NodePrev direction string"
 msgid "Previous"
 msgstr "Predchádzajúci"
 
 #: tp/Texinfo/Convert/HTML.pm:2147
-#| msgid "Forward node"
 msgctxt "NodeForward direction string"
 msgid "Forward node"
 msgstr "O uzol vpred"
 
 #: tp/Texinfo/Convert/HTML.pm:2149
-#| msgid "Back node"
 msgctxt "NodeBack direction string"
 msgid "Back node"
 msgstr "O uzol naspäť"
 
 #: tp/Texinfo/Convert/HTML.pm:2156
-#| msgid "Next file"
 msgctxt "NextFile direction string"
 msgid "Next file"
 msgstr "Nasledujúci súbor"
 
 #: tp/Texinfo/Convert/HTML.pm:2158
-#| msgid "Previous file"
 msgctxt "PrevFile direction string"
 msgid "Previous file"
 msgstr "Predchádzajúci súbor"
 
 #: tp/Texinfo/Convert/HTML.pm:2163
-#| msgid "Cover (top) of document"
 msgctxt "Top direction description"
 msgid "Cover (top) of document"
 msgstr "Obálka (vrchol) dokumentu"
 
 #: tp/Texinfo/Convert/HTML.pm:2166
-#| msgid "Table of contents"
 msgctxt "Contents direction description"
 msgid "Table of contents"
 msgstr "Obsah"
 
 #: tp/Texinfo/Convert/HTML.pm:2169
-#| msgid "Short table of contents"
 msgctxt "Overview direction description"
 msgid "Short table of contents"
 msgstr "Stručný obsah"
 
 #: tp/Texinfo/Convert/HTML.pm:2171
-#| msgid "Index"
 msgctxt "Index direction description"
 msgid "Index"
 msgstr "Register"
 
 #: tp/Texinfo/Convert/HTML.pm:2174
-#| msgid "Current section"
 msgctxt "This (current section) direction description"
 msgid "Current section"
 msgstr "Súčasný oddiel"
 
 #: tp/Texinfo/Convert/HTML.pm:2177
-#| msgid "Previous section in reading order"
 msgctxt "Back direction description"
 msgid "Previous section in reading order"
 msgstr "Predchádzajúci oddiel v poradí čítania"
 
 #: tp/Texinfo/Convert/HTML.pm:2180
-#| msgid "Beginning of this chapter or previous chapter"
 msgctxt "FastBack direction description"
 msgid "Beginning of this chapter or previous chapter"
 msgstr "Začiatok tejto kapitoly alebo predchádzajúcej kapitoly"
 
 #: tp/Texinfo/Convert/HTML.pm:2183
-#| msgid "Previous section on same level"
 msgctxt "Prev direction description"
 msgid "Previous section on same level"
 msgstr "Predchádzajúci oddiel na rovnakej úrovni"
 
 #: tp/Texinfo/Convert/HTML.pm:2185
-#| msgid "Up section"
 msgctxt "Up direction description"
 msgid "Up section"
 msgstr "O oddiel vyššie"
 
 #: tp/Texinfo/Convert/HTML.pm:2187
-#| msgid "Next section on same level"
 msgctxt "Next direction description"
 msgid "Next section on same level"
 msgstr "Nasledujúci oddiel na rovnakej úrovni"
 
 #: tp/Texinfo/Convert/HTML.pm:2189
-#| msgid "Up node"
 msgctxt "NodeUp direction description"
 msgid "Up node"
 msgstr "O uzol vyššie"
 
 #: tp/Texinfo/Convert/HTML.pm:2191
-#| msgid "Next node"
 msgctxt "NodeNext direction description"
 msgid "Next node"
 msgstr "Nasledujúci uzol"
 
 #: tp/Texinfo/Convert/HTML.pm:2193
-#| msgid "Previous node"
 msgctxt "NodePrev direction description"
 msgid "Previous node"
 msgstr "Predchádzajúci uzol"
 
 #: tp/Texinfo/Convert/HTML.pm:2196
-#| msgid "Next node in node reading order"
 msgctxt "NodeForward direction description"
 msgid "Next node in node reading order"
 msgstr "Nasledujúci uzol v poradí čítania uzlov"
 
 #: tp/Texinfo/Convert/HTML.pm:2199
-#| msgid "Previous node in node reading order"
 msgctxt "NodeBack direction description"
 msgid "Previous node in node reading order"
 msgstr "Predchádzajúci uzol v poradí čítania uzlov"
 
 #: tp/Texinfo/Convert/HTML.pm:2202
-#| msgid "Next section in reading order"
 msgctxt "Forward direction description"
 msgid "Next section in reading order"
 msgstr "Nasledujúci oddiel v poradí čítania"
 
 #: tp/Texinfo/Convert/HTML.pm:2204
-#| msgid "Next chapter"
 msgctxt "FastForward direction description"
 msgid "Next chapter"
 msgstr "Nasledujúca kapitola"
 
 #: tp/Texinfo/Convert/HTML.pm:2206
-#| msgid "About (help)"
 msgctxt "About direction description"
 msgid "About (help)"
 msgstr "Pomocník"
 
 #: tp/Texinfo/Convert/HTML.pm:2209
-#| msgid "First section in reading order"
 msgctxt "First direction description"
 msgid "First section in reading order"
 msgstr "Prvý oddiel v poradí čítania"
 
 #: tp/Texinfo/Convert/HTML.pm:2212
-#| msgid "Last section in reading order"
 msgctxt "Last direction description"
 msgid "Last section in reading order"
 msgstr "Posledný oddiel v poradí čítania"
 
 #: tp/Texinfo/Convert/HTML.pm:2215
-#| msgid "Forward section in next file"
 msgctxt "NextFile direction description"
 msgid "Forward section in next file"
 msgstr "O oddiel vpred do nasledujúceho súboru"
 
 #: tp/Texinfo/Convert/HTML.pm:2218
-#| msgid "Back section in previous file"
 msgctxt "PrevFile direction description"
 msgid "Back section in previous file"
 msgstr "O oddiel naspäť do predchádzajúceho súboru"
 
 #: tp/Texinfo/Convert/HTML.pm:2224
-#| msgid "Top"
 msgctxt "Top direction button label"
 msgid "Top"
 msgstr "Hore"
 
 #: tp/Texinfo/Convert/HTML.pm:2226
-#| msgid "Contents"
 msgctxt "Contents direction button label"
 msgid "Contents"
 msgstr "Obsah"
 
 #: tp/Texinfo/Convert/HTML.pm:2228
-#| msgid "Overview"
 msgctxt "Overview direction button label"
 msgid "Overview"
 msgstr "Prehľad"
 
 #: tp/Texinfo/Convert/HTML.pm:2230
-#| msgid "Index"
 msgctxt "Index direction button label"
 msgid "Index"
 msgstr "Register"
 
 #: tp/Texinfo/Convert/HTML.pm:2232
-#| msgid "This"
 msgctxt "This direction button label"
 msgid "This"
 msgstr "Toto"
 
 #: tp/Texinfo/Convert/HTML.pm:2234
-#| msgid "Back"
 msgctxt "Back direction button label"
 msgid "Back"
 msgstr "Naspäť"
 
 #: tp/Texinfo/Convert/HTML.pm:2236
-#| msgid "FastBack"
 msgctxt "FastBack direction button label"
 msgid "FastBack"
 msgstr "Rýchlo naspäť"
 
 #: tp/Texinfo/Convert/HTML.pm:2238
-#| msgid "Prev"
 msgctxt "Prev direction button label"
 msgid "Prev"
 msgstr "Predchádzajúci"
 
 #: tp/Texinfo/Convert/HTML.pm:2240
-#| msgid "Up"
 msgctxt "Up direction button label"
 msgid "Up"
 msgstr "Nahor"
 
 #: tp/Texinfo/Convert/HTML.pm:2242
-#| msgid "Next"
 msgctxt "Next direction button label"
 msgid "Next"
 msgstr "Nasledujúci"
 
 #: tp/Texinfo/Convert/HTML.pm:2244
-#| msgid "NodeUp"
 msgctxt "NodeUp direction button label"
 msgid "NodeUp"
 msgstr "O uzol vyššie"
 
 #: tp/Texinfo/Convert/HTML.pm:2246
-#| msgid "NodeNext"
 msgctxt "NodeNext direction button label"
 msgid "NodeNext"
 msgstr "Nasledujúci uzol"
 
 #: tp/Texinfo/Convert/HTML.pm:2248
-#| msgid "NodePrev"
 msgctxt "NodePrev direction button label"
 msgid "NodePrev"
 msgstr "Predchádzajúci uzol"
 
 #: tp/Texinfo/Convert/HTML.pm:2250
-#| msgid "NodeForward"
 msgctxt "NodeForward direction button label"
 msgid "NodeForward"
 msgstr "O uzol vpred"
 
 #: tp/Texinfo/Convert/HTML.pm:2252
-#| msgid "NodeBack"
 msgctxt "NodeBack direction button label"
 msgid "NodeBack"
 msgstr "O uzol naspäť"
 
 #: tp/Texinfo/Convert/HTML.pm:2254
-#| msgid "Forward"
 msgctxt "Forward direction button label"
 msgid "Forward"
 msgstr "Vpred"
 
 #: tp/Texinfo/Convert/HTML.pm:2256
-#| msgid "FastForward"
 msgctxt "FastForward direction button label"
 msgid "FastForward"
 msgstr "Rýchlo vpred"
 
 #: tp/Texinfo/Convert/HTML.pm:2258
-#| msgid "About"
 msgctxt "About direction button label"
 msgid "About"
 msgstr "Pomocník"
 
 #: tp/Texinfo/Convert/HTML.pm:2260
-#| msgid "First"
 msgctxt "First direction button label"
 msgid "First"
 msgstr "Prvý"
 
 #: tp/Texinfo/Convert/HTML.pm:2262
-#| msgid "Last"
 msgctxt "Last direction button label"
 msgid "Last"
 msgstr "Posledný"
 
 #: tp/Texinfo/Convert/HTML.pm:2264
-#| msgid "NextFile"
 msgctxt "NextFile direction button label"
 msgid "NextFile"
 msgstr "Nasledujúci súbor"
 
 #: tp/Texinfo/Convert/HTML.pm:2266
-#| msgid "PrevFile"
 msgctxt "PrevFile direction button label"
 msgid "PrevFile"
 msgstr "Predchádzajúci súbor"
@@ -920,20 +848,20 @@ msgstr "„{section}“"
 #: tp/Texinfo/Convert/HTML.pm:5670
 #, perl-brace-format
 msgid "@code{{main_index_entry}}, @emph{See@:} @code{{seenentry}}"
-msgstr ""
+msgstr "@code{{main_index_entry}}, @emph{Viď@:} @code{{seenentry}}"
 
 #. TRANSLATORS: redirect to another index entry
 #. TRANSLATORS: @: is discardable and used to avoid a msgfmt error
 #: tp/Texinfo/Convert/HTML.pm:5677
 #, perl-brace-format
 msgid "{main_index_entry}, @emph{See@:} {seenentry}"
-msgstr ""
+msgstr "{main_index_entry}, @emph{Viď@:} {seenentry}"
 
 #. TRANSLATORS: refer to another index entry
 #: tp/Texinfo/Convert/HTML.pm:5694
 #, perl-brace-format
 msgid "@emph{See also} {see_also_entry}"
-msgstr ""
+msgstr "@emph{Pozri tiež} {see_also_entry}"
 
 #. TRANSLATORS: before list of letters and symbols grouping index entries
 #: tp/Texinfo/Convert/HTML.pm:5972 tp/Texinfo/Convert/HTML.pm:5999
@@ -1091,51 +1019,51 @@ msgstr "Dokument bez názvu"
 
 #: tp/Texinfo/Convert/Utils.pm:76
 msgid "January"
-msgstr "január"
+msgstr "Január"
 
 #: tp/Texinfo/Convert/Utils.pm:77
 msgid "February"
-msgstr "február"
+msgstr "Február"
 
 #: tp/Texinfo/Convert/Utils.pm:78
 msgid "March"
-msgstr "marec"
+msgstr "Marec"
 
 #: tp/Texinfo/Convert/Utils.pm:79
 msgid "April"
-msgstr "apríl"
+msgstr "Apríl"
 
 #: tp/Texinfo/Convert/Utils.pm:80
 msgid "May"
-msgstr "máj"
+msgstr "Máj"
 
 #: tp/Texinfo/Convert/Utils.pm:81
 msgid "June"
-msgstr "jún"
+msgstr "Jún"
 
 #: tp/Texinfo/Convert/Utils.pm:82
 msgid "July"
-msgstr "júl"
+msgstr "Júl"
 
 #: tp/Texinfo/Convert/Utils.pm:83
 msgid "August"
-msgstr "august"
+msgstr "August"
 
 #: tp/Texinfo/Convert/Utils.pm:84
 msgid "September"
-msgstr "september"
+msgstr "September"
 
 #: tp/Texinfo/Convert/Utils.pm:85
 msgid "October"
-msgstr "október"
+msgstr "Október"
 
 #: tp/Texinfo/Convert/Utils.pm:86
 msgid "November"
-msgstr "november"
+msgstr "November"
 
 #: tp/Texinfo/Convert/Utils.pm:87
 msgid "December"
-msgstr "december"
+msgstr "December"
 
 #: tp/Texinfo/Convert/Utils.pm:106
 #, perl-brace-format
@@ -1157,18 +1085,14 @@ msgstr "{category} na triede @code{{class}}"
 msgid "{category} of @code{{class}}"
 msgstr "{category} triedy @code{{class}}"
 
-#, perl-brace-format
 #~ msgid "{float_type} {float_number}\n"
 #~ msgstr "{float_type} {float_number}\n"
 
-#, perl-brace-format
 #~ msgid "{float_type}\n"
 #~ msgstr "{float_type}\n"
 
-#, perl-brace-format
 #~ msgid "{float_number}\n"
 #~ msgstr "{float_number}\n"
 
-#, perl-brace-format
 #~ msgid "@center --- @emph{{author}}\n"
 #~ msgstr "@center --- @emph{{author}}\n"

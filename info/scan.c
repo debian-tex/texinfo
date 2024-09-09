@@ -925,11 +925,11 @@ write_extra_bytes_to_output (char *input, long n)
 }
 
 /* Like write_extra_bytes_to_output, but writes bytes even when
-   preprocess_nodes=Off. */
+   preprocess_nodes=Off.  Note n could be 0 for an index tag. */
 static void
 write_tag_contents (char *input, long n)
 {
-  if (rewrite_p)
+  if (rewrite_p && n > 0)
     {
       text_buffer_add_string (&output_buf, input, n);
       output_bytes_difference -= n;

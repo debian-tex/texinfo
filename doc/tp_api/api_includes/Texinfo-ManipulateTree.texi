@@ -1,0 +1,105 @@
+@node Texinfo@asis{::}ManipulateTree
+@chapter Texinfo::ManipulateTree
+
+@node Texinfo@asis{::}ManipulateTree NAME
+@section Texinfo::ManipulateTree NAME
+
+Texinfo::ManipulateTree - Texinfo modules common tree manipulation functions
+
+@node Texinfo@asis{::}ManipulateTree SYNOPSIS
+@section Texinfo::ManipulateTree SYNOPSIS
+
+@verbatim
+  use Texinfo::ManipulateTree;
+@end verbatim
+
+@node Texinfo@asis{::}ManipulateTree NOTES
+@section Texinfo::ManipulateTree NOTES
+
+The Texinfo Perl module main purpose is to be used in @code{texi2any} to convert
+Texinfo to other formats.  There is no promise of API stability.
+
+@node Texinfo@asis{::}ManipulateTree DESCRIPTION
+@section Texinfo::ManipulateTree DESCRIPTION
+
+@code{Texinfo::ManipulateTree} contains methods for copying and modifying the
+Texinfo tree used for default conversion to output formats.
+
+For optional tree transformation, see @ref{Texinfo@asis{::}Transformations NAME,, Texinfo::Transformations}.
+
+@node Texinfo@asis{::}ManipulateTree METHODS
+@section Texinfo::ManipulateTree METHODS
+
+The Texinfo tree and Texinfo tree elements used in argument of some functions
+are documented in @ref{Texinfo@asis{::}Parser TEXINFO TREE}.  When customization
+information is needed, an object that defines @code{get_conf} is
+expected, normally a @ref{Texinfo@asis{::}Document Getting customization
+options values registered in document} object.
+
+@table @asis
+@item move_index_entries_after_items_in_tree($tree)
+@anchor{Texinfo@asis{::}ManipulateTree move_index_entries_after_items_in_tree($tree)}
+@cindex @code{move_index_entries_after_items_in_tree}
+
+In @code{@@enumerate} and @code{@@itemize} from the tree, move index entries
+appearing just before @code{@@item} after the @code{@@item}.  Comment lines
+between index entries are moved too.
+
+@item protect_colon_in_tree($tree)
+@anchor{Texinfo@asis{::}ManipulateTree protect_colon_in_tree($tree)}
+
+@item protect_node_after_label_in_tree($tree)
+@anchor{Texinfo@asis{::}ManipulateTree protect_node_after_label_in_tree($tree)}
+@cindex @code{protect_colon_in_tree}
+@cindex @code{protect_node_after_label_in_tree}
+
+Protect colon with @code{protect_colon_in_tree} and characters that
+are special in node names after a label in menu entries (tab
+dot and comma) with @code{protect_node_after_label_in_tree}.
+The protection is achieved by putting protected characters
+in @code{@@asis@{@}}.
+
+@item protect_comma_in_tree($tree)
+@anchor{Texinfo@asis{::}ManipulateTree protect_comma_in_tree($tree)}
+@cindex @code{protect_comma_in_tree}
+
+Protect comma characters, replacing @code{,} with @@comma@{@} in tree.
+
+@item protect_first_parenthesis($element)
+@anchor{Texinfo@asis{::}ManipulateTree protect_first_parenthesis($element)}
+@cindex @code{protect_first_parenthesis}
+
+Modify @emph{$element} contents by protecting the first parenthesis.
+If @emph{$element} is undef a fatal error with a backtrace will be emitted.
+
+@item relate_index_entries_to_table_items_in_tree($document)
+@anchor{Texinfo@asis{::}ManipulateTree relate_index_entries_to_table_items_in_tree($document)}
+@cindex @code{relate_index_entries_to_table_items_in_tree}
+
+In tables, relate index entries preceding and following an
+entry with said item.  Reference one of them in the entry's
+@code{entry_associated_element}.
+
+@end table
+
+@node Texinfo@asis{::}ManipulateTree SEE ALSO
+@section Texinfo::ManipulateTree SEE ALSO
+
+@ref{Texinfo@asis{::}Document NAME,, Texinfo::Document}, @ref{Texinfo@asis{::}Structuring NAME,, Texinfo::Structuring}, @ref{Texinfo@asis{::}Transformations NAME,, Texinfo::Transformations}.
+
+@node Texinfo@asis{::}ManipulateTree AUTHOR
+@section Texinfo::ManipulateTree AUTHOR
+
+Patrice Dumas, <pertusus@@free.fr>
+
+@node Texinfo@asis{::}ManipulateTree COPYRIGHT AND LICENSE
+@section Texinfo::ManipulateTree COPYRIGHT AND LICENSE
+
+Copyright 2010- Free Software Foundation, Inc.  See the source file for
+all copyright years.
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or (at
+your option) any later version.
+

@@ -54,7 +54,8 @@ texindex: texindex.in Makefile
 texindex.awk: ti.twjr
 	$(GAWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr || rm -f texindex.awk
 	$(do_subst) <texindex.awk >texindex.awk-tmp
-	mv texindex.awk-tmp texindex.awk
+	rm -f texindex.awk
+	mv texindex.awk-tmp $(srcdir)/texindex.awk
 
 # how to build the pdf of the program-as-document.
 ti.pdf: ti.texi

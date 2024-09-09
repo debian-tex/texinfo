@@ -43,7 +43,7 @@ require Exporter;
 use vars qw($VERSION @ISA);
 @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.1';
+$VERSION = '7.1.1';
 
 my %brace_commands = %Texinfo::Commands::brace_commands;
 

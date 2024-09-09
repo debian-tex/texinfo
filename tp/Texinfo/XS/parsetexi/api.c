@@ -30,7 +30,9 @@
 
 #undef context
 
+#ifdef ENABLE_NLS
 #include <libintl.h>
+#endif
 
 #include <stdlib.h>
 #include <stdio.h>

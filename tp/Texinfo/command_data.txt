@@ -253,8 +253,8 @@ printindex              line,formattable_line,close_paragraph,global,contain_pla
 listoffloats            line,formattable_line,close_paragraph,global,contain_basic_inline   LINE_line
 exdent                  line,formatted_line,close_paragraph            LINE_line
 # or nobrace skipspace, depending on the context
-item_LINE               line,formatted_line,close_paragraph,contain_basic_inline    LINE_line
-itemx                   line,formatted_line,close_paragraph,contain_basic_inline    LINE_line
+item_LINE               line,formatted_line,close_paragraph    LINE_line
+itemx                   line,formatted_line,close_paragraph    LINE_line
 nodedescription         line,close_paragraph                               LINE_line
 # in index entries
 subentry                line,in_index,contain_basic_inline          LINE_line
@@ -494,9 +494,9 @@ defmethod               block,def,contain_basic_inline,def_alias,close_paragraph
 deftypemethod           block,def,contain_basic_inline,def_alias,close_paragraph    BLOCK_def
 
 # generic, no automatic index
-defblock                block,contain_basic_inline,close_paragraph       BLOCK_def
-defline                 line,def,contain_basic_inline,close_paragraph        LINE_line
-deftypeline             line,def,contain_basic_inline,close_paragraph        LINE_line
+defblock                block,close_paragraph           BLOCK_def
+defline                 line,def,close_paragraph        LINE_line
+deftypeline             line,def,close_paragraph        LINE_line
 
 # def*x
 deffnx                  line,def,contain_basic_inline,close_paragraph        LINE_line

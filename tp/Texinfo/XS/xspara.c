@@ -684,6 +684,30 @@ xspara_end (void)
 /* characters triggering an end of sentence */
 #define end_sentence_characters ".?!"
 
+/* Wrapper for mbrtowc.  Set *PWC and return length of codepoint in bytes. */
+size_t
+get_utf8_codepoint (wchar_t *pwc, const char *mbs, size_t n)
+{
+#ifdef _WIN32
+  /* Use the above implementation of mbrtowc.  Do not use btowc as
+     does not exist as standard on MS-Windows, and was tested to be
+     very slow on MinGW. */
+  return mbrtowc (pwc, mbs, n, NULL);
+#else
+  if (!PRINTABLE_ASCII(*mbs))
+    {
+      return mbrtowc (pwc, mbs, n, NULL);
+    }
+  else
+    {
+      /* Functionally the same as mbrtowc but (tested) slightly quicker. */
+      *pwc = btowc (*mbs);
+      return 1;
+    }
+#endif
+}
+
+
 /* Add WORD to paragraph in RESULT, not refilling WORD.  If we go past the end 
    of the line start a new one.  TRANSPARENT means that the letters in WORD
    are ignored for the purpose of deciding whether a full stop ends a sentence
@@ -730,18 +754,9 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
               if (!strchr (end_sentence_characters
                            after_punctuation_characters, *p))
                 {
-                  if (!PRINTABLE_ASCII(*p))
-                    {
-                      wchar_t wc = L'\0';
-                      mbrtowc (&wc, p, len, NULL);
-                      state.last_letter = wc;
-                      break;
-                    }
-                  else
-                    {
-                      state.last_letter = btowc (*p);
-                      break;
-                    }
+                  wchar_t wc;
+                  get_utf8_codepoint (&wc, p, len);
+                  state.last_letter = wc;
                 }
             }
         }
@@ -1013,16 +1028,7 @@ xspara_add_text (char *text, int len)
         }
 
       /************** Not a white space character. *****************/
-      if (!PRINTABLE_ASCII(*p))
-        {
-          char_len = mbrtowc (&wc, p, len, NULL);
-        }
-      else
-        {
-          /* Functonally the same as mbrtowc but (tested) slightly quicker. */
-          char_len = 1;
-          wc = btowc (*p);
-        }
+      char_len = get_utf8_codepoint (&wc, p, len);
 
       if ((long) char_len == 0)
         break; /* Null character. Shouldn't happen. */

@@ -1,12 +1,11 @@
+# time_h.m4
+# serial 26
+dnl Copyright (C) 2000-2001, 2003-2007, 2009-2024 Free Software Foundation, Inc.
+dnl This file is free software; the Free Software Foundation
+dnl gives unlimited permission to copy and/or distribute it,
+dnl with or without modifications, as long as this notice is preserved.
+
 # Configure a more-standard replacement for <time.h>.
-
-# Copyright (C) 2000-2001, 2003-2007, 2009-2023 Free Software Foundation, Inc.
-
-# serial 24
-
-# This file is free software; the Free Software Foundation
-# gives unlimited permission to copy and/or distribute it,
-# with or without modifications, as long as this notice is preserved.
 
 # Written by Paul Eggert and Jim Meyering.
 
@@ -146,6 +145,7 @@ AC_DEFUN([gl_TIME_H_REQUIRE_DEFAULTS],
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIMESPEC_GETRES])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIME_R])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TIME_RZ])
+    gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TZNAME])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_TZSET])
     dnl Support Microsoft deprecated alias function names by default.
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_MDA_TZSET], [1])
@@ -175,5 +175,6 @@ AC_DEFUN([gl_TIME_H_DEFAULTS],
   REPLACE_TIME=0;                        AC_SUBST([REPLACE_TIME])
   REPLACE_TIMEGM=0;                      AC_SUBST([REPLACE_TIMEGM])
   REPLACE_TIMESPEC_GET=0;                AC_SUBST([REPLACE_TIMESPEC_GET])
+  REPLACE_TIMESPEC_GETRES=0;             AC_SUBST([REPLACE_TIMESPEC_GETRES])
   REPLACE_TZSET=0;                       AC_SUBST([REPLACE_TZSET])
 ])

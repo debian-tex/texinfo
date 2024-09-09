@@ -1679,6 +1679,11 @@ end_line_misc_line (ELEMENT *current)
                 manage the source mark memory which can stay associated
                 to the element. */
               source_mark->element = pop_element_from_contents (current);
+            /* remove parent information, as the parent could be removed
+               from the tree (case of a before_item, for example), and also
+               because it seems incorrect to consider that there is a specific
+               parent in the tree. */
+              source_mark->element->parent = 0;
               register_source_mark (current, source_mark);
             }
         }

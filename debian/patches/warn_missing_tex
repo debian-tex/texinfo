@@ -1,5 +1,7 @@
-20_warn_missing_tex.dpatch by  <preining@logic.at>
-
+Description: Generate a more useful information for end users how
+  to obtain a working TeX installation.
+Forwarded: not-needed
+Author: Norbert Preining <preining@logic.at>
 ---
  util/texi2dvi |    3 +++
  1 file changed, 3 insertions(+)

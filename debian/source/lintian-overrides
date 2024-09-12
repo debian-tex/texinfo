@@ -11,6 +11,10 @@ texinfo source: source-is-missing [tp/t/results/formats_encodings/at_commands_in
 texinfo source: source-is-missing [tp/t/results/formats_encodings/at_commands_in_refs_utf8/res_html/env-code-option-samp-command-file-C_002dx-ESC.html]
 texinfo source: source-is-missing [tp/t/results/formats_encodings/japanese_shift_jis/res_html/Preface.html]
 texinfo source: source-is-missing [tp/tests/layout/res_parser/formatting_inline_css/formatting.html]
+texinfo source: source-is-missing [tp/t/results/formats_encodings/at_commands_in_refs_latin1/res_html/cite-asis-in-_0040w-b-in-r-sc-str-t-var-dfn-i.html]
+texinfo source: source-is-missing [tp/t/results/formats_encodings/at_commands_in_refs_utf8/res_html/cite-asis-in-_0040w-b-in-r-sc-str-t-var-dfn-i.html]
+texinfo source: source-is-missing [tp/t/results/formats_encodings/multiple_include_encodings/res_html/Preface.html]
+texinfo source: source-is-missing [tp/tests/other/res_parser/highlight_syntax_example_pygments/chapter.html]
 # More bad long lines
 texinfo source: very-long-line-length-in-source-file 1106 > 512 [tp/t/results/sectioning/chapter_sections.pl:631]
 texinfo source: very-long-line-length-in-source-file 1198 > 512 [tp/t/results/sectioning/top_chapter_sections.pl:720]

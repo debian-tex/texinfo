@@ -1,4 +1,7 @@
-replace numerical signal names with symbolical
+Description: XSI:isms in several scripts: numeric signals instead of signal names for trap.
+Forwarded: not-done
+Bug-Debian: https://bugs.debian.org/256287
+Author: David Weinehall <tao@debian.org>
 ---
  contrib/fix-info-dir |    6 +++---
  contrib/fixfonts     |    2 +-

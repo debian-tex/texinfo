@@ -8,5 +8,3 @@ texinfo: national-encoding [usr/share/texmf/tex/texinfo/txi-uk.tex]
 texinfo: no-manual-page [usr/bin/txixml2texi]
 texinfo: unusual-interpreter
 texinfo: package-contains-documentation-outside-usr-share-doc
-# #1021502
-texinfo: debian-news-entry-has-unknown-version 4.8-7 [usr/share/doc/texinfo/NEWS.Debian.gz:1]

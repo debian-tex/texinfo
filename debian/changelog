@@ -1,3 +1,16 @@
+texinfo (7.1.1-1) unstable; urgency=medium
+
+  * New upstream release; disable obsolete patches, add DEP-3
+    header to remaining patches.
+  * Package builds a source package after a successful build
+    (Closes: #1046800).
+  * Lintian overrides / fixes.
+  * Debian test suite does not need full package build.
+  * Bump Standards version, no changes needed.
+  * Update d/copyright to 2024.
+
+ -- Hilmar Preuße <hille42@debian.org>  Sat, 14 Sep 2024 00:07:11 +0200
+
 texinfo (7.1-3) unstable; urgency=medium
 
   * Remove surplus entries from debian/clean.

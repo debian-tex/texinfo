@@ -63,7 +63,7 @@ Description: Libraries needed by the texinfo package
  This package contains the architecture dependent parts of the texinfo package.
 
 Package: info
-Priority: important
+Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, install-info
 Provides: info-browser
@@ -79,7 +79,7 @@ Description: Standalone GNU Info documentation browser
  the form of Info files, so it is most likely you will want to install it.
 
 Package: install-info
-Priority: important
+Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Multi-Arch: foreign

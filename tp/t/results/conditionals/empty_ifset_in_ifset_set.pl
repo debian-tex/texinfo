@@ -59,9 +59,7 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 4,
-                  'macro' => ''
+                  'line_nr' => 4
                 }
               },
               'position' => 1,
@@ -119,16 +117,12 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           },
           'source_marks' => [
             {
@@ -160,9 +154,7 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 8,
-                  'macro' => ''
+                  'line_nr' => 8
                 }
               },
               'sourcemark_type' => 'expanded_conditional_command',

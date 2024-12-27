@@ -1,5 +1,7 @@
 use strict;
 
+use Encode;
+
 use lib '.';
 use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
@@ -318,13 +320,13 @@ $latin1_accents_text
 $weird_accents_text
 ],
 ['weird_accents_disable_encoding',
-$weird_accents_text, {'ENABLE_ENCODING' => 0}
+$weird_accents_text, {}, {'ENABLE_ENCODING' => 0}
 ],
 ['accent',
 $accents_text
 ],
 ['accent_enable_encoding',
-$accents_text, {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}
+$accents_text, {}, {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}
 ],
 ['accent_argument_non_ascii',
 '@node Top
@@ -361,7 +363,7 @@ $at_commands_in_refs_text,
 
 my @html_text_cases = (
 ['accentenc_enable_encoding',
-$latin1_accents_text, {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}
+$latin1_accents_text, {}, {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}
 ],
 );
 
@@ -379,7 +381,12 @@ undef, {'test_file' => 'char_us_ascii_latin1_in_refs.texi'}
 undef, {'test_file' => 'char_latin2_latin2_in_refs.texi'}
 ],
 ['japanese_shift_jis',
-undef, {'test_file' => 'japanese_shift_jis.texi'}
+# test fails on solaris11 with recent Perl, with encoding errors.  Could
+# be because of solaris iconv.  Use conversion from EUC-CN as an evidence
+# for problematic iconv even though it is not the actual issue.
+undef, {'test_file' => 'japanese_shift_jis.texi',
+        'skip' => $Texinfo::ModulePath::conversion_from_euc_cn ne 'yes'
+         ? 'No conversion from EUC-CN assuming errors with shift_jis' : undef,}
 ],
 ['sample_utf8',
 undef, {'test_file' => 'sample_utf8.texi'}
@@ -394,9 +401,6 @@ undef, {'test_file' => 'manual_simple_latin1_with_error.texi'}
 undef, {'test_file' => 'multiple_include_encodings.texi',
         'skip' => $Texinfo::ModulePath::conversion_from_euc_cn ne 'yes'
                    ? 'No conversion from EUC-CN' : undef, }
-],
-['8bit_document_translations',
-undef, {'test_file' => 'pl_translated_inserted_strings_8bit.texi'}
 ],
 ['at_commands_in_refs_utf8',
 '@setfilename at_commands_in_refs_utf8.info

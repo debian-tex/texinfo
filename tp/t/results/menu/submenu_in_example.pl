@@ -141,16 +141,12 @@ $result_trees{'submenu_in_example'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       }
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 },
                 {
@@ -223,16 +219,12 @@ $result_trees{'submenu_in_example'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
+                        'line_nr' => 15
                       }
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 13,
-                    'macro' => ''
+                    'line_nr' => 13
                   }
                 },
                 {
@@ -316,16 +308,12 @@ $result_trees{'submenu_in_example'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 20,
-                                'macro' => ''
+                                'line_nr' => 20
                               }
                             }
                           ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 18,
-                            'macro' => ''
+                            'line_nr' => 18
                           }
                         }
                       ],
@@ -358,16 +346,12 @@ $result_trees{'submenu_in_example'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 21,
-                        'macro' => ''
+                        'line_nr' => 21
                       }
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -400,15 +384,14 @@ $result_trees{'submenu_in_example'} = {
                         }
                       ],
                       'cmdname' => 'subheading',
+                      'extra' => {},
                       'info' => {
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 23,
-                        'macro' => ''
+                        'line_nr' => 23
                       }
                     },
                     {
@@ -456,9 +439,7 @@ $result_trees{'submenu_in_example'} = {
                             'item_number' => 1
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 26,
-                            'macro' => ''
+                            'line_nr' => 26
                           }
                         },
                         {
@@ -488,9 +469,7 @@ $result_trees{'submenu_in_example'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 27,
-                            'macro' => ''
+                            'line_nr' => 27
                           }
                         }
                       ],
@@ -498,9 +477,7 @@ $result_trees{'submenu_in_example'} = {
                         'enumerate_specification' => '1'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 25,
-                        'macro' => ''
+                        'line_nr' => 25
                       }
                     },
                     {
@@ -543,16 +520,12 @@ $result_trees{'submenu_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 29,
-                    'macro' => ''
+                    'line_nr' => 29
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -582,20 +555,17 @@ $result_trees{'submenu_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 30,
-                'macro' => ''
+                'line_nr' => 30
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -604,9 +574,7 @@ $result_trees{'submenu_in_example'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -664,54 +632,49 @@ subheading in menu
 
 ';
 
-$result_nodes{'submenu_in_example'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_nodes{'submenu_in_example'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
-$result_menus{'submenu_in_example'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_menus{'submenu_in_example'} = [
+  {
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
 $result_errors{'submenu_in_example'} = [
   {
     'error_line' => 'warning: @menu in invalid context
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@menu in invalid context',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @menu in invalid context
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => '@menu in invalid context',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @menu in invalid context
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => '@menu in invalid context',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @menu in invalid context
 ',
-    'file_name' => '',
     'line_nr' => 17,
-    'macro' => '',
     'text' => '@menu in invalid context',
     'type' => 'warning'
   }
@@ -751,7 +714,7 @@ $result_converted{'plaintext'}->{'submenu_in_example'} = '
 
 $result_converted{'html'}->{'submenu_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -783,17 +746,17 @@ span:hover a.copiable-link {visibility: visible}
 
 in example
 
-</pre><table class="menu" border="0" cellspacing="0"><tr><td>
+</pre><table class="menu"><tr><td>
 <pre class="menu-comment-preformatted">in submenu
 
 </pre><pre class="menu-comment-preformatted">
 
-</pre><table class="menu" border="0" cellspacing="0"><tr><td>
+</pre><table class="menu"><tr><td>
 <pre class="menu-comment-preformatted">in submenu
 </pre></td></tr></table>
 <pre class="menu-comment-preformatted">
 
-</pre><table class="menu" border="0" cellspacing="0"><tr><td>
+</pre><table class="menu"><tr><td>
 <blockquote class="quotation">
 <pre class="menu-comment-preformatted">A quot---ation in submenu
 </pre></blockquote>

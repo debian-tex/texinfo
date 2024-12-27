@@ -54,9 +54,7 @@ $result_trees{'arg_not_closed'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,9 +63,7 @@ $result_trees{'arg_not_closed'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -90,14 +86,16 @@ $result_trees{'arg_not_closed'} = {
 '
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
-                      'command_name' => 'foo',
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
+                      'command_name' => 'foo'
                     },
                     'type' => 'macro_call'
                   },
@@ -141,9 +139,7 @@ $result_errors{'arg_not_closed'} = [
   {
     'error_line' => '@foo missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@foo missing closing brace',
     'type' => 'error'
   }

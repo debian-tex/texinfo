@@ -29,9 +29,7 @@ $result_trees{'example_at_commands_arguments'} = {
                   ],
                   'cmdname' => '^',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -40,14 +38,12 @@ $result_trees{'example_at_commands_arguments'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'TeX',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -56,14 +52,12 @@ $result_trees{'example_at_commands_arguments'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'exclamdown',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -77,14 +71,12 @@ $result_trees{'example_at_commands_arguments'} = {
                           'text' => '---'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -93,14 +85,12 @@ $result_trees{'example_at_commands_arguments'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'enddots',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -112,14 +102,12 @@ $result_trees{'example_at_commands_arguments'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'comma',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -192,9 +180,7 @@ $result_trees{'example_at_commands_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -204,9 +190,7 @@ $result_trees{'example_at_commands_arguments'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -238,7 +222,7 @@ $result_converted{'plaintext'}->{'example_at_commands_arguments'} = '     exampl
 
 $result_converted{'html'}->{'example_at_commands_arguments'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -273,7 +257,6 @@ $result_converted_errors{'html'}->{'example_at_commands_arguments'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'example_at_commands_arguments.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

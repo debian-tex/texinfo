@@ -5,11 +5,13 @@ use Test::More;
 use lib '.';
 use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
-BEGIN { plan tests => 11; }
+BEGIN { plan tests => 12; }
 
 use Texinfo::Parser;
-use Texinfo::Transformations;
 use Texinfo::Convert::Texinfo;
+use Texinfo::Document;
+use Texinfo::Structuring;
+use Texinfo::Transformations;
 
 use Data::Dumper;
 
@@ -24,23 +26,22 @@ sub test($$$;$$)
   my $use_sections = shift;
 
   my $parser = Texinfo::Parser::parser();
-  my $tree = $parser->parse_texi_text($in);
-  my $registrar = $parser->registered_errors();
-  my ($labels, $targets_list, $nodes_list) = $parser->labels_information();
-  my $parser_information = $parser->global_information();
-  my $refs = $parser->internal_references_information();
-  Texinfo::Structuring::associate_internal_references($registrar, $parser,
-                                        $parser_information, $labels, $refs);
-  my ($sectioning_root, $sections_list)
-                 = Texinfo::Structuring::sectioning_structure($registrar,
-                                                              $parser, $tree);
+  my $document = $parser->parse_texi_text($in);
+  my $tree = $document->tree();
+  Texinfo::Structuring::associate_internal_references($document);
+
+  Texinfo::Structuring::sectioning_structure($document);
   if ($complete_missing_menus) {
-    Texinfo::Transformations::complete_tree_nodes_missing_menu($tree,
+    Texinfo::Transformations::complete_tree_nodes_missing_menu($document,
                                                                $use_sections);
     #print STDERR "".Texinfo::Common::debug_print_tree($tree)."\n";
   } else {
     Texinfo::Transformations::complete_tree_nodes_menus($tree, $use_sections);
   }
+
+  # rebuild the tree
+  $tree = $document->tree();
+
   my $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
 
   if (!defined($out)) {
@@ -291,6 +292,43 @@ test('@node Top
 @node nsection
 @section sect
 ', 'non automatic node');
+
+test('@node Top
+@top top
+
+@node chapter
+@chapter chap
+
+@menu
+* nsec1::
+
+@node nsec1
+@section sec1
+
+@node nsec2
+@section sec2
+
+', '@node Top
+@top top
+
+@menu
+* chapter::
+@end menu
+
+@node chapter
+@chapter chap
+
+@menu
+* nsec1::
+
+* nsec2::
+@node nsec1
+@section sec1
+
+@node nsec2
+@section sec2
+
+', 'menu not closed');
 
 # test complete_tree_nodes_missing_menu and use the
 # same input for complete_tree_nodes_menus too

@@ -29,6 +29,7 @@ $result_trees{'one_subsection_and_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'one-node'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'one_subsection_and_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -60,16 +59,16 @@ $result_trees{'one_subsection_and_node'} = {
         }
       ],
       'cmdname' => 'subsection',
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -86,7 +85,7 @@ $result_texts{'one_subsection_and_node'} = '1 The subsection
 ';
 
 $result_sectioning{'one_subsection_and_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'subsection',
@@ -96,40 +95,40 @@ $result_sectioning{'one_subsection_and_node'} = {
             'extra' => {
               'normalized' => 'one-node'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 3,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 2
   }
 };
-$result_sectioning{'one_subsection_and_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'one_subsection_and_node'};
+$result_sectioning{'one_subsection_and_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'one_subsection_and_node'};
 
-$result_nodes{'one_subsection_and_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'subsection',
-      'extra' => {},
-      'structure' => {
-        'section_number' => 1
-      }
-    },
-    'normalized' => 'one-node'
+$result_nodes{'one_subsection_and_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'subsection',
+        'extra' => {
+          'section_number' => '1'
+        }
+      },
+      'normalized' => 'one-node'
+    }
   }
-};
+];
 
-$result_menus{'one_subsection_and_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'one-node'
+$result_menus{'one_subsection_and_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'one-node'
+    }
   }
-};
+];
 
 $result_errors{'one_subsection_and_node'} = [];
 
@@ -145,7 +144,6 @@ File: ,  Node: one node
 
 1 The subsection
 ----------------
-
 
 
 Tag Table:
@@ -172,7 +170,7 @@ $result_converted_errors{'info'}->{'one_subsection_and_node'} = [
 
 $result_converted{'html'}->{'one_subsection_and_node'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

@@ -15,7 +15,9 @@ $result_trees{'not_closed_item'} = {
               'contents' => [
                 {
                   'cmdname' => 'bullet',
-                  'type' => 'command_as_argument_inserted'
+                  'info' => {
+                    'inserted' => 1
+                  }
                 }
               ],
               'info' => {
@@ -50,9 +52,7 @@ $result_trees{'not_closed_item'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -60,9 +60,7 @@ $result_trees{'not_closed_item'} = {
             'command_as_argument' => {}
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -85,9 +83,7 @@ $result_errors{'not_closed_item'} = [
   {
     'error_line' => 'no matching `@end itemize\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'no matching `@end itemize\'',
     'type' => 'error'
   }

@@ -36,6 +36,7 @@ $result_trees{'ref_to_top'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -44,9 +45,7 @@ $result_trees{'ref_to_top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -84,19 +83,19 @@ $result_trees{'ref_to_top'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Top'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -114,15 +113,13 @@ $result_trees{'ref_to_top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'ref_to_top'} = '
 @node ToP
@@ -140,7 +137,7 @@ TOP.
 ';
 
 $result_sectioning{'ref_to_top'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -150,45 +147,43 @@ $result_sectioning{'ref_to_top'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'ref_to_top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'ref_to_top'};
+$result_sectioning{'ref_to_top'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'ref_to_top'};
 
-$result_nodes{'ref_to_top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'ref_to_top'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'ref_to_top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'ref_to_top'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'ref_to_top'} = [
   {
     'error_line' => 'warning: @xref to `TOP\', different from node name `ToP\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@xref to `TOP\', different from node name `ToP\'',
     'type' => 'warning'
   }
@@ -224,7 +219,7 @@ End:
 
 $result_converted{'html'}->{'ref_to_top'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>

@@ -7,7 +7,7 @@ use utf8;
 
 $result_trees{'top_node_and_bye'} = [
   {
-    'contents' => [
+    'unit_contents' => [
       {
         'type' => 'before_node_section'
       },
@@ -37,6 +37,7 @@ $result_trees{'top_node_and_bye'} = [
           }
         ],
         'extra' => {
+          'is_target' => 1,
           'normalized' => 'Top'
         },
         'info' => {
@@ -45,9 +46,7 @@ $result_trees{'top_node_and_bye'} = [
           }
         },
         'source_info' => {
-          'file_name' => '',
-          'line_nr' => 1,
-          'macro' => ''
+          'line_nr' => 1
         }
       },
       {
@@ -61,7 +60,7 @@ $result_trees{'top_node_and_bye'} = [
         'cmdname' => 'bye'
       }
     ],
-    'type' => 'unit'
+    'unit_type' => 'unit'
   }
 ];
 
@@ -74,41 +73,36 @@ $result_texis{'top_node_and_bye'} = '@node Top
 $result_texts{'top_node_and_bye'} = '
 ';
 
-$result_nodes{'top_node_and_bye'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
+$result_nodes{'top_node_and_bye'} = [
+  {
     'associated_unit' => {
-      'structure' => {
-        'directions' => {
-          'This' => {}
-        }
+      'directions' => {
+        'This' => {}
       },
-      'type' => 'unit'
+      'unit_type' => 'unit'
+    },
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
     }
   }
-};
-$result_nodes{'top_node_and_bye'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_nodes{'top_node_and_bye'}{'structure'}{'associated_unit'};
+];
+$result_nodes{'top_node_and_bye'}[0]{'associated_unit'}{'directions'}{'This'} = $result_nodes{'top_node_and_bye'}[0]{'associated_unit'};
 
-$result_menus{'top_node_and_bye'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
+$result_menus{'top_node_and_bye'} = [
+  {
     'associated_unit' => {
-      'structure' => {
-        'directions' => {
-          'This' => {}
-        }
+      'directions' => {
+        'This' => {}
       },
-      'type' => 'unit'
+      'unit_type' => 'unit'
+    },
+    'extra' => {
+      'normalized' => 'Top'
     }
   }
-};
-$result_menus{'top_node_and_bye'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_menus{'top_node_and_bye'}{'structure'}{'associated_unit'};
+];
+$result_menus{'top_node_and_bye'}[0]{'associated_unit'}{'directions'}{'This'} = $result_menus{'top_node_and_bye'}[0]{'associated_unit'};
 
 $result_errors{'top_node_and_bye'} = [];
 
@@ -118,20 +112,19 @@ $result_floats{'top_node_and_bye'} = {};
 
 $result_elements{'top_node_and_bye'} = [
   {
-    'structure' => {
-      'directions' => {
-        'This' => {}
-      }
+    'directions' => {
+      'This' => {}
     },
-    'type' => 'unit'
+    'unit_type' => 'unit'
   }
 ];
-$result_elements{'top_node_and_bye'}[0]{'structure'}{'directions'}{'This'} = $result_elements{'top_node_and_bye'}[0];
+$result_elements{'top_node_and_bye'}[0]{'directions'}{'This'} = $result_elements{'top_node_and_bye'}[0];
 
 
 
-$result_directions_text{'top_node_and_bye'} = 'element: No associated command (type unit)
-  NO DIRECTION';
+$result_directions_text{'top_node_and_bye'} = 'output unit: No associated command (type unit)
+  This: No associated command (type unit)
+';
 
 
 $result_converted{'xml'}->{'top_node_and_bye'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>

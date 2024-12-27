@@ -17,7 +17,7 @@ $result_trees{'sole_image'} = {
                   'text' => 'aa'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -25,9 +25,7 @@ $result_trees{'sole_image'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -88,9 +86,7 @@ $result_converted_errors{'html_text'}->{'sole_image'} = [
   {
     'error_line' => 'warning: @image file `aa\' (for HTML) not found, using `aa.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `aa\' (for HTML) not found, using `aa.jpg\'',
     'type' => 'warning'
   }

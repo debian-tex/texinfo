@@ -31,6 +31,7 @@ $result_trees{'node_empty_direction'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'name'
       },
       'info' => {
@@ -39,9 +40,7 @@ $result_trees{'node_empty_direction'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -53,19 +52,22 @@ $result_texis{'node_empty_direction'} = '@node name, ';
 
 $result_texts{'node_empty_direction'} = '';
 
-$result_nodes{'node_empty_direction'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'name'
+$result_nodes{'node_empty_direction'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'name'
+    }
   }
-};
+];
 
-$result_menus{'node_empty_direction'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'name'
+$result_menus{'node_empty_direction'} = [
+  {
+    'extra' => {
+      'normalized' => 'name'
+    }
   }
-};
+];
 
 $result_errors{'node_empty_direction'} = [];
 

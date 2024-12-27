@@ -1,26 +1,25 @@
-# Copyright 2014-2023 Free Software Foundation, Inc.
+# Copyright 2014-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package Texinfo::Convert::Paragraph;
 
-# same as texi2any.pl
-use 5.00405;
+use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 use Texinfo::XSLoader;
 
@@ -30,15 +29,15 @@ use Texinfo::XSLoader;
 # this module with Texinfo::XSLoader::init.
 sub import {
   my @EXPORT = qw(
-    add_text 
-    add_next 
-    set_space_protection 
-    remove_end_sentence 
-    allow_end_sentence 
-    add_end_sentence 
-    end_line 
-    add_pending_word 
-    get_pending 
+    add_text
+    add_next
+    set_space_protection
+    remove_end_sentence
+    allow_end_sentence
+    add_end_sentence
+    end_line
+    add_pending_word
+    get_pending
   );
 
   my ($callpkg, $filename, $line) = caller(0);
@@ -49,9 +48,6 @@ sub import {
 }
 
 BEGIN {
-  our $warning_message = undef;
-  our $fatal_message = undef;
-
   # Save reference to subroutine before we do anything.
   my $import_fn = \&import;
 
@@ -60,9 +56,6 @@ BEGIN {
     "Texinfo::Convert::ParagraphNonXS",
     "XSParagraph",
     undef,
-    0,
-    $warning_message,
-    $fatal_message
   );
 
   no strict 'refs';

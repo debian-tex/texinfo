@@ -58,6 +58,7 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -66,9 +67,7 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -93,9 +92,7 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
       ],
       'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -149,14 +146,13 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
             'index_ignore_chars' => '-'
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           },
           'type' => 'index_entry_command'
         },
@@ -187,14 +183,13 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
             'index_ignore_chars' => '-'
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           },
           'type' => 'index_entry_command'
         },
@@ -225,14 +220,13 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
             'index_ignore_chars' => '-'
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           },
           'type' => 'index_entry_command'
         },
@@ -248,14 +242,12 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
                           'text' => '--'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'sortas',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -286,14 +278,13 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
             'sortas' => '--'
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           },
           'type' => 'index_entry_command'
         },
@@ -331,13 +322,12 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -347,9 +337,7 @@ $result_trees{'ignored_sort_char_empty_entries'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     }
   ],
@@ -383,7 +371,7 @@ $result_texts{'ignored_sort_char_empty_entries'} = '
 ';
 
 $result_sectioning{'ignored_sort_char_empty_entries'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -392,70 +380,71 @@ $result_sectioning{'ignored_sort_char_empty_entries'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'ignored_sort_char_empty_entries'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'ignored_sort_char_empty_entries'};
+$result_sectioning{'ignored_sort_char_empty_entries'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'ignored_sort_char_empty_entries'};
 
-$result_nodes{'ignored_sort_char_empty_entries'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'ignored_sort_char_empty_entries'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'ignored_sort_char_empty_entries'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'ignored_sort_char_empty_entries'}[0];
+$result_nodes{'ignored_sort_char_empty_entries'}[1] = $result_nodes{'ignored_sort_char_empty_entries'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'ignored_sort_char_empty_entries'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'ignored_sort_char_empty_entries'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'ignored_sort_char_empty_entries'};
-
-$result_menus{'ignored_sort_char_empty_entries'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'ignored_sort_char_empty_entries'} = [
   {
     'error_line' => 'warning: empty index key in @findex
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'empty index key in @findex',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: empty index key in @findex
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'empty index key in @findex',
     'type' => 'warning'
   }
@@ -488,7 +477,6 @@ File: ,  Node: chap,  Prev: Top
 * --:                                    chap.                  (line 3)
 * A:                                     chap.                  (line 3)
 
-
 
 Tag Table:
 Node: Top27
@@ -502,28 +490,6 @@ coding: utf-8
 End:
 ';
 
-$result_converted_errors{'info'}->{'ignored_sort_char_empty_entries'} = [
-  {
-    'error_line' => 'warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  }
-];
-
-
 
 $result_converted{'plaintext'}->{'ignored_sort_char_empty_entries'} = '* Menu:
 
@@ -531,28 +497,6 @@ $result_converted{'plaintext'}->{'ignored_sort_char_empty_entries'} = '* Menu:
 * A:                                     chap.                  (line 0)
 
 ';
-
-$result_converted_errors{'plaintext'}->{'ignored_sort_char_empty_entries'} = [
-  {
-    'error_line' => 'warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  }
-];
-
 
 
 $result_converted{'html_text'}->{'ignored_sort_char_empty_entries'} = '
@@ -581,7 +525,7 @@ $result_converted{'html_text'}->{'ignored_sort_char_empty_entries'} = '
 <a class="summary-letter-printindex" href="#chap_fn_letter-A"><b>A</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="fn-entries-printindex" border="0">
+<table class="fn-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_fn_symbol-1">-</th></tr>
@@ -600,28 +544,6 @@ $result_converted{'html_text'}->{'ignored_sort_char_empty_entries'} = '
 </div>
 </div>
 ';
-
-$result_converted_errors{'html_text'}->{'ignored_sort_char_empty_entries'} = [
-  {
-    'error_line' => 'warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  }
-];
-
 
 
 $result_converted{'xml'}->{'ignored_sort_char_empty_entries'} = '<set name="txiindexhyphenignore" line=" txiindexhyphenignore"></set>

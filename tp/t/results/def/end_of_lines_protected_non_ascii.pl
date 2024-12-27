@@ -20,7 +20,6 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -31,41 +30,53 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => "cat\x{e9}gorie"
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => "cat\x{e9}gorie"
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => "deffn_n\x{f9}me"
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => "deffn_n\x{f9}me"
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => "\x{e0}rguments"
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => "\x{e0}rguments"
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'source_marks' => [
                         {
                           'counter' => 1,
@@ -77,121 +88,140 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'more'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
                       'contents' => [
                         {
-                          'source_marks' => [
+                          'contents' => [
                             {
-                              'counter' => 2,
-                              'position' => 5,
-                              'sourcemark_type' => 'defline_continuation'
+                              'text' => 'more'
                             }
                           ],
-                          'text' => "\x{e0}rgs   with end \x{f4}f line within"
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => 'end_of_lines_protected_non_ascii.texi',
-                        'line_nr' => 3,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'with'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => '3'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'cmdname' => '@',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      }
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'cmdname' => '@',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_marks' => [
-                        {
-                          'counter' => 3,
-                          'sourcemark_type' => 'defline_continuation'
-                        }
-                      ]
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'one last arg'
+                          'contents' => [
+                            {
+                              'source_marks' => [
+                                {
+                                  'counter' => 2,
+                                  'position' => 5,
+                                  'sourcemark_type' => 'defline_continuation'
+                                }
+                              ],
+                              'text' => "\x{e0}rgs   with end \x{f4}f line within"
+                            }
+                          ],
+                          'source_info' => {
+                            'file_name' => 'end_of_lines_protected_non_ascii.texi',
+                            'line_nr' => 3
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => 'end_of_lines_protected_non_ascii.texi',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_arg'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'with'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => '3'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'cmdname' => '@'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'cmdname' => '@',
+                              'source_marks' => [
+                                {
+                                  'counter' => 3,
+                                  'sourcemark_type' => 'defline_continuation'
+                                }
+                              ]
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'one last arg'
+                            }
+                          ],
+                          'source_info' => {
+                            'file_name' => 'end_of_lines_protected_non_ascii.texi',
+                            'line_nr' => 5
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -205,7 +235,19 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => "deffn_n\x{f9}me"
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   1
@@ -214,8 +256,7 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
               },
               'source_info' => {
                 'file_name' => 'end_of_lines_protected_non_ascii.texi',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               },
               'type' => 'def_line'
             },
@@ -261,8 +302,7 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
               },
               'source_info' => {
                 'file_name' => 'end_of_lines_protected_non_ascii.texi',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -273,8 +313,7 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
           },
           'source_info' => {
             'file_name' => 'end_of_lines_protected_non_ascii.texi',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -288,7 +327,6 @@ $result_trees{'end_of_lines_protected_non_ascii'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'end_of_lines_protected_non_ascii'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'end_of_lines_protected_non_ascii'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'end_of_lines_protected_non_ascii'} = '
 @deffn catégorie deffn_nùme àrguments    more {àrgs   with end ôf line within} with 3 @@ @@ {one last arg}
@@ -309,7 +347,6 @@ $result_errors{'end_of_lines_protected_non_ascii'} = [
 ',
     'file_name' => 'end_of_lines_protected_non_ascii.texi',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }

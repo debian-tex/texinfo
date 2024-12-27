@@ -10,7 +10,6 @@ $result_trees{'two_unnumbered_no_argument'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -29,13 +28,9 @@ $result_trees{'two_unnumbered_no_argument'} = {
         }
       ],
       'cmdname' => 'unnumbered',
-      'extra' => {
-        'missing_argument' => 1
-      },
+      'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -51,13 +46,9 @@ $result_trees{'two_unnumbered_no_argument'} = {
         }
       ],
       'cmdname' => 'unnumbered',
-      'extra' => {
-        'missing_argument' => 1
-      },
+      'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -72,55 +63,49 @@ $result_texis{'two_unnumbered_no_argument'} = '@unnumbered
 $result_texts{'two_unnumbered_no_argument'} = '';
 
 $result_sectioning{'two_unnumbered_no_argument'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'unnumbered',
         'extra' => {
-          'missing_argument' => 1
-        },
-        'structure' => {
+          'section_directions' => {},
           'section_level' => 1,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
         'cmdname' => 'unnumbered',
         'extra' => {
-          'missing_argument' => 1
-        },
-        'structure' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 1,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'two_unnumbered_no_argument'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'two_unnumbered_no_argument'};
-$result_sectioning{'two_unnumbered_no_argument'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'two_unnumbered_no_argument'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'two_unnumbered_no_argument'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'two_unnumbered_no_argument'};
-$result_sectioning{'two_unnumbered_no_argument'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'two_unnumbered_no_argument'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'two_unnumbered_no_argument'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'two_unnumbered_no_argument'};
+$result_sectioning{'two_unnumbered_no_argument'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'two_unnumbered_no_argument'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'two_unnumbered_no_argument'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'two_unnumbered_no_argument'}{'extra'}{'section_childs'}[0];
 
 $result_errors{'two_unnumbered_no_argument'} = [
   {
     'error_line' => 'warning: @unnumbered missing argument
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@unnumbered missing argument',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @unnumbered missing argument
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@unnumbered missing argument',
     'type' => 'warning'
   }
@@ -136,7 +121,7 @@ $result_converted{'plaintext'}->{'two_unnumbered_no_argument'} = '';
 
 $result_converted{'html'}->{'two_unnumbered_no_argument'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -152,6 +137,10 @@ $result_converted{'html'}->{'two_unnumbered_no_argument'} = '<!DOCTYPE html>
 </head>
 
 <body lang="en">
+<div class="unnumbered-level-extent">
+</div>
+<div class="unnumbered-level-extent">
+</div>
 
 
 

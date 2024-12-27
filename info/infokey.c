@@ -1,6 +1,6 @@
-/* infokey.c -- read ~/.infokey
+/* infokey.c -- read ~/.config/texinfo/infokey
 
-   Copyright 1999-2023 Free Software Foundation, Inc.
+   Copyright 1999-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -205,7 +205,7 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
      lengths are arbitrary (and should be large enough) and their
      lengths are not hard-coded anywhere else, so increasing them
      here will not break anything.  */
-  char oval = 0;
+  int oval = 0;
   char comment[10];
   unsigned int clen = 0;
   int seq[20];
@@ -219,8 +219,11 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 
 #define	To_seq(c) \
 		  do { \
-		    if (slen < sizeof seq/sizeof(int)) \
-		      seq[slen++] = meta ? KEYMAP_META(c) : (c); \
+		    if (slen < sizeof seq/sizeof(int) - 1) \
+		      { \
+		        seq[slen++] = meta ? KEYMAP_META(c) : (c); \
+		        seq[slen] = '\0'; \
+		      } \
 		    else \
 		      { \
 			syntax_error(filename, lnum, \
@@ -229,6 +232,7 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		      } \
 		    meta = 0; \
 		  } while (0)
+  seq[0] = '\0';
 
   while (!error && (rescan || (c = fgetc (fp)) != EOF))
     {
@@ -376,14 +380,21 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		}
 	      if (seqstate != octal)
 		{
-		  if (oval)
-		    To_seq (oval);
-		  else
+		  if (oval == 0)
 		    {
 		      syntax_error (filename, lnum,
 				    _("NUL character (\\000) not permitted"));
 		      error = 1;
 		    }
+		  else if (oval > 0177)
+		    {
+		      syntax_error (filename, lnum,
+			_("invalid octal sequence for byte value (\\%o)"),
+			oval);
+		      error = 1;
+		    }
+		  else
+		    To_seq (oval);
 		}
 	      break;
 
@@ -487,8 +498,6 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
                       ke.value.function = a != A_INVALID
                                             ? &function_doc_array[a]
                                             : &invalid_function;
-                      To_seq (0);
-
                       if (section == info)
                         keymap_bind_keyseq (info_keymap, seq, &ke);
                       else /* section == ea */

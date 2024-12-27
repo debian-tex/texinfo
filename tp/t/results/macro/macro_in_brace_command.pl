@@ -50,9 +50,7 @@ $result_trees{'macro_in_brace_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_in_brace_command'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -112,9 +108,7 @@ $result_trees{'macro_in_brace_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -123,9 +117,7 @@ $result_trees{'macro_in_brace_command'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -140,11 +132,8 @@ $result_trees{'macro_in_brace_command'} = {
                 {
                   'cmdname' => 'bullet',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 9
+                  }
                 }
               ],
               'info' => {
@@ -178,7 +167,7 @@ $result_trees{'macro_in_brace_command'} = {
                                   'element' => {
                                     'args' => [
                                       {
-                                        'type' => 'brace_command_arg'
+                                        'type' => 'brace_arg'
                                       }
                                     ],
                                     'info' => {
@@ -188,12 +177,7 @@ $result_trees{'macro_in_brace_command'} = {
                                   },
                                   'sourcemark_type' => 'macro_expansion',
                                   'status' => 'start'
-                                }
-                              ],
-                              'text' => ''
-                            },
-                            {
-                              'source_marks' => [
+                                },
                                 {
                                   'counter' => 1,
                                   'position' => 13,
@@ -211,7 +195,7 @@ $result_trees{'macro_in_brace_command'} = {
                                   'element' => {
                                     'args' => [
                                       {
-                                        'type' => 'brace_command_arg'
+                                        'type' => 'brace_arg'
                                       }
                                     ],
                                     'info' => {
@@ -236,14 +220,12 @@ $result_trees{'macro_in_brace_command'} = {
                               'text' => 'bar-expansion'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'email',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 10,
-                        'macro' => ''
+                        'line_nr' => 10
                       }
                     },
                     {
@@ -262,9 +244,7 @@ $result_trees{'macro_in_brace_command'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -294,9 +274,7 @@ $result_trees{'macro_in_brace_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
@@ -309,9 +287,7 @@ $result_trees{'macro_in_brace_command'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         }
       ],

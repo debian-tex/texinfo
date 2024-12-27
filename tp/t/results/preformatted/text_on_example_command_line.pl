@@ -55,9 +55,7 @@ $result_trees{'text_on_example_command_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -67,9 +65,7 @@ $result_trees{'text_on_example_command_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -132,9 +128,7 @@ $result_trees{'text_on_example_command_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
@@ -144,9 +138,7 @@ $result_trees{'text_on_example_command_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -204,16 +196,12 @@ $result_trees{'text_on_example_command_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         },
         {
@@ -276,16 +264,12 @@ $result_trees{'text_on_example_command_line'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 14,
-                    'macro' => ''
+                    'line_nr' => 14
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -315,16 +299,12 @@ $result_trees{'text_on_example_command_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           }
         }
       ],
@@ -363,18 +343,14 @@ $result_errors{'text_on_example_command_line'} = [
   {
     'error_line' => 'bad argument to @end: example text after end
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => 'bad argument to @end: example text after end',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: example text after end example nested in example
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => 'bad argument to @end: example text after end example nested in example',
     'type' => 'error'
   }
@@ -385,8 +361,7 @@ $result_floats{'text_on_example_command_line'} = {};
 
 
 
-$result_converted{'plaintext'}->{'text_on_example_command_line'} = '
-     normal text
+$result_converted{'plaintext'}->{'text_on_example_command_line'} = '     normal text
 
      in example
 
@@ -395,7 +370,7 @@ $result_converted{'plaintext'}->{'text_on_example_command_line'} = '
 
 $result_converted{'html'}->{'text_on_example_command_line'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -436,7 +411,6 @@ $result_converted_errors{'html'}->{'text_on_example_command_line'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'text_on_example_command_line.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

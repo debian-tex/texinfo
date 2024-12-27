@@ -14,14 +14,12 @@ $result_trees{'empty_accent'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => '`',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -52,7 +50,8 @@ $result_floats{'empty_accent'} = {};
 
 
 
-$result_converted{'plaintext'}->{'empty_accent'} = '̀';
+$result_converted{'plaintext'}->{'empty_accent'} = '̀
+';
 
 
 $result_converted{'html_text'}->{'empty_accent'} = '<p>&#768;

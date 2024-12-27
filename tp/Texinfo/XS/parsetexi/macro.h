@@ -1,7 +1,7 @@
 /* macro.h - declarations for macro.c */
 #ifndef MACRO_H
 #define MACRO_H
-/* Copyright 2010-2023 Free Software Foundation, Inc.
+/* Copyright 2010-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,9 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
+#include "command_ids.h"
 #include "tree_types.h"
+#include "document_types.h"
 
 typedef struct {
     enum command_id cmd;
@@ -26,27 +28,28 @@ typedef struct {
 
 typedef struct {
     char *macro_name;
-    ELEMENT *element;
+    const ELEMENT *element;
     enum command_id cmd;
     char *macrobody;
 } MACRO;
 
-void new_macro (char *name, ELEMENT *macro);
-ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
+void new_macro (const char *name, const ELEMENT *macro);
+ELEMENT *parse_macro_command_line (enum command_id, const char **line_inout,
                                    ELEMENT *parent);
-ELEMENT *handle_macro (ELEMENT *current, char **line_inout,
+ELEMENT *handle_macro (ELEMENT *current, const char **line_inout,
                        enum command_id cmd_id);
-void delete_macro (char *name);
+void delete_macro (const char *name);
 void unset_macro_record (MACRO *m);
-void expand_macro_body (MACRO *macro_record, ELEMENT *arguments,
-                        TEXT *expanded);
 MACRO *lookup_macro (enum command_id cmd);
 void wipe_macros (void);
 
-void store_value (char *name, char *value);
-char *fetch_value (char *name);
-void clear_value (char *name);
+void store_value (VALUE_LIST *values, const char *name, const char *value);
+char *fetch_value (const char *name);
+void clear_value (const char *name);
+void init_values (void);
+void store_parser_value (const char *name, const char *value);
+
 INFO_ENCLOSE *lookup_infoenclose (enum command_id cmd);
-void add_infoenclose (enum command_id cmd, char *begin, char *end);
+void add_infoenclose (enum command_id cmd, const char *begin, const char *end);
 
 #endif

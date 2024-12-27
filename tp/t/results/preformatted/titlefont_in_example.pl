@@ -31,14 +31,13 @@ $result_trees{'titlefont_in_example'} = {
                       'text' => 'Title'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'titlefont',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -81,16 +80,12 @@ $result_trees{'titlefont_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -126,7 +121,7 @@ $result_converted{'plaintext'}->{'titlefont_in_example'} = '     Title
 
 $result_converted{'html'}->{'titlefont_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Title</title>

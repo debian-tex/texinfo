@@ -56,17 +56,16 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
                                       'extra' => {
                                         'element_region' => 'copying'
                                       },
-                                      'type' => 'brace_command_arg'
+                                      'type' => 'brace_arg'
                                     }
                                   ],
                                   'cmdname' => 'anchor',
                                   'extra' => {
+                                    'is_target' => 1,
                                     'normalized' => 'Copying-footnote'
                                   },
                                   'source_info' => {
-                                    'file_name' => '',
-                                    'line_nr' => 5,
-                                    'macro' => ''
+                                    'line_nr' => 5
                                   }
                                 },
                                 {
@@ -82,6 +81,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
                         }
                       ],
                       'cmdname' => 'footnote',
+                      'extra' => {},
                       'info' => {
                         'spaces_before_argument' => {
                           'text' => '
@@ -89,9 +89,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -133,16 +131,12 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
+                    'line_nr' => 8
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -182,6 +176,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -190,9 +185,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
+        'line_nr' => 10
       }
     },
     {
@@ -228,10 +221,9 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
             }
           ],
           'cmdname' => 'insertcopying',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           }
         },
         {
@@ -248,10 +240,9 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
             }
           ],
           'cmdname' => 'insertcopying',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
+            'line_nr' => 16
           }
         },
         {
@@ -270,19 +261,19 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Copying-footnote'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             },
             {
@@ -299,6 +290,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -307,15 +299,13 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 12,
-        'macro' => ''
+        'line_nr' => 12
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'anchor_in_copying_in_footnote'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'anchor_in_copying_in_footnote'} = '@copying
 
@@ -348,32 +338,41 @@ Copying footnote.
 
 ';
 
-$result_nodes{'anchor_in_copying_in_footnote'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'anchor_in_copying_in_footnote'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'anchor_in_copying_in_footnote'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'anchor_in_copying_in_footnote'}[0];
+$result_nodes{'anchor_in_copying_in_footnote'}[1] = $result_nodes{'anchor_in_copying_in_footnote'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'anchor_in_copying_in_footnote'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'anchor_in_copying_in_footnote'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'anchor_in_copying_in_footnote'};
-
-$result_menus{'anchor_in_copying_in_footnote'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'anchor_in_copying_in_footnote'} = [];
 
@@ -408,7 +407,6 @@ Copying(1).
 
    (2) In footnote.
 
-
 
 Tag Table:
 Node: Top97
@@ -429,9 +427,7 @@ $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
   {
     'error_line' => '@anchor output more than once: Copying footnote
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@anchor output more than once: Copying footnote',
     'type' => 'error'
   }
@@ -441,7 +437,7 @@ $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [
 
 $result_converted{'html'}->{'anchor_in_copying_in_footnote'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 

@@ -32,10 +32,9 @@ $result_trees{'insertcopying_in_example'} = {
                 }
               ],
               'cmdname' => 'insertcopying',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -74,16 +73,12 @@ $result_trees{'insertcopying_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -116,7 +111,7 @@ $result_converted{'plaintext'}->{'insertcopying_in_example'} = '     text
 
 $result_converted{'html'}->{'insertcopying_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -151,7 +146,6 @@ $result_converted_errors{'html'}->{'insertcopying_in_example'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'insertcopying_in_example.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

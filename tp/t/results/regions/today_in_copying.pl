@@ -30,14 +30,12 @@ $result_trees{'today_in_copying'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'today',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     },
                     {
@@ -74,16 +72,12 @@ $result_trees{'today_in_copying'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -116,6 +110,7 @@ $result_trees{'today_in_copying'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -124,9 +119,7 @@ $result_trees{'today_in_copying'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -161,9 +154,7 @@ $result_trees{'today_in_copying'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -199,14 +190,14 @@ $result_trees{'today_in_copying'} = {
             }
           ],
           'cmdname' => 'insertcopying',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -215,9 +206,7 @@ $result_trees{'today_in_copying'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     }
   ],
@@ -245,7 +234,7 @@ top
 ';
 
 $result_sectioning{'today_in_copying'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -254,52 +243,57 @@ $result_sectioning{'today_in_copying'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'today_in_copying'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'today_in_copying'};
+$result_sectioning{'today_in_copying'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'today_in_copying'};
 
-$result_nodes{'today_in_copying'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'today_in_copying'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'today_in_copying'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'today_in_copying'}[0];
+$result_nodes{'today_in_copying'}[1] = $result_nodes{'today_in_copying'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'today_in_copying'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'today_in_copying'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'today_in_copying'};
-
-$result_menus{'today_in_copying'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'today_in_copying'} = [];
 
@@ -339,7 +333,7 @@ End:
 
 $result_converted{'html'}->{'today_in_copying'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- a sunny day. -->

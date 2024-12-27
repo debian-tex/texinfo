@@ -1,6 +1,6 @@
 /* infomap.c -- keymaps for Info.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -252,7 +252,7 @@ static int default_emacs_like_info_keys[] =
   KEY_RIGHT_ARROW, NUL,         A_info_forward_char,
   KEY_LEFT_ARROW, NUL,          A_info_backward_char,
   KEY_DELETE, NUL,              A_info_scroll_backward,
-  
+
   ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
   ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,
   ESC, KEY_UP_ARROW, NUL,       A_info_prev_line,
@@ -260,7 +260,7 @@ static int default_emacs_like_info_keys[] =
   ESC, KEY_RIGHT_ARROW, NUL,    A_info_forward_word,
   ESC, KEY_LEFT_ARROW, NUL,     A_info_backward_word,
   KEY_BACK_TAB, NUL,            A_info_move_to_prev_xref,
-  
+
 };
 
 
@@ -478,7 +478,7 @@ static int default_vi_like_info_keys[] =
   ESC, KEY_LEFT_ARROW, NUL,     A_info_beginning_of_node,
   CONTROL('x'), KEY_DELETE, NUL, A_ea_backward_kill_line,
   KEY_BACK_TAB, NUL,            A_info_move_to_prev_xref,
-  
+
 };
 
 
@@ -529,7 +529,7 @@ static int default_vi_like_ea_keys[] =
   LFD, NUL,                       A_ea_newline,
   RET, NUL,                       A_ea_newline,
   TAB, NUL,                       A_ea_complete,
-  
+
   KEY_RIGHT_ARROW, NUL,         A_ea_forward,
   KEY_LEFT_ARROW, NUL,          A_ea_backward,
   KEY_HOME, NUL,                A_ea_beg_of_line,
@@ -546,6 +546,133 @@ static int default_vi_like_ea_keys[] =
 /* Whether to suppress the default key bindings. */
 static int sup_info, sup_ea;
 
+
+/* To find "infokey file", where user defs are kept and read by Info.  */
+#define PACKAGE      "texinfo"
+#define INFOKEY_FILE "infokey"
+
+/* MS-DOS doesn't allow leading dots in file names.  */
+#ifdef __MSDOS__
+#define DOT_INFOKEY_FILE                "_infokey"
+#else
+#define DOT_INFOKEY_FILE                ".infokey"
+#endif
+
+
+
+/* Locate init file.  Return value to be freed by caller.
+
+   See the "XDG Base Directory Specification" at
+   https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+*/
+char *
+locate_init_file (void)
+{
+  struct stat finfo;
+  char *xdg_config_home, *homedir;
+  char *filename = 0;
+
+  /* First, check for init file under XDG_CONFIG_HOME. */
+
+  xdg_config_home = getenv ("XDG_CONFIG_HOME");
+  if (xdg_config_home)
+    {
+      xdg_config_home = strdup (xdg_config_home);
+    }
+  else
+    {
+      homedir = getenv ("HOME");
+#ifdef __MINGW32__
+      if (!homedir)
+        homedir = getenv ("USERPROFILE");
+#endif
+      if (homedir)
+        {
+          xdg_config_home = xmalloc (strlen (homedir)
+                                     + strlen ("/.config") + 1);
+          sprintf (xdg_config_home, "%s/%s", homedir, ".config");
+        }
+    }
+
+  if (xdg_config_home)
+    {
+      filename = xmalloc (strlen (xdg_config_home) + 1
+                          + strlen (PACKAGE) + 1
+                          + strlen (INFOKEY_FILE) + 1);
+      sprintf (filename, "%s/%s/%s",
+               xdg_config_home, PACKAGE, INFOKEY_FILE);
+      free (xdg_config_home);
+
+      if (stat (filename, &finfo) == 0)
+        return filename;
+      free (filename);
+    }
+
+  /* Otherwise, use .infokey under home directory. */
+    homedir = getenv ("HOME");
+#ifdef __MINGW32__
+    if (!homedir)
+      homedir = getenv ("USERPROFILE");
+#endif
+
+  if (homedir)
+    {
+      filename = xmalloc (strlen (homedir) + 2 + strlen (DOT_INFOKEY_FILE));
+      sprintf (filename, "%s/%s", homedir, DOT_INFOKEY_FILE);
+    }
+#if defined(__MSDOS__) || defined(__MINGW32__)
+  /* Poor baby, she doesn't have a HOME...  */
+  else
+    filename = xstrdup (DOT_INFOKEY_FILE); /* try current directory */
+#endif
+
+  if (filename)
+    {
+      if (stat (filename, &finfo) == 0)
+        return filename;
+      free (filename);
+    }
+
+  /* Next, check sysconfdir. */
+#ifdef SYSCONFDIR
+  filename = xmalloc (strlen (SYSCONFDIR) + strlen("/xdg/")
+                      + strlen (PACKAGE) + 1
+                      + strlen (INFOKEY_FILE) + 1);
+  sprintf (filename, "%s/xdg/%s/%s", SYSCONFDIR, PACKAGE, INFOKEY_FILE);
+  if (stat (filename, &finfo) == 0)
+    return filename;
+  free (filename);
+#endif
+
+  /* Finally, check through XDG_CONFIG_DIRS. */
+
+  char *xdg_config_dirs = getenv ("XDG_CONFIG_DIRS");
+  if (!xdg_config_dirs)
+    return 0;
+
+  char *xdg_config_dirs_split = xstrdup (xdg_config_dirs);
+
+  char *dir = strtok (xdg_config_dirs_split, ":");
+  while (dir)
+    {
+      filename = xmalloc (strlen (dir) + 1
+                          + strlen (PACKAGE) + 1
+                          + strlen (INFOKEY_FILE) + 1);
+      sprintf (filename, "%s/%s/%s", dir, PACKAGE, INFOKEY_FILE);
+      if (stat (filename, &finfo) == 0)
+        {
+          free (xdg_config_dirs_split);
+          return filename;
+        }
+      free (filename);
+      dir = strtok (NULL, ":");
+    }
+
+  free (xdg_config_dirs_split);
+  return 0;
+}
+
+
 /* Fetch the contents of the init file at INIT_FILE, or the standard
    infokey file "$HOME/.infokey".  Return non-zero if an init file was
    loaded and read. */
@@ -553,8 +680,7 @@ static int
 fetch_user_maps (char *init_file)
 {
   char *filename = NULL;
-  char *homedir;
-  FILE *inf;
+  FILE *inf = NULL;
 
   /* In infokey.c */
   int compile (FILE *fp, const char *filename, int *, int *);
@@ -562,23 +688,11 @@ fetch_user_maps (char *init_file)
   /* Find and open file. */
   if (init_file)
     filename = xstrdup (init_file);
-  else if ((homedir = getenv ("HOME")) != NULL
-#ifdef __MINGW32__
-	    || (homedir = getenv ("USERPROFILE")) != NULL
-#endif
-	  )
-    {
-      filename = xmalloc (strlen (homedir) + 2 + strlen (INFOKEY_FILE));
-      strcpy (filename, homedir);
-      strcat (filename, "/");
-      strcat (filename, INFOKEY_FILE);
-    }
-#if defined(__MSDOS__) || defined(__MINGW32__)
-  /* Poor baby, she doesn't have a HOME...  */
   else
-    filename = xstrdup (INFOKEY_FILE); /* try current directory */
-#endif
-  inf = fopen (filename, "r");
+    filename = locate_init_file ();
+
+  if (filename)
+    inf = fopen (filename, "r");
   if (!inf)
     {
       free (filename);
@@ -590,6 +704,7 @@ fetch_user_maps (char *init_file)
   compile (inf, filename, &sup_info, &sup_ea);
 
   free (filename);
+  fclose (inf);
   return 1;
 }
 
@@ -604,44 +719,44 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
   int *p;
   int *seq;
   enum { getseq, gotseq, getaction } state = getseq;
-  
+
   for (p = table; (unsigned int) (p - table) < len; p++)
     {
       switch (state)
-	{
-	case getseq:
-	  if (*p)
-	    {
-	      seq = p;
-	      state = gotseq;
-	    }
-	  break;
-	  
-	case gotseq:
-	  if (!*p)
+        {
+        case getseq:
+          if (*p)
+            {
+              seq = p;
+              state = gotseq;
+            }
+          break;
+
+        case gotseq:
+          if (!*p)
             state = getaction;
-	  break;
-	  
-	case getaction:
-	  {
-	    unsigned int action = *p;
-	    KEYMAP_ENTRY ke;
-	    
-	    state = getseq;
+          break;
+
+        case getaction:
+          {
+            unsigned int action = *p;
+            KEYMAP_ENTRY ke;
+
+            state = getseq;
 
             ke.type = ISFUNC;
             ke.value.function = action < A_NCOMMANDS ?
                                 &function_doc_array[action]
                                 : NULL;
             keymap_bind_keyseq (map, seq, &ke);
-	  }
-	  break;
-	}
+          }
+          break;
+        }
     }
   if (state != getseq)
     abort ();
 
-  /* Go through map and bind ESC x to the same function as M-x if it is not 
+  /* Go through map and bind ESC x to the same function as M-x if it is not
      bound already. */
   if (!map[ESC].value.function)
     {

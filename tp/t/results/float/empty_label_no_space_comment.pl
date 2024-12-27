@@ -10,7 +10,6 @@ $result_trees{'empty_label_no_space_comment'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -68,9 +67,7 @@ $result_trees{'empty_label_no_space_comment'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -83,9 +80,7 @@ $result_trees{'empty_label_no_space_comment'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -119,12 +114,13 @@ $result_floats{'empty_label_no_space_comment'} = {
 
 
 
-$result_converted{'plaintext'}->{'empty_label_no_space_comment'} = 'Type';
+$result_converted{'plaintext'}->{'empty_label_no_space_comment'} = 'Type
+';
 
 
 $result_converted{'html'}->{'empty_label_no_space_comment'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

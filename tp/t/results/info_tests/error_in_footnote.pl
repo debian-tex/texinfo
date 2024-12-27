@@ -102,9 +102,7 @@ $result_trees{'error_in_footnote'} = {
                         {
                           'cmdname' => 'TeX',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 8,
-                            'macro' => ''
+                            'line_nr' => 8
                           }
                         },
                         {
@@ -122,14 +120,12 @@ $result_trees{'error_in_footnote'} = {
                                   'text' => 'note caption'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'strong',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 9,
-                            'macro' => ''
+                            'line_nr' => 9
                           }
                         },
                         {
@@ -148,9 +144,7 @@ $result_trees{'error_in_footnote'} = {
                                     {
                                       'cmdname' => 'LaTeX',
                                       'source_info' => {
-                                        'file_name' => '',
-                                        'line_nr' => 10,
-                                        'macro' => ''
+                                        'line_nr' => 10
                                       }
                                     },
                                     {
@@ -168,14 +162,12 @@ $result_trees{'error_in_footnote'} = {
                                               'text' => 'Note footnote'
                                             }
                                           ],
-                                          'type' => 'brace_command_arg'
+                                          'type' => 'brace_container'
                                         }
                                       ],
                                       'cmdname' => 'strong',
                                       'source_info' => {
-                                        'file_name' => '',
-                                        'line_nr' => 11,
-                                        'macro' => ''
+                                        'line_nr' => 11
                                       }
                                     },
                                     {
@@ -189,10 +181,9 @@ $result_trees{'error_in_footnote'} = {
                             }
                           ],
                           'cmdname' => 'footnote',
+                          'extra' => {},
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 10,
-                            'macro' => ''
+                            'line_nr' => 10
                           }
                         }
                       ],
@@ -207,9 +198,7 @@ $result_trees{'error_in_footnote'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -244,15 +233,14 @@ $result_trees{'error_in_footnote'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'Text',
+            'is_target' => 1,
             'normalized' => 'label'
           },
           'info' => {
@@ -261,9 +249,7 @@ $result_trees{'error_in_footnote'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -298,9 +284,7 @@ $result_trees{'error_in_footnote'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           }
         },
         {
@@ -335,13 +319,12 @@ $result_trees{'error_in_footnote'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
+            'line_nr' => 16
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -350,9 +333,7 @@ $result_trees{'error_in_footnote'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -390,36 +371,35 @@ Float text1
 
 ';
 
-$result_nodes{'error_in_footnote'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'error_in_footnote'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'error_in_footnote'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'error_in_footnote'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'error_in_footnote'} = [
   {
     'error_line' => '@TeX expected braces
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => '@TeX expected braces',
     'type' => 'error'
   },
   {
     'error_line' => '@LaTeX expected braces
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => '@LaTeX expected braces',
     'type' => 'error'
   }
@@ -437,11 +417,9 @@ $result_floats{'error_in_footnote'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'Text',
         'normalized' => 'label'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -461,22 +439,25 @@ Text 1: Caption.  TeX.  In caption *note caption*.  Now footnote(1)
 
 * Menu:
 
-* Text 1: label.                         Caption.  TeX.  In caption ...
+* Text 1: label.                         Caption.  TeX.  In caption
+                                         *note caption*.  Now
+                                         footnote(1)
 
 * Menu:
 
-* Text 1: label.                         Caption.  TeX.  In caption ...
+* Text 1: label.                         Caption.  TeX.  In caption
+                                         *note caption*.  Now
+                                         footnote(1)
 
    ---------- Footnotes ----------
 
    (1) LaTeX.  and strong *Note footnote*.
 
-
 
 Tag Table:
 Node: Top27
 Ref: label61
-Ref: Top-Footnote-1343
+Ref: Top-Footnote-1565
 
 End Tag Table
 
@@ -490,36 +471,28 @@ $result_converted_errors{'info'}->{'error_in_footnote'} = [
   {
     'error_line' => 'warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning'
   }

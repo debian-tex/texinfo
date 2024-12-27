@@ -69,27 +69,21 @@ $result_trees{'raw_expanded_in_style'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 4,
-                            'macro' => ''
+                            'line_nr' => 4
                           }
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -120,8 +114,7 @@ $result_floats{'raw_expanded_in_style'} = {};
 
 
 
-$result_converted{'plaintext'}->{'raw_expanded_in_style'} = '‘ 
-in html
+$result_converted{'plaintext'}->{'raw_expanded_in_style'} = '‘ in html
 ’
 ';
 

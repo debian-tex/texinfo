@@ -53,16 +53,12 @@ $result_trees{'bye_on_end_command_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -95,18 +91,14 @@ $result_errors{'bye_on_end_command_line'} = [
   {
     'error_line' => 'warning: @bye should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@bye should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @bye should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@bye should not appear in @end',
     'type' => 'warning'
   }
@@ -121,7 +113,7 @@ $result_converted{'plaintext'}->{'bye_on_end_command_line'} = 'in cartouche.
 ';
 
 
-$result_converted{'html_text'}->{'bye_on_end_command_line'} = '<table class="cartouche" border="1"><tr><td>
+$result_converted{'html_text'}->{'bye_on_end_command_line'} = '<table class="cartouche"><tr><td>
 <p>in cartouche.
 </p></td></tr></table>
 ';

@@ -19,6 +19,9 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                       'text' => 'a'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 1
+                  },
                   'type' => 'bracketed_arg'
                 }
               ],
@@ -94,9 +97,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -128,9 +129,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
@@ -198,9 +197,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     }
                   ],
@@ -244,9 +241,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -285,9 +280,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
@@ -300,9 +293,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -331,63 +322,49 @@ $result_errors{'multitable_one_column_too_much_cells'} = [
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 1)
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 1)',
     'type' => 'error'
   }

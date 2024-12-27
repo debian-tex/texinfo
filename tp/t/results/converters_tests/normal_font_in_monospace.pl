@@ -43,25 +43,21 @@ $result_trees{'normal_font_in_monospace'} = {
                                   'text' => 'in co---de'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 2,
-                            'macro' => ''
+                            'line_nr' => 2
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'r',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                    'line_nr' => 2
                   }
                 },
                 {
@@ -98,16 +94,12 @@ $result_trees{'normal_font_in_monospace'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -139,36 +131,30 @@ $result_trees{'normal_font_in_monospace'} = {
                                       'text' => 'in file---'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'file',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 5,
-                                'macro' => ''
+                                'line_nr' => 5
                               }
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'r',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'command',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {

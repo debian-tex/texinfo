@@ -19,7 +19,7 @@ $result_trees{'email_possibilities'} = {
                       'text' => '--a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -27,14 +27,12 @@ $result_trees{'email_possibilities'} = {
                       'text' => '--b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -44,7 +42,7 @@ $result_trees{'email_possibilities'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -52,14 +50,12 @@ $result_trees{'email_possibilities'} = {
                       'text' => '--b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -74,14 +70,12 @@ $result_trees{'email_possibilities'} = {
                       'text' => '--a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -130,5 +124,11 @@ $result_converted{'latex_text'}->{'email_possibilities'} = '\\href{mailto:--a}{-
 --b
 \\href{mailto:--a}{\\nolinkurl{--a}}
 ';
+
+
+$result_converted{'docbook'}->{'email_possibilities'} = '<para><ulink url="mailto:--a">&#8211;b</ulink>
+&#8211;b
+<email>--a</email>
+</para>';
 
 1;

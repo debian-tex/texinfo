@@ -49,177 +49,193 @@ $result_trees{'ref_in_def'} = {
                 {
                   'contents' => [
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'myanchor'
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'ref',
+                              'source_info' => {
+                                'line_nr' => 4
+                              }
                             }
                           ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'ref',
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      }
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'text' => 'myanchor'
-                            }
-                          ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'ref',
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      }
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'args' => [
+                          'contents' => [
                             {
-                              'contents' => [
+                              'args' => [
                                 {
-                                  'text' => 'myanchor'
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
                                 }
                               ],
-                              'extra' => {
-                                'node_content' => [
-                                  {}
-                                ],
-                                'normalized' => 'myanchor'
-                              },
-                              'type' => 'brace_command_arg'
+                              'cmdname' => 'ref',
+                              'source_info' => {
+                                'line_nr' => 4
+                              }
                             }
                           ],
-                          'cmdname' => 'pxref',
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'pxref',
+                              'source_info' => {
+                                'line_nr' => 4
+                              }
+                            }
+                          ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 4,
-                            'macro' => ''
-                          }
+                            'line_nr' => 4
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'myanchor'
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'pxref',
+                              'source_info' => {
+                                'line_nr' => 4
+                              }
                             }
                           ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'pxref',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'myanchor'
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'pxref',
+                              'source_info' => {
+                                'line_nr' => 4
+                              }
                             }
                           ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'pxref',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -233,93 +249,8 @@ $result_trees{'ref_in_def'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
-                'element_node' => {},
-                'index_entry' => [
-                  'fn',
-                  1
-                ],
-                'original_def_cmdname' => 'deffn'
-              },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
-              },
-              'type' => 'def_line'
-            },
-            {
-              'args' => [
-                {
+                'def_index_element' => {
                   'contents' => [
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'text' => 'myanchor'
-                            }
-                          ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'ref',
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      }
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'text' => 'myanchor'
-                            }
-                          ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'ref',
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      }
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
                     {
                       'contents' => [
                         {
@@ -331,99 +262,227 @@ $result_trees{'ref_in_def'} = {
                                 }
                               ],
                               'extra' => {
-                                'node_content' => [
-                                  {}
-                                ],
-                                'normalized' => 'myanchor'
+                                'node_content' => {
+                                  'contents' => [
+                                    {}
+                                  ]
+                                }
                               },
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
-                          'cmdname' => 'pxref',
+                          'cmdname' => 'ref'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
+                'element_node' => {},
+                'index_entry' => [
+                  'fn',
+                  1
+                ],
+                'original_def_cmdname' => 'deffn'
+              },
+              'source_info' => {
+                'line_nr' => 4
+              },
+              'type' => 'def_line'
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'ref',
+                              'source_info' => {
+                                'line_nr' => 5
+                              }
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'ref',
+                              'source_info' => {
+                                'line_nr' => 5
+                              }
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'pxref',
+                              'source_info' => {
+                                'line_nr' => 5
+                              }
+                            }
+                          ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 5,
-                            'macro' => ''
-                          }
+                            'line_nr' => 5
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'myanchor'
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'pxref',
+                              'source_info' => {
+                                'line_nr' => 5
+                              }
                             }
                           ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'pxref',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'myanchor'
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'myanchor'
+                                    }
+                                  ],
+                                  'extra' => {
+                                    'node_content' => {
+                                      'contents' => [
+                                        {}
+                                      ]
+                                    },
+                                    'normalized' => 'myanchor'
+                                  },
+                                  'type' => 'brace_arg'
+                                }
+                              ],
+                              'cmdname' => 'pxref',
+                              'source_info' => {
+                                'line_nr' => 5
+                              }
                             }
                           ],
-                          'extra' => {
-                            'node_content' => [
-                              {}
-                            ],
-                            'normalized' => 'myanchor'
-                          },
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'pxref',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -438,7 +497,36 @@ $result_trees{'ref_in_def'} = {
               'cmdname' => 'deffnx',
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'myanchor'
+                                }
+                              ],
+                              'extra' => {
+                                'node_content' => {
+                                  'contents' => [
+                                    {}
+                                  ]
+                                }
+                              },
+                              'type' => 'brace_arg'
+                            }
+                          ],
+                          'cmdname' => 'ref'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'element_node' => {},
                 'index_entry' => [
                   'fn',
@@ -452,11 +540,8 @@ $result_trees{'ref_in_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 5
+              }
             },
             {
               'contents' => [
@@ -499,9 +584,7 @@ $result_trees{'ref_in_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -511,9 +594,7 @@ $result_trees{'ref_in_def'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -529,17 +610,16 @@ $result_trees{'ref_in_def'} = {
                   'text' => 'myanchor'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'myanchor'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         },
         {
@@ -549,6 +629,7 @@ $result_trees{'ref_in_def'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -557,27 +638,25 @@ $result_trees{'ref_in_def'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[8]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[8]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'ref_in_def'}{'contents'}[1];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[6]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[8]{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[8]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'def_index_element'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'def_index_element'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_def'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'element_node'} = $result_trees{'ref_in_def'}{'contents'}[1];
 
 $result_texis{'ref_in_def'} = '
@@ -600,19 +679,22 @@ T
 
 ';
 
-$result_nodes{'ref_in_def'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_nodes{'ref_in_def'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
-$result_menus{'ref_in_def'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_menus{'ref_in_def'} = [
+  {
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
 $result_errors{'ref_in_def'} = [];
 
@@ -629,10 +711,8 @@ $result_indices_sort_strings{'ref_in_def'} = {
 
 
 
-$result_converted{'plaintext'}->{'ref_in_def'} = ' -- *note myanchor::: *note myanchor:: *note myanchor:: *note myanchor::
-          *note myanchor::
- -- *note myanchor::: *note myanchor:: *note myanchor:: *note myanchor::
-          *note myanchor::
+$result_converted{'plaintext'}->{'ref_in_def'} = ' -- myanchor: myanchor see myanchor see myanchor see myanchor
+ -- myanchor: myanchor see myanchor see myanchor see myanchor
      T
 
 ';

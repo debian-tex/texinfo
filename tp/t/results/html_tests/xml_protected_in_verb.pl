@@ -55,16 +55,12 @@ $result_trees{'xml_protected_in_verb'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -83,7 +79,7 @@ $result_trees{'xml_protected_in_verb'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -91,9 +87,7 @@ $result_trees{'xml_protected_in_verb'} = {
                 'delimiter' => '.'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -136,9 +130,7 @@ $result_trees{'xml_protected_in_verb'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         }
       ],
@@ -173,7 +165,7 @@ $result_floats{'xml_protected_in_verb'} = {};
 
 $result_converted{'html'}->{'xml_protected_in_verb'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -205,7 +197,6 @@ $result_converted_errors{'html'}->{'xml_protected_in_verb'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'xml_protected_in_verb.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

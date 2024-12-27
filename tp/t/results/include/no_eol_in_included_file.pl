@@ -42,9 +42,7 @@ $result_trees{'no_eol_in_included_file'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 2,
-                      'macro' => ''
+                      'line_nr' => 2
                     }
                   },
                   'position' => 12,

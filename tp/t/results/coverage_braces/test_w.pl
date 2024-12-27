@@ -23,14 +23,12 @@ $result_trees{'test_w'} = {
                       'text' => 'ccc dddd'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -58,14 +56,12 @@ $result_trees{'test_w'} = {
                       'text' => 'b a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -90,14 +86,12 @@ $result_trees{'test_w'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -126,14 +120,12 @@ $result_trees{'test_w'} = {
                       'text' => '  ggg.'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -156,14 +148,12 @@ $result_trees{'test_w'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -191,14 +181,12 @@ $result_trees{'test_w'} = {
                       'text' => 'd'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -226,14 +214,12 @@ $result_trees{'test_w'} = {
                       'text' => '  f  f'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -261,14 +247,12 @@ $result_trees{'test_w'} = {
                       'text' => '  f  f '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             },
             {
@@ -301,14 +285,12 @@ $result_trees{'test_w'} = {
                       'text' => '  f  f '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             },
             {
@@ -341,14 +323,12 @@ $result_trees{'test_w'} = {
                       'text' => '  f  f '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 24,
-                'macro' => ''
+                'line_nr' => 24
               }
             },
             {
@@ -371,14 +351,12 @@ $result_trees{'test_w'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 26,
-                'macro' => ''
+                'line_nr' => 26
               }
             },
             {
@@ -401,14 +379,12 @@ $result_trees{'test_w'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               }
             },
             {
@@ -431,14 +407,12 @@ $result_trees{'test_w'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 30,
-                'macro' => ''
+                'line_nr' => 30
               }
             },
             {
@@ -466,14 +440,12 @@ $result_trees{'test_w'} = {
                       'text' => ' '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 32,
-                'macro' => ''
+                'line_nr' => 32
               }
             },
             {
@@ -507,14 +479,12 @@ $result_trees{'test_w'} = {
                             {
                               'args' => [
                                 {
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'w',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 34,
-                                'macro' => ''
+                                'line_nr' => 34
                               }
                             },
                             {
@@ -523,14 +493,12 @@ $result_trees{'test_w'} = {
                             {
                               'args' => [
                                 {
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'dots',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 34,
-                                'macro' => ''
+                                'line_nr' => 34
                               }
                             },
                             {
@@ -539,39 +507,33 @@ $result_trees{'test_w'} = {
                             {
                               'args' => [
                                 {
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'w',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 34,
-                                'macro' => ''
+                                'line_nr' => 34
                               }
                             },
                             {
                               'text' => '\''
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 't',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 34,
-                        'macro' => ''
+                        'line_nr' => 34
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 34,
-                'macro' => ''
+                'line_nr' => 34
               }
             },
             {
@@ -789,5 +751,42 @@ begin and end quotations: \\hbox{\\texttt{`\\hbox{}`\\dots{}\\@\'\\hbox{}\'}}.  
 convention should be followed in Texinfo files.  TeX converts
 two single quotes to left- and right-hand doubled.
 ';
+
+
+$result_converted{'docbook'}->{'test_w'} = '<para>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&amp;#160;bbbbbbbbbbbbb&amp;#160;bbbbb&amp;#160;bbb&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;b&amp;#160;bb&amp;#160;.&amp;#160;ccc&amp;#160;dddd<!-- /@w -->.
+</para>
+<para>a a a a a a a a a a a a a a a a a a a a a a a a a a a a  b&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a&amp;#160;a<!-- /@w -->
+</para>
+
+<para><!-- /@w -->
+</para>
+<para>&amp;#160;a&amp;#160;rr&amp;#160;&amp;#160;ggg.<!-- /@w -->
+</para>
+<para>AA<!-- /@w -->bbb.
+</para>
+<para>FFd<!-- /@w -->nnn.
+</para>
+<para>aa&amp;#160;f&amp;#160;f<!-- /@w -->ggg.
+</para>
+<para>aa2&amp;#160;f&amp;#160;f&amp;#160;<!-- /@w -->ggg2.
+</para>
+
+<para>aa3 &amp;#160;f&amp;#160;f&amp;#160;<!-- /@w -->ggg3.
+</para>
+
+<para>aa4 &amp;#160;f&amp;#160;f&amp;#160;<!-- /@w --> ggg4.
+</para>
+<para>aa5 <!-- /@w --> ggg5.
+</para>
+<para>aa6 <!-- /@w -->ggg6.
+</para>
+<para>aa6<!-- /@w --> ggg6.
+</para>
+<para>aaf &amp;#160;<!-- /@w --> bbb.
+</para>
+<para>begin and end quotations: <literal>`<!-- /@w -->`&#8230;\'<!-- /@w -->\'</literal><!-- /@w -->.  This
+convention should be followed in Texinfo files.  TeX converts
+two single quotes to left- and right-hand doubled.
+</para>';
 
 1;

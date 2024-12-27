@@ -54,9 +54,7 @@ $result_trees{'texinfo_command_alias'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,9 +63,7 @@ $result_trees{'texinfo_command_alias'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -105,37 +101,10 @@ $result_trees{'texinfo_command_alias'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'aa'
-                      }
-                    ],
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'alias_of' => 'strong',
-                  'command_name' => 'mystrong'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -144,6 +113,28 @@ $result_trees{'texinfo_command_alias'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'aa'
+                          }
+                        ],
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'alias_of' => 'strong',
+                      'command_name' => 'mystrong'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 1,
                   'position' => 6,
@@ -193,9 +184,7 @@ $result_trees{'texinfo_command_alias'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         },
         {
@@ -213,7 +202,7 @@ $result_trees{'texinfo_command_alias'} = {
                       'text' => 'bb'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'mystrong',
@@ -222,12 +211,11 @@ $result_trees{'texinfo_command_alias'} = {
                 'end' => ':'
               },
               'info' => {
-                'alias_of' => 'strong'
+                'alias_of' => 'strong',
+                'command_name' => 'mystrong'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               },
               'type' => 'definfoenclose_command'
             },
@@ -278,9 +266,7 @@ $result_errors{'texinfo_command_alias'} = [
   {
     'error_line' => 'warning: @definfoenclose is obsolete
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   }

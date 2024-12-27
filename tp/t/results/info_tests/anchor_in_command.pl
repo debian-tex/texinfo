@@ -46,14 +46,12 @@ $result_trees{'anchor_in_command'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'TeX',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -67,14 +65,12 @@ $result_trees{'anchor_in_command'} = {
                               'text' => 'in emph'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -109,39 +105,34 @@ $result_trees{'anchor_in_command'} = {
                                       'text' => 'anchor in emph'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_arg'
                                 }
                               ],
                               'cmdname' => 'anchor',
                               'extra' => {
+                                'is_target' => 1,
                                 'normalized' => 'anchor-in-emph'
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 5,
-                                'macro' => ''
+                                'line_nr' => 5
                               }
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'strong',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -153,6 +144,7 @@ $result_trees{'anchor_in_command'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -161,9 +153,7 @@ $result_trees{'anchor_in_command'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -183,19 +173,22 @@ aaa TeX in emph after
 emph emph2 .
 ';
 
-$result_nodes{'anchor_in_command'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'anchor_in_command'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'anchor_in_command'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'anchor_in_command'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'anchor_in_command'} = [];
 

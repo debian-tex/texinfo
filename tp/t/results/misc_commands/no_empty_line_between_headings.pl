@@ -47,27 +47,25 @@ $result_trees{'no_empty_line_between_headings'} = {
             }
           ],
           'cmdname' => 'subheading',
+          'extra' => {},
           'info' => {
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -88,15 +86,16 @@ $result_trees{'no_empty_line_between_headings'} = {
         }
       ],
       'cmdname' => 'chapter',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -117,15 +116,16 @@ $result_trees{'no_empty_line_between_headings'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '1.1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -150,46 +150,53 @@ Subheading
 ';
 
 $result_sectioning{'no_empty_line_between_headings'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'structure' => {
+                    'extra' => {
+                      'section_directions' => {
+                        'up' => {}
+                      },
                       'section_level' => 2,
-                      'section_number' => '1.1',
-                      'section_up' => {}
+                      'section_number' => '1.1'
                     }
                   }
                 ],
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_empty_line_between_headings'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_empty_line_between_headings'};
+$result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_empty_line_between_headings'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'no_empty_line_between_headings'};
 
 $result_errors{'no_empty_line_between_headings'} = [];
 

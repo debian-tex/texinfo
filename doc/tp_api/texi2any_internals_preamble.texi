@@ -1,4 +1,9 @@
 \input texinfo
+
+@c this is needed by old automake versions < 1.6.2, that are still used
+@c in some platforms in 2024
+@setfilename texi2any_internals.info
+
 @settitle Texinfo modules documentation
 
 @dircategory Texinfo documentation system

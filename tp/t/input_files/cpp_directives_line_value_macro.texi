@@ -1,0 +1,24 @@
+
+@macro vvv {}
+#line 30 "toto"
+@end macro
+
+@vvv{}
+
+@macro machash {}
+#
+@end macro
+
+@machash{} 130
+
+@macro numberfileflag {arg}
+\arg\ "titi" 3\arg\
+@end macro
+
+# @numberfileflag{900}
+
+@set hash #
+
+@value{hash}line 71 "example.c"
+
+@unknown

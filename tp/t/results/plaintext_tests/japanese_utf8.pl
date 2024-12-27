@@ -50,8 +50,7 @@ $result_trees{'japanese_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -87,8 +86,7 @@ $result_trees{'japanese_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -116,8 +114,7 @@ $result_trees{'japanese_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -153,8 +150,7 @@ $result_trees{'japanese_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -187,6 +183,7 @@ $result_trees{'japanese_utf8'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -196,8 +193,7 @@ $result_trees{'japanese_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'japanese_utf8.texi',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     },
     {
@@ -246,14 +242,13 @@ $result_trees{'japanese_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'copyright',
                   'source_info' => {
                     'file_name' => 'japanese_utf8.texi',
-                    'line_nr' => 12,
-                    'macro' => ''
+                    'line_nr' => 12
                   }
                 },
                 {
@@ -286,14 +281,13 @@ $result_trees{'japanese_utf8'} = {
                           'text' => 'legally counts.'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'emph',
                   'source_info' => {
                     'file_name' => 'japanese_utf8.texi',
-                    'line_nr' => 14,
-                    'macro' => ''
+                    'line_nr' => 14
                   }
                 },
                 {
@@ -322,14 +316,13 @@ $result_trees{'japanese_utf8'} = {
                           'text' => "\x{82f1}\x{8a9e}\x{3067}\x{66f8}\x{304b}\x{308c}\x{305f}\x{6ce8}\x{610f}\x{66f8}\x{304d}\x{3060}\x{3051}\x{304c}\x{6cd5}\x{7684}\x{306b}\x{6709}\x{52b9}\x{3067}\x{3059}\x{3002}"
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'emph',
                   'source_info' => {
                     'file_name' => 'japanese_utf8.texi',
-                    'line_nr' => 18,
-                    'macro' => ''
+                    'line_nr' => 18
                   }
                 },
                 {
@@ -367,15 +360,13 @@ $result_trees{'japanese_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             }
           ],
           'source_info' => {
             'file_name' => 'japanese_utf8.texi',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -429,9 +420,11 @@ $result_trees{'japanese_utf8'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Preface'
                   },
                   'type' => 'menu_entry_node'
@@ -457,8 +450,7 @@ $result_trees{'japanese_utf8'} = {
               ],
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 26,
-                'macro' => ''
+                'line_nr' => 26
               },
               'type' => 'menu_entry'
             },
@@ -475,9 +467,11 @@ $result_trees{'japanese_utf8'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Introduction'
                   },
                   'type' => 'menu_entry_node'
@@ -503,8 +497,7 @@ $result_trees{'japanese_utf8'} = {
               ],
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 27,
-                'macro' => ''
+                'line_nr' => 27
               },
               'type' => 'menu_entry'
             },
@@ -536,15 +529,13 @@ $result_trees{'japanese_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'japanese_utf8.texi',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               }
             }
           ],
           'source_info' => {
             'file_name' => 'japanese_utf8.texi',
-            'line_nr' => 25,
-            'macro' => ''
+            'line_nr' => 25
           }
         },
         {
@@ -561,8 +552,7 @@ $result_trees{'japanese_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'japanese_utf8.texi',
-        'line_nr' => 9,
-        'macro' => ''
+        'line_nr' => 9
       }
     },
     {
@@ -584,6 +574,7 @@ $result_trees{'japanese_utf8'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Preface'
       },
       'info' => {
@@ -593,8 +584,7 @@ $result_trees{'japanese_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'japanese_utf8.texi',
-        'line_nr' => 30,
-        'macro' => ''
+        'line_nr' => 30
       }
     },
     {
@@ -641,7 +631,9 @@ $result_trees{'japanese_utf8'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -649,8 +641,7 @@ $result_trees{'japanese_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'japanese_utf8.texi',
-        'line_nr' => 31,
-        'macro' => ''
+        'line_nr' => 31
       }
     },
     {
@@ -672,6 +663,7 @@ $result_trees{'japanese_utf8'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Introduction'
       },
       'info' => {
@@ -681,8 +673,7 @@ $result_trees{'japanese_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'japanese_utf8.texi',
-        'line_nr' => 36,
-        'macro' => ''
+        'line_nr' => 36
       }
     },
     {
@@ -724,7 +715,9 @@ $result_trees{'japanese_utf8'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -732,8 +725,7 @@ $result_trees{'japanese_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'japanese_utf8.texi',
-        'line_nr' => 37,
-        'macro' => ''
+        'line_nr' => 37
       }
     },
     {
@@ -749,8 +741,8 @@ $result_trees{'japanese_utf8'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'japanese_utf8'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'japanese_utf8'} = '\\input texinfo @c -*- coding: utf-8; mode: texinfo; -*-
 @documentencoding UTF-8
@@ -822,7 +814,7 @@ GNU LilyPond -- 学習マニュアル
 ';
 
 $result_sectioning{'japanese_utf8'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -831,11 +823,8 @@ $result_sectioning{'japanese_utf8'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -844,16 +833,17 @@ $result_sectioning{'japanese_utf8'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'Preface'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -863,132 +853,126 @@ $result_sectioning{'japanese_utf8'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'Introduction'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 2,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '2',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'japanese_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'japanese_utf8'};
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'japanese_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'japanese_utf8'};
 
-$result_nodes{'japanese_utf8'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'Preface'
+$result_nodes{'japanese_utf8'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_next' => {
+      'node_directions' => {
+        'next' => {
           'cmdname' => 'node',
           'extra' => {
             'associated_section' => {
               'cmdname' => 'chapter',
-              'extra' => {},
-              'structure' => {
-                'section_number' => 2
+              'extra' => {
+                'section_number' => '1'
               }
             },
-            'normalized' => 'Introduction'
-          },
-          'structure' => {
-            'node_prev' => {},
-            'node_up' => {}
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'associated_section' => {
+                    'cmdname' => 'chapter',
+                    'extra' => {
+                      'section_number' => '2'
+                    }
+                  },
+                  'node_directions' => {
+                    'prev' => {},
+                    'up' => {}
+                  },
+                  'normalized' => 'Introduction'
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'Preface'
           }
-        },
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'japanese_utf8'}{'structure'}{'menu_child'};
-$result_nodes{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'japanese_utf8'};
-$result_nodes{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'japanese_utf8'};
-$result_nodes{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'japanese_utf8'};
-$result_nodes{'japanese_utf8'}{'structure'}{'node_next'} = $result_nodes{'japanese_utf8'}{'structure'}{'menu_child'};
-
-$result_menus{'japanese_utf8'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'Preface'
-      },
-      'structure' => {
-        'menu_next' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'Introduction'
-          },
-          'structure' => {
-            'menu_prev' => {},
-            'menu_up' => {},
-            'menu_up_hash' => {
-              'Top' => 1
-            }
-          }
-        },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
         }
-      }
+      },
+      'normalized' => 'Top'
     }
-  }
-};
-$result_menus{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_prev'} = $result_menus{'japanese_utf8'}{'structure'}{'menu_child'};
-$result_menus{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_up'} = $result_menus{'japanese_utf8'};
-$result_menus{'japanese_utf8'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'japanese_utf8'};
+  },
+  {},
+  {}
+];
+$result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'japanese_utf8'}[0];
+$result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'japanese_utf8'}[0];
+$result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'japanese_utf8'}[0];
+$result_nodes{'japanese_utf8'}[1] = $result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'japanese_utf8'}[2] = $result_nodes{'japanese_utf8'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'japanese_utf8'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {
+          'extra' => {
+            'menu_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'Introduction'
+          }
+        },
+        'up' => {}
+      },
+      'normalized' => 'Preface'
+    }
+  },
+  {}
+];
+$result_menus{'japanese_utf8'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'prev'} = $result_menus{'japanese_utf8'}[1];
+$result_menus{'japanese_utf8'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'up'} = $result_menus{'japanese_utf8'}[0];
+$result_menus{'japanese_utf8'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'japanese_utf8'}[0];
+$result_menus{'japanese_utf8'}[2] = $result_menus{'japanese_utf8'}[1]{'extra'}{'menu_directions'}{'next'};
 
 $result_errors{'japanese_utf8'} = [];
 

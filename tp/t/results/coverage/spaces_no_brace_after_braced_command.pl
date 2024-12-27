@@ -19,9 +19,7 @@ $result_trees{'spaces_no_brace_after_braced_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -49,9 +47,7 @@ $result_errors{'spaces_no_brace_after_braced_command'} = [
   {
     'error_line' => '@code expected braces
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@code expected braces',
     'type' => 'error'
   }

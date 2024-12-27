@@ -10,7 +10,6 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -127,14 +125,13 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
                             ]
                           },
                           'info' => {
+                            'command_name' => 'cindex',
                             'spaces_before_argument' => {
                               'text' => ' '
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 7,
-                            'macro' => ''
+                            'line_nr' => 7
                           },
                           'type' => 'index_entry_command'
                         }
@@ -146,10 +143,9 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -172,9 +168,7 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -196,6 +190,7 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'Index'
       },
@@ -205,9 +200,7 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
+        'line_nr' => 10
       }
     },
     {
@@ -263,22 +256,20 @@ $result_trees{'index_entry_in_footnote_sections_separate'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => 'A'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
+        'line_nr' => 11
       }
     }
   ],
@@ -313,7 +304,7 @@ Appendix A index
 ';
 
 $result_sectioning{'index_entry_in_footnote_sections_separate'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -322,11 +313,8 @@ $result_sectioning{'index_entry_in_footnote_sections_separate'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'appendix',
@@ -336,73 +324,82 @@ $result_sectioning{'index_entry_in_footnote_sections_separate'} = {
                   'extra' => {
                     'isindex' => 1,
                     'normalized' => 'Index'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
                 'section_number' => 'A',
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entry_in_footnote_sections_separate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_entry_in_footnote_sections_separate'};
+$result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entry_in_footnote_sections_separate'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'index_entry_in_footnote_sections_separate'};
 
-$result_nodes{'index_entry_in_footnote_sections_separate'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'appendix',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 'A'
-          }
-        },
-        'isindex' => 1,
-        'normalized' => 'Index'
+$result_nodes{'index_entry_in_footnote_sections_separate'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'appendix',
+              'extra' => {
+                'section_number' => 'A'
+              }
+            },
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'Index'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'index_entry_in_footnote_sections_separate'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'index_entry_in_footnote_sections_separate'}[0];
+$result_nodes{'index_entry_in_footnote_sections_separate'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'index_entry_in_footnote_sections_separate'}[0];
+$result_nodes{'index_entry_in_footnote_sections_separate'}[1] = $result_nodes{'index_entry_in_footnote_sections_separate'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'index_entry_in_footnote_sections_separate'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'Index'
     }
   }
-};
-$result_nodes{'index_entry_in_footnote_sections_separate'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'index_entry_in_footnote_sections_separate'};
-$result_nodes{'index_entry_in_footnote_sections_separate'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'index_entry_in_footnote_sections_separate'};
-
-$result_menus{'index_entry_in_footnote_sections_separate'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'index_entry_in_footnote_sections_separate'} = [];
 
@@ -430,6 +427,8 @@ Top node(1) (*note Top-Footnote-1::)
 
 * Menu:
 
+Appendices
+
 * Index::
 
 
@@ -450,13 +449,12 @@ Appendix A index
 
 * index entry in footnote:               Top-Footnotes.         (line 5)
 
-
 
 Tag Table:
 Node: Top27
-Node: Top-Footnotes182
-Ref: Top-Footnote-1224
-Node: Index274
+Node: Top-Footnotes194
+Ref: Top-Footnote-1236
+Node: Index286
 
 End Tag Table
 
@@ -470,7 +468,7 @@ End:
 $result_converted{'plaintext'}->{'index_entry_in_footnote_sections_separate'} = 'index_entry_in_footnote
 ***********************
 
-Top node(1) (*note Top-Footnote-1::)
+Top node(1) (see Top-Footnote-1)
 
    (1) in footnote
 
@@ -507,7 +505,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_sections_separate'} = 
 <h2 class="appendix" id="index"><span>Appendix A index<a class="copiable-link" href="#index"> &para;</a></span></h2>
 
 <div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-I">I</th></tr>
@@ -521,7 +519,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_sections_separate'} = 
 <div class="element-footnotes" id="SEC_Footnotes">
 <div class="nav-panel">
 <p>
-[<a href="#Index" title="Index" rel="index">Index</a>]</p>
+[<a href="#Top" title="Cover (top) of document" rel="start">Top</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <h4 class="footnotes-heading">Footnotes</h4>
 

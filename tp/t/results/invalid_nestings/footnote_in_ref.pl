@@ -44,7 +44,7 @@ $result_trees{'footnote_in_ref'} = {
                       'text' => 'first'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -82,10 +82,9 @@ $result_trees{'footnote_in_ref'} = {
                         }
                       ],
                       'cmdname' => 'footnote',
+                      'extra' => {},
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -97,14 +96,12 @@ $result_trees{'footnote_in_ref'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -112,6 +109,7 @@ $result_trees{'footnote_in_ref'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -120,9 +118,7 @@ $result_trees{'footnote_in_ref'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -139,36 +135,35 @@ seond para}.}';
 $result_texts{'footnote_in_ref'} = '
 first';
 
-$result_nodes{'footnote_in_ref'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_nodes{'footnote_in_ref'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
-$result_menus{'footnote_in_ref'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_menus{'footnote_in_ref'} = [
+  {
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
 $result_errors{'footnote_in_ref'} = [
   {
     'error_line' => 'warning: @footnote should not appear anywhere inside @xref
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@footnote should not appear anywhere inside @xref',
     'type' => 'warning'
   },
   {
     'error_line' => '@xref missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@xref missing closing brace',
     'type' => 'error'
   }

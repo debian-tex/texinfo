@@ -10,7 +10,6 @@ $result_trees{'ref_to_float'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -79,14 +78,13 @@ $result_trees{'ref_to_float'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'extra' => {
             'float_type' => 'Text',
+            'is_target' => 1,
             'normalized' => 'Label1'
           },
           'info' => {
@@ -95,9 +93,7 @@ $result_trees{'ref_to_float'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -166,14 +162,13 @@ $result_trees{'ref_to_float'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'extra' => {
             'float_type' => '',
+            'is_target' => 1,
             'normalized' => 'Label2'
           },
           'info' => {
@@ -182,9 +177,7 @@ $result_trees{'ref_to_float'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -203,19 +196,19 @@ $result_trees{'ref_to_float'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Label1'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -241,19 +234,19 @@ $result_trees{'ref_to_float'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Label2'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -269,8 +262,8 @@ $result_trees{'ref_to_float'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_to_float'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'ref_to_float'} = '@float Text, Label1
 Float
@@ -305,11 +298,9 @@ $result_floats{'ref_to_float'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => '',
         'normalized' => 'Label2'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ],
@@ -317,11 +308,9 @@ $result_floats{'ref_to_float'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => 'Text',
         'normalized' => 'Label1'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -332,18 +321,19 @@ $result_floats{'ref_to_float'} = {
 $result_converted{'plaintext'}->{'ref_to_float'} = 'Float
 
 Text 1
+
 In foat 2.
 
 1
-*note Text 1: Label1.
+Text 1: Label1
 
-   *note 1: Label2.
+   1: Label2
 ';
 
 
 $result_converted{'html'}->{'ref_to_float'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

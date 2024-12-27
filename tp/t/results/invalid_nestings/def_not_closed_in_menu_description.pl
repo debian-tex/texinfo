@@ -42,9 +42,11 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -70,36 +72,51 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                             {
                               'contents' => [
                                 {
-                                  'extra' => {
-                                    'def_role' => 'category'
-                                  },
-                                  'text' => 'bidule'
+                                  'contents' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'bidule'
+                                        }
+                                      ],
+                                      'type' => 'def_line_arg'
+                                    }
+                                  ],
+                                  'type' => 'def_category'
                                 },
                                 {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
-                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
                                 {
-                                  'extra' => {
-                                    'def_role' => 'name'
-                                  },
-                                  'text' => 'truc'
+                                  'contents' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'truc'
+                                        }
+                                      ],
+                                      'type' => 'def_line_arg'
+                                    }
+                                  ],
+                                  'type' => 'def_name'
                                 },
                                 {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
-                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
                                 {
-                                  'extra' => {
-                                    'def_role' => 'arg'
-                                  },
-                                  'text' => 'chose'
+                                  'contents' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'chose'
+                                        }
+                                      ],
+                                      'type' => 'def_line_arg'
+                                    }
+                                  ],
+                                  'type' => 'def_arg'
                                 }
                               ],
                               'info' => {
@@ -113,7 +130,19 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                           ],
                           'extra' => {
                             'def_command' => 'deffn',
-                            'def_index_element' => {},
+                            'def_index_element' => {
+                              'contents' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'truc'
+                                    }
+                                  ],
+                                  'type' => 'def_line_arg'
+                                }
+                              ],
+                              'type' => 'def_name'
+                            },
                             'index_entry' => [
                               'fn',
                               1
@@ -121,9 +150,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                             'original_def_cmdname' => 'deffn'
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 2,
-                            'macro' => ''
+                            'line_nr' => 2
                           },
                           'type' => 'def_line'
                         },
@@ -153,9 +180,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -163,9 +188,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               },
               'type' => 'menu_entry'
             },
@@ -196,16 +219,12 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -214,8 +233,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'def_not_closed_in_menu_description'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'def_not_closed_in_menu_description'} = '@menu
 * (info):: before deff @deffn bidule truc chose
@@ -234,27 +252,21 @@ $result_errors{'def_not_closed_in_menu_description'} = [
   {
     'error_line' => 'warning: @deffn should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@deffn should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => '`@end\' expected `deffn\', but saw `menu\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '`@end\' expected `deffn\', but saw `menu\'',
     'type' => 'error'
   }

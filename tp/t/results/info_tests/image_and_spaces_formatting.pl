@@ -42,7 +42,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -50,9 +50,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -66,7 +64,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -74,9 +72,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -90,7 +86,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -98,9 +94,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -114,7 +108,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -122,9 +116,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -138,7 +130,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -146,9 +138,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -162,7 +152,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -170,9 +160,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -186,7 +174,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                   'text' => 'words'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -194,9 +182,7 @@ $result_trees{'image_and_spaces_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -221,7 +207,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -229,9 +215,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -245,7 +229,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -253,9 +237,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -269,7 +251,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -277,9 +259,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -293,7 +273,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -301,9 +281,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -317,7 +295,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -325,9 +303,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -341,7 +317,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -349,9 +325,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -365,7 +339,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -373,9 +347,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -403,7 +375,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -411,9 +383,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -427,7 +397,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -435,9 +405,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -451,7 +419,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -459,9 +427,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -475,7 +441,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -483,9 +449,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -499,7 +463,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -507,9 +471,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -523,7 +485,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -531,9 +493,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -547,7 +507,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -555,9 +515,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -585,7 +543,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -593,9 +551,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -623,7 +579,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -631,9 +587,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -661,7 +615,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -669,9 +623,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -685,7 +637,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                       'text' => 'words'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -693,9 +645,7 @@ $result_trees{'image_and_spaces_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -712,6 +662,7 @@ $result_trees{'image_and_spaces_formatting'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -720,9 +671,7 @@ $result_trees{'image_and_spaces_formatting'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -761,19 +710,22 @@ Text. words       words.
 
 ';
 
-$result_nodes{'image_and_spaces_formatting'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'image_and_spaces_formatting'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'image_and_spaces_formatting'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'image_and_spaces_formatting'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'image_and_spaces_formatting'} = [];
 
@@ -799,7 +751,6 @@ ddddddddddddd This is an image words. text eeeeeeeeeeeeeee This is an image word
    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBB
 This is an image words.
    Text.  This is an image words.  This is an image words..
-
 
 
 Tag Table:

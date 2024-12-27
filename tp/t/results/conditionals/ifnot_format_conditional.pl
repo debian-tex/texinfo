@@ -27,9 +27,7 @@ $result_trees{'ifnot_format_conditional'} = {
                 ],
                 'cmdname' => 'ifnottex',
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'expanded_conditional_command',
@@ -71,9 +69,7 @@ $result_trees{'ifnot_format_conditional'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 3,
-                      'macro' => ''
+                      'line_nr' => 3
                     }
                   },
                   'position' => 8,

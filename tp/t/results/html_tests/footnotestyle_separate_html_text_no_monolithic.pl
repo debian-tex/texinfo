@@ -38,9 +38,7 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -70,6 +68,7 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -78,9 +77,7 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -124,10 +121,9 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -150,9 +146,7 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -174,6 +168,7 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -182,9 +177,7 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     },
     {
@@ -212,16 +205,16 @@ $result_trees{'footnotestyle_separate_html_text_no_monolithic'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     }
   ],
@@ -251,7 +244,7 @@ In top.
 ';
 
 $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -260,11 +253,8 @@ $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -273,72 +263,81 @@ $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'};
+$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'footnotestyle_separate_html_text_no_monolithic'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'footnotestyle_separate_html_text_no_monolithic'};
 
-$result_nodes{'footnotestyle_separate_html_text_no_monolithic'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chap'
+$result_nodes{'footnotestyle_separate_html_text_no_monolithic'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'footnotestyle_separate_html_text_no_monolithic'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'footnotestyle_separate_html_text_no_monolithic'}[0];
+$result_nodes{'footnotestyle_separate_html_text_no_monolithic'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'footnotestyle_separate_html_text_no_monolithic'}[0];
+$result_nodes{'footnotestyle_separate_html_text_no_monolithic'}[1] = $result_nodes{'footnotestyle_separate_html_text_no_monolithic'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'footnotestyle_separate_html_text_no_monolithic'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'footnotestyle_separate_html_text_no_monolithic'};
-$result_nodes{'footnotestyle_separate_html_text_no_monolithic'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'footnotestyle_separate_html_text_no_monolithic'};
-
-$result_menus{'footnotestyle_separate_html_text_no_monolithic'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'footnotestyle_separate_html_text_no_monolithic'} = [];
 
@@ -349,8 +348,6 @@ $result_floats{'footnotestyle_separate_html_text_no_monolithic'} = {};
 
 $result_converted{'html_text'}->{'footnotestyle_separate_html_text_no_monolithic'} = '
 <div class="top-level-extent" id="Top">
-<div class="nav-panel">
-</div>
 <h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 <p>In top<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
@@ -359,8 +356,6 @@ $result_converted{'html_text'}->{'footnotestyle_separate_html_text_no_monolithic
 </ul>
 <hr>
 <div class="chapter-level-extent" id="chap">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="Chap"><span>1 Chap<a class="copiable-link" href="#Chap"> &para;</a></span></h2>
 
 <hr>
@@ -368,6 +363,8 @@ $result_converted{'html_text'}->{'footnotestyle_separate_html_text_no_monolithic
 </div>
 <div class="element-footnotes" id="SEC_Footnotes">
 <div class="nav-panel">
+<p>
+[<a href="#Top" title="Cover (top) of document" rel="start">Top</a>]</p>
 </div>
 <h4 class="footnotes-heading">Footnotes</h4>
 
@@ -375,6 +372,8 @@ $result_converted{'html_text'}->{'footnotestyle_separate_html_text_no_monolithic
 <p>Additional text</p>
 </div><hr>
 <div class="nav-panel">
+<p>
+[<a href="#Top" title="Cover (top) of document" rel="start">Top</a>]</p>
 </div>
 ';
 

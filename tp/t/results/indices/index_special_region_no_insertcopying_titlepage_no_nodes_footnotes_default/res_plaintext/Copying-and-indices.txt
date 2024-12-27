@@ -3,11 +3,11 @@ Appendix A Copying and indices
 
 In the appendix, we print the indices and references.
 
-   *note Copying information:: for the copying information.  *note
-Public domain reference:: for reference on the licence.
+   Copying information for the copying information.  Public domain
+reference for reference on the licence.
 
-   *note Titlepage anchor:: for the titlepage.  *note Titlepage footnote
-anchor:: for reference on the titlepage.
+   Titlepage anchor for the titlepage.  Titlepage footnote anchor for
+reference on the titlepage.
 
 * Menu:
 

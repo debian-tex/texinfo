@@ -31,15 +31,14 @@ $result_trees{'space_in_footnote'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -84,5 +83,8 @@ $result_converted{'html_text'}->{'space_in_footnote'} = '<p>text<a class="footno
 
 
 $result_converted{'latex_text'}->{'space_in_footnote'} = 'text\\footnote{in footnote.}';
+
+
+$result_converted{'docbook'}->{'space_in_footnote'} = '<para>text<footnote><para>in footnote.</para></footnote></para>';
 
 1;

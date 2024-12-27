@@ -30,14 +30,12 @@ $result_trees{'email_in_node'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -56,7 +54,7 @@ $result_trees{'email_in_node'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -69,14 +67,12 @@ $result_trees{'email_in_node'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -90,7 +86,7 @@ $result_trees{'email_in_node'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -103,14 +99,12 @@ $result_trees{'email_in_node'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -125,6 +119,7 @@ $result_trees{'email_in_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'a-c-'
       },
       'info' => {
@@ -133,9 +128,7 @@ $result_trees{'email_in_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -148,19 +141,22 @@ $result_texis{'email_in_node'} = '@node @email{ a } @email{c , d} @email{ , e}
 
 $result_texts{'email_in_node'} = '';
 
-$result_nodes{'email_in_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'a-c-'
+$result_nodes{'email_in_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'a-c-'
+    }
   }
-};
+];
 
-$result_menus{'email_in_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'a-c-'
+$result_menus{'email_in_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'a-c-'
+    }
   }
-};
+];
 
 $result_errors{'email_in_node'} = [];
 

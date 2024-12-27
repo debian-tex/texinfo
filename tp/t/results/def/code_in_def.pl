@@ -17,92 +17,107 @@ $result_trees{'code_in_def'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'Function'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'Function'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'type'
-                      },
-                      'text' => 'int'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'int'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_type'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'foo'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'foo'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => '(',
                       'type' => 'delimiter'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'const std::vector<int>'
-                            },
-                            {
-                              'cmdname' => '&'
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'const std::vector<int>'
+                                    },
+                                    {
+                                      'cmdname' => '&'
+                                    }
+                                  ],
+                                  'type' => 'brace_container'
+                                }
+                              ],
+                              'cmdname' => 'code',
+                              'source_info' => {
+                                'line_nr' => 1
+                              }
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'code',
-                      'extra' => {
-                        'def_role' => 'typearg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
-                      }
+                      'type' => 'def_typearg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'bar'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'bar'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ')',
                       'type' => 'delimiter'
                     }
@@ -118,7 +133,19 @@ $result_trees{'code_in_def'} = {
               ],
               'extra' => {
                 'def_command' => 'deftypefn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'foo'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   1
@@ -126,9 +153,7 @@ $result_trees{'code_in_def'} = {
                 'original_def_cmdname' => 'deftypefn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               },
               'type' => 'def_line'
             },
@@ -147,14 +172,12 @@ $result_trees{'code_in_def'} = {
                               'text' => 'foo'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     },
                     {
@@ -194,9 +217,7 @@ $result_trees{'code_in_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -206,9 +227,7 @@ $result_trees{'code_in_def'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -217,7 +236,6 @@ $result_trees{'code_in_def'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
 
 $result_texis{'code_in_def'} = '@deftypefn Function int foo (@code{const std::vector<int>@&} bar)
 Documentation of @code{foo}.
@@ -233,9 +251,7 @@ $result_errors{'code_in_def'} = [
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }

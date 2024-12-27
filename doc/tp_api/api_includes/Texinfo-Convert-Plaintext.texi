@@ -11,10 +11,10 @@ Texinfo::Convert::Plaintext - Convert Texinfo tree to Plaintext
 
 @verbatim
   my $converter
-    = Texinfo::Convert::Plaintext->converter({'parser' => $parser});
+    = Texinfo::Convert::Plaintext->converter({'NUMBER_SECTIONS' => 0});
 
-  $converter->output($tree);
-  $converter->convert($tree);
+  $converter->output($document);
+  $converter->convert($document);
   $converter->convert_tree($tree);
 @end verbatim
 
@@ -38,27 +38,24 @@ Texinfo::Convert::Plaintext converts a Texinfo tree to Plaintext.
 
 Initialize converter from Texinfo to Plaintext.
 
-The @emph{$options} hash reference holds options for the converter.  In
-this option hash reference a @ref{Texinfo@asis{::}Parser NAME,, parser object}
-may be associated with the @emph{parser} key.  The other options
-are Texinfo customization options and a few other options that can
-be passed to the converter. Most of the customization options are described in
-the Texinfo manual.  Those customization options, when appropriate, override
-the document content.  The parser should not be available directly anymore
-after getting the associated information.
+The @emph{$options} hash reference holds Texinfo customization options for the
+converter.  These options should be Texinfo customization options
+that can be passed to the converter.  Most of the customization options are
+described in the Texinfo manual or in the customization API manual.  Those
+customization options, when appropriate, override the document content.
 
 See @ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter} for more information.
 
-@item $converter->output($tree)
-@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $converter->output($tree)}
+@item $converter->output($document)
+@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $converter->output($document)}
 
-Convert a Texinfo tree @emph{$tree} and output the result in files as
+Convert a Texinfo parsed document @emph{$document} and output the result in files as
 described in the Texinfo manual.
 
-@item $result = $converter->convert($tree)
-@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $result = $converter->convert($tree)}
+@item $result = $converter->convert($document)
+@anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $result = $converter->convert($document)}
 
-Convert a Texinfo tree @emph{$tree} and return the resulting output.
+Convert a Texinfo parsed document @emph{$document} and return the resulting output.
 
 @item $result = $converter->convert_tree($tree)
 @anchor{Texinfo@asis{::}Convert@asis{::}Plaintext $result = $converter->convert_tree($tree)}
@@ -66,6 +63,9 @@ Convert a Texinfo tree @emph{$tree} and return the resulting output.
 Convert a Texinfo tree portion @emph{$tree} and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use @code{convert}.
+
+In general, this function should be called after the converter has been
+associated to a document by a call to @code{output} or @code{convert}.
 
 @end table
 

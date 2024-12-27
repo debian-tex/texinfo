@@ -63,16 +63,12 @@ $result_trees{'end_conditional_not_at_line_begining'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 3,
-                      'macro' => ''
+                      'line_nr' => 3
                     }
                   }
                 ],
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'ignored_conditional_block'
@@ -96,9 +92,7 @@ $result_errors{'end_conditional_not_at_line_begining'} = [
   {
     'error_line' => 'warning: @end ifhtml should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@end ifhtml should only appear at the beginning of a line',
     'type' => 'warning'
   }

@@ -43,9 +43,7 @@ $result_trees{'printindex_before_document'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         }
       ],
@@ -67,9 +65,7 @@ $result_errors{'printindex_before_document'} = [
   {
     'error_line' => 'warning: printindex before document beginning: @printindex cp
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'printindex before document beginning: @printindex cp',
     'type' => 'warning'
   }

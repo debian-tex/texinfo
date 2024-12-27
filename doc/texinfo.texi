@@ -13,7 +13,6 @@
 @c Put everything except function (command, in this case) names in one
 @c index (arbitrarily chosen to be the concept index).
 @syncodeindex op cp
-@syncodeindex vr cp
 @syncodeindex pg cp
 
 @c finalout
@@ -33,7 +32,7 @@ This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
 printed manual from a single source using semantic markup.
 
-Copyright @copyright{} 1988-2023 Free Software Foundation, Inc.
+Copyright @copyright{} 1988-2024 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -223,7 +222,7 @@ at the @uref{http://www.gnu.org/doc/, GNU documentation web page}.
 We welcome bug reports and suggestions for any aspect of the Texinfo
 system: programs, documentation, installation, etc.  Please email them
 to @email{bug-texinfo@@gnu.org}.  You can get the latest version of
-Texinfo via its home page, @uref{http://www.gnu.org/software/texinfo}.
+Texinfo via its home page, @uref{https://www.gnu.org/software/texinfo}.
 
 @cindex Checklist for bug reports
 For bug reports, please include enough information for the maintainers
@@ -250,7 +249,7 @@ the Emacs developers: see @ref{Bugs,,, emacs, The GNU Emacs Manual}.
 @cindex Patches, contributing
 Patches are welcome; if possible, please make them with @samp{@w{diff -c}},
 @samp{@w{diff -u}} (@pxref{,,, diffutils, Comparing and Merging Files}),
-or @samp{git diff} and include @file{ChangeLog} entries (@pxref{Change Log,,,
+or @samp{git diff} and include @file{ChangeLog} entries (@pxref{Change Logs,,,
 standards, GNU Coding Standards}), and follow the existing coding style.
 
 
@@ -276,10 +275,10 @@ Files}, and @ref{Creating and Installing Info Files}.
 @cindex Plain text output, overview
 @item Plain text
 (Generated via @command{texi2any --plaintext}.)  This is almost the
-same as Info output with the navigational control characters are
+same as Info output with the navigational control characters
 omitted.
 
-@cindex HTML output, overview
+@cindex HTML output @subentry overview
 @item HTML
 @c @cindex Mozilla
 @c @cindex Lynx
@@ -463,7 +462,7 @@ of the Texinfo distribution.
 Texinfo provides a file @file{texinfo.tex} that contains the definitions
 that @TeX{} uses when it typesets a Texinfo file.
 You can get the latest version of @file{texinfo.tex} from
-the Texinfo home page, @uref{http://www.gnu.org/software/texinfo/}.
+the Texinfo home page, @uref{https://www.gnu.org/software/texinfo/}.
 
 A Texinfo-based book is similar to any other typeset, printed work: it
 can have a title page, copyright page, table of contents, and preface,
@@ -788,25 +787,18 @@ verbatim modes).
 
 @cindex Form feed character
 @cindex @kbd{CTRL-l}
-Form feed (@kbd{CTRL-l}) characters in normal text end any open paragraph.
-Other ASCII whitespace (tab, carriage return) may be treated
-the same as space characters, although the results may differ depending
-on output format.  Hence, there is not much point in using these
-in documents.  Non-ASCII spaces, such as Unicode ``em space'', are
-not recognized as whitespace at all and will be treated as regular,
-non-whitespace characters.
+
+Form feed (@kbd{CTRL-l}) characters terminate any open paragraph.
+Other form feeds, as well other ASCII whitespace (tab, carriage return)
+are treated the same as space characters (although the results may
+differ depending on the output format).  Hence, there is not much point
+in using these whitespace characters in documents.  Non-ASCII spaces,
+such as Unicode ``em space'', are not recognized as whitespace at all,
+and will be treated as regular, non-whitespace characters.
 
 However, in verbatim modes, for example in code samples, tab characters
 may produce the correct formatting in the output.
 
-@ignore @c Excessive detail?
-
-To avoid this problem, Texinfo mode in GNU Emacs inserts
-multiple spaces when you press the @key{TAB} key.  Also, you can run
-@code{untabify} in Emacs to convert tabs in a region to multiple
-spaces, or use the @code{unexpand} command from the shell.
-
-@end ignore
 @ignore @c too detailed for the manual, but kept for implementation tips
 @item
 Form feed characters outside of a paragraph are handled as follows:
@@ -822,10 +814,10 @@ in the output otherwise.
 @c Written as @code{\par@{@}}, a @LaTeX{} macro that starts a paragraph.
 
 @item Info
-Output as-is between paragraphs (their most common use); ignored in contexts
-where spaces are ignored except after specific commands closing braces
-(@code{@@caption} for example).  In other contexts, they may be treated as
-regular spaces (and thus consolidated with surrounding whitespace).
+Ignored in contexts where spaces are ignored except after specific
+commands closing braces (@code{@@caption} for example).  In other
+contexts, they may be treated as regular spaces (and thus consolidated
+with surrounding whitespace).
 
 @item HTML
 Written as a numeric entity except contexts where spaces are ignored;
@@ -1966,8 +1958,8 @@ As such, it should contain a very brief description of the manual
 (including the version number).  The contents of the `Top' node do
 not appear in printed output nor in DocBook output.
 
-It is conventional to write a @code{@@top} sectioning command
-line containing the title of the document immediately after the
+It is conventional to write a line with a @code{@@top} command
+containing the title of the document immediately after the
 @code{@@node Top} line (@pxref{@code{@@top} Command}).
 
 We repeat the short description from the beginning of
@@ -2407,13 +2399,13 @@ but some Info readers do not recognize this syntax.  Node name and label
 quoting causes @code{DEL} characters (@samp{CTRL-?}, character number 127,
 often rendered as @samp{^?}) to appear around the name.  To remove
 node names and labels quoting, you can set the customization variable
-@code{INFO_SPECIAL_CHARS_QUOTE} to @samp{0} (@pxref{Other
+@code{INFO_SPECIAL_CHARS_QUOTE} to @samp{0} (@pxref{Info and Plaintext
 Customization Variables}).
 
 @command{texi2any} warns about such problematic usage in node names,
 menu items, and cross-references.  If you don't want to see the
 warnings, you can set the customization variable
-@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
+@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Info and Plaintext
 Customization Variables}).
 
 If you insist on using these characters in node names, in order not
@@ -2509,8 +2501,8 @@ For example, for GNU the natural place would be
 @url{http://www.gnu.org/manual/} (a web page collecting links to most
 GNU manuals), better specified as just @code{/manual/} if the manual
 will be installed on @code{www.gnu.org}.  This can be specified with
-the @code{TOP_NODE_UP_URL} customization variable (@pxref{HTML
-Customization Variables}), as in
+the @code{TOP_NODE_UP_URL} customization variable (@pxref{File Names
+and Links Customization for HTML}), as in
 
 @example
 $ @kbd{texi2any --html -c TOP_NODE_UP_URL=/manual/} ...
@@ -2833,12 +2825,12 @@ a menu as follows:
 @dfn{Menus} contain pointers to subordinate nodes.  In Info output,
 you use menus to go to such nodes.  @command{texi2any} can output menus in
 HTML output, but does not do so by default
-(@pxref{Other Customization Variables}, under @code{FORMAT_MENU}).
+(@pxref{HTML Output Structure Customization}, @code{FORMAT_MENU}).
 Menus have no role in printed manuals or other output formats.
 
 Menus are automatically generated by @command{texi2any} when outputting
-Info for nodes followed by a sectioning command, without an explicit
-@code{@@menu} block, and with automatic pointers.
+Info or HTML with menus for nodes followed by a sectioning command, without an
+explicit @code{@@menu} block, and with automatic pointers.
 
 It is often more convenient to let @command{texi2any} generate
 menus for you, as you do not then have the burden of updating menu
@@ -3266,7 +3258,7 @@ same level.  For instance, it is the same for the chapter-level commands
 
 In HTML, the chapter-level commands produce an @code{<h2>}-level
 header by default (controlled by the @code{CHAPTER_HEADER_LEVEL}
-customization variable, @pxref{Other Customization Variables}).
+customization variable, @pxref{HTML Customization of Specific Output}).
 The heading element level is adjusted for the other commands.
 
 In the DocBook output, the appropriate level of element is used.
@@ -4426,12 +4418,12 @@ target appears within; if not given, the reference is to the current
 manual.
 
 @code{@@link} has similar output to @code{@@ref}, except that it does
-produce any extra text around the link label in Info or printed output
+not produce any extra text around the link label in Info or printed output
 that would mark it as a cross-reference.
 
 Be careful about using @code{@@link} to produce links that are
 necessary for a user to move around a manual, as these links will do
-nothing in these output formats.  @code{@@link} is best used to add
+nothing in some output formats.  @code{@@link} is best used to add
 convenience links that are nonetheless not essential for a reader
 to understand the text of the manual.  For example, you might use
 @code{@@link} in a code sample to reference documentation of a symbol
@@ -4928,8 +4920,7 @@ in typewriter-like contexts such as the @code{@@example} environment
 To control which quoting characters are inserted by
 @command{texi2any} in the output of @samp{@@code}, etc., see the
 @code{OPEN_QUOTE_SYMBOL} and @code{CLOSE_QUOTE_SYMBOL} customization
-variables (@pxref{Other Customization Variables}).
-
+variables (@pxref{Customization Variables for Multiple Formats}).
 
 
 @node @code{@@kbd}
@@ -6540,11 +6531,10 @@ since @code{@@indent} is a command used outside of paragraphs
 @cindex Box with rounded corners
 @cindex Rounded rectangles, around text
 
-Where the output format allows, the @code{@@cartouche} command draws a box
-with rounded corners around its contents.  In HTML, a normal rectangle is
-drawn.  You can use this command to isolate a portion of the manual from the
-main flow.  You can also further highlight an example or quotation
-with @code{@@cartouche}.
+Where the output format allows, the @code{@@cartouche} command draws a
+box with rounded corners around its contents.  You can use this command
+to isolate a portion of the manual from the main flow.  You can also
+further highlight an example or quotation with @code{@@cartouche}.
 
 For instance, you could write a manual in which one type of example is
 surrounded by a cartouche for emphasis.  For example,
@@ -6646,11 +6636,17 @@ The @code{@@small@dots{}} commands use the same font style as their
 normal counterparts: @code{@@smallexample} and @code{@@smalllisp} use
 a fixed-width font, and everything else uses the regular font.
 They also have the same behavior in other respects---whether filling
-is done and whether margins are narrowed.
+is done and whether margins are narrowed.  They do not take arguments
+even when their normal counterparts do, however.
 
+@vindex dispenvsize
 As a general rule, it's better to just use the regular
 commands (such as @code{@@example} instead of @code{@@smallexample}),
-unless you have a good reason for it.
+unless you have a good reason for it.  When processing with
+@file{texinfo.tex} only, you can obtain a similar effect with
+@samp{@@set dispenvsize small}, which uses a smaller font for
+@code{@@example} and other environments.  In HTML output, you can
+use CSS to change the font size of enviroments if needed; @pxref{HTML CSS}.
 
 
 @node Lists and Tables
@@ -6692,7 +6688,7 @@ command.
 @noindent
 Here is an itemized list of the different kinds of table and lists:
 
-@itemize @bullet
+@itemize @bullet{}
 @item
 Itemized lists with and without bullets.
 
@@ -6749,46 +6745,23 @@ The @code{@@itemize} command produces a sequence of ``items'', each
 starting with a bullet or other mark inside the left margin, and
 generally indented.
 
-@cindex @code{@@w}, for blank items
 Begin an itemized list by writing @code{@@itemize} at the beginning of
-a line.  Follow the command, on the same line, with a character or a
-Texinfo command that generates a mark.  Usually, you will use
-@code{@@bullet} after @code{@@itemize}, but you can use
-@code{@@minus}, or any command or character that results in a single
-character in the Info file.  (When you write the mark command such as
-@code{@@bullet} after an @code{@@itemize} command, you may omit the
-@samp{@{@}}.)  If you don't specify a mark command, the default is
-@code{@@bullet}.  If you don't want any mark at all, but still want
-logical items, use @code{@@w@{@}} (in this case the braces are
-required).
+a line.  Follow the command, on the same line, with a Texinfo command
+or character to generate a mark.  Usually, you will use @code{@@bullet}
+after @code{@@itemize}, but you can use @code{@@minus}, or any other
+Texinfo command or character.  If you don't specify a mark command,
+the default is @code{@@bullet}.
 
 @findex item @r{in @code{@@itemize}}
 After the @code{@@itemize}, write your items, each starting with
 @code{@@item}.  Text can follow on the same line as the @code{@@item}.
 The text of an item can continue for more than one paragraph.
 
-There should be at least one @code{@@item} inside the @code{@@itemize}
-environment.  If none are present, @code{texi2any} gives a warning.
-If you just want indented text and not a list of items, use
-@code{@@indentedblock}; @pxref{@code{@@indentedblock}}.
-
-Index entries and comments that are given before an @code{@@item}
-including the first, are automatically moved (internally) to after the
-@code{@@item}, so the output is as expected.  Historically this has
-been a common practice.
-
-Usually, you should put a blank line between items.  This puts a blank
-line in the Info file. (@TeX{} inserts the proper vertical space in
-any case.)  Except when the entries are very brief, these blank lines
-make the list look better.
-
-Here is an example of the use of @code{@@itemize}, followed by the
-output it produces.  @code{@@bullet} produces an @samp{*} in Info and
-a round dot in other output formats.
+Here is an example of the use of @code{@@itemize}:
 
 @example
 @group
-@@itemize @@bullet
+@@itemize @@bullet@{@}
 @@item
 Some text for foo.
 
@@ -6803,7 +6776,7 @@ for bar.
 This produces:
 
 @quotation
-@itemize @bullet
+@itemize @bullet{}
 @item
 Some text for foo.
 
@@ -6813,16 +6786,37 @@ for bar.
 @end itemize
 @end quotation
 
+When you give a mark command such as @code{@@bullet} as the argument
+to @code{@@itemize} command, you may omit the @samp{@{@}} that would
+normally follow the command.
+
+@cindex @code{@@w}, for blank items
+If you don't want any mark at all, but still want logical items, use
+@code{@@w@{@}} (in this case the braces are required).
+
+There should be at least one @code{@@item} inside the @code{@@itemize}
+environment.  If none are present, @code{texi2any} gives a warning.
+If you just want indented text and not a list of items, use
+@code{@@indentedblock}; @pxref{@code{@@indentedblock}}.
+
+Index entries that occur immediately before an @code{@@item}
+are associated with the @code{@@item}.
+
+Usually, you should put a blank line between items.  This puts a blank
+line in the Info file. (@TeX{} inserts the proper vertical space in
+any case.)  Except when the entries are very brief, these blank lines
+make the list look better.
+
 Itemized lists may be embedded within other itemized lists.  Here is a
 list marked with dashes embedded in a list marked with bullets:
 
 @example
 @group
-@@itemize @@bullet
+@@itemize @@bullet@{@}
 @@item
 First item.
 
-@@itemize @@minus
+@@itemize @@minus@{@}
 @@item
 Inner item.
 
@@ -6840,11 +6834,11 @@ Second outer item.
 This produces:
 
 @quotation
-@itemize @bullet
+@itemize @bullet{}
 @item
 First item.
 
-@itemize @minus
+@itemize @minus{}
 @item
 Inner item.
 
@@ -8002,9 +7996,10 @@ variables).
 
 @noindent
 Not every manual needs all of these, and most manuals use only two or
-three at most.  The present manual, for example, has two indices: a
-concept index and an @@-command index. (The latter is actually the function
-index but is called a command index in the chapter heading.)
+three at most.  The present manual, for example, has three indices: a
+concept index, a variable index, and an @@-command index.  (The last is
+actually the function index but is called a command index in the chapter
+heading.)
 
 You are not required to use the predefined indices strictly for their
 canonical purposes.  For example, suppose you wish to index some C
@@ -9472,10 +9467,11 @@ for plain @TeX{} math control sequences for symbols, functions,
 and so on.
 
 @cindex Math output for HTML
+@cindex HTML output @subentry math
 By default, the HTML output is only emphasized.
 @command{texi2any} provides three options for displaying properly
 formatted mathematics for HTML.  You can select these with the
-@code{HTML_MATH} variable (@pxref{HTML Customization Variables}).
+@code{HTML_MATH} variable (@pxref{HTML Customization for Math}).
 With @code{HTML_MATH} set to @samp{l2h}, @command{texi2any} attempts
 to use the @command{latex2html} program to produce image files for
 mathematical material.  With the @samp{t4h} setting, @command{texi2any}
@@ -9510,7 +9506,7 @@ e^{-{1\over2}\left({x-\mu\over\sigma}\right)^2}
 In general, the contents of @code{@@math} or @code{@@displaymath}
 should be plain @TeX{} only, with no interspersed Texinfo commands.
 If you do use any Texinfo commands, then you should mark these with
-@samp{@@} as usual, rather than @samp{\} (e.g. @samp{@@var} rather than
+@samp{@@} as usual, rather than @samp{\} (e.g.@: @samp{@@var} rather than
 @samp{\var}), but we do not guarantee which Texinfo commands will work.
 
 Although @code{@@sub} and @code{@@sup} may work inside math mode in
@@ -9653,10 +9649,6 @@ much closer together than the dots in the ellipsis.
 Use the @code{@@bullet@{@}} command to generate a large round dot, or
 the closest possible thing to one.  An asterisk can also be used.
 Here is a bullet: @bullet{}
-
-When you use @code{@@bullet} in @code{@@itemize}, you do not need to
-type the braces, because @code{@@itemize} supplies them.
-(@pxref{@code{@@itemize}}).
 
 
 @node @code{@@euro}
@@ -10105,8 +10097,7 @@ glyph is also available independently via the command
 @findex clickstyle
 You can change the glyph produced by @code{@@click} with the command
 @code{@@clickstyle}, which takes a command name as its single argument
-on the rest of the line, much like @code{@@itemize} and friends
-(@pxref{@code{@@itemize}}).  The command should produce a glyph, and
+on the rest of the line.  The command should produce a glyph, and
 the usual empty braces @samp{@{@}} are omitted.  Here's an example:
 
 @example
@@ -11078,7 +11069,7 @@ variables. For example, in Perl, returned scalars may be given the
 @var{$result} and @var{$status} name in the following manner:
 
 @example
-@@deftypefn @{Sub@} @{(@@var@{$result@}, @@var@{$status@} =)@} @@
+@@deftypefn @{Sub@} @{(@@var@{$result@}, @@var@{$status@}) =@} @@
                      process (@@var@{$input@})
 @dots{} Set @@var@{$status@} to 0 in case of failure @dots{}
 @@end deftypefn
@@ -11812,12 +11803,16 @@ example, @code{de} is equivalent to @code{de_DE} (German as spoken in
 Germany).
 
 @cindex Document strings, translation of
-For Info and other online output, this command changes the translation
-of various @dfn{document strings} such as ``see'' in cross-references
-(@pxref{Cross References}), ``Function'' in defuns (@pxref{Definition
-Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
-``Menu:'', etc., are keywords in Info output, so are not translated
-there; they are translated in other output formats.
+This command changes the translation of various @dfn{document strings}
+such as ``see'' in cross-references (@pxref{Cross References}),
+``Function'' in defuns (@pxref{Definition Commands}), and so on.
+Optionally, this command may also affect how @command{texi2any}
+sorts indices (@pxref{Global Customization Variables}, under
+@code{DOCUMENTLANGUAGE_COLLATION}).
+
+Note that in Info output, some strings, such as ``Node:'', ``Next:'',
+``Menu:'', etc., are keywords and so are not translated.
+
 In DocBook output @code{@@documentlanguage} sets the language for
 following sections.
 
@@ -11871,7 +11866,7 @@ the official web site for ISO@tie{}3166 can be found via
 @cindex Character set, declaring
 @cindex Document input encoding
 
-In the default case, the input and output document encoding are assumed
+By default, the input and output document encoding are assumed
 to be UTF-8, the vast global character encoding, expressed in 8-bit bytes.
 UTF-8 is compatible with 7-bit ASCII.  It is recommended to use UTF-8
 encoding for Texinfo manuals.
@@ -11938,7 +11933,7 @@ encoding where possible.  If this is not possible, or if the option
 @option{--disable-encoding} is given, an ASCII transliteration is
 used instead.
 
-@cindex HTML output, and encodings
+@cindex HTML output @subentry encodings
 @cindex @code{http-equiv}, and charset specification
 @cindex @code{<meta>} HTML tag, and charset specification
 In HTML output, a @samp{<meta>} tag is output, in the @samp{<head>}
@@ -11953,17 +11948,17 @@ this:
 @end example
 
 In HTML and @LaTeX{} output, if @code{OUTPUT_CHARACTERS} is set
-(@pxref{Other Customization Variables}), accent constructs and special
-characters, such as @code{@@'e} or @code{``}, are output as the actual
+(@pxref{Customization Variables for Multiple Formats}), accent constructs and
+special characters, such as @code{@@'e} or @code{``}, are output as the actual
 UTF-8 sequence or 8-bit character in the output encoding where possible.
-Otherwise, HTML entities are used for those characters in HTML, and
-@LaTeX{} macros are used in @LaTeX{}.
+Otherwise, HTML entities are used for those characters in HTML, and @LaTeX{}
+macros are used in @LaTeX{}.
 
 In DocBook output, if the encoding is different from UTF-8,
-an @code{encoding} attribute is added to the XML declaration.
-If @code{OUTPUT_CHARACTERS} is set (@pxref{Other Customization Variables}),
-accent constructs such as @code{@@'e} are output as the actual 8-bit or
-UTF-8 character in the output encoding where possible.  Otherwise XML
+an @code{encoding} attribute is added to the XML declaration.  If
+@code{OUTPUT_CHARACTERS} is set (@pxref{Customization Variables for Multiple
+Formats}), accent constructs such as @code{@@'e} are output as the actual 8-bit
+or UTF-8 character in the output encoding where possible.  Otherwise XML
 entities are used for those constructs.
 
 @cindex Computer Modern fonts
@@ -12740,7 +12735,7 @@ implementation is reliable in this regard, however.
 @pindex @file{NEWS} file for Texinfo
 You can check the @file{NEWS} file in the Texinfo source distribution
 and linked from the Texinfo home page
-(@url{http://www.gnu.org/software/texinfo}) to see when a particular
+(@url{https://www.gnu.org/software/texinfo}) to see when a particular
 command was added.
 
 @vindex txicommandconditionals
@@ -13583,7 +13578,7 @@ For example, you can write:
 
 @noindent
 near the beginning of a Texinfo file to define @code{@@phoo} as an Info
-and HTML formatting command that inserts `//' before and `\\' after the
+and HTML command that inserts `//' before and `\\' after the
 argument to @code{@@phoo}.  You can then write @code{@@phoo@{bar@}}
 wherever you want `//bar\\' highlighted in Info and HTML.
 
@@ -13662,7 +13657,7 @@ such lines.
 The @command{texi2any} program recognizes these lines by default,
 except within @code{@@verbatim} blocks (@pxref{@code{@@verbatim}}).
 Their recognition can be turned off completely with
-@code{CPP_LINE_DIRECTIVES} (@pxref{Other Customization Variables}),
+@code{CPP_LINE_DIRECTIVES} (@pxref{Global Customization Variables}),
 though there is normally no reason to do so.
 
 For those few programs (M4, CPP, Texinfo) which need to document
@@ -14382,48 +14377,6 @@ coincidentally, he is also the long-time maintainer of @command{gawk}
 @file{texindex/Makefile.am} shows example usage of the system.
 
 
-@node Print with @command{lpr}
-@nodedescription How to print.
-@section Print with @command{lpr} from Shell
-
-@pindex lpr @r{(DVI print command)}
-
-The way to print a DVI file depends on your system installation.  Two
-common ones are @samp{dvips foo.dvi -o} to make a PostScript file
-first and then print that, and @samp{lpr -d foo.dvi} to print a DVI
-file directly.
-
-For example, the following commands will (probably) suffice to sort
-the indices, format, and print this manual using the @command{texi2dvi}
-shell script (@pxref{Format with @command{texi2dvi}}).
-
-@example
-@group
-texi2dvi texinfo.texi
-dvips texinfo.dvi -o
-lpr texinfo.ps
-@end group
-@end example
-
-Depending on the @command{lpr} setup on your machine, you might be able to
-combine the last two steps into @code{lpr -d texinfo.dvi}.
-
-@cindex PCL file, for printing
-You can also generate a PDF file by running @command{texi2dvi} instead of
-@command{texi2dvi}; a PDF is often directly printable.  Or you can
-generate a PCL file by using @command{dvilj} instead of @command{dvips}, if
-you have a printer that prefers that format.
-
-@cindex Shell printing, on MS-DOS/MS-Windows
-@cindex Printing DVI files, on MS-DOS/MS-Windows
-@pindex lpr@r{-d, replacements on MS-DOS/MS-Windows}
-@command{lpr} is a standard program on Unix systems, but it is usually
-absent on MS-DOS/MS-Windows.  If so, just create a PostScript or PDF
-or PCL file, whatever is most convenient, and print that in the usual
-way for your machine (e.g., by sending to the appropriate port,
-usually @samp{PRN}).
-
-
 @node Preparing for @TeX{}
 @nodedescription What to do before you use @TeX{}.
 @section Preparing for @TeX{}
@@ -14583,6 +14536,50 @@ before the @code{@@titlepage} command:
 @example
 @@finalout
 @end example
+
+@node Printing Japanese and Chinese
+@nodedescription XeTeX or LuaTeX required.
+@section Printing Japanese and Chinese
+
+@cindex Chinese language
+@cindex Japanese language
+Texinfo comes with support files for processing input in the
+Japanese and Chinese languages.
+
+@cindex Japanese with Xe@TeX{}
+@cindex Japanese with LuaTeX
+For Japanese, you use the @file{texinfo-ja.tex} file. Your main input
+file should begin with a @samp{\input texinfo-ja} line, rather than
+the standard
+@w{@samp{\input texinfo}}.  Use the UTF-8 character encoding as usual.
+You must process the files with either Xe@TeX{} or LuaTeX.
+
+@cindex Chinese with Xe@TeX{}
+For Chinese, you use the @file{texinfo-zh.tex} file. Your main input
+file should begin with a @samp{\input texinfo-zh} line, rather than
+the standard
+@w{@samp{\input texinfo}}.  Use the UTF-8 character encoding as usual.
+You must process the files with Xe@TeX{}.
+
+For example, you would run
+@samp{PDFTEX=xetex texi2pdf @var{my-input-file.texi}}
+to use Xe@TeX{} to produce PDF output.  You may have to install Xe@TeX{}
+(or LuaTeX), the @samp{zhspacing} package, and/or font packages.
+
+Neither Japanese nor Chinese is supported with the standard @TeX{} (or
+pdf@TeX{}) program, as it cannot support the fonts and thousands of
+glyphs needed for these languages.
+
+The Texinfo distribution comes with a couple of sample files that you
+can use to test support for these languages:
+@samp{short-sample-ja.texi} for Japanese, and @samp{short-sample-zh.texi}
+for Chinese.
+
+@cindex Xe@TeX{}
+@cindex LuaTeX
+For more information on these extensions to @TeX{}, see
+@uref{https://tug.org/xetex/, the Xe@TeX{} home page} and
+@uref{https://www.luatex.org/, the LuaTeX website}.
 
 
 @node Generic Translator @command{texi2any}
@@ -14816,11 +14813,11 @@ into a subdirectory based on the name of the input file.
 @opindex -I @var{dir}
 Append @var{dir} to the directory search list for finding files that
 are included using the @code{@@include} command.  By default,
-@command{texi2any} searches only the current directory.  If @var{dir} is
-not given, the current directory is appended.  The @var{dir} value
-can be a single directory or a list of several directories separated
-by the usual path separator character (@samp{:} on Unix-like systems,
-@samp{;} on Windows).
+@command{texi2any} searches the current directory and the input file
+path leading directory if there is one (and it is not the current directory).
+The @var{dir} value can be a single directory or a list of several
+directories separated by the usual path separator character (@samp{:} on
+Unix-like systems, @samp{;} on Windows).
 
 @item --ifdocbook
 @opindex --ifdocbook
@@ -15050,8 +15047,7 @@ to alter indentation in XML/DocBook output.)
 @item -P @var{path}
 @opindex -P @var{path}
 Prepend @var{path} to the directory search list for @code{@@include}.
-If @var{path} is not given, the current directory is prepended.  See
-@samp{-I} above.
+See @samp{-I} above.
 
 @item --paragraph-indent=@var{indent}
 @itemx -p @var{indent}
@@ -15157,6 +15153,15 @@ available as separate files.
 Keep Info files to at most @var{num} characters if possible; default
 is 300,000.  (However, a single node will never be split across Info
 files.)
+
+@item --trace-includes
+@opindex --trace-includes
+@vindex TRACE_INCLUDES
+Print the name of each included file to standard output, including any
+indirectly included files.  An include file is printed only if it was
+actually found.  When this option is given, @command{texi2any} does not
+output in any output format.  (The purpose of this option is to make it
+easier to collect the sources of a Texinfo manual.)
 
 @item --transliterate-file-names
 @opindex --transliterate-file-names
@@ -15289,13 +15294,13 @@ to construct an arbitrary command line for @command{texi2dvi}.  For
 example, running
 
 @example
-texi2any --Xopt -t --Xopt @@a4paper --pdf foo.texi
+texi2any --Xopt -t --Xopt @@afourpaper --pdf foo.texi
 @end example
 
 @noindent is equivalent to running
 
 @example
-texi2dvi -t @@a4paper --pdf foo.texi
+texi2dvi -t @@afourpaper --pdf foo.texi
 @end example
 
 @noindent except for the validity check.
@@ -15307,8 +15312,8 @@ numbered sections.  (Perhaps this could be improved in the future, if
 requests are received.)
 
 The actual name of the command that is invoked is specified by the
-@code{TEXI2DVI} customization variable (@pxref{Other Customization
-Variables}).  As you might guess, the default is @samp{texi2dvi}.
+@code{TEXI2DVI} customization variable (@pxref{Customization Variables for
+Multiple Formats}).  As you might guess, the default is @samp{texi2dvi}.
 
 @command{texi2any} itself does not generate any normal output when it
 invokes @command{texi2dvi}, only diagnostic messages.
@@ -15336,17 +15341,24 @@ Those associated with @@-commands; for example,
 @item
 Those associated with command-line options; for example, the
 customization variable @code{SPLIT} is associated with the
-@option{--split} command-line option, and @code{TEXINFO_OUTPUT_FORMAT}
+@option{--split} command-line option. @code{TEXINFO_OUTPUT_FORMAT}
+is set based on output format command line options and
 allows specifying the output format.
 
 @item
-Those associated with customizing the HTML output.
+Those affecting the global behavior of @command{texi2any}, in particular
+Texinfo code parsing.
 
 @item
-Other ad hoc variables.
+Those associated with particular output formats.
+(Variables only relevant for HTML output are documented in @ref{HTML
+Output Customization}.)
+
+@item
+Those relevant for multiple output formats.
 @end itemize
 
-Customization variables may set on the command line using
+You may set customization variables on the command line using
 @code{--set-customization-variable '@var{var} @var{value}'} (quoting
 the variable/value pair to the shell) or
 @code{--set-customization-variable @var{var}=@var{value}} (using
@@ -15358,12 +15370,11 @@ The sections below give the details for each of these.
 @menu
 * Commands: Customization Variables for @@-Commands.
 * Options:  Customization Variables and Options.
-* HTML:     HTML Customization Variables.
-* MathJax:  MathJax Customization Variables.
-* latex2html:  @command{latex2html} Customization Variables.
-* tex4ht:      @command{tex4ht} Customization Variables.
+* Global:   Global Customization Variables.
+* Info:     Info and Plaintext Customization Variables.
 * LaTeX:    @LaTeX{} Customization Variables.
-* Other:    Other Customization Variables.
+* Other:    Other Formats Customization Variables.
+* Formats:  Customization Variables for Multiple Formats.
 @end menu
 
 
@@ -15419,48 +15430,66 @@ meaning of the options.
 @multitable @columnfractions 0.5 0.5
 @headitem Option @tab Variable
 @item
+@vindex ENABLE_ENCODING
 @option{--enable-encoding}   @tab @code{ENABLE_ENCODING}
 @item
 @option{--document-language} @tab @code{documentlanguage}
 @item
+@vindex ERROR_LIMIT
 @option{--error-limit}       @tab @code{ERROR_LIMIT}
 @item
+@vindex FILLCOLUMN
 @option{--fill-column}       @tab @code{FILLCOLUMN}
 @item
 @option{--footnote-style}    @tab @code{footnotestyle}
 @item
+@vindex FORCE
 @option{--force}             @tab @code{FORCE}
 @item
-@option{--internal-links}    @tab @code{INTERNAL_LINKS}
-@item
-@option{--macro-expand}      @tab @code{MACRO_EXPAND}
-@item
+@vindex HEADERS
 @option{--headers}           @tab @code{HEADERS}, @code{FORMAT_MENU}
 @item
-@option{--no-warn}           @tab @code{NO_WARN}
+@vindex INTERNAL_LINKS
+@option{--internal-links}    @tab @code{INTERNAL_LINKS}
+@item
+@vindex MACRO_EXPAND
+@option{--macro-expand}      @tab @code{MACRO_EXPAND}
 @item
 @vindex novalidate
 @option{--no-validate}       @tab @code{novalidate}
 @item
-@option{--number-footnotes}  @tab @code{NUMBER_FOOTNOTES}
+@vindex NO_WARN
+@option{--no-warn}           @tab @code{NO_WARN}
 @item
-@option{--number-sections}   @tab @code{NUMBER_SECTIONS}
-@item
+@vindex NODE_FILES
 @option{--node-files}        @tab @code{NODE_FILES}
 @item
+@vindex NUMBER_FOOTNOTES
+@option{--number-footnotes}  @tab @code{NUMBER_FOOTNOTES}
+@item
+@vindex NUMBER_SECTIONS
+@option{--number-sections}   @tab @code{NUMBER_SECTIONS}
+@item
+@vindex OUTFILE
+@vindex SUBDIR
 @option{--output}            @tab @code{OUTFILE}, @code{SUBDIR}
 @item
 @vindex paragraphindent
 @option{--paragraph-indent}  @tab @code{paragraphindent}
 @item
-@option{--silent}            @tab @code{SILENT}
-@item
+@vindex SPLIT
 @option{--split}             @tab @code{SPLIT}
 @item
+@vindex SPLIT_SIZE
 @option{--split-size}        @tab @code{SPLIT_SIZE}
 @item
+@vindex TRACE_INCLUDES
+@option{--trace-includes}    @tab @code{TRACE_INCLUDES}
+@item
+@vindex TRANSLITERATE_FILE_NAMES
 @option{--transliterate-file-names} @tab @code{TRANSLITERATE_FILE_NAMES}
 @item
+@vindex VERBOSE
 @option{--verbose}           @tab @code{VERBOSE}
 @end multitable
 
@@ -15487,7 +15516,10 @@ forms:
 @itemx xml
 These correspond to the command-line options (and
 @code{TEXINFO_OUTPUT_FORMAT} environment variable values) of the same
-name.  @xref{Invoking @command{texi2any}}.
+name.  The @code{TEXINFO_OUTPUT_FORMAT} customization variable value
+is set when command-line options (or @code{TEXINFO_OUTPUT_FORMAT}
+environment variable values) set the output format.
+@xref{Invoking @command{texi2any}}.
 
 @cindex tree representation, for debugging
 @cindex debugging document, with tree representation
@@ -15536,608 +15568,13 @@ exec texi2any -c TEXINPUT_OUTPUT_FORMAT=textcontent "$@@"
 @end table
 
 
-@node HTML Customization Variables
-@subsection HTML Customization Variables
+@node Global Customization Variables
+@subsection Global Customization Variables
 
-This table gives the customization variables which apply to HTML
-output only.  A few other customization variables apply to both HTML
-and other output formats; see @ref{Other Customization Variables}.
+This table gives the customization variables which affect the global behavior
+of @command{texi2any}.
 
 @vtable @code
-@item AVOID_MENU_REDUNDANCY
-If set, and the menu entry and menu description are the
-same, then do not print the menu description; default false.
-
-@item AFTER_BODY_OPEN
-If set, the corresponding text will appear at the
-beginning of each HTML file; default unset.
-
-@item AFTER_SHORT_TOC_LINES
-@itemx AFTER_TOC_LINES
-If set, the corresponding text is output after the short
-table of contents for @code{AFTER_SHORT_TOC_LINES} and after the table of
-contents for @code{AFTER_TOC_LINES}; otherwise, a default string is
-used.  At the time of writing, a @code{</div>} element is closed.
-
-In general, you should set @code{BEFORE_SHORT_TOC_LINES} if
-@code{AFTER_SHORT_TOC_LINES} is set, and you should set
-@code{BEFORE_TOC_LINES} if @code{AFTER_TOC_LINES} is set.
-
-@item BASEFILENAME_LENGTH
-The maximum length of a base file name; default 245.
-Changing this would make cross-manual references to such long node
-names invalid (@pxref{HTML Xref Link Basics}).
-
-@item BEFORE_SHORT_TOC_LINES
-@itemx BEFORE_TOC_LINES
-If set, the corresponding text is output before the short
-table of contents for @code{BEFORE_SHORT_TOC_LINES} and before the table of
-contents for @code{BEFORE_TOC_LINES}, otherwise a default string is
-used.  At the time of writing, a @code{<div ...>} element is opened.
-
-In general you should set @code{AFTER_SHORT_TOC_LINES} if
-@code{BEFORE_SHORT_TOC_LINES} is set, and you should set
-@code{AFTER_TOC_LINES} if @code{BEFORE_TOC_LINES} is set.
-
-
-@item BIG_RULE
-Rule used after and before the top element and before
-special elements, but not for footers and headers; default
-@code{<hr>}.
-
-@cindex @code{<body>} text, customizing
-@opindex lang@r{, HTML attribute}
-@item BODYTEXT
-The text appearing in @code{<body>}.  By default, sets the
-HTML @code{lang} attribute to the document language
-(@pxref{@code{@@documentlanguage}}).
-
-@item CASE_INSENSITIVE_FILENAMES
-Construct output file names as if the filesystem were case
-insensitive (@pxref{HTML Splitting}); default false.
-
-@item CHAPTER_HEADER_LEVEL
-Header formatting level used for chapter level sectioning
-commands; default @samp{2}.
-
-@item CHECK_HTMLXREF
-Check that manuals which are the target of external
-cross-references (@pxref{Four and Five Arguments}) are present in
-@file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); default false.
-
-@item COMPLEX_FORMAT_IN_TABLE
-If set, use tables for indentation of complex formats; default
-false.
-
-@item CONTENTS_OUTPUT_LOCATION
-If set to @samp{after_top}, output the contents at the end of the @code{@@top}
-section.  If set to @samp{inline}, output the contents where the
-@code{@@contents} and similar @@-commands are located.  If set to
-@samp{separate_element} output the contents in separate elements, either at the
-end of the document if not split, or in a separate file.  If set to
-@samp{after_title} the tables of contents are output after the title; default
-@samp{after_top}.
-
-@item CONVERT_TO_LATEX_IN_MATH
-If set, try to convert any Texinfo @@-commands inside @code{@@math} and
-@code{@@displaymath} to @LaTeX{}, before converting the @code{@@math} or
-@code{@@displaymath} to HTML.  Default @code{undef}.  If undefined,
-set if @code{HTML_MATH} is set.
-
-@item COPIABLE_LINKS
-If set, output copiable links for the definition commands
-(@pxref{Definition Commands}) and table commands (@pxref{Two-column
-Tables}) where an index entry is defined.  A link appears as a `@U{00B6}'
-@c pilcrow sign
-sign that appears when you hover the mouse pointer over the heading text.
-
-@item DATE_IN_HEADER
-Put the document generation date in the header; off by default.
-
-@item DEF_TABLE
-If set, a @code{<table>} construction for @code{@@deffn}
-and similar @@-commands is used (looking more like the @TeX{} output),
-instead of definition lists; default false.
-
-@item DEFAULT_RULE
-Rule used between element, except before and after the
-top element, and before special elements, and for footers and headers;
-default @code{<hr>}.
-
-@item DO_ABOUT
-If set to 0 never do an About special element;
-if set to 1 always do an About special element;
-default 0.
-@c @xref{Output Elements Defined}.
-
-@item EXTERNAL_CROSSREF_SPLIT
-For cross-references to other manuals, this determines if the other
-manual is considered to be split or monolithic.  By default, it is set
-based on the value of @code{SPLIT}.  @xref{HTML Xref}, and @pxref{HTML
-Xref Configuration}.
-
-@item EXTERNAL_DIR
-Base directory for external manuals; default none.  It is
-better to use the general external cross-reference mechanism
-(@pxref{HTML Xref Configuration}) than this variable.
-
-@item EXTERNAL_CROSSREF_EXTENSION
-File extension for cross-references to other manuals.  If unset,
-based on @code{EXTENSION}.
-
-@item EXTRA_HEAD
-Additional text appearing within @code{<head>}; default unset.
-
-@item FOOTNOTE_END_HEADER_LEVEL
-Header formatting level used for the footnotes header with
-the `end' footnotestyle; default @samp{4}.  @xref{Footnote Styles}.
-
-@item FOOTNOTE_SEPARATE_HEADER_LEVEL
-Header formatting level used for the footnotes header with
-the `separate' footnotestyle; default @samp{4}.  @xref{Footnote
-Styles}.
-
-@item FRAMES
-If set, a file describing the frame layout is generated,
-together with a file with the short table of contents; default false.
-
-@item FRAMESET_DOCTYPE
-Same as DOCTYPE, but for the file containing the frame
-description.
-
-@item HEADER_IN_TABLE
-Use tables for header formatting rather than a simple
-@code{<div>} element; default false.
-
-@item HTML_MATH
-Method to use to render @code{@@math}.  This can be unset, set to
-@samp{mathjax} (@pxref{MathJax Customization Variables}),
-set to @samp{l2h}, which uses @command{latex2html}
-(@pxref{@command{latex2html} Customization Variables}), or set to
-@samp{t4h}, which uses @command{tex4ht}
-(@pxref{@command{tex4ht} Customization Variables}).  In the default case,
-setting @code{HTML_MATH} also sets @code{CONVERT_TO_LATEX_IN_MATH}.
-
-@item HTML_ROOT_ELEMENT_ATTRIBUTES
-Use that string for the @code{<html>} HTML document root element.
-Default undefined.
-
-@item HTMLXREF_FILE
-Set the file name used for cross-references to other manuals.  If
-not defined, @file{htmlxref.cnf} is used (@pxref{HTML Xref Configuration}).
-Not defined in the default case.  If @code{TEST} is set, @code{HTMLXREF_MODE}
-is set to the default and @code{HTMLXREF_FILE} is not defined, information on
-cross-references to other manuals is not used.
-
-If @code{HTMLXREF_MODE} is set to @samp{file} the file name is directly used
-as the source of information, otherwise the file name is searched for in
-directories, and all the files found are used (@pxref{HTML Xref
-Configuration}).
-
-@item HTMLXREF_MODE
-How cross-references to other manuals information is determined.
-If set to @samp{none}, no information is used.  If set to @samp{file},
-the information is determined from a file path, @file{htmlxref.cnf}
-in the default case, or the value of @code{HTMLXREF_FILE}.  If not defined
-(the default) or set to any other value, search in
-directories and use all the files (@pxref{HTML Xref Configuration}).
-
-@item ICONS
-Use icons for the navigation panel; default false.
-
-@item IMAGE_LINK_PREFIX
-If set, the associated value is prepended to the image file
-links; default unset.
-
-@item INDEX_ENTRY_COLON
-Symbol used between the index entry and the associated node or section;
-default @samp{:}.
-
-@item INFO_JS_DIR
-(Experimental.)  Add a JavaScript browsing interface to the manual.
-The value of the variable is the directory to place the code for this
-interface, so you would run the program as e.g.@: @samp{texi2any --html
--c INFO_JS_DIR=js @var{manual}.texi} to place files in a @samp{js}
-directory under the output.  This provides some of the functionality
-of the Info browsers in a web browser, such as keyboard navigation
-and index lookup.  This only works with non-split HTML output.
-
-The interface should provide an acceptable fallback in functionality
-if JavaScript or web browser features are not available.  However,
-please be cautious when using this option, in case you do make your
-documentation harder to access for some of your users.
-
-@item IGNORE_REF_TO_TOP_NODE_UP
-Ignore references to @code{TOP_NODE_UP}, the up node for the Top node.
-
-@item INLINE_CSS_STYLE
-Put CSS directly in HTML elements rather than at the
-beginning of the output; default false.
-
-@item JS_WEBLABELS
-@itemx JS_WEBLABELS_FILE
-Specify how to use a @dfn{JavaScript license web labels} page to
-give licensing information and source code for any JavaScript used
-in the HTML files for the manual.
-(See @uref{https://www.gnu.org/licenses/javascript-labels.html}).
-
-With the value @samp{generate} (the default), generate a labels page
-at @code{JS_WEBLABELS_FILE}, and link to it in the HTML output files.
-Only do this if actually referencing JavaScript files (either with
-@code{HTML_MATH} set to @samp{mathjax}, or when using the experimental
-JS browsing interface when @code{INFO_JS_DIR} is set).  With this
-setting, @code{JS_WEBLABELS_FILE} must be a relative file name.
-
-With the value @samp{reference}, link to the labels
-file given by @code{JS_WEBLABELS_FILE} in the output, and do not
-generate a labels file.  This setting is useful if you separately
-maintain a single labels file for a larger website that includes
-your manual.
-
-With @samp{omit}, neither generate nor link to a labels file.
-
-@item MAX_HEADER_LEVEL
-Maximum header formatting level used (higher header
-formatting level numbers correspond to lower sectioning levels);
-default @samp{4}.
-
-@item MENU_ENTRY_COLON
-Symbol used between the menu entry and the description; default
-@samp{:}.
-
-@item MENU_SYMBOL
-Symbol used in front of menu entries when node names are used
-for menu entries formatting; default is undefined and set to
-@code{&bull;} if @code{USE_NUMERIC_ENTITY} is not set, and to
-@code{&#8217;} if set.
-
-@item MONOLITHIC
-Output only one file including the table of contents.  Set
-by default, but only relevant when the output is not split.
-
-@item NO_CSS
-Do not use CSS; default false.  @xref{HTML CSS}.
-
-@item NO_CUSTOM_HTML_ATTRIBUTE
-Do not output HTML with custom attributes in elements; default false.
-
-@item NO_NUMBER_FOOTNOTE_SYMBOL
-Symbol used for footnotes if @code{NUMBER_FOOTNOTES} is false.
-Default is @code{*}.
-
-@item NODE_NAME_IN_INDEX
-If true, use node names in index entries, otherwise prefer section names.
-If undefined, use @code{USE_NODES} value in HTML.  Default is undefined.
-
-@item PRE_BODY_CLOSE
-If set, the given text will appear at the footer of each
-HTML file; default unset.
-
-@item PROGRAM_NAME_IN_ABOUT
-Used when an About element is output.  If set, output the program
-name and miscellaneous related information in About special element;
-default false.
-
-@item PROGRAM_NAME_IN_FOOTER
-If set, output the program name and miscellaneous related
-information in the page footers; default false.
-
-@item SECTION_NAME_IN_TITLE
-If set,  when output is split, use the argument of the chapter 
-structuring command (e.g., @code{@@chapter} or @code{@@section})
-in the @code{<title>} instead of the argument to @code{@@node}.
-
-@item SHORT_TOC_LINK_TO_TOC
-If set, the cross-references in the Short table of contents links to the
-corresponding Table of Contents entries, if a Table of Contents is output;
-default true.
-
-@item SHOW_BUILTIN_CSS_RULES
-Output the built-in default CSS rules on the standard output and exit.
-
-@item SHOW_TITLE
-If set, output the title at the beginning of the document;
-default @samp{undef}.  If set to @samp{undef}, setting
-@code{NO_TOP_NODE_OUTPUT} also sets @code{SHOW_TITLE} for HTML.
-
-@item SIMPLE_MENU
-If set, use a simple preformatted style for the menu,
-instead of breaking down the different parts of the menu; default false.
-@xref{Menu Parts}.
-
-@item TOC_LINKS
-If set, links from headings to toc entries are created;
-default false.
-
-@item TOP_FILE
-This file name may be used for the top-level file.  The extension is
-set appropriately, if necessary.  This is used to override the default,
-and is, in general, only taken into account when output is split, and
-for HTML@.
-
-@item TOP_NODE_FILE_TARGET
-File name used for the Top node in cross-references;
-default is @code{index.html}.
-
-@item TOP_NODE_UP_URL
-A URL used for Top node up references; the default is
-@code{undef}, in that case no Top node Up reference is generated.
-For more about the Top node pointers, @pxref{First Node}.  For 
-overriding the Up pointer name in case @code{TOP_NODE_UP_URL} is set
-and for other formats, see @code{TOP_NODE_UP} in 
-@ref{Other Customization Variables}.
-
-@cindex @code{accesskey} @subentry customization variable for
-@item USE_ACCESSKEY
-Use @code{accesskey} in cross-references; default true.
-
-@item USE_ISO
-Use entities for doubled single-quote characters
-(@pxref{Inserting Quotation Marks}), and @samp{---} and @samp{--}
-(@pxref{Conventions}); default true.
-
-@cindex @code{<link>} HTML tag, in @code{<head>}
-@cindex @code{<head>} HTML tag, and @code{<link>}
-@item USE_LINKS
-Generate @code{<link>} elements in the HTML @code{<head>}
-output; default true.
-
-@item USE_NEXT_HEADING_FOR_LONE_NODE
-If set, a node not associated to a sectioning command but
-followed by a heading command not usually associated to node
-such as @code{@@heading} before other formatted contents
-do not have its name output as a heading, under the assumption
-that the command found provides the heading.  Default true.
-
-@item USE_NODE_DIRECTIONS
-If true, use nodes to determine where next, up and prev
-link to in node headers.  If false, use sections.  If undefined, use
-@code{USE_NODES} value.  Default is undefined.  Note that this setting does not
-determine the link string only where the links points to, see @ref{Three
-Arguments, , xrefautomaticsectiontitle} for the link string customization.  If
-nodes and sections are systematically associated, this customization has no
-practical effect.
-
-@item USE_REL_REV
-Use @code{rel} in cross-references; default true.
-
-@item USE_TITLEPAGE_FOR_TITLE
-Use the full @code{@@titlepage} as the title, not a simple title string;
-default true.  Only relevant if @code{SHOW_TITLE} is set.
-
-@item USE_XML_SYNTAX
-Use XML/XHTML compatible syntax.
-
-@item VERTICAL_HEAD_NAVIGATION
-If set, a vertical navigation panel is used; default false.
-
-@cindex Navigation panel, bottom of page
-@cindex Navigation footer
-@item WORDS_IN_PAGE
-When output is split by nodes, specifies the approximate
-minimum page length at which a navigation panel is placed at the
-bottom of a page.  To avoid ever having the navigation buttons at the
-bottom of a page, set this to a sufficiently large number.  The
-default is 300.
-
-@item XREF_USE_FLOAT_LABEL
-If set, for the float name in cross-references, use the
-float label instead of the type followed by the float number
-(@pxref{@code{@@float}}).  The default is off.
-
-@item XREF_USE_NODE_NAME_ARG
-Only relevant for cross-reference commands with no cross
-reference name (second argument).  If set to@tie{}1, use the node name
-(first) argument in cross-reference @@-commands for the text displayed
-as the hyperlink.  If set to@tie{}0, use the node name if
-@code{USE_NODES} is set, otherwise the section name.  If set to
-@samp{undef}, use the first argument in preformatted environments,
-otherwise use the node name or section name depending on
-@code{USE_NODES}.  The default is @samp{undef}.
-
-@end vtable
-
-
-@node MathJax Customization Variables
-@subsection MathJax Customization Variables
-
-This table lists the customization variables which can be used when 
-MathJax is being used, which will be the case when @code{HTML_MATH}
-is set to @samp{mathjax}.
-
-@vtable @code
-@item MATHJAX_SCRIPT
-URL of the MathJax component file (e.g.@: @file{tex-svg.js}) you are using.
-@command{texi2any} provides a default value for this variable, but you
-are encouraged to host this file yourself on your website so that you are
-not dependent on others' hosting.
-
-@item MATHJAX_SOURCE
-A URL of the full source code in its preferred form for modification,
-or instructions for obtaining such source code, for the component file
-named by @code{MATHJAX_SCRIPT}.  `Preferred form for modification'
-means that this should not be in a `minified' form.  Used in the
-license labels page (@pxref{HTML Customization Variables}, under
-@code{JS_WEBLABELS}).
-
-Again, @command{texi2any} provides a default value for this variable,
-but you are encouraged to host the source code for MathJax and its
-dependencies yourself.  This is in order to make the source code
-available reliably, and to reduce you and your users' dependence on
-others' distribution systems.
-@end vtable
-
-
-@node @command{latex2html} Customization Variables
-@subsection @command{latex2html} Customization Variables
-
-This table lists the customization variables which can be used when 
-@command{latex2html} is being used to convert @code{@@math},
-@code{@@displaymath}, @code{@@latex} and @code{@@tex} sections for HTML@.
-These customization variables are relevant only if @code{HTML_MATH} is set to
-@samp{l2h}.
-
-To actually convert @code{@@tex} sections, @option{--iftex} should be used,
-and to actually convert @code{@@latex} sections, @option{--iflatex} should be
-used.
-
-@vtable @code
-@item L2H_CLEAN
-If set, the intermediate files generated in relation with @command{latex2html}
-are removed; default true.
-
-@item L2H_FILE
-If set, the given file is used as @command{latex2html}'s init file; default
-unset.
-
-@item L2H_HTML_VERSION
-The HTML version used in the @command{latex2html} call; default unset.
-
-@item L2H_L2H
-The program invoked as @command{latex2html}; default is @code{latex2html}.
-
-@item L2H_SKIP
-If set to a true value, the actual call to @command{latex2html} is skipped;
-previously generated content is reused instead.  If set to 0, the cache is not
-used at all.  If set to @samp{undef}, the cache is used for as many @TeX{}
-fragments as possible and for any remaining the command is run.  The default is
-@samp{undef}.
-
-@item L2H_TMP
-Set the directory used for temporary files.  None of the file name components
-in this directory name may start with @samp{.}; otherwise, @command{latex2html}
-will fail (because of @command{dvips}).  The default is the empty string, which
-means the current directory.
-@end vtable
-
-
-@node @command{tex4ht} Customization Variables
-@subsection @command{tex4ht} Customization Variables
-
-This table lists the customization variables which can be used when
-@command{tex4ht} is being used to convert @code{@@math}, @code{@@displaymath},
-@code{@@tex} and @code{@@latex} sections for HTML@.  These customization
-variables are relevant only if @code{HTML_MATH} is set to @samp{t4h}.
-
-To actually convert @code{@@tex} sections, @option{--iftex} should be used,
-and to actually convert @code{@@latex} sections, @option{--iflatex} should be
-used.
-
-@vtable @code
-@item T4H_LATEX_CONVERSION
-If set, the conversion type used for @code{@@latex} sections.  Possibilities
-are @samp{latex}, @samp{tex} and @samp{texi}.  Set to @samp{latex} if not
-defined.
-
-@item T4H_MATH_CONVERSION
-If set, the conversion type used for @code{@@math} and @code{@@displymath}.
-Possibilities are @samp{latex}, @samp{tex} and @samp{texi}.  Set to @samp{tex}
-if not defined.
-
-@item T4H_TEX_CONVERSION
-If set, the conversion type used for @code{@@tex} sections.  Possibilities
-are @samp{latex}, @samp{tex} and @samp{texi}.  Set to @samp{tex} if not
-defined.
-@end vtable
-
-
-@node @LaTeX{} Customization Variables
-@subsection @LaTeX{} Customization Variables
-
-@cartouche
-@quotation warning
-@LaTeX{} output customization is experimental.  Nothing is decided,
-everything can change, and we would welcome any feedback.
-@end quotation
-@end cartouche
-
-This table gives the customization variables which apply to @LaTeX{} output
-only.
-
-@vtable @code
-@item CLASS_BEGIN_USEPACKAGE
-If set, the corresponding text will replace the @LaTeX{} @code{\documentclass},
-package imports that are always output and are output right after
-@code{\documentclass}, and package imports that depend on the document encoding
-setting the input and font encoding (@code{inputenc} and @code{fontenc}).
-
-The text replaced is along:
-@example LaTeX
-\documentclass@{book@}
-\usepackage@{amsfonts@}
-\usepackage@{amsmath@}
-\usepackage[gen]@{eurosym@}
-\usepackage@{textcomp@}
-\usepackage@{graphicx@}
-\usepackage@{etoolbox@}
-\usepackage@{titleps@}
-\usepackage[utf8]@{inputenc@}
-\usepackage[T1]@{fontenc@}
-@end example
-
-@item END_USEPACKAGE
-If set, the corresponding text will replace the package imports that depend
-on the Texinfo commands used, and the last packages imports that are always
-output and output after all the other packages imports.  The last package
-imports corresponds to @samp{\usepackage[hidelinks]@{hyperref@}}.
-
-Here is an example of the corresponding text for a document with indices,
-@code{@@need}, @code{@@multitable}, definition commands, @code{@@cartouche},
-lists, and @code{@@float}:
-@example LaTeX
-\usepackage@{imakeidx@}
-\usepackage@{needspace@}
-\usepackage@{array@}
-\usepackage@{embrac@}
-\usepackage@{expl3@}
-\usepackage@{tabularx@}
-\usepackage[framemethod=tikz]@{mdframed@}
-\usepackage@{enumitem@}
-\usepackage@{float@}
-\usepackage[hidelinks]@{hyperref@}
-@end example
-@end vtable
-
-
-@node Other Customization Variables
-@subsection Other Customization Variables
-
-This table gives the remaining customization variables, which apply to
-multiple formats, or affect global behavior, or otherwise don't fit
-into the categories of the previous sections.
-
-@vtable @code
-@item ASCII_DASHES_AND_QUOTES
-For Info output, when set, use plain ASCII characters to represent
-quotation marks, hyphens and dashes when these are given in the Texinfo
-source as @samp{-}, @samp{--}, @samp{---}, @samp{`}, @samp{``},
-@samp{'}, and @samp{''}, rather than UTF-8 directional quotation marks,
-en dashes, vel sim.  On by default.
-
-@item ASCII_GLYPH
-For Info output, use ASCII output for glyph commands such as the copyright
-sign (@command{@@copyright@{@}}, becoming @samp{(C)}),
-and the bullet symbol (@command{@@bullet@{@}}, becoming @samp{*}), rather
-than other Unicode sequences.  Off by default.
-
-@item ASCII_PUNCTUATION
-Avoid any unncessary or gratuitious non-ASCII, UTF-8 sequences in the
-output.  Implies both @code{ASCII_DASHES_AND_QUOTES} and @code{ASCII_GLYPH}
-and additionally affects the output of commands such as @code{@@samp} which
-output quotation marks.
-
-@item AUTO_MENU_DESCRIPTION_ALIGN_COLUMN
-For Info output, column at which to start a menu entry description
-provided by @code{@@nodedescription} or @code{@@nodedescriptionblock}.
-Undefined by default, in which case 45% of the fill column value is used
-(@pxref{Invoking @command{texi2any}}).
-
-@item AUTO_MENU_MAX_WIDTH
-Maximum number of columns in a menu entry line in Info when adding a
-description from @code{@@nodedescription} or @code{@@nodedescriptionblock}.
-Undefined by default, in which case 10% more than the fill column value
-is used (@pxref{Invoking @command{texi2any}}).
-
 @item CHECK_MISSING_MENU_ENTRY
 When a @code{@@menu} block occurs in a node, check if there is a menu
 entry for all subordinate nodes in the document sectioning structure.  On
@@ -16149,22 +15586,25 @@ are not consistent with the order of node menu entries.  This is a more
 thorough structure check than that provided by
 @code{CHECK_MISSING_MENU_ENTRY}.  Off by default.
 
-@item CLOSE_QUOTE_SYMBOL
-When a closing quote is needed, e.g. for @code{@@samp} output, use
-this character; default @code{&#8217;} in DocBook.
-Undefined in the default case in HTML and set to @code{&rsquo;}
-if @code{USE_NUMERIC_ENTITY} is not set, to @code{&#8217;} if set, and
-to a quote character if @code{OUTPUT_CHARACTERS} is set and the output
-encoding includes that character.
+@item COLLATION_LANGUAGE
+By default, @command{texi2any} sorts document indices according to the
+@dfn{Unicode Collation Algorithm} (defined in
+@uref{http://www.unicode.org/reports/tr10/, Unicode Technical Standard #10}),
+without language-specific collation tailoring.  If set, use the language
+for linguistic tailoring of index sorting.
 
-The default for Info is set the same as for @code{OPEN_QUOTE_SYMBOL},
-except that the Unicode code is a closing quote (see below).
+Currently, @command{texi2any} gives no warning if there is no support
+for linguistic tailoring due to either missing software or missing
+support for the specified language.
 
-@item CLOSE_DOUBLE_QUOTE_SYMBOL
-When a closing double quote is needed, for @samp{@@dfn} in Info, use this
-character.  The default for Info is set the same as for
-@code{OPEN_DOUBLE_QUOTE_SYMBOL}, except that the Unicode code is a closing
-double quote (see below).
+In Perl, the @code{Unicode::Collate::Locale} module is used for linguistic
+tailoring; therefore if this module is not installed, the variable will be
+silently ignored.
+
+If @code{USE_UNICODE_COLLATION} is set to @samp{0}, there is no Unicode
+collation and so no linguistic tailoring either.
+
+See also the @code{DOCUMENTLANGUAGE_COLLATION} variable, described below.
 
 @item COMMAND_LINE_ENCODING
 Encoding used to decode command-line arguments.  Default is based on the locale
@@ -16208,13 +15648,11 @@ is used for the encoding of file content.
 
 The @code{OUTPUT_FILE_NAME_ENCODING} variable overrides this variable.
 
-@vindex SystemLiteral
-@item DOCTYPE
-For DocBook, HTML, XML@.  Specifies the @code{SystemLiteral}, the
-entity's system identifier.  This is a URI which may be used to
-retrieve the entity, and identifies the canonical DTD for the
-document.  The default value is different for each of HTML, DocBook
-and XML.
+@item DOCUMENTLANGUAGE_COLLATION
+If set, try to use the language specified in a @code{@@documentlanguage}
+directive for language-specific tailoring of index sorting.
+See also the @code{COLLATION_LANGUAGE} variable, described above.
+(@xref{@code{@@documentlanguage}}.)
 
 @item DUMP_TEXI
 For debugging.  If set, no conversion is done, only parsing and macro
@@ -16224,20 +15662,6 @@ source is also expanded to the corresponding file.  Default false.
 @item DUMP_TREE
 For debugging.  If set, the tree constructed upon parsing a Texinfo
 document is output to standard error; default false.
-
-@item EPUB_CREATE_CONTAINER_FILE
-If set to 0, do not generate the EPUB output file.  Default is set
-to 1.
-
-@item EPUB_KEEP_CONTAINER_FOLDER
-If set, keep the directory containing the directories and files
-needed for EPUB.   The EPUB output file is a ZIP archive of this
-directory.  Default is not defined.  Set if not defined and @code{TEST} or
-@code{DEBUG} is set. @xref{EPUB Output File and Directory}.
-
-@item EXTENSION
-The extension added to the output file name.  The default is different
-for each output format.
 
 @item FORMAT_MENU
 If set to @samp{menu}, output Texinfo menus.  This is the default for
@@ -16258,42 +15682,9 @@ are considered to be fatal errors.  You should not need to change this
 value.  Default 100.
 @end ignore
 
-@item HIGHLIGHT_SYNTAX
-If set, @code{@@example} blocks with language information as first
-argument are highlighted in the HTML output.  It is also possible to specify a
-default for the language with @code{HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE}.  Syntax
-highlighting requires an external program to generate the highlighted HTML.
-The @code{HIGHLIGHT_SYNTAX} value allows to select a specific program.  The
-possibilities are @code{highlight}, @code{pygments}, any other value standing
-for @code{source-highlight} (@pxref{Syntax Highlighting}).
-
-@item HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE
-The default language used for syntax highlighting when there is no
-language information.
-
 @item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
 If set, spaces are ignored after an @@-command that takes braces.
 Default true, matching the @TeX{} behavior.
-
-@item INDEX_SPECIAL_CHARS_WARNING
-If set, warn about @samp{:} in index entry, as not all Info readers may
-be able to process these.  For Info and plaintext only.  Default false,
-because parsing problems there don't prevent navigation; readers can still
-relatively easily find their way to the node in question.
-
-@item INFO_SPECIAL_CHARS_QUOTE
-If set, whenever there are problematic characters for Info output in
-places such as node names or menu items, surround the part of the
-construct where they appear with quoting characters, as described in
-@ref{Info Format Specification}.  Default is set for Info and unset
-for plaintext.  @xref{Node Line Requirements}.
-
-@item INFO_SPECIAL_CHARS_WARNING
-If set, warn about problematic constructs for Info output (such as the
-string @samp{::}) in node names, menu items, and cross-references.
-If not defined, set unless @code{INFO_SPECIAL_CHARS_QUOTE} is set.
-Default is set for Info and not defined for plaintext. Similar warnings in
-index entries are covered by @code{INDEX_SPECIAL_CHARS_WARNING}.
 
 @cindex Encoding @subentry input file names
 @item INPUT_FILE_NAME_ENCODING
@@ -16321,68 +15712,21 @@ It is also used for command-line argument passed to commands called from
 @command{texi2any}.  For example, @command{latex2html} will be called from
 @command{texi2any} if @code{HTML_MATH} is set to @samp{l2h}.
 
-@item NO_TOP_NODE_OUTPUT
-@anchor{@code{NO_TOP_NODE_OUTPUT}}
-If set do not output the Top node content.  The Top node is still
-parsed, but the content is discarded.  Not set in the default case
-for HTML@.  Set in the default case for EPUB@.  If @code{SHOW_TITLE}
-is @samp{undef}, setting @code{NO_TOP_NODE_OUTPUT} also sets
-@code{SHOW_TITLE} for HTML.
+@item NO_INDEX
+If set, index entries are not recorded and @@-commands related to
+indices, such as @code{@@printindex}, @code{@@synindex} or @code{@@defindex}
+have no effect.  Default false.
 
-Setting @code{NO_TOP_NODE_OUTPUT}, which removes the Top node and adds
-a title page corresponds more to the formatting of a book.  Setting
-@code{NO_TOP_NODE_OUTPUT} to false, with @code{SHOW_TITLE} remaining
-@samp{undef}, and false, corresponds more to a document setup for browsing,
-with a direct access to the information at the Top node.
-
-For DocBook, @code{NO_TOP_NODE_OUTPUT} is set to true.  Setting
-@code{NO_TOP_NODE_OUTPUT} to false causes the Top node content to be
-output.  It is not recommended to output the Top node in DocBook as
-the title and copying informations are always output.  This option
-is kept for DocBook for compatibility, as before 2022 the Top node was output
-in DocBook.  It could be removed in the future.
-
-@item NO_USE_SETFILENAME
-If set, do not use @code{@@setfilename} to set the document name;
-instead, base the output document name only on the input file name.
-The default is false.
-
-@item NODE_NAME_IN_MENU
-If set, use node names in menu entries, otherwise prefer section names;
-default true.
-
-@item OPEN_QUOTE_SYMBOL
-When an opening quote is needed, e.g., for @samp{@@samp} output, use
-the specified character; default @code{&#8216;} for DocBook.
-Undefined in the default case in HTML and set to @code{&lsquo;}
-if @code{USE_NUMERIC_ENTITY} is not set, to @code{&#8217;} if set, and
-to a quote character if @code{OUTPUT_CHARACTERS} is set and the output
-encoding includes that character.
-
-For Info, the default depends on the enabled document encoding.  If
-@option{--disable-encoding} is set or the document encoding is not UTF-8,
-@samp{'} is used.  This character usually appears
-as an undirected single quote on modern systems.  Otherwise, the Info
-output uses a Unicode left quote.
-
-@item OPEN_DOUBLE_QUOTE_SYMBOL
-When an opening double quote is needed, for @samp{@@dfn} output in Info, use
-the specified character.  If @option{--disable-encoding} is set or the document
-encoding is not UTF-8, @samp{"} is used.  Otherwise, the Info output uses a
-Unicode left double quote.
-
-@item OUTPUT_CHARACTERS
-If not set, the default, output accented and special characters in HTML, XML
-and DocBook using XML entities, and in @LaTeX{} using macros.  If set, output
-accented characters in HTML, XML, DocBook and @LaTeX{} output and special
-characters in HTML and @LaTeX{} output based on the document encoding.
-@xref{@code{@@documentencoding}}, and @ref{Inserting Accents}.
+@item NO_USER_COMMANDS
+If set, definitions of user-defined @@-command are ignored.  @code{@@alias},
+@code{@@definfoenclose}, @code{@@defindex}, @code{@@macro} and similar
+@@-commands have no effect.  Default false.
 
 @item OUTPUT_ENCODING_NAME
 Normalized encoding name used for output files.  Should be a usable
 charset name in HTML, typically one of the preferred IANA encoding
 names.  By default, if an input encoding is set (typically through
-@code{@@documentencoding}), this information is used to set the output 
+@code{@@documentencoding}), this information is used to set the output
 encoding name, otherwise the output encoding is based on the
 default encoding.  @xref{@code{@@documentencoding}}.
 
@@ -16437,30 +15781,19 @@ generated anew for each run (date, program name, version) are set to
 fixed and given values.  This is useful to compare the output to a
 reference file, as is done for the tests.  The default is false.
 
-@item TEXI2DVI
-Name of the command used to produce PostScript, PDF, and DVI; default
-@samp{texi2dvi}.  @xref{@command{texi2any} Printed Output}.
+@item TEXINFO_OUTPUT_FORMAT
+The generated output format.  Set from command line with options such as
+@option{--html}, as the @env{TEXINFO_OUTPUT_FORMAT} environment variable
+value (@pxref{@command{texi2any} Environment Variables}) or as a customization
+option.  @xref{Customization Variables and Options}
 
-@cindex compatibility, with @command{texi2html}
-@item TEXI2HTML
-Generate HTML and try to be as compatible as possible with
-@command{texi2html}; default false.
-
-@item TEXINFO_DTD_VERSION
-For XML@.  Version of the DTD used in the XML output preamble.  The
-default is set based on a variable in @file{configure.ac}.
-
-@item TEXTCONTENT_COMMENT
-For stripped text content output (i.e., when
-@code{TEXINFO_OUTPUT_FORMAT} is set to @code{textcontent}).  If set,
-also output comments.  Default false.
-
-@item TOP_NODE_UP
-Up node for the Top node; default @samp{(dir)}.  This node name is 
-supposed to be already formatted for the output format.  In HTML
-can be used in attribute, so should not contain any element.  Used for
-HTML output only if @code{TOP_NODE_UP_URL} is set to override the URL@:,
-see @code{TOP_NODE_UP_URL} in @ref{HTML Customization Variables}.  
+The value set in the @code{TEXINFO_OUTPUT_FORMAT} variable is in general the
+same as the name used to set the format, but not always.  If the format is set
+to @code{xml}, with @option{--xml}, with the @env{TEXINFO_OUTPUT_FORMAT}
+environment variable or with a customization variable the
+@code{TEXINFO_OUTPUT_FORMAT} customization variable is set to a more
+specific output format name @code{texinfoxml}.  That kind of difference
+in naming should not have any user-visible consequence.
 
 @item TREE_TRANSFORMATIONS
 The associated value is a comma separated list of transformations that
@@ -16524,36 +15857,298 @@ reassociate the index entry information from an index @@-command
 appearing right after an @code{@@item} line with the first element of
 the @code{@@item}.  Remove the index @@-command from the tree.
 
-@item simple_menu
-Mostly the same as @code{SIMPLE_MENU}: use a simple preformatted style
-for the menu.  It differs from setting @code{SIMPLE_MENU} in that
-@code{SIMPLE_MENU} only has an effect in HTML output.
-
 @end ftable
-
-@item USE_NODES
-Preferentially use nodes to decide where elements are separated.  If
-set to false, preferentially use sectioning to decide where elements
-are separated.  The default is true.
-
-@item USE_NUMERIC_ENTITY
-For HTML, XML and DocBook@.  If set, use numeric entities instead of named
-entities.  By default, set to true for DocBook output.
-
-@item USE_UP_NODE_FOR_ELEMENT_UP
-Fill in up sectioning direction with node direction when there is no
-sectioning up direction.  In practice this can only happen when there
-is no @@top section.  Not set by default.
 
 @item USE_SETFILENAME_EXTENSION
 Default is on for Info, off for other output.  If set, use exactly
 what @code{@@setfilename} gives for the output file name, including
 the extension.  You should not need to explicitly set this variable.
 
+@pindex Unicode::Collate
+@item USE_UNICODE_COLLATION
+By default, @command{texi2any} sorts document indices according to
+the @dfn{Unicode Collation Algorithm} (defined in
+@uref{http://www.unicode.org/reports/tr10/, Unicode Technical Standard #10}),
+which performs a @dfn{multi-level} ordering of strings containing Unicode
+code points.  (To do this, the program uses the @code{Unicode::Collate}
+module, a standard part of Perl installations.)  However, the use of
+this algorithm incurs noticeably longer run times when processing manuals
+with large indices.
+
+Set this variable to @samp{0} to use a simpler, faster sorting algorithm.
+@c which only uses Perl's built-in string comparison or strcmp in C
+
+You may find this useful for speeding up @command{texi2any} if you don't
+have many non-ASCII characters in index entry text, or if you don't care
+about having the indices sorted correctly, especially when working on
+the draft of a manual.
+
+
 @pindex Text::Unidecode
 @item USE_UNIDECODE
 If set to false, do not use the @code{Text::Unidecode} Perl module to
 transliterate more characters; default true.
+
+@end vtable
+
+
+@node Info and Plaintext Customization Variables
+@subsection Info and Plaintext Customization Variables
+
+This table gives the customization variables which apply to Info
+and Plaintext formats only.
+
+@vtable @code
+@item ASCII_DASHES_AND_QUOTES
+For Info output, when set, use plain ASCII characters to represent
+quotation marks, hyphens and dashes when these are given in the Texinfo
+source as @samp{-}, @samp{--}, @samp{---}, @samp{`}, @samp{``},
+@samp{'}, and @samp{''}, rather than UTF-8 directional quotation marks,
+en dashes, vel sim.  On by default.
+
+@item ASCII_GLYPH
+For Info output, use ASCII output for glyph commands such as the copyright
+sign (@command{@@copyright@{@}}, becoming @samp{(C)}),
+and the bullet symbol (@command{@@bullet@{@}}, becoming @samp{*}), rather
+than other Unicode sequences.  Off by default.
+
+@item ASCII_PUNCTUATION
+Avoid any unncessary or gratuitious non-ASCII, UTF-8 sequences in the
+output.  Implies both @code{ASCII_DASHES_AND_QUOTES} and @code{ASCII_GLYPH}
+and additionally affects the output of commands such as @code{@@samp} which
+output quotation marks.
+
+@item AUTO_MENU_DESCRIPTION_ALIGN_COLUMN
+For Info output, column at which to start a menu entry description
+provided by @code{@@nodedescription} or @code{@@nodedescriptionblock}.
+Undefined by default, in which case 45% of the fill column value is used
+(@pxref{Invoking @command{texi2any}}).
+
+@item AUTO_MENU_MAX_WIDTH
+Maximum number of columns in a menu entry line in Info when adding a
+description from @code{@@nodedescription} or @code{@@nodedescriptionblock}.
+Undefined by default, in which case 10% more than the fill column value
+is used (@pxref{Invoking @command{texi2any}}).
+
+@item CLOSE_DOUBLE_QUOTE_SYMBOL
+When a closing double quote is needed, for @samp{@@dfn} in Info, use this
+character.  The default for Info is set the same as for
+@code{OPEN_DOUBLE_QUOTE_SYMBOL}, except that the Unicode code is a closing
+double quote (see below).
+
+@item INDEX_SPECIAL_CHARS_WARNING
+If set, warn about @samp{:} in index entry, as not all Info readers may
+be able to process these.  For Info and plaintext only.  Default false,
+because parsing problems there don't prevent navigation; readers can still
+relatively easily find their way to the node in question.
+
+@item INFO_SPECIAL_CHARS_QUOTE
+If set, whenever there are problematic characters for Info output in
+places such as node names or menu items, surround the part of the
+construct where they appear with quoting characters, as described in
+@ref{Info Format Specification}.  Default is set for Info and unset
+for plaintext.  @xref{Node Line Requirements}.
+
+@item INFO_SPECIAL_CHARS_WARNING
+If set, warn about problematic constructs for Info output (such as the
+string @samp{::}) in node names, menu items, and cross-references.
+If not defined, set unless @code{INFO_SPECIAL_CHARS_QUOTE} is set.
+Default is set for Info and not defined for plaintext. Similar warnings in
+index entries are covered by @code{INDEX_SPECIAL_CHARS_WARNING}.
+
+@item OPEN_DOUBLE_QUOTE_SYMBOL
+When an opening double quote is needed, for @samp{@@dfn} output in Info, use
+the specified character.  If @option{--disable-encoding} is set or the document
+encoding is not UTF-8, @samp{"} is used.  Otherwise, the Info output uses a
+Unicode left double quote.
+
+@end vtable
+
+
+@node @LaTeX{} Customization Variables
+@subsection @LaTeX{} Customization Variables
+
+@cartouche
+@quotation warning
+@LaTeX{} output customization is experimental.  Nothing is decided,
+everything can change, and we would welcome any feedback.
+@end quotation
+@end cartouche
+
+This table gives the customization variables which apply to @LaTeX{} output
+only.
+
+@vtable @code
+@item CLASS_BEGIN_USEPACKAGE
+If set, the corresponding text will replace the @LaTeX{} @code{\documentclass},
+package imports that are always output and are output right after
+@code{\documentclass}, and package imports that depend on the document encoding
+setting the input and font encoding (@code{inputenc} and @code{fontenc}).
+
+The text replaced is along:
+@example LaTeX
+\documentclass@{book@}
+\usepackage@{amsfonts@}
+\usepackage@{amsmath@}
+\usepackage[gen]@{eurosym@}
+\usepackage@{textcomp@}
+\usepackage@{graphicx@}
+\usepackage@{etoolbox@}
+\usepackage@{titleps@}
+\usepackage[utf8]@{inputenc@}
+\usepackage[T1]@{fontenc@}
+@end example
+
+@item END_USEPACKAGE
+If set, the corresponding text will replace the package imports that depend
+on the Texinfo commands used, and the last packages imports that are always
+output and output after all the other packages imports.  The last package
+imports corresponds to @samp{\usepackage[hidelinks]@{hyperref@}}.
+
+Here is an example of the corresponding text for a document with indices,
+@code{@@need}, @code{@@multitable}, definition commands, @code{@@cartouche},
+lists, and @code{@@float}:
+@example LaTeX
+\usepackage@{imakeidx@}
+\usepackage@{needspace@}
+\usepackage@{array@}
+\usepackage@{embrac@}
+\usepackage@{expl3@}
+\usepackage@{tabularx@}
+\usepackage[framemethod=tikz]@{mdframed@}
+\usepackage@{enumitem@}
+\usepackage@{float@}
+\usepackage[hidelinks]@{hyperref@}
+@end example
+
+@item LATEX_FLOATS_FILE_EXTENSION
+Set new floats definition file extension for @LaTeX{} output.
+Default @samp{tfl}.
+
+@end vtable
+
+
+@node Other Formats Customization Variables
+@subsection Other Formats Customization Variables
+
+This table gives the customization which apply to specific formats only,
+for formats without separate customization variables description section.
+
+@vtable @code
+@item TXI_MARKUP_NO_SECTION_EXTENT
+For XML@.  Do not include lower level sectioning commands inside upper-level
+sectioning command markup.  Default false.
+
+@item TEXI2DVI
+Name of the command used to produce PostScript, PDF, and DVI; default
+@samp{texi2dvi}.  @xref{@command{texi2any} Printed Output}.
+
+@item TEXTCONTENT_COMMENT
+For stripped text content output (i.e., when
+@code{TEXINFO_OUTPUT_FORMAT} is set to @code{textcontent}).  If set,
+also output comments.  Default false.
+
+@item TEXINFO_DTD_VERSION
+For XML@.  Version of the DTD used in the XML output preamble.  The
+default is set based on a variable in @file{configure.ac}.
+
+@end vtable
+
+
+@node Customization Variables for Multiple Formats
+@subsection Customization Variables for Multiple Formats
+
+@anchor{Other Customization Variables} @c old name
+
+This table gives the customization which apply to multiple formats.
+
+@vtable @code
+@item CLOSE_QUOTE_SYMBOL
+When a closing quote is needed, e.g.@: for @code{@@samp} output, use
+this character; default @code{&#8217;} in DocBook.
+Undefined in the default case in HTML and set to @code{&rsquo;}
+if @code{USE_NUMERIC_ENTITY} is not set, to @code{&#8217;} if set, and
+to a quote character if @code{OUTPUT_CHARACTERS} is set and the output
+encoding includes that character.
+
+The default for Info is set the same as for @code{OPEN_QUOTE_SYMBOL},
+except that the Unicode code is a closing quote (see below).
+
+@vindex SystemLiteral
+@item DOCTYPE
+For DocBook, HTML, XML@.  Specifies the @code{SystemLiteral}, the
+entity's system identifier.  This is a URI which may be used to
+retrieve the entity, and identifies the canonical DTD for the
+document.  The default value is different for each of HTML, DocBook
+and XML.
+
+@item EXTENSION
+The extension added to the output file name.  The default is different
+for each output format.
+
+@item NO_TOP_NODE_OUTPUT
+@anchor{@code{NO_TOP_NODE_OUTPUT}}
+If set do not output the Top node content.  The Top node is still
+parsed, but the content is discarded.  Not set in the default case
+for HTML@.  Set in the default case for EPUB@.  If @code{SHOW_TITLE}
+is @samp{undef}, setting @code{NO_TOP_NODE_OUTPUT} also sets
+@code{SHOW_TITLE} for HTML.
+
+Setting @code{NO_TOP_NODE_OUTPUT}, which removes the Top node and adds
+a title page corresponds more to the formatting of a book.  Setting
+@code{NO_TOP_NODE_OUTPUT} to false, with @code{SHOW_TITLE} remaining
+@samp{undef}, and false, corresponds more to a document setup for browsing,
+with a direct access to the information at the Top node.
+
+For DocBook, @code{NO_TOP_NODE_OUTPUT} is set to true.  Setting
+@code{NO_TOP_NODE_OUTPUT} to false causes the Top node content to be
+output.  It is not recommended to output the Top node in DocBook as
+the title and copying informations are always output.  This option
+is kept for DocBook for compatibility, as before 2022 the Top node was output
+in DocBook.  It could be removed in the future.
+
+@item OPEN_QUOTE_SYMBOL
+When an opening quote is needed, e.g., for @samp{@@samp} output, use
+the specified character; default @code{&#8216;} for DocBook.
+Undefined in the default case in HTML and set to @code{&lsquo;}
+if @code{USE_NUMERIC_ENTITY} is not set, to @code{&#8216;} if set, and
+to a quote character if @code{OUTPUT_CHARACTERS} is set and the output
+encoding includes that character.
+
+For Info, the default depends on the enabled document encoding.  If
+@option{--disable-encoding} is set or the document encoding is not UTF-8,
+@samp{'} is used.  This character usually appears
+as an undirected single quote on modern systems.  Otherwise, the Info
+output uses a Unicode left quote.
+
+@item OUTPUT_CHARACTERS
+If not set, the default, output accented and special characters in HTML, XML
+and DocBook using XML entities, and in @LaTeX{} using macros.  If set, output
+accented characters in HTML, XML, DocBook and @LaTeX{} output and special
+characters in HTML and @LaTeX{} output based on the document encoding.
+@xref{@code{@@documentencoding}}, and @ref{Inserting Accents}.
+
+@anchor{TOP_NODE_UP}
+@item TOP_NODE_UP
+Up node for the Top node; default @samp{(dir)}.  This node name is
+supposed to be already formatted for the output format.  In HTML
+can be used in attribute, so should not contain any element.  Used for
+HTML output only if @code{TOP_NODE_UP_URL} is set to override the URL@:,
+see @code{TOP_NODE_UP_URL} in @ref{HTML Customization Variables List}.
+@xref{File Names and Links Customization for HTML}.
+
+@item USE_NODES
+The main unit of output documents is an @dfn{output unit}.  Usually a node is
+associated with a following sectioning command, while a sectioning command is
+associated with a previous node; they both together make up the output unit.
+
+For Plaintext and HTML.  Preferentially use nodes to decide where output units
+are separated if @code{USE_NODES} is set.  If set to false, preferentially use
+sectioning to decide where output units are separated.  The default is true.
+
+@item USE_NUMERIC_ENTITY
+For HTML, XML and DocBook@.  If set, use numeric entities instead of named
+entities.  By default, set to true for DocBook output.
 
 @end vtable
 
@@ -16576,37 +16171,28 @@ the value of the @code{documentlanguage} at the time of the string
 being output (@pxref{@code{@@documentlanguage}}, for the Texinfo
 command interface).
 
-@pindex libintl-perl @r{Gettext implementation}
-The Gettext framework is used for those strings (@pxref{Top,,,
-gettext, Gettext}).  The @code{libintl-perl} package is used as the
-@code{gettext} implementation; more specifically, the pure Perl
-implementation is used, so Texinfo can support consistent behavior
-across all platforms and installations, which would not otherwise be
-possible.  @code{libintl-perl} is included in the Texinfo distribution
-and always installed, to ensure that it is available if needed.  It is
-also possible to use the system @code{gettext} (the choice can be made
-at build-time).
-
 @vindex texinfo_document @r{Gettext domain}
 @cindex Perl format strings for translation
-The Gettext domain @samp{texinfo_document} is used for the strings.
+The Gettext framework with the @samp{texinfo_document} domain
+is used for those strings (@pxref{Top,,, gettext, Gettext}).
 Translated strings are written as Texinfo, and may include
 @@-commands.  In translated strings, the varying parts of the string
-are not usually denoted by @code{%s} and the like, but by
-@samp{@{arg_name@}}.  (This convention is common for @code{gettext} in
-Perl and is fully supported in GNU Gettext; @pxref{perl-format,, Perl
-Format Strings, gettext, GNU Gettext}.)  For example, in the
-following, @samp{@{section@}} will be replaced by the section name:
+are denoted by @samp{@{arg_name@}}, but not by @code{%s} and the like.
+(This convention is common for @code{gettext} in Perl and is fully
+supported in GNU Gettext; @pxref{perl-format,, Perl Format Strings,
+gettext, GNU Gettext}.)  For example, in the following, @samp{@{section@}}
+will be replaced by the section name:
 
 @example
 see @{section@}
 @end example
 
-These Perl-style brace format strings are used for two reasons: first,
-changing the order of @code{printf} arguments is only available since
-Perl@tie{}5.8.0; second, and more importantly, the order of arguments
+@c Ignore, there is no need to justify this choice
+@ignore
+These Perl-style brace format strings are used because the order of arguments
 is unpredictable, since @@-command expansion may lead to different
 orders depending on the output format.
+@end ignore
 
 The expansion of a translation string is done like this:
 
@@ -16614,31 +16200,16 @@ The expansion of a translation string is done like this:
 @item First, the string is translated.  The locale
 is @var{documentlanguage}@code{.}@var{documentencoding}.
 
-@cindex @code{us-ascii} encoding, and translations
 If the @var{documentlanguage} has the form @samp{ll_CC}, that is
 tried first, and then just @samp{ll}.
 
-To cope with the possibility of having multiple encodings, a
-special use of the @code{us-ascii} locale encoding is also possible.
-If the @samp{ll} locale in the current encoding does not exist, and the
-encoding is not @code{us-ascii}, then @code{us-ascii} is tried.
+@item Next, in most cases, the string is expanded as Texinfo, and converted.
+The arguments are substituted; for example, @samp{@{arg_name@}} is replaced by
+the corresponding actual argument.
 
-The idea is that if there is a @code{us-ascii} encoding, it means that
-all the characters in the charset may be expressed as @@-commands.
-For example, there is a @code{fr.us-ascii} locale that can accommodate
-any encoding, since all the Latin@tie{}1 characters have associated
-@@-commands.  On the other hand, Japanese has only a translation
-@code{ja.utf-8}, since there are no @@-commands for Japanese
-characters.
-
-The @code{us-ascii} locales are not needed much now that
-UTF-8 is used for most documents.  Note that accented characters
-are required to be expressed as @@-commands in the @code{us-ascii} locales,
-which may be inconvenient for translators.
-
-@item Next, the string is expanded as Texinfo, and converted.
-The arguments are substituted; for example, @samp{@{arg_name@}} is
-replaced by the corresponding actual argument.
+It is also possible for the string and the argument to be already converted.
+In that case, the arguments are simply substituted.  Similarly,
+@samp{@{arg_name@}} is replaced by the corresponding actual argument.
 
 @end enumerate
 
@@ -16653,12 +16224,11 @@ Generated on @@emph@{@{date@}@} using
 @@uref@{@{program_homepage@}, @@emph@{@{program@}@}@}.
 @end example
 
-This approach is admittedly a bit complicated.  Its usefulness is that
-it supports having translations available in different encodings for
-encodings which can be covered by @@-commands, and also specifying how
-the formatting for some commands is done, independently of the output
-format---yet still be language-dependent.  For example, the
-@samp{@@pxref} translation string can be like this:
+This approach is admittedly a bit complicated.  Its usefulness is that it
+supports specifying the formatting of the translated string independently
+of the output format.
+
+For example, the @samp{@@pxref} translation string can be like this:
 
 @example
 see @{node_file_href@} section `@{section@}' in @@cite@{@{book@}@}
@@ -16668,6 +16238,17 @@ see @{node_file_href@} section `@{section@}' in @@cite@{@{book@}@}
 which allows for specifying a string independently of the output
 format, while nevertheless with rich formatting it may be translated
 appropriately in many languages.
+
+@c TODO Seems like an implementation detail.  Remove?
+@pindex libintl-perl @r{Gettext implementation}
+If Perl is used for strings translation in @command{texi2any}, the
+@code{libintl-perl} package is used as the @code{gettext} implementation; more
+specifically, the pure Perl implementation is used, so Texinfo can support
+consistent behavior across all platforms and installations, which would not
+otherwise be possible.  @code{libintl-perl} is included in the Texinfo
+distribution and always installed, to ensure that it is available if needed.
+It is also possible to use the system @code{libintl-perl} (the choice can be
+made at build-time).
 
 
 @node Invoking @command{pod2texi}
@@ -16690,13 +16271,13 @@ with @code{@@include}.
 @c options and examples in the @command{pod2texi} program itself, since it
 @c may be useful outside of the rest of Texinfo.  Thus, please see the
 @c output of @code{pod2texi --help}, the version on the web at
-@c @url{http://www.gnu.org/software/texinfo/manual/pod2texi.html}, etc.
+@c @url{https://www.gnu.org/software/texinfo/manual/pod2texi.html}, etc.
 
 The @command{pod2texi} program may be useful outside of the rest of Texinfo;
 thus, the invocation of @command{pod2texi} is documented in the Pod language
 using the man page format to follow the convention used in Perl standalone
 programs, with a version on the web
-@url{http://www.gnu.org/software/texinfo/manual/pod2texi.html} and a version
+@url{https://www.gnu.org/software/texinfo/manual/pod2texi.html} and a version
 included below.  The version included in the manual is also an example of
 @command{pod2texi} use, as it is converted from Pod using @command{pod2texi}.
 
@@ -16786,11 +16367,11 @@ corresponding @command{texi2any} customization variables.
 @item @option{--use-nodes}            @tab @code{USE_NODES}
 @item @option{--monolithic}           @tab @code{MONOLITHIC}
 @item @option{--top-file}             @tab @code{TOP_FILE}
-@item @option{--frames}               @tab @code{FRAMES}
+@item @option{--frames}               @tab no equivalent
 @item @option{--menu}                 @tab @code{FORMAT_MENU}
 @item @option{--debug}                @tab @code{DEBUG}
 @item @option{--doctype}              @tab @code{DOCTYPE}
-@item @option{--frameset-doctype}     @tab @code{FRAMESET_DOCTYPE}
+@item @option{--frameset-doctype}     @tab no equivalent
 @item @option{--test}                 @tab @code{TEST}
 @end multitable
 
@@ -17500,12 +17081,13 @@ If you want more, you are recommended to use the HTML output from
 other programs.  This chapter gives some details on such HTML output.
 
 @command{texi2any} has many user-definable customization variables
-with which you can influence the HTML output.  @xref{Customization
-Variables}.  In particular, there is support for syntax highlighting in
-@code{@@example} (@pxref{Syntax Highlighting}). You can also write so-called
-@dfn{initialization files}, or @dfn{init files} for short, to modify almost
-every aspect of HTML output formatting.  Initialization files contain code and
-are loaded by @option{--init-file} (@pxref{Invoking @command{texi2any}}).
+with which you can influence the HTML output.  @xref{HTML Output
+Customization}.  In particular, there is support for syntax
+highlighting in @code{@@example} (@pxref{Syntax Highlighting}). You can also
+write so-called @dfn{initialization files}, or @dfn{init files} for short, to
+modify almost every aspect of HTML output.  Initialization files
+contain code and are loaded by @option{--init-file} (@pxref{Invoking
+@command{texi2any}}).
 
 Some initialization files are maintained with Texinfo and installed
 in the default case.  For example, @file{chm.pm} produces the intermediate
@@ -17528,7 +17110,7 @@ output.  The output is intentionally quite plain for maximum portability
 and accessibility.
 
 You can customize the output via CSS (@pxref{HTML CSS}) or other
-means (@pxref{Customization Variables}).  If you cannot accomplish
+means (@pxref{HTML Output Customization}).  If you cannot accomplish
 a reasonable customization, feel free to report that.
 
 @cindex Navigation bar, in HTML output
@@ -17549,7 +17131,7 @@ to the output (i.e., suppressing the normal escaping of input
 @samp{<}, @samp{>} and @samp{&} characters which have special
 significance in HTML)@.  @xref{Conditional Commands}.
 
-@cindex HTML output, browser compatibility of
+@cindex HTML output @subentry browser compatibility
 @strong{Standards}:
 It is intentionally not our goal, and not even always possible, to pass
 through every conceivable validation test without any diagnostics.
@@ -17573,7 +17155,7 @@ dropped@dots{}).
 @nodedescription How HTML output is split.
 @section HTML Splitting
 @cindex Split HTML output
-@cindex HTML output, split
+@cindex HTML output @subentry split
 
 When splitting output at nodes (which is the default),
 @command{texi2any} writes HTML output into (basically) one output file
@@ -17595,7 +17177,7 @@ insensitive filesystem by setting the customization variable
 @code{CASE_INSENSITIVE_FILENAMES}.
 
 It is also possible to split at chapters or sections with
-@option{--split} (@pxref{Invoking @command{texi2any}}).  In that case,
+@option{--split} (@pxref{Splitting Output}).  In that case,
 the file names are constructed after the name of the node associated
 with the relevant sectioning command.  Also, unless
 @option{--no-node-files} is specified, a redirection file is output
@@ -17713,9 +17295,25 @@ any way; the special @samp{@@} and @samp{;} characters are looked for
 the text is blindly copied into the output.  Comments in the CSS
 file may or may not be included in the output.
 
-In addition to the possibilities offered by CSS, @command{texi2any}
-has many user-definable customization variables with which you can
-influence the HTML output.  @xref{Customization Variables}.
+@vindex NO_CSS
+@vindex INLINE_CSS_STYLE
+By default, classes are added to the HTML elements and CSS rules
+for these classes are output at the beginning of each HTML file.  Set
+the @code{NO_CSS} customization variable to prevent classes being added and CSS
+being used. Set @code{INLINE_CSS_STYLE} to have CSS code put in HTML
+elements in the @code{style} attribute rather than at the beginning of
+the output.
+
+@vindex SHOW_BUILTIN_CSS_RULES
+Since @command{texi2any} only inserts CSS code needed by the HTML
+actually output, the full list of CSS code potentially inserted is
+not visible in the output document.  To get the full list of CSS rules, call
+@command{texi2any} with the @code{SHOW_BUILTIN_CSS_RULES} customization
+variable set to output the built-in default CSS rules on the standard output
+and exit, like:
+@example
+texi2any -c SHOW_BUILTIN_CSS_RULES=1
+@end example
 
 
 @node @code{@@documentdescription}
@@ -17760,7 +17358,7 @@ This will produce the following output in the @samp{<head>} of the HTML:
 @cindex Outputting EPUB
 
 EPUB is a format designed for reading electronic books on portable
-devices.  @command{texi2any} generated EPUB 3.2 in 2022.  An EPUB
+devices.  @command{texi2any} generated EPUB 3.3 in 2024.  An EPUB
 file is a ZIP archive container, holding informative files as
 well as the manual rendered in HTML.
 
@@ -17768,7 +17366,7 @@ well as the manual rendered in HTML.
 @vindex EPUB_CREATE_CONTAINER_FILE @subentry @r{avoiding} @code{Archive::Zip} @r{dependency}
 The generation of the EPUB file depends on the @code{Archive::Zip}
 Perl module being installed.  This dependency is checked at runtime.
-In the default case, trying to output EPUB without this dependency raises an
+By default, trying to output EPUB without this dependency raises an
 error.  However, if the EPUB output file is not generated, with the
 customization variable @code{EPUB_CREATE_CONTAINER_FILE} set to 0, it is
 not an error if @code{Archive::Zip} is not installed.
@@ -17781,13 +17379,12 @@ the files and directories needed for the EPUB file by setting the
 
 
 @node EPUB Output File and Directory
-@nodedescription Use syntax highlighting in code excerpts.
 @subsection Container Directory and Output Files
 
 @cindex Container directory for EPUB
 @cindex EPUB Container directory
 A directory containing the files and directories needed for the
-EPUB format is created when outputting EPUB.  The name of this
+EPUB format is created when outputting EPUB@.  The name of this
 container directory is derived from the base name of the input file (that
 is, any extension is removed), with @code{_epub_package} postpended.
 If an output directory is specified, with @option{--output},
@@ -17811,6 +17408,8 @@ this file name is used instead.  The output EPUB file is never placed
 in the directory specified by @option{--output} or @code{SUBDIR};
 only the container directory is placed there, as explained just above.
 
+@vindex EPUB_CREATE_CONTAINER_FILE
+@vindex EPUB_KEEP_CONTAINER_FOLDER
 The EPUB output file is not generated if the customization variable
 @code{EPUB_CREATE_CONTAINER_FILE} is set to 0.  The container directory
 is left after the final EPUB file has been generated if
@@ -17820,7 +17419,7 @@ is left after the final EPUB file has been generated if
 
 
 @node EPUB Cross-References
-@nodedescription Cross-references in HTML output.
+@nodedescription No cross-references in EPUB output.
 @subsection EPUB Cross-References
 
 The EPUB format does not support references from an EPUB file to
@@ -17834,40 +17433,68 @@ missing cross-references information.  If these warnings are unwanted,
 set @code{CHECK_HTMLXREF} to 0.
 
 
+@node EPUB Conformance
+@subsection Achieving strict EPUB conformance
+
+By default, @command{texi2any} produces EPUB expected by conformance
+checkers as far as possible.   You may still need to adjust your Texinfo
+manual to achieve full conformance to:
+@itemize
+@item Make sure that references to external manuals resolve to URLs
+(@pxref{EPUB Cross-References}).
+@item Avoid Texinfo code more forgiving than XHTML.  In general
+valid Texinfo is converted to valid XHTML, but there are exceptions.
+For example, you should avoid nested references and nested sectioning
+commands and references, content before @code{@@table}
+first @code{@@item} and omitting the second column of @code{@@table}
+@code{@@item}.
+@item Remove spaces in Texinfo input file names.
+@item Remove form feeds that end up in output.
+@end itemize
+
+
 @node EPUB HTML
+@nodedescription Variables set internally.
 @subsection HTML Generated for EPUB
 
 The HTML generated for EPUB is XHTML conformant, UTF-8 encoded, and
 formatted without the usual HTML navigation headers and footers.
-Most of these features are enabled with customization variables, such as
-@code{USE_XML_SYNTAX} or @code{OUTPUT_FILE_NAME_ENCODING}.  Some
-features of printed output are used in EPUB.  In particular, the Top
-node does not appear in the EPUB output, while a title page is
-generated.  This is obtained by setting @code{NO_TOP_NODE_OUTPUT}.
+
+@command{texi2any} achieves this internally by setting customization
+variables, such as @code{USE_XML_SYNTAX}, @code{HEADERS} or
+@code{OUTPUT_ENCODING_NAME}.  Some features of printed output are used
+in EPUB@.  In particular, the Top node does not appear in the EPUB
+output, while a title page is generated.  This is obtained by setting
+@code{NO_TOP_NODE_OUTPUT}.  @xref{HTML Output Customization}.
 
 The @code{OUTFILE} and @code{SUBDIR} customization variables values
 correspond initially to the EPUB directory container and/or the
 EPUB output file (@pxref{EPUB Output File and Directory}).  These
 customization variables values are undefined or reset to the
 locations in the container directory where the XHTML files are output
-for the HTML generation.  It is mentioned here because resetting
-customization variables is unusual; however, the variables reset are
-used internally for the conversion, and should not interact with any
-customization set by the user.
+for the HTML generation.
 
-@xref{HTML Customization Variables}.
+This use of customization variables by @command{texi2any} is mentioned here
+because resetting such variables is unusual; however, the variables reset
+are used internally for the conversion, and should not interact with any
+customization set by the user.
 
 
 @node Syntax Highlighting
+@c @nodedescription Using external programs.
+@nodedescription Use syntax highlighting in code excerpts.
 @section Code Examples Syntax Highlighting in HTML
 @cindex @command{source-highlight}
 
 @cartouche
-@quotation warning
-Source highlighting is experimental, feedback is welcomed.
+@quotation Warning
+Source highlighting is experimental; feedback is welcomed.  The syntax
+of @code{HIGHLIGHT_SYNTAX} is very likely to change in future release.
 @end quotation
 @end cartouche
 
+@vindex HIGHLIGHT_SYNTAX
+@vindex HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE
 Support for source code syntax highlighting is available in
 @command{texi2any} for the HTML output, with the help of external software.
 This feature is turned on by setting @code{HIGHLIGHT_SYNTAX}.  Source code
@@ -17883,14 +17510,14 @@ Use @command{highlight} from
 @url{http://www.andre-simon.de/doku/highlight/en/highlight.php};
 @item pygments
 Use @command{pygmentize} from @url{https://pygments.org/};
-@item anything else
+@item source-highlight
 Use @command{source-highlight} (@pxref{,,,source-highlight, GNU Source-highlight}).
 @end table
 
-@xref{Other Customization Variables}.
-
 
 @node HTML Xref
+@nodedescription Standard algorithm for interoperability.
+@c @nodedescription Cross-references in HTML output.
 @section HTML Cross-references
 @cindex HTML cross-references
 @cindex Cross-references, in HTML output
@@ -17917,7 +17544,6 @@ The algorithm was primarily devised by Patrice Dumas in 2003--04.
 * Node Expansion:    HTML Xref Node Name Expansion.
 * Command Expansion: HTML Xref Command Expansion.
 * 8-bit Expansion:   HTML Xref 8-bit Character Expansion.
-* Mismatch:          HTML Xref Mismatch.
 * Configuration:     HTML Xref Configuration.
 @end menu
 
@@ -17939,19 +17565,21 @@ manual name in the cross-reference command in the Texinfo source
 (@pxref{Cross References}), and from @dfn{external information}
 (@pxref{HTML Xref Configuration}).
 
-We now consider each part in turn.
+In the usual case of HTML manuals published on the World Wide Web, in
+order to have working cross-references, external information is required
+to define the values of @var{host} and @var{dir}.  This is detailed later on
+(@pxref{HTML Xref Configuration}).
 
-The @var{host} is hardwired to be the local host.  This could either
-be the literal string @samp{localhost}, or, according to the rules for
-HTML links, the @samp{http://localhost/} could be omitted entirely.
+If no external information is available for a manual, then defaults are
+used for @var{host} and @var{dir} which correspond to cross-reference
+links among a collection of manuals located side-by-side on a single host.
+In this case, @var{host} is hardwired to be the local host.  This could
+either be the literal string @samp{localhost}, or be omitted entirely along
+with @samp{http://}, according to the rules for HTML links.
 
-The @var{dir} and @var{file} parts are more complicated, and depend on
-the relative split/mono nature of both the manual being processed and
-the manual that the cross-reference refers to.  The underlying idea is
-that there is one directory for Texinfo manuals in HTML, and a given
-@var{manual} is either available as a monolithic file
-@file{@var{manual}.html}, or a split subdirectory
-@file{@var{manual}_html/*.html}.  Here are the cases:
+The @var{dir} and @var{file} parts depend both on the relative split/mono
+nature of the manual being processed, and on the manual to which
+the cross-reference refers:
 
 @itemize @bullet
 @item
@@ -17975,13 +17603,18 @@ the directory is @file{./} (or just the empty string), and the file is
 
 @end itemize
 
-Another rule, that only holds for file names, is that base file names
-are truncated to 245 characters, to allow for an extension to be
+The underlying idea is that there is one directory for Texinfo
+manuals in HTML, and a given @var{manual} is either available as a
+monolithic file @file{@var{manual}.html}, or as a split subdirectory
+@file{@var{manual}_html/*.html}.
+
+Another rule, which only holds for file names, is that base file names
+are truncated to 245 characters to allow for an extension to be
 appended and still comply with the 255-character limit which is common
-to many filesystems.  Although technically this can be changed with
-the @code{BASEFILENAME_LENGTH} customization variable (@pxref{Other
-Customization Variables}), doing so would make cross-manual references
-to such nodes invalid.
+to many filesystems.  Although technically this can be changed with the
+@code{BASEFILENAME_LENGTH} customization variable (@pxref{File Names and Links
+Customization for HTML}), doing so would make cross-manual references to such
+nodes invalid.
 
 Any directory part in the file name argument of the source cross
 reference command is ignored.  Thus, @code{@@xref@{,,,../foo@}} and
@@ -17992,18 +17625,20 @@ name.
 
 Finally, the @var{target} part is always the expanded node name.
 
-Whether the present manual is split or mono is determined by user
-option; @command{texi2any} defaults to split, with the
+Whether the present manual is output as split or mono is determined by
+how you run @command{texi2any}; the default is to split, with the
 @option{--no-split} option overriding this.
 
-Whether the referent manual is split or mono, however, is another bit
-of the external information (@pxref{HTML Xref Configuration}).  By
-default, @command{texi2any} uses the same form of the referent manual
-as the present manual.
+By default, @command{texi2any} generates links to a referent manual using
+the same form as as the present manual: if the present manual is generated
+as split, then links to other manuals are to their split forms by default;
+likewise for mono output.
 
-Thus, there can be a mismatch between the format of the referent
-manual that the generating software assumes, and the format it's
-actually present in.  @xref{HTML Xref Mismatch}.
+However, the form of the referent manual (mono or split) should usually
+be specified in a configuation file (@pxref{HTML Xref Configuration}).
+This ensures that there is no mismatch between the format of the referent
+manual that the generating software assumes, and the format it's actually
+present in.
 
 
 @node HTML Xref Node Name Expansion
@@ -18238,93 +17873,94 @@ related documents and implementations are available elsewhere on the
 web.
 
 
-@node HTML Xref Mismatch
-@subsection HTML Cross-reference Mismatch
-@cindex HTML cross-references @subentry mismatch
-@cindex Mismatched HTML cross-reference source and target
-
-As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
-software may need to guess whether a given manual being cross-referenced is available in split or monolithic form---and, inevitably,
-it might guess wrong.  However, when the @emph{referent} manual is
-generated, it is possible to handle at least some mismatches.
-
-In the case where we assume the referent is split, but it is actually
-available in mono, the only recourse would be to generate a
-@file{manual_html/} subdirectory full of HTML files which redirect back to
-the monolithic @file{manual.html}.  Since this is essentially the same
-as a split manual in the first place, it's not very appealing.
-
-On the other hand, in the case where we assume the referent is mono,
-but it is actually available in split, it is possible to use
-JavaScript to redirect from the putatively monolithic
-@file{manual.html} to the different @file{manual_html/node.html} files.
-Here's an example:
-
-@example
-function redirect() @{
-  switch (location.hash) @{
-    case "#Node1":
-      location.replace("manual_html/Node1.html#Node1"); break;
-    case "#Node2" :
-      location.replace("manual_html/Node2.html#Node2"); break;
-    @dots{}
-    default:;
-  @}
-@}
-@end example
-
-Then, in the @code{<body>} tag of @file{manual.html}:
-
-@example
-<body onLoad="redirect();">
-@end example
-
-Once again, this is something the software which generated the
-@emph{referent} manual has to do in advance, it's not something the
-software generating the cross-reference in the present manual can
-control.
-
-
 @node HTML Xref Configuration
 @nodedescription @file{htmlxref.cnf}.
 @subsection HTML Cross-reference Configuration: @file{htmlxref.cnf}
+
+@c the "HTML Xref Mismatch" was removed.  Placing the anchor here as
+@c it is the most relevant node for that subject.
+@anchor{HTML Xref Mismatch}
 
 @pindex htmlxref.cnf
 @cindex HTML cross-references @subentry configuration
 @cindex Cross-reference configuration, for HTML
 @cindex Configuration, for HTML cross-manual references
 
+For other manuals published on the World Wide Web to be able to have
+correct cross-references to your manual, the @var{host} and
+@var{dir} parts of the cross-reference need to be known by Texinfo
+converters when they produce HTML for those other manuals.
+Similarly, for your manual in HTML format to have correct
+cross-references to other manuals, @command{texi2any} needs to know
+how to construct the URLs for other manuals.
+
 @command{texi2any} reads a file named @file{htmlxref.cnf} to gather
 information for cross-references to other manuals in HTML output.  It
-is looked for in the following directories:
+is looked for in the following directories, based on the
+@url{https://specifications.freedesktop.org/basedir-spec/latest/, XDG Base
+Directory Specification} with defaults based on installation directories:
 
 @table @file
 @item ./
 (the current directory)
 
+@item leading input file path directory
+If there is a leading directory and it is not the current directory.
+For example, if the input file is @file{some/dir/mymanual.texi},
+@file{htmlxref.cnf} is searched for in @file{some/dir}.
+
 @item ./.texinfo/
 (under the current directory)
 
-@item ~/.texinfo/
-(where @code{~} is the current user's home directory)
+@item @env{XDG_CONFIG_HOME}/texinfo
+(with @env{XDG_CONFIG_HOME} an environment variable)
 
-@item @var{sysconfdir}/texinfo/
+@item ~/.config/texinfo/
+(where @code{~} is the current user's home directory, only if
+@env{XDG_CONFIG_HOME} is not set)
+
+@item @var{sysconfdir}/xdg/texinfo/
 (where @var{sysconfdir} is the system configuration directory
 specified at compile-time, e.g., @file{/usr/local/etc})
 
+@item @env{XDG_CONFIG_DIRS}/texinfo
+(for each directory in the @code{:} delimited @env{XDG_CONFIG_DIRS}
+environment variable)
+
+@c @item /etc/xdg/texinfo/
+@c (with @file{/etc/xdg} the default directory for @env{XDG_CONFIG_DIRS}
+@c in the XDG Base Directory Specification)
+
 @item @var{datadir}/texinfo/
-(likewise specified at compile time, e.g., @file{/usr/local/share})
+(specified at compile time, e.g., @file{/usr/local/share})
+
+@c @item @env{XDG_DATA_DIRS}/texinfo
+@c (for each directory in the @code{:} delimited @env{XDG_DATA_DIRS} environment
+@c variable)
+
+@c @item /usr/local/share/texinfo/
+@c (with @file{/usr/local/share} the first default directory for
+@c @env{XDG_DATA_DIRS} in the XDG Base Directory Specification)
+
+@c @item /usr/share/texinfo/
+@c (with @file{/usr/share/} the second default directory for @env{XDG_DATA_DIRS}
+@c in the XDG Base Directory Specification)
 @end table
 
 All files found are used, with earlier entries overriding later ones.
 The Texinfo distribution includes a default file which handles many
-GNU manuals; it is installed in the last of the above directories,
-i.e., @file{@var{datadir}/texinfo/htmlxref.cnf}.
+GNU manuals; it is installed in @file{@var{datadir}/texinfo/htmlxref.cnf},
+one of the last of the above directories.
+
+You can use a local @file{htmlxref.cnf} to complete or correct the
+default file from the Texinfo distribution.  This could be useful to
+correct outdated data, or even to generate cross-references to local
+files for some manuals.
 
 The @code{HTMLXREF_MODE} customization variable can be set to modify how the
 files are found.  For instance, if set to @samp{none}, no external information
 is used.  @code{HTMLXREF_FILE} sets the file name to something else than
-@file{htmlxref.cnf}.  @pxref{HTML Customization Variables}.
+@file{htmlxref.cnf}.  @xref{HTML Xref Configuration Customization}.
 
 The file is line-oriented.  Lines consisting only of whitespace are
 ignored.  Comments are indicated with a @samp{#} at the beginning of a
@@ -18378,13 +18014,16 @@ If the keyword is @code{node}, @code{section}, or @code{chapter},
 @var{urlprefix} gives the host and directory for @var{manual} split
 into nodes, sections, or chapters, respectively.
 
-When available, @command{texi2any} will use the ``corresponding''
-value for cross-references between manuals.  That is, when generating
-monolithic output (@option{--no-split}), the @code{mono} URL will be
-used, when generating output that is split by node, the @code{node}
-URL will be used, etc.  However, if a manual is not available in that
-form, anything that is available can be used.  Here is the search
-order for each style:
+When @command{texi2any} is generating a link to another Texinfo manual,
+it will prefer to use a line for the manual with the same
+splitting option as the current output.  That is, when generating
+monolithic output (@option{--no-split}), a @code{mono} URL will be
+preferred; when generating output that is split by node, a @code{node}
+URL will be preferred, etc.
+
+If no information line with the preferred splitting option is present
+for a given manual, then other lines for that manual can be used if
+present.  Here is the full search order for each splitting option:
 
 @example
 node    @result{} node,    section, chapter, mono
@@ -18398,10 +18037,1300 @@ These section- and chapter-level cross-manual references can succeed
 only when the target manual was created using @option{--node-files};
 this is the default for split output.
 
+At present, the @file{htmlxref.cnf} file distributed with GNU Texinfo
+serves as the main resource to locate Texinfo HTML manuals in the World
+Wide Web.  Since it is installed in a location used by @command{texi2any},
+information on HTML manuals found in this file will be used for
+cross-references by default.
+
 If you have additions or corrections to the @file{htmlxref.cnf}
 distributed with Texinfo, please email @email{bug-texinfo@@gnu.org} as
-usual.  You can get the latest version from
+usual.  If you publish a Texinfo HTML manual on the World Wide Web,
+having an up-to-date location listed in @file{htmlxref.cnf} should ensure that
+all HTML manuals generated by @command{texi2any} use this location for
+cross-references automatically.  You can get the latest version from
 @url{http://ftpmirror.gnu.org/@/texinfo/@/htmlxref.cnf}.
+
+
+@node HTML Output Customization
+@nodedescription Using customization variables.
+@section HTML Output Customization
+
+You can use many user-definable customization variables to influence
+the HTML output.  @xref{HTML Customization Variables List} for the full list.
+The possibilities offered by the customization variables, ranging from
+overall document structure and HTML language variant to formatting of
+specific constructs, should cover most needs not already satisfied
+by CSS customization (@pxref{HTML CSS}).
+
+If you ever need more control, you may be able to achieve this through
+the use of initialization files, which are described in a separate
+manual (@pxref{,,, texi2any_api, GNU Texinfo @command{texi2any} Output
+Customization}).
+
+@vindex TEXI2HTML
+If the @code{TEXI2HTML} customization variable is set, the generated HTML is as
+compatible as possible with @command{texi2html} (@pxref{@command{texi2html}}).
+The effect of this variable is quite unusual, as it does not directly modify
+the output, but sets a lot of other customization variables, including some
+that may only be set in initialization files and are described in the
+separate manual on @command{texi2any} Output Customization.  Unset in
+the default case.
+
+
+@node HTML Output Structure Customization
+@subsection HTML Output Structure Customization
+
+You can use customization variables to control the output of document
+titles and tables of contents or other similar parts of documents.
+Other variables have an effect on how @command{texi2any} views the
+structure of a document and how output is split into output files.
+
+@vindex SHOW_TITLE
+@vindex USE_TITLEPAGE_FOR_TITLE
+If @code{SHOW_TITLE} is @samp{undef}, the default, no title is
+output at the start of the output.  If you set this variable,
+by default the full @code{@@titlepage} is used for the title; unset
+@code{USE_TITLEPAGE_FOR_TITLE} to get a simple title string.
+
+@vindex NO_TOP_NODE_OUTPUT @subentry @r{for HTML}
+By default, the HTML output is tailored for online viewing, with
+the Top node being output as a top-level starting point for the reader.
+You can set @code{NO_TOP_NODE_OUTPUT} to remove the Top node, which
+results in output that may be more similar to the format of a printed
+book.  By default, setting @code{NO_TOP_NODE_OUTPUT} also
+outputs a title at the beginning of the document, although you
+can override this by setting @code{SHOW_TITLE} to 0.
+
+@vindex FORMAT_MENU @subentry @r{for HTML}
+In each node, by default a list is output of subordinate sections
+for navigation.  This corresponds to the @code{FORMAT_MENU} variable
+being set to @samp{sectiontoc}.  To use menus instead to navigate in
+the document (as in Info format; @pxref{Menus}), set @code{FORMAT_MENU}
+to @samp{menu}.  If you do not want either menus or subordinate sections
+list for navigation to be output, set @code{FORMAT_MENU} to @samp{nomenu}.
+
+@vindex CONTENTS_OUTPUT_LOCATION
+By default, the table of contents for the entire document is output
+at the end of the @code{@@top} section, to have the main location for
+navigation in the whole document early on.  This corresponds to the
+@code{CONTENTS_OUTPUT_LOCATION} variable set to @samp{after_top}.
+
+You can have the table of contents output after the title (if
+@code{SHOW_TITLE} is set) by setting @code{CONTENTS_OUTPUT_LOCATION}
+to @samp{after_title}.
+To output the table of contents at the end of the document or to a separate
+file, if output is split, set @code{CONTENTS_OUTPUT_LOCATION}
+to @samp{separate_element}.  You can also set
+@code{CONTENTS_OUTPUT_LOCATION} to @samp{inline}: in this case, the
+the tables of contents are output where
+the corresponding @@-command, for example @code{@@contents}, is used.
+
+You may find it useful to set @code{CONTENTS_OUTPUT_LOCATION} when
+@code{FORMAT_MENU} is set to @samp{menu} in order to use menus for
+navigation.  In this case, there should already be a master menu in the
+@code{@@top} section (@pxref{Master Menu Parts}), and so the reader of
+your manual may not need a table of contents at the same location.
+
+@vindex SPLIT @subentry @r{for HTML}
+By default, each node is output in a separate file.  You can change this
+with the @option{--split} command-line option, which is equivalent to
+setting the @code{SPLIT} variable.  @code{SPLIT} can take the values
+@samp{chapter}, @samp{section}, or @samp{node}, or be set to an empty
+string to indicate non-split output.  @xref{Splitting Output}.
+
+@vindex USE_NODES @subentry @r{for HTML}
+Elementary units called @dfn{output units} are used for output, with each
+output file containing the content for one or more output units, depending
+on the value of @code{SPLIT}.  Output units contain the content associated
+with a node or a sectioning command.  In typical Texinfo document sources,
+a node command is almost always associated with an immediately following
+sectioning command.
+
+The customization variable @code{USE_NODES} determines whether the
+node or the sectioning command is considered to be the main command.
+By default, nodes are used as the main component for the separation of
+output units.  You can set @code{USE_NODES} to false to preferentially
+use sectioning to decide where output units are separated.
+When sections are the main components of output units, ``isolated'' nodes
+not directly associated with a sectioning command are associated with
+the following sectioning command, while sectioning commands without
+nodes constitute output units.  Conversely, when nodes are the main
+components of output units, isolated sections not associated with nodes
+are associated with the previous node, and isolated nodes are
+output units.
+
+@vindex USE_NODE_DIRECTIONS
+By default, the @code{USE_NODES} setting also affects whether next,
+up and prev links in node headers link to nodes or sections, with nodes
+used if true, and sections used if false.  You can override this using
+the @code{USE_NODE_DIRECTIONS} variable (default value is undefined).
+Note that this setting does not determine the link string, only where the
+links points to; see @ref{Three Arguments, , xrefautomaticsectiontitle}
+for the link string customization.  If nodes and sections are
+systematically associated, this customization has no practical effect.
+
+@vindex DO_ABOUT
+@vindex PROGRAM_NAME_IN_ABOUT
+You can add a special @dfn{About} element explaining how to navigate by
+setting @code{DO_ABOUT}, set to 0 in the default case (no About element).
+If @code{PROGRAM_NAME_IN_ABOUT} is also set, output the program name and
+miscellaneous related information in the About special element; default
+false.
+
+@vindex MONOLITHIC
+In the case of non-split output, by default only one file is output
+which contains any About elements (with @code{DO_ABOUT}) and tables of
+contents elements (with @code{CONTENTS_OUTPUT_LOCATION} set to
+@samp{separate_element}).  If you prefer such special elements to be
+separate, set @code{MONOLITHIC} to 0 to output special elements to
+separate files.
+
+@vindex USE_NEXT_HEADING_FOR_LONE_NODE
+In Texinfo code, a @code{@@node} command is usually followed by a
+sectioning command, providing a heading for the node.  By default, a
+node with no following sectioning command, but followed by a command like
+@code{@@heading}, has its heading provided by the heading command.  This
+avoids having both the node name and the heading command as headings.  To
+have the node name used as heading in that case, set
+@code{USE_NEXT_HEADING_FOR_LONE_NODE} to 0.
+
+
+@node File Names and Links Customization for HTML
+@subsection File Names and Links Customization for HTML
+
+There are customization variables to control output file names, and
+to customize hyperlinks output within output files.
+
+@c file names
+
+@vindex PREFIX @subentry @r{for HTML}
+@vindex SUBDIR @subentry @r{for HTML}
+@vindex EXTENSION @subentry @r{for HTML}
+@vindex CASE_INSENSITIVE_FILENAMES
+You can specify the output file names with more control than
+merely the command line option @option{--output} (@pxref{Invoking
+@command{texi2any}}). The @code{PREFIX} customization
+variable overrides the base name of the file given by @code{@@setfilename} or
+the file name and should not contain any directory components.  To alter
+intermediate directories, use the @code{SUBDIR} customization variable.
+Finally, you may also override the extension with the customization variable
+@code{EXTENSION}.  This variable should be @code{undef} if no extension is to
+be added.  If you set @code{CASE_INSENSITIVE_FILENAMES}, file names are
+constructed as if the filesystem were case insensitive.  In that case,
+one file name is used for all files differing only by case.
+
+@vindex TOP_FILE
+Furthermore, the customization variable @code{TOP_FILE} overrides
+the output file name for the top element.  This is, in general,
+only taken into account when output is split.
+
+@vindex USE_ACCESSKEY
+@vindex USE_REL_REV
+If @code{USE_ACCESSKEY} is set, the default, the @code{accesskey} attribute
+is used to provide keyboard shortcuts on some navigation hyperlinks.
+@kbd{n} is used for links to the next node or section, @kbd{p} for links to
+the previous node or section, and @kbd{u} for up direction links.
+Similarly, if the @code{USE_REL_REV} customization variable is set, the
+default, the @code{rel} attribute is used in navigation to define the
+relationship between the current page and the linked resource.  For example,
+the @samp{contents} @code{rel} attribute is set for a link to the table of
+contents, the @samp{next} @code{rel} attribute is set for a link to the next
+node or section.
+@c name of USE_REL_REV is a reference to the 'rev' attribute which is
+@c not actually used
+
+@c internal links
+
+There are customization variables that are specific to particular
+types of link:
+
+@table @emph
+@item Cross-reference command links
+@vindex XREF_USE_NODE_NAME_ARG
+If the second argument of a cross-reference command is set, it is displayed
+as hyperlink text (@pxref{Two Arguments}).  Otherwise the
+@code{XREF_USE_NODE_NAME_ARG} customization variable is used to determine the
+hyperlink text.  If set to@tie{}1, use the node name (first) argument in
+cross-reference @@-commands for the text displayed as the hyperlink.  If set
+to@tie{}0, use the node name if @code{USE_NODES} is set, otherwise the section
+name.  If set to @samp{undef}, use the first argument in preformatted
+environments, otherwise use the node name or section name depending on
+@code{USE_NODES}.  The default is @samp{undef}.
+
+@item Links to floats
+@vindex XREF_USE_FLOAT_LABEL
+If you set @code{XREF_USE_FLOAT_LABEL} (default is off), the float label
+is used instead of the type followed by the float number
+(@pxref{@code{@@float}}).
+
+@item Links to nodes or sections for index entries
+@vindex NODE_NAME_IN_INDEX
+In @code{@@printindex} formatting, two links are output: a link to the index
+entry, and a link to the root @@-command containing the index entry.  The
+@code{NODE_NAME_IN_INDEX} customization variable specifies whether the node or
+section should be used for the link to the root @@-command.  If true, use node
+names in index entries, otherwise use section names.  If undefined, use
+the @code{USE_NODES} value to determine which root @@-command to prefer.
+Default is undefined.
+
+@item Menu links
+@vindex NODE_NAME_IN_MENU
+Node names are used in menu entries links by default.  Set
+@code{NODE_NAME_IN_MENU} to false to use section names instead.
+
+@item Table of contents links
+@vindex SHORT_TOC_LINK_TO_TOC
+If a main Table of contents and a Short table of contents are both present, the
+cross-references in the Short table of contents link to the corresponding
+Table of Contents entries in the default case.  Set
+@code{SHORT_TOC_LINK_TO_TOC} to 0 to link to the sectioning commands instead.
+
+@vindex TOC_LINKS
+If you set @code{TOC_LINKS}, links from headings to toc entries are created;
+default false.
+
+@item Top node Up direction link
+@vindex IGNORE_REF_TO_TOP_NODE_UP
+By default no Up reference is generated for the Top node.  You can set
+@code{IGNORE_REF_TO_TOP_NODE_UP} so that any references to the Top Up node
+(by default, @samp{(dir)}) appearing in other cross-references are also
+ignored.  @code{IGNORE_REF_TO_TOP_NODE_UP} is not set in the default case.
+(@xref{TOP_NODE_UP}.)
+
+@vindex TOP_NODE_UP_URL
+@vindex TOP_NODE_UP @subentry @r{for HTML}
+If the manual is referred to in a web page together with other manuals,
+it may be relevant to link to that page.  Set
+@code{TOP_NODE_UP_URL} to the URL used for Top node up references.
+If @code{TOP_NODE_UP_URL} is set, the value of @code{TOP_NODE_UP}
+is used for the hyperlink text, with @samp{(dir)} as default.
+@code{TOP_NODE_UP} can be used in attribute, so should not contain any element.
+
+For example, in the GNU project @url{http://www.gnu.org/manual/} collects
+links to most GNU manuals; therefore @code{TOP_NODE_UP_URL} is best
+specified as @code{/manual/} if the manual will be installed on
+@code{www.gnu.org}.
+
+@xref{First Node} for more about the Top node pointers.
+
+@item images links
+@vindex IMAGE_LINK_PREFIX
+If @code{IMAGE_LINK_PREFIX} is set, the associated value is prepended to
+the image file links; default unset.  This could be useful if image files are
+in a specific subdirectory.
+@end table
+
+@c Cross references
+
+@anchor{HTML Xref Configuration Customization}
+Cross-references between HTML manuals are specified precisely
+(@pxref{HTML Xref}).  Customization of manual locations is provided
+through the @file{htmlxref.cnf} file (@pxref{HTML Xref Configuration}).
+
+@vindex CHECK_HTMLXREF
+Default directories and file names are used for cross-reference target
+manuals not found through HTML Xref Configuration (@pxref{HTML Xref Link
+Basics}).  By default, a warning is given for each external manual not in
+the HTML Xref configuration files.  If you do not want warnings about such
+manuals, you should set @code{CHECK_HTMLXREF} to @samp{0}.  This could
+be relevant, for example, if you know that manuals are installed locally.
+
+@vindex HTMLXREF_MODE
+@vindex HTMLXREF_FILE
+@vindex EXTERNAL_CROSSREF_SPLIT
+@cindex HTML cross-references @subentry configuration customization
+You can use customization variables to specify the HTML Xref
+Configuration more precisely.
+By default, the file name used for HTML Xref configuration
+is searched for in directories, and all the files found are used.
+You can set the @code{HTMLXREF_MODE} customization variable to modify how
+cross-references to other manuals information is determined.
+If @code{HTMLXREF_MODE} is set to @samp{file}, the file name is directly used
+as the source of information.  If @code{HTMLXREF_MODE} is set to @samp{none}
+no information is used.  The default case is obtained with @code{HTMLXREF_MODE}
+not defined or set to any other value.  The @code{HTMLXREF_FILE} customization
+variable sets the file used for HTML Xref configuration to another value than
+the default, @file{htmlxref.cnf}.  If @code{HTMLXREF_FILE} contains directories,
+it is loaded if found, but is not searched for in directories.  By default, the
+distant manual is considered to be split or monolithic based on the splitting
+of the manual being output.  You can set it explicitly, instead, by setting
+@code{EXTERNAL_CROSSREF_SPLIT}.
+
+@cindex Cross-references customization, in HTML
+There are also customization variables that modify various other
+aspects of cross-references:
+
+@itemize @bullet
+@vindex TOP_NODE_FILE_TARGET
+@item You can set the file name used for the Top node in cross-references by
+setting the @code{TOP_NODE_FILE_TARGET} customization variable value;
+default is @file{index.html}.
+
+@vindex EXTERNAL_DIR
+@item You specify a base directory for external
+manuals with @code{EXTERNAL_DIR}; in the default case, there is none.
+
+@vindex EXTERNAL_CROSSREF_EXTENSION
+@vindex BASEFILENAME_LENGTH
+@item Similarly, you set the file extension for cross-references to other
+manuals with @code{EXTERNAL_CROSSREF_EXTENSION}, which, if unset, is based on
+@code{EXTENSION}.  You can change the maximum length of a base file name
+by setting @code{BASEFILENAME_LENGTH}; by default, the base file names
+are truncated to 245 characters (@pxref{HTML Xref Link Basics}).
+@end itemize
+
+@noindent However, in general use of these will make cross-manual
+references ``invalid'' in the sense that the generated URL will not link
+to the external manual, unless this manual was itself also produced
+using the corresponding customization. It is therefore, in general,
+better to use HTML Xref Configuration only.
+
+
+
+@node Customization of Navigation and Headers
+@subsection Customization of Navigation and Headers
+
+@vindex HEADERS @subentry @r{for HTML}
+Headers and footers with a navigation panel are output in the default
+case.  If you use @option{--no-headers}, or if the customization variable
+@code{HEADERS} is unset, the navigation panel is only inserted at the
+beginning of split files.
+
+@vindex USE_LINKS
+By default, @code{<link>} elements are generated in the
+HTML @code{<head>} to specify relationships between the HTML page
+and other resources, for example the Top node, the next node or
+the table of contents.  Unset @code{USE_LINKS} to avoid those elements.
+
+@vindex SECTION_NAME_IN_TITLE
+The @code{<title>} and the document description in @code{<head>}
+are based on @code{@@settitle} (@pxref{@code{@@settitle}}).
+If the manual is split, the node name is also added to this HTML title.
+Set @code{SECTION_NAME_IN_TITLE} to use the argument of the associated
+chapter structuring command instead of the node name.
+
+@vindex OUTPUT_ENCODING_NAME @subentry @r{for HTML}
+By default, if an input encoding is set (typically through
+@code{@@documentencoding}), this information is used to set the output
+encoding name, otherwise the output encoding is based on the default encoding.
+A @samp{<meta>} tag is output, in the @samp{<head>} section of the HTML, to
+specify the output encoding.  @xref{@code{@@documentencoding}}.  To set
+the output encoding explicitly, set @code{OUTPUT_ENCODING_NAME}.  The
+specified encoding should be a normalized charset name usable in HTML,
+typically one of the preferred IANA encoding names.
+
+@vindex WORDS_IN_PAGE
+When output is split at nodes (@pxref{HTML Splitting}), the
+@code{WORDS_IN_PAGE} customization variable value specifies the approximate
+minimum page length at which a navigation panel is placed at the bottom of a
+page.
+
+The appearance of the navigation panel is affected by the following
+customization variables, all false in the default case:
+
+@vtable @code
+@item DATE_IN_HEADER
+Put the document generation date in the header.
+
+@item HEADER_IN_TABLE
+Use tables for header formatting rather than a simple @samp{<div>}.
+
+@item ICONS
+Use icons for the navigation panel.
+
+@item PROGRAM_NAME_IN_FOOTER
+If set, output the program name and miscellaneous related information in the
+page footers.
+
+@item VERTICAL_HEAD_NAVIGATION
+If set, a vertical navigation panel is used.
+@end vtable
+
+@cindex Initialization file, HTML icon direction buttons
+Setting @code{ICONS} is necessary but not sufficient to get icons
+for direction buttons, since no button image is specified in the
+default case.  In addition, you need to set the @code{ACTIVE_ICONS}
+and @code{PASSIVE_ICONS} customization variables.  You can only do this
+using an initialization file (@pxref{Invoking @command{texi2any}}).
+@xref{,,, texi2any_api, GNU Texinfo @command{texi2any} Output Customization}.
+
+
+@node HTML Features Customization
+@subsection HTML Features Customization
+
+@vindex USE_XML_SYNTAX
+@cindex DOCTYPE customization
+@vindex DOCTYPE @subentry @r{for HTML}
+By default HTML is generated, but you can set @code{USE_XML_SYNTAX}
+in order to generate XML compatible code.  The main difference is
+that @samp{/>} instead of @samp{>} ends tags such as @code{<img>} or
+@code{<link>} that do not have a closing tag (such tags create so-called
+@dfn{void elements}).
+
+To set the @dfn{DOCTYPE}, set the @code{DOCTYPE} customization variable.
+The default is the simple DTD-less DOCTYPE used for HTML5.
+
+You can set an XML compatible file beginning instead:
+@example
+@command{texi2any} --html my_manual.texi -c USE_XML_SYNTAX \
+   -c DOCTYPE='<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>'
+@end example
+
+You could also set the DOCTYPE to HTML 4.01 Transitional:
+@example
+@command{texi2any} --html my_manual.texi -c DOCTYPE=\
+'<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">'
+@end example
+
+@vindex USE_ISO
+@vindex USE_NUMERIC_ENTITY @subentry @r{for HTML}
+@vindex OUTPUT_CHARACTERS @subentry @r{for HTML}
+By default, entities are used for doubled single-quote characters
+(@pxref{Inserting Quotation Marks}), and @samp{---} and @samp{--}
+(@pxref{Conventions}).  Set @code{USE_ISO} to @samp{0} in the unlikely case
+that you want a simpler output.
+By default textual entities are used when possible.  Set
+@code{USE_NUMERIC_ENTITY} to use numeric entities only.
+Set @code{OUTPUT_CHARACTERS} to output accented characters based on
+the output encoding instead of entities.
+
+@vindex NO_CUSTOM_HTML_ATTRIBUTE
+By default a custom attribute, as allowed by the standard, is
+used to provide the target manual name in cross-references.
+If it is not desirable, for example to generate strict XHTML, you can
+set @code{NO_CUSTOM_HTML_ATTRIBUTE} to prevent custom attributes being
+output.
+
+@vindex COPIABLE_LINKS
+Copiable links are output for link targets for the definition commands
+(@pxref{Definition Commands}), table commands (@pxref{Two-column
+Tables}) where an index entry is defined and headings.  A link appears
+as a `@U{00B6}'
+@c pilcrow sign
+sign that appears when you hover the mouse pointer over the heading text.
+Unset @code{COPIABLE_LINKS} to prevent copiable links output.
+
+
+@node Customization of Inserted HTML Code
+@subsection Customization of Inserted HTML Code
+
+There are variables to set the HTML code inserted at various points
+in the output.
+
+@vindex CLOSE_QUOTE_SYMBOL @subentry @r{for HTML}
+@vindex OPEN_QUOTE_SYMBOL @subentry @r{for HTML}
+Opening quote and closing quotes needed, e.g.@: for @code{@@samp} output,
+are set to:
+
+@table @asis
+@item @code{&lsquo;} and @code{&rsquo;}
+By default, with @code{OPEN_QUOTE_SYMBOL} and @code{CLOSE_QUOTE_SYMBOL}
+undefined.
+
+@item @code{&#8216;} and @code{&#8217;}
+If you set @code{USE_NUMERIC_ENTITY}.
+
+@item An opening and closing quote character
+If you set @code{OUTPUT_CHARACTERS} and the output
+encoding includes that character.
+
+@item @code{OPEN_QUOTE_SYMBOL} and @code{CLOSE_QUOTE_SYMBOL}
+If you set those customization variables.
+@end table
+
+@vindex DEFAULT_RULE
+@vindex BIG_RULE
+To change the HTML code for breaks (horizontal rule) inserted in various
+contexts, set @code{DEFAULT_RULE}, which is
+used for most horizontal separators output in the resulting HTML,
+and set @code{BIG_RULE} for the wider separator sometimes used.
+
+@c Arguments are HTML content to be inserted at certain points in the output.
+@vindex HTML_ROOT_ELEMENT_ATTRIBUTES
+@vindex EXTRA_HEAD
+@c @vindex AFTER_BODY_OPEN
+@cindex @code{<head>} block, adding to
+@vindex BODY_ELEMENT_ATTRIBUTES
+You can set @code{HTML_ROOT_ELEMENT_ATTRIBUTES} to add attributes to
+the @code{<html>} element.
+You can define the variable @code{EXTRA_HEAD} to add text within the
+@code{<head>} HTML element.  Similarly, the value of
+@code{AFTER_BODY_OPEN} is added just after @code{<body>} is output.
+These variables are empty by default.
+
+@cindex @code{<body>} tag, attributes of
+You can set the attributes of the @code{<body>} element by defining the
+customization variable @code{BODY_ELEMENT_ATTRIBUTES}.
+By default, the @samp{lang} attribute is set to the document language
+(@pxref{@code{@@documentlanguage}}).
+
+@vindex PRE_BODY_CLOSE
+You can define the variable @code{PRE_BODY_CLOSE} to add text just
+before the HTML @code{</body>} element.  Nothing is added by default.
+
+Similarly, the following variables allow for some useful control of the
+formatting of the table of contents and the short table of contents:
+
+@vtable @code
+@item BEFORE_TOC_LINES
+Inserted before the table of contents text.
+
+@item AFTER_TOC_LINES
+Inserted after the table of contents text.
+
+@item BEFORE_SHORT_TOC_LINES
+Inserted before the short table of contents text.
+
+@item AFTER_SHORT_TOC_LINES
+Inserted after the short table of contents text.
+
+@end vtable
+At the time of writing, the default values of these variables are set to
+opening and closing tags for a @code{<div>} element enclosing the
+tables of contents.
+
+@ignore
+Could be an example, but would need either to specify as command-line
+arguments, which would be cumbersome, or requires knowing about init
+files
+@c output valid XHTML XML 1.0 Document
+@example
+texinfo_set_from_init_file('HTML_ROOT_ELEMENT_ATTRIBUTES',
+                           'xmlns="http://www.w3.org/1999/xhtml"');
+texinfo_set_from_init_file('NO_CUSTOM_HTML_ATTRIBUTE', 1);
+texinfo_set_from_init_file('USE_XML_SYNTAX', 1);
+texinfo_set_from_init_file('DOCTYPE', '<?xml version="1.0" encoding="UTF-8"?>'."\n"
+                                      .'<!DOCTYPE html>');
+texinfo_set_from_init_file('USE_NUMERIC_ENTITY', 1);
+texinfo_set_from_init_file('OUTPUT_ENCODING_NAME', 'utf-8');
+@end example
+
+@end ignore
+
+@node HTML Customization of Specific Output
+@subsection HTML Customization of Specific Output
+
+The output of specific constructs is customizable.
+
+@c Header levels
+
+In HTML, heading levels translate to @samp{<h@var{n}>} elements
+where @var{n} is the heading level.  The following header levels are
+customizable:
+
+@vtable @code
+@item CHAPTER_HEADER_LEVEL
+Header formatting level used for chapter level sectioning
+commands; default @samp{2}.
+
+@item FOOTNOTE_END_HEADER_LEVEL
+@itemx FOOTNOTE_SEPARATE_HEADER_LEVEL
+Header formatting level used for the footnotes header with
+the `end' footnotestyle or for the `separate' footnotestyle; default @samp{4}.
+@xref{Footnote Styles}.
+
+@item MAX_HEADER_LEVEL
+Maximum header formatting level used (higher header
+formatting level numbers correspond to lower sectioning levels);
+default @samp{4}.
+
+@end vtable
+
+
+@c Menu  Options for the output of @@menu, as well as indices.
+@c Output of other constructs
+
+You may modify the appearance of various constructs by setting:
+
+@vtable @code
+@item DEF_TABLE
+If set, a @code{<table>} construction for @code{@@deffn}
+and similar @@-commands is used (looking more like the @TeX{} output),
+instead of definition lists; default false.
+
+@item INDENTED_BLOCK_COMMANDS_IN_TABLE
+If set, use tables for indentation of indented block commands; default
+false.
+
+@item INDEX_ENTRY_COLON
+Symbol used between the index entry and the associated node or section;
+default is an empty string.
+
+@item MENU_ENTRY_COLON
+Symbol used between the menu entry and the description; default
+@samp{:}.
+
+@item MENU_SYMBOL
+Symbol used in front of menu entries when node names are used
+for menu entries formatting; default is undefined and set to
+@code{&bull;} if @code{USE_NUMERIC_ENTITY} is not set, and to
+@code{&#8217;} if set.
+
+@item NUMBER_FOOTNOTES
+@itemx NO_NUMBER_FOOTNOTE_SYMBOL
+By default footnotes are numbered.  With @option{--no-number-footnotes} or if
+@code{NUMBER_FOOTNOTES} is set to 0, a @samp{*} is used instead, or the
+@code{NO_NUMBER_FOOTNOTE_SYMBOL} customization variable value, if set.
+@end vtable
+
+
+@node HTML Customization for Math
+@subsection HTML Customization for Math
+
+@vindex HTML_MATH
+@cindex HTML output @subentry math @subentry customization
+You can select various methods to render math in HTML (@pxref{Inserting Math}).
+This is controlled by the @code{HTML_MATH} customization variable.
+By default, the customization variable is unset and the HTML output
+is only emphasized.  You may select other options in order to display
+properly formatted mathematics.  For some of these options, if you
+set @option{--iftex}, @code{@@tex} sections are converted to HTML, and if you
+set @option{--iflatex} @code{@@latex} sections are converted to HTML.
+
+@table @code
+@item l2h
+Use the @command{latex2html} program to produce
+image files for mathematical material.
+
+@command{latex2html} will process @LaTeX{} math in math commands,
+including @TeX{} math compatible with @LaTeX{}.
+@command{latex2html} is used to translate @code{@@tex}
+and @code{@@latex} sections to HTML if the corresponding sections
+are not ignored.  Note that @command{latex2html} can only process @LaTeX{},
+including when processing @code{@@tex} sections.
+
+Processing with @command{latex2html} should leave files in the
+output directory, with @samp{-l2h} in their name, in particular
+a cache file to avoid redoing translation HTML if already done.
+
+@xref{@command{latex2html} Customization Variables}.
+
+@item mathjax
+@anchor{MathJax scripts}
+Inserts references in the output files to MathJax scripts to format
+mathematics.  The MathJax option requires JavaScript to be enabled in the
+browser to work.
+
+MathJax handles @LaTeX{} math, including commonly used @TeX{}
+math compatible with @LaTeX{}.  Some specific constructs
+(for example some uses of @code{\text}) are not supported, but this should
+not be a practical issue.
+
+If math commands are actually processed, a JavaScript license web label is
+generated for MathJax scripts (@pxref{JavaScript license web labels}).
+
+@xref{MathJax Customization Variables}.
+
+@item t4h
+Use the @command{tex4ht} program to produce HTML for mathematical material.
+
+@command{tex4ht} will process @LaTeX{} math in math commands,
+including @TeX{} math compatible with @LaTeX{}.
+@command{tex4ht} is used to translate @code{@@tex} and @code{@@latex}
+sections to HTML if the sections are not ignored.  The @code{@@tex} sections
+are processed in @TeX{} mode, while the @code{@@latex} sections are
+processed as @LaTeX{}.
+
+Processing with @command{tex4ht} should leave files in the
+output directory, with @samp{_tex4ht} in their name.
+
+@xref{@command{tex4ht} Customization Variables}.
+
+@end table
+
+@vindex CONVERT_TO_LATEX_IN_MATH
+By default, with @code{CONVERT_TO_LATEX_IN_MATH} undefined,
+setting @code{HTML_MATH} also sets @code{CONVERT_TO_LATEX_IN_MATH}.
+In that case Texinfo @@-commands inside @code{@@math} and @code{@@displaymath}
+are converted to @LaTeX{}, before converting the @code{@@math} or
+@code{@@displaymath} to HTML.
+
+
+@node MathJax Customization Variables
+@subsubsection MathJax Customization Variables
+
+This table lists the customization variables which can be used when
+MathJax is being used, which will be the case when @code{HTML_MATH}
+is set to @samp{mathjax}.
+
+@vtable @code
+@item MATHJAX_CONFIGURATION
+Data to add to the global @samp{MathJax} configuration object.
+Specify as a comma-separated list of
+@code{@var{component}: @{ @var{name}: @var{value}, @dots{} @}}
+pairs.
+
+For example, you could set @code{MATHJAX_CONFIGURATION} to
+
+@example
+options: @{ enableMenu: false @},
+loader: @{
+    load: [\'[tex]/physics\'],
+    versionWarnings: false
+@},
+tex: @{
+  packages: @{\'[+]\': [\'physics\']@}
+@}
+@end example
+
+@noindent to disable the MathJax right-click menu, and to load the
+MathJax @code{physics} extension.
+(See @uref{https://docs.mathjax.org/en/latest/options/index.html,
+Configuring MathJax} in the MathJax documentation.)
+
+If you override any of the defaults for this configuration output by
+@command{texi2any} you should make sure that your new settings align
+with the HTML output produced by @command{texi2any}.
+
+@item MATHJAX_SCRIPT
+URL of the MathJax component file (e.g.@: @file{tex-svg.js}) you are using.
+@command{texi2any} provides a default value for this variable, but you
+are encouraged to host this file yourself on your website so that you are
+not dependent on others' hosting.
+
+@item MATHJAX_SOURCE
+A URL of the full source code in its preferred form for modification,
+or instructions for obtaining such source code, for the component file
+named by @code{MATHJAX_SCRIPT}.  `Preferred form for modification'
+means that this should not be in a `minified' form.  Used in the
+license labels page (@pxref{JavaScript license web labels}).
+
+Again, @command{texi2any} provides a default value for this variable,
+but you are encouraged to host the source code for MathJax and its
+dependencies yourself.  This is in order to make the source code
+available reliably, and to reduce you and your users' dependence on
+others' distribution systems.
+@end vtable
+
+
+@node @command{latex2html} Customization Variables
+@subsubsection @command{latex2html} Customization Variables
+
+This table lists the customization variables which can be used when 
+@command{latex2html} is being used to convert @code{@@math},
+@code{@@displaymath}, @code{@@latex} and @code{@@tex} sections for HTML@.
+These customization variables are relevant only if @code{HTML_MATH} is set to
+@samp{l2h}.
+
+To actually convert @code{@@tex} sections, @option{--iftex} should be used,
+and to actually convert @code{@@latex} sections, @option{--iflatex} should be
+used.
+
+@vtable @code
+@item L2H_CLEAN
+If set, the intermediate files generated in relation with @command{latex2html}
+are removed; default true.
+
+@item L2H_FILE
+If set, the given file is used as @command{latex2html}'s init file; default
+unset.
+
+@item L2H_HTML_VERSION
+The HTML version used in the @command{latex2html} call; default unset.
+
+@item L2H_L2H
+The program invoked as @command{latex2html}; default is @code{latex2html}.
+
+@item L2H_SKIP
+If set to a true value, the actual call to @command{latex2html} is skipped;
+previously generated content is reused instead.  If set to 0, the cache is not
+used at all.  If set to @samp{undef}, the cache is used for as many @TeX{}
+fragments as possible and for any remaining the command is run.  The default is
+@samp{undef}.
+
+@item L2H_TMP
+Set the directory used for temporary files.  None of the file name components
+in this directory name may start with @samp{.}; otherwise, @command{latex2html}
+will fail (because of @command{dvips}).  The default is the empty string, which
+means the current directory.
+@end vtable
+
+
+@node @command{tex4ht} Customization Variables
+@subsubsection @command{tex4ht} Customization Variables
+
+This table lists the customization variables which can be used when
+@command{tex4ht} is being used to convert @code{@@math}, @code{@@displaymath},
+@code{@@tex} and @code{@@latex} sections for HTML@.  These customization
+variables are relevant only if @code{HTML_MATH} is set to @samp{t4h}.
+
+To actually convert @code{@@tex} sections, @option{--iftex} should be used,
+and to actually convert @code{@@latex} sections, @option{--iflatex} should be
+used.
+
+@vtable @code
+@item T4H_LATEX_CONVERSION
+If set, the conversion type used for @code{@@latex} sections.  Possibilities
+are @samp{latex}, @samp{tex} and @samp{texi}.  Set to @samp{latex} if not
+defined.
+
+@item T4H_MATH_CONVERSION
+If set, the conversion type used for @code{@@math} and @code{@@displymath}.
+Possibilities are @samp{latex}, @samp{tex} and @samp{texi}.  Set to @samp{tex}
+if not defined.
+
+@item T4H_TEX_CONVERSION
+If set, the conversion type used for @code{@@tex} sections.  Possibilities
+are @samp{latex}, @samp{tex} and @samp{texi}.  Set to @samp{tex} if not
+defined.
+@end vtable
+
+
+@node JavaScript Interface and Licenses
+@subsection JavaScript Interface and Licenses
+
+@vindex INFO_JS_DIR
+@cindex JavaScript browsing interface for HTML
+
+You can add an experimental JavaScript browsing interface to the HTML
+output by setting @code{INFO_JS_DIR} value to the name of a directory in
+which to place the code for this interface.  For example,
+@samp{texi2any --html -c INFO_JS_DIR=js @var{manual}.texi} places files in
+a @samp{js} directory under the output.  This interface provides some of
+the functionality of the Info browsers in a web browser, such as keyboard
+navigation and index lookup.  This only works with non-split HTML output.
+
+@anchor{JavaScript license web labels}
+@cindex JavaScript license web labels page
+@vindex JS_WEBLABELS
+@vindex JS_WEBLABELS_FILE
+By default, a @dfn{JavaScript license web labels page} is set up
+to give licensing information and source code for any JavaScript used by
+the HTML output
+(see @uref{https://www.gnu.org/licenses/javascript-labels.html}).  To avoid
+generating a JavaScript license web labels page, set @code{JS_WEBLABELS}
+to @samp{omit}.  With @code{JS_WEBLABELS} set to @samp{generate}, the default,
+generate a labels page at @code{JS_WEBLABELS_FILE}, @file{js_licenses.html}
+in the default case, and link to it in the HTML output files.  With
+@code{JS_WEBLABELS} set to @samp{reference}, link to the labels file given by
+@code{JS_WEBLABELS_FILE} in the output, and do not generate a labels file.
+This last setting is useful if you separately maintain a single labels
+file for a larger website that includes your manual.
+
+Labels files can be generated if @code{INFO_JS_DIR} is set, or if
+@code{HTML_MATH} is set to @samp{mathjax} (@pxref{MathJax scripts}).
+
+
+@node HTML Customization Variables List
+@subsection HTML Customization Variables List
+
+@c old name
+@anchor{HTML Customization Variables}
+
+This table lists the customization variables which apply to HTML output.
+
+@table @code
+@item AFTER_BODY_OPEN
+Text added at the beginning of each HTML file; default unset.
+
+@item AFTER_SHORT_TOC_LINES
+@itemx AFTER_TOC_LINES
+Text output after the short table of contents for
+@code{AFTER_SHORT_TOC_LINES} and after the table of
+contents for @code{AFTER_TOC_LINES} if set; otherwise, a default string is
+used.  At the time of writing, a @code{</div>} element is closed.
+
+In general, you should set @code{BEFORE_SHORT_TOC_LINES} if
+@code{AFTER_SHORT_TOC_LINES} is set, and you should set
+@code{BEFORE_TOC_LINES} if @code{AFTER_TOC_LINES} is set.
+
+@item BASEFILENAME_LENGTH
+The maximum length of a base file name; default 245.
+Changing this would make cross-manual references to such long node
+names invalid (@pxref{HTML Xref Link Basics}).
+
+@item BEFORE_SHORT_TOC_LINES
+@itemx BEFORE_TOC_LINES
+If set, text output before the short table of contents for
+@code{BEFORE_SHORT_TOC_LINES} and before the table of contents for
+@code{BEFORE_TOC_LINES}, otherwise a default string is used.  At the time of
+writing, a @code{<div ...>} element is opened.
+
+In general you should set @code{AFTER_SHORT_TOC_LINES} if
+@code{BEFORE_SHORT_TOC_LINES} is set, and you should set
+@code{AFTER_TOC_LINES} if @code{BEFORE_TOC_LINES} is set.
+
+
+@item BIG_RULE
+Rule used after and before the top element and before
+special elements, but not for footers and headers; default
+@code{<hr>}.
+
+@cindex @code{<body>} text, customizing
+@opindex lang@r{, HTML attribute}
+@item BODY_ELEMENT_ATTRIBUTES
+The @code{<body>} attributes text.  By default, sets the
+HTML @code{lang} attribute to the document language
+(@pxref{@code{@@documentlanguage}}).
+
+@item CASE_INSENSITIVE_FILENAMES
+Construct output file names as if the filesystem were case
+insensitive (@pxref{HTML Splitting}); default false.
+
+@item CHAPTER_HEADER_LEVEL
+Header formatting level used for chapter level sectioning
+commands; default @samp{2}.
+
+@item CHECK_HTMLXREF
+Check that manuals which are the target of external
+cross-references (@pxref{Four and Five Arguments}) are present in
+@file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); default true.
+
+@item CONTENTS_OUTPUT_LOCATION
+If set to @samp{after_top}, output the contents at the end of the @code{@@top}
+section.  If set to @samp{inline}, output the contents where the
+@code{@@contents} and similar @@-commands are located.  If set to
+@samp{separate_element} output the contents in separate elements, either at the
+end of the document if not split, or in a separate file.  If set to
+@samp{after_title} the tables of contents are output after the title; default
+@samp{after_top}.
+
+@item CONVERT_TO_LATEX_IN_MATH
+If set, try to convert any Texinfo @@-commands inside @code{@@math} and
+@code{@@displaymath} to @LaTeX{}, before converting the @code{@@math} or
+@code{@@displaymath} to HTML.  Default @code{undef}.  If undefined,
+set if @code{HTML_MATH} is set.
+
+@item COPIABLE_LINKS
+If set, output copiable links for the definition commands
+(@pxref{Definition Commands}), table commands (@pxref{Two-column
+Tables}) where an index entry is defined and headings.  A link appears
+as a `@U{00B6}'
+@c pilcrow sign
+sign that appears when you hover the mouse pointer over the heading text.
+
+@item DATE_IN_HEADER
+Put the document generation date in the header; off by default.
+
+@item DEF_TABLE
+If set, a @code{<table>} construction for @code{@@deffn}
+and similar @@-commands is used (looking more like the @TeX{} output),
+instead of definition lists; default false.
+
+@item DEFAULT_RULE
+Rule used between element, except before and after the
+top element, and before special elements, and for footers and headers;
+default @code{<hr>}.
+
+@item DO_ABOUT
+If set to 0 never do an About special element;
+if set to 1 always do an About special element;
+default 0.
+@c @xref{Output Elements Defined}.
+
+@item EPUB_CREATE_CONTAINER_FILE
+If set to 0, do not generate the EPUB output file.  Default is set
+to 1.
+
+@item EPUB_KEEP_CONTAINER_FOLDER
+If set, keep the directory containing the directories and files
+needed for EPUB@.   The EPUB output file is a ZIP archive of this
+directory.  Default is not defined.  Set if not defined and @code{TEST} or
+@code{DEBUG} is set. @xref{EPUB Output File and Directory}.
+
+@item EXTERNAL_CROSSREF_SPLIT
+For cross-references to other manuals, this determines if the other
+manual is considered to be split or monolithic.  By default, it is set
+based on the value of @code{SPLIT}.  @xref{HTML Xref}, and @pxref{HTML
+Xref Configuration}.
+
+@item EXTERNAL_DIR
+Base directory for external manuals; default none.  It is
+better to use the general external cross-reference mechanism
+(@pxref{HTML Xref Configuration}) than this variable.
+
+@item EXTERNAL_CROSSREF_EXTENSION
+File extension for cross-references to other manuals.  If unset,
+based on @code{EXTENSION}.
+
+@item EXTRA_HEAD
+Additional text appearing within @code{<head>}; default unset.
+
+@item FOOTNOTE_END_HEADER_LEVEL
+Header formatting level used for the footnotes header with
+the `end' footnotestyle; default @samp{4}.  @xref{Footnote Styles}.
+
+@item FOOTNOTE_SEPARATE_HEADER_LEVEL
+Header formatting level used for the footnotes header with
+the `separate' footnotestyle; default @samp{4}.  @xref{Footnote
+Styles}.
+
+@item HEADER_IN_TABLE
+Use tables for header formatting rather than a simple
+@code{<div>} element; default false.
+
+@item HIGHLIGHT_SYNTAX
+If set, @code{@@example} blocks with language information as first
+argument are highlighted in the HTML output.  It is also possible to specify a
+default for the language with @code{HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE}.  Syntax
+highlighting requires an external program to generate the highlighted HTML.
+The @code{HIGHLIGHT_SYNTAX} value allows to select a specific program.  The
+possibilities are @code{highlight}, @code{pygments}, any other value standing
+for @code{source-highlight} (@pxref{Syntax Highlighting}).
+
+@item HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE
+The default language used for syntax highlighting when there is no
+language information.
+
+@item HTML_MATH
+Method to use to render @code{@@math} (@pxref{HTML Customization for Math}).
+This can be unset, set to
+@samp{mathjax} (@pxref{MathJax Customization Variables}),
+set to @samp{l2h}, which uses @command{latex2html}
+(@pxref{@command{latex2html} Customization Variables}), or set to
+@samp{t4h}, which uses @command{tex4ht}
+(@pxref{@command{tex4ht} Customization Variables}).  By default,
+setting @code{HTML_MATH} also sets @code{CONVERT_TO_LATEX_IN_MATH}.
+
+@item HTML_ROOT_ELEMENT_ATTRIBUTES
+Use that string for the @code{<html>} HTML document root element.
+Default undefined.
+
+@item HTMLXREF_FILE
+Set the file name used for cross-references to other manuals.  If
+not defined, @file{htmlxref.cnf} is used (@pxref{HTML Xref Configuration}).
+Not defined in the default case.  If @code{TEST} is set, @code{HTMLXREF_MODE}
+is set to the default and @code{HTMLXREF_FILE} is not defined, information on
+cross-references to other manuals is not used.
+
+If @code{HTMLXREF_MODE} is set to @samp{file} the file name is directly used
+as the source of information, otherwise the file name is searched for in
+directories, and all the files found are used (@pxref{HTML Xref
+Configuration}).
+
+@item HTMLXREF_MODE
+How cross-references to other manuals information is determined.
+If set to @samp{none}, no information is used.  If set to @samp{file},
+the information is determined from a file path, @file{htmlxref.cnf}
+in the default case, or the value of @code{HTMLXREF_FILE}.  If not defined
+(the default) or set to any other value, search in
+directories and use all the files (@pxref{HTML Xref Configuration}).
+
+@item ICONS
+Use icons for the navigation panel; default false.
+
+@item IMAGE_LINK_PREFIX
+If set, the associated value is prepended to the image file
+links; default unset.
+
+@item INDENTED_BLOCK_COMMANDS_IN_TABLE
+If set, use tables for indentation of indented block commands; default
+false.
+
+@item INDEX_ENTRY_COLON
+Symbol used between the index entry and the associated node or section;
+default is an empty string.
+
+@item INFO_JS_DIR
+(Experimental.)  Add a JavaScript browsing interface to the manual.
+The value of the variable is the directory to place the code for this
+interface, so you would run the program as e.g.@: @samp{texi2any --html
+-c INFO_JS_DIR=js @var{manual}.texi} to place files in a @samp{js}
+directory under the output.  This provides some of the functionality
+of the Info browsers in a web browser, such as keyboard navigation
+and index lookup.  This only works with non-split HTML output.
+
+The interface should provide an acceptable fallback in functionality
+if JavaScript or web browser features are not available.  However,
+please be cautious when using this option, in case you do make your
+documentation harder to access for some of your users.
+
+@item IGNORE_REF_TO_TOP_NODE_UP
+Ignore references to @code{TOP_NODE_UP}, the up node for the Top node.
+
+@item INLINE_CSS_STYLE
+Put CSS directly in HTML elements rather than at the
+beginning of the output; default false.
+
+@item JS_WEBLABELS
+@itemx JS_WEBLABELS_FILE
+Specify how to use a @dfn{JavaScript license web labels} page to
+give licensing information and source code for any JavaScript used
+in the HTML files for the manual.
+(See @uref{https://www.gnu.org/licenses/javascript-labels.html}).
+
+With the value @samp{generate} (the default), generate a labels page
+at @code{JS_WEBLABELS_FILE}, and link to it in the HTML output files.
+Only do this if actually referencing JavaScript files (either with
+@code{HTML_MATH} set to @samp{mathjax}, or when using the experimental
+JS browsing interface when @code{INFO_JS_DIR} is set).  With this
+setting, @code{JS_WEBLABELS_FILE} must be a relative file name.
+
+With the value @samp{reference}, link to the labels
+file given by @code{JS_WEBLABELS_FILE} in the output, and do not
+generate a labels file.  This setting is useful if you separately
+maintain a single labels file for a larger website that includes
+your manual.
+
+With @samp{omit}, neither generate nor link to a labels file.
+
+@item MAX_HEADER_LEVEL
+Maximum header formatting level used (higher header
+formatting level numbers correspond to lower sectioning levels);
+default @samp{4}.
+
+@item MENU_ENTRY_COLON
+Symbol used between the menu entry and the description; default
+@samp{:}.
+
+@item MENU_SYMBOL
+Symbol used in front of menu entries when node names are used
+for menu entries formatting; default is undefined and set to
+@code{&bull;} if @code{USE_NUMERIC_ENTITY} is not set, and to
+@code{&#8217;} if set.
+
+@item MONOLITHIC
+Output only one file including the table of contents.  Set
+by default, but only relevant when the output is not split.
+
+@item NO_CSS
+Do not use CSS; default false.  @xref{HTML CSS}.
+
+@item NO_CUSTOM_HTML_ATTRIBUTE
+Do not output HTML with custom attributes in elements; default false.
+
+@item NO_NUMBER_FOOTNOTE_SYMBOL
+Symbol used for footnotes if @code{NUMBER_FOOTNOTES} is false.
+Default is @code{*}.
+
+@item NODE_NAME_IN_INDEX
+If true, use node names in index entries, otherwise prefer section names.
+If undefined, use @code{USE_NODES} value in HTML.  Default is undefined.
+
+@item NODE_NAME_IN_MENU
+If set, use node names in menu entries, otherwise prefer section names;
+default true.
+
+@item PRE_BODY_CLOSE
+If set, the given text will appear at the footer of each
+HTML file; default unset.
+
+@item PROGRAM_NAME_IN_ABOUT
+Used when an About element is output.  If set, output the program
+name and miscellaneous related information in About special element;
+default false.
+
+@item PROGRAM_NAME_IN_FOOTER
+If set, output the program name and miscellaneous related
+information in the page footers; default false.
+
+@item SECTION_NAME_IN_TITLE
+If set,  when output is split, use the argument of the chapter
+structuring command (e.g., @code{@@chapter} or @code{@@section})
+in the @code{<title>} instead of the argument to @code{@@node}.
+
+@item SHORT_TOC_LINK_TO_TOC
+If set, the cross-references in the Short table of contents links to the
+corresponding Table of Contents entries, if a Table of Contents is output;
+default true.
+
+@item SHOW_BUILTIN_CSS_RULES
+Output the built-in default CSS rules on the standard output and exit.
+
+@item SHOW_TITLE
+If set, output the title at the beginning of the document;
+default @samp{undef}.  If set to @samp{undef}, setting
+@code{NO_TOP_NODE_OUTPUT} also sets @code{SHOW_TITLE} for HTML.
+
+@cindex compatibility, with @command{texi2html}
+@item TEXI2HTML
+Generate HTML and try to be as compatible as possible with
+@command{texi2html}; default false.
+
+@item TOC_LINKS
+If set, links from headings to toc entries are created;
+default false.
+
+@item TOP_FILE
+This file name may be used for the top-level file.  The extension is
+set appropriately, if necessary.  This is used to override the default,
+and is, in general, only taken into account when output is split, and
+for HTML@.
+
+@item TOP_NODE_FILE_TARGET
+File name used for the Top node in cross-references;
+default is @code{index.html}.
+
+@item TOP_NODE_UP_URL
+A URL used for Top node up references; the default is
+@code{undef}, in that case no Top node Up reference is generated.
+For overriding the Up pointer name in case @code{TOP_NODE_UP_URL} is set and
+for other formats, see @code{TOP_NODE_UP} in @ref{Customization Variables for
+Multiple Formats}.  @xref{File Names and Links Customization for HTML}.  For
+more about the Top node pointers, @pxref{First Node}.
+
+@cindex @code{accesskey} @subentry customization variable for
+@item USE_ACCESSKEY
+Use @code{accesskey} in cross-references; default true.
+
+@item USE_ISO
+Use entities for doubled single-quote characters
+(@pxref{Inserting Quotation Marks}), and @samp{---} and @samp{--}
+(@pxref{Conventions}); default true.
+
+@cindex @code{<link>} HTML tag, in @code{<head>}
+@cindex @code{<head>} HTML tag, and @code{<link>}
+@item USE_LINKS
+Generate @code{<link>} elements in the HTML @code{<head>}
+output; default true.
+
+@item USE_NEXT_HEADING_FOR_LONE_NODE
+If set, a node not associated with a sectioning command but
+followed by a leading command not usually associated with a node,
+such as @code{@@heading}, before other formatted contents
+does not have its name output as a heading, under the assumption
+that the command found provides the heading.  Default true.
+
+@item USE_NODE_DIRECTIONS
+If true, use nodes to determine where next, up and prev
+link to in node headers.  If false, use sections.  If undefined, use
+@code{USE_NODES} value.  Default is undefined.  Note that this setting does not
+determine the link string, only where the links points to; see @ref{Three
+Arguments, , xrefautomaticsectiontitle} for the link string customization.  If
+nodes and sections are systematically associated, this customization has no
+practical effect.
+
+@item USE_REL_REV
+Use @code{rel} in cross-references; default true.
+
+@item USE_TITLEPAGE_FOR_TITLE
+Use the full @code{@@titlepage} as the title, not a simple title string;
+default true.  Only relevant if @code{SHOW_TITLE} is set.
+
+@item USE_XML_SYNTAX
+Use XML/XHTML compatible syntax.
+
+@item VERTICAL_HEAD_NAVIGATION
+If set, a vertical navigation panel is used; default false.
+
+@cindex Navigation panel, bottom of page
+@cindex Navigation footer
+@item WORDS_IN_PAGE
+When output is split by nodes, specifies the approximate
+minimum page length at which a navigation panel is placed at the
+bottom of a page.  To avoid ever having the navigation buttons at the
+bottom of a page, set this to a sufficiently large number.  The
+default is 300.
+
+@item XREF_USE_FLOAT_LABEL
+If set, for the float name in cross-references, use the
+float label instead of the type followed by the float number
+(@pxref{@code{@@float}}).  The default is off.
+
+@item XREF_USE_NODE_NAME_ARG
+Only relevant for cross-reference commands with no cross
+reference name (second argument).  If set to@tie{}1, use the node name
+(first) argument in cross-reference @@-commands for the text displayed
+as the hyperlink.  If set to@tie{}0, use the node name if
+@code{USE_NODES} is set, otherwise the section name.  If set to
+@samp{undef}, use the first argument in preformatted environments,
+otherwise use the node name or section name depending on
+@code{USE_NODES}.  The default is @samp{undef}.
+
+@end table
 
 
 @node @@-Command Details
@@ -18651,7 +19580,7 @@ Set @var{text} in a @b{bold} font, if possible.  @xref{Fonts}.
 
 @item @@bullet@{@}
 Generate a large round dot, @bullet{}, or the closest possible thing to one.
-Often used with @code{@@table}.  @xref{@code{@@bullet}}.
+Often used with @code{@@itemize}.  @xref{@code{@@bullet}}.
 
 @item @@bsixpaper
 Change page dimensions for the B6 paper size.  @xref{A4 Paper}.
@@ -21009,13 +21938,11 @@ You can also use the commands to update all the nodes and menus in a
 region or in a whole Texinfo file.
 
 The updating commands work only with conventional Texinfo files, which
-are structured hierarchically like books.  In such files, a structuring
-command line must follow closely after each @code{@@node} line, except
-for the `Top' @code{@@node} line.  (A @dfn{structuring command line} is
-a line beginning with @code{@@chapter}, @code{@@section}, or other
-similar command.)
+are structured hierarchically like books.  In such files, a line with a
+structuring command must follow closely after each @code{@@node} line,
+except for the `Top' @code{@@node} line.
 
-You can write the structuring command line on the line that follows
+You can write the structuring command on the line that follows
 immediately after an @code{@@node} line or else on the line that
 follows after a single @code{@@comment} line or a single
 @code{@@ifinfo} line.  You cannot interpose more than one line between
@@ -23497,18 +24424,24 @@ table entry.
 
 @cindex Local variable section, in Info format
 
-The local variables section is optional and is currently used to give the
-encoding information.  It may be augmented in the future.
+The local variables section is optional.  It is currently used to give
+the encoding information and/or the document language code.
 
 @example
     <local variables> =
 <separator>
 Local Variables:
-coding: <encoding>
+(coding: <encoding>)?
+(Info-documentlanguage: <language>)?
 End:
 @end example
 
-@xref{@code{@@documentencoding}}.
+@xref{@code{@@documentencoding}} for information about the document encoding.
+
+@samp{<language>} should be of the form @var{ll} or @var{ll}_@var{cc}; see
+@ref{@code{@@documentlanguage}}.  Only one language can be specified
+in the local variables section even if @code{@@documentlanguage} occurs
+several times in a Texinfo document.
 
 
 @node Info Format Regular Nodes
@@ -23761,14 +24694,22 @@ and the fifth example shows a period being quoted in a node name.
 @include fdl.texi
 
 
-@node Command and Variable Index
-@unnumbered Command and Variable Index
+@node Command Index
+@unnumbered Command Index
 
-This is an alphabetical list of all the @@-commands, assorted Emacs Lisp
-functions, and several variables.  To make the list easier to use, the
-commands are listed without their preceding @samp{@@}.
+This is an alphabetical list of all the @@-commands and assorted Emacs Lisp
+functions.  To make the list easier to use, the commands are listed without
+their preceding @samp{@@}.
 
 @printindex fn
+
+
+@node Variables Index
+@unnumbered Variables Index
+
+This is an alphabetical list of all variables, mainly customization variables.
+
+@printindex vr
 
 
 @node General Index

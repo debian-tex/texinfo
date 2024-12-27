@@ -77,16 +77,12 @@ $result_trees{'double_titlepage_not_closed'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -113,36 +109,28 @@ $result_errors{'double_titlepage_not_closed'} = [
   {
     'error_line' => 'warning: @titlepage should not appear in @titlepage block
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@titlepage should not appear in @titlepage block',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: multiple @titlepage
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'multiple @titlepage',
     'type' => 'warning'
   },
   {
     'error_line' => 'no matching `@end titlepage\'
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'no matching `@end titlepage\'',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end titlepage\'
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'no matching `@end titlepage\'',
     'type' => 'error'
   }

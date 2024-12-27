@@ -63,6 +63,14 @@ $test_text
 ['section_in_unnumbered_plaintext',
 undef, {'test_file' => 'section_in_unnumbered_text.texi'},
 ],
+# tests that the footnotes segment is output in HTML
+['nodes_no_section_footnote_no_top_node_output',
+'@node Top
+@node chap
+
+a@footnote{my feet}
+', {}, {'USE_NODES' => 0, 'NO_TOP_NODE_OUTPUT' => 1},
+],
 );
 
 
@@ -169,6 +177,8 @@ undef, {'test_file' => 'character_and_spaces_in_refs_text.texi'}],
 ['special_spaces_in_nodes',
 undef, {'test_file' => 'special_spaces_in_nodes.texi',
         'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, }],
+# TODO for LINE SEPARATOR and PARAGRAPH SEPARATOR Perl and XS code give
+# different width.
 ['only_special_spaces_node',
 undef, {'test_file' => 'only_special_spaces_node.texi',
         'skip' => ($] < 5.018) ? 'Perl too old: LINE TABULATION in /a needed' : undef, }],
@@ -385,6 +395,9 @@ my $top_chapter_sections_text =
 '.$chapter_sections_text;
 
 my @test_cases = (
+# TODO when a node is in multiple menus, the node directions can be consistent
+# with a menu and not another.  This is the case in that test, the node
+# directions are consistent with the first menu a node appears in.
 ['rec_nodes',
 '@node Top
 Top node
@@ -527,7 +540,8 @@ Second chapter
 @contents
 @bye
 ', # use CHECK_NORMAL_MENU_STRUCTURE to check that lowering leads to
-   # inconsistent menu with sectioning
+   # inconsistent menu with sectioning.  To keep even if it is the default
+   # to mark that it is important for the test.
 {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['loweredheading',
 '@lowersections
@@ -613,7 +627,8 @@ undef, {'test_file' => 'character_and_spaces_in_refs_text.texi',
 ['topic_guide',
   undef,
   {'test_file' => 'topic_guide.texi',
-   'test_formats' => ['file_info', 'file_html'],},
+   'test_formats' => ['file_info', 'file_html'],
+   'CHECK_NORMAL_MENU_STRUCTURE' => 0,},
   {'FORMAT_MENU' => 'menu', } # add explicitely for the converter
 ],
 ['anchor_in_footnote_split_node',
@@ -681,6 +696,7 @@ foreach my $test (@test_out_files) {
   push @{$test->[2]->{'test_formats'}}, 'file_html'
     if (!$test->[2]->{'test_formats'});
   $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+  $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
 }
 
 my %xml_tests_info_tests = (

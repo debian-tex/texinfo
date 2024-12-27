@@ -25,7 +25,6 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -53,14 +52,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           },
           'type' => 'index_entry_command'
         },
@@ -103,8 +102,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -157,6 +155,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             }
           ],
           'cmdname' => 'printindex',
+          'extra' => {},
           'info' => {
             'spaces_before_argument' => {
               'text' => ' '
@@ -164,8 +163,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         },
         {
@@ -198,14 +196,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           },
           'type' => 'index_entry_command'
         },
@@ -240,14 +238,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
                 ]
               },
               'info' => {
+                'command_name' => 'cindex',
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
                 'file_name' => 'index_no_node_no_top.texi',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               },
               'type' => 'index_entry_command'
             }
@@ -289,8 +287,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           }
         },
         {
@@ -299,6 +296,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -306,8 +304,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
       },
       'source_info' => {
         'file_name' => 'index_no_node_no_top.texi',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     },
     {
@@ -359,14 +356,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           },
           'type' => 'index_entry_command'
         },
@@ -395,14 +392,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           },
           'type' => 'index_entry_command'
         },
@@ -431,14 +428,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 21,
-            'macro' => ''
+            'line_nr' => 21
           },
           'type' => 'index_entry_command'
         },
@@ -467,14 +464,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 22,
-            'macro' => ''
+            'line_nr' => 22
           },
           'type' => 'index_entry_command'
         },
@@ -503,14 +500,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           },
           'type' => 'index_entry_command'
         },
@@ -539,14 +536,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 24,
-            'macro' => ''
+            'line_nr' => 24
           },
           'type' => 'index_entry_command'
         },
@@ -594,8 +591,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           }
         },
         {
@@ -628,14 +624,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 29,
-            'macro' => ''
+            'line_nr' => 29
           },
           'type' => 'index_entry_command'
         },
@@ -650,6 +646,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -657,8 +654,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
       },
       'source_info' => {
         'file_name' => 'index_no_node_no_top.texi',
-        'line_nr' => 17,
-        'macro' => ''
+        'line_nr' => 17
       }
     },
     {
@@ -715,8 +711,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 34,
-            'macro' => ''
+            'line_nr' => 34
           }
         },
         {
@@ -744,14 +739,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 35,
-            'macro' => ''
+            'line_nr' => 35
           },
           'type' => 'index_entry_command'
         },
@@ -786,14 +781,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
                 ]
               },
               'info' => {
+                'command_name' => 'cindex',
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
                 'file_name' => 'index_no_node_no_top.texi',
-                'line_nr' => 37,
-                'macro' => ''
+                'line_nr' => 37
               },
               'type' => 'index_entry_command'
             }
@@ -835,11 +830,11 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 39,
-            'macro' => ''
+            'line_nr' => 39
           }
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -847,8 +842,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
       },
       'source_info' => {
         'file_name' => 'index_no_node_no_top.texi',
-        'line_nr' => 32,
-        'macro' => ''
+        'line_nr' => 32
       }
     },
     {
@@ -895,14 +889,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 41,
-            'macro' => ''
+            'line_nr' => 41
           },
           'type' => 'index_entry_command'
         },
@@ -941,8 +935,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           },
           'source_info' => {
             'file_name' => 'index_no_node_no_top.texi',
-            'line_nr' => 43,
-            'macro' => ''
+            'line_nr' => 43
           }
         },
         {
@@ -976,14 +969,14 @@ $result_trees{'index_no_node_no_top_no_node'} = {
                 ]
               },
               'info' => {
+                'command_name' => 'cindex',
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
                 'file_name' => 'index_no_node_no_top.texi',
-                'line_nr' => 45,
-                'macro' => ''
+                'line_nr' => 45
               },
               'type' => 'index_entry_command'
             }
@@ -996,6 +989,9 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -1003,8 +999,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
       },
       'source_info' => {
         'file_name' => 'index_no_node_no_top.texi',
-        'line_nr' => 40,
-        'macro' => ''
+        'line_nr' => 40
       }
     },
     {
@@ -1046,6 +1041,9 @@ $result_trees{'index_no_node_no_top_no_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -1053,8 +1051,7 @@ $result_trees{'index_no_node_no_top_no_node'} = {
       },
       'source_info' => {
         'file_name' => 'index_no_node_no_top.texi',
-        'line_nr' => 47,
-        'macro' => ''
+        'line_nr' => 47
       }
     },
     {
@@ -1160,68 +1157,78 @@ In chapter 2
 ';
 
 $result_sectioning{'index_no_node_no_top_no_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'unnumbered',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {},
           'section_level' => 1,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
         'cmdname' => 'unnumbered',
-        'structure' => {
+        'extra' => {
           'section_childs' => [
             {
               'cmdname' => 'section',
-              'structure' => {
-                'section_level' => 2,
-                'section_up' => {}
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
+                'section_level' => 2
               }
             }
           ],
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 1,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       },
       {
         'cmdname' => 'chapter',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 1,
-          'section_number' => 1,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '1',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       },
       {
         'cmdname' => 'chapter',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 1,
-          'section_number' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '2',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_no_node_no_top_no_node'};
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1];
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'index_no_node_no_top_no_node'};
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[2]{'structure'}{'section_prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1];
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[2]{'structure'}{'section_up'} = $result_sectioning{'index_no_node_no_top_no_node'};
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[2]{'structure'}{'toplevel_prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[1];
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[3]{'structure'}{'section_prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[2];
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[3]{'structure'}{'section_up'} = $result_sectioning{'index_no_node_no_top_no_node'};
-$result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[3]{'structure'}{'toplevel_prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'structure'}{'section_childs'}[2];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'index_no_node_no_top_no_node'};
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[1]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[1];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[2]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[1];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[2]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[1];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[3]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[2];
+$result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[3]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'index_no_node_no_top_no_node'}{'extra'}{'section_childs'}[2];
 
 $result_errors{'index_no_node_no_top_no_node'} = [
   {
@@ -1229,7 +1236,6 @@ $result_errors{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1238,7 +1244,6 @@ $result_errors{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'printindex before document beginning: @printindex cp',
     'type' => 'warning'
   },
@@ -1247,7 +1252,6 @@ $result_errors{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'unknown index `bidule\' in @printindex',
     'type' => 'error'
   }
@@ -1415,7 +1419,6 @@ Text of chapter
 
 In chapter 2
 
-
 
 Tag Table:
 
@@ -1440,7 +1443,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 41,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1449,7 +1451,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 45,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1458,7 +1459,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 35,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1467,7 +1467,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 37,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1476,7 +1475,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 19,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1485,7 +1483,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 20,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1494,7 +1491,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 21,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1503,7 +1499,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 22,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1512,7 +1507,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 23,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1521,7 +1515,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 24,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1530,7 +1523,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 29,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1539,7 +1531,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1548,7 +1539,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1557,7 +1547,6 @@ $result_converted_errors{'info'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
@@ -1702,7 +1691,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 41,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1711,7 +1699,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 45,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1720,7 +1707,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 35,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1729,7 +1715,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 37,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1738,7 +1723,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 19,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1747,7 +1731,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 20,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1756,7 +1739,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 21,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1765,7 +1747,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 22,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1774,7 +1755,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 23,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1783,7 +1763,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 24,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1792,7 +1771,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 29,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1801,7 +1779,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1810,7 +1787,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
@@ -1819,7 +1795,6 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 ',
     'file_name' => 'index_no_node_no_top.texi',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
@@ -1830,27 +1805,27 @@ $result_converted_errors{'plaintext'}->{'index_no_node_no_top_no_node'} = [
 $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="index-entry-id" id="index-truc"></a>
 <p>Garbage
 </p><div class="printindex cp-printindex">
-<table class="cp-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-C"><b>C</b></a>
+<table class="cp-letters-header-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#unnumbered_cp_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-S"><b>S</b></a>
+<a class="summary-letter-printindex" href="#unnumbered_cp_letter-S"><b>S</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-T"><b>T</b></a>
+<a class="summary-letter-printindex" href="#unnumbered_cp_letter-T"><b>T</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-U"><b>U</b></a>
+<a class="summary-letter-printindex" href="#unnumbered_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
-<tr><th id="t_i_cp_letter-C">C</th></tr>
+<tr><th id="unnumbered_cp_letter-C">C</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-chapter">chapter</a></td><td class="printindex-index-section"><a href="#Chapter">1 Chapter</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Chapter2">Chapter2</a></td><td class="printindex-index-section"><a href="#Chapter">1 Chapter</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
-<tr><th id="t_i_cp_letter-S">S</th></tr>
+<tr><th id="unnumbered_cp_letter-S">S</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-second">second</a></td><td class="printindex-index-section"><a href="#second">second</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-second-1">second</a></td><td class="printindex-index-section"><a href="#second">second</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
-<tr><th id="t_i_cp_letter-T">T</th></tr>
+<tr><th id="unnumbered_cp_letter-T">T</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-top-section">top section</a></td><td class="printindex-index-section"><a href="#top-_0028chapter_0029-section">top (chapter) section</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-top-section-1">top section</a></td><td class="printindex-index-section"><a href="#top-_0028chapter_0029-section">top (chapter) section</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-top-section-2">top section</a></td><td class="printindex-index-section"><a href="#top-_0028chapter_0029-section">top (chapter) section</a></td></tr>
@@ -1860,18 +1835,18 @@ $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="in
 <tr><td></td><td class="printindex-index-entry"><a href="#index-top-section1">top section1</a></td><td class="printindex-index-section"><a href="#top-_0028chapter_0029-section">top (chapter) section</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-truc">truc</a></td><td class="printindex-index-section"><a href="#unnumbered">unnumbered</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
-<tr><th id="t_i_cp_letter-U">U</th></tr>
+<tr><th id="unnumbered_cp_letter-U">U</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-unnumbered">unnumbered</a></td><td class="printindex-index-section"><a href="#unnumbered">unnumbered</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-unnumbered-after-text">unnumbered after text</a></td><td class="printindex-index-section"><a href="#unnumbered">unnumbered</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 </table>
-<table class="cp-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#t_i_cp_letter-C"><b>C</b></a>
+<table class="cp-letters-footer-printindex"><tr><th>Jump to: &nbsp; </th><td><a class="summary-letter-printindex" href="#unnumbered_cp_letter-C"><b>C</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-S"><b>S</b></a>
+<a class="summary-letter-printindex" href="#unnumbered_cp_letter-S"><b>S</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-T"><b>T</b></a>
+<a class="summary-letter-printindex" href="#unnumbered_cp_letter-T"><b>T</b></a>
  &nbsp; 
-<a class="summary-letter-printindex" href="#t_i_cp_letter-U"><b>U</b></a>
+<a class="summary-letter-printindex" href="#unnumbered_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
 </div>
@@ -1898,7 +1873,7 @@ $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="in
 <a class="summary-letter-printindex" href="#unnumbered_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="unnumbered_cp_letter-C">C</th></tr>
@@ -1962,7 +1937,7 @@ $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="in
 <a class="summary-letter-printindex" href="#top-_0028chapter_0029-section_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="top-_0028chapter_0029-section_cp_letter-C">C</th></tr>
@@ -2023,7 +1998,7 @@ $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="in
 <a class="summary-letter-printindex" href="#second_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="second_cp_letter-C">C</th></tr>
@@ -2073,7 +2048,7 @@ $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="in
 <a class="summary-letter-printindex" href="#second_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="second_cp_letter-C">C</th></tr>
@@ -2130,7 +2105,7 @@ $result_converted{'html_text'}->{'index_no_node_no_top_no_node'} = '<a class="in
 <a class="summary-letter-printindex" href="#Chapter_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Chapter_cp_letter-C">C</th></tr>

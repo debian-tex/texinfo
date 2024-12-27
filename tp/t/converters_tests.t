@@ -153,7 +153,6 @@ my @test_cases = (
 ['empty_accent',
 '@`{}
 '],
-# FIXME remove duplication from t/03coverage_braces.t form_feed_in_brace_commands
 ['form_feeds',
 '@node Top
 
@@ -170,6 +169,9 @@ cc \f dd".'
 @code{'."\f".'begin in code}
 
 @code{middle'."\f".' in code}
+
+@anchor{aa}something @email{aaa,  fff}@footnote{
+ f1 } @footnote{  ggjj}.
 
 @xref{chap'."\f".'node}
 
@@ -200,6 +202,19 @@ in float
 @listoffloats type '."\f".'
 
 '],
+# This tests a title in convert
+['commands_in_settitle_with_title',
+'@settitle @sc{sc @~n @aa{} @TeX{}} node @"i @"{@dotless{i}} @`{@=E} @l{} @,{@\'C} @exclamdown{}
+
+@node Top
+@top top
+
+@node chapter
+@chapter Chap
+
+Document.
+
+', {}, {'SHOW_TITLE' => 1}],
 ['some_at_commands_in_ref_nodes',
 '
 @node Top
@@ -345,6 +360,26 @@ $top_in_ref_text
 @section @xref{,,,filename}. xref filename only, no spaces
 
 '],
+# this tests in particular printindex in a document with multiple output
+# units and conversion called through convert.  This can happen in other
+# tests, but they are focused on other issues.
+['sections_and_printindex',
+'@node Top
+@top for example
+
+@node node
+@chapter chap
+
+@cindex entry1
+@node sec
+@section Sec
+
+@cindex entry2
+@appendix App
+
+@printindex cp
+
+'],
 ['link',
 '@node One
 @chapter ONEX
@@ -413,6 +448,56 @@ sp after para
 @sp 1
 @end example
 '],
+# NOTE comparison of TeX/LaTeX output with Plaintext show differences.
+# In TeX/LaTeX with @sp 1, and irrespective of the number of empty line
+# the vertical space is always the same, interparagraph small space + 1
+# character.  In plaintext trailing empty lines do not produce an empty
+# line (as in TeX), but leading empty line do.  Also, @sp 0 without empty
+# lines lead to no empty line between paragraphs in Plaintext.
+# This is not of practical concern, as both @sp 0 (and @sp without
+# argument) behaviour are undefined, and both TeX and Plaintext output
+# are consistent with the documentation.  Also @sp should rarely, if ever,
+# be used in Plaintext.
+['sp_empty_lines_1_no_arg_zero',
+'A
+
+A010
+@sp 1
+A110
+
+@sp 1
+A011
+
+@sp 1
+A111
+
+@sp 1
+
+A000
+@sp 0
+A100
+
+@sp 0
+A001
+
+@sp 0
+A101
+
+@sp 0
+
+A0 0
+@sp
+A1 0
+
+@sp 
+A0 1
+
+@sp
+A1 1
+
+@sp 
+
+B'],
 ['line_breaks',
 '@documentdescription 
 a document @* yes!
@@ -544,6 +629,8 @@ $inline_text, {'EXPANDED_FORMATS' => ['tex']},
 ',
 {'EXPANDED_FORMATS' => []}
 ],
+# beware that with EXPANDED_FORMATS set to an empty array no
+# format is considered to be expanded in the parser.
 # same as above, show visually that the format being converted
 # text is the first argument and is raw text without @-command
 # expanded, while for the other formats the second argument is
@@ -553,7 +640,7 @@ $inline_text, {'EXPANDED_FORMATS' => ['tex']},
 
 @inlinefmtifelse{plaintext,if @emph{plaintext},else @emph{plaintext}}.
 
-@inlinefmtifelse{xml,if xml @env{empty} second arg, xml @env{else}}.
+@inlinefmtifelse{xml,if xml @env{second} arg, xml @env{else}}.
 
 @inlinefmtifelse{ docbook , if docbook @string{spaces} , else @strong{docbook spaces} }.
 
@@ -651,6 +738,15 @@ explanation
 @end defun
 
 @end example
+'],
+['multitable_prototypes',
+'@multitable  {aa b}  { r } {j @code{some code} } @var{cmd}gg hh j 
+@item cc d
+@tab s
+@tab k @samp{same samp}
+@tab Invalid tab
+@end multitable
+
 '],
 ['image_with_spaces',
 '@image{f--ile,,,@ }.
@@ -830,6 +926,101 @@ text2
 @item www-discuss@@gnu.org
 discussion
 @end table
+'],
+['various_vtable_command_as_argument',
+'@node Top
+@top top
+
+@node chap
+@chapter Chap
+
+@vtable @inlineraw
+@item html
+@item docbook
+@item titi
+@end vtable
+
+@vtable @image
+@item first
+@itemx second
+@end vtable
+
+@vtable @footnote
+@item aa
+@itemx bb
+@end vtable
+
+@vtable @caption
+@item caa
+@itemx cbb
+@end vtable
+
+@vtable @math
+@item a + b
+@item a@sup{c}
+@end vtable
+
+@vtable @anchor
+@item anchor 1
+@itemx anchor 2
+@end vtable
+
+@vtable @verb
+@item :uu:
+@itemx ?nn?
+@end vtable
+
+@node Indices
+@appendix Print the index
+
+@printindex vr
+',],
+['various_itemize_command_as_argument',
+'@node Top
+@top top
+
+@node chap
+@chapter Chap
+
+@itemize @inlineraw
+@item Inlineraw
+@end itemize
+
+@itemize @image
+@item Image
+@item Second
+@end itemize
+
+@itemize @footnote
+@item aa
+@item F2
+aa
+
+T
+
+@end itemize
+
+@itemize @caption
+@item Caption
+@end itemize
+
+@itemize @math
+@item a + b
+@item a@sup{c}
+
+2
+
+@end itemize
+
+@itemize @anchor
+@item anchor 1
+@item anchor 2
+@end itemize
+
+@itemize @verb
+@item :uu:
+@end itemize
+
 '],
 ['at_commands_in_raw',
 '@node Top
@@ -1137,6 +1328,14 @@ defop n
 
 @var{'.$string_for_upper_case.'}',
 {'EXPANDED_FORMATS' => ['docbook', 'html', 'xml', 'plaintext']}],
+# reference to be able to compare the customizations effects
+['reference_for_formatting_customizations',
+undef, {'test_file' => 'formatting_customizations_input.texi'},],
+# the customization variables tested have effect in raw text output,
+# other could be tested too.
+['test_formatting_customizations',
+undef, {'test_file' => 'formatting_customizations_input.texi'},
+       {'NUMBER_SECTIONS' => 0, 'ASCII_GLYPH' => 1}],
 # the big rule is set to be different from the normal rule to check the type
 # of rule output
 ['contents_at_document_begin',
@@ -1244,13 +1443,13 @@ undef,{'test_file' => 'simplest.texi',},
 ],
 ['indices_in_begin_tables_lists',
 undef, {'test_file' => '../../tests/formatting/indices_in_begin_tables_lists.texi'},
-{'SPLIT' => '', 'USE_NODES', 0}],
+{'SPLIT' => '', 'USE_NODES' => 0}],
 # HTML still different from tests/indices indices_in_begin_tables_lists,
 # as there is no relate_index_entries_to_items tree transformation
 ['indices_in_begin_tables_lists_entries_after_item',
 undef, {'test_file' => '../../tests/formatting/indices_in_begin_tables_lists.texi',
         'TREE_TRANSFORMATIONS' => 'move_index_entries_after_items'},
-{'SPLIT' => '', 'USE_NODES', 0}],
+{'SPLIT' => '', 'USE_NODES' => 0}],
 ['combined_fonts',
 '@setfilename combined_fonts.info
 
@@ -1290,6 +1489,83 @@ undef, {'test_file' => '../../tests/formatting/indices_in_begin_tables_lists.tex
 @cite{c--ite in example}
 @end example
 '],
+['extension_undef',
+'node Top
+@top top
+
+@node chapter
+@chapter Chap
+', {'test_input_file_name' => 'extension_undef.texi'}, {'EXTENSION' => undef},
+],
+['conversion_with_undef_customization',
+'@node Top
+@top top
+
+@contents
+@shortcontents
+
+@node chap@^e
+@chapter Chap@^e
+
+Text@footnote{Go @samp{s}}
+
+@cindex entry
+
+@node sec
+@section Section
+
+@printindex cp
+
+@deftypefn category type name something ( aa )
+A def.
+@end deftypefn
+', {'test_input_file_name' => 'conversion_with_undef_customization.texi',
+    'FORMAT_MENU' => 'menu'},
+# set some features for more interesting tests
+{'PROGRAM_NAME_IN_FOOTER' => 1,
+ 'FORMAT_MENU' => 'menu',
+ 'TOP_NODE_UP_URL' => 'aaa',
+ 'USE_LINKS' => 1,
+ 'DO_ABOUT' => 1,
+# set customization variables to undef
+ 'footnotestyle' => undef,
+ 'xrefautomaticsectiontitle' => undef,
+ 'deftypefnnewline' => undef,
+ 'TRANSLITERATE_FILE_NAMES' => undef,
+ 'HEADERS' => undef,
+ 'TOP_NODE_UP' => undef, # requires TOP_NODE_UP_URL
+ 'BIG_RULE' => undef, # not actually interesting as the corresponding code
+                      # is not called
+ 'DEFAULT_RULE' => undef,
+ 'HANDLER_FATAL_ERROR_LEVEL' => undef,
+ 'BODY_ELEMENT_ATTRIBUTES' => undef,
+ 'DOCTYPE' => undef,
+ 'PACKAGE_AND_VERSION' => undef,
+ 'NO_NUMBER_FOOTNOTE_SYMBOL' => undef,
+ 'MAX_HEADER_LEVEL' => undef,
+ 'AFTER_TOC_LINES' => undef,
+ 'AFTER_SHORT_TOC_LINES' => undef,
+ 'BEFORE_TOC_LINES' => undef,
+ 'BEFORE_SHORT_TOC_LINES' => undef,
+ 'CONTENTS_OUTPUT_LOCATION' => undef,
+ 'HTML_ROOT_ELEMENT_ATTRIBUTES' => undef,
+ 'JS_WEBLABELS_FILE' => undef,
+ 'OUTPUT_ENCODING_NAME' => undef,
+ 'HTML_MATH' => undef,
+ 'INDEX_ENTRY_COLON' => undef,
+ 'MENU_SYMBOL' => undef, # requires FORMAT_MENU menu
+ 'MENU_ENTRY_COLON' => undef, # requires FORMAT_MENU menu
+ 'LINKS_BUTTONS' => undef, # requires USE_LINKS set
+ 'SECTION_BUTTONS' => undef, # more interesting with DO_ABOUT set
+ # next are for Plaintext/Info and HTML
+ 'OPEN_QUOTE_SYMBOL' => undef,
+ 'CLOSE_QUOTE_SYMBOL' => undef,
+ 'NUMBER_FOOTNOTES' => undef,
+ # Plaintext/Info
+ 'FILLCOLUMN' => undef,
+# '' => undef,
+}
+],
 );
 
 my %info_tests = (
@@ -1308,6 +1584,10 @@ my %info_tests = (
  'contents_at_document_begin_inline' => 1,
  'contents_at_document_begin_separate_element' => 1,
  'commands_in_sc' => 1,
+ 'refs_formatting' => 1,
+ 'top_in_ref' => 1,
+ 'ref_error_formatting' => 1,
+ 'ref_in_sectioning' => 1,
 );
 
 my %html_tests = (
@@ -1346,6 +1626,8 @@ foreach my $test (@test_cases) {
   if ($file_html_tests{$test->[0]}
       or $file_latex_tests{$test->[0]}) {
     $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+    $test->[2]->{'full_document'} = 1
+        unless (exists($test->[2]->{'full_document'}));
   }
   if ($file_html_tests{$test->[0]}) {
     push @{$test->[2]->{'test_formats'}}, 'file_html';
@@ -1357,8 +1639,6 @@ foreach my $test (@test_cases) {
     push @{$test->[2]->{'test_formats'}}, 'docbook';
   }
   if ($file_latex_tests{$test->[0]}) {
-    $test->[2]->{'full_document'} = 1
-        unless (exists($test->[2]->{'full_document'}));
     push @{$test->[2]->{'test_formats'}}, 'file_latex';
   } else {
     push @{$test->[2]->{'test_formats'}}, 'latex_text';

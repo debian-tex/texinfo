@@ -89,20 +89,17 @@ $result_trees{'no_colon_in_menu'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -111,9 +108,7 @@ $result_trees{'no_colon_in_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -132,24 +127,25 @@ $result_texts{'no_colon_in_menu'} = '
 * a
 ';
 
-$result_nodes{'no_colon_in_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'first'
+$result_nodes{'no_colon_in_menu'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
+    }
   }
-};
+];
 
-$result_menus{'no_colon_in_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_menus{'no_colon_in_menu'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'first'
+    }
   }
-};
+];
 
 $result_errors{'no_colon_in_menu'} = [];
 
@@ -166,7 +162,7 @@ $result_converted{'plaintext'}->{'no_colon_in_menu'} = '* Menu:
 
 $result_converted{'html'}->{'no_colon_in_menu'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -193,8 +189,8 @@ th.menu-comment {text-align:left}
 <body lang="en">
 <h4 class="node" id="first"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">* a
+<table class="menu">
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted">* a
 </pre></th></tr></table>
 
 

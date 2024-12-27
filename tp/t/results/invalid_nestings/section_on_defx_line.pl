@@ -17,49 +17,68 @@ $result_trees{'section_on_defx_line'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'h'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'h'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'j'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'j'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'k'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'k'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'l'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'l'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -73,7 +92,19 @@ $result_trees{'section_on_defx_line'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'j'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   1
@@ -81,9 +112,7 @@ $result_trees{'section_on_defx_line'} = {
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               },
               'type' => 'def_line'
             },
@@ -92,23 +121,34 @@ $result_trees{'section_on_defx_line'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'a'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'b'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'b'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     }
                   ],
                   'info' => {
@@ -122,7 +162,19 @@ $result_trees{'section_on_defx_line'} = {
               'cmdname' => 'deffnx',
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'b'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   2
@@ -135,11 +187,8 @@ $result_trees{'section_on_defx_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 2
+              }
             }
           ],
           'info' => {
@@ -148,9 +197,7 @@ $result_trees{'section_on_defx_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -195,22 +242,21 @@ $result_trees{'section_on_defx_line'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'section_on_defx_line'} = '@deffn h j k l 
 @deffnx a b @section s
@@ -230,74 +276,62 @@ Something
 ';
 
 $result_sectioning{'section_on_defx_line'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_on_defx_line'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_on_defx_line'};
+$result_sectioning{'section_on_defx_line'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_on_defx_line'};
 
 $result_errors{'section_on_defx_line'} = [
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @section should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @section should not appear on @deffnx line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@section should not appear on @deffnx line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => '@section seen before @end deffn
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@section seen before @end deffn',
     'type' => 'error'
   },
   {
     'error_line' => 'unmatched `@end deffn\'
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'unmatched `@end deffn\'',
     'type' => 'error'
   }

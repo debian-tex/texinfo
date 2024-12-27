@@ -3,7 +3,7 @@
   <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">
 ]>
-<book id="combined_fonts.xml" lang="">
+<book id="combined_fonts.xml" lang="en">
 <chapter label="1" id="chapter">
 <title>chapter</title>
 

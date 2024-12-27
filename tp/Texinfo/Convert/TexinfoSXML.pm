@@ -1,20 +1,20 @@
 # TexinfoSXML.pm: output tree as Texinfo SXML.
 #
-# Copyright 2013-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2013-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
 # A simple subclass of the Texinfo::Convert::TexinfoMarkup abstract
@@ -22,34 +22,30 @@
 
 package Texinfo::Convert::TexinfoSXML;
 
-use 5.00405;
+use 5.006;
 use strict;
 
 use Texinfo::Convert::TexinfoMarkup;
 use Carp qw(cluck);
 
-use vars qw($VERSION @ISA);
-@ISA = qw(Texinfo::Convert::TexinfoMarkup);
+our @ISA = qw(Texinfo::Convert::TexinfoMarkup);
 
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 
 # SXML specific
 my %defaults = (
-  # Not a customization option variable
-  'converted_format'     => 'texinfosxml',
-
   # Customization option variables
   'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'sxml',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'SPLIT'                => 0,
+  'SPLIT'                => '',
   'documentlanguage'     => 'en',
 );
 
 sub converter_defaults($$)
 {
-  return %defaults;
+  return \%defaults;
 }
 
 # TODO protect formfeeds, end of lines and other special spaces as in TexinfoXML?

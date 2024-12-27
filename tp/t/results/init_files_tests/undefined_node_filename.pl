@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'undefined_node_filename'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -36,6 +41,7 @@ $result_trees{'undefined_node_filename'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -44,9 +50,7 @@ $result_trees{'undefined_node_filename'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -68,6 +72,7 @@ $result_trees{'undefined_node_filename'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap-Other'
       },
       'info' => {
@@ -76,9 +81,7 @@ $result_trees{'undefined_node_filename'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     }
   ],
@@ -94,32 +97,41 @@ $result_texis{'undefined_node_filename'} = '@node Top
 $result_texts{'undefined_node_filename'} = '
 ';
 
-$result_nodes{'undefined_node_filename'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap-Other'
+$result_nodes{'undefined_node_filename'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap-Other'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'undefined_node_filename'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'undefined_node_filename'}[0];
+$result_nodes{'undefined_node_filename'}[1] = $result_nodes{'undefined_node_filename'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'undefined_node_filename'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap-Other'
     }
   }
-};
-$result_nodes{'undefined_node_filename'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'undefined_node_filename'};
-
-$result_menus{'undefined_node_filename'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'undefined_node_filename'} = [];
 

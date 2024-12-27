@@ -1,6 +1,10 @@
 Revision history for Perl extension Pod::Simple::Texinfo.
 
+Pod::Simple::Texinfo is not distributed separately from GNU Texinfo.
+The changes are in the GNU Texinfo main ChangeLog and the module version
+has never been changed for now even if Pod::Simple::Texinfo is released
+with every GNU Texinfo release.
+
 0.01  Fri Dec 23 22:41:34 2011
-	- original version; created by h2xs 1.23 with options
-		-XA -b 5.0.0 -n Pod::Simple::Texinfo
+	- initial version
 

@@ -1,0 +1,10 @@
+
+@documentencoding koi8-r
+
+@node Top
+@top top
+
+@node chap
+@chapter Chap
+
+Text @  and more.

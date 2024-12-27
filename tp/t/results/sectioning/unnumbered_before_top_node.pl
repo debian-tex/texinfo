@@ -7,47 +7,46 @@ use utf8;
 
 $result_trees{'unnumbered_before_top_node'} = [
   {
-    'contents' => [
+    'unit_command' => {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'before nodes'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'unnumbered',
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        }
+      ],
+      'extra' => {},
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'line_nr' => 1
+      }
+    },
+    'unit_contents' => [
       {
         'type' => 'before_node_section'
       },
-      {
-        'args' => [
-          {
-            'contents' => [
-              {
-                'text' => 'before nodes'
-              }
-            ],
-            'info' => {
-              'spaces_after_argument' => {
-                'text' => '
-'
-              }
-            },
-            'type' => 'line_arg'
-          }
-        ],
-        'cmdname' => 'unnumbered',
-        'contents' => [
-          {
-            'text' => '
-',
-            'type' => 'empty_line'
-          }
-        ],
-        'extra' => {},
-        'info' => {
-          'spaces_before_argument' => {
-            'text' => ' '
-          }
-        },
-        'source_info' => {
-          'file_name' => '',
-          'line_nr' => 1,
-          'macro' => ''
-        }
-      },
+      {},
       {
         'args' => [
           {
@@ -89,14 +88,13 @@ $result_trees{'unnumbered_before_top_node'} = [
                     'text' => 'Title titlefont'
                   }
                 ],
-                'type' => 'brace_command_arg'
+                'type' => 'brace_container'
               }
             ],
             'cmdname' => 'titlefont',
+            'extra' => {},
             'source_info' => {
-              'file_name' => '',
-              'line_nr' => 6,
-              'macro' => ''
+              'line_nr' => 6
             }
           },
           {
@@ -105,6 +103,7 @@ $result_trees{'unnumbered_before_top_node'} = [
           }
         ],
         'extra' => {
+          'is_target' => 1,
           'normalized' => 'Top'
         },
         'info' => {
@@ -113,19 +112,14 @@ $result_trees{'unnumbered_before_top_node'} = [
           }
         },
         'source_info' => {
-          'file_name' => '',
-          'line_nr' => 3,
-          'macro' => ''
+          'line_nr' => 3
         }
       }
     ],
-    'extra' => {
-      'unit_command' => {}
-    },
-    'type' => 'unit'
+    'unit_type' => 'unit'
   }
 ];
-$result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'unit_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
+$result_trees{'unnumbered_before_top_node'}[0]{'unit_contents'}[1] = $result_trees{'unnumbered_before_top_node'}[0]{'unit_command'};
 
 $result_texis{'unnumbered_before_top_node'} = '@unnumbered before nodes
 
@@ -145,90 +139,71 @@ Title titlefont
 ';
 
 $result_sectioning{'unnumbered_before_top_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
-        'cmdname' => 'unnumbered',
-        'extra' => {},
-        'structure' => {
-          'associated_unit' => {
-            'extra' => {
-              'unit_command' => {}
-            },
-            'structure' => {
-              'directions' => {
-                'This' => {}
-              }
-            },
-            'type' => 'unit'
+        'associated_unit' => {
+          'directions' => {
+            'This' => {}
           },
+          'unit_command' => {},
+          'unit_type' => 'unit'
+        },
+        'cmdname' => 'unnumbered',
+        'extra' => {
           'section_level' => 1,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'}{'extra'}{'unit_command'} = $result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'};
-$result_sectioning{'unnumbered_before_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'unnumbered_before_top_node'};
+$result_sectioning{'unnumbered_before_top_node'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'directions'}{'This'} = $result_sectioning{'unnumbered_before_top_node'}{'extra'}{'section_childs'}[0]{'associated_unit'};
+$result_sectioning{'unnumbered_before_top_node'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'} = $result_sectioning{'unnumbered_before_top_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'unnumbered_before_top_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'unnumbered_before_top_node'};
 
-$result_nodes{'unnumbered_before_top_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
+$result_nodes{'unnumbered_before_top_node'} = [
+  {
     'associated_unit' => {
-      'extra' => {
-        'unit_command' => {
-          'cmdname' => 'unnumbered',
-          'extra' => {},
-          'structure' => {
-            'associated_unit' => {}
-          }
-        }
+      'directions' => {
+        'This' => {}
       },
-      'structure' => {
-        'directions' => {
-          'This' => {}
-        }
+      'unit_command' => {
+        'associated_unit' => {},
+        'cmdname' => 'unnumbered',
+        'extra' => {}
       },
-      'type' => 'unit'
+      'unit_type' => 'unit'
+    },
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
     }
   }
-};
-$result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
-$result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_nodes{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
+];
+$result_nodes{'unnumbered_before_top_node'}[0]{'associated_unit'}{'directions'}{'This'} = $result_nodes{'unnumbered_before_top_node'}[0]{'associated_unit'};
+$result_nodes{'unnumbered_before_top_node'}[0]{'associated_unit'}{'unit_command'}{'associated_unit'} = $result_nodes{'unnumbered_before_top_node'}[0]{'associated_unit'};
 
-$result_menus{'unnumbered_before_top_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
+$result_menus{'unnumbered_before_top_node'} = [
+  {
     'associated_unit' => {
-      'extra' => {
-        'unit_command' => {
-          'cmdname' => 'unnumbered',
-          'extra' => {},
-          'structure' => {
-            'associated_unit' => {}
-          }
-        }
+      'directions' => {
+        'This' => {}
       },
-      'structure' => {
-        'directions' => {
-          'This' => {}
-        }
+      'unit_command' => {
+        'associated_unit' => {},
+        'extra' => {}
       },
-      'type' => 'unit'
+      'unit_type' => 'unit'
+    },
+    'extra' => {
+      'normalized' => 'Top'
     }
   }
-};
-$result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
-$result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_menus{'unnumbered_before_top_node'}{'structure'}{'associated_unit'};
+];
+$result_menus{'unnumbered_before_top_node'}[0]{'associated_unit'}{'directions'}{'This'} = $result_menus{'unnumbered_before_top_node'}[0]{'associated_unit'};
+$result_menus{'unnumbered_before_top_node'}[0]{'associated_unit'}{'unit_command'}{'associated_unit'} = $result_menus{'unnumbered_before_top_node'}[0]{'associated_unit'};
 
 $result_errors{'unnumbered_before_top_node'} = [];
 
@@ -238,29 +213,23 @@ $result_floats{'unnumbered_before_top_node'} = {};
 
 $result_elements{'unnumbered_before_top_node'} = [
   {
-    'extra' => {
-      'unit_command' => {
-        'cmdname' => 'unnumbered',
-        'extra' => {},
-        'structure' => {
-          'associated_unit' => {}
-        }
-      }
+    'directions' => {
+      'This' => {}
     },
-    'structure' => {
-      'directions' => {
-        'This' => {}
-      }
+    'unit_command' => {
+      'associated_unit' => {},
+      'cmdname' => 'unnumbered',
+      'extra' => {}
     },
-    'type' => 'unit'
+    'unit_type' => 'unit'
   }
 ];
-$result_elements{'unnumbered_before_top_node'}[0]{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_elements{'unnumbered_before_top_node'}[0];
-$result_elements{'unnumbered_before_top_node'}[0]{'structure'}{'directions'}{'This'} = $result_elements{'unnumbered_before_top_node'}[0];
+$result_elements{'unnumbered_before_top_node'}[0]{'directions'}{'This'} = $result_elements{'unnumbered_before_top_node'}[0];
+$result_elements{'unnumbered_before_top_node'}[0]{'unit_command'}{'associated_unit'} = $result_elements{'unnumbered_before_top_node'}[0];
 
 
 
-$result_directions_text{'unnumbered_before_top_node'} = 'element: @unnumbered before nodes
+$result_directions_text{'unnumbered_before_top_node'} = 'output unit: @unnumbered before nodes
   This: @unnumbered before nodes
 ';
 
@@ -293,7 +262,7 @@ End:
 
 $result_converted{'html'}->{'unnumbered_before_top_node'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Title titlefont</title>

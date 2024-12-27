@@ -17,9 +17,7 @@ $result_trees{'on_section_line'} = {
             {
               'cmdname' => 'noindent',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -37,14 +35,13 @@ $result_trees{'on_section_line'} = {
                       'text' => 'in titlefont'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'titlefont',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -58,17 +55,16 @@ $result_trees{'on_section_line'} = {
                       'text' => 'in anchor'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'anchor',
               'extra' => {
+                'is_target' => 1,
                 'normalized' => 'in-anchor'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -88,10 +84,9 @@ $result_trees{'on_section_line'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -121,9 +116,7 @@ $result_trees{'on_section_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -131,15 +124,16 @@ $result_trees{'on_section_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -155,74 +149,62 @@ $result_texts{'on_section_line'} = '1 Text in titlefont  exdent
 ';
 
 $result_sectioning{'on_section_line'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'on_section_line'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'on_section_line'};
+$result_sectioning{'on_section_line'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'on_section_line'};
 
 $result_errors{'on_section_line'} = [
   {
     'error_line' => 'warning: @noindent should not appear on @section line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@noindent should not appear on @section line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @titlefont should not appear on @section line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@titlefont should not appear on @section line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @anchor should not appear on @section line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@anchor should not appear on @section line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @footnote should not appear on @section line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@footnote should not appear on @section line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @exdent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @exdent should not appear on @section line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@exdent should not appear on @section line',
     'type' => 'warning'
   }

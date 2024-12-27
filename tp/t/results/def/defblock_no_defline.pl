@@ -10,6 +10,9 @@ $result_trees{'defblock_no_defline'} = {
     {
       'contents' => [
         {
+          'type' => 'preamble_before_content'
+        },
+        {
           'args' => [
             {
               'info' => {
@@ -35,7 +38,7 @@ $result_trees{'defblock_no_defline'} = {
                   'type' => 'paragraph'
                 }
               ],
-              'type' => 'def_item'
+              'type' => 'before_defline'
             },
             {
               'args' => [
@@ -64,16 +67,12 @@ $result_trees{'defblock_no_defline'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -105,7 +104,7 @@ $result_converted{'plaintext'}->{'defblock_no_defline'} = '     misc text inside
 
 $result_converted{'html'}->{'defblock_no_defline'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -121,7 +120,7 @@ $result_converted{'html'}->{'defblock_no_defline'} = '<!DOCTYPE html>
 </head>
 
 <body lang="en">
-<dl class="first-defblock">
+<dl class="defblock def-block">
 <dd><p>misc text inside
 </p></dd></dl>
 
@@ -185,15 +184,19 @@ $result_converted{'latex'}->{'defblock_no_defline'} = '\\documentclass{book}
 \\makeatother
 \\pagestyle{single}%
 
-\\begin{quote}
-\\unskip{\\parskip=0pt\\noindent}%
+\\begin{document}
 misc text inside
-\\end{quote}
 \\end{document}
 ';
 
 
-$result_converted{'docbook'}->{'defblock_no_defline'} = '<blockquote><para>misc text inside
-</para></blockquote>';
+$result_converted{'docbook'}->{'defblock_no_defline'} = '<para>misc text inside
+</para>';
+
+
+$result_converted{'xml'}->{'defblock_no_defline'} = '<defblock endspaces=" ">
+<beforefirstdefline><para>misc text inside
+</para></beforefirstdefline></defblock>
+';
 
 1;

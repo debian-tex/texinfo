@@ -50,9 +50,7 @@ $result_trees{'macro_end_call_in_ignored_inlinefmtifelse'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,31 +59,10 @@ $result_trees{'macro_end_call_in_ignored_inlinefmtifelse'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'inlinefirstfmt'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -93,6 +70,24 @@ $result_trees{'macro_end_call_in_ignored_inlinefmtifelse'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'inlinefirstfmt'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Toto '
             },
             {
@@ -103,7 +98,7 @@ $result_trees{'macro_end_call_in_ignored_inlinefmtifelse'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -133,7 +128,7 @@ $result_trees{'macro_end_call_in_ignored_inlinefmtifelse'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -142,7 +137,6 @@ $result_trees{'macro_end_call_in_ignored_inlinefmtifelse'} = {
                 'format' => 'tex'
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'inlinefirstfmt'
               }

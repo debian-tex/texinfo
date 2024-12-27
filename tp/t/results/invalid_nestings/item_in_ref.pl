@@ -16,11 +16,8 @@ $result_trees{'item_in_ref'} = {
                 {
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -62,9 +59,7 @@ $result_trees{'item_in_ref'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -96,10 +91,10 @@ $result_trees{'item_in_ref'} = {
                                   'text' => 'Top'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             },
                             {
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             },
                             {
                               'contents' => [
@@ -113,14 +108,12 @@ $result_trees{'item_in_ref'} = {
                                   'text' => ' '
                                 }
                               },
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'ref',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 5,
-                            'macro' => ''
+                            'line_nr' => 5
                           }
                         }
                       ],
@@ -160,9 +153,7 @@ $result_trees{'item_in_ref'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     }
                   ],
@@ -198,9 +189,7 @@ $result_trees{'item_in_ref'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -213,9 +202,7 @@ $result_trees{'item_in_ref'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -246,18 +233,14 @@ $result_errors{'item_in_ref'} = [
   {
     'error_line' => '@ref missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@ref missing closing brace',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }

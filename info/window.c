@@ -1,6 +1,6 @@
 /* window.c -- windows in Info.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -289,11 +289,11 @@ window_make_window (void)
   window->height = (active_window->height / 2) - 1;
   window->first_row = active_window->first_row +
     (active_window->height - window->height);
-  window->goal_column = -1;
+  window->goal_column = 0;
   memset (&window->line_map, 0, sizeof (window->line_map));
   window->modeline = xmalloc (1 + window->width);
   window->line_starts = NULL;
-  window->flags = W_UpdateWindow | W_WindowVisible;
+  window->flags = W_UpdateWindow | W_WindowVisible | W_CurrentColGoal;
 
   /* Adjust the height of the old active window. */
   active_window->height -= (window->height + 1);
@@ -368,8 +368,8 @@ window_change_window_height (WINDOW *window, int amount)
      It can be impossible if there isn't enough available room on the
      screen, or if the resultant window would be too small. */
 
-    prev = window->prev;
-    next = window->next;
+  prev = window->prev;
+  next = window->next;
 
   /* WINDOW decreasing in size? */
   if (amount < 0)
@@ -654,7 +654,7 @@ window_delete_window (WINDOW *window)
     window_to_fix = prev;
   else
     window_to_fix = windows;
-    
+
   if (window_to_fix->first_row > window->first_row)
     {
       int diff;
@@ -707,8 +707,8 @@ window_unmark_chain (WINDOW *chain, int flag)
 long
 window_log_to_phys_line (WINDOW *window, long ln)
 {
-  size_t i;
-  
+  long i;
+
   if (ln > window->line_count)
     return 0;
   for (i = ln; i < window->line_count && window->log_line_no[i] < ln; i++)
@@ -721,7 +721,7 @@ window_log_to_phys_line (WINDOW *window, long ln)
 void
 set_window_pagetop (WINDOW *window, int desired_top)
 {
-  int point_line, old_pagetop;
+  long point_line, old_pagetop;
 
   if (desired_top < 0)
     desired_top = 0;
@@ -735,17 +735,17 @@ set_window_pagetop (WINDOW *window, int desired_top)
   window->pagetop = desired_top;
 
   /* Make sure that point appears in this window. */
+  window->goal_column = 0;
+  window->flags &= ~W_CurrentColGoal;
   point_line = window_line_of_point (window);
   if (point_line < window->pagetop)
     {
       window->point = window->line_starts[window->pagetop];
-      window->goal_column = 0;
     }
   else if (point_line >= window->pagetop + window->height)
     {
       long bottom = window->pagetop + window->height - 1;
       window->point = window->line_starts[bottom];
-      window->goal_column = 0;
     }
 
   window->flags |= W_UpdateWindow;
@@ -816,15 +816,15 @@ window_adjust_pagetop (WINDOW *window)
 }
 
 /* Return the index of the line containing point. */
-int
+long
 window_line_of_point (WINDOW *window)
 {
-  register int i, start = 0;
+  register long i, start = 0;
 
   if (!window->line_starts)
     calculate_line_starts (window);
 
-  /* Check if point is past the pagetop for this window, and if so, start 
+  /* Check if point is past the pagetop for this window, and if so, start
      searching forward from there. */
   if (window->pagetop > -1 && window->pagetop < window->line_count
       && window->line_starts[window->pagetop] <= window->point)
@@ -843,7 +843,7 @@ window_line_of_point (WINDOW *window)
 }
 
 /* Get and return the printed column offset of the cursor in this window. */
-int
+long
 window_get_cursor_column (WINDOW *window)
 {
   return window_point_to_column (window, window->point, &window->point);
@@ -920,6 +920,15 @@ window_make_modeline (WINDOW *window)
     /* Omit any extension like ".info.gz" from file name. */
     dot = strcspn (name, ".");
 
+    /* But include any numbered version suffix in a file name
+       like "automake-1.16.info". */
+    while (name[dot] == '.' && isdigit ((unsigned char) name[dot+1]))
+      {
+        do
+          dot++;
+        while (isdigit ((unsigned char) name[dot]));
+      }
+
     if (name && strcmp ("", name))
       {
         sprintf (modeline + strlen (modeline), "(");
@@ -982,7 +991,7 @@ free_echo_area (void)
   echo_area_node = NULL;
   window_set_node_of_window (the_echo_area, echo_area_node);
 }
-  
+
 /* Clear the echo area, removing any message that is already present.
    The echo area is cleared immediately. */
 void
@@ -1009,7 +1018,7 @@ void
 window_message_in_echo_area (const char *format, ...)
 {
   va_list ap;
-  
+
   va_start (ap, format);
   vwindow_message_in_echo_area (format, ap);
   va_end (ap);
@@ -1027,7 +1036,7 @@ void
 message_in_echo_area (const char *format, ...)
 {
   va_list ap;
-  
+
   if (echo_area_node)
     {
       add_pointer_to_array (echo_area_node, old_echo_area_nodes_index,
@@ -1071,7 +1080,7 @@ format_message_node (const char *format, ...)
 {
   NODE *node;
   va_list ap;
-  
+
   va_start (ap, format);
   node = build_message_node (format, ap);
   va_end (ap);
@@ -1100,6 +1109,14 @@ text_buffer_to_node (struct text_buffer *tb)
 static void
 collect_line_starts (WINDOW *win, long ll_num, long pl_start)
 {
+  /* in the following macro call, win->line_count, a signed long is
+     compared to win->line_slots an unsigned size_t.  The comparison
+     should be ok as win->line_count should always be positive.
+     win->line_count is also increased, so using an intermediary
+     variable to explicit the conversion is not practical.  The comparison
+     may lead to a compile time warning like
+      comparison of integer expressions of different signedness
+    */
   add_element_to_array (pl_start, win->line_count,
                         win->line_starts, win->line_slots, 2);
 
@@ -1170,8 +1187,8 @@ calculate_line_starts (WINDOW *win)
        mbi_avail (iter);
        mbi_advance (iter))
     {
-      size_t pchars = 0; /* Screen columns for this character. */
-      size_t pbytes = 0; /* Not used. */
+      int pchars = 0; /* Screen columns for this character. */
+      int pbytes = 0; /* Not used. */
       int delim = 0;
 
       /* Set pchars. */
@@ -1203,12 +1220,12 @@ calculate_line_starts (WINDOW *win)
         pl_start += mb_len (mbi_cur (iter));
       pl_chars = 0;
 
-      /* If there is a character carried over, count it now.  Expected to be 
+      /* If there is a character carried over, count it now.  Expected to be
          "short", i.e. a representation like "^A". */
       if (carried_over_chars != 0)
         {
           pl_chars = carried_over_chars;
-    
+
           /* If this window has chosen not to wrap lines, skip to the end
              of the logical line in the buffer, and start a new line here. */
           if (win->flags & W_NoWrap)
@@ -1238,7 +1255,7 @@ calculate_line_starts (WINDOW *win)
 
 
 static void
-line_map_init (LINE_MAP *map, NODE *node, int line)
+line_map_init (LINE_MAP *map, NODE *node, long line)
 {
   map->node = node;
   map->nline = line;
@@ -1250,11 +1267,11 @@ line_map_add (LINE_MAP *map, long pos)
 {
   if (map->used == map->size)
     {
-      if (map->size == 0)				       
-	map->size = 80; /* Initial allocation */	       
+      if (map->size == 0)
+        map->size = 80; /* Initial allocation */
       map->map = x2nrealloc (map->map,
-			     &map->size,
-			     sizeof (map->map[0]));
+                             &map->size,
+                             sizeof (map->map[0]));
     }
 
   map->map[map->used++] = pos;
@@ -1271,7 +1288,7 @@ window_line_map_init (WINDOW *win)
 void
 window_compute_line_map (WINDOW *win)
 {
-  int line = window_line_of_point (win);
+  long line = window_line_of_point (win);
   mbi_iterator_t iter;
   int delim = 0;
   char *endp;
@@ -1288,19 +1305,19 @@ window_compute_line_map (WINDOW *win)
     endp = win->node->contents + win->line_starts[line + 1];
   else
     endp = win->node->contents + win->node->nodelen;
-  
+
   for (mbi_init (iter,
-		 win->node->contents + win->line_starts[line], 
-		 win->node->nodelen - win->line_starts[line]);
+                 win->node->contents + win->line_starts[line],
+                 win->node->nodelen - win->line_starts[line]);
        !delim && mbi_avail (iter);
        mbi_advance (iter))
     {
-      size_t pchars, pbytes;
+      int pchars, pbytes;
       cur_ptr = mbi_cur_ptr (iter);
 
       if (cur_ptr >= endp)
-	break;
-      
+        break;
+
       /* Set pchars */
       (void) printed_representation (&iter, &delim, win->line_map.used,
                                      &pchars, &pbytes);
@@ -1312,13 +1329,13 @@ window_compute_line_map (WINDOW *win)
 
 /* Translate the value of POINT into a column number.  If NP is given
    store there the value of point corresponding to the beginning of a
-   multibyte character in this column.  If the character at POINT spans 
+   multibyte character in this column.  If the character at POINT spans
    multiple columns (e.g. a tab), return the leftmost column it occupies. */
-int
+size_t
 window_point_to_column (WINDOW *win, long point, long *np)
 {
-  int i;
-  
+  size_t i;
+
   window_compute_line_map (win);
   if (!win->line_map.map || point < win->line_map.map[0])
     return 0;
@@ -1329,4 +1346,4 @@ window_point_to_column (WINDOW *win, long point, long *np)
     *np = win->line_map.map[i];
   return i;
 }
-      
+

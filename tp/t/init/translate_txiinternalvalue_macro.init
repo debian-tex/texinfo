@@ -9,9 +9,11 @@ sub my_sp_formatting($$$$$)
   my $args = shift;
   my $content = shift;
 
-  if (defined($command->{'extra'}->{'misc_args'}->[0])) {
+  if (defined($command->{'extra'})
+      and defined($command->{'extra'}->{'misc_args'})
+      and defined($command->{'extra'}->{'misc_args'}->[0])) {
     my $sp_nr = $command->{'extra'}->{'misc_args'}->[0];
-    my $translated_tree = $self->gdt('@macro txiinternalvalue
+    my $translated_tree = $self->cdt('@macro txiinternalvalue
 user internalvalue
 @end macro
 {myarg} @TeX{}', {'myarg' => {'contents' => [{'text' => $sp_nr}]}});

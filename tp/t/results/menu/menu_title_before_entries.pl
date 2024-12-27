@@ -75,9 +75,11 @@ $result_trees{'menu_title_before_entries'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'chap-subnode'
                   },
                   'type' => 'menu_entry_node'
@@ -102,9 +104,7 @@ $result_trees{'menu_title_before_entries'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'menu_entry'
             },
@@ -135,16 +135,12 @@ $result_trees{'menu_title_before_entries'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -154,6 +150,7 @@ $result_trees{'menu_title_before_entries'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -162,9 +159,7 @@ $result_trees{'menu_title_before_entries'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -186,6 +181,7 @@ $result_trees{'menu_title_before_entries'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap-subnode'
       },
       'info' => {
@@ -194,15 +190,13 @@ $result_trees{'menu_title_before_entries'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'menu_title_before_entries'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'menu_title_before_entries'} = '@node Top
 
@@ -221,55 +215,50 @@ Horizontal space
 
 ';
 
-$result_nodes{'menu_title_before_entries'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap-subnode'
-      },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'menu_title_before_entries'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'menu_title_before_entries'};
-$result_nodes{'menu_title_before_entries'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'menu_title_before_entries'};
-$result_nodes{'menu_title_before_entries'}{'structure'}{'node_next'} = $result_nodes{'menu_title_before_entries'}{'structure'}{'menu_child'};
-
-$result_menus{'menu_title_before_entries'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap-subnode'
-      },
-      'structure' => {
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
+$result_nodes{'menu_title_before_entries'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap-subnode'
+          }
         }
-      }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'menu_title_before_entries'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'menu_title_before_entries'}[0];
+$result_nodes{'menu_title_before_entries'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'menu_title_before_entries'}[0];
+$result_nodes{'menu_title_before_entries'}[1] = $result_nodes{'menu_title_before_entries'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'menu_title_before_entries'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {}
+      },
+      'normalized' => 'chap-subnode'
     }
   }
-};
-$result_menus{'menu_title_before_entries'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'menu_title_before_entries'};
+];
+$result_menus{'menu_title_before_entries'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'menu_title_before_entries'}[0];
 
 $result_errors{'menu_title_before_entries'} = [];
 
@@ -288,7 +277,7 @@ Horizontal space
 
 $result_converted{'html'}->{'menu_title_before_entries'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -305,7 +294,7 @@ $result_converted{'html'}->{'menu_title_before_entries'} = '<!DOCTYPE html>
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 pre.menu-comment-preformatted {font-family: serif}
 span:hover a.copiable-link {visibility: visible}
-td.menu-entry-description {vertical-align: top}
+td.menu-entry-description {vertical-align: top; padding-left: 1em}
 td.menu-entry-destination {vertical-align: top}
 th.menu-comment {text-align:left}
 -->
@@ -321,9 +310,9 @@ Next: <a href="#chap-subnode" accesskey="n" rel="next">chap subnode</a> &nbsp; <
 </div>
 <h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">Horizontal space
-</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="#chap-subnode" accesskey="1">chap subnode</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+<table class="menu">
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted">Horizontal space
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="#chap-subnode" accesskey="1">chap subnode</a>:</td><td class="menu-entry-description">
 </td></tr>
 </table>
 

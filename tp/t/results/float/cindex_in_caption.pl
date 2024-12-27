@@ -10,7 +10,6 @@ $result_trees{'cindex_in_caption'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'cindex_in_caption'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'cindex_in_caption'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -99,9 +97,7 @@ $result_trees{'cindex_in_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -184,14 +180,13 @@ $result_trees{'cindex_in_caption'} = {
                             ]
                           },
                           'info' => {
+                            'command_name' => 'cindex',
                             'spaces_before_argument' => {
                               'text' => ' '
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 9,
-                            'macro' => ''
+                            'line_nr' => 9
                           },
                           'type' => 'index_entry_command'
                         }
@@ -207,9 +202,7 @@ $result_trees{'cindex_in_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -244,15 +237,14 @@ $result_trees{'cindex_in_caption'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'fl',
+            'is_target' => 1,
             'normalized' => 'label'
           },
           'info' => {
@@ -261,9 +253,7 @@ $result_trees{'cindex_in_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -300,9 +290,7 @@ $result_trees{'cindex_in_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         },
         {
@@ -312,6 +300,7 @@ $result_trees{'cindex_in_caption'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -321,9 +310,7 @@ $result_trees{'cindex_in_caption'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -358,33 +345,42 @@ In float.
 
 ';
 
-$result_nodes{'cindex_in_caption'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'cindex_in_caption'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'cindex_in_caption'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'cindex_in_caption'}[0];
+$result_nodes{'cindex_in_caption'}[1] = $result_nodes{'cindex_in_caption'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'cindex_in_caption'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'cindex_in_caption'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'cindex_in_caption'};
-
-$result_menus{'cindex_in_caption'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'cindex_in_caption'} = [];
 
@@ -400,11 +396,9 @@ $result_floats{'cindex_in_caption'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'fl',
         'normalized' => 'label'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -456,7 +450,6 @@ fl 1: in caption
 
 * index entry:                           chap.                  (line 9)
 
-
 
 Tag Table:
 Node: Top27
@@ -474,7 +467,7 @@ End:
 
 $result_converted{'html'}->{'cindex_in_caption'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -526,7 +519,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; [<a href="#chap
 <a class="index-entry-id" id="index-index-entry"></a>
 </p></div></div>
 <div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_cp_letter-I">I</th></tr>

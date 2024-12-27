@@ -43,9 +43,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -77,52 +75,72 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'Function'
+                              'contents' => [
+                                {
+                                  'text' => 'Function'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
                             }
                           ],
-                          'extra' => {
-                            'def_role' => 'category'
+                          'info' => {
+                            'inserted' => 1
                           },
-                          'type' => 'bracketed_inserted'
+                          'type' => 'def_category'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
-                          'text' => ' ',
-                          'type' => 'spaces_inserted'
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'type'
-                          },
-                          'text' => 'TYPE'
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'spaces'
+                          'info' => {
+                            'inserted' => 1
                           },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'name'
-                          },
-                          'text' => 'NAME'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'TYPE'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_type'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'typearg'
-                          },
-                          'text' => 'ARGUMENTS...'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'NAME'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'ARGUMENTS...'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_typearg'
                         }
                       ],
                       'info' => {
@@ -136,7 +154,19 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                   ],
                   'extra' => {
                     'def_command' => 'deftypefun',
-                    'def_index_element' => {},
+                    'def_index_element' => {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'NAME'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     'element_region' => 'copying',
                     'index_entry' => [
                       'fn',
@@ -145,9 +175,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                     'original_def_cmdname' => 'deftypefun'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
+                    'line_nr' => 5
                   },
                   'type' => 'def_line'
                 },
@@ -192,9 +220,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 7,
-                    'macro' => ''
+                    'line_nr' => 7
                   }
                 }
               ],
@@ -204,9 +230,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -236,16 +260,12 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -275,6 +295,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -283,9 +304,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
+        'line_nr' => 10
       }
     },
     {
@@ -320,9 +339,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
+        'line_nr' => 11
       }
     },
     {
@@ -344,6 +361,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -352,9 +370,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
+        'line_nr' => 13
       }
     },
     {
@@ -391,52 +407,72 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'Function'
+                          'contents' => [
+                            {
+                              'text' => 'Function'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
+                      'info' => {
+                        'inserted' => 1
                       },
-                      'type' => 'bracketed_inserted'
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces_inserted'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'type'
-                      },
-                      'text' => 'void'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
+                      'info' => {
+                        'inserted' => 1
                       },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'something'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'void'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_type'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'typearg'
-                      },
-                      'text' => 'input'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'something'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'input'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_typearg'
                     }
                   ],
                   'info' => {
@@ -450,7 +486,19 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
               ],
               'extra' => {
                 'def_command' => 'deftypefun',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'something'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'element_node' => {},
                 'index_entry' => [
                   'fn',
@@ -459,9 +507,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                 'original_def_cmdname' => 'deftypefun'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               },
               'type' => 'def_line'
             },
@@ -506,9 +552,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             }
           ],
@@ -518,9 +562,7 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
+            'line_nr' => 16
           }
         },
         {
@@ -529,23 +571,21 @@ $result_trees{'deftypefnnewline_for_copying_before'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'deftypefnnewline_for_copying_before'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'deftypefnnewline_for_copying_before'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'deftypefnnewline_for_copying_before'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'deftypefnnewline_for_copying_before'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
 $result_trees{'deftypefnnewline_for_copying_before'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'deftypefnnewline_for_copying_before'}{'contents'}[3];
 
 $result_texis{'deftypefnnewline_for_copying_before'} = '
@@ -585,7 +625,7 @@ do something with input
 ';
 
 $result_sectioning{'deftypefnnewline_for_copying_before'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -594,11 +634,8 @@ $result_sectioning{'deftypefnnewline_for_copying_before'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -607,72 +644,81 @@ $result_sectioning{'deftypefnnewline_for_copying_before'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'deftypefnnewline_for_copying_before'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'deftypefnnewline_for_copying_before'};
+$result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'deftypefnnewline_for_copying_before'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'deftypefnnewline_for_copying_before'};
 
-$result_nodes{'deftypefnnewline_for_copying_before'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chap'
+$result_nodes{'deftypefnnewline_for_copying_before'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'deftypefnnewline_for_copying_before'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'deftypefnnewline_for_copying_before'}[0];
+$result_nodes{'deftypefnnewline_for_copying_before'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'deftypefnnewline_for_copying_before'}[0];
+$result_nodes{'deftypefnnewline_for_copying_before'}[1] = $result_nodes{'deftypefnnewline_for_copying_before'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'deftypefnnewline_for_copying_before'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'deftypefnnewline_for_copying_before'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'deftypefnnewline_for_copying_before'};
-$result_nodes{'deftypefnnewline_for_copying_before'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'deftypefnnewline_for_copying_before'};
-
-$result_menus{'deftypefnnewline_for_copying_before'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'deftypefnnewline_for_copying_before'} = [];
 
@@ -691,7 +737,7 @@ $result_indices_sort_strings{'deftypefnnewline_for_copying_before'} = {
 
 $result_converted{'html'}->{'deftypefnnewline_for_copying_before'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- Function: TYPE NAME ARGUMENTS...
@@ -738,8 +784,8 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 </div>
 <h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-something"><span class="category-def">Function:<br> </span><span><code class="def-type">void</code><br> <strong class="def-name">something</strong> <code class="def-code-arguments">input</code><a class="copiable-link" href="#index-something"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-something"><span class="category-def">Function:<br> </span><span><code class="def-type">void</code><br> <strong class="def-name">something</strong> <code class="def-code-arguments">input</code><a class="copiable-link" href="#index-something"> &para;</a></span></dt>
 <dd><p>do something with input
 </p></dd></dl>
 

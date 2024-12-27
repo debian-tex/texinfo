@@ -52,9 +52,7 @@ $result_trees{'footnote_not_closed'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -79,9 +77,7 @@ $result_errors{'footnote_not_closed'} = [
   {
     'error_line' => '@footnote missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@footnote missing closing brace',
     'type' => 'error'
   }

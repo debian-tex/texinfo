@@ -87,13 +87,17 @@ $result_trees{'empty_menu_description'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ],
-                    'node_content' => [
-                      {},
-                      {}
-                    ],
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
+                    'node_content' => {
+                      'contents' => [
+                        {},
+                        {}
+                      ]
+                    },
                     'normalized' => 'b'
                   },
                   'type' => 'menu_entry_node'
@@ -103,9 +107,7 @@ $result_trees{'empty_menu_description'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               },
               'type' => 'menu_entry'
             },
@@ -151,20 +153,17 @@ $result_trees{'empty_menu_description'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -173,17 +172,15 @@ $result_trees{'empty_menu_description'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1];
-$result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[3];
-$result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[1] = $result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[4];
+$result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1];
+$result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[3];
+$result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}{'contents'}[1] = $result_trees{'empty_menu_description'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[4];
 
 $result_texis{'empty_menu_description'} = '@node first
 
@@ -199,50 +196,25 @@ $result_texts{'empty_menu_description'} = '
 
 ';
 
-$result_nodes{'empty_menu_description'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'f'
-          }
-        ],
-        'normalized' => 'b'
-      },
-      'type' => 'menu_entry_node'
+$result_nodes{'empty_menu_description'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
     }
   }
-};
+];
 
-$result_menus{'empty_menu_description'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'f'
-          }
-        ],
-        'normalized' => 'b'
-      },
-      'type' => 'menu_entry_node'
+$result_menus{'empty_menu_description'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'first'
     }
   }
-};
+];
 
 $result_errors{'empty_menu_description'} = [];
 
@@ -260,7 +232,7 @@ $result_converted{'plaintext'}->{'empty_menu_description'} = '* Menu:
 
 $result_converted{'html'}->{'empty_menu_description'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -277,7 +249,7 @@ $result_converted{'html'}->{'empty_menu_description'} = '<!DOCTYPE html>
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 pre.menu-comment-preformatted {font-family: serif}
 span:hover a.copiable-link {visibility: visible}
-td.menu-entry-description {vertical-align: top}
+td.menu-entry-description {vertical-align: top; padding-left: 1em}
 td.menu-entry-destination {vertical-align: top}
 th.menu-comment {text-align:left}
 -->
@@ -289,9 +261,9 @@ th.menu-comment {text-align:left}
 <body lang="en">
 <h4 class="node" id="first"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td class="menu-entry-destination">&bull; <a href="f.html#b" accesskey="1">a</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description"></td></tr>
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+<table class="menu">
+<tr><td class="menu-entry-destination">&bull; <a href="f.html#b" accesskey="1">a</a>:</td><td class="menu-entry-description"></td></tr>
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted">
 
 </pre></th></tr></table>
 

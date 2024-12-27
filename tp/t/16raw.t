@@ -43,6 +43,17 @@ in verbatim2
 ',
 {'EXPANDED_FORMATS' => ['tex', 'html']}
 ],
+['comments_on_raw_block_line',
+'@html@c Hcomment
+In HTML
+@end html@c Hafter end
+
+@tex@c Tcomment
+In TeX
+@end tex@c Tafter end
+',
+{'EXPANDED_FORMATS' => ['tex']},
+],
 ['raw_in_para',
 'para
 @verbatim
@@ -158,6 +169,30 @@ $$
 @end html
 ',
 {'EXPANDED_FORMATS' => ['tex']}
+],
+['empty_line_in_command_in_expanded_not_expanded',
+'
+@tex
+@anchor{a
+
+b}.
+
+@code{v
+
+n}
+@end tex
+
+@html
+@anchor{ha
+
+hb}.
+
+@code{hv
+
+hn}
+@end html
+',
+{'EXPANDED_FORMATS' => ['html']}
 ],
 ['verbatim_and_verbatiminclude',
 '@verbatim
@@ -454,6 +489,10 @@ in displaymath
 @inlinefmt{html, in 
 
 <i>@acronym{HTML}</i>}.
+'],
+['inlineraw_not_closed',
+'@inlineraw{html, aa
+@section sec
 '],
 ['inline_missing_first_arg',
 '@inlinefmt{ , aaa}. @inlineraw{, bbb}.

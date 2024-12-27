@@ -41,14 +41,12 @@ $result_trees{'command_in_end'} = {
                                   'text' => 'quotation'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 3,
-                            'macro' => ''
+                            'line_nr' => 3
                           }
                         }
                       ],
@@ -62,18 +60,13 @@ $result_trees{'command_in_end'} = {
                     }
                   ],
                   'cmdname' => 'end',
-                  'extra' => {
-                    'missing_argument' => 1
-                  },
                   'info' => {
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 }
               ],
@@ -119,14 +112,12 @@ $result_trees{'command_in_end'} = {
                                       'text' => 'uotation'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'code',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 7,
-                                'macro' => ''
+                                'line_nr' => 7
                               }
                             }
                           ],
@@ -149,9 +140,7 @@ $result_trees{'command_in_end'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     }
                   ],
@@ -197,14 +186,12 @@ $result_trees{'command_in_end'} = {
                                           'text' => 'otation'
                                         }
                                       ],
-                                      'type' => 'brace_command_arg'
+                                      'type' => 'brace_container'
                                     }
                                   ],
                                   'cmdname' => 'code',
                                   'source_info' => {
-                                    'file_name' => '',
-                                    'line_nr' => 11,
-                                    'macro' => ''
+                                    'line_nr' => 11
                                   }
                                 }
                               ],
@@ -227,9 +214,7 @@ $result_trees{'command_in_end'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 11,
-                            'macro' => ''
+                            'line_nr' => 11
                           }
                         }
                       ],
@@ -275,14 +260,12 @@ $result_trees{'command_in_end'} = {
                                               'text' => 'atio'
                                             }
                                           ],
-                                          'type' => 'brace_command_arg'
+                                          'type' => 'brace_container'
                                         }
                                       ],
                                       'cmdname' => 'asis',
                                       'source_info' => {
-                                        'file_name' => '',
-                                        'line_nr' => 15,
-                                        'macro' => ''
+                                        'line_nr' => 15
                                       }
                                     },
                                     {
@@ -308,9 +291,7 @@ $result_trees{'command_in_end'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 15,
-                                'macro' => ''
+                                'line_nr' => 15
                               }
                             }
                           ],
@@ -354,14 +335,12 @@ $result_trees{'command_in_end'} = {
                                     {
                                       'args' => [
                                         {
-                                          'type' => 'brace_command_arg'
+                                          'type' => 'brace_container'
                                         }
                                       ],
                                       'cmdname' => 'asis',
                                       'source_info' => {
-                                        'file_name' => '',
-                                        'line_nr' => 19,
-                                        'macro' => ''
+                                        'line_nr' => 19
                                       }
                                     },
                                     {
@@ -387,16 +366,12 @@ $result_trees{'command_in_end'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 19,
-                                'macro' => ''
+                                'line_nr' => 19
                               }
                             }
                           ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 17,
-                            'macro' => ''
+                            'line_nr' => 17
                           }
                         },
                         {
@@ -437,14 +412,12 @@ $result_trees{'command_in_end'} = {
                                     {
                                       'args' => [
                                         {
-                                          'type' => 'brace_command_arg'
+                                          'type' => 'brace_container'
                                         }
                                       ],
                                       'cmdname' => 'asis',
                                       'source_info' => {
-                                        'file_name' => '',
-                                        'line_nr' => 23,
-                                        'macro' => ''
+                                        'line_nr' => 23
                                       }
                                     },
                                     {
@@ -470,16 +443,12 @@ $result_trees{'command_in_end'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 23,
-                                'macro' => ''
+                                'line_nr' => 23
                               }
                             }
                           ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 21,
-                            'macro' => ''
+                            'line_nr' => 21
                           }
                         },
                         {
@@ -520,14 +489,12 @@ $result_trees{'command_in_end'} = {
                                     {
                                       'args' => [
                                         {
-                                          'type' => 'brace_command_arg'
+                                          'type' => 'brace_container'
                                         }
                                       ],
                                       'cmdname' => 'asis',
                                       'source_info' => {
-                                        'file_name' => '',
-                                        'line_nr' => 27,
-                                        'macro' => ''
+                                        'line_nr' => 27
                                       }
                                     },
                                     {
@@ -553,16 +520,12 @@ $result_trees{'command_in_end'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 27,
-                                'macro' => ''
+                                'line_nr' => 27
                               }
                             }
                           ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 25,
-                            'macro' => ''
+                            'line_nr' => 25
                           }
                         },
                         {
@@ -596,37 +559,27 @@ $result_trees{'command_in_end'} = {
                             }
                           ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 29,
-                            'macro' => ''
+                            'line_nr' => 29
                           }
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 13,
-                        'macro' => ''
+                        'line_nr' => 13
                       }
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -692,198 +645,154 @@ $result_errors{'command_in_end'} = [
   {
     'error_line' => 'warning: @code should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@code should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: @code{quotation}
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'bad argument to @end: @code{quotation}',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @code should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@code should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: unknown @end q
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'unknown @end q',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: q@code{uotation}
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'bad argument to @end: q@code{uotation}',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @code should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@code should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: unknown @end qu
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'unknown @end qu',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: qu@code{otation}
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'bad argument to @end: qu@code{otation}',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @asis should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@asis should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: unknown @end quotn
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'unknown @end quotn',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: quot@asis{atio}n
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'bad argument to @end: quot@asis{atio}n',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @asis should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 19,
-    'macro' => '',
     'text' => '@asis should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: q@asis{}uotation
 ',
-    'file_name' => '',
     'line_nr' => 19,
-    'macro' => '',
     'text' => 'bad argument to @end: q@asis{}uotation',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @asis should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 23,
-    'macro' => '',
     'text' => '@asis should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: qu@asis{}otation
 ',
-    'file_name' => '',
     'line_nr' => 23,
-    'macro' => '',
     'text' => 'bad argument to @end: qu@asis{}otation',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @asis should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@asis should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: quot@asis{}ation
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => 'bad argument to @end: quot@asis{}ation',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end verbatim\'
 ',
-    'file_name' => '',
     'line_nr' => 31,
-    'macro' => '',
     'text' => 'no matching `@end verbatim\'',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end quotation\'
 ',
-    'file_name' => '',
     'line_nr' => 31,
-    'macro' => '',
     'text' => 'no matching `@end quotation\'',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end quotation\'
 ',
-    'file_name' => '',
     'line_nr' => 31,
-    'macro' => '',
     'text' => 'no matching `@end quotation\'',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end quotation\'
 ',
-    'file_name' => '',
     'line_nr' => 31,
-    'macro' => '',
     'text' => 'no matching `@end quotation\'',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end quotation\'
 ',
-    'file_name' => '',
     'line_nr' => 31,
-    'macro' => '',
     'text' => 'no matching `@end quotation\'',
     'type' => 'error'
   }

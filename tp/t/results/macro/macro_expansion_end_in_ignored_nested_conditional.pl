@@ -60,9 +60,7 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -71,9 +69,7 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -83,7 +79,7 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -96,7 +92,7 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
               'status' => 'start'
             },
             {
-              'counter' => 2,
+              'counter' => 1,
               'element' => {
                 'args' => [
                   {
@@ -117,67 +113,31 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
                 'cmdname' => 'ifset',
                 'contents' => [
                   {
+                    'text' => '@ifset b
+',
+                    'type' => 'raw'
+                  },
+                  {
                     'source_marks' => [
                       {
                         'counter' => 1,
-                        'element' => {
-                          'cmdname' => 'ifset',
-                          'contents' => [
-                            {
-                              'source_marks' => [
-                                {
-                                  'counter' => 1,
-                                  'position' => 2,
-                                  'sourcemark_type' => 'macro_expansion',
-                                  'status' => 'end'
-                                }
-                              ],
-                              'text' => 'GG',
-                              'type' => 'raw'
-                            },
-                            {
-                              'text' => '
-',
-                              'type' => 'raw'
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'ifset'
-                                    }
-                                  ],
-                                  'info' => {
-                                    'spaces_after_argument' => {
-                                      'text' => '
-'
-                                    }
-                                  },
-                                  'type' => 'line_arg'
-                                }
-                              ],
-                              'cmdname' => 'end',
-                              'extra' => {
-                                'text_arg' => 'ifset'
-                              },
-                              'info' => {
-                                'spaces_before_argument' => {
-                                  'text' => ' '
-                                }
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 8,
-                                'macro' => ''
-                              }
-                            }
-                          ]
-                        },
-                        'sourcemark_type' => 'ignored_conditional_block'
+                        'position' => 2,
+                        'sourcemark_type' => 'macro_expansion',
+                        'status' => 'end'
                       }
                     ],
-                    'text' => ''
+                    'text' => 'GG',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end ifset
+',
+                    'type' => 'raw'
                   },
                   {
                     'args' => [
@@ -206,9 +166,7 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 9,
-                      'macro' => ''
+                      'line_nr' => 9
                     }
                   }
                 ],
@@ -218,7 +176,6 @@ $result_trees{'macro_expansion_end_in_ignored_nested_conditional'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 7,
                   'macro' => 'beginnestedcond'
                 }

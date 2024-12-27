@@ -1,6 +1,6 @@
 # Makefile.am for texinfo/info.
 #
-# Copyright 2002-2023 Free Software Foundation, Inc.
+# Copyright 2002-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -9,6 +9,14 @@
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# no-dist-built-sources is actually in 1.16.4 upward
+# could use no-dist-built-sources such that funs.h is not distributed even
+# if in BUILT_SOURCES
+#no-dist-built-sources
+# However, in tests with automake 1.16.5 funs.h does not seems to be
+# distributed even without no-dist-built-sources
+AUTOMAKE_OPTIONS = 1.16
 
 # Use `ginfo' for building to avoid confusion with the standard `info'
 # target.  Removes the `g' in the install rule before applying any
@@ -22,7 +30,8 @@ AM_CPPFLAGS =                                   \
   -I$(top_builddir)/gnulib/lib                  \
   -DLOCALEDIR=\"$(datadir)/locale\"             \
   -DINFODIR=\"$(infodir)\"                      \
-  -DINFODIR2=\"$(datadir)/info\"
+  -DINFODIR2=\"$(datadir)/info\"                \
+  -DSYSCONFDIR=\"$(sysconfdir)\"
 
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS)
 
@@ -89,12 +98,67 @@ BUILT_SOURCES = funs.h
 
 # Test suite
 
-if have_ptys
-check_PROGRAMS = pseudotty
-pseudotty_SOURCES = pseudotty.c
-endif
+CLEANFILES =
 
-TESTS = \
+info_tests_with_pseudotty = \
+	t/adjust-anchors.sh \
+	t/all-only.sh \
+	t/anchor-positions.sh \
+	t/body-start.sh \
+	t/close-window-after-search.sh \
+	t/c-u-m-x-scroll-forward.sh \
+	t/dir-entry-to-subdir.sh \
+	t/dir-merge.sh \
+	t/echo-area-no-completions.sh \
+	t/empty-infopath.sh \
+	t/end-of-line.sh \
+	t/gc-split.sh \
+	t/goal-column.sh \
+	t/goto-quoted.sh \
+	t/inc-sea-bs.sh \
+	t/inc-sea-forward-nonregex.sh \
+	t/inc-sea-forward.sh \
+	t/inc-sea-history.sh \
+	t/inc-sea-insensitive.sh \
+	t/index-apropos.sh \
+	t/index-completing.sh \
+	t/index-long-nodeline.sh \
+	t/index-search.sh \
+	t/index.sh \
+	t/last-node-not-top-level.sh \
+	t/last-no-history.sh \
+	t/malformed-split.sh \
+	t/menu-sequence.sh \
+	t/multiple-completions.sh \
+	t/next-quoted.sh \
+	t/no-index.sh \
+	t/quoted-label-and-target.sh \
+	t/quoted-label-as-target.sh \
+	t/quoted-manual-in-label.sh \
+	t/quoted-manual-in-target.sh \
+	t/quoted-target.sh \
+	t/recode-C-locale.sh \
+	t/relative-reference.sh \
+	t/replace-viewed.sh \
+	t/resize-in-completions.sh \
+	t/search-after-tag.sh \
+	t/search-empty.sh \
+	t/search-skip-screen.sh \
+	t/search-split-after-index.sh \
+	t/split-file-menu.sh \
+	t/split-footnotes.sh \
+	t/split-index.sh \
+	t/star-note-non-whitespace.sh \
+	t/tab-argument.sh \
+	t/tab-no-xref.sh \
+	t/tab.sh \
+	t/tab-skip-node.sh \
+	t/window-split-dir.sh \
+	t/xref-across-lines-2.sh \
+	t/xref-across-lines.sh \
+	t/xref-to-anchor.sh
+
+info_tests = \
 	t/file.sh \
 	t/file-node.sh \
 	t/file-nodes.sh \
@@ -105,13 +169,11 @@ TESTS = \
 	t/no-file.sh \
 	t/node-no-file.sh \
 	t/split.sh \
-	t/malformed-split.sh \
 	t/relative-path.sh \
 	t/file-relative-path.sh \
 	t/dir.sh \
 	t/dir-file.sh \
 	t/dir-file-sloppily.sh \
-	t/dir-merge.sh \
 	t/dir-nondir.sh \
 	t/dir-no-file.sh \
 	t/dir-file-menu.sh \
@@ -122,68 +184,25 @@ TESTS = \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/dir-dangling-entry.sh \
-	t/dir-entry-to-subdir.sh \
 	t/spec-file-node.sh \
 	t/spec-no-node.sh \
 	t/spec-menu.sh \
-	t/all-only.sh \
 	t/empty.sh \
-	t/tab.sh \
-	t/tab-argument.sh \
-	t/tab-no-xref.sh \
-	t/tab-skip-node.sh \
-	t/xref-across-lines.sh \
-	t/xref-across-lines-2.sh \
-	t/body-start.sh \
-	t/end-of-line.sh \
-	t/goal-column.sh \
-	t/star-note-non-whitespace.sh \
-	t/c-u-m-x-scroll-forward.sh \
-	t/last-no-history.sh \
-	t/split-footnotes.sh \
-	t/window-split-dir.sh \
-	t/last-node-not-top-level.sh \
-	t/adjust-anchors.sh \
-	t/recode-C-locale.sh \
-	t/xref-to-anchor.sh \
-	t/search-after-tag.sh \
-	t/split-file-menu.sh \
-	t/search-split-after-index.sh \
-	t/index.sh \
-	t/no-index.sh \
-	t/index-apropos.sh \
-	t/index-search.sh \
-	t/index-completing.sh \
-	t/split-index.sh \
-	t/index-long-nodeline.sh \
 	t/index-paren.sh \
-	t/empty-infopath.sh \
-	t/menu-sequence.sh \
-	t/relative-reference.sh \
-	t/resize-in-completions.sh \
-	t/replace-viewed.sh \
-	t/search-skip-screen.sh \
-	t/search-empty.sh \
-	t/close-window-after-search.sh \
-	t/inc-sea-forward.sh \
-	t/inc-sea-forward-nonregex.sh \
-	t/inc-sea-insensitive.sh \
-	t/inc-sea-history.sh \
-	t/inc-sea-bs.sh \
-	t/gc-split.sh \
-	t/anchor-positions.sh \
-	t/quoted-label-as-target.sh \
-	t/quoted-target.sh \
-	t/quoted-label-and-target.sh \
-	t/quoted-manual-in-target.sh \
-	t/quoted-manual-in-label.sh \
-	t/goto-quoted.sh \
-	t/next-quoted.sh \
-	t/echo-area-no-completions.sh \
-	t/multiple-completions.sh \
 	t/help.sh
 
-EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
+TESTS = $(info_tests)
+
+if PTYS_TESTS
+check_PROGRAMS = pseudotty
+pseudotty_SOURCES = pseudotty.c
+
+TESTS += $(info_tests_with_pseudotty)
+else
+CLEANFILES += pseudotty
+endif
+
+EXTRA_DIST += $(info_tests) $(info_tests_with_pseudotty) $(XFAIL_TESTS) \
   t/README t/infodir \
   t/Init-test.inc \
   t/Infokey-config t/node-target

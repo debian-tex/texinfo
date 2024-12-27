@@ -1,0 +1,76 @@
+\documentclass{book}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[gen]{eurosym}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+\usepackage{titleps}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
+\usepackage{tabularx}
+\usepackage{float}
+% use hidelinks to remove boxes around links to be similar to Texinfo TeX
+\usepackage[hidelinks]{hyperref}
+
+\makeatletter
+\newcommand{\Texinfosettitle}{No Title}%
+
+% no index headers
+\indexsetup{level=\relax,toclevel=section}%
+\makeindex[name=cp,title=]%
+\makeindex[name=fn,title=]%
+
+% redefine the \mainmatter command such that it does not clear page
+% as if in double page
+\renewcommand\mainmatter{\clearpage\@mainmattertrue\pagenumbering{arabic}}
+\newenvironment{Texinfopreformatted}{%
+  \par\GNUTobeylines\obeyspaces\frenchspacing\parskip=\z@\parindent=\z@}{}
+{\catcode`\^^M=13 \gdef\GNUTobeylines{\catcode`\^^M=13 \def^^M{\null\par}}}
+\newenvironment{Texinfoindented}{\begin{list}{}{}\item\relax}{\end{list}}
+
+% used for substitutions in commands
+\newcommand{\Texinfoplaceholder}[1]{}
+
+\newpagestyle{single}{\sethead[\chaptername{} \thechapter{} \chaptertitle{}][][\thepage]
+                              {\chaptername{} \thechapter{} \chaptertitle{}}{}{\thepage}}
+
+% allow line breaking at underscore
+\let\Texinfounderscore\_
+\renewcommand{\_}{\Texinfounderscore\discretionary{}{}{}}
+\renewcommand{\includegraphics}[1]{\fbox{FIG \detokenize{#1}}}
+
+\makeatother
+% set default for @setchapternewpage
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\Texinfoplaceholder{setchapternewpage placeholder}\clearpage}{}{}
+\makeatother
+\pagestyle{single}%
+
+\begin{document}
+\tableofcontents\newpage
+\label{anchor:Top}%
+\chapter{{Chap\^{e}}}
+\label{anchor:chap_00ea}%
+
+Text\footnote{Go `\texttt{s}'}
+
+\index[cp]{entry@entry}%
+
+\section{{Section}}
+\label{anchor:sec}%
+
+\printindex[cp]
+
+
+\noindent\begin{tabularx}{\linewidth}{@{}Xr}
+\rightskip=5em plus 1 fill \hangindent=2em \hyphenpenalty=10000
+\texttt{type name something\ (\ aa\ )}& [category]
+\end{tabularx}
+
+\index[fn]{name@\texttt{name}}%
+\begin{quote}
+\unskip{\parskip=0pt\noindent}%
+A def.
+\end{quote}
+\end{document}

@@ -18,7 +18,6 @@ in format_command
    Something
 * Menu:
 
-
    Something
 * Menu:
 
@@ -66,7 +65,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -99,7 +98,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -181,7 +180,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -214,7 +213,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -240,7 +239,6 @@ f-lushleft
      Something
 * Menu:
 
-
      Something
 * Menu:
 
@@ -288,7 +286,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -321,7 +319,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -346,7 +344,6 @@ f-lushleft
      Something
 * Menu:
 
-
      Something
 * Menu:
 
@@ -394,7 +391,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -427,7 +424,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -509,7 +506,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -542,7 +539,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -568,7 +565,6 @@ f-lushleft
      Something
 * Menu:
 
-
      Something
 * Menu:
 
@@ -616,7 +612,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -649,7 +645,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -674,7 +670,6 @@ f-lushleft
      Something
 * Menu:
 
-
      Something
 * Menu:
 
@@ -722,7 +717,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -755,7 +750,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -837,7 +832,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -870,7 +865,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -898,7 +893,6 @@ in format_command
 
 Something
 * Menu:
-
 
 Something
 * Menu:
@@ -947,7 +941,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name
+ -- c-ategory: d--effn_name
           a--rguments...
      d-effn
 
@@ -981,7 +975,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name
+ -- c-ategory: d--effn_name
           a--rguments...
      d-effn
 
@@ -1007,7 +1001,6 @@ multitable item 2                           multitable tab 2 Call macro in mutit
                                             
                                             Something
                                             * Menu:
-                                            
                                             
                                             Something
                                             * Menu:
@@ -1056,7 +1049,7 @@ multitable item 2                           multitable tab 2 Call macro in mutit
                                             
                                                  s--mallexample
                                             
-                                             -- c--ategory: d--effn_name a--rguments...
+                                             -- c-ategory: d--effn_name a--rguments...
                                                  d-effn
                                             
                                             a
@@ -1089,7 +1082,7 @@ multitable item 2                           multitable tab 2 Call macro in mutit
                                             
                                                  s--mallexample
                                             
-                                             -- c--ategory: d--effn_name a--rguments...
+                                             -- c-ategory: d--effn_name a--rguments...
                                                  d-effn
                                             
                                             a
@@ -1172,7 +1165,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name
+ -- c-ategory: d--effn_name
           a--rguments...
      d-effn
 
@@ -1206,7 +1199,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name
+ -- c-ategory: d--effn_name
           a--rguments...
      d-effn
 
@@ -1287,7 +1280,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d--effn
 
      a
@@ -1320,7 +1313,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1402,7 +1395,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d--effn
 
      a
@@ -1435,7 +1428,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1519,7 +1512,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1552,7 +1545,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1566,10 +1559,9 @@ f-lushleft
 
                             ce-ntered line
 
-
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      deffn call macro in deffn in macro
 
 * Menu:
@@ -1580,7 +1572,6 @@ f-lushleft
 
      Something
 * Menu:
-
 
      Something
 * Menu:
@@ -1629,7 +1620,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1662,7 +1653,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1744,7 +1735,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1777,7 +1768,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1792,7 +1783,7 @@ f-lushleft
                             ce-ntered line
 
    call macro in deffn at the beginning
- -- c--ategory2: d--effn_name2 a--rguments2...
+ -- c-ategory2: d--effn_name2 a--rguments2...
      in macro
 
 * Menu:
@@ -1803,7 +1794,6 @@ f-lushleft
 
      Something
 * Menu:
-
 
      Something
 * Menu:
@@ -1852,7 +1842,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1885,7 +1875,7 @@ f-lushleft
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1911,7 +1901,6 @@ a line
      Something
 * Menu:
 
-
      Something
 * Menu:
 
@@ -1959,7 +1948,7 @@ a line
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -1992,7 +1981,7 @@ a line
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -2019,7 +2008,6 @@ a line
      Something
 * Menu:
 
-
      Something
 * Menu:
 
@@ -2067,7 +2055,7 @@ a line
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -2100,7 +2088,7 @@ a line
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -2183,7 +2171,7 @@ a line2
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -2216,7 +2204,7 @@ a line2
 
           s--mallexample
 
-      -- c--ategory: d--effn_name a--rguments...
+      -- c-ategory: d--effn_name a--rguments...
           d-effn
 
      a
@@ -2242,7 +2230,6 @@ in format_command
    Something
 * Menu:
 
-
    Something
 * Menu:
 
@@ -2290,7 +2277,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2323,7 +2310,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2348,7 +2335,6 @@ in format_command
    Something
 * Menu:
 
-
    Something
 * Menu:
 
@@ -2396,7 +2382,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2429,7 +2415,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2511,7 +2497,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2544,7 +2530,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2569,7 +2555,6 @@ in format_command
 
 Something
 * Menu:
-
 
 Something
 * Menu:
@@ -2618,7 +2603,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2651,7 +2636,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2734,7 +2719,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2767,7 +2752,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2791,7 +2776,6 @@ in format_command
 
                                                               Something
 * Menu:
-
 
                                                               Something
 * Menu:
@@ -2840,7 +2824,7 @@ in verbatim
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
                                                                  d-effn
 
 a
@@ -2873,7 +2857,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2955,7 +2939,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -2988,7 +2972,7 @@ lone mu-ltitable item
 
      s--mallexample
 
- -- c--ategory: d--effn_name a--rguments...
+ -- c-ategory: d--effn_name a--rguments...
      d-effn
 
 a
@@ -3001,7 +2985,6 @@ f-lushleft
                                                             f-lushright
 
                             ce-ntered line
-
 
 
 Tag Table:

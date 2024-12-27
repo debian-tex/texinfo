@@ -45,9 +45,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -56,9 +54,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -140,9 +136,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -151,9 +145,7 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {

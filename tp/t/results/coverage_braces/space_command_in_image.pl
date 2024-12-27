@@ -17,13 +17,13 @@ $result_trees{'space_command_in_image'} = {
                   'text' => 'f--ile'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -31,7 +31,7 @@ $result_trees{'space_command_in_image'} = {
                   'cmdname' => ' '
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -39,9 +39,7 @@ $result_trees{'space_command_in_image'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -55,13 +53,13 @@ $result_trees{'space_command_in_image'} = {
                   'text' => 'f--ile'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -69,7 +67,7 @@ $result_trees{'space_command_in_image'} = {
                   'cmdname' => ':'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -77,9 +75,7 @@ $result_trees{'space_command_in_image'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -101,12 +97,16 @@ $result_floats{'space_command_in_image'} = {};
 
 
 
-$result_converted{'plaintext'}->{'space_command_in_image'} = 'Image description""\\. Image description""\\.';
+$result_converted{'plaintext'}->{'space_command_in_image'} = 'Image description""\\. Image description""\\.
+';
 
 
 $result_converted{'html_text'}->{'space_command_in_image'} = '<img class="image" src="f--ile.png" alt="&nbsp;"> <img class="image" src="f--ile.png" alt="f--ile">';
 
 
 $result_converted{'latex_text'}->{'space_command_in_image'} = '\\includegraphics{f--ile} \\includegraphics{f--ile}';
+
+
+$result_converted{'docbook'}->{'space_command_in_image'} = '<informalfigure><mediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></mediaobject></informalfigure> <informalfigure><mediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></mediaobject></informalfigure>';
 
 1;

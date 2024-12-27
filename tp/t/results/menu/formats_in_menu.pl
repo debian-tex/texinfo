@@ -67,9 +67,11 @@ $result_trees{'formats_in_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -95,11 +97,8 @@ $result_trees{'formats_in_menu'} = {
                             {
                               'cmdname' => 'asis',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 5,
-                                'macro' => ''
-                              },
-                              'type' => 'command_as_argument'
+                                'line_nr' => 5
+                              }
                             }
                           ],
                           'info' => {
@@ -141,9 +140,7 @@ $result_trees{'formats_in_menu'} = {
                                     }
                                   },
                                   'source_info' => {
-                                    'file_name' => '',
-                                    'line_nr' => 6,
-                                    'macro' => ''
+                                    'line_nr' => 6
                                   }
                                 }
                               ],
@@ -193,9 +190,7 @@ $result_trees{'formats_in_menu'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 8,
-                            'macro' => ''
+                            'line_nr' => 8
                           }
                         }
                       ],
@@ -208,9 +203,7 @@ $result_trees{'formats_in_menu'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -218,9 +211,7 @@ $result_trees{'formats_in_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               },
               'type' => 'menu_entry'
             },
@@ -258,9 +249,11 @@ $result_trees{'formats_in_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -330,16 +323,12 @@ $result_trees{'formats_in_menu'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 14,
-                            'macro' => ''
+                            'line_nr' => 14
                           }
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       }
                     }
                   ],
@@ -347,9 +336,7 @@ $result_trees{'formats_in_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               },
               'type' => 'menu_entry'
             },
@@ -372,9 +359,11 @@ $result_trees{'formats_in_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -445,16 +434,12 @@ $result_trees{'formats_in_menu'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 19,
-                                'macro' => ''
+                                'line_nr' => 19
                               }
                             }
                           ],
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 16,
-                            'macro' => ''
+                            'line_nr' => 16
                           }
                         },
                         {
@@ -469,9 +454,7 @@ $result_trees{'formats_in_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               },
               'type' => 'menu_entry'
             },
@@ -494,9 +477,11 @@ $result_trees{'formats_in_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -520,14 +505,12 @@ $result_trees{'formats_in_menu'} = {
                                   'text' => '* acronym::'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'acronym',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 21,
-                            'macro' => ''
+                            'line_nr' => 21
                           }
                         },
                         {
@@ -542,9 +525,7 @@ $result_trees{'formats_in_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               },
               'type' => 'menu_entry'
             },
@@ -614,16 +595,12 @@ $result_trees{'formats_in_menu'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 27,
-                        'macro' => ''
+                        'line_nr' => 27
                       }
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
+                    'line_nr' => 24
                   }
                 },
                 {
@@ -666,20 +643,17 @@ $result_trees{'formats_in_menu'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -688,19 +662,17 @@ $result_trees{'formats_in_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1];
-$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[1];
+$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
+$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1];
+$result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'formats_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'formats_in_menu'} = '@node first
 
@@ -754,48 +726,25 @@ Menu comment
 
 ';
 
-$result_nodes{'formats_in_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'gcc'
-          }
-        ]
-      },
-      'type' => 'menu_entry_node'
+$result_nodes{'formats_in_menu'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
     }
   }
-};
+];
 
-$result_menus{'formats_in_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'gcc'
-          }
-        ]
-      },
-      'type' => 'menu_entry_node'
+$result_menus{'formats_in_menu'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'first'
     }
   }
-};
+];
 
 $result_errors{'formats_in_menu'} = [];
 
@@ -826,7 +775,7 @@ Log$
 
 $result_converted{'html'}->{'formats_in_menu'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -845,7 +794,7 @@ div.example {margin-left: 3.2em}
 pre.menu-comment-preformatted {font-family: serif}
 pre.menu-preformatted {font-family: serif}
 span:hover a.copiable-link {visibility: visible}
-td.menu-entry-description {vertical-align: top}
+td.menu-entry-description {vertical-align: top; padding-left: 1em}
 td.menu-entry-destination {vertical-align: top}
 th.menu-comment {text-align:left}
 -->
@@ -857,29 +806,29 @@ th.menu-comment {text-align:left}
 <body lang="en">
 <h4 class="node" id="first"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td class="menu-entry-destination">&bull; <a href="gcc.html#Top" accesskey="1">(gcc)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">text
+<table class="menu">
+<tr><td class="menu-entry-destination">&bull; <a href="gcc.html#Top" accesskey="1">(gcc)</a>:</td><td class="menu-entry-description">text
 <dl class="table">
 <dt>item</dt>
 <dd><pre class="menu-preformatted">* table line::
 </pre></dd>
 </dl>
 </td></tr>
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted">
 
-</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="info.html#Top" accesskey="2">(info)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+</pre></th></tr><tr><td class="menu-entry-destination">&bull; <a href="info.html#Top" accesskey="2">(info)</a>:</td><td class="menu-entry-description">
 <pre class="verbatim">some @ verb{x atim
 * texinfo:: in @ verbatim
 </pre></td></tr>
-<tr><td class="menu-entry-destination">&bull; <a href="manual2.html#Top" accesskey="3">(manual2)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">%
+<tr><td class="menu-entry-destination">&bull; <a href="manual2.html#Top" accesskey="3">(manual2)</a>:</td><td class="menu-entry-description">%
 
 <i></i>
 Log$
 </td></tr>
-<tr><td class="menu-entry-destination">&bull; <a href="truc.html#Top" accesskey="4">(truc)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description"><abbr class="acronym">description
+<tr><td class="menu-entry-destination">&bull; <a href="truc.html#Top" accesskey="4">(truc)</a>:</td><td class="menu-entry-description"><abbr class="acronym">description
 * acronym::</abbr>
 </td></tr>
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted">
 
 </pre><div class="example">
 <pre class="example-preformatted">* subsubsection::

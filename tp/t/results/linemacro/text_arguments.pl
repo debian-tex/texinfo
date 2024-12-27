@@ -62,9 +62,7 @@ $result_trees{'text_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -73,64 +71,10 @@ $result_trees{'text_arguments'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'X'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  },
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'Y'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  },
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'Z'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'nospace'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -138,17 +82,68 @@ $result_trees{'text_arguments'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'X'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'Y'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'line_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'Z'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'nospace',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Z'
             },
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'bullet',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'nospace'
               }
@@ -159,12 +154,11 @@ $result_trees{'text_arguments'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'minus',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'nospace'
               }

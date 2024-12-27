@@ -3,14 +3,14 @@ Appendix A Copying and indices
 
 In the appendix, we print the indices and references.
 
-   *note Copying information:: for the copying information.  *note
-Public domain reference:: for reference on the licence.
+   Copying information for the copying information.  Public domain
+reference for reference on the licence.
 
-   *note Titlepage anchor:: for the titlepage.  *note Titlepage footnote
-anchor:: for reference on the titlepage.
+   Titlepage anchor for the titlepage.  Titlepage footnote anchor for
+reference on the titlepage.
 
    This is a test manual, trivially and explicitly in the public
-domain(1) (*note Copying and indices-Footnote-1::).
+domain(1) (see Copying and indices-Footnote-1).
 
 * Menu:
 
@@ -33,6 +33,7 @@ domain(1) (*note Copying and indices-Footnote-1::).
 Top
 1 Chapter
 Appendix A Copying and indices
+
    ---------- Footnotes ----------
 
    (1) The public domain is something you should allready know

@@ -59,9 +59,7 @@ $result_trees{'unpaired_backslash_in_macro_body'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -70,31 +68,10 @@ $result_trees{'unpaired_backslash_in_macro_body'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'mymacro'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -102,6 +79,24 @@ $result_trees{'unpaired_backslash_in_macro_body'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'mymacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'In macro not arg
 '
             },

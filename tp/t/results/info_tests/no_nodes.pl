@@ -39,7 +39,6 @@ $result_floats{'no_nodes'} = {};
 $result_converted{'info'}->{'no_nodes'} = 'This is , produced from .
 
 Text.
-
 
 Tag Table:
 

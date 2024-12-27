@@ -10,7 +10,6 @@ $result_trees{'explicit_sort_key'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'explicit_sort_key'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'explicit_sort_key'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -70,9 +68,7 @@ $result_trees{'explicit_sort_key'} = {
       ],
       'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -128,9 +124,7 @@ $result_trees{'explicit_sort_key'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -150,14 +144,12 @@ $result_trees{'explicit_sort_key'} = {
                           'text' => 'A'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'sortas',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
+                    'line_nr' => 8
                   }
                 },
                 {
@@ -187,14 +179,13 @@ $result_trees{'explicit_sort_key'} = {
             'sortas' => 'A'
           },
           'info' => {
+            'command_name' => 'SKindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           },
           'type' => 'index_entry_command'
         },
@@ -210,14 +201,12 @@ $result_trees{'explicit_sort_key'} = {
                           'text' => 'B'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'sortas',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 },
                 {
@@ -247,14 +236,13 @@ $result_trees{'explicit_sort_key'} = {
             'sortas' => 'B'
           },
           'info' => {
+            'command_name' => 'SKindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           },
           'type' => 'index_entry_command'
         },
@@ -270,14 +258,12 @@ $result_trees{'explicit_sort_key'} = {
                           'text' => '0'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'sortas',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 },
                 {
@@ -307,14 +293,13 @@ $result_trees{'explicit_sort_key'} = {
             'sortas' => '0'
           },
           'info' => {
+            'command_name' => 'SKindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           },
           'type' => 'index_entry_command'
         },
@@ -337,25 +322,21 @@ $result_trees{'explicit_sort_key'} = {
                                   'text' => 'invalid nesting'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'sortas',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 11,
-                            'macro' => ''
+                            'line_nr' => 11
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'b',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 }
               ],
@@ -377,14 +358,13 @@ $result_trees{'explicit_sort_key'} = {
             ]
           },
           'info' => {
+            'command_name' => 'SKindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           },
           'type' => 'index_entry_command'
         },
@@ -406,14 +386,12 @@ $result_trees{'explicit_sort_key'} = {
                       'text' => 'foo'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'sortas',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -434,25 +412,21 @@ $result_trees{'explicit_sort_key'} = {
                               'text' => 'command'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'sortas',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 13,
-                        'macro' => ''
+                        'line_nr' => 13
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -484,25 +458,21 @@ $result_trees{'explicit_sort_key'} = {
                               'text' => 'inside'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'b',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
+                        'line_nr' => 15
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'sortas',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             },
             {
@@ -524,25 +494,21 @@ $result_trees{'explicit_sort_key'} = {
                               'text' => 'inside'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'sortas',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 16,
-                        'macro' => ''
+                        'line_nr' => 16
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'url',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -586,13 +552,12 @@ $result_trees{'explicit_sort_key'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -602,9 +567,7 @@ $result_trees{'explicit_sort_key'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -648,7 +611,7 @@ and cmd .
 ';
 
 $result_sectioning{'explicit_sort_key'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -657,106 +620,99 @@ $result_sectioning{'explicit_sort_key'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'explicit_sort_key'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'explicit_sort_key'};
+$result_sectioning{'explicit_sort_key'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'explicit_sort_key'};
 
-$result_nodes{'explicit_sort_key'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'explicit_sort_key'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'explicit_sort_key'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'explicit_sort_key'}[0];
+$result_nodes{'explicit_sort_key'}[1] = $result_nodes{'explicit_sort_key'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'explicit_sort_key'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'explicit_sort_key'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'explicit_sort_key'};
-
-$result_menus{'explicit_sort_key'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'explicit_sort_key'} = [
   {
     'error_line' => 'warning: @sortas should only appear in an index entry
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @sortas should only appear in an index entry
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @sortas should only appear in an index entry
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @sortas should only appear in an index entry
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @b should not appear in @sortas
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@b should not appear in @sortas',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @sortas should only appear in an index entry
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   }
@@ -766,51 +722,30 @@ $result_errors{'explicit_sort_key'} = [
 $result_indices{'explicit_sort_key'} = {
   'index_names' => {
     'SK' => {
-      'contained_indices' => {
-        'SK' => 1
-      },
       'in_code' => 0,
       'name' => 'SK'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }
@@ -851,7 +786,6 @@ in a reuglar para .  ‘inside another ’.
 * bbbbbbb (first):                       chap.                  (line 3)
 * aaa :                                  chap.                  (line 3)
 * aaaaaaa (second):                      chap.                  (line 3)
-
 
 
 Tag Table:
@@ -914,7 +848,7 @@ $result_converted{'html_text'}->{'explicit_sort_key'} = '<div class="top-level-e
 <a class="summary-letter-printindex" href="#chap_SK_letter-B"><b>B</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="SK-entries-printindex" border="0">
+<table class="SK-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_SK_symbol-1">0</th></tr>

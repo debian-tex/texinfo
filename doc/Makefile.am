@@ -1,6 +1,6 @@
 # Makefile.am for texinfo/doc.
 #
-# Copyright 2002-2023 Free Software Foundation, Inc.
+# Copyright 2002-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -13,10 +13,10 @@
 # The links to texi2any_internals require that to avoid many warnings
 AM_MAKEINFOFLAGS = -c INFO_SPECIAL_CHARS_WARNING=0
 
-SUBDIRS = tp_api
+SUBDIRS = tp_api refcard
 
 info_TEXINFOS = texinfo.texi info-stnd.texi texi2any_api.texi
-texinfo_TEXINFOS = pod2texi.texi
+texinfo_TEXINFOS = pod2texi.texi html_default_commands_args.texi
 DISTCLEANFILES = texinfo.info* info-stnd.info* texi2any_api.info*
 
 TEXINFO_TEX = texinfo.tex
@@ -30,19 +30,30 @@ TEXI2DVI_ENVIRONMENT = TEXINDEX=${abs_top_builddir}/texindex/texindex \
                        TEXINDEX_SCRIPT=${abs_top_srcdir}/texindex/texindex.awk
 TEXI2DVI = $(TEXI2DVI_ENVIRONMENT) $(top_srcdir)/util/texi2dvi
 
-# include pod2texi in the main manual
 pod2texi_pl = $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl
 
 if BUILD_PERL_API_TEXI
+# include pod2texi.pl POD converted to Texinfo in the main manual.
+
 # we setup the conversion to Texinfo for inclusion in a document,
 # but we ignore the main document (output to /dev/null) that includes
 # each portion of Texinfo converted from the pod files (here only from
 # pod2texi.pl), as we include from the Texinfo manual.  The file name
 # for the included section is therefore determined by the information
 # in the Pod file NAME section.
+# Since Pod::Simple::Texinfo is not in CPAN, the @url first argument
+# is post-processed by a sed one liner to point to the GNU web site. 
 $(srcdir)/pod2texi.texi: $(pod2texi_pl)
 	$(MAKEINFO_ENVIRONMENT) $(PERL) -I $(top_srcdir)/Pod-Simple-Texinfo/lib/ $(top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl --base-level=subsubsection --no-section-nodes --headings-as-sections --subdir=$(srcdir) $(pod2texi_pl) > /dev/null
+	mv $(srcdir)/pod2texi.texi $(srcdir)/pod2texi_tmp.texi
+	sed 's;https://metacpan.org/pod/Pod::Simple::Texinfo;https://www.gnu.org/software/texinfo/manual/Pod/Simple/Texinfo.html;' $(srcdir)/pod2texi_tmp.texi > $(srcdir)/pod2texi.texi
+	rm -f $(srcdir)/pod2texi_tmp.texi
 endif
+
+TXI_MODULES_ENV = srcdir="$(srcdir)"; export srcdir;
+
+$(srcdir)/html_default_commands_args.texi: $(top_srcdir)/tp/Texinfo/Convert/HTML.pm $(srcdir)/generate_html_doc_texi.pl
+	$(TXI_MODULES_ENV) $(PERL) $(srcdir)/generate_html_doc_texi.pl $(srcdir)/html_default_commands_args.texi
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.
@@ -54,19 +65,11 @@ TXI_XLATE = txi-ca.tex txi-cs.tex txi-de.tex txi-en.tex txi-es.tex \
 	    txi-pt.tex txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex \
 	    txi-zh.tex
 
-refcard_files = refcard/Makefile refcard/txicmdcheck \
-                refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
-		refcard/txirefcard.tex
-
-refcard/txirefcard.pdf refcard/txirefcard-a4.pdf: refcard/txirefcard.tex
-	cd $(srcdir)/refcard && make
-
 # Include our texinfo.tex, not Automake's.
-EXTRA_DIST = epsf.tex texinfo.tex \
-             fdl.texi \
-	     $(man_MANS) $(TXI_XLATE) \
-             $(refcard_files) \
-	     texinfo-tex-test.texi texinfo-tex-test.WIDOWs \
+EXTRA_DIST = epsf.tex fdl.texi generate_html_doc_texi.pl \
+             texinfo.tex \
+             $(man_MANS) $(TXI_XLATE) \
+             texinfo-tex-test.texi texinfo-tex-test.WIDOWs \
              texinfo-ja.tex short-sample-ja.texi \
              texinfo-zh.tex short-sample-zh.texi
 
@@ -111,7 +114,15 @@ MAINTAINERCLEANFILES = pod2texi.texi html_default_commands_args.texi
 gnulib = $(abs_top_srcdir)/../gnulib
 gendocs = $(gnulib)/build-aux/gendocs.sh
 gendocs_templates = $(gnulib)/doc
-gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
+gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates) \
+        MAKEINFO=../$(builddir)/../tp/texi2any \
+                       TEXINFO_DEV_SOURCE=1 \
+                       top_srcdir="../$(top_srcdir)" \
+                       top_builddir="../$(top_builddir)" \
+        TEXI2DVI=../$(srcdir)/../util/texi2dvi \
+        TEXINDEX=../../texindex/texindex \
+        TEXINDEX_SCRIPT=../$(srcdir)/../texindex/texindex.awk
+
 #
 gendocs_email = bug-texinfo@gnu.org
 gendocs_dir_url = /manual/
@@ -159,10 +170,11 @@ wwwdoc-build:
 	rm -rf $(doctemp) && mkdir $(doctemp)
 	cd $(doctemp) \
 	&& $(MKDIR_P) Pod/Simple \
-	&& ln -s ../*.texi . \
-	&& ln -s ../tp_api/*.texi . \
-	&& ln -s ../tp_api/api_includes . \
-	&& ln -s ../../../../Pod-Simple-Texinfo/lib/Pod/Simple/Texinfo.pm Pod/Simple \
+	&& ln -s ../$(srcdir)/texinfo.tex . \
+	&& ln -s ../$(srcdir)/*.texi . \
+	&& ln -s ../$(srcdir)/tp_api/*.texi . \
+	&& ln -s ../$(srcdir)/tp_api/api_includes . \
+	&& ln -s ../../../$(srcdir)/../Pod-Simple-Texinfo/lib/Pod/Simple/Texinfo.pm Pod/Simple \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
 	&& $(gendocs_invoke) $(manual3_flags) \
@@ -174,7 +186,7 @@ wwwdoc-build:
 	&& echo "Manuals ready for web distribution under: $(doctemp)/"
 #
 # At official release, we need to update:
-# http://www.gnu.org/software/texinfo/manual/
+# https://www.gnu.org/software/texinfo/manual/
 wwwdoc-install:
 	cp -arf $(doctemp)/$(manual1) $(doctemp)/$(manual2) \
 	        $(doctemp)/$(manual3) $(doctemp)/$(manual4) \
@@ -182,5 +194,4 @@ wwwdoc-install:
 	        $(www_target)
 	$(MKDIR_P) $(www_target)/Pod/Simple
 	cp -arf $(doctemp)/Pod/Simple/Texinfo.html $(www_target)/Pod/Simple
-	ls -ltu $(www_target)/*/html_node | tail  # cvs rm -f obsolete files
 # followed by cvs add of new files and cvs commit.

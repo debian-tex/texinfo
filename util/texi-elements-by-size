@@ -9,15 +9,15 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 use strict;
@@ -41,7 +41,6 @@ BEGIN {
 }
 
 use Texinfo::Parser;
-use Texinfo::Structuring;
 use Texinfo::Convert::TextContent;
 
 my $my_version = "0.1 (TP $Texinfo::Parser::VERSION)";
@@ -75,8 +74,8 @@ my @include_dirs = ();
 my @prepend_dirs = ();
 
 my $parser_default_options = {
-                              #'expanded_formats' => [], 
-                              'expanded_formats' => [ $format ], 
+                              #'expanded_formats' => [],
+                              'EXPANDED_FORMATS' => [ $format ],
                               'values' => {},
                               #'gettext' => \&__
                               };
@@ -89,9 +88,9 @@ sub set_expansion($$) {
     push @{$parser_default_options->{'expanded_formats'}}, $region
       unless (grep {$_ eq $region} @{$parser_default_options->{'expanded_formats'}});
   } else {
-    @{$parser_default_options->{'expanded_formats'}} = 
+    @{$parser_default_options->{'expanded_formats'}} =
       grep {$_ ne $region} @{$parser_default_options->{'expanded_formats'}};
-#    @{$default_expanded_format} 
+#    @{$default_expanded_format}
 #       = grep {$_ ne $region} @{$default_expanded_format};
   }
 }
@@ -179,7 +178,7 @@ after translation to Info format.\n")
 
   Also, for the --no-ifFORMAT options, do process \@ifnotFORMAT text.\n");
   return $help;
-  
+
 }
 
 sub _exit($) {
@@ -207,32 +206,32 @@ if ($input_file_name =~ /(.*\/)/) {
 }
 
 my $parser_options = { %$parser_default_options };
-$parser_options->{'include_directories'} = [@include_dirs];
+$parser_options->{'INCLUDE_DIRECTORIES'} = [@include_dirs];
 my @prepended_include_directories = ('.');
 push @prepended_include_directories, $input_directory
     if ($input_directory ne '.');
-unshift @{$parser_options->{'include_directories'}},
+unshift @{$parser_options->{'INCLUDE_DIRECTORIES'}},
    @prepended_include_directories;
-unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
+unshift @{$parser_options->{'INCLUDE_DIRECTORIES'}}, @prepend_dirs;
 
 my $error_count = 0;
 my $parser = Texinfo::Parser::parser($parser_options);
-my $tree = $parser->parse_texi_file($input_file_name);
+my $document = $parser->parse_texi_file($input_file_name);
 
 my $registrar = $parser->registered_errors();
 
-if (!defined($tree)) {
+if (!defined($document)) {
   handle_errors($registrar, $error_count);
   exit (1);
 }
 
 my $converter_options = {};
-$converter_options->{'parser'} = $parser;
+$converter_options->{'document'} = $document;
 my $converter = Texinfo::Convert::TextContent->converter($converter_options);
 
-my ($sorted_name_counts_array, $formatted_result) 
-  = $converter->sort_element_counts($tree, $use_sections, 
-                                    $count_words); 
+my ($sorted_name_counts_array, $formatted_result)
+  = $converter->sort_element_counts($document, $use_sections,
+                                    $count_words);
 
 print STDOUT $formatted_result;
 

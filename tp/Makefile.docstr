@@ -20,15 +20,6 @@ LocaleData/ca/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/ca.gmo
 
 
 
-$(srcdir)/../po_document/ca.us-ascii.gmo: $(srcdir)/../po_document/ca.us-ascii.po
-	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) ca.us-ascii.gmo
-
-LocaleData/ca.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/ca.us-ascii.gmo
-	$(MKDIR_P) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/ca.us-ascii.gmo $@
-
-
-
 $(srcdir)/../po_document/cs.gmo: $(srcdir)/../po_document/cs.po
 	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) cs.gmo
 
@@ -44,15 +35,6 @@ $(srcdir)/../po_document/de.gmo: $(srcdir)/../po_document/de.po
 LocaleData/de/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/de.gmo
 	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/de.gmo $@
-
-
-
-$(srcdir)/../po_document/de.us-ascii.gmo: $(srcdir)/../po_document/de.us-ascii.po
-	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) de.us-ascii.gmo
-
-LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/de.us-ascii.gmo
-	$(MKDIR_P) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/de.us-ascii.gmo $@
 
 
 
@@ -128,21 +110,21 @@ LocaleData/ka/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/ka.gmo
 
 
 
+$(srcdir)/../po_document/nb.gmo: $(srcdir)/../po_document/nb.po
+	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nb.gmo
+
+LocaleData/nb/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nb.gmo
+	$(MKDIR_P) `dirname $@`
+	$(INSTALL_DATA) $(srcdir)/../po_document/nb.gmo $@
+
+
+
 $(srcdir)/../po_document/nl.gmo: $(srcdir)/../po_document/nl.po
 	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) nl.gmo
 
 LocaleData/nl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/nl.gmo
 	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/nl.gmo $@
-
-
-
-$(srcdir)/../po_document/no.us-ascii.gmo: $(srcdir)/../po_document/no.us-ascii.po
-	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) no.us-ascii.gmo
-
-LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/no.us-ascii.gmo
-	$(MKDIR_P) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/no.us-ascii.gmo $@
 
 
 
@@ -155,15 +137,6 @@ LocaleData/pl/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pl.gmo
 
 
 
-$(srcdir)/../po_document/pl.iso-8859-2.gmo: $(srcdir)/../po_document/pl.iso-8859-2.po
-	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pl.iso-8859-2.gmo
-
-LocaleData/pl.iso-8859-2/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pl.iso-8859-2.gmo
-	$(MKDIR_P) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/pl.iso-8859-2.gmo $@
-
-
-
 $(srcdir)/../po_document/pt.gmo: $(srcdir)/../po_document/pt.po
 	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt.gmo
 
@@ -173,30 +146,12 @@ LocaleData/pt/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt.gmo
 
 
 
-$(srcdir)/../po_document/pt.us-ascii.gmo: $(srcdir)/../po_document/pt.us-ascii.po
-	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt.us-ascii.gmo
-
-LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt.us-ascii.gmo
-	$(MKDIR_P) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/pt.us-ascii.gmo $@
-
-
-
 $(srcdir)/../po_document/pt_BR.gmo: $(srcdir)/../po_document/pt_BR.po
 	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt_BR.gmo
 
 LocaleData/pt_BR/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt_BR.gmo
 	$(MKDIR_P) `dirname $@`
 	$(INSTALL_DATA) $(srcdir)/../po_document/pt_BR.gmo $@
-
-
-
-$(srcdir)/../po_document/pt_BR.us-ascii.gmo: $(srcdir)/../po_document/pt_BR.us-ascii.po
-	cd ../po_document/ && $(MAKE) $(AM_MAKEFLAGS) pt_BR.us-ascii.gmo
-
-LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/pt_BR.us-ascii.gmo
-	$(MKDIR_P) `dirname $@`
-	$(INSTALL_DATA) $(srcdir)/../po_document/pt_BR.us-ascii.gmo $@
 
 
 
@@ -244,4 +199,4 @@ LocaleData/uk/LC_MESSAGES/$(document_domain).mo: $(srcdir)/../po_document/uk.gmo
 	$(INSTALL_DATA) $(srcdir)/../po_document/uk.gmo $@
 
 
-document_strings_mo_files =  LocaleData/ca/LC_MESSAGES/$(document_domain).mo LocaleData/ca.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/cs/LC_MESSAGES/$(document_domain).mo LocaleData/de/LC_MESSAGES/$(document_domain).mo LocaleData/de.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/eo/LC_MESSAGES/$(document_domain).mo LocaleData/es/LC_MESSAGES/$(document_domain).mo LocaleData/fi/LC_MESSAGES/$(document_domain).mo LocaleData/fr/LC_MESSAGES/$(document_domain).mo LocaleData/hr/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/ka/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/no.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pl/LC_MESSAGES/$(document_domain).mo LocaleData/pl.iso-8859-2/LC_MESSAGES/$(document_domain).mo LocaleData/pt/LC_MESSAGES/$(document_domain).mo LocaleData/pt.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR.us-ascii/LC_MESSAGES/$(document_domain).mo LocaleData/ro/LC_MESSAGES/$(document_domain).mo LocaleData/sk/LC_MESSAGES/$(document_domain).mo LocaleData/sr/LC_MESSAGES/$(document_domain).mo LocaleData/sv/LC_MESSAGES/$(document_domain).mo LocaleData/uk/LC_MESSAGES/$(document_domain).mo
+document_strings_mo_files =  LocaleData/ca/LC_MESSAGES/$(document_domain).mo LocaleData/cs/LC_MESSAGES/$(document_domain).mo LocaleData/de/LC_MESSAGES/$(document_domain).mo LocaleData/eo/LC_MESSAGES/$(document_domain).mo LocaleData/es/LC_MESSAGES/$(document_domain).mo LocaleData/fi/LC_MESSAGES/$(document_domain).mo LocaleData/fr/LC_MESSAGES/$(document_domain).mo LocaleData/hr/LC_MESSAGES/$(document_domain).mo LocaleData/hu/LC_MESSAGES/$(document_domain).mo LocaleData/it/LC_MESSAGES/$(document_domain).mo LocaleData/ka/LC_MESSAGES/$(document_domain).mo LocaleData/nb/LC_MESSAGES/$(document_domain).mo LocaleData/nl/LC_MESSAGES/$(document_domain).mo LocaleData/pl/LC_MESSAGES/$(document_domain).mo LocaleData/pt/LC_MESSAGES/$(document_domain).mo LocaleData/pt_BR/LC_MESSAGES/$(document_domain).mo LocaleData/ro/LC_MESSAGES/$(document_domain).mo LocaleData/sk/LC_MESSAGES/$(document_domain).mo LocaleData/sr/LC_MESSAGES/$(document_domain).mo LocaleData/sv/LC_MESSAGES/$(document_domain).mo LocaleData/uk/LC_MESSAGES/$(document_domain).mo

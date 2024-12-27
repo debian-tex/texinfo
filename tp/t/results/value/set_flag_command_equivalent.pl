@@ -38,35 +38,10 @@ $result_trees{'set_flag_command_equivalent'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'text' => 'txicodequoteundirected'
-                  }
-                ],
-                'cmdname' => 'value'
-              },
-              'line' => '',
-              'position' => 1,
-              'sourcemark_type' => 'value_expansion',
-              'status' => 'start'
-            },
-            {
-              'counter' => 1,
-              'position' => 1,
-              'sourcemark_type' => 'value_expansion',
-              'status' => 'end'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -74,6 +49,32 @@ $result_trees{'set_flag_command_equivalent'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'txicodequoteundirected'
+                          }
+                        ],
+                        'type' => 'brace_container'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => '',
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '.
 '
             }
@@ -114,9 +115,7 @@ $result_trees{'set_flag_command_equivalent'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],

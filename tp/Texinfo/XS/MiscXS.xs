@@ -1,4 +1,4 @@
-/* Copyright 2016-2023 Free Software Foundation, Inc.
+/* Copyright 2016-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,39 +13,24 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
-#if defined _WIN32 && !defined __CYGWIN__
-# undef free
-#endif
 #include "XSUB.h"
 
-#include "ppport.h"
-
-#include "miscxs.h"
+#include "xsmisc.h"
 
 MODULE = Texinfo::MiscXS  PACKAGE = Texinfo::MiscXS  PREFIX = xs_
 
 PROTOTYPES: DISABLE
 
 SV *
-xs_process_text (text_in)
-     SV *text_in
+xs_process_text (text)
+     char *text = (char *)SvPVutf8_nolen ($arg);
+ PROTOTYPE: $
  PREINIT:
-     char *text;
      char *retval;
  CODE:
-     /* Make sure the input is in UTF8. */
-     if (!SvUTF8 (text_in))
-       sv_utf8_upgrade (text_in);
-
-     text = SvPV_nolen (text_in);
-
      retval = xs_process_text (text);
 
      RETVAL = newSVpv (retval, 0);
@@ -54,11 +39,10 @@ xs_process_text (text_in)
      RETVAL
 
 SV *
-xs_unicode_text (text_in, ...)
-     SV *text_in
+xs_unicode_text (text, ...)
+     char *text = (char *)SvPVutf8_nolen ($arg);
  PREINIT:
      int in_code = 0;
-     char *text;
      char *retval;
  CODE:
      items--;
@@ -67,13 +51,10 @@ xs_unicode_text (text_in, ...)
          if (SvOK(ST(1)))
            in_code = (int) SvIV(ST(1));
        }
-     /* Make sure the input is in UTF-8. */
-     if (!SvUTF8 (text_in))
-       sv_utf8_upgrade (text_in);
-
-     text = SvPV_nolen (text_in);
-
-     retval = xs_unicode_text (text, in_code);
+     if (in_code)
+       retval = text;
+     else
+       retval = xs_unicode_substitute_text (text);
 
      RETVAL = newSVpv (retval, 0);
      SvUTF8_on (RETVAL);
@@ -82,18 +63,11 @@ xs_unicode_text (text_in, ...)
      RETVAL
 
 SV *
-xs_entity_text (text_in)
-     SV *text_in
+xs_entity_text (text)
+     char *text = (char *)SvPVutf8_nolen ($arg);
  PREINIT:
-     char *text;
      char *retval;
  CODE:
-     /* Make sure the input is in UTF-8. */
-     if (!SvUTF8 (text_in))
-       sv_utf8_upgrade (text_in);
-
-     text = SvPV_nolen (text_in);
-
      retval = xs_entity_text (text);
 
      RETVAL = newSVpv (retval, 0);
@@ -104,7 +78,7 @@ xs_entity_text (text_in)
 
 void
 xs_parse_command_name (text)
-     SV *text
+     char *text = (char *)SvPVutf8_nolen ($arg);
   PREINIT:
      char *command;
      int is_single_letter;
@@ -121,7 +95,7 @@ xs_parse_command_name (text)
 
 void
 xs_parse_texi_regex (text)
-     SV *text
+     char *text = (char *)SvPVutf8_nolen ($arg);
   PREINIT:
      char *arobase;
      char *open_brace;
@@ -162,19 +136,12 @@ xs_parse_texi_regex (text)
      SvUTF8_on(ST(7));
 
 SV *
-xs_default_format_protect_text (self, text_in)
+xs_default_format_protect_text (self, text)
      SV *self
-     SV *text_in
+     char *text = (char *)SvPVutf8_nolen ($arg);
  PREINIT:
-     char *text;
      char *retval;
  CODE:
-     /* Make sure the input is in UTF-8. */
-     if (!SvUTF8 (text_in))
-       sv_utf8_upgrade (text_in);
-
-     text = SvPV_nolen (text_in);
-
      retval = xs_default_format_protect_text (text);
 
      RETVAL = newSVpv (retval, 0);

@@ -17,6 +17,9 @@ formatting_textcontent formatting.texi -c TEXINFO_OUTPUT_FORMAT=textcontent
 # used to format text fragments in converters, minimal formatting
 formatting_rawtext formatting.texi -c TEXINFO_OUTPUT_FORMAT=rawtext
 
+# disabled because there is a different output in out of build tests.
+#formatting_trace_includes formatting.texi --trace-includes
+
 # formats present in the documentation not tested: debugtree and texinfosxml
 #formatting_sxml formatting.texi -c TEXINFO_OUTPUT_FORMAT=texinfosxml
 

@@ -1,0 +1,49 @@
+\input texinfo
+@settitle top
+@shorttitlepage top
+@headings on
+
+@contents
+
+@node Top
+@top top
+
+@menu
+* Module1::
+* Module2::
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Module1
+
+* Module1 NAME::
+* Module1 DESCRIPTION::
+
+Module1 DESCRIPTION
+
+* Module1 1::
+
+Module1
+
+* Module1 Mod::
+
+Module2
+
+* Module2 NAME::
+* Module2 DESCRIPTION::
+
+Module2 DESCRIPTION
+
+* Module2 1::
+
+Module2
+
+* Module2 Mod::
+@end detailmenu
+@end menu
+
+@include out_tests/includes/Module1.texi
+@include out_tests/includes/Module2.texi
+
+@bye

@@ -19,7 +19,7 @@ $result_trees{'too_much_args'} = {
                       'text' => 'AZE'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -32,14 +32,12 @@ $result_trees{'too_much_args'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'abbr',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -72,5 +70,8 @@ $result_converted{'html_text'}->{'too_much_args'} = '<p><abbr class="abbr" title
 
 
 $result_converted{'latex_text'}->{'too_much_args'} = 'AZE (A truc Z b, E eep)';
+
+
+$result_converted{'docbook'}->{'too_much_args'} = '<para><abbrev>AZE</abbrev> (A truc Z b, E eep)</para>';
 
 1;

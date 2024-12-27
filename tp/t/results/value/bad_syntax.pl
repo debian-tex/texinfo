@@ -104,7 +104,12 @@ $result_trees{'bad_syntax'} = {
         {
           'args' => [
             {
-              'text' => 'unknown'
+              'contents' => [
+                {
+                  'text' => 'unknown'
+                }
+              ],
+              'type' => 'brace_container'
             }
           ],
           'cmdname' => 'value'
@@ -143,115 +148,91 @@ $result_texts{'bad_syntax'} = '
 
 gurgl
 
-
+unknown
 ';
 
 $result_errors{'bad_syntax'} = [
   {
     'error_line' => '@set requires a name
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@set requires a name',
     'type' => 'error'
   },
   {
     'error_line' => '@set requires a name
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@set requires a name',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @set
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @set
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @set
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @set
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @set
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @clear
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => 'bad name for @clear',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @clear
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'bad name for @clear',
     'type' => 'error'
   },
   {
     'error_line' => 'bad syntax for @value
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'bad syntax for @value',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: undefined flag: unknown
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'undefined flag: unknown',
     'type' => 'warning'
   }

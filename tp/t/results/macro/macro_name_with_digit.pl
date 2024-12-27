@@ -50,9 +50,7 @@ $result_trees{'macro_name_with_digit'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_name_with_digit'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -116,9 +112,7 @@ $result_trees{'macro_name_with_digit'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -127,39 +121,10 @@ $result_trees{'macro_name_with_digit'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'some thing @macro1{}'
-                      }
-                    ],
-                    'type' => 'line_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'macro11',
-                  'spaces_before_argument' => {
-                    'text' => ' '
-                  }
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -169,11 +134,35 @@ $result_trees{'macro_name_with_digit'} = {
             {
               'source_marks' => [
                 {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'some thing @macro1{}'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macro11',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'macro_call_line'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
                   'counter' => 2,
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {

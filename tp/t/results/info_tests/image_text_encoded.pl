@@ -37,9 +37,7 @@ $result_trees{'image_text_encoded'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -55,7 +53,7 @@ $result_trees{'image_text_encoded'} = {
                   'text' => 'image_encoded'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -63,9 +61,7 @@ $result_trees{'image_text_encoded'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -99,7 +95,6 @@ $result_floats{'image_text_encoded'} = {};
 $result_converted{'info'}->{'image_text_encoded'} = 'This is , produced from .
 
 îmage encodée
-
 
 Tag Table:
 

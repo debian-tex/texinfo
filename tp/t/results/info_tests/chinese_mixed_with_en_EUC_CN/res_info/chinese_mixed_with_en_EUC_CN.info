@@ -43,7 +43,6 @@ standard Emacs features when programming in Ada.
    restrict 表示在当前 scope 内不允许其它变量指向它。用处，比如防止
 memory overlap。
 
-
 
 Tag Table:
 Node: Top93

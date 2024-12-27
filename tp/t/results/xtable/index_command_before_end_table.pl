@@ -21,11 +21,8 @@ $result_trees{'index_command_before_end_table'} = {
                 {
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 2
+                  }
                 }
               ],
               'info' => {
@@ -67,9 +64,7 @@ $result_trees{'index_command_before_end_table'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -96,9 +91,7 @@ $result_trees{'index_command_before_end_table'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     }
                   ],
@@ -145,14 +138,13 @@ $result_trees{'index_command_before_end_table'} = {
                         ]
                       },
                       'info' => {
+                        'command_name' => 'vindex',
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       },
                       'type' => 'index_entry_command'
                     }
@@ -189,9 +181,7 @@ $result_trees{'index_command_before_end_table'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
@@ -204,9 +194,7 @@ $result_trees{'index_command_before_end_table'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         }
       ],
@@ -239,9 +227,7 @@ $result_errors{'index_command_before_end_table'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   }

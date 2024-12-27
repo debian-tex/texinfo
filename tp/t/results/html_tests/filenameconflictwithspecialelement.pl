@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'filenameconflictwithspecialelement'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -29,6 +34,7 @@ $result_trees{'filenameconflictwithspecialelement'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +43,7 @@ $result_trees{'filenameconflictwithspecialelement'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -85,10 +89,9 @@ $result_trees{'filenameconflictwithspecialelement'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -111,9 +114,7 @@ $result_trees{'filenameconflictwithspecialelement'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -135,6 +136,7 @@ $result_trees{'filenameconflictwithspecialelement'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -143,9 +145,7 @@ $result_trees{'filenameconflictwithspecialelement'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -194,17 +194,16 @@ $result_trees{'filenameconflictwithspecialelement'} = {
                   'text' => 'filenameconflictwithspecialelement fot'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'filenameconflictwithspecialelement-fot'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -218,16 +217,16 @@ $result_trees{'filenameconflictwithspecialelement'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     }
   ],
@@ -263,7 +262,7 @@ Need 2 elements for separate footnotes.
 ';
 
 $result_sectioning{'filenameconflictwithspecialelement'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -272,11 +271,8 @@ $result_sectioning{'filenameconflictwithspecialelement'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -285,72 +281,81 @@ $result_sectioning{'filenameconflictwithspecialelement'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'filenameconflictwithspecialelement'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'filenameconflictwithspecialelement'};
+$result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'filenameconflictwithspecialelement'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'filenameconflictwithspecialelement'};
 
-$result_nodes{'filenameconflictwithspecialelement'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chap'
+$result_nodes{'filenameconflictwithspecialelement'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'filenameconflictwithspecialelement'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'filenameconflictwithspecialelement'}[0];
+$result_nodes{'filenameconflictwithspecialelement'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'filenameconflictwithspecialelement'}[0];
+$result_nodes{'filenameconflictwithspecialelement'}[1] = $result_nodes{'filenameconflictwithspecialelement'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'filenameconflictwithspecialelement'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'filenameconflictwithspecialelement'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'filenameconflictwithspecialelement'};
-$result_nodes{'filenameconflictwithspecialelement'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'filenameconflictwithspecialelement'};
-
-$result_menus{'filenameconflictwithspecialelement'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'filenameconflictwithspecialelement'} = [];
 
@@ -362,9 +367,7 @@ $result_converted_errors{'file_html'}->{'filenameconflictwithspecialelement'} = 
   {
     'error_line' => 'warning: @anchor `filenameconflictwithspecialelement fot\' file filenameconflictwithspecialelement-fot.html for redirection exists
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@anchor `filenameconflictwithspecialelement fot\' file filenameconflictwithspecialelement-fot.html for redirection exists',
     'type' => 'warning'
   },

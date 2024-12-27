@@ -44,14 +44,12 @@ $result_trees{'heading_in_example'} = {
                               'text' => 'heading'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -65,15 +63,14 @@ $result_trees{'heading_in_example'} = {
                 }
               ],
               'cmdname' => 'heading',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -103,16 +100,12 @@ $result_trees{'heading_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -147,7 +140,7 @@ $result_converted{'plaintext'}->{'heading_in_example'} = '     in example @ _hea
 
 $result_converted{'html'}->{'heading_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

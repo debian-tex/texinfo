@@ -72,14 +72,12 @@ $result_trees{'menu_entry_no_entry'} = {
                               'text' => 'a'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'b',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     },
                     {
@@ -97,14 +95,12 @@ $result_trees{'menu_entry_no_entry'} = {
                               'text' => 'b'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'b',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     },
                     {
@@ -153,16 +149,12 @@ $result_trees{'menu_entry_no_entry'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -206,7 +198,7 @@ $result_converted{'plaintext'}->{'menu_entry_no_entry'} = '* Menu:
 
 $result_converted{'html'}->{'menu_entry_no_entry'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -228,8 +220,8 @@ th.menu-comment {text-align:left}
 </head>
 
 <body lang="en">
-<table class="menu" border="0" cellspacing="0">
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted">* a1:
+<table class="menu">
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted">* a1:
 * a2:  
 * a1c:* a2c:  * a4<b class="b">a</b>: 
 * a5<b class="b">b</b>: </pre></th></tr></table>

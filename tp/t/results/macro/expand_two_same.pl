@@ -59,9 +59,7 @@ $result_trees{'expand_two_same'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -70,13 +68,15 @@ $result_trees{'expand_two_same'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
           'contents' => [
+            {
+              'text' => 'Call macro2
+'
+            },
             {
               'source_marks' => [
                 {
@@ -91,29 +91,26 @@ arg}
 '
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
                       'command_name' => 'macrotwo',
                       'spaces_after_cmd_before_arg' => {
                         'text' => ' '
-                      },
-                      'spaces_before_argument' => {
-                        'text' => ' '
                       }
                     },
                     'type' => 'macro_call'
                   },
-                  'position' => 12,
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'start'
                 }
               ],
-              'text' => 'Call macro2
-'
-            },
-            {
               'text' => 'With a doubles arg a simple '
             },
             {
@@ -128,12 +125,11 @@ arg}
                       'text' => 'arg'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 8,
                 'macro' => 'macrotwo'
               }
@@ -157,12 +153,11 @@ arg}
                       'text' => 'arg'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 8,
                 'macro' => 'macrotwo'
               }
@@ -195,6 +190,10 @@ arg}
         {
           'contents' => [
             {
+              'text' => 'Call macro2 with 2 args
+'
+            },
+            {
               'source_marks' => [
                 {
                   'counter' => 2,
@@ -206,30 +205,25 @@ arg}
                             'text' => 'arg with comma , here '
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
                       'command_name' => 'macrotwo',
                       'spaces_after_cmd_before_arg' => {
                         'text' => ' '
-                      },
-                      'spaces_before_argument' => {
-                        'text' => ' '
                       }
                     },
                     'type' => 'macro_call'
                   },
-                  'position' => 24,
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'start'
-                }
-              ],
-              'text' => 'Call macro2 with 2 args
-'
-            },
-            {
-              'source_marks' => [
+                },
                 {
                   'counter' => 2,
                   'position' => 72,

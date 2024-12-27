@@ -28,15 +28,16 @@ $result_trees{'sections'} = {
         }
       ],
       'cmdname' => 'chapter',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -52,21 +53,21 @@ $result_texts{'sections'} = '1 a chapter
 ';
 
 $result_sectioning{'sections'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'chapter',
-        'structure' => {
+        'extra' => {
           'section_level' => 1,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'sections'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'sections'};
+$result_sectioning{'sections'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'sections'};
 
 $result_errors{'sections'} = [];
 

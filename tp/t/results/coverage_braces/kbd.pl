@@ -22,14 +22,12 @@ $result_trees{'kbd'} = {
                       'text' => 'in kbd'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -64,25 +62,21 @@ $result_trees{'kbd'} = {
                               'text' => 'in nested kbd'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'kbd',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -117,25 +111,21 @@ $result_trees{'kbd'} = {
                               'text' => 'in nested kbd'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'kbd',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'kbd',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -198,14 +188,12 @@ $result_trees{'kbd'} = {
                           'text' => 'in example in kbd'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -242,16 +230,12 @@ $result_trees{'kbd'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         },
         {
@@ -307,14 +291,12 @@ $result_trees{'kbd'} = {
                           'text' => 'in format in kbd'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 18,
-                    'macro' => ''
+                    'line_nr' => 18
                   }
                 },
                 {
@@ -351,16 +333,12 @@ $result_trees{'kbd'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 19,
-                'macro' => ''
+                'line_nr' => 19
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
+            'line_nr' => 16
           }
         }
       ],
@@ -478,5 +456,23 @@ in format
 \\texttt{in format in kbd}.
 \\end{Texinfopreformatted}
 ';
+
+
+$result_converted{'docbook'}->{'kbd'} = '<para>kbd: <literal>in kbd</literal>.
+</para>
+<para>kbd in code: <literal>in first <userinput>in nested kbd</userinput></literal>.
+</para>
+<para>kbd in kbd: <userinput>in top kbd <userinput>in nested kbd</userinput></userinput>.
+</para>
+<para>kbd in @example:
+</para>
+<screen>in example
+<literal>in example in kbd</literal>.
+</screen>
+<para>kbd in @format:
+</para>
+<literallayout>in format
+<literal>in format in kbd</literal>.
+</literallayout>';
 
 1;

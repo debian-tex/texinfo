@@ -38,9 +38,7 @@ $result_trees{'bad_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -63,14 +61,12 @@ $result_trees{'bad_line'} = {
                           'text' => 'in code'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
@@ -90,9 +86,7 @@ $result_trees{'bad_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         }
       ],
@@ -117,36 +111,28 @@ $result_errors{'bad_line'} = [
   {
     'error_line' => 'bad argument to @alias
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'bad argument to @alias',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @code should not appear in @alias
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@code should not appear in @alias',
     'type' => 'warning'
   },
   {
     'error_line' => 'superfluous argument to @alias
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'superfluous argument to @alias',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @alias
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'bad argument to @alias',
     'type' => 'error'
   }

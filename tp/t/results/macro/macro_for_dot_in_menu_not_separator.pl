@@ -50,9 +50,7 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -112,7 +108,7 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -135,7 +131,7 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -152,9 +148,11 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'name_002eafter'
                   },
                   'type' => 'menu_entry_node'
@@ -187,9 +185,7 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'menu_entry'
             },
@@ -220,16 +216,12 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
@@ -238,7 +230,7 @@ $result_trees{'macro_for_dot_in_menu_not_separator'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'macro_for_dot_in_menu_not_separator'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'macro_for_dot_in_menu_not_separator'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[0];
+$result_trees{'macro_for_dot_in_menu_not_separator'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'macro_for_dot_in_menu_not_separator'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[3]{'contents'}[0];
 
 $result_texis{'macro_for_dot_in_menu_not_separator'} = '@macro macrodot
 .

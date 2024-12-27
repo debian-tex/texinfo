@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="extension_undef" lang="en">
+<chapter label="">
+<title>top</title>
+
+</chapter>
+<chapter label="1" id="chapter">
+<title>Chap</title>
+</chapter>
+</book>

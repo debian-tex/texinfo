@@ -16,16 +16,13 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'bullet',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -60,9 +57,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -92,9 +87,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -107,9 +100,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -124,16 +115,13 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'minus',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 5
+                  }
                 }
               ],
               'info' => {
@@ -168,9 +156,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -200,9 +186,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -215,9 +199,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],

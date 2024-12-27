@@ -104,6 +104,13 @@ expand \arg\
 
 @macro11 some thing @macro1{}
 '],
+['macro_name_zero',
+'@macro 0
+in macro
+@end macro
+
+@0:
+'],
 ['unpaired_backslash_in_macro_body',
 '@macro mymacro {arg}
 In macro \not arg
@@ -1568,6 +1575,10 @@ X\arg\X
 # string or spaces only
 ['cpp_directives_after_macros',
   undef, {'test_file' => 'cpp_directives_after_macros.texi',},
+],
+# similar test with hash within line macro or expanded as @value
+['cpp_directives_line_value_macro',
+  undef, {'test_file' => 'cpp_directives_line_value_macro.texi',},
 ],
 ['bib_example',
   undef, {'test_file' => 'bib-example.texi',},

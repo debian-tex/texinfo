@@ -27,15 +27,14 @@ $result_trees{'author_outside_titlepage_quotation'} = {
             }
           ],
           'cmdname' => 'author',
+          'extra' => {},
           'info' => {
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -56,9 +55,7 @@ $result_errors{'author_outside_titlepage_quotation'} = [
   {
     'error_line' => 'warning: @author not meaningful outside `@titlepage\' and `@quotation\' environments
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@author not meaningful outside `@titlepage\' and `@quotation\' environments',
     'type' => 'warning'
   }

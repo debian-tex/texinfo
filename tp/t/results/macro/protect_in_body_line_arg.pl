@@ -58,9 +58,7 @@ $result_trees{'protect_in_body_line_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -69,26 +67,10 @@ $result_trees{'protect_in_body_line_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'info' => {
-                  'command_name' => 'macroone'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -96,17 +78,29 @@ $result_trees{'protect_in_body_line_arg'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'info' => {
+                      'command_name' => 'macroone'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'result: '
             },
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'macroone'
               }
@@ -117,12 +111,11 @@ $result_trees{'protect_in_body_line_arg'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'macroone'
               },
@@ -145,14 +138,12 @@ $result_trees{'protect_in_body_line_arg'} = {
                       'text' => 'f\\irst arg'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'samp',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -185,9 +176,7 @@ $result_errors{'protect_in_body_line_arg'} = [
   {
     'error_line' => 'warning: @macroone defined with zero or more than one argument should be invoked with {}
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@macroone defined with zero or more than one argument should be invoked with {}',
     'type' => 'warning'
   }

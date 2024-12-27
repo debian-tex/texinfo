@@ -1,6 +1,6 @@
 /* scan.c -- scanning Info files and nodes
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -51,12 +51,12 @@ char *info_parsed_filename = NULL;
 char *info_parsed_nodename = NULL;
 
 /* Read a filename surrounded by "(" and ")", accounting for matching
-   characters, and place it in *FILENAME if FILENAME is not null.  Return 
+   characters, and place it in *FILENAME if FILENAME is not null.  Return
    length of read filename.  On error, set *FILENAME to null and return 0.  */
-int
+size_t
 read_bracketed_filename (char *string, char **filename)
 {
-  register int i = 0;
+  register size_t i = 0;
   int count = 0; /* Level of nesting. */
   int first_close = -1; /* First ")" encountered. */
 
@@ -77,9 +77,9 @@ read_bracketed_filename (char *string, char **filename)
           count--;
           if (count == 0)
             break;
-        } 
+        }
     }
-  
+
   /* If string ended before brackets were balanced, take the first ")" as
      terminating the filename. */
   if (count > 0)
@@ -105,7 +105,7 @@ read_bracketed_filename (char *string, char **filename)
 /* Parse the filename and nodename out of STRING, saving in
    INFO_PARSED_FILENAME and INFO_PARSED_NODENAME.  These variables should not
    be freed by calling code.  If either is missing, the relevant variable is
-   set to a null pointer. */ 
+   set to a null pointer. */
 void
 info_parse_node (char *string)
 {
@@ -141,15 +141,15 @@ info_parse_node (char *string)
    the number of lines that the string can span.  If LINES is zero, there is no
    limit.  Return length of string including any quoting characters.  Return
    0 if input was invalid. */
-long
-read_quoted_string (char *start, char *terminator, int lines, char **output)
+size_t
+read_quoted_string (char *start, char *terminator, size_t lines, char **output)
 {
-  long len;
+  size_t len;
   char *nl = 0, saved_char;
 
   if (lines)
     {
-      int i;
+      size_t i;
       nl = start;
       for (i = 0; i < lines; i++)
         {
@@ -218,7 +218,7 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
    be freed by caller.  If SLOPPY, allow initial matches, like
    "Buffers" for a LABEL "buffer". */
 REFERENCE *
-info_get_menu_entry_by_label (NODE *node, char *label, int sloppy) 
+info_get_menu_entry_by_label (NODE *node, char *label, int sloppy)
 {
   register int i;
   int best_guess = -1;
@@ -300,7 +300,7 @@ info_copy_reference (REFERENCE *src)
   dest->end = src->end;
   dest->line_number = src->line_number;
   dest->type = src->type;
-  
+
   return dest;
 }
 
@@ -525,7 +525,7 @@ init_conversion (FILE_BUFFER *fb)
           /* Return if no conversion function implemented */
           iconv_close (iconv_to_output);
           iconv_to_output = (iconv_t) -1;
-          return; 
+          return;
         }
     }
 
@@ -645,7 +645,7 @@ degrade_utf8 (char **from, size_t *from_left)
   for (erp = er; erp->from_string != 0; erp++)
     {
       /* Avoid reading past end of input. */
-      int width = strlen (erp->from_string);
+      size_t width = strlen (erp->from_string);
       if (width > *from_left)
         continue;
 
@@ -685,11 +685,11 @@ copy_converting (long n)
   size_t iconv_ret;
   long output_start;
 
-  size_t utf8_char_free; 
+  size_t utf8_char_free;
   char utf8_char[4]; /* Maximum 4 bytes in a UTF-8 character */
   char *utf8_char_ptr, *orig_inptr;
   size_t i;
-  
+
   /* Use n as an estimate of how many bytes will be required
      in target encoding. */
   text_buffer_alloc (&output_buf, (size_t) n);
@@ -703,12 +703,12 @@ copy_converting (long n)
                                      (ICONV_CONST char **)&inptr, &bytes_left);
 
       /* Make sure libiconv flushes out the last converted character.
-	 This is required when the conversion is stateful, in which
-	 case libiconv might not output the last character, waiting to
-	 see whether it should be combined with the next one.  */
+         This is required when the conversion is stateful, in which
+         case libiconv might not output the last character, waiting to
+         see whether it should be combined with the next one.  */
       if (iconv_ret != (size_t) -1
-	  && text_buffer_iconv (&output_buf, iconv_to_output,
-				NULL, NULL) != (size_t) -1)
+          && text_buffer_iconv (&output_buf, iconv_to_output,
+                                NULL, NULL) != (size_t) -1)
         /* Success: all of input converted. */
         break;
 
@@ -748,11 +748,11 @@ copy_converting (long n)
       /* Flush any waiting input in iconv_to_output and enter the
          default shift state. */
       text_buffer_iconv (&output_buf, iconv_to_output, NULL, NULL);
-      
+
       if (file_is_in_utf8)
         {
           degrade_utf8 (&inptr, &bytes_left);
-          continue;     
+          continue;
         }
 
       /* If file is not in UTF-8, we degrade to ASCII in two steps:
@@ -782,30 +782,30 @@ copy_converting (long n)
       /* errno == E2BIG if iconv ran out of output buffer,
          which is expected. */
       if (iconv_ret == (size_t) -1 && errno != E2BIG)
-	{
-	  /* Character is not recognized.  Copy a single byte.  */
-	  inptr = orig_inptr;	/* iconv might have incremented inptr  */
-	  copy_direct (1);
-	  bytes_left = orig_bytes_left - 1;
-	}
+        {
+          /* Character is not recognized.  Copy a single byte.  */
+          inptr = orig_inptr;    /* iconv might have incremented inptr  */
+          copy_direct (1);
+          bytes_left = orig_bytes_left - 1;
+        }
       else
         {
           utf8_char_ptr = utf8_char;
           /* i is width of UTF-8 character */
           degrade_utf8 (&utf8_char_ptr, &i);
-	  /* If we are done, make sure iconv flushes the last character.  */
-	  if (bytes_left <= 0)
-	    {
-	      utf8_char_ptr = utf8_char;
-	      i = 4;
-	      iconv (iconv_to_utf8, NULL, NULL,
-		     &utf8_char_ptr, &utf8_char_free);
-	      if (utf8_char_ptr > utf8_char)
-		{
-		  utf8_char_ptr = utf8_char;
-		  degrade_utf8 (&utf8_char_ptr, &i);
-		}
-	    }
+          /* If we are done, make sure iconv flushes the last character.  */
+          if (bytes_left <= 0)
+            {
+              utf8_char_ptr = utf8_char;
+              i = 4;
+              iconv (iconv_to_utf8, NULL, NULL,
+                     &utf8_char_ptr, &utf8_char_free);
+              if (utf8_char_ptr > utf8_char)
+                {
+                  utf8_char_ptr = utf8_char;
+                  degrade_utf8 (&utf8_char_ptr, &i);
+                }
+            }
         }
     }
 
@@ -883,7 +883,7 @@ copy_input_to_output (long n)
 
                 anchor_to_adjust++;
                 if (!*anchor_to_adjust
-                    || (*anchor_to_adjust)->cache.nodelen != 0)
+                    || !((*anchor_to_adjust)->flags & T_IsAnchor))
                   {
                     anchor_to_adjust = 0;
                     break;
@@ -896,7 +896,7 @@ copy_input_to_output (long n)
 }
 
 static void
-skip_input (long n)
+skip_input (size_t n)
 {
   if (preprocess_nodes_p)
     {
@@ -954,7 +954,7 @@ parse_top_node_line (NODE *node)
   char **store_in = 0;
   char *nodename;
   char *ptr;
-  int value_length;
+  size_t value_length;
 
   /* If the first line is empty, leave it in.  This is the case
      in the index-apropos window. */
@@ -984,7 +984,7 @@ parse_top_node_line (NODE *node)
           ptr += strlen (INFO_PREV_LABEL);
           store_in = &node->prev;
         }
-      else if (!strncasecmp (ptr, INFO_ALTPREV_LABEL, 
+      else if (!strncasecmp (ptr, INFO_ALTPREV_LABEL,
                              strlen(INFO_ALTPREV_LABEL)))
         {
           ptr += strlen (INFO_ALTPREV_LABEL);
@@ -1000,7 +1000,7 @@ parse_top_node_line (NODE *node)
           ptr += strlen (INFO_UP_LABEL);
           store_in = &node->up;
         }
-      else 
+      else
         {
           store_in = 0;
           /* Not recognized - code below will skip to next comma */
@@ -1013,8 +1013,8 @@ parse_top_node_line (NODE *node)
       else
         value_length = read_bracketed_filename (ptr, 0);
 
-      /* Get length of node name, or filename if following "File:".  Note 
-         that .  is not included in the second argument here in order to 
+      /* Get length of node name, or filename if following "File:".  Note
+         that "." is not included in the second argument here in order to
          support this character in file names. */
       value_length += read_quoted_string (ptr + value_length,
                                           "\n\r\t,", 1, &nodename);
@@ -1065,8 +1065,8 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
     copy_input_to_output (strlen ("\n* "));
   else
     {
-      /* Only match "*Note" if it is followed by a whitespace character so that 
-         it will not be recognized if, e.g., it is surrounded in inverted 
+      /* Only match "*Note" if it is followed by a whitespace character so that
+         it will not be recognized if, e.g., it is surrounded in inverted
          commas. */
       if (!strchr (" \t\r\n", inptr[strlen ("*Note")]))
         {
@@ -1091,10 +1091,10 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
         {
           write_extra_bytes_to_output ("see", 3);
           /* Only output the "see" for input like "(*note ...)", which
-             would have come from a use of @pxref.  We used to output "see" for 
+             would have come from a use of @pxref.  We used to output "see" for
              "*note" in more circumstances, with a list of words where to
              suppress it (to avoid "see *note" turning into "see see"), but
-             such a list can't be complete or reliable.  It's better to remove 
+             such a list can't be complete or reliable.  It's better to remove
              it with more enthusiasm, then if the document writer wants a "see"
              to appear, they can add one themselves. */
         }
@@ -1117,8 +1117,8 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
 static int
 scan_reference_label (REFERENCE *entry, int in_index)
 {
-  int max_lines;
-  int len, label_len = 0;
+  size_t max_lines;
+  size_t len, label_len = 0;
 
   /* Handle case of cross-reference like (FILE)NODE::. */
   if (inptr[0] == '(' && !in_index)
@@ -1135,7 +1135,7 @@ scan_reference_label (REFERENCE *entry, int in_index)
       len = read_quoted_string (inptr + label_len, ":", max_lines,
                                 &entry->nodename);
       canonicalize_whitespace (entry->nodename);
-      if (!len)
+      if (!len && !entry->filename)
         return 0; /* Input invalid. */
       label_len += len;
     }
@@ -1147,7 +1147,7 @@ scan_reference_label (REFERENCE *entry, int in_index)
          as long as the node name does not contain a colon as well. */
 
       char *p;
-      int n, m = 0;
+      size_t n, m = 0;
       p = inptr + label_len;
 
       while (1)
@@ -1231,17 +1231,17 @@ scan_reference_label (REFERENCE *entry, int in_index)
 static int
 scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
-  int i;
+  size_t i;
 
   /* This entry continues with a specific target.  Parse the
      file name and node name from the specification. */
 
   if (entry->type == REFERENCE_XREF)
     {
-      int length = 0; /* Length of specification */
+      size_t length = 0; /* Length of specification */
       char *target_start = inptr;
       char *nl_off = 0;
-      int space_at_start_of_line = 0;
+      size_t space_at_start_of_line = 0;
 
       length += skip_whitespace_and_newlines (inptr);
 
@@ -1274,7 +1274,7 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
           if (nl_off
               && nl_off < target_start + (length - space_at_start_of_line) / 2)
             {
-              int i;
+              size_t i;
               write_extra_bytes_to_output ("\n", 1);
 
               for (i = 0; i < space_at_start_of_line; i++)
@@ -1294,7 +1294,7 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
           write_extra_bytes_to_output (" manual)",
                                        strlen (" manual)"));
         }
-      
+
       /* Hide terminating punctuation if we are in a reference
          like "(*note Label:(file)node.)". */
       if (in_parentheses && inptr[0] == '.')
@@ -1306,8 +1306,8 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       /* Output a newline if one is needed.  Don't do it at the end of
          a paragraph. */
       if (nl_off && *inptr != '\n')
-        { 
-          int i;
+        {
+          size_t i;
 
           write_extra_bytes_to_output ("\n", 1);
           for (i = 0; i < space_at_start_of_line; i++)
@@ -1317,15 +1317,15 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
     }
   else /* entry->type == REFERENCE_MENU_ITEM */
     {
-      int line_len;
-      int length = 0; /* Length of specification */
+      size_t line_len;
+      size_t length = 0; /* Length of specification */
 
       length = skip_whitespace (inptr);
       length += read_bracketed_filename (inptr + length, &entry->filename);
       length += strspn (inptr + length, " ");
 
       /* Get the node name. */
-      length += read_quoted_string (inptr + length, ",.\t\n", 2, 
+      length += read_quoted_string (inptr + length, ",.\t\n", 2,
                                     &entry->nodename);
       if (inptr[length] == '.') /* A '.' terminating the entry. */
         length++;
@@ -1445,7 +1445,7 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
     }
   else
     {
-      /* It was not a valid tag. */ 
+      /* It was not a valid tag. */
       copy_input_to_output (p - inptr + 1);
     }
 
@@ -1460,11 +1460,11 @@ static char *
 forward_to_info_syntax (char *contents)
 {
   /* Loop until just before the end of the input.  The '- 3' prevents us
-     accessing memory after the end of the input, and none of the strings we 
+     accessing memory after the end of the input, and none of the strings we
      are looking for are shorter than 3 bytes. */
   while (contents < input_start + input_length - 3)
     {
-      /* Menu entry comes first to optimize for the case of looking through a 
+      /* Menu entry comes first to optimize for the case of looking through a
          long index node. */
       if (looking_at_string (contents, INFO_MENU_ENTRY_LABEL)
           || looking_at_string (contents, INFO_XREF_LABEL)
@@ -1477,14 +1477,14 @@ forward_to_info_syntax (char *contents)
 
 /* Scan contents of NODE, recording cross-references and similar.
 
-   Convert character encoding of node contents to that of the user if the two 
-   are known to be different.  If PREPROCESS_NODES_P == 1, remove Info syntax 
+   Convert character encoding of node contents to that of the user if the two
+   are known to be different.  If PREPROCESS_NODES_P == 1, remove Info syntax
    in contents.
 
-   If FB is non-null, it is the file containing the node, and TAG_PTR is an 
+   If FB is non-null, it is the file containing the node, and TAG_PTR is an
    offset into FB->tags.  If the node contents are rewritten, adjust anchors
-   that occur in the node and store adjusted value as TAG->nodestart_adjusted, 
-   otherwise simply copy TAG->nodestart to TAG->nodestart_adjusted for each 
+   that occur in the node and store adjusted value as TAG->nodestart_adjusted,
+   otherwise simply copy TAG->nodestart to TAG->nodestart_adjusted for each
    anchor in the node. */
 void
 scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
@@ -1511,7 +1511,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
       if (!*anchor_to_adjust)
         anchor_to_adjust = 0;
       else if (*anchor_to_adjust
-               && (*anchor_to_adjust)->cache.nodelen != 0)
+               && !((*anchor_to_adjust)->flags & T_IsAnchor))
         anchor_to_adjust = 0;
 
       if (!node->subfile)
@@ -1551,7 +1551,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
       REFERENCE *entry;
 
       /* Write out up to match */
-      copy_input_to_output (match - inptr); 
+      copy_input_to_output (match - inptr);
 
       if ((in_menu && match[0] == '\n') || match[0] == '*')
         {
@@ -1564,7 +1564,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
             in_parentheses = 1;
 
           save_conversion_state ();
-          
+
           if (!scan_reference_marker (entry, in_parentheses))
             goto not_a_reference;
 
@@ -1592,7 +1592,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
           else
             {
               /* Proceed to read the rest of the reference. */
-              /* TODO: we should probably not allow references of the form 
+              /* TODO: we should probably not allow references of the form
                  "(file)node1:node2." or "(file1)node1:(file2)node2", so
                  bail out here if entry->filename is non-null. */
 
@@ -1606,8 +1606,8 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
             {
               char *cur_inptr;
 
-not_a_reference:
-              /* This is not a menu entry or reference.  Do not add to our 
+ not_a_reference:
+              /* This is not a menu entry or reference.  Do not add to our
                  list. */
               cur_inptr = inptr;
               reset_conversion ();
@@ -1640,7 +1640,7 @@ not_a_reference:
   /* If we haven't accidentally gone past the end of the node, write
      out the rest of it. */
   if (inptr < node->contents + node->nodelen)
-    copy_input_to_output ((node->contents + node->nodelen) - inptr); 
+    copy_input_to_output ((node->contents + node->nodelen) - inptr);
 
   /* Null to terminate buffer. */
   if (rewrite_p)
@@ -1648,7 +1648,7 @@ not_a_reference:
 
   /* Free resources used in character encoding conversion. */
   close_conversion ();
-  
+
   node->references = refs;
 
   if (rewrite_p)
@@ -1657,7 +1657,7 @@ not_a_reference:
         free (node->contents);
       node->contents = text_buffer_base (&output_buf);
       node->flags |= N_WasRewritten;
- 
+
       /* output_buf.off is the offset of the next character to be
          written.  Subtracting 1 gives the offset of our terminating
          null, that is, the length. */
@@ -1667,7 +1667,7 @@ not_a_reference:
     {
       /* Set nodestart_adjusted for all of the anchors in this node. */
       tag_ptr++;
-      while (*tag_ptr && (*tag_ptr)->cache.nodelen == 0)
+      while (*tag_ptr && ((*tag_ptr)->flags & T_IsAnchor))
         {
           (*tag_ptr)->nodestart_adjusted = (*tag_ptr)->nodestart
                                              - output_bytes_difference;

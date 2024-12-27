@@ -64,9 +64,7 @@ $result_trees{'bad_ifclear_argument'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 4,
-                      'macro' => ''
+                      'line_nr' => 4
                     }
                   }
                 ],
@@ -76,9 +74,7 @@ $result_trees{'bad_ifclear_argument'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 2,
-                  'macro' => ''
+                  'line_nr' => 2
                 }
               },
               'position' => 1,
@@ -107,9 +103,7 @@ $result_errors{'bad_ifclear_argument'} = [
   {
     'error_line' => 'bad name for @ifclear
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'bad name for @ifclear',
     'type' => 'error'
   }

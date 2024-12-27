@@ -107,15 +107,16 @@ $result_trees{'node_footnote_use_node'} = {
                       'cmdname' => '\'',
                       'source_info' => {
                         'file_name' => 'node_footnote.texi',
-                        'line_nr' => 8,
-                        'macro' => ''
+                        'line_nr' => 8
                       }
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => '_00e1'
                   },
                   'type' => 'menu_entry_node'
@@ -141,8 +142,7 @@ $result_trees{'node_footnote_use_node'} = {
               ],
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               },
               'type' => 'menu_entry'
             },
@@ -168,15 +168,16 @@ $result_trees{'node_footnote_use_node'} = {
                       'cmdname' => '^',
                       'source_info' => {
                         'file_name' => 'node_footnote.texi',
-                        'line_nr' => 9,
-                        'macro' => ''
+                        'line_nr' => 9
                       }
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => '_00e2'
                   },
                   'type' => 'menu_entry_node'
@@ -202,8 +203,7 @@ $result_trees{'node_footnote_use_node'} = {
               ],
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               },
               'type' => 'menu_entry'
             },
@@ -220,9 +220,11 @@ $result_trees{'node_footnote_use_node'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'chapter'
                   },
                   'type' => 'menu_entry_node'
@@ -248,8 +250,7 @@ $result_trees{'node_footnote_use_node'} = {
               ],
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               },
               'type' => 'menu_entry'
             },
@@ -275,15 +276,16 @@ $result_trees{'node_footnote_use_node'} = {
                       'cmdname' => '`',
                       'source_info' => {
                         'file_name' => 'node_footnote.texi',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       }
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => '_00e0'
                   },
                   'type' => 'menu_entry_node'
@@ -309,8 +311,7 @@ $result_trees{'node_footnote_use_node'} = {
               ],
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               },
               'type' => 'menu_entry'
             },
@@ -342,15 +343,13 @@ $result_trees{'node_footnote_use_node'} = {
               },
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'source_info' => {
             'file_name' => 'node_footnote.texi',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -360,6 +359,7 @@ $result_trees{'node_footnote_use_node'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -369,8 +369,7 @@ $result_trees{'node_footnote_use_node'} = {
       },
       'source_info' => {
         'file_name' => 'node_footnote.texi',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -391,8 +390,7 @@ $result_trees{'node_footnote_use_node'} = {
               'cmdname' => '\'',
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             }
           ],
@@ -431,8 +429,7 @@ $result_trees{'node_footnote_use_node'} = {
               'cmdname' => '\'',
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -465,8 +462,7 @@ $result_trees{'node_footnote_use_node'} = {
                           'cmdname' => '\'',
                           'source_info' => {
                             'file_name' => 'node_footnote.texi',
-                            'line_nr' => 17,
-                            'macro' => ''
+                            'line_nr' => 17
                           }
                         }
                       ],
@@ -477,10 +473,10 @@ $result_trees{'node_footnote_use_node'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             },
             {
@@ -497,6 +493,7 @@ $result_trees{'node_footnote_use_node'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => '_00e1'
       },
       'info' => {
@@ -506,8 +503,7 @@ $result_trees{'node_footnote_use_node'} = {
       },
       'source_info' => {
         'file_name' => 'node_footnote.texi',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     },
     {
@@ -528,8 +524,7 @@ $result_trees{'node_footnote_use_node'} = {
               'cmdname' => '^',
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 19,
-                'macro' => ''
+                'line_nr' => 19
               }
             }
           ],
@@ -568,8 +563,7 @@ $result_trees{'node_footnote_use_node'} = {
               'cmdname' => '^',
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             },
             {
@@ -602,8 +596,7 @@ $result_trees{'node_footnote_use_node'} = {
                           'cmdname' => '^',
                           'source_info' => {
                             'file_name' => 'node_footnote.texi',
-                            'line_nr' => 22,
-                            'macro' => ''
+                            'line_nr' => 22
                           }
                         }
                       ],
@@ -614,10 +607,10 @@ $result_trees{'node_footnote_use_node'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               }
             },
             {
@@ -634,6 +627,7 @@ $result_trees{'node_footnote_use_node'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => '_00e2'
       },
       'info' => {
@@ -643,8 +637,7 @@ $result_trees{'node_footnote_use_node'} = {
       },
       'source_info' => {
         'file_name' => 'node_footnote.texi',
-        'line_nr' => 19,
-        'macro' => ''
+        'line_nr' => 19
       }
     },
     {
@@ -666,6 +659,7 @@ $result_trees{'node_footnote_use_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chapter'
       },
       'info' => {
@@ -675,8 +669,7 @@ $result_trees{'node_footnote_use_node'} = {
       },
       'source_info' => {
         'file_name' => 'node_footnote.texi',
-        'line_nr' => 24,
-        'macro' => ''
+        'line_nr' => 24
       }
     },
     {
@@ -739,15 +732,16 @@ $result_trees{'node_footnote_use_node'} = {
                       'cmdname' => '`',
                       'source_info' => {
                         'file_name' => 'node_footnote.texi',
-                        'line_nr' => 28,
-                        'macro' => ''
+                        'line_nr' => 28
                       }
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => '_00e0'
                   },
                   'type' => 'menu_entry_node'
@@ -773,8 +767,7 @@ $result_trees{'node_footnote_use_node'} = {
               ],
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               },
               'type' => 'menu_entry'
             },
@@ -806,15 +799,13 @@ $result_trees{'node_footnote_use_node'} = {
               },
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             }
           ],
           'source_info' => {
             'file_name' => 'node_footnote.texi',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           }
         },
         {
@@ -823,7 +814,9 @@ $result_trees{'node_footnote_use_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -831,8 +824,7 @@ $result_trees{'node_footnote_use_node'} = {
       },
       'source_info' => {
         'file_name' => 'node_footnote.texi',
-        'line_nr' => 25,
-        'macro' => ''
+        'line_nr' => 25
       }
     },
     {
@@ -853,8 +845,7 @@ $result_trees{'node_footnote_use_node'} = {
               'cmdname' => '`',
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 31,
-                'macro' => ''
+                'line_nr' => 31
               }
             }
           ],
@@ -893,8 +884,7 @@ $result_trees{'node_footnote_use_node'} = {
               'cmdname' => '`',
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 33,
-                'macro' => ''
+                'line_nr' => 33
               }
             },
             {
@@ -927,8 +917,7 @@ $result_trees{'node_footnote_use_node'} = {
                           'cmdname' => '`',
                           'source_info' => {
                             'file_name' => 'node_footnote.texi',
-                            'line_nr' => 34,
-                            'macro' => ''
+                            'line_nr' => 34
                           }
                         }
                       ],
@@ -939,10 +928,10 @@ $result_trees{'node_footnote_use_node'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
                 'file_name' => 'node_footnote.texi',
-                'line_nr' => 34,
-                'macro' => ''
+                'line_nr' => 34
               }
             },
             {
@@ -959,6 +948,7 @@ $result_trees{'node_footnote_use_node'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => '_00e0'
       },
       'info' => {
@@ -968,8 +958,7 @@ $result_trees{'node_footnote_use_node'} = {
       },
       'source_info' => {
         'file_name' => 'node_footnote.texi',
-        'line_nr' => 31,
-        'macro' => ''
+        'line_nr' => 31
       }
     },
     {
@@ -985,11 +974,11 @@ $result_trees{'node_footnote_use_node'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
-$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'node_footnote_use_node'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
+$result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0];
+$result_trees{'node_footnote_use_node'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_footnote_use_node'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'node_footnote_use_node'} = '\\input texinfo @c -*-texinfo-*-
 
@@ -1057,7 +1046,7 @@ Footnote 3.
 ';
 
 $result_sectioning{'node_footnote_use_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'chapter',
@@ -1066,169 +1055,153 @@ $result_sectioning{'node_footnote_use_node'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'chapter'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 1,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'node_footnote_use_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'node_footnote_use_node'};
+$result_sectioning{'node_footnote_use_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'node_footnote_use_node'};
 
-$result_nodes{'node_footnote_use_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => '_00e1'
-      },
-      'structure' => {
-        'node_next' => {
+$result_nodes{'node_footnote_use_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => '_00e2'
-          },
-          'structure' => {
-            'node_next' => {
-              'cmdname' => 'node',
-              'extra' => {
-                'associated_section' => {
-                  'cmdname' => 'chapter',
-                  'extra' => {},
-                  'structure' => {
-                    'section_number' => 1
-                  }
-                },
-                'menus' => [
-                  {
-                    'cmdname' => 'menu'
-                  }
-                ],
-                'normalized' => 'chapter'
-              },
-              'structure' => {
-                'menu_child' => {
-                  'cmdname' => 'node',
-                  'extra' => {
-                    'normalized' => '_00e0'
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'node_directions' => {
+                    'next' => {
+                      'cmdname' => 'node',
+                      'extra' => {
+                        'associated_section' => {
+                          'cmdname' => 'chapter',
+                          'extra' => {
+                            'section_number' => '1'
+                          }
+                        },
+                        'node_directions' => {
+                          'next' => {
+                            'cmdname' => 'node',
+                            'extra' => {
+                              'node_directions' => {
+                                'prev' => {},
+                                'up' => {}
+                              },
+                              'normalized' => '_00e0'
+                            }
+                          },
+                          'prev' => {},
+                          'up' => {}
+                        },
+                        'normalized' => 'chapter'
+                      }
+                    },
+                    'prev' => {},
+                    'up' => {}
                   },
-                  'structure' => {
-                    'node_prev' => {},
-                    'node_up' => {}
-                  }
-                },
-                'node_next' => {},
-                'node_prev' => {},
-                'node_up' => {}
-              }
-            },
-            'node_prev' => {},
-            'node_up' => {}
-          }
-        },
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'}{'structure'}{'node_next'} = $result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'}{'structure'}{'menu_child'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'node_footnote_use_node'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'node_footnote_use_node'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'node_footnote_use_node'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'node_footnote_use_node'};
-$result_nodes{'node_footnote_use_node'}{'structure'}{'node_next'} = $result_nodes{'node_footnote_use_node'}{'structure'}{'menu_child'};
-
-$result_menus{'node_footnote_use_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => '_00e1'
-      },
-      'structure' => {
-        'menu_next' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => '_00e2'
-          },
-          'structure' => {
-            'menu_next' => {
-              'cmdname' => 'node',
-              'extra' => {
-                'normalized' => 'chapter'
-              },
-              'structure' => {
-                'menu_child' => {
-                  'cmdname' => 'node',
-                  'extra' => {
-                    'normalized' => '_00e0'
-                  },
-                  'structure' => {
-                    'menu_prev' => {},
-                    'menu_up' => {},
-                    'menu_up_hash' => {
-                      'Top' => 1,
-                      'chapter' => 1
-                    }
-                  }
-                },
-                'menu_next' => {},
-                'menu_prev' => {},
-                'menu_up' => {},
-                'menu_up_hash' => {
-                  'Top' => 1
+                  'normalized' => '_00e2'
                 }
-              }
+              },
+              'prev' => {},
+              'up' => {}
             },
-            'menu_prev' => {},
-            'menu_up' => {},
-            'menu_up_hash' => {
-              'Top' => 1
-            }
+            'normalized' => '_00e1'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {},
+  {},
+  {},
+  {}
+];
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'node_footnote_use_node'}[0];
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'node_footnote_use_node'}[0];
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'node_footnote_use_node'}[0];
+$result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'node_footnote_use_node'}[0];
+$result_nodes{'node_footnote_use_node'}[1] = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[2] = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[3] = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+$result_nodes{'node_footnote_use_node'}[4] = $result_nodes{'node_footnote_use_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'node_footnote_use_node'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {
+          'extra' => {
+            'menu_directions' => {
+              'next' => {
+                'extra' => {
+                  'menu_directions' => {
+                    'next' => {
+                      'extra' => {
+                        'menu_directions' => {
+                          'prev' => {},
+                          'up' => {}
+                        },
+                        'normalized' => '_00e0'
+                      }
+                    },
+                    'prev' => {},
+                    'up' => {}
+                  },
+                  'menus' => [
+                    {}
+                  ],
+                  'normalized' => 'chapter'
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => '_00e2'
           }
         },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
-        }
-      }
+        'up' => {}
+      },
+      'normalized' => '_00e1'
     }
-  }
-};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'}{'structure'}{'menu_child'}{'structure'}{'menu_prev'} = $result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'}{'structure'}{'menu_next'} = $result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'}{'structure'}{'menu_child'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'}{'structure'}{'menu_prev'} = $result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_next'}{'structure'}{'menu_up'} = $result_menus{'node_footnote_use_node'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_prev'} = $result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_up'} = $result_menus{'node_footnote_use_node'};
-$result_menus{'node_footnote_use_node'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'node_footnote_use_node'};
+  },
+  {},
+  {},
+  {}
+];
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'prev'} = $result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'};
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'up'} = $result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'};
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'prev'} = $result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'};
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'up'} = $result_menus{'node_footnote_use_node'}[0];
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'prev'} = $result_menus{'node_footnote_use_node'}[1];
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'up'} = $result_menus{'node_footnote_use_node'}[0];
+$result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'node_footnote_use_node'}[0];
+$result_menus{'node_footnote_use_node'}[2] = $result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'};
+$result_menus{'node_footnote_use_node'}[3] = $result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'};
+$result_menus{'node_footnote_use_node'}[4] = $result_menus{'node_footnote_use_node'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'next'};
 
 $result_errors{'node_footnote_use_node'} = [];
 

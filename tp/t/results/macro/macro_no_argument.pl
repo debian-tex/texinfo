@@ -18,9 +18,7 @@ $result_trees{'macro_no_argument'} = {
             'arg_line' => ''
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -39,18 +37,14 @@ $result_errors{'macro_no_argument'} = [
   {
     'error_line' => '@macro requires a name
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@macro requires a name',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end macro\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'no matching `@end macro\'',
     'type' => 'error'
   }

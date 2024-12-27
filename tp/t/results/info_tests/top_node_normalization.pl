@@ -45,19 +45,19 @@ $result_trees{'top_node_normalization'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Top'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -72,19 +72,19 @@ $result_trees{'top_node_normalization'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Top'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -126,9 +126,11 @@ $result_trees{'top_node_normalization'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Top'
                   },
                   'type' => 'menu_entry_node'
@@ -153,9 +155,7 @@ $result_trees{'top_node_normalization'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'menu_entry'
             },
@@ -186,20 +186,17 @@ $result_trees{'top_node_normalization'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -208,17 +205,15 @@ $result_trees{'top_node_normalization'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'top_node_normalization'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'top_node_normalization'} = '@node ToP
 
@@ -236,67 +231,53 @@ TOP. tOP.
 * tOP::
 ';
 
-$result_nodes{'top_node_normalization'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {},
-    'node_next' => {},
-    'node_prev' => {}
-  }
-};
-$result_nodes{'top_node_normalization'}{'structure'}{'menu_child'} = $result_nodes{'top_node_normalization'};
-$result_nodes{'top_node_normalization'}{'structure'}{'node_next'} = $result_nodes{'top_node_normalization'};
-$result_nodes{'top_node_normalization'}{'structure'}{'node_prev'} = $result_nodes{'top_node_normalization'};
-
-$result_menus{'top_node_normalization'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {},
-    'menu_up' => {},
-    'menu_up_hash' => {
-      'Top' => 1
+$result_nodes{'top_node_normalization'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {}
+      },
+      'normalized' => 'Top'
     }
   }
-};
-$result_menus{'top_node_normalization'}{'structure'}{'menu_child'} = $result_menus{'top_node_normalization'};
-$result_menus{'top_node_normalization'}{'structure'}{'menu_up'} = $result_menus{'top_node_normalization'};
+];
+$result_nodes{'top_node_normalization'}[0]{'extra'}{'node_directions'}{'next'} = $result_nodes{'top_node_normalization'}[0];
+
+$result_menus{'top_node_normalization'} = [
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {}
+      },
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  }
+];
+$result_menus{'top_node_normalization'}[0]{'extra'}{'menu_directions'}{'up'} = $result_menus{'top_node_normalization'}[0];
 
 $result_errors{'top_node_normalization'} = [
   {
     'error_line' => 'warning: @xref to `TOP\', different from node name `ToP\'
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@xref to `TOP\', different from node name `ToP\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @xref to `tOP\', different from node name `ToP\'
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@xref to `tOP\', different from node name `ToP\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @menu entry node name `tOP\' different from node name `ToP\'
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@menu entry node name `tOP\' different from node name `ToP\'',
     'type' => 'warning'
   }
@@ -310,7 +291,7 @@ $result_floats{'top_node_normalization'} = {};
 $result_converted{'info'}->{'top_node_normalization'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: Top,  Prev: Top,  Up: (dir)
+File: ,  Node: Top,  Next: Top,  Up: (dir)
 
 *Note ToP::.  *Note ToP::.
 

@@ -13,7 +13,9 @@ $result_trees{'section_on_xtable_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'type' => 'block_line_arg'
@@ -29,9 +31,7 @@ $result_trees{'section_on_xtable_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -65,18 +65,17 @@ $result_trees{'section_on_xtable_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'cmdname' => 'TeX',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 3
+                  }
                 }
               ],
               'info' => {
@@ -97,21 +96,20 @@ $result_trees{'section_on_xtable_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -145,11 +143,8 @@ $result_trees{'section_on_xtable_line'} = {
                 {
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 5
+                  }
                 }
               ],
               'info' => {
@@ -170,21 +165,20 @@ $result_trees{'section_on_xtable_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -215,7 +209,9 @@ $result_trees{'section_on_xtable_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
@@ -227,9 +223,7 @@ $result_trees{'section_on_xtable_line'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 7,
-                    'macro' => ''
+                    'line_nr' => 7
                   }
                 }
               ],
@@ -246,21 +240,20 @@ $result_trees{'section_on_xtable_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         }
       ],
+      'extra' => {
+        'section_number' => '3'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -281,15 +274,16 @@ $result_trees{'section_on_xtable_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '4'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     }
   ],
@@ -324,194 +318,179 @@ $result_texts{'section_on_xtable_line'} = '1 first
 ';
 
 $result_sectioning{'section_on_xtable_line'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {},
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 2,
-          'section_number' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '2',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       },
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 2,
-          'section_number' => 3,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '3',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       },
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 2,
-          'section_number' => 4,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '4',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_on_xtable_line'};
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'section_on_xtable_line'};
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[2]{'structure'}{'section_prev'} = $result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[1];
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[2]{'structure'}{'section_up'} = $result_sectioning{'section_on_xtable_line'};
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[2]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[1];
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[3]{'structure'}{'section_prev'} = $result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[2];
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[3]{'structure'}{'section_up'} = $result_sectioning{'section_on_xtable_line'};
-$result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[3]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_on_xtable_line'}{'structure'}{'section_childs'}[2];
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_on_xtable_line'};
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[2]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[1];
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[2]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[1];
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[3]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[2];
+$result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[3]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'section_on_xtable_line'}{'extra'}{'section_childs'}[2];
 
 $result_errors{'section_on_xtable_line'} = [
   {
+    'error_line' => 'warning: @section should only appear at the beginning of a line
+',
+    'line_nr' => 1,
+    'text' => '@section should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'warning: @section should not appear on @vtable line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@section should not appear on @vtable line',
     'type' => 'warning'
   },
   {
     'error_line' => 'missing @vtable argument
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'missing @vtable argument',
     'type' => 'error'
   },
   {
     'error_line' => '@section seen before @end vtable
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@section seen before @end vtable',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @section should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @section should not appear on @table line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@section should not appear on @table line',
     'type' => 'warning'
   },
   {
     'error_line' => 'command @TeX not accepting argument in brace should not be on @table line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'command @TeX not accepting argument in brace should not be on @table line',
     'type' => 'error'
   },
   {
     'error_line' => '@section seen before @end table
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@section seen before @end table',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @section should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @section should not appear on @table line
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@section should not appear on @table line',
     'type' => 'warning'
   },
   {
     'error_line' => '@section seen before @end table
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@section seen before @end table',
     'type' => 'error'
   },
   {
     'error_line' => '@ringaccent expected braces
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@ringaccent expected braces',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @section should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @section should not appear on @ftable line
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@section should not appear on @ftable line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @ftable: @ringaccent 
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'bad argument to @ftable: @ringaccent ',
     'type' => 'error'
   },
   {
     'error_line' => '@section seen before @end ftable
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@section seen before @end ftable',
     'type' => 'error'
   }

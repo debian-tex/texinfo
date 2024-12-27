@@ -1,0 +1,10 @@
+
+@title Title
+@node Top
+@node ichp
+
+@macrtwo{}
+
+J @value{myval}.
+
+@include file_with_cpp_lines.texi

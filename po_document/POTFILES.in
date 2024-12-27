@@ -10,6 +10,7 @@
 tp/ext/epub3.pm
 tp/init/html32.pm
 tp/Texinfo/Common.pm
+tp/Texinfo/HTMLData.pm
 tp/Texinfo/Structuring.pm
 tp/Texinfo/Translations.pm
 tp/Texinfo/Convert/Converter.pm
@@ -18,3 +19,14 @@ tp/Texinfo/Convert/LaTeX.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/HTML.pm
 tp/Texinfo/Convert/Utils.pm
+tp/Texinfo/XS/convert/converter.c
+tp/Texinfo/XS/convert/convert_html.c
+tp/Texinfo/XS/convert/format_html.c
+tp/Texinfo/XS/main/html_conversion_data.c
+tp/Texinfo/XS/main/convert_to_text.c
+tp/Texinfo/XS/main/convert_utils.c
+tp/Texinfo/XS/main/parser_conf.c
+tp/Texinfo/XS/main/translations.c
+tp/Texinfo/XS/main/utils.c
+tp/Texinfo/XS/parsetexi/indices.c
+tp/Texinfo/XS/structuring_transfo/structuring.c

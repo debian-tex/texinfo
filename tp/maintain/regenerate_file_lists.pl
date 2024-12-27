@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# Copyright 2011-2023 Free Software Foundation, Inc.
+# Copyright 2011-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -13,16 +13,13 @@
 
 use strict;
 
-# emulates -w
-BEGIN
-{
-  $^W = 1;
-}
+use warnings;
+
 use File::Find;
 use File::Basename;
 use File::Spec;
 
-my ($command, $mydir, $suffix) = fileparse($0);
+my ($program_name, $mydir, $suffix) = fileparse($0);
 my $parent = File::Spec->catdir($mydir, File::Spec->updir());
 chdir($parent) || die "chdir $parent: $!";
 -d "t" || (die "goodbye, no t directory in " . `pwd`);
@@ -33,9 +30,10 @@ sub wanted
 {
   if ((/\.pl$/ and $File::Find::dir =~ m:^t/results/[^/]+:)
       or (!/^CVS$/ and !/^\.svn$/ 
+          # it could have been interesting to list each file but this
+          # leads to an "Argument list too long" error for the shell in
+          # make dist.
           # to list each file
-          # FIXME it would be better to list each file but then this leads to
-          # an "Argument list too long" error for the shell in make dist
           #and $File::Find::dir =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {
           # list only directories
           and $File::Find::name =~ m:^t/results/[^/]+/[^/]+/res_[^/]+$:)) {

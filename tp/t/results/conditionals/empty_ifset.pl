@@ -69,16 +69,12 @@ $result_trees{'empty_ifset'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 5,
-                      'macro' => ''
+                      'line_nr' => 5
                     }
                   }
                 ],
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'ignored_conditional_block'
@@ -102,9 +98,7 @@ $result_errors{'empty_ifset'} = [
   {
     'error_line' => '@ifset requires a name
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@ifset requires a name',
     'type' => 'error'
   }

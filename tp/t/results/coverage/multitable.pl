@@ -48,9 +48,7 @@ $result_trees{'multitable'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                    'line_nr' => 2
                   }
                 }
               ],
@@ -83,9 +81,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -109,9 +105,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
@@ -147,9 +141,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     },
                     {
@@ -183,9 +175,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     }
                   ],
@@ -216,9 +206,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     },
                     {
@@ -259,14 +247,13 @@ $result_trees{'multitable'} = {
                                 ]
                               },
                               'info' => {
+                                'command_name' => 'cindex',
                                 'spaces_before_argument' => {
                                   'text' => ' '
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 7,
-                                'macro' => ''
+                                'line_nr' => 7
                               },
                               'type' => 'index_entry_command'
                             }
@@ -278,9 +265,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     }
                   ],
@@ -312,9 +297,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 8,
-                        'macro' => ''
+                        'line_nr' => 8
                       }
                     }
                   ],
@@ -353,9 +336,7 @@ $result_trees{'multitable'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -369,9 +350,7 @@ $result_trees{'multitable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -389,6 +368,9 @@ $result_trees{'multitable'} = {
                       'text' => 'truc'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 11
+                  },
                   'type' => 'bracketed_arg'
                 },
                 {
@@ -400,6 +382,9 @@ $result_trees{'multitable'} = {
                       'text' => 'bidule'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 11
+                  },
                   'type' => 'bracketed_arg'
                 }
               ],
@@ -438,9 +423,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => ''
+                        'line_nr' => 12
                       }
                     },
                     {
@@ -464,9 +447,7 @@ $result_trees{'multitable'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => ''
+                        'line_nr' => 12
                       }
                     }
                   ],
@@ -505,9 +486,7 @@ $result_trees{'multitable'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             }
           ],
@@ -520,9 +499,7 @@ $result_trees{'multitable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         }
       ],
@@ -562,9 +539,7 @@ $result_errors{'multitable'} = [
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }

@@ -48,9 +48,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -78,14 +76,13 @@ $result_trees{'unknown_then_known_index_entry'} = {
                 ]
               },
               'info' => {
+                'command_name' => 'someindex',
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               },
               'type' => 'index_entry_command'
             }
@@ -112,18 +109,14 @@ $result_errors{'unknown_then_known_index_entry'} = [
   {
     'error_line' => 'unknown command `someindex\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'unknown command `someindex\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: entry for index `some\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'entry for index `some\' outside of any node',
     'type' => 'warning'
   }
@@ -133,51 +126,30 @@ $result_errors{'unknown_then_known_index_entry'} = [
 $result_indices{'unknown_then_known_index_entry'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'some' => {
-      'contained_indices' => {
-        'some' => 1
-      },
       'in_code' => 0,
       'name' => 'some'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }

@@ -121,6 +121,14 @@ Horizontal space
 
 @end menu
 '],
+['empty_leading_menu_comment',
+'@node first
+
+@menu
+
+* (f)b:: desc
+@end menu
+'],
 ['detailmenu',
 '
 @menu
@@ -512,7 +520,7 @@ Text
 
 @node chap @: b
 @chapter Chap
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 0,}],
 ['nodedescription_descriptions',
 '@node Top
 @top test of nodedescription used in menu
@@ -660,6 +668,7 @@ where the max column could be. @w{in w}.
 
 @ref{in nodescription}, @ref{f1}.
 
+@c node1 again to test two nodescription expansions
 @menu
 * node1::
 @end menu
@@ -668,8 +677,59 @@ where the max column could be. @w{in w}.
 
 @listoffloats tfloat
 
-',{},{'AUTO_MENU_DESCRIPTION_ALIGN_COLUMN' => 16,
+',{'CHECK_NORMAL_MENU_STRUCTURE' => 0,},
+{'AUTO_MENU_DESCRIPTION_ALIGN_COLUMN' => 16,
        'AUTO_MENU_MAX_WIDTH' => 90}],
+# Note that the following tests also test @appendixsec in a chapter
+# (before another chapter) which does not seems to be tested in any other
+# test.
+['part_appendix_in_generated_menu',
+'@node Top
+@top top
+
+
+@node chapter
+@chapter Chap
+
+@node sec
+@appendixsec Sec
+
+@part P1
+
+@node chap2
+@chapter Chap 2
+
+@node app
+@appendix GGG
+',],
+['appendix_and_associated_part_in_generated_menu',
+'@node Top
+@top top
+
+@node chapter
+@chapter Chap
+
+@node sec
+@appendixsec Sec
+
+@part P1
+
+@node chap2
+@chapter Chap 2
+
+@part Final
+
+@node app
+@appendix GGG
+',],
+['format_menu_undef',
+'@node Top
+@top top
+
+@node chapter
+@chapter Chap
+', {'FORMAT_MENU' => undef}, {'FORMAT_MENU' => undef}
+],
 );
 
 my @test_invalid = (
@@ -751,11 +811,18 @@ my @test_invalid = (
 '],
 );
 
+my %info_tests = (
+ 'part_appendix_in_generated_menu' => 1,
+ 'appendix_and_associated_part_in_generated_menu' => 1,
+);
+
 foreach my $test (@test_cases) {
-  $test->[3]->{'FORMAT_MENU'} = 'menu' if (!defined($test->[3]->{'FORMAT_MENU'}));
+  $test->[3]->{'FORMAT_MENU'} = 'menu' if (!exists($test->[3]->{'FORMAT_MENU'}));
   push @{$test->[2]->{'test_formats'}}, 'plaintext';
   push @{$test->[2]->{'test_formats'}}, 'html';
   push @{$test->[2]->{'test_formats'}}, 'xml';
+  push @{$test->[2]->{'test_formats'}}, 'info'
+    if ($info_tests{$test->[0]});
 }
 
 run_all('menu', [@test_cases, @test_invalid]);

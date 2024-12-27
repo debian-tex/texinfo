@@ -24,7 +24,7 @@
 @ref{ Top}
 @ref{  local   node}
 
-@node other nodes, !_"#$%&'()*+-., Top, Top
+@node other nodes, !_"#$%&'()*+-., node to avoid DocBook or LaTeX ignored, Top
 @chapter Chapter with nodes
 
 @menu

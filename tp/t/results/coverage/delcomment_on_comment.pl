@@ -25,7 +25,6 @@ $result_trees{'delcomment_on_comment'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {

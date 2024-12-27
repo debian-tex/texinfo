@@ -36,6 +36,8 @@ Say @value{-e_\'::;}.
 
 @value  {var}
 '],
+['unknown_value_after_spaces',
+'  @value{unknown}  '],
 ['comment_on_set_line',
 '@set x@c
 @set y @c

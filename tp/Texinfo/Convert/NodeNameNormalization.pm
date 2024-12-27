@@ -1,20 +1,20 @@
 # NodeNameNormalization.pm: output tree as normalized node name.
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 # the rules for conversion are decribed in the Texinfo manual, for
@@ -22,7 +22,7 @@
 
 package Texinfo::Convert::NodeNameNormalization;
 
-use 5.00405;
+use 5.006;
 use strict;
 
 # stop \s from matching non-ASCII spaces, etc.  \p{...} can still be
@@ -37,31 +37,32 @@ use Text::Unidecode;
 
 # commands classes
 use Texinfo::Commands;
-# for nobrace_symbol_text
+# for nobrace_symbol_text and text_brace_no_arg_commands
 use Texinfo::Common;
 # use the hashes and functions
 use Texinfo::Convert::Unicode;
-# reuse some conversion hashes and ascii_accent function
-use Texinfo::Convert::Text;
+
+# NOTE it is important that there is no dependency to Texinfo::Convert::Text
+# to avoid a dependency loop, in particular for data definition.
+# The loop would be Texinfo::Convert::Text -> Texinfo::Translations
+#   -> Texinfo::Parser -> this module
 
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter);
+our @ISA = qw(Exporter);
 
-%EXPORT_TAGS = ( 'all' => [ qw(
-  normalize_node
+our @EXPORT_OK = qw(
+  convert_to_identifier
   normalize_transliterate_texinfo
   transliterate_texinfo
   transliterate_protect_file_name
-) ] );
+);
 
-@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 
 my %normalize_node_brace_no_arg_commands
-  = %Texinfo::Convert::Text::text_brace_no_arg_commands;
+  = %Texinfo::Common::text_brace_no_arg_commands;
+
 foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands)) {
   $normalize_node_brace_no_arg_commands{$command} =
      $Texinfo::Convert::Unicode::unicode_character_brace_no_arg_commands{$command};
@@ -70,6 +71,7 @@ foreach my $command (keys(%Texinfo::Convert::Unicode::unicode_character_brace_no
 my %normalize_node_nobrace_symbol_text
   = %Texinfo::Common::nobrace_symbol_text;
 $normalize_node_nobrace_symbol_text{'*'} = ' ';
+$normalize_node_nobrace_symbol_text{'today'} = '';
 
 my %accent_commands = %Texinfo::Commands::accent_commands;
 
@@ -79,19 +81,25 @@ foreach my $ignored_brace_command ('anchor', 'footnote', 'shortcaption',
   $ignored_brace_commands{$ignored_brace_command} = 1;
 }
 
-my %ignored_types;
-foreach my $type ('ignorable_spaces_after_command',
-            'postamble_after_end',
-            'preamble_before_beginning',
+my %ignored_text_types;
+foreach my $type (
+            'ignorable_spaces_after_command',
             'spaces_at_end',
             'spaces_before_paragraph',
             'space_at_end_menu_node',
             'spaces_after_close_brace') {
+  $ignored_text_types{$type} = 1;
+}
+
+my %ignored_types;
+foreach my $type (
+            'postamble_after_end',
+            'preamble_before_beginning') {
   $ignored_types{$type} = 1;
 }
 
 
-sub normalize_node($)
+sub convert_to_identifier($)
 {
   my $root = shift;
   my $result = _convert($root);
@@ -216,12 +224,15 @@ sub _unicode_to_transliterate($;$)
       } elsif (ord($char) <= hex(0xFFFF)
                and exists($Texinfo::Convert::Unicode::diacritics_accent_commands{uc(sprintf("%04x",ord($char)))})) {
         $result .= '';
-      # in this case, we want to avoid calling unidecode, as we are sure
+      # in those cases, we want to avoid calling unidecode, as we are sure
       # that there is no useful transliteration of the unicode character
-      # instead we want to keep it as is.
+      # the would end up in the file name, instead we want to keep it as is
+      # such that it is protected as itself.
       # This is the case, for example, for @exclamdown, it corresponds
-      # with x00a1, but unidecode transliterates it to a !, we want
-      # to avoid that and keep x00a1.
+      # with x00a1, but unidecode transliterates it to a !, which ends up
+      # as _0021, we want to avoid that and keep _00a1 in the transliterated
+      # file name.  These case also do not have a good transliteration with
+      # iconv, although this could also depend on the locale.
       } elsif (ord($char) <= hex(0xFFFF)
                and exists($Texinfo::Convert::Unicode::no_transliterate_map{uc(sprintf("%04x",ord($char)))})) {
         $result .= $char;
@@ -254,6 +265,14 @@ sub _convert($)
 {
   my $element = shift;
 
+  if (defined($element->{'text'})) {
+    return ''
+      if ($element->{'type'} and $ignored_text_types{$element->{'type'}});
+    my $result = $element->{'text'};
+    $result =~ s/\s+/ /g;
+    return $result;
+  }
+
   return '' if (($element->{'type'} and $ignored_types{$element->{'type'}})
           or ($element->{'cmdname'}
              and ($ignored_brace_commands{$element->{'cmdname'}}
@@ -262,39 +281,33 @@ sub _convert($)
                      and $element->{'args'}->[0]->{'type'}
                      and ($element->{'args'}->[0]->{'type'} eq 'line_arg'
                          or $element->{'args'}->[0]->{'type'} eq 'rawline_arg')))));
-  my $result = '';
-  if (defined($element->{'text'})) {
-    $result = $element->{'text'};
-    $result =~ s/\s+/ /g;
-  }
   if ($element->{'cmdname'}) {
-    my $command = $element->{'cmdname'};
-    if (defined($normalize_node_nobrace_symbol_text{$element->{'cmdname'}})) {
-      return $normalize_node_nobrace_symbol_text{$element->{'cmdname'}};
-    } elsif (defined($normalize_node_brace_no_arg_commands{$element->{'cmdname'}})) {
-      $command = $element->{'extra'}->{'clickstyle'}
+    my $cmdname = $element->{'cmdname'};
+    if (defined($normalize_node_nobrace_symbol_text{$cmdname})) {
+      return $normalize_node_nobrace_symbol_text{$cmdname};
+    } elsif (defined($normalize_node_brace_no_arg_commands{$cmdname})) {
+      $cmdname = $element->{'extra'}->{'clickstyle'}
          if ($element->{'extra'}
           and defined($element->{'extra'}->{'clickstyle'})
           and defined($normalize_node_brace_no_arg_commands{$element->{'extra'}->{'clickstyle'}}));
-      my $result = $normalize_node_brace_no_arg_commands{$command};
+      my $result = $normalize_node_brace_no_arg_commands{$cmdname};
       return $result;
     # commands with braces
-    } elsif ($accent_commands{$element->{'cmdname'}}) {
+    } elsif ($accent_commands{$cmdname}) {
       return '' if (!$element->{'args'});
       my $accent_text = _convert($element->{'args'}->[0]);
       my $accented_char
         = Texinfo::Convert::Unicode::unicode_accent($accent_text,
                                                     $element);
       if (!defined($accented_char)) {
-        # In this case, the node normalization do not follow the specification,
-        # but we cannot do better
-        $accented_char = Texinfo::Convert::Text::ascii_accent($accent_text,
-                                                              $element);
+        # If this case was possible, the node normalization would not follow the
+        # specification, but it is not possible, see unicode_accent.
+        $accented_char = $accent_text;
       }
       return $accented_char;
-    } elsif ($Texinfo::Commands::ref_commands{$element->{'cmdname'}}) {
+    } elsif ($Texinfo::Commands::ref_commands{$cmdname}) {
       my @args_try_order;
-      if ($element->{'cmdname'} eq 'inforef') {
+      if ($cmdname eq 'inforef' or $cmdname eq 'link') {
         @args_try_order = (0, 1, 2);
       } else {
         @args_try_order = (0, 1, 2, 4, 3);
@@ -310,124 +323,19 @@ sub _convert($)
     # more than one arg the first one is used.
     } elsif ($element->{'args'} and $element->{'args'}->[0]
            and (($element->{'args'}->[0]->{'type'}
-                and $element->{'args'}->[0]->{'type'} eq 'brace_command_arg')
-                or $element->{'cmdname'} eq 'math')) {
+                 and ($element->{'args'}->[0]->{'type'} eq 'brace_container'
+             or $element->{'args'}->[0]->{'type'} eq 'brace_arg'))
+                or $cmdname eq 'math')) {
       return _convert($element->{'args'}->[0]);
     }
   }
+  my $result = '';
   if ($element->{'contents'}) {
     foreach my $content (@{$element->{'contents'}}) {
       $result .= _convert($content);
     }
   }
   return $result;
-}
-
-# Called from Texinfo::ParserNonXS and Texinfo::XS::parsetexi::Parsetexi.
-# This should be considered an internal function of the parsers for all
-# purposes, it is here to avoid code duplication.
-# Sets $self->{'nodes'} and $self->{'labels'} based on $self->{'targets'}.
-sub set_nodes_list_labels($$$)
-{
-  my $self = shift;
-  my $registrar = shift;
-  my $configuration_information = shift;
-
-  $self->{'nodes'} = [];
-  my %labels = ();
-  if (defined $self->{'targets'}) {
-    for my $target (@{$self->{'targets'}}) {
-      if ($target->{'cmdname'} eq 'node') {
-        for (my $i = 1; $i < scalar(@{$target->{'args'}}); $i++) {
-          my $arg = $target->{'args'}->[$i];
-          if ($arg->{'extra'} and $arg->{'extra'}->{'node_content'}) {
-            my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node(
-               {'contents' => $arg->{'extra'}->{'node_content'}});
-            $arg->{'extra'}->{'normalized'} = $normalized;
-          }
-        }
-      }
-      my $label_element = Texinfo::Common::get_label_element($target);
-      if ($label_element and $label_element->{'contents'}) {
-        my $normalized
-            = Texinfo::Convert::NodeNameNormalization::normalize_node(
-                                                           $label_element);
-        if ($normalized !~ /[^-]/) {
-          $registrar->line_error($configuration_information,
-                      sprintf(__("empty node name after expansion `%s'"),
-                         # convert the contents only, to avoid spaces
-                              Texinfo::Convert::Texinfo::convert_to_texinfo(
-                               {'contents' => $label_element->{'contents'}})),
-                                 $target->{'source_info'});
-        } else {
-          if (defined $labels{$normalized}) {
-            $registrar->line_error($configuration_information,
-                                   sprintf(__("\@%s `%s' previously defined"),
-                                           $target->{'cmdname'},
-                          Texinfo::Convert::Texinfo::convert_to_texinfo(
-                               {'contents' => $label_element->{'contents'}})),
-                                    $target->{'source_info'});
-            $registrar->line_error($configuration_information,
-                         sprintf(__("here is the previous definition as \@%s"),
-                                 $labels{$normalized}->{'cmdname'}),
-                                   $labels{$normalized}->{'source_info'}, 1);
-          } else {
-            $labels{$normalized} = $target;
-            $target->{'extra'} = {} if (!$target->{'extra'});
-            $target->{'extra'}->{'normalized'} = $normalized;
-            if ($target->{'cmdname'} eq 'node') {
-              push @{$self->{'nodes'}}, $target;
-            }
-          }
-        }
-      } else {
-        if ($target->{'cmdname'} eq 'node') {
-          $registrar->line_error($configuration_information,
-               sprintf(__("empty argument in \@%s"),
-                  $target->{'cmdname'}), $target->{'source_info'});
-        }
-      }
-    }
-  }
-  $self->{'labels'} = \%labels;
-}
-
-sub _parse_float_type($)
-{
-  my $current = shift;
-
-  my $normalized = '';
-  if ($current->{'args'} and scalar(@{$current->{'args'}})) {
-    $normalized = convert_to_normalized($current->{'args'}->[0]);
-  }
-  $current->{'extra'} = {} if (!$current->{'extra'});
-  $current->{'extra'}->{'float_type'} = $normalized;
-  return $normalized;
-}
-
-# Called from Texinfo::ParserNonXS and Texinfo::XS::parsetexi::Parsetexi.
-# This should be considered an internal function of the parsers for all
-# purposes, it is here to avoid code duplication.
-sub set_float_types
-{
-  my $self = shift;
-
-  $self->{'floats'} = {};
-
-  my $global_commands = $self->global_commands_information();
-  return unless ($global_commands);
-
-  if ($global_commands->{'float'}) {
-    foreach my $current (@{$global_commands->{'float'}}) {
-      my $float_type = _parse_float_type($current);
-      push @{$self->{'floats'}->{$float_type}}, $current;
-    }
-  }
-  if ($global_commands->{'listoffloats'}) {
-    foreach my $current (@{$global_commands->{'listoffloats'}}) {
-      _parse_float_type($current);
-    }
-  }
 }
 
 1;
@@ -440,13 +348,13 @@ Texinfo::Convert::NodeNameNormalization - Normalize and transliterate Texinfo tr
 
 =head1 SYNOPSIS
 
-  use Texinfo::Convert::NodeNameNormalization qw(normalize_node
+  use Texinfo::Convert::NodeNameNormalization qw(convert_to_identifier
                                         normalize_transliterate_texinfo);
 
-  my $normalized = normalize_node({'contents' => $node_contents});
+  my $normalized = convert_to_identifier($node_element->{'args'}->[0]);
 
-  my $file_name = normalize_transliterate_texinfo({'contents'
-                                            => $section_contents});
+  my $file_name
+    = normalize_transliterate_texinfo($section_element->{'args'}->[0]);
 
 =head1 NOTES
 
@@ -455,13 +363,13 @@ Texinfo to other formats.  There is no promise of API stability.
 
 =head1 DESCRIPTION
 
-C<Texinfo::Convert::NodeNameNormalization> allows to normalize node names,
-with C<normalize_node> following the specification described in the
-Texinfo manual I<HTML Xref> node.  This is useful whenever one want a
-unique identifier for Texinfo content, which is only composed of letter,
-digits, C<-> and C<_>.  In L<Texinfo::Parser>, C<normalize_node> is used
-for C<@node>, C<@float> and C<@anchor> names normalization, but also C<@float>
-types and C<@acronym> and C<@abbr> first argument.
+C<Texinfo::Convert::NodeNameNormalization> allows to normalize node names
+with C<convert_to_normalized> and C<convert_to_identifier>.
+C<convert_to_identifier> follows the specification described in the Texinfo
+manual I<HTML Xref> node.  This is useful whenever one want a unique identifier
+for Texinfo content, which is only composed of letter, digits, C<-> and C<_>,
+for example for C<@node>, C<@float> and C<@anchor> names normalization.
+C<convert_to_normalized> leaves out the step of protecting characters.
 
 It is also possible to transliterate non-ASCII letters, instead of mangling
 them, with C<normalize_transliterate_texinfo>, losing the uniqueness feature of
@@ -482,8 +390,8 @@ normalized as described in the Texinfo manual I<HTML Xref> node.  ASCII
 7-bit characters other than spaces and non-ASCII characters are left as
 is in the resulting string.
 
-=item $normalized = normalize_node($tree)
-X<C<normalize_node>>
+=item $normalized = convert_to_identifier($tree)
+X<C<convert_to_identifier>>
 
 The Texinfo I<$tree> is returned as a string, normalized as described in the
 Texinfo manual I<HTML Xref> node.
@@ -496,7 +404,7 @@ C<@node> or block commands.
 X<C<normalize_transliterate_texinfo>>
 
 The Texinfo I<$tree> is returned as a string, with non-ASCII letters
-transliterated as ASCII, but otherwise similar with C<normalize_node>
+transliterated as ASCII, but otherwise similar with C<convert_to_identifier>
 output.  If the optional I<$no_unidecode> argument is set, C<Text::Unidecode>
 is not used for characters whose transliteration is not built-in.
 

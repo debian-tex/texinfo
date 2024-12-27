@@ -1,6 +1,6 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -38,7 +38,8 @@
 typedef struct line_map_struct
 {
   NODE *node;      /* Node to which this line pertains */
-  size_t nline;    /* Line number for which the map is computed. */
+  long nline;      /* Line number for which the map is computed.
+                      Should not be negative. */
   size_t size;     /* Number of elements map can accomodate */
   size_t used;     /* Number of used map slots */
   long *map;       /* The map itself */
@@ -60,7 +61,7 @@ typedef struct match_struct
   int finished;        /* Non-zero if all possible matches are stored. */
   regex_t regex;
   char *buffer;
-  size_t buflen;
+  long buflen;         /* Should not be negative */
 } MATCH_STATE;
 
 /* Structure which defines a window.  Windows are doubly linked, next
@@ -76,8 +77,8 @@ typedef struct window_struct
   long width;           /* Width of this window. */
   long height;          /* Height of this window. */
   long first_row;       /* Offset of the first line in the_screen. */
-  long goal_column;     /* Column to place the cursor in when moving it up and 
-                           down.  -1 means the column it is currently in. */
+  size_t goal_column;   /* Column to place the cursor in when moving it up and
+                           down (if W_CurrentColGoal flag is not set). */
   NODE *node;           /* The node displayed in this window. */
   long pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
   long point;           /* Offset within NODE of the cursor position. */
@@ -109,6 +110,8 @@ typedef struct window_struct
 #define W_NoWrap        0x10    /* Lines do not wrap in this window. */
 #define W_InputWindow   0x20    /* Window accepts input. */
 #define W_TempWindow    0x40    /* Window is less important. */
+#define W_CurrentColGoal 0x80   /* Use the current column to place the
+                                   cursor in when moving it up and down. */
 
 extern WINDOW *windows;         /* List of visible Info windows. */
 extern WINDOW *active_window;   /* The currently active window. */
@@ -217,14 +220,14 @@ void unmessage_in_echo_area (void);
 void window_clear_echo_area (void);
 
 /* Return the index of the line containing point. */
-int window_line_of_point (WINDOW *window);
+long window_line_of_point (WINDOW *window);
 
 /* Get and return the printed column offset of the cursor in this window. */
-int window_get_cursor_column (WINDOW *window);
+long window_get_cursor_column (WINDOW *window);
 
 void window_compute_line_map (WINDOW *win);
 
-int window_point_to_column (WINDOW *win, long point, long *np);
+size_t window_point_to_column (WINDOW *win, long point, long *np);
 
 void window_line_map_init (WINDOW *win);
 

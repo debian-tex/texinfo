@@ -31,64 +31,81 @@ $result_trees{'defx_in_example'} = {
                     {
                       'contents' => [
                         {
-                          'extra' => {
-                            'def_role' => 'category'
-                          },
-                          'text' => 'fset'
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
-                          'text' => ' ',
-                          'type' => 'spaces'
-                        },
-                        {
-                          'args' => [
+                          'contents' => [
                             {
                               'contents' => [
                                 {
-                                  'text' => 'i'
+                                  'text' => 'fset'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'def_line_arg'
                             }
                           ],
-                          'cmdname' => 'var',
-                          'extra' => {
-                            'def_role' => 'name'
-                          },
-                          'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 2,
-                            'macro' => ''
-                          }
+                          'type' => 'def_category'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'arg'
-                          },
-                          'text' => 'a'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'i'
+                                        }
+                                      ],
+                                      'type' => 'brace_container'
+                                    }
+                                  ],
+                                  'cmdname' => 'var',
+                                  'source_info' => {
+                                    'line_nr' => 2
+                                  }
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'arg'
-                          },
-                          'text' => 'g'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'a'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_arg'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'g'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_arg'
                         }
                       ],
                       'info' => {
@@ -102,7 +119,29 @@ $result_trees{'defx_in_example'} = {
                   ],
                   'extra' => {
                     'def_command' => 'deffn',
-                    'def_index_element' => {},
+                    'def_index_element' => {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'i'
+                                    }
+                                  ],
+                                  'type' => 'brace_container'
+                                }
+                              ],
+                              'cmdname' => 'var'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     'index_entry' => [
                       'fn',
                       1
@@ -110,9 +149,7 @@ $result_trees{'defx_in_example'} = {
                     'original_def_cmdname' => 'deffn'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                    'line_nr' => 2
                   },
                   'type' => 'def_line'
                 },
@@ -123,44 +160,52 @@ $result_trees{'defx_in_example'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'truc'
+                              'contents' => [
+                                {
+                                  'text' => 'truc'
+                                }
+                              ],
+                              'source_info' => {
+                                'line_nr' => 3
+                              },
+                              'type' => 'bracketed_arg'
                             }
                           ],
-                          'extra' => {
-                            'def_role' => 'category'
-                          },
-                          'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 3,
-                            'macro' => ''
-                          },
-                          'type' => 'bracketed_arg'
+                          'type' => 'def_category'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'name'
-                          },
-                          'text' => 'bidulr'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'bidulr'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'arg'
-                          },
-                          'text' => 'machin...'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'machin...'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_arg'
                         }
                       ],
                       'info' => {
@@ -175,7 +220,19 @@ $result_trees{'defx_in_example'} = {
                   'cmdname' => 'deffnx',
                   'extra' => {
                     'def_command' => 'deffn',
-                    'def_index_element' => {},
+                    'def_index_element' => {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'bidulr'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     'index_entry' => [
                       'fn',
                       2
@@ -188,11 +245,8 @@ $result_trees{'defx_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
-                  },
-                  'type' => 'def_line'
+                    'line_nr' => 3
+                  }
                 },
                 {
                   'args' => [
@@ -221,9 +275,7 @@ $result_trees{'defx_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
@@ -233,9 +285,7 @@ $result_trees{'defx_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -265,16 +315,12 @@ $result_trees{'defx_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -283,8 +329,6 @@ $result_trees{'defx_in_example'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'defx_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'defx_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'defx_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'defx_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'defx_in_example'} = '@example
 @deffn fset @var{i} a g
@@ -302,18 +346,14 @@ $result_errors{'defx_in_example'} = [
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }

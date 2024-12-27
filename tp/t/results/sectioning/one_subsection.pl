@@ -10,7 +10,6 @@ $result_trees{'one_subsection'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -34,15 +33,16 @@ $result_trees{'one_subsection'} = {
         }
       ],
       'cmdname' => 'subsection',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -58,21 +58,21 @@ $result_texts{'one_subsection'} = '1 The subsection
 ';
 
 $result_sectioning{'one_subsection'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'subsection',
-        'structure' => {
+        'extra' => {
           'section_level' => 3,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 2
   }
 };
-$result_sectioning{'one_subsection'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'one_subsection'};
+$result_sectioning{'one_subsection'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'one_subsection'};
 
 $result_errors{'one_subsection'} = [];
 
@@ -89,7 +89,7 @@ $result_converted{'plaintext'}->{'one_subsection'} = '1 The subsection
 
 $result_converted{'html'}->{'one_subsection'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

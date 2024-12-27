@@ -50,9 +50,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -113,7 +109,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -130,9 +126,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -181,9 +175,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -192,9 +184,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -242,7 +232,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -259,9 +249,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -315,9 +303,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             }
           ],
@@ -326,9 +312,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         },
         {
@@ -358,6 +342,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -366,9 +351,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 18,
-        'macro' => ''
+        'line_nr' => 18
       }
     },
     {
@@ -403,9 +386,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 19,
-        'macro' => ''
+        'line_nr' => 19
       }
     },
     {
@@ -472,9 +453,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 23,
-                  'macro' => ''
+                  'line_nr' => 23
                 }
               },
               'position' => 1,
@@ -528,8 +507,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
               },
               'source_info' => {
                 'file_name' => 'macro_included.texi',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -539,8 +517,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           },
           'source_info' => {
             'file_name' => 'macro_included.texi',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           },
           'source_marks' => [
             {
@@ -591,7 +568,6 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 23,
                   'macro' => 'multiinclude'
                 }
@@ -619,25 +595,6 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'type' => 'paragraph'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 4,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'themacro'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -646,6 +603,22 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'themacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 4,
                   'position' => 11,
@@ -698,13 +671,12 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -713,9 +685,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 21,
-        'macro' => ''
+        'line_nr' => 21
       }
     }
   ],
@@ -771,7 +741,7 @@ in themacro
 ';
 
 $result_sectioning{'macro_and_commands_in_early_commands'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -780,60 +750,63 @@ $result_sectioning{'macro_and_commands_in_early_commands'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'macro_and_commands_in_early_commands'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'macro_and_commands_in_early_commands'};
+$result_sectioning{'macro_and_commands_in_early_commands'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'macro_and_commands_in_early_commands'};
 
-$result_nodes{'macro_and_commands_in_early_commands'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'macro_and_commands_in_early_commands'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'macro_and_commands_in_early_commands'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'macro_and_commands_in_early_commands'}[0];
+$result_nodes{'macro_and_commands_in_early_commands'}[1] = $result_nodes{'macro_and_commands_in_early_commands'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'macro_and_commands_in_early_commands'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'macro_and_commands_in_early_commands'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'macro_and_commands_in_early_commands'};
-
-$result_menus{'macro_and_commands_in_early_commands'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {
     'error_line' => 'warning: encoding `ISO-8859-1@\' is not a canonical texinfo encoding
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'encoding `ISO-8859-1@\' is not a canonical texinfo encoding',
     'type' => 'warning'
   }

@@ -16,11 +16,8 @@ $result_trees{'asis_as_itemize_argument'} = {
                 {
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -55,9 +52,7 @@ $result_trees{'asis_as_itemize_argument'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -87,9 +82,7 @@ $result_trees{'asis_as_itemize_argument'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -102,9 +95,7 @@ $result_trees{'asis_as_itemize_argument'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -124,7 +115,15 @@ $result_texis{'asis_as_itemize_argument'} = '@itemize @asis
 $result_texts{'asis_as_itemize_argument'} = 'as is
 ';
 
-$result_errors{'asis_as_itemize_argument'} = [];
+$result_errors{'asis_as_itemize_argument'} = [
+  {
+    'error_line' => 'warning: @asis expected braces
+',
+    'line_nr' => 1,
+    'text' => '@asis expected braces',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'asis_as_itemize_argument'} = {};

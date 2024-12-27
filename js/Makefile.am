@@ -47,7 +47,8 @@ endif
 EXTRA_DIST =
 
 
-jsdir=$(pkgdatadir)/js
+converterdatadir = $(datadir)/$(CONVERTER)
+jsdir=$(converterdatadir)/js
 
 # Javascript files that will be included in the html pages.  The order
 # of those files is the order in which they will be included

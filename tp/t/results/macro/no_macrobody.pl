@@ -49,9 +49,7 @@ $result_trees{'no_macrobody'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -60,9 +58,7 @@ $result_trees{'no_macrobody'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -91,7 +87,7 @@ $result_trees{'no_macrobody'} = {
                     'text' => ' '
                   }
                 },
-                'type' => 'macro_call'
+                'type' => 'macro_call_line'
               },
               'sourcemark_type' => 'macro_expansion',
               'status' => 'start'
@@ -107,36 +103,6 @@ $result_trees{'no_macrobody'} = {
           'type' => 'empty_line'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 2,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'arg brace'
-                      }
-                    ],
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'nomacrobody'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            },
-            {
-              'counter' => 2,
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'end'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -144,6 +110,34 @@ $result_trees{'no_macrobody'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'arg brace'
+                          }
+                        ],
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'nomacrobody'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 2,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '.
 '
             }

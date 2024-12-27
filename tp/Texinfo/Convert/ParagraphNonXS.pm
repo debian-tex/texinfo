@@ -1,20 +1,20 @@
 # ParagraphNonXS.pm: handle paragraph text.
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 # this module has nothing Texinfo specific.  In contrast with existing
@@ -40,7 +40,7 @@ sub new($;$)
 {
   my $class = shift;
   my $conf = shift;
-  my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0, 
+  my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0,
               'word_counter' => 0, 'space' => '', 'frenchspacing' => 0,
               'lines_counter' => 0, 'end_line_count' => 0,
               'unfilled' => 0, 'last_letter' => '' };
@@ -97,7 +97,7 @@ sub _end_line($)
   $paragraph->{'space'} = '';
   if (defined($paragraph->{'indent_length_next'})) {
     $paragraph->{'indent_length'} = $paragraph->{'indent_length_next'};
-    delete $paragraph->{'indent_length_next'};        
+    delete $paragraph->{'indent_length_next'};
   }
   $paragraph->{'lines_counter'}++;
   $paragraph->{'end_line_count'}++;
@@ -175,7 +175,7 @@ sub end($)
   # probably not really useful, but cleaner
   $paragraph->{'last_letter'} = '';
   if (!$paragraph->{'no_final_newline'} and $paragraph->{'counter'} != 0) {
-    $result .= "\n"; 
+    $result .= "\n";
     $paragraph->{'lines_counter'}++;
     $paragraph->{'end_line_count'}++;
   }
@@ -186,9 +186,6 @@ my $end_sentence_characters = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
 # Add $WORD to paragraph, returning the text to be added to the paragraph.
-# Any end of sentence punctuation in $WORD that should be allowed to end a
-# sentence but which would otherwise be preceded by an upper-case letter should
-# instead by preceded by a backspace character.
 sub add_next($;$$)
 {
   my $paragraph = shift;
@@ -211,24 +208,14 @@ sub _add_next($;$$$)
     return '';
   }
 
-  my $disinhibit = 0;
-  # Reverse the insertion of any control characters in Plaintext.pm.
-  if ($word =~ /\x08$/) {
-    $disinhibit = 1;
-  }
-  $word =~ s/\x08//g;
-
   $paragraph->{'word'} .= $word;
 
-  if (!$transparent) {
-    if ($disinhibit) {
-      $paragraph->{'last_letter'} = 'a';
-    } elsif ($word =~
-         /([^$end_sentence_characters$after_punctuation_characters])
-          [$end_sentence_characters$after_punctuation_characters]*$/ox) {
-      # Save the last character in $word before punctuation
-      $paragraph->{'last_letter'} = $1;
-    }
+  if (!$transparent
+      and ($word =~
+           /([^$end_sentence_characters$after_punctuation_characters])
+            [$end_sentence_characters$after_punctuation_characters]*$/ox)) {
+    # Save the last character in $word before punctuation
+    $paragraph->{'last_letter'} = $1;
   }
 
   if (!$newlines_impossible and $word =~ /\n/) {
@@ -254,10 +241,17 @@ sub _add_next($;$$$)
   return $result;
 }
 
+# Values for 'end_sentence'.  'end_sentence' can also be undef.
+use constant {
+  eos_inhibited => 0,
+  eos_present => 1,
+  eos_present_frenchspacing => -1,
+};
+
 sub remove_end_sentence($)
 {
   my $paragraph = shift;
-  $paragraph->{'end_sentence'} = 0;
+  $paragraph->{'end_sentence'} = eos_inhibited;
 }
 
 sub add_end_sentence($;$) {
@@ -309,7 +303,7 @@ sub add_text($$)
   my $result = '';
 
   my @segments = split
-    /(\s+)|(\p{InFullwidth})|((?:[^\s\p{InFullwidth}])+)/,
+    /(\s+)|(\p{InFullwidth})|((?:[^\s\p{InFullwidth}\x08])+)|(\x08)/,
     $text;
 
   # Check now if a newline exists anywhere in the string to
@@ -321,8 +315,8 @@ sub add_text($$)
     # $empty_segment should be an empty string; the other variables
     # here were recognized as field separators by split, the separator
     # set to something else than undef for the separator matching.
-    my ($empty_segment, $spaces, $fullwidth_segment, $added_word)
-     = splice (@segments, 0, 4);
+    my ($empty_segment, $spaces, $fullwidth_segment, $added_word, $allow_eos)
+     = splice (@segments, 0, 5);
 
     if ($debug_flag) {
       print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) "
@@ -343,9 +337,9 @@ sub add_text($$)
         }
       } else {
         my $at_end_sentence = 0;
-        $at_end_sentence = 1 if ($paragraph->{'end_sentence'} 
-                                   and $paragraph->{'end_sentence'} > 0
-                                   and !$paragraph->{'frenchspacing'});
+        $at_end_sentence = 1 if (defined($paragraph->{'end_sentence'})
+                               and  $paragraph->{'end_sentence'} == eos_present
+                               and !$paragraph->{'frenchspacing'});
         if ($paragraph->{'no_break'}) {
           if (substr($paragraph->{'word'}, -1) ne ' ') {
             my $new_spaces = $at_end_sentence ? '  ' : ' ';
@@ -354,8 +348,8 @@ sub add_text($$)
 
             # The $paragraph->{'counter'} != 0 is here to avoid having an
             # additional line output when the text is longer than the max.
-            if ($paragraph->{'counter'} != 0 and 
-                $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
+            if ($paragraph->{'counter'} != 0 and
+                $paragraph->{'counter'} + $paragraph->{'word_counter'} +
                    length($paragraph->{'space'}) > $paragraph->{'max'}) {
               $result .= _cut_line($paragraph);
             }
@@ -370,17 +364,13 @@ sub add_text($$)
             } else {
               # Only save the first space
               if (length($paragraph->{'space'}) < 1) {
-                if ($spaces =~ /\n/) {
-                  $paragraph->{'space'} = ' ';
-                } else {
-                  $paragraph->{'space'} .= substr ($spaces, 0, 1);
-                }
+                $paragraph->{'space'} = ' ';
               }
             }
           }
         }
       }
-      if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
+      if ($paragraph->{'counter'} + length($paragraph->{'space'})
                       > $paragraph->{'max'}) {
         $result .= _cut_line($paragraph);
       }
@@ -389,6 +379,10 @@ sub add_text($$)
         $result .= _end_line($paragraph);
       }
       $paragraph->{'last_letter'} = ' ';
+    } elsif (defined $allow_eos) {
+      # Reset 'last_leter' to a lower-case letter to allow an end of
+      # sentence to occur.
+      $paragraph->{'last_letter'} = 'a';
     } elsif (defined $added_word) {
       my $tmp = $added_word;
       # Prepend 'last_letter' to add the information on the last
@@ -412,11 +406,11 @@ sub add_text($$)
           and $tmp =~
         /(^|[^\p{Upper}$after_punctuation_characters$end_sentence_characters])
          [$after_punctuation_characters]*[$end_sentence_characters]
-         [$end_sentence_characters\x08$after_punctuation_characters]*$/ox) {
+         [$end_sentence_characters$after_punctuation_characters]*$/ox) {
         if ($paragraph->{'frenchspacing'}) {
-          $paragraph->{'end_sentence'} = -1;
+          $paragraph->{'end_sentence'} = eos_present_frenchspacing;
         } else {
-          $paragraph->{'end_sentence'} = 1;
+          $paragraph->{'end_sentence'} = eos_present;
         }
         print STDERR "END_SENTENCE\n" if ($paragraph->{'DEBUG'});
       } else {

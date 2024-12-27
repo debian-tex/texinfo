@@ -25,14 +25,12 @@ $result_trees{'at_commands_in_node'} = {
                       'text' => 'sc'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'sc',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -51,9 +49,7 @@ $result_trees{'at_commands_in_node'} = {
               ],
               'cmdname' => '"',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -71,25 +67,21 @@ $result_trees{'at_commands_in_node'} = {
                               'text' => 'i'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'dotless',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => '"',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -112,20 +104,16 @@ $result_trees{'at_commands_in_node'} = {
                       ],
                       'cmdname' => '=',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => '`',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -134,14 +122,12 @@ $result_trees{'at_commands_in_node'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'l',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -164,20 +150,16 @@ $result_trees{'at_commands_in_node'} = {
                       ],
                       'cmdname' => '\'',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => ',',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -186,14 +168,12 @@ $result_trees{'at_commands_in_node'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'exclamdown',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -202,6 +182,7 @@ $result_trees{'at_commands_in_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'A-sc-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
       },
       'info' => {
@@ -210,9 +191,7 @@ $result_trees{'at_commands_in_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -224,19 +203,22 @@ $result_texis{'at_commands_in_node'} = '@node A @sc{sc} node @"i @"{@dotless{i}}
 
 $result_texts{'at_commands_in_node'} = '';
 
-$result_nodes{'at_commands_in_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'A-sc-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+$result_nodes{'at_commands_in_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'A-sc-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+    }
   }
-};
+];
 
-$result_menus{'at_commands_in_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'A-sc-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+$result_menus{'at_commands_in_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'A-sc-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1'
+    }
   }
-};
+];
 
 $result_errors{'at_commands_in_node'} = [];
 

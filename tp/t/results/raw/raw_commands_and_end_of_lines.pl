@@ -64,16 +64,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -141,16 +137,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -220,16 +212,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 15,
-                    'macro' => ''
+                    'line_nr' => 15
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -299,16 +287,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 20,
-                    'macro' => ''
+                    'line_nr' => 20
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             }
           ],
@@ -374,16 +358,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
+                    'line_nr' => 24
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               }
             },
             {
@@ -453,16 +433,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 29,
-                    'macro' => ''
+                    'line_nr' => 29
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 27,
-                'macro' => ''
+                'line_nr' => 27
               }
             }
           ],
@@ -523,16 +499,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 33,
-                'macro' => ''
+                'line_nr' => 33
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 31,
-            'macro' => ''
+            'line_nr' => 31
           }
         },
         {
@@ -596,16 +568,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 38,
-                    'macro' => ''
+                    'line_nr' => 38
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 36,
-                'macro' => ''
+                'line_nr' => 36
               }
             },
             {
@@ -675,16 +643,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 43,
-                    'macro' => ''
+                    'line_nr' => 43
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 41,
-                'macro' => ''
+                'line_nr' => 41
               }
             },
             {
@@ -754,16 +718,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 48,
-                    'macro' => ''
+                    'line_nr' => 48
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 46,
-                'macro' => ''
+                'line_nr' => 46
               }
             }
           ],
@@ -829,16 +789,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 52,
-                    'macro' => ''
+                    'line_nr' => 52
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 50,
-                'macro' => ''
+                'line_nr' => 50
               }
             },
             {
@@ -908,16 +864,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 57,
-                    'macro' => ''
+                    'line_nr' => 57
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 55,
-                'macro' => ''
+                'line_nr' => 55
               }
             }
           ],
@@ -974,16 +926,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 61,
-                'macro' => ''
+                'line_nr' => 61
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 59,
-            'macro' => ''
+            'line_nr' => 59
           }
         },
         {
@@ -1046,16 +994,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 66,
-                'macro' => ''
+                'line_nr' => 66
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 64,
-            'macro' => ''
+            'line_nr' => 64
           }
         },
         {
@@ -1126,16 +1070,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 71,
-                'macro' => ''
+                'line_nr' => 71
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 69,
-            'macro' => ''
+            'line_nr' => 69
           }
         },
         {
@@ -1206,16 +1146,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 76,
-                'macro' => ''
+                'line_nr' => 76
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 74,
-            'macro' => ''
+            'line_nr' => 74
           }
         },
         {
@@ -1277,16 +1213,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 80,
-                'macro' => ''
+                'line_nr' => 80
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 78,
-            'macro' => ''
+            'line_nr' => 78
           }
         },
         {
@@ -1357,16 +1289,12 @@ $result_trees{'raw_commands_and_end_of_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 85,
-                'macro' => ''
+                'line_nr' => 85
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 83,
-            'macro' => ''
+            'line_nr' => 83
           }
         }
       ],
@@ -1519,162 +1447,126 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
   {
     'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 18,
-    'macro' => '',
     'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: html after the closing command.
 ',
-    'file_name' => '',
     'line_nr' => 20,
-    'macro' => '',
     'text' => 'bad argument to @end: html after the closing command.',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 22,
-    'macro' => '',
     'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @html should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: html. A symbol after the closing command.
 ',
-    'file_name' => '',
     'line_nr' => 29,
-    'macro' => '',
     'text' => 'bad argument to @end: html. A symbol after the closing command.',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 41,
-    'macro' => '',
     'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 46,
-    'macro' => '',
     'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: tex after the closing command.
 ',
-    'file_name' => '',
     'line_nr' => 48,
-    'macro' => '',
     'text' => 'bad argument to @end: tex after the closing command.',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 50,
-    'macro' => '',
     'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @tex should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 55,
-    'macro' => '',
     'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: tex. A symbol after the closing command.
 ',
-    'file_name' => '',
     'line_nr' => 57,
-    'macro' => '',
     'text' => 'bad argument to @end: tex. A symbol after the closing command.',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 69,
-    'macro' => '',
     'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 74,
-    'macro' => '',
     'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: verbatim after the closing command.
 ',
-    'file_name' => '',
     'line_nr' => 76,
-    'macro' => '',
     'text' => 'bad argument to @end: verbatim after the closing command.',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 78,
-    'macro' => '',
     'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @verbatim should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 83,
-    'macro' => '',
     'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: verbatim. A symbol after the closing command.
 ',
-    'file_name' => '',
     'line_nr' => 85,
-    'macro' => '',
     'text' => 'bad argument to @end: verbatim. A symbol after the closing command.',
     'type' => 'error'
   }

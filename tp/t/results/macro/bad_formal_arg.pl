@@ -63,9 +63,7 @@ $result_trees{'bad_formal_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -77,9 +75,7 @@ $result_trees{'bad_formal_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -136,9 +132,7 @@ $result_trees{'bad_formal_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
@@ -150,9 +144,7 @@ $result_trees{'bad_formal_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -220,9 +212,7 @@ $result_trees{'bad_formal_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             }
           ],
@@ -234,9 +224,7 @@ $result_trees{'bad_formal_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         }
       ],
@@ -273,27 +261,21 @@ $result_errors{'bad_formal_arg'} = [
   {
     'error_line' => 'bad or empty @macro formal argument: 
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'bad or empty @macro formal argument: ',
     'type' => 'error'
   },
   {
     'error_line' => 'bad or empty @macro formal argument: in 2arg
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'bad or empty @macro formal argument: in 2arg',
     'type' => 'error'
   },
   {
     'error_line' => 'bad or empty @macro formal argument: :::
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => 'bad or empty @macro formal argument: :::',
     'type' => 'error'
   }

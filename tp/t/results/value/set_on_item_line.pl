@@ -16,11 +16,8 @@ $result_trees{'set_on_item_line'} = {
                 {
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -70,9 +67,7 @@ $result_trees{'set_on_item_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -138,9 +133,7 @@ $result_trees{'set_on_item_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -202,9 +195,7 @@ $result_trees{'set_on_item_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     }
                   ],
@@ -240,9 +231,7 @@ $result_trees{'set_on_item_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
@@ -255,9 +244,7 @@ $result_trees{'set_on_item_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -272,11 +259,8 @@ $result_trees{'set_on_item_line'} = {
                 {
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 10
+                  }
                 }
               ],
               'info' => {
@@ -326,9 +310,7 @@ $result_trees{'set_on_item_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       }
                     }
                   ],
@@ -394,9 +376,7 @@ $result_trees{'set_on_item_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 14,
-                        'macro' => ''
+                        'line_nr' => 14
                       }
                     }
                   ],
@@ -458,9 +438,7 @@ $result_trees{'set_on_item_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 16,
-                        'macro' => ''
+                        'line_nr' => 16
                       }
                     }
                   ],
@@ -496,9 +474,7 @@ $result_trees{'set_on_item_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
@@ -511,9 +487,7 @@ $result_trees{'set_on_item_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         }
       ],
@@ -564,36 +538,42 @@ $result_errors{'set_on_item_line'} = [
   {
     'error_line' => 'warning: @set should only appear at the beginning of a line
 ',
-    'file_name' => '',
+    'line_nr' => 2,
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @set should only appear at the beginning of a line
+',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@set should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @set should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@set should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @set should only appear at the beginning of a line
 ',
-    'file_name' => '',
+    'line_nr' => 11,
+    'text' => '@set should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @set should only appear at the beginning of a line
+',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@set should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @set should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@set should only appear at the beginning of a line',
     'type' => 'warning'
   }

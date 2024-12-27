@@ -55,9 +55,7 @@ $result_trees{'text_before_after'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 }
               ],
@@ -66,9 +64,7 @@ $result_trees{'text_before_after'} = {
 '
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -93,18 +89,14 @@ $result_errors{'text_before_after'} = [
   {
     'error_line' => 'warning: @macro should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@macro should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: macro after
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'bad argument to @end: macro after',
     'type' => 'error'
   }

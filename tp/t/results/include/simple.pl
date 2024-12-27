@@ -40,9 +40,7 @@ $result_trees{'simple'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'include',
@@ -92,7 +90,6 @@ $result_floats{'simple'} = {};
 $result_converted{'info'}->{'simple'} = 'This is , produced from .
 
 In included file.
-
 
 Tag Table:
 
@@ -121,7 +118,7 @@ $result_converted{'plaintext'}->{'simple'} = 'In included file.
 
 $result_converted{'html'}->{'simple'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

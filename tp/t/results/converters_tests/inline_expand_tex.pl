@@ -24,7 +24,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'html'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -41,9 +41,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'html'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -58,7 +56,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'plaintext'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -75,9 +73,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'plaintext'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -92,7 +88,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'xml'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -109,9 +105,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'xml'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -126,7 +120,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'docbook'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -143,9 +137,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'docbook'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -160,7 +152,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -175,14 +167,12 @@ $result_trees{'inline_expand_tex'} = {
                               'text' => 'tex \\hbox code '
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     }
                   ],
@@ -191,7 +181,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmt',
@@ -200,9 +190,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'tex'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -217,7 +205,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'latex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -234,9 +222,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'latex'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -266,7 +252,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'html'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -283,9 +269,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'html'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -300,7 +284,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'plaintext'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -317,9 +301,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'plaintext'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -334,7 +316,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'xml'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -351,9 +333,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'xml'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -368,7 +348,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'docbook'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -385,9 +365,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'docbook'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -402,7 +380,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -428,21 +406,17 @@ $result_trees{'inline_expand_tex'} = {
                                     }
                                   ],
                                   'source_info' => {
-                                    'file_name' => '',
-                                    'line_nr' => 14,
-                                    'macro' => ''
+                                    'line_nr' => 14
                                   },
                                   'type' => 'balanced_braces'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 14,
-                            'macro' => ''
+                            'line_nr' => 14
                           }
                         },
                         {
@@ -450,9 +424,7 @@ $result_trees{'inline_expand_tex'} = {
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 14,
-                        'macro' => ''
+                        'line_nr' => 14
                       },
                       'type' => 'balanced_braces'
                     },
@@ -465,7 +437,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlineraw',
@@ -474,9 +446,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'tex'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -491,7 +461,7 @@ $result_trees{'inline_expand_tex'} = {
                       'text' => 'latex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -508,9 +478,7 @@ $result_trees{'inline_expand_tex'} = {
                 'format' => 'latex'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             },
             {
@@ -566,36 +534,28 @@ $result_errors{'inline_expand_tex'} = [
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }

@@ -1,6 +1,6 @@
 /* doc.h -- Structures associating function pointers with documentation.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
    appears in the user's infokey file or the default keymaps in
    infomap.c.
 
-   Each FUNCTION_DOC has a linked list of FUNCTION_KEYSEQ structs
+   Each InfoCommand has a linked list of FUNCTION_KEYSEQ structs
    hanging off it, which are created on startup when the user and/or
    default keymaps are being parsed.  */
 typedef struct function_keyseq
@@ -42,19 +42,18 @@ typedef struct function_keyseq
 } FUNCTION_KEYSEQ;
 
 /* Structure describing an Info command. */
-typedef struct
+typedef struct InfoCommand
 {
-  VFunction *func;        /* Pointer to function implementing command. */
+  COMMAND_FUNCTION *func; /* Pointer to function implementing command. */
   char *func_name;        /* Name of this command. */
   FUNCTION_KEYSEQ *keys;  /* Key sequences that could invoke this command. */
   char *doc;              /* Documentation string. */
-} FUNCTION_DOC;
+} InfoCommand;
 
-/* Array of FUNCTION_DOC structures defined in doc.c, generated
+/* Array of InfoCommand structures defined in doc.c, generated
    by the makedoc utility. */
-extern FUNCTION_DOC function_doc_array[];
+extern InfoCommand function_doc_array[];
 
-typedef FUNCTION_DOC InfoCommand;
 #define InfoCmd(fn) (&function_doc_array[A_##fn])
 
 #include "infomap.h" /* for Keymap.  */

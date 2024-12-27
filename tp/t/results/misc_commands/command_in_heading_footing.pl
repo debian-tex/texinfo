@@ -42,9 +42,7 @@ $result_trees{'command_in_heading_footing'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -91,14 +89,12 @@ $result_trees{'command_in_heading_footing'} = {
                       'cmdname' => 'thissection'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -133,27 +129,21 @@ $result_errors{'command_in_heading_footing'} = [
   {
     'error_line' => '@thispage should only appear in heading or footing
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@thispage should only appear in heading or footing',
     'type' => 'error'
   },
   {
     'error_line' => '@thischapternum should only appear in heading or footing
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@thischapternum should only appear in heading or footing',
     'type' => 'error'
   },
   {
     'error_line' => '@thissection should only appear in heading or footing
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@thissection should only appear in heading or footing',
     'type' => 'error'
   }

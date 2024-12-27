@@ -10,7 +10,6 @@ $result_trees{'float_with_at_commands'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -33,9 +32,7 @@ $result_trees{'float_with_at_commands'} = {
                   ],
                   'cmdname' => '\'',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -62,9 +59,7 @@ $result_trees{'float_with_at_commands'} = {
                   ],
                   'cmdname' => '`',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -83,9 +78,7 @@ $result_trees{'float_with_at_commands'} = {
                   ],
                   'cmdname' => '\'',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -129,9 +122,7 @@ $result_trees{'float_with_at_commands'} = {
                   ],
                   'cmdname' => '`',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 },
                 {
@@ -150,9 +141,7 @@ $result_trees{'float_with_at_commands'} = {
                   ],
                   'cmdname' => '\'',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 },
                 {
@@ -184,9 +173,7 @@ $result_trees{'float_with_at_commands'} = {
                           ],
                           'cmdname' => '`',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 4,
-                            'macro' => ''
+                            'line_nr' => 4
                           }
                         },
                         {
@@ -205,9 +192,7 @@ $result_trees{'float_with_at_commands'} = {
                           ],
                           'cmdname' => '\'',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 4,
-                            'macro' => ''
+                            'line_nr' => 4
                           }
                         },
                         {
@@ -225,9 +210,7 @@ $result_trees{'float_with_at_commands'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -267,15 +250,14 @@ $result_trees{'float_with_at_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => "entr\x{e9}e",
+            'is_target' => 1,
             'normalized' => 'premi_00e8re-entr_00e9e'
           },
           'info' => {
@@ -284,9 +266,7 @@ $result_trees{'float_with_at_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -319,9 +299,7 @@ $result_trees{'float_with_at_commands'} = {
                   ],
                   'cmdname' => '\'',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 },
                 {
@@ -347,9 +325,7 @@ $result_trees{'float_with_at_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         }
       ],
@@ -395,11 +371,9 @@ $result_floats{'float_with_at_commands'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => "entr\x{e9}e",
         'normalized' => 'premi_00e8re-entr_00e9e'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -414,14 +388,15 @@ entrée 1: La première entrée est importante
 
 * Menu:
 
-* entrée 1: première entrée.             La première entrée est ...
+* entrée 1: première entrée.             La première entrée est
+                                         importante
 
 ';
 
 
 $result_converted{'html'}->{'float_with_at_commands'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

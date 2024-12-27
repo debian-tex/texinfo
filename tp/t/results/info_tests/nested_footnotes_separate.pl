@@ -38,9 +38,7 @@ $result_trees{'nested_footnotes_separate'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -115,10 +113,9 @@ $result_trees{'nested_footnotes_separate'} = {
                             }
                           ],
                           'cmdname' => 'footnote',
+                          'extra' => {},
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 6,
-                            'macro' => ''
+                            'line_nr' => 6
                           }
                         },
                         {
@@ -133,10 +130,9 @@ $result_trees{'nested_footnotes_separate'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -148,6 +144,7 @@ $result_trees{'nested_footnotes_separate'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -156,9 +153,7 @@ $result_trees{'nested_footnotes_separate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -179,27 +174,28 @@ $result_texts{'nested_footnotes_separate'} = '
 F
 ';
 
-$result_nodes{'nested_footnotes_separate'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'nested_footnotes_separate'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'nested_footnotes_separate'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'nested_footnotes_separate'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'nested_footnotes_separate'} = [
   {
     'error_line' => 'warning: @footnote should not appear anywhere inside @footnote
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@footnote should not appear anywhere inside @footnote',
     'type' => 'warning'
   }
@@ -225,7 +221,6 @@ File: ,  Node: Top-Footnotes,  Up: Top
    V(2) (*note Top-Footnotes-Footnote-2::)
 
    (2) F2
-
 
 
 Tag Table:

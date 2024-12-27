@@ -50,16 +50,12 @@ $result_trees{'empty_quotation'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -113,9 +109,7 @@ $result_trees{'empty_quotation'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -125,9 +119,7 @@ $result_trees{'empty_quotation'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -142,14 +134,12 @@ $result_trees{'empty_quotation'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 7,
-                    'macro' => ''
+                    'line_nr' => 7
                   }
                 }
               ],
@@ -191,9 +181,7 @@ $result_trees{'empty_quotation'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
@@ -203,9 +191,7 @@ $result_trees{'empty_quotation'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -259,9 +245,7 @@ $result_trees{'empty_quotation'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
@@ -271,9 +255,7 @@ $result_trees{'empty_quotation'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         }
       ],
@@ -313,7 +295,8 @@ $result_floats{'empty_quotation'} = {};
 $result_converted{'plaintext'}->{'empty_quotation'} = '     Empty: 
      : 
 
-     : ';
+     : 
+';
 
 
 $result_converted{'html_text'}->{'empty_quotation'} = '<blockquote class="quotation">

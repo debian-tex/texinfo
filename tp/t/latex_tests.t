@@ -304,6 +304,29 @@ after everyheading before chap 3 second page
 
 '
 ],
+['custom_headings_and_comments',
+'@evenheading @thispage @thissectionname @| @thissectionnum @thissection @| @thischaptername @thischapternum  
+@evenfooting   @thischapter @thistitle @| @thisfile @|   @code{@thischaptername}  @c comment
+
+@node Top
+@top top sectionning
+
+@node chapter
+@chapter ch--ap
+
+@page
+
+after ch--ap first page
+
+@page
+
+after ch--ap second page
+
+@section sec1
+
+@chapter chap 2
+
+'],
 ['custom_heading_with_include',
 '@setchapternewpage odd
 @everyheading @thispage @| @thisfile @| @thischapter
@@ -623,6 +646,7 @@ In afourpaper reset
         'frenchspacing' => 'on',
         'microtype' => 'off',
         'firstparagraphindent' => 'insert',
+   # With C/XS, this tests that '11' as a string is accepted as an integer
         'fonttextsize' => '11',
         'paragraphindent' => 4,
         'afivepaper' => ''}],
@@ -734,7 +758,7 @@ b!}
 $indices_text
 ],
 ['indices_disable_encoding',
-$indices_text, {ENABLE_ENCODING => 0,}, {ENABLE_ENCODING => 0,}
+$indices_text, {}, {ENABLE_ENCODING => 0,}
 ],
 ['error_in_sectioning_command',
 '@contents

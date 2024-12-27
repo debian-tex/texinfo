@@ -39,9 +39,7 @@ $result_trees{'print_merged_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -66,6 +64,7 @@ $result_trees{'print_merged_index'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -74,9 +73,7 @@ $result_trees{'print_merged_index'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -121,13 +118,12 @@ $result_trees{'print_merged_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -137,9 +133,7 @@ $result_trees{'print_merged_index'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     }
   ],
@@ -154,41 +148,48 @@ $result_texis{'print_merged_index'} = '@syncodeindex fn cp
 
 $result_texts{'print_merged_index'} = '';
 
-$result_nodes{'print_merged_index'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'print_merged_index'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'print_merged_index'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'print_merged_index'}[0];
+$result_nodes{'print_merged_index'}[1] = $result_nodes{'print_merged_index'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'print_merged_index'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'print_merged_index'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'print_merged_index'};
-
-$result_menus{'print_merged_index'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'print_merged_index'} = [
   {
     'error_line' => 'warning: printing an index `fn\' merged in another one, `cp\'
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'printing an index `fn\' merged in another one, `cp\'',
     'type' => 'warning'
   }
@@ -198,10 +199,6 @@ $result_errors{'print_merged_index'} = [
 $result_indices{'print_merged_index'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1,
-        'fn' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
@@ -211,30 +208,18 @@ $result_indices{'print_merged_index'} = {
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }

@@ -1,8 +1,8 @@
 EXTRA_DIST = \
- osé_utf8.texi osé_utf8_no_setfilename.texi \
  manual_include_accented_file_name_latin1.texi \
  test_latin1_no_documentencoding.texi \
- çss.css cêss.css an_ïmage.png txt_çimage.txt list-of-tests  res_parser
+ verbatiminclude_names_latin1.texi \
+ list-of-tests res_parser
 
 DISTCLEANFILES = tests.log tests.out
 

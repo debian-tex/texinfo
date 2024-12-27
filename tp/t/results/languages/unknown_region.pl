@@ -38,9 +38,7 @@ $result_trees{'unknown_region'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -73,6 +71,7 @@ $result_trees{'unknown_region'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -81,9 +80,7 @@ $result_trees{'unknown_region'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -120,57 +117,77 @@ $result_trees{'unknown_region'} = {
                     {
                       'contents' => [
                         {
+                          'contents' => [
+                            {
+                              'text' => 'Instance Variable',
+                              'type' => 'untranslated'
+                            }
+                          ],
                           'extra' => {
                             'documentlanguage' => 'fr_NOWHERE',
                             'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                           },
-                          'text' => 'Instance Variable',
-                          'type' => 'untranslated'
+                          'type' => 'untranslated_def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
+                      'info' => {
+                        'inserted' => 1
                       },
-                      'type' => 'bracketed_inserted'
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces_inserted'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'class'
-                      },
-                      'text' => 'AAA'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
+                      'info' => {
+                        'inserted' => 1
                       },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'BBB'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'AAA'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_class'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'CCC'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'CCC'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -186,20 +203,68 @@ $result_trees{'unknown_region'} = {
                 'def_command' => 'defivar',
                 'def_index_element' => {
                   'contents' => [
-                    {},
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     {
                       'text' => ' de '
                     },
-                    {}
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'AAA'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_class'
+                    }
                   ]
                 },
                 'def_index_ref_element' => {
                   'contents' => [
-                    {},
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     {
                       'text' => ' of '
                     },
-                    {}
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'AAA'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_class'
+                    }
                   ]
                 },
                 'documentlanguage' => 'fr_NOWHERE',
@@ -211,9 +276,7 @@ $result_trees{'unknown_region'} = {
                 'original_def_cmdname' => 'defivar'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'def_line'
             },
@@ -244,9 +307,7 @@ $result_trees{'unknown_region'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -256,13 +317,12 @@ $result_trees{'unknown_region'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -271,18 +331,12 @@ $result_trees{'unknown_region'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'unknown_region'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'unknown_region'}{'contents'}[2];
 
 $result_texis{'unknown_region'} = '@documentlanguage fr_NOWHERE
@@ -297,43 +351,50 @@ $result_texis{'unknown_region'} = '@documentlanguage fr_NOWHERE
 
 $result_texts{'unknown_region'} = '
 
-Instance Variable of AAA: BBB CCC
+Variable d\'instance de AAA: BBB CCC
 ';
 
-$result_nodes{'unknown_region'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'unknown_region'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'unknown_region'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'unknown_region'}[0];
+$result_nodes{'unknown_region'}[1] = $result_nodes{'unknown_region'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'unknown_region'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'unknown_region'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'unknown_region'};
-
-$result_menus{'unknown_region'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'unknown_region'} = [
   {
     'error_line' => 'warning: NOWHERE is not a valid region code
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'NOWHERE is not a valid region code',
     'type' => 'warning'
   }
@@ -375,13 +436,14 @@ End Tag Table
 
 Local Variables:
 coding: utf-8
+Info-documentlanguage: fr_NOWHERE
 End:
 ';
 
 
 $result_converted{'html'}->{'unknown_region'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Document sans titre</title>
@@ -418,8 +480,8 @@ Pr&eacute;c&eacute;dent: <a href="#Top" accesskey="p" rel="prev">Top</a> &nbsp; 
 </div>
 <h4 class="node"><span>chap<a class="copiable-link" href="#chap"> &para;</a></span></h4>
 
-<dl class="first-defcv first-defivar-alias-first-defcv">
-<dt class="defcv defivar-alias-defcv" id="index-BBB-of-AAA"><span class="category-def">Variable d&rsquo;instance de <code class="code">AAA</code>&nbsp;: </span><span><strong class="def-name">BBB</strong> <var class="def-var-arguments">CCC</var><a class="copiable-link" href="#index-BBB-of-AAA"> &para;</a></span></dt>
+<dl class="first-defcv first-defivar-alias-first-defcv def-block">
+<dt class="defcv defivar-alias-defcv def-line" id="index-BBB-of-AAA"><span class="category-def">Variable d&rsquo;instance de <code class="code">AAA</code>&nbsp;: </span><span><strong class="def-name">BBB</strong> <var class="def-var-arguments">CCC</var><a class="copiable-link" href="#index-BBB-of-AAA"> &para;</a></span></dt>
 </dl>
 
 

@@ -63,8 +63,7 @@ $result_trees{'cpp_directives_after_macros'} = {
                   },
                   'source_info' => {
                     'file_name' => 'cpp_directives_after_macros.texi',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
@@ -74,8 +73,7 @@ $result_trees{'cpp_directives_after_macros'} = {
               },
               'source_info' => {
                 'file_name' => 'cpp_directives_after_macros.texi',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -125,8 +123,7 @@ $result_trees{'cpp_directives_after_macros'} = {
                   },
                   'source_info' => {
                     'file_name' => 'cpp_directives_after_macros.texi',
-                    'line_nr' => 8,
-                    'macro' => ''
+                    'line_nr' => 8
                   }
                 }
               ],
@@ -136,8 +133,7 @@ $result_trees{'cpp_directives_after_macros'} = {
               },
               'source_info' => {
                 'file_name' => 'cpp_directives_after_macros.texi',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -157,7 +153,7 @@ $result_trees{'cpp_directives_after_macros'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -201,31 +197,6 @@ $result_trees{'cpp_directives_after_macros'} = {
           'type' => 'empty_line'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 2,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'emptyexpansion'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            },
-            {
-              'counter' => 2,
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'end'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -233,6 +204,29 @@ $result_trees{'cpp_directives_after_macros'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'emptyexpansion'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 2,
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'end'
+                }
+              ],
               'text' => '#line 75 "a_file_after_macro_call_no_spaces"
 '
             }
@@ -294,7 +288,6 @@ $result_errors{'cpp_directives_after_macros'} = [
 ',
     'file_name' => 'a_test_after_spaces',
     'line_nr' => 102,
-    'macro' => '',
     'text' => 'unknown command `unknown1\'',
     'type' => 'error'
   },
@@ -303,7 +296,6 @@ $result_errors{'cpp_directives_after_macros'} = [
 ',
     'file_name' => 'a_test_after_spaces',
     'line_nr' => 106,
-    'macro' => '',
     'text' => 'unknown command `unknown2\'',
     'type' => 'error'
   }

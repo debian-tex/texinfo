@@ -16,11 +16,8 @@ $result_trees{'section_in_table'} = {
                 {
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -62,9 +59,7 @@ $result_trees{'section_in_table'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -93,9 +88,7 @@ $result_trees{'section_in_table'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -144,15 +137,16 @@ $result_trees{'section_in_table'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -180,47 +174,41 @@ After
 ';
 
 $result_sectioning{'section_in_table'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_in_table'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_in_table'};
+$result_sectioning{'section_in_table'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_in_table'};
 
 $result_errors{'section_in_table'} = [
   {
     'error_line' => '@section seen before @end table
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@section seen before @end table',
     'type' => 'error'
   },
   {
     'error_line' => '@item outside of table or list
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@item outside of table or list',
     'type' => 'error'
   },
   {
     'error_line' => 'unmatched `@end table\'
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'unmatched `@end table\'',
     'type' => 'error'
   }

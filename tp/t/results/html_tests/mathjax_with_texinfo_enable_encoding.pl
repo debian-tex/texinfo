@@ -10,7 +10,6 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -44,9 +43,7 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       },
                       'type' => 'balanced_braces'
                     },
@@ -58,14 +55,12 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                         {
                           'args' => [
                             {
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'copyright',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 2,
-                            'macro' => ''
+                            'line_nr' => 2
                           }
                         },
                         {
@@ -73,21 +68,17 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       },
                       'type' => 'balanced_braces'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'sup',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -101,14 +92,12 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                       'text' => 'i'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'dotless',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -142,16 +131,12 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -174,14 +159,12 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'minus',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     },
                     {
@@ -190,14 +173,12 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'geq',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     },
                     {
@@ -206,14 +187,12 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'AA',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     },
                     {
@@ -232,9 +211,7 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
                       ],
                       'cmdname' => '^',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -243,9 +220,7 @@ $result_trees{'mathjax_with_texinfo_enable_encoding'} = {
               ],
               'cmdname' => 'math',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -293,7 +268,7 @@ Some $a - b \\geq{} Å ê$.
 
 $result_converted{'html'}->{'mathjax_with_texinfo_enable_encoding'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -304,13 +279,26 @@ $result_converted{'html'}->{'mathjax_with_texinfo_enable_encoding'} = '<!DOCTYPE
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<style type="text/css">
+<!--
+pre.displaymath {font-style: italic; font-family: serif; display: flex; justify-content: center}
+-->
+</style>
 
 <script type=\'text/javascript\'>
 MathJax = {
   options: {
-    skipHtmlTags: {\'[-]\': [\'pre\']},
+    skipHtmlTags: {\'[-]\': [\'pre\']},       // do not skip pre
     ignoreHtmlClass: \'tex2jax_ignore\',
     processHtmlClass: \'tex2jax_process\'
+  },
+  tex: {
+    processEscapes: false,      // do not use \\$ to produce a literal dollar sign
+    processEnvironments: false, // do not process \\begin{xxx}...\\end{xxx} outside math mode
+    processRefs: false,         // do not process \\ref{...} outside of math mode
+    displayMath: [             // start/end delimiter pairs for display math
+      [\'\\\\[\', \'\\\\]\']
+    ],
   },
 };
 </script><script type="text/javascript" id="MathJax-script" async
@@ -319,8 +307,8 @@ MathJax = {
 </head>
 
 <body lang="en" class="tex2jax_ignore">
-<div class="displaymath"><em class="tex2jax_process">\\[a^{b - \\frac{\\xi}{phi \\copyright{}}} ı
-\\]</em></div>
+<pre class="displaymath tex2jax_process">\\[a^{b - \\frac{\\xi}{phi \\copyright{}}} ı
+\\]</pre>
 <p>Some <em class="math tex2jax_process">\\(a - b \\geq{} Å ê\\)</em>.
 </p>
 

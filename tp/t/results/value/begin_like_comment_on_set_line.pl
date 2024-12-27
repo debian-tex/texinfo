@@ -46,7 +46,12 @@ $result_trees{'begin_like_comment_on_set_line'} = {
             {
               'args' => [
                 {
-                  'text' => 'x'
+                  'contents' => [
+                    {
+                      'text' => 'x'
+                    }
+                  ],
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'value'
@@ -58,7 +63,12 @@ $result_trees{'begin_like_comment_on_set_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 'y'
+                        'contents' => [
+                          {
+                            'text' => 'y'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
@@ -96,34 +106,28 @@ $result_texis{'begin_like_comment_on_set_line'} = '@set x@come with me
 
 
 $result_texts{'begin_like_comment_on_set_line'} = '
-!! !some thing  is it!
+!x! !some thing  is it!
 ';
 
 $result_errors{'begin_like_comment_on_set_line'} = [
   {
     'error_line' => 'bad name for @set
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'bad name for @set',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: undefined flag: x
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'undefined flag: x',
     'type' => 'warning'
   },
   {
     'error_line' => 'unknown command `commentary\'
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'unknown command `commentary\'',
     'type' => 'error'
   }

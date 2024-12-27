@@ -27,14 +27,12 @@ $result_trees{'empty_line_in_email'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -88,18 +86,14 @@ $result_errors{'empty_line_in_email'} = [
   {
     'error_line' => '@email missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@email missing closing brace',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }
@@ -110,7 +104,7 @@ $result_floats{'empty_line_in_email'} = {};
 
 
 
-$result_converted{'plaintext'}->{'empty_line_in_email'} = '< >
+$result_converted{'plaintext'}->{'empty_line_in_email'} = '<>
    mail,
 
    text
@@ -129,5 +123,12 @@ $result_converted{'latex_text'}->{'empty_line_in_email'} = '\\href{mailto:
 
 text
 ';
+
+
+$result_converted{'docbook'}->{'empty_line_in_email'} = '<para><email>
+</email></para><para>mail,
+</para>
+<para>text
+</para>';
 
 1;

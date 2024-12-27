@@ -17,64 +17,81 @@ $result_trees{'empty_def_arguments'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'fset'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'i'
+                              'text' => 'fset'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'var',
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
-                      }
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'a'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'i'
+                                    }
+                                  ],
+                                  'type' => 'brace_container'
+                                }
+                              ],
+                              'cmdname' => 'var',
+                              'source_info' => {
+                                'line_nr' => 1
+                              }
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'g'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'g'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -88,7 +105,29 @@ $result_trees{'empty_def_arguments'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'args' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'i'
+                                }
+                              ],
+                              'type' => 'brace_container'
+                            }
+                          ],
+                          'cmdname' => 'var'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   1
@@ -96,9 +135,7 @@ $result_trees{'empty_def_arguments'} = {
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               },
               'type' => 'def_line'
             },
@@ -107,46 +144,49 @@ $result_trees{'empty_def_arguments'} = {
                 {
                   'contents' => [
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
-                            {
-                              'text' => 'id '
-                            },
                             {
                               'args' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => 'i'
+                                      'text' => 'id '
+                                    },
+                                    {
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'i'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'samp',
+                                      'source_info' => {
+                                        'line_nr' => 2
+                                      }
+                                    },
+                                    {
+                                      'text' => ' ule'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
-                              'cmdname' => 'samp',
+                              'cmdname' => 'b',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 2,
-                                'macro' => ''
+                                'line_nr' => 2
                               }
-                            },
-                            {
-                              'text' => ' ule'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'b',
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
-                      }
+                      'type' => 'def_category'
                     }
                   ],
                   'info' => {
@@ -169,11 +209,8 @@ $result_trees{'empty_def_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 2
+              }
             },
             {
               'args' => [
@@ -193,21 +230,25 @@ $result_trees{'empty_def_arguments'} = {
                 'original_def_cmdname' => 'deffnx'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 3
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'aaa'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'aaa'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     }
                   ],
                   'info' => {
@@ -230,44 +271,38 @@ $result_trees{'empty_def_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 4
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'contents' => [
+                        {
+                          'source_info' => {
+                            'line_nr' => 5
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'contents' => [
+                        {
+                          'source_info' => {
+                            'line_nr' => 5
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     }
                   ],
                   'info' => {
@@ -290,48 +325,8 @@ $result_trees{'empty_def_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
-              },
-              'type' => 'def_line'
-            },
-            {
-              'args' => [
-                {
-                  'contents' => [
-                    {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
-                    }
-                  ],
-                  'info' => {
-                    'spaces_after_argument' => {
-                      'text' => '
-'
-                    }
-                  },
-                  'type' => 'line_arg'
-                }
-              ],
-              'cmdname' => 'deffnx',
-              'extra' => {
-                'def_command' => 'deffn',
-                'original_def_cmdname' => 'deffnx'
-              },
-              'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 5
+              }
             },
             {
               'args' => [
@@ -340,41 +335,13 @@ $result_trees{'empty_def_arguments'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'truc'
+                          'source_info' => {
+                            'line_nr' => 6
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'info' => {
-                        'spaces_before_argument' => {
-                          'text' => ' '
-                        }
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_category'
                     }
                   ],
                   'info' => {
@@ -392,11 +359,8 @@ $result_trees{'empty_def_arguments'} = {
                 'original_def_cmdname' => 'deffnx'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 6
+              }
             },
             {
               'args' => [
@@ -405,18 +369,38 @@ $result_trees{'empty_def_arguments'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'truc'
+                          'contents' => [
+                            {
+                              'text' => 'truc'
+                            }
+                          ],
+                          'source_info' => {
+                            'line_nr' => 7
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 8,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_category'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'info' => {
+                            'spaces_before_argument' => {
+                              'text' => ' '
+                            }
+                          },
+                          'source_info' => {
+                            'line_nr' => 7
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     }
                   ],
                   'info' => {
@@ -434,44 +418,28 @@ $result_trees{'empty_def_arguments'} = {
                 'original_def_cmdname' => 'deffnx'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 7
+              }
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
-                      },
-                      'type' => 'bracketed_arg'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'truc'
+                            }
+                          ],
+                          'source_info' => {
+                            'line_nr' => 8
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     }
                   ],
                   'info' => {
@@ -489,11 +457,57 @@ $result_trees{'empty_def_arguments'} = {
                 'original_def_cmdname' => 'deffnx'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 8
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'source_info' => {
+                            'line_nr' => 9
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'source_info' => {
+                            'line_nr' => 9
+                          },
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'deffnx',
+              'extra' => {
+                'def_command' => 'deffn',
+                'original_def_cmdname' => 'deffnx'
               },
-              'type' => 'def_line'
+              'source_info' => {
+                'line_nr' => 9
+              }
             },
             {
               'args' => [
@@ -522,9 +536,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
@@ -534,9 +546,7 @@ $result_trees{'empty_def_arguments'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -545,7 +555,6 @@ $result_trees{'empty_def_arguments'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'empty_def_arguments'} = '@deffn fset @var{i} a g
 @deffnx @b{id @samp{i} ule}    
@@ -574,81 +583,63 @@ $result_errors{'empty_def_arguments'} = [
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'missing category for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing name for @deffnx
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'missing name for @deffnx',
     'type' => 'warning'
   }

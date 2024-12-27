@@ -10,7 +10,6 @@ $result_trees{'anchor_in_caption'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'anchor_in_caption'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'anchor_in_caption'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -99,9 +97,7 @@ $result_trees{'anchor_in_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -165,17 +161,16 @@ $result_trees{'anchor_in_caption'} = {
                                   'text' => 'in anchor'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'anchor',
                           'extra' => {
+                            'is_target' => 1,
                             'normalized' => 'in-anchor'
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 8,
-                            'macro' => ''
+                            'line_nr' => 8
                           }
                         }
                       ],
@@ -190,9 +185,7 @@ $result_trees{'anchor_in_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -227,15 +220,14 @@ $result_trees{'anchor_in_caption'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'fl',
+            'is_target' => 1,
             'normalized' => 'label'
           },
           'info' => {
@@ -244,13 +236,12 @@ $result_trees{'anchor_in_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -259,9 +250,7 @@ $result_trees{'anchor_in_caption'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -288,32 +277,41 @@ fl, label
 In float.
 ';
 
-$result_nodes{'anchor_in_caption'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'anchor_in_caption'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'anchor_in_caption'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'anchor_in_caption'}[0];
+$result_nodes{'anchor_in_caption'}[1] = $result_nodes{'anchor_in_caption'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'anchor_in_caption'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'anchor_in_caption'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'anchor_in_caption'};
-
-$result_menus{'anchor_in_caption'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'anchor_in_caption'} = [];
 
@@ -329,11 +327,9 @@ $result_floats{'anchor_in_caption'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'fl',
         'normalized' => 'label'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -386,7 +382,7 @@ End:
 
 $result_converted{'html'}->{'anchor_in_caption'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

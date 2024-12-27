@@ -7,10 +7,10 @@ Texinfo::Convert::OUTFORMAT - Convert Texinfo tree to OUTFORMAT
 =head1 SYNOPSIS
 
   my $converter
-    = Texinfo::Convert::OUTFORMAT->converter({'parser' => $parser});
+    = Texinfo::Convert::OUTFORMAT->converter({'NUMBER_SECTIONS' => 0});
 
-  $converter->output($tree);
-  $converter->convert($tree);
+  $converter->output($document);
+  $converter->convert($document);
   $converter->convert_tree($tree);
 __HTML   $converter->output_internal_links(); # HTML only
 
@@ -31,31 +31,31 @@ Texinfo::Convert::OUTFORMAT converts a Texinfo tree to OUTFORMAT.
 
 Initialize converter from Texinfo to OUTFORMAT.
 
-The I<$options> hash reference holds options for the converter.  In
-this option hash reference a L<parser object|Texinfo::Parser>
-may be associated with the I<parser> key.  The other options
-are Texinfo customization options and a few other options that can
-be passed to the converter. Most of the customization options are described in
-the Texinfo manual.  Those customization options, when appropriate, override
-the document content.  The parser should not be available directly anymore
-after getting the associated information.
+The I<$options> hash reference holds Texinfo customization options for the
+converter.  These options should be Texinfo customization options
+that can be passed to the converter.  Most of the customization options are
+described in the Texinfo manual or in the customization API manual.  Those
+customization options, when appropriate, override the document content.
 
 See L<Texinfo::Convert::Converter> for more information.
 
-=item $converter->output($tree)
+=item $converter->output($document)
 
-Convert a Texinfo tree I<$tree> and output the result in files as
+Convert a Texinfo parsed document I<$document> and output the result in files as
 described in the Texinfo manual.
 
-=item $result = $converter->convert($tree)
+=item $result = $converter->convert($document)
 
-Convert a Texinfo tree I<$tree> and return the resulting output.
+Convert a Texinfo parsed document I<$document> and return the resulting output.
 
 =item $result = $converter->convert_tree($tree)
 
 Convert a Texinfo tree portion I<$tree> and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use C<convert>.
+
+In general, this function should be called after the converter has been
+associated to a document by a call to C<output> or C<convert>.
 
 __HTML =item $result = $converter->output_internal_links()
 __HTML X<C<output_internal_links>>

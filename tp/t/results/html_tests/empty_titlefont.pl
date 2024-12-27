@@ -17,14 +17,13 @@ $result_trees{'empty_titlefont'} = {
         {
           'args' => [
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_container'
             }
           ],
           'cmdname' => 'titlefont',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -56,7 +55,7 @@ $result_floats{'empty_titlefont'} = {};
 
 $result_converted{'html'}->{'empty_titlefont'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -85,7 +84,6 @@ $result_converted_errors{'html'}->{'empty_titlefont'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'empty_titlefont.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

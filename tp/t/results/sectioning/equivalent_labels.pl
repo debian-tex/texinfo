@@ -46,28 +46,25 @@ $result_trees{'equivalent_labels'} = {
                           'text' => 'anch'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'samp',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'anch'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -150,14 +147,13 @@ $result_trees{'equivalent_labels'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'extra' => {
             'float_type' => 'truc',
+            'is_target' => 1,
             'normalized' => 'floa'
           },
           'info' => {
@@ -166,9 +162,7 @@ $result_trees{'equivalent_labels'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -203,9 +197,11 @@ $result_trees{'equivalent_labels'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'anch'
                   },
                   'type' => 'menu_entry_node'
@@ -230,9 +226,7 @@ $result_trees{'equivalent_labels'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               },
               'type' => 'menu_entry'
             },
@@ -252,21 +246,21 @@ $result_trees{'equivalent_labels'} = {
                               'text' => 'floa'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       }
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'floa'
                   },
                   'type' => 'menu_entry_node'
@@ -291,9 +285,7 @@ $result_trees{'equivalent_labels'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               },
               'type' => 'menu_entry'
             },
@@ -324,20 +316,17 @@ $result_trees{'equivalent_labels'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -346,16 +335,14 @@ $result_trees{'equivalent_labels'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'equivalent_labels'} = '@node first
 
@@ -382,82 +369,38 @@ In float
 * floa::
 ';
 
-$result_nodes{'equivalent_labels'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'anchor',
-      'extra' => {
-        'normalized' => 'anch'
-      },
-      'structure' => {}
+$result_nodes{'equivalent_labels'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
     }
   }
-};
+];
 
-$result_menus{'equivalent_labels'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'anchor',
-      'extra' => {
-        'normalized' => 'anch'
-      },
-      'structure' => {
-        'menu_next' => {
-          'cmdname' => 'float',
-          'extra' => {
-            'float_type' => 'truc',
-            'normalized' => 'floa'
-          },
-          'structure' => {
-            'float_number' => 1,
-            'menu_prev' => {},
-            'menu_up' => {},
-            'menu_up_hash' => {
-              'first' => 1
-            }
-          }
-        },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'first' => 1
-        }
-      }
+$result_menus{'equivalent_labels'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'first'
     }
   }
-};
-$result_menus{'equivalent_labels'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_prev'} = $result_menus{'equivalent_labels'}{'structure'}{'menu_child'};
-$result_menus{'equivalent_labels'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_up'} = $result_menus{'equivalent_labels'};
-$result_menus{'equivalent_labels'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'equivalent_labels'};
+];
 
 $result_errors{'equivalent_labels'} = [
   {
     'error_line' => 'warning: @menu entry node name `anch\' different from anchor name `@samp{anch}\'
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => '@menu entry node name `anch\' different from anchor name `@samp{anch}\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @menu entry node name `@code{floa}\' different from float name `floa\'
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@menu entry node name `@code{floa}\' different from float name `floa\'',
     'type' => 'warning'
   }
@@ -469,11 +412,9 @@ $result_floats{'equivalent_labels'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => 'truc',
         'normalized' => 'floa'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -523,7 +464,7 @@ $result_converted_errors{'info'}->{'equivalent_labels'} = [
 
 $result_converted{'html'}->{'equivalent_labels'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

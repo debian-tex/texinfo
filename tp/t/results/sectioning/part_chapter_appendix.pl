@@ -49,9 +49,7 @@ $result_trees{'part_chapter_appendix'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -80,7 +78,8 @@ $result_trees{'part_chapter_appendix'} = {
         }
       ],
       'extra' => {
-        'associated_part' => {}
+        'associated_part' => {},
+        'section_number' => '1'
       },
       'info' => {
         'spaces_before_argument' => {
@@ -88,9 +87,7 @@ $result_trees{'part_chapter_appendix'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -111,15 +108,16 @@ $result_trees{'part_chapter_appendix'} = {
         }
       ],
       'cmdname' => 'appendix',
+      'extra' => {
+        'section_number' => 'A'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     }
   ],
@@ -148,7 +146,7 @@ Appendix A Appendix
 ';
 
 $result_sectioning{'part_chapter_appendix'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'part',
@@ -156,44 +154,46 @@ $result_sectioning{'part_chapter_appendix'} = {
           'part_associated_section' => {
             'cmdname' => 'chapter',
             'extra' => {
-              'associated_part' => {}
-            },
-            'structure' => {
+              'associated_part' => {},
+              'section_directions' => {
+                'up' => {}
+              },
               'section_level' => 1,
-              'section_number' => 1,
-              'section_up' => {}
+              'section_number' => '1',
+              'toplevel_directions' => {}
             }
-          }
-        },
-        'structure' => {
+          },
           'section_childs' => [
             {}
           ],
+          'section_directions' => {},
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       },
       {
         'cmdname' => 'appendix',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 1,
           'section_number' => 'A',
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'structure'}{'section_up'} = $result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0] = $result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'part_chapter_appendix'};
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'part_chapter_appendix'};
-$result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'part_chapter_appendix'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
+$result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'section_directions'}{'up'} = $result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0] = $result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
+$result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'part_chapter_appendix'};
+$result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'part_chapter_appendix'}{'extra'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
 
 $result_errors{'part_chapter_appendix'} = [];
 

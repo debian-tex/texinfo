@@ -1,12 +1,12 @@
 use strict;
 
-texinfo_register_file_id_setting_function('tree_unit_file_name',
+texinfo_register_file_id_setting_function('unit_file_name',
                                           \&test_redirection_collision_file_name);
 
 sub test_redirection_collision_file_name($$$$)
 {
   my $converter = shift;
-  my $element = shift;
+  my $output_unit = shift;
   my $filename = shift;
   my $filepath = shift;
 

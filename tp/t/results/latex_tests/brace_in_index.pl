@@ -10,7 +10,6 @@ $result_trees{'brace_in_index'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -45,9 +44,7 @@ $result_trees{'brace_in_index'} = {
               ],
               'cmdname' => 'math',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -110,16 +107,12 @@ $result_trees{'brace_in_index'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -152,14 +145,13 @@ $result_trees{'brace_in_index'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           },
           'type' => 'index_entry_command'
         },
@@ -185,9 +177,7 @@ $result_trees{'brace_in_index'} = {
                   ],
                   'cmdname' => 'math',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 }
               ],
@@ -208,14 +198,13 @@ $result_trees{'brace_in_index'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           },
           'type' => 'index_entry_command'
         },
@@ -236,14 +225,12 @@ $result_trees{'brace_in_index'} = {
                           'cmdname' => '{'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'samp',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 13,
-                    'macro' => ''
+                    'line_nr' => 13
                   }
                 }
               ],
@@ -264,14 +251,13 @@ $result_trees{'brace_in_index'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           },
           'type' => 'index_entry_command'
         },
@@ -290,62 +276,67 @@ $result_trees{'brace_in_index'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'Function'
+                          'contents' => [
+                            {
+                              'text' => 'Function'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
+                      'info' => {
+                        'inserted' => 1
                       },
-                      'type' => 'bracketed_inserted'
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces_inserted'
-                    },
-                    {
-                      'contents' => [
-                        {
-                          'text' => 'A'
-                        },
-                        {
-                          'cmdname' => '{'
-                        },
-                        {
-                          'text' => 'A'
-                        }
-                      ],
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'type' => 'def_aggregate'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
+                      'info' => {
+                        'inserted' => 1
                       },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'A'
+                            },
+                            {
+                              'cmdname' => '{'
+                            },
+                            {
+                              'text' => 'A'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
                       'text' => '(',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'BBB'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ')',
                       'type' => 'delimiter'
                     }
@@ -361,7 +352,25 @@ $result_trees{'brace_in_index'} = {
               ],
               'extra' => {
                 'def_command' => 'defun',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'A'
+                        },
+                        {
+                          'cmdname' => '{'
+                        },
+                        {
+                          'text' => 'A'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   1
@@ -369,9 +378,7 @@ $result_trees{'brace_in_index'} = {
                 'original_def_cmdname' => 'defun'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               },
               'type' => 'def_line'
             },
@@ -416,9 +423,7 @@ $result_trees{'brace_in_index'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
@@ -428,9 +433,7 @@ $result_trees{'brace_in_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           }
         }
       ],
@@ -439,7 +442,6 @@ $result_trees{'brace_in_index'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'brace_in_index'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'brace_in_index'}{'contents'}[0]{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'brace_in_index'} = '@{
 
@@ -478,36 +480,28 @@ $result_errors{'brace_in_index'} = [
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }

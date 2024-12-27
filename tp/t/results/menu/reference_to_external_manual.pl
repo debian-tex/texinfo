@@ -74,9 +74,11 @@ $result_trees{'reference_to_external_manual'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -100,9 +102,7 @@ $result_trees{'reference_to_external_manual'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'menu_entry'
             },
@@ -133,20 +133,17 @@ $result_trees{'reference_to_external_manual'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -155,15 +152,13 @@ $result_trees{'reference_to_external_manual'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'reference_to_external_manual'} = '
 @node first
@@ -179,48 +174,25 @@ $result_texts{'reference_to_external_manual'} = '
 * (info)::
 ';
 
-$result_nodes{'reference_to_external_manual'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'info'
-          }
-        ]
-      },
-      'type' => 'menu_entry_node'
+$result_nodes{'reference_to_external_manual'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
     }
   }
-};
+];
 
-$result_menus{'reference_to_external_manual'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'info'
-          }
-        ]
-      },
-      'type' => 'menu_entry_node'
+$result_menus{'reference_to_external_manual'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'first'
     }
   }
-};
+];
 
 $result_errors{'reference_to_external_manual'} = [];
 
@@ -237,7 +209,7 @@ $result_converted{'plaintext'}->{'reference_to_external_manual'} = '* Menu:
 
 $result_converted{'html'}->{'reference_to_external_manual'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -253,7 +225,7 @@ $result_converted{'html'}->{'reference_to_external_manual'} = '<!DOCTYPE html>
 <!--
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 span:hover a.copiable-link {visibility: visible}
-td.menu-entry-description {vertical-align: top}
+td.menu-entry-description {vertical-align: top; padding-left: 1em}
 td.menu-entry-destination {vertical-align: top}
 -->
 </style>
@@ -265,8 +237,8 @@ td.menu-entry-destination {vertical-align: top}
 
 <h4 class="node" id="first"><span>first<a class="copiable-link" href="#first"> &para;</a></span></h4>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td class="menu-entry-destination">&bull; <a href="info.html#Top" accesskey="1">(info)</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+<table class="menu">
+<tr><td class="menu-entry-destination">&bull; <a href="info.html#Top" accesskey="1">(info)</a>:</td><td class="menu-entry-description">
 </td></tr>
 </table>
 

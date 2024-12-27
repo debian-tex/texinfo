@@ -1,0 +1,133 @@
+# Copyright 2010-2024 Free Software Foundation, Inc.
+# 
+# This file is part of GNU Texinfo.
+#
+# GNU Texinfo is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# this information is used to setup converter options for both C and
+# Perl.
+
+# for Texinfo::Convert::Converter
+- converter
+
+documentlanguage undef
+
+# in Texinfo::Convert::Converter, common to all the converters
+- common
+
+# This is the default, mainly for tests; the caller should set them.  These
+# values are what is used in tests of the Converters.  These variables are
+# customization options, set in the main program when a converter is
+# called from the main program.
+PACKAGE               texinfo
+PACKAGE_NAME          GNU Texinfo
+PACKAGE_AND_VERSION   texinfo
+PACKAGE_VERSION       
+PACKAGE_URL           https://www.gnu.org/software/texinfo/
+PROGRAM               
+
+
+- html
+
+BIG_RULE               <hr>
+BODY_ELEMENT_ATTRIBUTES  undef
+CHAPTER_HEADER_LEVEL   2
+CLOSE_QUOTE_SYMBOL     undef
+CONTENTS_OUTPUT_LOCATION  after_top
+CONVERT_TO_LATEX_IN_MATH  undef
+INDENTED_BLOCK_COMMANDS_IN_TABLE  0
+CHECK_HTMLXREF         1
+COPIABLE_LINKS         1
+DATE_IN_HEADER         0
+DEFAULT_RULE           <hr>
+documentlanguage       en
+DOCTYPE                <!DOCTYPE html>
+DO_ABOUT               0
+OUTPUT_CHARACTERS      0
+EXTENSION              html
+# based on EXTENSION
+EXTERNAL_CROSSREF_EXTENSION  undef
+FOOTNOTE_END_HEADER_LEVEL  4
+FOOTNOTE_SEPARATE_HEADER_LEVEL  4
+FORMAT_MENU            sectiontoc
+HEADERS                1
+INDEX_ENTRY_COLON      
+# if set style is added in attribute.
+INLINE_CSS_STYLE       0
+JS_WEBLABELS           generate
+# no clash with node name
+JS_WEBLABELS_FILE      js_licenses.html
+MAX_HEADER_LEVEL       4
+MENU_ENTRY_COLON       :
+MENU_SYMBOL            undef
+MONOLITHIC             1
+NO_CUSTOM_HTML_ATTRIBUTE  0
+# if set, no css is used.
+NO_CSS                 0
+NO_NUMBER_FOOTNOTE_SYMBOL  *
+NODE_NAME_IN_MENU      1
+OPEN_QUOTE_SYMBOL      undef
+OUTPUT_ENCODING_NAME   utf-8
+SECTION_NAME_IN_TITLE  0
+SHORT_TOC_LINK_TO_TOC  1
+SHOW_TITLE             undef
+SPLIT                  node
+# ignores EXTENSION
+# ignores EXTENSION
+TOP_FILE               index.html
+TOP_NODE_FILE_TARGET   index.html
+USE_ACCESSKEY          1
+USE_NEXT_HEADING_FOR_LONE_NODE  1
+USE_ISO                1
+USE_LINKS              1
+USE_NODES              1
+USE_NODE_DIRECTIONS    undef
+USE_REL_REV            1
+USE_TITLEPAGE_FOR_TITLE  1
+WORDS_IN_PAGE          300
+# for internal cross references
+XREF_USE_NODE_NAME_ARG  undef
+XREF_USE_FLOAT_LABEL    0
+xrefautomaticsectiontitle  on
+
+
+- texi2html
+
+# added hopefully temporarily to be able to validate with W3C validator
+#DOCTYPE                     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+#DOCTYPE                     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+FORMAT_MENU                  menu
+USE_SETFILENAME_EXTENSION    0
+footnotestyle                separate
+CONTENTS_OUTPUT_LOCATION     separate_element
+FORCE                        1
+USE_ACCESSKEY                0
+NODE_NAME_IN_MENU            0
+SHORT_TOC_LINK_TO_TOC        0
+SHOW_TITLE                   1
+USE_REL_REV                  0
+USE_LINKS                    0
+USE_NODES                    0
+SPLIT    
+PROGRAM_NAME_IN_FOOTER       1
+PROGRAM_NAME_IN_ABOUT        1
+HEADER_IN_TABLE              1
+MENU_ENTRY_COLON    
+INDEX_ENTRY_COLON    
+DO_ABOUT                     undef
+CHAPTER_HEADER_LEVEL         1
+BIG_RULE                     <hr style="height: 6px;">
+FOOTNOTE_END_HEADER_LEVEL    3
+FOOTNOTE_SEPARATE_HEADER_LEVEL    1
+

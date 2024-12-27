@@ -37,9 +37,7 @@ $result_trees{'verbatiminclude_and_encoding'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -75,9 +73,7 @@ $result_trees{'verbatiminclude_and_encoding'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],

@@ -40,9 +40,7 @@ $result_trees{'macro_definition_in_include'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'include',
@@ -93,8 +91,7 @@ $result_trees{'macro_definition_in_include'} = {
               },
               'source_info' => {
                 'file_name' => 'macro_included.texi',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -104,8 +101,7 @@ $result_trees{'macro_definition_in_include'} = {
           },
           'source_info' => {
             'file_name' => 'macro_included.texi',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           },
           'source_marks' => [
             {
@@ -123,13 +119,17 @@ $result_trees{'macro_definition_in_include'} = {
         {
           'contents' => [
             {
+              'text' => 'Call macro
+'
+            },
+            {
               'source_marks' => [
                 {
                   'counter' => 1,
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -137,16 +137,9 @@ $result_trees{'macro_definition_in_include'} = {
                     },
                     'type' => 'macro_call'
                   },
-                  'position' => 11,
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'start'
-                }
-              ],
-              'text' => 'Call macro
-'
-            },
-            {
-              'source_marks' => [
+                },
                 {
                   'counter' => 1,
                   'position' => 11,

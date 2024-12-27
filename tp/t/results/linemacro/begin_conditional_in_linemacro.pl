@@ -54,9 +54,7 @@ $result_trees{'begin_conditional_in_linemacro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,42 +63,10 @@ $result_trees{'begin_conditional_in_linemacro'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '
-@ifset',
-                        'type' => 'bracketed_linemacro_arg'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -109,6 +75,32 @@ $result_trees{'begin_conditional_in_linemacro'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '
+@ifset',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 1,
                   'element' => {
@@ -170,9 +162,7 @@ $result_trees{'begin_conditional_in_linemacro'} = {
                           }
                         },
                         'source_info' => {
-                          'file_name' => '',
-                          'line_nr' => 8,
-                          'macro' => ''
+                          'line_nr' => 8
                         }
                       }
                     ],
@@ -182,7 +172,6 @@ $result_trees{'begin_conditional_in_linemacro'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 6,
                       'macro' => 'lm'
                     }
@@ -198,36 +187,6 @@ $result_trees{'begin_conditional_in_linemacro'} = {
           'type' => 'paragraph'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 2,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '
-@ifclear',
-                        'type' => 'bracketed_linemacro_arg'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -236,6 +195,32 @@ $result_trees{'begin_conditional_in_linemacro'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '
+@ifclear',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 1,
                   'element' => {
@@ -270,7 +255,6 @@ $result_trees{'begin_conditional_in_linemacro'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 11,
                       'macro' => 'lm'
                     }
@@ -314,9 +298,7 @@ $result_trees{'begin_conditional_in_linemacro'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 13,
-                      'macro' => ''
+                      'line_nr' => 13
                     }
                   },
                   'position' => 11,

@@ -1,8 +1,24 @@
 
-highlight_syntax_example highlight_example.texi --html -c HIGHLIGHT_SYNTAX=1
+# syntax highlighting in examples
+highlight_syntax_example highlight_example.texi --html -c HIGHLIGHT_SYNTAX=source-highlight
 highlight_syntax_example_pygments highlight_example.texi --html -c HIGHLIGHT_SYNTAX=pygments
 highlight_syntax_example_highlight highlight_example.texi --html -c HIGHLIGHT_SYNTAX=highlight
 
-highlight_syntax_example_default_language highlight_example.texi --html -c HIGHLIGHT_SYNTAX=1 -c HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE=Perl
+highlight_syntax_example_default_language highlight_example.texi --html -c HIGHLIGHT_SYNTAX=source-highlight -c HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE=Perl
 
 highlight_syntax_example_latin9 highlight_example.texi --html --init=highlight_syntax.pm -c 'OUTPUT_ENCODING_NAME=ISO-8859-15'
+
+
+# collation
+
+index_collation_test_plaintext index_collation_test.texi --plaintext
+
+index_collation_test_collation_language index_collation_test.texi --plaintext -c COLLATION_LANGUAGE=se
+
+index_collation_test_collation_locale_en index_collation_test.texi --plaintext -c XS_STRXFRM_COLLATION_LOCALE='en.utf-8'
+
+index_collation_test_collation_locale_en_US index_collation_test.texi --plaintext -c XS_STRXFRM_COLLATION_LOCALE='en_US.utf-8'
+
+index_collation_test_collation_locale_sv index_collation_test.texi --plaintext -c XS_STRXFRM_COLLATION_LOCALE='sv_SE.utf8'
+
+index_collation_test_documentlanguage_collation index_collation_test.texi --plaintext -c DOCUMENTLANGUAGE_COLLATION=1

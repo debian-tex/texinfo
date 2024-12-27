@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright 2022-2023 Free Software Foundation, Inc.
+# Copyright 2022-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -26,8 +26,10 @@ prepended_command=
 
 . ../../defs || exit 1
 
-# Need command-line unicode for this test, which is not reliable on Windows
-if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
+if sed 1q ../non_ascii_extracted_stamp.txt | grep 'OK' >/dev/null; then
+  :
+else
+  echo "S: (no non-ASCII file names) $basename"
   exit 77
 fi
 
@@ -44,7 +46,7 @@ raw_outdir=$raw_output_dir/$basename
 mkdir $basename
 : > $basename/$stdout_file
 
-cmd="$prepended_command $PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split --set-customization-variable 'TEST 1' -I $srcdir/input_files/dir_înclùde --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/simple_including_file.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+cmd="$prepended_command $PERL -I $srcdir/../.. -w $srcdir/../../texi2any.pl --html --no-split --set-customization-variable 'TEST 1' -I ../built_input/non_ascii/dir_înclùde --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/simple_including_file.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
 echo "$cmd" >> $logfile
 eval $cmd
 
@@ -56,6 +58,7 @@ if [ $ret != 0 ]; then
 else
   outdir=$basename
   cp -pr $outdir $raw_output_dir
+  find $outdir | $PERL $srcdir/../escape_file_names.pl
 
   dir=$basename
   if [ -d "$srcdir/${dir}_res" ]; then

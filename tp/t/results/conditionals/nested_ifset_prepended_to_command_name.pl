@@ -69,9 +69,7 @@ $result_trees{'nested_ifset_prepended_to_command_name'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 4,
-                      'macro' => ''
+                      'line_nr' => 4
                     }
                   }
                 ],
@@ -81,9 +79,7 @@ $result_trees{'nested_ifset_prepended_to_command_name'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'ignored_conditional_block'
@@ -107,9 +103,7 @@ $result_errors{'nested_ifset_prepended_to_command_name'} = [
   {
     'error_line' => 'unmatched `@end ifset\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'unmatched `@end ifset\'',
     'type' => 'error'
   }

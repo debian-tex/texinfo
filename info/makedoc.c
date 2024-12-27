@@ -1,6 +1,6 @@
 /* makedoc.c -- make doc.c and funs.h from input files.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ static char *doc_header_1[] = {
   "#include \"window.h\"",
   "#include \"funs.h\"",
   "",
-  "FUNCTION_DOC function_doc_array[] = {",
+  "InfoCommand function_doc_array[] = {",
   "",
   NULL
 };
@@ -436,7 +436,7 @@ process_one_file (char *filename, FILE *doc_stream, FILE *funs_stream)
       doc[offset - point] = '\0';
 
       fprintf (doc_stream,
-          "   { (VFunction *)%s, \"%s\", (FUNCTION_KEYSEQ *)0, %s },\n",
+          "   { %s, \"%s\", (FUNCTION_KEYSEQ *)0, %s },\n",
           func, func_name, doc);
 
       free (func_name);

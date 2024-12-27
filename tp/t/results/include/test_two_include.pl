@@ -42,9 +42,7 @@ $result_trees{'test_two_include'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 2,
-                      'macro' => ''
+                      'line_nr' => 2
                     }
                   },
                   'position' => 16,
@@ -227,9 +225,7 @@ $result_trees{'test_two_include'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 5,
-                      'macro' => ''
+                      'line_nr' => 5
                     }
                   },
                   'position' => 17,

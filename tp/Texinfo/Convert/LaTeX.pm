@@ -1,17 +1,17 @@
 # LaTeX.pm: output tree as LaTeX
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
@@ -163,7 +163,7 @@
 
 package Texinfo::Convert::LaTeX;
 
-use 5.00405;
+use 5.006;
 
 # See comment at start of HTML.pm
 use if $] >= 5.012, feature => qw(unicode_strings);
@@ -182,12 +182,12 @@ use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::NodeNameNormalization;
 use Texinfo::Convert::Text;
+use Texinfo::Indices;
 use Texinfo::Convert::Converter;
 
-use vars qw($VERSION @ISA);
-@ISA = qw(Texinfo::Convert::Converter);
+our @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 # could export convert_to_latex_math
 
@@ -243,8 +243,12 @@ foreach my $kept_command (keys(%informative_commands),
   $formatted_line_commands{$kept_command} = 1;
 }
 
+my %def_line_commands;
 foreach my $def_command (keys(%def_commands)) {
-  $formatted_line_commands{$def_command} = 1 if ($line_commands{$def_command});
+  if ($line_commands{$def_command}) {
+    $formatted_line_commands{$def_command} = 1;
+    $def_line_commands{$def_command} = 1;
+  }
 }
 
 # TODO command that could be used for translation \sectionname does
@@ -533,6 +537,15 @@ my %LaTeX_fixed_width_environments = (
   'Texinfopreformatted' => 1,
 );
 
+# Empty containers do not happen often, mainly when a source mark
+# needs to be kept.  However, it is more robust to remove explictely
+# empty containers that we want to remove instead of relying on a
+# specific tree.
+my %container_ignored_if_empty = (
+  'preformatted' => 1,
+  #'menu_comment' => 1,
+);
+
 foreach my $environment_command (@LaTeX_same_block_commands) {
   $LaTeX_environment_commands{$environment_command} = [$environment_command];
 }
@@ -553,18 +566,10 @@ foreach my $type ('ignorable_spaces_after_command',
   $ignorable_space_types{$type} = 1;
 }
 
-# ignore 'command_as_argument_inserted' in order to use the default
-# setting for @itemize if there is no argument
 my %ignored_types;
-foreach my $type ('command_as_argument_inserted',
-            'postamble_after_end', 'preamble_before_beginning',
-            'preamble_before_setfilename', 'command_as_argument_inserted') {
+foreach my $type ('postamble_after_end', 'preamble_before_beginning',
+            'preamble_before_setfilename') {
   $ignored_types{$type} = 1;
-}
-
-my %ignorable_types = %ignorable_space_types;
-foreach my $ignored_type(keys(%ignored_types)) {
-  $ignorable_types{$ignored_type} = 1;
 }
 
 # The following code is used to define style commands with more
@@ -721,7 +726,7 @@ foreach my $typewriter_command (@typewriter_commands) {
 my @quoted_commands = ('samp', 'indicateurl');
 
 my %quotes_map;
-# Quotes are reset in converter_initialize and unicode quotes are used
+# Quotes are reset in conversion_initialization and unicode quotes are used
 # if @documentencoding utf-8 is used.
 foreach my $quoted_command (@quoted_commands) {
   $quotes_map{$quoted_command} = ["`", "'"];
@@ -777,18 +782,9 @@ foreach my $command (keys(%{$LaTeX_style_brace_commands{'cmd_text'}})) {
 
 
 my %defaults = (
-  # Not customization option variables
-  'converted_format'     => 'latex',
-
-  # FIXME this sets an option that is not a customization variable
-  # and will not be documented anywhere.  It should probably be better
-  # to add and document a customization variable in the Texinfo manual
-  # if needed.
   # For LaTeX in general, it could make sense to have some customization,
   # for example of packages, fonts, document type, to be discussed/though
   # about how to setup this customization.
-  # FIXME any idea what could be used?
-  'floats_extension'     => 'tfl',
 
   # Customization option variables
   'OUTPUT_CHARACTERS'    => 0,
@@ -801,7 +797,7 @@ my %defaults = (
 
 sub converter_defaults($$)
 {
-  return %defaults;
+  return \%defaults;
 }
 
 # Converter state keys:
@@ -839,16 +835,21 @@ sub converter_initialize($)
 
   foreach my $format (keys(%format_raw_commands)) {
     $self->{'ignored_commands'}->{$format} = 1
-       unless ($self->{'expanded_formats_hash'}->{$format});
+       unless ($self->{'expanded_formats'}->{$format});
+  }
+  return $self;
+}
+
+sub conversion_initialization($;$)
+{
+  my $self = shift;
+  my $document = shift;
+
+  if ($document) {
+    $self->set_document($document);
   }
 
   %{$self->{'quotes_map'}} = %quotes_map;
-  # for file names
-  $self->{'convert_encoded_text_options'}
-      = {Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)};
-  # for other conversions to text
-  $self->{'convert_text_options'}
-      = {Texinfo::Convert::Text::copy_options_for_convert_text($self)};
 
   # this condition means that there is no way to turn off
   # @U expansion to utf-8 characters even though this
@@ -885,8 +886,6 @@ sub converter_initialize($)
   $self->{'output_characters'} = $self->get_conf('OUTPUT_CHARACTERS');
   $self->{'output_encoding_name'} = $self->get_conf('OUTPUT_ENCODING_NAME');
   $self->{'debug'} = $self->get_conf('DEBUG');
-
-  return $self;
 }
 
 my %LaTeX_floats = (
@@ -898,13 +897,19 @@ my %LaTeX_floats = (
 sub _prepare_floats($)
 {
   my $self = shift;
-  if ($self->{'floats'}) {
+
+  my $floats;
+  if ($self->{'document'}) {
+    $floats = $self->{'document'}->floats_information();
+  }
+
+  if ($floats) {
     $self->{'normalized_float_latex'} = {};
     $self->{'latex_floats'} = {};
-    foreach my $normalized_float_type (sort(keys(%{$self->{'floats'}}))) {
+    foreach my $normalized_float_type (sort(keys(%{$floats}))) {
       my $latex_variable_float_name;
-      if (scalar(@{$self->{'floats'}->{$normalized_float_type}})) {
-        my $float = $self->{'floats'}->{$normalized_float_type}->[0];
+      if (scalar(@{$floats->{$normalized_float_type}})) {
+        my $float = $floats->{$normalized_float_type}->[0];
         $latex_variable_float_name
           = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
            {'contents' => $float->{'args'}->[0]->{'contents'}});
@@ -938,10 +943,16 @@ sub _prepare_indices($)
 {
   my $self = shift;
 
-  my $index_names = $self->{'indices_information'};
-  if ($index_names) {
+  my $indices_information;
+  if ($self->{'document'}) {
+    $indices_information = $self->{'document'}->indices_information();
+  }
+
+  if ($indices_information) {
+    $self->{'index_formatting_text_options'}
+      = Texinfo::Indices::setup_index_entry_keys_formatting($self);
     my $merged_index_entries
-        = Texinfo::Structuring::merge_indices($index_names);
+        = $self->{'document'}->merged_indices();
     # select non empty indices
     if ($merged_index_entries) {
       $self->{'index_entries'} = {};
@@ -957,7 +968,6 @@ sub _prepare_indices($)
     }
   }
 }
-
 
 sub _prepare_conversion($;$)
 {
@@ -981,16 +991,19 @@ sub _prepare_conversion($;$)
   delete($self->{'custom_heading'});
   delete($self->{'index_entries'});
 
+  my $global_commands;
+  if ($self->{'document'}) {
+    $global_commands = $self->{'document'}->global_commands_information();
+  }
+
   if (defined($root)) {
     $self->_associate_other_nodes_to_sections($root);
   }
 
-  if ($self->{'global_commands'}->{'settitle'}) {
-    my $settitle_root = $self->{'global_commands'}->{'settitle'};
+  if ($global_commands and $global_commands->{'settitle'}) {
+    my $settitle_root = $global_commands->{'settitle'};
     if ($settitle_root->{'args'}->[0]
-        and $settitle_root->{'args'}->[0]->{'contents'}
-        and not ($settitle_root->{'extra'}
-                 and $settitle_root->{'extra'}->{'missing_argument'})) {
+        and $settitle_root->{'args'}->[0]->{'contents'}) {
       $self->{'settitle_tree'} =
          {'contents' => $settitle_root->{'args'}->[0]->{'contents'}};
     }
@@ -1014,7 +1027,8 @@ sub _associate_other_nodes_to_sections($$)
   foreach my $element_content (@{$root->{'contents'}}) {
     if ($element_content->{'cmdname'}
         and $element_content->{'cmdname'} eq 'node') {
-      if (not $element_content->{'extra'}->{'associated_section'}
+      if ($element_content->{'extra'}
+          and not $element_content->{'extra'}->{'associated_section'}
           and defined($element_content->{'extra'}->{'normalized'})) {
         if (defined($current_sectioning_command)) {
           $additional_node_section_associations
@@ -1051,10 +1065,16 @@ my $latex_document_type = 'preamble_before_content';
 
 sub output($$)
 {
-  my ($self, $root) = @_;
+  my $self = shift;
+  my $document = shift;
+
+  $self->conversion_initialization($document);
+
+  my $root = $document->tree();
 
   my ($output_file, $destination_directory, $output_filename)
-    = $self->determine_files_and_directory();
+    = $self->determine_files_and_directory(
+                                  $self->get_conf('TEXINFO_OUTPUT_FORMAT'));
 
   my ($encoded_destination_directory, $dir_encoding)
     = $self->encoded_output_file_name($destination_directory);
@@ -1070,11 +1090,13 @@ sub output($$)
     ($encoded_output_file, $path_encoding)
       = $self->encoded_output_file_name($output_file);
     my $error_message;
-    ($fh, $error_message) = Texinfo::Common::output_files_open_out(
+    # the third return information, set if the file has already been used
+    # in this files_information is not checked as this cannot happen.
+    ($fh, $error_message) = Texinfo::Convert::Utils::output_files_open_out(
                              $self->output_files_information(), $self,
                              $encoded_output_file);
     if (!$fh) {
-      $self->document_error($self,
+      $self->converter_document_error(
              sprintf(__("could not open %s for writing: %s"),
                                     $output_file, $error_message));
       return undef;
@@ -1109,7 +1131,7 @@ sub output($$)
       }
     }
   }
-  # nothing after Top node the end, mark that Top node is ignored
+  # nothing after Top node at the end, mark that Top node is ignored
   # in a container that can be used to mark that content should not
   # be ignored anymore.
   if ($in_top_node) {
@@ -1140,10 +1162,10 @@ sub output($$)
 
   #print STDERR "OUTPUT fh:$fh|F:$output_file|$result";
   if ($fh and $output_file ne '-') {
-    Texinfo::Common::output_files_register_closed(
+    Texinfo::Convert::Utils::output_files_register_closed(
                   $self->output_files_information(), $encoded_output_file);
     if (!close ($fh)) {
-      $self->document_error($self,
+      $self->converter_document_error(
                    sprintf(__("error on closing %s: %s"),
                                     $output_file, $!));
     }
@@ -1156,7 +1178,11 @@ sub output($$)
 sub convert($$)
 {
   my $self = shift;
-  my $root = shift;
+  my $document = shift;
+
+  $self->conversion_initialization($document);
+
+  my $root = $document->tree();
 
   $self->_prepare_conversion($root);
 
@@ -1213,6 +1239,7 @@ sub copy_options_for_convert_to_latex_math($)
 # generated by the LaTeX conversion are few and not relevant for math tree
 # fragments.  Relevant errors should be generated when parsing the Texinfo,
 # or when converting the final LaTeX.
+# Document could be passed to conversion_initialization if needed.
 sub convert_to_latex_math($$;$$)
 {
   my $self = shift;
@@ -1225,6 +1252,8 @@ sub convert_to_latex_math($$;$$)
   if (not defined($self)) {
     $self = Texinfo::Convert::LaTeX->converter($options);
   }
+
+  $self->conversion_initialization();
 
   _push_new_context($self, 'convert_to_math');
 
@@ -1323,7 +1352,13 @@ sub _latex_header() {
   }
   $header_code .= "\n";
 
-  if ($self->{'floats'}) {
+  my $floats;
+  if ($self->{'document'}) {
+    $floats = $self->{'document'}->floats_information();
+  }
+
+  if ($floats) {
+    my $floats_extension = $self->get_conf('LATEX_FLOATS_FILE_EXTENSION');
     foreach my $normalized_float_type
                            (sort(keys(%{$self->{'normalized_float_latex'}}))) {
       my $latex_float_name
@@ -1332,11 +1367,10 @@ sub _latex_header() {
         my $float_type = '';
         if ($normalized_float_type ne '') {
           _push_new_context($self, 'float_type '.$normalized_float_type);
-          my $float = $self->{'floats'}->{$normalized_float_type}->[0];
+          my $float = $floats->{$normalized_float_type}->[0];
           my $float_type = _convert($self, $float->{'args'}->[0]);
           _pop_context($self);
         }
-        my $floats_extension = $self->{'floats_extension'};
         $header_code .= "% new float for type `$normalized_float_type'\n";
         $header_code
            .= "\\newfloat{$latex_float_name}{htb}{$floats_extension}[chapter]
@@ -1612,7 +1646,7 @@ roundcorner=10pt}
     if ($self->{'packages'}->{'geometry'}) {
       $usepackage_end .= "\\usepackage{geometry}\n";
     }
-    if ($self->{'floats'}) {
+    if ($floats) {
       $usepackage_end .= "\\usepackage{float}\n";
     }
     if ($self->{'packages'}->{'babel'}) {
@@ -1732,7 +1766,7 @@ sub _latex_begin_output($)
 
   #my $header = "\n";
   my $header = "";
-  # Special treatment for setchapternewpage, we want to avid
+  # Special treatment for setchapternewpage, we want to avoid
   # a useless headings set just below
   $header .= "% set default for \@setchapternewpage\n";
   my $heading_set;
@@ -1781,14 +1815,20 @@ sub _begin_document($)
   my $result = '';
   $result .= '\begin{document}
 ';
-  if (exists($self->{'global_commands'}->{'titlepage'})
-      or exists($self->{'global_commands'}->{'shorttitlepage'})) {
+  my $global_commands;
+  if ($self->{'document'}) {
+    $global_commands = $self->{'document'}->global_commands_information();
+  }
+
+  if ($global_commands
+      and ($global_commands->{'titlepage'}
+           or $global_commands->{'shorttitlepage'})) {
     $result .= "\n";
     $result .= $front_main_matter_definitions{$documentclass}->{'front'}."\n";
     $result .= _set_headings($self, 'off');
 
-    if (exists($self->{'global_commands'}->{'titlepage'})) {
-      my $element = $self->{'global_commands'}->{'titlepage'};
+    if ($global_commands->{'titlepage'}) {
+      my $element = $global_commands->{'titlepage'};
       # Start a group such that the changes are forgotten when front cover
       # is done.
       # Define glues dimensions that are used in front cover formatting.
@@ -1808,7 +1848,7 @@ sub _begin_document($)
       $result .= _finish_front_cover_page($self);
       $result .= "\\end{titlepage}\n";
     } else {
-      my $element = $self->{'global_commands'}->{'shorttitlepage'};
+      my $element = $global_commands->{'shorttitlepage'};
       my $title_text = _title_font($self, $element);
       $result .= "\\begin{titlepage}\n";
       $result .= "{\\raggedright $title_text}\n";
@@ -1819,20 +1859,26 @@ sub _begin_document($)
     }
   }
 
-  if (exists($self->{'global_commands'}->{'contents'})
-      and $self->{'structuring'}
-      and $self->{'structuring'}->{'sectioning_root'}
+  if ($global_commands and $global_commands->{'contents'}
       and not (defined($self->get_conf('CONTENTS_OUTPUT_LOCATION'))
                and $self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'inline')) {
-    if (exists($self->{'global_commands'}->{'titlepage'})
-        or exists($self->{'global_commands'}->{'shorttitlepage'})) {
-      $result .= _set_headings($self, 'pagenum');
+    my $sections_list;
+    if ($self->{'document'}) {
+      $sections_list = $self->{'document'}->sections_list();
     }
-    $result .= "\\tableofcontents\\newpage\n";
+
+    if ($sections_list) {
+      if ($global_commands->{'titlepage'}
+          or $global_commands->{'shorttitlepage'}) {
+        $result .= _set_headings($self, 'pagenum');
+      }
+      $result .= "\\tableofcontents\\newpage\n";
+    }
   }
 
-  if (exists($self->{'global_commands'}->{'titlepage'})
-      or exists($self->{'global_commands'}->{'shorttitlepage'})) {
+  if ($global_commands
+      and ($global_commands->{'titlepage'}
+           or $global_commands->{'shorttitlepage'})) {
     $result .= $front_main_matter_definitions{$documentclass}->{'main'}."\n";
     $result .= _set_headings($self, $self->get_conf('headings'));
   }
@@ -2037,19 +2083,21 @@ my %custom_headings_map = (
 # replace the footing or heading specifications.
 sub _set_custom_headings($$$)
 {
-  my ($self, $cmdname, $headings_spec) = @_;
+  my ($self, $cmdname, $headings_spec_element) = @_;
   my ($head_or_foot, $page_spec) = @{$custom_headings_map{$cmdname}};
 
   my $location_index = -1;
   my @headings = ('', '', '');
   _push_new_context($self, 'custom_heading');
   $self->{'formatting_context'}->[-1]->{'in_custom_heading'} = 1;
-  foreach my $location_heading_spec (@$headings_spec) {
-    $location_index++;
-    my $heading = $self->_convert({'contents' => $location_heading_spec});
-    $heading =~ s/^\s*//;
-    $heading =~ s/\s*$//;
-    $headings[$location_index] = $heading;
+  if ($headings_spec_element) {
+    foreach my $location_heading_spec (@{$headings_spec_element->{'contents'}}) {
+      $location_index++;
+      my $heading = $self->_convert($location_heading_spec);
+      $heading =~ s/^\s*//;
+      $heading =~ s/\s*$//;
+      $headings[$location_index] = $heading;
+    }
   }
   _pop_context($self);
 
@@ -2262,11 +2310,10 @@ sub _title_font($$)
   my $self = shift;
   my $element = shift;
 
-  if ($element->{'args'}->[0] and $element->{'args'}->[0]->{'contents'}) {
+  if ($element->{'args'} and $element->{'args'}->[0]->{'contents'}) {
     # in Texinfo TeX seems a bit smaller, but LARGE seems too small
     my $result = "{\\huge \\bfseries ";
-    $result
-      .= _convert($self, {'contents' => $element->{'args'}->[0]->{'contents'}});
+    $result .= _convert($self, $element->{'args'}->[0]);
     $result .= '}';
     return $result;
   }
@@ -2396,7 +2443,7 @@ sub _finish_front_cover_page($)
 sub _tree_anchor_label {
   my $node_content = shift;
 
-  my $label = Texinfo::Convert::NodeNameNormalization::normalize_node
+  my $label = Texinfo::Convert::NodeNameNormalization::convert_to_identifier
     ({'contents' => $node_content});
   return "anchor:$label";
 }
@@ -2411,9 +2458,14 @@ sub _index_entry($$)
   my $self = shift;
   my $element = shift;
   if ($element->{'extra'} and $element->{'extra'}->{'index_entry'}) {
+    my $indices_information;
+    if ($self->{'document'}) {
+      $indices_information = $self->{'document'}->indices_information();
+    }
+
     my ($entry, $index_info)
      = Texinfo::Common::lookup_index_entry($element->{'extra'}->{'index_entry'},
-                                           $self->{'indices_information'});
+                                           $indices_information);
     my $entry_index_name = $entry->{'index_name'};
     my $index_name = $entry_index_name;
     if ($index_info->{'merged_in'}) {
@@ -2424,53 +2476,50 @@ sub _index_entry($$)
     if ($index_info->{'in_code'}) {
       $in_code = 1;
     }
-    my $options
-      = Texinfo::Structuring::setup_index_entry_keys_formatting($self);
-    my $current_entry = $element;
-    my $current_sortas;
-    my $subentry_commands = [$element];
-    if (exists($element->{'extra'}->{'sortas'})) {
-      $current_sortas = $element->{'extra'}->{'sortas'};
-    }
-    my $subentries = [[Texinfo::Common::index_content_element($element, 1),
-                         $current_sortas]];
-    while ($current_entry->{'extra'}
-      and $current_entry->{'extra'}->{'subentry'}) {
-      $current_entry = $current_entry->{'extra'}->{'subentry'};
-      my $current_sortas;
-      if (exists($current_entry->{'extra'}->{'sortas'})) {
-        $current_sortas = $current_entry->{'extra'}->{'sortas'};
-      }
-      push @$subentries, [$current_entry->{'args'}->[0], $current_sortas];
-      push @$subentry_commands, $current_entry;
+    my @subindex_commands = ($element);
+    my $current_element = $element;
+    while ($current_element->{'extra'}
+      and $current_element->{'extra'}->{'subentry'}) {
+      $current_element = $current_element->{'extra'}->{'subentry'};
+      push @subindex_commands, $current_element;
     }
     _push_new_context($self, 'index_entry');
     $self->{'formatting_context'}->[-1]->{'index'} = 1;
     my @result;
-    foreach my $subentry_entry_and_sortas (@$subentries) {
-      my ($subentry, $subentry_sortas) = @$subentry_entry_and_sortas;
+    foreach my $subindex_command (@subindex_commands) {
+      my $content
+         = Texinfo::Common::index_content_element($subindex_command, 1);
       if ($in_code) {
         push @{$self->{'formatting_context'}->[-1]->{'code'}}, 1;
       }
-      my $index_entry = _convert($self, $subentry);
+      my $index_entry = _convert($self, $content);
       if ($in_code) {
         pop @{$self->{'formatting_context'}->[-1]->{'code'}};
       }
       # always setup a string to sort with as we may use commands
-      my $convert_to_text_options = {%$options, 'code' => $in_code};
-      my ($sortas, $sort_string)
-           = Texinfo::Structuring::index_entry_sort_string($entry,
-                                          $subentry, $subentry_sortas,
-                                          $convert_to_text_options);
+      if ($in_code) {
+        Texinfo::Convert::Text::set_options_code(
+          $self->{'index_formatting_text_options'});
+      }
+      # NOTE in XS code, the $self->{'index_formatting_text_options'}
+      # argument is ignored, instead the $self converter is used to find C
+      # text options data setup by setup_index_entry_keys_formatting.
+      my $sort_string
+           = Texinfo::Indices::index_entry_element_sort_string(
+                                          $self, $entry,
+                                          $subindex_command,
+                            $self->{'index_formatting_text_options'}, 1);
       my $result = '';
-      if (defined($sortas)) {
+      if (defined($sort_string)) {
         # | in sort key breaks with hyperref
-        $sortas =~ s/\|//g;
-        $result = _protect_text($self, $sortas);
+        $sort_string =~ s/\|//g;
+        $result = _protect_text($self, $sort_string);
         $result =~ s/\\[{}]//g; # cannot have unmatched braces in index entry
         $result = _protect_index_text($result).'@';
       }
       if ($in_code) {
+        Texinfo::Convert::Text::reset_options_code(
+                                 $self->{'index_formatting_text_options'});
         $result .= "\\texttt{" . _protect_index_text($index_entry) . "}";
       } else {
         $result .= _protect_index_text($index_entry);
@@ -2478,17 +2527,14 @@ sub _index_entry($$)
       push @result, $result;
     }
     my $seeresult = '';
-   SEEENTRY:
-    foreach my $subentry_command (@$subentry_commands) {
-      foreach my $seecommand (('seeentry', 'seealso')) {
-        if ($subentry_command->{'extra'}->{$seecommand}
-            and $subentry_command->{'extra'}->{$seecommand}->{'args'}->[0]) {
-          my $seeconverted = _convert($self,
-                   $subentry_command->{'extra'}->{$seecommand}->{'args'}->[0]);
-          $seeresult = '|'.$LaTeX_see_index_commands_text{$seecommand}.'{'
-                     .$seeconverted.'}';
-          last SEEENTRY;
-        }
+    foreach my $seecommand (('seeentry', 'seealso')) {
+      if ($element->{'extra'}->{$seecommand}
+          and $element->{'extra'}->{$seecommand}->{'args'}->[0]) {
+        my $seeconverted = _convert($self,
+                 $element->{'extra'}->{$seecommand}->{'args'}->[0]);
+        $seeresult = '|'.$LaTeX_see_index_commands_text{$seecommand}.'{'
+                   .$seeconverted.'}';
+         last;
       }
     }
     _pop_context($self);
@@ -2542,6 +2588,151 @@ sub _include_file_name($$)
     $file_name = undef if ($file_name !~ /\S/);
   }
   return $file_name;
+}
+
+sub _convert_def_line($$)
+{
+  my $self = shift;
+  my $element =shift;
+
+  my $result = '';
+  my ($category_element, $class_element,
+      $type_element, $name_element, $arguments)
+        = Texinfo::Convert::Utils::definition_arguments_content($element);
+  if (defined($category_element) or defined($class_element)
+      or defined($type_element) or defined($name_element)) {
+    my $command;
+    if ($Texinfo::Common::def_aliases{$element->{'extra'}->{'def_command'}}) {
+      $command
+       = $Texinfo::Common::def_aliases{$element->{'extra'}->{'def_command'}};
+    } else {
+      $command = $element->{'extra'}->{'def_command'};
+    }
+
+    my $deftypefnnewline = ($self->get_conf('deftypefnnewline')
+           and $self->get_conf('deftypefnnewline') eq 'on'
+           and ($command eq 'deftypefn' or $command eq 'deftypeop'));
+
+    my $def_space = ' ';
+    if ($element->{'extra'}->{'omit_def_name_space'}) {
+      $def_space = '';
+    }
+
+    my $converted_category;
+    my $category
+      = Texinfo::Convert::Utils::definition_category_tree($self, $element);
+    if (defined($category)) {
+      # category is converted in normal text context
+      my $converted = _convert($self, $category);
+      $converted_category = "[$converted]";
+    }
+
+    $self->{'packages'}->{'tabularx'} = 1;
+    my $def_line_result = '';
+    # First column (X) is as wide as possible, second column (r) is for
+    # category.  @{} removes space at left side of table.
+    # Without \noindent, a def* after a section beginning is indented
+    $def_line_result .= "\\noindent\\begin{tabularx}{\\linewidth}{\@{}Xr}\n";
+
+    # This stops the definition line overlapping the category in
+    # case it is hard to break the first line.
+    $def_line_result .= "\\rightskip=5em plus 1 fill ";
+
+    # In case definition "line" doesn't fit on one line.
+    $def_line_result .= "\\hangindent=2em ";
+
+    # turn off hyphenation
+    $def_line_result .= "\\hyphenpenalty=10000\n";
+
+    $def_line_result .= '\texttt{';
+
+    # no end of line in tabularx
+    push @{$self->{'formatting_context'}->[-1]->{'no_eol'}}, 1;
+    # the def* line except for the category is converted in code context
+    push @{$self->{'formatting_context'}->[-1]->{'code'}}, 1;
+
+    if ($type_element) {
+      $def_line_result .= _convert($self, $type_element);
+      if ($deftypefnnewline) {
+       if (defined($converted_category)) {
+          $def_line_result .= "}& $converted_category\\\\\n\\texttt{"
+        } else {
+          $def_line_result .= "}\\\\\n\\texttt{";
+        }
+      } else {
+        $def_line_result .= ' ';
+      }
+    }
+    $def_line_result .= _convert($self, $name_element) if $name_element;
+    # will contain the command names that have been made known to
+    # embrac, like texttt and need to have the symbol undefined
+    # such that they can be redefined later
+    my $known_embrac_commands;
+    if ($arguments) {
+      $def_line_result .= $def_space;
+      if ($Texinfo::Common::def_no_var_arg_commands{$command}) {
+        $def_line_result .= _convert($self, $arguments);
+      } else {
+        $self->{'packages'}->{'embrac'} = 1;
+        # we want slanted roman and not slanted typewriter, including
+        # ligatures, as if @r{@slanted{...}} had been used, so output
+        # \textnormal and push 0 on 'code' context.
+        $def_line_result .= '\EmbracOn{}\textnormal{\textsl{';
+        push @{$self->{'formatting_context'}->[-1]->{'code'}}, 0;
+        push @{$self->{'formatting_context'}->[-1]->{'embrac'}},
+          {'status' => 1, 'made_known' => {}};
+
+        $def_line_result .= _convert($self, $arguments);
+
+        # \EmbracOff{} is probably not really needed here as \EmbracOn{}
+        # should be local to the texttt
+        $def_line_result .= '}}\EmbracOff{}'; # \textnormal \textsl
+        pop @{$self->{'formatting_context'}->[-1]->{'code'}};
+        my $closed_embrac
+          = pop @{$self->{'formatting_context'}->[-1]->{'embrac'}};
+        if (scalar(keys(%{$closed_embrac->{'made_known'}}))) {
+          $known_embrac_commands
+            = [sort(keys(%{$closed_embrac->{'made_known'}}))]
+        }
+      }
+    }
+
+    pop @{$self->{'formatting_context'}->[-1]->{'code'}};
+    $def_line_result .= '}'; # \texttt
+    pop @{$self->{'formatting_context'}->[-1]->{'no_eol'}};
+
+    $def_line_result .= "& $converted_category\n"
+      if (defined($converted_category) and not $deftypefnnewline);
+
+    $def_line_result .= "\\end{tabularx}\n";
+    # Add commands associated to embrac, prepended to be before tabularx.
+    # If done in tabularx there are redefinition errors, cells are
+    # probably expanded more than once.
+    #
+    # also postpend undefine symbols associated with commands that have
+    # been made known to embrac, such that they can be redefined later
+    #
+    # TODO currently setting EmbracMakeKnown twice leads to an error.
+    # this is triggered by the tests layout formatting_latex test.
+    # So do not use it for now.
+    if (0 and defined($known_embrac_commands)) {
+      $def_line_result .= "\\ExplSyntaxOn%\n";
+      foreach my $defined_style_embrac (@{$known_embrac_commands}) {
+        # before the tabularx
+        $def_line_result = '\EmbracMakeKnown{'.$defined_style_embrac.'}'
+                           ."%\n" .$def_line_result;
+        $def_line_result
+          .= '\cs_undefine:N{\embrac_'.$defined_style_embrac.':nn}'.
+    '\cs_undefine:N{\embrac_orig_'.$defined_style_embrac.':n}'.
+    '\cs_undefine:N{\__embrac_'.$defined_style_embrac.':n}%
+';
+      }
+      $def_line_result .= "\\ExplSyntaxOff%\n";
+    }
+    $result .= "\n".$def_line_result;
+  }
+  $result .= "\n";
+  $result .= _index_entry($self, $element);
 }
 
 sub _convert($$);
@@ -2604,17 +2795,25 @@ sub _convert($$)
   my $cmdname = $element->{'cmdname'};
 
   if ((defined($type) and $self->{'ignored_types'}->{$type})
+      # ignore command as argument inserted in order to use the default
+      # setting for @itemize if there is no argument
+      or ($element->{'info'} and $element->{'info'}->{'inserted'}
+          and $element->{'parent'} and $element->{'parent'}->{'parent'}
+          and $element->{'parent'}->{'parent'}->{'cmdname'}
+          and $element->{'parent'}->{'parent'}->{'cmdname'} eq 'itemize')
        or (defined($cmdname)
             and ($self->{'ignored_commands'}->{$cmdname}
                  or ($Texinfo::Commands::brace_commands{$cmdname}
                      and $Texinfo::Commands::brace_commands{$cmdname} eq 'inline'
                      and $cmdname ne 'inlinefmtifelse'
                      and (($inline_format_commands{$cmdname}
-                          and (!$element->{'extra'}->{'format'}
-                               or !$self->{'expanded_formats_hash'}
+                          and (!$element->{'extra'}
+                               or !$element->{'extra'}->{'format'}
+                               or !$self->{'expanded_formats'}
                                       ->{$element->{'extra'}->{'format'}}))
                          or (!$inline_format_commands{$cmdname}
-                             and !defined($element->{'extra'}->{'expand_index'}))))))) {
+                             and (!$element->{'extra'}
+                     or !defined($element->{'extra'}->{'expand_index'})))))))) {
     return $result;
   }
 
@@ -2662,28 +2861,8 @@ sub _convert($$)
 
   # process text
   if (defined($element->{'text'})) {
-    if (!$type or $type ne 'untranslated') {
-      $result .= _protect_text($self, $element->{'text'});
-      return $result;
-    } else {
-      my $tree;
-      if ($element->{'extra'}
-          and $element->{'extra'}->{'translation_context'}) {
-        $tree = $self->pgdt($element->{'extra'}->{'translation_context'},
-                            $element->{'text'});
-      } else {
-        $tree = $self->gdt($element->{'text'});
-      }
-      my $converted = _convert($self, $tree);
-      return $converted;
-    }
-  }
-
-  if ($element->{'extra'}) {
-    if ($element->{'extra'}->{'missing_argument'}
-             and (!$element->{'contents'} or !@{$element->{'contents'}})) {
-      return $result;
-    }
+    $result .= _protect_text($self, $element->{'text'});
+    return $result;
   }
 
   # for displaymath that closes the preformatted
@@ -2928,6 +3107,8 @@ sub _convert($$)
       }
       $result = _restart_embrac_if_needed($self, $result, $did_stop_embrac);
       return $result;
+    } elsif ($def_line_commands{$cmdname}) {
+      $result .= _convert_def_line($self, $element);
     } elsif ($cmdname eq 'dmn') {
       $result .= '\\thinspace ';
       if ($element->{'args'}) {
@@ -2939,7 +3120,14 @@ sub _convert($$)
       # whether we are in another LaTeX macro would probably be a pain.
       # It should be ok, though, as it is described as an error in the manual:
       #   It is not reliable to use @verb inside other Texinfo constructs
-      my $delim = $element->{'info'}->{'delimiter'};
+      my $delim;
+      if ($element->{'info'}
+          and defined($element->{'info'}->{'delimiter'})) {
+        $delim = $element->{'info'}->{'delimiter'};
+      } else {
+        # delimiter also tried below
+        $delim = '|';
+      }
       my $contents = '';
       my @lines;
 
@@ -2962,7 +3150,7 @@ sub _convert($$)
             next LINE;
           }
         }
-        $self->line_warn($self,
+        $self->converter_line_warn(
            sprintf(__("\\verb delimiter `%s' (for LaTeX) used in text `%s'"),
                       $delim, $line),
            $element->{'source_info'});
@@ -2971,14 +3159,21 @@ sub _convert($$)
       $result .= join "\\\\\n", @lines_out;
       return $result;
     } elsif ($cmdname eq 'image') {
-      if (defined($element->{'args'}->[0])
-          and $element->{'args'}->[0]->{'contents'}
-          and @{$element->{'args'}->[0]->{'contents'}}) {
+      if ($element->{'args'}
+          and $element->{'args'}->[0]->{'contents'}) {
         # distinguish text basefile used to find the file and
         # converted basefile with special characters escaped
+        Texinfo::Convert::Text::set_options_code(
+                                 $self->{'convert_text_options'});
+        Texinfo::Convert::Text::set_options_encoding_if_not_ascii($self,
+                                  $self->{'convert_text_options'});
         my $basefile = Texinfo::Convert::Text::convert_to_text(
-         {'contents' => $element->{'args'}->[0]->{'contents'}},
-         {'code' => 1, %{$self->{'convert_encoded_text_options'}}});
+                                        $element->{'args'}->[0],
+                                    $self->{'convert_text_options'});
+        Texinfo::Convert::Text::reset_options_code(
+                                 $self->{'convert_text_options'});
+        Texinfo::Convert::Text::reset_options_encoding(
+                                 $self->{'convert_text_options'});
 
         # warn if no file is found, even though the basefile is used
         # in any case.
@@ -2987,14 +3182,15 @@ sub _convert($$)
           my ($file_name, $file_name_encoding)
              = $self->encoded_input_file_name("$basefile.$extension");
           my $located_file =
-            $self->Texinfo::Common::locate_include_file($file_name);
+            Texinfo::Common::locate_include_file($file_name,
+                                  $self->get_conf('INCLUDE_DIRECTORIES'));
           if (defined($located_file)) {
             $image_file_found = 1;
             last;
           }
         }
         if (not $image_file_found) {
-          $self->line_warn($self,
+          $self->converter_line_warn(
                          sprintf(__("\@image file `%s' (for LaTeX) not found"),
                                  $basefile),
                            $element->{'source_info'});
@@ -3064,27 +3260,27 @@ sub _convert($$)
       if ($element->{'args'}) {
         my $name;
         my $converted_name;
-        my $email;
+        my $email_arg;
         my $email_text;
         if (scalar (@{$element->{'args'}}) == 2
-            and defined($element->{'args'}->[1])
-            and $element->{'args'}->[1]->{'contents'}
-            and @{$element->{'args'}->[1]->{'contents'}}) {
-          $name = $element->{'args'}->[1]->{'contents'};
-          $converted_name = _convert($self, {'contents' => $name});
+            and $element->{'args'}->[1]->{'contents'}) {
+          $name = $element->{'args'}->[1];
+          $converted_name = _convert($self, $name);
         }
-        if (defined($element->{'args'}->[0])
-            and $element->{'args'}->[0]->{'contents'}
-            and @{$element->{'args'}->[0]->{'contents'}}) {
-          $email = $element->{'args'}->[0]->{'contents'};
+        if ($element->{'args'}->[0]->{'contents'}) {
+          $email_arg = $element->{'args'}->[0];
+          Texinfo::Convert::Text::set_options_code(
+                          $self->{'convert_text_options'});
           $email_text
             = $self->_protect_url(Texinfo::Convert::Text::convert_to_text(
-                {'contents' => $email},
-                {'code' => 1, %{$self->{'convert_text_options'}}}));
+                                                    $email_arg,
+                                       $self->{'convert_text_options'}));
+          Texinfo::Convert::Text::reset_options_code(
+                                         $self->{'convert_text_options'});
         }
-        if ($name and $email) {
+        if ($name and $email_arg) {
           $result .= "\\href{mailto:$email_text}{$converted_name}";
-        } elsif ($email) {
+        } elsif ($email_arg) {
           $result .= "\\href{mailto:$email_text}{\\nolinkurl{$email_text}}";
         } elsif ($name) {
           $result .= $converted_name;
@@ -3094,28 +3290,23 @@ sub _convert($$)
     } elsif ($cmdname eq 'uref' or $cmdname eq 'url') {
       if ($element->{'args'}) {
         if (scalar(@{$element->{'args'}}) == 3
-             and defined($element->{'args'}->[2])
-             and $element->{'args'}->[2]->{'contents'}
-             and @{$element->{'args'}->[2]->{'contents'}}) {
+             and $element->{'args'}->[2]->{'contents'}) {
           unshift @{$self->{'current_contents'}->[-1]},
-            {'contents' => $element->{'args'}->[2]->{'contents'}};
-        } elsif ($element->{'args'}->[0]
-                 and $element->{'args'}->[0]->{'contents'}
-                 and @{$element->{'args'}->[0]->{'contents'}}) {
-          my $url_content = $element->{'args'}->[0]->{'contents'};
+                     $element->{'args'}->[2];
+        } elsif ($element->{'args'}->[0]->{'contents'}) {
+          my $url_arg = $element->{'args'}->[0];
+          Texinfo::Convert::Text::set_options_code(
+                                   $self->{'convert_text_options'});
           my $url_text = $self->_protect_url(
-            Texinfo::Convert::Text::convert_to_text(
-               {'contents' => $url_content},
-               {'code' => 1, %{$self->{'convert_text_options'}}}));
+            Texinfo::Convert::Text::convert_to_text($url_arg,
+                                 $self->{'convert_text_options'}));
+          Texinfo::Convert::Text::reset_options_code(
+                                   $self->{'convert_text_options'});
           if (scalar(@{$element->{'args'}}) == 2
-              and defined($element->{'args'}->[1])
-              and $element->{'args'}->[1]->{'contents'}
-              and @{$element->{'args'}->[1]->{'contents'}}) {
-            my $description = _convert($self, {'contents',
-                                   $element->{'args'}->[1]->{'contents'}});
-            my $text = $self->gdt('{text} ({url})',
-                    {'text' => $description, 'url' => "\\nolinkurl{$url_text}"},
-                                  undef, 'translated_text');
+              and $element->{'args'}->[1]->{'contents'}) {
+            my $description_text = _convert($self, $element->{'args'}->[1]);
+            my $text = $self->cdt_string('{text} ({url})',
+              {'text' => $description_text, 'url' => "\\nolinkurl{$url_text}"});
             $result .= "\\href{$url_text}{$text}";
             return $result;
           } else {
@@ -3134,21 +3325,25 @@ sub _convert($$)
     } elsif ($cmdname eq 'footnote') {
       _push_new_context($self, 'footnote');
       $result .= '\footnote{';
-      $result .= $self->_convert($element->{'args'}->[0]);
+      if ($element->{'args'}) {
+        $result .= $self->_convert($element->{'args'}->[0]);
+      }
       $result .= '}';
       _pop_context($self);
       return $result;
     } elsif ($cmdname eq 'anchor') {
-      my $anchor_label
-         = _tree_anchor_label($element->{'args'}->[0]->{'contents'});
-      $result .= "\\label{$anchor_label}%\n";
+      if ($element->{'args'}) {
+        my $anchor_label
+           = _tree_anchor_label($element->{'args'}->[0]->{'contents'});
+        $result .= "\\label{$anchor_label}%\n";
+      }
       return $result;
     } elsif ($ref_commands{$cmdname}) {
-      if (scalar(@{$element->{'args'}})) {
+      if ($element->{'args'} and scalar(@{$element->{'args'}})) {
         my @args;
         for my $arg (@{$element->{'args'}}) {
           if (defined $arg->{'contents'} and @{$arg->{'contents'}}) {
-            push @args, $arg->{'contents'};
+            push @args, $arg;
           } else {
             push @args, undef;
           }
@@ -3161,38 +3356,41 @@ sub _convert($$)
         }
         my $book = '';
         if (defined($args[4])) {
-          $book = _convert($self, {'contents' => $args[4]});
+          $book = _convert($self, $args[4]);
         }
 
-        my $file_contents;
+        my $file_element;
         # FIXME not sure if Texinfo TeX uses the external node manual
         # specified as part of the node name with manual name prepended
         # in parentheses
         if (defined($args[3])) {
-          $file_contents = $args[3];
+          $file_element = $args[3];
         } elsif ($node_arg and $node_arg->{'extra'}
                  and defined($node_arg->{'extra'}->{'normalized'})
                  and $node_arg->{'extra'}->{'manual_content'}) {
-          $file_contents
-             = $node_arg->{'extra'}->{'manual_content'};
+          $file_element = $node_arg->{'extra'}->{'manual_content'};
         }
         my $filename = '';
-        if ($file_contents) {
+        if ($file_element) {
           push @{$self->{'formatting_context'}->[-1]->{'code'}}, 1;
-          $filename = _convert($self, {'contents' => $file_contents});
+          $filename = _convert($self, $file_element);
           pop @{$self->{'formatting_context'}->[-1]->{'code'}};
         }
+
+        my $identifiers_target;
+        if ($self->{'document'}) {
+          $identifiers_target = $self->{'document'}->labels_information();
+        }
+
         if ($cmdname ne 'inforef' and $book eq '' and $filename eq ''
             and $node_arg and $node_arg->{'extra'}
             and defined($node_arg->{'extra'}->{'normalized'})
             and !$node_arg->{'extra'}->{'manual_content'}
-            and $self->{'labels'}
-            and $self->{'labels'}
-                   ->{$node_arg->{'extra'}->{'normalized'}}) {
+            and $identifiers_target
+            and $identifiers_target->{$node_arg->{'extra'}->{'normalized'}}) {
           # internal reference
           my $reference
-           = $self->{'labels'}
-                   ->{$node_arg->{'extra'}->{'normalized'}};
+           = $identifiers_target->{$node_arg->{'extra'}->{'normalized'}};
           my $label_element = Texinfo::Common::get_label_element($reference);
           my $reference_node_content = $label_element->{'contents'};
 
@@ -3274,7 +3472,7 @@ sub _convert($$)
             # the table of content.  In that case, setup a text representation.
             $text_representation = '';
           }
-          # TODO: should translate
+          # TODO translation
           my $reference_result = '';
           if ($cmdname eq 'xref') {
             $reference_result = "See ";
@@ -3293,16 +3491,16 @@ sub _convert($$)
             if (defined($self->get_conf('xrefautomaticsectiontitle'))
                 and $self->get_conf('xrefautomaticsectiontitle') eq 'on'
                 and $section_command) {
-              $name = $section_command->{'args'}->[0]->{'contents'};
+              $name = $section_command->{'args'}->[0];
             } else {
-              $name = $reference_node_content;
+              $name = {'contents' => $reference_node_content};
             }
           }
           my $reference_label = _tree_anchor_label($reference_node_content);
 
           my $name_text;
           if (defined($name)) {
-            $name_text = _convert($self, {'contents' => $name});
+            $name_text = _convert($self, $name);
             $text_representation .= $name_text if (defined($text_representation));
           }
 
@@ -3336,7 +3534,7 @@ sub _convert($$)
             # If an unwanted comma is added, follow the argument with a command such as @:
             if ($reference->{'cmdname'} and $reference->{'cmdname'} eq 'node'
                 and $section_command) {
-              if ($section_command->{'structure'}->{'section_level'} > 1) {
+              if ($section_command->{'extra'}->{'section_level'} > 1) {
                 # TODO command that could be used for translation \sectionname
                 # does not exist in the default case.  it is defined in the
                 # pagenote package together with \pagename which is page in
@@ -3367,7 +3565,7 @@ sub _convert($$)
           # external ref
           # TODO hyper reference to manual file which seems to be implemented
           # in recent Texinfo TeX
-          # TODO: should translate
+          # TODO translation
           if ($cmdname eq 'xref') {
             $result .= "See ";
           } elsif ($cmdname eq 'pxref') {
@@ -3382,7 +3580,7 @@ sub _convert($$)
           }
           my $name_text;
           if (defined($name)) {
-            $name_text = _convert($self, {'contents' => $name});
+            $name_text = _convert($self, $name);
           }
 
           if ($book ne '') {
@@ -3413,7 +3611,7 @@ sub _convert($$)
 
           my $name_text;
           if (defined($name)) {
-            $name_text = _convert($self, {'contents' => $name});
+            $name_text = _convert($self, $name);
             $result .= $name_text;
           }
         }
@@ -3422,27 +3620,25 @@ sub _convert($$)
       return $result;
     } elsif ($explained_commands{$cmdname}) {
       if ($element->{'args'}
-          and defined($element->{'args'}->[0])
-          and $element->{'args'}->[0]->{'contents'}
-          and @{$element->{'args'}->[0]->{'contents'}}) {
+          and $element->{'args'}->[0]->{'contents'}) {
         # in abbr spaces never end a sentence.
         my $argument;
         if ($cmdname eq 'abbr') {
           $argument = {'type' => '_dot_not_end_sentence',
-                       'contents' => $element->{'args'}->[0]->{'contents'}};
+                       'contents' => [$element->{'args'}->[0]]};
         } else {
         # TODO in TeX, acronym is in a smaller font (1pt less).
-          $argument = { 'contents' => $element->{'args'}->[0]->{'contents'}};
+          $argument = $element->{'args'}->[0];
         }
         if (scalar (@{$element->{'args'}}) == 2
             and defined($element->{'args'}->[-1])
             and $element->{'args'}->[-1]->{'contents'}
             and @{$element->{'args'}->[-1]->{'contents'}}) {
           my $prepended
-           = $self->gdt('{abbr_or_acronym} ({explanation})',
+           = $self->cdt('{abbr_or_acronym} ({explanation})',
                         {'abbr_or_acronym' => $argument,
                          'explanation'
-                                   => $element->{'args'}->[-1]->{'contents'}});
+                                   => $element->{'args'}->[-1]});
           $result .= _convert($self, $prepended);
         } else {
           $result .= _convert($self, $argument);
@@ -3454,7 +3650,7 @@ sub _convert($$)
       my $arg_index = 1;
       if ($cmdname eq 'inlinefmtifelse'
           and (!$element->{'extra'}->{'format'}
-               or !$self->{'expanded_formats_hash'}
+               or !$self->{'expanded_formats'}
                                         ->{$element->{'extra'}->{'format'}})) {
         $arg_index = 2;
       }
@@ -3525,8 +3721,7 @@ sub _convert($$)
       my $caption_text = '';
       if ($element->{'args'}->[0]->{'contents'}) {
         _push_new_context($self, 'latex_caption');
-         $caption_text = _convert($self,
-           {'contents' => $element->{'args'}->[0]->{'contents'}});
+        $caption_text = _convert($self, $element->{'args'}->[0]);
         _pop_context($self);
       }
 
@@ -3549,8 +3744,7 @@ sub _convert($$)
       if (defined($shortcaption)
           and $shortcaption->{'args'}->[0]->{'contents'}) {
         _push_new_context($self, 'latex_shortcaption');
-        my $shortcaption_text = _convert($self,
-                 {'contents' => $shortcaption->{'args'}->[0]->{'contents'}});
+        my $shortcaption_text = _convert($self, $shortcaption->{'args'}->[0]);
         _pop_context($self);
         $result .= '['.$shortcaption_text.']';
       }
@@ -3560,41 +3754,40 @@ sub _convert($$)
       $result .= _title_font($self, $element);
       return $result;
     } elsif ($cmdname eq 'U') {
-      my $arg;
       if ($element->{'args'}
-          and $element->{'args'}->[0]
           and $element->{'args'}->[0]->{'contents'}
-          and $element->{'args'}->[0]->{'contents'}->[0]
           and $element->{'args'}->[0]->{'contents'}->[0]->{'text'}) {
-        $arg = $element->{'args'}->[0]->{'contents'}->[0]->{'text'};
-      }
-      if ($arg) {
-        # Syntactic checks on the value were already done in Parser.pm,
-        # but we have one more thing to test: since this is the one
-        # place where we might output actual UTF-8 binary bytes, we have
-        # to check that it is possible.  If not, silently fall back to
-        # plain text, on the theory that the user wants something.
-        # Note that being able to output an unicode point as encoded
-        # character does not mean that LaTeX will be able to process it.
-        my $res;
-        if ($self->{'to_utf8'}) {
-          my $possible_conversion
-            = Texinfo::Convert::Unicode::check_unicode_point_conversion($arg,
-                                                             $self->{'debug'});
-          if ($possible_conversion) {
-            $res = chr(hex($arg)); # ok to call chr
+        my $arg_text = $element->{'args'}->[0]->{'contents'}->[0]->{'text'};
+
+        if (defined($arg_text)) {
+          # Syntactic checks on the value were already done in Parser.pm,
+          # but we have one more thing to test: since this is the one
+          # place where we might output actual UTF-8 binary bytes, we have
+          # to check that it is possible.  If not, silently fall back to
+          # plain text, on the theory that the user wants something.
+          # Note that being able to output an unicode point as encoded
+          # character does not mean that LaTeX will be able to process it.
+          my $res;
+          if ($self->{'to_utf8'}) {
+            my $possible_conversion
+            = Texinfo::Convert::Unicode::check_unicode_point_conversion(
+                                                  $arg_text, $self->{'debug'});
+            if ($possible_conversion) {
+              $res = chr(hex($arg_text)); # ok to call chr
+            } else {
+              $res = "U+$arg_text";
+            }
           } else {
-            $res = "U+$arg";
+            $res = "U+$arg_text";  # not outputting UTF-8
           }
-        } else {
-          $res = "U+$arg";  # not outputting UTF-8
+          $result .= _protect_text($self, $res);
         }
-        $result .= _protect_text($self, $res);
       }
       return $result;
     } elsif ($cmdname eq 'value') {
-      my $expansion = $self->gdt('@{No value for `{value}\'@}',
-                                 {'value' => $element->{'args'}->[0]});
+      my $expansion = $self->cdt('@{No value for `{value}\'@}',
+                                 {'value'
+                                    => $element->{'args'}->[0]});
       $expansion = {'type' => 'paragraph',
                     'contents' => [$expansion]};
       $result .= _convert($self, $expansion);
@@ -3651,8 +3844,8 @@ sub _convert($$)
         if ($element->{'args'} and $element->{'args'}->[0]
             and $element->{'args'}->[0]->{'contents'}
             and @{$element->{'args'}->[0]->{'contents'}}) {
-          my $prepended = $self->gdt('@b{{quotation_arg}:} ',
-             {'quotation_arg' => $element->{'args'}->[0]->{'contents'}});
+          my $prepended = $self->cdt('@b{{quotation_arg}:} ',
+                      {'quotation_arg' => $element->{'args'}->[0]});
           $result .= $self->_convert($prepended);
         }
       } elsif ($cmdname eq 'multitable') {
@@ -3673,7 +3866,7 @@ sub _convert($$)
               if ($content->{'contents'}) {
                 $prototype_text
                     = Texinfo::Convert::Text::convert_to_text(
-                                 {'contents' => $content->{'contents'}},
+                                 $content,
                                  $self->{'convert_text_options'});
               }
               my $length
@@ -3729,7 +3922,8 @@ sub _convert($$)
       }
       if ($cmdname eq 'node') {
         # add the label only if not associated with a section
-        if (not $element->{'extra'}->{'associated_section'}) {
+        if (!$element->{'extra'}
+            or not $element->{'extra'}->{'associated_section'}) {
           my $node_label
             = _tree_anchor_label($element->{'args'}->[0]->{'contents'});
           $result .= "\\label{$node_label}%\n";
@@ -3848,16 +4042,20 @@ sub _convert($$)
       }
       return $result;
     } elsif ($cmdname eq 'verbatiminclude') {
-      my $expansion = Texinfo::Convert::Utils::expand_verbatiminclude($self,
+      my $expansion = Texinfo::Convert::Utils::expand_verbatiminclude(
                                                               $self, $element);
       unshift @{$self->{'current_contents'}->[-1]}, $expansion
         if ($expansion);
       return $result;
     } elsif ($cmdname eq 'insertcopying') {
-      if ($self->{'global_commands'}
-          and $self->{'global_commands'}->{'copying'}) {
+      my $global_commands;
+      if ($self->{'document'}) {
+        $global_commands = $self->{'document'}->global_commands_information();
+      }
+
+      if ($global_commands and $global_commands->{'copying'}) {
         unshift @{$self->{'current_contents'}->[-1]},
-           {'contents' => $self->{'global_commands'}->{'copying'}->{'contents'}};
+           {'contents' => $global_commands->{'copying'}->{'contents'}};
       }
       return $result;
     } elsif ($cmdname eq 'printindex') {
@@ -3873,9 +4071,14 @@ sub _convert($$)
       return $result;
     } elsif ($cmdname eq 'listoffloats') {
       my $normalized_float_type = $element->{'extra'}->{'float_type'};
-      if ($self->{'floats'}
-          and $self->{'floats'}->{$normalized_float_type}
-          and @{$self->{'floats'}->{$normalized_float_type}}) {
+      my $floats;
+      if ($self->{'document'}) {
+        $floats = $self->{'document'}->floats_information();
+      }
+
+      if ($floats
+          and $floats->{$normalized_float_type}
+          and @{$floats->{$normalized_float_type}}) {
         if (not exists($self->{'normalized_float_latex'}
                                                  ->{$normalized_float_type})) {
           cluck("\@listoffloats $normalized_float_type: not found\n");
@@ -3911,15 +4114,14 @@ sub _convert($$)
       $result .= "\\noindent{}";
       return $result;
     } elsif ($cmdname eq 'sp') {
-      my $sp_nr = 1;
-      if ($element->{'extra'}->{'misc_args'}->[0]) {
-        # this useless copy avoids perl changing the type to integer!
+      my $sp_nr = '';
+      if ($element->{'extra'}
+          and $element->{'extra'}->{'misc_args'}) {
         $sp_nr = $element->{'extra'}->{'misc_args'}->[0];
       }
-      # FIXME \vskip is a TeX primitive, so the syntax seems to be
-      # different from LaTeX, and some people warn against using
-      # TeX primitives.  However there is no obvious corresponding
-      # command in LaTeX, except for adding enough \\.
+      # NOTE \vskip is a TeX primitive that does what we need here,
+      # stop any paragraph and add vertical space.
+      # The code output here is the same as the code used in Texinfo TeX.
       $result .= "\\vskip $sp_nr\\baselineskip %\n";
       return $result;
     } elsif ($cmdname eq 'need') {
@@ -3987,17 +4189,25 @@ sub _convert($$)
       }
       return $result;
     } elsif ($cmdname eq 'contents') {
+      my $sections_list;
+      if ($self->{'document'}) {
+        $sections_list = $self->{'document'}->sections_list();
+      }
+
       if (defined($self->get_conf('CONTENTS_OUTPUT_LOCATION'))
           and $self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'inline'
-          and $self->{'structuring'}
-          and $self->{'structuring'}->{'sectioning_root'}
+          and $sections_list
           and not $self->{'formatting_context'}->[-1]->{'in_skipped_node_top'}) {
         $result .= "\\tableofcontents\\newpage\n";
       }
       return $result;
     } elsif ($cmdname eq 'shortcontents' or $cmdname eq 'summarycontents') {
-      if ($self->{'structuring'}
-            and $self->{'structuring'}->{'sectioning_root'}) {
+      my $sections_list;
+      if ($self->{'document'}) {
+        $sections_list = $self->{'document'}->sections_list();
+      }
+
+      if ($sections_list) {
         # TODO see notes at the beginning
         $result .= '';
       }
@@ -4007,7 +4217,7 @@ sub _convert($$)
           and $element->{'args'}->[0]->{'contents'}) {
         my $custom_headings_specification
          = Texinfo::Common::split_custom_heading_command_contents(
-                                $element->{'args'}->[0]->{'contents'});
+                                             $element->{'args'}->[0]);
         $result .= _set_custom_headings($self, $cmdname,
                                         $custom_headings_specification);
       }
@@ -4042,146 +4252,18 @@ sub _convert($$)
 
   # open 'type' constructs.
   if ($element->{'type'}) {
+
+    if ($container_ignored_if_empty{$element->{'type'}}
+        and !$element->{'contents'}) {
+      return $result;
+    }
+
+
     if ($element->{'type'} eq 'index_entry_command') {
       $result .= _index_entry($self, $element);
     }
     if ($element->{'type'} eq 'def_line') {
-      my ($category_element, $class_element,
-          $type_element, $name_element, $arguments)
-            = Texinfo::Convert::Utils::definition_arguments_content($element);
-      if (defined($category_element) or defined($class_element)
-          or defined($type_element) or defined($name_element)) {
-        my $command;
-        if ($Texinfo::Common::def_aliases{$element->{'extra'}->{'def_command'}}) {
-          $command
-           = $Texinfo::Common::def_aliases{$element->{'extra'}->{'def_command'}};
-        } else {
-          $command = $element->{'extra'}->{'def_command'};
-        }
-
-        my $deftypefnnewline = ($self->get_conf('deftypefnnewline') eq 'on'
-               and ($command eq 'deftypefn' or $command eq 'deftypeop'));
-
-        my $def_space = ' ';
-        if ($element->{'extra'}->{'omit_def_name_space'}) {
-          $def_space = '';
-        }
-
-        my $converted_category;
-        my $category
-          = Texinfo::Convert::Utils::definition_category_tree($self, $element);
-        if (defined($category)) {
-          # category is converted in normal text context
-          my $converted = _convert($self, $category);
-          $converted_category = "[$converted]";
-        }
-
-        $self->{'packages'}->{'tabularx'} = 1;
-        my $def_line_result = '';
-        # First column (X) is as wide as possible, second column (r) is for
-        # category.  @{} removes space at left side of table.
-        # Without \noindent, a def* after a section beginning is indented
-        $def_line_result .= "\\noindent\\begin{tabularx}{\\linewidth}{\@{}Xr}\n";
-
-        # This stops the definition line overlapping the category in
-        # case it is hard to break the first line.
-        $def_line_result .= "\\rightskip=5em plus 1 fill ";
-
-        # In case definition "line" doesn't fit on one line.
-        $def_line_result .= "\\hangindent=2em ";
-
-        # turn off hyphenation
-        $def_line_result .= "\\hyphenpenalty=10000\n";
-
-        $def_line_result .= '\texttt{';
-
-        # no end of line in tabularx
-        push @{$self->{'formatting_context'}->[-1]->{'no_eol'}}, 1;
-        # the def* line except for the category is converted in code context
-        push @{$self->{'formatting_context'}->[-1]->{'code'}}, 1;
-
-        if ($type_element) {
-          $def_line_result .= _convert($self, $type_element);
-          if ($deftypefnnewline) {
-           if (defined($converted_category)) {
-              $def_line_result .= "}& $converted_category\\\\\n\\texttt{"
-            } else {
-              $def_line_result .= "}\\\\\n\\texttt{";
-            }
-          } else {
-            $def_line_result .= ' ';
-          }
-        }
-        $def_line_result .= _convert($self, $name_element) if $name_element;
-        # will contain the command names that have been made known to
-        # embrac, like texttt and need to have the symbol undefined
-        # such that they can be redefined later
-        my $known_embrac_commands;
-        if ($arguments) {
-          $def_line_result .= $def_space;
-          if ($Texinfo::Common::def_no_var_arg_commands{$command}) {
-            $def_line_result .= _convert($self, {'contents' => $arguments});
-          } else {
-            $self->{'packages'}->{'embrac'} = 1;
-            # we want slanted roman and not slanted typewriter, including
-            # ligatures, as if @r{@slanted{...}} had been used, so output
-            # \textnormal and push 0 on 'code' context.
-            $def_line_result .= '\EmbracOn{}\textnormal{\textsl{';
-            push @{$self->{'formatting_context'}->[-1]->{'code'}}, 0;
-            push @{$self->{'formatting_context'}->[-1]->{'embrac'}},
-              {'status' => 1, 'made_known' => {}};
-
-            $def_line_result .= _convert($self, {'contents' => $arguments});
-
-            # \EmbracOff{} is probably not really needed here as \EmbracOn{}
-            # should be local to the texttt
-            $def_line_result .= '}}\EmbracOff{}'; # \textnormal \textsl
-            pop @{$self->{'formatting_context'}->[-1]->{'code'}};
-            my $closed_embrac
-              = pop @{$self->{'formatting_context'}->[-1]->{'embrac'}};
-            if (scalar(keys(%{$closed_embrac->{'made_known'}}))) {
-              $known_embrac_commands
-                = [sort(keys(%{$closed_embrac->{'made_known'}}))]
-            }
-          }
-        }
-
-        pop @{$self->{'formatting_context'}->[-1]->{'code'}};
-        $def_line_result .= '}'; # \texttt
-        pop @{$self->{'formatting_context'}->[-1]->{'no_eol'}};
-
-        $def_line_result .= "& $converted_category\n"
-          if (defined($converted_category) and not $deftypefnnewline);
-
-        $def_line_result .= "\\end{tabularx}\n";
-        # Add commands associated to embrac, prepended to be before tabularx.
-        # If done in tabularx there are redefinition errors, cells are
-        # probably expanded more than once.
-        #
-        # also postpend undefine symbols associated with commands that have
-        # been made known to embrac, such that they can be redefined later
-        #
-        # TODO currently setting EmbracMakeKnown twice leads to an error.
-        # this is triggered by the tests layout formatting_latex test.
-        # So do not use it for now.
-        if (0 and defined($known_embrac_commands)) {
-          $def_line_result .= "\\ExplSyntaxOn%\n";
-          foreach my $defined_style_embrac (@{$known_embrac_commands}) {
-            # before the tabularx
-            $def_line_result = '\EmbracMakeKnown{'.$defined_style_embrac.'}'
-                               ."%\n" .$def_line_result;
-            $def_line_result
-              .= '\cs_undefine:N{\embrac_'.$defined_style_embrac.':nn}'.
-        '\cs_undefine:N{\embrac_orig_'.$defined_style_embrac.':n}'.
-        '\cs_undefine:N{\__embrac_'.$defined_style_embrac.':n}%
-';
-          }
-          $def_line_result .= "\\ExplSyntaxOff%\n";
-        }
-        $result .= "\n".$def_line_result;
-      }
-      $result .= "\n";
-      $result .= _index_entry($self, $element);
+      $result .= _convert_def_line($self, $element);
     } elsif ($element->{'type'} eq 'def_item') {
       $result .= "\\begin{quote}\n";
       # Remove vertical space and start paragaph, avoiding adding
@@ -4234,6 +4316,17 @@ sub _convert($$)
       $result .= _open_preformatted($self, $element);
     } elsif ($element->{'type'} eq '_dot_not_end_sentence') {
       $self->{'formatting_context'}->[-1]->{'dot_not_end_sentence'} += 1;
+    } elsif ($element->{'type'} eq 'untranslated_def_line_arg') {
+      my $tree;
+      if ($element->{'extra'}
+          and $element->{'extra'}->{'translation_context'}) {
+        $tree = $self->pcdt($element->{'extra'}->{'translation_context'},
+                            $element->{'contents'}->[0]->{'text'});
+      } else {
+        $tree = $self->cdt($element->{'contents'}->[0]->{'text'});
+      }
+      my $converted = _convert($self, $tree);
+      return $converted;
     }
   }
 
@@ -4355,8 +4448,8 @@ sub _convert($$)
           if ($author->{'args'}->[0]->{'contents'}) {
             $result .= _convert($self,
                  # TRANSLATORS: quotation author
-                 $self->gdt('@center --- @emph{{author}}',
-                    {'author' => $author->{'args'}->[0]->{'contents'}}));
+                 $self->cdt('@center --- @emph{{author}}',
+                    {'author' => $author->{'args'}->[0]}));
           }
         }
       }

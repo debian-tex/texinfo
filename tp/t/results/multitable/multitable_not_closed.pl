@@ -19,6 +19,9 @@ $result_trees{'multitable_not_closed'} = {
                       'text' => 'r'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 1
+                  },
                   'type' => 'bracketed_arg'
                 },
                 {
@@ -30,6 +33,9 @@ $result_trees{'multitable_not_closed'} = {
                       'text' => 't'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 1
+                  },
                   'type' => 'bracketed_arg'
                 }
               ],
@@ -52,9 +58,7 @@ $result_trees{'multitable_not_closed'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -74,9 +78,7 @@ $result_errors{'multitable_not_closed'} = [
   {
     'error_line' => 'no matching `@end multitable\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'no matching `@end multitable\'',
     'type' => 'error'
   }

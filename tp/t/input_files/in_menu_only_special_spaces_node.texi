@@ -9,7 +9,7 @@
 *   ::
 * ᠎ ::
 *          　::
-*   ::
+@c *   ::
 @end menu
 
 
@@ -31,7 +31,8 @@
 @node          　
 @chapter THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|
 
-@node   
-@chapter LINE SEPARATOR| | PARAGRAPH SEPARATOR| |
+@c Perl and XS code give different width.
+@c @node   
+@c @chapter LINE SEPARATOR| | PARAGRAPH SEPARATOR| |
 
 @bye

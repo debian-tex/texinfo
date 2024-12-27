@@ -21,17 +21,16 @@ $result_trees{'end_line_in_anchor'} = {
                   'text' => 'anchor'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'an-anchor'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -68,5 +67,8 @@ $result_converted{'html_text'}->{'end_line_in_anchor'} = '<a class="anchor" id="
 
 $result_converted{'latex_text'}->{'end_line_in_anchor'} = '\\label{anchor:an-anchor}%
 ';
+
+
+$result_converted{'docbook'}->{'end_line_in_anchor'} = '<anchor id="an-anchor"/>';
 
 1;

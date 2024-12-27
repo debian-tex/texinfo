@@ -31,9 +31,7 @@ $result_trees{'uref_accented_letter'} = {
                       ],
                       'cmdname' => '"',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     },
                     {
@@ -44,25 +42,21 @@ $result_trees{'uref_accented_letter'} = {
                               'text' => 'a'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'ogonek',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -95,7 +89,7 @@ $result_floats{'uref_accented_letter'} = {};
 
 $result_converted{'html'}->{'uref_accented_letter'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -123,7 +117,6 @@ $result_converted_errors{'html'}->{'uref_accented_letter'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'uref_accented_letter.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

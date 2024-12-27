@@ -87,9 +87,7 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -98,9 +96,7 @@ $result_trees{'simple_nested_linemacro_calls'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -166,9 +162,7 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
@@ -177,9 +171,7 @@ $result_trees{'simple_nested_linemacro_calls'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -216,11 +208,7 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                                 'type' => 'bracketed_linemacro_arg'
                               }
                             ],
-                            'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
-                            }
+                            'type' => 'line_arg'
                           },
                           {
                             'contents' => [
@@ -233,7 +221,8 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                               'spaces_before_argument' => {
                                 'text' => ' '
                               }
-                            }
+                            },
+                            'type' => 'line_arg'
                           },
                           {
                             'contents' => [
@@ -245,11 +234,15 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                               'spaces_before_argument' => {
                                 'text' => ' '
                               }
-                            }
+                            },
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
-                          'command_name' => 'outside'
+                          'command_name' => 'outside',
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
                         },
                         'type' => 'linemacro_call'
                       },
@@ -260,45 +253,47 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                   'text' => ''
                 }
               ],
-              'type' => 'def_item'
+              'type' => 'before_defline'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'type'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'type'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'a function'
+                          'contents' => [
+                            {
+                              'text' => 'a function'
+                            }
+                          ],
+                          'source_info' => {
+                            'line_nr' => 13,
+                            'macro' => 'outside'
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 13,
-                        'macro' => 'outside'
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'source_marks' => [
                         {
                           'counter' => 2,
@@ -311,11 +306,7 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                                     'type' => 'bracketed_linemacro_arg'
                                   }
                                 ],
-                                'info' => {
-                                  'spaces_before_argument' => {
-                                    'text' => ' '
-                                  }
-                                }
+                                'type' => 'line_arg'
                               },
                               {
                                 'contents' => [
@@ -328,7 +319,8 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                                   'spaces_before_argument' => {
                                     'text' => ' '
                                   }
-                                }
+                                },
+                                'type' => 'line_arg'
                               },
                               {
                                 'contents' => [
@@ -340,11 +332,15 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                                   'spaces_before_argument' => {
                                     'text' => ' '
                                   }
-                                }
+                                },
+                                'type' => 'line_arg'
                               }
                             ],
                             'info' => {
-                              'command_name' => 'inside'
+                              'command_name' => 'inside',
+                              'spaces_before_argument' => {
+                                'text' => ' '
+                              }
                             },
                             'type' => 'linemacro_call'
                           },
@@ -357,105 +353,107 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'inside'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'inside'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'X operator Y'
+                          'contents' => [
+                            {
+                              'text' => 'X operator Y'
+                            }
+                          ],
+                          'source_info' => {
+                            'line_nr' => 13,
+                            'macro' => 'inside'
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 13,
-                        'macro' => 'inside'
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => '(',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'remaining'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'remaining'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'type'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'type'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'typed'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'typed'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'source_marks' => [
                         {
                           'counter' => 2,
@@ -480,7 +478,19 @@ $result_trees{'simple_nested_linemacro_calls'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'a function'
+                        }
+                      ],
+                      'type' => 'bracketed_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -489,11 +499,9 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 13,
                 'macro' => 'outside'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'contents' => [
@@ -531,12 +539,12 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 13,
                     'macro' => 'outside'
                   },
@@ -572,20 +580,17 @@ $result_trees{'simple_nested_linemacro_calls'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -594,15 +599,12 @@ $result_trees{'simple_nested_linemacro_calls'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'simple_nested_linemacro_calls'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'simple_nested_linemacro_calls'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'simple_nested_linemacro_calls'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'simple_nested_linemacro_calls'}{'contents'}[1];
 
 $result_texis{'simple_nested_linemacro_calls'} = '@node Top
@@ -629,19 +631,22 @@ $result_texts{'simple_nested_linemacro_calls'} = '
 type: a function inside X operator Y ( remaining, type typed )
 ';
 
-$result_nodes{'simple_nested_linemacro_calls'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'simple_nested_linemacro_calls'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'simple_nested_linemacro_calls'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'simple_nested_linemacro_calls'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'simple_nested_linemacro_calls'} = [];
 

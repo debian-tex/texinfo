@@ -24,14 +24,13 @@ $result_trees{'no_paragraph_commands'} = {
                   'text' => 'title font'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_container'
             }
           ],
           'cmdname' => 'titlefont',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -46,7 +45,7 @@ $result_trees{'no_paragraph_commands'} = {
                   'text' => 'aa'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -54,7 +53,7 @@ $result_trees{'no_paragraph_commands'} = {
                   'text' => 'bb'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -62,7 +61,7 @@ $result_trees{'no_paragraph_commands'} = {
                   'text' => 'cc'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -70,7 +69,7 @@ $result_trees{'no_paragraph_commands'} = {
                   'text' => 'dd'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -78,7 +77,7 @@ $result_trees{'no_paragraph_commands'} = {
                   'text' => '.ee'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -86,9 +85,7 @@ $result_trees{'no_paragraph_commands'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -138,9 +135,7 @@ $result_converted_errors{'html_text'}->{'no_paragraph_commands'} = [
   {
     'error_line' => 'warning: @image file `aa\' (for HTML) not found, using `aa.ee\'
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@image file `aa\' (for HTML) not found, using `aa.ee\'',
     'type' => 'warning'
   }

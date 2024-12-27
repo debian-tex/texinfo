@@ -29,9 +29,7 @@ $result_trees{'nested_ignore_comment_no_eol'} = {
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -51,18 +49,14 @@ $result_errors{'nested_ignore_comment_no_eol'} = [
   {
     'error_line' => 'expected @end ignore
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'expected @end ignore',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end ignore\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'no matching `@end ignore\'',
     'type' => 'error'
   }

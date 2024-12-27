@@ -150,9 +150,7 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 23,
-                'macro' => ''
+                'line_nr' => 23
               }
             }
           ],
@@ -161,9 +159,7 @@ $result_trees{'table_nested'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -201,7 +197,7 @@ $result_trees{'table_nested'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -222,11 +218,9 @@ $result_trees{'table_nested'} = {
                     {
                       'cmdname' => 'asis',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 27,
                         'macro' => 'myvtable'
-                      },
-                      'type' => 'command_as_argument'
+                      }
                     }
                   ],
                   'info' => {
@@ -274,7 +268,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 27,
                             'macro' => 'myvtable'
                           }
@@ -309,7 +302,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 27,
                             'macro' => 'myvtable'
                           }
@@ -378,7 +370,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 27,
                             'macro' => 'myvtable'
                           }
@@ -447,7 +438,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 27,
                             'macro' => 'myvtable'
                           }
@@ -485,7 +475,6 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 27,
                     'macro' => 'myvtable'
                   }
@@ -500,7 +489,6 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 27,
                 'macro' => 'myvtable'
               }
@@ -526,11 +514,9 @@ $result_trees{'table_nested'} = {
                     {
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 27,
                         'macro' => 'myvtable'
-                      },
-                      'type' => 'command_as_argument'
+                      }
                     }
                   ],
                   'info' => {
@@ -572,7 +558,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 27,
                             'macro' => 'myvtable'
                           }
@@ -625,7 +610,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 27,
                             'macro' => 'myvtable'
                           }
@@ -677,7 +661,6 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 27,
                     'macro' => 'myvtable'
                   }
@@ -692,7 +675,6 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 27,
                 'macro' => 'myvtable'
               }
@@ -741,16 +723,12 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 26,
-            'macro' => ''
+            'line_nr' => 26
           }
         },
         {
@@ -788,7 +766,7 @@ $result_trees{'table_nested'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -799,7 +777,8 @@ $result_trees{'table_nested'} = {
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'start'
                 }
-              ]
+              ],
+              'type' => 'preformatted'
             },
             {
               'args' => [
@@ -808,11 +787,9 @@ $result_trees{'table_nested'} = {
                     {
                       'cmdname' => 'asis',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 32,
                         'macro' => 'myvtable'
-                      },
-                      'type' => 'command_as_argument'
+                      }
                     }
                   ],
                   'info' => {
@@ -860,7 +837,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 32,
                             'macro' => 'myvtable'
                           }
@@ -895,7 +871,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 32,
                             'macro' => 'myvtable'
                           }
@@ -964,7 +939,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 32,
                             'macro' => 'myvtable'
                           }
@@ -1033,7 +1007,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 32,
                             'macro' => 'myvtable'
                           }
@@ -1071,7 +1044,6 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 32,
                     'macro' => 'myvtable'
                   }
@@ -1086,7 +1058,6 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 32,
                 'macro' => 'myvtable'
               }
@@ -1112,11 +1083,9 @@ $result_trees{'table_nested'} = {
                     {
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 32,
                         'macro' => 'myvtable'
-                      },
-                      'type' => 'command_as_argument'
+                      }
                     }
                   ],
                   'info' => {
@@ -1158,7 +1127,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 32,
                             'macro' => 'myvtable'
                           }
@@ -1211,7 +1179,6 @@ $result_trees{'table_nested'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 32,
                             'macro' => 'myvtable'
                           }
@@ -1263,7 +1230,6 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 32,
                     'macro' => 'myvtable'
                   }
@@ -1278,7 +1244,6 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 32,
                 'macro' => 'myvtable'
               }
@@ -1327,16 +1292,12 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 33,
-                'macro' => ''
+                'line_nr' => 33
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 31,
-            'macro' => ''
+            'line_nr' => 31
           }
         },
         {
@@ -1388,7 +1349,7 @@ $result_trees{'table_nested'} = {
                       'element' => {
                         'args' => [
                           {
-                            'type' => 'brace_command_arg'
+                            'type' => 'brace_arg'
                           }
                         ],
                         'info' => {
@@ -1409,11 +1370,9 @@ $result_trees{'table_nested'} = {
                         {
                           'cmdname' => 'asis',
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 38,
                             'macro' => 'myvtable'
-                          },
-                          'type' => 'command_as_argument'
+                          }
                         }
                       ],
                       'info' => {
@@ -1461,7 +1420,6 @@ $result_trees{'table_nested'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
                                 'line_nr' => 38,
                                 'macro' => 'myvtable'
                               }
@@ -1496,7 +1454,6 @@ $result_trees{'table_nested'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
                                 'line_nr' => 38,
                                 'macro' => 'myvtable'
                               }
@@ -1565,7 +1522,6 @@ $result_trees{'table_nested'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
                                 'line_nr' => 38,
                                 'macro' => 'myvtable'
                               }
@@ -1634,7 +1590,6 @@ $result_trees{'table_nested'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
                                 'line_nr' => 38,
                                 'macro' => 'myvtable'
                               }
@@ -1672,7 +1627,6 @@ $result_trees{'table_nested'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 38,
                         'macro' => 'myvtable'
                       }
@@ -1687,7 +1641,6 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 38,
                     'macro' => 'myvtable'
                   }
@@ -1713,11 +1666,9 @@ $result_trees{'table_nested'} = {
                         {
                           'cmdname' => 'emph',
                           'source_info' => {
-                            'file_name' => '',
                             'line_nr' => 38,
                             'macro' => 'myvtable'
-                          },
-                          'type' => 'command_as_argument'
+                          }
                         }
                       ],
                       'info' => {
@@ -1759,7 +1710,6 @@ $result_trees{'table_nested'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
                                 'line_nr' => 38,
                                 'macro' => 'myvtable'
                               }
@@ -1812,7 +1762,6 @@ $result_trees{'table_nested'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
                                 'line_nr' => 38,
                                 'macro' => 'myvtable'
                               }
@@ -1864,7 +1813,6 @@ $result_trees{'table_nested'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 38,
                         'macro' => 'myvtable'
                       }
@@ -1879,7 +1827,6 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 38,
                     'macro' => 'myvtable'
                   }
@@ -1928,16 +1875,12 @@ $result_trees{'table_nested'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 39,
-                    'macro' => ''
+                    'line_nr' => 39
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 37,
-                'macro' => ''
+                'line_nr' => 37
               }
             },
             {
@@ -1967,16 +1910,12 @@ $result_trees{'table_nested'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 40,
-                'macro' => ''
+                'line_nr' => 40
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 36,
-            'macro' => ''
+            'line_nr' => 36
           }
         }
       ],
@@ -2158,7 +2097,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2167,7 +2105,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2176,7 +2113,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2185,7 +2121,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 27,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2194,7 +2129,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2203,7 +2137,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2212,7 +2145,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2221,7 +2153,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 32,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2230,7 +2161,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2239,7 +2169,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2248,7 +2177,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',
@@ -2257,7 +2185,6 @@ $result_errors{'table_nested'} = [
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node (possibly involving @myvtable)
 ',
-    'file_name' => '',
     'line_nr' => 38,
     'macro' => 'myvtable',
     'text' => 'entry for index `vr\' outside of any node',

@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'filenameconflictwithnonsplit'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -29,6 +34,7 @@ $result_trees{'filenameconflictwithnonsplit'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +43,7 @@ $result_trees{'filenameconflictwithnonsplit'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -74,17 +78,16 @@ $result_trees{'filenameconflictwithnonsplit'} = {
                   'text' => 'filenameconflictwithnonsplit'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'filenameconflictwithnonsplit'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -105,9 +108,7 @@ $result_trees{'filenameconflictwithnonsplit'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -129,7 +130,7 @@ $result_texts{'filenameconflictwithnonsplit'} = 'top
 ';
 
 $result_sectioning{'filenameconflictwithnonsplit'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -139,37 +140,37 @@ $result_sectioning{'filenameconflictwithnonsplit'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'filenameconflictwithnonsplit'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'filenameconflictwithnonsplit'};
+$result_sectioning{'filenameconflictwithnonsplit'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'filenameconflictwithnonsplit'};
 
-$result_nodes{'filenameconflictwithnonsplit'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'filenameconflictwithnonsplit'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'filenameconflictwithnonsplit'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'filenameconflictwithnonsplit'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'filenameconflictwithnonsplit'} = [];
 

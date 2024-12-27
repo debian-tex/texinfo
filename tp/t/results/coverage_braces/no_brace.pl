@@ -19,9 +19,7 @@ $result_trees{'no_brace'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -35,9 +33,7 @@ $result_trees{'no_brace'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -51,9 +47,7 @@ $result_trees{'no_brace'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -78,27 +72,21 @@ $result_errors{'no_brace'} = [
   {
     'error_line' => '@TeX expected braces
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@TeX expected braces',
     'type' => 'error'
   },
   {
     'error_line' => '@code expected braces
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@code expected braces',
     'type' => 'error'
   },
   {
     'error_line' => '@footnote expected braces
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@footnote expected braces',
     'type' => 'error'
   }

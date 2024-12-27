@@ -4,7 +4,7 @@
 #
 # tex4ht.pm: use tex4ht to convert tex to html
 #
-# Copyright 2005, 2007, 2009, 2011-2023 Free Software Foundation, Inc.
+# Copyright 2005, 2007, 2009, 2011-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -92,7 +92,9 @@ sub tex4ht_prepare($$)
 {
   # set file names
   my $self = shift;
-  my $document_root = shift;
+  my $document = shift;
+
+  my $document_root = $document->tree();
 
   # this initialization may not be needed, but it is cleaner anyway,
   # in case there is more than one texinfo file processed.
@@ -118,7 +120,7 @@ sub tex4ht_prepare($$)
 
   my $math_conversion = $self->get_conf('T4H_MATH_CONVERSION');
   if (defined($math_conversion) and !$formats{$math_conversion}) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("tex4ht.pm: unknown conversion type for math: %s"),
                                       $math_conversion));
     $math_conversion = undef;
@@ -127,7 +129,7 @@ sub tex4ht_prepare($$)
 
   my $tex_conversion = $self->get_conf('T4H_TEX_CONVERSION');
   if (defined($tex_conversion) and !$formats{$tex_conversion}) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("tex4ht.pm: unknown conversion type for \@tex: %s"),
                                       $tex_conversion));
     $tex_conversion = undef;
@@ -136,7 +138,7 @@ sub tex4ht_prepare($$)
 
   my $latex_conversion = $self->get_conf('T4H_LATEX_CONVERSION');
   if (defined($latex_conversion) and !$formats{$latex_conversion}) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("tex4ht.pm: unknown conversion type for \@latex: %s"),
                                       $latex_conversion));
     $latex_conversion = undef;
@@ -154,8 +156,15 @@ sub tex4ht_prepare($$)
 
   $tex4ht_initial_dir = Cwd::abs_path;
   $tex4ht_out_dir = $self->get_info('destination_directory');
-  $tex4ht_out_dir = File::Spec->curdir()
-    if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/);
+
+  if (!defined($tex4ht_out_dir) or $tex4ht_out_dir =~ /^\s*$/) {
+    $tex4ht_out_dir = File::Spec->curdir();
+  } else {
+    my ($encoded_tex4ht_out_dir, $tex4ht_out_dir_encoding)
+      = $self->encoded_output_file_name($tex4ht_out_dir);
+    $self->create_destination_directory($encoded_tex4ht_out_dir,
+                                        $tex4ht_out_dir);
+  }
 
   my $document_name = $self->get_info('document_name');
   my $tex4ht_basename = "${document_name}_tex4ht";
@@ -187,8 +196,8 @@ sub tex4ht_prepare($$)
        = $self->encoded_output_file_name($formats{$format}->{'html_basefile_name'});
     $formats{$format}->{'html_basefile_path'} = $encoded_html_basefile_name;
 
-    my $tex4ht_file_path_name = File::Spec->catfile($tex4ht_out_dir,
-                                    $formats{$format}->{'basefile_name'});
+    my $tex4ht_file_path_name
+      = "$tex4ht_out_dir/$formats{$format}->{'basefile_name'}";
     my ($encoded_tex4ht_file_path_name, $tex4ht_path_encoding)
       = $self->encoded_output_file_name($tex4ht_file_path_name);
     $formats{$format}->{'counter'} = 0;
@@ -233,7 +242,7 @@ sub tex4ht_prepare($$)
         if ($formats{$format}->{'counter'} == 0) {
           local *TEX4HT_TEXFILE;
           unless (open(*TEX4HT_TEXFILE, ">$encoded_tex4ht_file_path_name")) {
-            $self->document_error($self,
+            $self->converter_document_error(
                     sprintf(__("tex4ht.pm: could not open %s: %s"),
                                           $tex4ht_file_path_name, $!));
             return 1;
@@ -338,7 +347,7 @@ sub tex4ht_process($)
   my ($encoded_tex4ht_out_dir, $tex4ht_out_dir_encoding)
     = $self->encoded_output_file_name($tex4ht_out_dir);
   unless (chdir $encoded_tex4ht_out_dir) {
-    $self->document_warn($self,
+    $self->converter_document_warn(
             sprintf(__("tex4ht.pm: chdir %s failed: %s"),
                          $tex4ht_out_dir, $!));
     return 1;
@@ -352,7 +361,7 @@ sub tex4ht_process($)
     $errors += tex4ht_process_format($self, $format);
   }
   unless (chdir $tex4ht_initial_dir) {
-    $self->document_warn($self, sprintf(__(
+    $self->converter_document_warn(sprintf(__(
           "tex4ht.pm: unable to return to initial directory: %s"), $!));
     return 1 + $errors;
   }
@@ -366,7 +375,7 @@ sub tex4ht_process_format($$) {
 
   return 0 unless ($formats{$format}->{'counter'});
 
-  $self->document_warn($self,
+  $self->converter_document_warn(
               sprintf(__("tex4ht.pm: output file missing: %s"),
                                $formats{$format}->{'basefile_name'}))
     unless (-f $formats{$format}->{'basefile_path'});
@@ -401,12 +410,12 @@ sub tex4ht_process_format($$) {
   # if tex fails, it will read from STDIN and the input may trigger
   # diverse actions by tex.
   if (not(open(TEX4HT, "|-", $encoded_cmd))) {
-    $self->document_error($self, sprintf(__(
+    $self->converter_document_error(sprintf(__(
                          "tex4ht.pm: command failed: %s"), $cmd));
     return 1;
   }
   if (!close(TEX4HT)) {
-    $self->document_warn($self, sprintf(__(
+    $self->converter_document_warn(sprintf(__(
                          "tex4ht.pm: closing communication failed: %s: %s"),
                          $cmd, $!));
     return 1;
@@ -419,7 +428,7 @@ sub tex4ht_process_format($$) {
   my $html_basefile = $formats{$format}->{'html_basefile_name'};
   my $encoded_html_basefile = $formats{$format}->{'html_basefile_path'};
   unless (open(TEX4HT_HTMLFILE, $encoded_html_basefile)) {
-    $self->document_warn($self,
+    $self->converter_document_warn(
               sprintf(__("tex4ht.pm: could not open %s: %s"),
                                   $html_basefile, $!));
     return 1;
@@ -455,7 +464,7 @@ sub tex4ht_process_format($$) {
       }
       unless ($end_found) {
         # should be a bug or mangled output
-        $self->document_warn($self, sprintf(__(
+        $self->converter_document_warn(sprintf(__(
                                "tex4ht.pm: end of %s item %d for \@%s not found"),
                                       $format, $count, $cmdname));
       }
@@ -464,7 +473,7 @@ sub tex4ht_process_format($$) {
   if ($got_count != $formats{$format}->{'counter'}) {
     # unless tex4ht somehow mangles the output, this should
     # never happen, could also be considered as en error or a bug.
-    $self->document_warn($self, sprintf(__(
+    $self->converter_document_warn(sprintf(__(
        "tex4ht.pm: processing produced %d items in HTML; expected %d for format %s"),
                                  $got_count, $formats{$format}->{'counter'},
                                  $format));
@@ -499,7 +508,7 @@ sub tex4ht_convert_command($$$;$$)
   } else {
     # probably a bug in that case, unless the format is ignored
     if ($self->is_format_expanded($cmdname)) {
-      $self->document_warn($self, sprintf(__(
+      $self->converter_document_warn(sprintf(__(
                        "tex4ht.pm: output has no HTML item for \@%s %s"),
                                   $cmdname, $command));
     }
@@ -516,7 +525,7 @@ sub tex4ht_finish($)
     foreach my $command (sort(keys(%commands))) {
       if (not defined($commands{$command}->{'output_counter'})) {
         if (defined($commands{$command}->{'counter'})) {
-          $self->document_warn($self, sprintf(__(
+          $self->converter_document_warn(sprintf(__(
            "tex4ht.pm: output counter UNDEF; expected %d for \@%s"),
                                  $commands{$command}->{'counter'}, $command));
         } else {

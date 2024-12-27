@@ -38,9 +38,7 @@ $result_trees{'macro_defined_txiinternalvalue_in_translation'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -77,9 +75,7 @@ $result_trees{'macro_defined_txiinternalvalue_in_translation'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -117,7 +113,7 @@ $result_floats{'macro_defined_txiinternalvalue_in_translation'} = {};
 
 $result_converted{'html'}->{'macro_defined_txiinternalvalue_in_translation'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -133,8 +129,8 @@ $result_converted{'html'}->{'macro_defined_txiinternalvalue_in_translation'} = '
 </head>
 
 <body lang="en">
-user internalvalue TeX
-user internalvalue TeX
+1 TeX
+2 TeX
 
 
 

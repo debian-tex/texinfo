@@ -29,6 +29,7 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -102,9 +101,11 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'section-node'
                   },
                   'type' => 'menu_entry_node'
@@ -129,9 +130,7 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'menu_entry'
             },
@@ -162,16 +161,12 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -187,9 +182,7 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -231,15 +224,16 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
+        'line_nr' => 9
       }
     },
     {
@@ -265,9 +259,11 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Top'
           },
           'info' => {
@@ -281,6 +277,7 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'section-node'
       },
       'info' => {
@@ -289,9 +286,7 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
+        'line_nr' => 13
       }
     },
     {
@@ -341,30 +336,29 @@ $result_trees{'chapter_between_nodes_texi2html'} = {
             }
           ],
           'cmdname' => 'contents',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1.1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'chapter_between_nodes_texi2html'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'chapter_between_nodes_texi2html'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'chapter_between_nodes_texi2html'}{'contents'}[4]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'chapter_between_nodes_texi2html'}{'contents'}[4]{'args'}[3]{'contents'}[0];
+$result_trees{'chapter_between_nodes_texi2html'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'chapter_between_nodes_texi2html'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'chapter_between_nodes_texi2html'}{'contents'}[4]{'args'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'chapter_between_nodes_texi2html'}{'contents'}[4]{'args'}[3]{'contents'}[0];
 
 $result_texis{'chapter_between_nodes_texi2html'} = '@node Top
 @top top section
@@ -406,7 +400,7 @@ section.
 ';
 
 $result_sectioning{'chapter_between_nodes_texi2html'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -415,15 +409,12 @@ $result_sectioning{'chapter_between_nodes_texi2html'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
@@ -432,100 +423,95 @@ $result_sectioning{'chapter_between_nodes_texi2html'} = {
                         'cmdname' => 'node',
                         'extra' => {
                           'normalized' => 'section-node'
-                        },
-                        'structure' => {}
-                      }
-                    },
-                    'structure' => {
+                        }
+                      },
+                      'section_directions' => {
+                        'up' => {}
+                      },
                       'section_level' => 2,
-                      'section_number' => '1.1',
-                      'section_up' => {}
+                      'section_number' => '1.1'
                     }
                   }
                 ],
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'chapter_between_nodes_texi2html'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'chapter_between_nodes_texi2html'};
+$result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'chapter_between_nodes_texi2html'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'chapter_between_nodes_texi2html'};
 
-$result_nodes{'chapter_between_nodes_texi2html'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'section',
-          'extra' => {},
-          'structure' => {
-            'section_number' => '1.1'
+$result_nodes{'chapter_between_nodes_texi2html'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'section',
+              'extra' => {
+                'section_number' => '1.1'
+              }
+            },
+            'node_directions' => {
+              'up' => {}
+            },
+            'normalized' => 'section-node'
           }
-        },
-        'normalized' => 'section-node'
-      },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'chapter_between_nodes_texi2html'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'chapter_between_nodes_texi2html'};
-$result_nodes{'chapter_between_nodes_texi2html'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'chapter_between_nodes_texi2html'};
-$result_nodes{'chapter_between_nodes_texi2html'}{'structure'}{'node_next'} = $result_nodes{'chapter_between_nodes_texi2html'}{'structure'}{'menu_child'};
-
-$result_menus{'chapter_between_nodes_texi2html'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'section-node'
-      },
-      'structure' => {
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
         }
-      }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'chapter_between_nodes_texi2html'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'chapter_between_nodes_texi2html'}[0];
+$result_nodes{'chapter_between_nodes_texi2html'}[1] = $result_nodes{'chapter_between_nodes_texi2html'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'chapter_between_nodes_texi2html'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {}
+      },
+      'normalized' => 'section-node'
     }
   }
-};
-$result_menus{'chapter_between_nodes_texi2html'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'chapter_between_nodes_texi2html'};
+];
+$result_menus{'chapter_between_nodes_texi2html'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'chapter_between_nodes_texi2html'}[0];
 
 $result_errors{'chapter_between_nodes_texi2html'} = [];
 
@@ -554,13 +540,12 @@ Top node
 In chapter
 
 
-File: ,  Node: section node,  Prev: Top,  Up: Top
+File: ,  Node: section node,  Up: Top
 
 1.1 section
 ===========
 
 section.
-
 
 
 Tag Table:
@@ -578,7 +563,7 @@ End:
 
 $result_converted{'html'}->{'chapter_between_nodes_texi2html'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top section</title>
@@ -594,10 +579,17 @@ $result_converted{'html'}->{'chapter_between_nodes_texi2html'} = '<!DOCTYPE html
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 span.program-in-footer {font-size: smaller}
 span:hover a.copiable-link {visibility: visible}
-td.button-direction-about {text-align:center}
-td.menu-entry-description {vertical-align: top}
+table.direction-about {border-collapse: collapse}
+td.button-direction-about {text-align: center; border-width: thin; border-right-style: solid}
+td.description-direction-about {border-width: thin; border-right-style: solid; border-left-style: solid}
+td.example-direction-about {border-width: thin; border-left-style: solid}
+td.menu-entry-description {vertical-align: top; padding-left: 1em}
 td.menu-entry-destination {vertical-align: top}
-td.name-direction-about {text-align:center}
+td.name-direction-about {text-align: center; border-width: thin; border-right-style: solid; border-left-style: solid}
+th.button-direction-about {border-width: thin; border-bottom-style: solid; border-right-style: solid}
+th.description-direction-about {border-width: thin; border-bottom-style: solid; border-right-style: solid; border-left-style: solid}
+th.example-direction-about {border-width: thin; border-bottom-style: solid; border-left-style: solid}
+th.name-direction-about {border-width: thin; border-bottom-style: solid; border-right-style: solid; border-left-style: solid}
 ul.toc-numbered-mark {list-style: none}
 -->
 </style>
@@ -607,38 +599,38 @@ ul.toc-numbered-mark {list-style: none}
 
 <body lang="en">
 <div class="top-level-extent" id="Top">
-<table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
-<tr><td>[ &lt; ]</td>
-<td>[<a href="#Chapter" title="Next section in reading order"> &gt; </a>]</td>
-<td> &nbsp; </td>
-<td>[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td>[Index]</td>
-<td>[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+<table class="nav-panel">
+<tr><td class="nav-button">[ &lt; ]</td>
+<td class="nav-button">[<a href="#Chapter" title="Next section in reading order"> &gt; </a>]</td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td class="nav-button">[Index]</td>
+<td class="nav-button">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="top" id="top-section"><span>top section<a class="copiable-link" href="#top-section"> &para;</a></span></h1>
 <p>Top node
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td class="menu-entry-destination"><a href="#section-node">1.1 section</a></td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+<table class="menu">
+<tr><td class="menu-entry-destination"><a href="#section-node">1.1 section</a></td><td class="menu-entry-description">
 </td></tr>
 </table>
 
 <hr style="height: 6px;">
 <div class="chapter-level-extent" id="Chapter">
-<table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
-<tr><td>[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td>[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
-<td>[<a href="#Top" title="Up section"> Up </a>]</td>
-<td>[<a href="#section-node" title="Next section in reading order"> &gt; </a>]</td>
-<td>[ &gt;&gt; ]</td>
-<td> &nbsp; </td>
-<td> &nbsp; </td>
-<td> &nbsp; </td>
-<td> &nbsp; </td>
-<td>[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
-<td>[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td>[Index]</td>
-<td>[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+<table class="nav-panel">
+<tr><td class="nav-button">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td class="nav-button">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
+<td class="nav-button">[<a href="#Top" title="Up section"> Up </a>]</td>
+<td class="nav-button">[<a href="#section-node" title="Next section in reading order"> &gt; </a>]</td>
+<td class="nav-button">[ &gt;&gt; ]</td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td class="nav-button">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td class="nav-button">[Index]</td>
+<td class="nav-button">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h1>
 
@@ -646,26 +638,26 @@ ul.toc-numbered-mark {list-style: none}
 </p>
 <hr>
 <div class="section-level-extent" id="section-node">
-<table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
-<tr><td>[<a href="#Chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td>[<a href="#Chapter" title="Previous section in reading order"> &lt; </a>]</td>
-<td>[<a href="#Chapter" title="Up section"> Up </a>]</td>
-<td>[ &gt; ]</td>
-<td>[ &gt;&gt; ]</td>
-<td> &nbsp; </td>
-<td> &nbsp; </td>
-<td> &nbsp; </td>
-<td> &nbsp; </td>
-<td>[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
-<td>[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td>[Index]</td>
-<td>[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+<table class="nav-panel">
+<tr><td class="nav-button">[<a href="#Chapter" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td class="nav-button">[<a href="#Chapter" title="Previous section in reading order"> &lt; </a>]</td>
+<td class="nav-button">[<a href="#Chapter" title="Up section"> Up </a>]</td>
+<td class="nav-button">[ &gt; ]</td>
+<td class="nav-button">[ &gt;&gt; ]</td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button"> &nbsp; </td>
+<td class="nav-button">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td class="nav-button">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td class="nav-button">[Index]</td>
+<td class="nav-button">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h2 class="section" id="section"><span>1.1 section<a class="copiable-link" href="#section"> &para;</a></span></h2>
 
 <p>section.
 </p>
-<div class="element-contents" id="SEC_Contents">
+<div class="region-contents" id="SEC_Contents">
 <h1 class="contents-heading">Table of Contents</h1>
 
 <div class="contents">
@@ -683,11 +675,11 @@ ul.toc-numbered-mark {list-style: none}
 </div>
 </div>
 <div class="element-about" id="SEC_About">
-<table class="nav-panel" cellpadding="1" cellspacing="1" border="0">
-<tr><td>[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
-<td>[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td>[Index]</td>
-<td>[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
+<table class="nav-panel">
+<tr><td class="nav-button">[<a href="#Top" title="Cover (top) of document">Top</a>]</td>
+<td class="nav-button">[<a href="#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td class="nav-button">[Index]</td>
+<td class="nav-button">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <h1 class="about-heading">About This Document</h1>
 
@@ -697,66 +689,66 @@ ul.toc-numbered-mark {list-style: none}
 <p>
   The buttons in the navigation panels have the following meaning:
 </p>
-<table border="1">
+<table class="direction-about">
   <tr>
-    <th> Button </th>
-    <th> Name </th>
-    <th> Go to </th>
-    <th> From 1.2.3 go to</th>
+    <th class="button-direction-about"> Button </th>
+    <th class="name-direction-about"> Name </th>
+    <th class="description-direction-about"> Go to </th>
+    <th class="example-direction-about"> From 1.2.3 go to</th>
   </tr>
   <tr>
     <td class="button-direction-about"> [ &lt;&lt; ] </td>
     <td class="name-direction-about">FastBack</td>
-    <td>Beginning of this chapter or previous chapter</td>
-    <td>1</td>
+    <td class="description-direction-about">Beginning of this chapter or previous chapter</td>
+    <td class="example-direction-about">1</td>
   </tr>
   <tr>
     <td class="button-direction-about"> [ &lt; ] </td>
     <td class="name-direction-about">Back</td>
-    <td>Previous section in reading order</td>
-    <td>1.2.2</td>
+    <td class="description-direction-about">Previous section in reading order</td>
+    <td class="example-direction-about">1.2.2</td>
   </tr>
   <tr>
     <td class="button-direction-about"> [ Up ] </td>
     <td class="name-direction-about">Up</td>
-    <td>Up section</td>
-    <td>1.2</td>
+    <td class="description-direction-about">Up section</td>
+    <td class="example-direction-about">1.2</td>
   </tr>
   <tr>
     <td class="button-direction-about"> [ &gt; ] </td>
     <td class="name-direction-about">Forward</td>
-    <td>Next section in reading order</td>
-    <td>1.2.4</td>
+    <td class="description-direction-about">Next section in reading order</td>
+    <td class="example-direction-about">1.2.4</td>
   </tr>
   <tr>
     <td class="button-direction-about"> [ &gt;&gt; ] </td>
     <td class="name-direction-about">FastForward</td>
-    <td>Next chapter</td>
-    <td>2</td>
+    <td class="description-direction-about">Next chapter</td>
+    <td class="example-direction-about">2</td>
   </tr>
   <tr>
     <td class="button-direction-about"> [Top] </td>
     <td class="name-direction-about">Top</td>
-    <td>Cover (top) of document</td>
-    <td> &nbsp; </td>
+    <td class="description-direction-about">Cover (top) of document</td>
+    <td class="example-direction-about"> &nbsp; </td>
   </tr>
   <tr>
     <td class="button-direction-about"> [Contents] </td>
     <td class="name-direction-about">Contents</td>
-    <td>Table of contents</td>
-    <td> &nbsp; </td>
+    <td class="description-direction-about">Table of contents</td>
+    <td class="example-direction-about"> &nbsp; </td>
   </tr>
   <tr>
     <td class="button-direction-about"> [Index] </td>
     <td class="name-direction-about">Index</td>
-    <td>Index</td>
-    <td> &nbsp; </td>
+    <td class="description-direction-about">Index</td>
+    <td class="example-direction-about"> &nbsp; </td>
   </tr>
   <tr>
     <td class="button-direction-about"> [ ? ] </td>
     <td class="name-direction-about">About</td>
-    <td>About (help)</td>
-    <td> &nbsp; </td>
+    <td class="description-direction-about">About (help)</td>
+    <td class="example-direction-about"> &nbsp; </td>
   </tr>
 </table>
 

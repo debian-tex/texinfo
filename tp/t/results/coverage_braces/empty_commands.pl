@@ -12,14 +12,13 @@ $result_trees{'empty_commands'} = {
         {
           'args' => [
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_container'
             }
           ],
           'cmdname' => 'titlefont',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -36,14 +35,12 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -52,14 +49,12 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'abbr',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -68,14 +63,12 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -84,14 +77,12 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -101,10 +92,9 @@ $result_trees{'empty_commands'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -113,14 +103,12 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => '~',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -129,14 +117,12 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'dotless',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -145,7 +131,7 @@ $result_trees{'empty_commands'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -153,9 +139,7 @@ $result_trees{'empty_commands'} = {
                 'delimiter' => ';'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -187,9 +171,7 @@ $result_errors{'empty_commands'} = [
   {
     'error_line' => 'warning: @abbr missing first argument
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@abbr missing first argument',
     'type' => 'warning'
   }
@@ -211,7 +193,7 @@ $result_converted{'plaintext'}->{'empty_commands'} = '
 
 $result_converted{'html_text'}->{'empty_commands'} = '
 
-<p> <abbr class="abbr"></abbr>  <code class="code"></code><a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a> &#771;  <code class="verb"></code>
+<p> <abbr class="abbr"></abbr>  <a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a> &#771;  
 </p><div class="footnotes-segment">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
@@ -226,5 +208,11 @@ $result_converted{'latex_text'}->{'empty_commands'} = '
 
    \\texttt{}\\footnote{} \\~{}  
 ';
+
+
+$result_converted{'docbook'}->{'empty_commands'} = '
+
+<para><ulink url=""></ulink>   <literal></literal><footnote></footnote> &#771;  <literal></literal>
+</para>';
 
 1;

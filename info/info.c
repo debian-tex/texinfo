@@ -250,7 +250,7 @@ get_initial_file (int *argc, char ***argv, char **error)
     {
       /* If they say info info (or info -O info, etc.), show them 
          info-stnd.texi.  (Get info.texi with info -f info.) */
-      if ((*argv)[0] && mbscasecmp ((*argv)[0], "info") == 0)
+      if ((*argv)[0] && strcasecmp ((*argv)[0], "info") == 0)
         (*argv)[0] = "info-stnd";
 
       entry = lookup_dir_entry ((*argv)[0], 0);
@@ -603,7 +603,7 @@ info_find_matching_files (char *filename)
   while (1)
     {
       char *p;
-      int j;
+      size_t j;
 
       p = info_file_find_next_in_path (filename, &i, 0);
       if (!p)
@@ -699,6 +699,9 @@ main (int argc, char *argv[])
   /* Set the text message domain.  */
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
+
+  /* For any translations of gnulib strings. */
+  bindtextdomain ("gnulib", GNULIB_LOCALEDIR);
 #endif
 
   init_messages ();
@@ -1162,7 +1165,7 @@ puts (_("\
   puts (_("\
 Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
-Texinfo home page: http://www.gnu.org/software/texinfo/"));
+Texinfo home page: https://www.gnu.org/software/texinfo/"));
 
   exit (EXIT_SUCCESS);
 }

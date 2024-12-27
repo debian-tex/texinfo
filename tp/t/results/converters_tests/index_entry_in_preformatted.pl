@@ -29,6 +29,7 @@ $result_trees{'index_entry_in_preformatted'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'index_entry_in_preformatted'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -74,9 +73,7 @@ $result_trees{'index_entry_in_preformatted'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -98,6 +95,7 @@ $result_trees{'index_entry_in_preformatted'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -106,9 +104,7 @@ $result_trees{'index_entry_in_preformatted'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -177,14 +173,13 @@ $result_trees{'index_entry_in_preformatted'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
+                    'line_nr' => 8
                   },
                   'type' => 'index_entry_command'
                 },
@@ -232,14 +227,13 @@ $result_trees{'index_entry_in_preformatted'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   },
                   'type' => 'index_entry_command'
                 },
@@ -273,14 +267,13 @@ $result_trees{'index_entry_in_preformatted'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 13,
-                    'macro' => ''
+                    'line_nr' => 13
                   },
                   'type' => 'index_entry_command'
                 }
@@ -314,29 +307,25 @@ $result_trees{'index_entry_in_preformatted'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -375,7 +364,7 @@ text2
 ';
 
 $result_sectioning{'index_entry_in_preformatted'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -384,11 +373,8 @@ $result_sectioning{'index_entry_in_preformatted'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -397,72 +383,81 @@ $result_sectioning{'index_entry_in_preformatted'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entry_in_preformatted'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_entry_in_preformatted'};
+$result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entry_in_preformatted'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'index_entry_in_preformatted'};
 
-$result_nodes{'index_entry_in_preformatted'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chap'
+$result_nodes{'index_entry_in_preformatted'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'index_entry_in_preformatted'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'index_entry_in_preformatted'}[0];
+$result_nodes{'index_entry_in_preformatted'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'index_entry_in_preformatted'}[0];
+$result_nodes{'index_entry_in_preformatted'}[1] = $result_nodes{'index_entry_in_preformatted'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'index_entry_in_preformatted'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'index_entry_in_preformatted'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'index_entry_in_preformatted'};
-$result_nodes{'index_entry_in_preformatted'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'index_entry_in_preformatted'};
-
-$result_menus{'index_entry_in_preformatted'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'index_entry_in_preformatted'} = [];
 
@@ -493,8 +488,6 @@ $result_converted{'plaintext'}->{'index_entry_in_preformatted'} = 'top
 
 
 $result_converted{'html_text'}->{'index_entry_in_preformatted'} = '<div class="top-level-extent" id="Top">
-<div class="nav-panel">
-</div>
 <h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
@@ -502,8 +495,6 @@ $result_converted{'html_text'}->{'index_entry_in_preformatted'} = '<div class="t
 </ul>
 <hr>
 <div class="chapter-level-extent" id="chap">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <div class="example">

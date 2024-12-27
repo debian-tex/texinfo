@@ -27,15 +27,14 @@ $result_trees{'incorrect_allowcodebreaks_argument'} = {
             }
           ],
           'cmdname' => 'allowcodebreaks',
+          'extra' => {},
           'info' => {
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -48,14 +47,12 @@ $result_trees{'incorrect_allowcodebreaks_argument'} = {
                       'text' => 'b a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -84,9 +81,7 @@ $result_errors{'incorrect_allowcodebreaks_argument'} = [
   {
     'error_line' => '@allowcodebreaks arg must be `true\' or `false\', not `_arg\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@allowcodebreaks arg must be `true\' or `false\', not `_arg\'',
     'type' => 'error'
   }

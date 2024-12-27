@@ -34,7 +34,7 @@ $result_trees{'verb_and_char_end_of_line_not_closed'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -42,9 +42,7 @@ $result_trees{'verb_and_char_end_of_line_not_closed'} = {
                 'delimiter' => '*'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -72,9 +70,7 @@ $result_errors{'verb_and_char_end_of_line_not_closed'} = [
   {
     'error_line' => '@verb missing closing delimiter sequence: *}
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@verb missing closing delimiter sequence: *}',
     'type' => 'error'
   }

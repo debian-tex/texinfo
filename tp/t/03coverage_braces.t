@@ -82,7 +82,38 @@ my @test_cases = (
 '@code{ in code } @slanted{ in slanted } @var{ var } @sub{ sub }
 @hyphenation{ a-b c-d }
 @indicateurl{ http://example.com } @U{ 1234 } @w{ w } @verb{: verb :}.
+@^{ e } @ringaccent{ a } @dotless{ i } @tieaccent{ bb }
+@aa{ i } @enddots{ ei }
 '],
+['command_in_dotless',
+'@dotless{@code{i}}'],
+['command_in_U',
+'@U{@code{09AF}}'],
+['brace_command_no_braces', '@xref'],
+['image_no_braces', '@image '],
+['abbr_no_braces', '@abbr'],
+['email_no_braces', '@email'],
+['url_no_braces', '@url'],
+['math_no_braces', '@math'],
+['strong_no_braces', '@strong'],
+['caption_no_braces', '@caption'],
+['footnote_no_braces', '@footnote'],
+['U_no_braces', '@U'],
+['hyphenation_no_braces', '@hyphenation'],
+['titlefont_no_braces', '@titlefont'],
+['definfoenclose_no_braces', '@definfoenclose phoo,;,:
+@phoo'],
+# tests a brace command without braces on a line command at the end of a
+# document
+['seeentry_no_braces', '@node Top
+@top top
+
+@node chap
+@chapter chap
+
+@printindex cp
+
+@cindex aa @seeentry'],
 ['verb_in_xref',
 '@anchor{point}
 
@@ -94,7 +125,7 @@ ggg *}}.
 ['nested_in_sc',
 '@sc{@sc{aaa @~n @aa{} @TeX{} @~{@aa{}} @footnote{In footnote}, @abbr{ABr, expl}, 
 @verb{:in verb:}}}
-', {'test_formats' => ['docbook']}],
+'],
 ['ref_in_style_command', '@samp{@ref{(manula)other node}}.'],
 ['uref_in_ref',
 '@ref{(file)node, cross ref with uref @uref{href://http/myhost.com/index.html,uref1}, title with uref2 @uref{href://http/myhost.com/index2.html,uref2}, info file with uref3 @uref{href://http/myhost.com/index3.html,uref3}, printed manual with uref4 @uref{href://http/myhost.com/index4.html,uref4}}
@@ -112,6 +143,9 @@ ggg *}}.
 ['footnote_ending_on_empty_line','text@footnote{ in footnote.
 
 }'],
+['footnote_ending_on_empty_line_spaces','text@footnote{ in footnote.
+
+  }'],
 ['heading_in_footnote',
 'T@footnote{
 AAA
@@ -247,6 +281,11 @@ $two_footnotes_in_nodes_text,
 '@footnotestyle separate
 '.$two_footnotes_in_nodes_text,
 , {'test_formats' => ['html', 'info'], 'full_document' => 1} ],
+['two_footnotes_in_nodes_separate_no_header',
+'@footnotestyle separate
+'.$two_footnotes_in_nodes_text,
+, {'test_formats' => ['html', 'info'], 'full_document' => 1},
+  {'HEADERS' => 0} ],
 # could be in @test_invalid too, but also allows to test what happens
 # to formatting with empty first email first argument
 ['empty_line_in_email',
@@ -256,10 +295,6 @@ mail,
 
 text
 }'],
-['form_feed_in_brace_commands',
-'@option{ aa} @anchor{aa}something @email{aaa,  fff}@footnote{ 
- f1 } @footnote{  ggjj}.
-', {'test_formats' => ['xml']}],
 # here even if invalid as we want to see how the @sortas is in index
 ['contain_plain_text_nestings',
 '@node Top
@@ -280,6 +315,20 @@ Text @w{@ref{Top, cross in w} text}.
 @cindex ii @sortas{@ref{Top, cross in sortas} text}
 
 @printindex cp
+'],
+['definfoenclose_texinfo_commands',
+'@definfoenclose verb,;;,!!
+@definfoenclose TeX,aa,bb
+@definfoenclose strong,(,)
+@definfoenclose quotation,q,e
+
+@verb{*aaa*}.
+
+@TeX{}. @strong{in strong}.
+
+@quotation important
+in quotation
+@end quotation
 '],
 );
 
@@ -380,6 +429,7 @@ third}
 @ref{,,,manual} @ref{,,, , Manual} @inforef{,,imanual}
 @xref{ , Bidule, Truc, file, Printed}.
 '],
+['definfoenclose_bad_argument', '@definfoenclose #phoo,;,:'],
 );
 
 foreach my $test (@test_cases) {
@@ -387,6 +437,7 @@ foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html_text'
     unless grep {$_ eq 'html'} @{$test->[2]->{'test_formats'}};
   push @{$test->[2]->{'test_formats'}}, 'latex_text';
+  push @{$test->[2]->{'test_formats'}}, 'docbook';
 }
 
 run_all('coverage_braces', [@test_cases, @test_invalid]);

@@ -73,16 +73,12 @@ $result_trees{'expanded_tex'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
+                    'line_nr' => 6
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -123,11 +119,11 @@ $result_floats{'expanded_tex'} = {};
 
 
 
-$result_converted{'plaintext'}->{'expanded_tex'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
-TTT
+$result_converted{'plaintext'}->{'expanded_tex'} = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa TTT
 GGG
 HHH
-bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3 bbbbbbbbbbbbbb4.
+bbbbbbbbb1 bbbbbbbbbbb2 bbbbbbbbbb3
+bbbbbbbbbbbbbb4.
 ';
 
 1;

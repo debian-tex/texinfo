@@ -16,11 +16,8 @@ $result_trees{'title_and_itemx_before_item'} = {
                 {
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -76,9 +73,7 @@ $result_trees{'title_and_itemx_before_item'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
@@ -114,9 +109,7 @@ $result_trees{'title_and_itemx_before_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -129,9 +122,7 @@ $result_trees{'title_and_itemx_before_item'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -157,9 +148,7 @@ $result_errors{'title_and_itemx_before_item'} = [
   {
     'error_line' => '@itemx should not begin @table
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@itemx should not begin @table',
     'type' => 'error'
   }

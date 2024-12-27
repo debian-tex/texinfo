@@ -26,25 +26,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'fg'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'kbd',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -66,25 +62,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'gg'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -106,25 +98,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'fg'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'kbd',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'command',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -146,25 +134,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'in command'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'command',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -186,25 +170,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'in code'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'samp',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -226,25 +206,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'in samp'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'samp',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -266,25 +242,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'in code'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'var',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -306,25 +278,21 @@ $result_trees{'nested_code_commands'} = {
                               'text' => 'in var'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'var',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 8,
-                        'macro' => ''
+                        'line_nr' => 8
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -363,14 +331,12 @@ $result_trees{'nested_code_commands'} = {
                           'text' => 'in code'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -392,25 +358,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'fg'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'kbd',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 12,
-                            'macro' => ''
+                            'line_nr' => 12
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 12,
-                    'macro' => ''
+                    'line_nr' => 12
                   }
                 },
                 {
@@ -425,14 +387,12 @@ $result_trees{'nested_code_commands'} = {
                           'text' => 'hh'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'kbd',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 13,
-                    'macro' => ''
+                    'line_nr' => 13
                   }
                 },
                 {
@@ -454,25 +414,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'fg'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'kbd',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 14,
-                            'macro' => ''
+                            'line_nr' => 14
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'command',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 14,
-                    'macro' => ''
+                    'line_nr' => 14
                   }
                 },
                 {
@@ -494,25 +450,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in command'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'command',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 15,
-                            'macro' => ''
+                            'line_nr' => 15
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 15,
-                    'macro' => ''
+                    'line_nr' => 15
                   }
                 },
                 {
@@ -534,25 +486,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in code'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 16,
-                            'macro' => ''
+                            'line_nr' => 16
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'samp',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 16,
-                    'macro' => ''
+                    'line_nr' => 16
                   }
                 },
                 {
@@ -574,25 +522,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in samp'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'samp',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 17,
-                            'macro' => ''
+                            'line_nr' => 17
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -614,25 +558,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in code'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 18,
-                            'macro' => ''
+                            'line_nr' => 18
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'var',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 18,
-                    'macro' => ''
+                    'line_nr' => 18
                   }
                 },
                 {
@@ -654,25 +594,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in var'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'var',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 19,
-                            'macro' => ''
+                            'line_nr' => 19
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 19,
-                    'macro' => ''
+                    'line_nr' => 19
                   }
                 },
                 {
@@ -709,16 +645,12 @@ $result_trees{'nested_code_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         },
         {
@@ -750,14 +682,12 @@ $result_trees{'nested_code_commands'} = {
                           'text' => 'in disp'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'kbd',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 23,
-                    'macro' => ''
+                    'line_nr' => 23
                   }
                 },
                 {
@@ -779,25 +709,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'fg'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'kbd',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 24,
-                            'macro' => ''
+                            'line_nr' => 24
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
+                    'line_nr' => 24
                   }
                 },
                 {
@@ -819,25 +745,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'fg'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'kbd',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 25,
-                            'macro' => ''
+                            'line_nr' => 25
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'command',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 25,
-                    'macro' => ''
+                    'line_nr' => 25
                   }
                 },
                 {
@@ -859,25 +781,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in command'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'command',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 26,
-                            'macro' => ''
+                            'line_nr' => 26
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 26,
-                    'macro' => ''
+                    'line_nr' => 26
                   }
                 },
                 {
@@ -899,25 +817,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in code'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 27,
-                            'macro' => ''
+                            'line_nr' => 27
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'samp',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 27,
-                    'macro' => ''
+                    'line_nr' => 27
                   }
                 },
                 {
@@ -939,25 +853,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in samp'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'samp',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 28,
-                            'macro' => ''
+                            'line_nr' => 28
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 28,
-                    'macro' => ''
+                    'line_nr' => 28
                   }
                 },
                 {
@@ -979,25 +889,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in code'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 29,
-                            'macro' => ''
+                            'line_nr' => 29
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'var',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 29,
-                    'macro' => ''
+                    'line_nr' => 29
                   }
                 },
                 {
@@ -1019,25 +925,21 @@ $result_trees{'nested_code_commands'} = {
                                   'text' => 'in var'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'var',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 30,
-                            'macro' => ''
+                            'line_nr' => 30
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 30,
-                    'macro' => ''
+                    'line_nr' => 30
                   }
                 },
                 {
@@ -1074,16 +976,12 @@ $result_trees{'nested_code_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 31,
-                'macro' => ''
+                'line_nr' => 31
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 22,
-            'macro' => ''
+            'line_nr' => 22
           }
         }
       ],

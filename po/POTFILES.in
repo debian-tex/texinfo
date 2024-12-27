@@ -1,4 +1,4 @@
-# Copyright 2005-2023 Free Software Foundation, Inc.
+# Copyright 2005-2024 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -6,11 +6,6 @@
 #  
 # List of source files containing translatable strings.
 
-gnulib/lib/cdefs.h
-gnulib/lib/error.c
-gnulib/lib/getopt.c
-gnulib/lib/regcomp.c
-gnulib/lib/xalloc-die.c
 info/echo-area.c
 info/filesys.c
 info/footnotes.c
@@ -32,20 +27,20 @@ info/variables.c
 info/window.c
 install-info/install-info.c
 Pod-Simple-Texinfo/pod2texi.pl
-tp/DebugTexinfo/DebugTree.pm
 tp/Texinfo/Common.pm
 tp/Texinfo/Config.pm
+tp/Texinfo/DebugTree.pm
+tp/Texinfo/Document.pm
 tp/Texinfo/Convert/Converter.pm
 tp/Texinfo/Convert/DocBook.pm
 tp/Texinfo/Convert/HTML.pm
 tp/Texinfo/Convert/IXIN.pm
 tp/Texinfo/Convert/Info.pm
 tp/Texinfo/Convert/LaTeX.pm
-tp/Texinfo/Convert/NodeNameNormalization.pm
 tp/Texinfo/Convert/Plaintext.pm
 tp/Texinfo/Convert/Text.pm
-tp/Texinfo/Convert/TexinfoMarkup.pm
 tp/Texinfo/Convert/Utils.pm
+tp/Texinfo/Indices.pm
 tp/Texinfo/ParserNonXS.pm
 tp/Texinfo/Report.pm
 tp/Texinfo/Structuring.pm
@@ -56,12 +51,20 @@ tp/ext/highlight_syntax.pm
 tp/ext/latex2html.pm
 tp/ext/tex4ht.pm
 tp/texi2any.pl
-tp/Texinfo/XS/gnulib/lib/obstack.c
-tp/Texinfo/XS/parsetexi/Parsetexi.pm
+tp/Texinfo/XS/convert/converter.c
+tp/Texinfo/XS/convert/convert_html.c
+tp/Texinfo/XS/convert/format_html.c
+tp/Texinfo/XS/convert/html_prepare_converter.c
+tp/Texinfo/XS/main/errors.c
+tp/Texinfo/XS/main/errors.h
+tp/Texinfo/XS/main/manipulate_indices.c
+tp/Texinfo/XS/main/convert_utils.c
+tp/Texinfo/XS/main/targets.c
+tp/Texinfo/XS/parsetexi/api.c
 tp/Texinfo/XS/parsetexi/close.c
 tp/Texinfo/XS/parsetexi/end_line.c
-tp/Texinfo/XS/parsetexi/errors.c
-tp/Texinfo/XS/parsetexi/errors.h
+tp/Texinfo/XS/parsetexi/errors_parser.c
+tp/Texinfo/XS/parsetexi/errors_parser.h
 tp/Texinfo/XS/parsetexi/handle_commands.c
 tp/Texinfo/XS/parsetexi/indices.c
 tp/Texinfo/XS/parsetexi/input.c
@@ -71,3 +74,5 @@ tp/Texinfo/XS/parsetexi/menus.c
 tp/Texinfo/XS/parsetexi/multitable.c
 tp/Texinfo/XS/parsetexi/parser.c
 tp/Texinfo/XS/parsetexi/separator.c
+tp/Texinfo/XS/structuring_transfo/structuring.c
+tp/Texinfo/XS/structuring_transfo/transformations.c

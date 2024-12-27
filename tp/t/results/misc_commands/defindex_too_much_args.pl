@@ -27,9 +27,7 @@ $result_trees{'defindex_too_much_args'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -48,9 +46,7 @@ $result_errors{'defindex_too_much_args'} = [
   {
     'error_line' => 'bad argument to @defindex: chose    machin
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'bad argument to @defindex: chose    machin',
     'type' => 'error'
   }

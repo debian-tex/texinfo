@@ -60,9 +60,7 @@ $result_trees{'line_after_recursive_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -71,27 +69,25 @@ $result_trees{'line_after_recursive_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
-          },
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'info' => {
-                  'command_name' => 'mac'
-                },
-                'type' => 'macro_call'
-              },
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ]
+            'line_nr' => 1
+          }
         },
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'info' => {
+                      'command_name' => 'mac'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'ggg
 '
             },
@@ -138,7 +134,6 @@ $result_errors{'line_after_recursive_call'} = [
   {
     'error_line' => 'recursive call of macro mac is not allowed; use @rmacro if needed (possibly involving @mac)
 ',
-    'file_name' => '',
     'line_nr' => 6,
     'macro' => 'mac',
     'text' => 'recursive call of macro mac is not allowed; use @rmacro if needed',

@@ -54,8 +54,7 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'cpp_lines.texi',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -81,14 +80,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'before top'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 68,
-                'macro' => ''
+                'line_nr' => 68
               }
             },
             {
@@ -125,6 +123,7 @@ $result_trees{'cpp_lines'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -134,8 +133,7 @@ $result_trees{'cpp_lines'} = {
       },
       'source_info' => {
         'file_name' => 'g_f',
-        'line_nr' => 70,
-        'macro' => ''
+        'line_nr' => 70
       }
     },
     {
@@ -232,15 +230,13 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 51,
-                'macro' => ''
+                'line_nr' => 51
               }
             }
           ],
           'source_info' => {
             'file_name' => 'g_f',
-            'line_nr' => 48,
-            'macro' => ''
+            'line_nr' => 48
           }
         },
         {
@@ -290,8 +286,7 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 55,
-                'macro' => ''
+                'line_nr' => 55
               }
             }
           ],
@@ -301,8 +296,7 @@ $result_trees{'cpp_lines'} = {
           },
           'source_info' => {
             'file_name' => 'g_f',
-            'line_nr' => 53,
-            'macro' => ''
+            'line_nr' => 53
           }
         },
         {
@@ -320,14 +314,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'after lacro def'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 57,
-                'macro' => ''
+                'line_nr' => 57
               }
             },
             {
@@ -338,25 +331,6 @@ $result_trees{'cpp_lines'} = {
           'type' => 'paragraph'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'macr'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -365,6 +339,22 @@ $result_trees{'cpp_lines'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macr'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 1,
                   'position' => 12,
@@ -393,14 +383,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'after macro call'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 61,
-                'macro' => ''
+                'line_nr' => 61
               }
             },
             {
@@ -462,8 +451,7 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 66,
-                'macro' => ''
+                'line_nr' => 66
               }
             }
           ],
@@ -473,8 +461,7 @@ $result_trees{'cpp_lines'} = {
           },
           'source_info' => {
             'file_name' => 'g_f',
-            'line_nr' => 63,
-            'macro' => ''
+            'line_nr' => 63
           }
         },
         {
@@ -492,14 +479,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'after macrotwo def'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 68,
-                'macro' => ''
+                'line_nr' => 68
               }
             },
             {
@@ -510,25 +496,6 @@ $result_trees{'cpp_lines'} = {
           'type' => 'paragraph'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 2,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'macrtwo'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -536,6 +503,24 @@ $result_trees{'cpp_lines'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macrtwo'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'line before
 '
             },
@@ -569,14 +554,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'after macrotwo call'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 72,
-                'macro' => ''
+                'line_nr' => 72
               }
             },
             {
@@ -618,8 +602,7 @@ $result_trees{'cpp_lines'} = {
                 },
                 'source_info' => {
                   'file_name' => 'g_f',
-                  'line_nr' => 74,
-                  'macro' => ''
+                  'line_nr' => 74
                 }
               },
               'position' => 1,
@@ -651,14 +634,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'in'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'inc',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -691,14 +673,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'after inc'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 75,
-                'macro' => ''
+                'line_nr' => 75
               }
             },
             {
@@ -730,7 +711,7 @@ $result_trees{'cpp_lines'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -739,8 +720,7 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 77,
-                'macro' => ''
+                'line_nr' => 77
               }
             },
             {
@@ -765,14 +745,13 @@ $result_trees{'cpp_lines'} = {
                       'text' => 'after verb'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 81,
-                'macro' => ''
+                'line_nr' => 81
               }
             },
             {
@@ -809,6 +788,7 @@ $result_trees{'cpp_lines'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => '
@@ -817,8 +797,7 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'g_f',
-                'line_nr' => 83,
-                'macro' => ''
+                'line_nr' => 83
               }
             },
             {
@@ -860,6 +839,7 @@ $result_trees{'cpp_lines'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => '
@@ -868,8 +848,7 @@ $result_trees{'cpp_lines'} = {
               },
               'source_info' => {
                 'file_name' => 'footnote',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               }
             },
             {
@@ -905,7 +884,7 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -923,14 +902,13 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'footnote2',
-                'line_nr' => 40,
-                'macro' => ''
+                'line_nr' => 40
               }
             },
             {
@@ -961,7 +939,7 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -979,14 +957,13 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'email2',
-                'line_nr' => 64,
-                'macro' => ''
+                'line_nr' => 64
               }
             },
             {
@@ -1017,7 +994,7 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -1035,14 +1012,13 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'email2',
-                'line_nr' => 69,
-                'macro' => ''
+                'line_nr' => 69
               }
             },
             {
@@ -1075,14 +1051,13 @@ $result_trees{'cpp_lines'} = {
 '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
                 'file_name' => 'email12',
-                'line_nr' => 64,
-                'macro' => ''
+                'line_nr' => 64
               }
             }
           ],
@@ -1169,8 +1144,7 @@ $result_trees{'cpp_lines'} = {
           },
           'source_info' => {
             'file_name' => 'accentÃªd',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -1180,6 +1154,7 @@ $result_trees{'cpp_lines'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -1189,8 +1164,7 @@ $result_trees{'cpp_lines'} = {
       },
       'source_info' => {
         'file_name' => 'g_f',
-        'line_nr' => 71,
-        'macro' => ''
+        'line_nr' => 71
       }
     },
     {
@@ -1360,32 +1334,41 @@ etext4
 
 ';
 
-$result_nodes{'cpp_lines'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'cpp_lines'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'cpp_lines'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'cpp_lines'}[0];
+$result_nodes{'cpp_lines'}[1] = $result_nodes{'cpp_lines'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'cpp_lines'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'cpp_lines'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'cpp_lines'};
-
-$result_menus{'cpp_lines'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'cpp_lines'} = [
   {
@@ -1393,7 +1376,6 @@ $result_errors{'cpp_lines'} = [
 ',
     'file_name' => 'email12',
     'line_nr' => 64,
-    'macro' => '',
     'text' => '@email missing closing brace',
     'type' => 'error'
   },
@@ -1402,7 +1384,6 @@ $result_errors{'cpp_lines'} = [
 ',
     'file_name' => 'email4',
     'line_nr' => 63,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   },
@@ -1411,7 +1392,6 @@ $result_errors{'cpp_lines'} = [
 ",
     'file_name' => 'accentÃªd',
     'line_nr' => 7,
-    'macro' => '',
     'text' => "l\x{e0}ng is not a valid language code",
     'type' => 'warning'
   }

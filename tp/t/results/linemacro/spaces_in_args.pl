@@ -72,9 +72,7 @@ $result_trees{'spaces_in_args'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -83,9 +81,7 @@ $result_trees{'spaces_in_args'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -101,11 +97,7 @@ $result_trees{'spaces_in_args'} = {
                         'type' => 'bracketed_linemacro_arg'
                       }
                     ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -118,7 +110,8 @@ $result_trees{'spaces_in_args'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -131,11 +124,15 @@ $result_trees{'spaces_in_args'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   }
                 ],
                 'info' => {
-                  'command_name' => 'mylinecommand'
+                  'command_name' => 'mylinecommand',
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'type' => 'linemacro_call'
               },
@@ -167,75 +164,102 @@ $result_trees{'spaces_in_args'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'category'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'category'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => '   ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'a'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => '  ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'A'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'A'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => '  ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'd'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'd'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => '   ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'B'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'B'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => '    ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'rest'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'rest'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -250,7 +274,19 @@ $result_trees{'spaces_in_args'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'a'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -259,11 +295,9 @@ $result_trees{'spaces_in_args'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'mylinecommand'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'args' => [
@@ -300,14 +334,12 @@ $result_trees{'spaces_in_args'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'mylinecommand'
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 7,
             'macro' => 'mylinecommand'
           }
@@ -318,7 +350,6 @@ $result_trees{'spaces_in_args'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'spaces_in_args'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'spaces_in_args'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'spaces_in_args'} = '@linemacro mylinecommand {first, second, rest}
 @defblock

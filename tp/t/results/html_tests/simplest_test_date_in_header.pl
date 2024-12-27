@@ -25,7 +25,6 @@ $result_trees{'simplest_test_date_in_header'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -77,6 +76,7 @@ $result_trees{'simplest_test_date_in_header'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -86,8 +86,7 @@ $result_trees{'simplest_test_date_in_header'} = {
       },
       'source_info' => {
         'file_name' => 'simplest.texi',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -119,19 +118,22 @@ This is a very simple texi manual   <>.
 
 ';
 
-$result_nodes{'simplest_test_date_in_header'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'simplest_test_date_in_header'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'simplest_test_date_in_header'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'simplest_test_date_in_header'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'simplest_test_date_in_header'} = [];
 

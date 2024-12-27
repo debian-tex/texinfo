@@ -19,14 +19,12 @@ $result_trees{'arg_in_brace_no_arg_command'} = {
                       'text' => 'in tex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'TeX',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -54,9 +52,7 @@ $result_errors{'arg_in_brace_no_arg_command'} = [
   {
     'error_line' => 'warning: command @TeX does not accept arguments
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'command @TeX does not accept arguments',
     'type' => 'warning'
   }

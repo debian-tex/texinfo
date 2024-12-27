@@ -2,21 +2,39 @@
 # easily tested by calling directly ./texi2any.pl and checking visually:
 # ./texi2any.pl --footnote-style=bâd
 # ./texi2any.pl --paragraph-indent=ïndent
+
+# NOTE in the default case, the locale set for the tests corresponds to
+# an ASCII encoding.  In that setup, non-ASCII encoded characters are usually
+# treated as invalid characters.  Perl Encode::encode use a substitution
+# character which seems to be "?", but there is no guarantee.  With XS/C
+# and GNU iconv, there also seems to be a "?" output but there are also
+# "encoding error at byte XXX" errors output.  For XS/C it could probably
+# be possible to have "?" output reproducibly by replacing encode_with_iconv by
+# gnulib striconveh module mem_cd_iconveh with iconv_ilseq_handler set to
+# iconveh_question_mark.
+#
+# Since there is no guarantee on the non-ASCII character representations
+# in error messages with an ASCII encoding, we set MESSAGE_ENCODING=UTF-8
+# for all the tests.
+
+# check non ascii in verbatiminclude file name
+#no_command_line_encoding built_input/non_ascii/osé_utf8.texi --html -D 'neednonasciifilenames Need non-ASCII file names'
+
 # check non ascii command line arguments and css files
-non_ascii_command_line osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' --html --no-split -c DO_ABOUT=1 -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --split=Mekanïk --document-language=Destruktïw -c 'Kommandöh vâl' -D TÛT -D 'vùr ké' -U ôndef -c 'FORMAT_MENU mînù' --macro-expand=@OUT_DIR@osé-texinfo.texi --internal-links=@OUT_DIR@intérnal.txt --css-include çss.css --css-include cêss.css --css-ref=rëf --css-ref=öref
+non_ascii_command_line built_input/non_ascii/osé_utf8.texi --html --no-split -c DO_ABOUT=1 -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --split=Mekanïk --document-language=Destruktïw -c 'Kommandöh vâl' -D TÛT -D 'vùr ké' -U ôndef -c 'FORMAT_MENU mînù' --macro-expand=@OUT_DIR@osé-texinfo.texi --internal-links=@OUT_DIR@intérnal.txt --css-include çss.css --css-include cêss.css --css-ref=rëf --css-ref=öref -D 'neednonasciifilenames Need non-ASCII file names'
 
 # test for the copying of image with non ascii characters for epub
-non_ascii_test_epub osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --init epub3.pm -c 'EPUB_CREATE_CONTAINER_FILE 0'
+non_ascii_test_epub built_input/non_ascii/osé_utf8.texi -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --init epub3.pm -c 'EPUB_CREATE_CONTAINER_FILE 0' -D 'neednonasciifilenames Need non-ASCII file names'
 
 # check that the output is right when based on @setfilename
-non_ascii_test_rawtext osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 -c TEXINFO_OUTPUT_FORMAT=rawtext
+non_ascii_test_rawtext built_input/non_ascii/osé_utf8.texi -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 -c TEXINFO_OUTPUT_FORMAT=rawtext -D 'neednonasciifilenames Need non-ASCII file names'
 
 # check that the output is right when based on input file name
-non_ascii_no_setfilename_test_rawtext osé_utf8_no_setfilename.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 -c TEXINFO_OUTPUT_FORMAT=rawtext
+non_ascii_no_setfilename_test_rawtext built_input/non_ascii/osé_utf8_no_setfilename.texi -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 -c TEXINFO_OUTPUT_FORMAT=rawtext -D 'neednonasciifilenames Need non-ASCII file names'
 
-non_ascii_test_info osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 --info
+non_ascii_test_info built_input/non_ascii/osé_utf8.texi -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 --info -D 'neednonasciifilenames Need non-ASCII file names'
 
-non_ascii_test_latex osé_utf8.texi -D 'needcommandlineunicode Need command-line unicode' -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 --latex
+non_ascii_test_latex built_input/non_ascii/osé_utf8.texi -c COMMAND_LINE_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -c OUTPUT_FILE_NAME_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8 --latex -D 'neednonasciifilenames Need non-ASCII file names'
 
 # test of non utf8 encoded file name in non utf8 document
 # "Need recoded file names" string is used in test driving script
@@ -29,6 +47,19 @@ manual_include_accented_file_name_latin1_explicit_encoding manual_include_accent
 # fails to find the latin1 encoded include file as the locale encoding
 # of the test suite is utf8
 manual_include_accented_file_name_latin1_use_locale_encoding manual_include_accented_file_name_latin1.texi --info -D 'needrecodedfilenames Need recoded file names' -c MESSAGE_ENCODING=UTF-8 -c INPUT_FILE_NAME_ENCODING=UTF-8
+
+# note that this could be in t/*.t test suite, but the included
+# files are here.
+# The following tests tests how verbatiminclude file name encoding is
+# resolved in raw text in HTML and in raw text converter and how
+# customization options are used.
+verbatiminclude_names_latin1_html verbatiminclude_names_latin1.texi --html -c MESSAGE_ENCODING=UTF-8
+
+verbatiminclude_names_latin1_html_explicit_encoding verbatiminclude_names_latin1.texi --html -c INPUT_FILE_NAME_ENCODING=UTF-8 -c MESSAGE_ENCODING=UTF-8 -D 'neednonasciifilenames Need non-ASCII file names'
+
+verbatiminclude_names_latin1_rawtext verbatiminclude_names_latin1.texi -c TEXINFO_OUTPUT_FORMAT=rawtext -D 'neednonasciifilenames Need non-ASCII file names'
+
+verbatiminclude_names_latin1_explicit_encoding_rawtext verbatiminclude_names_latin1.texi -c TEXINFO_OUTPUT_FORMAT=rawtext -c INPUT_FILE_NAME_ENCODING=UTF-8 -D 'neednonasciifilenames Need non-ASCII file names'
 
 # test that a file with some latin1 characters, typically used for person names
 # but no declared encoding does not give a result that is too bad, and lead

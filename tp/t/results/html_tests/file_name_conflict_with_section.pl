@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'file_name_conflict_with_section'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -29,6 +34,7 @@ $result_trees{'file_name_conflict_with_section'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +43,7 @@ $result_trees{'file_name_conflict_with_section'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -69,17 +73,16 @@ $result_trees{'file_name_conflict_with_section'} = {
                   'text' => 'Chap'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'Chap'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -100,9 +103,7 @@ $result_trees{'file_name_conflict_with_section'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -123,15 +124,16 @@ $result_trees{'file_name_conflict_with_section'} = {
         }
       ],
       'cmdname' => 'chapter',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -154,7 +156,7 @@ $result_texts{'file_name_conflict_with_section'} = 'top
 ';
 
 $result_sectioning{'file_name_conflict_with_section'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -164,52 +166,57 @@ $result_sectioning{'file_name_conflict_with_section'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_conflict_with_section'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_conflict_with_section'};
+$result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_conflict_with_section'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'file_name_conflict_with_section'};
 
-$result_nodes{'file_name_conflict_with_section'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'file_name_conflict_with_section'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'file_name_conflict_with_section'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'file_name_conflict_with_section'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'file_name_conflict_with_section'} = [];
 
@@ -221,9 +228,7 @@ $result_converted_errors{'file_html'}->{'file_name_conflict_with_section'} = [
   {
     'error_line' => 'warning: @anchor `Chap\' file Chap.html for redirection exists
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@anchor `Chap\' file Chap.html for redirection exists',
     'type' => 'warning'
   },
@@ -231,9 +236,7 @@ $result_converted_errors{'file_html'}->{'file_name_conflict_with_section'} = [
     'continuation' => 1,
     'error_line' => 'warning: conflict with @chapter `Chap\' file
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'conflict with @chapter `Chap\' file',
     'type' => 'warning'
   }

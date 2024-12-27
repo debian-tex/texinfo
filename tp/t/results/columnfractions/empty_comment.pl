@@ -32,18 +32,13 @@ $result_trees{'empty_comment'} = {
                     }
                   ],
                   'cmdname' => 'columnfractions',
-                  'extra' => {
-                    'missing_argument' => 1
-                  },
                   'info' => {
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -73,9 +68,7 @@ $result_trees{'empty_comment'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -88,9 +81,7 @@ $result_trees{'empty_comment'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -110,9 +101,7 @@ $result_errors{'empty_comment'} = [
   {
     'error_line' => '@columnfractions missing argument
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@columnfractions missing argument',
     'type' => 'error'
   }

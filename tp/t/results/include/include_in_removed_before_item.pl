@@ -16,11 +16,8 @@ $result_trees{'include_in_removed_before_item'} = {
                 {
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 1
+                  }
                 }
               ],
               'info' => {
@@ -77,9 +74,7 @@ $result_trees{'include_in_removed_before_item'} = {
                               }
                             },
                             'source_info' => {
-                              'file_name' => '',
-                              'line_nr' => 3,
-                              'macro' => ''
+                              'line_nr' => 3
                             }
                           },
                           'sourcemark_type' => 'include',
@@ -128,9 +123,7 @@ $result_trees{'include_in_removed_before_item'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     }
                   ],
@@ -166,9 +159,7 @@ $result_trees{'include_in_removed_before_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -181,9 +172,7 @@ $result_trees{'include_in_removed_before_item'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],

@@ -19,6 +19,9 @@ $result_trees{'multitable_item_in_index'} = {
                       'text' => 'aaa'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 1
+                  },
                   'type' => 'bracketed_arg'
                 },
                 {
@@ -30,6 +33,9 @@ $result_trees{'multitable_item_in_index'} = {
                       'text' => 'bbb'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 1
+                  },
                   'type' => 'bracketed_arg'
                 }
               ],
@@ -75,14 +81,13 @@ $result_trees{'multitable_item_in_index'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'vindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                    'line_nr' => 2
                   },
                   'type' => 'index_entry_command'
                 }
@@ -116,9 +121,7 @@ $result_trees{'multitable_item_in_index'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -131,9 +134,7 @@ $result_trees{'multitable_item_in_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -155,36 +156,28 @@ $result_errors{'multitable_item_in_index'} = [
   {
     'error_line' => 'warning: @item should not appear on @vindex line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@item should not appear on @vindex line',
     'type' => 'warning'
   },
   {
     'error_line' => '@item outside of table or list
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@item outside of table or list',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @multitable has text but no @item
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@multitable has text but no @item',
     'type' => 'warning'
   }

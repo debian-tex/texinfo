@@ -76,9 +76,7 @@ $result_trees{'value_in_macro_body'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -87,36 +85,10 @@ $result_trees{'value_in_macro_body'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'macro_arg1'
-                      }
-                    ],
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'testvaluebody'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -124,6 +96,29 @@ $result_trees{'value_in_macro_body'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'macro_arg1'
+                          }
+                        ],
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'testvaluebody'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'result: '
             },
             {
@@ -137,7 +132,12 @@ $result_trees{'value_in_macro_body'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'bodyarg'
+                                'contents' => [
+                                  {
+                                    'text' => 'bodyarg'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -157,12 +157,11 @@ $result_trees{'value_in_macro_body'} = {
                       'text' => '\\\\arg\\  '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'testvaluebody'
               },
@@ -207,9 +206,7 @@ $result_errors{'value_in_macro_body'} = [
   {
     'error_line' => '\\ in @testvaluebody expansion followed `@value{bodyarg}\' instead of parameter name or \\
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '\\ in @testvaluebody expansion followed `@value{bodyarg}\' instead of parameter name or \\',
     'type' => 'error'
   }

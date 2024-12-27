@@ -1,6 +1,6 @@
 install-info/tests/README
 
-  Copyright 2008-2023 Free Software Foundation, Inc.
+  Copyright 2008-2024 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -180,3 +180,5 @@ This file describes each of the numbered install-info tests.
       extra blank lines.
 0059: Deletion of section between two other sections leaves one
       blank line between the remaining sections.
+0060: Installing an Info file.  The Info file contains entries with the same
+      start, the longest entry should be listed last (dictionary sort).

@@ -50,9 +50,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'command_conditionals_user_defined'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -100,9 +96,7 @@ $result_trees{'command_conditionals_user_defined'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -141,9 +135,7 @@ $result_trees{'command_conditionals_user_defined'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -181,9 +173,7 @@ $result_trees{'command_conditionals_user_defined'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         },
         {
@@ -214,9 +204,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 11,
-                  'macro' => ''
+                  'line_nr' => 11
                 }
               },
               'position' => 1,
@@ -264,9 +252,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 13,
-                      'macro' => ''
+                      'line_nr' => 13
                     }
                   },
                   'position' => 23,
@@ -326,9 +312,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                           }
                         },
                         'source_info' => {
-                          'file_name' => '',
-                          'line_nr' => 16,
-                          'macro' => ''
+                          'line_nr' => 16
                         }
                       }
                     ],
@@ -338,9 +322,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 14,
-                      'macro' => ''
+                      'line_nr' => 14
                     }
                   },
                   'position' => 23,
@@ -381,9 +363,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 18,
-                  'macro' => ''
+                  'line_nr' => 18
                 }
               },
               'position' => 1,
@@ -434,9 +414,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 20,
-                      'macro' => ''
+                      'line_nr' => 20
                     }
                   },
                   'position' => 22,
@@ -496,9 +474,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                           }
                         },
                         'source_info' => {
-                          'file_name' => '',
-                          'line_nr' => 23,
-                          'macro' => ''
+                          'line_nr' => 23
                         }
                       }
                     ],
@@ -508,9 +484,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 21,
-                      'macro' => ''
+                      'line_nr' => 21
                     }
                   },
                   'position' => 22,
@@ -551,9 +525,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 25,
-                  'macro' => ''
+                  'line_nr' => 25
                 }
               },
               'position' => 1,
@@ -604,9 +576,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 27,
-                      'macro' => ''
+                      'line_nr' => 27
                     }
                   },
                   'position' => 21,
@@ -666,9 +636,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                           }
                         },
                         'source_info' => {
-                          'file_name' => '',
-                          'line_nr' => 30,
-                          'macro' => ''
+                          'line_nr' => 30
                         }
                       }
                     ],
@@ -678,9 +646,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 28,
-                      'macro' => ''
+                      'line_nr' => 28
                     }
                   },
                   'position' => 21,
@@ -721,9 +687,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 32,
-                  'macro' => ''
+                  'line_nr' => 32
                 }
               },
               'position' => 1,
@@ -774,9 +738,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 34,
-                      'macro' => ''
+                      'line_nr' => 34
                     }
                   },
                   'position' => 18,
@@ -836,9 +798,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                           }
                         },
                         'source_info' => {
-                          'file_name' => '',
-                          'line_nr' => 37,
-                          'macro' => ''
+                          'line_nr' => 37
                         }
                       }
                     ],
@@ -848,9 +808,7 @@ $result_trees{'command_conditionals_user_defined'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 35,
-                      'macro' => ''
+                      'line_nr' => 35
                     }
                   },
                   'position' => 18,
@@ -907,9 +865,7 @@ $result_errors{'command_conditionals_user_defined'} = [
   {
     'error_line' => 'warning: @definfoenclose is obsolete
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   }
@@ -919,51 +875,30 @@ $result_errors{'command_conditionals_user_defined'} = [
 $result_indices{'command_conditionals_user_defined'} = {
   'index_names' => {
     'auth' => {
-      'contained_indices' => {
-        'auth' => 1
-      },
       'in_code' => 0,
       'name' => 'auth'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }

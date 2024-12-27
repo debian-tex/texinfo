@@ -38,9 +38,7 @@ $result_trees{'simple_documentlanguage'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -73,6 +71,7 @@ $result_trees{'simple_documentlanguage'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -81,9 +80,7 @@ $result_trees{'simple_documentlanguage'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -120,57 +117,77 @@ $result_trees{'simple_documentlanguage'} = {
                     {
                       'contents' => [
                         {
+                          'contents' => [
+                            {
+                              'text' => 'Instance Variable',
+                              'type' => 'untranslated'
+                            }
+                          ],
                           'extra' => {
                             'documentlanguage' => 'fr',
                             'translation_context' => 'category of instance variables in object-oriented programming for @defivar'
                           },
-                          'text' => 'Instance Variable',
-                          'type' => 'untranslated'
+                          'type' => 'untranslated_def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
+                      'info' => {
+                        'inserted' => 1
                       },
-                      'type' => 'bracketed_inserted'
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces_inserted'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'class'
-                      },
-                      'text' => 'AAA'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
+                      'info' => {
+                        'inserted' => 1
                       },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'BBB'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'AAA'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_class'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'CCC'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'CCC'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -186,20 +203,68 @@ $result_trees{'simple_documentlanguage'} = {
                 'def_command' => 'defivar',
                 'def_index_element' => {
                   'contents' => [
-                    {},
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     {
                       'text' => ' de '
                     },
-                    {}
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'AAA'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_class'
+                    }
                   ]
                 },
                 'def_index_ref_element' => {
                   'contents' => [
-                    {},
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'BBB'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     {
                       'text' => ' of '
                     },
-                    {}
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'AAA'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_class'
+                    }
                   ]
                 },
                 'documentlanguage' => 'fr',
@@ -211,9 +276,7 @@ $result_trees{'simple_documentlanguage'} = {
                 'original_def_cmdname' => 'defivar'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'def_line'
             },
@@ -244,9 +307,7 @@ $result_trees{'simple_documentlanguage'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -256,13 +317,12 @@ $result_trees{'simple_documentlanguage'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -271,18 +331,12 @@ $result_trees{'simple_documentlanguage'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[0] = $result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_element'}{'contents'}[2] = $result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[0] = $result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_index_ref_element'}{'contents'}[2] = $result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'simple_documentlanguage'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'element_node'} = $result_trees{'simple_documentlanguage'}{'contents'}[2];
 
 $result_texis{'simple_documentlanguage'} = '@documentlanguage fr
@@ -297,35 +351,44 @@ $result_texis{'simple_documentlanguage'} = '@documentlanguage fr
 
 $result_texts{'simple_documentlanguage'} = '
 
-Instance Variable of AAA: BBB CCC
+Variable d\'instance de AAA: BBB CCC
 ';
 
-$result_nodes{'simple_documentlanguage'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'simple_documentlanguage'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'simple_documentlanguage'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'simple_documentlanguage'}[0];
+$result_nodes{'simple_documentlanguage'}[1] = $result_nodes{'simple_documentlanguage'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'simple_documentlanguage'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'simple_documentlanguage'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'simple_documentlanguage'};
-
-$result_menus{'simple_documentlanguage'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'simple_documentlanguage'} = [];
 

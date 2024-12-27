@@ -28,15 +28,14 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         }
       ],
       'cmdname' => 'top',
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -57,15 +56,16 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         }
       ],
       'cmdname' => 'chapter',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -86,15 +86,14 @@ $result_trees{'character_number_leading_toc_stoc'} = {
         }
       ],
       'cmdname' => 'unnumbered',
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -130,10 +129,9 @@ $result_trees{'character_number_leading_toc_stoc'} = {
             }
           ],
           'cmdname' => 'contents',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -150,10 +148,9 @@ $result_trees{'character_number_leading_toc_stoc'} = {
             }
           ],
           'cmdname' => 'shortcontents',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         },
         {
@@ -162,15 +159,14 @@ $result_trees{'character_number_leading_toc_stoc'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -203,59 +199,70 @@ _
 ';
 
 $result_sectioning{'character_number_leading_toc_stoc'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
               'cmdname' => 'unnumbered',
-              'structure' => {
+              'extra' => {
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
-                    'structure' => {
-                      'section_level' => 2,
-                      'section_up' => {}
+                    'extra' => {
+                      'section_directions' => {
+                        'up' => {}
+                      },
+                      'section_level' => 2
                     }
                   }
                 ],
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'character_number_leading_toc_stoc'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'character_number_leading_toc_stoc'};
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'character_number_leading_toc_stoc'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'character_number_leading_toc_stoc'};
 
 $result_errors{'character_number_leading_toc_stoc'} = [];
 
@@ -266,7 +273,7 @@ $result_floats{'character_number_leading_toc_stoc'} = {};
 
 $result_converted{'html'}->{'character_number_leading_toc_stoc'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -292,7 +299,7 @@ ul.toc-numbered-mark {list-style: none}
 <body lang="en">
 <div class="top-level-extent" id="top">
 <h1 class="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
-<div class="element-shortcontents" id="SEC_Shortcontents">
+<div class="region-shortcontents" id="SEC_Shortcontents">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
@@ -302,7 +309,7 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
-<div class="element-contents" id="SEC_Contents">
+<div class="region-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">

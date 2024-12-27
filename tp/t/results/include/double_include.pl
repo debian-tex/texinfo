@@ -53,9 +53,7 @@ $result_trees{'double_include'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 2,
-                                'macro' => ''
+                                'line_nr' => 2
                               }
                             },
                             'position' => 1,
@@ -79,9 +77,7 @@ $result_trees{'double_include'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 2,
-                  'macro' => ''
+                  'line_nr' => 2
                 }
               },
               'position' => 1,
@@ -144,18 +140,14 @@ $result_errors{'double_include'} = [
   {
     'error_line' => 'warning: @include should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @include should not appear in @include
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@include should not appear in @include',
     'type' => 'warning'
   }

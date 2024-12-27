@@ -61,9 +61,7 @@ $result_trees{'paragraphindent_asis_first'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -112,7 +110,6 @@ $result_converted{'info'}->{'paragraphindent_asis_first'} = 'This is , produced 
 bbb
 
      ccc
-
 
 Tag Table:
 

@@ -38,14 +38,13 @@ $result_trees{'node_on_index_entry_line'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           },
           'type' => 'index_entry_command'
         }
@@ -78,12 +77,16 @@ $result_trees{'node_on_index_entry_line'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            },
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'b'
           },
           'info' => {
@@ -109,12 +112,16 @@ $result_trees{'node_on_index_entry_line'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            },
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'c'
           },
           'info' => {
@@ -140,12 +147,16 @@ $result_trees{'node_on_index_entry_line'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            },
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'd'
           },
           'info' => {
@@ -178,6 +189,7 @@ $result_trees{'node_on_index_entry_line'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'a'
       },
       'info' => {
@@ -186,20 +198,18 @@ $result_trees{'node_on_index_entry_line'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[3];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'extra'}{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[1];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[3];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[3];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[1];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[1]{'contents'}[3];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[1];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[2]{'contents'}[3];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_on_index_entry_line'}{'contents'}[1]{'args'}[3]{'contents'}[3];
 
 $result_texis{'node_on_index_entry_line'} = '
 @cindex entry @node a, (m)b, (m)c, (h)d
@@ -213,78 +223,65 @@ $result_texts{'node_on_index_entry_line'} = '
 Content
 ';
 
-$result_nodes{'node_on_index_entry_line'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'a'
-  },
-  'structure' => {
-    'node_next' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'm'
-          }
-        ],
-        'normalized' => 'b'
-      }
-    },
-    'node_prev' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'm'
-          }
-        ],
-        'normalized' => 'c'
-      }
-    },
-    'node_up' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'h'
-          }
-        ],
-        'normalized' => 'd'
-      }
+$result_nodes{'node_on_index_entry_line'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'extra' => {
+            'manual_content' => {},
+            'normalized' => 'b'
+          },
+          'type' => 'line_arg'
+        },
+        'prev' => {
+          'extra' => {
+            'manual_content' => {},
+            'normalized' => 'c'
+          },
+          'type' => 'line_arg'
+        },
+        'up' => {
+          'extra' => {
+            'manual_content' => {},
+            'normalized' => 'd'
+          },
+          'type' => 'line_arg'
+        }
+      },
+      'normalized' => 'a'
     }
   }
-};
+];
 
-$result_menus{'node_on_index_entry_line'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'a'
-  },
-  'structure' => {}
-};
+$result_menus{'node_on_index_entry_line'} = [
+  {
+    'extra' => {
+      'normalized' => 'a'
+    }
+  }
+];
 
 $result_errors{'node_on_index_entry_line'} = [
   {
     'error_line' => 'warning: @node should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@node should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @node should not appear on @cindex line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@node should not appear on @cindex line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }

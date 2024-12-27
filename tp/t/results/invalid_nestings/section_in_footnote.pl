@@ -40,9 +40,7 @@ $result_trees{'section_in_footnote'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -69,15 +67,16 @@ $result_trees{'section_in_footnote'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -97,29 +96,27 @@ Text1 a section
 ';
 
 $result_sectioning{'section_in_footnote'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_in_footnote'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_in_footnote'};
+$result_sectioning{'section_in_footnote'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_in_footnote'};
 
 $result_errors{'section_in_footnote'} = [
   {
     'error_line' => '@section seen before @footnote closing brace
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@section seen before @footnote closing brace',
     'type' => 'error'
   }

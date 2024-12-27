@@ -2,30 +2,15 @@
 #ifndef API_H
 #define API_H
 
-int init (int texinfo_uninstalled, char *srcdir_in);
+#include "tree_types.h"
 
-int parse_file (char *filename);
-void parse_piece (char *, int line_nr);
-void parse_string (char *, int line_nr);
-void parse_text (char *, int line_nr);
+size_t parse_file (const char *input_file_path, int *status);
+size_t parse_piece (const char *, int line_nr);
+size_t parse_string (const char *, int line_nr);
+size_t parse_text (const char *, int line_nr);
 void reset_parser (int debug_output);
-void reset_parser_except_conf (void);
-void set_debug (int);
-void wipe_values (void);
-void reset_context_stack (void);
 
-void set_DOC_ENCODING_FOR_INPUT_FILE_NAME (int i);
-void conf_set_input_file_name_encoding (char *value);
-void conf_set_locale_encoding (char *value);
-void conf_set_documentlanguage_override (char *value);
-
-HV *build_texinfo_tree (void);
-AV *build_target_elements_list (void);
-AV *build_internal_xref_list (void);
-HV *build_float_list (void);
-HV *build_index_data (void);
-HV *build_global_info (void);
-HV *build_global_info2 (void);
-AV *get_errors (void);
+void parser_conf_reset_values (void);
+void parser_conf_add_value (const char *name, const char *value);
 
 #endif

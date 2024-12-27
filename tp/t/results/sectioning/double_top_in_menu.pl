@@ -27,9 +27,11 @@ $result_trees{'double_top_in_menu'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Top'
           },
           'info' => {
@@ -87,9 +89,11 @@ $result_trees{'double_top_in_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Top'
                   },
                   'type' => 'menu_entry_node'
@@ -114,9 +118,7 @@ $result_trees{'double_top_in_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'menu_entry'
             },
@@ -133,9 +135,11 @@ $result_trees{'double_top_in_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Top'
                   },
                   'type' => 'menu_entry_node'
@@ -160,9 +164,7 @@ $result_trees{'double_top_in_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'menu_entry'
             },
@@ -193,16 +195,12 @@ $result_trees{'double_top_in_menu'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -212,6 +210,7 @@ $result_trees{'double_top_in_menu'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -220,9 +219,7 @@ $result_trees{'double_top_in_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -245,9 +242,11 @@ $result_trees{'double_top_in_menu'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Top'
           },
           'type' => 'line_arg'
@@ -259,9 +258,11 @@ $result_trees{'double_top_in_menu'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Top'
           },
           'info' => {
@@ -285,25 +286,26 @@ $result_trees{'double_top_in_menu'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'normalized' => 'Top'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
+        'line_nr' => 9
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[2]{'contents'}[0];
-$result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[3]{'contents'}[0];
+$result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[2]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[2]{'contents'}[0];
+$result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_top_in_menu'}{'contents'}[2]{'args'}[3]{'contents'}[0];
 
 $result_texis{'double_top_in_menu'} = '@node ToP, top
 Top node
@@ -326,51 +328,60 @@ $result_texts{'double_top_in_menu'} = 'Top node
 second node.
 ';
 
-$result_nodes{'double_top_in_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
+$result_nodes{'double_top_in_menu'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {}
+      },
+      'normalized' => 'Top'
+    }
   },
-  'structure' => {
-    'menu_child' => {},
-    'node_next' => {}
-  }
-};
-$result_nodes{'double_top_in_menu'}{'structure'}{'menu_child'} = $result_nodes{'double_top_in_menu'};
-$result_nodes{'double_top_in_menu'}{'structure'}{'node_next'} = $result_nodes{'double_top_in_menu'};
-
-$result_menus{'double_top_in_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {},
-    'menu_next' => {},
-    'menu_prev' => {},
-    'menu_up' => {},
-    'menu_up_hash' => {
-      'Top' => 1
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'prev' => {},
+        'up' => {}
+      },
+      'normalized' => 'Top'
     }
   }
-};
-$result_menus{'double_top_in_menu'}{'structure'}{'menu_child'} = $result_menus{'double_top_in_menu'};
-$result_menus{'double_top_in_menu'}{'structure'}{'menu_next'} = $result_menus{'double_top_in_menu'};
-$result_menus{'double_top_in_menu'}{'structure'}{'menu_prev'} = $result_menus{'double_top_in_menu'};
-$result_menus{'double_top_in_menu'}{'structure'}{'menu_up'} = $result_menus{'double_top_in_menu'};
+];
+$result_nodes{'double_top_in_menu'}[0]{'extra'}{'node_directions'}{'next'} = $result_nodes{'double_top_in_menu'}[0];
+$result_nodes{'double_top_in_menu'}[1]{'extra'}{'node_directions'}{'prev'} = $result_nodes{'double_top_in_menu'}[0];
+$result_nodes{'double_top_in_menu'}[1]{'extra'}{'node_directions'}{'up'} = $result_nodes{'double_top_in_menu'}[0];
+
+$result_menus{'double_top_in_menu'} = [
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {},
+        'prev' => {},
+        'up' => {}
+      },
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  }
+];
+$result_menus{'double_top_in_menu'}[0]{'extra'}{'menu_directions'}{'next'} = $result_menus{'double_top_in_menu'}[0];
+$result_menus{'double_top_in_menu'}[0]{'extra'}{'menu_directions'}{'prev'} = $result_menus{'double_top_in_menu'}[0];
+$result_menus{'double_top_in_menu'}[0]{'extra'}{'menu_directions'}{'up'} = $result_menus{'double_top_in_menu'}[0];
 
 $result_errors{'double_top_in_menu'} = [
   {
     'error_line' => '@node `top\' previously defined
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@node `top\' previously defined',
     'type' => 'error'
   },
@@ -378,37 +389,36 @@ $result_errors{'double_top_in_menu'} = [
     'continuation' => 1,
     'error_line' => 'here is the previous definition as @node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'here is the previous definition as @node',
     'type' => 'error'
   },
   {
+    'error_line' => 'warning: Next pointer `top\' (for node `ToP\') different from node name `ToP\'
+',
+    'line_nr' => 1,
+    'text' => 'Next pointer `top\' (for node `ToP\') different from node name `ToP\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: Up pointer `Top\' (for node `top\') different from node name `ToP\'
+',
+    'line_nr' => 9,
+    'text' => 'Up pointer `Top\' (for node `top\') different from node name `ToP\'',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'warning: @menu entry node name `top\' different from node name `ToP\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@menu entry node name `top\' different from node name `ToP\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @menu entry node name `TOP\' different from node name `ToP\'
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@menu entry node name `TOP\' different from node name `ToP\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'warning: Next pointer `top\' (for node `ToP\') different from node name `ToP\'
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'Next pointer `top\' (for node `ToP\') different from node name `ToP\'',
     'type' => 'warning'
   }
 ];

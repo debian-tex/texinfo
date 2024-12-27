@@ -8,13 +8,13 @@ require 't/test_utils.pl';
 my @test_cases = (
 ['htmlxref',
   undef, {'test_file' => 'test_refs.texi' },
-  {'HTMLXREF_FILE' => 'htmlxref.cnf',
+  {'HTMLXREF_FILE' => 'htmlxref-test.cnf',
    'SPLIT' => '', 'NODE_NAME_IN_MENU' => 0,
    'USE_NODES' => 0}
 ],
 ['htmlxref_nodes',
   undef, {'test_file' => 'test_refs.texi' },
-  {'HTMLXREF_FILE' => 'htmlxref.cnf',
+  {'HTMLXREF_FILE' => 'htmlxref-test.cnf',
    'SPLIT' => 'node',,
    'USE_NODES' => 1}
 ],
@@ -41,6 +41,22 @@ my @test_cases = (
   {'HTMLXREF_FILE' => 'htmlxref-split.cnf',
    'SPLIT' => 'node',
    'USE_NODES' => 1}
+],
+['htmlxref_no_urlprefix_first',
+'@node top
+@top top
+
+@node chap
+@chapter Chap
+
+@xref{,,,manual}.
+
+@xref{,,,manual2}.
+
+',
+{'full_document' => 1,
+ 'test_input_file_name' => 'htmlxref_no_urlprefix_first.texi'},
+{'HTMLXREF_FILE' => 'htmlxref-no_urlprefix_first.cnf'}
 ],
 
 );

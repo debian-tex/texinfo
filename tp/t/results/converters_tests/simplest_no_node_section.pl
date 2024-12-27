@@ -59,8 +59,7 @@ $result_trees{'simplest_no_node_section'} = {
               },
               'source_info' => {
                 'file_name' => 'simplest_no_node_section.texi',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {

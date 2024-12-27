@@ -15,6 +15,24 @@ my @test_cases = (
 @defivar AAA BBB CCC
 @end defivar
 '],
+['no_documentlanguage_before_copying',
+'@copying
+@defivar copying a b
+@error{}
+@end defivar
+@end copying
+
+@node Top
+@top top
+
+@node chap
+@chapter Chap
+
+@documentlanguage de
+
+@insertcopying
+
+', {'skip' => 'incorrect result'}],
 # REMARK it is worth noting that the
 # @defivar in @insertcopying after @documentlanguage de appears
 # in german in the document, (and after @documentlanguage pt at
@@ -107,7 +125,7 @@ Text ending the preamble
 @end defivar
 '],
 ['appendix_translated',
-'@documentlanguage fr
+'@documentlanguage es
 
 @node Top
 @top top
@@ -150,6 +168,31 @@ Another unknown language. @xref{Top}.
 
 @defivar AAA BBB CCC
 @end defivar
+'],
+['documentlanguage_generated_master_menu',
+'@documentlanguage pt
+
+@documentlanguage de
+
+@node Top
+@top top
+
+@part Part I
+
+@node chapter
+@chapter Chap
+
+@documentlanguage fr
+
+@part Part II
+
+@node other chap
+@chapter Other chap
+
+@documentlanguage  hr
+
+@node appendix
+@appendix App
 '],
 );
 
@@ -215,25 +258,25 @@ my @file_tests = (
 ['multiple_lang_chapters',
 $multiple_lang_chapters_text,
 {'test_input_file_name' => 'multiple_lang_chapters.texi'},
-{'SPLIT' => 0}],
+{'SPLIT' => ''}],
 ['multiple_lang_chapters_texi2html',
 $multiple_lang_chapters_text, 
 {'test_input_file_name' => 'multiple_lang_chapters.texi',
 'EXPANDED_FORMATS' => ['html']}, 
-{'SPLIT' => 0, 'TEXI2HTML' => 1, 'TEST' => 1}],
+{'SPLIT' => '', 'TEXI2HTML' => 1, 'TEST' => 1}],
 ['documentlanguage',
  undef, {'test_file' => '../../tests/formatting/documentlanguage.texi',},
- {'SPLIT' => 0},
+ {'SPLIT' => ''},
 ],
 ['documentlanguage_option',
  undef, {'test_file' => '../../tests/formatting/documentlanguage.texi',
          'documentlanguage' => 'fr'},
- {'SPLIT' => 0, 'documentlanguage' => 'fr'},
+ {'SPLIT' => '', 'documentlanguage' => 'fr'},
 ],
 ['documentlanguage_unknown',
  undef, {'test_file' => '../../tests/formatting/documentlanguage.texi',
          'documentlanguage' => 'unknown'},
- {'SPLIT' => 0, 'documentlanguage' => 'unknown'},
+ {'SPLIT' => '', 'documentlanguage' => 'unknown'},
 ],
 );
 
@@ -254,6 +297,7 @@ my %info_tests = (
   'command_translated' => 1,
   'unknown_language' => 1,
   'unknown_region' => 1,
+  'documentlanguage_generated_master_menu' => 1,
 );
 
 my %xml_tests = (

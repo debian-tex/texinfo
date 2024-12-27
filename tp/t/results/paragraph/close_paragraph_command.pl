@@ -25,14 +25,13 @@ $result_trees{'close_paragraph_command'} = {
                   'text' => 'in titlefont'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_container'
             }
           ],
           'cmdname' => 'titlefont',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -87,9 +86,7 @@ $result_trees{'close_paragraph_command'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {

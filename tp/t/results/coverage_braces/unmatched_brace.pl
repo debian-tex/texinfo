@@ -19,14 +19,12 @@ $result_trees{'unmatched_brace'} = {
                       'text' => 'Closing'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'samp',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -46,14 +44,12 @@ $result_trees{'unmatched_brace'} = {
                       'text' => ' without opening macro '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'samp',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -78,9 +74,7 @@ $result_errors{'unmatched_brace'} = [
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }

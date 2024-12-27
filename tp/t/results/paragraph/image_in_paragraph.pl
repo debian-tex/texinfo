@@ -22,7 +22,7 @@ $result_trees{'image_in_paragraph'} = {
                       'text' => 'aa'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -30,7 +30,7 @@ $result_trees{'image_in_paragraph'} = {
                       'text' => 'bb'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -38,7 +38,7 @@ $result_trees{'image_in_paragraph'} = {
                       'text' => 'cc'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -46,7 +46,7 @@ $result_trees{'image_in_paragraph'} = {
                       'text' => 'dd'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -54,7 +54,7 @@ $result_trees{'image_in_paragraph'} = {
                       'text' => '.ee'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -62,9 +62,7 @@ $result_trees{'image_in_paragraph'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -106,9 +104,7 @@ $result_converted_errors{'html_text'}->{'image_in_paragraph'} = [
   {
     'error_line' => 'warning: @image file `aa\' (for HTML) not found, using `aa.ee\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `aa\' (for HTML) not found, using `aa.ee\'',
     'type' => 'warning'
   }

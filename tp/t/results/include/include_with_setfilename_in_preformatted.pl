@@ -54,9 +54,7 @@ $result_trees{'include_with_setfilename_in_preformatted'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 2,
-                      'macro' => ''
+                      'line_nr' => 2
                     }
                   },
                   'sourcemark_type' => 'include',
@@ -92,13 +90,13 @@ $result_trees{'include_with_setfilename_in_preformatted'} = {
                     },
                     'source_info' => {
                       'file_name' => 'included_file_with_setfilename.texi',
-                      'line_nr' => 1,
-                      'macro' => ''
+                      'line_nr' => 1
                     }
                   },
                   'sourcemark_type' => 'setfilename'
                 }
-              ]
+              ],
+              'type' => 'preformatted'
             },
             {
               'contents' => [
@@ -147,16 +145,12 @@ $result_trees{'include_with_setfilename_in_preformatted'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -190,7 +184,6 @@ $result_converted{'info'}->{'include_with_setfilename_in_preformatted'} = 'This 
 
      In included file.
      after include
-
 
 Tag Table:
 

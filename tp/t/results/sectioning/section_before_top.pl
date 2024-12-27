@@ -33,9 +33,11 @@ $result_trees{'section_before_top'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Top'
           },
           'info' => {
@@ -49,6 +51,7 @@ $result_trees{'section_before_top'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'section-node'
       },
       'info' => {
@@ -57,9 +60,7 @@ $result_trees{'section_before_top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -87,16 +88,16 @@ $result_trees{'section_before_top'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -118,6 +119,7 @@ $result_trees{'section_before_top'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -126,9 +128,7 @@ $result_trees{'section_before_top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -182,9 +182,11 @@ $result_trees{'section_before_top'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'section-node'
                   },
                   'type' => 'menu_entry_node'
@@ -209,9 +211,7 @@ $result_trees{'section_before_top'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               },
               'type' => 'menu_entry'
             },
@@ -242,16 +242,12 @@ $result_trees{'section_before_top'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         }
       ],
@@ -262,16 +258,14 @@ $result_trees{'section_before_top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_before_top'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'section_before_top'}{'contents'}[1]{'args'}[3]{'contents'}[0];
-$result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'section_before_top'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'section_before_top'}{'contents'}[1]{'args'}[3]{'contents'}[0];
+$result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'section_before_top'} = '@node section node,,,Top
 @section section 
@@ -295,7 +289,7 @@ top
 ';
 
 $result_sectioning{'section_before_top'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
@@ -304,14 +298,13 @@ $result_sectioning{'section_before_top'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'section-node'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
+          'section_directions' => {},
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
@@ -321,95 +314,83 @@ $result_sectioning{'section_before_top'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_before_top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_before_top'};
-$result_sectioning{'section_before_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'section_before_top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'section_before_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'section_before_top'};
-$result_sectioning{'section_before_top'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_before_top'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'section_before_top'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_before_top'};
+$result_sectioning{'section_before_top'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'section_before_top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'section_before_top'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'section_before_top'}{'extra'}{'section_childs'}[0];
 
-$result_nodes{'section_before_top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'section',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'section-node'
-      },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'section_before_top'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'section_before_top'};
-$result_nodes{'section_before_top'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'section_before_top'};
-$result_nodes{'section_before_top'}{'structure'}{'node_next'} = $result_nodes{'section_before_top'}{'structure'}{'menu_child'};
-
-$result_menus{'section_before_top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'section-node'
-      },
-      'structure' => {
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
+$result_nodes{'section_before_top'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'section',
+        'extra' => {
+          'section_number' => '1'
         }
-      }
+      },
+      'node_directions' => {
+        'up' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'top',
+              'extra' => {}
+            },
+            'node_directions' => {
+              'next' => {}
+            },
+            'normalized' => 'Top'
+          }
+        }
+      },
+      'normalized' => 'section-node'
     }
-  }
-};
-$result_menus{'section_before_top'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'section_before_top'};
+  },
+  {}
+];
+$result_nodes{'section_before_top'}[0]{'extra'}{'node_directions'}{'up'}{'extra'}{'node_directions'}{'next'} = $result_nodes{'section_before_top'}[0];
+$result_nodes{'section_before_top'}[1] = $result_nodes{'section_before_top'}[0]{'extra'}{'node_directions'}{'up'};
+
+$result_menus{'section_before_top'} = [
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {
+          'extra' => {
+            'menus' => [
+              {}
+            ],
+            'normalized' => 'Top'
+          }
+        }
+      },
+      'normalized' => 'section-node'
+    }
+  },
+  {}
+];
+$result_menus{'section_before_top'}[1] = $result_menus{'section_before_top'}[0]{'extra'}{'menu_directions'}{'up'};
 
 $result_errors{'section_before_top'} = [
   {
     'error_line' => 'warning: lowering the section level of @top appearing after a lower element
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'warning'
   }
@@ -423,7 +404,7 @@ $result_floats{'section_before_top'} = {};
 $result_converted{'info'}->{'section_before_top'} = 'This is , produced from .
 
 
-File: ,  Node: section node,  Prev: Top,  Up: Top
+File: ,  Node: section node,  Up: Top
 
 1 section
 =========
@@ -441,7 +422,7 @@ top
 
 Tag Table:
 Node: section node27
-Node: Top101
+Node: Top89
 
 End Tag Table
 
@@ -454,7 +435,7 @@ End:
 
 $result_converted{'html'}->{'section_before_top'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -480,7 +461,7 @@ span:hover a.copiable-link {visibility: visible}
 <div class="section-level-extent" id="section-node">
 <div class="nav-panel">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
+Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
 <h3 class="section" id="section"><span>1 section<a class="copiable-link" href="#section"> &para;</a></span></h3>
 
@@ -502,7 +483,7 @@ Next: <a href="#section-node" accesskey="n" rel="next">section</a> &nbsp; </p>
 ';
 
 
-$result_converted{'xml'}->{'section_before_top'} = '<node name="section-node" spaces=" "><nodename>section node</nodename><nodenext></nodenext><nodeprev automatic="on">Top</nodeprev><nodeup>Top</nodeup></node>
+$result_converted{'xml'}->{'section_before_top'} = '<node name="section-node" spaces=" "><nodename>section node</nodename><nodenext></nodenext><nodeprev></nodeprev><nodeup>Top</nodeup></node>
 <section spaces=" "><sectiontitle>section </sectiontitle>
 
 </section>

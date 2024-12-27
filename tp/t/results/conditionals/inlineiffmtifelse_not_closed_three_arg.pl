@@ -19,7 +19,7 @@ $result_trees{'inlineiffmtifelse_not_closed_three_arg'} = {
                       'text' => 'html'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -42,7 +42,7 @@ $result_trees{'inlineiffmtifelse_not_closed_three_arg'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -51,9 +51,7 @@ $result_trees{'inlineiffmtifelse_not_closed_three_arg'} = {
                 'format' => 'html'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -77,9 +75,7 @@ $result_errors{'inlineiffmtifelse_not_closed_three_arg'} = [
   {
     'error_line' => '@inlinefmtifelse missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@inlinefmtifelse missing closing brace',
     'type' => 'error'
   }

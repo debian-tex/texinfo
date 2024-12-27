@@ -1,6 +1,6 @@
 % texinfo-tex-test.texi -- test file for texinfo.tex
 %
-% Copyright 2015-2023 Free Software Foundation, Inc.
+% Copyright 2015-2024 Free Software Foundation, Inc.
 %
 % This file is free software: you can redistribute it and/or
 % modify it under the terms of the GNU General Public License as
@@ -86,14 +86,25 @@ Test of @acronym{ACRONYM}s.  {ACRONYM}s.
 @majorheading Test of @acronym{ACRONYM}s.  ACRONYMs
 
 
-@chapter Glyph commands
+@chapter Glyph tests
+
+@section Glyph commands
 
 @ordf{} @ordm{}
+
+@section Test of non-alphanumeric characters
+
+Not in code: @{@}@@#\
+
+In code @t{@{@}@@#\}
+
+
 
 @paragraphindent 3
 @chapter Paragraph formatting
 @section Images
 
+@ifpdf
 
 @image{image}
 
@@ -116,7 +127,7 @@ third third third third third third third third third third
 third third third third third third third third third third
 third third third third third third third third third third
 
-(check no paragraph indent on first paragraph above, after image)
+(check no paragraph indent on first paragraph above, after first image)
 
 @page
 
@@ -172,6 +183,12 @@ line
 
 
 @image{image}
+
+@else
+(PDF output only)
+@fi
+
+
 
 @paragraphindent 0
 
@@ -474,51 +491,60 @@ Output should be doubled
 
 x
 @Example
-groff [ -abceghijklpstvzCEGNRSUVXZ ]
+aaagroff
 @endExample
 x
 
 x
 @example
 @group@comment
-groff [ -abceghijklpstvzCEGNRSUVXZ ]
+aaagroff
 @end group
 @end example
 x
 
+y
+@Example
+bbbgroff
+@endExample
 x
+
+y
 @example
 @group
-groff [ -abceghijklpstvzCEGNRSUVXZ ]
+bbbgroff
 @end group
 @end example
-x
+y
 
-x
-@example
-@group@c
-groff [ -abceghijklpstvzCEGNRSUVXZ ]
-@end group
-@end example
-x
-
-xxxxxxxxxxxxxxxxxxxxxx
-
-@example
-@group@c
-groff [ -abceghijklpstvzCEGNRSUVXZ ]
-@end group
-@end example
-
-xxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-xxxxxxxxxxxxxxxxxxxxxx
-
+z
 @Example
-groff [ -abceghijklpstvzCEGNRSUVXZ ]
+cccgroff
 @endExample
+z
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxx
+z
+@example
+@group@c
+cccgroff
+@end group
+@end example
+z
+
+zz
+@Example
+dddgroff
+@endExample
+zz
+
+zz
+@example
+@group@c
+dddgroff
+@end group
+@end example
+zz
+
 
 @section Braceless at end of line
 
@@ -553,11 +579,11 @@ EE value FF
 
 GG @Mac{}
 
-HHH
+GGG
 
 GG value
 
-HHH
+GGG
 
 II JJ @Mac
 
@@ -609,7 +635,12 @@ for other macros.
 
 @noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
 
+@noindent <XbX> <X bX> <Xb  X> <X b X>
+
 @noindent @Mactwo{b,c} @Mactwo{ b, c} @Mactwo{b  ,c  } @Mactwo{ b , c }
+
+@noindent <XbXcX> <XbXcX> <Xb  Xc  X> <Xb Xc X>
+
 
 
 @section Newline at start of argument
@@ -865,209 +896,16 @@ If @var{axis} is not a valid axis of @var{a}.
 Have a look at the headline.
 
 
-@chapter Test of non-alphanumeric characters
-
-Not in code: @{@}@@#\
-
-In code @t{@{@}@@#\}
-
-
-@chapter Test of auxiliary files
-
-
-@section Values
-
-Need to test with @command{texi2dvi}.
-
-Undefined value in anchor: @anchor{@value{ho} ho}
-
-Xref to said anchor: @xref{@value{ho} ho}.
-
-@set auxvalue this is the value
-Defined value in anchor: @anchor{@value{auxvalue} ho}
-
-Xref to said anchor: @xref{@value{auxvalue} ho}.  (Should definitely 
-work.)
-
-@defindex ax
-
-value in index entry
-@axindex @value{ho} in index entry
-
-defined value in index entry (this should definitely work)
-@axindex @value{auxvalue} in index entry
-
-value in index entry, but only defined afterwards
-@axindex @value{definedafter} index entry
-
-@axindex @b{another}
-
-@set complex @code{foo@b{b@'ar}}
-test of texinfo commands in value in index entry
-@axindex @value{complex} index entry
-
-test of value change after index command
-@set changed original
-@axindex `@value{changed}' should be `original'
-@set changed new
-
-test of underscore in value
-@set underscore _
-@axindex `@value{underscore}' should be `_'
-
-some more text.
-
-test of macro in index entry:
-@macro MyMac {arg}
-ffff\arg\ggggg
-@end macro
-
-@axindex @MyMac{bah}
-
-@page
-
-@set definedafter Defining this now
-@set definedafter Defining this again
-
-@printindex ax
-
-
-@ignore
-@c This section doesn't work while we use \ as the escape character
-@c in the index files.
-
-@section Test of macros with @samp{@@} in index
-
-@defindex BB
-
-@macro Mac {arg}
-\arg\@}
-@end macro
-
-@macro MacTwo {arg}
-@{@}
-@end macro
-
-@BBindex @Mac{CCCC @@}
-
-@BBindex @MacTwo{DDDD @@}
-@printindex BB
-@end ignore
-
-
-@section Test of certain characters in index
-
-@defindex CC
-@CCindex \, backslash
-@CCindex @{, open brace
-@CCindex @}, close brace
-@CCindex @@, at sign
-@CCindex @backslashchar{}, backslash 2
-@CCindex @lbracechar{}, open brace 2
-@CCindex @rbracechar{}, close brace 2
-@CCindex @atchar{}, at sign 2
-
-@printindex CC
-
-
-@section Test of @code{@@synindex}
-
-@defindex foo
-@defindex bar
-
-@synindex foo bar
-
-@fooindex One
-@barindex Two
-
-Should be two entries, not one below.
-
-@printindex bar
-
-
-@section Test of index sort keys
-
-@defindex SK
-
-@SKindex @sortas{A} bbbbbbb (first)
-@SKindex @sortas{B} aaaaaaa (second)
-
-@printindex SK
-
-
-@page
-@section Test of characters in node names for PDF
-
-@ifx@pdfescapestring@thisisundefined
-
-This test requires newer @command{pdfetex}.
-
-@else
-
-@anchor{anchor}.
-
-@anchor{backslash \}.
-
-@anchor{closing bracket )}.
-
-@anchor{opening bracket (}.
-
-@xref{anchor}.
-
-@xref{backslash \}.
-
-@xref{closing bracket )}.
-
-@xref{opening bracket (}.
-
-@fi
-
-
 @chapter @code{@@set} and @code{@@value}
 
-@section Another test of @t{@@value}
-
-Underscores and hyphens in value
+@section Underscores and hyphens in value
 
 @set foo-bar_ neenaw
 
 The value is @value{foo-bar_}.
 
+The value is neenaw.
 
-@chapter Cross-references
-
-@section Comma insertion
-
-Check commas surrounding page number:
-
-@noindent
-@xref{Target}, for more information (@code{@@xref})@*
-@xref{Target} for more information@*
-@xref{Target}	for more information@*
-@xref{Target}
-for more information@*
-@xref{Target}.@*
-@xref{Target}@ for more info.@*
-@xref{Target}@
-for more info.@*
-@xref{Target}@*
-for more info.@*
-@xref{Target}@	for more info.@*
-@xref{Target} --- for more info. (comma)@*
-@xref{Target}@: --- for more info. (no comma)@*
-See @ref{Target}, for more information (@code{@@ref})@*
-See @ref{Target} for more information@*
-See @ref{Target}.@*
-(@pxref{Target}) (@code{@@pxref})@*
-(@pxref{Target,, Hurricanes})
-
-
-@node Target
-@section Target
-
-@section Non-existent target
-
-@xref{blllllllrrrrrrghhh}.
 
 @chapter Copying and captions
 
@@ -1084,9 +922,16 @@ Copyrite @copyright{} 201X@*
 þ þ þ þ þ þ þ þ
 @end copying
 
-Now for the @@insertcopying:
+Output should be doubled
 
 @insertcopying
+
+This manual is for blah-de-blah.@*
+Backslash \@*
+Brace commands @{ @{ @}
+
+Copyrite @copyright{} 201X@*
+þ þ þ þ þ þ þ þ
 
 
 @section Captions
@@ -1324,12 +1169,18 @@ test of \eqno
 
 @section Code quote
 
+Default
+
 @code{`foo'}
+
+Code quotes on
 
 @codequoteundirected on
 @codequotebacktick on
 
 @code{`foo'}
+
+Code quotes off
 
 @codequoteundirected off
 @codequotebacktick off
@@ -1366,34 +1217,6 @@ Greek text:
 (random text copied from Wikipedia)
 
 double accent --- ταΐζω
-
-
-@section Test of characters in section title
-
-Check table of contents.
-
-For PDF output, check the bookmarks pane in the reader.
-(Currently plain ASCII approximations are used for the UTF-8 encoding.)
-
-@section --- übersicht
-
-@section --- @"Ubersicht
-
-@section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
-
-This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
-
-
-@node Special characters
-@section ~[]"_|<>$#&%+\
-
-This section should be called @code{~[]"_|<>$#&%+\} (in Roman type).
-
-@xrefautomaticsectiontitle on
-@xref{Special characters} is a cross-reference using
-@code{@@xrefautomaticsectiontitle on}.
-@xrefautomaticsectiontitle off
-
 
 
 @chapter PDF link colours
@@ -1495,6 +1318,29 @@ aaaaa/bbbbb/aaaaa/bbbbb/}
 
 par
 
+
+@chapter URL
+
+In @command{@@lisp}
+
+@lisp
+one
+@url{www.gnu.org}
+three
+four
+
+six
+
+
+nine @url{http://example.com/} nine
+@end lisp
+
+in footnote@footnote{see @url{http://example.com/}.}. after footnote
+
+next para.
+
+next para.
+
 @chapter URL line breaking
 
 Some use of @code{@@url}.  Ragged-right output should only be used where
@@ -1540,27 +1386,16 @@ first part of the URL: blah blah blah blah blah blah blah blah.
 Text to test the justification of the line containing the last part
 of the URL: blah blah blah blah blah blah blah blah.
 
-@chapter Nested URL
+@itemize
+@item
+Link: @url{https://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_xds_software_package_download.html#xds110-support-utilities}
 
-In @command{@@lisp}
+@item
+Link: @url{https://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_xds110.html}
+@end itemize
 
-@lisp
-one
-@url{www.gnu.org}
-three
-four
+@page
 
-six
-
-
-nine @url{http://example.com/} nine
-@end lisp
-
-in footnote@footnote{see @url{http://example.com/}.}. after footnote
-
-next para.
-
-next para.
 
 
 
@@ -2548,6 +2383,223 @@ line line line line line line}{9, 42}
 @initial{@}}
 @initial{F}
 @finishindex
+
+
+@chapter Test of characters in section title
+
+Check table of contents.
+
+For PDF output, check the bookmarks pane in the reader.
+(Currently plain ASCII approximations are used for the UTF-8 encoding.)
+
+@section --- übersicht
+
+@section --- @"Ubersicht
+
+@section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
+
+This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
+
+
+@node Special characters
+@section ~[]"_|<>$#&%+\
+
+This section should be called @code{~[]"_|<>$#&%+\} (in Roman type).
+
+@xrefautomaticsectiontitle on
+@xref{Special characters} is a cross-reference using
+@code{@@xrefautomaticsectiontitle on}.
+@xrefautomaticsectiontitle off
+
+
+
+
+
+
+@chapter Cross-references
+
+@section Comma insertion
+
+Check commas surrounding page number:
+
+@noindent
+@xref{Target}, for more information (@code{@@xref})@*
+@xref{Target} for more information@*
+@xref{Target}	for more information@*
+@xref{Target}
+for more information@*
+@xref{Target}.@*
+@xref{Target}@ for more info.@*
+@xref{Target}@
+for more info.@*
+@xref{Target}@*
+for more info.@*
+@xref{Target}@	for more info.@*
+@xref{Target} --- for more info. (comma)@*
+@xref{Target}@: --- for more info. (no comma)@*
+See @ref{Target}, for more information (@code{@@ref})@*
+See @ref{Target} for more information@*
+See @ref{Target}.@*
+(@pxref{Target}) (@code{@@pxref})@*
+(@pxref{Target,, Hurricanes})
+
+
+@node Target
+@section Target
+
+@section Non-existent target
+
+@xref{blllllllrrrrrrghhh}.
+
+@chapter Test of auxiliary files
+
+
+@section Values
+
+Need to test with @command{texi2dvi}.
+
+Undefined value in anchor: @anchor{@value{ho} ho}
+
+Xref to said anchor: @xref{@value{ho} ho}.
+
+@set auxvalue this is the value
+Defined value in anchor: @anchor{@value{auxvalue} ho}
+
+Xref to said anchor: @xref{@value{auxvalue} ho}.  (Should definitely 
+work.)
+
+@defindex ax
+
+value in index entry
+@axindex @value{ho} in index entry
+
+defined value in index entry (this should definitely work)
+@axindex @value{auxvalue} in index entry
+
+value in index entry, but only defined afterwards
+@axindex @value{definedafter} index entry
+
+@axindex @b{another}
+
+@set complex @code{foo@b{b@'ar}}
+test of texinfo commands in value in index entry
+@axindex @value{complex} index entry
+
+test of value change after index command
+@set changed original
+@axindex `@value{changed}' should be `original'
+@set changed new
+
+test of underscore in value
+@set underscore _
+@axindex `@value{underscore}' should be `_'
+
+some more text.
+
+test of macro in index entry:
+@macro MyMac {arg}
+ffff\arg\ggggg
+@end macro
+
+@axindex @MyMac{bah}
+
+@page
+
+@set definedafter Defining this now
+@set definedafter Defining this again
+
+@printindex ax
+
+
+@section Test of macros with @samp{@@} in index
+
+@defindex BB
+
+@macro Mac {arg}
+\arg\@}
+@end macro
+
+@macro MacTwo {arg}
+@{@}
+@end macro
+
+@BBindex @Mac{CCCC @@}
+
+@BBindex @MacTwo{DDDD @@}
+@printindex BB
+
+
+@section Test of certain characters in index
+
+@defindex CC
+@CCindex \, backslash
+@CCindex @{, open brace
+@CCindex @}, close brace
+@CCindex @@, at sign
+@CCindex @backslashchar{}, backslash 2
+@CCindex @lbracechar{}, open brace 2
+@CCindex @rbracechar{}, close brace 2
+@CCindex @atchar{}, at sign 2
+
+@printindex CC
+
+
+@section Test of @code{@@synindex}
+
+@defindex foo
+@defindex bar
+
+@synindex foo bar
+
+@fooindex One
+@barindex Two
+
+Should be two entries, not one below.
+
+@printindex bar
+
+
+@section Test of index sort keys
+
+@defindex SK
+
+@SKindex @sortas{A} bbbbbbb (first)
+@SKindex @sortas{B} aaaaaaa (second)
+
+@printindex SK
+
+
+@page
+@section Test of characters in node names for PDF
+
+@ifx@pdfescapestring@thisisundefined
+
+This test requires newer @command{pdfetex}.
+
+@else
+
+@anchor{anchor}.
+
+@anchor{backslash \}.
+
+@anchor{closing bracket )}.
+
+@anchor{opening bracket (}.
+
+@xref{anchor}.
+
+@xref{backslash \}.
+
+@xref{closing bracket )}.
+
+@xref{opening bracket (}.
+
+@fi
+
+
+
+
+
 
 
 

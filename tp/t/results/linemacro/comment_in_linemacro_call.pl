@@ -63,9 +63,7 @@ $result_trees{'comment_in_linemacro_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -74,53 +72,10 @@ $result_trees{'comment_in_linemacro_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '@code{
-something @comment in}'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  },
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'out'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -128,6 +83,46 @@ something @comment in}'
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '@code{
+something @comment in}'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      },
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'out'
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'c '
             },
             {
@@ -164,12 +159,11 @@ something @comment in}'
 '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'lm'
               }

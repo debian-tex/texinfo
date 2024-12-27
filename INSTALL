@@ -1,6 +1,6 @@
 INSTALL file for texinfo.
 
-     Copyright 1992-2023 Free Software Foundation, Inc.
+     Copyright 1992-2024 Free Software Foundation, Inc.
 
      Copying and distribution of this file, with or without modification,
      are permitted in any medium without royalty provided the copyright
@@ -54,22 +54,51 @@ Installation notes specific to Texinfo:
   For that, run configure --disable-install-warnings, or set
   enable_install_warnings=no in the environment.
 
-* The `makeinfo' program is a Perl program that can use extension
-  modules, known as XS modules.  The configure script will attempt to
-  detect whether such modules can be built and loaded on your
+* The `texi2any' (makeinfo) program is a Perl program that can use
+  extension modules, known as XS modules.  The configure script will
+  attempt to detect whether such modules can be built and loaded on your
   installation.  If you want to disable the use of XS modules, you can
   give the --disable-perl-xs flag to `configure'; likewise, to use them
-  without checking, give the --enable-perl-xs flag.  Some of the
-  environment variables listed in the output of `./configure --help' may
-  be of use for building the XS modules.
+  without checking, give the --enable-perl-xs flag.
+
+  When `configure' is running in the XS subdirectory, instead of the
+  standard CC, CFLAGS, LDFLAGS etc., it uses special variables with a
+  PERL_EXT_ prefix.  These are all listed in the output of `configure
+  --help'.  This is necessary because it is possible that the C compiler
+  being used to compile Perl extension modules is a different compiler
+  to that used for the rest of the package.  (However, if you need to
+  override these variables when running `make', use the unprefixed
+  variants, e.g. CFLAGS instead of PERL_EXT_CFLAGS.  Exception: you
+  cannot override CPPFLAGS this way as gnulib uses this variable.)
+
       After building the program, the use of XS modules can be
   controlled with the `TEXINFO_XS' environment variable, which may be
   useful for troubleshooting.  Set TEXINFO_XS=debug to print some
   information as the modules are looked for and loaded, TEXINFO_XS=omit
   to disable their use, and TEXINFO_XS=required to force their use.
 
-  If you want to use the XS modules but not the XS parser, you can set
-  the `TEXINFO_XS_PARSER' environment variable to 0.
+  Specific focused XS modules are only controlled by TEXINFO_XS.
+  XS modules replacing perl code for the main processing steps can be
+  controlled more finely.  Three steps are distinguished: the parsing
+  step, the structure step for the determination of sectioning and node
+  structures, and the conversion step.  If the XS modules are not used
+  for a step, they cannot be used for the following steps.
+      If you want to use the XS modules but not the XS parser, you can
+  set the `TEXINFO_XS_PARSER' environment variable to 0.  If you use
+  the XS parser but do not want to use XS for the structure step, you
+  can set the `TEXINFO_XS_STRUCTURE' environment variable to 0.  For now,
+  the XS modules used for conversion are considered to be experimental,
+  so they are not used in the default case, even if the XS modules are used
+  for the structure step.  If you want to use the XS modules for conversion,
+  you should set the `TEXINFO_XS_CONVERT' environment variable to 1.
+
+* The XS modules get translations for strings to be put in output files
+  using libc gettext, using the LANGUAGE variable.  If the gettext
+  implementation (such as that on musl) does not support this variable,
+  this will not work and strings will not be translated.  However, if you
+  pass the --enable-xs-perl-libintl flag to `configure', an alternative
+  translation method is activated where XS code calls back into the Perl
+  interpreter to get translations, which does work.
 
 * For instructions on compiling this distribution with DJGPP tools
   for MS-DOS and MS-Windows, see the file djgpp/README.

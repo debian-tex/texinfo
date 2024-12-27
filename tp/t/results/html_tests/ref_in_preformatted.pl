@@ -61,9 +61,11 @@ $result_trees{'ref_in_preformatted'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'chap-nnn-the-node-name'
                   },
                   'type' => 'menu_entry_node'
@@ -88,9 +90,7 @@ $result_trees{'ref_in_preformatted'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               },
               'type' => 'menu_entry'
             },
@@ -121,16 +121,12 @@ $result_trees{'ref_in_preformatted'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -170,20 +166,20 @@ $result_trees{'ref_in_preformatted'} = {
                         }
                       ],
                       'extra' => {
-                        'node_content' => [
-                          {},
-                          {}
-                        ],
+                        'node_content' => {
+                          'contents' => [
+                            {},
+                            {}
+                          ]
+                        },
                         'normalized' => 'chap-nnn-the-node-name'
                       },
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'ref',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
+                    'line_nr' => 8
                   }
                 },
                 {
@@ -220,16 +216,12 @@ $result_trees{'ref_in_preformatted'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -239,6 +231,7 @@ $result_trees{'ref_in_preformatted'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -247,9 +240,7 @@ $result_trees{'ref_in_preformatted'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -271,6 +262,7 @@ $result_trees{'ref_in_preformatted'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap-nnn-the-node-name'
       },
       'info' => {
@@ -279,17 +271,15 @@ $result_trees{'ref_in_preformatted'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 12,
-        'macro' => ''
+        'line_nr' => 12
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[1] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}{'contents'}[1] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 
 $result_texis{'ref_in_preformatted'} = '@node Top
 
@@ -314,55 +304,50 @@ node name
 
 ';
 
-$result_nodes{'ref_in_preformatted'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap-nnn-the-node-name'
-      },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'ref_in_preformatted'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'ref_in_preformatted'};
-$result_nodes{'ref_in_preformatted'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'ref_in_preformatted'};
-$result_nodes{'ref_in_preformatted'}{'structure'}{'node_next'} = $result_nodes{'ref_in_preformatted'}{'structure'}{'menu_child'};
-
-$result_menus{'ref_in_preformatted'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap-nnn-the-node-name'
-      },
-      'structure' => {
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
+$result_nodes{'ref_in_preformatted'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap-nnn-the-node-name'
+          }
         }
-      }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'ref_in_preformatted'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'ref_in_preformatted'}[0];
+$result_nodes{'ref_in_preformatted'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'ref_in_preformatted'}[0];
+$result_nodes{'ref_in_preformatted'}[1] = $result_nodes{'ref_in_preformatted'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'ref_in_preformatted'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {}
+      },
+      'normalized' => 'chap-nnn-the-node-name'
     }
   }
-};
-$result_menus{'ref_in_preformatted'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'ref_in_preformatted'};
+];
+$result_menus{'ref_in_preformatted'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'ref_in_preformatted'}[0];
 
 $result_errors{'ref_in_preformatted'} = [];
 
@@ -371,9 +356,7 @@ $result_floats{'ref_in_preformatted'} = {};
 
 
 
-$result_converted{'html_text'}->{'ref_in_preformatted'} = '<a class="node-id" id="Top"></a><div class="nav-panel">
-</div>
-<h1 class="node"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
+$result_converted{'html_text'}->{'ref_in_preformatted'} = '<h1 class="node" id="Top"><span>Top<a class="copiable-link" href="#Top"> &para;</a></span></h1>
 
 
 <div class="example">
@@ -382,9 +365,7 @@ node name</a>
 </pre></div>
 
 <hr>
-<a class="node-id" id="chap-nnn-the-node-name"></a><div class="nav-panel">
-</div>
-<h4 class="node"><span>chap nnn the node name<a class="copiable-link" href="#chap-nnn-the-node-name"> &para;</a></span></h4>
+<h4 class="node" id="chap-nnn-the-node-name"><span>chap nnn the node name<a class="copiable-link" href="#chap-nnn-the-node-name"> &para;</a></span></h4>
 ';
 
 1;

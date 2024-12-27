@@ -1,6 +1,6 @@
 /* infodoc.c -- functions which build documentation nodes.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -111,8 +111,8 @@ dump_map_to_text_buffer (struct text_buffer *tb, int *prefix,
           char *doc, *name;
 
           /* Hide some key mappings. */
-          if (map[i].value.function
-              && (map[i].value.function->func == info_do_lowercase_version))
+          if (!map[i].value.function->func /* "invalid" mapping */
+              || map[i].value.function->func == info_do_lowercase_version)
             continue;
 
           doc = function_documentation (map[i].value.function);
@@ -357,9 +357,8 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node '(info)Help'")
     for (win = windows; win; win = win->next)
       {
         if (win->node && win->node->fullpath
-            && !mbscasecmp ("info",
-                            filename_non_directory (win->node->fullpath))
-            && (!strcmp (win->node->nodename, "Help")
+          && !strcasecmp (filename_non_directory (win->node->fullpath), "info")
+          && (!strcmp (win->node->nodename, "Help")
                 || !strcmp (win->node->nodename, "Help-Small-Screen")))
           {
             active_window = win;
@@ -467,7 +466,8 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
       *k++ = keystroke;
       *k = '\0';
 
-      if (map[keystroke].value.function == NULL)
+      if (!map[keystroke].value.function
+          || !map[keystroke].value.function->func) /* "invalid" mapping */
         {
           message_in_echo_area (_("%s is undefined"), pretty_keyseq (keys));
           return;
@@ -506,7 +506,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
               if (map[lowerkey].value.function == NULL)
                 {
                   message_in_echo_area (_("%s is undefined"),
-					pretty_keyseq (keys));
+                                        pretty_keyseq (keys));
                   return;
                 }
             }
@@ -661,14 +661,15 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
             {
               if (string[++j] == '-')
                 j++;
-              if (isdigit(string[j]))
+              if (isdigit ((unsigned char) string[j]))
                 {
-                  while (isdigit(string[j]))
+                  while (isdigit ((unsigned char) string[j]))
                     j++;
-                  if (string[j] == '.' && isdigit(string[j + 1]))
+                  if (string[j] == '.'
+                      && isdigit ((unsigned char) string[j + 1]))
                     {
                       j += 1;
-                      while (isdigit(string[j]))
+                      while (isdigit ((unsigned char) string[j]))
                         j++;
                     }
                   fmt = xmalloc (j - i + 2);

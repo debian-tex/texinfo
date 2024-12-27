@@ -54,9 +54,7 @@ $result_trees{'block_begin_end_in_linemacro_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,44 +63,10 @@ $result_trees{'block_begin_end_in_linemacro_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '
-@quotation aa
-in quotation
-',
-                        'type' => 'bracketed_linemacro_arg'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -110,6 +74,36 @@ in quotation
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '
+@quotation aa
+in quotation
+',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'b 
 '
             }
@@ -183,9 +177,7 @@ in quotation
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -195,7 +187,6 @@ in quotation
             }
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 8,
             'macro' => 'lm'
           }
@@ -225,42 +216,38 @@ in quotation
           'cmdname' => 'quotation',
           'contents' => [
             {
-              'source_marks' => [
+              'contents' => [
                 {
-                  'counter' => 2,
-                  'element' => {
-                    'args' => [
-                      {
-                        'contents' => [
+                  'source_marks' => [
+                    {
+                      'counter' => 2,
+                      'element' => {
+                        'args' => [
                           {
-                            'text' => '
+                            'contents' => [
+                              {
+                                'text' => '
 @end quotation
 
 ',
-                            'type' => 'bracketed_linemacro_arg'
+                                'type' => 'bracketed_linemacro_arg'
+                              }
+                            ],
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
+                          'command_name' => 'lm',
                           'spaces_before_argument' => {
                             'text' => ' '
                           }
-                        }
-                      }
-                    ],
-                    'info' => {
-                      'command_name' => 'lm'
-                    },
-                    'type' => 'linemacro_call'
-                  },
-                  'sourcemark_type' => 'linemacro_expansion',
-                  'status' => 'start'
-                }
-              ],
-              'text' => ''
-            },
-            {
-              'contents' => [
-                {
+                        },
+                        'type' => 'linemacro_call'
+                      },
+                      'sourcemark_type' => 'linemacro_expansion',
+                      'status' => 'start'
+                    }
+                  ],
                   'text' => 'b 
 '
                 }
@@ -294,7 +281,6 @@ in quotation
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 15,
                 'macro' => 'lm'
               }
@@ -306,9 +292,7 @@ in quotation
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -338,36 +322,6 @@ in quotation
           'type' => 'paragraph'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 3,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '
-@quotation',
-                        'type' => 'bracketed_linemacro_arg'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -375,6 +329,34 @@ in quotation
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 3,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '
+@quotation',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'b 
 '
             }
@@ -458,9 +440,7 @@ in quotation
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               }
             }
           ],
@@ -470,43 +450,11 @@ in quotation
             }
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 18,
             'macro' => 'lm'
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 4,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '
-@ignore
-ignored ',
-                        'type' => 'bracketed_linemacro_arg'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -514,6 +462,35 @@ ignored ',
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 4,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '
+@ignore
+ignored ',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'b 
 '
             },
@@ -580,14 +557,11 @@ ignored ',
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 28,
-                    'macro' => ''
+                    'line_nr' => 28
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 26,
                 'macro' => 'lm'
               }
@@ -596,39 +570,6 @@ ignored ',
           'type' => 'paragraph'
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 5,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '
-@macro mymac {e, f}
-args \\e\\|\\f\\|
-@defline @lm {\\e\\} {\\f\\}
-',
-                        'type' => 'bracketed_linemacro_arg'
-                      }
-                    ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'lm'
-                },
-                'type' => 'linemacro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'linemacro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -636,6 +577,37 @@ args \\e\\|\\f\\|
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 5,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => '
+@macro mymac {e, f}
+args \\e\\|\\f\\|
+@defline @lm {\\e\\} {\\f\\}
+',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'linemacro_call'
+                  },
+                  'sourcemark_type' => 'linemacro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'b 
 '
             },
@@ -710,9 +682,7 @@ args \\e\\|\\f\\|
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 35,
-                    'macro' => ''
+                    'line_nr' => 35
                   }
                 }
               ],
@@ -721,7 +691,6 @@ args \\e\\|\\f\\|
 '
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 34,
                 'macro' => 'lm'
               }
@@ -751,47 +720,44 @@ args \\e\\|\\f\\|
             {
               'contents' => [
                 {
-                  'source_marks' => [
+                  'contents' => [
                     {
-                      'counter' => 1,
-                      'element' => {
-                        'args' => [
-                          {
-                            'contents' => [
+                      'source_marks' => [
+                        {
+                          'counter' => 1,
+                          'element' => {
+                            'args' => [
                               {
-                                'text' => 'arg1'
-                              }
-                            ],
-                            'type' => 'brace_command_arg'
-                          },
-                          {
-                            'contents' => [
+                                'contents' => [
+                                  {
+                                    'text' => 'arg1'
+                                  }
+                                ],
+                                'type' => 'brace_arg'
+                              },
                               {
-                                'text' => 'arg2'
+                                'contents' => [
+                                  {
+                                    'text' => 'arg2'
+                                  }
+                                ],
+                                'info' => {
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
+                                },
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
+                              'command_name' => 'mymac'
                             },
-                            'type' => 'brace_command_arg'
-                          }
-                        ],
-                        'info' => {
-                          'command_name' => 'mymac'
-                        },
-                        'type' => 'macro_call'
-                      },
-                      'sourcemark_type' => 'macro_expansion',
-                      'status' => 'start'
-                    }
-                  ],
-                  'text' => ''
-                },
-                {
-                  'contents' => [
-                    {
+                            'type' => 'macro_call'
+                          },
+                          'sourcemark_type' => 'macro_expansion',
+                          'status' => 'start'
+                        }
+                      ],
                       'text' => 'args arg1|arg2|
 '
                     }
@@ -799,84 +765,91 @@ args \\e\\|\\f\\|
                   'type' => 'paragraph'
                 }
               ],
-              'type' => 'def_item'
+              'type' => 'before_defline'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'b'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'b'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'arg1'
+                          'contents' => [
+                            {
+                              'text' => 'arg1'
+                            }
+                          ],
+                          'source_info' => {
+                            'line_nr' => 38,
+                            'macro' => 'lm'
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 38,
-                        'macro' => 'lm'
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'arg2'
+                          'contents' => [
+                            {
+                              'text' => 'arg2'
+                            }
+                          ],
+                          'source_info' => {
+                            'line_nr' => 38,
+                            'macro' => 'lm'
+                          },
+                          'type' => 'bracketed_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 38,
-                        'macro' => 'lm'
-                      },
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_marks' => [
+                      'contents' => [
                         {
-                          'counter' => 6,
-                          'position' => 1,
-                          'sourcemark_type' => 'linemacro_expansion',
-                          'status' => 'end'
+                          'contents' => [
+                            {
+                              'source_marks' => [
+                                {
+                                  'counter' => 6,
+                                  'position' => 1,
+                                  'sourcemark_type' => 'linemacro_expansion',
+                                  'status' => 'end'
+                                }
+                              ],
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'text' => 'a'
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -891,7 +864,19 @@ args \\e\\|\\f\\|
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'arg1'
+                        }
+                      ],
+                      'type' => 'bracketed_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -907,15 +892,14 @@ args \\e\\|\\f\\|
                                 'text' => '{arg1} {arg2}'
                               }
                             ],
-                            'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
-                            }
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
-                          'command_name' => 'lm'
+                          'command_name' => 'lm',
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
                         },
                         'type' => 'linemacro_call'
                       },
@@ -928,11 +912,9 @@ args \\e\\|\\f\\|
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 38,
                 'macro' => 'mymac'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'contents' => [
@@ -987,16 +969,12 @@ args \\e\\|\\f\\|
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 39,
-                'macro' => ''
+                'line_nr' => 39
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 37,
-            'macro' => ''
+            'line_nr' => 37
           }
         },
         {
@@ -1010,7 +988,6 @@ args \\e\\|\\f\\|
   ],
   'type' => 'document_root'
 };
-$result_trees{'block_begin_end_in_linemacro_call'}{'contents'}[0]{'contents'}[17]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'block_begin_end_in_linemacro_call'}{'contents'}[0]{'contents'}[17]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'block_begin_end_in_linemacro_call'} = '@linemacro lm {a}
 b \\a\\ a

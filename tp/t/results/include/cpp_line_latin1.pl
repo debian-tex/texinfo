@@ -55,8 +55,7 @@ $result_trees{'cpp_line_latin1'} = {
               },
               'source_info' => {
                 'file_name' => 'cpp_line_latin1.texi',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -89,6 +88,7 @@ $result_trees{'cpp_line_latin1'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -98,8 +98,7 @@ $result_trees{'cpp_line_latin1'} = {
       },
       'source_info' => {
         'file_name' => 'cpp_line_latin1.texi',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -125,8 +124,7 @@ $result_trees{'cpp_line_latin1'} = {
       'extra' => {},
       'source_info' => {
         'file_name' => 'cpp_line_latin1.texi',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -184,6 +182,7 @@ $result_trees{'cpp_line_latin1'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -193,8 +192,7 @@ $result_trees{'cpp_line_latin1'} = {
       },
       'source_info' => {
         'file_name' => 'cpp_line_latin1.texi',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     },
     {
@@ -240,7 +238,7 @@ aaa
 ';
 
 $result_sectioning{'cpp_line_latin1'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -249,52 +247,57 @@ $result_sectioning{'cpp_line_latin1'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'cpp_line_latin1'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'cpp_line_latin1'};
+$result_sectioning{'cpp_line_latin1'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'cpp_line_latin1'};
 
-$result_nodes{'cpp_line_latin1'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'cpp_line_latin1'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'cpp_line_latin1'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'cpp_line_latin1'}[0];
+$result_nodes{'cpp_line_latin1'}[1] = $result_nodes{'cpp_line_latin1'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'cpp_line_latin1'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'cpp_line_latin1'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'cpp_line_latin1'};
-
-$result_menus{'cpp_line_latin1'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'cpp_line_latin1'} = [
   {
@@ -302,7 +305,6 @@ $result_errors{'cpp_line_latin1'} = [
 ',
     'file_name' => 'foo.ptèxi',
     'line_nr' => 102,
-    'macro' => '',
     'text' => 'unknown command `gggg\'',
     'type' => 'error'
   }

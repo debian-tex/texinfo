@@ -42,14 +42,12 @@ $result_trees{'footnote'} = {
                                   'text' => 'in footnote r'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'r',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 3,
-                            'macro' => ''
+                            'line_nr' => 3
                           }
                         },
                         {
@@ -63,10 +61,9 @@ $result_trees{'footnote'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -122,5 +119,10 @@ $result_converted{'html_text'}->{'footnote'} = '<p>text<a class="footnote" id="D
 $result_converted{'latex_text'}->{'footnote'} = 'text\\footnote{in footnote.
 
 \\textnormal{in footnote r}. } after footnote.';
+
+
+$result_converted{'docbook'}->{'footnote'} = '<para>text<footnote><para>in footnote.
+</para>
+<para>in footnote r. </para></footnote> after footnote.</para>';
 
 1;

@@ -10,7 +10,6 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -80,9 +78,7 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -104,6 +100,7 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'node1'
       },
       'info' => {
@@ -112,9 +109,7 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -130,19 +125,19 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'to-node1'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -163,16 +158,16 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -191,19 +186,19 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'node1'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -218,6 +213,7 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'to-node1'
       },
       'info' => {
@@ -226,16 +222,14 @@ $result_trees{'double_recursive_self_section_node_reference'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_recursive_self_section_node_reference'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'double_recursive_self_section_node_reference'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'double_recursive_self_section_node_reference'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'double_recursive_self_section_node_reference'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'double_recursive_self_section_node_reference'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_recursive_self_section_node_reference'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'double_recursive_self_section_node_reference'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'double_recursive_self_section_node_reference'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'double_recursive_self_section_node_reference'} = '@node Top
 @top top
@@ -256,7 +250,7 @@ $result_texts{'double_recursive_self_section_node_reference'} = 'top
 ';
 
 $result_sectioning{'double_recursive_self_section_node_reference'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -265,11 +259,8 @@ $result_sectioning{'double_recursive_self_section_node_reference'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -278,89 +269,105 @@ $result_sectioning{'double_recursive_self_section_node_reference'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'node1'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'double_recursive_self_section_node_reference'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'double_recursive_self_section_node_reference'};
+$result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'double_recursive_self_section_node_reference'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'double_recursive_self_section_node_reference'};
 
-$result_nodes{'double_recursive_self_section_node_reference'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'node1'
+$result_nodes{'double_recursive_self_section_node_reference'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'node1'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {},
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'to-node1'
     }
   }
-};
-$result_nodes{'double_recursive_self_section_node_reference'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'double_recursive_self_section_node_reference'};
-$result_nodes{'double_recursive_self_section_node_reference'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'double_recursive_self_section_node_reference'};
+];
+$result_nodes{'double_recursive_self_section_node_reference'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'double_recursive_self_section_node_reference'}[0];
+$result_nodes{'double_recursive_self_section_node_reference'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'double_recursive_self_section_node_reference'}[0];
+$result_nodes{'double_recursive_self_section_node_reference'}[1] = $result_nodes{'double_recursive_self_section_node_reference'}[0]{'extra'}{'node_directions'}{'next'};
 
-$result_menus{'double_recursive_self_section_node_reference'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'double_recursive_self_section_node_reference'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   },
-  'structure' => {}
-};
+  {
+    'extra' => {
+      'normalized' => 'node1'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'to-node1'
+    }
+  }
+];
 
 $result_errors{'double_recursive_self_section_node_reference'} = [
   {
     'error_line' => 'warning: @ref should not appear on @node line
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@ref should not appear on @node line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @ref to `to node1\', different from node name `to @ref{node1}\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@ref to `to node1\', different from node name `to @ref{node1}\'',
     'type' => 'warning'
   }
@@ -374,28 +381,15 @@ $result_floats{'double_recursive_self_section_node_reference'} = {};
 $result_converted{'plaintext'}->{'double_recursive_self_section_node_reference'} = 'top
 ***
 
-1 *note to *note node1::::
-**************************
+1 to node1
+**********
 
 ';
-
-$result_converted_errors{'plaintext'}->{'double_recursive_self_section_node_reference'} = [
-  {
-    'error_line' => 'warning: @ref node name should not contain `:\'
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '@ref node name should not contain `:\'',
-    'type' => 'warning'
-  }
-];
-
 
 
 $result_converted{'html'}->{'double_recursive_self_section_node_reference'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -437,9 +431,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 <h2 class="chapter" id="to-node1-1"><span>1 <a class="ref" href="#to-node1">to <a class="ref" href="#node1">node1</a></a><a class="copiable-link" href="#to-node1-1"> &para;</a></span></h2>
 
 <hr>
-<a class="node-id" id="to-node1"></a><div class="nav-panel">
-</div>
-<h4 class="node"><span>to <a class="ref" href="#node1"><a class="ref" href="#to-node1">to <a class="ref" href="#node1">node1</a></a></a><a class="copiable-link" href="#to-node1"> &para;</a></span></h4>
+<h4 class="node" id="to-node1"><span>to <a class="ref" href="#node1"><a class="ref" href="#to-node1">to <a class="ref" href="#node1">node1</a></a></a><a class="copiable-link" href="#to-node1"> &para;</a></span></h4>
 </div>
 </div>
 

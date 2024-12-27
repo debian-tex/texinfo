@@ -56,7 +56,6 @@ quiet=false     # let the tools' message be displayed
 set_language=
 src_specials=
 shell_escape=
-latex2html=hevea  # or set to tex4ht
 textra=         # Extra TeX commands to insert in the input file.
 txiprereq=19990129 # minimum texinfo.tex version with macro expansion
 verb=false      # true for verbose mode
@@ -130,11 +129,8 @@ General options:
 Output format:
       --dvi     output a DVI file [default]
       --dvipdf  output a PDF file via DVI (using a dvi-to-pdf program)
-      --html    output an HTML file from LaTeX, using HeVeA
-      --info    output an Info file from LaTeX, using HeVeA
   -p, --pdf     use pdftex or pdflatex for processing
       --ps      output a PostScript file via DVI (using dvips)
-      --text    output a plain text file from LaTeX, using HeVeA
 
 TeX tuning:
   -E, --expand               macro expansion using makeinfo
@@ -171,8 +167,8 @@ the environment variable TEXI2DVI_BUILD_DIRECTORY.
 The values of these environment variables are used to run the
 corresponding commands, if they are set:
 
-  BIBER BIBTEX DVIPDF DVIPS EGREP HEVEA LATEX MAKEINDEX MAKEINFO
-  PDFLATEX PDFTEX SED T4HT TEX TEX4HT TEXINDEX TEXINDY THUMBPDF_CMD
+  BIBER BIBTEX DVIPDF DVIPS EGREP LATEX MAKEINDEX MAKEINFO
+  PDFLATEX PDFTEX SED TEX TEXINDEX TEXINDY THUMBPDF_CMD
 
 Regarding --dvipdf, if DVIPDF is not set in the environment, the
 following programs are looked for (in this order): dvipdfmx dvipdfm
@@ -186,7 +182,7 @@ should give you access to more documentation.
 
 Report bugs to bug-texinfo@gnu.org,
 general questions and discussion to help-texinfo@gnu.org.
-GNU Texinfo home page: <http://www.gnu.org/software/texinfo/>
+GNU Texinfo home page: <https://www.gnu.org/software/texinfo/>
 General help using GNU software: <http://www.gnu.org/gethelp/>
 EOF
   exit 0
@@ -197,7 +193,7 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 7.1.1)
+texi2dvi (GNU Texinfo 7.2)
 
 Copyright (C) 2024 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -455,7 +451,7 @@ list_infix ()
 out_lang_set ()
 {
   case $1 in
-    dvi|dvipdf|html|info|pdf|ps|text) out_lang=$1;;
+    dvi|dvipdf|pdf|ps) out_lang=$1;;
     *) error 1 "invalid output format: $1";;
   esac
 }
@@ -466,7 +462,6 @@ out_lang_tex ()
   case $out_lang in
     dvi | ps | dvipdf ) echo dvi;;
     pdf ) echo $out_lang;;
-    html | info | text ) echo $out_lang;;
     *)    error 1 "invalid out_lang: $1";;
   esac
 }
@@ -476,7 +471,7 @@ out_lang_ext ()
 {
   case $out_lang in
     dvipdf ) echo pdf;;
-    dvi | html | info | pdf | ps | text ) echo $out_lang;;
+    dvi | pdf | ps ) echo $out_lang;;
     *)    error 1 "invalid out_lang: $1";;
   esac
 }
@@ -549,7 +544,7 @@ destdir ()
 }
 
 
-# move_to_dest FILE... - Move FILE(s) to the place where the user expects.
+# move_to_dest FILE - Move FILE to the place where the user expects.
 # Truly move it, that is, it must not remain in its build location
 # unless that is also the output location.  (Otherwise it might appear
 # as an extra file in make distcheck.)
@@ -558,48 +553,48 @@ destdir ()
 # or an auxiliary file with the same base name.
 move_to_dest ()
 {
-#  echo "move_to_dest $*, tidy=$tidy, oname=$oname"
-
   # If we built in place and have no output name, there is nothing to
   # do, so just return.
   case $tidy:$oname in
     false:) return;;
   esac
 
-  for file
-  do
-    test -f "$file" \
-    || error 1 "no such file or directory: $file"
-    case $tidy:$oname in
-      true:)  mtd_destdir=$orig_pwd
-              mtd_destfile=$mtd_destdir/$file;;
-      true:*) mtd_destfile=`output_base_name "$file"`
-              mtd_destdir=`dirname "$mtd_destfile"`;;
-      false:*) mtd_destfile=$oname
-               mtd_destdir=`dirname "$mtd_destfile"`;;
-    esac
+  test -f "$1" || error 1 "no such file or directory: $1"
+  case $tidy:$oname in
+    true:)  dest=$orig_pwd/$1 ;;
+    true:*) dest=`output_base_name "$1"` ;;
+    false:*) dest=$oname ;;
+  esac
  
-    # We want to compare the source location and the output location,
-    # and if they are different, do the move.  But if they are the
-    # same, we must preserve the source.  Since we can't assume
-    # stat(1) or test -ef is available, resort to comparing the
-    # directory names, canonicalized with pwd.  We can't use cmp -s
-    # since the output file might not actually change from run to run;
-    # e.g., TeX DVI output is timestamped to only the nearest minute.
-    mtd_destdir=`cd "$mtd_destdir" && pwd`
-    mtd_destbase=`basename "$mtd_destfile"`
+  # We want to compare the source location and the output location,
+  # and if they are different, do the move.  But if they are the
+  # same, we must preserve the source.  Since we can't assume
+  # stat(1) or test -ef is available, resort to comparing the
+  # directory names, canonicalized with pwd.  We can't use cmp -s
+  # since the output file might not actually change from run to run;
+  # e.g., TeX DVI output is timestamped to only the nearest minute.
+  mtd_destdir=`dirname "$dest"`
+  mtd_destdir=`cd "$mtd_destdir" && pwd`
+  mtd_destbase=`basename "$dest"`
 
-    mtd_sourcedir=`dirname "$file"`
-    mtd_sourcedir=`cd "$mtd_sourcedir" && pwd`
-    mtd_sourcebase=`basename "$file"`
+  mtd_sourcedir=`dirname "$1"`
+  mtd_sourcedir=`cd "$mtd_sourcedir" && pwd`
+  mtd_sourcebase=`basename "$1"`
 
-    if test "$mtd_sourcedir/$mtd_sourcebase" != "$mtd_destdir/$mtd_destbase"
-    then
-      verbose "Moving $file to $mtd_destfile"
-      rm -f "$mtd_destfile"
-      mv "$file" "$mtd_destfile"
+  if test "$mtd_sourcedir/$mtd_sourcebase" != "$mtd_destdir/$mtd_destbase"
+  then
+    verbose "Moving $1 to $dest"
+    rm -f "$dest"
+    if mv "$1" "$dest" ; then
+       # For --output, report that the file was moved, as TeX has just
+       # reported that it wrote output at the original location.
+       if test z"$oname" != z ; then
+         echo "Moved $1 to $dest"
+       fi
+    else
+       error 1 "Could not move $1 to $dest"
     fi
-  done
+  fi
 }
 
 
@@ -636,20 +631,12 @@ bibaux_file_p ()
 index_file_p ()
 {
   test -f "$1" || return 0
-  case $in_lang:$latex2html:`out_lang_tex`:`$SED '1q' "$1"` in
-    # When working with TeX4HT, *.idx are created by LaTeX.  They must
-    # be processed to produce *.4ix, *.4dx files.  The *.4dx file is
-    # passed to makeindex to produce the *.ind file.  This sequence is
-    # handled by run_index, so we are only interested in the *.idx
-    # files, which have each "\indexentry" preceded by a
-    # "\beforeentry".
-    latex:tex4ht:html:"\\beforeentry {"*) echo $1;;
-
+  case $in_lang:`$SED '1q' "$1"` in
     # When index.sty is used, there is a space before the brace.
-    latex:*:*:"\\indexentry{"*|latex:*:*:"\\indexentry {"*) echo $1;;
+    latex:"\\indexentry{"*|latex:*:*:"\\indexentry {"*) echo $1;;
 
-    texinfo:*:*:"\\entry{"*) echo $1;;
-    texinfo:*:*:"@entry{"*) echo $1;;
+    texinfo:"\\entry{"*) echo $1;;
+    texinfo:"@entry{"*) echo $1;;
     # @entry is output from newer versions of texinfo.tex
   esac
   return 0
@@ -784,19 +771,19 @@ xref_files_changed ()
 # Set tex_cmd variable, for running TeX.
 make_tex_cmd ()
 {
-  case $in_lang:$latex2html:`out_lang_tex` in
-    latex:*:dvi|latex:tex4ht:html)
+  case $in_lang:`out_lang_tex` in
+    latex:dvi)
         tex=${LATEX:-latex};;
-    latex:*:pdf)
+    latex:pdf)
         tex=${PDFLATEX:-pdflatex};;
-    texinfo:*:dvi)
+    texinfo:dvi)
         # MetaPost also uses the TEX environment variable.  If the user
         # has set TEX=latex for that reason, don't bomb out.
         case $TEX in
           *latex) tex=tex;; # don't bother trying to find etex
                *) tex=$TEX
         esac;;
-    texinfo:*:pdf) tex=$PDFTEX;;
+    texinfo:pdf) tex=$PDFTEX;;
     *) error 1 "$out_lang not supported for $in_lang";;
   esac
 
@@ -976,19 +963,8 @@ run_index ()
   : ${TEXINDEX:=texindex}
   : ${TEXINDY:=texindy}
 
-  case $in_lang:$latex2html:`out_lang_tex` in
-    latex:tex4ht:html)
-      for index_file in $index_files
-      do
-        index_noext=`noext "$index_file"`
-        run tex \
-            '\def\filename{{'"$index_noext"'}{idx}{4dx}{ind}}
-             \input idxmake.4ht'
-        run $MAKEINDEX -o $index_noext.ind $index_noext.4dx
-      done
-      ;;
-
-    latex:*)
+  case $in_lang in
+    latex)
       if $TEXINDY --version >&6 2>&1; then
         run $TEXINDY $index_files
       else
@@ -996,29 +972,8 @@ run_index ()
       fi
       ;;
 
-    texinfo:*)
+    texinfo)
       run $TEXINDEX $index_files
-      ;;
-  esac
-}
-
-
-# run_tex4ht - Run the last two phases of TeX4HT: tex4ht extracts the
-# HTML from the instrumented DVI file, and t4ht converts the figures and
-# installs the files when given -d.
-#
-# Because knowing exactly which files are created is complex (in
-# addition the names are not simple to compute), which makes it
-# difficult to install the output files in a second step, we
-# tell t4ht to install the output files.
-run_tex4ht ()
-{
-  case $in_lang:$latex2html:`out_lang_tex` in
-    latex:tex4ht:html)
-      : ${TEX4HT:=tex4ht} ${T4HT:=t4ht}
-      run "$TEX4HT" "-f/$in_noext"
-      # Do not remove the / after the destdir.
-      run "$T4HT" "-d`destdir`/" "-f/$in_noext"
       ;;
   esac
 }
@@ -1098,7 +1053,7 @@ run_tex_suite ()
     verbose "Cycle $suite_cycle for $command_line_filename"
 
     tex_failed=false
-    run_core_conversion
+    run_tex
     xref_files_changed || break
     xref_files_save
 
@@ -1118,17 +1073,14 @@ run_tex_suite ()
   # and TeX one last time.
   run_thumbpdf
 
-  # If we are using tex4ht, call it.
-  run_tex4ht
-
   # Install the result if we didn't already (i.e., if the output is
   # dvipdf or ps).
-  case $latex2html:$out_lang in
-    *:dvipdf)
+  case $out_lang in
+    dvipdf)
       run_dvipdf "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
       ;;
-    *:ps)
+    ps)
       : ${DVIPS:=dvips}
       run $DVIPS -o "$in_noext.`out_lang_ext`" "$in_noext.`out_lang_tex`"
       move_to_dest "$in_noext.`out_lang_ext`"
@@ -1241,20 +1193,6 @@ insert_commands ()
 $textra" "$in_input" >"$in_xtr"
     in_input=$in_xtr
   fi
-
-  case $in_lang:$latex2html:`out_lang_tex` in
-    latex:tex4ht:html)
-      # _tex4ht.  The file with the added \usepackage{tex4ht}.
-      work_tex4ht=$workdir/tex4ht
-      in_tex4ht=$work_tex4ht/$in_base
-      ensure_dir "$work_tex4ht"
-      verbose "Inserting \\usepackage{tex4ht}"
-      perl -pe 's<\\documentclass(?:\[.*\])?{.*}>
-                 <$&\\usepackage[xhtml]{tex4ht}>' \
-        "$in_input" >"$in_tex4ht"
-      in_input=$in_tex4ht
-      ;;
-  esac
 }
 
 
@@ -1277,67 +1215,6 @@ compute_language ()
       *)                             echo texinfo;;
     esac
   fi
-}
-
-
-# run_hevea (MODE) - Convert to HTML/INFO/TEXT.
-#
-# Don't pass `-noiso' to hevea: it's useless in HTML since anyway the
-# charset is set to latin1, and troublesome in other modes since
-# accented characters loose their accents.
-#
-# Don't pass `-o DEST' to hevea because in that case it leaves all its
-# auxiliary files there too...  Too bad, because it means we will need
-# to handle images some day.
-run_hevea ()
-{
-  run_hevea_name="${HEVEA:-hevea}"
-  run_hevea_cmd="$run_hevea_name"
-
-  case $1 in
-    html) ;;
-    text|info) run_hevea_cmd="$run_hevea_cmd -$1";;
-    *) error 1 "run_hevea_cmd: invalid argument: $1";;
-  esac
-
-  # Compiling to the tmp directory enables to preserve a previous
-  # successful compilation.
-  run_hevea_cmd="$run_hevea_cmd -fix -O -o '$out_base'"
-  run_hevea_cmd="$run_hevea_cmd `list_prefix includes -I` -I '$orig_pwd' "
-  run_hevea_cmd="$run_hevea_cmd '$rel$in_input'"
-
-  if $debug; then
-    run_hevea_cmd="$run_hevea_cmd -v -v"
-  fi
-
-  verbose "running $run_hevea_cmd"
-  if eval "$run_hevea_cmd" >&5; then
-    # hevea leaves trailing white spaces, this is annoying.
-    case $1 in text|info)
-      perl -pi -e 's/[ \t]+$//g' "$out_base"*;;
-    esac
-    case $1 in
-    html|text) move_to_dest "$out_base";;
-    info) # There can be foo.info-1, foo.info-2 etc.
-               move_to_dest "$out_base"*;;
-    esac
-  else
-    error 1 "$run_hevea_name exited with bad status, quitting."
-  fi
-}
-
-
-# run_core_conversion - Run TeX (or HeVeA).
-run_core_conversion ()
-{
-  case $in_lang:$latex2html:`out_lang_tex` in
-    *:dvi|*:pdf|latex:tex4ht:html)
-        run_tex;;
-    latex:*:html|latex:*:text|latex:*:info)
-        run_hevea $out_lang;;
-    *)
-        error 1 "invalid input/output combination: $in_lang/$out_lang";;
-  esac
 }
 
 
@@ -1713,14 +1590,13 @@ while test x"$1" != x"$arg_sep"; do
 
     # Output formats.
     -O|--output-format) shift; out_lang_set "$1";;
-       --dvi|--dvipdf|--html|--info|--pdf|--ps|--text)
+       --dvi|--dvipdf|--pdf|--ps)
        out_lang_set `echo "x$1" | $SED 's/^x--//'`;;
 
     -p) out_lang_set pdf;;
     -q | -s | --quiet | --silent) quiet=true;;
     --src-specials) src_specials=--src-specials;;
     --shell-escape) shell_escape=--shell-escape;;  
-    --tex4ht) latex2html=tex4ht;;
     -t | --texinfo | --command ) shift; textra="$textra\\
 "`echo "$1" | $SED 's/\\\\/\\\\\\\\/g'`;;
     --translate-file ) shift; translate_file="$1";;

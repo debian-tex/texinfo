@@ -3,7 +3,7 @@ EXTRA_DIST = \
  tex_complex.texi \
  tex_in_copying.texi \
  math_not_closed.texi       tex_not_closed.texi \
- tex.texi tex_gdef.texi tex_eqalign.texi tex_encodé_utf8.texi \
+ tex.texi tex_gdef.texi tex_eqalign.texi \
  tex_encode_latin1.texi \
  list-of-tests res_parser
 

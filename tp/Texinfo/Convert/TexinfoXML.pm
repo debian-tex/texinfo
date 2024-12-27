@@ -1,20 +1,20 @@
 # TexinfoXML.pm: output tree as Texinfo XML.
 #
-# Copyright 2011-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2011-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
 # A simple subclass of the Texinfo::Convert::TexinfoMarkup abstract
@@ -22,7 +22,7 @@
 
 package Texinfo::Convert::TexinfoXML;
 
-use 5.00405;
+use 5.006;
 use strict;
 
 use Carp qw(cluck);
@@ -32,28 +32,24 @@ use Texinfo::Convert::TexinfoMarkup;
 # for xml formatting methods
 use Texinfo::Convert::Converter;
 
-use vars qw($VERSION @ISA);
-@ISA = qw(Texinfo::Convert::TexinfoMarkup Texinfo::Convert::Converter);
+our @ISA = qw(Texinfo::Convert::TexinfoMarkup Texinfo::Convert::Converter);
 
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 
 # TexinfoXML specific
 my %defaults = (
-  # Not a customization option variable
-  'converted_format'     => 'xml',
-
   # Customization option variables
   'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'xml',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'SPLIT'                => 0,
+  'SPLIT'                => '',
   'documentlanguage'     => 'en',
 );
 
 sub converter_defaults($$)
 {
-  return %defaults;
+  return \%defaults;
 }
 
 
@@ -216,7 +212,6 @@ sub txi_markup_convert_text($$)
   my $element = shift;
   my $result = $self->_protect_text($element->{'text'});
   if (! defined($element->{'type'}) or $element->{'type'} ne 'raw') {
-    # FIXME API
     if (!$self->in_monospace()) {
       $result =~ s/``/&textldquo;/g;
       $result =~ s/\'\'/&textrdquo;/g;
@@ -262,10 +257,10 @@ Texinfo::Convert::TexinfoXML - Convert Texinfo tree to TexinfoXML
 =head1 SYNOPSIS
 
   my $converter
-    = Texinfo::Convert::TexinfoXML->converter({'parser' => $parser});
+    = Texinfo::Convert::TexinfoXML->converter({'NUMBER_SECTIONS' => 0});
 
-  $converter->output($tree);
-  $converter->convert($tree);
+  $converter->output($document);
+  $converter->convert($document);
   $converter->convert_tree($tree);
 
 =head1 NOTES
@@ -285,31 +280,31 @@ Texinfo::Convert::TexinfoXML converts a Texinfo tree to TexinfoXML.
 
 Initialize converter from Texinfo to TexinfoXML.
 
-The I<$options> hash reference holds options for the converter.  In
-this option hash reference a L<parser object|Texinfo::Parser>
-may be associated with the I<parser> key.  The other options
-are Texinfo customization options and a few other options that can
-be passed to the converter. Most of the customization options are described in
-the Texinfo manual.  Those customization options, when appropriate, override
-the document content.  The parser should not be available directly anymore
-after getting the associated information.
+The I<$options> hash reference holds Texinfo customization options for the
+converter.  These options should be Texinfo customization options
+that can be passed to the converter.  Most of the customization options are
+described in the Texinfo manual or in the customization API manual.  Those
+customization options, when appropriate, override the document content.
 
 See L<Texinfo::Convert::Converter> for more information.
 
-=item $converter->output($tree)
+=item $converter->output($document)
 
-Convert a Texinfo tree I<$tree> and output the result in files as
+Convert a Texinfo parsed document I<$document> and output the result in files as
 described in the Texinfo manual.
 
-=item $result = $converter->convert($tree)
+=item $result = $converter->convert($document)
 
-Convert a Texinfo tree I<$tree> and return the resulting output.
+Convert a Texinfo parsed document I<$document> and return the resulting output.
 
 =item $result = $converter->convert_tree($tree)
 
 Convert a Texinfo tree portion I<$tree> and return the resulting
 output.  This function does not try to output a full document but only
 portions.  For a full document use C<convert>.
+
+In general, this function should be called after the converter has been
+associated to a document by a call to C<output> or C<convert>.
 
 =back
 

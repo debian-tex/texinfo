@@ -99,7 +99,6 @@ $result_errors{'cpp_line_before_first_node'} = [
 ',
     'file_name' => 'foo.ptexi',
     'line_nr' => 102,
-    'macro' => '',
     'text' => 'unknown command `gggg\'',
     'type' => 'error'
   }

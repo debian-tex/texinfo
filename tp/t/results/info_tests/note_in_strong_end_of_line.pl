@@ -47,14 +47,12 @@ $result_trees{'note_in_strong_end_of_line'} = {
                       'text' => 'note a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'strong',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -86,14 +84,12 @@ $result_trees{'note_in_strong_end_of_line'} = {
                       'text' => 'a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'strong',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -105,6 +101,7 @@ $result_trees{'note_in_strong_end_of_line'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -113,9 +110,7 @@ $result_trees{'note_in_strong_end_of_line'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -138,19 +133,22 @@ bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb vvvvvvvvvvvvvvvv note
 a
 ';
 
-$result_nodes{'note_in_strong_end_of_line'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'note_in_strong_end_of_line'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'note_in_strong_end_of_line'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'note_in_strong_end_of_line'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'note_in_strong_end_of_line'} = [];
 
@@ -186,18 +184,14 @@ $result_converted_errors{'info'}->{'note_in_strong_end_of_line'} = [
   {
     'error_line' => 'warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @strong{Note...} produces a spurious cross-reference in Info; reword to avoid that
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that',
     'type' => 'warning'
   }

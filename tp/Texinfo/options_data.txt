@@ -1,0 +1,366 @@
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
+# This file is part of GNU Texinfo.
+#
+# GNU Texinfo is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# this information is used to setup both the XS options
+# and the perl main program and converters options.
+
+# format is:
+# option_name   category    default_value   type
+# undef is special for default_value, it means undefined.  What undefined
+# actually means depends on the variable.  In could mean
+#  * unset/false/empty string
+#  * set to the default value, when an unset value does not make sense
+# By chance, there is no space in default values for now, and therefore
+# no need for quoting/escaping.
+
+
+# @-commands that can be used multiple time in a document and default
+# values.
+# also used in util/txicustomvars
+
+allowcodebreaks            multiple_at_command true     char
+clickstyle                 multiple_at_command @arrow   char
+codequotebacktick          multiple_at_command off      char
+codequoteundirected        multiple_at_command off      char
+contents                   multiple_at_command 0        integer
+deftypefnnewline           multiple_at_command off      char
+documentencoding           multiple_at_command utf-8    char
+
+# Documented as en, but no @documentlanguage
+# really means that the language is not set.
+# --document-language
+documentlanguage           multiple_at_command undef    char
+
+evenfooting                multiple_at_command undef    char
+evenheading                multiple_at_command undef    char
+everyfooting               multiple_at_command undef    char
+everyheading               multiple_at_command undef    char
+# is N ems in TeX, 0.4 in.  Can be asis or a number
+exampleindent              multiple_at_command 5        char
+firstparagraphindent       multiple_at_command none     char
+frenchspacing              multiple_at_command off      char
+headings                   multiple_at_command on       char
+kbdinputstyle              multiple_at_command distinct char
+microtype                  multiple_at_command undef    char
+oddheading                 multiple_at_command undef    char
+oddfooting                 multiple_at_command undef    char
+paragraphindent            multiple_at_command 3        char
+shortcontents              multiple_at_command 0        integer
+summarycontents            multiple_at_command 0        integer
+urefbreakstyle             multiple_at_command after    char
+xrefautomaticsectiontitle  multiple_at_command off      char
+
+
+# @-commands that should be unique.
+# also used in util/txicustomvars
+afivepaper           unique_at_command undef   char
+afourpaper           unique_at_command undef   char
+afourlatex           unique_at_command undef   char
+afourwide            unique_at_command undef   char
+bsixpaper            unique_at_command undef   char
+# when passed through a customization variable, documentdescription
+# should be already formatted for HTML.  There is no default,
+# what is determined to be the title is used if not set.
+documentdescription  unique_at_command undef   char
+evenfootingmarks     unique_at_command undef   char
+evenheadingmarks     unique_at_command undef   char
+everyfootingmarks    unique_at_command bottom  char
+everyheadingmarks    unique_at_command bottom  char
+fonttextsize         unique_at_command 11      integer
+# --footnote-style
+footnotestyle        unique_at_command end     char
+# --no-validate
+novalidate           unique_at_command 0       integer
+oddfootingmarks      unique_at_command undef   char
+oddheadingmarks      unique_at_command undef   char
+pagesizes            unique_at_command undef   char
+setchapternewpage    unique_at_command on      char
+setfilename          unique_at_command undef   char
+smallbook            unique_at_command undef   char
+
+
+# comand-line options that are primarily used to control conversion.
+# a value corresponds to defaults that are the same for every output format
+# otherwise undef is used
+# --split-size
+SPLIT_SIZE                converter_cmdline 300000  integer
+# --fill-column
+FILLCOLUMN                converter_cmdline 72      integer
+# --number-sections
+NUMBER_SECTIONS           converter_cmdline 1       integer
+# --number-footnotes
+NUMBER_FOOTNOTES          converter_cmdline 1       integer
+# only in HTML
+# --transliterate-file-names
+TRANSLITERATE_FILE_NAMES  converter_cmdline 1       integer
+# --split
+SPLIT                     converter_cmdline undef   char
+# --headers.  Used to set diverse
+# customization options in main program.
+# Only directly used in HTML converter
+HEADERS                   converter_cmdline 1       integer
+# --node-files.  Default depends on SPLIT;  Used in HTML only.
+NODE_FILES                converter_cmdline undef   integer
+# --verbose
+VERBOSE                   converter_cmdline undef   integer
+# --output    Sets OUTPUT if non split and not ending by /.
+# Setting can be format dependent
+OUTFILE                   converter_cmdline undef   char
+# --output    Sets SUBDIR if split or ending by /.
+# Setting can be format dependent
+SUBDIR                    converter_cmdline undef   char
+# --disable-encoding/--enable-encoding.
+# The option is directly used in
+# Info/Plaintext, and used in diverse formats
+# for index sorting and plain text output.
+ENABLE_ENCODING           converter_cmdline 1       integer
+
+
+# used in main program, defaults documented in manual
+# --macro-expand.  Only for main program
+MACRO_EXPAND    program_cmdline undef  bytes
+# used in HTML only, called from main program
+# --internal-links
+INTERNAL_LINKS  program_cmdline undef  bytes
+# --error-limit
+ERROR_LIMIT     program_cmdline 100    integer
+# --force
+FORCE           program_cmdline undef  integer
+# --no-warn
+NO_WARN         program_cmdline undef  integer
+# --trace-includes
+TRACE_INCLUDES  program_cmdline 0      integer
+
+# following also set in converters
+# --headers.  Modified by the format.
+FORMAT_MENU     program_cmdline menu   char
+
+
+# output warnings when node with
+# automatic direction and directions in menu are not consistent
+# with sectionning, and when node directions are not consistent
+# with menu directions.
+CHECK_NORMAL_MENU_STRUCTURE  program_customization 1         integer
+CHECK_MISSING_MENU_ENTRY     program_customization 1         integer
+DUMP_TREE                    program_customization undef     integer
+DUMP_TEXI                    program_customization undef     integer
+SHOW_BUILTIN_CSS_RULES       program_customization 0         integer
+SORT_ELEMENT_COUNT           program_customization undef     char
+SORT_ELEMENT_COUNT_WORDS     program_customization undef     integer
+TEXI2DVI                     program_customization texi2dvi  char
+TREE_TRANSFORMATIONS         program_customization undef     char
+
+
+# up node of Top node default value
+TOP_NODE_UP                        converter_customization (dir)   char
+BASEFILENAME_LENGTH                converter_customization 255-10  integer
+DOC_ENCODING_FOR_INPUT_FILE_NAME   converter_customization 1       integer
+DOC_ENCODING_FOR_OUTPUT_FILE_NAME  converter_customization 0       integer
+# only used in HTML
+IMAGE_LINK_PREFIX                  converter_customization undef   char
+CASE_INSENSITIVE_FILENAMES         converter_customization 0       integer
+DEBUG                              converter_customization 0       integer
+# only used in HTML
+HANDLER_FATAL_ERROR_LEVEL          converter_customization 100     integer
+TEST                               converter_customization 0       integer
+# for textcontent format
+TEXTCONTENT_COMMENT                converter_customization undef   integer
+# used in TexinfoXML/SXML
+# Reset by the main program, therefore this value is only used in converter
+# tests that use the perl modules directly.  Does not need to match with the
+# documented value used in the main program, nor to be updated every time a
+# DTD is released, to have a fixed value for the tests.  However, it should
+# be good to update from time to time to avoid test results that are not
+# valid against their reported DTD.
+TEXINFO_DTD_VERSION                converter_customization 7.1     char
+USE_UNICODE_COLLATION              converter_customization 1       integer
+
+# Some are for all converters, EXTENSION for instance, some for
+# some converters, for example CLOSE_QUOTE_SYMBOL and many
+# for HTML.
+# Defaults are documented in manual and set in the various converters.
+# used in util/txicustomvars
+AFTER_BODY_OPEN                    converter_customization undef   char
+AFTER_SHORT_TOC_LINES              converter_customization undef   char
+AFTER_TOC_LINES                    converter_customization undef   char
+ASCII_DASHES_AND_QUOTES            converter_customization undef   integer
+ASCII_GLYPH                        converter_customization undef   integer
+ASCII_PUNCTUATION                  converter_customization undef   integer
+AUTO_MENU_DESCRIPTION_ALIGN_COLUMN converter_customization undef   integer
+AUTO_MENU_MAX_WIDTH                converter_customization undef   integer
+BEFORE_SHORT_TOC_LINES             converter_customization undef   char
+BEFORE_TOC_LINES                   converter_customization undef   char
+BIG_RULE                           converter_customization undef   char
+BODY_ELEMENT_ATTRIBUTES            converter_customization undef   char
+# for LaTeX
+CLASS_BEGIN_USEPACKAGE             converter_customization undef   char
+COPIABLE_LINKS                     converter_customization undef   integer
+CHAPTER_HEADER_LEVEL               converter_customization undef   integer
+CHECK_HTMLXREF                     converter_customization undef   integer
+CLOSE_DOUBLE_QUOTE_SYMBOL          converter_customization undef   char
+CLOSE_QUOTE_SYMBOL                 converter_customization undef   char
+COLLATION_LANGUAGE                 converter_customization undef   char
+COMMAND_LINE_ENCODING              converter_customization undef   char
+INDENTED_BLOCK_COMMANDS_IN_TABLE   converter_customization undef   integer
+CONTENTS_OUTPUT_LOCATION           converter_customization undef   char
+CONVERT_TO_LATEX_IN_MATH           converter_customization undef   integer
+DATE_IN_HEADER                     converter_customization undef   integer
+DEFAULT_RULE                       converter_customization undef   char
+DEF_TABLE                          converter_customization undef   integer
+DO_ABOUT                           converter_customization undef   integer
+DOCTYPE                            converter_customization undef   char
+DOCUMENTLANGUAGE_COLLATION         converter_customization undef   integer
+# for LaTeX
+END_USEPACKAGE                     converter_customization undef   char
+# for ext/epub3.pm
+EPUB_CREATE_CONTAINER_FILE         converter_customization undef   integer
+# for ext/epub3.pm
+EPUB_KEEP_CONTAINER_FOLDER         converter_customization undef   integer
+EXTENSION                          converter_customization undef   char
+EXTERNAL_CROSSREF_EXTENSION        converter_customization undef   char
+# This is used like a boolean, but it is set to a char to match SPLIT, such
+# that the value can be set as a copy of SPLIT value
+EXTERNAL_CROSSREF_SPLIT            converter_customization undef   char
+EXTERNAL_DIR                       converter_customization undef   char
+EXTRA_HEAD                         converter_customization undef   char
+FOOTNOTE_END_HEADER_LEVEL          converter_customization undef   integer
+FOOTNOTE_SEPARATE_HEADER_LEVEL     converter_customization undef   integer
+HEADER_IN_TABLE                    converter_customization undef   integer
+# for ext/highlight_syntax.pm
+HIGHLIGHT_SYNTAX                   converter_customization undef   char
+# for ext/highlight_syntax.pm
+HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE  converter_customization undef   char
+HTML_MATH                          converter_customization undef   char
+HTML_ROOT_ELEMENT_ATTRIBUTES       converter_customization undef   char
+HTMLXREF_FILE                      converter_customization undef   char
+HTMLXREF_MODE                      converter_customization undef   char
+ICONS                              converter_customization undef   integer
+INDEX_ENTRY_COLON                  converter_customization undef   char
+INDEX_SPECIAL_CHARS_WARNING        converter_customization undef   integer
+INFO_JS_DIR                        converter_customization undef   char
+INFO_SPECIAL_CHARS_QUOTE           converter_customization undef   char
+INFO_SPECIAL_CHARS_WARNING         converter_customization undef   integer
+IGNORE_REF_TO_TOP_NODE_UP          converter_customization undef   integer
+INLINE_CSS_STYLE                   converter_customization undef   integer
+INPUT_FILE_NAME_ENCODING           converter_customization undef   char
+JS_WEBLABELS                       converter_customization undef   char
+JS_WEBLABELS_FILE                  converter_customization undef   char
+LATEX_FLOATS_FILE_EXTENSION        converter_customization tfl     char
+LOCALE_ENCODING                    converter_customization undef   char
+L2H_CLEAN                          converter_customization undef   integer
+L2H_FILE                           converter_customization undef   char
+L2H_HTML_VERSION                   converter_customization undef   char
+L2H_L2H                            converter_customization undef   char
+L2H_SKIP                           converter_customization undef   integer
+L2H_TMP                            converter_customization undef   char
+MATHJAX_CONFIGURATION              converter_customization undef   char
+MATHJAX_SCRIPT                     converter_customization undef   char
+MATHJAX_SOURCE                     converter_customization undef   char
+MAX_HEADER_LEVEL                   converter_customization undef   integer
+MENU_ENTRY_COLON                   converter_customization undef   char
+MENU_SYMBOL                        converter_customization undef   char
+MESSAGE_ENCODING                   converter_customization undef   char
+MONOLITHIC                         converter_customization undef   integer
+NO_CSS                             converter_customization undef   integer
+NO_NUMBER_FOOTNOTE_SYMBOL          converter_customization undef   char
+NO_CUSTOM_HTML_ATTRIBUTE           converter_customization undef   integer
+NODE_NAME_IN_INDEX                 converter_customization undef   integer
+NODE_NAME_IN_MENU                  converter_customization undef   integer
+NO_TOP_NODE_OUTPUT                 converter_customization undef   integer
+OPEN_DOUBLE_QUOTE_SYMBOL           converter_customization undef   char
+OPEN_QUOTE_SYMBOL                  converter_customization undef   char
+OUTPUT_CHARACTERS                  converter_customization undef   integer
+OUTPUT_ENCODING_NAME               converter_customization undef   char
+OUTPUT_FILE_NAME_ENCODING          converter_customization undef   char
+OUTPUT_PERL_ENCODING               converter_customization undef   char
+PACKAGE                            converter_customization undef   char
+PACKAGE_AND_VERSION                converter_customization undef   char
+PACKAGE_NAME                       converter_customization undef   char
+PACKAGE_URL                        converter_customization undef   char
+PACKAGE_VERSION                    converter_customization undef   char
+PRE_BODY_CLOSE                     converter_customization undef   char
+PREFIX                             converter_customization undef   char
+PROGRAM                            converter_customization undef   char
+PROGRAM_NAME_IN_ABOUT              converter_customization undef   integer
+PROGRAM_NAME_IN_FOOTER             converter_customization undef   integer
+SECTION_NAME_IN_TITLE              converter_customization undef   integer
+SHORT_TOC_LINK_TO_TOC              converter_customization undef   integer
+SHOW_TITLE                         converter_customization undef   integer
+T4H_LATEX_CONVERSION               converter_customization undef   char
+T4H_MATH_CONVERSION                converter_customization undef   char
+T4H_TEX_CONVERSION                 converter_customization undef   char
+TEXI2HTML                          converter_customization undef   integer
+TEXINFO_OUTPUT_FORMAT              converter_customization undef   char
+# for Texinfo Markup/XML
+TXI_MARKUP_NO_SECTION_EXTENT       converter_customization undef   integer
+TOC_LINKS                          converter_customization undef   integer
+TOP_FILE                           converter_customization undef   char
+TOP_NODE_FILE_TARGET               converter_customization undef   char
+TOP_NODE_UP_URL                    converter_customization undef   char
+USE_ACCESSKEY                      converter_customization undef   integer
+USE_ISO                            converter_customization undef   integer
+USE_LINKS                          converter_customization undef   integer
+USE_NEXT_HEADING_FOR_LONE_NODE     converter_customization undef   integer
+USE_NODES                          converter_customization undef   integer
+USE_NODE_DIRECTIONS                converter_customization undef   integer
+USE_NUMERIC_ENTITY                 converter_customization undef   integer
+USE_REL_REV                        converter_customization undef   integer
+USE_SETFILENAME_EXTENSION          converter_customization undef   integer
+USE_TITLEPAGE_FOR_TITLE            converter_customization undef   integer
+USE_UNIDECODE                      converter_customization undef   integer
+USE_XML_SYNTAX                     converter_customization undef   integer
+VERTICAL_HEAD_NAVIGATION           converter_customization undef   integer
+WORDS_IN_PAGE                      converter_customization undef   integer
+XREF_USE_FLOAT_LABEL               converter_customization undef   integer
+XREF_USE_NODE_NAME_ARG             converter_customization undef   integer
+
+# Not documented for now.  If set, conversion/formatting not in C.
+# FIXME keep/document?
+XS_EXTERNAL_CONVERSION             converter_customization undef   integer
+XS_EXTERNAL_FORMATTING             converter_customization undef   integer
+
+# used for development tests, not sure that it will stay in the long term
+XS_STRXFRM_COLLATION_LOCALE        converter_customization undef   char
+
+# used internally for EPUB
+_INLINE_STYLE_WIDTH                converter_customization undef   integer
+
+# Not strings
+LINKS_BUTTONS                      converter_other undef   buttons
+TOP_BUTTONS                        converter_other undef   buttons
+TOP_FOOTER_BUTTONS                 converter_other undef   buttons
+SECTION_BUTTONS                    converter_other undef   buttons
+CHAPTER_FOOTER_BUTTONS             converter_other undef   buttons
+SECTION_FOOTER_BUTTONS             converter_other undef   buttons
+NODE_FOOTER_BUTTONS                converter_other undef   buttons
+MISC_BUTTONS                       converter_other undef   buttons
+CHAPTER_BUTTONS                    converter_other undef   buttons
+ACTIVE_ICONS                       converter_other undef   icons
+PASSIVE_ICONS                      converter_other undef   icons
+
+
+# set from command line or in main program.
+# --css-include
+CSS_FILES                    array_cmdline  undef   bytes_string_list
+# --css-ref
+CSS_REFS                     array_cmdline  undef   char_string_list
+# --if*
+EXPANDED_FORMATS             array_cmdline  undef   bytes_string_list
+# -I
+INCLUDE_DIRECTORIES          array_cmdline  undef   file_string_list
+TEXINFO_LANGUAGE_DIRECTORIES array_cmdline  undef   file_string_list
+

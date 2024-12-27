@@ -1,26 +1,29 @@
 use strict;
 
-texinfo_register_file_id_setting_function('tree_unit_file_name',
+texinfo_register_file_id_setting_function('unit_file_name',
                                           \&test_misc_file_name);
 
 sub test_misc_file_name($$$$)
 {
   my $converter = shift;
-  my $element = shift;
-  my $filename = shift;
-  my $filepath = shift;
+  my $output_unit = shift;
+  my $input_filename = shift;
+  my $input_filepath = shift;
 
-  return ($filename, $filepath) if (defined($filepath));
+  return ($input_filename, $input_filepath) if (defined($input_filepath));
 
-  if ($converter->element_is_tree_unit_top($element)
-      or ($converter->{'tree_units'}->[2]
-          and $converter->{'tree_units'}->[2] eq $element)) {
+  my $filename;
+  if ($converter->unit_is_top_output_unit($output_unit)
+      or ($converter->{'document_units'}->[2]
+          and $converter->{'document_units'}->[2] eq $output_unit)) {
     my $extension = $converter->get_conf('EXTENSION');
-    my $prefix = $converter->{'document_name'};
+    my $prefix = $converter->get_info('document_name');
     $filename = "${prefix}_abt"
       . ((defined($extension)) ? ".$extension" : '');
+  } else {
+    $filename = $input_filename;
   }
-  return ($filename, $filepath);
+  return ($filename, $input_filepath);
 }
 
 texinfo_set_from_init_file('DO_ABOUT', 1);

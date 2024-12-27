@@ -55,9 +55,7 @@ $result_trees{'arg_body_expansion_order'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -66,9 +64,7 @@ $result_trees{'arg_body_expansion_order'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -141,9 +137,7 @@ $result_trees{'arg_body_expansion_order'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
@@ -152,9 +146,7 @@ $result_trees{'arg_body_expansion_order'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -169,7 +161,7 @@ $result_trees{'arg_body_expansion_order'} = {
                         'text' => '@othermacro{}'
                       }
                     ],
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -240,7 +232,6 @@ $result_trees{'arg_body_expansion_order'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 14,
                 'macro' => 'redefineothermacro'
               }
@@ -251,33 +242,30 @@ $result_trees{'arg_body_expansion_order'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 14,
             'macro' => 'redefineothermacro'
-          },
-          'source_marks' => [
-            {
-              'counter' => 2,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'othermacro'
-                },
-                'type' => 'macro_call'
-              },
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ]
+          }
         },
         {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 2,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'othermacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 2,
                   'position' => 9,

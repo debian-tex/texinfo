@@ -38,7 +38,7 @@ blah:blah.
 * blah:blah::
 * the topic:blumpty.fump.
 * normal node::
-* funny:label:secret,node.
+* funny:label:secret,node.
 * (man:u.al)ext::
 
 
@@ -75,11 +75,11 @@ stuff here.
 
 Tag Table:
 Node: Top55
-Node: blah:blah863
-Node: blumpty.fump986
-Node: normal node1110
-Node: secret,node1270
-Node: top secret node1375
+Node: blah:blah869
+Node: blumpty.fump992
+Node: normal node1116
+Node: secret,node1276
+Node: top secret node1381
 
 End Tag Table
 

@@ -3,7 +3,7 @@
 # copy_change_file_name_encoding.pl: copy file changing
 # the encoding of the file name and substituting to have accented letters.
 #
-# Copyright 2022-2023 Free Software Foundation, Inc.
+# Copyright 2022-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

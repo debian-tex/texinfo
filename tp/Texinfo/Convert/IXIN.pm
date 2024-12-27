@@ -1,20 +1,20 @@
 # IXIN.pm: output IXIN format.
 #
-# Copyright 2013-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2013-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
 #
@@ -26,9 +26,10 @@
 #
 #
 # This module alone is not sufficient to output the IXIN format, as it
-# calls convert_tree() but does not implement the conversion of Texinfo
-# (of the Texinfo tree) nor inherit from a module that does so.  A module
-# inheriting both from a converter module, for convert_tree(), and this module
+# calls convert_tree() and convert_output_unit() but does not implement
+# the conversion of Texinfo (of the Texinfo tree) nor inherit from a module
+# that does so.  A module inheriting both from a converter module, for
+# convert_tree() and convert_output_unit(), and this module
 # should be used.  A functional implementation of IXIN is available as the
 # Texinfo::Convert::IXINSXML module which uses Texinfo::Convert::TexinfoSXML
 # for the Texinfo tree conversion.  Using a Texinfo tree converter that does
@@ -62,7 +63,7 @@
 
 package Texinfo::Convert::IXIN;
 
-use 5.00405;
+use 5.006;
 use strict;
 
 # To check if there is no erroneous autovivification
@@ -72,13 +73,18 @@ use MIME::Base64;
 use Carp qw(cluck);
 
 use Texinfo::Commands;
+use Texinfo::Options;
 use Texinfo::Common;
+
+# for section_level_adjusted_command_name
+use Texinfo::Structuring;
+use Texinfo::OutputUnits;
+
 use Texinfo::Convert::TexinfoSXML;
 
-use vars qw($VERSION @ISA);
-@ISA = qw(Texinfo::Convert::Converter);
+our @ISA = qw(Texinfo::Convert::Converter);
 
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 
 my $ixin_version = 1;
@@ -229,35 +235,30 @@ sub ixin_none_element($$)
 # end output specific subs
 
 # FIXME this is rather non specific. Move to Converter?
-# FIXME need to be changed for {'structure'}->{'associated_unit'}.
 # There is a version HTML specific, _html_get_tree_root_element
-# which is up to date and handles better content in @insertcopying
+# which is always up to date and handles better content in @insertcopying
 # or @titlepage, but has specific HTML code related to separate
-# elements, it could be used to update if needed.
+# elements.
 sub _get_element($$);
 sub _get_element($$)
 {
   my $self = shift;
   my $current = shift;
 
-  my ($element, $root_command);
+  my $root_command;
   while (1) {
     #print STDERR Texinfo::Common::debug_print_element($current);
-    if ($current->{'type'}) {
-      if ($current->{'type'} eq 'unit') {
-        return ($current, $root_command);
-      }
-    }
     if ($current->{'cmdname'}) {
       if ($Texinfo::Commands::root_commands{$current->{'cmdname'}}) {
         $root_command = $current;
-        return ($element, $root_command) if defined($element);
       }
     }
-    if ($current->{'parent'}) {
+    if ($current->{'associated_unit'}) {
+      return ($current->{'associated_unit'}, $root_command);
+    } elsif ($current->{'parent'}) {
       $current = $current->{'parent'};
     } else {
-      return ($element, $root_command);
+      return (undef, $root_command);
     }
   }
 }
@@ -282,11 +283,11 @@ sub _associated_node_id($$$;$)
 
     if ($root_command) {
       if (!$root_command->{'cmdname'} or $root_command->{'cmdname'} ne 'node') {
-        if ($element and $element->{'extra'}
-            and $element->{'extra'}->{'unit_command'}
-            and $element->{'extra'}->{'unit_command'}->{'cmdname'}
-            and $element->{'extra'}->{'unit_command'}->{'cmdname'} eq 'node') {
-          $node_command = $element->{'extra'}->{'unit_command'};
+        if ($element
+            and $element->{'unit_command'}
+            and $element->{'unit_command'}->{'cmdname'}
+            and $element->{'unit_command'}->{'cmdname'} eq 'node') {
+          $node_command = $element->{'unit_command'};
         }
       } else {
         $node_command = $root_command;
@@ -320,16 +321,23 @@ my @node_directions = ('Next', 'Prev', 'Up');
 sub output_ixin($$)
 {
   my $self = shift;
-  my $root = shift;
+  my $document = shift;
 
-  my ($output_file, $destination_directory) = $self->determine_files_and_directory();
+  $self->conversion_initialization($document);
+
+  my ($output_file, $destination_directory, $output_filename)
+    = $self->determine_files_and_directory(
+                                  $self->get_conf('TEXINFO_OUTPUT_FORMAT'));
 
   my ($encoded_destination_directory, $dir_encoding)
     = $self->encoded_output_file_name($destination_directory);
   my $succeeded
     = $self->create_destination_directory($encoded_destination_directory,
                                           $destination_directory);
-  return undef unless $succeeded;
+  unless ($succeeded) {
+    $self->conversion_finalization();
+    return undef;
+  }
 
   my $fh;
   my $encoded_output_file;
@@ -338,13 +346,16 @@ sub output_ixin($$)
     ($encoded_output_file, $path_encoding)
       = $self->encoded_output_file_name($output_file);
     my $error_message;
-    ($fh, $error_message) = Texinfo::Common::output_files_open_out(
+    # the third return information, set if the file has already been used
+    # in this files_information is not checked as this cannot happen.
+    ($fh, $error_message) = Texinfo::Convert::Utils::output_files_open_out(
                              $self->output_files_information(), $self,
                              $encoded_output_file);
     if (!$fh) {
-      $self->document_error($self,
+      $self->converter_document_error(
                 sprintf(__("could not open %s for writing: %s"),
                                     $output_file, $error_message));
+      $self->conversion_finalization();
       return undef;
     }
   }
@@ -370,9 +381,25 @@ sub output_ixin($$)
   $result .= $self->ixin_list_element('lang', [['name', $lang]]);
   # FIXME title: use simpletitle or fulltitle
 
-  if ($self->{'parser_info'}->{'dircategory_direntry'}) {
+  my $document_info;
+  my $floats;
+  my $sections_list;
+  my $identifiers_target;
+  my $indices_information;
+  my $global_commands;
+  if ($self->{'document'}) {
+    $document_info = $self->{'document'}->global_information();
+    $floats = $self->{'document'}->floats_information();
+    $sections_list = $self->{'document'}->sections_list();
+    $identifiers_target = $self->{'document'}->labels_information();
+    $indices_information = $self->{'document'}->indices_information();
+    $global_commands = $self->{'document'}->global_commands_information();
+  }
+
+  if ($global_commands and $global_commands->{'dircategory_direntry'}) {
     my $current_category;
-    foreach my $dircategory_direntry (@{$self->{'parser_info'}->{'dircategory_direntry'}}) {
+    foreach my $dircategory_direntry
+                  (@{$global_commands->{'dircategory_direntry'}}) {
       if ($dircategory_direntry->{'cmdname'}
           and $dircategory_direntry->{'cmdname'} eq 'dircategory') {
         if ($current_category) {
@@ -395,7 +422,7 @@ sub output_ixin($$)
 
   # FIXME vars: wait for Thien-Thi answer.
 
-  my $tree_units = Texinfo::Structuring::split_by_node($root);
+  my $output_units = Texinfo::OutputUnits::split_by_node($document);
   # setting_commands is for @-commands appearing before the first node,
   # while end_of_nodes_setting_commands holds, for @-commands names, the
   # last @-command element.
@@ -404,17 +431,17 @@ sub output_ixin($$)
   my %setting_commands_defaults;
   # FIXME this code is unclear and probably needs to be fixed if developemnt
   # resumes.  Maybe could be replaced by set_global_document_commands.
-  foreach my $global_command (keys(%{$self->{'global_commands'}})) {
+  foreach my $global_command (keys(%{$global_commands})) {
     if ((($Texinfo::Commands::line_commands{$global_command}
           and $Texinfo::Commands::line_commands{$global_command} eq 'specific')
          or $additional_setting_commands{$global_command})
         and !$global_line_not_setting_commands{$global_command}) {
-      if (ref($self->{'global_commands'}->{$global_command}) eq 'ARRAY') {
-        if (defined($Texinfo::Common::document_settable_multiple_at_commands{$global_command})) {
+      if (ref($global_commands->{$global_command}) eq 'ARRAY') {
+        if (defined($Texinfo::Options::multiple_at_command_options{$global_command})) {
           $setting_commands_defaults{$global_command}
-            = $Texinfo::Common::document_settable_multiple_at_commands{$global_command};
+            = $Texinfo::Options::multiple_at_command_options{$global_command};
         }
-        foreach my $command (@{$self->{'global_commands'}->{$global_command}}) {
+        foreach my $command (@{$global_commands->{$global_command}}) {
           my ($element, $root_command) = _get_element($self, $command);
           # before first node
           if (not $root_command
@@ -429,12 +456,7 @@ sub output_ixin($$)
           #print STDERR "$element $root_command->{'extra'} $global_command\n";
         }
       } else {
-        # FIXME the value is reset just after, this is useless...
-        if (defined($Texinfo::Common::document_settable_unique_at_commands{$global_command})) {
-          $setting_commands_defaults{$global_command}
-            = $Texinfo::Common::document_settable_unique_at_commands{$global_command};
-        }
-        $setting_commands{$global_command} = $self->{'global_commands'}->{$global_command};
+        $setting_commands{$global_command} = $global_commands->{$global_command};
       }
     }
   }
@@ -443,10 +465,9 @@ sub output_ixin($$)
     my $setting_command = $setting_commands{$setting_command_name};
     $setting_command_name = 'shortcontents'
         if ($setting_command_name eq 'summarycontents');
-    # FIXME should use get_conf instead?
-    my $value = Texinfo::Common::_informative_command_value($setting_command);
+    my $value = Texinfo::Common::informative_command_value($setting_command);
     #print STDERR "$setting_command_name $value\n";
-    # do not register settings if sete at the default value.
+    # do not register settings if set at the default value.
     if (defined($value)
         and !(defined($setting_commands_defaults{$setting_command_name})
               and $setting_commands_defaults{$setting_command_name} eq $value)) {
@@ -475,8 +496,8 @@ sub output_ixin($$)
   $result .= $self->ixin_close_element('settings');
 
   foreach my $region ('copying', 'titlepage') {
-    if ($self->{'global_commands'}->{$region}) {
-      $result .= $self->convert_tree($self->{'global_commands'}->{$region});
+    if ($global_commands->{$region}) {
+      $result .= $self->convert_tree($global_commands->{$region});
     } else {
       $result .= $self->ixin_none_element($region);
     }
@@ -487,56 +508,52 @@ sub output_ixin($$)
   $result .= $self->ixin_close_element('meta');
   $result .= "\n";
 
-  # to do the nodes index, one need the size of each node.
-  # to do the counts list, one need to know the sizze of the node index.
+  # to do the nodes index, one need the size of each output unit.
+  # to do the counts list, one need to know the size of the node index.
   # So we have to start by the node data.
   my $node_nr = 0;
   my %current_settings;
   my %node_label_number;
-  my %node_byte_sizes;
+  my %output_unit_byte_sizes;
   my %node_tweaks;
   my @nodes;
   my $document_output = '';
-  if ($tree_units) {
-    foreach my $node_element (@$tree_units) {
-      next if (not defined ($node_element->{'extra'})
-               or not defined($node_element->{'extra'}->{'unit_command'}));
-      $node_nr++;
-      my $node = $node_element->{'extra'}->{'unit_command'};
-      push @nodes, $node;
-      my $normalized_node_name = $node->{'extra'}->{'normalized'};
-      foreach my $setting_command_name (keys(%current_settings)) {
-        $node_tweaks{$normalized_node_name}->{$setting_command_name}
-          = $current_settings{$setting_command_name};
-      }
-      $node_label_number{$normalized_node_name} = $node_nr;
 
-      my $node_result = $self->convert_tree($node_element)."\n";
-      $document_output .= $node_result;
+  foreach my $output_unit (@$output_units) {
+    next if (not defined($output_unit->{'unit_command'}));
+    $node_nr++;
+    my $node = $output_unit->{'unit_command'};
+    push @nodes, $node;
+    my $normalized_node_name = $node->{'extra'}->{'normalized'};
+    foreach my $setting_command_name (keys(%current_settings)) {
+      $node_tweaks{$normalized_node_name}->{$setting_command_name}
+        = $current_settings{$setting_command_name};
+    }
+    $node_label_number{$normalized_node_name} = $node_nr;
 
-      # get node length.
-      $node_byte_sizes{$normalized_node_name}
-         = $self->_count_bytes($node_result);
-      # update current settings
-      if (defined($end_of_nodes_setting_commands{$normalized_node_name})) {
-        foreach my $setting_command_name (keys(%{$end_of_nodes_setting_commands{$normalized_node_name}})) {
-          # FIXME should use get_conf instead?
-          my $value = Texinfo::Common::_informative_command_value_informative_command_value(
-            $end_of_nodes_setting_commands{$normalized_node_name}->{$setting_command_name});
-          if ((defined($settings{$setting_command_name})
-               and $settings{$setting_command_name} eq $value)
-              or (!defined($settings{$setting_command_name})
-                  and defined($setting_commands_defaults{$setting_command_name})
-                  and $setting_commands_defaults{$setting_command_name} eq $value)) {
-            delete $current_settings{$setting_command_name};
-          } else {
-            $current_settings{$setting_command_name} = $value;
-          }
+    my $output_unit_result = $self->convert_output_unit($output_unit)."\n";
+    $document_output .= $output_unit_result;
+
+    # get node length.
+    $output_unit_byte_sizes{$normalized_node_name}
+       = $self->_count_bytes($output_unit_result);
+    # update current settings
+    if (defined($end_of_nodes_setting_commands{$normalized_node_name})) {
+      foreach my $setting_command_name (keys(%{$end_of_nodes_setting_commands{$normalized_node_name}})) {
+        # FIXME should use get_conf instead?
+        my $value = Texinfo::Common::_informative_command_value_informative_command_value(
+          $end_of_nodes_setting_commands{$normalized_node_name}->{$setting_command_name});
+        if ((defined($settings{$setting_command_name})
+             and $settings{$setting_command_name} eq $value)
+            or (!defined($settings{$setting_command_name})
+                and defined($setting_commands_defaults{$setting_command_name})
+                and $setting_commands_defaults{$setting_command_name} eq $value)) {
+          delete $current_settings{$setting_command_name};
+        } else {
+          $current_settings{$setting_command_name} = $value;
         }
       }
     }
-  } else {
-    # not a full document.
   }
 
   my $nodes_index = $self->ixin_open_element('nodesindex');
@@ -544,10 +561,13 @@ sub output_ixin($$)
     my $normalized_node_name = $node->{'extra'}->{'normalized'};
     # FIXME name should be a renderable sequence
     my @attributes = (['name', $normalized_node_name],
-                      ['length', $node_byte_sizes{$normalized_node_name}]);
+                      ['length',
+                       $output_unit_byte_sizes{$normalized_node_name}]);
     foreach my $direction (@node_directions) {
-      if ($node->{'node_'.lc($direction)}) {
-        my $node_direction = $node->{'node_'.lc($direction)};
+      if ($node->{'extra'}->{'node_directions'}
+          and $node->{'extra'}->{'node_directions'}->{lc($direction)}) {
+        my $node_direction
+           = $node->{'extra'}->{'node_directions'}->{lc($direction)};
         if ($node_direction->{'extra'}->{'manual_content'}) {
           # FIXME?
           push @attributes, ['node'.lc($direction), -2];
@@ -588,9 +608,10 @@ sub output_ixin($$)
   # do sectioning tree
   my $sectioning_tree = '';
   $sectioning_tree  .= $self->ixin_open_element('sectioningtree');
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
-    my $section_root = $self->{'structuring'}->{'sectioning_root'};
-    foreach my $top_section (@{$section_root->{'structure'}->{'section_childs'}}) {
+  if ($sections_list) {
+    my $section_root = $sections_list->[0]
+                                   ->{'extra'}->{'sectioning_root'};
+    foreach my $top_section (@{$section_root->{'extra'}->{'section_childs'}}) {
       my $section = $top_section;
  SECTION:
       while ($section) {
@@ -610,29 +631,32 @@ sub output_ixin($$)
         if ($section->{'cmdname'} eq 'top') {
           $sectioning_tree .= $self->ixin_close_element('sectionentry');
         }
-        if ($section->{'structure'}->{'section_childs'}) {
-          $section = $section->{'structure'}->{'section_childs'}->[0];
-        } elsif ($section->{'structure'}->{'section_next'}) {
+        if ($section->{'extra'}->{'section_childs'}) {
+          $section = $section->{'extra'}->{'section_childs'}->[0];
+        } elsif ($section->{'extra'}->{'section_directions'}
+                 and $section->{'extra'}->{'section_directions'}->{'next'}) {
           $sectioning_tree .= $self->ixin_close_element('sectionentry');
           last if ($section eq $top_section);
-          $section = $section->{'structure'}->{'section_next'};
+          $section = $section->{'extra'}->{'section_directions'}->{'next'};
         } else {
           if ($section eq $top_section) {
             $sectioning_tree .= $self->ixin_close_element('sectionentry')
               unless ($section->{'cmdname'} eq 'top');
             last;
           }
-          while ($section->{'structure'}->{'section_up'}) {
-            $section = $section->{'structure'}->{'section_up'};
+          while ($section->{'extra'}->{'section_directions'}
+                 and $section->{'extra'}->{'section_directions'}->{'up'}) {
+            $section = $section->{'extra'}->{'section_directions'}->{'up'};
             $sectioning_tree .= $self->ixin_close_element('sectionentry');
             if ($section eq $top_section) {
               $sectioning_tree .= $self->ixin_close_element('sectionentry')
                  unless ($section->{'cmdname'} eq 'top');
               last SECTION;
             }
-            if ($section->{'structure'}->{'section_next'}) {
+            if ($section->{'extra'}->{'section_directions'}
+                and $section->{'extra'}->{'section_directions'}->{'next'}) {
               $sectioning_tree .= $self->ixin_close_element('sectionentry');
-              $section = $section->{'structure'}->{'section_next'};
+              $section = $section->{'extra'}->{'section_directions'}->{'next'};
               last;
             }
           }
@@ -647,9 +671,9 @@ sub output_ixin($$)
   my $non_node_labels_text = '';
   my $labels_nr = 0;
   my %floats_associated_node_id;
-  if ($self->{'labels'}) {
-    foreach my $label (sort(keys(%{$self->{'labels'}}))) {
-      my $command = $self->{'labels'}->{$label};
+  if ($identifiers_target) {
+    foreach my $label (sort(keys(%{$identifiers_target}))) {
+      my $command = $identifiers_target->{$label};
       next if ($command->{'cmdname'} eq 'node');
       $labels_nr++;
       my $associated_node_id = $self->_associated_node_id($command,
@@ -678,14 +702,9 @@ sub output_ixin($$)
 
   my %dts_information;
 
-  my $indices_information = $self->{'indices_information'};
   if ($indices_information) {
-    my $merged_index_entries
-        = Texinfo::Structuring::merge_indices($indices_information);
-    my ($entries, $index_entries_sort_strings)
-      = Texinfo::Structuring::sort_indices($self, $self,
-                                           $merged_index_entries,
-                                           $indices_information);
+    my $entries
+      = $self->get_converter_indices_sorted_by_index();
     # first do the dts_text as the counts are needed for the dts index
     foreach my $index_name (sort(keys(%$entries))) {
       $dts_information{$index_name} = {};
@@ -722,8 +741,8 @@ sub output_ixin($$)
   }
 
   # Gather information on printindex @-commands associated node id
-  if ($self->{'global_commands'}->{'printindex'}) {
-    foreach my $command (@{$self->{'global_commands'}->{'printindex'}}) {
+  if ($global_commands->{'printindex'}) {
+    foreach my $command (@{$global_commands->{'printindex'}}) {
       my $associated_node_id = $self->_associated_node_id($command,
                                                    \%node_label_number);
       if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
@@ -770,15 +789,15 @@ sub output_ixin($$)
   my %floats_information;
 
   # collect all float types corresponding to float commands
-  if ($self->{'floats'}) {
-    foreach my $float_type (keys(%{$self->{'floats'}})) {
+  if ($floats) {
+    foreach my $float_type (keys(%{$floats})) {
       $floats_information{$float_type} = {};
     }
   }
 
   # collect listoffloats information
-  if ($self->{'global_commands'}->{'listoffloats'}) {
-    foreach my $listoffloats_element (@{$self->{'global_commands'}->{'listoffloats'}}) {
+  if ($global_commands and $global_commands->{'listoffloats'}) {
+    foreach my $listoffloats_element (@{$global_commands->{'listoffloats'}}) {
       my $associated_node_id = $self->_associated_node_id($listoffloats_element,
                                                      \%node_label_number);
       my $float_type = $listoffloats_element->{'extra'}->{'float_type'};
@@ -795,10 +814,10 @@ sub output_ixin($$)
   my $floats_index = '';
   foreach my $type (sort(keys(%floats_information))) {
     my $float_text_len = 0;
-    if ($self->{'floats'}->{$type}) {
+    if ($floats->{$type}) {
       my $float_nr = 0;
       my $float_text = '';
-      foreach my $float (@{$self->{'floats'}->{$type}}) {
+      foreach my $float (@{$floats->{$type}}) {
         $float_nr++;
         my $associated_node_id;
         # associated node already found when collecting labels
@@ -843,7 +862,7 @@ sub output_ixin($$)
       # determine type expandable string from first float if it was not
       # already determined from listoffloats
       if (!defined($floats_information{$type}->{'type'})) {
-        my $float_element = $self->{'floats'}->{$type}->[0];
+        my $float_element = $floats->{$type}->[0];
         if ($float_element->{'extra'}->{'float_type'} ne '') {
           $floats_information{$type}->{'type'}
             = $self->convert_tree($float_element->{'args'}->[0]);
@@ -883,6 +902,9 @@ sub output_ixin($$)
   my $blobs = '';
   my $blobs_index = '';
   my $blob_nr = 0;
+
+  my $root = $document->tree();
+
   my $collected_image_commands = Texinfo::Common::collect_commands_list_in_tree(
                                                                 $root, ['image']);
   if (scalar(@{$collected_image_commands})) {
@@ -893,20 +915,34 @@ sub output_ixin($$)
       if (defined($command->{'args'}->[0])
           and $command->{'args'}->[0]->{'contents'}
           and @{$command->{'args'}->[0]->{'contents'}}) {
+        Texinfo::Convert::Text::set_options_code(
+                                 $self->{'convert_text_options'});
+        Texinfo::Convert::Text::set_options_encoding_if_not_ascii($self,
+                                  $self->{'convert_text_options'});
         $basefile = Texinfo::Convert::Text::convert_to_text(
-          {'contents' => $command->{'args'}->[0]->{'contents'}},
-          {'code' => 1,
-           Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)});
+                                          $command->{'args'}->[0],
+                                    $self->{'convert_text_options'});
+        Texinfo::Convert::Text::reset_options_code(
+                                 $self->{'convert_text_options'});
+        Texinfo::Convert::Text::reset_options_encoding(
+                                 $self->{'convert_text_options'});
       } else {
         next;
       }
       if (defined($command->{'args'}->[4])
           and $command->{'args'}->[4]->{'contents'}
           and @{$command->{'args'}->[4]->{'contents'}}) {
+        Texinfo::Convert::Text::set_options_code(
+                                 $self->{'convert_text_options'});
+        Texinfo::Convert::Text::set_options_encoding_if_not_ascii($self,
+                                  $self->{'convert_text_options'});
         $extension = Texinfo::Convert::Text::convert_to_text(
-          {'contents' => $command->{'args'}->[4]->{'contents'}},
-          {'code' => 1,
-           Texinfo::Convert::Text::copy_options_for_convert_text($self, 1)});
+                                        $command->{'args'}->[4],
+                                    $self->{'convert_text_options'});
+        Texinfo::Convert::Text::reset_options_code(
+                                 $self->{'convert_text_options'});
+        Texinfo::Convert::Text::reset_options_encoding(
+                                 $self->{'convert_text_options'});
         $extension =~ s/^\.//;
         @extension = ($extension);
       }
@@ -914,10 +950,11 @@ sub output_ixin($$)
         my $file_name_text = "$basefile.$extension";
         my ($file_name, $file_name_encoding)
           = $self->encoded_input_file_name($file_name_text);
-        my $file = $self->Texinfo::Common::locate_include_file($file_name);
+        my $file = Texinfo::Common::locate_include_file($file_name,
+                                  $self->get_conf('INCLUDE_DIRECTORIES'));
         if (defined($file)) {
           my $filehandle = do { local *FH };
-          if (open ($filehandle, $file)) {
+          if (open($filehandle, $file)) {
             $blob_nr++;
             if ($extension eq 'txt') {
               my $encoding
@@ -980,14 +1017,15 @@ sub output_ixin($$)
   $output .= $self->write_or_return($blobs, $fh);
 
   if ($fh and $output_file ne '-') {
-    Texinfo::Common::output_files_register_closed(
+    Texinfo::Convert::Utils::output_files_register_closed(
                   $self->output_files_information(), $encoded_output_file);
     if (!close ($fh)) {
-      $self->document_error($self,
+      $self->converter_document_error(
                 sprintf(__("error on closing %s: %s"),
                                     $output_file, $!));
     }
   }
+  $self->conversion_finalization();
   return $output;
 }
 

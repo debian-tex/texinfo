@@ -45,11 +45,13 @@ $result_trees{'inforef_too_much_args'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ]
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -62,7 +64,7 @@ $result_trees{'inforef_too_much_args'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -75,14 +77,12 @@ $result_trees{'inforef_too_much_args'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inforef',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -94,6 +94,7 @@ $result_trees{'inforef_too_much_args'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chapter'
       },
       'info' => {
@@ -102,15 +103,13 @@ $result_trees{'inforef_too_much_args'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'inforef_too_much_args'} = '@node chapter
 
@@ -122,27 +121,28 @@ $result_texts{'inforef_too_much_args'} = '
 chapter
 ';
 
-$result_nodes{'inforef_too_much_args'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'chapter'
+$result_nodes{'inforef_too_much_args'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'chapter'
+    }
   }
-};
+];
 
-$result_menus{'inforef_too_much_args'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'chapter'
+$result_menus{'inforef_too_much_args'} = [
+  {
+    'extra' => {
+      'normalized' => 'chapter'
+    }
   }
-};
+];
 
 $result_errors{'inforef_too_much_args'} = [
   {
     'error_line' => 'warning: @inforef is obsolete
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@inforef is obsolete',
     'type' => 'warning'
   }
@@ -153,7 +153,7 @@ $result_floats{'inforef_too_much_args'} = {};
 
 
 
-$result_converted{'plaintext'}->{'inforef_too_much_args'} = '*note cross ref name: (file name, spurious arg)chapter.
+$result_converted{'plaintext'}->{'inforef_too_much_args'} = 'See cross ref name: (file name, spurious arg)chapter
 ';
 
 
@@ -167,5 +167,11 @@ $result_converted{'latex_text'}->{'inforef_too_much_args'} = '\\label{anchor:cha
 
 Section ``chapter\'\' in \\texttt{file name,\\ spurious arg}
 ';
+
+
+$result_converted{'docbook'}->{'inforef_too_much_args'} = '<anchor id="chapter"/>
+
+<para>See section &#8220;cross ref name&#8221; in <filename>file name, spurious arg</filename>
+</para>';
 
 1;

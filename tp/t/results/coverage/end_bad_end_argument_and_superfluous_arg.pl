@@ -44,14 +44,12 @@ $result_trees{'end_bad_end_argument_and_superfluous_arg'} = {
                                   'text' => 'in c'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'code',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 3,
-                            'macro' => ''
+                            'line_nr' => 3
                           }
                         }
                       ],
@@ -74,9 +72,7 @@ $result_trees{'end_bad_end_argument_and_superfluous_arg'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 }
               ],
@@ -84,9 +80,7 @@ $result_trees{'end_bad_end_argument_and_superfluous_arg'} = {
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -109,27 +103,21 @@ $result_errors{'end_bad_end_argument_and_superfluous_arg'} = [
   {
     'error_line' => 'warning: @code should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@code should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: : @code{in c}
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'bad argument to @end: : @code{in c}',
     'type' => 'error'
   },
   {
     'error_line' => 'no matching `@end quotation\'
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'no matching `@end quotation\'',
     'type' => 'error'
   }

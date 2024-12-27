@@ -27,23 +27,6 @@ $result_trees{'simple'} = {
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'text' => 'a-_5b'
-                  }
-                ],
-                'cmdname' => 'value'
-              },
-              'line' => 'the value @b{b}',
-              'position' => 1,
-              'sourcemark_type' => 'value_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -51,6 +34,27 @@ $result_trees{'simple'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'a-_5b'
+                          }
+                        ],
+                        'type' => 'brace_container'
+                      }
+                    ],
+                    'cmdname' => 'value'
+                  },
+                  'line' => 'the value @b{b}',
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'the value '
             },
             {
@@ -61,14 +65,12 @@ $result_trees{'simple'} = {
                       'text' => 'b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'b',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               },
               'source_marks' => [
                 {

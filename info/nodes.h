@@ -1,6 +1,6 @@
 /* nodes.h -- How we represent nodes internally.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -53,21 +53,13 @@ typedef struct {
   int active_menu;              /* Used for subnodes search. */
 } NODE;
 
-/* Values for NODE.flags or FILE_BUFFER.flags. */
-#define N_HasTagsTable 0x01     /* This node was found through a tags table. */
-#define N_TagsIndirect 0x02     /* The tags table was an indirect one. */
-#define N_UpdateTags   0x04     /* The tags table is out of date. */
-#define N_IsCompressed 0x08     /* The file is compressed on disk. */
-#define N_IsInternal   0x10     /* This node was made by Info. */
-#define N_CannotGC     0x20     /* File buffer cannot be gc'ed. */
-#define N_IsManPage    0x40     /* This node is a manpage. */
-#define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
-#define N_IsIndex      0x200    /* An index node. */
-#define N_IsDir        0x400    /* A dir node. */
-#define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
-#define N_Gone         0x1000   /* File is no more. */
-#define N_Simple       0x2000   /* Data about cross-references is missing. */
-#define N_SeenBySearch 0x4000   /* Node has already been seen in a search. */
+/* Values for NODE.flags. */
+#define N_IsInternal   0x01     /* This node was made by Info. */
+#define N_IsManPage    0x02     /* This node is a manpage. */
+#define N_WasRewritten 0x04     /* NODE->contents can be passed to free(). */
+#define N_IsIndex      0x08     /* An index node. */
+#define N_IsDir        0x10     /* A dir node. */
+#define N_Simple       0x20     /* Data about cross-references is missing. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
@@ -102,11 +94,16 @@ typedef struct {
 typedef struct {
   char *filename;               /* The file where this node can be found. */
   char *nodename;               /* The node pointed to by this tag. */
-  long nodestart;               /* The value read from the tag table. */
+  long nodestart;               /* The value read from the tag table.
+                                   Should never be negative */
   long nodestart_adjusted;      /* Where the node or anchor actually is. */
-  int flags;                    /* Same as NODE.flags. */
+  int flags;                    /* See immediately below. */
   NODE cache;                   /* Saved information about pointed-to node. */
 } TAG;
+
+/* Values for TAG.flags. */
+#define T_SeenBySearch 0x01     /* Tag has already been seen in a search. */
+#define T_IsAnchor     0x02     /* Tag is an anchor */
 
 /* The following structure is used to remember information about the contents
    of Info files that we have loaded at least once before.  The FINFO member
@@ -118,13 +115,21 @@ typedef struct {
   char *fullpath;               /* The full pathname of this info file. */
   struct stat finfo;            /* Information about this file. */
   char *contents;               /* The contents of this particular file. */
-  size_t filesize;              /* The number of bytes this file expands to. */
+  long filesize;                /* The number of bytes this file expands to.
+                                   Should not be negative */
   char **subfiles;              /* If non-null, the list of subfiles. */
   TAG **tags;                   /* If non-null, the tags table. */
   size_t tags_slots;            /* Number of slots allocated for TAGS. */
-  int flags;                    /* Various flags.  Mimics of N_* flags. */
+  int flags;                    /* Various flags.  See below. */
   char *encoding;               /* Name of character encoding of file. */
 } FILE_BUFFER;
+
+/* Values for FILE_BUFFER.flags. */
+#define F_HasTagsTable 0x01     /* This file has a tags table. */
+#define F_TagsIndirect 0x02     /* The tags table was an indirect one. */
+#define F_IsCompressed 0x04     /* The file is compressed on disk. */
+#define F_Subfile      0x08     /* File buffer is a subfile of a split file. */
+#define F_Gone         0x10     /* File is no more. */
 
 /* Array of FILE_BUFFER * which represents the currently loaded info files. */
 extern FILE_BUFFER **info_loaded_files;

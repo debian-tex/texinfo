@@ -35,15 +35,16 @@ $result_trees{'section_before_top_no_node'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -64,15 +65,14 @@ $result_trees{'section_before_top_no_node'} = {
         }
       ],
       'cmdname' => 'top',
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     }
   ],
@@ -93,41 +93,43 @@ top
 ';
 
 $result_sectioning{'section_before_top_no_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {},
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_before_top_no_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_before_top_no_node'};
-$result_sectioning{'section_before_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'section_before_top_no_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'section_before_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'section_before_top_no_node'};
-$result_sectioning{'section_before_top_no_node'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_before_top_no_node'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'section_before_top_no_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_before_top_no_node'};
+$result_sectioning{'section_before_top_no_node'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'section_before_top_no_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'section_before_top_no_node'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'section_before_top_no_node'}{'extra'}{'section_childs'}[0];
 
 $result_errors{'section_before_top_no_node'} = [
   {
     'error_line' => 'warning: lowering the section level of @top appearing after a lower element
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
     'type' => 'warning'
   }

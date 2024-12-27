@@ -37,9 +37,7 @@ $result_trees{'text_on_conditional_line_expanded'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'expanded_conditional_command',
@@ -81,9 +79,7 @@ $result_trees{'text_on_conditional_line_expanded'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 3,
-                      'macro' => ''
+                      'line_nr' => 3
                     }
                   },
                   'position' => 2,
@@ -115,9 +111,7 @@ $result_errors{'text_on_conditional_line_expanded'} = [
   {
     'error_line' => 'warning: unexpected argument on @ifnothtml line: text following ifnothtml,
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'unexpected argument on @ifnothtml line: text following ifnothtml,',
     'type' => 'warning'
   }

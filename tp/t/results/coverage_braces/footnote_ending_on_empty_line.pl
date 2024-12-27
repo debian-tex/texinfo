@@ -37,15 +37,14 @@ $result_trees{'footnote_ending_on_empty_line'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -95,5 +94,10 @@ $result_converted{'html_text'}->{'footnote_ending_on_empty_line'} = '<p>text<a c
 $result_converted{'latex_text'}->{'footnote_ending_on_empty_line'} = 'text\\footnote{in footnote.
 
 }';
+
+
+$result_converted{'docbook'}->{'footnote_ending_on_empty_line'} = '<para>text<footnote><para>in footnote.
+</para>
+</footnote></para>';
 
 1;

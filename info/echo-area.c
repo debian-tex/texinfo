@@ -1,6 +1,6 @@
 /* echo-area.c -- how to read a line in the echo area.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ int info_aborted_echo_area = 0;
 int echo_area_is_active = 0;
 
 /* The address of the last command executed in the echo area. */
-static VFunction *ea_last_executed_command = NULL;
+static COMMAND_FUNCTION *ea_last_executed_command = NULL;
 
 /* Non-zero means that the last command executed while reading input
    killed some text. */
@@ -45,8 +45,8 @@ static int input_line_beg;       /* End of prompt, and start of user input. */
 static int input_line_end;       /* End of user input. */
 
 static NODE input_line_node = {
-  NULL, NULL, NULL, input_line,
-  EA_MAX_INPUT, 0, N_IsInternal
+  NULL, NULL, NULL, input_line, EA_MAX_INPUT, 0,
+  N_IsInternal, 0, 0, 0, 0, 0, 0
 };
 
 static void echo_area_initialize_node (void);
@@ -158,7 +158,7 @@ read_and_dispatch_in_echo_area (void)
   while (1)
     {
       int count;
-      VFunction *cmd;
+      COMMAND_FUNCTION *cmd;
       int lk = 0;
 
       lk = echo_area_last_command_was_kill;
@@ -669,8 +669,8 @@ DECLARE_INFO_COMMAND (ea_yank_pop, _("Yank back a previous kill"))
 {
   register int len;
 
-  if (((ea_last_executed_command != (VFunction *) ea_yank) &&
-       (ea_last_executed_command != (VFunction *) ea_yank_pop)) ||
+  if (((ea_last_executed_command != ea_yank) &&
+       (ea_last_executed_command != ea_yank_pop)) ||
       (kill_ring_index == 0))
     return;
 
@@ -872,7 +872,7 @@ REFERENCE **echo_area_completion_items = NULL;
    the variable echo_area_completion_items.  If there is only one element,
    it is the only possible completion. */
 static REFERENCE **completions_found = NULL;
-static size_t completions_found_index = 0;
+static long completions_found_index = 0;   /* Should not be negative */
 static size_t completions_found_slots = 0;
 
 /* The lowest common denominator found while completing. */
@@ -948,7 +948,7 @@ info_read_completing_internal (const char *prompt, REFERENCE **completions,
          a default or aborted, and if FORCE is active. */
       if (force && line && *line && completions)
         {
-          size_t i;
+          long i;
 	  
           build_completions ();
 
@@ -1042,8 +1042,8 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
     }
   else
     {
-      size_t i, l;
-      size_t limit, iterations, max_label = 0;
+      long i, l;
+      long limit, iterations, max_label = 0; /* Should not be negative */
       struct text_buffer message;
 
       text_buffer_init (&message);
@@ -1055,7 +1055,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       /* Find the maximum length of a label. */
       for (i = 0; i < completions_found_index; i++)
         {
-          int len = strlen (completions_found[i]->label);
+          long len = strlen (completions_found[i]->label);
           if (len > max_label)
             max_label = len;
         }
@@ -1083,7 +1083,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       /* Print the sorted items, up-and-down alphabetically. */
       for (i = 0; i < iterations; i++)
         {
-          register int j;
+          register long j;
 
           for (j = 0, l = i; j < limit; j++)
             {
@@ -1092,7 +1092,8 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
               else
                 {
                   char *label;
-                  int printed_length, k;
+                  long printed_length;
+                  int k;
 
                   label = completions_found[l]->label;
                   printed_length = strlen (label);
@@ -1166,7 +1167,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
 DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 {
-  if (ea_last_executed_command == (VFunction *) ea_complete)
+  if (ea_last_executed_command == ea_complete)
     {
       ea_possible_completions (window, count);
       return;
@@ -1190,10 +1191,10 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 
 /* Utility REFERENCE used to store possible LCD. */
 static REFERENCE LCD_reference = {
-    NULL, NULL, NULL, 0, 0, 0
+    NULL, NULL, NULL, 0, 0, 0, 0
 };
 
-static void remove_completion_duplicates (void);
+static size_t remove_completion_duplicates (size_t completions_number);
 
 /* Variables which remember the state of the most recent call
    to build_completions (). */
@@ -1214,11 +1215,12 @@ completions_must_be_rebuilt (void)
 static void
 build_completions (void)
 {
-  size_t i;
+  long i;
   int len;
   register REFERENCE *entry;
   char *request;
   int informed_of_lengthy_job = 0;
+  size_t completion_index;
 
   /* If there are no items to complete over, exit immediately. */
   if (!echo_area_completion_items)
@@ -1247,9 +1249,12 @@ build_completions (void)
   last_completion_request = request;
   last_completion_items = echo_area_completion_items;
 
-  /* Always start at the beginning of the list. */
+  /* reset */
   completions_found_index = 0;
   LCD_completion = NULL;
+
+  /* Start at the beginning of the list. */
+  completion_index = 0;
 
   for (i = 0; (entry = echo_area_completion_items[i]); i++)
     {
@@ -1259,22 +1264,29 @@ build_completions (void)
         continue;
 
       if (mbsncasecmp (request, entry->label, len) == 0)
-        add_pointer_to_array (entry, completions_found_index,
+        add_pointer_to_array (entry, completion_index,
                               completions_found, completions_found_slots,
                               20);
 
-      if (!informed_of_lengthy_job && completions_found_index > 100)
+      if (!informed_of_lengthy_job && completion_index > 100)
         {
           informed_of_lengthy_job = 1;
           window_message_in_echo_area (_("Building completions..."));
         }
     }
 
-  if (!completions_found_index)
+  if (!completion_index)
     return;
 
   /* Sort and prune duplicate entries from the completions array. */
-  remove_completion_duplicates ();
+  completion_index = remove_completion_duplicates (completion_index);
+
+  /* from here, completions and completions_found_index should not be
+     modified until a build_completions call.  Same for LCD_completion
+     set when the function returns just below. */
+  /* NOTE conversion from size_t to long here to be sure that comparisons with
+     windows length fields are always safe. */
+  completions_found_index = completion_index;
 
   /* If there is only one completion, just return that. */
   if (completions_found_index == 1)
@@ -1344,21 +1356,21 @@ compare_references (const void *entry1, const void *entry2)
 }
 
 /* Prune duplicate entries from COMPLETIONS_FOUND. */
-static void
-remove_completion_duplicates (void)
+static size_t
+remove_completion_duplicates (size_t completions_number)
 {
   size_t i, j;
   REFERENCE **temp;
-  int newlen;
+  size_t newlen;
 
-  if (!completions_found_index)
-    return;
+  if (!completions_number)
+    return 0;
 
   /* Sort the items. */
-  qsort (completions_found, completions_found_index, sizeof (REFERENCE *),
+  qsort (completions_found, completions_number, sizeof (REFERENCE *),
          compare_references);
 
-  for (i = 0, newlen = 1; i < completions_found_index - 1; i++)
+  for (i = 0, newlen = 1; i < completions_number - 1; i++)
     {
       if (strcmp (completions_found[i]->label,
                   completions_found[i + 1]->label) == 0)
@@ -1370,7 +1382,7 @@ remove_completion_duplicates (void)
   /* We have marked all the dead slots.  It is faster to copy the live slots
      twice than to prune the dead slots one by one. */
   temp = xmalloc ((1 + newlen) * sizeof (REFERENCE *));
-  for (i = 0, j = 0; i < completions_found_index; i++)
+  for (i = 0, j = 0; i < completions_number; i++)
     if (completions_found[i])
       temp[j++] = completions_found[i];
 
@@ -1378,8 +1390,8 @@ remove_completion_duplicates (void)
     completions_found[i] = temp[i];
 
   completions_found[i] = NULL;
-  completions_found_index = newlen;
   free (temp);
+  return newlen;
 }
 
 /* Scroll the "other" window.  If there is a window showing completions, scroll

@@ -34,9 +34,7 @@ $result_trees{'include_at_end_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -69,11 +67,16 @@ After.';
 
 $result_errors{'include_at_end_line'} = [
   {
+    'error_line' => 'warning: @ should not occur at end of argument to line command
+',
+    'line_nr' => 1,
+    'text' => '@ should not occur at end of argument to line command',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'bad argument to @include: inc_file.texi@
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'bad argument to @include: inc_file.texi@',
     'type' => 'error'
   }

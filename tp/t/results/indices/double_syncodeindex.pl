@@ -41,9 +41,7 @@ $result_trees{'double_syncodeindex'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -76,9 +74,7 @@ $result_trees{'double_syncodeindex'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -111,6 +107,7 @@ $result_trees{'double_syncodeindex'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -119,9 +116,7 @@ $result_trees{'double_syncodeindex'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -174,14 +169,13 @@ $result_trees{'double_syncodeindex'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           },
           'type' => 'index_entry_command'
         },
@@ -211,14 +205,13 @@ $result_trees{'double_syncodeindex'} = {
             ]
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           },
           'type' => 'index_entry_command'
         },
@@ -256,9 +249,7 @@ $result_trees{'double_syncodeindex'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         },
         {
@@ -290,13 +281,12 @@ $result_trees{'double_syncodeindex'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -306,9 +296,7 @@ $result_trees{'double_syncodeindex'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -336,41 +324,48 @@ $result_texts{'double_syncodeindex'} = '
 
 ';
 
-$result_nodes{'double_syncodeindex'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'double_syncodeindex'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'double_syncodeindex'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'double_syncodeindex'}[0];
+$result_nodes{'double_syncodeindex'}[1] = $result_nodes{'double_syncodeindex'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'double_syncodeindex'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'double_syncodeindex'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'double_syncodeindex'};
-
-$result_menus{'double_syncodeindex'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'double_syncodeindex'} = [
   {
     'error_line' => 'warning: printing an index `cp\' merged in another one, `fn\'
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'printing an index `cp\' merged in another one, `fn\'',
     'type' => 'warning'
   }
@@ -385,38 +380,22 @@ $result_indices{'double_syncodeindex'} = {
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'cp' => 1,
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }
@@ -449,7 +428,6 @@ File: ,  Node: chap,  Prev: Top
 
 * cindex entry:                          chap.                  (line 3)
 * findex entry:                          chap.                  (line 3)
-
 
 
 Tag Table:
@@ -495,7 +473,7 @@ $result_converted{'html_text'}->{'double_syncodeindex'} = '
 <a class="summary-letter-printindex" href="#chap_fn_letter-F"><b>F</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="fn-entries-printindex" border="0">
+<table class="fn-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_fn_letter-C">C</th></tr>

@@ -88,9 +88,7 @@ $result_trees{'empty_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -125,15 +123,14 @@ $result_trees{'empty_caption'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'a',
+            'is_target' => 1,
             'normalized' => 'b'
           },
           'info' => {
@@ -142,9 +139,7 @@ $result_trees{'empty_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -179,13 +174,12 @@ $result_trees{'empty_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -194,9 +188,7 @@ $result_trees{'empty_caption'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -224,19 +216,22 @@ aa
 
 ';
 
-$result_nodes{'empty_caption'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'empty_caption'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'empty_caption'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'empty_caption'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'empty_caption'} = [];
 
@@ -252,11 +247,9 @@ $result_floats{'empty_caption'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'a',
         'normalized' => 'b'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -273,10 +266,10 @@ File: ,  Node: Top,  Up: (dir)
 aa
 
 a 1: 
+
 * Menu:
 
 * a 1: b.                                
-
 
 
 Tag Table:

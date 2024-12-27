@@ -50,9 +50,7 @@ $result_trees{'space_macro_after_end_verbatim'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'space_macro_after_end_verbatim'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -106,7 +102,7 @@ $result_trees{'space_macro_after_end_verbatim'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -141,16 +137,12 @@ $result_trees{'space_macro_after_end_verbatim'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],

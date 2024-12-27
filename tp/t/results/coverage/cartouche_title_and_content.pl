@@ -24,14 +24,12 @@ $result_trees{'cartouche_title_and_content'} = {
                           'text' => 'documentation'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -86,9 +84,7 @@ $result_trees{'cartouche_title_and_content'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -98,9 +94,7 @@ $result_trees{'cartouche_title_and_content'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -135,7 +129,7 @@ flow of the text.
 ';
 
 
-$result_converted{'html_text'}->{'cartouche_title_and_content'} = '<table class="cartouche" border="1"><tr><th>
+$result_converted{'html_text'}->{'cartouche_title_and_content'} = '<table class="cartouche"><tr><th>
 Box title on <em class="emph">documentation</em></th></tr><tr><td>
 <p>Text on documentation explaining something important out of the main
 flow of the text.

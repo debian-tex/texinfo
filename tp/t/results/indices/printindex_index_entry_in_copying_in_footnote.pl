@@ -71,14 +71,13 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                                     ]
                                   },
                                   'info' => {
+                                    'command_name' => 'cindex',
                                     'spaces_before_argument' => {
                                       'text' => ' '
                                     }
                                   },
                                   'source_info' => {
-                                    'file_name' => '',
-                                    'line_nr' => 5,
-                                    'macro' => ''
+                                    'line_nr' => 5
                                   },
                                   'type' => 'index_entry_command'
                                 }
@@ -95,6 +94,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                         }
                       ],
                       'cmdname' => 'footnote',
+                      'extra' => {},
                       'info' => {
                         'spaces_before_argument' => {
                           'text' => '
@@ -102,9 +102,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -148,9 +146,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 },
                 {
@@ -185,16 +181,12 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -227,6 +219,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -235,9 +228,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
+        'line_nr' => 13
       }
     },
     {
@@ -282,10 +273,9 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
             }
           ],
           'cmdname' => 'insertcopying',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => ''
+            'line_nr' => 17
           }
         },
         {
@@ -320,9 +310,11 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'chapter'
                   },
                   'type' => 'menu_entry_node'
@@ -347,9 +339,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               },
               'type' => 'menu_entry'
             },
@@ -380,16 +370,12 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           }
         },
         {
@@ -405,9 +391,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     },
     {
@@ -429,6 +413,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chapter'
       },
       'info' => {
@@ -437,9 +422,7 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 23,
-        'macro' => ''
+        'line_nr' => 23
       }
     },
     {
@@ -475,10 +458,9 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
             }
           ],
           'cmdname' => 'insertcopying',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 26,
-            'macro' => ''
+            'line_nr' => 26
           }
         },
         {
@@ -487,22 +469,22 @@ $result_trees{'printindex_index_entry_in_copying_in_footnote'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 24,
-        'macro' => ''
+        'line_nr' => 24
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'printindex_index_entry_in_copying_in_footnote'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'printindex_index_entry_in_copying_in_footnote'} = '@copying
 
@@ -549,7 +531,7 @@ Top.
 ';
 
 $result_sectioning{'printindex_index_entry_in_copying_in_footnote'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -558,11 +540,8 @@ $result_sectioning{'printindex_index_entry_in_copying_in_footnote'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -571,93 +550,88 @@ $result_sectioning{'printindex_index_entry_in_copying_in_footnote'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chapter'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'};
+$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'printindex_index_entry_in_copying_in_footnote'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'printindex_index_entry_in_copying_in_footnote'};
 
-$result_nodes{'printindex_index_entry_in_copying_in_footnote'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
+$result_nodes{'printindex_index_entry_in_copying_in_footnote'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chapter'
           }
-        },
-        'normalized' => 'chapter'
-      },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'};
-$result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'};
-$result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'node_next'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'menu_child'};
-
-$result_menus{'printindex_index_entry_in_copying_in_footnote'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chapter'
-      },
-      'structure' => {
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
         }
-      }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'printindex_index_entry_in_copying_in_footnote'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'}[0];
+$result_nodes{'printindex_index_entry_in_copying_in_footnote'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'printindex_index_entry_in_copying_in_footnote'}[0];
+$result_nodes{'printindex_index_entry_in_copying_in_footnote'}[1] = $result_nodes{'printindex_index_entry_in_copying_in_footnote'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'printindex_index_entry_in_copying_in_footnote'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {}
+      },
+      'normalized' => 'chapter'
     }
   }
-};
-$result_menus{'printindex_index_entry_in_copying_in_footnote'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'printindex_index_entry_in_copying_in_footnote'};
+];
+$result_menus{'printindex_index_entry_in_copying_in_footnote'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'printindex_index_entry_in_copying_in_footnote'}[0];
 
 $result_errors{'printindex_index_entry_in_copying_in_footnote'} = [];
 
@@ -716,7 +690,6 @@ Copying(1).
 
    (1) In footnote
 
-
 
 Tag Table:
 Node: Top96
@@ -773,7 +746,7 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 <p>Copying<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>.
 </p>
 <div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Top_cp_letter-C">C</th></tr>
@@ -799,10 +772,10 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 <p>Copying<a class="footnote" id="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
 </p>
 <div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
-<tr><th id="Top_cp_letter-C">C</th></tr>
+<tr><th id="chapter_cp_letter-C">C</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-copying-Copying-this-document">Copying this document</a></td><td class="printindex-index-section"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 </table>

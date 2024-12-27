@@ -33,39 +33,55 @@ $result_trees{'def_in_example'} = {
                         {
                           'contents' => [
                             {
-                              'text' => 'Function'
+                              'contents' => [
+                                {
+                                  'text' => 'Function'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
                             }
                           ],
-                          'extra' => {
-                            'def_role' => 'category'
+                          'info' => {
+                            'inserted' => 1
                           },
-                          'type' => 'bracketed_inserted'
+                          'type' => 'def_category'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'spaces'
-                          },
-                          'text' => ' ',
-                          'type' => 'spaces_inserted'
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'name'
-                          },
-                          'text' => 'name'
-                        },
-                        {
-                          'extra' => {
-                            'def_role' => 'spaces'
+                          'info' => {
+                            'inserted' => 1
                           },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
-                          'extra' => {
-                            'def_role' => 'arg'
-                          },
-                          'text' => 'arg'
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'name'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'arg'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_arg'
                         }
                       ],
                       'info' => {
@@ -79,7 +95,19 @@ $result_trees{'def_in_example'} = {
                   ],
                   'extra' => {
                     'def_command' => 'defun',
-                    'def_index_element' => {},
+                    'def_index_element' => {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'name'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
                     'index_entry' => [
                       'fn',
                       1
@@ -87,9 +115,7 @@ $result_trees{'def_in_example'} = {
                     'original_def_cmdname' => 'defun'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 2,
-                    'macro' => ''
+                    'line_nr' => 2
                   },
                   'type' => 'def_line'
                 },
@@ -134,9 +160,7 @@ $result_trees{'def_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
@@ -146,9 +170,7 @@ $result_trees{'def_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -178,16 +200,12 @@ $result_trees{'def_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -196,7 +214,6 @@ $result_trees{'def_in_example'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'def_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'def_in_example'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'def_in_example'} = '@example
 @defun name arg
@@ -214,9 +231,7 @@ $result_errors{'def_in_example'} = [
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }
@@ -241,7 +256,7 @@ $result_converted{'plaintext'}->{'def_in_example'} = '      -- Function: name ar
 
 $result_converted{'html'}->{'def_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -266,8 +281,8 @@ strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 
 <body lang="en">
 <div class="example">
-<dl class="first-deffn first-defun-alias-first-deffn">
-<dt class="deffn defun-alias-deffn" id="index-name"><span class="category-def">Function: </span><span><strong class="def-name">name</strong> <var class="def-var-arguments">arg</var><a class="copiable-link" href="#index-name"> &para;</a></span></dt>
+<dl class="first-deffn first-defun-alias-first-deffn def-block">
+<dt class="deffn defun-alias-deffn def-line" id="index-name"><span class="category-def">Function: </span><span><strong class="def-name">name</strong> <var class="def-var-arguments">arg</var><a class="copiable-link" href="#index-name"> &para;</a></span></dt>
 <dd><pre class="example-preformatted">in defun
 </pre></dd></dl>
 </div>
@@ -282,7 +297,6 @@ $result_converted_errors{'html'}->{'def_in_example'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'def_in_example.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }
@@ -296,7 +310,7 @@ $result_converted{'docbook'}->{'def_in_example'} = '<synopsis><indexterm role="f
 
 
 $result_converted{'xml'}->{'def_in_example'} = '<example endspaces=" ">
-<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">name</indexterm><defcategory automatic="on" bracketed="on">Function</defcategory> <deffunction>name</deffunction> <defparam>arg</defparam></definitionterm>
+<defun spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">name</indexterm><defcategory automatic="on">Function</defcategory> <deffunction>name</deffunction> <defparam>arg</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">in defun
 </pre></definitionitem></defun>
 </example>

@@ -89,20 +89,17 @@ $result_trees{'leading_space_before_menu_star'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'a-node'
       },
       'info' => {
@@ -111,9 +108,7 @@ $result_trees{'leading_space_before_menu_star'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -132,24 +127,25 @@ $result_texts{'leading_space_before_menu_star'} = '
  * a node::
 ';
 
-$result_nodes{'leading_space_before_menu_star'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'a-node'
+$result_nodes{'leading_space_before_menu_star'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'a-node'
+    }
   }
-};
+];
 
-$result_menus{'leading_space_before_menu_star'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'a-node'
+$result_menus{'leading_space_before_menu_star'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'a-node'
+    }
   }
-};
+];
 
 $result_errors{'leading_space_before_menu_star'} = [];
 
@@ -166,7 +162,7 @@ $result_converted{'plaintext'}->{'leading_space_before_menu_star'} = '* Menu:
 
 $result_converted{'html'}->{'leading_space_before_menu_star'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -193,8 +189,8 @@ th.menu-comment {text-align:left}
 <body lang="en">
 <h4 class="node" id="a-node"><span>a node<a class="copiable-link" href="#a-node"> &para;</a></span></h4>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><th class="menu-comment" colspan="3"><pre class="menu-comment-preformatted"> * a node::
+<table class="menu">
+<tr><th class="menu-comment" colspan="2"><pre class="menu-comment-preformatted"> * a node::
 </pre></th></tr></table>
 
 

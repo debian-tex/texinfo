@@ -1,23 +1,20 @@
-#! /bin/sh -x
-# Copyright 2010-2023 Free Software Foundation, Inc.
+#! /bin/sh
+# Copyright 2012-2024 Free Software Foundation.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
 # notice and this notice are preserved.
+#
+# This file is a convenience to run the t/*.t tests directly, and not
+# through the automake generated facilities.
 
-#set -x
-
-if test z"$srcdir" = 'z'; then
+if [ z"$srcdir" = 'z' ]; then
   srcdir='.'
 fi
 
-#prove -I "$tpdir" -I "$srcdir"/lib "$srcdir"/t/*.t
-
-tpdir=$srcdir/../tp
-# the last -I ../tp is here to find modules in the build directory, which should
-# be the case for Texinfo::ModulePath
-prove -I "$tpdir" -I "$tpdir"/maintain/lib/Unicode-EastAsianWidth/lib/ \
-      -I "$tpdir"/maintain/lib/libintl-perl/lib \
-      -I "$tpdir"/maintain/lib/Text-Unidecode/lib/ \
-      -I "$srcdir"/lib -I ../tp \
-      "$srcdir"/t/*.t
+# Note that srcdir is not used directly to find modules in
+# Texinfo::ModulePath; top_srcdir or .t file name are used instead, and
+# Texinfo::ModulePath::top_srcdir is set.
+# In scripts srcdir is used to find input files used if set.  If srcdir
+# is not set it is based on Texinfo::ModulePath::top_srcdir.
+prove "$srcdir"/t/*.t

@@ -10,14 +10,14 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [7.1.1], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [7.2], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
-dnl parallel-tests as recommended by stefano.
-AM_INIT_AUTOMAKE([1.16.2 dist-xz
+AM_INIT_AUTOMAKE([1.16.1 dist-xz
                  info-in-builddir parallel-tests tar-ustar])
+AC_CONFIG_MACRO_DIRS([build-aux/m4 gnulib/m4])
 
 # Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
@@ -33,8 +33,11 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=7.1
+TEXINFO_DTD_VERSION=7.2
 AC_SUBST([TEXINFO_DTD_VERSION])
+
+CONVERTER=texi2any
+AC_SUBST([CONVERTER])
 
 # Package date.
 PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
@@ -61,7 +64,7 @@ AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
 AC_MSG_CHECKING([Perl version and modules])
-if $PERL -e "use 5.008_001; use Encode; use Data::Dumper; use Unicode::Normalize" >/dev/null 2>&1; then
+if $PERL -e "use 5.008_001; use Encode; use Data::Dumper; use Getopt::Long qw(GetOptions); use Storable; use File::Spec; use File::Basename; use Unicode::Normalize" >/dev/null 2>&AS_MESSAGE_LOG_FD; then
   perl_version_requirement='yes'
 else
   perl_version_requirement='no'
@@ -155,7 +158,8 @@ if test "x$am_func_iconv" = "xyes" ; then
   }
   return result;
 ]])],
-          [texinfo_cv_sys_iconv_converts_euc_cn=yes], ,)
+          [texinfo_cv_sys_iconv_converts_euc_cn=yes], ,
+          [texinfo_cv_sys_iconv_converts_euc_cn="cross compile guess no"])
         test "$texinfo_cv_sys_iconv_converts_euc_cn" = no || break
       done
       LIBS="$euc_cn_save_LIBS"
@@ -249,8 +253,25 @@ AC_TYPE_OFF_T
 # Checks for library functions.
 AC_CHECK_FUNCS(setlocale sigaction sigprocmask posix_openpt)
 
-# Used for Info tests
-AM_CONDITIONAL([have_ptys], [test x$ac_cv_func_posix_openpt = xyes])
+ptys_tests='yes'
+AC_ARG_ENABLE([ptys-tests],
+    AS_HELP_STRING([--enable-ptys-tests],[run tests using pseudottys (default: detected)]),
+    [if test $enableval = 'no'; then
+       ptys_tests='no'
+     else
+       ptys_tests='yes'
+     fi],
+    [
+     if test x$ac_cv_func_posix_openpt = xyes; then
+       ptys_tests='yes'
+     else
+       ptys_tests='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([pseudottys tests requirements])
+AC_MSG_RESULT([$ptys_tests])
+AM_CONDITIONAL([PTYS_TESTS], [test "z$ptys_tests" = 'zyes'])
 
 # We want to recognize djgpp to avoid the useless warning about no
 # term library.
@@ -402,13 +423,11 @@ AC_ARG_WITH([external-Text-Unidecode],
    fi]
 )
 
-AC_SUBST([USE_UNICODE])
 AC_SUBST([USE_EXTERNAL_UNIDECODE])
 
-# i18n support.  To update to a new version of gettext, run:
-#   gettextize -f --po-dir=po --po-dir=po_document
-# See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.21])
+# i18n support.
+# See README-hacking for how to upgrade to a new version of gettext
+AM_GNU_GETTEXT_VERSION([0.22.5])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
@@ -420,6 +439,12 @@ AC_ARG_WITH([external-libintl-perl],
 )
 
 AC_SUBST([USE_EXTERNAL_LIBINTL])
+
+AC_ARG_ENABLE([additional-checks],
+    AS_HELP_STRING([--enable-additional-checks], [run tests on non-distributed components]),
+    [ enable_additional_tests=$enableval],
+    [ enable_additional_tests=no])
+
 
 AC_ARG_ENABLE([perl-xs],
     AS_HELP_STRING([--enable-perl-xs],[build Perl XS modules for speed (default: check)]),
@@ -477,6 +502,23 @@ AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
+# This is useful on platforms where gettext functions are present, but
+# setting the locale through LANGUAGE is not implemented.  In 2024 this is
+# the case of the musl libc libintl implementation, for example.
+# Setting locale through LANGUAGE is not automatically detected, but it
+# is possible to manually set --enable-xs-perl-libintl to use libintl-perl
+# to always get the correct output (there is a TODO for automatic detection in
+# tp/Texinfo/XS/configure.ac).
+AC_ARG_ENABLE([xs-perl-libintl],
+    AS_HELP_STRING([--enable-xs-perl-libintl],
+            [prefer Perl libintl-perl gettext in XS modules]),
+    [if test $enableval = 'yes'; then
+       prefer_libintl_perl=yes
+     else
+       prefer_libintl_perl=no
+     fi],
+     [])
+
 # Texinfo JS Interface
 npm_path="${srcdir}/js/node_modules/.bin"
 if test -d "$npm_path" ; then
@@ -505,10 +547,7 @@ AC_CONFIG_FILES([install-info/tests/defs])
 dnl We cannot enable the TeX-related tests, so don't waste time
 dnl configuring them.  See contrib/nontests/README.
 dnl AC_CONFIG_FILES([util/tests/defs])
-dnl AC_CHECK_PROGS([HEVEA], [hevea], [])
 dnl AC_CHECK_PROGS([TEX], [tex], [])
-
-AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],
@@ -519,9 +558,7 @@ AC_ARG_ENABLE([tp-tests],
        tp_tests='yes'
      fi],
     [
-     if test "z$PROVE" = 'z'; then
-       tp_tests='no'
-     elif $PERL -e "use 5.007_003; use Encode; use Test::More; use File::Basename; use File::Copy; use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone); use Getopt::Long qw(GetOptions);" > /dev/null 2>&1;
+     if $PERL -e "use 5.008_001; use Encode; use Test::More; use File::Compare qw(compare); use Data::Dumper; use Data::Compare; use Test::Deep; use Storable qw(dclone);" > /dev/null 2>&AS_MESSAGE_LOG_FD;
      then
        tp_tests='yes'
      else
@@ -533,23 +570,6 @@ AC_MSG_CHECKING([parser tests requirements])
 AC_MSG_RESULT([$tp_tests])
 AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
 
-build_perl_api_texi='no'
-AC_ARG_ENABLE([perl-api-texi-build],
-    AS_HELP_STRING([--enable-perl-api-texi-build],[build the perl api texinfo files (default: detected)]),
-    [if test $enableval = 'no'; then
-       build_perl_api_texi='no'
-     else
-       build_perl_api_texi='yes'
-     fi],
-    [
-     if $PERL -e "use 5.007_003; use Encode; use Pod::Simple::PullParser;" > /dev/null 2>&1;
-     then
-       build_perl_api_texi='yes'
-     else
-       build_perl_api_texi='no'
-     fi
-    ])
-
 AC_MSG_CHECKING([Perl version for tests requiring unicode collation])
 if $PERL -e "use 5.018_001; use Unicode::Collate" >/dev/null 2>&1; then
   perl_unicode_collation_requirement='yes'
@@ -560,22 +580,17 @@ AC_MSG_RESULT($perl_unicode_collation_requirement)
 PERL_UNICODE_COLLATE_OK=$perl_unicode_collation_requirement
 AC_SUBST([PERL_UNICODE_COLLATE_OK])
 
-AC_MSG_CHECKING([Perl Texinfo API texinfo documentation build requirements])
-AC_MSG_RESULT([$build_perl_api_texi])
-AM_CONDITIONAL([BUILD_PERL_API_TEXI], [test "z$build_perl_api_texi" = 'zyes'])
 
 pod_simple_texinfo_tests='no'
 AC_ARG_ENABLE([pod-simple-texinfo-tests],
-    AS_HELP_STRING([--enable-pod-simple-texinfo-tests],[run the parser and converters testsuite (default: detected)]),
+    AS_HELP_STRING([--enable-pod-simple-texinfo-tests],[run Pod to Texinfo conversion testsuite (default: detected)]),
     [if test $enableval = 'no'; then
        pod_simple_texinfo_tests='no'
      else
        pod_simple_texinfo_tests='yes'
      fi],
     [
-     if test "z$PROVE" = 'z' ; then
-       pod_simple_texinfo_tests='no'
-     elif $PERL -e "use 5.007_003; use Encode; use Test::More; use Pod::Simple::PullParser;" > /dev/null 2>&1;
+     if $PERL -e "use 5.008_001; use Encode; use Test::More; use Pod::Simple::PullParser; use Pod::Simple::XHTML;" > /dev/null 2>&AS_MESSAGE_LOG_FD;
      then
        pod_simple_texinfo_tests='yes'
      else
@@ -586,6 +601,29 @@ AC_ARG_ENABLE([pod-simple-texinfo-tests],
 AC_MSG_CHECKING([Pod::Simple::Texinfo tests requirements])
 AC_MSG_RESULT([$pod_simple_texinfo_tests])
 AM_CONDITIONAL([POD_SIMPLE_TEXINFO_TESTS], [test "z$pod_simple_texinfo_tests" = 'zyes'])
+
+
+build_perl_api_texi='no'
+AC_ARG_ENABLE([perl-api-texi-build],
+    AS_HELP_STRING([--enable-perl-api-texi-build],[build the perl api Texinfo files (default: detected)]),
+    [if test $enableval = 'no'; then
+       build_perl_api_texi='no'
+     else
+       build_perl_api_texi='yes'
+     fi],
+    [
+     if $PERL -e "use 5.008_001; use Encode; use Pod::Simple::PullParser; use Pod::Simple::XHTML;" > /dev/null 2>&AS_MESSAGE_LOG_FD;
+     then
+       build_perl_api_texi='yes'
+     else
+       build_perl_api_texi='no'
+     fi
+    ])
+
+AC_MSG_CHECKING([Perl Texinfo API Texinfo documentation build requirements])
+AC_MSG_RESULT([$build_perl_api_texi])
+AM_CONDITIONAL([BUILD_PERL_API_TEXI], [test "z$build_perl_api_texi" = 'zyes'])
+
 
 host_is_windows=no
 case "$host" in
@@ -602,6 +640,7 @@ AC_SUBST([HOST_IS_WINDOWS_VARIABLE])
 AC_CONFIG_FILES([\
   Makefile
   doc/Makefile
+  doc/refcard/Makefile
   doc/tp_api/Makefile
   gnulib/lib/Makefile
   info/Makefile

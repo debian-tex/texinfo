@@ -3,7 +3,7 @@
   <!ENTITY tex "TeX">
   <!ENTITY latex "LaTeX">
 ]>
-<book id="formatting.xml" lang="">
+<book id="formatting.xml" lang="en">
 <title>title &#8211;a</title>
 <subtitle>formatting subtitle &#8211;a
 subtitle 2 &#8211;a</subtitle>
@@ -3170,7 +3170,7 @@ error&#8594; &#8614; &#8722; &#8867; &#8658;
 </screen><itemizedlist><screen><!-- comment in itemize -->
 </screen><listitem><screen><emphasis>after emph</emphasis> e--mph item
 </screen></listitem></itemizedlist><screen>
-</screen><itemizedlist><screen></screen><listitem><screen>&#8226; a--n itemize line <indexterm role="cp"><primary>index entry within itemize</primary></indexterm>i--tem 1
+</screen><itemizedlist><listitem><screen>&#8226; a--n itemize line <indexterm role="cp"><primary>index entry within itemize</primary></indexterm>i--tem 1
 </screen></listitem><listitem><screen>&#8226; a--n itemize line i--tem 2
 </screen></listitem></itemizedlist><screen>
 </screen><itemizedlist><listitem><screen><!-- /@w --> with w a--b

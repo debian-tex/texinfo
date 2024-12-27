@@ -1,7 +1,7 @@
 This is the todo list for GNU Texinfo.
 If you are interested in working on any of these, email bug-texinfo@gnu.org.
 
-  Copyright 1992-2023 Free Software Foundation.
+  Copyright 1992-2024 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -28,20 +28,41 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - use a different command than @titlepage for the page after the title:
     https://lists.gnu.org/archive/html/bug-texinfo/2019-03/msg00029.html
   - related to the previous entry, add more metadata, in particular for books
-    but not only
-     * add metadata on last modification date (needed in EPUB)
+    but not only:
      * make it easier to gather author metadata
      * short information on licence
+
+    It could be relevant to have up to three dates:
+     * Last modified date.  In EPUB the dcterms:modified property.  Defaults
+       to the generation date;
+     * a date corresponding to the modification of the Texinfo manual (what is
+       currectly set with automake and accessible as @value{UPDATED}),
+       with default set with the modification timestamp of the main texinfo
+       file (or the newest for the main and all @include'd files);
+     * a publication date.  In EPUB the dc:date optional element, to be set
+       manually by the user.
+
   - unique identifiers/way to disambiguate manuals with the same name?
   - reflection on guide/topic document structure and pluggable content
     for extensible documents (Mallard format ideas)
+  - to be discussed tabs or similar when documenting code for different
+    languages such that the user is probably only interested by one only
+      https://sphinx-tabs.readthedocs.io/en/latest/
+    example:
+      https://developer.gnome.org/documentation/tutorials/beginners/getting_started/content_view.html#bind-the-text-view-in-the-source-code
 
 * texi2any:
   - HTML: support thumbnails.
   - HTML: have a library of different CSS styles.
     http://mail.gnu.org/archive/html/bug-texinfo/2004-01/msg00025.html
-  - output comment lines in generated Info detailed menus for the start of
-    the appendices or @part's.
+  - HTML: for printindex, not using <table> could be better.
+    remove the letter column?
+    https://lists.gnu.org/archive/html/bug-texinfo/2022-11/msg00199.html
+    https://lists.gnu.org/archive/html/bug-texinfo/2022-11/msg00201.html
+    Also from Per Bothner:
+     Better of course if we we could nest the subentries within the super
+     entries, and maybe avoid using tables altogether. It might be possible
+     using grids (and maybe subgrids), but they're relatively new.
   - Support output formats retaining the tree structure of Texinfo documents
     as parsed by the Parser.  A lisp-like format for GUILE? Maybe JSON?
   - Support other graphical documentation browsers like GNOME DevHelp
@@ -55,6 +76,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
       (https://lists.gnu.org/archive/html/bug-texinfo/2015-03/msg00041.html)
   - Support the MediaWiki output format.
   - LaTeX: customization and internationalization.
+  - Info: render math as png and include as an image.  Using LaTeX preview
+    package and dvipng could be the best option.  Rahguzar for SageMath
+    (https://lists.gnu.org/archive/html/help-texinfo/2024-08/msg00001.html)
 
 * TeX:
   - should we turn off @set txicodevaristt?
@@ -72,8 +96,12 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Include hyperlink \special's in the DVI output for xdvi, etc.
   - PDF: make each letter of the index (A, B, ...) a section in the TOC.
     From Carsten Dominik.
-  - Use @ as the escape character in index files by default,
-    after new texi2dvi is deployed (2022?).
+  - clear out support for \ as the index file escape character (instead
+    of @).
+
+* texindex:
+  - check if messages are translated via po/POTFILES.in.  check if twjr
+    format can be supported in po/Makevars and "make po-check" target.
 
 * Doc:
   - Verify/proofread Documentation of the HTML customization.
@@ -98,6 +126,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
 * Distribution:
   - generate txi-??.tex from .po's to make translators' jobs easier.
     From Akim and Karl E.
+  - use SHELL more to make sure that it is possible to customize the shell
+    used for building and testing.
 
 * Other
   - Info format - Get Emacs to support : in index entries by changing
@@ -106,20 +136,9 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     Get Emacs to support node name quoting. See
     https://lists.gnu.org/archive/html/bug-gnu-emacs/2022-08/msg01756.html
   - Process Texinfo files directly instead of converting to other formats.
-    It should be possible to turn the C XS parser to a library, probably
-    needing a bit more more perl postprocessing rewritten in C and a
-    public C API.
-    
-    There is no plan to use such a library to process Texinfo files directly
-    in the Texinfo project, as it will always be easier to convert Texinfo
-    to a format with the same information and easier to process such as
-    TexinfoXML, or to a format corresponding to the tree structure of Texinfo
-    documents as parsed by the Parser.
-
-    If others are interested in processing Texinfo files directly,
-    however, it could be possible to work on providing a practical API
-    for the C parser in the Texinfo project, and maybe bindings for
-    other languages than C or Perl.
+    There is no plan to process Texinfo files directly in the Texinfo
+    project, only to convert to output formats.  New output formats
+    representing the Texinfo input could be output if useful.
 
 ***********************************************************************
 

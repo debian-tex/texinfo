@@ -50,9 +50,7 @@ $result_trees{'macro_for_ignored_line_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_for_ignored_line_command'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -73,7 +69,7 @@ $result_trees{'macro_for_ignored_line_command'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {

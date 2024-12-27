@@ -65,9 +65,7 @@ $result_trees{'comment_on_cartouche_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -77,9 +75,7 @@ $result_trees{'comment_on_cartouche_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -99,14 +95,12 @@ $result_trees{'comment_on_cartouche_line'} = {
                           'text' => 'Title of box'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
+                    'line_nr' => 5
                   }
                 }
               ],
@@ -166,9 +160,7 @@ $result_trees{'comment_on_cartouche_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -178,9 +170,7 @@ $result_trees{'comment_on_cartouche_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
@@ -220,11 +210,11 @@ $result_converted{'plaintext'}->{'comment_on_cartouche_line'} = 'in cartouche.
 ';
 
 
-$result_converted{'html_text'}->{'comment_on_cartouche_line'} = '<table class="cartouche" border="1"><tr><td>
+$result_converted{'html_text'}->{'comment_on_cartouche_line'} = '<table class="cartouche"><tr><td>
 <p>in cartouche.
 </p></td></tr></table>
 
-<table class="cartouche" border="1"><tr><th>
+<table class="cartouche"><tr><th>
 <em class="emph">Title of box</em></th></tr><tr><td>
 <p>Out of main text
 </p></td></tr></table>

@@ -33,9 +33,7 @@ $result_trees{'center_flush'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -126,17 +124,16 @@ $result_trees{'center_flush'} = {
                           'text' => 'anchor in flushleft'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
+                    'is_target' => 1,
                     'normalized' => 'anchor-in-flushleft'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 14,
-                    'macro' => ''
+                    'line_nr' => 14
                   }
                 },
                 {
@@ -178,16 +175,12 @@ $result_trees{'center_flush'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -278,17 +271,16 @@ $result_trees{'center_flush'} = {
                           'text' => 'anchor in flushright'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
+                    'is_target' => 1,
                     'normalized' => 'anchor-in-flushright'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 29,
-                    'macro' => ''
+                    'line_nr' => 29
                   }
                 },
                 {
@@ -311,17 +303,16 @@ $result_trees{'center_flush'} = {
                           'text' => 'second anchor in flushright'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
+                    'is_target' => 1,
                     'normalized' => 'second-anchor-in-flushright'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 31,
-                    'macro' => ''
+                    'line_nr' => 31
                   }
                 },
                 {
@@ -362,16 +353,12 @@ $result_trees{'center_flush'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 32,
-                'macro' => ''
+                'line_nr' => 32
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           }
         }
       ],
@@ -477,7 +464,6 @@ after anchor
                                                              Now anchor
                                                            after anchor
                                     Second anchor in text after anchor.
-
 
 Tag Table:
 Ref: anchor in flushleft99
@@ -502,27 +488,21 @@ $result_converted_errors{'info'}->{'center_flush'} = [
   {
     'error_line' => 'warning: @anchor outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@anchor outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @anchor outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 29,
-    'macro' => '',
     'text' => '@anchor outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @anchor outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 31,
-    'macro' => '',
     'text' => '@anchor outside of any node',
     'type' => 'warning'
   }

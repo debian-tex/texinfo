@@ -42,9 +42,11 @@ $result_trees{'menu_no_closed_after_empty_line'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -68,9 +70,7 @@ $result_trees{'menu_no_closed_after_empty_line'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               },
               'type' => 'menu_entry'
             },
@@ -96,9 +96,7 @@ $result_trees{'menu_no_closed_after_empty_line'} = {
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -107,7 +105,7 @@ $result_trees{'menu_no_closed_after_empty_line'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
+$result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1];
 
 $result_texis{'menu_no_closed_after_empty_line'} = '@menu
 * (manual_in_menu):: desc2
@@ -125,9 +123,7 @@ $result_errors{'menu_no_closed_after_empty_line'} = [
   {
     'error_line' => 'no matching `@end menu\'
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'no matching `@end menu\'',
     'type' => 'error'
   }

@@ -35,10 +35,10 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
                 }
               ],
               'cmdname' => 'contents',
+              'extra' => {},
               'source_info' => {
                 'file_name' => 'contents_at_document_begin.texi',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -71,6 +71,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -80,8 +81,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
       },
       'source_info' => {
         'file_name' => 'contents_at_document_begin.texi',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -149,9 +149,11 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'chapter'
                   },
                   'type' => 'menu_entry_node'
@@ -177,8 +179,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
               ],
               'source_info' => {
                 'file_name' => 'contents_at_document_begin.texi',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               },
               'type' => 'menu_entry'
             },
@@ -210,15 +211,13 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
               },
               'source_info' => {
                 'file_name' => 'contents_at_document_begin.texi',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'source_info' => {
             'file_name' => 'contents_at_document_begin.texi',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         },
         {
@@ -235,8 +234,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
       },
       'source_info' => {
         'file_name' => 'contents_at_document_begin.texi',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -258,6 +256,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chapter'
       },
       'info' => {
@@ -267,8 +266,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
       },
       'source_info' => {
         'file_name' => 'contents_at_document_begin.texi',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     },
     {
@@ -310,7 +308,9 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -318,8 +318,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
       },
       'source_info' => {
         'file_name' => 'contents_at_document_begin.texi',
-        'line_nr' => 15,
-        'macro' => ''
+        'line_nr' => 15
       }
     },
     {
@@ -335,7 +334,7 @@ $result_trees{'contents_at_document_begin_separate_element'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'contents_at_document_begin_separate_element'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_at_document_begin_separate_element'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'contents_at_document_begin_separate_element'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'contents_at_document_begin_separate_element'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'contents_at_document_begin_separate_element'} = '\\input texinfo @c -*-texinfo-*-
 
@@ -375,7 +374,7 @@ The chapter
 ';
 
 $result_sectioning{'contents_at_document_begin_separate_element'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -384,11 +383,8 @@ $result_sectioning{'contents_at_document_begin_separate_element'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -397,93 +393,88 @@ $result_sectioning{'contents_at_document_begin_separate_element'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chapter'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'contents_at_document_begin_separate_element'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'contents_at_document_begin_separate_element'};
+$result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'contents_at_document_begin_separate_element'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'contents_at_document_begin_separate_element'};
 
-$result_nodes{'contents_at_document_begin_separate_element'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
+$result_nodes{'contents_at_document_begin_separate_element'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chapter'
           }
-        },
-        'normalized' => 'chapter'
-      },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'contents_at_document_begin_separate_element'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'contents_at_document_begin_separate_element'};
-$result_nodes{'contents_at_document_begin_separate_element'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'contents_at_document_begin_separate_element'};
-$result_nodes{'contents_at_document_begin_separate_element'}{'structure'}{'node_next'} = $result_nodes{'contents_at_document_begin_separate_element'}{'structure'}{'menu_child'};
-
-$result_menus{'contents_at_document_begin_separate_element'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chapter'
-      },
-      'structure' => {
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
         }
-      }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'contents_at_document_begin_separate_element'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'contents_at_document_begin_separate_element'}[0];
+$result_nodes{'contents_at_document_begin_separate_element'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'contents_at_document_begin_separate_element'}[0];
+$result_nodes{'contents_at_document_begin_separate_element'}[1] = $result_nodes{'contents_at_document_begin_separate_element'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'contents_at_document_begin_separate_element'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'up' => {}
+      },
+      'normalized' => 'chapter'
     }
   }
-};
-$result_menus{'contents_at_document_begin_separate_element'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'contents_at_document_begin_separate_element'};
+];
+$result_menus{'contents_at_document_begin_separate_element'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'contents_at_document_begin_separate_element'}[0];
 
 $result_errors{'contents_at_document_begin_separate_element'} = [];
 
@@ -494,6 +485,7 @@ $result_floats{'contents_at_document_begin_separate_element'} = {};
 
 $result_converted{'plaintext'}->{'contents_at_document_begin_separate_element'} = 'Contents at beginning
 1 Chapter 1
+
 Contents at beginning
 *********************
 
@@ -509,7 +501,7 @@ The chapter
 
 $result_converted{'html'}->{'contents_at_document_begin_separate_element'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Contents at beginning</title>
@@ -564,7 +556,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Contents at beginning</a>, Up:
 <div class="element-contents" id="SEC_Contents">
 <div class="nav-panel">
 <p>
-[<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+[<a href="#Top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -648,7 +640,6 @@ File: ,  Node: chapter,  Prev: Top,  Up: Top
 ***********
 
 The chapter
-
 
 
 Tag Table:

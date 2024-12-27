@@ -45,15 +45,14 @@ $result_trees{'heading_in_footnote'} = {
                         }
                       ],
                       'cmdname' => 'heading',
+                      'extra' => {},
                       'info' => {
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -81,14 +80,13 @@ $result_trees{'heading_in_footnote'} = {
                         ]
                       },
                       'info' => {
+                        'command_name' => 'cindex',
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       },
                       'type' => 'index_entry_command'
                     },
@@ -106,6 +104,7 @@ $result_trees{'heading_in_footnote'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => '
@@ -113,9 +112,7 @@ $result_trees{'heading_in_footnote'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -148,9 +145,7 @@ $result_errors{'heading_in_footnote'} = [
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
@@ -203,5 +198,13 @@ $result_converted{'latex_text'}->{'heading_in_footnote'} = 'T\\footnote{AAA
 BBB
 }
 ';
+
+
+$result_converted{'docbook'}->{'heading_in_footnote'} = '<para>T<footnote><para>AAA
+</para><bridgehead renderas="sect1">H1</bridgehead>
+<indexterm role="cp"><primary>ind e</primary></indexterm>
+<para>BBB
+</para></footnote>
+</para>';
 
 1;

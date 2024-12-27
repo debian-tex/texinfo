@@ -24,8 +24,9 @@ sub convert_ignore_command($$$$$)
   my $args = shift;
   my $content = shift;
 
-  # FIXME should the spacing be set differently for raw commands?
-  return $self->xml_comment(" ".$content."\n");
+  $content = '' if (!defined($content));
+
+  return $self->xml_comment(" $content\n");
 }
 
 texinfo_register_command_formatting('ignore', \&convert_ignore_command);

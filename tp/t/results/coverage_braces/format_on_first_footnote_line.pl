@@ -68,16 +68,12 @@ $result_trees{'format_on_first_footnote_line'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 3,
-                            'macro' => ''
+                            'line_nr' => 3
                           }
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
@@ -85,10 +81,9 @@ $result_trees{'format_on_first_footnote_line'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -162,16 +157,12 @@ $result_trees{'format_on_first_footnote_line'} = {
                             }
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 8,
-                            'macro' => ''
+                            'line_nr' => 8
                           }
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     },
                     {
@@ -184,10 +175,9 @@ $result_trees{'format_on_first_footnote_line'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -222,7 +212,22 @@ $result_texts{'format_on_first_footnote_line'} = 'Texte.
 Last text 
 ';
 
-$result_errors{'format_on_first_footnote_line'} = [];
+$result_errors{'format_on_first_footnote_line'} = [
+  {
+    'error_line' => 'warning: @quotation should only appear at the beginning of a line
+',
+    'line_nr' => 1,
+    'text' => '@quotation should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @example should only appear at the beginning of a line
+',
+    'line_nr' => 6,
+    'text' => '@example should only appear at the beginning of a line',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'format_on_first_footnote_line'} = {};
@@ -275,5 +280,14 @@ Last text \\footnote{\\begin{Texinfoindented}
 
 }
 ';
+
+
+$result_converted{'docbook'}->{'format_on_first_footnote_line'} = '<para>Texte<footnote><blockquote><para>in quotation on the first footnote line
+</para></blockquote></footnote>.
+</para>
+<para>Last text <footnote><screen>in example
+</screen>
+</footnote>
+</para>';
 
 1;

@@ -37,9 +37,7 @@ $result_trees{'documentencoding_utf8'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -66,9 +64,7 @@ $result_errors{'documentencoding_utf8'} = [
   {
     'error_line' => 'warning: encoding `utf8\' is not a canonical texinfo encoding
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'encoding `utf8\' is not a canonical texinfo encoding',
     'type' => 'warning'
   }
@@ -135,7 +131,6 @@ $result_converted{'latex'}->{'documentencoding_utf8'} = '\\documentclass{book}
 
 
 $result_converted{'info'}->{'documentencoding_utf8'} = 'This is , produced from .
-
 
 
 Tag Table:

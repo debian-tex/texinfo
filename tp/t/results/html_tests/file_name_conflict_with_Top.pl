@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'file_name_conflict_with_Top'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -29,6 +34,7 @@ $result_trees{'file_name_conflict_with_Top'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +43,7 @@ $result_trees{'file_name_conflict_with_Top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -74,9 +78,7 @@ $result_trees{'file_name_conflict_with_Top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -98,6 +100,7 @@ $result_trees{'file_name_conflict_with_Top'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Chapter'
       },
       'info' => {
@@ -106,9 +109,7 @@ $result_trees{'file_name_conflict_with_Top'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -143,17 +144,16 @@ $result_trees{'file_name_conflict_with_Top'} = {
                   'text' => 'index'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'index'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -162,16 +162,16 @@ $result_trees{'file_name_conflict_with_Top'} = {
           'type' => 'spaces_after_close_brace'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -197,7 +197,7 @@ $result_texts{'file_name_conflict_with_Top'} = 'top
 ';
 
 $result_sectioning{'file_name_conflict_with_Top'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -206,11 +206,8 @@ $result_sectioning{'file_name_conflict_with_Top'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -219,72 +216,81 @@ $result_sectioning{'file_name_conflict_with_Top'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'Chapter'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_conflict_with_Top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_conflict_with_Top'};
+$result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_conflict_with_Top'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'file_name_conflict_with_Top'};
 
-$result_nodes{'file_name_conflict_with_Top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'Chapter'
+$result_nodes{'file_name_conflict_with_Top'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'Chapter'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'file_name_conflict_with_Top'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'file_name_conflict_with_Top'}[0];
+$result_nodes{'file_name_conflict_with_Top'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'file_name_conflict_with_Top'}[0];
+$result_nodes{'file_name_conflict_with_Top'}[1] = $result_nodes{'file_name_conflict_with_Top'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'file_name_conflict_with_Top'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'Chapter'
     }
   }
-};
-$result_nodes{'file_name_conflict_with_Top'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'file_name_conflict_with_Top'};
-$result_nodes{'file_name_conflict_with_Top'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'file_name_conflict_with_Top'};
-
-$result_menus{'file_name_conflict_with_Top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'file_name_conflict_with_Top'} = [];
 
@@ -296,9 +302,7 @@ $result_converted_errors{'file_html'}->{'file_name_conflict_with_Top'} = [
   {
     'error_line' => 'warning: @anchor `index\' file index.html for redirection exists
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@anchor `index\' file index.html for redirection exists',
     'type' => 'warning'
   },

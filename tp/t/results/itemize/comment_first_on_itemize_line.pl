@@ -15,7 +15,9 @@ $result_trees{'comment_first_on_itemize_line'} = {
               'contents' => [
                 {
                   'cmdname' => 'bullet',
-                  'type' => 'command_as_argument_inserted'
+                  'info' => {
+                    'inserted' => 1
+                  }
                 }
               ],
               'info' => {
@@ -56,9 +58,7 @@ $result_trees{'comment_first_on_itemize_line'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -88,9 +88,7 @@ $result_trees{'comment_first_on_itemize_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -103,9 +101,7 @@ $result_trees{'comment_first_on_itemize_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],

@@ -80,9 +80,7 @@ $result_trees{'comma_value_in_macro_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -91,42 +89,10 @@ $result_trees{'comma_value_in_macro_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => 'arg1 @value{comma} arg2 '
-                      }
-                    ],
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'macro1',
-                  'spaces_after_cmd_before_arg' => {
-                    'text' => ' '
-                  },
-                  'spaces_before_argument' => {
-                    'text' => ' '
-                  }
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -134,6 +100,37 @@ $result_trees{'comma_value_in_macro_arg'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'arg1 @value{comma} arg2 '
+                          }
+                        ],
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'macro1',
+                      'spaces_after_cmd_before_arg' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'result: '
             },
             {
@@ -147,7 +144,12 @@ $result_trees{'comma_value_in_macro_arg'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'comma'
+                                'contents' => [
+                                  {
+                                    'text' => 'comma'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -167,12 +169,11 @@ $result_trees{'comma_value_in_macro_arg'} = {
                       'text' => 'arg1 , arg2 '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'macro1'
               }
@@ -183,12 +184,11 @@ $result_trees{'comma_value_in_macro_arg'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 7,
                 'macro' => 'macro1'
               },

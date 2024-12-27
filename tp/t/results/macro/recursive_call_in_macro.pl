@@ -54,9 +54,7 @@ $result_trees{'recursive_call_in_macro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,9 +63,7 @@ $result_trees{'recursive_call_in_macro'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -82,7 +78,7 @@ $result_trees{'recursive_call_in_macro'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -126,7 +122,6 @@ $result_errors{'recursive_call_in_macro'} = [
   {
     'error_line' => 'recursive call of macro anorecurse is not allowed; use @rmacro if needed (possibly involving @anorecurse)
 ',
-    'file_name' => '',
     'line_nr' => 5,
     'macro' => 'anorecurse',
     'text' => 'recursive call of macro anorecurse is not allowed; use @rmacro if needed',

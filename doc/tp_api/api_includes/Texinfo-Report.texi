@@ -13,16 +13,18 @@ Texinfo::Report - Error storing for Texinfo modules
   use Texinfo::Report;
 
   my $registrar = Texinfo::Report::new();
-  
+
   if ($warning_happened) {
     $registrar->line_warn($converter, sprintf(__("\@%s is wrongly used"),
                        $current->{'cmdname'}), $current->{'source_info'});
   }
-  
+
   my ($errors, $errors_count) = $registrar->errors();
   foreach my $error_message (@$errors) {
     warn $error_message->{'error_line'};
   }
+
+  $registrar->clear();
 @end verbatim
 
 @node Texinfo@asis{::}Report NOTES
@@ -34,40 +36,26 @@ Texinfo to other formats.  There is no promise of API stability.
 @node Texinfo@asis{::}Report DESCRIPTION
 @section Texinfo::Report DESCRIPTION
 
-The @code{Texinfo::Report} module helps with error handling.  It is
-used by the Texinfo modules @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser} and
-@ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.  To use this module, either create
-a new @code{Texinfo::Report} object or initialize another object
-such as to be able to call @code{Texinfo::Report} methods.  In any
-case, @code{Texinfo::Report::new()} is called to setup the module.
-
-Besides the @code{new} method, @code{errors} is used for reporting errors, and the
-other methods to store errors (and warnings).
+The @code{Texinfo::Report} module helps with error handling.  Errors
+and warnings can be setup, stored and retrieved later on.
+This module is used by the Texinfo modules @ref{Texinfo@asis{::}Parser NAME,, Texinfo::Parser} and
+@ref{Texinfo@asis{::}Convert@asis{::}Converter NAME,, Texinfo::Convert::Converter}.
 
 @node Texinfo@asis{::}Report METHODS
 @section Texinfo::Report METHODS
 
 No method is exported in the default case.
 
-The @code{new} method initializes @code{Texinfo::Report} related fields.
+The @code{new} method initializes a @code{Texinfo::Report} object.
 The errors collected are available through the @code{errors} method, the other
 methods allow registering errors and warnings.
 
 @table @asis
 @item my $registrar = Texinfo::Report::new()
 @anchor{Texinfo@asis{::}Report my $registrar = Texinfo@asis{::}Report@asis{::}new()}
-
-@item $converter->Texinfo::Report::new()
-@anchor{Texinfo@asis{::}Report $converter->Texinfo@asis{::}Report@asis{::}new()}
 @cindex @code{Texinfo::Report::new}
 
-If called without argument, a @code{Texinfo::Report} object is initialized and
-returned.  This is how the module is used in the Texinfo Parsers, as
-a separate object.
-
-If called on a @code{$converter}, the @code{$converter} is initialized itself
-such as to be able to call @code{Texinfo::Report} methods.  It is how it is
-used in the Converters.
+Return an initialized  @code{Texinfo::Report} object.
 
 @item ($error_warnings_list, $error_count) = errors($registrar)
 @anchor{Texinfo@asis{::}Report ($error_warnings_list@comma{} $error_count) = errors($registrar)}
@@ -79,31 +67,25 @@ one for each error, warning or error line continuation.  Each of these has
 the following keys:
 
 @table @asis
-@item type
-@anchor{Texinfo@asis{::}Report type}
+@item continuation
+@anchor{Texinfo@asis{::}Report continuation}
 
-May be @code{warning}, or @code{error}.
-
-@item text
-@anchor{Texinfo@asis{::}Report text}
-
-The text of the error.
+If set, the line is a continuation line of a message.
 
 @item error_line
 @anchor{Texinfo@asis{::}Report error_line}
 
-The text of the error formatted with the file name, line number and macro
-name, as needed.
-
-@item line_nr
-@anchor{Texinfo@asis{::}Report line_nr}
-
-The line number of the error or warning.
+The text of the error formatted with the macro name, as needed.
 
 @item file_name
 @anchor{Texinfo@asis{::}Report file_name}
 
 The file name where the error or warning occurs.
+
+@item line_nr
+@anchor{Texinfo@asis{::}Report line_nr}
+
+The line number of the error or warning.
 
 @item macro
 @anchor{Texinfo@asis{::}Report macro}
@@ -111,28 +93,52 @@ The file name where the error or warning occurs.
 The user macro name that is expanded at the location of
 the error or warning.
 
+@item text
+@anchor{Texinfo@asis{::}Report text}
+
+The text of the error.
+
+@item type
+@anchor{Texinfo@asis{::}Report type}
+
+May be @code{warning}, or @code{error}.
+
 @end table
 
-@item $registrar->line_warn($text, $configuration_information, $error_location_info, $continuation, $silent)
-@anchor{Texinfo@asis{::}Report $registrar->line_warn($text@comma{} $configuration_information@comma{} $error_location_info@comma{} $continuation@comma{} $silent)}
+@item $registrar->clear ()
+@anchor{Texinfo@asis{::}Report $registrar->clear ()}
+@cindex @code{clear}
 
-@item $registrar->line_error($text, $configuration_information, $error_location_info, $continuation, $silent)
-@anchor{Texinfo@asis{::}Report $registrar->line_error($text@comma{} $configuration_information@comma{} $error_location_info@comma{} $continuation@comma{} $silent)}
+Clear the previously registered messages.
+
+@item $registrar->add_formatted_message ($msg)
+@anchor{Texinfo@asis{::}Report $registrar->add_formatted_message ($msg)}
+@cindex @code{add_formatted_message}
+
+Register the @emph{$msg} hash reference corresponding to an error, warning or error line
+continuation.  The @emph{$msg} hash reference should correspond to the structure returned
+by @code{errors}.
+
+@item $registrar->line_warn($text, $error_location_info, $continuation, $debug, $silent)
+@anchor{Texinfo@asis{::}Report $registrar->line_warn($text@comma{} $error_location_info@comma{} $continuation@comma{} $debug@comma{} $silent)}
+
+@item $registrar->line_error($text, $error_location_info, $continuation, $debug, $silent)
+@anchor{Texinfo@asis{::}Report $registrar->line_error($text@comma{} $error_location_info@comma{} $continuation@comma{} $debug@comma{} $silent)}
 @cindex @code{line_warn}
 @cindex @code{line_error}
 
 Register a warning or an error.  The @emph{$text} is the text of the
-error or warning.  The @emph{$configuration_information} object gives
-some information that can modify the messages or their delivery.
-The optional @emph{$error_location_info} holds the information on the error or
-warning location.  The @emph{$error_location_info} reference on hash may be
-obtained from Texinfo elements @emph{source_info} keys.   It may also
-be setup to point to a file name, using the @code{file_name} key and
-to a line number, using the @code{line_nr} key.  The @code{file_name} key value
-should be a binary string.
+error or warning.  The mandatory @emph{$error_location_info} holds the information
+on the error or warning location.  The @emph{$error_location_info} reference on
+hash may be obtained from Texinfo elements @emph{source_info} keys.   It may also
+be setup to point to a file name, using the @code{file_name} key and to a line
+number, using the @code{line_nr} key.  The @code{file_name} key value should be a
+binary string.
 
 The @emph{$continuation} optional arguments, if true, conveys that
 the line is a continuation line of a message.
+
+The @emph{$debug} optional integer arguments sets the debug level.
 
 The @emph{$silent} optional arguments, if true, suppresses the output of
 a message that is output immediatly if debugging is set.
@@ -140,19 +146,18 @@ a message that is output immediatly if debugging is set.
 The @emph{source_info} key of Texinfo tree elements is described
 in more details in @ref{Texinfo@asis{::}Parser source_info}.
 
-@item $registrar->document_warn($configuration_information, $text, $continuation)
-@anchor{Texinfo@asis{::}Report $registrar->document_warn($configuration_information@comma{} $text@comma{} $continuation)}
+@item $registrar->document_warn($text, $program_name, $continuation)
+@anchor{Texinfo@asis{::}Report $registrar->document_warn($text@comma{} $program_name@comma{} $continuation)}
 
-@item $registrar->document_error($configuration_information, $text, $continuation)
-@anchor{Texinfo@asis{::}Report $registrar->document_error($configuration_information@comma{} $text@comma{} $continuation)}
+@item $registrar->document_error($text, $program_name, $continuation)
+@anchor{Texinfo@asis{::}Report $registrar->document_error($text@comma{} $program_name@comma{} $continuation)}
 @cindex @code{document_warn}
 @cindex @code{document_error}
 
 Register a document-wide error or warning.  @emph{$text} is the error or
-warning message.  The @emph{$configuration_information} object gives
-some information that can modify the messages or their delivery.
-The @emph{$continuation} optional arguments, if true, conveys that
-the line is a continuation line of a message.
+warning message.  The @emph{$program_name} is prepended to the
+message, if defined.  The @emph{$continuation} optional arguments, if true, conveys
+that the line is a continuation line of a message.
 
 @end table
 

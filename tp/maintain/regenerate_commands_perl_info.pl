@@ -1,9 +1,9 @@
 #! /usr/bin/env perl
 
 # regenerate_perl_command_infos.pl: generate perl hashes based on
-# commands information setup for the XS parser.
+# commands information also used in the XS parser.
 #
-# Copyright 2022-2023 Free Software Foundation, Inc.
+# Copyright 2022-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,11 +20,9 @@
 
 use strict;
 
-# emulates -w
-BEGIN
-{
-  $^W = 1;
-}
+use warnings;
+
+use File::Basename;
 
 # need this information to fill in automatically the index commands
 my %index_in_code = (
@@ -39,8 +37,6 @@ my %index_in_code = (
 my %command_categories;
 my %flags_hashes;
 my %command_args_nr;
-
-my %multi_category_commands;
 
 while (<STDIN>) {
   if (not (/^#/ or /^ *$/)) {
@@ -77,11 +73,6 @@ while (<STDIN>) {
       }
       $category = $categories[0];
     }
-    # handle commands in multiple categories, for now @item
-    my $uc_category = uc($category);
-    if ($command =~ /^(.*)_$uc_category$/) {
-      $multi_category_commands{$command} = $1;
-    }
 
     if (defined($args_nr) and $args_nr ne '') {
       $command_args_nr{$command} = $args_nr;
@@ -104,9 +95,11 @@ while (<STDIN>) {
 my $out_file = $ARGV[0];
 die "Need an output file\n" if (!defined($out_file));
 
-open (OUT, ">$out_file") or die "Open $out_file: $!\n";
+open(OUT, ">$out_file") or die "Open $out_file: $!\n";
 
-print OUT "# Automatically generated from $0\n\n";
+my $program_name = basename($0);
+
+print OUT "# Automatically generated from $program_name\n\n";
 
 print OUT "package Texinfo::Commands;\n\n";
 
@@ -130,9 +123,6 @@ print OUT "# flag hashes\n";
 # for those flags, the information of multi category commands is
 # duplicated.  So, for example, item_LINE has the formatted_line flag
 # associated, it will be associated to item.
-#
-# In general, the hash here should be in the excluded flags in
-# Texinfo/XS/parsetexi/command_data.awk
 my %converter_flag = (
   'formatted_line' => 1,
   'formattable_line' => 1,
@@ -146,11 +136,6 @@ foreach my $hash_flag (sort(keys(%flags_hashes))) {
   print OUT "our %${hash_flag}_commands = (\n";
   foreach my $command (sort(@{$flags_hashes{$hash_flag}})) {
     print OUT '  '.sprintf('%-25s', '"'.$command.'"')." => 1,\n";
-    if ($multi_category_commands{$command}
-        and $converter_flag{$hash_flag}) {
-      print OUT '  '.sprintf('%-25s', '"'.$multi_category_commands{$command}
-                                                             .'"')." => 1,\n";
-    }
   }
   print OUT ");\n\n";
 }
@@ -178,17 +163,16 @@ foreach my $index_name (sort(keys(%index_in_code))) {
 }
 print OUT ");\n\n";
 
-# add code that sets %line_commands for index commands based on %index_names
+# add code that sets %default_index_commands for index commands based
+# on %index_names
 print OUT 'foreach my $index (keys(%index_names)) {
   $index_names{$index}->{"name"} = $index;
-  $index_names{$index}->{"contained_indices"} = {$index => 1};
 }
 
 our %default_index_commands;
 foreach my $index_name (keys (%index_names)) {
   my $one_letter_prefix = substr($index_name, 0, 1);
   foreach my $prefix ($index_name, $one_letter_prefix) {
-    $line_commands{$prefix."index"} = "line";
     $default_index_commands{$prefix."index"} = $index_name;
   }
 }

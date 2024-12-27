@@ -19,7 +19,7 @@ $result_trees{'spaces_after_braced_command'} = {
                       'text' => 'b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
@@ -29,9 +29,7 @@ $result_trees{'spaces_after_braced_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -56,7 +54,7 @@ $result_trees{'spaces_after_braced_command'} = {
                       'text' => 'v'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'samp',
@@ -67,9 +65,7 @@ $result_trees{'spaces_after_braced_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -89,7 +85,7 @@ $result_trees{'spaces_after_braced_command'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'AA',
@@ -100,9 +96,7 @@ $result_trees{'spaces_after_braced_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -127,7 +121,7 @@ $result_trees{'spaces_after_braced_command'} = {
                       'text' => 'a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -144,7 +138,7 @@ $result_trees{'spaces_after_braced_command'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
@@ -155,9 +149,7 @@ $result_trees{'spaces_after_braced_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -183,9 +175,7 @@ $result_trees{'spaces_after_braced_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -242,72 +232,56 @@ $result_errors{'spaces_after_braced_command'} = [
   {
     'error_line' => 'warning: command `@samp\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'command `@samp\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: command `@AA\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'command `@AA\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: command `@email\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'command `@email\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: command `@TeX\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'command `@TeX\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: command `@TeX\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => 'command `@TeX\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => '@TeX expected braces
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@TeX expected braces',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }

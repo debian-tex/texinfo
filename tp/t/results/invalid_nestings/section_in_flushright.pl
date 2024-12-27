@@ -44,9 +44,7 @@ $result_trees{'section_in_flushright'} = {
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -70,15 +68,16 @@ $result_trees{'section_in_flushright'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -101,29 +100,27 @@ text flushed right
 ';
 
 $result_sectioning{'section_in_flushright'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_in_flushright'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_in_flushright'};
+$result_sectioning{'section_in_flushright'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_in_flushright'};
 
 $result_errors{'section_in_flushright'} = [
   {
     'error_line' => '@section seen before @end flushright
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@section seen before @end flushright',
     'type' => 'error'
   }

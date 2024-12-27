@@ -5,6 +5,8 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
+my $XS_convert = Texinfo::XSLoader::XS_convert_enabled();
+
 my $itemize_arguments_text = '
 @itemize ---
 @item item ---
@@ -60,6 +62,22 @@ my $itemize_arguments_text = '
 
 @itemize @{
 @item item @{
+@end itemize
+
+@itemize @&
+@item item @&
+@end itemize
+
+@itemize @ampchar
+@item item @ampchar{}
+@end itemize
+
+@itemize @& a
+@item item @& a
+@end itemize
+
+@itemize @ampchar{} a
+@item item @ampchar{} a
 @end itemize
 
 @itemize @registeredsymbol{}
@@ -146,6 +164,15 @@ a@sup{b - \frac{\xi}{phi @copyright{}}} @dotless{i}
 Some @math{a @minus{} b @geq{} @AA{} @^e}.
 ';
 
+# nothing special, just a way to have the same for all the
+# info_js_dir tests
+my $info_js_dir_test = '@node top
+@top top
+
+@node chap
+@chapter Chapter
+';
+
 my $check_htmlxref_text = '
 @node Top, (../there/no_existing_no_manual_direction), first, (dir)
 @top top
@@ -163,6 +190,8 @@ my $check_htmlxref_text = '
 
 @node chapter, (chap_not_existing), (dir)node in dir
 @chapter Chapter
+
+@xref{(some_name_inf.inf)aa}.
 ';
 
 my $top_node_up_implicit_text = '@node Top
@@ -274,6 +303,17 @@ in @code{documentdescri---ption} --- @bullet{} @enddots{} @verb{:"verb:} @aa{} @
 
 @top top
 '],
+['menu_in_documentdescription',
+'@node Top
+@top top
+
+@documentdescription
+@menu
+* (f)b::
+@end menu
+@end documentdescription
+', {'FORMAT_MENU' => 'menu'},
+   {'FORMAT_MENU' => 'menu'}],
 ['index_below',
 '@top top
 
@@ -283,8 +323,38 @@ in @code{documentdescri---ption} --- @bullet{} @enddots{} @verb{:"verb:} @aa{} @
 
 @cindex entry
 @printindex cp
-', {'test_split' => 'section'}, {'USE_NODES', 0}],
-['simple_menu',
+', {'test_split' => 'section'}, {'USE_NODES' => 0}],
+['letter_command_in_index',
+'@node Top
+@top top
+
+@node chap
+@chapter Chapter
+
+@cindex @TH{}
+
+@cindex @l{}
+
+@cindex @^e
+
+@printindex cp
+'],
+['U_in_index',
+'@node Top
+@top top
+
+@node chap
+@chapter Chapter
+
+@cindex @U{0131} dotless i
+
+@cindex @U{0074} letter t
+
+@cindex @U{00B5} greek letter mu
+
+@printindex cp
+'],
+['menu',
 '
 @node Top
 @top
@@ -357,8 +427,9 @@ in detaildescription
 
 @end detailmenu
 @end menu
-', {'SIMPLE_MENU' => 1, 'test_formats' => ['info']}, {'FORMAT_MENU' => 'menu'}],
-['simple_menu_in_example',
+', {'FORMAT_MENU' => 'menu', 'test_formats' => ['info']},
+   {'FORMAT_MENU' => 'menu'}],
+['menu_in_example',
 '@node Top
 
 @example
@@ -376,7 +447,8 @@ in cartouche in menu comment in menu in example
 * a menu name:(other) node.
 @end menu
 @end example
-', {'SIMPLE_MENU' => 1, 'test_formats' => ['info']}, {'FORMAT_MENU' => 'menu'}],
+', {'FORMAT_MENU' => 'menu', 'test_formats' => ['info']},
+   {'FORMAT_MENU' => 'menu'}],
 # the following tests are somewhat redundant with tests in
 # XXsectioning.t, but here there is a clearer comparison with
 # and without 'USE_NODES' here.  There is no test of TOP_NODE_UP, here, however.
@@ -509,6 +581,20 @@ aa
 ', {'EXPANDED_FORMATS' => ['tex']},
 {'EXPANDED_FORMATS' => ['tex']}
 ],
+['tex_expanded_in_caption_multiple_time',
+'@float A, B
+My float.
+@caption{
+@tex
+aa
+@end tex
+}
+@end float
+
+@listoffloats A
+', {'EXPANDED_FORMATS' => ['tex']},
+{'EXPANDED_FORMATS' => ['tex']}
+],
 ['titles',
 '
 @settitle @@title @sc{html} @code{test}
@@ -544,6 +630,36 @@ in <b>html</b> in copying ``
 @node Top
 @top top
 
+'],
+# the output has nested <a> in @printindex formatting for @item
+# with @anchor on the line, which is invalid HTML.  However, it
+# is probably better not to consider this output to be a bug as
+# it corresponds to the Texinfo code intention.
+['anchor_on_vtable_item',
+'@node Top
+@top top
+
+@node chap
+@chapter Chap
+
+@vtable @code
+
+@item @anchor{label1}label1
+Text1
+
+@item @anchor{label2} label2
+Text2
+
+@item lab3
+
+@end vtable
+
+@node Idx
+@chapter Idx
+
+@printindex vr
+
+@xref{label1}.
 '],
 ['headings_after_lone_nodes',
 '@node Top
@@ -638,14 +754,18 @@ in html
 @section Sec after
 ', {'FORMAT_MENU' => 'menu'}, {'FORMAT_MENU' => 'menu'},],
 ['mathjax_with_texinfo',
-$mathjax_with_texinfo, {}, {'HTML_MATH' => 'mathjax'}],
+$mathjax_with_texinfo,
+{}, {'HTML_MATH' => 'mathjax'}],
 ['mathjax_with_texinfo_enable_encoding',
 $mathjax_with_texinfo, {'test_formats' => ['latex_text', 'file_latex'],
-                        'full_document' => 1},
+                        'full_document' => 1,
+       'test_input_file_name' => 'mathjax_with_texinfo_enable_encoding.texi',},
 {'HTML_MATH' => 'mathjax', 'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}],
 ['mathjax_with_texinfo_no_convert_to_latex',
 $mathjax_with_texinfo, {}, {'HTML_MATH' => 'mathjax',
                             'CONVERT_TO_LATEX_IN_MATH' => 0}],
+['info_js_dir_html',
+$info_js_dir_test, {}, {'INFO_JS_DIR' => 'js'}],
 ['empty_lines_at_beginning_no_setfilename',
 undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename.texi'}
 ],
@@ -703,6 +823,9 @@ In top.
 '
 @titlefont{}
 '],
+['end_of_line_in_uref',
+'See the @uref{https://gcc.gnu.org/codingconventions.html#Spelling
+Spelling, terminology and markup} section.'],
 ['fractions_rounding',
 '@multitable @columnfractions .19 .30 .29 .22
 @item In contents            @tab In contents                  @tab In contents           @tab Not in contents
@@ -715,8 +838,19 @@ ccc}
 
 @verb{|aaa  bb
 ccc|}
-', {'init_files' => ['spaces_in_line_breaks.init']},
+', {'init_files' => ['spaces_in_line_breaks.init'],
+    'skip' => $XS_convert ? 'Direct perl data change test' : undef,},
 ],
+['xhtml_rule_element_already_closed',
+'@node Top
+@top top
+
+@node chap
+@chapter Chapter
+', {},
+# BIG_RULE is actually used
+ {'DEFAULT_RULE' => '<hr/>', 'BIG_RULE' => '<hr/>',
+  'USE_XML_SYNTAX' => 1,}],
 );
 
 my $test_accents_sc_no_brace_commands_quotes = '@u{--a}
@@ -744,12 +878,12 @@ AA @^e --- -- \'` \'\' ``'],
 ['utf8_enable_encoding',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}],
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}],
 ['utf8_enable_encoding_no_use_iso',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {'ENABLE_ENCODING' => 1},
-                            {'OUTPUT_CHARACTERS' => 1, 'USE_ISO' => 0}],
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
+                            'OUTPUT_CHARACTERS' => 1, 'USE_ISO' => 0}],
 ['utf8_use_numeric_entity',
 '@documentencoding utf-8
 
@@ -757,8 +891,8 @@ AA @^e --- -- \'` \'\' ``', {}, {'USE_NUMERIC_ENTITY' => 1}],
 ['utf8_enable_encoding_use_numeric_entity',
 '@documentencoding utf-8
 
-AA @^e --- -- \'` \'\' ``', {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1,
-                                                       'USE_NUMERIC_ENTITY' => 1}],
+AA @^e --- -- \'` \'\' ``', {}, {'ENABLE_ENCODING' => 1,
+                    'OUTPUT_CHARACTERS' => 1, 'USE_NUMERIC_ENTITY' => 1}],
 ['ref_in_preformatted',
 '@node Top
 
@@ -775,6 +909,8 @@ node name}
 '],
 ['mathjax_with_texinfo_html_text',
 $mathjax_with_texinfo, {}, {'HTML_MATH' => 'mathjax'}],
+['info_js_dir_html_text',
+$info_js_dir_test, {}, {'INFO_JS_DIR' => 'js'}],
 ['split_html_text',
 '@node Top
 @top top
@@ -819,21 +955,35 @@ my $file_name_case_insensitive_conflict_node = '@node Top
 ';
 
 my @test_cases_file_text = (
+# already tested in 30sectioning.t, but we want tests with all the possible
+# entry points
+['contents_with_only_top_node',
+'
+@node Top
+
+@contents
+',],
+['top_node_top_contents',
+'@contents
+
+@node Top
+@top Texinfo modules documentation
+',],
 ['test_accents_sc_default',
 undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'}],
 ['test_accents_sc_enable_encoding',
-undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi',
-        'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}],
+undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi',},
+       {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}],
 ['test_accents_sc_default_latin1',
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'}],
 ['test_accents_sc_enable_encoding_latin1',
-undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',
-        'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}],
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',},
+       {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}],
 ['test_accents_sc_default_usascii',
 undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi'}],
 ['test_accents_sc_enable_encoding_usascii',
-undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',
-        'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}],
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',},
+        {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}],
 ['test_accents_sc_use_numeric_entity',
 undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'},
        {'USE_NUMERIC_ENTITY' => 1}],
@@ -842,17 +992,85 @@ undef, {'test_file' => 'punctuation_small_case_accents_utf8.texi'},
 undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi'},
         {'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 ['test_accents_sc_enable_encoding_to_utf8_latin1',
-undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',
-         'ENABLE_ENCODING' => 1},
-        {'OUTPUT_CHARACTERS' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+undef, {'test_file' => 'punctuation_small_case_accents_latin1.texi',},
+       {'ENABLE_ENCODING' => 1,
+       'OUTPUT_CHARACTERS' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 ['test_accents_sc_enable_encoding_to_utf8_usascii',
-undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',
-         'ENABLE_ENCODING' => 1},
-        {'OUTPUT_CHARACTERS' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
+undef, {'test_file' => 'punctuation_small_case_accents_us_ascii.texi',},
+        {'ENABLE_ENCODING' => 1,
+         'OUTPUT_CHARACTERS' => 1, 'OUTPUT_ENCODING_NAME' => 'utf-8'}],
 );
 
-# test that the node name that goes in the redirection file is reproducible.
+my $css_init_file_texinfo = '@node Top
+@top top
+
+@sansserif{SSSSSSSSSSs ssss}.
+
+@code{@r{in r in code}}
+
+@titlefont{in a new heading}
+';
+
+my $nodedescription_description_texinfo = '@node Top
+@top test of descriptions with nodedescription*
+
+@node toto
+@chapter Toto
+
+@nodedescription toto is there:: and the @emph{is a description}@w{slightly long} and @verb{:vv somewhat:} @ringaccent anexpected
+
+@nodedescriptionblock
+Block along line node description for toto
+@end nodedescriptionblock
+
+@node titi
+@chapter Titi
+
+@nodedescriptionblock
+description of titi in block
+@end nodedescriptionblock
+
+@node other
+@chapter Other
+
+@nodedescription other comes here
+';
+
 my @file_tests = (
+['empty_node_in_html_title_no_sec_name',
+'@node Top
+@top top
+
+@node
+@chapter chap
+', {}, {'SECTION_NAME_IN_TITLE' => 0, 'SPLIT' => 'chapter'}],
+['empty_chapter_in_html_title',
+'@node Top
+@top top
+
+@node chap
+@chapter
+', {}, {'SPLIT' => 'chapter'}],
+# A big rule would be between chapter and section if BIG_RULE was not undef
+['undef_split_and_big_rule',
+'node Top
+@top top
+
+@node chap
+@chapter Chapter
+
+@node sec
+@section Sec
+', {}, {'SPLIT' => undef, 'BIG_RULE' => undef}
+],
+# the chapter file is named '.html', which is ok, but no file may be better
+['empty_chapter_in_html_title_no_node_no_use_nodes',
+'@node Top
+@top top
+
+@chapter
+', {}, {'SPLIT' => 'chapter', 'USE_NODES' => 0}],
+# test that the node name that goes in the redirection file is reproducible.
 ['redirection_same_labels',
 '@node Top
 @top the top
@@ -986,6 +1204,63 @@ Need 2 elements for separate footnotes.
 ', {'init_files' => ['redirection_file_collision_with_special.init']},
    {'SPLIT' => 'node', 'footnotestyle' => 'separate'},
 ],
+['top_file_name_and_node_name_collision',
+'@node my node
+@chapter chap my node
+
+@node other node
+@chapter chapter
+
+@top top
+
+', {}, {'TOP_FILE' => 'my-node.html', 'USE_NODES' => 0}],
+['command_in_node_redirection',
+'@node Top
+@top t @r{in r}
+
+@anchor{yyyy}
+'],
+['command_in_node_redirection_other_command',
+'@node Top
+@top t @r{in r}
+
+@anchor{@sansserif{gg}}
+'],
+['command_in_node_redirection_same_command',
+'@node Top
+@top t @r{in r}
+
+@anchor{@r{ancher}}
+'],
+['command_in_node_redirection_two_commands',
+'@node Top
+@top t @r{in r}
+
+@anchor{@sansserif{ll} @r{jj}}
+'],
+# this tests more what happens for the subsequent redirections,
+# in particular shows that what is in anchor is in global CSS context.
+['command_in_node_redirection_multiple',
+'@node Top
+@top t @r{in r}
+
+@anchor{yyyy}
+
+@anchor{@sansserif{gg}}
+
+@anchor{@r{ancher}}
+
+@anchor{@sansserif{ll} @r{jj}}
+',],
+['set_unit_file_name_filepath',
+'@node Top
+@top top
+
+@node chap
+@chapter Chap
+', {'init_files' => ['set_unit_file_name_filepath.pm']},
+   {'SPLIT' => 'node'},
+],
 # NOTE the result is incorrect, the first footnote text is at the
 # end of the file but the link is towards the separate file.
 # The manual states that the footnotestyle should be in the preamble,
@@ -1011,11 +1286,37 @@ $itemize_arguments_text
 ],
 ['itemize_arguments_enable_encoding',
 $itemize_arguments_text
-, {'ENABLE_ENCODING' => 1}, {'OUTPUT_CHARACTERS' => 1}
+, {}, {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}
+],
+['itemize_tieaccent',
+'@itemize @tieaccent{ab}
+@item item @tieaccent{ab}
+@end itemize
+
+@itemize @tieaccent{@aa{}@^e}
+@item item @tieaccent{@aa{}@^e}
+@end itemize
+
+@itemize @tieaccent{@aa{}d}
+@item item @tieaccent{@aa{}d}
+@end itemize
+
+@itemize @tieaccent{x@^e}
+@item item @tieaccent{x@^e}
+@end itemize
+
+@itemize @tieaccent{g}
+@item item @tieaccent{g}
+@end itemize
+
+@itemize @tieaccent{@^e}
+@item item @tieaccent{@^e}
+@end itemize
+',
 ],
 ['check_htmlxref_no_use_nodes',
 $check_htmlxref_text
-, {}, {'CHECK_HTMLXREF' => 1, 'USE_NODES', 0}],
+, {}, {'CHECK_HTMLXREF' => 1, 'USE_NODES' => 0}],
 ['check_htmlxref_menu',
 $check_htmlxref_text
 , {'FORMAT_MENU' => 'menu',}, {'FORMAT_MENU' => 'menu', 'CHECK_HTMLXREF' => 1}],
@@ -1025,24 +1326,26 @@ $check_htmlxref_text
   undef,
   # also tests for node without section command nor directions after
   # a section, and Top without @top and chapter in menu
-  {'test_file' => 'node_footnote.texi'},
+  {'test_file' => 'node_footnote.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 0,},
   {'FORMAT_MENU' => 'menu'}
 ],
 ['node_footnote_end',
   undef,
+  # test with CHECK_NORMAL_MENU_STRUCTURE for node_footnote.texi
+  # only done here, to keep even though it is the default.
   {'test_file' => 'node_footnote.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 1},
   {'SPLIT' => '', 'USE_NODES' => 0}
 ],
 # actually the same output as node_footnote_end.
 ['node_footnote_separated',
   undef,
-  {'test_file' => 'node_footnote.texi'},
+  {'test_file' => 'node_footnote.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 0},
   {'SPLIT' => '', 'USE_NODES' => 0,
-   'footnotestyle' => 'separate'}
+   'footnotestyle' => 'separate',}
 ],
 ['node_footnote_use_node_separate',
   undef,
-  {'test_file' => 'node_footnote.texi'},
+  {'test_file' => 'node_footnote.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 0},
   {'footnotestyle' => 'separate', 'FORMAT_MENU' => 'menu'}
 ],
 ['simplest_test_date_in_header',
@@ -1055,13 +1358,30 @@ $check_htmlxref_text
   {'test_file' => 'float_copying.texi',},
   {'SPLIT' => 'chapter', 'footnotestyle' => 'separate'}
 ],
-['sectioning_frames',
+# FIXME which TEXI2HTML options are really interesting for the test?
+# The CHECK_NORMAL_MENU_STRUCTURE setting is relevant and to keep,
+# even though it is set by default, to mark that it is on purpose.
+['sectioning_check_menu_structure',
   undef,
   # tests for node with directions after section
   {'test_file' => '../../tests/customization/sectioning.texi',
    'CHECK_NORMAL_MENU_STRUCTURE' => 1},
-  {'TEXI2HTML' => 1, 'SPLIT' => 'chapter', 'FRAMES' => 1}
+  {'TEXI2HTML' => 1, 'SPLIT' => 'chapter'}
 ],
+['test_separated_contents_shortcontents',
+'@contents
+
+@node Top
+@top top
+
+@node chap
+@chapter chapter
+
+@node app
+@appendix appendix
+
+@shortcontents
+',{},{'SPLIT' => 'node', 'CONTENTS_OUTPUT_LOCATION' => 'inline',}],
 # There are some similar tests in *sectioning.t, but we use completly
 # different input as input files as we want, here, independently,
 # test all possibility regarding HTML output.
@@ -1181,7 +1501,8 @@ $check_htmlxref_text
 ['double_contents_after_title_show_title_nodes',
   undef, {'test_file' => 'double_contents.texi'},
   {'CONTENTS_OUTPUT_LOCATION' => 'after_title', 'SHOW_TITLE' => 1,
-   'SPLIT' => 'nodes', 'BIG_RULE' => '<hr style="height: 6px;">'}
+   'SPLIT' => 'not a reference split spec, use node',
+   'BIG_RULE' => '<hr style="height: 6px;">'}
 ],
 # there is also a test in tests/ as texinfo_set_from_init_file
 # has no effect in the test suite, such that the following does not
@@ -1222,21 +1543,95 @@ $check_htmlxref_text
   {'contents' => 1, 'CONTENTS_OUTPUT_LOCATION' => 'separate_element',
    'SPLIT' => '', 'BIG_RULE' => '<hr style="height: 6px;">'}
 ],
+['mathjax_with_texinfo_html_file',
+$mathjax_with_texinfo,
+{},
+{'HTML_MATH' => 'mathjax'}],
+['info_js_dir_html_file',
+$info_js_dir_test, {}, {'INFO_JS_DIR' => 'js'}],
+['info_js_dir_html_file_js_weblabels_file_undef',
+$info_js_dir_test, {}, {'INFO_JS_DIR' => 'js', 'JS_WEBLABELS_FILE' => undef}],
+['css_in_node_redirection_page',
+'@node Top
+@top top
+
+@sansserif{SANS}.
+@anchor{spot}
+', {'init_files' => ['css_in_node_redirection_page.pm']}],
+['base_for_css_info_in_init_test',
+$css_init_file_texinfo,],
+['text_css_info_in_init',
+$css_init_file_texinfo, {'init_files' => ['test_css_info_functions.pm']}],
+# the objective is not to test the init file, the init files allows
+# to remove navigation in output files to have simpler output easier to
+# interpret.  This was set for a bug with div closed in the wrong file.
+['simple_only_special_spaces_node',
+undef, {'test_file' => 'simple_only_special_spaces_node.texi',
+        'init_files' => ['no_navigation.pm'],
+        'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef,
+       },
+       # needed to test for the bug
+       {'SPLIT' => 'node'}],
+# also in *sectioning.t.  Here we are interested both by the infinite
+# recursion and by the title strings to verify that they do not end up
+# with attributes
+['double_recursive_self_section_reference_node_no_use_node',
+'@node n1
+@chapter @ref{n2}
+
+@node n2
+@chapter @ref{n1}
+', {}, {'USE_NODES' => 0,
+        # needed for the test
+        'SPLIT' => 'node'}],
+['nodedescription_description',
+$nodedescription_description_texinfo, {}, {'FORMAT_MENU' => 'menu',
+        # needed for the test
+        'SPLIT' => 'node'}],
+['nodedescription_description_no_use_nodes',
+$nodedescription_description_texinfo, {}, {'FORMAT_MENU' => 'menu',
+        'USE_NODES' => 0,
+        # needed for the test
+        'SPLIT' => 'node'}],
+# Show that HTML elements in inline raw in title or node name end up in
+# attributes, in meta description content, but also in link.  This can
+# be considered a feature, raw HTML should not be escaped, but it also
+# means that if it ends up in attributes there should only be entities,
+# no element.
+['inline_in_node',
+'@settitle @inlineraw{html,<strong class="ttitle">}Title@inlineraw{html,</strong>}
+
+@node Top
+@top
+
+@node @inlineraw{html,<code class="tnode">}One@inlineraw{html,</code>}
+@chapter @inlineraw{html,<span class="test">}One@inlineraw{html,</span>}
+
+'],
 );
 
 
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'html';
-  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
 }
+
 foreach my $test (@test_cases_text) {
   push @{$test->[2]->{'test_formats'}}, 'html_text';
 }
+
 foreach my $test (@file_tests) {
   push @{$test->[2]->{'test_formats'}}, 'file_html';
-  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+  $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi'
+    unless (exists($test->[2]->{'test_input_file_name'}));
+  $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
 }
+
 foreach my $test (@test_cases_file_text) {
+  if (defined($test->[1])) {
+    $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
+    $test->[2]->{'full_document'} = 1
+       unless (exists($test->[2]->{'full_document'}));
+  }
   push @{$test->[2]->{'test_formats'}}, ('html_text', 'file_html');
 }
 

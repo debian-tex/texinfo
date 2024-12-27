@@ -31,9 +31,7 @@ $result_trees{'only_documentencoding'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -56,7 +54,6 @@ $result_floats{'only_documentencoding'} = {};
 
 
 $result_converted{'info'}->{'only_documentencoding'} = 'This is , produced from .
-
 
 
 Tag Table:

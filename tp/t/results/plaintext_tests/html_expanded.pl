@@ -65,16 +65,12 @@ $result_trees{'html_expanded'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -111,8 +107,7 @@ $result_floats{'html_expanded'} = {};
 
 
 
-$result_converted{'plaintext'}->{'html_expanded'} = 'Before 
-html
+$result_converted{'plaintext'}->{'html_expanded'} = 'Before html
 after.
 ';
 

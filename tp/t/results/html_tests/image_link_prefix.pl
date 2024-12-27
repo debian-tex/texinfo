@@ -17,7 +17,7 @@ $result_trees{'image_link_prefix'} = {
                   'text' => 'image'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -25,9 +25,7 @@ $result_trees{'image_link_prefix'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -51,7 +49,7 @@ $result_floats{'image_link_prefix'} = {};
 
 $result_converted{'html'}->{'image_link_prefix'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -78,16 +76,13 @@ $result_converted_errors{'html'}->{'image_link_prefix'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'image_link_prefix.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
   }

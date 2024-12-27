@@ -62,9 +62,7 @@ $result_trees{'braces_after_text'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -73,9 +71,7 @@ $result_trees{'braces_after_text'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -111,11 +107,7 @@ $result_trees{'braces_after_text'} = {
                                 'text' => 'text{in paren}'
                               }
                             ],
-                            'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
-                            }
+                            'type' => 'line_arg'
                           },
                           {
                             'contents' => [
@@ -127,7 +119,8 @@ $result_trees{'braces_after_text'} = {
                               'spaces_before_argument' => {
                                 'text' => ' '
                               }
-                            }
+                            },
+                            'type' => 'line_arg'
                           },
                           {
                             'contents' => [
@@ -140,11 +133,15 @@ $result_trees{'braces_after_text'} = {
                               'spaces_before_argument' => {
                                 'text' => ' '
                               }
-                            }
+                            },
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
-                          'command_name' => 'mymacro'
+                          'command_name' => 'mymacro',
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
                         },
                         'type' => 'linemacro_call'
                       },
@@ -155,7 +152,7 @@ $result_trees{'braces_after_text'} = {
                   'text' => ''
                 }
               ],
-              'type' => 'def_item'
+              'type' => 'before_defline'
             },
             {
               'args' => [
@@ -164,57 +161,56 @@ $result_trees{'braces_after_text'} = {
                     {
                       'contents' => [
                         {
-                          'text' => 'text'
-                        },
-                        {
                           'contents' => [
                             {
-                              'text' => 'in paren'
+                              'text' => 'text'
+                            },
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'in paren'
+                                }
+                              ],
+                              'source_info' => {
+                                'line_nr' => 6,
+                                'macro' => 'mymacro'
+                              },
+                              'type' => 'bracketed_arg'
                             }
                           ],
-                          'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 6,
-                            'macro' => 'mymacro'
-                          },
-                          'type' => 'bracketed_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'type' => 'def_aggregate'
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [
                         {
-                          'text' => 'rest'
-                        },
-                        {
                           'contents' => [
                             {
-                              'text' => 'in paren'
+                              'text' => 'rest'
+                            },
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'in paren'
+                                }
+                              ],
+                              'source_info' => {
+                                'line_nr' => 6,
+                                'macro' => 'mymacro'
+                              },
+                              'type' => 'bracketed_arg'
                             }
                           ],
-                          'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 6,
-                            'macro' => 'mymacro'
-                          },
-                          'type' => 'bracketed_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'type' => 'def_aggregate'
+                      'type' => 'def_name'
                     }
                   ],
                   'info' => {
@@ -237,7 +233,27 @@ $result_trees{'braces_after_text'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'rest'
+                        },
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'in paren'
+                            }
+                          ],
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -246,11 +262,9 @@ $result_trees{'braces_after_text'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 6,
                 'macro' => 'mymacro'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'args' => [
@@ -279,16 +293,12 @@ $result_trees{'braces_after_text'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
@@ -297,7 +307,6 @@ $result_trees{'braces_after_text'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'braces_after_text'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'braces_after_text'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2];
 
 $result_texis{'braces_after_text'} = '@linemacro mymacro {a, b, c}
 @defline \\a\\ \\b\\ \\c\\

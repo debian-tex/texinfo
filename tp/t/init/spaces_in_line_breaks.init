@@ -1,12 +1,21 @@
 
-# There is no API to set $self->{'line_break_element'}.
+# TODO keep test even though it accesses private data?
+
+# There is no specific API to set line_break_element, which is availaible
+# through get_info().  Therefore the test sets directly the converter state
+# although it is supposed to be private.  As get_info is overriden, this test
+# fails with XS.
+
+# A space in line_break_element is needed to trigger code ensuring that
+# a space in line_break_element is kept even if all the spaces are transformed
+# to non breakable spaces.
 
 texinfo_register_handler('setup', \&_texi2any_tests_set_line_break_element);
 
 sub _texi2any_tests_set_line_break_element
 {
-  my ($self, $tree, $stage) = @_;
+  my ($self, $document, $stage) = @_;
 
-  $self->{'line_break_element'} = '<br >';
+  $self->{'converter_info'}->{'line_break_element'} = '<br >';
   return 0;
 }

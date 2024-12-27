@@ -27,9 +27,7 @@ $result_trees{'raw_block_on_line'} = {
                   ],
                   'cmdname' => 'tex',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -44,14 +42,13 @@ $result_trees{'raw_block_on_line'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           },
           'type' => 'index_entry_command'
         }
@@ -70,29 +67,30 @@ $result_texts{'raw_block_on_line'} = '';
 
 $result_errors{'raw_block_on_line'} = [
   {
+    'error_line' => 'warning: @tex should only appear at the beginning of a line
+',
+    'line_nr' => 1,
+    'text' => '@tex should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
     'error_line' => 'no matching `@end tex\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'no matching `@end tex\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: entry for index `cp\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: empty index key in @cindex
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'empty index key in @cindex',
     'type' => 'warning'
   }

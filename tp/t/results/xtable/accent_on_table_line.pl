@@ -13,16 +13,16 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'cmdname' => '~',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -65,9 +65,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -95,14 +93,12 @@ $result_trees{'accent_on_table_line'} = {
                                       'text' => 'code'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'code',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 3,
-                                'macro' => ''
+                                'line_nr' => 3
                               }
                             }
                           ],
@@ -122,9 +118,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
@@ -160,9 +154,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -175,9 +167,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -189,23 +179,22 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '~',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 6
+                  }
                 }
               ],
               'info' => {
@@ -247,9 +236,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     }
                   ],
@@ -277,14 +264,12 @@ $result_trees{'accent_on_table_line'} = {
                                       'text' => 'code acc brace'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'code',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 8,
-                                'macro' => ''
+                                'line_nr' => 8
                               }
                             }
                           ],
@@ -304,9 +289,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 8,
-                        'macro' => ''
+                        'line_nr' => 8
                       }
                     }
                   ],
@@ -342,9 +325,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -357,9 +338,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -371,16 +350,16 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'cmdname' => '~',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 }
               ],
@@ -429,9 +408,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => ''
+                        'line_nr' => 12
                       }
                     }
                   ],
@@ -467,9 +444,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             }
           ],
@@ -482,9 +457,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -496,16 +469,16 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'cmdname' => '~',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 15,
-                    'macro' => ''
+                    'line_nr' => 15
                   }
                 }
               ],
@@ -548,9 +521,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 16,
-                        'macro' => ''
+                        'line_nr' => 16
                       }
                     }
                   ],
@@ -586,9 +557,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
@@ -601,9 +570,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           }
         },
         {
@@ -615,16 +582,16 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'cmdname' => 'ringaccent',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 19,
-                    'macro' => ''
+                    'line_nr' => 19
                   }
                 }
               ],
@@ -667,9 +634,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 20,
-                        'macro' => ''
+                        'line_nr' => 20
                       }
                     }
                   ],
@@ -705,9 +670,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             }
           ],
@@ -720,9 +683,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           }
         },
         {
@@ -734,23 +695,22 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'ringaccent',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 23,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 23
+                  }
                 }
               ],
               'info' => {
@@ -792,9 +752,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 24,
-                        'macro' => ''
+                        'line_nr' => 24
                       }
                     }
                   ],
@@ -830,9 +788,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 25,
-                'macro' => ''
+                'line_nr' => 25
               }
             }
           ],
@@ -845,9 +801,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           }
         },
         {
@@ -859,7 +813,9 @@ $result_trees{'accent_on_table_line'} = {
           'args' => [
             {
               'cmdname' => 'asis',
-              'type' => 'command_as_argument_inserted'
+              'info' => {
+                'inserted' => 1
+              }
             },
             {
               'contents' => [
@@ -871,14 +827,12 @@ $result_trees{'accent_on_table_line'} = {
                           'text' => 'a'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'ringaccent',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 27,
-                    'macro' => ''
+                    'line_nr' => 27
                   }
                 }
               ],
@@ -921,9 +875,7 @@ $result_trees{'accent_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 28,
-                        'macro' => ''
+                        'line_nr' => 28
                       }
                     }
                   ],
@@ -959,9 +911,7 @@ $result_trees{'accent_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             }
           ],
@@ -974,9 +924,7 @@ $result_trees{'accent_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           }
         }
       ],
@@ -1046,99 +994,77 @@ $result_errors{'accent_on_table_line'} = [
   {
     'error_line' => 'warning: command `@~\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'command `@~\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @table: @~
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'bad argument to @table: @~',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: accent command `@~\' not allowed as @table argument
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'accent command `@~\' not allowed as @table argument',
     'type' => 'warning'
   },
   {
     'error_line' => '@~ expected braces
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@~ expected braces',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @table: @~
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'bad argument to @table: @~',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: command `@~\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'command `@~\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @table: @~
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => 'bad argument to @table: @~',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: command `@ringaccent\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 19,
-    'macro' => '',
     'text' => 'command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @table: @ringaccent
 ',
-    'file_name' => '',
     'line_nr' => 19,
-    'macro' => '',
     'text' => 'bad argument to @table: @ringaccent',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: accent command `@ringaccent\' not allowed as @table argument
 ',
-    'file_name' => '',
     'line_nr' => 23,
-    'macro' => '',
     'text' => 'accent command `@ringaccent\' not allowed as @table argument',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @table: @ringaccent{a}
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => 'bad argument to @table: @ringaccent{a}',
     'type' => 'error'
   }

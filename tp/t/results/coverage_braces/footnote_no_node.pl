@@ -56,10 +56,9 @@ $result_trees{'footnote_no_node'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -70,15 +69,14 @@ $result_trees{'footnote_no_node'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -98,20 +96,20 @@ F.
 ';
 
 $result_sectioning{'footnote_no_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'footnote_no_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'footnote_no_node'};
+$result_sectioning{'footnote_no_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'footnote_no_node'};
 
 $result_errors{'footnote_no_node'} = [];
 
@@ -150,6 +148,14 @@ $result_converted{'html_text'}->{'footnote_no_node'} = '<div class="top-level-ex
 $result_converted{'latex_text'}->{'footnote_no_node'} = '\\part*{{top}}
 
 F\\footnote{In footnote}.
+';
+
+
+$result_converted{'docbook'}->{'footnote_no_node'} = '<chapter label="">
+<title>top</title>
+
+<para>F<footnote><para>In footnote</para></footnote>.
+</para></chapter>
 ';
 
 1;

@@ -20,10 +20,9 @@ $result_trees{'no_argument_and_contents'} = {
                 }
               ],
               'cmdname' => 'contents',
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -62,15 +61,14 @@ $result_trees{'no_argument_and_contents'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -80,14 +78,12 @@ $result_trees{'no_argument_and_contents'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'asis',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -108,15 +104,16 @@ $result_trees{'no_argument_and_contents'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -142,35 +139,40 @@ for example
 ';
 
 $result_sectioning{'no_argument_and_contents'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'no_argument_and_contents'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_argument_and_contents'};
+$result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'no_argument_and_contents'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'no_argument_and_contents'};
 
 $result_errors{'no_argument_and_contents'} = [];
 
@@ -181,6 +183,7 @@ $result_floats{'no_argument_and_contents'} = {};
 
 $result_converted{'plaintext'}->{'no_argument_and_contents'} = 'for example
 1 
+
 for example
 ***********
 
@@ -192,7 +195,7 @@ for example
 
 $result_converted{'html'}->{'no_argument_and_contents'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>for example</title>
@@ -220,7 +223,7 @@ ul.toc-numbered-mark {list-style: none}
 <div class="top-level-extent" id="for-example">
 <h1 class="top"><span>for example<a class="copiable-link" href="#for-example"> &para;</a></span></h1>
 
-<div class="element-contents" id="SEC_Contents">
+<div class="region-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -231,7 +234,7 @@ ul.toc-numbered-mark {list-style: none}
 </div>
 </div>
 <div class="chapter-level-extent">
-<h2 class="chapter"><span>1 </span></h2>
+<h2 class="chapter">1 </h2>
 
 </div>
 </div>

@@ -5,6 +5,27 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 require 't/test_utils.pl';
 
+my $sectioning_test = '@node Top
+@top top
+
+In T.
+
+@node chap
+@chapter Chap1
+
+In c1.
+
+@node sec
+@section sec1
+
+In s1.1.
+
+@node chap2
+@chapter Chap2
+
+In c2.
+';
+
 my @test_cases = (
 ['image_inline_or_not',
 '@image{A}
@@ -348,6 +369,22 @@ b}
 
 Again with space @inlineifset{flag, }. After.
 '],
+['sectioning_test_ref',
+$sectioning_test,
+],
+['sectioning_test_no_use_nodes',
+$sectioning_test, {}, {'TXI_MARKUP_NO_SECTION_EXTENT' => 1,},
+],
+['inline_commands',
+'@inlineraw{xml, <sc>xml inlineraw</sc>}
+@inlineraw{html, <code>html</code>}
+
+@inlinefmt{xml, @env{inlinefmt}, xml}
+@inlinefmt{html, @env{inlinefmt}, html}
+
+@inlinefmtifelse{xml, xml @code{inlinefmtifelse}, else xml}
+@inlinefmtifelse{html, html @var{inlinefmtifelse}, else html}
+', {'EXPANDED_FORMATS' => ['xml']}],
 );
 
 foreach my $test (@test_cases) {

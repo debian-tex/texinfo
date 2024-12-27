@@ -25,17 +25,16 @@ $result_trees{'space_in_anchor'} = {
                   'text' => '   '
                 }
               },
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'anchor-name'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -79,5 +78,9 @@ $result_converted{'html_text'}->{'space_in_anchor'} = '<a class="anchor" id="anc
 $result_converted{'latex_text'}->{'space_in_anchor'} = '\\label{anchor:anchor-name}%
 .
 ';
+
+
+$result_converted{'docbook'}->{'space_in_anchor'} = '<anchor id="anchor-name"/><para>.
+</para>';
 
 1;

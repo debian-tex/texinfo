@@ -1,7 +1,7 @@
 #! /bin/sh
 # Run all Texinfo tests.
-# 
-# Copyright 2010-2023 Free Software Foundation, Inc.
+#
+# Copyright 2010-2024 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -18,32 +18,36 @@ check_need_recoded_file_names ()
    return 0
 }
 
-# Some tests use non-ASCII characters on their command line,
-# using UTF-8 to encode those characters in the source files.
-# Shell on Windows may consider those characters to be
-# encoded in the current codeset, passing them incorrectly to
-# the programs, and even if the shell passed them unchanged, native
-# Windows perl in most cases cannot cope with non-ASCII arguments
-# encoded in a different encoding than the current user codepage.
-check_need_command_line_unicode ()
+check_need_non_ascii_file_names ()
 {
-  if echo "$remaining" | grep 'Need command-line unicode' >/dev/null; then
-    if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
-      echo "S: (no reliable command-line Unicode) $current"
-      return 1
-    fi
-  fi
-  return 0
+   if echo "$remaining" | grep 'Need non-ASCII file names' >/dev/null; then
+     if [ "$no_non_ascii_file_names" = 'yes' ]; then
+       echo "S: (no non-ASCII file names) $current"
+       return 1
+     fi
+   fi
+   return 0
 }
 
 check_unicode_collate_ok ()
-{        
+{
   if echo "$remaining" | grep 'Need collation compatibility' >/dev/null; then
     if test "z$PERL_UNICODE_COLLATE_OK" = 'zno' ; then
       echo "S: (no compatible unicode collation) $current"
      return 1
     fi
-  fi 
+  fi
+  return 0
+}
+
+check_strxfrm_ok ()
+{
+  if echo "$remaining" | grep XS_STRXFRM_COLLATION_LOCALE >/dev/null; then
+    if test "z$TEXINFO_XS_CONVERT" = "z" -o "z$TEXINFO_XS_CONVERT" = "z0" ; then
+      echo "S: (Need TEXINFO_XS_CONVERT set) $current"
+     return 1
+    fi
+  fi
   return 0
 }
 
@@ -121,50 +125,58 @@ post_process_output ()
     mkdir -p "${raw_outdir}$dir"
     cp -p ${outdir}$dir/${basename}.2 "${raw_outdir}$dir"
   fi
+
   if test "$use_tex4ht" = 'yes' ; then
     # tex4ht may be customized to use dvipng or dvips, both being
     # verbose, so there can not be reproducible tests on stderr either
     # with tex4ht.
     rm "${outdir}$dir/$basename.2"
-  elif test "$use_latex2html" = 'yes' ; then
-    sed -e 's/^texexpand.*/texexpand /' \
-        -e '/is no longer supported at.*line/d' \
-        -e '/^could not open/d' \
-        -e 's/^htmlxref/.\/htmlxref/' \
-        $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
-    # "*"_images.pl" files are not guaranteed to be present
-    for file in "${raw_outdir}$dir/"*"_labels.pl"; do
-     if test -f "$file" ; then
-      filename=`basename "$file"`
-      sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
-     fi
-    done
-    #for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
-    for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm; do
-     if test -f "$file" ; then
-     # width and height changed because of different rounding on 
-     # different computers.  Also remove version information.
-      filename=`basename "$file"`
-      sed -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' \
-          -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' \
-          -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' \
-          -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' \
-          -e 's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
-     fi
-    done
-    # *_l2h_images.pl associate images original text with physical files
-    # but entries are not sorted, so that the result is not reproducible
-    # even with the normalizations above.
-    rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
-          ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
   else
     # Delete error message that may have directories in file name and
-    # account for variant output under MS-Windows.  These transformations
-    # are also done above.
-    sed -e '/^could not open/d' \
-        -e 's/^htmlxref/.\/htmlxref/' \
-        $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
+    # account for variant output under MS-Windows.
+    sed_cmds='/^could not open/d; /: overwriting file/d; /: overwriting output file/d; s/^htmlxref/.\/htmlxref/'
+
+    if test "$use_latex2html" = 'yes' ; then
+      sed -e 's/^texexpand.*/texexpand /' \
+          -e '/is no longer supported at.*line/d' \
+          -e "$sed_cmds" \
+          $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
+      # "*"_images.pl" files are not guaranteed to be present
+      for file in "${raw_outdir}$dir/"*"_labels.pl"; do
+       if test -f "$file" ; then
+        filename=`basename "$file"`
+        sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
+       fi
+      done
+      #for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
+      for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm; do
+       if test -f "$file" ; then
+       # width and height changed because of different rounding on
+       # different computers.  Also remove version information.
+        filename=`basename "$file"`
+        sed -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' \
+            -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' \
+            -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' \
+            -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' \
+            -e 's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
+       fi
+      done
+      # *_l2h_images.pl associate images original text with physical files
+      # but entries are not sorted, so that the result is not reproducible
+      # even with the normalizations above.
+      rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
+            ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
+    else
+      sed -e "$sed_cmds" \
+          $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
+    fi
   fi
+}
+
+# ensure only ASCII filenames are used in output
+escape_file_names ()
+{
+    find "${outdir}${dir}" | $PERL ${srcdir}/escape_file_names.pl
 }
 
 LC_ALL=C; export LC_ALL
@@ -198,9 +210,8 @@ while [ z"$1" = 'z-clean' -o z"$1" = 'z-copy'  -o z"$1" = 'z-dir' ]; do
     shift
   fi
   if [ z"$1" = 'z-dir' ]; then
-    shift 
-    #mydir=`echo "$1" | sed 's:/*$::'`'/'
-    testdir=`echo "$1" | sed 's:/*$::'`'/'
+    shift
+    testdir=`echo "$1" | sed 's:/*$::'`
     shift
   fi
 done
@@ -257,6 +268,11 @@ fi
 # a file name and read, so we skip the tests.
 if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
   no_recoded_file_names=yes
+fi
+
+no_non_ascii_file_names=yes
+if sed 1q non_ascii_extracted_stamp.txt | grep 'OK' >/dev/null; then
+  no_non_ascii_file_names=no
 fi
 
 one_test=no
@@ -362,15 +378,19 @@ while read line; do
   basename=`basename $file .texi`
   #remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
   remaining=`echo $line | sed 's/[a-zA-Z0-9_é./-]*  *[a-zA-Z0-9_é./-]* *//'`
-  src_file="$srcdir/$testdir/$file"
-  
+
+  case $file in
+      built_input/*) src_file="$file" ;;
+      *)             src_file="$srcdir/$testdir/$file" ;;
+  esac
+
   for command_dir in $commands; do
     format_option=
     command=`echo $command_dir | cut -d':' -f1`
     dir_suffix=`echo $command_dir | cut -d':' -f2`
     format=`echo $dir_suffix |sed 's/^_//'`
     #
-    if test -z "$command"; then 
+    if test -z "$command"; then
       command=$main_command
       if test -n "$format"; then
         format_option="--$format"
@@ -392,16 +412,17 @@ while read line; do
       echo "$0: Command $command not found" >&2
       exit 1
     fi
-    
+
     outdir="$testdir/${out_dir}${dir_suffix}/"
     results_dir="$srcdir/$testdir/${res_dir}${dir_suffix}"
     one_test_done=yes
 
     skipped_test=no
     check_need_recoded_file_names || skipped_test=yes
-    check_need_command_line_unicode || skipped_test=yes
+    check_need_non_ascii_file_names || skipped_test=yes
     check_latex2html_and_tex4ht || skipped_test=yes
     check_unicode_collate_ok || skipped_test=yes
+    check_strxfrm_ok || skipped_test=yes
     if [ "$skipped_test" = 'yes' ] ; then
       if test $one_test = 'yes' ; then
         return_code=77
@@ -414,7 +435,7 @@ while read line; do
     mkdir "${outdir}$dir"
     remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
     echo "$command $dir -> ${outdir}$dir" >> $logfile
-    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --conf-dir $srcdir/../ext -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . -I built_input --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --conf-dir $srcdir/../ext -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . -I built_input -I built_input/non_ascii --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
     echo "$cmd" >>$logfile
     eval $cmd
     ret=$?
@@ -432,6 +453,7 @@ while read line; do
       rm -rf "${raw_outdir}$dir"
 
       post_process_output
+      escape_file_names
 
       if test "z$res_dir_used" != 'z' ; then
         diff $DIFF_OPTIONS -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"

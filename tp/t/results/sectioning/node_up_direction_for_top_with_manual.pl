@@ -42,12 +42,16 @@ $result_trees{'node_up_direction_for_top_with_manual'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            },
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Top'
           },
           'info' => {
@@ -61,6 +65,7 @@ $result_trees{'node_up_direction_for_top_with_manual'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -69,16 +74,14 @@ $result_trees{'node_up_direction_for_top_with_manual'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}[0] = $result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'contents'}[3];
+$result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'node_up_direction_for_top_with_manual'}{'contents'}[1]{'args'}[3]{'contents'}[3];
 
 $result_texis{'node_up_direction_for_top_with_manual'} = '@node Top,,,(dir)top
 ';
@@ -86,32 +89,31 @@ $result_texis{'node_up_direction_for_top_with_manual'} = '@node Top,,,(dir)top
 
 $result_texts{'node_up_direction_for_top_with_manual'} = '';
 
-$result_nodes{'node_up_direction_for_top_with_manual'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_up' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'dir'
-          }
-        ],
-        'normalized' => 'Top'
-      }
+$result_nodes{'node_up_direction_for_top_with_manual'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'up' => {
+          'extra' => {
+            'manual_content' => {},
+            'normalized' => 'Top'
+          },
+          'type' => 'line_arg'
+        }
+      },
+      'normalized' => 'Top'
     }
   }
-};
+];
 
-$result_menus{'node_up_direction_for_top_with_manual'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+$result_menus{'node_up_direction_for_top_with_manual'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  }
+];
 
 $result_errors{'node_up_direction_for_top_with_manual'} = [];
 
@@ -124,7 +126,6 @@ $result_converted{'info'}->{'node_up_direction_for_top_with_manual'} = 'This is 
 
 
 File: ,  Node: Top,  Up: (dir)Top
-
 
 
 Tag Table:
@@ -141,7 +142,7 @@ End:
 
 $result_converted{'html'}->{'node_up_direction_for_top_with_manual'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

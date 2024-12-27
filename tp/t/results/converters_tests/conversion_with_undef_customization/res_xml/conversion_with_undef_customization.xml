@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V7.1//EN" "http://www.gnu.org/software/texinfo/dtd/7.1/texinfo.dtd">
+<texinfo>
+<filename file="conversion_with_undef_customization.xml"></filename>
+<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">chap<accent type="circ" bracketed="off">e</accent></nodenext></node>
+<top spaces=" "><sectiontitle>top</sectiontitle>
+
+<contents></contents>
+<shortcontents></shortcontents>
+
+</top>
+<node name="chap_00ea" spaces=" "><nodename>chap<accent type="circ" bracketed="off">e</accent></nodename><nodeprev automatic="on">Top</nodeprev><nodeup automatic="on">Top</nodeup></node>
+<chapter spaces=" "><sectiontitle>Chap<accent type="circ" bracketed="off">e</accent></sectiontitle>
+
+<para>Text<footnote><para>Go <samp>s</samp></para></footnote>
+</para>
+<cindex index="cp" spaces=" "><indexterm index="cp" number="1">entry</indexterm></cindex>
+
+<node name="sec" spaces=" "><nodename>sec</nodename><nodeup automatic="on">chap<accent type="circ" bracketed="off">e</accent></nodeup></node>
+<section spaces=" "><sectiontitle>Section</sectiontitle>
+
+<printindex spaces=" " value="cp" line="cp"></printindex>
+
+<deftypefn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">name</indexterm><defcategory>category</defcategory> <deftype>type</deftype> <deffunction>name</deffunction> <defparamtype>something</defparamtype> <defdelimiter>(</defdelimiter> <defparamtype>aa</defparamtype> <defdelimiter>)</defdelimiter></definitionterm>
+<definitionitem><para>A def.
+</para></definitionitem></deftypefn>
+</section>
+</chapter>
+</texinfo>

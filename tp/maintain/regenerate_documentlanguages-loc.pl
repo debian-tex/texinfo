@@ -4,7 +4,7 @@
 # and ISO 3166-1 alpha-2 codes and regenerate Texinfo/Documentlanguages.pm
 # list of languages and regions
 #
-# Copyright 2022-2023 Free Software Foundation, Inc.
+# Copyright 2022-2024 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -17,15 +17,13 @@
 
 use strict;
 
-use List::Util qw(first);
-# not in core perl
-use Text::CSV;
+use warnings;
 
-# emulates -w
-BEGIN
-{
-  $^W = 1;
-}
+use File::Basename;
+
+use List::Util qw(first);
+# not in Perl core standard modules
+use Text::CSV;
 
 my $dir = 'maintain';
 system ("cd $dir && wget -N https://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt");
@@ -34,7 +32,7 @@ system ("cd $dir && wget -N https://www.loc.gov/standards/iso639-2/ISO-639-2_utf
 # Use the country code project list instead
 system ("cd $dir && wget -N https://raw.githubusercontent.com/datasets/country-codes/master/data/country-codes.csv");
 
-open (TXT, "$dir/ISO-639-2_utf-8.txt") or die "Open $dir/ISO-639-2_utf-8.txt: $!\n";
+open(TXT, "$dir/ISO-639-2_utf-8.txt") or die "Open $dir/ISO-639-2_utf-8.txt: $!\n";
 binmode(TXT, ":utf8");
 
 my @entries;
@@ -46,7 +44,7 @@ while (<TXT>) {
 }
 
 my $fh;
-open ($fh, "$dir/country-codes.csv") or die "Open $dir/country-codes.csv: $!\n";
+open($fh, "$dir/country-codes.csv") or die "Open $dir/country-codes.csv: $!\n";
 binmode($fh, ":utf8");
 
 my $csv = Text::CSV->new();
@@ -60,16 +58,18 @@ if (not defined($code_header_index)) {
   die;
 }
 
-my @regions;
+my %regions;
 while (my $row = $csv->getline ($fh)) {
   if ($row->[$code_header_index] ne '') {
-    push @regions, $row->[$code_header_index];
+    $regions{$row->[$code_header_index]} = 1;
   }
 }
 
-open (OUT, ">Texinfo/Documentlanguages.pm") or die "Open Texinfo/Documentlanguages.pm: $!\n";
+my $program_name = basename($0);
 
-print OUT "# This file was automatically generated from $0\n\n";
+open(OUT, ">Texinfo/Documentlanguages.pm") or die "Open Texinfo/Documentlanguages.pm: $!\n";
+
+print OUT "# This file was automatically generated from $program_name\n\n";
 
 print OUT "package Texinfo::Documentlanguages;\n\n";
 
@@ -80,7 +80,7 @@ foreach my $entry (sort @entries) {
 print OUT ");\n\n";
 
 print OUT 'our %region_codes = ('."\n";
-foreach my $region (sort @regions) {
+foreach my $region (sort keys %regions) {
   print OUT "'$region' => 1,\n";
 }
 print OUT ");\n\n1;\n";

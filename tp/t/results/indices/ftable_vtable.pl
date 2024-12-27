@@ -20,7 +20,6 @@ $result_trees{'ftable_vtable'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -45,6 +44,7 @@ $result_trees{'ftable_vtable'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -53,9 +53,7 @@ $result_trees{'ftable_vtable'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -89,11 +87,8 @@ $result_trees{'ftable_vtable'} = {
                 {
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 5
+                  }
                 }
               ],
               'info' => {
@@ -142,9 +137,7 @@ $result_trees{'ftable_vtable'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 6,
-                        'macro' => ''
+                        'line_nr' => 6
                       }
                     },
                     {
@@ -178,9 +171,7 @@ $result_trees{'ftable_vtable'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     }
                   ],
@@ -238,9 +229,7 @@ $result_trees{'ftable_vtable'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
+                        'line_nr' => 9
                       }
                     }
                   ],
@@ -276,9 +265,7 @@ $result_trees{'ftable_vtable'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
@@ -291,9 +278,7 @@ $result_trees{'ftable_vtable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -308,11 +293,8 @@ $result_trees{'ftable_vtable'} = {
                 {
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 12,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 12
+                  }
                 }
               ],
               'info' => {
@@ -340,14 +322,12 @@ $result_trees{'ftable_vtable'} = {
                             {
                               'args' => [
                                 {
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'error',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 13,
-                                'macro' => ''
+                                'line_nr' => 13
                               }
                             }
                           ],
@@ -374,9 +354,7 @@ $result_trees{'ftable_vtable'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 13,
-                        'macro' => ''
+                        'line_nr' => 13
                       }
                     },
                     {
@@ -410,9 +388,7 @@ $result_trees{'ftable_vtable'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 14,
-                        'macro' => ''
+                        'line_nr' => 14
                       }
                     }
                   ],
@@ -470,9 +446,7 @@ $result_trees{'ftable_vtable'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 16,
-                        'macro' => ''
+                        'line_nr' => 16
                       }
                     }
                   ],
@@ -508,9 +482,7 @@ $result_trees{'ftable_vtable'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
@@ -523,9 +495,7 @@ $result_trees{'ftable_vtable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           }
         },
         {
@@ -559,14 +529,13 @@ $result_trees{'ftable_vtable'} = {
             ]
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           },
           'type' => 'index_entry_command'
         },
@@ -604,9 +573,7 @@ $result_trees{'ftable_vtable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 21,
-            'macro' => ''
+            'line_nr' => 21
           }
         },
         {
@@ -643,9 +610,7 @@ $result_trees{'ftable_vtable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           }
         },
         {
@@ -655,6 +620,7 @@ $result_trees{'ftable_vtable'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -664,9 +630,7 @@ $result_trees{'ftable_vtable'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     }
   ],
@@ -725,33 +689,42 @@ var3
 
 ';
 
-$result_nodes{'ftable_vtable'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'ftable_vtable'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'ftable_vtable'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'ftable_vtable'}[0];
+$result_nodes{'ftable_vtable'}[1] = $result_nodes{'ftable_vtable'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'ftable_vtable'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'ftable_vtable'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'ftable_vtable'};
-
-$result_menus{'ftable_vtable'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'ftable_vtable'} = [];
 
@@ -807,7 +780,6 @@ _var3_
 * var1 error→:                           chap.                 (line  8)
 * var3:                                  chap.                 (line 11)
 * varx2:                                 chap.                 (line  9)
-
 
 
 Tag Table:
@@ -880,7 +852,7 @@ $result_converted{'html_text'}->{'ftable_vtable'} = '<a class="node-id" id="Top"
 <a class="index-entry-id" id="index-function1-1"></a>
 
 <div class="printindex fn-printindex">
-<table class="fn-entries-printindex" border="0">
+<table class="fn-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_fn_letter-F">F</th></tr>
@@ -893,7 +865,7 @@ $result_converted{'html_text'}->{'ftable_vtable'} = '<a class="node-id" id="Top"
 </div>
 
 <div class="printindex vr-printindex">
-<table class="vr-entries-printindex" border="0">
+<table class="vr-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_vr_letter-V">V</th></tr>

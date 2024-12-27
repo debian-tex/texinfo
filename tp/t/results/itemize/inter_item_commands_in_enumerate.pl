@@ -10,7 +10,6 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -80,9 +78,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -104,6 +100,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chapter'
       },
       'info' => {
@@ -112,9 +109,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -196,9 +191,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -228,9 +221,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
@@ -238,9 +229,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
             'enumerate_specification' => '1'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -295,14 +284,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 15,
-                    'macro' => ''
+                    'line_nr' => 15
                   },
                   'type' => 'index_entry_command'
                 },
@@ -335,9 +323,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             },
             {
@@ -367,9 +353,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             }
           ],
@@ -377,9 +361,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
             'enumerate_specification' => '1'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         },
         {
@@ -434,14 +416,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 22,
-                    'macro' => ''
+                    'line_nr' => 22
                   },
                   'type' => 'index_entry_command'
                 }
@@ -469,9 +450,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 23,
-                'macro' => ''
+                'line_nr' => 23
               }
             },
             {
@@ -501,9 +480,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 24,
-                'macro' => ''
+                'line_nr' => 24
               }
             }
           ],
@@ -511,9 +488,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
             'enumerate_specification' => '1'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           }
         },
         {
@@ -563,14 +538,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 27,
-                    'macro' => ''
+                    'line_nr' => 27
                   },
                   'type' => 'index_entry_command'
                 },
@@ -603,9 +577,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             },
             {
@@ -635,9 +607,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 30,
-                'macro' => ''
+                'line_nr' => 30
               }
             }
           ],
@@ -645,9 +615,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
             'enumerate_specification' => '1'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 26,
-            'macro' => ''
+            'line_nr' => 26
           }
         },
         {
@@ -703,14 +671,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                         ]
                       },
                       'info' => {
+                        'command_name' => 'cindex',
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 34,
-                        'macro' => ''
+                        'line_nr' => 34
                       },
                       'type' => 'index_entry_command'
                     }
@@ -741,9 +708,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 35,
-                'macro' => ''
+                'line_nr' => 35
               }
             },
             {
@@ -773,9 +738,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 36,
-                'macro' => ''
+                'line_nr' => 36
               }
             }
           ],
@@ -783,9 +746,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
             'enumerate_specification' => '1'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 32,
-            'macro' => ''
+            'line_nr' => 32
           }
         },
         {
@@ -835,14 +796,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 39,
-                    'macro' => ''
+                    'line_nr' => 39
                   },
                   'type' => 'index_entry_command'
                 },
@@ -882,14 +842,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 41,
-                    'macro' => ''
+                    'line_nr' => 41
                   },
                   'type' => 'index_entry_command'
                 },
@@ -919,14 +878,13 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 42,
-                    'macro' => ''
+                    'line_nr' => 42
                   },
                   'type' => 'index_entry_command'
                 }
@@ -954,9 +912,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 43,
-                'macro' => ''
+                'line_nr' => 43
               }
             },
             {
@@ -986,9 +942,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 44,
-                'macro' => ''
+                'line_nr' => 44
               }
             }
           ],
@@ -996,9 +950,7 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
             'enumerate_specification' => '1'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 38,
-            'macro' => ''
+            'line_nr' => 38
           }
         },
         {
@@ -1007,16 +959,16 @@ $result_trees{'inter_item_commands_in_enumerate'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -1105,7 +1057,7 @@ Title
 ';
 
 $result_sectioning{'inter_item_commands_in_enumerate'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -1114,11 +1066,8 @@ $result_sectioning{'inter_item_commands_in_enumerate'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -1127,72 +1076,81 @@ $result_sectioning{'inter_item_commands_in_enumerate'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chapter'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'inter_item_commands_in_enumerate'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'inter_item_commands_in_enumerate'};
+$result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'inter_item_commands_in_enumerate'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'inter_item_commands_in_enumerate'};
 
-$result_nodes{'inter_item_commands_in_enumerate'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chapter'
+$result_nodes{'inter_item_commands_in_enumerate'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chapter'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'inter_item_commands_in_enumerate'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'inter_item_commands_in_enumerate'}[0];
+$result_nodes{'inter_item_commands_in_enumerate'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'inter_item_commands_in_enumerate'}[0];
+$result_nodes{'inter_item_commands_in_enumerate'}[1] = $result_nodes{'inter_item_commands_in_enumerate'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'inter_item_commands_in_enumerate'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chapter'
     }
   }
-};
-$result_nodes{'inter_item_commands_in_enumerate'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'inter_item_commands_in_enumerate'};
-$result_nodes{'inter_item_commands_in_enumerate'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'inter_item_commands_in_enumerate'};
-
-$result_menus{'inter_item_commands_in_enumerate'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'inter_item_commands_in_enumerate'} = [];
 
@@ -1237,8 +1195,6 @@ $result_converted{'plaintext'}->{'inter_item_commands_in_enumerate'} = 'top
 
 
 $result_converted{'html_text'}->{'inter_item_commands_in_enumerate'} = '<div class="top-level-extent" id="Top">
-<div class="nav-panel">
-</div>
 <h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
@@ -1246,8 +1202,6 @@ $result_converted{'html_text'}->{'inter_item_commands_in_enumerate'} = '<div cla
 </ul>
 <hr>
 <div class="chapter-level-extent" id="chapter">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="chap"><span>1 chap<a class="copiable-link" href="#chap"> &para;</a></span></h2>
 
 <ol class="enumerate">

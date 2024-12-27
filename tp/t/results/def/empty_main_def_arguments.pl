@@ -17,10 +17,17 @@ $result_trees{'empty_main_def_arguments'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'NNN'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'NNN'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     }
                   ],
                   'info' => {
@@ -37,9 +44,7 @@ $result_trees{'empty_main_def_arguments'} = {
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               },
               'type' => 'def_line'
             },
@@ -70,9 +75,7 @@ $result_trees{'empty_main_def_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -82,9 +85,7 @@ $result_trees{'empty_main_def_arguments'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -106,9 +107,7 @@ $result_errors{'empty_main_def_arguments'} = [
   {
     'error_line' => 'warning: missing name for @deffn
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'missing name for @deffn',
     'type' => 'warning'
   }

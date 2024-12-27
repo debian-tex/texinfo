@@ -1,0 +1,14 @@
+\input texinfo
+@setfilename Test_ref.info
+
+@settitle Test ref
+
+@node Top
+@top Test ref
+
+@node Test ref
+@chapter Test ref
+
+@ref{unknown}
+
+@bye

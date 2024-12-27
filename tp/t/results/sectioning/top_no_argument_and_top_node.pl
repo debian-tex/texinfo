@@ -29,6 +29,7 @@ $result_trees{'top_no_argument_and_top_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'top_no_argument_and_top_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -57,9 +56,7 @@ $result_trees{'top_no_argument_and_top_node'} = {
       'cmdname' => 'top',
       'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -74,7 +71,7 @@ $result_texis{'top_no_argument_and_top_node'} = '@node Top
 $result_texts{'top_no_argument_and_top_node'} = '';
 
 $result_sectioning{'top_no_argument_and_top_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -84,37 +81,37 @@ $result_sectioning{'top_no_argument_and_top_node'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'top_no_argument_and_top_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'top_no_argument_and_top_node'};
+$result_sectioning{'top_no_argument_and_top_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'top_no_argument_and_top_node'};
 
-$result_nodes{'top_no_argument_and_top_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'top_no_argument_and_top_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'top_no_argument_and_top_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'top_no_argument_and_top_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'top_no_argument_and_top_node'} = [];
 
@@ -127,7 +124,6 @@ $result_converted{'info'}->{'top_no_argument_and_top_node'} = 'This is , produce
 
 
 File: ,  Node: Top,  Up: (dir)
-
 
 
 Tag Table:
@@ -144,7 +140,7 @@ End:
 
 $result_converted{'html'}->{'top_no_argument_and_top_node'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

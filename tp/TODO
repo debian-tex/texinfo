@@ -1,6 +1,6 @@
 This is the todo list for texi2any
 
-  Copyright 2012-2023 Free Software Foundation.
+  Copyright 2012-2024 Free Software Foundation.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -10,8 +10,10 @@ This is the todo list for texi2any
 Before next release
 ===================
 
+
 Bugs
 ====
+
 
 HTML API
 ========
@@ -20,14 +22,15 @@ Issues
 ------
 
 Some private function used in conversion
- _convert_printindex_command
-  _new_document_context
+_convert_printindex_command
+ _new_document_context
+_convert_def_line_type
+ _set_code_context
+ _pop_code_context
 
 
 Missing documentation
 =====================
-
-HTML API ignore_notice _noticed_line_warn.  Add to API before?
 
 Tree documentation in ParserNonXS.pm
 ------------------------------------
@@ -36,31 +39,60 @@ elided_rawpreformatted, elided_brace_command_arg types.
 
 'comment_at_end' in info hash
 
+alias_of in info hash
+
 source marks.
+
+special_unit_element type (only in HTML code)
 
 Other
 -----
 
-For converter writers,
+For converter writers, after the difference with C has been resolved or
+confirmed
 'output_init_conf' and 'converter_init_conf'.
 
+Document *XS_EXTERNAL_FORMATTING *XS_EXTERNAL_CONVERSION?
 
-Delayed bugs
-============
 
-From https://www.gnu.org/software/libc/manual/html_node/Using-gettextized-software.html
-For locales, the encoding part is normalized in a specific way.  It
-seems that iconv in the C library follows the same convention at least to
-some extent, though it is not visibly documented.
-Should we use fully the normalization of documentencoding following in some
-context (gdt?):
-  The normalized codeset value is generated from the user-provided character set name by applying the following rules:
+Delayed bugs/features
+=====================
 
-    Remove all characters besides numbers and letters.
-    Fold letters to lowercase.
-    If the same only contains digits prepend the string "iso".
+Update search directories in C codes for the XDG Base Directory Specification
+based on what is done in Perl.  Need to wait to be clear on what is done
+in Perl.
 
-  So all of the above names will be normalized to iso88591. This allows the program user much more freedom in choosing the locale name.
+
+Gavin on using CSV files and a Perl script to generate code for Perl and C.
+For something like html_style_commands_element.csv, it could potentially
+make the code more impenetrable.  Suppose for example someone wants to
+find which part of the code handles the @sansserif command.  If they
+search HTML.pm for 'sansserif' that string isn't there.  As this file
+is shorter, there is less benefit to avoiding duplicating its contents.
+However, the purpose, structure and meaning of this file is quite clear.
+(Files such as HTML.pm are also not self-contained, accessing information
+in files such as Commands.pm, so having another file to access does not
+really change the situation.)
+
+For shorter files like default_special_unit_info.csv and
+default_direction_strings.csv it is less clear that it offers a net
+benefit.  To be honest, the function of these files is not particularly
+clear to me other than one of them is something to do with node direction
+pointers.  I don't someone looking at these files for the first time
+would have an easy time figuring out what they are for.
+
+
+Make building "source marks" optional?
+
+
+check for comma after @xref{...}, in parser to simplify checking for
+it in Info output module.
+The code checking if punctuation followed the closing brace
+required fiddly checking ahead (see code following comment
+"# Check if punctuation follows the ref command" in Plaintext.pm).
+Gavin wondered if it would be easier to do this in the parser instead so the
+converter could check if the punctuation was present simply by checking
+$current->{'extra'}->{'following_punctuation'} or similar.
 
 
 hyphenation: should only appear in toplevel.
@@ -98,40 +130,62 @@ the context command stack.
  @end defun
 
 
-Modules included in tp/maintain/lib/ need to be updated from time to
-time.
+Modules included in tp/maintain/lib/ are stable, but still need
+to be updated from time to time.
+
+Unicode::EastAsianWidth \p{InFullwidth} could be replaced
+by native \p{East_Asian_Width=Fullwidth} + \p{East_Asian_Width=Wide}
+when the oldest supported Perl version is 5.12.0 (released in 2010).
 
 
-HTML5 validation tidy errors that do not need fixing
-----------------------------------------------------
+Transliteration/protection with iconv in C leads to a result different from Perl
+for some characters.  It seems that the iconv result depends on the locale, and
+there are quite a bit of ? output, probably when there is no obvious
+transliteration.  In those cases, the Unidecode transliterations are not
+necessarily very good, either.
 
-# to get only errors:
-tidy -qe *.html
 
-Some can also be validation errors in other HTML versions.
-
-missing </a> before <a>
-discarding unexpected </a>
-nested <a> which happens for @url in @xref, which is valid Texinfo.
-
-Warning: <a> anchor "..." already defined
-Should only happen with multiple insertcopying.
-
-Warning: trimming empty <code>
-Normally happens only for invalid Texinfo, missing @def* name, empty
-@def* line...
-
-<td> attribute "width" not allowed for HTML5
-<th> attribute "width" not allowed for HTML5
-These attributes are obsolete (though the elements are 
-still part of the language), and must not be used by authors.
-The CSS replacement would be style="width: 40%".
-However, width is kept as an attribute in texi2nay output and not
-as CSS because it is not style, but table or even line specific formatting.
+Sorting indices in C with strxfrm_l using an utf-8 locale with
+LC_COLLATE_MASK on Debian GNU/Linux with glibc is quite consistent with Perl
+for number and letters, but leads to a different output than with Perl for non
+alphanumeric characters.  It is because in Perl we set
+'variable' => 'Non-Ignorable' to set Variable Weighting to Non-ignorable (see
+http://www.unicode.org/reports/tr10/#Variable_Weighting).
+For spaces, the output with Non-Ignorable Variable Weighting looks better for
+index sorting, as it allows to have spaces and punctuation marks sort before
+letters.  Right now, the XS code calls Perl to get the sorting
+collation strings with Non-Ignorable Variable Weighting.  The
+undocumented XS_STRXFRM_COLLATION_LOCALE customization variable can be used
+to specify a locale and use it with strxfrm_l to sort, but it is only
+for testing and should not be kept in the long term, the plan is to replace by
+C code that sets Variable Weighting to Non-ignorable and before that keep
+calling Perl.
+Related glibc enhancement request:
+ request for Non-Ignorable Variable Weighting Unicode collation
+ https://sourceware.org/bugzilla/show_bug.cgi?id=31658
 
 
 Missing tests
 =============
+
+There is a test of translation in parser in a translation in converter, in
+
+  tp/t/init_files_tests.t translation_in_parser_in_translation
+
+It would be nice to also have a translation in parser in a translation
+in parser.  That would mean having a po/gmo file where the string
+translated in the parser for @def* indices, for instance "{name} of {class}"
+is translated to a string including @def* commands, like
+@deftypeop a b c d e f
+AA
+@end deftypeop
+
+@documentlanguage fr
+
+@deftypemethod g h i j k l
+BB
+@end deftypemethod
+
 
 Unit test of end_line_count for Texinfo/Convert/Paragraph.pm .... containers.
 
@@ -141,35 +195,14 @@ anchor in flushright, on an empty line, with a current byte offset.
 Future features
 ===============
 
-For converters in C, agreed with Gavin that it is better not to
-translate a perl tree in input, but access directly the C tree that
-was setup by the XS parser.
-
-
-It would probably be good and maybe ease C converters to have a
-Texinfo::Document package which encapsulates the information associated
-to a document, the tree, and all the other information given by
-the parser, indices_information, floats_information,
-internal_references_information, global_commands_information,
-global_information and labels_information as they are a property of a Texinfo
-Document, in addition to being, in general, states of a parser.  The
-information set by some calls to Structuring would also probably fit there
-naturally.  A member of the package/class would be initialized after the
-parsing, but not necessarily for all the function, maybe only parse_texi_text
-and parse_texi_file.
-
-
-For Paragraph, improvements and synchronizations of
-the two implementations.  It would be nice to change the XS code
-to operate on multiple spans of characters at once when relevant,
-we'd have an extra step of keeping track of how long each span of
-text is, and then processing that span of text together (in the loop
-in xspara_add_text).  It could potentiall have performance benefits
-(e.g. reducing the number of function calls) and be easier to debug,
-with fewer steps in the processing to trace.  The XS code is easier
-to read for the ens of sentence handling part, so for that part, it
-could be relevant to use the XS code as reference and change the perl
-Paragraph.
+Add the possibility to add text to a parsed document by restarting
+parsing, when called as parse_texi_piece or parse_texi_line, by
+storing the parser document state not already in document in document.
+There would be a customization variable to set the parser to be
+restartable, and then parse_texi_piece and parse_texi_line could pass
+a document to retrieve the parsing state.  This should probably
+wait for a clear use case. Currently, the parser is never reused
+for different documents in the main codes, only in specific tests.
 
 
 From Gavin on the preamble_before_beginning implementation:
@@ -188,15 +221,11 @@ line by line.
 
 See message/thread from Reißner Ernst: Feature request: api docs
 
-Add in_math (for \) as flag in command_data.txt?
-
 Right now VERBOSE is almost not used.
 
 Should we warn if output is on STDOUT and OUTPUT_ENCODING_NAME != MESSAGE_OUTPUT_ENCODING_NAME?
 
 Handle better @exdent in html? (there is a FIXME in the code)
-
-Implement what is proposed in HTML Cross Reference Mismatch.
 
 For plaintext, implement an effect of NO_TOP_NODE_OUTPUT
 * if true, output some title, possibly based on titlepage
@@ -206,32 +235,6 @@ Default is false.
 
 In Plaintext, @quotation text could have the right margin narrowed to be more
 in line with other output formats.
-
-Punctuation and spaces before @image do not lead to a doubling of space.
-In fact @image is completly formatted outside of usual formatting containers.
-Not sure what should be the right way?
-test in info_test/image_and_punctuation
-
-in info_tests/error_in_footnote there is an error message for each
-listoffloats;  Line numbers are right, though, so maybe this is not
-an issue.
-
-converters_tests/things_before_setfilename there is no error
-for anchor and footnote before setfilename.  It is not completly
-clear that there should be, though.
-
-In Info, image special directive on sectioning command line length
-is taken into account for the underlying characters line count inserted
-below the section title.  There is no reason to underline the image
-special directive.  Since the image rendering and length of replacement
-text depends on the Info viewer, howere, there is no way to know in
-advance the lenght of text to underline (if any).  It is therefore unclear
-what would be the correct underlying characters count.
-An example in formats_encodings/at_commands_in_refs.
-
-Many strings in debugging output are not encoded.  Not clear that it is
-an issue.  For example with
-/usr/bin/perl -w ./..//texi2any.pl  --force --conf-dir ./../t/init/ --conf-dir ./../init --conf-dir ./../ext -I ./coverage/ -I coverage// -I ./ -I . -I built_input --error-limit=1000 -c TEST=1  --output coverage//out_parser/formatting_macro_expand/ --macro-expand=coverage//out_parser/formatting_macro_expand/formatting.texi -c TEXINFO_OUTPUT_FORMAT=structure ./coverage//formatting.texi --debug=1 2>t.err
 
 
 DocBook
@@ -270,18 +273,21 @@ Manual tests
 Some tests are interesting but are not in the test suite for various
 reasons.  It is not really expected to have much regressions with these
 tests.  They are shown here for information.  It was up to date in
-March 2022, it may drift away as tests files names or content change.
+March 2024, it may drift away as tests files names or content change.
 
 
 Tests in non utf8 locale
 ------------------------
 
 In practice these tests were tested in latin1.  They are not
-in the may test suite because a latin1 locale cannot be expected
+in the main test suite because a latin1 locale cannot be expected
 to be present reliably.
 
 Tests with correct or acceptable results
 ****************************************
+
+File not found error message with accented characters in its name:
+./texi2any.pl not_éxisting.texi
 
 t/formats_encodings.t manual_simple_utf8_with_error
 utf8 manual with errors involving non ascii strings
@@ -306,7 +312,7 @@ non ascii output directory, utf8 manual
 
 test of non ascii included file name in utf8 locale is already in formatting:
 formatting/osé_utf8.texi:@include included_akçentêd.texi
-./texi2any.pl --force -I tests/ tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ tests/encoded/os*_utf8.texi
 The file name is utf-8 encoded in messages, which is expected as we do not
 decode/encode file names from the command line for messages
 osÃ©_utf8.texi:15: warning: undefined flag: vùr
@@ -315,9 +321,9 @@ t/80include.t cpp_line_latin1
 CPP directive with non ascii characters, latin1 manual
 ./texi2any.pl --force ./t/input_files/cpp_line_latin1.texi
 
-Issue to add 'tests/included_lat'$'\356''n1.texi' in make dist
-tests/formatting manual_include_accented_file_name_latin1
-./texi2any.pl --force -I tests/ tests/formatting/manual_include_accented_file_name_latin1.texi
+Need to have recoded file name to latin1 OK, see tests/README
+tests/encoded manual_include_accented_file_name_latin1
+./texi2any.pl --force -I tests/built_input/ tests/encoded/manual_include_accented_file_name_latin1.texi
 
 latin1 encoded and latex2html in latin1 locale
 ./texi2any.pl --html --init ext/latex2html.pm tests/tex_html/tex_encode_latin1.texi
@@ -334,34 +340,34 @@ The file names and file contents looks right, though, with latin1 only
 encoded characters.
 
 epub for utf8 encoded manual in latin1 locale
-./texi2any.pl --force -I tests/ --init ext/epub3.pm tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ --init ext/epub3.pm tests/encoded/os*_utf8.texi
 
 epub for latin1 encoded manual in latin1 locale
 cp tests/tex_html/tex_encode_latin1.texi tex_encodé_latin1.texi
 ./texi2any.pl --init ext/epub3.pm tex_encodé_latin1.texi
 
-./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext tests/encoded/os*_utf8.texi
 output file name is in latin1, but the encoding inside is utf8 consistent
 with the document encoding.
 
-./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8_no_setfilename.texi
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext tests/encoded/os*_utf8_no_setfilename.texi
 output file name is utf8 because the utf8 encoded input file name
 is decoded using the locale latin1 encoding keeping the 8bit characters
 from the utf8 encoding, and the encoding inside is utf8
 consistent with the document encoding.
 
-./texi2any.pl --force -I tests/ -o encodé/raw.txt -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ -o encodé/raw.txt -c TEXINFO_OUTPUT_FORMAT=rawtext tests/encoded/os*_utf8.texi
 encodé/raw.txt file name encoded in latin1, and the encoding inside is utf8
 consistent with the document encoding.
 
-./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext -c 'SUBDIR=subdîr' tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext -c 'SUBDIR=subdîr' tests/encoded/os*_utf8.texi
 subdîr/osé_utf8.txt file name encoded in latin1, and the encoding inside is utf8
 consistent with the document encoding.
 
-./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o résultat/encodé.txt ./t/input_files/simplest_no_node_section.texi
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree -o résultat/encodé.txt ./t/input_files/simplest_no_node_section.texi
 résultat/encodé.txt file name encoded in latin1.
 
-./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o char_latin1_latin1_in_refs_tree.txt ./t/input_files/char_latin1_latin1_in_refs.texi
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree -o char_latin1_latin1_in_refs_tree.txt ./t/input_files/char_latin1_latin1_in_refs.texi
 char_latin1_latin1_in_refs_tree.txt content encoded in latin1
 
 utf8 encoded manual name and latex2html in latin1 locale
@@ -399,24 +405,28 @@ Tests in utf8 locales
 The archive epub file is not tested in the automated tests.
 
 epub for utf8 encoded manual in utf8 locale
-./texi2any.pl --force -I tests/ --init ext/epub3.pm tests/formatting/osé_utf8.texi
+./texi2any.pl --force -I tests/ --init ext/epub3.pm tests/encoded/osé_utf8.texi
 
 The following tests require latin1 encoded file names.  Note that it
 could be done automatically now with
 tp/maintain/copy_change_file_name_encoding.pl.
 However, there is already a test with an include file in latin1, it
 is enough.
+Create the latin1 encoded from a latin1 console:
+cp tests/tex_html/tex_encode_latin1.texi tex_encodé_latin1.texi
+Run from an UTF-8 locale console.  The resulting file has a ? in the name
+but result is otherwise ok.
 ./texi2any.pl tex_encod*_latin1.texi
 
 The following tests not important enough to have regression test
-./texi2any.pl --force -I tests/ -o encodé/raw.txt -c TEXINFO_OUTPUT_FORMAT=rawtext tests/formatting/os*_utf8.texi
-./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext -c 'SUBDIR=subdîr' tests/formatting/os*_utf8.texi
+./texi2any.pl --force -I tests/ -o encodé/raw.txt -c TEXINFO_OUTPUT_FORMAT=rawtext tests/encoded/os*_utf8.texi
+./texi2any.pl --force -I tests/ -c TEXINFO_OUTPUT_FORMAT=rawtext -c 'SUBDIR=subdîr' tests/encoded/os*_utf8.texi
 
 Test more interesting in non utf8 locale
-./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o résultat/encodé.txt ./t/input_files/simplest_no_node_section.texi
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree -o résultat/encodé.txt ./t/input_files/simplest_no_node_section.texi
 résultat/encodé.txt file name encoded in utf8
 
-./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree --set USE_NODES=0 -o char_latin1_latin1_in_refs_tree.txt ./t/input_files/char_latin1_latin1_in_refs.texi
+./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugtree -o char_latin1_latin1_in_refs_tree.txt ./t/input_files/char_latin1_latin1_in_refs.texi
 char_latin1_latin1_in_refs_tree.txt content encoded in latin1
 
 
@@ -515,36 +525,13 @@ Labels in Info (not index entries, in index entries the last : not in
 Interrogations and remarks
 ==========================
 
-Should more Converter ignore the last new line (with type
-last_raw_newline) of a raw block format?
+For converters in C, agreed with Gavin that it is better not to
+translate a perl tree in input, but access directly the C tree that
+was setup by the XS parser.
 
 There is no forward looking code anymore, so maybe a lex/yacc parser
 could be used for the main loop.  More simply, a binary tokenizer, at
 least, could make for a notable speedup.
-
-def/end_of_lines_protected_in_footnote.pl the footnote is
-   (1)  -- category: deffn_name arguments arg2 more args with end of line
-and not
-   (1)
- -- category: deffn_name arguments arg2 more args with end of line
-It happens this way because the paragraph starts right after the footnote
-number.
-
-in HTML, the argument of a quotation is ignored if the quotation is empty,
-as in
- @quotation thing
- @end quotation
-Is it really a bug?
-
-In @copying things like some raw formats may be expanded.  However it is
-not clear that it should be the same than in the main converter.  Maybe a
-specific list of formats could be passed to Convert::Text::convert, which
-would be different (for example Info and Plaintext even if converting HTML).
-This requires a test, to begin with.
-
-In HTML, HEADERS is used.  But not in other modules, especially not in
-Plaintext.pm or Info.pm, this is determined by the module used (Plaintext.pm
-or Info.pm).  No idea whether it is right or wrong.
 
 From vincent Belaïche. About svg image files in HTML:
 
@@ -567,6 +554,125 @@ The @FIGURE @macro is, for html:
  pluginspage="http://www.adobe.com/svg/viewer/install/" /></div>
 @end html
 @end macro
+
+
+In general, the htmlxref.cnf file should be filled and used to determine
+the split of a reference manual, and if no htmlxref.cnf file is used, it
+is a good idea to generate both a mono and a split manual.  Therefore the
+following situation is not something that needs to be supported/implemented,
+however we keep the information on the javascript code here.
+
+If a manual is split and the person generating the manual wants that
+references to a mono manual to be redirected to the split files, it should
+be possible to create a manual.html file that redirects to the
+manual_html/node.html files using the following javascript function:
+
+ function redirect() {
+   switch (location.hash) {
+     case "#Node1":
+       location.replace("manual_html/Node1.html#Node1"); break;
+     case "#Node2" :
+       location.replace("manual_html/Node2.html#Node2"); break;
+     ...
+     default:;
+   }
+ }
+
+And, in the <body> tag of manual.html:
+  <body onLoad="redirect();">
+
+
+Need to make sure that a fix needed
+-----------------------------------
+
+In HTML, HEADERS is used.  But not in other modules, especially not in
+Plaintext.pm or Info.pm, this is determined by the module used (Plaintext.pm
+or Info.pm).  No idea whether it is right or wrong.
+
+def/end_of_lines_protected_in_footnote.pl the footnote is
+   (1)  -- category: deffn_name arguments arg2 more args with end of line
+and not
+   (1)
+ -- category: deffn_name arguments arg2 more args with end of line
+It happens this way because the paragraph starts right after the footnote
+number.
+
+in HTML, the argument of a quotation is ignored if the quotation is empty,
+as in
+ @quotation thing
+ @end quotation
+Is it really a bug?
+
+In @copying things like some raw formats may be expanded.  However it is
+not clear that it should be the same than in the main converter.  Maybe a
+specific list of formats could be passed to Convert::Text::convert, which
+would be different (for example Info and Plaintext even if converting HTML).
+Not clear that it is a good idea.  Also this requires a test, to begin with.
+
+Punctuation and spaces before @image do not lead to a doubling of space.
+In fact @image is completly formatted outside of usual formatting containers.
+Not sure what should be the right way?
+test in info_test/image_and_punctuation
+
+in info_tests/error_in_footnote there is an error message for each
+listoffloats;  Line numbers are right, though, so maybe this is not
+an issue.
+
+converters_tests/things_before_setfilename there is no error
+for anchor and footnote before setfilename.  It is not clear that
+there should be, though.
+
+In Info, image special directive on sectioning command line length
+is taken into account for the underlying characters line count inserted
+below the section title.  There is no reason to underline the image
+special directive.  Since the image rendering and length of replacement
+text depends on the Info viewer, however, there is no way to know in
+advance the lenght of text to underline (if any).  It is therefore unclear
+what would be the correct underlying characters count.
+An example in formats_encodings/at_commands_in_refs.
+
+When using Perl modules, many strings in debugging output are internal
+Perl strings not encoded before being output, leading to
+'Wide character in print' messages (in C those strings are always encoded
+in UTF-8).  Not clear that it is an issue.  For example with
+export TEXINFO_XS=omit
+/usr/bin/perl -w ./..//texi2any.pl  --force --conf-dir ./../t/init/ --conf-dir ./../init --conf-dir ./../ext -I ./coverage/ -I coverage// -I ./ -I . -I built_input --error-limit=1000 -c TEST=1  --output coverage//out_parser/formatting_macro_expand/ --macro-expand=coverage//out_parser/formatting_macro_expand/formatting.texi -c TEXINFO_OUTPUT_FORMAT=structure ./coverage//formatting.texi --debug=1 2>t.err
+
+
+HTML5 validation tidy errors that do not need fixing
+----------------------------------------------------
+
+# to get only errors:
+tidy -qe *.html
+
+Some can also be validation errors in other HTML versions.
+
+missing </a> before <a>
+discarding unexpected </a>
+nested <a> which happens for @url in @xref, which is valid Texinfo.
+
+Warning: <a> anchor "..." already defined
+Should only happen with multiple insertcopying.
+
+Warning: trimming empty <code>
+Normally happens only for invalid Texinfo, missing @def* name, empty
+@def* line...
+
+<td> attribute "width" not allowed for HTML5
+<th> attribute "width" not allowed for HTML5
+These attributes are obsolete (though the elements are
+still part of the language), and must not be used by authors.
+The CSS replacement would be style="width: 40%".
+However, width is kept as an attribute in texi2any @multitable output and not
+as CSS because it is not style, but table or even line specific formatting.
+If the _INLINE_STYLE_WIDTH undocumented option is set, CSS is used.
+It is set for EPUB.
+See
+https://lists.gnu.org/archive/html/bug-texinfo/2024-09/msg00065.html
+
+
+Specialized synopsis in DocBook
+-------------------------------
 
 Use of specialized synopsis in DocBook is not a priority and it is not even
 obvious that it is interesting to do so.  The following notes explain the
@@ -628,18 +734,58 @@ defvr (defvar, defopt), deftypevr (deftypevar)
 deftp
 
 
+Solaris 11
+==========
+
+# recent Test::Deep requires perl 5.12
+cpan> o conf urllist push http://backpan.perl.org/
+cpan RJBS/Test-Deep-1.127.tar.gz
+
+Also possible to install Texinfo dependencies with openCSW, like
+pkgutil -y -i CSWhelp2man CSWpm-data-compare CSWpm-test-deep
+
+The system perl may not be suitable to build XS modules, and the
+system gawk may be too old, openCSW may be needed.  For example:
+./configure PERL=/opt/csw/bin/perl GAWK=/opt/csw/bin/gawk CFLAGS='-g'
+
+./configure PERL=/opt/csw/bin/perl GAWK=/opt/csw/bin/gawk CFLAGS='-g' LDFLAGS=-L/opt/csw/lib/ CPPFLAGS='-I/opt/csw/include/' PERL_EXT_LDFLAGS=-L/opt/csw/lib/ LIBS=-liconv
+
+
 Misc notes
 ==========
+
+# differences between dist in and out source after maintainer-clean
+rm -f texinfo-7.*.*.tar.gz
+./autogen.sh
+./configure
+make maintainer-clean
+./autogen.sh
+./configure
+make dist
+rm -rf in_source_dist_contents
+mkdir in_source_dist_contents
+(cd in_source_dist_contents && tar xvf ../texinfo-7.*.*.tar.gz)
+make maintainer-clean
+rm -rf bb
+mkdir bb
+cd bb
+../configure
+make dist
+tar xvf texinfo-7.*.*.tar.gz
+diff -u -r ../in_source_dist_contents/texinfo-7.*.*/ texinfo-7.*.*/ > ../build_in_out_source_differences.diff
 
 Test validity of Texinfo XML or docbook
 export XML_CATALOG_FILES=~/src/texinfo/tp/maintain/catalog.xml
 xmllint --nonet --noout --valid commands.xml
 
+tidy does not seems to be released and/or maintained anymore.  It incorrectly
+emits an error for ol type attribute.
 tidy -qe *.html
 
 profiling: package on debian:
 libdevel-nytprof-perl
 In doc:
+perl -d:NYTProf ../tp/texi2any.pl texinfo.texi --html
 perl -d:NYTProf ../tp/texi2any.pl texinfo.texi
 nytprofhtml
 # firefox nytprof/index.html
@@ -666,15 +812,137 @@ In tp/tests/, generate Texinfo file for Texinfo TeX coverage
 From doc/
 texi2pdf -I ../tp/tests/layout/ ../tp/tests/formatting_valid.texi
 
+To generate valgrind .supp rules: --gen-suppressions=all --log-file=gen_supp_rules.log
 mkdir -p val_res
-for file in t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind -q perl -w $file > val_res/$bfile.out 2>&1 ; done
+PERL_DESTRUCT_LEVEL=2
+export PERL_DESTRUCT_LEVEL
+for file in t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind --suppressions=./texi2any.supp -q perl -w $file > val_res/$bfile.out 2>&1 ; done
 
-For tests in tp/tests, a way to have valgrind -q prependend is to add, in tp/defs:
-prepended_command='valgrind -q'
+With memory leaks
+for file in t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind --suppressions=./texi2any.supp -q --leak-check=full perl -w $file > val_res/$bfile.out 2>&1 ; done
+for file in t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind -q --leak-check=full perl -w $file > val_res/$bfile.out 2>&1 ; done
+
+In some cases, memory that is not released/freed, but that should still be
+accessible at the end of conversion is shown by valgrind as being leaked,
+ie, not accessible, with some missing symbols.  Typically static/global
+variables freed upon reuse, or left unreleased on purpose (parser conf, for
+example).  In that case adding --keep-debuginfo=yes shows the missing
+symbols.  The documentation of valgrind
+  https://valgrind.org/docs/manual/faq.html#faq.unhelpful
+hints that the memory appearing as leaked probably comes from a dlclosed object:
+ "if the shared object is unloaded before the program terminates, Valgrind will discard the debug information and the error message will be full of ??? entries. If you use the option --keep-debuginfo=yes, then Valgrind will keep the debug information"
+What could happen in that case is that something
+prevents the memory still accessible from the dlclosed object to be released
+properly, such that all the data that would have been accessible before
+dlcosing becomes inaccessible, while being kept in valgrind output and appear
+as memory leaks.
+Call with --keep-debuginfo=yes:
+for file in t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind --keep-debuginfo=yes -q --leak-check=full perl -w $file > val_res/$bfile.out 2>&1 ; done
+for file in $srcdir/t/*.t ; do bfile=`basename $file .t`; echo $bfile; valgrind --keep-debuginfo=yes -q --leak-check=full perl -w $file > val_res/$bfile.out 2>&1 ; done
+
+For tests in tp/tests, a way to have valgrind call prependend is to add,
+in tp/defs:
+prepended_command='valgrind --leak-check=full -q'
+prepended_command='valgrind --leak-check=full -q --suppressions=../texi2any.supp'
 
 rm -rf t/check_debug_differences/
 mkdir t/check_debug_differences/
 for file in t/*.t ; do bfile=`basename $file .t`; perl -w $file -d 1 2>t/check_debug_differences/XS_$bfile.err ; done
 export TEXINFO_XS_PARSER=0
 for file in t/*.t ; do bfile=`basename $file .t`; perl -w $file -d 1 2>t/check_debug_differences/PL_$bfile.err ; done
-for file in t/*.t ; do bfile=`basename $file .t`; diff -u t/check_debug_differences/PL_$bfile.err t/check_debug_differences/XS_$bfile.err > t/check_debug_differences/debug_$bfile.diff; done
+for file in t/*.t ; do bfile=`basename $file .t`; sed 's/^XS|//' t/check_debug_differences/XS_$bfile.err | diff -u t/check_debug_differences/PL_$bfile.err - > t/check_debug_differences/debug_$bfile.diff; done
+
+Full check, including XS conversion and memory leaks in debug:
+export TEXINFO_XS_CONVERT=1
+PERL_DESTRUCT_LEVEL=2
+export PERL_DESTRUCT_LEVEL
+for file in t/*.t ; do bfile=`basename $file .t`; valgrind -q --leak-check=full --keep-debuginfo=yes perl -w $file -d 1 2>t/check_debug_differences/XS_$bfile.err ; done
+
+Check of XS interface to Perl
+export TEXINFO_XS_CONVERT=1
+export TEXINFO_XS_EXTERNAL_FORMATTING=1
+export TEXINFO_XS_EXTERNAL_CONVERSION=1
+
+
+Analysing memory use:
+valgrinf massif useful-heap approximate distribution in 2024 (obsolete)
+mkdir -p massif
+valgrind --tool=massif --massif-out-file=massif/massif_info.out perl -w texi2any.pl ../doc/texinfo.texi
+ms_print massif/massif_info.out > massif/ms_print_info.out
+16M Perl
+36M C tree
+50M Perl tree (visible in detailed use, but difficult to do the
+               imputation right, some may correspond with other uses
+               of Perl memory)
+5M (approximate, not visible in the detailed use, based on difference
+    in use over time) conversion
+
+With full XS (7.2 64M, with text separate 58.5M, without info_info 56M
+              with integer extra keys 54M, with source marks as pointers 52.3M)
+mkdir -p massif
+valgrind --tool=massif --massif-out-file=massif/massif_html.out perl -w texi2any.pl --html ../doc/texinfo.texi
+ms_print massif/massif_html.out > massif/ms_print_html.out
+useful-heap
+25M = 13.1 + 5.8 + 2.9 + 2.5 + 0.7 Perl
+17.8M Tree
+ 6 + 5 = 11M new_element
+ 3.5M reallocate_list
+ 0.5M get_associated_info_key (below threshold in later reports)
+ 2.8M = 0.8 + 0.7 +1.3 text
+5.2M = 3.8 (text) + 0.7 (text printindex) + 0.7: conversion,
+               mainly text in convert_output_output_unit*
+                  (+1.3M by approximate difference with total)
+(7.5 + 1.3) - (3.8 + 0.7 + 0.7 + 0.8 +1.3) = 1.5 M Text not imputed
+3. - 0.5 = 2.5M remaining not imputed (- get_associated_info_key)
+52M TOTAL (for 52.3M reported)
+
+
+Using callgrind to find the time used by functions
+
+valgrind --tool=callgrind perl -w texi2any.pl ../doc/texinfo.texi --html
+# to avoid cycles (some remain in Perl only code) that mess up the graph:
+valgrind --tool=callgrind --separate-callers=3 --separate-recs=10 perl -w texi2any.pl ../doc/texinfo.texi --html
+kcachegrind callgrind.out.XXXXXX
+
+This is obsolete with output overriding, although the distribution changed
+very little after reattributing the shares.
+For the Texinfo manual with full XS, in 2024, Perl uses 22% of the time
+(for html), now only for code hopefully called once.  The switch to
+global locales for setlocale calling that is needed for Perl takes also 4%.
+Calling Perl getSortKey uses about 28% (more on sorting and C below).
+Decomposition of the time used for the Texinfo manual with full XS
+(in percent):
+ parser: 11.5
+ index sorting: 30
+ main conversion to HTML: 24.8 = 54.8 - 30
+
+ node redirections: 2.6
+ prepare conversion units: 2.3
+ remove document: 1.8
+ associate internal references: 0.53
+ prepare unit directions: 0.41
+ setup indices sort strings: 0.36
+ reset converter: 0.23
+ structuring transformation1: 0.19
+ structuring transformation2: 0.19
+ remaining Texinfo XS code: 0.35
+  = 8.95
+ Perl: 22.5 = 7 + 15.2 + (75.57 - 54.8 - 11.5 - 8.95)
+SUM: 98
+
+
+Setting flags
+# some features are only enabled at -O2, but sometime -O0 is better
+# for debugging with valgrind
+our_CFLAGS='-g -O0 -Wformat-security -Wstrict-prototypes -Wall -Wno-parentheses -Wno-unused-parameter -Wextra'
+# keep cpp expanded files
+# -save-temps
+# Without -Wstack-protector there is no message on functions not protected.
+# All these are in gnulib or gettext for now.
+# -fno-omit-frame-pointer is better for debugging with valgrind, but has
+# some speed penalty
+our_CFLAGS='-g -O2 -D_FORTIFY_SOURCE=2 -Wformat-security -Wstrict-prototypes -Wall -Wno-parentheses -Wno-missing-braces -Wno-unused-parameter -fstack-protector-all -Wextra -fno-omit-frame-pointer'
+our_CFLAGS='-g -O2 -Wformat-security -Wstrict-prototypes -Wall -Wno-parentheses -Wno-missing-braces -Wno-unused-parameter -Wextra'
+./configure --enable-additional-checks "CFLAGS=$our_CFLAGS" "PERL_EXT_CFLAGS=$our_CFLAGS"
+unset our_CFLAGS
+

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Tests</title>
@@ -16,6 +16,7 @@
 <style type="text/css">
 <!--
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+pre.displaymath {font-style: italic; font-family: serif; display: flex; justify-content: center}
 span:hover a.copiable-link {visibility: visible}
 -->
 </style>
@@ -23,9 +24,17 @@ span:hover a.copiable-link {visibility: visible}
 <script type='text/javascript'>
 MathJax = {
   options: {
-    skipHtmlTags: {'[-]': ['pre']},
+    skipHtmlTags: {'[-]': ['pre']},       // do not skip pre
     ignoreHtmlClass: 'tex2jax_ignore',
     processHtmlClass: 'tex2jax_process'
+  },
+  tex: {
+    processEscapes: false,      // do not use \$ to produce a literal dollar sign
+    processEnvironments: false, // do not process \begin{xxx}...\end{xxx} outside math mode
+    processRefs: false,         // do not process \ref{...} outside of math mode
+    displayMath: [             // start/end delimiter pairs for display math
+      ['\\[', '\\]']
+    ],
   },
 };
 </script><script type="text/javascript" id="MathJax-script" async
@@ -45,8 +54,8 @@ MathJax = {
 </p>
 <p><em class="math tex2jax_process">\(\Desig \testmacro \otest\)</em>
 </p>
-<div class="displaymath"><em class="tex2jax_process">\[ \Desig \testmacro \otest
-\]</em></div>
+<pre class="displaymath tex2jax_process">\[ \Desig \testmacro \otest
+\]</pre>
 </div>
 
 

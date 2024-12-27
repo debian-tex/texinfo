@@ -30,7 +30,7 @@ outside of the module.
 X<C<%index_names>>
 
 Hash describing the default Texinfo indices.  The format of this hash is
-described in L<< C<Texinfo::Parser::indices_information>|Texinfo::Parser/$indices_information = $parser->indices_information() >>.
+described in L<< C<Texinfo::Document::indices_information>|Texinfo::Document/$indices_information = $document->indices_information() >>.
 
 =back
 
@@ -281,6 +281,11 @@ C<@itemize> and C<@enumerate>.
 X<C<%non_formatted_block_commands>>
 
 Block commands not formatted as text, such as C<@ignore> or C<@macro>.
+
+=item %non_formatted_brace_commands
+
+Brace commands that are not immediately replaced with text, such as
+C<anchor>, C<caption>, C<errormsg> and others.
 
 =item %preamble_commands
 X<C<%preamble_commands>>

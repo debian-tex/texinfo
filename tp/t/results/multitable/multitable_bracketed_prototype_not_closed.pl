@@ -30,6 +30,9 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
                       'text' => ' '
                     }
                   },
+                  'source_info' => {
+                    'line_nr' => 2
+                  },
                   'type' => 'bracketed_arg'
                 }
               ],
@@ -65,9 +68,7 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -80,9 +81,7 @@ $result_trees{'multitable_bracketed_prototype_not_closed'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         }
       ],
@@ -105,9 +104,7 @@ $result_errors{'multitable_bracketed_prototype_not_closed'} = [
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   }

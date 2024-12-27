@@ -1,4 +1,4 @@
-# Copyright (C) 2014-2023 Free Software Foundation, Inc.
+# Copyright (C) 2014-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ set -x
 
 # Use the second line to run the program under valgrind.
 ginfo="./ginfo --init-file $srcdir/t/Infokey-config"
-#ginfo="valgrind --log-file=$0.val.log --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
+#ginfo="valgrind --log-file=t/`basename $0.val.log` --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
 
 # Only look for Info files in our test directory
 INFOPATH=$srcdir/t/infodir; export INFOPATH
@@ -127,7 +127,9 @@ init_interactive_test ()
   test $initialization_done -eq 1 && return 0
   initialization_done=1
 
-  # Skip test if pseudotty wasn't built
+  # Skip test if pseudotty wasn't built.
+  # Note that this should not happen as tests requiring pseudotty
+  # are only run in the same situation where pseudotty is built.
   test -x pseudotty || exit 77
   
   # Avoid ginfo complaining that terminal is too dumb

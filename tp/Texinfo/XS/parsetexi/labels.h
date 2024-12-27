@@ -1,7 +1,7 @@
 /* labels.h - declarations for labels.c */
 #ifndef LABELS_H
 #define LABELS_H
-/* Copyright 2010-2023 Free Software Foundation, Inc.
+/* Copyright 2010-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,22 +16,20 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
+#include <stddef.h>
+
 #include "tree_types.h"
 
-extern ELEMENT **target_elements_list;
-extern size_t labels_number;
-void reset_labels (void);
+/* declaration of extern data is in parser.h to avoid exposure
+   to code including labels.h */
+
 void check_register_target_element_label (ELEMENT *label_element,
                                           ELEMENT *target_element);
+void set_labels_identifiers_target (const LABEL_LIST *labels,
+                                    LABEL_LIST *result);
 
 
-
-NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node, int modify_node);
-
-
-extern ELEMENT **internal_xref_list;
-extern size_t internal_xref_number;
 
 void remember_internal_xref (ELEMENT *element);
-void reset_internal_xrefs (void);
+
 #endif

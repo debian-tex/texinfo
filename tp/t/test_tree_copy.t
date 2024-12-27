@@ -5,16 +5,24 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 5; }
+BEGIN { plan tests => 7; }
 #BEGIN { plan tests => 1; }
 
-use Texinfo::Parser;
-use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use File::Spec;
 #use Text::Diff;
 
+use Texinfo::Parser;
+use Texinfo::Convert::Texinfo;
+use Texinfo::ManipulateTree;
+use Texinfo::Structuring;
+
 my $srcdir = $ENV{'srcdir'};
+# fallback based on Texinfo::ModulePath $top_srcdir
+if (!defined($srcdir) and defined($Texinfo::ModulePath::top_srcdir)) {
+  $srcdir = File::Spec->catdir($Texinfo::ModulePath::top_srcdir, 'tp');
+}
+
 if (defined($srcdir)) {
   $srcdir =~ s/\/*$/\//;
 } else {
@@ -22,8 +30,47 @@ if (defined($srcdir)) {
 }
 
 my $debug = 0;
+#my $debug = 1;
+
+my $with_XS = ((not defined($ENV{TEXINFO_XS})
+                or $ENV{TEXINFO_XS} ne 'omit')
+               and (!defined $ENV{TEXINFO_XS_PARSER}
+                    or $ENV{TEXINFO_XS_PARSER} eq '1'));
 
 ok(1, "modules loading");
+
+# FIXME not tested in XS
+# a tree with a reference seen after one within the extra tree.
+# Not sure that it exists in real trees, so check it here
+my $tref = {'type' => 'document_root',
+            'contents' => [{'text' => 'x'},
+                           {'type' => 'paragraph',
+                            'extra' => {'thing' =>
+                              {'type' => 'container',
+                               'contents' => [{'type' => 'e1',
+                                              'extra' => {}}
+                                             ]
+                              }
+                             }
+                            },
+                            {'text' => "\n"},
+                           ]
+            };
+
+$tref->{'contents'}->[1]->{'extra'}->{'thing'}->{'contents'}->[0]->{'extra'}->{'ref'}
+  = $tref->{'contents'}->[0];
+
+my $tref_texi = Texinfo::Convert::Texinfo::convert_to_texinfo($tref);
+
+my $tref_copy = Texinfo::ManipulateTree::copy_treeNonXS($tref);
+
+my $tref_copy_texi = Texinfo::Convert::Texinfo::convert_to_texinfo($tref_copy);
+
+# Does not test much as the reference in extra does not appear in the
+# output.  Not a big deal, what is important it so see if there are error
+# messages.
+
+is ($tref_texi, $tref_copy_texi, "ref within extra tree");
 
 my $text = '@setfilename some@@file.ext
 
@@ -92,9 +139,10 @@ T
 
 ';
 
-my $tree = Texinfo::Parser::parse_texi_piece(undef, $text);
-my $reference_associations = {};
-my $copy = Texinfo::Common::copy_tree($tree, undef);
+my $test_parser = Texinfo::Parser::parser();
+my $document = Texinfo::Parser::parse_texi_piece($test_parser, $text);
+my $tree = $document->tree();
+my $copy = Texinfo::ManipulateTree::copy_tree($tree);
 
 my $texi_tree = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
 
@@ -102,6 +150,19 @@ is ($text, $texi_tree, "tree to texi and original match");
 
 my $texi_copy = Texinfo::Convert::Texinfo::convert_to_texinfo($copy);
 is ($texi_copy, $texi_tree, "tree and copy to texi match");
+
+# set sectioning structure and redo a copy
+Texinfo::Structuring::sectioning_structure($document);
+# rebuild the tree
+$tree = $document->tree();
+
+my $copy_with_sec = Texinfo::ManipulateTree::copy_tree($tree);
+
+my $texi_tree_with_sec = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
+my $texi_copy_with_sec
+  = Texinfo::Convert::Texinfo::convert_to_texinfo($copy_with_sec); 
+is ($texi_tree_with_sec, $texi_copy_with_sec,
+    "tree after sectioning and copy to texi match");
 
 my $updir = File::Spec->updir();
 my $manual_file = File::Spec->catfile($srcdir, $updir, 'doc', 'texinfo.texi');
@@ -119,14 +180,14 @@ foreach my $file_include (['Texinfo', $manual_file, $manual_include_dir],
   print STDERR "$label\n" if ($debug);
   my $test_parser
    = Texinfo::Parser::parser({'INCLUDE_DIRECTORIES' => [$test_include_dir]});
-  my $texinfo_test_tree = $test_parser->Texinfo::Parser::parse_texi_file($test_file);
-  my $test_registrar = $test_parser->registered_errors();
-  my ($test_parser_errors, $test_parser_error_count) = $test_registrar->errors();
+  my $document = $test_parser->Texinfo::Parser::parse_texi_file($test_file);
+  my $texinfo_test_tree = $document->tree();
+  my ($test_parser_errors, $test_parser_error_count) = $document->parser_errors();
   foreach my $error_message (@$test_parser_errors) {
     warn "$label: ".$error_message->{'error_line'}
       if ($debug);
   }
-  my $test_tree_copy = Texinfo::Common::copy_tree($texinfo_test_tree, undef);
+  my $test_tree_copy = Texinfo::ManipulateTree::copy_tree($texinfo_test_tree);
 
   my $test_texi
      = Texinfo::Convert::Texinfo::convert_to_texinfo($texinfo_test_tree);

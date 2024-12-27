@@ -62,9 +62,7 @@ $result_trees{'paragraph_no_paragraph'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -73,9 +71,7 @@ $result_trees{'paragraph_no_paragraph'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -98,11 +94,7 @@ $result_trees{'paragraph_no_paragraph'} = {
                         'text' => '@anchor{aa}'
                       }
                     ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -114,7 +106,8 @@ $result_trees{'paragraph_no_paragraph'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -126,11 +119,15 @@ $result_trees{'paragraph_no_paragraph'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   }
                 ],
                 'info' => {
-                  'command_name' => 'mycommand'
+                  'command_name' => 'mycommand',
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'type' => 'linemacro_call'
               },
@@ -149,15 +146,15 @@ $result_trees{'paragraph_no_paragraph'} = {
                   'text' => 'aa'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'aa'
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 5,
             'macro' => 'mycommand'
           }
@@ -175,12 +172,11 @@ $result_trees{'paragraph_no_paragraph'} = {
                       'text' => 'more'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'mycommand'
               },
@@ -220,11 +216,7 @@ $result_trees{'paragraph_no_paragraph'} = {
                             'type' => 'bracketed_linemacro_arg'
                           }
                         ],
-                        'info' => {
-                          'spaces_before_argument' => {
-                            'text' => ' '
-                          }
-                        }
+                        'type' => 'line_arg'
                       },
                       {
                         'contents' => [
@@ -236,7 +228,8 @@ $result_trees{'paragraph_no_paragraph'} = {
                           'spaces_before_argument' => {
                             'text' => ' '
                           }
-                        }
+                        },
+                        'type' => 'line_arg'
                       },
                       {
                         'contents' => [
@@ -249,11 +242,15 @@ $result_trees{'paragraph_no_paragraph'} = {
                           'spaces_before_argument' => {
                             'text' => ' '
                           }
-                        }
+                        },
+                        'type' => 'line_arg'
                       }
                     ],
                     'info' => {
-                      'command_name' => 'mycommand'
+                      'command_name' => 'mycommand',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
                     },
                     'type' => 'linemacro_call'
                   },
@@ -280,12 +277,11 @@ $result_trees{'paragraph_no_paragraph'} = {
                       'text' => ' call'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'var',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 9,
                 'macro' => 'mycommand'
               },

@@ -19,7 +19,6 @@ $result_trees{'only_special_spaces_node'} = {
           "type" => "preamble_before_beginning"
         },
         {
-          "contents" => [],
           "type" => "preamble_before_content"
         }
       ],
@@ -43,6 +42,7 @@ $result_trees{'only_special_spaces_node'} = {
       ],
       "cmdname" => "node",
       "extra" => {
+        "is_target" => 1,
         "normalized" => "Top"
       },
       "info" => {
@@ -52,8 +52,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 2,
-        "macro" => ""
+        "line_nr" => 2
       }
     },
     {
@@ -87,8 +86,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 3,
-        "macro" => ""
+        "line_nr" => 3
       }
     },
     {
@@ -109,6 +107,7 @@ $result_trees{'only_special_spaces_node'} = {
       ],
       "cmdname" => "node",
       "extra" => {
+        "is_target" => 1,
         "normalized" => "_2002_2003_2002"
       },
       "info" => {
@@ -118,8 +117,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 5,
-        "macro" => ""
+        "line_nr" => 5
       }
     },
     {
@@ -145,7 +143,9 @@ $result_trees{'only_special_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {},
+      "extra" => {
+        "section_number" => 1
+      },
       "info" => {
         "spaces_before_argument" => {
           "text" => " "
@@ -153,8 +153,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 6,
-        "macro" => ""
+        "line_nr" => 6
       }
     },
     {
@@ -172,8 +171,7 @@ $result_trees{'only_special_spaces_node'} = {
       "extra" => {},
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 8,
-        "macro" => ""
+        "line_nr" => 8
       }
     },
     {
@@ -199,7 +197,9 @@ $result_trees{'only_special_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {},
+      "extra" => {
+        "section_number" => 2
+      },
       "info" => {
         "spaces_before_argument" => {
           "text" => " "
@@ -207,8 +207,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 9,
-        "macro" => ""
+        "line_nr" => 9
       }
     },
     {
@@ -226,8 +225,7 @@ $result_trees{'only_special_spaces_node'} = {
       "extra" => {},
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 11,
-        "macro" => ""
+        "line_nr" => 11
       }
     },
     {
@@ -253,7 +251,9 @@ $result_trees{'only_special_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {},
+      "extra" => {
+        "section_number" => 3
+      },
       "info" => {
         "spaces_before_argument" => {
           "text" => " "
@@ -261,8 +261,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 12,
-        "macro" => ""
+        "line_nr" => 12
       }
     },
     {
@@ -283,6 +282,7 @@ $result_trees{'only_special_spaces_node'} = {
       ],
       "cmdname" => "node",
       "extra" => {
+        "is_target" => 1,
         "normalized" => "_0085_00a0_1680"
       },
       "info" => {
@@ -292,8 +292,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 14,
-        "macro" => ""
+        "line_nr" => 14
       }
     },
     {
@@ -319,7 +318,9 @@ $result_trees{'only_special_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {},
+      "extra" => {
+        "section_number" => 4
+      },
       "info" => {
         "spaces_before_argument" => {
           "text" => " "
@@ -327,8 +328,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 15,
-        "macro" => ""
+        "line_nr" => 15
       }
     },
     {
@@ -349,6 +349,7 @@ $result_trees{'only_special_spaces_node'} = {
       ],
       "cmdname" => "node",
       "extra" => {
+        "is_target" => 1,
         "normalized" => "_180e_2003"
       },
       "info" => {
@@ -358,8 +359,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 17,
-        "macro" => ""
+        "line_nr" => 17
       }
     },
     {
@@ -385,7 +385,9 @@ $result_trees{'only_special_spaces_node'} = {
           "type" => "empty_line"
         }
       ],
-      "extra" => {},
+      "extra" => {
+        "section_number" => 5
+      },
       "info" => {
         "spaces_before_argument" => {
           "text" => " "
@@ -393,8 +395,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 18,
-        "macro" => ""
+        "line_nr" => 18
       }
     },
     {
@@ -414,13 +415,8 @@ $result_trees{'only_special_spaces_node'} = {
         }
       ],
       "cmdname" => "node",
-      "contents" => [
-        {
-          "text" => "\n",
-          "type" => "empty_line"
-        }
-      ],
       "extra" => {
+        "is_target" => 1,
         "normalized" => "_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000"
       },
       "info" => {
@@ -430,8 +426,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 20,
-        "macro" => ""
+        "line_nr" => 20
       }
     },
     {
@@ -455,75 +450,42 @@ $result_trees{'only_special_spaces_node'} = {
         {
           "text" => "\n",
           "type" => "empty_line"
-        }
-      ],
-      "extra" => {},
-      "info" => {
-        "spaces_before_argument" => {
-          "text" => " "
-        }
-      },
-      "source_info" => {
-        "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 22,
-        "macro" => ""
-      }
-    },
-    {
-      "args" => [
+        },
         {
-          "contents" => [
+          "args" => [
             {
-              "text" => "\x{2028}\x{2029}"
+              "text" => " Perl and XS code give different width.\n",
+              "type" => "rawline_arg"
             }
           ],
-          "info" => {
-            "spaces_after_argument" => {
-              "text" => "\n"
-            }
-          },
-          "type" => "line_arg"
-        }
-      ],
-      "cmdname" => "node",
-      "extra" => {
-        "normalized" => "_2028_2029"
-      },
-      "info" => {
-        "spaces_before_argument" => {
-          "text" => " "
-        }
-      },
-      "source_info" => {
-        "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 24,
-        "macro" => ""
-      }
-    },
-    {
-      "args" => [
+          "cmdname" => "c"
+        },
         {
-          "contents" => [
+          "args" => [
             {
-              "text" => "LINE SEPARATOR|\x{2028}| PARAGRAPH SEPARATOR|\x{2029}|"
+              "text" => " \@node \x{2028}\x{2029}\n",
+              "type" => "rawline_arg"
             }
           ],
-          "info" => {
-            "spaces_after_argument" => {
-              "text" => "\n"
+          "cmdname" => "c"
+        },
+        {
+          "args" => [
+            {
+              "text" => " \@chapter LINE SEPARATOR|\x{2028}| PARAGRAPH SEPARATOR|\x{2029}|\n",
+              "type" => "rawline_arg"
             }
-          },
-          "type" => "line_arg"
-        }
-      ],
-      "cmdname" => "chapter",
-      "contents" => [
+          ],
+          "cmdname" => "c"
+        },
         {
           "text" => "\n",
           "type" => "empty_line"
         }
       ],
-      "extra" => {},
+      "extra" => {
+        "section_number" => 6
+      },
       "info" => {
         "spaces_before_argument" => {
           "text" => " "
@@ -531,8 +493,7 @@ $result_trees{'only_special_spaces_node'} = {
       },
       "source_info" => {
         "file_name" => "only_special_spaces_node.texi",
-        "line_nr" => 25,
-        "macro" => ""
+        "line_nr" => 21
       }
     },
     {
@@ -568,11 +529,11 @@ $result_texis{'only_special_spaces_node'} = '
 @chapter MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |
 
 @node          　
-
 @chapter THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|
 
-@node   
-@chapter LINE SEPARATOR| | PARAGRAPH SEPARATOR| |
+@c Perl and XS code give different width.
+@c @node   
+@c @chapter LINE SEPARATOR| | PARAGRAPH SEPARATOR| |
 
 @bye
 ';
@@ -596,17 +557,14 @@ $result_texts{'only_special_spaces_node'} = 'top
 5 MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |
 *****************************************
 
-
 6 THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|
 *************************************************************************************************************************************************************************************************************
 
-7 LINE SEPARATOR| | PARAGRAPH SEPARATOR| |
-****************************************
 
 ';
 
 $result_sectioning{'only_special_spaces_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -615,11 +573,8 @@ $result_sectioning{'only_special_spaces_node'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -628,16 +583,17 @@ $result_sectioning{'only_special_spaces_node'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => '_2002_2003_2002'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -646,15 +602,17 @@ $result_sectioning{'only_special_spaces_node'} = {
                 'associated_node' => {
                   'cmdname' => 'node',
                   'extra' => {}
-                }
-              },
-              'structure' => {
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 2,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '2',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -663,15 +621,17 @@ $result_sectioning{'only_special_spaces_node'} = {
                 'associated_node' => {
                   'cmdname' => 'node',
                   'extra' => {}
-                }
-              },
-              'structure' => {
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 3,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '3',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -681,17 +641,18 @@ $result_sectioning{'only_special_spaces_node'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => '_0085_00a0_1680'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 4,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '4',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -701,17 +662,18 @@ $result_sectioning{'only_special_spaces_node'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => '_180e_2003'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 5,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '5',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -721,129 +683,195 @@ $result_sectioning{'only_special_spaces_node'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => '_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 6,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
-              }
-            },
-            {
-              'cmdname' => 'chapter',
-              'extra' => {
-                'associated_node' => {
-                  'cmdname' => 'node',
-                  'extra' => {
-                    'normalized' => '_2028_2029'
-                  },
-                  'structure' => {}
+                'section_number' => '6',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
                 }
-              },
-              'structure' => {
-                'section_level' => 1,
-                'section_number' => 7,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2]{'structure'}{'section_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[3]{'structure'}{'section_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[3]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[3]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[3]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[4]{'structure'}{'section_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[3];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[4]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[4]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[3];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[4]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[5]{'structure'}{'section_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[4];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[5]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[5]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[4];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[5]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[6]{'structure'}{'section_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[5];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[6]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[6]{'structure'}{'toplevel_prev'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[5];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[6]{'structure'}{'toplevel_up'} = $result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'only_special_spaces_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'only_special_spaces_node'};
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[3]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[3]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[3]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[3]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[4]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[3];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[4]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[4]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[3];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[4]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[5]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[4];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[5]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[5]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[4];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[5]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'only_special_spaces_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'only_special_spaces_node'};
 
-$result_nodes{'only_special_spaces_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => '_2002_2003_2002'
+$result_nodes{'only_special_spaces_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_next' => {
+      'node_directions' => {
+        'next' => {
           'cmdname' => 'node',
           'extra' => {
             'associated_section' => {
               'cmdname' => 'chapter',
-              'extra' => {},
-              'structure' => {
-                'section_number' => 2
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'associated_section' => {
+                    'cmdname' => 'chapter',
+                    'extra' => {
+                      'section_number' => '2'
+                    }
+                  }
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => '_2002_2003_2002'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {},
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {
+          'section_number' => '4'
+        }
+      },
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '5'
+              }
+            },
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'associated_section' => {
+                    'cmdname' => 'chapter',
+                    'extra' => {
+                      'section_number' => '6'
+                    }
+                  },
+                  'node_directions' => {
+                    'prev' => {},
+                    'up' => {}
+                  },
+                  'normalized' => '_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000'
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => '_180e_2003'
+          }
+        },
+        'prev' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '3'
               }
             }
           }
         },
-        'node_prev' => {},
-        'node_up' => {}
-      }
+        'up' => {}
+      },
+      'normalized' => '_0085_00a0_1680'
+    }
+  },
+  {},
+  {}
+];
+$result_nodes{'only_special_spaces_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'only_special_spaces_node'}[0];
+$result_nodes{'only_special_spaces_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'only_special_spaces_node'}[0];
+$result_nodes{'only_special_spaces_node'}[1] = $result_nodes{'only_special_spaces_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'only_special_spaces_node'}[0];
+$result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'only_special_spaces_node'}[2];
+$result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'only_special_spaces_node'}[0];
+$result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'up'} = $result_nodes{'only_special_spaces_node'}[0];
+$result_nodes{'only_special_spaces_node'}[3] = $result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'only_special_spaces_node'}[4] = $result_nodes{'only_special_spaces_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'only_special_spaces_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => '_2002_2003_2002'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => '_0085_00a0_1680'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => '_180e_2003'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => '_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000'
     }
   }
-};
-$result_nodes{'only_special_spaces_node'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'only_special_spaces_node'};
-$result_nodes{'only_special_spaces_node'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'only_special_spaces_node'};
-
-$result_menus{'only_special_spaces_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'only_special_spaces_node'} = [
   {
@@ -851,7 +879,6 @@ $result_errors{'only_special_spaces_node'} = [
 ',
     'file_name' => 'only_special_spaces_node.texi',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'empty argument in @node',
     'type' => 'error'
   },
@@ -860,7 +887,6 @@ $result_errors{'only_special_spaces_node'} = [
 ',
     'file_name' => 'only_special_spaces_node.texi',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'empty argument in @node',
     'type' => 'error'
   }
@@ -885,7 +911,6 @@ top
 *   ::
 * ᠎ ::
 *          　::
-*   ::
 
 
 File: ,  Node:    ,  Next: ,  Prev: Top,  Up: Top
@@ -893,11 +918,11 @@ File: ,  Node:    ,  Next: ,  Prev: Top,  Up: Top
 1 EN QUAD| | EM QUAD| | EN SPACE| |
 ***********************************
 
-2 CHARACTER TABULATION|	| FORM FEED|| LINE TABULATION||
-******************************************************
+2 CHARACTER TABULATION| | FORM FEED| | LINE TABULATION| |
+*********************************************************
 
-3 CARRIAGE RETURN|'."\r".'|
-*******************
+3 CARRIAGE RETURN| |
+********************
 
 
 File: ,  Node:   ,  Next: ᠎ ,  Prev: ,  Up: Top
@@ -912,26 +937,18 @@ File: ,  Node: ᠎ ,  Next:          　,  Prev:   ,  U
 *****************************************
 
 
-File: ,  Node:          　,  Next:   ,  Prev: ᠎ ,  Up: Top
+File: ,  Node:          　,  Prev: ᠎ ,  Up: Top
 
 6 THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|
 *************************************************************************************************************************************************************************************************************
 
 
-File: ,  Node:   ,  Prev:          　,  Up: Top
-
-7 LINE SEPARATOR| | PARAGRAPH SEPARATOR| |
-****************************************
-
-
-
 Tag Table:
 Node: Top56
-Node:    210
-Node:   504
-Node: ᠎ 686
-Node:          　866
-Node:   1387
+Node:    159
+Node:   445
+Node: ᠎ 615
+Node:          　763
 
 End Tag Table
 
@@ -944,7 +961,7 @@ End:
 
 $result_converted{'html'}->{'only_special_spaces_node'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -981,7 +998,6 @@ Next: <a href="#g_t_2002_2003_2002" accesskey="n" rel="next">EN QUAD| | EM QUA
 <li><a href="#g_t_0085_00a0_1680" accesskey="4">NEXT LINE (NEL)|| NO-BREAK SPACE| | OGHAM SPACE MARK| |</a></li>
 <li><a href="#g_t_180e_2003" accesskey="5">MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |</a></li>
 <li><a href="#g_t_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000" accesskey="6">THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|</a></li>
-<li><a href="#g_t_2028_2029" accesskey="7">LINE SEPARATOR| | PARAGRAPH SEPARATOR| |</a></li>
 </ul>
 <hr>
 <div class="chapter-level-extent" id="g_t_2002_2003_2002">
@@ -994,15 +1010,11 @@ Next: CHARACTER TABULATION|	| FORM FEED|&#12;| LINE TABULATION||, Previous: <a 
 <hr>
 </div>
 <div class="chapter-level-extent">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="CHARACTER-TABULATION_007c-_007c-FORM-FEED_007c-_007c-LINE-TABULATION_007c-_007c"><span>2 CHARACTER TABULATION|	| FORM FEED|&#12;| LINE TABULATION||<a class="copiable-link" href="#CHARACTER-TABULATION_007c-_007c-FORM-FEED_007c-_007c-LINE-TABULATION_007c-_007c"> &para;</a></span></h2>
 
 <hr>
 </div>
 <div class="chapter-level-extent">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="CARRIAGE-RETURN_007c-_007c"><span>3 CARRIAGE RETURN|'."\r".'|<a class="copiable-link" href="#CARRIAGE-RETURN_007c-_007c"> &para;</a></span></h2>
 
 <hr>
@@ -1028,19 +1040,10 @@ Next: <a href="#g_t_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000" accesskey
 <div class="chapter-level-extent" id="g_t_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000">
 <div class="nav-panel">
 <p>
-Next: <a href="#g_t_2028_2029" accesskey="n" rel="next">LINE SEPARATOR| | PARAGRAPH SEPARATOR| |</a>, Previous: <a href="#g_t_180e_2003" accesskey="p" rel="prev">MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
+Previous: <a href="#g_t_180e_2003" accesskey="p" rel="prev">MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
-
 <h2 class="chapter" id="THREE_002dPER_002dEM-SPACE_007c-_007c-FOUR_002dPER_002dEM-SPACE_007c-_007c-SIX_002dPER_002dEM-SPACE_007c-_007c-FIGURE-SPACE_007c-_007c-PUNCTUATION-SPACE_007c-_007c-THIN-SPACE_007c-_007c-HAIR-SPACE_007c-_007c-NARROW-NO_002dBREAK-SPACE_007c-_007c-MEDIUM-MATHEMATICAL-SPACE_007c_005b_003f_005d_007c-IDEOGRAPHIC-SPACE_007c-_007c"><span>6 THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|<a class="copiable-link" href="#THREE_002dPER_002dEM-SPACE_007c-_007c-FOUR_002dPER_002dEM-SPACE_007c-_007c-SIX_002dPER_002dEM-SPACE_007c-_007c-FIGURE-SPACE_007c-_007c-PUNCTUATION-SPACE_007c-_007c-THIN-SPACE_007c-_007c-HAIR-SPACE_007c-_007c-NARROW-NO_002dBREAK-SPACE_007c-_007c-MEDIUM-MATHEMATICAL-SPACE_007c_005b_003f_005d_007c-IDEOGRAPHIC-SPACE_007c-_007c"> &para;</a></span></h2>
 
-<hr>
-</div>
-<div class="chapter-level-extent" id="g_t_2028_2029">
-<div class="nav-panel">
-<p>
-Previous: <a href="#g_t_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000" accesskey="p" rel="prev">THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
-</div>
-<h2 class="chapter" id="LINE-SEPARATOR_007c_000a_007c-PARAGRAPH-SEPARATOR_007c_000a_000a_007c"><span>7 LINE SEPARATOR| | PARAGRAPH SEPARATOR| |<a class="copiable-link" href="#LINE-SEPARATOR_007c_000a_007c-PARAGRAPH-SEPARATOR_007c_000a_000a_007c"> &para;</a></span></h2>
 
 </div>
 </div>
@@ -1077,13 +1080,12 @@ $result_converted{'xml'}->{'only_special_spaces_node'} = '<preamblebeforebeginni
 <chapter spaces=" "><sectiontitle>MONGOLIAN VOWEL SEPARATOR|᠎| EM SPACE| |</sectiontitle>
 
 </chapter>
-<node name="_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000" spaces=" "><nodename>         　</nodename><nodenext automatic="on">  </nodenext><nodeprev automatic="on">᠎ </nodeprev><nodeup automatic="on">Top</nodeup></node>
-
+<node name="_2004_2005_2006_2007_2008_2009_200a_202f_205f_3000" spaces=" "><nodename>         　</nodename><nodeprev automatic="on">᠎ </nodeprev><nodeup automatic="on">Top</nodeup></node>
 <chapter spaces=" "><sectiontitle>THREE-PER-EM SPACE| | FOUR-PER-EM SPACE| | SIX-PER-EM SPACE| | FIGURE SPACE| | PUNCTUATION SPACE| | THIN SPACE| | HAIR SPACE| | NARROW NO-BREAK SPACE| | MEDIUM MATHEMATICAL SPACE| | IDEOGRAPHIC SPACE|　|</sectiontitle>
 
-</chapter>
-<node name="_2028_2029" spaces=" "><nodename>  </nodename><nodeprev automatic="on">         　</nodeprev><nodeup automatic="on">Top</nodeup></node>
-<chapter spaces=" "><sectiontitle>LINE SEPARATOR| | PARAGRAPH SEPARATOR| |</sectiontitle>
+<!-- c Perl and XS code give different width. -->
+<!-- c @node    -->
+<!-- c @chapter LINE SEPARATOR| | PARAGRAPH SEPARATOR| | -->
 
 </chapter>
 <bye></bye>

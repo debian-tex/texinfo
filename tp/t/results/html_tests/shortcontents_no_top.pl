@@ -35,15 +35,16 @@ $result_trees{'shortcontents_no_top'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -71,15 +72,16 @@ $result_trees{'shortcontents_no_top'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -115,22 +117,22 @@ $result_trees{'shortcontents_no_top'} = {
             }
           ],
           'cmdname' => 'shortcontents',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         }
       ],
+      'extra' => {
+        'section_number' => '2.1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -159,45 +161,51 @@ $result_texts{'shortcontents_no_top'} = '1 chap
 ';
 
 $result_sectioning{'shortcontents_no_top'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'chapter',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {},
           'section_level' => 1,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
         'cmdname' => 'chapter',
-        'structure' => {
+        'extra' => {
           'section_childs' => [
             {
               'cmdname' => 'section',
-              'structure' => {
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 2,
-                'section_number' => '2.1',
-                'section_up' => {}
+                'section_number' => '2.1'
               }
             }
           ],
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 1,
-          'section_number' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '2',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'shortcontents_no_top'};
-$result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[1];
-$result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'shortcontents_no_top'};
-$result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'shortcontents_no_top'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'shortcontents_no_top'};
+$result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[1]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[1];
+$result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'shortcontents_no_top'}{'extra'}{'section_childs'}[0];
 
 $result_errors{'shortcontents_no_top'} = [];
 
@@ -208,7 +216,7 @@ $result_floats{'shortcontents_no_top'} = {};
 
 $result_converted{'html'}->{'shortcontents_no_top'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -244,7 +252,7 @@ ul.toc-numbered-mark {list-style: none}
 <div class="section-level-extent" id="sec">
 <h3 class="section"><span>2.1 sec<a class="copiable-link" href="#sec"> &para;</a></span></h3>
 
-<div class="element-shortcontents" id="SEC_Shortcontents">
+<div class="region-shortcontents" id="SEC_Shortcontents">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">
@@ -268,7 +276,6 @@ $result_converted_errors{'html'}->{'shortcontents_no_top'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'shortcontents_no_top.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

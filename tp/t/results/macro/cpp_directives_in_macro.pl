@@ -67,8 +67,7 @@ $result_trees{'cpp_directives_in_macro'} = {
                   },
                   'source_info' => {
                     'file_name' => 'cpp_directives_in_macro.texi',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
@@ -78,10 +77,19 @@ $result_trees{'cpp_directives_in_macro'} = {
               },
               'source_info' => {
                 'file_name' => 'cpp_directives_in_macro.texi',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            }
+          ],
+          'type' => 'preamble_before_content'
+        },
+        {
+          'contents' => [
             {
               'source_marks' => [
                 {
@@ -97,33 +105,24 @@ $result_trees{'cpp_directives_in_macro'} = {
 '
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => '
+'
+                          }
+                        },
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
-                      'command_name' => 'simplemacro',
-                      'spaces_before_argument' => {
-                        'text' => '
-'
-                      }
+                      'command_name' => 'simplemacro'
                     },
                     'type' => 'macro_call'
                   },
-                  'position' => 1,
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'start'
                 }
               ],
-              'text' => '
-',
-              'type' => 'empty_line'
-            }
-          ],
-          'type' => 'preamble_before_content'
-        },
-        {
-          'contents' => [
-            {
               'text' => '#line 100 "in_arg_file"
 '
             }
@@ -215,7 +214,6 @@ $result_errors{'cpp_directives_in_macro'} = [
 ',
     'file_name' => 'cpp_directives_in_macro.texi',
     'line_nr' => 12,
-    'macro' => '',
     'text' => 'unknown command `unknownout\'',
     'type' => 'error'
   }

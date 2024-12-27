@@ -1,6 +1,6 @@
 /* infopath.c -- INFOPATH handling.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ infopath_init ()
 
 /* Return value to be freed by caller. */
 char *
-infopath_string ()
+infopath_string (void)
 {
   struct text_buffer path;
   int dir_idx;
@@ -158,7 +158,7 @@ infopath_add_dir (char *path)
 {
   struct stat dirinfo;
   INFO_DIR *entry;
-  int i;
+  size_t i;
 
   if (stat (path, &dirinfo) == -1)
     {

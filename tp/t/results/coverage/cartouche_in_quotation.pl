@@ -82,16 +82,12 @@ $result_trees{'cartouche_in_quotation'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
+                    'line_nr' => 5
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -130,16 +126,12 @@ $result_trees{'cartouche_in_quotation'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -179,7 +171,7 @@ $result_converted{'plaintext'}->{'cartouche_in_quotation'} = '     In quotation
 
 $result_converted{'html_text'}->{'cartouche_in_quotation'} = '<blockquote class="quotation">
 <p>In quotation
-</p><table class="cartouche" border="1"><tr><td>
+</p><table class="cartouche"><tr><td>
 <p>In cartouche in quotation
 </p></td></tr></table>
 <p>end quotation

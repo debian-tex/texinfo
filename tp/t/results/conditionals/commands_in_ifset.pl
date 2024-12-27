@@ -79,9 +79,7 @@ $result_trees{'commands_in_ifset'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 7,
-                      'macro' => ''
+                      'line_nr' => 7
                     }
                   }
                 ],
@@ -91,9 +89,7 @@ $result_trees{'commands_in_ifset'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 2,
-                  'macro' => ''
+                  'line_nr' => 2
                 }
               },
               'position' => 1,
@@ -179,9 +175,7 @@ $result_trees{'commands_in_ifset'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 15,
-                      'macro' => ''
+                      'line_nr' => 15
                     }
                   }
                 ],
@@ -191,9 +185,7 @@ $result_trees{'commands_in_ifset'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 9,
-                  'macro' => ''
+                  'line_nr' => 9
                 }
               },
               'position' => 1,

@@ -29,9 +29,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               },
               'type' => 'def_line'
             },
@@ -62,16 +60,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -99,9 +93,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'defvr'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               },
               'type' => 'def_line'
             },
@@ -132,16 +124,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -169,9 +157,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'deftypefn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               },
               'type' => 'def_line'
             },
@@ -202,16 +188,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -239,9 +221,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'deftypeop'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               },
               'type' => 'def_line'
             },
@@ -272,16 +252,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         },
         {
@@ -309,9 +285,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'deftypevr'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               },
               'type' => 'def_line'
             },
@@ -342,16 +316,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         },
         {
@@ -379,9 +349,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'defcv'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               },
               'type' => 'def_line'
             },
@@ -412,16 +380,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 16,
-            'macro' => ''
+            'line_nr' => 16
           }
         },
         {
@@ -449,9 +413,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'deftypecv'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 19,
-                'macro' => ''
+                'line_nr' => 19
               },
               'type' => 'def_line'
             },
@@ -482,16 +444,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           }
         },
         {
@@ -519,9 +477,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'defop'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               },
               'type' => 'def_line'
             },
@@ -552,16 +508,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 23,
-                'macro' => ''
+                'line_nr' => 23
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 22,
-            'macro' => ''
+            'line_nr' => 22
           }
         },
         {
@@ -589,9 +541,7 @@ $result_trees{'all_empty_def'} = {
                 'original_def_cmdname' => 'deftp'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 25,
-                'macro' => ''
+                'line_nr' => 25
               },
               'type' => 'def_line'
             },
@@ -622,16 +572,12 @@ $result_trees{'all_empty_def'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 26,
-                'macro' => ''
+                'line_nr' => 26
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 25,
-            'macro' => ''
+            'line_nr' => 25
           }
         }
       ],
@@ -684,81 +630,63 @@ $result_errors{'all_empty_def'} = [
   {
     'error_line' => 'warning: missing category for @deffn
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'missing category for @deffn',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @defvr
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'missing category for @defvr',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @deftypefn
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'missing category for @deftypefn',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @deftypeop
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => 'missing category for @deftypeop',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @deftypevr
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'missing category for @deftypevr',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @defcv
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => 'missing category for @defcv',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @deftypecv
 ',
-    'file_name' => '',
     'line_nr' => 19,
-    'macro' => '',
     'text' => 'missing category for @deftypecv',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @defop
 ',
-    'file_name' => '',
     'line_nr' => 22,
-    'macro' => '',
     'text' => 'missing category for @defop',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: missing category for @deftp
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => 'missing category for @deftp',
     'type' => 'warning'
   }
@@ -770,7 +698,6 @@ $result_floats{'all_empty_def'} = {};
 
 
 $result_converted{'info'}->{'all_empty_def'} = 'This is , produced from .
-
 
 
 Tag Table:
@@ -796,7 +723,7 @@ $result_converted_errors{'info'}->{'all_empty_def'} = [
 
 $result_converted{'html'}->{'all_empty_def'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -812,40 +739,40 @@ $result_converted{'html'}->{'all_empty_def'} = '<!DOCTYPE html>
 </head>
 
 <body lang="en">
-<dl class="first-deffn">
-<dt class="deffn"></dt>
+<dl class="first-deffn def-block">
+<dt class="deffn def-line"></dt>
 </dl>
 
-<dl class="first-defvr">
-<dt class="defvr"></dt>
+<dl class="first-defvr def-block">
+<dt class="defvr def-line"></dt>
 </dl>
 
-<dl class="first-deftypefn">
-<dt class="deftypefn"></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line"></dt>
 </dl>
 
-<dl class="first-deftypeop">
-<dt class="deftypeop"></dt>
+<dl class="first-deftypeop def-block">
+<dt class="deftypeop def-line"></dt>
 </dl>
 
-<dl class="first-deftypevr">
-<dt class="deftypevr"></dt>
+<dl class="first-deftypevr def-block">
+<dt class="deftypevr def-line"></dt>
 </dl>
 
-<dl class="first-defcv">
-<dt class="defcv"></dt>
+<dl class="first-defcv def-block">
+<dt class="defcv def-line"></dt>
 </dl>
 
-<dl class="first-deftypecv">
-<dt class="deftypecv"></dt>
+<dl class="first-deftypecv def-block">
+<dt class="deftypecv def-line"></dt>
 </dl>
 
-<dl class="first-defop">
-<dt class="defop"></dt>
+<dl class="first-defop def-block">
+<dt class="defop def-line"></dt>
 </dl>
 
-<dl class="first-deftp">
-<dt class="deftp"></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line"></dt>
 </dl>
 
 

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY tex "TeX">
+  <!ENTITY latex "LaTeX">
+]>
+<book id="conversion_with_undef_customization.xml" lang="en">
+<chapter label="1" id="chap_00ea">
+<title>Chap&#234;</title>
+
+<para>Text<footnote><para>Go <literal>s</literal></para></footnote>
+</para>
+<indexterm role="cp"><primary>entry</primary></indexterm>
+
+<sect1 label="1.1" id="sec">
+<title>Section</title>
+
+<index role="cp"></index>
+
+<synopsis><indexterm role="fn"><primary>name</primary></indexterm><phrase role="category"><emphasis role="bold">category</emphasis>:</phrase> <returnvalue>type</returnvalue> <function>name</function> <type>something</type> ( <type>aa</type> )</synopsis>
+<blockquote><para>A def.
+</para></blockquote></sect1>
+</chapter>
+</book>

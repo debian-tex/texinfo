@@ -1,0 +1,21 @@
+\input texinfo
+@setfilename empty_head2.info
+
+@settitle empty head2
+
+@node Top
+@top empty head2
+
+@node empty head2
+@chapter empty head2
+
+@node  1
+@section 
+
+@node  2
+@section 
+
+@node @strong{}
+@section @strong{}
+
+@bye

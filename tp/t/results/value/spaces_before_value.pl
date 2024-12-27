@@ -27,28 +27,6 @@ $result_trees{'spaces_before_value'} = {
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'text' => 'var'
-                  }
-                ],
-                'cmdname' => 'value',
-                'info' => {
-                  'spaces_after_cmd_before_arg' => {
-                    'text' => '  '
-                  }
-                }
-              },
-              'line' => 'val',
-              'position' => 1,
-              'sourcemark_type' => 'value_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -57,6 +35,30 @@ $result_trees{'spaces_before_value'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'var'
+                          }
+                        ],
+                        'type' => 'brace_container'
+                      }
+                    ],
+                    'cmdname' => 'value',
+                    'info' => {
+                      'spaces_after_cmd_before_arg' => {
+                        'text' => '  '
+                      }
+                    }
+                  },
+                  'line' => 'val',
+                  'sourcemark_type' => 'value_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 1,
                   'position' => 3,

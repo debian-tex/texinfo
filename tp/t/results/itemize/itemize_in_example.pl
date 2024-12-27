@@ -30,11 +30,8 @@ $result_trees{'itemize_in_example'} = {
                     {
                       'cmdname' => 'bullet',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
-                      },
-                      'type' => 'command_as_argument'
+                        'line_nr' => 2
+                      }
                     }
                   ],
                   'info' => {
@@ -78,9 +75,7 @@ $result_trees{'itemize_in_example'} = {
                     'item_number' => 1
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 },
                 {
@@ -110,9 +105,7 @@ $result_trees{'itemize_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
+                    'line_nr' => 6
                   }
                 }
               ],
@@ -125,9 +118,7 @@ $result_trees{'itemize_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -147,11 +138,8 @@ $result_trees{'itemize_in_example'} = {
                     {
                       'cmdname' => 'asis',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 8,
-                        'macro' => ''
-                      },
-                      'type' => 'command_as_argument'
+                        'line_nr' => 8
+                      }
                     }
                   ],
                   'info' => {
@@ -186,9 +174,7 @@ $result_trees{'itemize_in_example'} = {
                     'item_number' => 1
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 },
                 {
@@ -218,9 +204,7 @@ $result_trees{'itemize_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 }
               ],
@@ -233,9 +217,7 @@ $result_trees{'itemize_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -288,9 +270,7 @@ $result_trees{'itemize_in_example'} = {
                     'item_number' => 1
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 13,
-                    'macro' => ''
+                    'line_nr' => 13
                   }
                 },
                 {
@@ -320,9 +300,7 @@ $result_trees{'itemize_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 14,
-                    'macro' => ''
+                    'line_nr' => 14
                   }
                 }
               ],
@@ -332,9 +310,7 @@ $result_trees{'itemize_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -387,9 +363,7 @@ $result_trees{'itemize_in_example'} = {
                     'item_number' => 1
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -419,9 +393,7 @@ $result_trees{'itemize_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 18,
-                    'macro' => ''
+                    'line_nr' => 18
                   }
                 }
               ],
@@ -431,9 +403,7 @@ $result_trees{'itemize_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -453,14 +423,12 @@ $result_trees{'itemize_in_example'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'bullet',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 20,
-                        'macro' => ''
+                        'line_nr' => 20
                       }
                     },
                     {
@@ -499,9 +467,7 @@ $result_trees{'itemize_in_example'} = {
                     'item_number' => 1
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 21,
-                    'macro' => ''
+                    'line_nr' => 21
                   }
                 },
                 {
@@ -531,9 +497,7 @@ $result_trees{'itemize_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 22,
-                    'macro' => ''
+                    'line_nr' => 22
                   }
                 }
               ],
@@ -543,9 +507,7 @@ $result_trees{'itemize_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             },
             {
@@ -575,16 +537,12 @@ $result_trees{'itemize_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 23,
-                'macro' => ''
+                'line_nr' => 23
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -635,7 +593,15 @@ with m--n
 in an itemize line
 ';
 
-$result_errors{'itemize_in_example'} = [];
+$result_errors{'itemize_in_example'} = [
+  {
+    'error_line' => 'warning: @asis expected braces
+',
+    'line_nr' => 8,
+    'text' => '@asis expected braces',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'itemize_in_example'} = {};

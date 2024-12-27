@@ -59,16 +59,12 @@ $result_trees{'raw_html'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -96,7 +92,7 @@ $result_floats{'raw_html'} = {};
 
 $result_converted{'html'}->{'raw_html'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -124,7 +120,6 @@ $result_converted_errors{'html'}->{'raw_html'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'raw_html.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

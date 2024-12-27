@@ -30,7 +30,7 @@ $result_trees{'empty_second_email_argument'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'info' => {
@@ -38,14 +38,12 @@ $result_trees{'empty_second_email_argument'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'email',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -78,5 +76,8 @@ $result_converted{'html_text'}->{'empty_second_email_argument'} = '<p><a class="
 
 
 $result_converted{'latex_text'}->{'empty_second_email_argument'} = '\\href{mailto:a@b.c}{\\nolinkurl{a@b.c}}';
+
+
+$result_converted{'docbook'}->{'empty_second_email_argument'} = '<para><email>a@b.c</email></para>';
 
 1;

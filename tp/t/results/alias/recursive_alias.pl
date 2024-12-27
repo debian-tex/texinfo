@@ -39,9 +39,7 @@ $result_trees{'recursive_alias'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -79,9 +77,7 @@ $result_trees{'recursive_alias'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -119,9 +115,7 @@ $result_trees{'recursive_alias'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -139,7 +133,7 @@ $result_trees{'recursive_alias'} = {
                       'text' => 'aa'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'strong',
@@ -147,9 +141,7 @@ $result_trees{'recursive_alias'} = {
                 'alias_of' => 'other'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -204,36 +196,28 @@ $result_errors{'recursive_alias'} = [
   {
     'error_line' => 'warning: recursive alias definition of strong through other ignored
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'recursive alias definition of strong through other ignored',
     'type' => 'warning'
   },
   {
     'error_line' => 'unknown command `other\'
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'unknown command `other\'',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }

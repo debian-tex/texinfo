@@ -10,7 +10,6 @@ $result_trees{'verb_delimiter_not_ascii'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -80,9 +78,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -104,6 +100,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -112,9 +109,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -147,7 +142,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -155,9 +150,7 @@ $result_trees{'verb_delimiter_not_ascii'} = {
                 'delimiter' => "\x{ea}"
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -168,16 +161,16 @@ $result_trees{'verb_delimiter_not_ascii'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -202,7 +195,7 @@ $result_texts{'verb_delimiter_not_ascii'} = 'top
 ';
 
 $result_sectioning{'verb_delimiter_not_ascii'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -211,11 +204,8 @@ $result_sectioning{'verb_delimiter_not_ascii'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -224,72 +214,81 @@ $result_sectioning{'verb_delimiter_not_ascii'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'verb_delimiter_not_ascii'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'verb_delimiter_not_ascii'};
+$result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'verb_delimiter_not_ascii'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'verb_delimiter_not_ascii'};
 
-$result_nodes{'verb_delimiter_not_ascii'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chap'
+$result_nodes{'verb_delimiter_not_ascii'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'verb_delimiter_not_ascii'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'verb_delimiter_not_ascii'}[0];
+$result_nodes{'verb_delimiter_not_ascii'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'verb_delimiter_not_ascii'}[0];
+$result_nodes{'verb_delimiter_not_ascii'}[1] = $result_nodes{'verb_delimiter_not_ascii'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'verb_delimiter_not_ascii'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'verb_delimiter_not_ascii'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'verb_delimiter_not_ascii'};
-$result_nodes{'verb_delimiter_not_ascii'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'verb_delimiter_not_ascii'};
-
-$result_menus{'verb_delimiter_not_ascii'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'verb_delimiter_not_ascii'} = [];
 
@@ -309,8 +308,6 @@ $result_converted{'plaintext'}->{'verb_delimiter_not_ascii'} = 'top
 
 
 $result_converted{'html_text'}->{'verb_delimiter_not_ascii'} = '<div class="top-level-extent" id="Top">
-<div class="nav-panel">
-</div>
 <h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
@@ -318,8 +315,6 @@ $result_converted{'html_text'}->{'verb_delimiter_not_ascii'} = '<div class="top-
 </ul>
 <hr>
 <div class="chapter-level-extent" id="chap">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 <p><code class="verb">&nbsp;some&nbsp;text&nbsp;</code>
 </p></div>

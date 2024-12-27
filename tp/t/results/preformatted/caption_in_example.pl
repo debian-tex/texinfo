@@ -82,9 +82,7 @@ $result_trees{'caption_in_example'} = {
                     'float' => {}
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
+                    'line_nr' => 6
                   }
                 },
                 {
@@ -136,16 +134,12 @@ $result_trees{'caption_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -175,9 +169,7 @@ $result_trees{'caption_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
@@ -191,9 +183,7 @@ $result_trees{'caption_in_example'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -231,9 +221,7 @@ $result_errors{'caption_in_example'} = [
   {
     'error_line' => 'warning: @caption should be right below `@float\'
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@caption should be right below `@float\'',
     'type' => 'warning'
   }
@@ -272,7 +260,7 @@ float: caption
 
 $result_converted{'html'}->{'caption_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -314,7 +302,6 @@ $result_converted_errors{'html'}->{'caption_in_example'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'caption_in_example.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

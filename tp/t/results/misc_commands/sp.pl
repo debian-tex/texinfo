@@ -51,9 +51,7 @@ $result_trees{'sp'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -85,9 +83,7 @@ $result_trees{'sp'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -127,9 +123,7 @@ $result_trees{'sp'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -152,9 +146,7 @@ $result_trees{'sp'} = {
                     ],
                     'cmdname' => 'ifnottex',
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 6,
-                      'macro' => ''
+                      'line_nr' => 6
                     }
                   },
                   'position' => 50,
@@ -192,9 +184,7 @@ $result_trees{'sp'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           },
           'source_marks' => [
             {
@@ -226,9 +216,7 @@ $result_trees{'sp'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 8,
-                  'macro' => ''
+                  'line_nr' => 8
                 }
               },
               'sourcemark_type' => 'expanded_conditional_command',
@@ -264,27 +252,21 @@ $result_errors{'sp'} = [
   {
     'error_line' => 'warning: @sp should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@sp should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @sp should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@sp should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => '@sp arg must be numeric, not `2 a number after sp\'
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@sp arg must be numeric, not `2 a number after sp\'',
     'type' => 'error'
   }

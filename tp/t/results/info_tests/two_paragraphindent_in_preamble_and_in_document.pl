@@ -75,16 +75,12 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
+                    'line_nr' => 5
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -121,9 +117,7 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -160,9 +154,7 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -209,6 +201,7 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -217,9 +210,7 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
+        'line_nr' => 13
       }
     },
     {
@@ -309,9 +300,7 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           }
         },
         {
@@ -341,9 +330,7 @@ $result_trees{'two_paragraphindent_in_preamble_and_in_document'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     },
     {
@@ -416,7 +403,7 @@ Third para after third paragraphindent.
 ';
 
 $result_sectioning{'two_paragraphindent_in_preamble_and_in_document'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -426,37 +413,37 @@ $result_sectioning{'two_paragraphindent_in_preamble_and_in_document'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'two_paragraphindent_in_preamble_and_in_document'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'two_paragraphindent_in_preamble_and_in_document'};
+$result_sectioning{'two_paragraphindent_in_preamble_and_in_document'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'two_paragraphindent_in_preamble_and_in_document'};
 
-$result_nodes{'two_paragraphindent_in_preamble_and_in_document'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'two_paragraphindent_in_preamble_and_in_document'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'two_paragraphindent_in_preamble_and_in_document'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'two_paragraphindent_in_preamble_and_in_document'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'two_paragraphindent_in_preamble_and_in_document'} = [];
 
@@ -484,7 +471,6 @@ First para.
       Second para.
 
    Third para after third paragraphindent.
-
 
 
 Tag Table:

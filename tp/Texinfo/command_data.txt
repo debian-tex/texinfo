@@ -1,4 +1,4 @@
-# Copyright 2010-2023 Free Software Foundation, Inc.
+# Copyright 2010-2024 Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -21,14 +21,18 @@
 
 # Most flags (second column) should be documented (with _commands
 # postpended) in Texinfo/Commands.pod.
-# Some documentation of the flags is in commands.h, but only for
-# flags used in the XS parser, not for the flags not used in the
-# XS parser and filtered out.
+# Some documentation of the flags is in Texinfo/XS/main/builtin_commands.h.
 
 ##############################################################
 # Internal commands
 # invalid if not accept_internalvalue set in configuration
-txiinternalvalue        internal,brace                  INTERNAL_brace
+txiinternalvalue        internal,brace                  BRACE_special
+# used in converters for easy access to flags.  Since CF_brace is
+# set, the data type should be acceptable for a brace command
+definfoenclose_command  internal,brace                  BRACE_style_other
+# Since CF_line is set, the data type should be acceptable for a line
+# command.
+index_entry_command     internal,line,index_entry_command,contain_basic_inline,no_paragraph      LINE_line
 
 
 ##############################################################
@@ -114,28 +118,28 @@ refill                  nobrace,preamble,deprecated,no_paragraph     NOBRACE_oth
 
 # Root and heading commands
 node                    line,formatted_line,root,contain_basic_inline                                LINE_line     4
-top                     line,formatted_line,root,contain_basic_inline,sectioning_heading,global_unique LINE_line
+top                     line,formatted_line,root,contain_basic_inline,sectioning_heading,global_unique,unnumbered LINE_line
 chapter                 line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-unnumbered              line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-chapheading             line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph    LINE_line
-appendix                line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
+unnumbered              line,formatted_line,root,contain_basic_inline,sectioning_heading,unnumbered               LINE_line
+chapheading             line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph,global    LINE_line
+appendix                line,formatted_line,root,contain_basic_inline,sectioning_heading,appendix               LINE_line
 section                 line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-unnumberedsec           line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-heading                 line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph    LINE_line
-appendixsec             line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
+unnumberedsec           line,formatted_line,root,contain_basic_inline,sectioning_heading,unnumbered               LINE_line
+heading                 line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph,global    LINE_line
+appendixsec             line,formatted_line,root,contain_basic_inline,sectioning_heading,appendix               LINE_line
 subsection              line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-unnumberedsubsec        line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-subheading              line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph    LINE_line
-appendixsubsec          line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
+unnumberedsubsec        line,formatted_line,root,contain_basic_inline,sectioning_heading,unnumbered               LINE_line
+subheading              line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph,global    LINE_line
+appendixsubsec          line,formatted_line,root,contain_basic_inline,sectioning_heading,appendix               LINE_line
 subsubsection           line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-unnumberedsubsubsec     line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-subsubheading           line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph    LINE_line
-appendixsubsubsec       line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
+unnumberedsubsubsec     line,formatted_line,root,contain_basic_inline,sectioning_heading,unnumbered               LINE_line
+subsubheading           line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph,global    LINE_line
+appendixsubsubsec       line,formatted_line,root,contain_basic_inline,sectioning_heading,appendix               LINE_line
 
-part                    line,formatted_line,root,contain_basic_inline,sectioning_heading,global        LINE_line
-appendixsection         line,formatted_line,root,contain_basic_inline,sectioning_heading               LINE_line
-majorheading            line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph    LINE_line
-centerchap              line,formatted_line,root,contain_basic_inline,sectioning_heading,deprecated    LINE_line
+part                    line,formatted_line,root,contain_basic_inline,sectioning_heading,global,unnumbered        LINE_line
+appendixsection         line,formatted_line,root,contain_basic_inline,sectioning_heading,appendix               LINE_line
+majorheading            line,formatted_line,contain_basic_inline,sectioning_heading,close_paragraph,global    LINE_line
+centerchap              line,formatted_line,root,contain_basic_inline,sectioning_heading,unnumbered,deprecated    LINE_line
 
 # end of document, end of block
 bye                     line,preamble                       LINE_lineraw
@@ -218,12 +222,12 @@ setchapternewpage       line,global_unique,preamble,contain_plain_text    LINE_s
 # arg on off
 microtype               line,global,preamble,contain_plain_text  LINE_specific  1
 
-everyheading            line,global,heading_spec,preamble,contain_basic_inline      LINE_line
-everyfooting            line,global,heading_spec,preamble,contain_basic_inline      LINE_line
-evenheading             line,global,heading_spec,preamble,contain_basic_inline      LINE_line
-evenfooting             line,global,heading_spec,preamble,contain_basic_inline      LINE_line
-oddheading              line,global,heading_spec,preamble,contain_basic_inline      LINE_line
-oddfooting              line,global,heading_spec,preamble,contain_basic_inline      LINE_line
+everyheading            line,global_unique,heading_spec,preamble,contain_basic_inline      LINE_line
+everyfooting            line,global_unique,heading_spec,preamble,contain_basic_inline      LINE_line
+evenheading             line,global_unique,heading_spec,preamble,contain_basic_inline      LINE_line
+evenfooting             line,global_unique,heading_spec,preamble,contain_basic_inline      LINE_line
+oddheading              line,global_unique,heading_spec,preamble,contain_basic_inline      LINE_line
+oddfooting              line,global_unique,heading_spec,preamble,contain_basic_inline      LINE_line
 
 # args are index identifiers
 syncodeindex            line,preamble,contain_plain_text         LINE_specific  2
@@ -255,7 +259,7 @@ exdent                  line,formatted_line,close_paragraph            LINE_line
 # or nobrace skipspace, depending on the context
 item_LINE               line,formatted_line,close_paragraph    LINE_line
 itemx                   line,formatted_line,close_paragraph    LINE_line
-nodedescription         line,close_paragraph                               LINE_line
+nodedescription         line,close_paragraph,contain_basic_inline          LINE_line
 # in index entries
 subentry                line,in_index,contain_basic_inline          LINE_line
 # for printed output.  @vskip 0pt plus 1filll
@@ -274,6 +278,19 @@ title                   line,formatted_line,global_unique,contain_basic_inline  
 sp                      line,formattable_line,close_paragraph,contain_plain_text    LINE_specific  1
 page                    line,formatted_line,close_paragraph        LINE_lineraw
 
+# index commands
+cpindex                 line,index_entry_command,contain_basic_inline      LINE_line
+cindex                  line,index_entry_command,contain_basic_inline      LINE_line
+fnindex                 line,index_entry_command,contain_basic_inline      LINE_line
+findex                  line,index_entry_command,contain_basic_inline      LINE_line
+vrindex                 line,index_entry_command,contain_basic_inline      LINE_line
+vindex                  line,index_entry_command,contain_basic_inline      LINE_line
+kyindex                 line,index_entry_command,contain_basic_inline      LINE_line
+kindex                  line,index_entry_command,contain_basic_inline      LINE_line
+pgindex                 line,index_entry_command,contain_basic_inline      LINE_line
+pindex                  line,index_entry_command,contain_basic_inline      LINE_line
+tpindex                 line,index_entry_command,contain_basic_inline      LINE_line
+tindex                  line,index_entry_command,contain_basic_inline      LINE_line
 
 ##########################################################
 #
@@ -400,9 +417,11 @@ r                       brace                           BRACE_style_no_code
 
 # context brace commands - commands that enclose full texts
 # not in the main document context.  They can contain multiple paragraphs.
+# They hold leading and trailing spaces.  They contain a brace_command_context
+# type element.
 footnote                brace,global                    BRACE_context
-caption                 brace,close_paragraph,no_paragraph           BRACE_context
-shortcaption            brace,close_paragraph,contain_basic_inline,no_paragraph    BRACE_context
+caption                 brace,close_paragraph,no_paragraph,non_formatted_brace           BRACE_context
+shortcaption            brace,close_paragraph,contain_basic_inline,no_paragraph,non_formatted_brace    BRACE_context
 # Commands that enclose math content, and, because of that, are not in the
 # main document context.
 math                    brace,math,contain_basic_inline  BRACE_context
@@ -414,10 +433,10 @@ math                    brace,math,contain_basic_inline  BRACE_context
 # without even indicatric @-commands.
 # Parsers have specific checks for U content.
 U                       brace                                      BRACE_arguments     1
-hyphenation             brace,global,preamble,contain_plain_text,no_paragraph   BRACE_arguments     1
-anchor                  brace,contain_basic_inline,no_paragraph                 BRACE_arguments     1
-errormsg                brace,preamble,contain_basic_inline,no_paragraph        BRACE_arguments     1
-sortas                  brace,in_index,contain_plain_text          BRACE_arguments     1
+hyphenation             brace,global,preamble,contain_plain_text,no_paragraph,non_formatted_brace   BRACE_arguments     1
+anchor                  brace,contain_basic_inline,no_paragraph,non_formatted_brace                 BRACE_arguments     1
+errormsg                brace,preamble,contain_basic_inline,no_paragraph,non_formatted_brace        BRACE_arguments     1
+sortas                  brace,in_index,contain_plain_text,non_formatted_brace          BRACE_arguments     1
 seeentry                brace,in_index,contain_basic_inline        BRACE_arguments     1
 seealso                 brace,in_index,contain_basic_inline        BRACE_arguments     1
 

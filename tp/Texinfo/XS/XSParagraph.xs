@@ -1,4 +1,4 @@
-/* Copyright 2010-2023 Free Software Foundation, Inc.
+/* Copyright 2010-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,21 +13,10 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
-/* Avoid warnings about Perl headers redefining symbols that gnulib
-   redefined already. */
-#if defined _WIN32 && !defined __CYGWIN__
-  #undef free
-#endif
 #include "XSUB.h"
-
-#include "ppport.h"
 
 #include "xspara.h"
 
@@ -35,14 +24,8 @@ MODULE = Texinfo::Convert::Paragraph PACKAGE = Texinfo::Convert::Paragraph PREFI
 
 PROTOTYPES: ENABLE
 
-int
-xspara_init (unused, unused2)
-     int unused
-     char *unused2
-
 void
-xspara_set_state (state)
-     SV * state
+xspara_set_state (int state)
 
 # Return a reference blessed into the XSParagraph class
 # CLASS is ignored because we know it is "XSParagraph".  Optional
@@ -53,6 +36,12 @@ xspara_new (class, ...)
     PREINIT:
         HV *conf = 0;
         int id;
+#define xspara_SET_CONF(variable)  \
+                else if (!strcmp (var_name, #variable)) \
+                  { \
+                    if (SvOK (value_sv)) \
+                      {xspara_set_conf_##variable (SvIV (value_sv));} \
+                  }
     CODE:
         items--;
         if (items > 0)
@@ -60,18 +49,40 @@ xspara_new (class, ...)
             if (SvROK(ST(1)) && SvTYPE(SvRV(ST(1))) == SVt_PVHV)
               conf = (HV *) SvRV(ST(1));
           }
-        id = xspara_new (conf);
+        id = xspara_new ();
+
+        if (conf)
+          {
+            I32 hv_number;
+            I32 i;
+
+            hv_number = hv_iterinit (conf);
+
+            for (i = 0; i < hv_number; i++)
+              {
+                I32 retlen;
+                char *var_name;
+                SV *value_sv = hv_iternextsv (conf, &var_name, &retlen);
+
+                if (0)
+                  {}
+     /* XSPARA_CONF_VARIABLES_LIST is replaced by xspara_SET_CONF(variable)
+        for each of the configuration variables */
+                XSPARA_CONF_VARIABLES_LIST
+              }
+          }
 
         /* Create an integer, which the other functions
            need as their first argument. */
         RETVAL = newSViv (id);
     OUTPUT:
         RETVAL
+    CLEANUP:
+#undef xspara_SET_CONF
 
 
 int
-xspara_end_line_count (paragraph)
-        SV *paragraph
+xspara_end_line_count (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line_count ();
@@ -79,8 +90,7 @@ xspara_end_line_count (paragraph)
         RETVAL
 
 int
-xspara_counter (paragraph)
-        SV *paragraph
+xspara_counter (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         RETVAL = xspara_counter ();
@@ -88,15 +98,13 @@ xspara_counter (paragraph)
         RETVAL
 
 void
-xspara__end_line (paragraph)
-        SV *paragraph
+xspara__end_line (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         xspara__end_line ();
 
 char *
-xspara_end_line (paragraph)
-        SV *paragraph
+xspara_end_line (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         RETVAL = xspara_end_line ();
@@ -104,8 +112,7 @@ xspara_end_line (paragraph)
         RETVAL
 
 char *
-xspara_get_pending (paragraph)
-        SV *paragraph
+xspara_get_pending (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         RETVAL = xspara_get_pending ();
@@ -114,8 +121,7 @@ xspara_get_pending (paragraph)
 
 # ... is for add_spaces
 SV *
-xspara_add_pending_word (paragraph, ...)
-        SV *paragraph
+xspara_add_pending_word (int paragraph, ...)
     PREINIT:
         int add_spaces = 0;
         char *retval;
@@ -137,8 +143,7 @@ xspara_add_pending_word (paragraph, ...)
         RETVAL
 
 SV *
-xspara_end (paragraph)
-        SV *paragraph
+xspara_end (int paragraph)
     PREINIT:
         char *retval;
     CODE:
@@ -152,20 +157,14 @@ xspara_end (paragraph)
 
 
 SV *
-xspara_add_text (paragraph, text_in)
-        SV *paragraph
+xspara_add_text (int paragraph, text_in)
         SV *text_in
     PREINIT:
         char *text;
         STRLEN text_len;
         TEXT retval;
     CODE:
-        /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
-           process it properly in xspara_add_next. */
-        if (!SvUTF8 (text_in))
-          sv_utf8_upgrade (text_in);
-
-        text = SvPV (text_in, text_len);
+        text = SvPVutf8 (text_in, text_len);
 
         xspara_set_state (paragraph);
         retval = xspara_add_text (text, text_len);
@@ -177,8 +176,7 @@ xspara_add_text (paragraph, text_in)
         RETVAL
 
 SV *
-xspara_add_next (paragraph, text_in, ...)
-        SV *paragraph
+xspara_add_next (int paragraph, text_in, ...)
         SV *text_in
     PREINIT:
         char *text;
@@ -196,11 +194,7 @@ xspara_add_next (paragraph, text_in, ...)
               transparent = (int)SvIV(arg_in);
           }
 
-        /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
-           process it properly in xspara_add_next. */
-        if (!SvUTF8 (text_in))
-          sv_utf8_upgrade (text_in);
-        text = SvPV (text_in, text_len);
+        text = SvPVutf8 (text_in, text_len);
 
         xspara_set_state (paragraph);
         retval = xspara_add_next (text, text_len, transparent);
@@ -213,15 +207,13 @@ xspara_add_next (paragraph, text_in, ...)
 
 
 void
-xspara_remove_end_sentence (paragraph)
-        SV *paragraph
+xspara_remove_end_sentence (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         xspara_remove_end_sentence ();
 
 void
-xspara_add_end_sentence (paragraph, value)
-        SV *paragraph
+xspara_add_end_sentence (int paragraph, value)
         SV * value
     PREINIT:
         int intvalue = 0;
@@ -232,8 +224,7 @@ xspara_add_end_sentence (paragraph, value)
         xspara_add_end_sentence (intvalue);
 
 void
-xspara_allow_end_sentence (paragraph)
-        SV *paragraph
+xspara_allow_end_sentence (int paragraph)
     CODE:
         xspara_set_state (paragraph);
         xspara_allow_end_sentence ();
@@ -242,8 +233,7 @@ xspara_allow_end_sentence (paragraph)
 # DOUBLE_WIDTH_NO_BREAK.
 # Pass them to the C function as -1 if not given or undef.
 void
-xspara_set_space_protection (paragraph, space_protection_in, ...)
-        SV *paragraph
+xspara_set_space_protection (int paragraph, space_protection_in, ...)
         SV * space_protection_in
     PREINIT:
         int space_protection = -1;

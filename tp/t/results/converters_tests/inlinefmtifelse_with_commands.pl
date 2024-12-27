@@ -19,7 +19,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => 'html'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -43,18 +43,16 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                               'text' => 'html'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -63,9 +61,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                 'format' => 'html'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -90,7 +86,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => 'plaintext'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -114,18 +110,16 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                               'text' => 'plaintext'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -134,9 +128,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                 'format' => 'plaintext'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -161,12 +153,12 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => 'xml'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
                     {
-                      'text' => 'if xml @env{empty} second arg',
+                      'text' => 'if xml @env{second} arg',
                       'type' => 'raw'
                     }
                   ],
@@ -185,14 +177,12 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                               'text' => 'else'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'env',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -201,7 +191,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -210,9 +200,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                 'format' => 'xml'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -245,7 +233,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -269,14 +257,12 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                               'text' => 'docbook spaces'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'strong',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 7,
-                        'macro' => ''
+                        'line_nr' => 7
                       }
                     },
                     {
@@ -288,7 +274,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -297,9 +283,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                 'format' => 'docbook'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -324,7 +308,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => 'tex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -345,21 +329,19 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                               'text' => 'else'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'var',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
+                        'line_nr' => 9
                       }
                     },
                     {
                       'text' => ' tex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -368,9 +350,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                 'format' => 'tex'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -395,7 +375,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                       'text' => 'latex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -416,21 +396,19 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                               'text' => 'else'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'sc',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       }
                     },
                     {
                       'text' => ' latex'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'inlinefmtifelse',
@@ -439,9 +417,7 @@ $result_trees{'inlinefmtifelse_with_commands'} = {
                 'format' => 'latex'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -462,7 +438,7 @@ $result_texis{'inlinefmtifelse_with_commands'} = '@inlinefmtifelse{html,if @code
 
 @inlinefmtifelse{plaintext,if @emph{plaintext},else @emph{plaintext}}.
 
-@inlinefmtifelse{xml,if xml @env{empty} second arg, xml @env{else}}.
+@inlinefmtifelse{xml,if xml @env{second} arg, xml @env{else}}.
 
 @inlinefmtifelse{ docbook , if docbook @string{spaces} , else @strong{docbook spaces} }.
 
@@ -524,7 +500,7 @@ $result_converted{'xml'}->{'inlinefmtifelse_with_commands'} = '<para><inlinefmti
 </para>
 <para><inlinefmtifelse><inlinefmtifelseformat>plaintext</inlinefmtifelseformat><inlinefmtifelsecontentif>if @emph{plaintext}</inlinefmtifelsecontentif><inlinefmtifelsecontentelse>else <emph>plaintext</emph></inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>
-<para>.
+<para>if xml @env{second} arg.
 </para>
 <para><inlinefmtifelse><inlinefmtifelseformat spaces=" ">docbook </inlinefmtifelseformat><inlinefmtifelsecontentif> if docbook @string{spaces} </inlinefmtifelsecontentif><inlinefmtifelsecontentelse spaces=" ">else <strong>docbook spaces</strong> </inlinefmtifelsecontentelse></inlinefmtifelse>.
 </para>

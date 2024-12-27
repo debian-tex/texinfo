@@ -19,7 +19,7 @@ $result_trees{'recursive_acronym_definition'} = {
                       'text' => 'GNU'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -31,7 +31,7 @@ $result_trees{'recursive_acronym_definition'} = {
                               'text' => 'GNU'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         },
                         {
                           'contents' => [
@@ -43,7 +43,7 @@ $result_trees{'recursive_acronym_definition'} = {
                                       'text' => 'GNU'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_arg'
                                 },
                                 {
                                   'contents' => [
@@ -56,14 +56,12 @@ $result_trees{'recursive_acronym_definition'} = {
                                       'text' => ' '
                                     }
                                   },
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_arg'
                                 }
                               ],
                               'cmdname' => 'acronym',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 1,
-                                'macro' => ''
+                                'line_nr' => 1
                               }
                             },
                             {
@@ -75,14 +73,12 @@ $result_trees{'recursive_acronym_definition'} = {
                               'text' => ' '
                             }
                           },
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'acronym',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     },
                     {
@@ -94,14 +90,12 @@ $result_trees{'recursive_acronym_definition'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'acronym',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -142,5 +136,9 @@ $result_converted{'html_text'}->{'recursive_acronym_definition'} = '<p><abbr cla
 
 $result_converted{'latex_text'}->{'recursive_acronym_definition'} = 'GNU (GNU (GNU (is something)\'s Not Unix)\'s Not Unix)
 ';
+
+
+$result_converted{'docbook'}->{'recursive_acronym_definition'} = '<para><acronym>GNU</acronym> (<acronym>GNU</acronym> (<acronym>GNU</acronym> (is something)&#8217;s Not Unix)&#8217;s Not Unix)
+</para>';
 
 1;

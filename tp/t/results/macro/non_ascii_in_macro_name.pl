@@ -44,9 +44,7 @@ $result_trees{'non_ascii_in_macro_name'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -58,9 +56,7 @@ $result_trees{'non_ascii_in_macro_name'} = {
 "
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -100,36 +96,28 @@ $result_errors{'non_ascii_in_macro_name'} = [
   {
     'error_line' => 'bad name for @macro
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'bad name for @macro',
     'type' => 'error'
   },
   {
     'error_line' => 'unknown command `parenbr\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'unknown command `parenbr\'',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }

@@ -39,9 +39,7 @@ $result_trees{'flushright_not_closed'} = {
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -65,9 +63,7 @@ $result_errors{'flushright_not_closed'} = [
   {
     'error_line' => 'no matching `@end flushright\'
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'no matching `@end flushright\'',
     'type' => 'error'
   }

@@ -54,9 +54,7 @@ $result_trees{'exdent_and_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -104,9 +102,7 @@ $result_trees{'exdent_and_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -145,16 +141,12 @@ $result_trees{'exdent_and_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -207,9 +199,7 @@ $result_trees{'exdent_and_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -257,9 +247,7 @@ $result_trees{'exdent_and_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -298,16 +286,12 @@ $result_trees{'exdent_and_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         }
       ],
@@ -350,7 +334,22 @@ in exdented a @*
 after exdented
 ';
 
-$result_errors{'exdent_and_commands'} = [];
+$result_errors{'exdent_and_commands'} = [
+  {
+    'error_line' => 'warning: @ should not occur at end of argument to line command
+',
+    'line_nr' => 3,
+    'text' => '@ should not occur at end of argument to line command',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @ should not occur at end of argument to line command
+',
+    'line_nr' => 11,
+    'text' => '@ should not occur at end of argument to line command',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'exdent_and_commands'} = {};

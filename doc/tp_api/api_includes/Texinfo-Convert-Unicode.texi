@@ -14,11 +14,11 @@ Texinfo::Convert::Unicode - Representation as Unicode characters
                                    unicode_text);
   use Texinfo::Convert::Text qw(convert_to_text);
 
-  my ($innermost_contents, $stack)
+  my ($contents_element, $stack)
       = Texinfo::Convert::Utils::find_innermost_accent_contents($accent);
-  
+
   my $formatted_accents = encoded_accents ($converter,
-                 convert_to_text($innermost_contents), $stack, $encoding,
+                 convert_to_text($contents_element), $stack, $encoding,
                         \&Texinfo::Text::ascii_accent_fallback);
 
   my $accent_text = unicode_accent('e', $accent_command);
@@ -33,8 +33,9 @@ Texinfo to other formats.  There is no promise of API stability.
 @node Texinfo@asis{::}Convert@asis{::}Unicode DESCRIPTION
 @section Texinfo::Convert::Unicode DESCRIPTION
 
-@code{Texinfo::Convert::Unicode} provides methods dealing with Unicode representation
-and conversion of Unicode code points, to be used in converters.
+@code{Texinfo::Convert::Unicode} provides methods dealing with Unicode
+representation and conversion of Unicode code points, to be used in Texinfo
+converters.
 
 When an encoding supported in Texinfo is given as argument of a method of the
 module, the accented letters or characters returned by the method should only
@@ -79,7 +80,7 @@ their content are passed with @emph{$text} and @emph{$stack}.  @emph{$text} is t
 appearing within nested accent commands.  @emph{$stack} is an array reference
 holding the nested accents texinfo tree elements.  In general, @emph{$text} is
 the formatted contents and @emph{$stack} the stack returned by
-@ref{Texinfo@asis{::}Convert@asis{::}Utils (\@@contents@comma{}
+@ref{Texinfo@asis{::}Convert@asis{::}Utils ($contents_element@comma{}
 \@@accent_commands) = find_innermost_accent_contents($element),, Texinfo::Convert::Utils::find_innermost_accent_contents}.  The function
 tries to convert as much as possible the accents to @emph{$encoding} starting from the
 innermost accent.
@@ -90,8 +91,8 @@ conversion of the @emph{$stack}.  @emph{$converter} is a converter object option
 used by @emph{$format_accent}.  It may be @code{undef} if there is no need of
 converter object in @emph{$format_accent}.
 
-If @emph{$set_case} is positive, the result is upper-cased, while if it is negative,
-the result is lower-cased.
+The @emph{$set_case} argument is optional.  If @emph{$set_case} is positive, the result
+is upper-cased, while if it is negative, the result is lower-cased.
 
 @item $width = string_width($string)
 @anchor{Texinfo@asis{::}Convert@asis{::}Unicode $width = string_width($string)}

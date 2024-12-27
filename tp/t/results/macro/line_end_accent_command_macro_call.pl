@@ -50,9 +50,7 @@ $result_trees{'line_end_accent_command_macro_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'line_end_accent_command_macro_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -73,7 +69,7 @@ $result_trees{'line_end_accent_command_macro_call'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -113,7 +109,6 @@ $result_trees{'line_end_accent_command_macro_call'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 5,
                     'macro' => 'expand'
                   }
@@ -135,7 +130,6 @@ $result_trees{'line_end_accent_command_macro_call'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 5,
             'macro' => 'expand'
           }
@@ -199,9 +193,7 @@ $result_trees{'line_end_accent_command_macro_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             }
           ],
@@ -210,9 +202,7 @@ $result_trees{'line_end_accent_command_macro_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         },
         {
@@ -222,7 +212,7 @@ $result_trees{'line_end_accent_command_macro_call'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -261,7 +251,6 @@ $result_trees{'line_end_accent_command_macro_call'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 12,
                     'macro' => 'nospace'
                   }
@@ -283,7 +272,6 @@ $result_trees{'line_end_accent_command_macro_call'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 12,
             'macro' => 'nospace'
           }
@@ -344,18 +332,14 @@ $result_errors{'line_end_accent_command_macro_call'} = [
   {
     'error_line' => 'warning: command `@ringaccent\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: command `@ringaccent\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 12,
-    'macro' => '',
     'text' => 'command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   }

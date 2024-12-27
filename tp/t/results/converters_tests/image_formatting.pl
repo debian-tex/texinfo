@@ -29,6 +29,7 @@ $result_trees{'image_formatting'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'image_formatting'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -74,9 +73,7 @@ $result_trees{'image_formatting'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -98,6 +95,7 @@ $result_trees{'image_formatting'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -106,9 +104,7 @@ $result_trees{'image_formatting'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -157,14 +153,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -178,7 +172,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -186,9 +180,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -215,14 +207,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -236,7 +226,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -244,7 +234,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'l--i'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -252,9 +242,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -281,14 +269,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -302,10 +288,10 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -313,7 +299,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'l--e'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -321,9 +307,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -350,14 +334,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -371,13 +353,13 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -385,7 +367,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'alt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -393,9 +375,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -422,14 +402,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -443,16 +421,16 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -460,7 +438,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'e--xt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -468,9 +446,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             },
             {
@@ -497,14 +473,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -518,7 +492,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -526,7 +500,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'aze'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -534,7 +508,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'az'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -542,7 +516,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'alt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -550,7 +524,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'e--xt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -558,9 +532,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -584,14 +556,12 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile,aze,az,alt,'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -605,7 +575,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -613,7 +583,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'aze'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -621,7 +591,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'az'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -629,10 +599,10 @@ $result_trees{'image_formatting'} = {
                       'text' => 'alt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -640,9 +610,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -669,14 +637,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -690,7 +656,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f-ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -698,10 +664,10 @@ $result_trees{'image_formatting'} = {
                       'text' => 'aze'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -709,7 +675,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'a--lt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -717,9 +683,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -791,14 +755,12 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             },
             {
@@ -816,14 +778,12 @@ $result_trees{'image_formatting'} = {
                               'text' => 'f--ile'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'file',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
+                        'line_nr' => 15
                       }
                     },
                     {
@@ -833,7 +793,7 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '.'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -841,7 +801,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'aze'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -849,7 +809,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'az'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -857,7 +817,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'alt'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -869,14 +829,12 @@ $result_trees{'image_formatting'} = {
                               'text' => 'file ext'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'file',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
+                        'line_nr' => 15
                       }
                     },
                     {
@@ -886,7 +844,7 @@ $result_trees{'image_formatting'} = {
                       'cmdname' => '}'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -894,9 +852,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             },
             {
@@ -911,7 +867,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'image'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -919,9 +875,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -935,7 +889,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'image'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -943,9 +897,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -996,14 +948,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 19,
-                    'macro' => ''
+                    'line_nr' => 19
                   }
                 },
                 {
@@ -1017,7 +967,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f--ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1025,9 +975,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 19,
-                    'macro' => ''
+                    'line_nr' => 19
                   }
                 },
                 {
@@ -1054,14 +1002,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 20,
-                    'macro' => ''
+                    'line_nr' => 20
                   }
                 },
                 {
@@ -1075,7 +1021,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f--ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1083,7 +1029,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'l--i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1091,9 +1037,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 20,
-                    'macro' => ''
+                    'line_nr' => 20
                   }
                 },
                 {
@@ -1120,14 +1064,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 21,
-                    'macro' => ''
+                    'line_nr' => 21
                   }
                 },
                 {
@@ -1141,10 +1083,10 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f--ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1152,7 +1094,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'l--e'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1160,9 +1102,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 21,
-                    'macro' => ''
+                    'line_nr' => 21
                   }
                 },
                 {
@@ -1189,14 +1129,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 22,
-                    'macro' => ''
+                    'line_nr' => 22
                   }
                 },
                 {
@@ -1210,13 +1148,13 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f--ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1224,7 +1162,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'alt'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1232,9 +1170,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 22,
-                    'macro' => ''
+                    'line_nr' => 22
                   }
                 },
                 {
@@ -1261,14 +1197,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 23,
-                    'macro' => ''
+                    'line_nr' => 23
                   }
                 },
                 {
@@ -1282,16 +1216,16 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f--ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1299,7 +1233,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'e--xt'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1307,9 +1241,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 23,
-                    'macro' => ''
+                    'line_nr' => 23
                   }
                 },
                 {
@@ -1336,14 +1268,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
+                    'line_nr' => 24
                   }
                 },
                 {
@@ -1357,7 +1287,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f--ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1365,7 +1295,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'aze'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1373,7 +1303,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'az'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1381,7 +1311,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'alt'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1389,7 +1319,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'e--xt'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1397,9 +1327,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
+                    'line_nr' => 24
                   }
                 },
                 {
@@ -1426,14 +1354,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 25,
-                    'macro' => ''
+                    'line_nr' => 25
                   }
                 },
                 {
@@ -1447,7 +1373,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'f-ile'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1455,10 +1381,10 @@ $result_trees{'image_formatting'} = {
                           'text' => 'aze'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1466,7 +1392,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'a--lt'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1474,9 +1400,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 25,
-                    'macro' => ''
+                    'line_nr' => 25
                   }
                 },
                 {
@@ -1548,14 +1472,12 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 26,
-                    'macro' => ''
+                    'line_nr' => 26
                   }
                 },
                 {
@@ -1573,14 +1495,12 @@ $result_trees{'image_formatting'} = {
                                   'text' => 'f--ile'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'file',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 26,
-                            'macro' => ''
+                            'line_nr' => 26
                           }
                         },
                         {
@@ -1590,7 +1510,7 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '.'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1598,7 +1518,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'aze'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1606,7 +1526,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'az'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1614,7 +1534,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'alt'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -1626,14 +1546,12 @@ $result_trees{'image_formatting'} = {
                                   'text' => 'file ext'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'file',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 26,
-                            'macro' => ''
+                            'line_nr' => 26
                           }
                         },
                         {
@@ -1643,7 +1561,7 @@ $result_trees{'image_formatting'} = {
                           'cmdname' => '}'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1651,9 +1569,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 26,
-                    'macro' => ''
+                    'line_nr' => 26
                   }
                 },
                 {
@@ -1668,7 +1584,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'image'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1676,9 +1592,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 27,
-                    'macro' => ''
+                    'line_nr' => 27
                   }
                 },
                 {
@@ -1692,7 +1606,7 @@ $result_trees{'image_formatting'} = {
                           'text' => 'image'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -1700,9 +1614,7 @@ $result_trees{'image_formatting'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 27,
-                    'macro' => ''
+                    'line_nr' => 27
                   }
                 },
                 {
@@ -1739,16 +1651,12 @@ $result_trees{'image_formatting'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           }
         },
         {
@@ -1764,13 +1672,13 @@ $result_trees{'image_formatting'} = {
                   'text' => 'f--ile'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -1778,7 +1686,7 @@ $result_trees{'image_formatting'} = {
                   'text' => 'a very long alt argument that could span more than one line who knows'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -1786,9 +1694,7 @@ $result_trees{'image_formatting'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 30,
-            'macro' => ''
+            'line_nr' => 30
           }
         },
         {
@@ -1814,13 +1720,13 @@ $result_trees{'image_formatting'} = {
                       'text' => 'f--ile'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -1828,7 +1734,7 @@ $result_trees{'image_formatting'} = {
                       'text' => 'a very long alt argument that could span more than one line who knows'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -1836,9 +1742,7 @@ $result_trees{'image_formatting'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 33,
-                'macro' => ''
+                'line_nr' => 33
               }
             },
             {
@@ -1849,16 +1753,16 @@ $result_trees{'image_formatting'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     }
   ],
@@ -1935,7 +1839,7 @@ f--ile.
 ';
 
 $result_sectioning{'image_formatting'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -1944,11 +1848,8 @@ $result_sectioning{'image_formatting'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -1957,72 +1858,81 @@ $result_sectioning{'image_formatting'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'image_formatting'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'image_formatting'};
+$result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'image_formatting'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'image_formatting'};
 
-$result_nodes{'image_formatting'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'chap'
+$result_nodes{'image_formatting'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'image_formatting'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'image_formatting'}[0];
+$result_nodes{'image_formatting'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'image_formatting'}[0];
+$result_nodes{'image_formatting'}[1] = $result_nodes{'image_formatting'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'image_formatting'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'image_formatting'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'image_formatting'};
-$result_nodes{'image_formatting'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'image_formatting'};
-
-$result_menus{'image_formatting'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'image_formatting'} = [];
 
@@ -2068,8 +1978,6 @@ Image description""\\.
 
 
 $result_converted{'html_text'}->{'image_formatting'} = '<div class="top-level-extent" id="Top">
-<div class="nav-panel">
-</div>
 <h1 class="top" id="top"><span>top<a class="copiable-link" href="#top"> &para;</a></span></h1>
 
 <ul class="mini-toc">
@@ -2077,8 +1985,6 @@ $result_converted{'html_text'}->{'image_formatting'} = '<div class="top-level-ex
 </ul>
 <hr>
 <div class="chapter-level-extent" id="chap">
-<div class="nav-panel">
-</div>
 <h2 class="chapter" id="Chapter"><span>1 Chapter<a class="copiable-link" href="#Chapter"> &para;</a></span></h2>
 
 <p><code class="code">@image{f--ile}</code> <img class="image" src="f--ile.png" alt="f--ile">
@@ -2116,72 +2022,56 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
   {
     'error_line' => 'warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => '@image file `f-ile\' (for HTML) not found, using `f-ile.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'
 ',
-    'file_name' => '',
     'line_nr' => 26,
-    'macro' => '',
     'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
     'type' => 'warning'
   }
@@ -2270,36 +2160,28 @@ $result_converted_errors{'docbook'}->{'image_formatting'} = [
   {
     'error_line' => 'warning: @image file `f-ile\' not found, using `f-ile.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f-ile\' not found, using `f-ile.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => '@image file `f-ile\' not found, using `f-ile.jpg\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f--ile@.\' not found, using `f--ile@..jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 26,
-    'macro' => '',
     'text' => '@image file `f--ile@.\' not found, using `f--ile@..jpg\'',
     'type' => 'warning'
   }
@@ -2346,72 +2228,56 @@ $result_converted_errors{'latex_text'}->{'image_formatting'} = [
   {
     'error_line' => 'warning: @image file `f-ile\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@image file `f-ile\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f--ile@.\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@image file `f--ile@.\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f-ile\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => '@image file `f-ile\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f--ile@.\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 26,
-    'macro' => '',
     'text' => '@image file `f--ile@.\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `image\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@image file `image\' (for LaTeX) not found',
     'type' => 'warning'
   }
@@ -2462,7 +2328,6 @@ bbb
 ccc
 
  [image src="f--ile.png" alt="a very long alt argument that could span more than one line who knows" text="Image description\\"\\"\\\\." ]
-
 
    in para  [image src="f--ile.png" alt="a very long alt argument that could span more than one line who knows" text="Image description\\"\\"\\\\." ].
 

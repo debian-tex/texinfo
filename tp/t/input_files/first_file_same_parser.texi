@@ -1,0 +1,45 @@
+\input texinfo
+@setfilename first_file_same_parser.info
+
+@contents
+
+@top First File
+@node Top
+
+@node chap
+@chapter Chap
+
+
+@abbr{ABC, Abr Because Casual @value{abc}}.
+
+@abbr{ABC}.
+
+@findex fentry
+
+@email{addr, name}.
+
+@email{bb eol
+
+more, etext
+
+after}.
+
+@include file_with_cpp_lines.texi
+
+@documentlanguage fr
+
+@node results
+@appendix Results
+
+@macro macrtwo {a, b}
+NOW \a\ AND @strong{\b\}
+@end macro
+
+@deftypeop MyCat op dtype a1 ( a2)
+@macrtwo{Some def, and more}
+@end deftypeop
+
+@printindex fn
+
+
+@bye

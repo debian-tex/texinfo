@@ -49,9 +49,11 @@ $result_trees{'node_too_much_args'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ]
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            }
           },
           'info' => {
             'spaces_before_argument' => {
@@ -63,6 +65,7 @@ $result_trees{'node_too_much_args'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -71,54 +74,49 @@ $result_trees{'node_too_much_args'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'node_too_much_args'}{'contents'}[1]{'args'}[3]{'contents'}[1];
 
 $result_texis{'node_too_much_args'} = '@node first, , ,  (dir)';
 
 
 $result_texts{'node_too_much_args'} = '';
 
-$result_nodes{'node_too_much_args'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
-  },
-  'structure' => {
-    'node_up' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'dir'
-          }
-        ]
-      }
+$result_nodes{'node_too_much_args'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'up' => {
+          'extra' => {
+            'manual_content' => {}
+          },
+          'type' => 'line_arg'
+        }
+      },
+      'normalized' => 'first'
     }
   }
-};
+];
 
-$result_menus{'node_too_much_args'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
-  },
-  'structure' => {}
-};
+$result_menus{'node_too_much_args'} = [
+  {
+    'extra' => {
+      'normalized' => 'first'
+    }
+  }
+];
 
 $result_errors{'node_too_much_args'} = [
   {
     'error_line' => 'warning: superfluous arguments for node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'superfluous arguments for node',
     'type' => 'warning'
   }

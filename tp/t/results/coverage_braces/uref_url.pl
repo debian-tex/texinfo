@@ -19,7 +19,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--a'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -27,14 +27,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -49,14 +47,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--c'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -66,7 +62,7 @@ $result_trees{'uref_url'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -74,14 +70,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--d'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -96,7 +90,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--e'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -104,7 +98,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--f'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -112,14 +106,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--g'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -129,7 +121,7 @@ $result_trees{'uref_url'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -137,7 +129,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--h'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -145,14 +137,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--i'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -167,10 +157,10 @@ $result_trees{'uref_url'} = {
                       'text' => '--j'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -178,14 +168,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--k'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -195,10 +183,10 @@ $result_trees{'uref_url'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -206,14 +194,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--l'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'uref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -228,7 +214,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--m'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -236,14 +222,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--n'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'url',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -258,7 +242,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--o'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -266,7 +250,7 @@ $result_trees{'uref_url'} = {
                       'text' => '--p'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -274,14 +258,12 @@ $result_trees{'uref_url'} = {
                       'text' => '--q'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'url',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -354,5 +336,17 @@ $result_converted{'latex_text'}->{'uref_url'} = '\\href{--a}{--b (\\nolinkurl{--
 \\href{--m}{--n (\\nolinkurl{--m})}
 --q
 ';
+
+
+$result_converted{'docbook'}->{'uref_url'} = '<para><ulink url="--a">&#8211;b</ulink>
+<ulink url="--c">--c</ulink>
+<ulink url="">&#8211;d</ulink>
+<ulink url="--e">&#8211;f</ulink>
+<ulink url="">&#8211;h</ulink>
+<ulink url="--j">&#8211;k</ulink>
+<ulink url="">&#8211;l</ulink>
+<ulink url="--m">&#8211;n</ulink>
+<ulink url="--o">&#8211;p</ulink>
+</para>';
 
 1;

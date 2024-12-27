@@ -33,7 +33,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -47,7 +52,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -61,7 +71,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -75,7 +90,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -89,7 +109,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -103,7 +128,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -117,7 +147,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -131,7 +166,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -145,7 +185,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -159,7 +204,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -173,7 +223,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -187,7 +242,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -201,7 +261,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -215,7 +280,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -229,7 +299,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -243,7 +318,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -257,7 +337,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -271,7 +356,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -285,7 +375,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -299,7 +394,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -313,7 +413,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -327,7 +432,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -341,7 +451,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -355,7 +470,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -369,7 +489,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -383,7 +508,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -397,7 +527,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -411,7 +546,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -425,7 +565,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -439,7 +584,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -453,7 +603,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -467,7 +622,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -481,7 +641,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -495,7 +660,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -509,7 +679,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -523,7 +698,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -537,7 +717,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -551,7 +736,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -565,7 +755,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -579,7 +774,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -593,7 +793,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -607,7 +812,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -621,7 +831,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -635,7 +850,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -649,7 +869,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -663,7 +888,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -677,7 +907,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -691,7 +926,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -705,7 +945,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -719,7 +964,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -733,7 +983,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -747,7 +1002,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -761,7 +1021,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -775,7 +1040,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -789,7 +1059,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -803,7 +1078,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -817,7 +1097,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -831,7 +1116,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -845,7 +1135,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -859,7 +1154,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -873,7 +1173,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -887,7 +1192,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -901,7 +1211,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -915,7 +1230,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -929,7 +1249,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -943,7 +1268,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -957,7 +1287,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -971,7 +1306,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -985,7 +1325,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -999,7 +1344,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1013,7 +1363,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1027,7 +1382,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1041,7 +1401,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1055,7 +1420,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1069,7 +1439,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1083,7 +1458,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1097,7 +1477,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1111,7 +1496,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1125,7 +1515,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1139,7 +1534,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1153,7 +1553,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1167,7 +1572,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1181,7 +1591,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1195,7 +1610,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1209,7 +1629,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1223,7 +1648,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1237,7 +1667,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1251,7 +1686,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1265,7 +1705,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1279,7 +1724,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1293,7 +1743,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1307,7 +1762,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1321,7 +1781,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1335,7 +1800,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1349,7 +1819,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1363,7 +1838,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1377,7 +1857,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1391,7 +1876,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1405,7 +1895,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1419,7 +1914,12 @@ $result_trees{'recursive_expansion_in_set'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'V'
+                    'contents' => [
+                      {
+                        'text' => 'V'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -1952,9 +2452,7 @@ $result_errors{'recursive_expansion_in_set'} = [
   {
     'error_line' => 'warning: value call nested too deeply (set MAX_MACRO_CALL_NESTING to override; current value 100)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'value call nested too deeply (set MAX_MACRO_CALL_NESTING to override; current value 100)',
     'type' => 'warning'
   }

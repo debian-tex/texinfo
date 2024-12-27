@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'file_name_case_insensitive_conflict_node'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -29,6 +34,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +43,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -74,9 +78,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -98,6 +100,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -106,9 +109,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -143,17 +144,16 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
                   'text' => 'fOO'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'fOO'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -167,16 +167,16 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -198,6 +198,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Foo'
       },
       'info' => {
@@ -206,9 +207,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
+        'line_nr' => 9
       }
     },
     {
@@ -236,16 +235,16 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1.1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
+        'line_nr' => 10
       }
     },
     {
@@ -267,6 +266,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Bar'
       },
       'info' => {
@@ -275,9 +275,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 12,
-        'macro' => ''
+        'line_nr' => 12
       }
     },
     {
@@ -305,16 +303,16 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1.2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
+        'line_nr' => 13
       }
     },
     {
@@ -336,6 +334,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'foo'
       },
       'info' => {
@@ -344,9 +343,7 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 15,
-        'macro' => ''
+        'line_nr' => 15
       }
     },
     {
@@ -384,19 +381,19 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'foo'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             },
             {
@@ -422,19 +419,19 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Foo'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             },
             {
@@ -445,23 +442,23 @@ $result_trees{'file_name_case_insensitive_conflict_node'} = {
           'type' => 'paragraph'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1.3'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 16,
-        'macro' => ''
+        'line_nr' => 16
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'file_name_case_insensitive_conflict_node'}{'contents'}[10]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'file_name_case_insensitive_conflict_node'} = '@node Top
 @top top section
@@ -508,7 +505,7 @@ Foo
 ';
 
 $result_sectioning{'file_name_case_insensitive_conflict_node'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -517,11 +514,8 @@ $result_sectioning{'file_name_case_insensitive_conflict_node'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -530,11 +524,8 @@ $result_sectioning{'file_name_case_insensitive_conflict_node'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
                 'section_childs' => [
                   {
                     'cmdname' => 'section',
@@ -543,14 +534,13 @@ $result_sectioning{'file_name_case_insensitive_conflict_node'} = {
                         'cmdname' => 'node',
                         'extra' => {
                           'normalized' => 'Foo'
-                        },
-                        'structure' => {}
-                      }
-                    },
-                    'structure' => {
+                        }
+                      },
+                      'section_directions' => {
+                        'up' => {}
+                      },
                       'section_level' => 2,
-                      'section_number' => '1.1',
-                      'section_up' => {}
+                      'section_number' => '1.1'
                     }
                   },
                   {
@@ -560,15 +550,14 @@ $result_sectioning{'file_name_case_insensitive_conflict_node'} = {
                         'cmdname' => 'node',
                         'extra' => {
                           'normalized' => 'Bar'
-                        },
-                        'structure' => {}
-                      }
-                    },
-                    'structure' => {
+                        }
+                      },
+                      'section_directions' => {
+                        'prev' => {},
+                        'up' => {}
+                      },
                       'section_level' => 2,
-                      'section_number' => '1.2',
-                      'section_prev' => {},
-                      'section_up' => {}
+                      'section_number' => '1.2'
                     }
                   },
                   {
@@ -578,84 +567,166 @@ $result_sectioning{'file_name_case_insensitive_conflict_node'} = {
                         'cmdname' => 'node',
                         'extra' => {
                           'normalized' => 'foo'
-                        },
-                        'structure' => {}
-                      }
-                    },
-                    'structure' => {
+                        }
+                      },
+                      'section_directions' => {
+                        'prev' => {},
+                        'up' => {}
+                      },
                       'section_level' => 2,
-                      'section_number' => '1.3',
-                      'section_prev' => {},
-                      'section_up' => {}
+                      'section_number' => '1.3'
                     }
                   }
                 ],
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2]{'structure'}{'section_prev'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[2]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_node'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'};
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[2]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_node'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'file_name_case_insensitive_conflict_node'};
 
-$result_nodes{'file_name_case_insensitive_conflict_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'file_name_case_insensitive_conflict_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
   },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
+  {},
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'section',
+        'extra' => {
+          'section_number' => '1.1'
+        }
+      },
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'section',
+              'extra' => {
+                'section_number' => '1.2'
+              }
+            },
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'associated_section' => {
+                    'cmdname' => 'section',
+                    'extra' => {
+                      'section_number' => '1.3'
+                    }
+                  },
+                  'node_directions' => {
+                    'prev' => {},
+                    'up' => {}
+                  },
+                  'normalized' => 'foo'
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'Bar'
           }
         },
-        'normalized' => 'chap'
+        'up' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'normalized' => 'Foo'
+    }
+  },
+  {},
+  {}
+];
+$result_nodes{'file_name_case_insensitive_conflict_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[0];
+$result_nodes{'file_name_case_insensitive_conflict_node'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[0];
+$result_nodes{'file_name_case_insensitive_conflict_node'}[1] = $result_nodes{'file_name_case_insensitive_conflict_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[2];
+$result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'up'} = $result_nodes{'file_name_case_insensitive_conflict_node'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'file_name_case_insensitive_conflict_node'}[3] = $result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'file_name_case_insensitive_conflict_node'}[4] = $result_nodes{'file_name_case_insensitive_conflict_node'}[2]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'file_name_case_insensitive_conflict_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'Foo'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'Bar'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'foo'
     }
   }
-};
-$result_nodes{'file_name_case_insensitive_conflict_node'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'file_name_case_insensitive_conflict_node'};
-$result_nodes{'file_name_case_insensitive_conflict_node'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'file_name_case_insensitive_conflict_node'};
-
-$result_menus{'file_name_case_insensitive_conflict_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'file_name_case_insensitive_conflict_node'} = [];
 
@@ -667,9 +738,7 @@ $result_converted_errors{'file_html'}->{'file_name_case_insensitive_conflict_nod
   {
     'error_line' => 'warning: @anchor `fOO\' file Foo.html for redirection exists
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@anchor `fOO\' file Foo.html for redirection exists',
     'type' => 'warning'
   },
@@ -677,18 +746,14 @@ $result_converted_errors{'file_html'}->{'file_name_case_insensitive_conflict_nod
     'continuation' => 1,
     'error_line' => 'warning: conflict with @node `Foo\' file
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'conflict with @node `Foo\' file',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @node `foo\' file Foo.html for redirection exists
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@node `foo\' file Foo.html for redirection exists',
     'type' => 'warning'
   },
@@ -696,9 +761,7 @@ $result_converted_errors{'file_html'}->{'file_name_case_insensitive_conflict_nod
     'continuation' => 1,
     'error_line' => 'warning: conflict with @node `Foo\' file
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'conflict with @node `Foo\' file',
     'type' => 'warning'
   }

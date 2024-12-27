@@ -1,0 +1,317 @@
+# valgrind suppression file for texi2any
+
+# The trailing numbers allow to disambiguate entries, but should not
+# necessarily be sorted.
+
+# Leak occurs when switch_to_global_locale is called in main/translations.c.
+# Occurs in Perl 5.36, fixed in Perl 5.38.
+{
+   fixed-in-perl/Leak/translations/switch_to_global_locale/1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:newlocale
+   obj:*/perl
+   fun:Perl_set_numeric_standard
+   fun:Perl_setlocale
+   obj:*/POSIX.so
+   fun:Perl_pp_entersub
+   fun:Perl_runops_standard
+   fun:Perl_call_sv
+   fun:Perl_call_list
+   obj:*/perl
+   fun:Perl_newATTRSUB_x
+}
+
+# Leak, most likely call of switch_to_global_locale is called in main/translations.c.
+# Occurs in Perl 5.36, fixed in Perl 5.38.
+{
+   fixed-in-perl/Leak/translations/switch_to_global_locale/2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:newlocale
+   fun:S_emulate_setlocale
+   fun:Perl_sync_locale
+   fun:translate_string
+   ...
+}
+
+# Leaks in translations setenv
+# Occurs in Perl 5.36, fixed in Perl 5.38.
+{
+   fixed-in-perl/Leak/translations/setenv/1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:Perl_safesysmalloc
+   fun:S_env_alloc
+   fun:Perl_my_setenv
+   fun:Perl_magic_setenv
+   fun:Perl_mg_set
+   fun:Perl_pp_sassign
+   fun:Perl_runops_standard
+   fun:Perl_call_sv
+   fun:Perl_call_list
+   fun:S_process_special_blocks
+   fun:Perl_newATTRSUB_x
+   fun:Perl_yyparse
+   fun:S_doeval_compile
+}
+{
+   fixed-in-perl/Leak/translations/setenv/2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:Perl_safesysmalloc
+   fun:S_env_alloc
+   fun:Perl_my_setenv
+   fun:perl_parse
+   fun:main
+}
+{
+   fixed-in-perl/Leak/translations/setenv/3
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:Perl_safesysmalloc
+   fun:S_env_alloc
+   fun:Perl_my_setenv
+   fun:Perl_magic_setenv
+   fun:Perl_mg_set
+   fun:Perl_pp_sassign
+   fun:Perl_runops_standard
+   fun:S_run_body
+   fun:perl_run
+   fun:main
+}
+{
+   fixed-in-perl/Leak/translations/setenv/4
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:newlocale
+   fun:S_emulate_setlocale
+   fun:Perl_setlocale
+   fun:XS_POSIX_setlocale
+   fun:Perl_pp_entersub
+   fun:Perl_runops_standard
+   fun:S_run_body
+   fun:perl_run
+   fun:main
+}
+
+# Errors output due to use of setenv in XS module.
+# Occurs in Perl 5.36, fixed in Perl 5.38.
+# See <https://github.com/Perl/perl5/issues/19399> and
+# <https://rt.cpan.org/Public/Bug/Display.html?id=140138>.
+{
+   fixed-in-perl/Error/translations/setenv/1
+   Memcheck:Free
+   fun:free
+   ...
+   fun:tdestroy_recurse
+   fun:tdestroy
+   fun:free_mem
+   fun:__libc_freeres
+   fun:_vgnU_freeres
+   fun:__run_exit_handlers
+   fun:exit
+   fun:main
+}
+{
+   fixed-in-perl/Error/translations/setenv/2
+   Memcheck:Free
+   fun:free
+   ...
+   fun:tdestroy_recurse
+   fun:free_mem
+   fun:__libc_freeres
+   fun:_vgnU_freeres
+   fun:__run_exit_handlers
+   fun:exit
+   fun:main
+}
+{
+   fixed-in-perl/Error/translations/setenv/3
+   Memcheck:Addr1
+   fun:strcmp
+   fun:tfind
+   fun:__add_to_environ
+   fun:setenv
+   fun:switch_messages_locale
+   ...
+}
+{
+   fixed-in-perl/Error/translations/setenv/4
+   Memcheck:Addr1
+   fun:strcmp
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:switch_messages_locale
+   ...
+}
+{
+   fixed-in-perl/Error/translations/setenv/5
+   Memcheck:Addr1
+   fun:strcmp
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/setenv/6
+   Memcheck:Addr1
+   fun:strncmp
+   fun:__add_to_environ
+   fun:setenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/setenv/7
+   Memcheck:Addr1
+   fun:__add_to_environ
+   fun:setenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/setenv/8
+   Memcheck:Addr1
+   fun:strncmp
+   fun:__add_to_environ
+   fun:setenv
+   fun:switch_messages_locale
+   ...
+}
+{
+   fixed-in-perl/Error/translations/setenv/9
+   Memcheck:Addr1
+   fun:__add_to_environ
+   fun:setenv
+   fun:switch_messages_locale
+   ...
+}
+
+# Errors output due to use of getenv in XS module.
+# Occurs in Perl 5.36, fixed in Perl 5.38.
+{
+   fixed-in-perl/Error/translations/getenv/1
+   Memcheck:Addr2
+   fun:getenv
+   fun:setlocale
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/2
+   Memcheck:Addr2
+   fun:getenv
+   fun:newlocale
+   fun:S_emulate_setlocale
+   fun:Perl_sync_locale
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/3
+   Memcheck:Addr2
+   fun:getenv
+   fun:newlocale
+   fun:S_new_numeric
+   fun:Perl_sync_locale
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/4
+   Memcheck:Addr2
+   fun:getenv
+   fun:setlocale
+   fun:switch_messages_locale
+   ...
+}
+# FIXME next are not very specific
+{
+   fixed-in-perl/Error/translations/getenv/5
+   Memcheck:Addr2
+   fun:getenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/6
+   Memcheck:Addr1
+   fun:strncmp
+   fun:getenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/7
+   Memcheck:Addr1
+   fun:getenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/8
+   Memcheck:Addr2
+   fun:getenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/9
+   Memcheck:Addr1
+   fun:strncmp
+   fun:getenv
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv/10
+   Memcheck:Addr1
+   fun:getenv
+   fun:translate_string
+   ...
+}
+# FIXME non specific, not even getenv in the trace
+{
+   fixed-in-perl/Error/translations/getenv?/11
+   Memcheck:Addr1
+   fun:strlen
+   fun:strdup
+   fun:translate_string
+   ...
+}
+{
+   fixed-in-perl/Error/translations/getenv?/12
+   Memcheck:Addr1
+   fun:memmove
+   fun:translate_string
+   ...
+}
+
+# Fixed in valgrind sources 2022-05-13
+# See https://sourceware.org/git/gitweb.cgi?p=valgrind.git;h=947388eb043ea1c44b37df94046e1eee790ad776
+{
+   fixed-in-valgrind/Error/ld.so/strncmp/1
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_count
+   ...
+}
+{
+   fixed-in-valgrind/Error/ld.so/strncmp/2
+   Memcheck:Addr8
+   fun:strncmp
+   fun:is_dst
+   fun:_dl_dst_substitute
+   ...
+}

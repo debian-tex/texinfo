@@ -22,11 +22,13 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                         }
                       ],
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ]
+                        'node_content' => {
+                          'contents' => [
+                            {}
+                          ]
+                        }
                       },
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -34,7 +36,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                           'text' => 'b'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -42,7 +44,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                           'text' => 'c'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     },
                     {
                       'contents' => [
@@ -50,14 +52,12 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                           'text' => 'd'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'ref',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -76,17 +76,16 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                           'text' => 'an anchor'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
+                    'is_target' => 1,
                     'normalized' => 'an-anchor'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 },
                 {
@@ -130,9 +129,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -173,9 +170,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -185,9 +180,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -196,7 +189,7 @@ $result_trees{'example_invalid_at_commands_arguments'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'example_invalid_at_commands_arguments'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'example_invalid_at_commands_arguments'} = '@example @ref{a,b,c,d} fa, @anchor{an anchor} on example line, @center in center
 @end example
@@ -209,27 +202,28 @@ $result_errors{'example_invalid_at_commands_arguments'} = [
   {
     'error_line' => 'warning: @ref should not appear on @example line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@ref should not appear on @example line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @anchor should not appear on @example line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@anchor should not appear on @example line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @center should only appear at the beginning of a line
+',
+    'line_nr' => 1,
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @center should not appear on @example line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@center should not appear on @example line',
     'type' => 'warning'
   }
@@ -245,7 +239,7 @@ $result_converted{'plaintext'}->{'example_invalid_at_commands_arguments'} = '';
 
 $result_converted{'html'}->{'example_invalid_at_commands_arguments'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -272,7 +266,6 @@ $result_converted_errors{'html'}->{'example_invalid_at_commands_arguments'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'example_invalid_at_commands_arguments.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

@@ -93,6 +93,12 @@ my @test_cases = (
           'init_files' => ['misc_file_collision.init'] },
   {'SPLIT' => 'node'},
 ],
+['navigation_test_undef_top_buttons',
+  undef, {'test_file' => 'navigation.texi',},
+  {'TOP_BUTTONS' => undef }],
+['navigation_test_zero_top_buttons',
+  undef, {'test_file' => 'navigation.texi',},
+  {'TOP_BUTTONS' => '0' }],
 );
 
 foreach my $test (@test_cases) {

@@ -10,7 +10,6 @@ $result_trees{'empty_caption'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -63,9 +62,7 @@ $result_trees{'empty_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -100,15 +97,14 @@ $result_trees{'empty_caption'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'a',
+            'is_target' => 1,
             'normalized' => 'b'
           },
           'info' => {
@@ -117,9 +113,7 @@ $result_trees{'empty_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -172,9 +166,7 @@ $result_trees{'empty_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -209,14 +201,13 @@ $result_trees{'empty_caption'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
           'extra' => {
             'float_type' => '',
+            'is_target' => 1,
             'normalized' => 'c',
             'shortcaption' => {}
           },
@@ -226,9 +217,7 @@ $result_trees{'empty_caption'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -270,9 +259,7 @@ $result_trees{'empty_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -291,9 +278,7 @@ $result_trees{'empty_caption'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -328,9 +313,7 @@ $result_trees{'empty_caption'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             }
           ],
@@ -340,9 +323,7 @@ $result_trees{'empty_caption'} = {
             'shortcaption' => {}
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         }
       ],
@@ -395,6 +376,7 @@ $result_floats{'empty_caption'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => '',
         'normalized' => 'c',
         'shortcaption' => {
@@ -403,9 +385,6 @@ $result_floats{'empty_caption'} = {
             'float' => {}
           }
         }
-      },
-      'structure' => {
-        'float_number' => 1
       }
     },
     {
@@ -437,11 +416,9 @@ $result_floats{'empty_caption'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'a',
         'normalized' => 'b'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -456,9 +433,11 @@ $result_floats{'empty_caption'}{'a'}[0]{'extra'}{'caption'}{'extra'}{'float'} = 
 $result_converted{'plaintext'}->{'empty_caption'} = 'In float A, B
 
 a 1: 
+
 In float , C
 
 1: 
+
 In float
 
 ';
@@ -466,7 +445,7 @@ In float
 
 $result_converted{'html'}->{'empty_caption'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

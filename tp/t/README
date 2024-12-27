@@ -1,6 +1,6 @@
 tp/t/README
 
-  Copyright 2010-2023 Free Software Foundation, Inc.
+  Copyright 2010-2024 Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
@@ -31,10 +31,12 @@ Another way, which works when doing an out-of-source build, is
 Another way to run a test out-source is:
 
   s=../../tp
-  srcdir=$s ../pre-inst-env perl -w $s/t/92formatting.t empty
+  tb=../
+  srcdir=$s top_builddir=$tb perl -w $s/t/02coverage.t commands
 
-where s is the path to the srcdir.  This allows you to run specific
-sub-tests, here the sub-test with name "empty".
+where s is the path to the srcdir and tb is the path to the top build dir.
+This allows you to run specific sub-tests, here the sub-test with name
+"commands".
 
 Most test files use a testing infrastructure from t/test_utils.pl.
 The run_all function from that file runs the tests that have been
@@ -55,8 +57,10 @@ you can see the difference between the expected and actual output with
 example, is removed.)
 
 When making changes that you expect will change the parse tree but not
-change any of the output, one way to check this would be to run "make
-check" and then "grep FAIL test-suite.log | grep -v 'tree$'".
+change any of the output or structure, one way to check this would be to run
+"make check" and then "grep -a FAIL test-suite.log | grep -a -v 'tree$'".
+To check only output, but not the structure, you could use
+"grep -a FAIL test-suite.log | grep -a -v '\(tree\|nodes\|sectioning\|menus\|elements\)$'"
 
 The tests output on STDERR are not checked, it is possible to look
 for spurious output on STDERR in addition to the header and
@@ -123,14 +127,14 @@ specific tests, here arg_body_expansion_order:
 
   perl -w t/60macro.t -c arg_body_expansion_order
 
-iWith -c, there will be a warning if there is a Top node but no @chapter
+With -c, there will be a warning if there is a Top node but no @chapter
 nor equivalent @-commands nor a node which names starts by chap.  This
-is because in some output formats, and in particular in LaTeX, Top node content
-is not output, so it is possible to have useless tests for such output formats.
-If there is no @chapter nor equivalent @-commands but there are nodes
-to stop the Top node to get a usefull test, prepend their name by 'chap'
-such that they are recognized as chapter-like nodes.  Also note that it is
-not a problem if some tests cause this warning, as long as it is on purpose.
+is because in some output formats, such as LaTeX, Top node content is not
+output, so it is possible to have useless tests for such output formats.  If
+there is no @chapter nor equivalent @-commands but there are nodes to stop the
+Top node to get a useful test, prepend their name by 'chap' such that they are
+recognized as chapter-like nodes.  Also note that it is not a problem if some
+tests cause this warning, as long as it is on purpose.
 
 The output files will be created with -o, in t/output_files/$test_category/
 

@@ -1,0 +1,20 @@
+\input texinfo.tex
+@documentencoding ISO-8859-1
+
+@copying
+In copying
+@verbatiminclude included_akçentêd.texi
+
+@verbatiminclude vi_not_existïng.téxi
+@end copying
+
+@node Top
+@top top
+
+@node chap
+@chapter Chapter
+
+In main text
+@verbatiminclude included_akçentêd.texi
+
+@verbatiminclude vi_not_existïng.téxi

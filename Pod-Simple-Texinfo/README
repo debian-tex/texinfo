@@ -5,6 +5,11 @@ Pod::Simple based Pod formatter to render Texinfo.
 
 INSTALLATION
 
+To install from version control sources, the pod2texi script needs to be
+created first.  This is not needed from code archives.
+
+   cp pod2texi.pl pod2texi
+
 To install this module type the following:
 
    perl Makefile.PL
@@ -16,7 +21,7 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-Pod::Simple::PullParser, Texinfo::Parser.  
+Pod::Simple::PullParser, Pod::Simple::XHTML, Texinfo::Parser.
 
 DISTRIBUTION SETUP
 
@@ -25,16 +30,25 @@ and Automake for the build system.  Alternatively, it is possible to
 distribute the module using Makefile.PL as described here.
 
 The pod2texi script is usually set up using the Autoconf and Automake
-built environment from pod2texi.pl.  When using Makefile.PL, the
-pod2texi.pl file can be copied instead.  In that case, the Texinfo::Parser
-modules will not be searched for as in the GNU Texinfo usual case, only
-in the perl paths, as in other perl modules.
+built environment from pod2texi.pl.  When using Makefile.PL from version
+control sources, the pod2texi.pl file should be copied instead, as explained
+above.  In that case, the Texinfo::Parser modules will not be searched for as
+in the GNU Texinfo usual case, only in the perl paths, as in other perl
+modules.
 
-   cp pod2texi.pl pod2texi
+The test_scripts/*.sh test scripts are setup to work with the Autoconf and
+Automake built environment, they are not distributed when using Makefile.PL.
+To be able to run them manually from version control sources when using
+Makefile.PL, you can do something like the following, with a sed command
+that understands -i to modify the scripts such that they do not need the
+defs file present in the Autoconf and Automake built environment:
+for script in test_scripts/*.sh; do
+  sed -i -e 's;^\. \$testdir/\.\./tp/defs.*;#&\nPERL=perl;' $script;
+done
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2011-2023 Free Software Foundation, Inc.
+Copyright (C) 2011-2024 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -1,47 +1,40 @@
-# Copyright 2014-2023 Free Software Foundation, Inc.
+# Copyright 2014-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 package Texinfo::Parser;
 
-# same as texi2any.pl
-use 5.00405;
+use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 use Texinfo::XSLoader;
 
 BEGIN {
-  our $warning_message = undef;
-  our $fatal_message = undef;
-
-  my $xs_package = "Texinfo::Parser";
-  if (defined $ENV{TEXINFO_XS_PARSER}
-      and $ENV{TEXINFO_XS_PARSER} eq '0') {
-    undef $xs_package;
+  my $shared_library_name = "Parsetexi";
+  if (!Texinfo::XSLoader::XS_parser_enabled()) {
+    undef $shared_library_name;
   }
 
   my $package = Texinfo::XSLoader::init (
-      $xs_package,
+      "Texinfo::Parser",
       "Texinfo::ParserNonXS",
-      "Parsetexi",
+      $shared_library_name,
       "Texinfo::XS::parsetexi::Parsetexi",
-      0,
-      $warning_message,
-      $fatal_message
+      ['texinfo', 'texinfoxs'],
   );
 }
 

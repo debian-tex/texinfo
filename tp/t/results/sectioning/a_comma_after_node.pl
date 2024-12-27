@@ -27,9 +27,11 @@ $result_trees{'a_comma_after_node'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Requirements'
           },
           'info' => {
@@ -46,9 +48,11 @@ $result_trees{'a_comma_after_node'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'Nodes-and-Menus'
           },
           'info' => {
@@ -81,6 +85,7 @@ $result_trees{'a_comma_after_node'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Commands'
       },
       'info' => {
@@ -89,16 +94,14 @@ $result_trees{'a_comma_after_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[0];
+$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[0];
 
 $result_texis{'a_comma_after_node'} = '@node Commands, Requirements, Nodes and Menus
 
@@ -110,36 +113,35 @@ $result_texts{'a_comma_after_node'} = '
 A comma in text, end.
 ';
 
-$result_nodes{'a_comma_after_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Commands'
+$result_nodes{'a_comma_after_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Commands'
+    }
   }
-};
+];
 
-$result_menus{'a_comma_after_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Commands'
+$result_menus{'a_comma_after_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'Commands'
+    }
   }
-};
+];
 
 $result_errors{'a_comma_after_node'} = [
   {
     'error_line' => 'Next reference to nonexistent `Requirements\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'Next reference to nonexistent `Requirements\'',
     'type' => 'error'
   },
   {
     'error_line' => 'Prev reference to nonexistent `Nodes and Menus\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'Prev reference to nonexistent `Nodes and Menus\'',
     'type' => 'error'
   }

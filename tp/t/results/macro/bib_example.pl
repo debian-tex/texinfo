@@ -231,8 +231,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'bib-example.texi',
-                'line_nr' => 23,
-                'macro' => ''
+                'line_nr' => 23
               }
             },
             {
@@ -267,8 +266,7 @@ $result_trees{'bib_example'} = {
                     },
                     'source_info' => {
                       'file_name' => 'bib-example.texi',
-                      'line_nr' => 25,
-                      'macro' => ''
+                      'line_nr' => 25
                     }
                   },
                   'position' => 1,
@@ -1786,8 +1784,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 164,
-                    'macro' => ''
+                    'line_nr' => 164
                   }
                 }
               ],
@@ -1797,8 +1794,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 162,
-                'macro' => ''
+                'line_nr' => 162
               }
             },
             {
@@ -1873,8 +1869,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 171,
-                    'macro' => ''
+                    'line_nr' => 171
                   }
                 }
               ],
@@ -1884,8 +1879,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 169,
-                'macro' => ''
+                'line_nr' => 169
               }
             },
             {
@@ -1984,8 +1978,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 182,
-                    'macro' => ''
+                    'line_nr' => 182
                   }
                 }
               ],
@@ -1995,8 +1988,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 176,
-                'macro' => ''
+                'line_nr' => 176
               }
             },
             {
@@ -2095,8 +2087,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 193,
-                    'macro' => ''
+                    'line_nr' => 193
                   }
                 }
               ],
@@ -2106,8 +2097,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 187,
-                'macro' => ''
+                'line_nr' => 187
               }
             },
             {
@@ -2216,8 +2206,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 207,
-                    'macro' => ''
+                    'line_nr' => 207
                   }
                 }
               ],
@@ -2227,8 +2216,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 198,
-                'macro' => ''
+                'line_nr' => 198
               }
             },
             {
@@ -2286,8 +2274,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 211,
-                    'macro' => ''
+                    'line_nr' => 211
                   }
                 }
               ],
@@ -2297,8 +2284,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 209,
-                'macro' => ''
+                'line_nr' => 209
               }
             },
             {
@@ -2432,8 +2418,7 @@ $result_trees{'bib_example'} = {
                   },
                   'source_info' => {
                     'file_name' => 'my-bib-macros.texi',
-                    'line_nr' => 230,
-                    'macro' => ''
+                    'line_nr' => 230
                   }
                 }
               ],
@@ -2443,8 +2428,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'my-bib-macros.texi',
-                'line_nr' => 215,
-                'macro' => ''
+                'line_nr' => 215
               }
             },
             {
@@ -2477,7 +2461,7 @@ $result_trees{'bib_example'} = {
                             'text' => 'References'
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -2589,7 +2573,7 @@ $result_trees{'bib_example'} = {
                             'text' => 'References'
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -2674,6 +2658,7 @@ $result_trees{'bib_example'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -2683,8 +2668,7 @@ $result_trees{'bib_example'} = {
       },
       'source_info' => {
         'file_name' => 'bib-example.texi',
-        'line_nr' => 30,
-        'macro' => ''
+        'line_nr' => 30
       }
     },
     {
@@ -2738,9 +2722,11 @@ $result_trees{'bib_example'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Introduction'
                   },
                   'type' => 'menu_entry_node'
@@ -2766,8 +2752,7 @@ $result_trees{'bib_example'} = {
               ],
               'source_info' => {
                 'file_name' => 'bib-example.texi',
-                'line_nr' => 34,
-                'macro' => ''
+                'line_nr' => 34
               },
               'type' => 'menu_entry'
             },
@@ -2786,7 +2771,7 @@ $result_trees{'bib_example'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -2802,7 +2787,12 @@ $result_trees{'bib_example'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'mybibrefnode'
+                                'contents' => [
+                                  {
+                                    'text' => 'mybibrefnode'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -2828,9 +2818,11 @@ $result_trees{'bib_example'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'References'
                   },
                   'type' => 'menu_entry_node'
@@ -2856,8 +2848,7 @@ $result_trees{'bib_example'} = {
               ],
               'source_info' => {
                 'file_name' => 'bib-example.texi',
-                'line_nr' => 35,
-                'macro' => ''
+                'line_nr' => 35
               },
               'type' => 'menu_entry'
             },
@@ -2904,15 +2895,13 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'bib-example.texi',
-                'line_nr' => 37,
-                'macro' => ''
+                'line_nr' => 37
               }
             }
           ],
           'source_info' => {
             'file_name' => 'bib-example.texi',
-            'line_nr' => 33,
-            'macro' => ''
+            'line_nr' => 33
           }
         },
         {
@@ -2929,8 +2918,7 @@ $result_trees{'bib_example'} = {
       },
       'source_info' => {
         'file_name' => 'bib-example.texi',
-        'line_nr' => 31,
-        'macro' => ''
+        'line_nr' => 31
       }
     },
     {
@@ -2952,6 +2940,7 @@ $result_trees{'bib_example'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Introduction'
       },
       'info' => {
@@ -2961,8 +2950,7 @@ $result_trees{'bib_example'} = {
       },
       'source_info' => {
         'file_name' => 'bib-example.texi',
-        'line_nr' => 39,
-        'macro' => ''
+        'line_nr' => 39
       }
     },
     {
@@ -3007,7 +2995,7 @@ $result_trees{'bib_example'} = {
                             'text' => 'LaTeX2e'
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -3138,7 +3126,11 @@ $result_trees{'bib_example'} = {
                   },
                   'sourcemark_type' => 'expanded_conditional_command',
                   'status' => 'start'
-                },
+                }
+              ]
+            },
+            {
+              'source_marks' => [
                 {
                   'counter' => 5,
                   'element' => {
@@ -3149,7 +3141,7 @@ $result_trees{'bib_example'} = {
                             'text' => '@mybibnode{}'
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       },
                       {
                         'contents' => [
@@ -3162,7 +3154,7 @@ $result_trees{'bib_example'} = {
                             'text' => ' '
                           }
                         },
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -3173,9 +3165,7 @@ $result_trees{'bib_example'} = {
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'start'
                 }
-              ]
-            },
-            {
+              ],
               'text' => '(See item [LaTeX2e] in '
             },
             {
@@ -3189,7 +3179,7 @@ $result_trees{'bib_example'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -3205,7 +3195,12 @@ $result_trees{'bib_example'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'mybibrefnode'
+                                'contents' => [
+                                  {
+                                    'text' => 'mybibrefnode'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -3213,12 +3208,7 @@ $result_trees{'bib_example'} = {
                           'line' => 'References',
                           'sourcemark_type' => 'value_expansion',
                           'status' => 'start'
-                        }
-                      ],
-                      'text' => ''
-                    },
-                    {
-                      'source_marks' => [
+                        },
                         {
                           'counter' => 2,
                           'position' => 10,
@@ -3236,13 +3226,14 @@ $result_trees{'bib_example'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {},
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'References'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -3255,7 +3246,7 @@ $result_trees{'bib_example'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
@@ -3338,7 +3329,9 @@ $result_trees{'bib_example'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -3346,8 +3339,7 @@ $result_trees{'bib_example'} = {
       },
       'source_info' => {
         'file_name' => 'bib-example.texi',
-        'line_nr' => 40,
-        'macro' => ''
+        'line_nr' => 40
       }
     },
     {
@@ -3383,6 +3375,7 @@ $result_trees{'bib_example'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'References'
       },
       'info' => {
@@ -3393,7 +3386,7 @@ $result_trees{'bib_example'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -3410,7 +3403,12 @@ $result_trees{'bib_example'} = {
               'element' => {
                 'args' => [
                   {
-                    'text' => 'mybibrefnode'
+                    'contents' => [
+                      {
+                        'text' => 'mybibrefnode'
+                      }
+                    ],
+                    'type' => 'brace_container'
                   }
                 ],
                 'cmdname' => 'value'
@@ -3426,8 +3424,7 @@ $result_trees{'bib_example'} = {
       },
       'source_info' => {
         'file_name' => 'bib-example.texi',
-        'line_nr' => 46,
-        'macro' => ''
+        'line_nr' => 46
       }
     },
     {
@@ -3461,16 +3458,14 @@ $result_trees{'bib_example'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'w',
                   'source_info' => {
                     'file_name' => 'bib-example.texi',
-                    'line_nr' => 49,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 49
+                  }
                 }
               ],
               'info' => {
@@ -3498,7 +3493,7 @@ $result_trees{'bib_example'} = {
                                 'text' => 'LaTeX2e'
                               }
                             ],
-                            'type' => 'brace_command_arg'
+                            'type' => 'brace_arg'
                           }
                         ],
                         'info' => {
@@ -3511,7 +3506,7 @@ $result_trees{'bib_example'} = {
                       'status' => 'start'
                     },
                     {
-                      'counter' => 4,
+                      'counter' => 3,
                       'element' => {
                         'args' => [
                           {
@@ -3532,55 +3527,19 @@ $result_trees{'bib_example'} = {
                         'cmdname' => 'ifclear',
                         'contents' => [
                           {
-                            'source_marks' => [
-                              {
-                                'counter' => 3,
-                                'element' => {
-                                  'cmdname' => 'ifclear',
-                                  'contents' => [
-                                    {
-                                      'text' => '@set mybiblist true
+                            'text' => '@ifclear mybibtable
 ',
-                                      'type' => 'raw'
-                                    },
-                                    {
-                                      'args' => [
-                                        {
-                                          'contents' => [
-                                            {
-                                              'text' => 'ifclear'
-                                            }
-                                          ],
-                                          'info' => {
-                                            'spaces_after_argument' => {
-                                              'text' => '
-'
-                                            }
-                                          },
-                                          'type' => 'line_arg'
-                                        }
-                                      ],
-                                      'cmdname' => 'end',
-                                      'extra' => {
-                                        'text_arg' => 'ifclear'
-                                      },
-                                      'info' => {
-                                        'spaces_before_argument' => {
-                                          'text' => ' '
-                                        }
-                                      },
-                                      'source_info' => {
-                                        'file_name' => 'bib-example.texi',
-                                        'line_nr' => 51,
-                                        'macro' => 'mybibitem'
-                                      }
-                                    }
-                                  ]
-                                },
-                                'sourcemark_type' => 'ignored_conditional_block'
-                              }
-                            ],
-                            'text' => ''
+                            'type' => 'raw'
+                          },
+                          {
+                            'text' => '@set mybiblist true
+',
+                            'type' => 'raw'
+                          },
+                          {
+                            'text' => '@end ifclear
+',
+                            'type' => 'raw'
                           },
                           {
                             'args' => [
@@ -3688,11 +3647,12 @@ $result_trees{'bib_example'} = {
                           'text' => 'LaTeX2e'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'anchor',
                   'extra' => {
+                    'is_target' => 1,
                     'normalized' => 'LaTeX2e'
                   },
                   'source_info' => {
@@ -3758,7 +3718,7 @@ $result_trees{'bib_example'} = {
                       'cmdname' => 'c',
                       'source_marks' => [
                         {
-                          'counter' => 5,
+                          'counter' => 4,
                           'element' => {
                             'args' => [
                               {
@@ -3894,8 +3854,7 @@ $result_trees{'bib_example'} = {
               },
               'source_info' => {
                 'file_name' => 'bib-example.texi',
-                'line_nr' => 55,
-                'macro' => ''
+                'line_nr' => 55
               }
             }
           ],
@@ -3909,8 +3868,7 @@ $result_trees{'bib_example'} = {
           },
           'source_info' => {
             'file_name' => 'bib-example.texi',
-            'line_nr' => 49,
-            'macro' => ''
+            'line_nr' => 49
           }
         },
         {
@@ -3919,7 +3877,9 @@ $result_trees{'bib_example'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -3927,8 +3887,7 @@ $result_trees{'bib_example'} = {
       },
       'source_info' => {
         'file_name' => 'bib-example.texi',
-        'line_nr' => 47,
-        'macro' => ''
+        'line_nr' => 47
       }
     },
     {
@@ -3954,10 +3913,9 @@ $result_trees{'bib_example'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'extra'}{'node_content'}[1] = $result_trees{'bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'bib_example'}{'contents'}[6]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'bib_example'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'bib_example'} = '\\input texinfo   @c -*-texinfo-*-
@@ -4337,7 +4295,7 @@ Massachusetts, 1994.
 ';
 
 $result_sectioning{'bib_example'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -4346,11 +4304,8 @@ $result_sectioning{'bib_example'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -4359,16 +4314,17 @@ $result_sectioning{'bib_example'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'Introduction'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -4378,132 +4334,126 @@ $result_sectioning{'bib_example'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'References'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 2,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '2',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'bib_example'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'bib_example'};
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'bib_example'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'bib_example'};
 
-$result_nodes{'bib_example'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'Introduction'
+$result_nodes{'bib_example'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_next' => {
+      'node_directions' => {
+        'next' => {
           'cmdname' => 'node',
           'extra' => {
             'associated_section' => {
               'cmdname' => 'chapter',
-              'extra' => {},
-              'structure' => {
-                'section_number' => 2
+              'extra' => {
+                'section_number' => '1'
               }
             },
-            'normalized' => 'References'
-          },
-          'structure' => {
-            'node_prev' => {},
-            'node_up' => {}
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'associated_section' => {
+                    'cmdname' => 'chapter',
+                    'extra' => {
+                      'section_number' => '2'
+                    }
+                  },
+                  'node_directions' => {
+                    'prev' => {},
+                    'up' => {}
+                  },
+                  'normalized' => 'References'
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'Introduction'
           }
-        },
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'bib_example'}{'structure'}{'menu_child'};
-$result_nodes{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'bib_example'};
-$result_nodes{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'bib_example'};
-$result_nodes{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'bib_example'};
-$result_nodes{'bib_example'}{'structure'}{'node_next'} = $result_nodes{'bib_example'}{'structure'}{'menu_child'};
-
-$result_menus{'bib_example'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'Introduction'
-      },
-      'structure' => {
-        'menu_next' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'normalized' => 'References'
-          },
-          'structure' => {
-            'menu_prev' => {},
-            'menu_up' => {},
-            'menu_up_hash' => {
-              'Top' => 1
-            }
-          }
-        },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
         }
-      }
+      },
+      'normalized' => 'Top'
     }
-  }
-};
-$result_menus{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_prev'} = $result_menus{'bib_example'}{'structure'}{'menu_child'};
-$result_menus{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_up'} = $result_menus{'bib_example'};
-$result_menus{'bib_example'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'bib_example'};
+  },
+  {},
+  {}
+];
+$result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'bib_example'}[0];
+$result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'bib_example'}[0];
+$result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'bib_example'}[0];
+$result_nodes{'bib_example'}[1] = $result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'bib_example'}[2] = $result_nodes{'bib_example'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'bib_example'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {
+          'extra' => {
+            'menu_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'References'
+          }
+        },
+        'up' => {}
+      },
+      'normalized' => 'Introduction'
+    }
+  },
+  {}
+];
+$result_menus{'bib_example'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'prev'} = $result_menus{'bib_example'}[1];
+$result_menus{'bib_example'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'up'} = $result_menus{'bib_example'}[0];
+$result_menus{'bib_example'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'bib_example'}[0];
+$result_menus{'bib_example'}[2] = $result_menus{'bib_example'}[1]{'extra'}{'menu_directions'}{'next'};
 
 $result_errors{'bib_example'} = [
   {

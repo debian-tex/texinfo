@@ -7,7 +7,8 @@ sub mini_ker_element_type($$$$)
   my $element = shift;
   my $content = shift;
 
-  if ($self->element_is_tree_unit_top($element)) {
+  if ($self->unit_is_top_output_unit($element)) {
+    $content = '' if (!defined($content));
     my $result = '';
     $result .= &{$self->formatting_function('format_navigation_header')}($self,
           $self->get_conf('MISC_BUTTONS'), $type, $element)
@@ -16,7 +17,7 @@ sub mini_ker_element_type($$$$)
     my $overview = &{$self->formatting_function('format_contents')}($self,
                                                           'shortcontents');
     if ($overview) {
-      $result .= '<h2> ' .$self->convert_tree($self->gdt('Overview:'))
+      $result .= '<h2> ' .$self->convert_tree($self->cdt('Overview:'))
                   . "</h2>\n" . "<blockquote>\n";
       $result .= $overview;;
       $result .= "</blockquote>\n";
@@ -25,10 +26,10 @@ sub mini_ker_element_type($$$$)
                                                  $type, $element, $content);
     return $result;
   } else {
-    return &{$self->default_type_conversion($type)}($self,
+    return &{$self->default_output_unit_conversion($type)}($self,
                                  $type, $element, $content);
   }
 }
 
-texinfo_register_type_formatting('unit', \&mini_ker_element_type);
+texinfo_register_output_unit_formatting('unit', \&mini_ker_element_type);
 

@@ -1,20 +1,20 @@
 # Unicode.pm: handle conversion to unicode.
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 
 package Texinfo::Convert::Unicode;
@@ -54,19 +54,15 @@ sub import {
   goto &Exporter::import;
 }
 
-use vars qw($VERSION @EXPORT_OK %EXPORT_TAGS);
-
-%EXPORT_TAGS = ( 'all' => [ qw(
+our @EXPORT_OK = qw(
   unicode_accent
   encoded_accents
   brace_no_arg_command
   unicode_text
   string_width
-) ] );
+);
 
-@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
-
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 
 our %unicode_diacritics = (
@@ -93,6 +89,8 @@ foreach my $diacritic(keys(%unicode_diacritics)) {
   $diacritics_accent_commands{$unicode_diacritics{$diacritic}} = $diacritic;
 }
 
+# dotless in unicode_accented_letters not in diacritics,
+# tieaccent in diacritics not in unicode_accented_letters.
 our %unicode_accented_letters = (
     'dotaccent' => { # dot above
         'A' => '0226',
@@ -302,7 +300,7 @@ our %unicode_accented_letters = (
         'Y' => '00DD',
         'y' => '00FD',
         'Z' => '0179',
-        'z' => '018A',
+        'z' => '017A',
     },
     '~' => { # tilde
         'A' => '00C3',
@@ -429,8 +427,8 @@ our %unicode_accented_letters = (
         'o' => '01EB',
     },
     'dotless' => {
-        'i' => '0131',
-        'j' => '0237',
+        'i' => '0131', # 305
+        'j' => '0237', # 567
     }
 );
 
@@ -487,63 +485,68 @@ our %unicode_simple_character_map = (
 #http://www.alanwood.net/unicode/general_punctuation.html 20**
 #http://www.alanwood.net/unicode/mathematical_operators.html 22**
 
+# 'today' is not set here.
 our %unicode_map = (
-               'today'             => '',
-               'aa'                => '00E5',
-               'AA'                => '00C5',
-               'ae'                => '00E6',
-               'oe'                => '0153',
-               'AE'                => '00C6',
-               'OE'                => '0152',
-               'o'                 => '00F8',
-               'O'                 => '00D8',
-               'ss'                => '00DF',
-               'DH'                => '00D0',
-               'dh'                => '00F0',
-               'TH'                => '00DE',
-               'th'                => '00FE',
-               'l'                 => '0142',
-               'L'                 => '0141',
-               'exclamdown'        => '00A1',
-               'questiondown'      => '00BF',
-               'pounds'            => '00A3',
-               'ordf'              => '00AA',
-               'ordm'              => '00BA',
-               'comma'             => '002C',
+               # characters
                'atchar'            => '0040',
                'ampchar'           => '0026',
+               'backslashchar'     => '005C',
+               'comma'             => '002C',
+               'hashchar'          => '0023',
                'lbracechar'        => '007B',
                'rbracechar'        => '007D',
-               'backslashchar'     => '005C',
-               'hashchar'          => '0023',
+
+               # symbols (9)
                'euro'              => '20AC',
+               'exclamdown'        => '00A1',
                'geq'               => '2265',
                'leq'               => '2264',
-               'tie'               => '',
-#               'tie'               => '0020',
+               'ordf'              => '00AA',
+               'ordm'              => '00BA',
+               'pounds'            => '00A3',
+               'questiondown'      => '00BF',
                'textdegree'        => '00B0',
-               'quotedblbase'      => '201E',
-               'quotesinglbase'    => '201A',
+
+               # quotes
                'guillemetleft'     => '00AB',
                'guillemetright'    => '00BB',
                'guillemotleft'     => '00AB',
                'guillemotright'    => '00BB',
                'guilsinglleft'     => '2039',
                'guilsinglright'    => '203A',
+               'quotedblbase'      => '201E',
+               'quotesinglbase'    => '201A',
+
+               # letters
+               'AA'                => '00C5',
+               'aa'                => '00E5',
+               'AE'                => '00C6',
+               'ae'                => '00E6',
+               'DH'                => '00D0',
+               'dh'                => '00F0',
+               'L'                 => '0141',
+               'l'                 => '0142',
+               'O'                 => '00D8',
+               'o'                 => '00F8',
+               'OE'                => '0152',
+               'oe'                => '0153',
+               'ss'                => '00DF',
+               'TH'                => '00DE',
+               'th'                => '00FE',
              );
 
 # For commands where ASCII output is acceptable and may be wanted by the users
 # as ASCII instead of encoded characters
 our %extra_unicode_map = (
+               # symbols (11 + 3)
+               'arrow'             => '2192',
                'bullet'            => '2022',
                'copyright'         => '00A9',
-               'registeredsymbol'  => '00AE',
                'dots'              => '2026',
-               'enddots'           => '',
+               #'enddots'           => '',
                'equiv'             => '2261',
-               'error'             => '',
                'expansion'         => '21A6',
-               'arrow'             => '2192',
+               #'LaTeX'
                'minus'             => '2212', # in mathematical operators
 #               'minus'             => '002D', # in latin1
                'point'             => '22C6', # another candidate is 2605
@@ -552,14 +555,23 @@ our %extra_unicode_map = (
                                               # but less consistent with TeX
                                               # \star
                'print'             => '22A3',
+               'registeredsymbol'  => '00AE',
                'result'            => '21D2',
+               #'TeX'
+
+               # quotes
                'quotedblleft'      => '201C',
                'quotedblright'     => '201D',
                'quoteleft'         => '2018',
                'quoteright'        => '2019',
+
+               # other
                # this should only happen if the @clickstyle argument isn't a
                # command with braces and no argument.
                'click'             => '2192',
+               #'error'             => '',
+               #'tie'               => '',
+#               'tie'               => '0020',
 );
 
 %unicode_map = (%unicode_map, %extra_unicode_map);
@@ -568,23 +580,21 @@ our %extra_unicode_map = (
 # corresponding to the textual hex value in %unicode_map.
 our %unicode_character_brace_no_arg_commands;
 foreach my $command (keys(%unicode_map)) {
-  if ($unicode_map{$command} ne '') {
 # FIXME Using charnames::vianame as in the following is the clean documented
 # way to create an unicode character at runtime.  However, in tests of perl
 # 5.10.1 (on solaris), if charnames::vianame is used for @aa{} '00E5', uc()
 # on the resulting character does not leads to \x{00C5} (@AA{}) (when
 # formatting @sc{@aa{}} or @var{@aa{}} in plaintext).
-#    $unicode_character_brace_no_arg_commands{$command}
-#      = charnames::vianame("U+$unicode_map{$command}");
-    my $char_nr = hex($unicode_map{$command});
-    if ($char_nr > 126 and $char_nr < 255) {
-      # this is very strange, indeed.  The reason lies certainly in the
-      # magic backward compatibility support in Perl for 8bit encodings.
-      $unicode_character_brace_no_arg_commands{$command} =
-         Encode::decode("iso-8859-1", chr($char_nr));
-    } else {
-      $unicode_character_brace_no_arg_commands{$command} = chr($char_nr);
-    }
+#  $unicode_character_brace_no_arg_commands{$command}
+#    = charnames::vianame("U+$unicode_map{$command}");
+  my $char_nr = hex($unicode_map{$command});
+  if ($char_nr > 126 and $char_nr < 255) {
+    # this is very strange, indeed.  The reason lies certainly in the
+    # magic backward compatibility support in Perl for 8bit encodings.
+    $unicode_character_brace_no_arg_commands{$command} =
+       Encode::decode("iso-8859-1", chr($char_nr));
+  } else {
+    $unicode_character_brace_no_arg_commands{$command} = chr($char_nr);
   }
 }
 
@@ -592,8 +602,7 @@ our %unicode_entities;
 # set entities corresponding to unicode_map
 foreach my $command (keys(%unicode_map)) {
   $unicode_entities{$command}
-   = '&#'.hex($unicode_map{$command}).';'
-    if ($unicode_map{$command} ne '');
+   = '&#'.hex($unicode_map{$command}).';';
 }
 
 
@@ -635,10 +644,17 @@ our %transliterate_map = (
                '009E'  => '',
                '009F'  => '',
                # explicit transliterations
-               '00C5'  => 'AA',
-               '00E5'  => 'aa',
-               '00D8'  => 'O',
-               '00F8'  => 'o',
+               '00A3' => 'GBP', # iconv @pounds
+               '00A9' => '(C)', # iconv
+               '00AA' => 'a', # ordf iconv and unidecode
+               '00AE' => '(R)', # iconv
+               '00BA' => 'o', # ordm iconv and unidecode
+               #'00B0' => '?', #iconv @textdegree, probably no translit
+               #'00BF' => '?', #iconv @questiondown
+               '00C5' => 'A',
+               '00E5' => 'a',
+               '00D8' => 'O',
+               '00F8' => 'o',
                '00E6' => 'ae',
                '0153' => 'oe',
                '00C6' => 'AE',
@@ -665,6 +681,20 @@ our %transliterate_map = (
                '04D7'  => 'IO',
                '00DD'  => 'Y', # unidecode gets this wrong ?
                '0237'  => 'j', # unknown dotless j for unidecode, returns [?]
+               '20AC'  => 'EUR', # iconv and unidecode
+               # following based on iconv
+               '2022'  => 'o', # bullet
+               '2026'  => '...', # ellipsis
+               #'21A6'  => '?', # expansion, probably no translit
+               '2192'  => '->', # arrow
+               '21D2'  => '=>', # result
+               '2212'  => '-',
+               #'2261'  => '?', # equiv, probably no translit
+               '2264'  => '<=', # leq
+               '2265'  => '>=', # geq
+               #'22A3'  => '?', # print, probably no translit
+               #'22C6'  => '?', # point, probably no translit
+
                # following appears in tests, this is required to have
                # the same output with and without unidecode
                '4E2D'  => 'Zhong',
@@ -692,8 +722,7 @@ our %transliterate_map = (
 
 our %no_transliterate_map;
 foreach my $symbol(keys(%unicode_map)) {
-  if ($unicode_map{$symbol} ne ''
-      and !exists($transliterate_map{$symbol})) {
+  if (!exists($transliterate_map{$symbol})) {
     $no_transliterate_map{$unicode_map{$symbol}} = 1;
   }
 }
@@ -712,7 +741,8 @@ foreach my $command (keys(%unicode_accented_letters)) {
 # Also note that values below A0, which correspond to the ascii range
 # are not in the values and therefore should be handled differently by the
 # codes using the hash.
-my %unicode_to_eight_bit = (
+# used in code generating C data structure.
+our %unicode_to_eight_bit = (
    'iso-8859-1' => {
       '00A0' => 'A0',
       '00A1' => 'A1',
@@ -1304,7 +1334,7 @@ sub unicode_accent($$)
         and (!$command->{'parent'}
              or !$command->{'parent'}->{'parent'}
              or !$command->{'parent'}->{'parent'}->{'cmdname'}
-             or !$unicode_accented_letters{$command->{'parent'}
+             or !$unicode_diacritics{$command->{'parent'}
                                         ->{'parent'}->{'cmdname'}})) {
       return chr(hex($unicode_accented_letters{$accent}->{$text}));
     } else {
@@ -1322,6 +1352,7 @@ sub unicode_accent($$)
       # tieaccent diacritic is naturally and correctly composed
       # between two characters
       my $remaining_text = $text;
+      # \p{L} matches a single code point in the category "letter".
       if ($remaining_text =~ s/^([\p{L}\d])([\p{L}\d])(.*)$/$3/) {
         return Unicode::Normalize::NFC($1.$diacritic.$2 . $remaining_text);
       } else {
@@ -1329,6 +1360,8 @@ sub unicode_accent($$)
       }
     }
   }
+  # There are diacritics for every accent command except for dotless and
+  # dotless is handled especially, so we should never end up here.
   return undef;
 }
 
@@ -1372,10 +1405,12 @@ sub _eight_bit_and_unicode_point($$)
 sub _format_unicode_accents_stack($$$$;$)
 {
   my $converter = shift;
-  my $result = shift;
+  my $inner_text = shift;
   my $stack = shift;
   my $format_accent = shift;
   my $set_case = shift;
+
+  my $result = $inner_text;
 
   while (@$stack) {
     my $formatted_result = unicode_accent($result, $stack->[-1]);
@@ -1386,9 +1421,9 @@ sub _format_unicode_accents_stack($$$$;$)
   }
   if ($set_case) {
     if ($set_case > 0) {
-      $result = uc ($result);
+      $result = uc($result);
     } else {
-      $result = lc ($result);
+      $result = lc($result);
     }
   }
   while (@$stack) {
@@ -1401,13 +1436,13 @@ sub _format_unicode_accents_stack($$$$;$)
 sub _format_eight_bit_accents_stack($$$$$;$)
 {
   my $converter = shift;
-  my $unicode_formatted = shift;
+  my $text = shift;
   my $stack = shift;
   my $encoding = shift;
   my $convert_accent = shift;
   my $set_case = shift;
 
-  my $result = $unicode_formatted;
+  my $result = $text;
 
   my $debug;
   #$debug = 1;
@@ -1420,6 +1455,7 @@ sub _format_eight_bit_accents_stack($$$$$;$)
   # that we can return the maximum of multiaccented letters that can be
   # rendered with a given eight bit formatting.  undef is stored when
   # there is no corresponding unicode anymore.
+  my $unicode_formatted = $text;
   my @results_stack = ([$unicode_formatted, undef]);
 
   while (@$stack) {
@@ -1558,13 +1594,13 @@ sub unicode_point_decoded_in_encoding($$) {
     # to lower case to match the encoding names used here.  In the code
     # encoding names are lower cased early.
     $encoding = lc($encoding);
+  }
 
-    return 1 if ($encoding eq 'utf-8'
+  return 1 if ((!defined($encoding) or $encoding eq 'utf-8')
                     or ($unicode_to_eight_bit{$encoding}
                         and ($unicode_to_eight_bit{$encoding}->{$unicode_point}
                              # excludes 127 \x{7F} DEL
                              or hex($unicode_point) < 127)));
-  }
   return 0;
 }
 
@@ -1573,7 +1609,7 @@ sub unicode_point_decoded_in_encoding($$) {
 sub brace_no_arg_command($$) {
   my $command = shift;
   my $encoding = shift;
-  
+
   if ($unicode_character_brace_no_arg_commands{$command}
       and unicode_point_decoded_in_encoding($encoding, $unicode_map{$command})) {
     return $unicode_character_brace_no_arg_commands{$command};
@@ -1666,7 +1702,8 @@ sub string_width($)
   # Optimise for the common case where we can just return the length
   # of the string.  These regexes are faster than making the substitutions
   # below.
-  # IsPrint without \pM
+  # IsPrint without \p{Mark}.  Matches classes Letter, Number, Punct, Symbol,
+  # and Space_Separator.
   if ($string =~ /^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]*$/
       and $string !~ /[\p{InFullwidth}]/) {
     return length($string);
@@ -1710,11 +1747,11 @@ Texinfo::Convert::Unicode - Representation as Unicode characters
                                    unicode_text);
   use Texinfo::Convert::Text qw(convert_to_text);
 
-  my ($innermost_contents, $stack)
+  my ($contents_element, $stack)
       = Texinfo::Convert::Utils::find_innermost_accent_contents($accent);
-  
+
   my $formatted_accents = encoded_accents ($converter,
-                 convert_to_text($innermost_contents), $stack, $encoding,
+                 convert_to_text($contents_element), $stack, $encoding,
                         \&Texinfo::Text::ascii_accent_fallback);
 
   my $accent_text = unicode_accent('e', $accent_command);
@@ -1726,8 +1763,9 @@ Texinfo to other formats.  There is no promise of API stability.
 
 =head1 DESCRIPTION
 
-C<Texinfo::Convert::Unicode> provides methods dealing with Unicode representation
-and conversion of Unicode code points, to be used in converters.
+C<Texinfo::Convert::Unicode> provides methods dealing with Unicode
+representation and conversion of Unicode code points, to be used in Texinfo
+converters.
 
 When an encoding supported in Texinfo is given as argument of a method of the
 module, the accented letters or characters returned by the method should only
@@ -1769,7 +1807,7 @@ their content are passed with I<$text> and I<$stack>.  I<$text> is the text
 appearing within nested accent commands.  I<$stack> is an array reference
 holding the nested accents texinfo tree elements.  In general, I<$text> is
 the formatted contents and I<$stack> the stack returned by
-L<Texinfo::Convert::Utils::find_innermost_accent_contents|Texinfo::Convert::Utils/(\@contents,
+L<Texinfo::Convert::Utils::find_innermost_accent_contents|Texinfo::Convert::Utils/($contents_element,
 \@accent_commands) = find_innermost_accent_contents($element)>.  The function
 tries to convert as much as possible the accents to I<$encoding> starting from the
 innermost accent.
@@ -1780,8 +1818,8 @@ conversion of the I<$stack>.  I<$converter> is a converter object optionaly
 used by I<$format_accent>.  It may be C<undef> if there is no need of
 converter object in I<$format_accent>.
 
-If I<$set_case> is positive, the result is upper-cased, while if it is negative,
-the result is lower-cased.
+The I<$set_case> argument is optional.  If I<$set_case> is positive, the result
+is upper-cased, while if it is negative, the result is lower-cased.
 
 =item $width = string_width($string)
 X<C<string_width>>

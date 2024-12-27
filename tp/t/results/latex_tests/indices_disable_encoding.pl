@@ -68,6 +68,7 @@ $result_trees{'indices_disable_encoding'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -76,9 +77,7 @@ $result_trees{'indices_disable_encoding'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -113,9 +112,7 @@ $result_trees{'indices_disable_encoding'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -137,6 +134,7 @@ $result_trees{'indices_disable_encoding'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chapter'
       },
@@ -146,9 +144,7 @@ $result_trees{'indices_disable_encoding'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     },
     {
@@ -192,9 +188,7 @@ $result_trees{'indices_disable_encoding'} = {
                   ],
                   'cmdname' => '"',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 },
                 {
@@ -208,14 +202,12 @@ $result_trees{'indices_disable_encoding'} = {
                           'text' => 'o'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '"',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 }
               ],
@@ -238,14 +230,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           },
           'type' => 'index_entry_command'
         },
@@ -276,14 +267,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           },
           'type' => 'index_entry_command'
         },
@@ -314,14 +304,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           },
           'type' => 'index_entry_command'
         },
@@ -352,14 +341,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           },
           'type' => 'index_entry_command'
         },
@@ -390,14 +378,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           },
           'type' => 'index_entry_command'
         },
@@ -418,9 +405,7 @@ $result_trees{'indices_disable_encoding'} = {
                   ],
                   'cmdname' => '^',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 15,
-                    'macro' => ''
+                    'line_nr' => 15
                   }
                 }
               ],
@@ -443,14 +428,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           },
           'type' => 'index_entry_command'
         },
@@ -482,9 +466,7 @@ $result_trees{'indices_disable_encoding'} = {
                   ],
                   'cmdname' => 'math',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -509,9 +491,7 @@ $result_trees{'indices_disable_encoding'} = {
                   ],
                   'cmdname' => '"',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -525,14 +505,12 @@ $result_trees{'indices_disable_encoding'} = {
                           'text' => 'o'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '"',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 }
               ],
@@ -552,6 +530,85 @@ $result_trees{'indices_disable_encoding'} = {
               7
             ],
             'index_ignore_chars' => '\\',
+            'seealso' => {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a!"'
+                            },
+                            {
+                              'cmdname' => '@'
+                            },
+                            {
+                              'text' => 'b'
+                            }
+                          ],
+                          'type' => 'brace_command_context'
+                        }
+                      ],
+                      'cmdname' => 'math',
+                      'source_info' => {
+                        'line_nr' => 17
+                      }
+                    },
+                    {
+                      'text' => ' "!'
+                    },
+                    {
+                      'cmdname' => '@'
+                    },
+                    {
+                      'text' => ' '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'following_arg'
+                        }
+                      ],
+                      'cmdname' => '"',
+                      'source_info' => {
+                        'line_nr' => 17
+                      }
+                    },
+                    {
+                      'text' => ' '
+                    },
+                    {
+                      'args' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'o'
+                            }
+                          ],
+                          'type' => 'brace_container'
+                        }
+                      ],
+                      'cmdname' => '"',
+                      'source_info' => {
+                        'line_nr' => 17
+                      }
+                    }
+                  ],
+                  'type' => 'brace_arg'
+                }
+              ],
+              'cmdname' => 'seealso',
+              'source_info' => {
+                'line_nr' => 17
+              }
+            },
             'subentry' => {
               'args' => [
                 {
@@ -570,14 +627,12 @@ $result_trees{'indices_disable_encoding'} = {
                               'text' => 'b'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'sortas',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 17,
-                        'macro' => ''
+                        'line_nr' => 17
                       }
                     },
                     {
@@ -606,9 +661,7 @@ $result_trees{'indices_disable_encoding'} = {
                       ],
                       'cmdname' => 'math',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 17,
-                        'macro' => ''
+                        'line_nr' => 17
                       }
                     },
                     {
@@ -633,9 +686,7 @@ $result_trees{'indices_disable_encoding'} = {
                       ],
                       'cmdname' => '"',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 17,
-                        'macro' => ''
+                        'line_nr' => 17
                       }
                     },
                     {
@@ -649,107 +700,19 @@ $result_trees{'indices_disable_encoding'} = {
                               'text' => 'o'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => '"',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 17,
-                        'macro' => ''
+                        'line_nr' => 17
                       }
                     },
                     {
                       'text' => ' ',
                       'type' => 'spaces_at_end'
                     },
-                    {
-                      'args' => [
-                        {
-                          'contents' => [
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'a!"'
-                                    },
-                                    {
-                                      'cmdname' => '@'
-                                    },
-                                    {
-                                      'text' => 'b'
-                                    }
-                                  ],
-                                  'type' => 'brace_command_context'
-                                }
-                              ],
-                              'cmdname' => 'math',
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 17,
-                                'macro' => ''
-                              }
-                            },
-                            {
-                              'text' => ' "!'
-                            },
-                            {
-                              'cmdname' => '@'
-                            },
-                            {
-                              'text' => ' '
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'a'
-                                    }
-                                  ],
-                                  'type' => 'following_arg'
-                                }
-                              ],
-                              'cmdname' => '"',
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 17,
-                                'macro' => ''
-                              }
-                            },
-                            {
-                              'text' => ' '
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'o'
-                                    }
-                                  ],
-                                  'type' => 'brace_command_arg'
-                                }
-                              ],
-                              'cmdname' => '"',
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 17,
-                                'macro' => ''
-                              }
-                            }
-                          ],
-                          'type' => 'brace_command_arg'
-                        }
-                      ],
-                      'cmdname' => 'seealso',
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 17,
-                        'macro' => ''
-                      }
-                    }
+                    {}
                   ],
                   'info' => {
                     'spaces_after_argument' => {
@@ -762,9 +725,9 @@ $result_trees{'indices_disable_encoding'} = {
               ],
               'cmdname' => 'subentry',
               'extra' => {
-                'level' => 1,
-                'seealso' => {},
-                'sortas' => 'a!"@b'
+                'sortas' => 'a!"@b',
+                'subentry_level' => 1,
+                'subentry_parent' => {}
               },
               'info' => {
                 'spaces_before_argument' => {
@@ -772,21 +735,18 @@ $result_trees{'indices_disable_encoding'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => ''
+            'line_nr' => 17
           },
           'type' => 'index_entry_command'
         },
@@ -818,14 +778,13 @@ $result_trees{'indices_disable_encoding'} = {
             'index_ignore_chars' => '\\'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           },
           'type' => 'index_entry_command'
         },
@@ -848,14 +807,12 @@ $result_trees{'indices_disable_encoding'} = {
                           'text' => '\\cmd'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'sortas',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 19,
-                    'macro' => ''
+                    'line_nr' => 19
                   }
                 }
               ],
@@ -879,14 +836,13 @@ $result_trees{'indices_disable_encoding'} = {
             'sortas' => '\\cmd'
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           },
           'type' => 'index_entry_command'
         },
@@ -928,14 +884,12 @@ $result_trees{'indices_disable_encoding'} = {
                           'text' => 'file'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'file',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 23,
-                    'macro' => ''
+                    'line_nr' => 23
                   }
                 }
               ],
@@ -966,14 +920,13 @@ $result_trees{'indices_disable_encoding'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           },
           'type' => 'index_entry_command'
         },
@@ -997,14 +950,12 @@ $result_trees{'indices_disable_encoding'} = {
                           'text' => 'person'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'r',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 25,
-                    'macro' => ''
+                    'line_nr' => 25
                   }
                 },
                 {
@@ -1018,14 +969,12 @@ $result_trees{'indices_disable_encoding'} = {
                           'text' => 'aa'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'file',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 25,
-                    'macro' => ''
+                    'line_nr' => 25
                   }
                 }
               ],
@@ -1047,14 +996,13 @@ $result_trees{'indices_disable_encoding'} = {
             ]
           },
           'info' => {
+            'command_name' => 'findex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 25,
-            'macro' => ''
+            'line_nr' => 25
           },
           'type' => 'index_entry_command'
         },
@@ -1092,9 +1040,7 @@ $result_trees{'indices_disable_encoding'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           }
         },
         {
@@ -1131,22 +1077,20 @@ $result_trees{'indices_disable_encoding'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 29,
-            'macro' => ''
+            'line_nr' => 29
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     }
   ],
@@ -1159,7 +1103,8 @@ $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[4]{'extra'}
 $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[5]{'extra'}{'element_node'} = $result_trees{'indices_disable_encoding'}{'contents'}[3];
 $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[6]{'extra'}{'element_node'} = $result_trees{'indices_disable_encoding'}{'contents'}[3];
 $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'element_node'} = $result_trees{'indices_disable_encoding'}{'contents'}[3];
-$result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'}{'extra'}{'seealso'} = $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'}{'args'}[0]{'contents'}[11];
+$result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'}{'args'}[0]{'contents'}[11] = $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'seealso'};
+$result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'}{'extra'}{'subentry_parent'} = $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8];
 $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[9] = $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[8]{'extra'}{'subentry'};
 $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[10]{'extra'}{'element_node'} = $result_trees{'indices_disable_encoding'}{'contents'}[3];
 $result_trees{'indices_disable_encoding'}{'contents'}[4]{'contents'}[11]{'extra'}{'element_node'} = $result_trees{'indices_disable_encoding'}{'contents'}[3];
@@ -1214,7 +1159,7 @@ top section
 ';
 
 $result_sectioning{'indices_disable_encoding'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -1223,11 +1168,8 @@ $result_sectioning{'indices_disable_encoding'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -1237,90 +1179,95 @@ $result_sectioning{'indices_disable_encoding'} = {
                   'extra' => {
                     'isindex' => 1,
                     'normalized' => 'chapter'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'indices_disable_encoding'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'indices_disable_encoding'};
+$result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'indices_disable_encoding'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'indices_disable_encoding'};
 
-$result_nodes{'indices_disable_encoding'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'isindex' => 1,
-        'normalized' => 'chapter'
+$result_nodes{'indices_disable_encoding'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chapter'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'indices_disable_encoding'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'indices_disable_encoding'}[0];
+$result_nodes{'indices_disable_encoding'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'indices_disable_encoding'}[0];
+$result_nodes{'indices_disable_encoding'}[1] = $result_nodes{'indices_disable_encoding'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'indices_disable_encoding'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chapter'
     }
   }
-};
-$result_nodes{'indices_disable_encoding'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'indices_disable_encoding'};
-$result_nodes{'indices_disable_encoding'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'indices_disable_encoding'};
-
-$result_menus{'indices_disable_encoding'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'indices_disable_encoding'} = [
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 23,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 23,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }
@@ -1334,13 +1281,13 @@ $result_indices_sort_strings{'indices_disable_encoding'} = {
   'cp' => [
     '\\cmd',
     '\\some\\command for file',
-    'a!"@b "!@ a" o", a!"@b',
-    'a" o"',
+    "\x{e4} \x{f6}",
+    "a!\"\@b \"!\@ \x{e4} \x{f6}, a!\"\@b",
     'AA',
     'aa',
     'cmd',
     'i',
-    'i^',
+    "\x{ee}",
     'Z'
   ],
   'fn' => [

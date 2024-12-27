@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE texinfo PUBLIC "-//GNU//DTD TexinfoML V7.1//EN" "http://www.gnu.org/software/texinfo/dtd/7.1/texinfo.dtd">
+<texinfo>
+<filename file="extension_undef"></filename>
+<para>node Top
+</para><top spaces=" "><sectiontitle>top</sectiontitle>
+
+</top>
+<node name="chapter" spaces=" "><nodename>chapter</nodename></node>
+<chapter spaces=" "><sectiontitle>Chap</sectiontitle>
+</chapter>
+</texinfo>

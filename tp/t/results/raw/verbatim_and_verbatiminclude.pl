@@ -55,16 +55,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -127,16 +123,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -227,16 +219,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 16,
-                    'macro' => ''
+                    'line_nr' => 16
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -266,16 +254,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -338,16 +322,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           }
         },
         {
@@ -392,9 +372,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 25,
-            'macro' => ''
+            'line_nr' => 25
           }
         },
         {
@@ -453,9 +431,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             },
             {
@@ -485,16 +461,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 30,
-                'macro' => ''
+                'line_nr' => 30
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           }
         },
         {
@@ -539,9 +511,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 33,
-            'macro' => ''
+            'line_nr' => 33
           }
         },
         {
@@ -637,16 +607,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 42,
-                    'macro' => ''
+                    'line_nr' => 42
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 39,
-                'macro' => ''
+                'line_nr' => 39
               }
             },
             {
@@ -686,16 +652,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 44,
-                'macro' => ''
+                'line_nr' => 44
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 36,
-            'macro' => ''
+            'line_nr' => 36
           }
         },
         {
@@ -782,16 +744,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 52,
-                    'macro' => ''
+                    'line_nr' => 52
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 49,
-                'macro' => ''
+                'line_nr' => 49
               }
             },
             {
@@ -826,16 +784,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 54,
-                'macro' => ''
+                'line_nr' => 54
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 46,
-            'macro' => ''
+            'line_nr' => 46
           }
         },
         {
@@ -917,16 +871,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 61,
-                    'macro' => ''
+                    'line_nr' => 61
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 59,
-                'macro' => ''
+                'line_nr' => 59
               }
             },
             {
@@ -965,16 +915,12 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 63,
-                'macro' => ''
+                'line_nr' => 63
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 56,
-            'macro' => ''
+            'line_nr' => 56
           }
         }
       ],
@@ -1119,7 +1065,6 @@ In verbatim test text
      In verbatim in example
      In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
 
-
      In quotation with spaces
 
      In verbatim in quotation with spaces
@@ -1135,27 +1080,21 @@ $result_converted_errors{'plaintext'}->{'verbatim_and_verbatiminclude'} = [
   {
     'error_line' => '@verbatiminclude: could not find verb.txt
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => '@verbatiminclude: could not find verb.txt',
     'type' => 'error'
   },
   {
     'error_line' => '@verbatiminclude: could not find verb.txt
 ',
-    'file_name' => '',
     'line_nr' => 29,
-    'macro' => '',
     'text' => '@verbatiminclude: could not find verb.txt',
     'type' => 'error'
   },
   {
     'error_line' => '@verbatiminclude: could not find verb.txt
 ',
-    'file_name' => '',
     'line_nr' => 33,
-    'macro' => '',
     'text' => '@verbatiminclude: could not find verb.txt',
     'type' => 'error'
   }

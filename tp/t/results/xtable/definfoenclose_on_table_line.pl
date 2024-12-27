@@ -40,9 +40,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -60,10 +58,11 @@ $result_trees{'definfoenclose_on_table_line'} = {
                     'begin' => ':',
                     'end' => ':'
                   },
+                  'info' => {
+                    'command_name' => 'phi'
+                  },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   },
                   'type' => 'definfoenclose_command'
                 }
@@ -107,9 +106,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     },
                     {
@@ -136,9 +133,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -193,9 +188,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
@@ -208,9 +201,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         }
       ],
@@ -243,18 +234,14 @@ $result_errors{'definfoenclose_on_table_line'} = [
   {
     'error_line' => 'warning: @definfoenclose is obsolete
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @phi should not appear on @table line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@phi should not appear on @table line',
     'type' => 'warning'
   }

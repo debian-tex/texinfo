@@ -1,6 +1,6 @@
 /* terminal.c -- how to handle the physical terminal for Info.
 
-   Copyright 1988-2023 Free Software Foundation, Inc.
+   Copyright 1988-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ extern int tputs ();
 
 void (*terminal_initialize_terminal_hook) (char *terminal_name) = NULL;
 void (*terminal_get_screen_size_hook) (void) = NULL;
-int (*terminal_prep_terminal_hook) (void) = NULL;
+void (*terminal_prep_terminal_hook) (void) = NULL;
 void (*terminal_unprep_terminal_hook) (void) = NULL;
 void (*terminal_new_terminal_hook) (char *terminal_name) = NULL;
 void (*terminal_goto_xy_hook) (int x, int y) = NULL;
@@ -799,22 +799,23 @@ static void
 initialize_byte_map (void)
 {
   int i;
+  size_t j;
 
   static struct special_keys {
       int key_id;
       char **byte_seq;
   } keys[] = {
-      KEY_RIGHT_ARROW, &term_kr,
-      KEY_LEFT_ARROW, &term_kl,
-      KEY_UP_ARROW, &term_ku,
-      KEY_DOWN_ARROW, &term_kd,
-      KEY_PAGE_UP, &term_kP,
-      KEY_PAGE_DOWN, &term_kN,
-      KEY_HOME, &term_kh,
-      KEY_END, &term_ke,
-      KEY_DELETE, &term_kD,
-      KEY_INSERT, &term_ki,
-      KEY_BACK_TAB, &term_kB
+      {KEY_RIGHT_ARROW, &term_kr},
+      {KEY_LEFT_ARROW, &term_kl},
+      {KEY_UP_ARROW, &term_ku},
+      {KEY_DOWN_ARROW, &term_kd},
+      {KEY_PAGE_UP, &term_kP},
+      {KEY_PAGE_DOWN, &term_kN},
+      {KEY_HOME, &term_kh},
+      {KEY_END, &term_ke},
+      {KEY_DELETE, &term_kD},
+      {KEY_INSERT, &term_ki},
+      {KEY_BACK_TAB, &term_kB}
   };
 
   /* Recognize arrow key sequences with both of the usual prefixes in case they 
@@ -823,14 +824,14 @@ initialize_byte_map (void)
       int key_id;
       char *byte_seq;
   } keys2[] = {
-      KEY_RIGHT_ARROW, "\033[C",
-      KEY_RIGHT_ARROW, "\033OC",
-      KEY_LEFT_ARROW, "\033[D",
-      KEY_LEFT_ARROW, "\033OD",
-      KEY_UP_ARROW, "\033[A",
-      KEY_UP_ARROW, "\033OA",
-      KEY_DOWN_ARROW, "\033[B",
-      KEY_DOWN_ARROW, "\033OB"
+      {KEY_RIGHT_ARROW, "\033[C"},
+      {KEY_RIGHT_ARROW, "\033OC"},
+      {KEY_LEFT_ARROW, "\033[D"},
+      {KEY_LEFT_ARROW, "\033OD"},
+      {KEY_UP_ARROW, "\033[A"},
+      {KEY_UP_ARROW, "\033OA"},
+      {KEY_DOWN_ARROW, "\033[B"},
+      {KEY_DOWN_ARROW, "\033OB"}
   };
 
   byte_seq_to_key = xmalloc (256 * sizeof (BYTEMAP_ENTRY));
@@ -862,18 +863,18 @@ initialize_byte_map (void)
   byte_seq_to_key['\177'].next = 0;
 
   /* For each special key, record its byte sequence. */
-  for (i = 0; i < sizeof (keys) / sizeof (*keys); i++)
+  for (j = 0; j < sizeof (keys) / sizeof (*keys); j++)
     {
-      if (!*keys[i].byte_seq)
+      if (!*keys[j].byte_seq)
         continue; /* No byte sequence known for this key. */
 
-      add_seq_to_byte_map (keys[i].key_id, *keys[i].byte_seq);
+      add_seq_to_byte_map (keys[j].key_id, *keys[j].byte_seq);
     }
 
   /* Hard-coded byte sequences. */
-  for (i = 0; i < sizeof (keys2) / sizeof (*keys2); i++)
+  for (j = 0; j < sizeof (keys2) / sizeof (*keys2); j++)
     {
-      add_seq_to_byte_map (keys2[i].key_id, keys2[i].byte_seq);
+      add_seq_to_byte_map (keys2[j].key_id, keys2[j].byte_seq);
     }
 
   /* In case "normal tracking mode" is on. */

@@ -1,7 +1,7 @@
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright 1992-2023 Free Software Foundation, Inc.
+  Copyright 1992-2024 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -9,6 +9,75 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+7.2 (23 December 2024)
+* Build
+  . "make install" installs files for texi2any under $datadir/texi2any, not
+    $datadir/texinfo.
+
+* texinfo.tex
+  . use @ as the escape character in all index files.  this requires
+    new enough texi2dvi (Texinfo 6.7, 2019) for index files to be
+    properly processed.
+  . a bug has been fixed where a mangled PDF outline could be produced for
+    a document using @unnumberedsec
+  . you can call @unmacro with an undefined macro name, matching the
+    behavior of texi2any
+
+* texi2any
+  . set CHECK_NORMAL_MENU_STRUCTURE by default.  this means texi2any
+    again checks menu structure by default (changed in 6.8 release, 2021).
+  . only allow @definfoenclose to be used to redefine highlighting commands
+  . sorting of indices is now independent of the input or output encodings
+  . new customization variable COLLATION_LANGUAGE to allow linguistic
+    tailoring of index sorting
+  . new variable DOCUMENTLANGUAGE_COLLATION to use @documentlanguage for
+    linguistic tailoring of index sorting
+  . new variable USE_UNICODE_COLLATION to allow turning off the slower
+    use of Unicode collation when sorting indices
+  . rename BODYTEXT customization variable to BODY_ELEMENT_ATTRIBUTES
+  . rename COMPLEX_FORMAT_IN_TABLE customization variable to
+    INDENTED_BLOCK_COMMANDS_IN_TABLE
+  . remove the following variables: AVOID_MENU_REDUNDANCY, FRAMES,
+    FRAMESET_DOCTYPE, NO_USE_SETFILENAME, SILENT, USE_UP_NODE_FOR_ELEMENT_UP
+  . remove SIMPLE_MENU variable and tree transformation
+  . the use of the directories ~/.texinfo and ~/.texi2any for configuration
+    files is deprecated, and should be replaced by texinfo or texi2any
+    directories under XDG_CONFIG_HOME (usually ~/.config/).  the new
+    locations are compatible with the XDG Base Directory Specification.
+    in future versions, the ~/.texinfo and ~/.texi2any directories will
+    not be in search paths.
+  . do not try the us-ascii encoding anymore as a locale for translated
+    document strings.
+  . some unused translation files have been removed for the
+    `texinfo_document' domain
+  . Info output:
+      . output Info-documentlanguage in Local Variables section of output
+        file if @documentlanguage is given
+  . HTML, Texinfo and raw text output:
+      . an implementation of the conversion in C has been included, which
+        is much faster than the code in Perl. set the `TEXINFO_XS_CONVERT'
+        environment variable to 1 to use.
+  . HTML output:
+      . CHECK_HTMLXREF set by default for warnings about links to unknown
+        external manuals
+      . you can use the MATHJAX_CONFIGURATION customization variable to add
+        data to the MathJax configuration object
+      . warn if there is a .inf or .info suffix for cross-reference manual
+      . use <pre> instead of <div><em> for output of @displaymath
+      . remove border, cellpadding, cellspacing and align attributes.  add
+        classes and use CSS when needed.
+  . EPUB output:
+      . stricter conformance for conformance checkers
+
+* info
+  . check for init file under XDG_CONFIG_HOME/texinfo/infokey after
+    checking ~/.infokey, in accordance with the XDG Base Directory
+    Specification
+
+* Distribution
+  . automake 1.17, autoconf 2.72, gettext 0.22.5, libtool 2.5.3
+
+
 7.1.1 (7 September 2024)
 This is a bug-fix release with minimal changes.
 

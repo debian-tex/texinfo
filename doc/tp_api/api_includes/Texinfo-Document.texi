@@ -95,12 +95,8 @@ strings.  From both @code{@@include} and @code{@@verbatiminclude}.
 @item input_encoding_name
 @anchor{Texinfo@asis{::}Document input_encoding_name}
 
-@item input_perl_encoding
-@anchor{Texinfo@asis{::}Document input_perl_encoding}
-
 @code{input_encoding_name} string is the encoding name used for the
 Texinfo code.
-@code{input_perl_encoding} string is a corresponding Perl encoding name.
 
 @item input_file_name
 @anchor{Texinfo@asis{::}Document input_file_name}

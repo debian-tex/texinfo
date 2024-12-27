@@ -10,7 +10,6 @@ $result_trees{'verb'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -24,7 +23,7 @@ $result_trees{'verb'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -32,9 +31,7 @@ $result_trees{'verb'} = {
                 'delimiter' => '!'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -60,7 +57,7 @@ $result_trees{'verb'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -68,9 +65,7 @@ $result_trees{'verb'} = {
                 'delimiter' => '!'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -101,7 +96,7 @@ $result_trees{'verb'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -109,9 +104,7 @@ $result_trees{'verb'} = {
                 'delimiter' => '!'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -137,7 +130,7 @@ $result_trees{'verb'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -145,9 +138,7 @@ $result_trees{'verb'} = {
                 'delimiter' => '%'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -207,9 +198,7 @@ $result_converted_errors{'latex_text'}->{'verb'} = [
   {
     'error_line' => 'warning: \\verb delimiter `%\' (for LaTeX) used in text `a%|!:@b\'
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => '\\verb delimiter `%\' (for LaTeX) used in text `a%|!:@b\'',
     'type' => 'warning'
   }
@@ -220,9 +209,7 @@ $result_converted_errors{'file_latex'}->{'verb'} = [
   {
     'error_line' => 'warning: \\verb delimiter `%\' (for LaTeX) used in text `a%|!:@b\'
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => '\\verb delimiter `%\' (for LaTeX) used in text `a%|!:@b\'',
     'type' => 'warning'
   }

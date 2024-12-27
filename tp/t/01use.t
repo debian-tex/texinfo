@@ -30,7 +30,7 @@ my $manual_tree = { 'cmdname' => 'multitable',
                                {'cmdname' => 'b',
                                 'args' => [
                                             {
-                                              'type' => 'brace_command_arg',
+                                              'type' => 'brace_container',
                                               'contents' => [
                                                             { 'text' => 'rr' }
                                                          ]
@@ -55,7 +55,7 @@ my $manual_tree = { 'cmdname' => 'multitable',
                                                                   { 'text' => ' in verb } ',
                                                                     'type' => 'raw' }
                                                                 ],
-                                                                'type' => 'brace_command_arg',
+                                                                'type' => 'brace_container',
                                                             } ],
                                                   'info' => {
                                                     'delimiter' => ':'

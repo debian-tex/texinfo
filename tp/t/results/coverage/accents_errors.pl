@@ -33,9 +33,7 @@ $result_trees{'accents_errors'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -60,9 +58,7 @@ $result_trees{'accents_errors'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -77,9 +73,7 @@ $result_trees{'accents_errors'} = {
             {
               'cmdname' => 'ringaccent',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -120,9 +114,7 @@ $result_trees{'accents_errors'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -151,9 +143,7 @@ $result_trees{'accents_errors'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -168,9 +158,7 @@ $result_trees{'accents_errors'} = {
             {
               'cmdname' => '~',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -210,45 +198,35 @@ $result_errors{'accents_errors'} = [
   {
     'error_line' => 'warning: command `@ringaccent\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: command `@ringaccent\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'command `@ringaccent\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => '@ringaccent expected braces
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@ringaccent expected braces',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: command `@~\' must not be followed by new line
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'command `@~\' must not be followed by new line',
     'type' => 'warning'
   },
   {
     'error_line' => '@~ expected braces
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@~ expected braces',
     'type' => 'error'
   }

@@ -44,9 +44,7 @@ $result_trees{'setfilename'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -76,9 +74,7 @@ $result_trees{'setfilename'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -117,9 +113,7 @@ $result_trees{'setfilename'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -138,7 +132,7 @@ $result_trees{'setfilename'} = {
                               'type' => 'raw'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'verb',
@@ -146,9 +140,7 @@ $result_trees{'setfilename'} = {
                         'delimiter' => ':'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     },
                     {
@@ -165,18 +157,13 @@ $result_trees{'setfilename'} = {
                 }
               ],
               'cmdname' => 'setfilename',
-              'extra' => {
-                'missing_argument' => 1
-              },
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -209,45 +196,35 @@ $result_errors{'setfilename'} = [
   {
     'error_line' => 'warning: multiple @setfilename
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: multiple @setfilename
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: multiple @setfilename
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'multiple @setfilename',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @verb should not appear in @setfilename
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@verb should not appear in @setfilename',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @setfilename: @ @verb{: name :}@
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'bad argument to @setfilename: @ @verb{: name :}@',
     'type' => 'error'
   }
@@ -319,7 +296,6 @@ $result_converted{'docbook'}->{'setfilename'} = '
 
 
 $result_converted{'info'}->{'setfilename'} = 'This is file_comment, produced from .
-
 
 
 Tag Table:

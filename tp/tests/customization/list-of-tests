@@ -16,3 +16,6 @@ double_contents_book ../../t/input_files/double_contents.texi --html --no-split 
 double_contents_after_title_book ../../t/input_files/double_contents.texi --html --no-split --init book.pm -c 'CONTENTS_OUTPUT_LOCATION after_title'
 double_contents_after_title_book_chapter ../../t/input_files/double_contents.texi --html --init book.pm --split chapter -c 'CONTENTS_OUTPUT_LOCATION after_title'
 
+# test wrong return value from init file handler.
+simplest_stage_handler_bad_return ../formatting/simplest.texi --html --init stage_handler_bad_return.pm
+simplest_stage_handler_undef_return ../formatting/simplest.texi --html --init stage_handler_undef_return.pm

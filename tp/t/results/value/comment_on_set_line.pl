@@ -91,7 +91,12 @@ $result_trees{'comment_on_set_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 'x'
+                        'contents' => [
+                          {
+                            'text' => 'x'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
@@ -112,7 +117,12 @@ $result_trees{'comment_on_set_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 'y'
+                        'contents' => [
+                          {
+                            'text' => 'y'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
@@ -133,7 +143,12 @@ $result_trees{'comment_on_set_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 'z'
+                        'contents' => [
+                          {
+                            'text' => 'z'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
@@ -154,7 +169,12 @@ $result_trees{'comment_on_set_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 't'
+                        'contents' => [
+                          {
+                            'text' => 't'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'

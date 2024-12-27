@@ -39,6 +39,7 @@ $result_trees{'section_on_float_line'} = {
           'cmdname' => 'float',
           'extra' => {
             'float_type' => 't',
+            'is_target' => 1,
             'normalized' => 'l'
           },
           'info' => {
@@ -47,9 +48,7 @@ $result_trees{'section_on_float_line'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -73,15 +72,16 @@ $result_trees{'section_on_float_line'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -98,47 +98,41 @@ $result_texts{'section_on_float_line'} = 't, l
 ';
 
 $result_sectioning{'section_on_float_line'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_on_float_line'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_on_float_line'};
+$result_sectioning{'section_on_float_line'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_on_float_line'};
 
 $result_errors{'section_on_float_line'} = [
   {
     'error_line' => 'warning: @section should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@section should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @section should not appear on @float line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@section should not appear on @float line',
     'type' => 'warning'
   },
   {
     'error_line' => '@section seen before @end float
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@section seen before @end float',
     'type' => 'error'
   }
@@ -150,11 +144,9 @@ $result_floats{'section_on_float_line'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => 't',
         'normalized' => 'l'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -163,6 +155,7 @@ $result_floats{'section_on_float_line'} = {
 
 
 $result_converted{'plaintext'}->{'section_on_float_line'} = 't 1
+
 1 first
 =======
 

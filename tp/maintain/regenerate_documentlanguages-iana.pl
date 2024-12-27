@@ -3,7 +3,7 @@
 # regenerate_documentlanguages-iana.pl: download the iana files language
 # and regenerate Texinfo/Documentlanguages.pm list of languages and regions
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
+# Copyright 2010-2024 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -16,16 +16,14 @@
 
 use strict;
 
-# emulates -w
-BEGIN
-{
-  $^W = 1;
-}
+use warnings;
+
+use File::Basename;
 
 my $dir = 'maintain';
 system ("cd $dir && wget -N http://www.iana.org/assignments/language-subtag-registry");
 
-open (TXT,"$dir/language-subtag-registry") or die "Open $dir/language-subtag-registry: $!\n";
+open(TXT,"$dir/language-subtag-registry") or die "Open $dir/language-subtag-registry: $!\n";
 
 my $entry;
 my @entries;
@@ -44,9 +42,11 @@ if (!defined($entry->{'Type'})) {
   die "Type not defined for $entry ".join('|', keys(%$entry))."\n";
 }
 
-open (OUT, ">Texinfo/Documentlanguages.pm") or die "Open Texinfo/Documentlanguages.pm: $!\n";
+my $program_name = basename($0);
 
-print OUT "# This file was automatically generated from $0\n\n";
+open(OUT, ">Texinfo/Documentlanguages.pm") or die "Open Texinfo/Documentlanguages.pm: $!\n";
+
+print OUT "# This file was automatically generated from $program_name\n\n";
 
 print OUT "package Texinfo::Documentlanguages;\n\n";
 

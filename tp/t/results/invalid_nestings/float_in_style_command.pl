@@ -20,14 +20,12 @@ $result_trees{'float_in_style_command'} = {
 '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -93,9 +91,7 @@ $result_trees{'float_in_style_command'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -130,15 +126,14 @@ $result_trees{'float_in_style_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'A',
+            'is_target' => 1,
             'normalized' => 'B'
           },
           'info' => {
@@ -147,9 +142,7 @@ $result_trees{'float_in_style_command'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         }
       ],
@@ -178,18 +171,14 @@ $result_errors{'float_in_style_command'} = [
   {
     'error_line' => '@code missing closing brace
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   }
@@ -207,11 +196,9 @@ $result_floats{'float_in_style_command'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'A',
         'normalized' => 'B'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]

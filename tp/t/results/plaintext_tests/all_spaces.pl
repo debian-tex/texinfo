@@ -39,8 +39,7 @@ $result_trees{'all_spaces'} = {
               },
               "source_info" => {
                 "file_name" => "all_spaces.texi",
-                "line_nr" => 1,
-                "macro" => ""
+                "line_nr" => 1
               }
             },
             {
@@ -71,6 +70,7 @@ $result_trees{'all_spaces'} = {
       ],
       "cmdname" => "node",
       "extra" => {
+        "is_target" => 1,
         "normalized" => "Top"
       },
       "info" => {
@@ -80,8 +80,7 @@ $result_trees{'all_spaces'} = {
       },
       "source_info" => {
         "file_name" => "all_spaces.texi",
-        "line_nr" => 3,
-        "macro" => ""
+        "line_nr" => 3
       }
     },
     {
@@ -435,6 +434,7 @@ $result_trees{'all_spaces'} = {
         }
       ],
       "extra" => {
+        "is_target" => 1,
         "normalized" => "chap"
       },
       "info" => {
@@ -444,8 +444,7 @@ $result_trees{'all_spaces'} = {
       },
       "source_info" => {
         "file_name" => "all_spaces.texi",
-        "line_nr" => 4,
-        "macro" => ""
+        "line_nr" => 4
       }
     }
   ],
@@ -570,32 +569,41 @@ IDEOGRAPHIC SPACE: |　|
 
 ';
 
-$result_nodes{'all_spaces'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'all_spaces'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'all_spaces'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'all_spaces'}[0];
+$result_nodes{'all_spaces'}[1] = $result_nodes{'all_spaces'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'all_spaces'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'all_spaces'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'all_spaces'};
-
-$result_menus{'all_spaces'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'all_spaces'} = [];
 

@@ -1,4 +1,9 @@
 \input texinfo
+
+@c this is needed by old automake versions < 1.6.2, that are still used
+@c in some platforms in 2024
+@setfilename texi2any_internals.info
+
 @settitle Texinfo modules documentation
 
 @dircategory Texinfo documentation system
@@ -19,10 +24,14 @@
 * Texinfo@asis{::}Commands::
 * Texinfo@asis{::}Common::
 * Texinfo@asis{::}Parser::
+* Texinfo@asis{::}Document::
+* Texinfo@asis{::}ManipulateTree::
 * Texinfo@asis{::}Structuring::
 * Texinfo@asis{::}Report::
 * Texinfo@asis{::}Translations::
 * Texinfo@asis{::}Transformations::
+* Texinfo@asis{::}Indices::
+* Texinfo@asis{::}OutputUnits::
 * Texinfo@asis{::}Convert@asis{::}Texinfo::
 * Texinfo@asis{::}Convert@asis{::}Utils::
 * Texinfo@asis{::}Convert@asis{::}Unicode::
@@ -80,7 +89,6 @@ Texinfo::Parser METHODS
 
 * Texinfo@asis{::}Parser Initialization::
 * Texinfo@asis{::}Parser Parsing Texinfo text::
-* Texinfo@asis{::}Parser Getting information on the document::
 
 TEXINFO TREE
 
@@ -100,6 +108,37 @@ Information available in the @code{extra} key
 
 * Texinfo@asis{::}Parser Extra keys available for more than one @@-command::
 * Texinfo@asis{::}Parser Extra keys specific of certain @@-commands or containers::
+
+Texinfo::Document
+
+* Texinfo@asis{::}Document NAME::
+* Texinfo@asis{::}Document SYNOPSIS::
+* Texinfo@asis{::}Document NOTES::
+* Texinfo@asis{::}Document DESCRIPTION::
+* Texinfo@asis{::}Document METHODS::
+* Texinfo@asis{::}Document SEE ALSO::
+* Texinfo@asis{::}Document AUTHOR::
+* Texinfo@asis{::}Document COPYRIGHT AND LICENSE::
+
+Texinfo::Document METHODS
+
+* Texinfo@asis{::}Document Getting document information::
+* Texinfo@asis{::}Document Merging and sorting indices::
+* Texinfo@asis{::}Document Getting errors and error registering object::
+* Texinfo@asis{::}Document Getting customization options values registered in document::
+* Texinfo@asis{::}Document Registering document and information in document::
+* Texinfo@asis{::}Document Methods for Perl and C code interactions::
+
+Texinfo::ManipulateTree
+
+* Texinfo@asis{::}ManipulateTree NAME::
+* Texinfo@asis{::}ManipulateTree SYNOPSIS::
+* Texinfo@asis{::}ManipulateTree NOTES::
+* Texinfo@asis{::}ManipulateTree DESCRIPTION::
+* Texinfo@asis{::}ManipulateTree METHODS::
+* Texinfo@asis{::}ManipulateTree SEE ALSO::
+* Texinfo@asis{::}ManipulateTree AUTHOR::
+* Texinfo@asis{::}ManipulateTree COPYRIGHT AND LICENSE::
 
 Texinfo::Structuring
 
@@ -129,6 +168,7 @@ Texinfo::Translations
 * Texinfo@asis{::}Translations NOTES::
 * Texinfo@asis{::}Translations DESCRIPTION::
 * Texinfo@asis{::}Translations METHODS::
+* Texinfo@asis{::}Translations SEE ALSO::
 * Texinfo@asis{::}Translations AUTHOR::
 * Texinfo@asis{::}Translations COPYRIGHT AND LICENSE::
 
@@ -141,6 +181,34 @@ Texinfo::Transformations
 * Texinfo@asis{::}Transformations SEE ALSO::
 * Texinfo@asis{::}Transformations AUTHOR::
 * Texinfo@asis{::}Transformations COPYRIGHT AND LICENSE::
+
+Texinfo::Indices
+
+* Texinfo@asis{::}Indices NAME::
+* Texinfo@asis{::}Indices SYNOPSIS::
+* Texinfo@asis{::}Indices NOTES::
+* Texinfo@asis{::}Indices DESCRIPTION::
+* Texinfo@asis{::}Indices METHODS::
+* Texinfo@asis{::}Indices SEE ALSO::
+* Texinfo@asis{::}Indices AUTHOR::
+* Texinfo@asis{::}Indices COPYRIGHT AND LICENSE::
+
+Texinfo::OutputUnits
+
+* Texinfo@asis{::}OutputUnits NAME::
+* Texinfo@asis{::}OutputUnits SYNOPSIS::
+* Texinfo@asis{::}OutputUnits NOTES::
+* Texinfo@asis{::}OutputUnits DESCRIPTION::
+* Texinfo@asis{::}OutputUnits METHODS::
+* Texinfo@asis{::}OutputUnits SEE ALSO::
+* Texinfo@asis{::}OutputUnits AUTHOR::
+* Texinfo@asis{::}OutputUnits COPYRIGHT AND LICENSE::
+
+Texinfo::OutputUnits METHODS
+
+* Texinfo@asis{::}OutputUnits Output units creation::
+* Texinfo@asis{::}OutputUnits Grouping output units in pages::
+* Texinfo@asis{::}OutputUnits Setting output units directions::
 
 Texinfo::Convert::Texinfo
 
@@ -206,8 +274,12 @@ Texinfo::Convert::Converter
 
 Texinfo::Convert::Converter METHODS
 
-* Texinfo@asis{::}Convert@asis{::}Converter Initialization::
+* Texinfo@asis{::}Convert@asis{::}Converter Converter Initialization::
+* Texinfo@asis{::}Convert@asis{::}Converter Conversion::
 * Texinfo@asis{::}Convert@asis{::}Converter Getting and setting customization variables::
+* Texinfo@asis{::}Convert@asis{::}Converter Registering error and warning messages::
+* Texinfo@asis{::}Convert@asis{::}Converter Translations in output documents::
+* Texinfo@asis{::}Convert@asis{::}Converter Index sorting::
 * Texinfo@asis{::}Convert@asis{::}Converter Conversion to XML::
 * Texinfo@asis{::}Convert@asis{::}Converter Helper methods::
 
@@ -282,10 +354,14 @@ Texinfo::Convert::Plaintext
 @include api_includes/Texinfo-Commands.texi
 @include api_includes/Texinfo-Common.texi
 @include api_includes/Texinfo-Parser.texi
+@include api_includes/Texinfo-Document.texi
+@include api_includes/Texinfo-ManipulateTree.texi
 @include api_includes/Texinfo-Structuring.texi
 @include api_includes/Texinfo-Report.texi
 @include api_includes/Texinfo-Translations.texi
 @include api_includes/Texinfo-Transformations.texi
+@include api_includes/Texinfo-Indices.texi
+@include api_includes/Texinfo-OutputUnits.texi
 @include api_includes/Texinfo-Convert-Texinfo.texi
 @include api_includes/Texinfo-Convert-Utils.texi
 @include api_includes/Texinfo-Convert-Unicode.texi

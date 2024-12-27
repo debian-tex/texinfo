@@ -85,9 +85,7 @@ $result_trees{'float_long_captions'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -122,15 +120,14 @@ $result_trees{'float_long_captions'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'Text',
+            'is_target' => 1,
             'normalized' => 'text1'
           },
           'info' => {
@@ -139,9 +136,7 @@ $result_trees{'float_long_captions'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -200,9 +195,7 @@ $result_trees{'float_long_captions'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -237,15 +230,14 @@ $result_trees{'float_long_captions'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'Text',
+            'is_target' => 1,
             'normalized' => 'text2'
           },
           'info' => {
@@ -254,9 +246,7 @@ $result_trees{'float_long_captions'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -291,13 +281,12 @@ $result_trees{'float_long_captions'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -306,9 +295,7 @@ $result_trees{'float_long_captions'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -340,19 +327,22 @@ Text, text2
 
 ';
 
-$result_nodes{'float_long_captions'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'float_long_captions'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'float_long_captions'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'float_long_captions'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'float_long_captions'} = [];
 
@@ -368,11 +358,9 @@ $result_floats{'float_long_captions'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'Text',
         'normalized' => 'text1'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     },
     {
@@ -384,11 +372,9 @@ $result_floats{'float_long_captions'} = {
             'float' => {}
           }
         },
+        'float_number' => '2',
         'float_type' => 'Text',
         'normalized' => 'text2'
-      },
-      'structure' => {
-        'float_number' => 2
       }
     }
   ]
@@ -409,9 +395,10 @@ Text 2: AAAAAAAAAAAAAAAA BBBBBB CCCCCCCCCCC
 
 * Menu:
 
-* Text 1: text1.                         AAAAAAAAAAAAAAAA BBBBB ...
-* Text 2: text2.                         AAAAAAAAAAAAAAAA BBBBBB ...
-
+* Text 1: text1.                         AAAAAAAAAAAAAAAA BBBBB
+                                         CCCCCCCCCCC
+* Text 2: text2.                         AAAAAAAAAAAAAAAA BBBBBB
+                                         CCCCCCCCCCC
 
 
 Tag Table:

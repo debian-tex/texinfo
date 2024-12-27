@@ -62,9 +62,7 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -73,9 +71,7 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -90,11 +86,7 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
                         'text' => '@verb{: in }'
                       }
                     ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -106,7 +98,8 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -118,11 +111,15 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   }
                 ],
                 'info' => {
-                  'command_name' => 'mycommand'
+                  'command_name' => 'mycommand',
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'type' => 'linemacro_call'
               },
@@ -146,7 +143,7 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -154,7 +151,6 @@ $result_trees{'verb_with_brace_in_linemacro_call'} = {
                 'delimiter' => ':'
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'mycommand'
               }

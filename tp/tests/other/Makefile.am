@@ -1,5 +1,5 @@
 EXTRA_DIST = \
- highlight_example.texi \
+ highlight_example.texi index_collation_test.texi \
  list-of-tests res_parser
 
 DISTCLEANFILES = tests.log tests.out

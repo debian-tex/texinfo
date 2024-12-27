@@ -42,9 +42,7 @@ $result_trees{'section_in_math'} = {
                         }
                       ],
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       },
                       'type' => 'balanced_braces'
                     }
@@ -54,9 +52,7 @@ $result_trees{'section_in_math'} = {
               ],
               'cmdname' => 'math',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -118,24 +114,23 @@ $result_trees{'section_in_math'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -156,15 +151,16 @@ $result_trees{'section_in_math'} = {
         }
       ],
       'cmdname' => 'section',
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     }
   ],
@@ -195,78 +191,72 @@ More in math
 ';
 
 $result_sectioning{'section_in_math'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {},
           'section_level' => 2,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       },
       {
         'cmdname' => 'section',
-        'structure' => {
+        'extra' => {
+          'section_directions' => {
+            'prev' => {}
+          },
           'section_level' => 2,
-          'section_number' => 2,
-          'section_prev' => {},
-          'section_up' => {},
-          'toplevel_prev' => {}
+          'section_number' => '2',
+          'toplevel_directions' => {
+            'prev' => {}
+          }
         }
       }
     ],
     'section_level' => 1
   }
 };
-$result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'section_in_math'};
-$result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'section_in_math'};
-$result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'section_in_math'}{'structure'}{'section_childs'}[0];
+$result_sectioning{'section_in_math'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'section_in_math'};
+$result_sectioning{'section_in_math'}{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'section_in_math'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'section_in_math'}{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'section_in_math'}{'extra'}{'section_childs'}[0];
 
 $result_errors{'section_in_math'} = [
   {
     'error_line' => 'warning: @section should not appear anywhere inside @math
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@section should not appear anywhere inside @math',
     'type' => 'warning'
   },
   {
     'error_line' => 'misplaced {
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'misplaced {',
     'type' => 'error'
   },
   {
     'error_line' => '@section seen before @math closing brace
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@section seen before @math closing brace',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @section should not appear anywhere inside @math
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => '@section should not appear anywhere inside @math',
     'type' => 'warning'
   },
   {
     'error_line' => '@section seen before @math closing brace
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@section seen before @math closing brace',
     'type' => 'error'
   }

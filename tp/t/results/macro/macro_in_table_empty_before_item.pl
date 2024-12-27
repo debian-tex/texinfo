@@ -45,9 +45,7 @@ $result_trees{'macro_in_table_empty_before_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             }
           ],
@@ -56,9 +54,7 @@ $result_trees{'macro_in_table_empty_before_item'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -73,11 +69,8 @@ $result_trees{'macro_in_table_empty_before_item'} = {
                 {
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 4
+                  }
                 }
               ],
               'info' => {
@@ -100,7 +93,7 @@ $result_trees{'macro_in_table_empty_before_item'} = {
                       'element' => {
                         'args' => [
                           {
-                            'type' => 'brace_command_arg'
+                            'type' => 'brace_arg'
                           }
                         ],
                         'info' => {
@@ -150,9 +143,7 @@ $result_trees{'macro_in_table_empty_before_item'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
+                        'line_nr' => 5
                       }
                     }
                   ],
@@ -188,9 +179,7 @@ $result_trees{'macro_in_table_empty_before_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
@@ -203,9 +192,7 @@ $result_trees{'macro_in_table_empty_before_item'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         }
       ],

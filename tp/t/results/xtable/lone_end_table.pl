@@ -36,9 +36,7 @@ $result_errors{'lone_end_table'} = [
   {
     'error_line' => 'unmatched `@end table\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'unmatched `@end table\'',
     'type' => 'error'
   }

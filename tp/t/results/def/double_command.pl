@@ -17,281 +17,321 @@ $result_trees{'double_command'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'func'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'func'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'plot'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'plot'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => '(',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'a'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'b'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'b'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'c'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'c'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => '...'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => '...'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ')',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'func'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_category'
+                                    },
+                                    {
+                                      'text' => ' ',
+                                      'type' => 'spaces'
+                                    },
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'plot2'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_name'
+                                    },
+                                    {
+                                      'text' => ' ',
+                                      'type' => 'spaces'
+                                    },
+                                    {
+                                      'text' => '(',
+                                      'type' => 'delimiter'
+                                    },
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'a'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_arg'
+                                    },
+                                    {
+                                      'text' => ',',
+                                      'type' => 'delimiter'
+                                    },
+                                    {
+                                      'text' => ' ',
+                                      'type' => 'spaces'
+                                    },
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'b'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_arg'
+                                    },
+                                    {
+                                      'text' => ',',
+                                      'type' => 'delimiter'
+                                    },
+                                    {
+                                      'text' => ' ',
+                                      'type' => 'spaces'
+                                    },
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'c'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_arg'
+                                    },
+                                    {
+                                      'text' => ',',
+                                      'type' => 'delimiter'
+                                    },
+                                    {
+                                      'text' => ' ',
+                                      'type' => 'spaces'
+                                    },
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => '...'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_arg'
+                                    },
+                                    {
+                                      'text' => ',',
+                                      'type' => 'delimiter'
+                                    },
+                                    {
+                                      'text' => ' ',
+                                      'type' => 'spaces'
+                                    },
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'd'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_arg'
+                                    },
+                                    {
+                                      'text' => ')',
+                                      'type' => 'delimiter'
+                                    }
+                                  ],
+                                  'info' => {
+                                    'spaces_after_argument' => {
+                                      'text' => '
+'
+                                    }
+                                  },
+                                  'type' => 'line_arg'
+                                }
+                              ],
+                              'cmdname' => 'deffnx',
                               'extra' => {
-                                'def_role' => 'category'
+                                'def_command' => 'deffn',
+                                'def_index_element' => {
+                                  'contents' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'plot2'
+                                        }
+                                      ],
+                                      'type' => 'def_line_arg'
+                                    }
+                                  ],
+                                  'type' => 'def_name'
+                                },
+                                'index_entry' => [
+                                  'fn',
+                                  1
+                                ],
+                                'not_after_command' => 1,
+                                'original_def_cmdname' => 'deffnx'
                               },
-                              'text' => 'func'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
+                              'info' => {
+                                'spaces_before_argument' => {
+                                  'text' => ' '
+                                }
                               },
-                              'text' => ' ',
-                              'type' => 'spaces'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'name'
-                              },
-                              'text' => 'plot2'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => ' ',
-                              'type' => 'spaces'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'delimiter'
-                              },
-                              'text' => '(',
-                              'type' => 'delimiter'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'text' => 'a'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'delimiter'
-                              },
-                              'text' => ',',
-                              'type' => 'delimiter'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => ' ',
-                              'type' => 'spaces'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'text' => 'b'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'delimiter'
-                              },
-                              'text' => ',',
-                              'type' => 'delimiter'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => ' ',
-                              'type' => 'spaces'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'text' => 'c'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'delimiter'
-                              },
-                              'text' => ',',
-                              'type' => 'delimiter'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => ' ',
-                              'type' => 'spaces'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'text' => '...'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'delimiter'
-                              },
-                              'text' => ',',
-                              'type' => 'delimiter'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
-                              'text' => ' ',
-                              'type' => 'spaces'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'text' => 'd'
-                            },
-                            {
-                              'extra' => {
-                                'def_role' => 'delimiter'
-                              },
-                              'text' => ')',
-                              'type' => 'delimiter'
+                              'source_info' => {
+                                'line_nr' => 1
+                              }
                             }
                           ],
-                          'info' => {
-                            'spaces_after_argument' => {
-                              'text' => '
-'
-                            }
-                          },
-                          'type' => 'line_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'deffnx',
-                      'extra' => {
-                        'def_command' => 'deffn',
-                        'def_index_element' => {},
-                        'def_role' => 'arg',
-                        'index_entry' => [
-                          'fn',
-                          1
-                        ],
-                        'not_after_command' => 1,
-                        'original_def_cmdname' => 'deffnx'
-                      },
-                      'info' => {
-                        'spaces_before_argument' => {
-                          'text' => ' '
-                        }
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
-                      },
-                      'type' => 'def_line'
+                      'type' => 'def_arg'
                     }
                   ],
                   'type' => 'block_line_arg'
@@ -299,7 +339,19 @@ $result_trees{'double_command'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'plot'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   2
@@ -307,9 +359,7 @@ $result_trees{'double_command'} = {
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               },
               'type' => 'def_line'
             },
@@ -354,9 +404,7 @@ $result_trees{'double_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -366,9 +414,7 @@ $result_trees{'double_command'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -384,110 +430,148 @@ $result_trees{'double_command'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'func'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'func'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'aaaa'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'aaaa'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'args'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'args'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => '  ',
                       'type' => 'spaces'
                     },
                     {
-                      'cmdname' => 'defvr',
                       'contents' => [
                         {
-                          'args' => [
+                          'contents' => [
                             {
+                              'cmdname' => 'defvr',
                               'contents' => [
                                 {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'contents' => [
+                                                {
+                                                  'text' => 'c--ategory'
+                                                }
+                                              ],
+                                              'type' => 'def_line_arg'
+                                            }
+                                          ],
+                                          'type' => 'def_category'
+                                        },
+                                        {
+                                          'text' => ' ',
+                                          'type' => 'spaces'
+                                        },
+                                        {
+                                          'contents' => [
+                                            {
+                                              'contents' => [
+                                                {
+                                                  'text' => 'd--efvr_name'
+                                                }
+                                              ],
+                                              'type' => 'def_line_arg'
+                                            }
+                                          ],
+                                          'type' => 'def_name'
+                                        }
+                                      ],
+                                      'info' => {
+                                        'spaces_after_argument' => {
+                                          'text' => '
+'
+                                        }
+                                      },
+                                      'type' => 'block_line_arg'
+                                    }
+                                  ],
                                   'extra' => {
-                                    'def_role' => 'category'
+                                    'def_command' => 'defvr',
+                                    'def_index_element' => {
+                                      'contents' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'd--efvr_name'
+                                            }
+                                          ],
+                                          'type' => 'def_line_arg'
+                                        }
+                                      ],
+                                      'type' => 'def_name'
+                                    },
+                                    'index_entry' => [
+                                      'vr',
+                                      1
+                                    ],
+                                    'original_def_cmdname' => 'defvr'
                                   },
-                                  'text' => 'c--ategory'
-                                },
-                                {
-                                  'extra' => {
-                                    'def_role' => 'spaces'
+                                  'source_info' => {
+                                    'line_nr' => 5
                                   },
-                                  'text' => ' ',
-                                  'type' => 'spaces'
-                                },
-                                {
-                                  'extra' => {
-                                    'def_role' => 'name'
-                                  },
-                                  'text' => 'd--efvr_name'
+                                  'type' => 'def_line'
                                 }
                               ],
                               'info' => {
-                                'spaces_after_argument' => {
-                                  'text' => '
-'
+                                'spaces_before_argument' => {
+                                  'text' => ' '
                                 }
                               },
-                              'type' => 'block_line_arg'
+                              'source_info' => {
+                                'line_nr' => 5
+                              }
                             }
                           ],
-                          'extra' => {
-                            'def_command' => 'defvr',
-                            'def_index_element' => {},
-                            'index_entry' => [
-                              'vr',
-                              1
-                            ],
-                            'original_def_cmdname' => 'defvr'
-                          },
-                          'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 5,
-                            'macro' => ''
-                          },
-                          'type' => 'def_line'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'info' => {
-                        'spaces_before_argument' => {
-                          'text' => ' '
-                        }
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 5,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     }
                   ],
                   'type' => 'block_line_arg'
@@ -495,7 +579,19 @@ $result_trees{'double_command'} = {
               ],
               'extra' => {
                 'def_command' => 'deffn',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'aaaa'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'index_entry' => [
                   'fn',
                   3
@@ -503,9 +599,7 @@ $result_trees{'double_command'} = {
                 'original_def_cmdname' => 'deffn'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'def_line'
             },
@@ -550,9 +644,7 @@ $result_trees{'double_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -562,9 +654,7 @@ $result_trees{'double_command'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
@@ -573,10 +663,6 @@ $result_trees{'double_command'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[17]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'double_command'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
 
 $result_texis{'double_command'} = '@deffn func plot (a, b, c, ...) @deffnx func plot2 (a, b, c, ..., d)
 aaa
@@ -601,90 +687,70 @@ $result_errors{'double_command'} = [
   {
     'error_line' => 'warning: @deffnx should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@deffnx should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @deffnx should not appear on @deffn line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@deffnx should not appear on @deffn line',
     'type' => 'warning'
   },
   {
     'error_line' => 'must be after `@deffn\' to use `@deffnx\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'must be after `@deffn\' to use `@deffnx\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @defvr should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@defvr should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @defvr should not appear on @deffn line
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@defvr should not appear on @deffn line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: entry for index `vr\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'entry for index `vr\' outside of any node',
     'type' => 'warning'
   },
   {
     'error_line' => 'no matching `@end defvr\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'no matching `@end defvr\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: entry for index `fn\' outside of any node
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'entry for index `fn\' outside of any node',
     'type' => 'warning'
   }

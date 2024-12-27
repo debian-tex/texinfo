@@ -38,7 +38,7 @@ $result_trees{'end_of_line'} = {
                       'type' => 'raw'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'verb',
@@ -46,9 +46,7 @@ $result_trees{'end_of_line'} = {
                 'delimiter' => ''
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -79,9 +77,7 @@ $result_errors{'end_of_line'} = [
   {
     'error_line' => '@verb without associated character
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@verb without associated character',
     'type' => 'error'
   }

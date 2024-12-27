@@ -22,14 +22,12 @@ $result_trees{'w_end_sentence'} = {
                       'text' => 'b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -62,5 +60,8 @@ $result_converted{'html_text'}->{'w_end_sentence'} = '<p>a. b<!-- /@w --></p>';
 
 
 $result_converted{'latex_text'}->{'w_end_sentence'} = 'a. \\hbox{b}';
+
+
+$result_converted{'docbook'}->{'w_end_sentence'} = '<para>a. b<!-- /@w --></para>';
 
 1;

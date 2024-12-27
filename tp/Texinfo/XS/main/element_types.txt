@@ -1,0 +1,191 @@
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
+# This file is part of GNU Texinfo.
+#
+# GNU Texinfo is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# The first column holds type names, second column contains flags.
+# Flags for text elements:
+#  text: distinguishes text from other elements
+#  leading_space: text elements with spaces appearing before actual text.
+#                 to keep in sync with Perl parser %leading_space_types.
+#
+# The following flags correspond to elements holding information on the tree
+# associated to the type.  The association is set in the parsing
+# code based on the command/container, not using these flags.  Therefore
+# the type flags should be determined by looking at the parser code.  The
+# main use of these flags is to determine the number of slots needed in
+# the elt_info array in generated code.  These flags are not used in the
+# C code.
+#  spaces_before: element containing the spaces appearing before the
+#                 argument
+#  braces: element containing the spaces appearing between the @-command name
+#          and the opening brace
+#  spaces_after: element containing the spaces appearing after the argument
+#
+# Other flags:
+#  macro_call: @-command like user-defined macros call that require some
+#              information not needed by other containers.  Mainly used in C
+#              specific code for memory management, passing to Perl.
+#  c_only: element type associated to @-commands appearing only in C, needed
+#          because each correspond to a different need for associated info
+#          element or strings.  Flag only used to avoid passing to Perl.
+
+
+# Types for @-commands
+index_entry_command                    spaces_before
+definfoenclose_command                 braces
+
+# only in C.  These types should only be used in code to set the
+# type at the element creation, except maybe to help with the handling
+# of C specific data (case of ET_lineraw_command to check/select string_info)
+nobrace_command                        c_only
+brace_noarg_command                    braces,c_only
+# @item, @tab
+container_command                      c_only
+lineraw_command                        c_only
+line_command                           spaces_before,c_only
+block_command                          spaces_before,c_only
+brace_command                          braces,c_only
+# BRACE_arguments and BRACE_inline commands
+brace_args_command                     braces,c_only
+# BRACE_context commands
+context_brace_command                  braces,spaces_before,c_only
+
+# For text elements
+empty_line                                text,leading_space
+raw                                       text
+ignorable_spaces_after_command            text,leading_space
+spaces_at_end                             text
+spaces_after_close_brace                  text,leading_space
+spaces_before_paragraph                   text
+text_after_end                            text
+text_before_beginning                     text
+space_at_end_menu_node                    text
+after_menu_description_line               text
+spaces_after_cmd_before_arg               text
+normal_text                               text
+# text not in the regular converted tree elements.
+# In special spaces elements in info, as informative command arguments...
+other_text                                text
+
+# Containers
+document_root
+root_line
+before_node_section
+postamble_after_end
+preamble_before_beginning
+preamble_before_setfilename
+preamble_before_content
+paragraph
+preformatted
+rawpreformatted
+
+# @-commands arguments containers
+brace_container
+brace_command_context
+# with separate leading spaces in info, and trailing (if not in inline)
+brace_arg                                  spaces_before,spaces_after
+# with comment_at_end
+block_line_arg                             spaces_before,spaces_after
+line_arg                                   spaces_before,spaces_after
+following_arg
+
+rawline_arg                                text
+
+menu_entry
+menu_entry_leading_text                    text
+menu_entry_name
+menu_entry_separator                       text
+menu_entry_node
+menu_entry_description
+menu_comment
+
+# Used internally
+internal_menu_star                         text
+# right after a line command or block command
+internal_spaces_after_command              text,leading_space
+# after opening brace or comma
+internal_spaces_before_argument            text,leading_space
+internal_spaces_before_context_argument    text,leading_space
+# on @*index commands line before brace specific @-command
+internal_spaces_before_brace_in_index      text
+internal_spaces_after_cmd_before_arg       text
+
+macro_name                                 text
+macro_arg                                  text
+
+# structure of block commands
+before_item
+table_entry
+table_term
+table_definition
+inter_item
+def_line                              spaces_before
+def_item
+inter_def_item
+before_defline
+multitable_head
+multitable_body
+row
+
+balanced_braces
+bracketed_arg                         spaces_before,spaces_after
+
+# container of definition line argument content
+def_line_arg
+# A special case, as in general it should not be recursed into,
+# instead the text within should be translated
+untranslated_def_line_arg
+
+# definition line direct arguments containers.  Contains bracketed_arg
+# and *def_line_arg.
+def_category
+def_class
+def_type
+def_name
+def_typearg
+def_arg
+
+# text for def commands, definition line direct arguments
+delimiter                                 text
+spaces                                    text
+# type of text element inserted in untranslated_def_line_arg
+untranslated                              text
+
+# for unexpanded parts of conditionals
+elided_rawpreformatted
+elided_brace_command_arg
+
+# for macro expansion source marks
+macro_call                                braces,macro_call
+rmacro_call                               braces,macro_call
+macro_call_line                           spaces_before,macro_call
+rmacro_call_line                          spaces_before,macro_call
+linemacro_call                            spaces_before,macro_call
+
+bracketed_linemacro_arg                    text
+
+# virtual type not corresponding to a specific element in tree, but
+# used for all the elements that hold text, typically in converters.
+text
+
+# for HTML converter
+_code
+_converted                                text
+_string
+
+# not in parser, for virtual element associated to special output units
+special_unit_element
+

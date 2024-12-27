@@ -1,0 +1,8 @@
+@node Top
+@top top
+
+@node chapt
+@chapter Chap
+
+@AA{} @equiv{} @@ @copyright{}
+

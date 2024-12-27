@@ -121,9 +121,7 @@ $result_trees{'multitable_in_example_extraneous_item_tab'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
+                    'line_nr' => 5
                   }
                 }
               ],
@@ -136,9 +134,7 @@ $result_trees{'multitable_in_example_extraneous_item_tab'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -168,16 +164,12 @@ $result_trees{'multitable_in_example_extraneous_item_tab'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -203,54 +195,42 @@ $result_errors{'multitable_in_example_extraneous_item_tab'} = [
   {
     'error_line' => 'warning: empty multitable
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'empty multitable',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @item in empty multitable
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@item in empty multitable',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @tab in empty multitable
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@tab in empty multitable',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @item in empty multitable
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@item in empty multitable',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @tab in empty multitable
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@tab in empty multitable',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @multitable has text but no @item
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@multitable has text but no @item',
     'type' => 'warning'
   }

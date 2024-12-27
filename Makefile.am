@@ -1,7 +1,7 @@
 # Makefile.am for texinfo.
 # Process this file with automake to produce Makefile.in in all directories.
 #
-# Copyright 2002-2023 Free Software Foundation, Inc.
+# Copyright 2002-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +12,7 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # Find our headers and gnulib headers.
-ACLOCAL_AMFLAGS = -I gnulib/m4
+ACLOCAL_AMFLAGS = -I build-aux/m4 -I gnulib/m4
 
 # Wrapper for the build environment.
 noinst_SCRIPTS = pre-inst-env
@@ -33,6 +33,16 @@ TEXINFO_TEX = doc/texinfo.tex
 BUILT_SOURCES = tp/Texinfo/ModulePath.pm
 tp/Texinfo/ModulePath.pm:
 	cd tp && $(MAKE) $(AM_MAKEFLAGS) Texinfo/ModulePath.pm
+
+# Ensure that those files are built early, as they are needed in po*
+# directories.  This allows to run configure and make after make distclean
+BUILT_SOURCES += $(top_srcdir)/tp/Texinfo/HTMLData.pm \
+                 $(top_srcdir)/tp/Texinfo/XS/main/html_conversion_data.c
+$(top_srcdir)/tp/Texinfo/HTMLData.pm:
+	cd tp && $(MAKE) $(AM_MAKEFLAGS) translated_source_files
+
+$(top_srcdir)/tp/Texinfo/XS/main/html_conversion_data.c:
+	cd tp/Texinfo/XS && $(MAKE) $(AM_MAKEFLAGS) translated_source_files
 
 # One special target for installers to use by hand if desired.
 install-tex:
@@ -65,8 +75,8 @@ if HOST_IS_WINDOWS
   SUBDIRS += info
 endif
 endif
-  SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo texindex util \
-             doc man
+  SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo \
+             texindex util doc man
   SUBDIRS += js
 endif
 
@@ -88,7 +98,11 @@ dtd-check:
 	&& diff $@-1 $(srcdir)/util/texinfo.dtd \
 	&& rm -f $@-1
 
-# just for convenience:
+# For updating copyright years
+grand-replace:
+	./grand-replace.sh $(srcdir)
+
+# run update-po in both gettext directories
 update-po:
 	cd po && $(MAKE) update-po
 	cd po_document && $(MAKE) update-po
@@ -97,56 +111,56 @@ update-po:
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # Run this before making pretests, as well as official releases, so that
 # translators will see changed strings.  See README-hacking.
+# Note that pgettext is not matched to avoid a false positive in
+# tp/Texinfo/Translations.pm, but it is not problematic as it appears
+# only in errors.c, which matches other function names.
 po-check:
 	@if test -f po/POTFILES.in; then				\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
 	  for file in `find [a-zA-Z]* -name '*.[ch]' 			\
-		                   -o -name '*.p[lm]'			\
-			           -o -name '*.notyettwjr'`; do		\
+		                   -o -name '*.p[lm]'` ; do             \
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\
 	      djgpp/* | man/* ) continue;;	\
+	      gnulib/lib/*) continue;;					\
 	      texinfo-*/*) continue;;					\
               tp/maintain/* ) continue;;				\
               tp/t/results* ) continue;;				\
-	    esac;							\
-	    # if have lex/yacc sources, skip corresponding c/h files.	\
-	    case $$file in						\
-	    *.[ch])							\
-	      base=`expr " $$file" : ' \(.*\)\..'`;			\
-	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
+	      tp/Texinfo/XS/gnulib/lib/*) continue;;			\
 	    esac;							\
 	    files="$$files $$file";					\
 	  done;								\
-	  # the first alternative is for twjr/gawk, which just uses _"	\
-	  # with no space or lparen; the other alternative matches the	\
-	  # usual function calls, e.g., _("..."), with or without space.\
 	  grep -E -l							\
-	    '\b[^$$]N?__?"|\b(N?__?p?|gettext|line_error|line_error_ext|line_warn|command_error|command_warn) *\([^)"]*("|$$)'	\
+	    '\b(N?__?p?|ngettext|line_error|line_error_ext|line_warn|command_error|command_warn|message_list_document_warn|message_list_document_error|p?message_list_command_warn|message_list_command_error|message_list_line_error_ext) *\([^)"]*("|$$)'	\
 	    $$files | sort -u > $@-2;					\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
 
+# false positive in tp/Texinfo/XS/main/DocumentXS.c with function definition
+# but no translated strings
 po_document-check:
 	@if test -f po_document/POTFILES.in; then			\
 	  grep -E -v '^(#|$$)' po_document/POTFILES.in | sort > $@-1;	\
 	  files=;							\
-	  for file in `find [a-z]* -name '*.p[lm]'`; do 		\
+	  for file in `find [a-z]* -name '*.c' \
+	                           -o -name '*.p[lm]'`; do 		\
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\
 	      djgpp/* | man/* ) continue;;	\
 	      texinfo-*/*) continue;;					\
-	      tp/maintain/* ) continue;;				\
+	      tp/maintain/*) continue;;					\
+	      tp/init/documentation_examples.pm) continue;;		\
+	      tp/Texinfo/XS/main/DocumentXS.c) continue;;		\
 	    esac;							\
 	    files="$$files $$file";					\
 	  done;								\
 	  grep -E -l							\
-	    '\b(p?gdt) *\([^)$$]*("|'"'"'|$$)'	\
+	    '\b((html_)?p?[cg]dt(_string|_tree|_noop)?|pgdt_context_noop|translate_convert_to_html_internal) *\([^)$$]*("|'"'"'|$$)'	\
 	    $$files | sort -u > $@-2;					\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\

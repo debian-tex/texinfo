@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Copyright 2022-2023 Free Software Foundation, Inc.
+# Copyright 2022-2024 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -37,7 +37,7 @@ raw_outdir=$raw_output_dir/$basename
 [ -d $raw_outdir ] && rm -rf $raw_outdir
 mkdir $basename
 : > $basename/$stdout_file
-cmd="$prepended_command $PERL -I $srcdir/../.. -I $srcdir/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../../maintain/lib/libintl-perl/lib -I $srcdir/../../maintain/lib/Text-Unidecode/lib/ -w $srcdir/../../texi2any.pl --html --no-split -c FORMAT_MENU=menu -c TREE_TRANSFORMATIONS=regenerate_master_menu --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/no_master_menu_fr.texi $srcdir/input_files/no_master_menu_no_documentlanguage.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+cmd="$prepended_command $PERL -I $srcdir/../.. -w $srcdir/../../texi2any.pl --html --no-split -c FORMAT_MENU=menu -c TREE_TRANSFORMATIONS=regenerate_master_menu --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../init --out $basename/ $srcdir/input_files/no_master_menu_fr.texi $srcdir/input_files/no_master_menu_no_documentlanguage.texi --force >> $basename/$stdout_file 2>$basename/${basename}.2"
 echo "$cmd" >> $logfile
 eval $cmd
 
@@ -49,6 +49,7 @@ if [ $ret != 0 ]; then
 else
   outdir=$basename
   cp -pr $outdir $raw_output_dir
+  find $outdir | $PERL $srcdir/../escape_file_names.pl
     
   dir=$basename
   if [ -d "$srcdir/${dir}_res" ]; then

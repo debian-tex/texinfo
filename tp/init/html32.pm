@@ -3,7 +3,7 @@
 #
 # html32.pm: output HTML 3.2
 #
-# Copyright 2003, 2004, 2007, 2009, 2011-2023 Free Software Foundation, Inc.
+# Copyright 2003, 2004, 2007, 2009, 2011-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,16 +37,15 @@ use strict;
 
 use Texinfo::Commands;
 
-use Texinfo::Convert::Text;
+use Texinfo::Common;
 
 
-texinfo_set_from_init_file('COMPLEX_FORMAT_IN_TABLE', 1);
+texinfo_set_from_init_file('INDENTED_BLOCK_COMMANDS_IN_TABLE', 1);
 
 texinfo_set_from_init_file('DOCTYPE', '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN" "http://www.w3.org/TR/html32/loose.dtd">');
 
-texinfo_set_from_init_file('FRAMESET_DOCTYPE', texinfo_get_conf('DOCTYPE'));
-
-texinfo_set_from_init_file('BODYTEXT', 'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
+texinfo_set_from_init_file('BODY_ELEMENT_ATTRIBUTES',
+  'bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
 
 texinfo_set_from_init_file('BEFORE_SHORT_TOC_LINES', '');
 texinfo_set_from_init_file('AFTER_SHORT_TOC_LINES', '');
@@ -93,7 +92,7 @@ foreach my $command ('euro', 'geq', 'leq',
    'quotedblbase', 'quotesinglbase', 'guillemetleft', 'guillemetright',
    'guillemotleft', 'guillemotright', 'guilsinglleft', 'guilsinglright') {
   my $formatted_command = html32_format_protect_text(undef,
-             $Texinfo::Convert::Text::text_brace_no_arg_commands{$command});
+             $Texinfo::Common::text_brace_no_arg_commands{$command});
   texinfo_register_no_arg_command_formatting($command, undef, $formatted_command);
 }
 
@@ -164,7 +163,7 @@ sub html32_convert_text($$$$)
     $text =~ s/--/-/g;
     $text =~ s/\x{1F}/--/g;
   }
-  if (!$self->in_preformatted()
+  if (!$self->in_preformatted_context()
       and ($self->in_non_breakable_space()
              or $self->in_space_protected())) {
     $text .= '&nbsp;' if (chomp($text));
@@ -183,19 +182,18 @@ sub html32_convert_explained_command($$$$)
 
   my $with_explanation;
 
-  return '' if (!$args->[0] or !defined($args->[0]->{'normal'})
+  return '' if (!$args or !$args->[0]
                 or $args->[0]->{'normal'} !~ /\S/);
 
-  if ($args->[1] and defined($args->[1]->{'string'})
-                 and $args->[1]->{'string'} =~ /\S/) {
+  if ($args->[1] and $args->[1]->{'string'} =~ /\S/) {
     $with_explanation = 1;
   }
 
   my $result;
   if ($with_explanation) {
-    $result = $self->convert_tree($self->gdt('{explained_string} ({explanation})',
-          {'explained_string' => $args->[0]->{'tree'},
-           'explanation' => $args->[1]->{'tree'} }));
+    $result = $self->convert_tree($self->cdt('{explained_string} ({explanation})',
+          {'explained_string' => $args->[0]->{'arg_tree'},
+           'explanation' => $args->[1]->{'arg_tree'} }));
   } else {
     $result = $args->[0]->{'normal'};
   }
@@ -214,6 +212,8 @@ sub html32_convert_multitable_head_type($$$$) {
   my $element = shift;
   my $content = shift;
 
+  $content = '' if (!defined($content));
+
   return $content if ($self->in_string());
   if ($content =~ /\S/) {
     return $content . "\n";
@@ -228,6 +228,8 @@ sub html32_convert_multitable_body_type($$$$) {
   my $type = shift;
   my $element = shift;
   my $content = shift;
+
+  $content = '' if (!defined($content));
 
   return $content if ($self->in_string());
   if ($content =~ /\S/) {
@@ -246,6 +248,8 @@ sub html32_convert_itemize_command($$$$$)
   my $args = shift;
   my $content = shift;
 
+  $content = '' if (!defined($content));
+
   if ($self->in_string()) {
     return $content;
   }
@@ -263,16 +267,18 @@ sub html32_convert_tab_command($$$$$)
   my $args = shift;
   my $content = shift;
 
-  my $row = $command->{'parent'};
-  my $row_cmdname = $row->{'contents'}->[0]->{'cmdname'};
+  $content = '' if (!defined($content));
 
-  # FIXME is it right?
   $content =~ s/^\s*//;
   $content =~ s/\s*$//;
 
   if ($self->in_string()) {
     return $content;
   }
+
+  my $row = $command->{'parent'};
+  my $row_cmdname = $row->{'contents'}->[0]->{'cmdname'};
+
   if ($row_cmdname eq 'headitem') {
     return "<th>" . $content . '</th>';
   } else {
@@ -290,6 +296,8 @@ sub html32_convert_item_command($$$$$)
   my $args = shift;
   my $content = shift;
 
+  $content = '' if (!defined($content));
+
   if ($self->in_string()) {
     return $content;
   }
@@ -301,7 +309,7 @@ sub html32_convert_item_command($$$$$)
       and $command->{'parent'}->{'cmdname'} eq 'itemize') {
     my $prepend ;
     my $itemize = $command->{'parent'};
-    if ($itemize->{'extra'}->{'command_as_argument'}
+    if ($itemize->{'extra'} and $itemize->{'extra'}->{'command_as_argument'}
        and $itemize->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet') {
       $prepend = '';
     } else {
@@ -334,10 +342,12 @@ sub html32_convert_center_command($$$$)
   my $command = shift;
   my $args = shift;
 
+  if (!$args or !$args->[0]) {
+    return '';
+  }
+
   if ($self->in_string()) {
-    # FIXME use an API?
-    return $self->{'types_conversion'}->{'preformatted'}($self, $cmdname, $command,
-                                                         $args->[0]->{'normal'}."\n");
+    return $args->[0]->{'normal'}."\n";
   } else {
     return '<div align="center">'.$args->[0]->{'normal'}."\n</div>";
   }
@@ -359,6 +369,8 @@ sub html32_convert_paragraph_type($$$$)
   my $type = shift;
   my $element = shift;
   my $content = shift;
+
+  $content = '' if (!defined($content));
 
   $content = $self->get_associated_formatted_inline_content($element).$content;
 
@@ -397,7 +409,8 @@ sub html32_convert_subtitle_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  return '' if (!$args->[0]);
+  return '' if (!$args or !$args->[0]);
+
   if (!$self->in_string()) {
     return "<h3 align=\"right\">$args->[0]->{'normal'}</h3>\n";
   } else {

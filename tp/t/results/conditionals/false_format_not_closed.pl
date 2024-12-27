@@ -35,9 +35,7 @@ $result_trees{'false_format_not_closed'} = {
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -58,9 +56,7 @@ $result_errors{'false_format_not_closed'} = [
   {
     'error_line' => 'no matching `@end html\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'no matching `@end html\'',
     'type' => 'error'
   }

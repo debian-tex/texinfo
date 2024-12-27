@@ -1,6 +1,6 @@
 /* filesys.c -- filesystem specific functions.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -281,8 +281,8 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
    a single newline at each EOL; in particular, searching for various
    Info headers and cookies can become extremely tricky if that assumption
    breaks. */
-static long
-convert_eols (char *text, long int textlen)
+static size_t
+convert_eols (char *text, size_t textlen)
 {
   register char *s = text;
   register char *d = text;
@@ -310,22 +310,27 @@ char *
 filesys_read_info_file (char *pathname, size_t *filesize,
 			struct stat *finfo, int *is_compressed)
 {
-  size_t fsize;
+  off_t stat_fsize;
+  size_t file_size;
   char *contents;
 
-  fsize = filesys_error_number = 0;
+  filesys_error_number = 0;
 
   stat (pathname, finfo);
-  fsize = (long) finfo->st_size;
+  stat_fsize = finfo->st_size;
 
   if (compressed_filename_p (pathname))
     {
+      /* NOTE convert positive unsigned off_t to size_t */
+      file_size = stat_fsize;
       *is_compressed = 1;
-      contents = filesys_read_compressed (pathname, &fsize);
+
+      contents = filesys_read_compressed (pathname, &file_size);
     }
   else
     {
       int descriptor;
+      ssize_t read_file_size = stat_fsize;
 
       *is_compressed = 0;
       descriptor = open (pathname, O_RDONLY | O_BINARY, 0666);
@@ -338,16 +343,18 @@ filesys_read_info_file (char *pathname, size_t *filesize,
         }
 
       /* Try to read the contents of this file. */
-      contents = xmalloc (1 + fsize);
-      if ((read (descriptor, contents, fsize)) != fsize)
+      contents = xmalloc (1 + read_file_size);
+      if ((read (descriptor, contents, read_file_size)) != read_file_size)
         {
 	  filesys_error_number = errno;
 	  close (descriptor);
 	  free (contents);
 	  return NULL;
         }
-      contents[fsize] = 0;
+      contents[read_file_size] = 0;
       close (descriptor);
+      /* NOTE convert positive unsigned ssize_t to size_t */
+      file_size = read_file_size;
     }
 
 #if defined (__MSDOS__) || defined (__MINGW32__)
@@ -364,15 +371,15 @@ filesys_read_info_file (char *pathname, size_t *filesize,
      Also, this will allow any Info files that contain any CR-LF endings by
      mistake to work as expected (except on MS-DOS/Windows). */
 
-  fsize = convert_eols (contents, fsize);
+  file_size = convert_eols (contents, file_size);
 
   /* EOL conversion can shrink the text quite a bit.  We don't
      want to waste storage.  */
-  contents = xrealloc (contents, 1 + fsize);
-  contents[fsize] = '\0';
+  contents = xrealloc (contents, 1 + file_size);
+  contents[file_size] = '\0';
 #endif
 
-  *filesize = fsize;
+  *filesize = file_size;
 
   return contents;
 }

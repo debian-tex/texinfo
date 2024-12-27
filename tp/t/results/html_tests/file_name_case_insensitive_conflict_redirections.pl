@@ -8,6 +8,11 @@ use utf8;
 $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
   'contents' => [
     {
+      'contents' => [
+        {
+          'type' => 'preamble_before_content'
+        }
+      ],
       'type' => 'before_node_section'
     },
     {
@@ -29,6 +34,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +43,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -74,9 +78,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -110,11 +112,8 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                 {
                   'cmdname' => 'samp',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 6,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 6
+                  }
                 }
               ],
               'info' => {
@@ -166,9 +165,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 8,
-                        'macro' => ''
+                        'line_nr' => 8
                       }
                     }
                   ],
@@ -184,17 +181,16 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                               'text' => 'foo'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
+                        'is_target' => 1,
                         'normalized' => 'foo'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
+                        'line_nr' => 9
                       }
                     },
                     {
@@ -215,14 +211,12 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                                   'text' => 'foo'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'samp',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 10,
-                            'macro' => ''
+                            'line_nr' => 10
                           }
                         },
                         {
@@ -271,9 +265,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => ''
+                        'line_nr' => 12
                       }
                     }
                   ],
@@ -289,17 +281,16 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                               'text' => 'Foo'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'anchor',
                       'extra' => {
+                        'is_target' => 1,
                         'normalized' => 'Foo'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 13,
-                        'macro' => ''
+                        'line_nr' => 13
                       }
                     },
                     {
@@ -320,14 +311,12 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                                   'text' => 'Foo'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'samp',
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 14,
-                            'macro' => ''
+                            'line_nr' => 14
                           }
                         },
                         {
@@ -375,9 +364,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             }
           ],
@@ -390,9 +377,7 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -411,19 +396,19 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'foo'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             },
             {
@@ -449,19 +434,19 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'Foo'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             },
             {
@@ -472,23 +457,24 @@ $result_trees{'file_name_case_insensitive_conflict_redirections'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
   'type' => 'document_root'
 };
 $result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[5]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'file_name_case_insensitive_conflict_redirections'}{'contents'}[3]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'file_name_case_insensitive_conflict_redirections'} = '@node Top
 @top top section
@@ -533,7 +519,7 @@ Foo
 ';
 
 $result_sectioning{'file_name_case_insensitive_conflict_redirections'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -543,52 +529,57 @@ $result_sectioning{'file_name_case_insensitive_conflict_redirections'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'};
+$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'file_name_case_insensitive_conflict_redirections'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'file_name_case_insensitive_conflict_redirections'};
 
-$result_nodes{'file_name_case_insensitive_conflict_redirections'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'file_name_case_insensitive_conflict_redirections'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'file_name_case_insensitive_conflict_redirections'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'file_name_case_insensitive_conflict_redirections'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'file_name_case_insensitive_conflict_redirections'} = [];
 
@@ -598,22 +589,18 @@ $result_floats{'file_name_case_insensitive_conflict_redirections'} = {};
 
 $result_converted_errors{'file_html'}->{'file_name_case_insensitive_conflict_redirections'} = [
   {
-    'error_line' => 'warning: @anchor `foo\' file Foo.html for redirection exists
+    'error_line' => 'warning: @anchor `Foo\' file foo.html for redirection exists
 ',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@anchor `foo\' file Foo.html for redirection exists',
+    'line_nr' => 13,
+    'text' => '@anchor `Foo\' file foo.html for redirection exists',
     'type' => 'warning'
   },
   {
     'continuation' => 1,
-    'error_line' => 'warning: conflict with @anchor `Foo\' redirection file
+    'error_line' => 'warning: conflict with @anchor `foo\' redirection file
 ',
-    'file_name' => '',
-    'line_nr' => 13,
-    'macro' => '',
-    'text' => 'conflict with @anchor `Foo\' redirection file',
+    'line_nr' => 9,
+    'text' => 'conflict with @anchor `foo\' redirection file',
     'type' => 'warning'
   }
 ];

@@ -17,16 +17,16 @@ $result_trees{'image_extension'} = {
                   'text' => 'f---ile'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -34,7 +34,7 @@ $result_trees{'image_extension'} = {
                   'text' => '.gr--a'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -42,9 +42,7 @@ $result_trees{'image_extension'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -79,9 +77,7 @@ $result_converted_errors{'plaintext'}->{'image_extension'} = [
   {
     'error_line' => 'warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning'
   }
@@ -96,9 +92,7 @@ $result_converted_errors{'html_text'}->{'image_extension'} = [
   {
     'error_line' => 'warning: @image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `f---ile\' (for HTML) not found, using `f---ile.gr--a\'',
     'type' => 'warning'
   }
@@ -117,9 +111,7 @@ $result_converted_errors{'docbook'}->{'image_extension'} = [
   {
     'error_line' => 'warning: @image file `f---ile\' not found, using `f---ile.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `f---ile\' not found, using `f---ile.jpg\'',
     'type' => 'warning'
   }
@@ -134,9 +126,7 @@ $result_converted_errors{'latex_text'}->{'image_extension'} = [
   {
     'error_line' => 'warning: @image file `f---ile\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `f---ile\' (for LaTeX) not found',
     'type' => 'warning'
   }
@@ -147,7 +137,6 @@ $result_converted_errors{'latex_text'}->{'image_extension'} = [
 $result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 
 [f---ile]
-
 
 Tag Table:
 
@@ -169,9 +158,7 @@ $result_converted_errors{'info'}->{'image_extension'} = [
   {
     'error_line' => 'warning: could not find @image file `f---ile.txt\' nor alternate text
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'could not find @image file `f---ile.txt\' nor alternate text',
     'type' => 'warning'
   }

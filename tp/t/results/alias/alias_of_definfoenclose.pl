@@ -40,9 +40,7 @@ $result_trees{'alias_of_definfoenclose'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -80,9 +78,7 @@ $result_trees{'alias_of_definfoenclose'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -100,7 +96,7 @@ $result_trees{'alias_of_definfoenclose'} = {
                       'text' => 'aa'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'phoo',
@@ -109,12 +105,11 @@ $result_trees{'alias_of_definfoenclose'} = {
                 'end' => ':'
               },
               'info' => {
-                'alias_of' => 'new'
+                'alias_of' => 'new',
+                'command_name' => 'phoo'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'definfoenclose_command'
             },
@@ -149,9 +144,7 @@ $result_errors{'alias_of_definfoenclose'} = [
   {
     'error_line' => 'warning: @definfoenclose is obsolete
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@definfoenclose is obsolete',
     'type' => 'warning'
   }

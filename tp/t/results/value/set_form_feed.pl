@@ -78,7 +78,12 @@ $result_trees{'set_form_feed'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'gg'
+                                'contents' => [
+                                  {
+                                    'text' => 'gg'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -98,7 +103,12 @@ $result_trees{'set_form_feed'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'hh'
+                                'contents' => [
+                                  {
+                                    'text' => 'hh'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -119,7 +129,12 @@ $result_trees{'set_form_feed'} = {
                           'element' => {
                             'args' => [
                               {
-                                'text' => 'll'
+                                'contents' => [
+                                  {
+                                    'text' => 'll'
+                                  }
+                                ],
+                                'type' => 'brace_container'
                               }
                             ],
                             'cmdname' => 'value'
@@ -139,14 +154,12 @@ $result_trees{'set_form_feed'} = {
                       'text' => 'a\\a\\f\\\\. . '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {

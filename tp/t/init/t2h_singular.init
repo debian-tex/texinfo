@@ -35,7 +35,8 @@ texinfo_set_from_init_file('VERBOSE', 1);
 my $T2H_SING_base_images = '../singular_images/';
 
 # inside <BODY ..>
-texinfo_set_from_init_file('BODYTEXT','lang="en"  background="'.${T2H_SING_base_images}.'Mybg.png"');
+texinfo_set_from_init_file('BODY_ELEMENT_ATTRIBUTES','lang="en"  background="'
+                                    .${T2H_SING_base_images}.'Mybg.png"');
 
 # after <BODY>
 texinfo_set_from_init_file('AFTER_BODY_OPEN', "\n");
@@ -62,21 +63,20 @@ sub singular_format_footer($$$$)
 {
   my $self = shift;
   my $type = shift;
-  my $element = shift;
+  my $output_unit = shift;
   my $content = shift;
 
-
-  my $end_page = (!$element->{'structure'}->{'unit_next'}
-   or (defined($element->{'structure'}->{'unit_filename'})
-       and $element->{'structure'}->{'unit_filename'}
-           ne $element->{'structure'}->{'unit_next'}->{'structure'}->{'unit_filename'}
+  my $end_page = (!$output_unit->{'tree_unit_directions'}->{'next'}
+   or (defined($output_unit->{'unit_filename'})
+       and $output_unit->{'unit_filename'}
+           ne $output_unit->{'tree_unit_directions'}->{'next'}->{'unit_filename'}
        and $self->count_elements_in_filename('current',
-                   $element->{'structure'}->{'unit_filename'}) == 1));
+                   $output_unit->{'unit_filename'}) == 1));
 
-  if ($self->element_is_tree_unit_top($element)) {
+  if ($self->unit_is_top_output_unit($output_unit)) {
     my $buttons = $self->get_conf('TOP_BUTTONS');
-    my $content_href = $self->from_element_direction('Contents', 'href', $element);
-    my $about_href = $self->from_element_direction('About', 'href', $element);
+    my $content_href = $self->from_element_direction('Contents', 'href', $output_unit);
+    my $about_href = $self->from_element_direction('About', 'href', $output_unit);
     my $result = '';
     if ($content_href or $about_href) {
       $result .= "<blockquote>\n";
@@ -94,15 +94,17 @@ sub singular_format_footer($$$$)
     $result .= $self->get_conf('DEFAULT_RULE')."\n"
        if (defined($self->get_conf('DEFAULT_RULE')));
     if ($end_page) {
-      $result .= join('', $self->close_registered_sections_level(0));
+      my $closed_strings = $self->close_registered_sections_level(
+                                       $self->current_filename(), 0);
+      $result .= join('', @{$closed_strings});
       $result .= &{$self->formatting_function('format_navigation_panel')}($self,
-                                            $buttons, undef, $element);
+                                            $buttons, undef, $output_unit);
     }
     return $result;
   }
 
   return &{$self->default_formatting_function('format_element_footer')}($self,
-                                            $type, $element, $content);
+                                            $type, $output_unit, $content);
 }
 
 
@@ -279,12 +281,12 @@ and is best  viewed with a 16 or 18 point screen font.
 </p>
 EOT
 
-  $result .= &{$self->defaults_special_element_body_formatting($special_type)}(
+  $result .= &{$self->defaults_special_unit_body_formatting($special_type)}(
                                                  $self, $special_type, $element);
   return $result;
 }
 
-texinfo_register_formatting_special_element_body ('about',
+texinfo_register_formatting_special_unit_body ('about',
                        \&singular_format_special_body_about);
 
 # a whole menu
@@ -297,6 +299,8 @@ sub t2h_sing_menu($$$$$)
   my $command = shift;
   my $args = shift;
   my $content = shift;
+
+  $content = '' if (!defined($content));
 
   if ($content =~ /\S/) {
     return "<blockquote><table class=\"menu\" border=\"0\" cellspacing=\"0\">\n" . $content. "</table></blockquote>\n";

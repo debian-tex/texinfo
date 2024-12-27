@@ -59,16 +59,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -132,16 +128,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -209,16 +201,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -275,16 +263,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           }
         },
         {
@@ -313,11 +297,8 @@ $result_trees{'symbol_after_block'} = {
                 {
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 21,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 21
+                  }
                 }
               ],
               'info' => {
@@ -359,9 +340,7 @@ $result_trees{'symbol_after_block'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 22,
-                        'macro' => ''
+                        'line_nr' => 22
                       }
                     }
                   ],
@@ -411,9 +390,7 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 24,
-                'macro' => ''
+                'line_nr' => 24
               }
             }
           ],
@@ -426,9 +403,7 @@ $result_trees{'symbol_after_block'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 21,
-            'macro' => ''
+            'line_nr' => 21
           }
         },
         {
@@ -443,11 +418,8 @@ $result_trees{'symbol_after_block'} = {
                 {
                   'cmdname' => 'emph',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 26,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 26
+                  }
                 }
               ],
               'info' => {
@@ -489,9 +461,7 @@ $result_trees{'symbol_after_block'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 27,
-                        'macro' => ''
+                        'line_nr' => 27
                       }
                     }
                   ],
@@ -544,9 +514,7 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             }
           ],
@@ -559,9 +527,7 @@ $result_trees{'symbol_after_block'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 26,
-            'macro' => ''
+            'line_nr' => 26
           }
         },
         {
@@ -590,11 +556,8 @@ $result_trees{'symbol_after_block'} = {
                 {
                   'cmdname' => 'bullet',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 33,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 33
+                  }
                 }
               ],
               'info' => {
@@ -629,9 +592,7 @@ $result_trees{'symbol_after_block'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 34,
-                'macro' => ''
+                'line_nr' => 34
               }
             },
             {
@@ -661,9 +622,7 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 35,
-                'macro' => ''
+                'line_nr' => 35
               }
             }
           ],
@@ -676,9 +635,7 @@ $result_trees{'symbol_after_block'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 33,
-            'macro' => ''
+            'line_nr' => 33
           }
         },
         {
@@ -693,11 +650,8 @@ $result_trees{'symbol_after_block'} = {
                 {
                   'cmdname' => 'bullet',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 37,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 37
+                  }
                 }
               ],
               'info' => {
@@ -732,9 +686,7 @@ $result_trees{'symbol_after_block'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 38,
-                'macro' => ''
+                'line_nr' => 38
               }
             },
             {
@@ -767,9 +719,7 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 39,
-                'macro' => ''
+                'line_nr' => 39
               }
             }
           ],
@@ -782,9 +732,7 @@ $result_trees{'symbol_after_block'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 37,
-            'macro' => ''
+            'line_nr' => 37
           }
         },
         {
@@ -840,9 +788,7 @@ $result_trees{'symbol_after_block'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 43,
-                    'macro' => ''
+                    'line_nr' => 43
                   }
                 }
               ],
@@ -875,9 +821,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 44,
-                        'macro' => ''
+                        'line_nr' => 44
                       }
                     },
                     {
@@ -901,9 +845,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 44,
-                        'macro' => ''
+                        'line_nr' => 44
                       }
                     }
                   ],
@@ -939,9 +881,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 45,
-                        'macro' => ''
+                        'line_nr' => 45
                       }
                     },
                     {
@@ -965,9 +905,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 45,
-                        'macro' => ''
+                        'line_nr' => 45
                       }
                     }
                   ],
@@ -1006,9 +944,7 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 46,
-                'macro' => ''
+                'line_nr' => 46
               }
             }
           ],
@@ -1022,9 +958,7 @@ $result_trees{'symbol_after_block'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 43,
-            'macro' => ''
+            'line_nr' => 43
           }
         },
         {
@@ -1066,9 +1000,7 @@ $result_trees{'symbol_after_block'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 48,
-                    'macro' => ''
+                    'line_nr' => 48
                   }
                 }
               ],
@@ -1101,9 +1033,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 49,
-                        'macro' => ''
+                        'line_nr' => 49
                       }
                     },
                     {
@@ -1127,9 +1057,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 49,
-                        'macro' => ''
+                        'line_nr' => 49
                       }
                     }
                   ],
@@ -1165,9 +1093,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 50,
-                        'macro' => ''
+                        'line_nr' => 50
                       }
                     },
                     {
@@ -1191,9 +1117,7 @@ $result_trees{'symbol_after_block'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 50,
-                        'macro' => ''
+                        'line_nr' => 50
                       }
                     }
                   ],
@@ -1235,9 +1159,7 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 51,
-                'macro' => ''
+                'line_nr' => 51
               }
             }
           ],
@@ -1251,9 +1173,7 @@ $result_trees{'symbol_after_block'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 48,
-            'macro' => ''
+            'line_nr' => 48
           }
         },
         {
@@ -1325,16 +1245,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 57,
-                'macro' => ''
+                'line_nr' => 57
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 55,
-            'macro' => ''
+            'line_nr' => 55
           }
         },
         {
@@ -1395,16 +1311,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 61,
-                'macro' => ''
+                'line_nr' => 61
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 59,
-            'macro' => ''
+            'line_nr' => 59
           }
         },
         {
@@ -1476,16 +1388,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 67,
-                'macro' => ''
+                'line_nr' => 67
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 65,
-            'macro' => ''
+            'line_nr' => 65
           }
         },
         {
@@ -1546,16 +1454,12 @@ $result_trees{'symbol_after_block'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 71,
-                'macro' => ''
+                'line_nr' => 71
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 69,
-            'macro' => ''
+            'line_nr' => 69
           }
         }
       ],
@@ -1692,135 +1596,105 @@ $result_errors{'symbol_after_block'} = [
   {
     'error_line' => 'bad argument to @end: html. On the line.
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'bad argument to @end: html. On the line.',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: html@@ On the line.
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => 'bad argument to @end: html@@ On the line.',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: verbatim;
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => 'bad argument to @end: verbatim;',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: verbatim@@
 ',
-    'file_name' => '',
     'line_nr' => 17,
-    'macro' => '',
     'text' => 'bad argument to @end: verbatim@@',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: table+
 ',
-    'file_name' => '',
     'line_nr' => 24,
-    'macro' => '',
     'text' => 'bad argument to @end: table+',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: table@@
 ',
-    'file_name' => '',
     'line_nr' => 29,
-    'macro' => '',
     'text' => 'bad argument to @end: table@@',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: itemize\'\'
 ',
-    'file_name' => '',
     'line_nr' => 35,
-    'macro' => '',
     'text' => 'bad argument to @end: itemize\'\'',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: itemize@@
 ',
-    'file_name' => '',
     'line_nr' => 39,
-    'macro' => '',
     'text' => 'bad argument to @end: itemize@@',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: multitable^
 ',
-    'file_name' => '',
     'line_nr' => 46,
-    'macro' => '',
     'text' => 'bad argument to @end: multitable^',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: multitable@{
 ',
-    'file_name' => '',
     'line_nr' => 51,
-    'macro' => '',
     'text' => 'bad argument to @end: multitable@{',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: flushleft!
 ',
-    'file_name' => '',
     'line_nr' => 57,
-    'macro' => '',
     'text' => 'bad argument to @end: flushleft!',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: flushleft@@
 ',
-    'file_name' => '',
     'line_nr' => 61,
-    'macro' => '',
     'text' => 'bad argument to @end: flushleft@@',
     'type' => 'error'
   },
   {
     'error_line' => 'bad argument to @end: copying*
 ',
-    'file_name' => '',
     'line_nr' => 67,
-    'macro' => '',
     'text' => 'bad argument to @end: copying*',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: multiple @copying
 ',
-    'file_name' => '',
     'line_nr' => 69,
-    'macro' => '',
     'text' => 'multiple @copying',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: copying@@
 ',
-    'file_name' => '',
     'line_nr' => 71,
-    'macro' => '',
     'text' => 'bad argument to @end: copying@@',
     'type' => 'error'
   }

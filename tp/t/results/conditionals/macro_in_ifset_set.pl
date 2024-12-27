@@ -77,9 +77,7 @@ $result_trees{'macro_in_ifset_set'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
@@ -88,9 +86,7 @@ $result_trees{'macro_in_ifset_set'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -121,9 +117,7 @@ $result_trees{'macro_in_ifset_set'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 8,
-                  'macro' => ''
+                  'line_nr' => 8
                 }
               },
               'position' => 1,
@@ -189,9 +183,7 @@ $result_trees{'macro_in_ifset_set'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
@@ -200,9 +192,7 @@ $result_trees{'macro_in_ifset_set'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           },
           'source_marks' => [
             {
@@ -234,9 +224,7 @@ $result_trees{'macro_in_ifset_set'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 13,
-                  'macro' => ''
+                  'line_nr' => 13
                 }
               },
               'sourcemark_type' => 'expanded_conditional_command',
@@ -245,25 +233,6 @@ $result_trees{'macro_in_ifset_set'} = {
           ]
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'truc'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -272,6 +241,22 @@ $result_trees{'macro_in_ifset_set'} = {
           'contents' => [
             {
               'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'truc'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
                 {
                   'counter' => 1,
                   'position' => 8,

@@ -22,15 +22,18 @@
 
 use strict;
 
+my $srcdir = $ENV{'srcdir'};
+$srcdir = '.' if (!defined($srcdir));
+
 exit (&main ());
 
 sub main {
   my $no_common = $ARGV[0] eq "--no-common";
 
-  my %card_cmds = &read_refcard ("txirefcard.tex");
-  my %idx_cmds = &read_refidx ("../texinfo.texi");
-  my %man_cmds = &read_appendix ("../texinfo.texi");
-  my %tp_cmds = &read_tp ("../../util/txicmdlist");
+  my %card_cmds = &read_refcard ("$srcdir/txirefcard.tex");
+  my %idx_cmds = &read_refidx ("$srcdir/../texinfo.texi");
+  my %man_cmds = &read_appendix ("$srcdir/../texinfo.texi");
+  my %tp_cmds = &read_tp ("$srcdir/../../util/txicmdlist");
 
   # find the commands that are covered everywhere.
   my @found = ();

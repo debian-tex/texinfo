@@ -136,6 +136,11 @@ my @tests_converted = (
 ['one_subsection',
 '@subsection The subsection
 '],
+['empty_section_in_chapter',
+'@chapter chap
+
+@section
+'],
 ['section_below_unnumbered',
 '
 @contents
@@ -243,6 +248,7 @@ Text part second.
 ', {'test_split' => 'node'}],
 ['two_nodes_between_chapters',
 $two_nodes_between_chapters_text,
+# mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
 {'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['two_nodes_at_the_end',
 $two_nodes_at_the_end_text
@@ -311,7 +317,7 @@ $nodes_after_top_before_chapter_text
 # as @node Top next is with the first non Top node which
 # happens to be before.  Then the next node for the
 # node before node is obtained with toplevel next which is
-# the node associated with the chapter, after the Top node!
+# the node associated with the chapter, after the Top node.
 ['node_sectop_before_lone_node_Top',
 '@node node before
 @top top sectionning
@@ -347,6 +353,15 @@ in chap
 
 @node to @ref{node1}
 '],
+['double_recursive_self_section_node_reference_no_use_node',
+'@node Top
+@top top
+
+@node node1
+@chapter @ref{to node1}
+
+@node to @ref{node1}
+', {}, {'USE_NODES' => 0},]
 );
 
 
@@ -384,6 +399,8 @@ undef, {'test_file' => 'in_menu_only_special_ascii_spaces_node.texi'}],
 ['in_menu_only_special_ascii_spaces_node_menu',
 undef, {'test_file' => 'in_menu_only_special_ascii_spaces_node.texi'},
 {'FORMAT_MENU' => 'menu'}],
+# TODO for LINE SEPARATOR and PARAGRAPH SEPARATOR Perl and XS code give
+# different width
 ['in_menu_only_special_spaces_node',
 undef, {'test_file' => 'in_menu_only_special_spaces_node.texi',
         'skip' => ($] < 5.014) ? 'Perl too old: /a regex flag needed' : undef, }],
@@ -446,6 +463,19 @@ In float
 '],
 ['equivalent_nodes',
 '@node first, @emph{node}
+
+@menu
+* @strong{node}::
+@end menu
+
+@node @samp{node}
+
+@xref{node}.
+'],
+['equivalent_nodes_novalidate',
+'@novalidate
+
+@node first, @emph{node}
 
 @menu
 * @strong{node}::
@@ -779,7 +809,8 @@ Top node
 * chapter node::
 @end menu
 
-', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['section_node_before_part',
 '
 @node Top
@@ -787,9 +818,6 @@ Top node
 
 @part part
 '],
-# FIXME in DocBook the nesting is incorrect, part is opened before chapter
-# and is closed first too.  This is not an important bug, however, as
-# this construct is not normal, and @top has no equivalent in DocBook.
 ['top_node_part_top',
 '@node Top
 
@@ -813,6 +841,7 @@ Top node
 
 @contents
 ', {'test_formats' => ['plaintext'],
+# mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
     'CHECK_NORMAL_MENU_STRUCTURE' => 1},
    {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['top_without_node_sections',
@@ -884,7 +913,8 @@ $unnumbered_top_without_node_text,
 
 @node subsection
 @subsection subsection
-', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['node_up_direction_for_top_with_manual',
 '@node Top,,,(dir)top
 '],
@@ -912,7 +942,19 @@ $unnumbered_top_without_node_text,
 
 @node section
 @section sec
-']
+'],
+['novalidate',
+'
+@novalidate
+
+@node first, unknown node
+
+@menu
+* not a node::
+@end menu
+
+@xref{unknown ref}.
+'],
 );
 
 
@@ -934,6 +976,11 @@ my @test_cases = (
 @node comment @comment
 
 @node arg1 @comma{} arg2, @,cedilla, @strong{comma in strong,} @c comma , end
+'],
+['unknown_node_direction_novalidate',
+'@novalidate
+
+@node one arg2, two arg
 '],
 ['empty_nodes_with_commands',
 '
@@ -1006,7 +1053,8 @@ Dummy section with (manual)node node syntax.
 
 @anchor{(manual)anchor}.
 
-', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['node_nested_parentheses',
 '@node first
 
@@ -1022,6 +1070,15 @@ Dummy section with (manual)node node syntax.
 ],
 ['unknown_node_in_menu',
 '@node first
+
+@menu
+* unknown::
+@end menu
+'],
+['unknown_node_in_menu_novalidate',
+'@novalidate
+
+@node first
 
 @menu
 * unknown::
@@ -1071,7 +1128,8 @@ second node.
 
 @node Section non auto,, Chap1, Top
 @section Section
-', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['next_no_prev_to_node',
 '@node Top
 
@@ -1083,18 +1141,6 @@ second node.
 @node chap first node, no return,, Top
 
 @node no return,,, Top 
-'],
-['novalidate',
-'
-@novalidate
-
-@node first, unknown node
-
-@menu
-* not a node::
-@end menu
-
-@xref{unknown ref}.
 '],
 ['loop_nodes',
 '@node Top
@@ -1117,7 +1163,8 @@ second node.
 @end menu
 
 @node node down
-', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['double_top_section',
 '@top First top
 
@@ -1152,7 +1199,8 @@ Second top.
 
 @node First
 @chapter chap
-', {'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}
 ],
 ['menutextorder',
 '@menu
@@ -1191,7 +1239,8 @@ Second top.
 
 @node sub3
 @section Sub3
-', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', # mark that it is important to test with CHECK_NORMAL_MENU_STRUCTURE set
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['nodes_before_top',
 '@node first, Top, ,(dir)
 
@@ -1241,6 +1290,9 @@ in chap
 
 @chapter chapter
 '],
+# FIXME in DocBook the nesting is incorrect, part is opened before chapter
+# and is closed first too.  This is not an important bug, however, as
+# this construct is not normal, and @top has no equivalent in DocBook.
 ['top_part_chapter',
 '@top top
 
@@ -1267,6 +1319,13 @@ in chap
 @chapter chapter
 
 @appendix Appendix
+'],
+['part_section_part',
+'@part Part1
+
+@section section 1
+
+@part Part 2
 '],
 ['contents_in_html_text',
 '@top top
@@ -1392,8 +1451,10 @@ $two_nodes_at_the_end_text,
 );
 
 foreach my $test (@test_out_files) {
-  push @{$test->[2]->{'test_formats'}}, 'file_html'
-    if (!$test->[2]->{'test_formats'});
+  if (!$test->[2]->{'test_formats'}) {
+    push @{$test->[2]->{'test_formats'}}, 'file_html';
+    $test->[2]->{'full_document'} = 1 unless (exists($test->[2]->{'full_document'}));
+  }
   $test->[2]->{'test_input_file_name'} = $test->[0] . '.texi';
 }
 

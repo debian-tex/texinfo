@@ -10,7 +10,6 @@ $result_trees{'empty_listoffloats'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -30,9 +29,7 @@ $result_trees{'empty_listoffloats'} = {
             'float_type' => ''
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -60,7 +57,7 @@ $result_converted{'plaintext'}->{'empty_listoffloats'} = '';
 
 $result_converted{'html'}->{'empty_listoffloats'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

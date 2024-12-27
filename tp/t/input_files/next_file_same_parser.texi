@@ -1,0 +1,18 @@
+
+@node Top
+@top Next File
+
+@node chap for next
+@chapter Chap for Next
+
+@macrtwo{}
+
+@set myval toto
+
+FF @value{myval}.
+
+@error{}.
+
+@value{abc}.
+
+@printindex vr

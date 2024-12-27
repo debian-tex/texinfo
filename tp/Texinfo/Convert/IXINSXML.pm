@@ -1,6 +1,6 @@
 # IXINSXML.pm: output IXIN with Texinfo tree content converted to SXML.
 #
-# Copyright 2013-2023 Free Software Foundation, Inc.
+# Copyright 2013-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 
 package Texinfo::Convert::IXINSXML;
 
-use 5.00405;
+use 5.006;
 use strict;
 
 use Texinfo::Convert::TexinfoSXML;
@@ -35,48 +35,28 @@ use Texinfo::Convert::IXIN;
 
 use Carp qw(cluck);
 
-use vars qw($VERSION @ISA);
-@ISA = qw(Texinfo::Convert::TexinfoSXML Texinfo::Convert::IXIN);
+our @ISA = qw(Texinfo::Convert::TexinfoSXML Texinfo::Convert::IXIN);
 
-$VERSION = '7.1.1';
+our $VERSION = '7.2';
 
 
 my %defaults = (
-  # Not customization option variables
-  # next two are replaced by the main program value if called from
-  # the main program.  'output_format' is also 'ixinsxml' when set by
-  # the main program, but 'converted_format' is set to 'ixinsxml'.
-  # More on that subject below.
-  'converted_format'     => 'texinfosxml',
-  'output_format'        => 'ixinsxml',
-
   # Customization option variables
   'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'ixin',
   'OUTPUT_ENCODING_NAME' => 'utf-8',
-  'SPLIT'                => 0,
+  'SPLIT'                => '',
   'documentlanguage'     => 'en',
   'USE_NODES'            => 1,
 );
 
 sub converter_defaults($$)
 {
-  return %defaults;
+  return \%defaults;
 }
 
-# In the main program, the 'converted_format' needs to be 'ixinsxml'
-# to find the right module used for conversion (this module).  However in
-# the Texinfo::Convert::IXIN output_ixin() function, and maybe in
-# Texinfo::Convert::TexinfoSXML convert_tree(), called from output_ixin(),
-# it may be better to have 'converted_format' set to the format converted
-# from the Texinfo tree, which is texinfosxml.  So far it is not needed,
-# inheriting format specific functions is used to select the output format,
-# but it could theoretically be needed for a flexible conversion
-# (since the IXIN project is inactive, the corresponding code is not updated
-# actively either, so it is unlikely to change, though).
-sub converter_initialize($) { my $self = shift;
-
-  $self->{'converted_format'} = $defaults{'converted_format'};
+sub converter_initialize($) {
+  my $self = shift;
 
   # need to call parent module converter_initialize, to initialize
   # the converter state.  This method is actually implemented in
@@ -84,12 +64,12 @@ sub converter_initialize($) { my $self = shift;
   $self->SUPER::converter_initialize(@_);
 }
 
-sub output($)
+sub output($$)
 {
   my $self = shift;
-  my $root = shift;
+  my $document = shift;
 
-  return $self->output_ixin($root);
+  return $self->output_ixin($document);
 }
 
 1;

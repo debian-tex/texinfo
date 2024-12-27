@@ -39,9 +39,11 @@ $result_trees{'one_node_explicit_directions_anchor_no_use_node'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ]
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            }
           },
           'info' => {
             'spaces_after_argument' => {
@@ -81,17 +83,16 @@ $result_trees{'one_node_explicit_directions_anchor_no_use_node'} = {
                       'text' => 'ref'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'anchor',
               'extra' => {
+                'is_target' => 1,
                 'normalized' => 'ref'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -120,19 +121,19 @@ $result_trees{'one_node_explicit_directions_anchor_no_use_node'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'ref'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -144,6 +145,7 @@ $result_trees{'one_node_explicit_directions_anchor_no_use_node'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'one-node'
       },
       'info' => {
@@ -152,16 +154,14 @@ $result_trees{'one_node_explicit_directions_anchor_no_use_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'one_node_explicit_directions_anchor_no_use_node'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
 
 $result_texis{'one_node_explicit_directions_anchor_no_use_node'} = '@node one node,,,(dir)
 Top node
@@ -179,31 +179,30 @@ anchor ref .
 ref to ref ref.
 ';
 
-$result_nodes{'one_node_explicit_directions_anchor_no_use_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'one-node'
-  },
-  'structure' => {
-    'node_up' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'dir'
-          }
-        ]
-      }
+$result_nodes{'one_node_explicit_directions_anchor_no_use_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'up' => {
+          'extra' => {
+            'manual_content' => {}
+          },
+          'type' => 'line_arg'
+        }
+      },
+      'normalized' => 'one-node'
     }
   }
-};
+];
 
-$result_menus{'one_node_explicit_directions_anchor_no_use_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'one-node'
-  },
-  'structure' => {}
-};
+$result_menus{'one_node_explicit_directions_anchor_no_use_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'one-node'
+    }
+  }
+];
 
 $result_errors{'one_node_explicit_directions_anchor_no_use_node'} = [];
 
@@ -249,7 +248,7 @@ $result_converted_errors{'info'}->{'one_node_explicit_directions_anchor_no_use_n
 
 $result_converted{'html'}->{'one_node_explicit_directions_anchor_no_use_node'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

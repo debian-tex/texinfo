@@ -56,6 +56,9 @@ my @test_cases = (
 
 @enumerate z @c comment
 @end enumerate
+
+@enumerate 0
+@end enumerate
 '],
 ['enumerate_argument_item',
 '@enumerate 1
@@ -71,6 +74,11 @@ my @test_cases = (
 @enumerate z @c comment
 @item lower case first
 @item lower case second
+@end enumerate
+
+@enumerate 0
+@item numeric zero first
+@item numeric zero second
 @end enumerate
 '],
 ['comment_first_on_enumerate_line',
@@ -287,6 +295,13 @@ my @test_cases = (
 @item aaa
 @item aaa
 @end enumerate
+'],
+['enumerate_more_letters',
+'@enumerate c
+'
+.'@item bb
+' x (26+26*26+100)
+.'@end enumerate
 '],
 ['enumerate_in_example',
 '

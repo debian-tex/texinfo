@@ -37,7 +37,7 @@ $result_trees{'image_not_found'} = {
                   'text' => 'n_f_image'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -45,9 +45,7 @@ $result_trees{'image_not_found'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -56,6 +54,7 @@ $result_trees{'image_not_found'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -64,9 +63,7 @@ $result_trees{'image_not_found'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -81,19 +78,22 @@ $result_texis{'image_not_found'} = '@node Top
 $result_texts{'image_not_found'} = 'n_f_image
 ';
 
-$result_nodes{'image_not_found'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'image_not_found'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'image_not_found'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'image_not_found'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'image_not_found'} = [];
 
@@ -125,9 +125,7 @@ $result_converted_errors{'info'}->{'image_not_found'} = [
   {
     'error_line' => 'warning: could not find @image file `n_f_image.txt\' nor alternate text
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'could not find @image file `n_f_image.txt\' nor alternate text',
     'type' => 'warning'
   }

@@ -630,6 +630,9 @@ In float with caption.
 @errormsg{Text @~e @code{code}}
 @errormsg{  with surrounding spaces   }
 '],
+['command_zero',
+'@0:
+'],
 ['unknown_accents',
 '@"X @"x @"Q @"Y
 
@@ -672,7 +675,7 @@ In float with caption.
 @end displaymath
 
 @displaymath
-@quotedblleft{} @quotedblright{} 
+@quotedblleft{} @quotedblright{}
 @quoteleft{} @quoteright{} @quotedblbase{} @quotesinglbase{} @guillemetleft{}
 @guillemetright{} @guillemotleft{} @guillemotright{} @guilsinglleft{}
 @guilsinglright{} @textdegree{} @euro{} @arrow{} @leq{} @geq{}

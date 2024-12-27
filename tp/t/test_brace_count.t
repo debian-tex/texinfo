@@ -7,7 +7,7 @@ use Test::More;
 
 BEGIN { plan tests => 13; }
 
-use Texinfo::Parser qw(parse_texi_line);
+use Texinfo::Parser;
 use Texinfo::Common;
 
 ok(1, "modules loading");
@@ -58,7 +58,8 @@ sub run_test($$$$)
   my $ref_braces_count = shift;
   my $name = shift;
 
-  my $tree = parse_texi_line(undef, $in);
+  my $parser = Texinfo::Parser::parser();
+  my $tree = $parser->parse_texi_line($in);
   my $text_element = _find_text($tree);
 
   my $braces_count

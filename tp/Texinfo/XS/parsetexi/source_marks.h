@@ -1,7 +1,7 @@
 /* source_marks.h - declarations for source_marks.c */
 #ifndef SOURCE_MARKS_H
 #define SOURCE_MARKS_H
-/* Copyright 2023 Free Software Foundation, Inc.
+/* Copyright 2023-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,13 +19,10 @@
 #include "tree_types.h"
 
 SOURCE_MARK *new_source_mark (enum source_mark_type type);
-void register_source_mark (ELEMENT *e, SOURCE_MARK *source_mark);
-void source_marks_reset_counters (void);
-void transfer_source_marks (ELEMENT *from_e, ELEMENT *e);
-void add_source_mark (SOURCE_MARK *source_mark, ELEMENT *e);
 void place_source_mark (ELEMENT *e, SOURCE_MARK *source_mark);
-size_t relocate_source_marks (SOURCE_MARK_LIST *source_mark_list, ELEMENT *new_e,
-                              size_t previous_position, size_t current_position);
+void register_source_mark (ELEMENT *e, SOURCE_MARK *source_mark);
+void transfer_source_marks (ELEMENT *from_e, ELEMENT *e, size_t added_len);
 
+void source_marks_reset_counters (void);
 
 #endif

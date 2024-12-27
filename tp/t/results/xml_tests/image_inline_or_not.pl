@@ -17,7 +17,7 @@ $result_trees{'image_inline_or_not'} = {
                   'text' => 'A'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -25,9 +25,7 @@ $result_trees{'image_inline_or_not'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -52,7 +50,7 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'hh'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -60,9 +58,7 @@ $result_trees{'image_inline_or_not'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -99,6 +95,7 @@ $result_trees{'image_inline_or_not'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -107,9 +104,7 @@ $result_trees{'image_inline_or_not'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -144,7 +139,7 @@ $result_trees{'image_inline_or_not'} = {
                   'text' => 'B'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -152,9 +147,7 @@ $result_trees{'image_inline_or_not'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         },
         {
@@ -179,7 +172,7 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'jj'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -187,9 +180,7 @@ $result_trees{'image_inline_or_not'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -233,7 +224,7 @@ $result_trees{'image_inline_or_not'} = {
                           'text' => 'in_example'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -241,9 +232,7 @@ $result_trees{'image_inline_or_not'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 14,
-                    'macro' => ''
+                    'line_nr' => 14
                   }
                 },
                 {
@@ -267,7 +256,7 @@ $result_trees{'image_inline_or_not'} = {
                           'text' => 'in example after text'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -275,9 +264,7 @@ $result_trees{'image_inline_or_not'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -314,16 +301,12 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           }
         },
         {
@@ -343,7 +326,7 @@ $result_trees{'image_inline_or_not'} = {
                           'text' => 'in_quotation_arg'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -351,9 +334,7 @@ $result_trees{'image_inline_or_not'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 20,
-                    'macro' => ''
+                    'line_nr' => 20
                   }
                 }
               ],
@@ -376,7 +357,7 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'in_quotation_content'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -384,9 +365,7 @@ $result_trees{'image_inline_or_not'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             },
             {
@@ -420,9 +399,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               }
             }
           ],
@@ -432,9 +409,7 @@ $result_trees{'image_inline_or_not'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           }
         },
         {
@@ -449,11 +424,8 @@ $result_trees{'image_inline_or_not'} = {
                 {
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 24
+                  }
                 }
               ],
               'info' => {
@@ -483,7 +455,7 @@ $result_trees{'image_inline_or_not'} = {
                                       'text' => 'in_table_item'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_arg'
                                 }
                               ],
                               'cmdname' => 'image',
@@ -491,9 +463,7 @@ $result_trees{'image_inline_or_not'} = {
                                 'input_encoding_name' => 'utf-8'
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 25,
-                                'macro' => ''
+                                'line_nr' => 25
                               }
                             }
                           ],
@@ -513,9 +483,7 @@ $result_trees{'image_inline_or_not'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 25,
-                        'macro' => ''
+                        'line_nr' => 25
                       }
                     }
                   ],
@@ -536,7 +504,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'in_table_def'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -544,9 +512,7 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 27,
-                        'macro' => ''
+                        'line_nr' => 27
                       }
                     },
                     {
@@ -571,7 +537,7 @@ $result_trees{'image_inline_or_not'} = {
                                   'text' => 'in_table_def_para'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'image',
@@ -579,9 +545,7 @@ $result_trees{'image_inline_or_not'} = {
                             'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 29,
-                            'macro' => ''
+                            'line_nr' => 29
                           }
                         },
                         {
@@ -604,7 +568,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'in_table_def_after'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -612,9 +576,7 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 31,
-                        'macro' => ''
+                        'line_nr' => 31
                       }
                     },
                     {
@@ -654,9 +616,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 32,
-                'macro' => ''
+                'line_nr' => 32
               }
             }
           ],
@@ -669,9 +629,7 @@ $result_trees{'image_inline_or_not'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 24,
-            'macro' => ''
+            'line_nr' => 24
           }
         },
         {
@@ -709,7 +667,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'node_image'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -717,16 +675,16 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 35,
-                        'macro' => ''
+                        'line_nr' => 35
                       }
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'node_005fimage'
                   },
                   'type' => 'menu_entry_node'
@@ -747,7 +705,7 @@ $result_trees{'image_inline_or_not'} = {
                                   'text' => 'image_in_description'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'image',
@@ -755,9 +713,7 @@ $result_trees{'image_inline_or_not'} = {
                             'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 35,
-                            'macro' => ''
+                            'line_nr' => 35
                           }
                         },
                         {
@@ -772,9 +728,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 35,
-                'macro' => ''
+                'line_nr' => 35
               },
               'type' => 'menu_entry'
             },
@@ -794,7 +748,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'in_menu_entry_name'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -802,9 +756,7 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 36,
-                        'macro' => ''
+                        'line_nr' => 36
                       }
                     }
                   ],
@@ -833,7 +785,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'extnode'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -841,19 +793,21 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 36,
-                        'macro' => ''
+                        'line_nr' => 36
                       }
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ],
-                    'node_content' => [
-                      {}
-                    ],
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'extnode'
                   },
                   'type' => 'menu_entry_node'
@@ -878,9 +832,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 36,
-                'macro' => ''
+                'line_nr' => 36
               },
               'type' => 'menu_entry'
             },
@@ -901,7 +853,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'in_menu_comment'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -909,9 +861,7 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 38,
-                        'macro' => ''
+                        'line_nr' => 38
                       }
                     },
                     {
@@ -951,16 +901,12 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 39,
-                'macro' => ''
+                'line_nr' => 39
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 34,
-            'macro' => ''
+            'line_nr' => 34
           }
         },
         {
@@ -976,9 +922,7 @@ $result_trees{'image_inline_or_not'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -993,7 +937,7 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'node_image'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -1001,9 +945,7 @@ $result_trees{'image_inline_or_not'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 41,
-                'macro' => ''
+                'line_nr' => 41
               }
             }
           ],
@@ -1018,6 +960,7 @@ $result_trees{'image_inline_or_not'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'node_005fimage'
       },
       'info' => {
@@ -1026,9 +969,7 @@ $result_trees{'image_inline_or_not'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 41,
-        'macro' => ''
+        'line_nr' => 41
       }
     },
     {
@@ -1043,7 +984,7 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'in_chapter_arg'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -1051,9 +992,7 @@ $result_trees{'image_inline_or_not'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 42,
-                'macro' => ''
+                'line_nr' => 42
               }
             }
           ],
@@ -1095,7 +1034,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'in_footnote'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -1103,9 +1042,7 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 46,
-                        'macro' => ''
+                        'line_nr' => 46
                       }
                     },
                     {
@@ -1117,6 +1054,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => '
@@ -1124,9 +1062,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 45,
-                'macro' => ''
+                'line_nr' => 45
               }
             },
             {
@@ -1164,7 +1100,7 @@ $result_trees{'image_inline_or_not'} = {
                                   'text' => 'in text in_footnote'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'image',
@@ -1172,9 +1108,7 @@ $result_trees{'image_inline_or_not'} = {
                             'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 51,
-                            'macro' => ''
+                            'line_nr' => 51
                           }
                         },
                         {
@@ -1194,6 +1128,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               ],
               'cmdname' => 'footnote',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => '
@@ -1201,9 +1136,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 49,
-                'macro' => ''
+                'line_nr' => 49
               }
             },
             {
@@ -1258,7 +1191,7 @@ $result_trees{'image_inline_or_not'} = {
                       'text' => 'in_float'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -1266,9 +1199,7 @@ $result_trees{'image_inline_or_not'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 57,
-                'macro' => ''
+                'line_nr' => 57
               }
             },
             {
@@ -1292,7 +1223,7 @@ $result_trees{'image_inline_or_not'} = {
                               'text' => 'in_caption'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_arg'
                         }
                       ],
                       'cmdname' => 'image',
@@ -1300,9 +1231,7 @@ $result_trees{'image_inline_or_not'} = {
                         'input_encoding_name' => 'utf-8'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 59,
-                        'macro' => ''
+                        'line_nr' => 59
                       }
                     },
                     {
@@ -1318,7 +1247,7 @@ $result_trees{'image_inline_or_not'} = {
                                   'text' => 'in_caption_para'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_arg'
                             }
                           ],
                           'cmdname' => 'image',
@@ -1326,9 +1255,7 @@ $result_trees{'image_inline_or_not'} = {
                             'input_encoding_name' => 'utf-8'
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 59,
-                            'macro' => ''
+                            'line_nr' => 59
                           }
                         }
                       ],
@@ -1343,9 +1270,7 @@ $result_trees{'image_inline_or_not'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 59,
-                'macro' => ''
+                'line_nr' => 59
               }
             },
             {
@@ -1380,9 +1305,7 @@ $result_trees{'image_inline_or_not'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 60,
-                'macro' => ''
+                'line_nr' => 60
               }
             }
           ],
@@ -1390,6 +1313,7 @@ $result_trees{'image_inline_or_not'} = {
             'caption' => {},
             'float_section' => {},
             'float_type' => 'F',
+            'is_target' => 1,
             'normalized' => 'g'
           },
           'info' => {
@@ -1398,31 +1322,29 @@ $result_trees{'image_inline_or_not'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 55,
-            'macro' => ''
+            'line_nr' => 55
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 42,
-        'macro' => ''
+        'line_nr' => 42
       }
     }
   ],
   'type' => 'document_root'
 };
 $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[10]{'extra'}{'command_as_argument'} = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'contents'}[1];
-$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'contents'}[3];
+$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'contents'}[1];
+$result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[2]{'contents'}[12]{'contents'}[1]{'contents'}[3]{'contents'}[3];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'contents'}[4]{'extra'}{'float'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'extra'}{'caption'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[6]{'extra'}{'float_section'} = $result_trees{'image_inline_or_not'}{'contents'}[4];
@@ -1538,7 +1460,7 @@ in_float
 ';
 
 $result_sectioning{'image_inline_or_not'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -1547,11 +1469,8 @@ $result_sectioning{'image_inline_or_not'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -1560,104 +1479,95 @@ $result_sectioning{'image_inline_or_not'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'node_005fimage'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'image_inline_or_not'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'image_inline_or_not'};
+$result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'image_inline_or_not'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'image_inline_or_not'};
 
-$result_nodes{'image_inline_or_not'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'node_005fimage'
+$result_nodes{'image_inline_or_not'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'image_inline_or_not'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'image_inline_or_not'};
-$result_nodes{'image_inline_or_not'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'image_inline_or_not'};
-$result_nodes{'image_inline_or_not'}{'structure'}{'node_next'} = $result_nodes{'image_inline_or_not'}{'structure'}{'menu_child'};
-
-$result_menus{'image_inline_or_not'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'node_005fimage'
-      },
-      'structure' => {
-        'menu_next' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
           'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'somewhere'
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
               }
-            ],
+            },
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'node_005fimage'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'image_inline_or_not'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'image_inline_or_not'}[0];
+$result_nodes{'image_inline_or_not'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'image_inline_or_not'}[0];
+$result_nodes{'image_inline_or_not'}[1] = $result_nodes{'image_inline_or_not'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'image_inline_or_not'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {
+          'extra' => {
+            'manual_content' => {},
             'normalized' => 'extnode'
           },
           'type' => 'menu_entry_node'
         },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
-        }
-      }
+        'up' => {}
+      },
+      'normalized' => 'node_005fimage'
     }
   }
-};
-$result_menus{'image_inline_or_not'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'image_inline_or_not'};
+];
+$result_menus{'image_inline_or_not'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'image_inline_or_not'}[0];
 
 $result_errors{'image_inline_or_not'} = [];
 
@@ -1673,18 +1583,15 @@ $result_floats{'image_inline_or_not'} = {
             'float' => {}
           }
         },
+        'float_number' => '1.1',
         'float_section' => {
           'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
+          'extra' => {
+            'section_number' => '1'
           }
         },
         'float_type' => 'F',
         'normalized' => 'g'
-      },
-      'structure' => {
-        'float_number' => '1.1'
       }
     }
   ]

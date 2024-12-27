@@ -1,12 +1,12 @@
 We ship this version of libintl-perl to be sure that it is available, and
 also to have a consistent behaviour (different gettext implementations do
 things differently). This was downloaded from 
-https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.32.tar.gz
-in December, 2020.
+https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.33.tar.gz
+in August, 2024.
 
 Same with Unicode-EastAsianWidth. Downloaded from 
-http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-1.30.tar.gz
-in December, 2009.
+https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Unicode-EastAsianWidth-12.0.tar.gz
+in 2023.
 
-Text-Unidecode downloaded in March, 2011 from
-http://search.cpan.org/CPAN/authors/id/S/SB/SBURKE/Text-Unidecode-0.04.tar.gz
+Text-Unidecode downloaded in 2023 from
+https://cpan.metacpan.org/authors/id/S/SB/SBURKE/Text-Unidecode-1.30.tar.gz

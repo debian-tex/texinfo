@@ -33,34 +33,84 @@
 #  --m4-base=gnulib/m4 \
 #  --doc-base=doc \
 #  --tests-base=tests \
-#  --aux-dir=. \
+#  --aux-dir=build-aux \
 #  --no-conditional-dependencies \
 #  --libtool \
 #  --macro-prefix=gl \
+#  euidaccess \
 #  getline \
+#  gettext-h \
 #  iconv \
 #  libunistring \
-#  obstack \
+#  locale \
+#  setenv \
 #  strchrnul \
 #  strndup \
-#  uniconv/u8-strconv-from-enc \
+#  uchar \
+#  unicase/u8-tolower \
+#  unicase/u8-toupper \
+#  unictype/category-L \
+#  unictype/category-M \
+#  unictype/category-Mn \
+#  unictype/category-Nd \
+#  unictype/category-test \
+#  unictype/ctype-upper \
+#  unictype/property-alphabetic \
+#  unictype/property-join-control \
+#  unictype/property-test \
+#  uninorm/nfc \
+#  uninorm/nfkd \
+#  uninorm/u8-normalize \
+#  unistr/u32-next \
 #  unistr/u8-mbsnlen \
-#  vasprintf \
-#  wcwidth
+#  unistr/u8-mbtouc \
+#  unistr/u8-next \
+#  unistr/u8-strlen \
+#  unistr/u8-strmbtouc \
+#  unistr/u8-uctomb \
+#  uniwidth/u8-strwidth \
+#  uniwidth/u8-width \
+#  unsetenv \
+#  vasprintf
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
 gl_MODULES([
+  euidaccess
   getline
+  gettext-h
   iconv
   libunistring
-  obstack
+  locale
+  setenv
   strchrnul
   strndup
-  uniconv/u8-strconv-from-enc
+  uchar
+  unicase/u8-tolower
+  unicase/u8-toupper
+  unictype/category-L
+  unictype/category-M
+  unictype/category-Mn
+  unictype/category-Nd
+  unictype/category-test
+  unictype/ctype-upper
+  unictype/property-alphabetic
+  unictype/property-join-control
+  unictype/property-test
+  uninorm/nfc
+  uninorm/nfkd
+  uninorm/u8-normalize
+  unistr/u32-next
   unistr/u8-mbsnlen
+  unistr/u8-mbtouc
+  unistr/u8-next
+  unistr/u8-strlen
+  unistr/u8-strmbtouc
+  unistr/u8-uctomb
+  uniwidth/u8-strwidth
+  uniwidth/u8-width
+  unsetenv
   vasprintf
-  wcwidth
 ])
 gl_AVOID([])
 gl_SOURCE_BASE([gnulib/lib])

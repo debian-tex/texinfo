@@ -10,7 +10,6 @@ $result_trees{'comment_space_comand_in_float'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -35,6 +34,7 @@ $result_trees{'comment_space_comand_in_float'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -43,9 +43,7 @@ $result_trees{'comment_space_comand_in_float'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -150,14 +148,13 @@ $result_trees{'comment_space_comand_in_float'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'extra' => {
             'float_type' => 'Text  ',
+            'is_target' => 1,
             'normalized' => 'label-'
           },
           'info' => {
@@ -166,9 +163,7 @@ $result_trees{'comment_space_comand_in_float'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -212,13 +207,12 @@ $result_trees{'comment_space_comand_in_float'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chap'
       },
       'info' => {
@@ -227,9 +221,7 @@ $result_trees{'comment_space_comand_in_float'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -253,32 +245,41 @@ Float
 
 ';
 
-$result_nodes{'comment_space_comand_in_float'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'chap'
+$result_nodes{'comment_space_comand_in_float'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'comment_space_comand_in_float'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'comment_space_comand_in_float'}[0];
+$result_nodes{'comment_space_comand_in_float'}[1] = $result_nodes{'comment_space_comand_in_float'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'comment_space_comand_in_float'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'comment_space_comand_in_float'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'comment_space_comand_in_float'};
-
-$result_menus{'comment_space_comand_in_float'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'comment_space_comand_in_float'} = [];
 
@@ -288,11 +289,9 @@ $result_floats{'comment_space_comand_in_float'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => 'Text  ',
         'normalized' => 'label-'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]
@@ -303,6 +302,7 @@ $result_floats{'comment_space_comand_in_float'} = {
 $result_converted{'plaintext'}->{'comment_space_comand_in_float'} = 'Float
 
 Text   1
+
 * Menu:
 
 * Text   1: label  .                     
@@ -321,10 +321,10 @@ File: ,  Node: chap,  Prev: Top
 Float
 
 Text   1
+
 * Menu:
 
 * Text   1: label  .                     
-
 
 
 Tag Table:
@@ -343,7 +343,7 @@ End:
 
 $result_converted{'html'}->{'comment_space_comand_in_float'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

@@ -171,6 +171,10 @@ in lang
 
 @new{bb}
 '],
+['alias_zero',
+'@alias 0 = strong
+@0{g}.
+']
 );
 
 run_all('alias', \@test_cases);

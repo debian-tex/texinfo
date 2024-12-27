@@ -337,6 +337,14 @@ Text.
 @node chap
 @cindex
 '],
+['empty_added_index_entry',
+'@defindex my
+
+@node Top
+@node chap
+
+@myindex
+'],
 ['empty_string_index_entry',
 '@node Top
 @node chap
@@ -723,6 +731,18 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 
 @printindex cp
 '],
+['subentries_and_comments',
+'@node Top
+@top
+
+@node chapter one
+@chapter one
+
+@cindex aa @subentry bb@c comment
+@cindex ab @subentry cc @comment comment
+
+@printindex cp
+'],
 ['seeentry',
 '@node Top
 @top
@@ -761,6 +781,12 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 
 @cindex @command{awk} @subentry POSIX and
 @cindex @command{awk} @subentry POSIX and @seealso{POSIX @command{awk}}
+
+b
+
+c
+
+@cindex @command{awk} @subentry POSIX and @seeentry{Another entry}
 
 @printindex cp
 '],
@@ -1000,6 +1026,8 @@ my $encoding_index_text = '
 @cindex @exclamdown{}
 @cindex @TH{}
 @cindex @DH{}
+@cindex @ordf{}
+@cindex @ordm{}
 @cindex @textdegree{}
 @cindex 0
 @cindex 9
@@ -1025,17 +1053,25 @@ my @file_encodings_tests = (
 @documentencoding us-ascii
 '.$encoding_index_text,
 {'skip' => ($] < 5.018) ? 'Perl too old incompatible Unicode collation' : undef,
-'ENABLE_ENCODING' => 0, 'full_document' => 1}
+'full_document' => 1},
+{'ENABLE_ENCODING' => 0}
 ],
 ['encoding_index_latin1',
 undef,
 {'skip' => ($] < 5.018) ? 'Perl too old incompatible Unicode collation' : undef,
-'test_file' => 'encoding_index_latin1.texi', 'ENABLE_ENCODING' => 0},
+'test_file' => 'encoding_index_latin1.texi'},
+{'ENABLE_ENCODING' => 0}
 ],
 ['encoding_index_utf8',
 undef,
 {'skip' => ($] < 5.018) ? 'Perl too old incompatible Unicode collation' : undef,
-'test_file' => 'encoding_index_utf8.texi', 'ENABLE_ENCODING' => 0},
+'test_file' => 'encoding_index_utf8.texi',},
+{'ENABLE_ENCODING' => 0},
+],
+['encoding_index_utf8_no_use_unicode',
+undef,
+{'test_file' => 'encoding_index_utf8.texi', 'USE_UNICODE_COLLATION' => 0},
+{'ENABLE_ENCODING' => 0, 'USE_UNICODE_COLLATION' => 0},
 ],
 ['encoding_index_ascii_enable_encoding',
 '
@@ -1043,18 +1079,19 @@ undef,
 @documentencoding us-ascii
 '.$encoding_index_text,
 {'skip' => ($] < 5.018) ? 'Perl too old incompatible Unicode collation' : undef,
-'ENABLE_ENCODING' => 1, 'full_document' => 1},
+'full_document' => 1},
+{'ENABLE_ENCODING' => 1,}
 ],
 ['encoding_index_latin1_enable_encoding',
 undef,
 {'skip' => ($] < 5.018) ? 'Perl too old incompatible Unicode collation' : undef,
-'test_file' => 'encoding_index_latin1.texi', 'ENABLE_ENCODING' => 1},
+'test_file' => 'encoding_index_latin1.texi',},
 {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}
 ],
 ['encoding_index_utf8_enable_encoding',
 undef,
 {'skip' => ($] < 5.018) ? 'Perl too old incompatible Unicode collation' : undef,
-'test_file' => 'encoding_index_utf8.texi', 'ENABLE_ENCODING' => 1},
+'test_file' => 'encoding_index_utf8.texi',},
 {'ENABLE_ENCODING' => 1, 'OUTPUT_CHARACTERS' => 1}
 ],
 );
@@ -1073,8 +1110,9 @@ my @test_html_file = (
 ],
 ['index_split_split_chapter_no_nodes',
   undef,
-  # we use CHECK_NORMAL_MENU_STRUCTURE as this tests
-  # for a case that may only be tested here (Top before node)
+  # we set CHECK_NORMAL_MENU_STRUCTURE (even if it is the default)
+  # to mark that this tests for a case that may only be tested here
+  # (Top before node).
   # It also tests for node with directions after section which is
   # also in 96moresectioning.t
   {'test_file' => 'index_split.texi', 'CHECK_NORMAL_MENU_STRUCTURE' => 1},

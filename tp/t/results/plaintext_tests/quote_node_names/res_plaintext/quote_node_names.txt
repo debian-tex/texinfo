@@ -1,32 +1,29 @@
-*Note the::caption and a word: normal node. *Note the::caption: normal
-node.
+See the::caption and a word: normal node See the::caption: normal node
 
-   *Note the::caption and a word: blah:blah. *Note the::caption:
-blah:blah.
+   See the::caption and a word: blah:blah See the::caption: blah:blah
 
-   *Note the::caption and a word: blumpty.fump. *Note the::caption:
-blumpty.fump.mrmrmrmmrmrmr
+   See the::caption and a word: blumpty.fump See the::caption:
+blumpty.fump.mrmrmrmmrmrmr
 
-   *Note blah:blah::.
+   See blah:blah.
 
-   *Note secret,node::.
+   See secret,node.
 
-   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA *Note
-blah:blah::.)
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA See blah:blah.)
 
-   *Note (man_ual)x:y::z::.
+   See (man_ual)x:y::z.
 
-   *Note (man_ual)x.y.z::.
+   See (man_ual)x.y.z.
 
-   *Note label: (man_ual)pp:qq::rr.
+   See label: (man_ual)pp:qq::rr.
 
-   *Note label: (man_ual)pp:qq.rr.
+   See label: (man_ual)pp:qq.rr.
 
-   *Note label: (man:u.al)ext.
+   See label: (man:u.al)ext.
 
-   *Note label: (man:u.al)e:x.t.
+   See label: (man:u.al)e:x.t.
 
-   *Note la:bel: (man:u.al)ext.
+   See la:bel: (man:u.al)ext.
 
 1 blah:blah
 ***********

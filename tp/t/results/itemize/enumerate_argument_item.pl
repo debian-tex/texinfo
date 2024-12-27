@@ -49,9 +49,7 @@ $result_trees{'enumerate_argument_item'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -75,9 +73,7 @@ $result_trees{'enumerate_argument_item'} = {
                 'item_number' => 2
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -107,9 +103,7 @@ $result_trees{'enumerate_argument_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -122,9 +116,7 @@ $result_trees{'enumerate_argument_item'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -178,9 +170,7 @@ $result_trees{'enumerate_argument_item'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -204,9 +194,7 @@ $result_trees{'enumerate_argument_item'} = {
                 'item_number' => 2
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -236,9 +224,7 @@ $result_trees{'enumerate_argument_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -251,9 +237,7 @@ $result_trees{'enumerate_argument_item'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -310,9 +294,7 @@ $result_trees{'enumerate_argument_item'} = {
                 'item_number' => 1
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -336,9 +318,7 @@ $result_trees{'enumerate_argument_item'} = {
                 'item_number' => 2
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -368,9 +348,7 @@ $result_trees{'enumerate_argument_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             }
           ],
@@ -383,9 +361,122 @@ $result_trees{'enumerate_argument_item'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
+          }
+        },
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => '0'
+                }
+              ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                }
+              },
+              'type' => 'block_line_arg'
+            }
+          ],
+          'cmdname' => 'enumerate',
+          'contents' => [
+            {
+              'cmdname' => 'item',
+              'contents' => [
+                {
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'numeric zero first
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                }
+              ],
+              'extra' => {
+                'item_number' => 1
+              },
+              'source_info' => {
+                'line_nr' => 17
+              }
+            },
+            {
+              'cmdname' => 'item',
+              'contents' => [
+                {
+                  'text' => ' ',
+                  'type' => 'ignorable_spaces_after_command'
+                },
+                {
+                  'contents' => [
+                    {
+                      'text' => 'numeric zero second
+'
+                    }
+                  ],
+                  'type' => 'paragraph'
+                }
+              ],
+              'extra' => {
+                'item_number' => 2
+              },
+              'source_info' => {
+                'line_nr' => 18
+              }
+            },
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => 'enumerate'
+                    }
+                  ],
+                  'info' => {
+                    'spaces_after_argument' => {
+                      'text' => '
+'
+                    }
+                  },
+                  'type' => 'line_arg'
+                }
+              ],
+              'cmdname' => 'end',
+              'extra' => {
+                'text_arg' => 'enumerate'
+              },
+              'info' => {
+                'spaces_before_argument' => {
+                  'text' => ' '
+                }
+              },
+              'source_info' => {
+                'line_nr' => 19
+              }
+            }
+          ],
+          'extra' => {
+            'enumerate_specification' => '0'
+          },
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
+          },
+          'source_info' => {
+            'line_nr' => 16
           }
         }
       ],
@@ -409,6 +500,11 @@ $result_texis{'enumerate_argument_item'} = '@enumerate 1
 @item lower case first
 @item lower case second
 @end enumerate
+
+@enumerate 0
+@item numeric zero first
+@item numeric zero second
+@end enumerate
 ';
 
 
@@ -420,6 +516,9 @@ B. upper case second
 
 z. lower case first
 aa. lower case second
+
+0. numeric zero first
+1. numeric zero second
 ';
 
 $result_errors{'enumerate_argument_item'} = [];
@@ -437,6 +536,9 @@ $result_converted{'plaintext'}->{'enumerate_argument_item'} = '  1. numeric firs
 
   z. lower case first
   aa. lower case second
+
+  0. numeric zero first
+  1. numeric zero second
 ';
 
 
@@ -454,6 +556,11 @@ $result_converted{'html_text'}->{'enumerate_argument_item'} = '<ol class="enumer
 <li> lower case first
 </li><li> lower case second
 </li></ol>
+
+<ol class="enumerate" start="0">
+<li> numeric zero first
+</li><li> numeric zero second
+</li></ol>
 ';
 
 
@@ -470,6 +577,11 @@ $result_converted{'xml'}->{'enumerate_argument_item'} = '<enumerate first="1" sp
 <enumerate first="z" spaces=" " endspaces=" "><enumeratefirst>z </enumeratefirst><!-- c comment -->
 <listitem> <para>lower case first
 </para></listitem><listitem> <para>lower case second
+</para></listitem></enumerate>
+
+<enumerate spaces=" " endspaces=" "><enumeratefirst>0</enumeratefirst>
+<listitem> <para>numeric zero first
+</para></listitem><listitem> <para>numeric zero second
 </para></listitem></enumerate>
 ';
 

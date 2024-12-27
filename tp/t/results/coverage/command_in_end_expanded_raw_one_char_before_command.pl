@@ -42,14 +42,12 @@ $result_trees{'command_in_end_expanded_raw_one_char_before_command'} = {
                     {
                       'args' => [
                         {
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'asis',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     },
                     {
@@ -75,16 +73,12 @@ $result_trees{'command_in_end_expanded_raw_one_char_before_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -107,18 +101,14 @@ $result_errors{'command_in_end_expanded_raw_one_char_before_command'} = [
   {
     'error_line' => 'warning: @asis should not appear in @end
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@asis should not appear in @end',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @end: t@asis{}ex
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'bad argument to @end: t@asis{}ex',
     'type' => 'error'
   }

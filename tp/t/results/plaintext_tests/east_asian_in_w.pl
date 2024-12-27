@@ -40,8 +40,7 @@ $result_trees{'east_asian_in_w'} = {
               },
               'source_info' => {
                 'file_name' => 'east_asian_in_w.texi',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -69,14 +68,13 @@ $result_trees{'east_asian_in_w'} = {
                       'text' => "\x{5305}\x{542b}\x{6587}\x{5b57}"
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'w',
               'source_info' => {
                 'file_name' => 'east_asian_in_w.texi',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -95,8 +93,7 @@ $result_trees{'east_asian_in_w'} = {
           'cmdname' => 'noindent',
           'source_info' => {
             'file_name' => 'east_asian_in_w.texi',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {

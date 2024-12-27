@@ -1,6 +1,6 @@
 /* man.c: How to read and format man files.
 
-   Copyright 1995-2023 Free Software Foundation, Inc.
+   Copyright 1995-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -144,18 +144,18 @@ get_manpage_node (char *pagename)
       node = info_create_node ();
       node->fullpath = MANPAGE_FILE_BUFFER_NAME;
       node->nodename = xstrdup (pagename);
-      node->flags |= N_HasTagsTable | N_IsManPage;
+      node->flags |= N_IsManPage;
 
       /* Save this node. */
       add_pointer_to_array (node, manpage_node_index,
                             manpage_nodes,
                             manpage_node_slots, 100);
-    } 
+    }
 
   /* Node wasn't found, or its contents were freed since last time. */
   if (!node->contents)
     {
-      int plen;
+      size_t plen;
 
       page = get_manpage_contents (pagename);
       if (!page)
@@ -213,18 +213,18 @@ executable_file_in_path (char *filename, char *path)
       free (temp_dirname);
 
       /* Look for FILENAME, possibly with any of the extensions
-	 in EXEC_EXTENSIONS[].  */
+         in EXEC_EXTENSIONS[].  */
       for (i = 0; exec_extensions[i]; i++)
-	{
-	  if (exec_extensions[i][0])
-	    strcpy (temp_end, exec_extensions[i]);
-	  statable = (stat (temp, &finfo) == 0);
+        {
+          if (exec_extensions[i][0])
+            strcpy (temp_end, exec_extensions[i]);
+          statable = (stat (temp, &finfo) == 0);
 
-	  /* If we have found a regular executable file, then use it. */
-	  if ((statable) && (S_ISREG (finfo.st_mode)) &&
-	      (access (temp, X_OK) == 0))
-	    return temp;
-	}
+          /* If we have found a regular executable file, then use it. */
+          if ((statable) && (S_ISREG (finfo.st_mode)) &&
+              (access (temp, X_OK) == 0))
+            return temp;
+        }
 
       free (temp);
     }
@@ -293,39 +293,39 @@ clean_manpage (char *manpage)
   char *newpage = xmalloc (len + 1);
   char *np = newpage;
   int prev_len = 0;
-  
+
   for (mbi_init (iter, manpage, len);
        mbi_avail (iter);
        mbi_advance (iter))
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
+      int cur_len = mb_len (mbi_cur (iter));
 
       if (cur_len == 1)
-	{
-	  if (*cur_ptr == '\b' || *cur_ptr == '\f')
-	    {
-	      if (np >= newpage + prev_len)
-		np -= prev_len;
-	    }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      memcpy (np, cur_ptr, cur_len);
-	      np += cur_len;
-	      ITER_SETBYTES (iter, cur_len);
-	    }
-	  else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
-	    *np++ = *cur_ptr;
-	}
+        {
+          if (*cur_ptr == '\b' || *cur_ptr == '\f')
+            {
+              if (np >= newpage + prev_len)
+                np -= prev_len;
+            }
+          else if (ansi_escape (iter, &cur_len))
+            {
+              memcpy (np, cur_ptr, cur_len);
+              np += cur_len;
+              ITER_SETBYTES (iter, cur_len);
+            }
+          else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
+            *np++ = *cur_ptr;
+        }
       else
-	{
-	  memcpy (np, cur_ptr, cur_len);
-	  np += cur_len;
-	}
+        {
+          memcpy (np, cur_ptr, cur_len);
+          np += cur_len;
+        }
       prev_len = cur_len;
     }
   *np = 0;
-  
+
   strcpy (manpage, newpage);
   free (newpage);
 }
@@ -435,7 +435,7 @@ get_manpage_from_formatter (char *formatter_args[])
     if (fd_err > 2)
       dup2 (fd_err, fileno (stderr)); /* Don't print errors. */
     sprintf (cmdline, "\"%s\" %s %s",
-	     formatter_args[0], formatter_args[1], formatter_args[2]);
+             formatter_args[0], formatter_args[1], formatter_args[2]);
     fpipe = popen (cmdline, "r");
     free (cmdline);
     if (fd_err > 2)
@@ -454,12 +454,12 @@ get_manpage_from_formatter (char *formatter_args[])
   /* We could check the exit status of "man -a" to see if it successfully
      output a man page  However:
       * It is possible for "man -a" to output a man page and still to exit with
-        a non-zero status.  This was found to happen when duplicate man pages 
+        a non-zero status.  This was found to happen when duplicate man pages
         were found.
       * "man" was found to exit with a zero status on Solaris 10 even when
         it found nothing.
-     Hence, treat it as a success if more than three lines were output.  (A 
-     small amount of output could be error messages that were sent to standard 
+     Hence, treat it as a success if more than three lines were output.  (A
+     small amount of output could be error messages that were sent to standard
      output.) */
   {
     int i;
@@ -570,7 +570,7 @@ xrefs_of_manpage (NODE *node)
   s.end = node->nodelen;
 
   /* Exclude first line, which often looks like:
-CAT(1)                           User Commands                          CAT(1)
+ CAT(1)                           User Commands                          CAT(1)
   */
   s.start = strcspn (node->contents, "\n");
 
@@ -592,7 +592,7 @@ CAT(1)                           User Commands                          CAT(1)
          page name. */
       for (; name > 0; name--)
         if (whitespace_or_newline (s.buffer[name])
-            || (!isalnum (s.buffer[name])
+            || (!isalnum ((unsigned char) s.buffer[name])
                 && s.buffer[name] != '_'
                 && s.buffer[name] != '.'
                 && s.buffer[name] != '-'
@@ -628,7 +628,7 @@ CAT(1)                           User Commands                          CAT(1)
 
       /* Set name_end to the end of the name, but before any SGR sequence. */
       for (name_end = name; name_end < position; name_end++)
-        if (!isalnum (s.buffer[name_end])
+        if (!isalnum ((unsigned char) s.buffer[name_end])
             && s.buffer[name_end] != '_'
             && s.buffer[name_end] != '.'
             && s.buffer[name_end] != '-')
@@ -639,14 +639,14 @@ CAT(1)                           User Commands                          CAT(1)
 
       /* Look for one or two characters within the brackets, the
          first of which must be a non-zero digit and the second a letter. */
-      if (!isdigit (s.buffer[section + 1])
+      if (!isdigit ((unsigned char) s.buffer[section + 1])
           || s.buffer[section + 1] == '0')
         ;
       else if (!s.buffer[section + 2])
         ; /* end of buffer */
       else if (s.buffer[section + 2] == ')')
         section_end = section + 3;
-      else if (!isalpha(s.buffer[section + 2]))
+      else if (!isalpha((unsigned char) s.buffer[section + 2]))
         ;
       else if (s.buffer[section + 3] == ')')
         section_end = section + 4;
@@ -673,7 +673,7 @@ CAT(1)                           User Commands                          CAT(1)
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
         }
 
-skip:
+ skip:
       s.start = position + 1;
     }
 

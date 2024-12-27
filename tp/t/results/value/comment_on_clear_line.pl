@@ -135,7 +135,12 @@ $result_trees{'comment_on_clear_line'} = {
             {
               'args' => [
                 {
-                  'text' => 'x'
+                  'contents' => [
+                    {
+                      'text' => 'x'
+                    }
+                  ],
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'value'
@@ -146,7 +151,12 @@ $result_trees{'comment_on_clear_line'} = {
             {
               'args' => [
                 {
-                  'text' => 'y'
+                  'contents' => [
+                    {
+                      'text' => 'y'
+                    }
+                  ],
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'value'
@@ -158,7 +168,12 @@ $result_trees{'comment_on_clear_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 'z'
+                        'contents' => [
+                          {
+                            'text' => 'z'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
@@ -179,7 +194,12 @@ $result_trees{'comment_on_clear_line'} = {
                   'element' => {
                     'args' => [
                       {
-                        'text' => 't'
+                        'contents' => [
+                          {
+                            'text' => 't'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
@@ -225,43 +245,35 @@ $result_texis{'comment_on_clear_line'} = '@set x
 
 $result_texts{'comment_on_clear_line'} = '
 
-!!, !!, !g!, !a vv!
+!x!, !y!, !g!, !a vv!
 ';
 
 $result_errors{'comment_on_clear_line'} = [
   {
     'error_line' => 'bad name for @clear
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'bad name for @clear',
     'type' => 'error'
   },
   {
     'error_line' => 'bad name for @clear
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => 'bad name for @clear',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: undefined flag: x
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'undefined flag: x',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: undefined flag: y
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'undefined flag: y',
     'type' => 'warning'
   }

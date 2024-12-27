@@ -62,9 +62,7 @@ $result_trees{'blockitem_no_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -73,9 +71,7 @@ $result_trees{'blockitem_no_item'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -89,7 +85,9 @@ $result_trees{'blockitem_no_item'} = {
               'contents' => [
                 {
                   'cmdname' => 'bullet',
-                  'type' => 'command_as_argument_inserted'
+                  'info' => {
+                    'inserted' => 1
+                  }
                 }
               ],
               'info' => {
@@ -108,6 +106,10 @@ $result_trees{'blockitem_no_item'} = {
                 {
                   'contents' => [
                     {
+                      'text' => 'AA
+'
+                    },
+                    {
                       'source_marks' => [
                         {
                           'counter' => 1,
@@ -119,11 +121,7 @@ $result_trees{'blockitem_no_item'} = {
                                     'text' => 'd'
                                   }
                                 ],
-                                'info' => {
-                                  'spaces_before_argument' => {
-                                    'text' => ' '
-                                  }
-                                }
+                                'type' => 'line_arg'
                               },
                               {
                                 'contents' => [
@@ -135,7 +133,8 @@ $result_trees{'blockitem_no_item'} = {
                                   'spaces_before_argument' => {
                                     'text' => ' '
                                   }
-                                }
+                                },
+                                'type' => 'line_arg'
                               },
                               {
                                 'contents' => [
@@ -148,23 +147,22 @@ $result_trees{'blockitem_no_item'} = {
                                   'spaces_before_argument' => {
                                     'text' => ' '
                                   }
-                                }
+                                },
+                                'type' => 'line_arg'
                               }
                             ],
                             'info' => {
-                              'command_name' => 'mycommand'
+                              'command_name' => 'mycommand',
+                              'spaces_before_argument' => {
+                                'text' => ' '
+                              }
                             },
                             'type' => 'linemacro_call'
                           },
-                          'position' => 3,
                           'sourcemark_type' => 'linemacro_expansion',
                           'status' => 'start'
                         }
                       ],
-                      'text' => 'AA
-'
-                    },
-                    {
                       'text' => 'd, e f '
                     },
                     {
@@ -212,7 +210,6 @@ $result_trees{'blockitem_no_item'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 8,
                 'macro' => 'mycommand'
               }
@@ -222,9 +219,7 @@ $result_trees{'blockitem_no_item'} = {
             'command_as_argument' => {}
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
@@ -254,9 +249,7 @@ $result_errors{'blockitem_no_item'} = [
   {
     'error_line' => 'warning: @itemize has text but no @item
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@itemize has text but no @item',
     'type' => 'warning'
   }

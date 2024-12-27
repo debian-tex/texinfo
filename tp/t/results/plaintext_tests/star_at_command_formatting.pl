@@ -105,9 +105,7 @@ $result_trees{'star_at_command_formatting'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             }
           ],
@@ -116,31 +114,10 @@ $result_trees{'star_at_command_formatting'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'mymacro'
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -148,6 +125,24 @@ $result_trees{'star_at_command_formatting'} = {
         {
           'contents' => [
             {
+              'source_marks' => [
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'mymacro'
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                }
+              ],
               'text' => 'Some text '
             },
             {
@@ -253,12 +248,11 @@ $result_trees{'star_at_command_formatting'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'asis',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 16,
                 'macro' => 'mymacro'
               }
@@ -278,12 +272,11 @@ $result_trees{'star_at_command_formatting'} = {
                       'text' => ' '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'asis',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 16,
                 'macro' => 'mymacro'
               }
@@ -307,12 +300,11 @@ $result_trees{'star_at_command_formatting'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'asis',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 16,
                 'macro' => 'mymacro'
               }
@@ -344,12 +336,11 @@ $result_trees{'star_at_command_formatting'} = {
                       'text' => ' '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'asis',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 16,
                 'macro' => 'mymacro'
               }
@@ -395,13 +386,17 @@ $result_trees{'star_at_command_formatting'} = {
             {
               'contents' => [
                 {
+                  'text' => 'Example
+'
+                },
+                {
                   'source_marks' => [
                     {
                       'counter' => 2,
                       'element' => {
                         'args' => [
                           {
-                            'type' => 'brace_command_arg'
+                            'type' => 'brace_arg'
                           }
                         ],
                         'info' => {
@@ -409,15 +404,10 @@ $result_trees{'star_at_command_formatting'} = {
                         },
                         'type' => 'macro_call'
                       },
-                      'position' => 8,
                       'sourcemark_type' => 'macro_expansion',
                       'status' => 'start'
                     }
                   ],
-                  'text' => 'Example
-'
-                },
-                {
                   'text' => 'Some text '
                 },
                 {
@@ -518,12 +508,11 @@ $result_trees{'star_at_command_formatting'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 20,
                     'macro' => 'mymacro'
                   }
@@ -543,12 +532,11 @@ $result_trees{'star_at_command_formatting'} = {
                           'text' => ' '
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 20,
                     'macro' => 'mymacro'
                   }
@@ -572,12 +560,11 @@ $result_trees{'star_at_command_formatting'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 20,
                     'macro' => 'mymacro'
                   }
@@ -609,12 +596,11 @@ $result_trees{'star_at_command_formatting'} = {
                           'text' => ' '
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 20,
                     'macro' => 'mymacro'
                   }
@@ -665,16 +651,12 @@ $result_trees{'star_at_command_formatting'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           }
         },
         {
@@ -699,13 +681,17 @@ $result_trees{'star_at_command_formatting'} = {
             {
               'contents' => [
                 {
+                  'text' => 'Quotation
+'
+                },
+                {
                   'source_marks' => [
                     {
                       'counter' => 3,
                       'element' => {
                         'args' => [
                           {
-                            'type' => 'brace_command_arg'
+                            'type' => 'brace_arg'
                           }
                         ],
                         'info' => {
@@ -713,15 +699,10 @@ $result_trees{'star_at_command_formatting'} = {
                         },
                         'type' => 'macro_call'
                       },
-                      'position' => 10,
                       'sourcemark_type' => 'macro_expansion',
                       'status' => 'start'
                     }
                   ],
-                  'text' => 'Quotation
-'
-                },
-                {
                   'text' => 'Some text '
                 },
                 {
@@ -827,12 +808,11 @@ $result_trees{'star_at_command_formatting'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 25,
                     'macro' => 'mymacro'
                   }
@@ -852,12 +832,11 @@ $result_trees{'star_at_command_formatting'} = {
                           'text' => ' '
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 25,
                     'macro' => 'mymacro'
                   }
@@ -881,12 +860,11 @@ $result_trees{'star_at_command_formatting'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 25,
                     'macro' => 'mymacro'
                   }
@@ -918,12 +896,11 @@ $result_trees{'star_at_command_formatting'} = {
                           'text' => ' '
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'asis',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 25,
                     'macro' => 'mymacro'
                   }
@@ -974,16 +951,12 @@ $result_trees{'star_at_command_formatting'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 26,
-                'macro' => ''
+                'line_nr' => 26
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           }
         },
         {

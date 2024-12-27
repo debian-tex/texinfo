@@ -22,14 +22,13 @@ $result_trees{'invalid_clickstyle'} = {
             }
           ],
           'cmdname' => 'clickstyle',
+          'extra' => {},
           'info' => {
             'arg_line' => ' @result on the same line
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -45,7 +44,7 @@ $result_trees{'invalid_clickstyle'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'click',
@@ -53,9 +52,7 @@ $result_trees{'invalid_clickstyle'} = {
                 'clickstyle' => 'result'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -78,14 +75,13 @@ $result_trees{'invalid_clickstyle'} = {
             }
           ],
           'cmdname' => 'clickstyle',
+          'extra' => {},
           'info' => {
             'arg_line' => ' @nocmd
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -101,7 +97,7 @@ $result_trees{'invalid_clickstyle'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'click',
@@ -109,9 +105,7 @@ $result_trees{'invalid_clickstyle'} = {
                 'clickstyle' => 'nocmd'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -128,14 +122,13 @@ $result_trees{'invalid_clickstyle'} = {
         },
         {
           'cmdname' => 'clickstyle',
+          'extra' => {},
           'info' => {
             'arg_line' => ' something
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         },
         {
@@ -151,7 +144,7 @@ $result_trees{'invalid_clickstyle'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'click',
@@ -159,9 +152,7 @@ $result_trees{'invalid_clickstyle'} = {
                 'clickstyle' => 'nocmd'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             },
             {
@@ -208,9 +199,7 @@ $result_errors{'invalid_clickstyle'} = [
   {
     'error_line' => 'warning: remaining argument on @clickstyle line: on the same line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'remaining argument on @clickstyle line: on the same line',
     'type' => 'warning'
   },
@@ -218,9 +207,7 @@ $result_errors{'invalid_clickstyle'} = [
     'error_line' => '@clickstyle should only accept an @-command as argument, not ` something
 \'
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => '@clickstyle should only accept an @-command as argument, not ` something
 \'',
     'type' => 'error'

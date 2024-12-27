@@ -44,9 +44,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -62,9 +60,7 @@ $result_trees{'many_lines'} = {
               ],
               'cmdname' => 'afourpaper',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -80,9 +76,7 @@ $result_trees{'many_lines'} = {
               ],
               'cmdname' => 'smallbook',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -106,15 +100,14 @@ $result_trees{'many_lines'} = {
                 }
               ],
               'cmdname' => 'headings',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             },
             {
@@ -144,9 +137,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -176,9 +167,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -208,9 +197,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -240,9 +227,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -272,9 +257,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -304,9 +287,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               }
             },
             {
@@ -339,9 +320,7 @@ $result_trees{'many_lines'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -381,9 +360,7 @@ $result_trees{'many_lines'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           }
         },
         {
@@ -415,9 +392,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             },
             {
@@ -467,15 +442,14 @@ $result_trees{'many_lines'} = {
                 }
               ],
               'cmdname' => 'kbdinputstyle',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             },
             {
@@ -491,9 +465,7 @@ $result_trees{'many_lines'} = {
               ],
               'cmdname' => 'afourpaper',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             },
             {
@@ -509,9 +481,7 @@ $result_trees{'many_lines'} = {
               ],
               'cmdname' => 'afourlatex',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             },
             {
@@ -527,9 +497,7 @@ $result_trees{'many_lines'} = {
               ],
               'cmdname' => 'afourwide',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 19,
-                'macro' => ''
+                'line_nr' => 19
               }
             },
             {
@@ -564,9 +532,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 20,
-                'macro' => ''
+                'line_nr' => 20
               }
             },
             {
@@ -601,9 +567,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             },
             {
@@ -638,9 +602,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 22,
-                'macro' => ''
+                'line_nr' => 22
               }
             },
             {
@@ -675,9 +637,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 23,
-                'macro' => ''
+                'line_nr' => 23
               }
             },
             {
@@ -712,9 +672,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 24,
-                'macro' => ''
+                'line_nr' => 24
               }
             },
             {
@@ -738,15 +696,14 @@ $result_trees{'many_lines'} = {
                 }
               ],
               'cmdname' => 'firstparagraphindent',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 25,
-                'macro' => ''
+                'line_nr' => 25
               }
             },
             {
@@ -770,15 +727,14 @@ $result_trees{'many_lines'} = {
                 }
               ],
               'cmdname' => 'exampleindent',
+              'extra' => {},
               'info' => {
                 'spaces_before_argument' => {
                   'text' => ' '
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 26,
-                'macro' => ''
+                'line_nr' => 26
               }
             },
             {
@@ -813,9 +769,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 27,
-                'macro' => ''
+                'line_nr' => 27
               }
             },
             {
@@ -850,9 +804,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 28,
-                'macro' => ''
+                'line_nr' => 28
               }
             },
             {
@@ -887,9 +839,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 29,
-                'macro' => ''
+                'line_nr' => 29
               }
             },
             {
@@ -922,9 +872,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 30,
-                'macro' => ''
+                'line_nr' => 30
               }
             },
             {
@@ -955,9 +903,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 31,
-                'macro' => ''
+                'line_nr' => 31
               }
             },
             {
@@ -992,9 +938,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 32,
-                'macro' => ''
+                'line_nr' => 32
               }
             },
             {
@@ -1029,9 +973,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 33,
-                'macro' => ''
+                'line_nr' => 33
               }
             },
             {
@@ -1066,9 +1008,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 34,
-                'macro' => ''
+                'line_nr' => 34
               }
             },
             {
@@ -1098,9 +1038,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 35,
-                'macro' => ''
+                'line_nr' => 35
               }
             },
             {
@@ -1132,9 +1070,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 36,
-                'macro' => ''
+                'line_nr' => 36
               }
             },
             {
@@ -1166,9 +1102,7 @@ $result_trees{'many_lines'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 37,
-                'macro' => ''
+                'line_nr' => 37
               }
             }
           ],
@@ -1319,423 +1253,329 @@ $result_errors{'many_lines'} = [
   {
     'error_line' => 'warning: @pagesizes should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@pagesizes should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @afourpaper should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => '@afourpaper should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @smallbook should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@smallbook should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @headings should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@headings should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @headings: on line following headings
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'bad argument to @headings: on line following headings',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @oddfooting should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@oddfooting should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @everyheading should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@everyheading should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @everyfooting should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 7,
-    'macro' => '',
     'text' => '@everyfooting should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @evenheading should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => '@evenheading should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @evenfooting should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@evenfooting should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @oddheading should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => '@oddheading should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @need should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => '@need should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'bad argument to @need: 0.1 on line following
 ',
-    'file_name' => '',
     'line_nr' => 11,
-    'macro' => '',
     'text' => 'bad argument to @need: 0.1 on line following',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @need should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 12,
-    'macro' => '',
     'text' => '@need should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @setchapternewpage should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => '@setchapternewpage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => '@setchapternewpage arg must be `on\', `off\' or `odd\', not `on line following setchapternewpage\'
 ',
-    'file_name' => '',
     'line_nr' => 13,
-    'macro' => '',
     'text' => '@setchapternewpage arg must be `on\', `off\' or `odd\', not `on line following setchapternewpage\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @raisesections should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => '@raisesections should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @lowersections should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 15,
-    'macro' => '',
     'text' => '@lowersections should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @kbdinputstyle should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@kbdinputstyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => '@kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `code something\'
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => '@kbdinputstyle arg must be `code\'/`example\'/`distinct\', not `code something\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @afourpaper should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 17,
-    'macro' => '',
     'text' => '@afourpaper should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: multiple @afourpaper
 ',
-    'file_name' => '',
     'line_nr' => 17,
-    'macro' => '',
     'text' => 'multiple @afourpaper',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @afourlatex should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 18,
-    'macro' => '',
     'text' => '@afourlatex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @afourwide should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 19,
-    'macro' => '',
     'text' => '@afourwide should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 20,
-    'macro' => '',
     'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 21,
-    'macro' => '',
     'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 22,
-    'macro' => '',
     'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @paragraphindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 23,
-    'macro' => '',
     'text' => '@paragraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @firstparagraphindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 24,
-    'macro' => '',
     'text' => '@firstparagraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @firstparagraphindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => '@firstparagraphindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => '@firstparagraphindent arg must be `none\' or `insert\', not `3\'
 ',
-    'file_name' => '',
     'line_nr' => 25,
-    'macro' => '',
     'text' => '@firstparagraphindent arg must be `none\' or `insert\', not `3\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @exampleindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 26,
-    'macro' => '',
     'text' => '@exampleindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
 ',
-    'file_name' => '',
     'line_nr' => 26,
-    'macro' => '',
     'text' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @exampleindent should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 27,
-    'macro' => '',
     'text' => '@exampleindent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 28,
-    'macro' => '',
     'text' => '@footnotestyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @footnotestyle should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 29,
-    'macro' => '',
     'text' => '@footnotestyle should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: multiple @footnotestyle
 ',
-    'file_name' => '',
     'line_nr' => 29,
-    'macro' => '',
     'text' => 'multiple @footnotestyle',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @documentencoding should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 30,
-    'macro' => '',
     'text' => '@documentencoding should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: encoding `US-ascii encoding name\' is not a canonical texinfo encoding
 ',
-    'file_name' => '',
     'line_nr' => 30,
-    'macro' => '',
     'text' => 'encoding `US-ascii encoding name\' is not a canonical texinfo encoding',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: unhandled encoding name `US-ascii encoding name\'
 ',
-    'file_name' => '',
     'line_nr' => 30,
-    'macro' => '',
     'text' => 'unhandled encoding name `US-ascii encoding name\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @frenchspacing should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 32,
-    'macro' => '',
     'text' => '@frenchspacing should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @frenchspacing should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 33,
-    'macro' => '',
     'text' => '@frenchspacing should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @fonttextsize should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 34,
-    'macro' => '',
     'text' => '@fonttextsize should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @everyheadingmarks should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 35,
-    'macro' => '',
     'text' => '@everyheadingmarks should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => '@everyheadingmarks arg must be `top\' or `bottom\', not `bottom on line following everyheadingmarks\'
 ',
-    'file_name' => '',
     'line_nr' => 35,
-    'macro' => '',
     'text' => '@everyheadingmarks arg must be `top\' or `bottom\', not `bottom on line following everyheadingmarks\'',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: @finalout should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 39,
-    'macro' => '',
     'text' => '@finalout should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @finalout should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 41,
-    'macro' => '',
     'text' => '@finalout should only appear at the beginning of a line',
     'type' => 'warning'
   }

@@ -34,9 +34,7 @@ $result_trees{'conditional_not_closed'} = {
                   }
                 ],
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'ignored_conditional_block'
@@ -60,9 +58,7 @@ $result_errors{'conditional_not_closed'} = [
   {
     'error_line' => 'no matching `@end ifhtml\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'no matching `@end ifhtml\'',
     'type' => 'error'
   }

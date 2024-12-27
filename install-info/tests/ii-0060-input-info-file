@@ -1,0 +1,14 @@
+INFO-DIR-SECTION Diff programs
+START-INFO-DIR-ENTRY
+* diff3: (diffutils).                  Compare 3 files. Intentionally before 'diff'
+* diff: (diffutils).                   Compare 2 files.
+* diff2: (diffutils).                  Imaginary tool. Intentionally after 'diff'
+END-INFO-DIR-ENTRY
+
+File: gnu,  Node: Top,  Next: Top,  Up: (dir)
+
+Diff programs
+*************
+
+See diffutils.
+

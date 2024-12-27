@@ -58,9 +58,7 @@ $result_trees{'protect_in_body'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -69,9 +67,7 @@ $result_trees{'protect_in_body'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -93,7 +89,12 @@ $result_trees{'protect_in_body'} = {
                             'text' => '@samp{f\\irst arg}'
                           }
                         ],
-                        'type' => 'brace_command_arg'
+                        'info' => {
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
+                        },
+                        'type' => 'brace_arg'
                       },
                       {
                         'contents' => [
@@ -106,15 +107,12 @@ $result_trees{'protect_in_body'} = {
                             'text' => ' '
                           }
                         },
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
                       'command_name' => 'macroone',
                       'spaces_after_cmd_before_arg' => {
-                        'text' => ' '
-                      },
-                      'spaces_before_argument' => {
                         'text' => ' '
                       }
                     },
@@ -139,23 +137,21 @@ $result_trees{'protect_in_body'} = {
                               'text' => 'f\\irst arg'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'samp',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 5,
                         'macro' => 'macroone'
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'macroone'
               }
@@ -171,12 +167,11 @@ $result_trees{'protect_in_body'} = {
                       'text' => 'second arg '
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'emph',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'macroone'
               },

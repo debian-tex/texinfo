@@ -60,9 +60,7 @@ $result_trees{'comment_on_ifset_line'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 3,
-                  'macro' => ''
+                  'line_nr' => 3
                 }
               },
               'position' => 1,
@@ -107,9 +105,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 5,
-                      'macro' => ''
+                      'line_nr' => 5
                     }
                   },
                   'position' => 3,
@@ -148,9 +144,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 6,
-                      'macro' => ''
+                      'line_nr' => 6
                     }
                   },
                   'position' => 3,
@@ -192,9 +186,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 8,
-                      'macro' => ''
+                      'line_nr' => 8
                     }
                   },
                   'position' => 3,
@@ -233,9 +225,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 9,
-                      'macro' => ''
+                      'line_nr' => 9
                     }
                   },
                   'position' => 3,
@@ -277,9 +267,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 11,
-                      'macro' => ''
+                      'line_nr' => 11
                     }
                   },
                   'position' => 3,
@@ -321,9 +309,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 12,
-                      'macro' => ''
+                      'line_nr' => 12
                     }
                   },
                   'position' => 3,
@@ -365,9 +351,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 14,
-                      'macro' => ''
+                      'line_nr' => 14
                     }
                   },
                   'position' => 3,
@@ -409,9 +393,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 15,
-                      'macro' => ''
+                      'line_nr' => 15
                     }
                   },
                   'position' => 3,
@@ -453,9 +435,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 17,
-                      'macro' => ''
+                      'line_nr' => 17
                     }
                   },
                   'position' => 3,
@@ -497,9 +477,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 18,
-                      'macro' => ''
+                      'line_nr' => 18
                     }
                   },
                   'position' => 3,
@@ -541,9 +519,7 @@ $result_trees{'comment_on_ifset_line'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 20,
-                      'macro' => ''
+                      'line_nr' => 20
                     }
                   },
                   'position' => 3,

@@ -1,6 +1,6 @@
 /* m-x.c -- Meta-x minibuffer reader.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -137,7 +137,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
     free (line);
 
     if (command && command->func)
-      (*command->func) (active_window, count, 0);
+      (*command->func) (active_window, count);
   }
 }
 

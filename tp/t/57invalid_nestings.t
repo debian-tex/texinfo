@@ -499,7 +499,25 @@ Text. @errormsg{@anchor{in anchor} @ref{in ref}}
 @item item
 @end table
 }'],
-);
+['heading_commands_in_center',
+'@center @code{aaa @thischapter} @| a @thissection @| b
+'],
+['heading_commands_in_documentlanguage',
+'@documentlanguage @code{aaa @thischapter} @| @thissection @| b
+'],
+['thischapter_in_math_in_evenfooting',
+'
+@evenfooting @math{aa @thischapter}
+'],
+['thischapter_in_footnote_in_evenfooting',
+'
+@evenfooting aa @strong{GG@footnote{bb @thischapter}} @| @footnote{cc @thissection}
+'],
+['heading_separator_in_accent_command',
+'@,{@|}
+
+@oddfooting a @| @^{@|} @| b
+']);
 
 my @formatted_cases = (
 ['on_node_line',

@@ -1,0 +1,23 @@
+@item @code{@@abbr} @tab normal @tab normal, string
+@item @code{@@acronym} @tab normal @tab normal, string
+@item @code{@@anchor} @tab monospacestring
+@item @code{@@email} @tab url, monospacestring @tab normal
+@item @code{@@footnote} @tab 
+@item @code{@@image} @tab monospacestring, filenametext, url @tab filenametext @tab filenametext @tab normal, string @tab filenametext
+@item @code{@@inforef} @tab monospace @tab normal @tab filenametext
+@item @code{@@inlinefmt} @tab monospacetext @tab normal
+@item @code{@@inlinefmtifelse} @tab monospacetext @tab normal @tab normal
+@item @code{@@inlineifclear} @tab monospacetext @tab normal
+@item @code{@@inlineifset} @tab monospacetext @tab normal
+@item @code{@@inlineraw} @tab monospacetext @tab raw
+@item @code{@@item} @tab 
+@item @code{@@itemx} @tab 
+@item @code{@@link} @tab monospace @tab normal @tab filenametext
+@item @code{@@printindex} @tab 
+@item @code{@@pxref} @tab monospace @tab normal @tab normal @tab filenametext @tab normal
+@item @code{@@ref} @tab monospace @tab normal @tab normal @tab filenametext @tab normal
+@item @code{@@sp} @tab 
+@item @code{@@uref} @tab url, monospacestring @tab normal @tab normal
+@item @code{@@url} @tab url, monospacestring @tab normal @tab normal
+@item @code{@@value} @tab monospacestring
+@item @code{@@xref} @tab monospace @tab normal @tab normal @tab filenametext @tab normal

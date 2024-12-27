@@ -2,7 +2,7 @@
 
 # epub3.pm: setup an EPUB publication
 #
-#    Copyright 2021-2023 Free Software Foundation, Inc.
+#    Copyright 2021-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,7 +24,8 @@
 #
 # Discuss unique identifier on the mailing list
 #
-# Discuss last change date on the mailing list
+# Implement publication date and last change date customization
+# (see main TODO file).
 #
 # Currently the titlepage is used if available, while the Top node
 # is not shown.  There is a possibility to use an image as cover in
@@ -88,6 +89,9 @@ use File::Path;
 use File::Spec;
 use File::Copy;
 
+# for strftime
+use POSIX();
+
 # for fileparse
 use File::Basename;
 
@@ -95,6 +99,7 @@ use Encode qw(decode);
 
 # also for __(
 use Texinfo::Common;
+use Texinfo::Convert::NodeNameNormalization;
 use Texinfo::Convert::Utils;
 use Texinfo::Convert::Text;
 
@@ -198,9 +203,9 @@ texinfo_register_formatting_function('format_navigation_panel', \&epub_noop);
 
 texinfo_register_command_formatting('image', \&epub_convert_image_command);
 
-texinfo_register_type_formatting('unit', \&epub_convert_tree_unit_type);
-texinfo_register_type_formatting('special_element',
-                                 \&epub_convert_special_element_type);
+texinfo_register_output_unit_formatting('unit', \&epub_convert_unit_type);
+texinfo_register_output_unit_formatting('special_unit',
+                                 \&epub_convert_special_unit_type);
 
 my %epub_images_extensions_mimetypes = (
   '.png' =>  'image/png',
@@ -214,18 +219,19 @@ my %epub_js_extensions_mimetypes = (
   '.css', 'text/css',
 );
 
-sub _epub_convert_tree_to_text($$;$)
+sub _epub_convert_tree_to_text($$)
 {
   my $converter = shift;
   my $tree = shift;
-  my $options = shift;
 
-  $options = {} if (!defined($options));
-
-  return &{$converter->formatting_function('format_protect_text')}($converter,
-    Texinfo::Convert::Text::convert_to_text($tree,
-   {Texinfo::Convert::Text::copy_options_for_convert_text($converter, 1),
-     %$options}));
+  Texinfo::Convert::Text::set_options_encoding_if_not_ascii($converter,
+                                  $converter->{'convert_text_options'});
+  my $result = &{$converter->formatting_function('format_protect_text')}(
+         $converter, Texinfo::Convert::Text::convert_to_text($tree,
+                                           $converter->{'convert_text_options'}));
+  Texinfo::Convert::Text::reset_options_encoding(
+                                 $converter->{'convert_text_options'});
+  return $result;
 }
 
 sub epub_noop($$)
@@ -255,18 +261,29 @@ sub epub_convert_image_command($$$$)
   my $command = shift;
   my $args = shift;
 
-  if (defined($args->[0]->{'filenametext'})
+  if ($args and defined($args->[0])
+      and defined($args->[0]->{'filenametext'})
       and $args->[0]->{'filenametext'} ne '') {
-    my $basefile = $args->[0]->{'filenametext'};
-    return $basefile if ($self->in_string());
+    my $image_basefile = $args->[0]->{'filenametext'};
+    my $basefile_string = '';
+    $basefile_string = $args->[0]->{'monospacestring'}
+        if (defined($args->[0]->{'monospacestring'}));
+    return $basefile_string if ($self->in_string());
 
-    my ($image_file, $image_basefile, $image_extension, $image_path,
-        $image_path_encoding)
-      = $self->html_image_file_location_name($cmdname, $command, $args);
-    if (not defined($image_path)) {
-      # FIXME using an internal function.  Also not clear if it is correct to
-      # use it, as it is not used for other messages
-      $self->_noticed_line_warn(sprintf(
+    # To avoid multiple error messages, it could have been possible
+    # to check $self->in_multiple_conversions() and do not register
+    # error messages if set.  However, @image formatted in multiple
+    # conversions context should be rare (and probably always incorrect).
+    # Another cleaner way to solve this issue would have been to copy
+    # the image file only once and reuse the same $epub_file_nr for a
+    # given $image_basefile, but this would add more complex code for a
+    # case that is probably very uncommon.
+
+    my ($image_file, $image_extension, $image_path, $image_path_encoding)
+      = $self->html_image_file_location_name($cmdname, $command,
+                                             $image_basefile, $args);
+    if (not defined($image_path) and $command->{'source_info'}) {
+      $self->converter_line_warn(sprintf(
               __("\@image file `%s' (for HTML) not found, using `%s'"),
                  $image_basefile, $image_file), $command->{'source_info'});
     }
@@ -279,28 +296,38 @@ sub epub_convert_image_command($$$$)
     my $protected_image_extension
       = Texinfo::Convert::NodeNameNormalization::transliterate_protect_file_name(
                                                          $image_extension);
-    # -5 for the extension and -10 for $epub_file_nr
-    my $cropped_image_basefile_name
-     = substr($protected_image_basefile_name, 0,
-              $self->get_conf('BASEFILENAME_LENGTH') - 15);
+    my $basefilename_length = $self->get_conf('BASEFILENAME_LENGTH');
+    my $cropped_image_basefile_name;
+    if (defined($basefilename_length) and $basefilename_length >= 0) {
+      if ($basefilename_length > 2 * 15) {
+      # -5 for the extension and -10 for $epub_file_nr
+        $basefilename_length -= 15;
+      } else {
+        $basefilename_length = $basefilename_length / 2;
+      }
+      $cropped_image_basefile_name
+        = substr($protected_image_basefile_name, 0, $basefilename_length);
+    } else {
+      $cropped_image_basefile_name = $protected_image_basefile_name;
+    }
     my $destination_basefile_name = $epub_file_nr.'-'.$cropped_image_basefile_name
                                     . $protected_image_extension;
     $epub_file_nr += 1;
     if (defined($image_file)) {
       if (not defined($image_path)) {
-        $self->document_error($self,
+        $self->converter_document_error(
               sprintf(__("\@image file `%s' can not be copied"),
                      $image_basefile));
       } else {
         my $images_destination_dir
-               = File::Spec->catdir($epub_destination_directory,
-                                    $epub_document_dir_name, $epub_images_dir_name);
+               = join('/', ($epub_destination_directory,
+                            $epub_document_dir_name, $epub_images_dir_name));
         my ($encoded_images_destination_dir, $images_destination_dir_encoding)
           = $self->encoded_output_file_name($images_destination_dir);
         my $error_creating_dir;
         if (! -d $encoded_images_destination_dir) {
           if (!mkdir($encoded_images_destination_dir, oct(755))) {
-            $self->document_error($self, sprintf(__(
+            $self->converter_document_error(sprintf(__(
                              "could not create images directory `%s': %s"),
                                          $images_destination_dir, $!));
             $error_creating_dir = 1;
@@ -308,8 +335,8 @@ sub epub_convert_image_command($$$$)
         }
         if (not $error_creating_dir) {
           my $image_destination_path_name
-             = File::Spec->catfile($images_destination_dir,
-                                   $destination_basefile_name);
+             = join('/', ($images_destination_dir,
+                          $destination_basefile_name));
           my ($encoded_image_dest_path_name, $image_dest_path_encoding)
             = $self->encoded_output_file_name($image_destination_path_name);
           my $copy_succeeded = copy($image_path, $encoded_image_dest_path_name);
@@ -320,7 +347,7 @@ sub epub_convert_image_command($$$$)
             } else {
               $image_path_text = $image_path;
             }
-            $self->document_error($self, sprintf(__(
+            $self->converter_document_error(sprintf(__(
                      "could not copy `%s' to `%s': %s"),
                         $image_path_text, $image_destination_path_name, $!));
           }
@@ -339,12 +366,11 @@ sub epub_convert_image_command($$$$)
       $destination_file_name = $destination_basefile_name;
     }
     my $alt_string;
-    if (defined($args->[3]) and defined($args->[3]->{'string'})) {
+    if (defined($args->[3]) and defined($args->[3]->{'string'})
+        and $args->[3]->{'string'} ne '') {
       $alt_string = $args->[3]->{'string'};
-    }
-    if (!defined($alt_string) or ($alt_string eq '')) {
-      $alt_string
-       = &{$self->formatting_function('format_protect_text')}($self, $basefile);
+    } else {
+      $alt_string = $basefile_string;
     }
 
     return $self->close_html_lone_element(
@@ -355,38 +381,38 @@ sub epub_convert_image_command($$$$)
   return '';
 }
 
-my @epub_tree_units_output_filenames;
+my @epub_output_units_filenames;
 # collect filenames in units order
-sub epub_convert_tree_unit_type($$$$)
+sub epub_convert_unit_type($$$$)
 {
   my $self = shift;
   my $type = shift;
   my $element = shift;
   my $content = shift;
 
-  push @epub_tree_units_output_filenames,
-   $element->{'structure'}->{'unit_filename'}
-    unless grep {$_ eq $element->{'structure'}->{'unit_filename'}}
-            @epub_tree_units_output_filenames;
-  return &{$self->default_type_conversion($type)}($self,
+  push @epub_output_units_filenames,
+   $element->{'unit_filename'}
+    unless grep {$_ eq $element->{'unit_filename'}}
+            @epub_output_units_filenames;
+  return &{$self->default_output_unit_conversion($type)}($self,
                                       $type, $element, $content);
 }
 
 my @epub_special_elements_filenames;
 # collect filenames in order
-sub epub_convert_special_element_type($$$$)
+sub epub_convert_special_unit_type($$$$)
 {
   my $self = shift;
   my $type = shift;
-  my $element = shift;
+  my $output_unit = shift;
   my $content = shift;
 
   push @epub_special_elements_filenames,
-   $element->{'structure'}->{'unit_filename'}
-    unless grep {$_ eq $element->{'structure'}->{'unit_filename'}}
+   $output_unit->{'unit_filename'}
+    unless grep {$_ eq $output_unit->{'unit_filename'}}
             @epub_special_elements_filenames;
-  return &{$self->default_type_conversion($type)}($self,
-                                      $type, $element, $content);
+  return &{$self->default_output_unit_conversion($type)}($self,
+                                      $type, $output_unit, $content);
 }
 
 sub _epub_remove_container_folder($$)
@@ -400,12 +426,12 @@ sub _epub_remove_container_folder($$)
     for my $diag (@$err_remove_tree) {
       my ($file, $message) = %$diag;
       if ($file eq '') {
-        $self->document_error($self,
+        $self->converter_document_error(
            sprintf(__("error removing directory: %s: %s"),
                    $epub_destination_directory, $message));
       }
       else {
-        $self->document_error($self,
+        $self->converter_document_error(
           sprintf(__("error removing directory: %s: unlinking %s: %s"),
                   $epub_destination_directory, $file, $message));
       }
@@ -433,11 +459,13 @@ sub epub_setup($)
   $epub_destination_directory = undef;
   $epub_document_destination_directory = undef;
   $encoded_epub_destination_directory = undef;
-  @epub_tree_units_output_filenames = ();
+  @epub_output_units_filenames = ();
   @epub_special_elements_filenames = ();
   %epub_images = ();
   $nav_filename = $default_nav_filename;
   $epub_file_nr = 1;
+
+  $self->set_conf('_INLINE_STYLE_WIDTH', 1);
 
   if (not defined($self->get_conf('EPUB_CREATE_CONTAINER_FILE'))) {
     if (not $self->get_conf('TEST')) {
@@ -447,7 +475,7 @@ sub epub_setup($)
 
   if ($self->get_conf('EPUB_CREATE_CONTAINER_FILE')
       and $archive_zip_loading_error) {
-    $self->document_error($self,
+    $self->converter_document_error(
        __("Archive::Zip is required for EPUB file output"));
     return 150;
   }
@@ -457,35 +485,28 @@ sub epub_setup($)
       $self->set_conf('EPUB_KEEP_CONTAINER_FOLDER', 1);
     }
   }
-  
+
   $epub_info_js_dir_name = undef;
-  if ($self->get_conf('INFO_JS_DIR')) {
+  if (defined($self->get_conf('INFO_JS_DIR'))) {
     # re-set INFO_JS_DIR up to have the javascript and
     # css files in a directory rooted at $epub_document_dir_name
     $epub_info_js_dir_name = $self->get_conf('INFO_JS_DIR');
     my $updir = File::Spec->updir();
-    # FIXME INFO_JS_DIR is used both as a filesystem directory name
-    # and as path in HTML files.  As a path in HTML, / should always be
-    # used.  File::Spec->catdir is better for filesystem paths.  We finally
-    # hardocde '/' as separator because it is needed for HTML paths and it
-    # works for both for Unix and Windows filesystems, but it is not
-    # clean.
-    #$self->force_conf('INFO_JS_DIR', File::Spec->catdir($updir,
-    #                                              $epub_info_js_dir_name));
     $self->force_conf('INFO_JS_DIR', join('/', ($updir,
-                                                  $epub_info_js_dir_name)));
+                                                $epub_info_js_dir_name)));
     # TODO make sure it is SPLIT and set SPLIT if not?
   }
 
+  my $split = $self->get_conf('SPLIT');
   # determine main epub directory and directory for xhtml files,
   # reset OUTFILE and SUBDIR to match with the epub directory
   # for XHTML output
-  
+
   if (defined($self->get_conf('OUTFILE'))) {
     $epub_outfile = $self->get_conf('OUTFILE');
-    # if not undef, will be used as directory name in
+    # if not undef, OUTFILE will be used as directory name in
     # determine_files_and_directory() which does not make sense
-    if ($self->get_conf('SPLIT')) {
+    if ($split) {
       $self->force_conf('OUTFILE', undef);
     }
   }
@@ -498,18 +519,18 @@ sub epub_setup($)
   # so we try to set it to a directory that the user would not create
   # nor populate with files.
   if (defined($self->get_conf('SUBDIR'))) {
-    $epub_destination_directory = File::Spec->catdir($self->get_conf('SUBDIR'),
-                                          $document_name . '_epub_package');
-  } elsif ($self->get_conf('SPLIT')) {
+    $epub_destination_directory = join('/', ($self->get_conf('SUBDIR'),
+                                          $document_name . '_epub_package'));
+  } elsif ($split) {
     $epub_destination_directory = $destination_directory;
   } else {
     $epub_destination_directory = $document_name . '_epub_package';
   }
   $epub_document_destination_directory
-             = File::Spec->catdir($epub_destination_directory,
-                                  $epub_document_dir_name, $epub_xhtml_dir);
+             = join('/', ($epub_destination_directory,
+                          $epub_document_dir_name, $epub_xhtml_dir));
   # set for XHTML conversion
-  if ($self->get_conf('SPLIT')) {
+  if ($split) {
     $self->force_conf('SUBDIR', $epub_document_destination_directory);
     $self->force_conf('OUTFILE', undef);
   } else {
@@ -522,7 +543,7 @@ sub epub_setup($)
       $nav_filename = 'Gtexinfo_' . $default_nav_filename;
     }
     $self->force_conf('OUTFILE',
-     File::Spec->catfile($epub_document_destination_directory, $xhtml_output_file));
+     join('/', ($epub_document_destination_directory, $xhtml_output_file)));
   }
 
   my $epub_destination_dir_encoding;
@@ -542,12 +563,12 @@ sub epub_setup($)
     for my $diag (@$err_make_path) {
       my ($file, $message) = %$diag;
       if ($file eq '') {
-        $self->document_error($self,
+        $self->converter_document_error(
            sprintf(__("error creating directory: %s: %s"),
                   $epub_document_destination_directory, $message));
       }
       else {
-        $self->document_error($self,
+        $self->converter_document_error(
           sprintf(__("error creating directory: %s: creating %s: %s"),
                  $epub_document_destination_directory, $file, $message));
       }
@@ -563,77 +584,83 @@ texinfo_register_handler('setup', \&epub_setup);
 sub epub_finish($$)
 {
   my $self = shift;
-  my $document_root = shift;
+  my $document = shift;
 
-  my @epub_output_filenames = (@epub_tree_units_output_filenames,
+  my $document_root = $document->tree();
+
+  my @epub_output_filenames = (@epub_output_units_filenames,
                                @epub_special_elements_filenames);
 
   if (scalar(@epub_output_filenames) == 0) {
     if (defined($self->{'current_filename'})) {
       push @epub_output_filenames, $self->{'current_filename'};
     } else {
-      $self->document_warn($self,
-        __("epub: no filename output"));
+      $self->converter_document_warn(__("epub: no filename output"));
     }
   }
 
   my $meta_inf_directory_name = 'META-INF';
-  my $meta_inf_directory = File::Spec->catdir($epub_destination_directory,
-                                              $meta_inf_directory_name);
+  my $meta_inf_directory = join('/', ($epub_destination_directory,
+                                      $meta_inf_directory_name));
   my ($encoded_meta_inf_directory, $meta_inf_directory_encoding)
     = $self->encoded_output_file_name($meta_inf_directory);
   if (!mkdir($encoded_meta_inf_directory, oct(755))) {
-    $self->document_error($self, sprintf(__(
+    $self->converter_document_error(sprintf(__(
                    "could not create meta informations directory `%s': %s"),
                                          $meta_inf_directory, $!));
     return 1;
   }
-  my $container_file_path_name = File::Spec->catfile($meta_inf_directory,
-                                           'container.xml');
+  my $container_file_path_name = join('/', ($meta_inf_directory,
+                                            'container.xml'));
   my ($encoded_container_file_path_name, $container_path_encoding)
     = $self->encoded_output_file_name($container_file_path_name);
   my ($container_fh, $error_message_container)
-            = Texinfo::Common::output_files_open_out(
+            = Texinfo::Convert::Utils::output_files_open_out(
                           $self->output_files_information(), $self,
                           $encoded_container_file_path_name, undef, 'utf-8');
   if (!defined($container_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("epub3.pm: could not open %s for writing: %s\n"),
                   $container_file_path_name, $error_message_container));
     return 1;
   }
   my $document_name = $self->get_info('document_name');
-  my $opf_filename = $document_name . '.opf';
+  # We do not only percent encode the file name, as in that case the
+  # checker tells that the file cannot be found, however we can set the
+  # opf file name to anything as long as we are consistent.
+  my $opf_filename
+   = Texinfo::Convert::NodeNameNormalization::transliterate_protect_file_name(
+         $document_name) . '.opf';
   print $container_fh <<EOT;
 <?xml version="1.0"?>
 <container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
     <rootfiles>
         <rootfile full-path="${epub_document_dir_name}/${opf_filename}"
-            media-type="application/oebps-package+xml" />	
+            media-type="application/oebps-package+xml" />
     </rootfiles>
 </container>
 EOT
 
-  Texinfo::Common::output_files_register_closed(
+  Texinfo::Convert::Utils::output_files_register_closed(
     $self->output_files_information(), $encoded_container_file_path_name);
   if (!close ($container_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("epub3.pm: error on closing %s: %s"),
                           $container_file_path_name, $!));
     return 1;
   }
 
   my $mimetype_filename = 'mimetype';
-  my $mimetype_file_path_name = File::Spec->catfile($epub_destination_directory,
-                                                    $mimetype_filename);
+  my $mimetype_file_path_name = join('/', ($epub_destination_directory,
+                                           $mimetype_filename));
   my ($encoded_mimetype_file_path_name, $mimetype_path_encoding)
     = $self->encoded_output_file_name($mimetype_file_path_name);
   my ($mimetype_fh, $error_message_mimetype)
-               = Texinfo::Common::output_files_open_out(
+               = Texinfo::Convert::Utils::output_files_open_out(
                         $self->output_files_information(), $self,
                         $encoded_mimetype_file_path_name, undef, 'utf-8');
   if (!defined($mimetype_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("epub3.pm: could not open %s for writing: %s\n"),
                   $mimetype_file_path_name, $error_message_mimetype));
     return 1;
@@ -642,10 +669,10 @@ EOT
   # example files demonstrate clearly that there should not be end of lines.
   print $mimetype_fh 'application/epub+zip';
 
-  Texinfo::Common::output_files_register_closed(
+  Texinfo::Convert::Utils::output_files_register_closed(
     $self->output_files_information(), $encoded_mimetype_file_path_name);
   if (!close ($mimetype_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("epub3.pm: error on closing %s: %s"),
                           $mimetype_file_path_name, $!));
     return 1;
@@ -653,23 +680,29 @@ EOT
   my $nav_id = 'nav';
   my $nav_file_path_name;
   my $title = _epub_convert_tree_to_text($self, $self->get_info('title_tree'));
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
+
+  my $sections_list;
+  if ($self->{'document'}) {
+    $sections_list = $self->{'document'}->sections_list();
+  }
+
+  if ($sections_list) {
     $nav_file_path_name
-     = File::Spec->catfile($epub_document_destination_directory, $nav_filename);
+     = join('/', ($epub_document_destination_directory, $nav_filename));
     my ($encoded_nav_file_path_name, $nav_path_encoding)
       = $self->encoded_output_file_name($nav_file_path_name);
     my ($nav_fh, $error_message_nav)
-           = Texinfo::Common::output_files_open_out(
+           = Texinfo::Convert::Utils::output_files_open_out(
                        $self->output_files_information(), $self,
                        $encoded_nav_file_path_name, undef, 'utf-8');
     if (!defined($nav_fh)) {
-      $self->document_error($self,
+      $self->converter_document_error(
            sprintf(__("epub3.pm: could not open %s for writing: %s\n"),
                     $nav_file_path_name, $error_message_nav));
       return 1;
     }
     my $table_of_content_str = _epub_convert_tree_to_text($self,
-                                             $self->gdt('Table of contents'));
+                                             $self->cdt('Table of contents'));
     my $nav_file_title = $title.' - '.$table_of_content_str;
     print $nav_fh <<EOT;
 <?xml version="1.0" encoding="utf-8"?>
@@ -684,33 +717,41 @@ EOT
 EOT
 
     # similar code as in chm.pm
-    my $section_root = $self->{'structuring'}->{'sectioning_root'};
-    my $upper_level = $section_root->{'structure'}->{'section_childs'}->[0]
-                                            ->{'structure'}->{'section_level'};
-    foreach my $top_section (@{$section_root->{'structure'}->{'section_childs'}}) {
-      $upper_level = $top_section->{'structure'}->{'section_level'}
-      if ($top_section->{'structure'}->{'section_level'} < $upper_level);
+    my $section_root = $sections_list->[0]
+                                         ->{'extra'}->{'sectioning_root'};
+    my $upper_level = $section_root->{'extra'}->{'section_childs'}->[0]
+                                            ->{'extra'}->{'section_level'};
+    foreach my $top_section (@{$section_root->{'extra'}->{'section_childs'}}) {
+      $upper_level = $top_section->{'extra'}->{'section_level'}
+      if ($top_section->{'extra'}->{'section_level'} < $upper_level);
     }
     $upper_level = 1 if ($upper_level <= 0);
     my $root_level = $upper_level - 1;
     my $level = $root_level;
-    foreach my $section (@{$self->{'structuring'}->{'sections_list'}}) {
+    foreach my $section (@{$sections_list}) {
       next if ($section->{'cmdname'} eq 'part');
-      my $section_level = $section->{'structure'}->{'section_level'};
+      my $section_level = $section->{'extra'}->{'section_level'};
       $section_level = 1 if ($section_level == 0);
-      # FIXME with gaps in sectioning there could be nesting issues?
       if ($level < $section_level) {
+        print $nav_fh "\n". " " x $level . "<ol>\n";
+        $level++;
         while ($level < $section_level) {
-          my $leading_spaces = '';
-          print $nav_fh "\n". " " x $level . "<ol>\n";
+          # case of gap in sectioning.  The Navigation document requirements
+          # in EPUB mandates a span (or a) after a <li>, and mandates that
+          # it is not empty.  We use a "0" for this text for a lack of
+          # anything better.
+          # There should be a warning/error emitted by texi2any for such a
+          # sectioning structure.
+          print $nav_fh " " x $level . "<li><span>0</span>\n"
+                             . " " x $level . "<ol>\n";
           $level++;
         }
-      } elsif ($level > $section->{'structure'}->{'section_level'}) {
+      } elsif ($level > $section_level) {
         # on the same line as the a element for the first </li>
         print $nav_fh "</li>\n". " " x ($level -1) . "</ol>\n";
         $level--;
         while ($level > $section_level) {
-          print $nav_fh " " x $level . "</li>\n". " " x ($level -1) . "</ol>\n";
+          print $nav_fh " " x $level . "</li>\n"." " x ($level -1) . "</ol>\n";
           $level--;
         }
         print $nav_fh " " x $level ."</li>\n";
@@ -732,7 +773,7 @@ EOT
       $level--;
     }
     while ($level > $root_level) {
-      print $nav_fh " " x $level . "</li>\n". " " x ($level -1) . "</ol>\n";
+      print $nav_fh " " x $level . "</li>\n"." " x ($level -1) . "</ol>\n";
       $level--;
     }
 
@@ -740,10 +781,10 @@ EOT
     # TODO add landmarks?
     print $nav_fh '</body>'."\n".'</html>'."\n";
 
-    Texinfo::Common::output_files_register_closed(
+    Texinfo::Convert::Utils::output_files_register_closed(
       $self->output_files_information(), $encoded_nav_file_path_name);
     if (!close ($nav_fh)) {
-      $self->document_error($self,
+      $self->converter_document_error(
            sprintf(__("epub3.pm: error on closing %s: %s"),
                             $nav_file_path_name, $!));
       return 1;
@@ -754,26 +795,40 @@ EOT
   my $unique_uid = 'texi-uid';
   # TODO to discuss on bug-texinfo
   my $identifier = 'texinfo:'.$document_name;
-  # FIXME the dcterms:modified is mandatory, and it is also mandatory that it is a date:
+  # the dcterms:modified is mandatory, and it is also mandatory that it is a date:
   #  each Rendition MUST include exactly one [DCTERMS] modified property containing its last modification date. The value of this property MUST be an [XMLSCHEMA-2] dateTime conformant date of the form:
 
   # CCYY-MM-DDThh:mm:ssZ
   #
   # The last modification date MUST be expressed in Coordinated Universal Time (UTC) and MUST be terminated by the "Z" (Zulu) time zone indicator.
-  #
-  # <meta property="dcterms:modified">2012-03-05T12:47:00Z</meta>
+  # FIXME add a way for the user to set $dcterms_modified_str
+  my $dcterms_modified_str;
+  if (not $self->get_conf('TEST')) {
+    # dcterms:modified is a last modified date of the whole publication.
+    # By default, we use the EPUB generation time.
+    my $datetime_zulu = POSIX::strftime("%Y-%m-%dT%TZ", gmtime());
+    $dcterms_modified_str = $datetime_zulu;
+  } else {
+    # Fixed date for tests
+    $dcterms_modified_str = '1976-11-04T12:00:00Z';
+  }
+
   # to discuss
   # <dc:rights>
-  my $opf_file_path_name = File::Spec->catfile($epub_destination_directory,
-                                        $epub_document_dir_name, $opf_filename);
+
+  # Cf TODO, publication date
+  # <dc:date>
+
+  my $opf_file_path_name = join('/', ($epub_destination_directory,
+                                     $epub_document_dir_name, $opf_filename));
   my ($encoded_opf_file_path_name, $opf_path_encoding)
     = $self->encoded_output_file_name($opf_file_path_name);
   my ($opf_fh, $error_message_opf)
-            = Texinfo::Common::output_files_open_out(
+            = Texinfo::Convert::Utils::output_files_open_out(
                    $self->output_files_information(), $self,
                    $encoded_opf_file_path_name, undef, 'utf-8');
   if (!defined($opf_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("epub3.pm: could not open %s for writing: %s\n"),
                   $opf_file_path_name, $error_message_opf));
     return 1;
@@ -785,6 +840,10 @@ EOT
       <dc:identifier id="$unique_uid">$identifier</dc:identifier>
       <dc:title>$title</dc:title>
 EOT
+  if (defined($dcterms_modified_str)) {
+    print $opf_fh "      <meta property=\"dcterms:modified\">"
+                    .$dcterms_modified_str."</meta>\n";
+  }
   my @relevant_commands = ('author', 'documentlanguage');
   my $collected_commands = Texinfo::Common::collect_commands_list_in_tree(
                                         $document_root, \@relevant_commands);
@@ -797,7 +856,7 @@ EOT
         if ($element->{'extra'}->{'titlepage'}
              and $element->{'args'}->[0]->{'contents'}) {
           my $author_str = _epub_convert_tree_to_text($self,
-               {'contents' => $element->{'args'}->[0]->{'contents'}});
+                                      $element->{'args'}->[0]);
           if ($author_str =~ /\S/) {
             push @authors, $author_str;
           }
@@ -836,17 +895,17 @@ EOT
   foreach my $output_filename (@epub_output_filenames) {
     $id_count++;
     my $properties_str = '';
-    if ($self->get_conf('INFO_JS_DIR')) {
+    if (defined($self->get_conf('INFO_JS_DIR'))) {
       $properties_str = ' properties="scripted"'
     }
     print $opf_fh "      <item id=\"${spine_uid_str}${id_count}\" "
      . "media-type=\"application/xhtml+xml\" href=\"${epub_xhtml_dir}/${output_filename}\"${properties_str}/>\n";
   }
   my $js_weblabels_id;
-  if ($self->get_conf('JS_WEBLABELS_FILE')) {
+  if (defined($self->get_conf('JS_WEBLABELS_FILE'))) {
     my $js_weblabels_file_name = $self->get_conf('JS_WEBLABELS_FILE');
-    my $js_licenses_file_path = File::Spec->catfile($epub_document_destination_directory,
-                                                    $js_weblabels_file_name);
+    my $js_licenses_file_path = join('/', ($epub_document_destination_directory,
+                                           $js_weblabels_file_name));
     if (-e $js_licenses_file_path) {
       $js_weblabels_id = 'jsweblabels';
       print $opf_fh "      <item id=\"${js_weblabels_id}\" "
@@ -870,11 +929,11 @@ EOT
   }
   if (defined($epub_info_js_dir_name)) {
     my $info_js_destination_dir
-               = File::Spec->catdir($epub_destination_directory,
-                                    $epub_document_dir_name, $epub_info_js_dir_name);
+          = join('/', ($epub_destination_directory,
+                       $epub_document_dir_name, $epub_info_js_dir_name));
     my $opendir_success = opendir(JSPATH, $info_js_destination_dir);
     if (not $opendir_success) {
-      $self->document_error($self,
+      $self->converter_document_error(
            sprintf(__("epub3.pm: readdir %s error: %s"),
                           $info_js_destination_dir, $!));
     } else {
@@ -919,10 +978,10 @@ EOT
 </package>
 EOT
 
-  Texinfo::Common::output_files_register_closed(
+  Texinfo::Convert::Utils::output_files_register_closed(
     $self->output_files_information(), $encoded_opf_file_path_name);
   if (!close ($opf_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("epub3.pm: error on closing %s: %s"),
                           $opf_file_path_name, $!));
     return 1;
@@ -942,7 +1001,7 @@ EOT
       = $zip->addFile($encoded_mimetype_file_path_name, $mimetype_filename,
                       Archive::Zip->COMPRESSION_LEVEL_NONE);
     if (not(defined($mimetype_added))) {
-      $self->document_error($self,
+      $self->converter_document_error(
         sprintf(__("epub3.pm: error adding %s to archive"),
                $mimetype_file_path_name));
       return 1;
@@ -951,20 +1010,20 @@ EOT
     my $meta_inf_directory_ret_code
       = $zip->addTree($encoded_meta_inf_directory, $meta_inf_directory_name);
     if ($meta_inf_directory_ret_code != Archive::Zip->AZ_OK) {
-      $self->document_error($self,
+      $self->converter_document_error(
         sprintf(__("epub3.pm: error adding %s to archive"),
                $meta_inf_directory));
       return 1;
     }
 
-    my $epub_document_dir_path = File::Spec->catdir($epub_destination_directory,
-                                                    $epub_document_dir_name);
+    my $epub_document_dir_path = join('/', ($epub_destination_directory,
+                                            $epub_document_dir_name));
     my ($encoded_epub_document_dir_path, $epub_document_dir_path_encoding)
       = $self->encoded_output_file_name($epub_document_dir_path);
     my $epub_document_dir_name_ret_code
       = $zip->addTree($encoded_epub_document_dir_path, $epub_document_dir_name);
     if ($epub_document_dir_name_ret_code != Archive::Zip->AZ_OK) {
-      $self->document_error($self,
+      $self->converter_document_error(
         sprintf(__("epub3.pm: error adding %s to archive"),
                $epub_document_dir_path));
       return 1;
@@ -973,7 +1032,7 @@ EOT
     my ($encoded_epub_outfile, $epub_outfile_encoding)
       = $self->encoded_output_file_name($epub_outfile);
     unless ($zip->writeToFileNamed($encoded_epub_outfile) == Archive::Zip->AZ_OK) {
-      $self->document_error($self,
+      $self->converter_document_error(
            sprintf(__("epub3.pm: error writing archive %s"),
                    $epub_outfile));
       return 1;

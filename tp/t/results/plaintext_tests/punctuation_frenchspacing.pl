@@ -38,9 +38,7 @@ $result_trees{'punctuation_frenchspacing'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {

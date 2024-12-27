@@ -63,9 +63,7 @@ $result_trees{'comment_on_linemacro_call_macro_expansion'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
@@ -74,9 +72,7 @@ $result_trees{'comment_on_linemacro_call_macro_expansion'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -134,9 +130,7 @@ $result_trees{'comment_on_linemacro_call_macro_expansion'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -145,43 +139,10 @@ $result_trees{'comment_on_linemacro_call_macro_expansion'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
-          'source_marks' => [
-            {
-              'counter' => 1,
-              'element' => {
-                'args' => [
-                  {
-                    'contents' => [
-                      {
-                        'text' => '@lm {a} @c in comment'
-                      }
-                    ],
-                    'type' => 'brace_command_arg'
-                  }
-                ],
-                'info' => {
-                  'command_name' => 'mymacro',
-                  'spaces_after_cmd_before_arg' => {
-                    'text' => ' '
-                  },
-                  'spaces_before_argument' => {
-                    'text' => '
-'
-                  }
-                },
-                'type' => 'macro_call'
-              },
-              'position' => 1,
-              'sourcemark_type' => 'macro_expansion',
-              'status' => 'start'
-            }
-          ],
           'text' => '
 ',
           'type' => 'empty_line'
@@ -197,15 +158,41 @@ $result_trees{'comment_on_linemacro_call_macro_expansion'} = {
                       {
                         'contents' => [
                           {
-                            'text' => 'a',
-                            'type' => 'bracketed_linemacro_arg'
+                            'text' => '@lm {a} @c in comment'
                           }
                         ],
                         'info' => {
                           'spaces_before_argument' => {
-                            'text' => ' '
+                            'text' => '
+'
                           }
-                        }
+                        },
+                        'type' => 'brace_arg'
+                      }
+                    ],
+                    'info' => {
+                      'command_name' => 'mymacro',
+                      'spaces_after_cmd_before_arg' => {
+                        'text' => ' '
+                      }
+                    },
+                    'type' => 'macro_call'
+                  },
+                  'sourcemark_type' => 'macro_expansion',
+                  'status' => 'start'
+                },
+                {
+                  'counter' => 1,
+                  'element' => {
+                    'args' => [
+                      {
+                        'contents' => [
+                          {
+                            'text' => 'a',
+                            'type' => 'bracketed_linemacro_arg'
+                          }
+                        ],
+                        'type' => 'line_arg'
                       },
                       {
                         'contents' => [
@@ -217,11 +204,15 @@ $result_trees{'comment_on_linemacro_call_macro_expansion'} = {
                           'spaces_before_argument' => {
                             'text' => ' '
                           }
-                        }
+                        },
+                        'type' => 'line_arg'
                       }
                     ],
                     'info' => {
-                      'command_name' => 'lm'
+                      'command_name' => 'lm',
+                      'spaces_before_argument' => {
+                        'text' => ' '
+                      }
                     },
                     'type' => 'linemacro_call'
                   },

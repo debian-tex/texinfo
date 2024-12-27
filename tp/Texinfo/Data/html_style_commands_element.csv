@@ -1,0 +1,26 @@
+command|html_element|notes
+b|b|
+cite|cite|
+code|code|
+command|code|
+dfn|em|
+dmn|span|
+emph|em|
+env|code|
+file|samp|
+headitemfont|b|no effect: the @multitable prototypes are ignored and headitem are in <th> rather than <td>. The mapping is based on style used in other formats.
+i|i|
+slanted|i|
+sansserif|span|
+kbd|kbd|
+key|kbd|
+option|samp|
+r|span|
+samp|samp|
+sc|small|
+strong|strong|
+sub|sub|
+sup|sup|
+t|code|
+var|var|
+verb|code|other brace command

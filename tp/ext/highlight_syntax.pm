@@ -1,6 +1,6 @@
 # highlight_syntax.pm: interface to source-highlight for syntax highlighting
 #
-#    Copyright (C) 2021-2023 Free Software Foundation, Inc.
+#    Copyright (C) 2021-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-require 5.0;
+use 5.006;
 use strict;
 
 # To check if there is no erroneous autovivification
@@ -66,21 +66,29 @@ texinfo_register_command_opening('example',
 sub highlight_setup($$)
 {
   my $self = shift;
-  my $document_root = shift;
+  my $document = shift;
+
+  my $document_root = $document->tree();
 
   %highlighted_languages_list = ();
 
   my $highlight_type = $self->get_conf('HIGHLIGHT_SYNTAX');
 
+  return 1 if !defined($highlight_type);
+
   my $cmd;
-  if (defined($highlight_type) and $highlight_type eq 'highlight') {
+  if ($highlight_type eq 'highlight') {
     $cmd = 'highlight --list-scripts=lang';
-  } elsif (defined($highlight_type) and $highlight_type eq 'pygments') {
+  } elsif ($highlight_type eq 'pygments') {
     $cmd = 'pygmentize -L lexers';
-  } else {
-    $highlight_type = 'source-highlight';
+  } elsif ($highlight_type eq 'source-highlight') {
     $cmd = 'source-highlight --lang-list';
+  } else {
+    $self->converter_document_warn(sprintf(__(
+      "`%s' is not valid for HIGHLIGHT_SYNTAX"), $highlight_type));
+    return 1;
   }
+
   if ($highlight_type_languages_name_mappings{$highlight_type}) {
     %languages_name_mapping
       = %{$highlight_type_languages_name_mappings{$highlight_type}};
@@ -109,13 +117,13 @@ sub highlight_setup($$)
         #warn "$message";
         # not sure why, but this does not work, the warning is not actually
         # registered, as if it was done in a scope that is later destroyed.
-        #$self->document_warn($self, sprintf(__('%s: %s'), $cmd, $message));
+        #$self->converter_document_warn(sprintf(__('%s: %s'), $cmd, $message));
       };
 
   my $status = open(HIGHLIGHT_LANG_LIST, '-|', $cmd);
   $SIG{__WARN__} = undef;
   if (not($status)) {
-    $self->document_error($self, sprintf(__('%s: %s'), $cmd, $!));
+    $self->converter_document_error(sprintf(__('%s: %s'), $cmd, $!));
     return 1;
   }
 
@@ -157,7 +165,7 @@ sub highlight_setup($$)
       if ($line =~ /^\* (.+):$/) {
         my @languages = split (/, /, $1);
         if (scalar(@languages) == 0) {
-          $self->document_warn($self, sprintf(__(
+          $self->converter_document_warn(sprintf(__(
                         '%s: %s: cannot parse language line'), $cmd, $line))
         } else {
           my $main_language = shift @languages;
@@ -179,7 +187,7 @@ sub highlight_setup($$)
         my $language = $1;
         $highlighted_languages_list{$language} = 1;
       } else {
-        $self->document_warn($self, sprintf(__(
+        $self->converter_document_warn(sprintf(__(
                         '%s: %s: cannot parse language line'), $cmd, $line))
       }
     }
@@ -190,7 +198,7 @@ sub highlight_setup($$)
   if (scalar(keys(%highlighted_languages_list)) == 0) {
     # important if $cmd returns no output to have a message.  If there
     # is some output, there will already be some line parse error messages.
-    $self->document_warn($self, sprintf(__(
+    $self->converter_document_warn(sprintf(__(
                             '%s: no highlighted language found'), $cmd));
     # the remaining will be skipped, but no error is returned
   }
@@ -257,8 +265,12 @@ sub _convert_element($$)
       and $tree->{'contents'}->[-1]->{'cmdname'} eq 'end') {
     pop @{$tree->{'contents'}};
   }
-  my $text = Texinfo::Convert::Text::convert_to_text($tree, {'code' => 1,
-              Texinfo::Convert::Text::copy_options_for_convert_text($self)});
+  Texinfo::Convert::Text::set_options_code(
+                           $self->{'convert_text_options'});
+  my $text = Texinfo::Convert::Text::convert_to_text($tree,
+                                $self->{'convert_text_options'});
+  Texinfo::Convert::Text::reset_options_code(
+                                 $self->{'convert_text_options'});
   # make sure that the text ends with a newline
   chomp ($text);
   $text .= "\n";
@@ -273,7 +285,9 @@ my %commands;
 sub highlight_process($$)
 {
   my $self = shift;
-  my $document_root = shift;
+  my $document = shift;
+
+  my $document_root = $document->tree();
 
   # initialization, important in case multiple manuals are processed
   %commands = ();              # associates a command name and element to the resulting
@@ -349,7 +363,7 @@ sub highlight_process($$)
         }
         my $pid = IPC::Open3::open3($wtr, $rdr, $err, $cmd);
         if (! $pid) {
-          $self->document_error($self, sprintf(__('%s: %s'), $cmd, $!));
+          $self->converter_document_error(sprintf(__('%s: %s'), $cmd, $!));
           return 1;
         }
         binmode($wtr, ':utf8');
@@ -358,7 +372,7 @@ sub highlight_process($$)
         binmode($err, ':utf8');
         print $wtr $text;
         if (!close($wtr)) {
-          $self->document_error($self,
+          $self->converter_document_error(
             sprintf(__('%s: error closing input: %s'), $cmd, $!));
           close ($rdr);
           close ($err);
@@ -369,22 +383,22 @@ sub highlight_process($$)
         my @errlines = <$err>;
         my $status = 0;
         if (!close($rdr)) {
-          $self->document_error($self,
+          $self->converter_document_error(
             sprintf(__('%s: error closing output: %s'), $cmd, $!));
           $status = 1;
         }
         if (!close($err)) {
-          $self->document_error($self,
+          $self->converter_document_error(
             sprintf(__('%s: error closing errors: %s'), $cmd, $!));
           $status = 1;
         }
         waitpid($pid, 0);
         if (@errlines) {
           $status = 1;
-          $self->document_error($self, sprintf(__('%s: errors: %s'),
+          $self->converter_document_error(sprintf(__('%s: errors: %s'),
                                                $cmd, shift @errlines));
           foreach my $error_line (@errlines) {
-            $self->document_error($self, sprintf(__('  %s'), $error_line), 1);
+            $self->converter_document_error(sprintf(__('  %s'), $error_line), 1);
           }
         }
         return 1 if ($status);
@@ -419,7 +433,7 @@ sub highlight_process($$)
     my ($encoded_input_language_path_name, $input_language_path_encoding)
       = $self->encoded_output_file_name($input_language_path_name);
     unless (open (HIGHLIGHT_LANG_IN, ">$encoded_input_language_path_name")) {
-      $self->document_warn($self,
+      $self->converter_document_warn(
              sprintf(__("highlight_syntax.pm: could not open %s: %s"),
                                       $input_language_path_name, $!));
       return 1;
@@ -449,7 +463,7 @@ sub highlight_process($$)
       $counter ++;
     }
     if (! close(HIGHLIGHT_LANG_IN)) {
-      $self->document_warn($self,
+      $self->converter_document_warn(
              sprintf(__("highlight_syntax.pm: error on closing %s: %s"),
                                       $input_language_path_name, $!));
       return 1;
@@ -478,7 +492,7 @@ sub highlight_process($$)
       $encoded_cmd = $cmd;
     }
     if (system($encoded_cmd)) {
-      $self->document_error($self,
+      $self->converter_document_error(
           sprintf(__("highlight_syntax.pm: command did not succeed: %s"),
                                   $cmd));
       return 1;
@@ -489,7 +503,7 @@ sub highlight_process($$)
     my ($encoded_html_result_path_name, $html_result_path_encoding)
       = $self->encoded_output_file_name($html_result_path_name);
     unless (open(HIGHLIGHT_LANG_OUT, $encoded_html_result_path_name)) {
-      $self->document_warn($self,
+      $self->converter_document_warn(
          sprintf(__("highlight_syntax.pm: could not open %s: %s"),
                                   $html_result_path_name, $!));
       return 1;
@@ -525,7 +539,7 @@ sub highlight_process($$)
       }
     }
     if ($separators_count != $language_fragments_nr +1) {
-      $self->document_warn($self, sprintf(__(
+      $self->converter_document_warn(sprintf(__(
        "highlight_syntax.pm: %s: %d separators; expected %d, the number of fragments +1"),
                       $language, $separators_count, $language_fragments_nr+1));
     }
@@ -533,7 +547,7 @@ sub highlight_process($$)
       my $element_command = $languages{$language}->{'commands'}->[$got_count-1];
       my $element = $element_command->[0];
       my $cmdname = $element_command->[1];
-      $self->document_warn($self, sprintf(__(
+      $self->converter_document_warn(sprintf(__(
                  "highlight_syntax.pm: %s: end of \@%s item %d not found"),
                                   $language, $cmdname, $got_count));
     }
@@ -542,12 +556,12 @@ sub highlight_process($$)
     # it is useless, and even if there were other commands, the failure is
     # for a language, not a command, so it should not be needed either.
     if ($got_count != $languages{$language}->{'counter'}) {
-      $self->document_warn($self, sprintf(__(
+      $self->converter_document_warn(sprintf(__(
          "highlight_syntax.pm: %s: retrieved %d items in HTML; expected %d"),
                             $language, $got_count, $language_fragments_nr));
     }
     if (!close (HIGHLIGHT_LANG_OUT)) {
-      $self->document_warn($self,
+      $self->converter_document_warn(
              sprintf(__("highlight_syntax.pm: error on closing %s: %s"),
                                       $html_result_path_name, $!));
     }
@@ -569,11 +583,25 @@ sub highlight_open_inline_container_type($$$)
       return '';
     }
   }
-  my $pending_formatted = $self->get_pending_formatted_inline_content();
+  if (exists ($commands{$cmdname})
+      and exists ($commands{$cmdname}->{'results'})) {
+    my ($language, $converted_language)
+                = _get_language($self, $cmdname, $command);
+    if (exists ($commands{$cmdname}->{'results'}->{$command})
+        and defined($commands{$cmdname}->{'results'}->{$command})) {
 
-  if (defined($pending_formatted)) {
-    $self->associate_pending_formatted_inline_content($command,
-                                                      $pending_formatted);
+      # only replace the example and inside preformatted if the code leading
+      # to get_associated_formatted_inline_content being called in
+      # example highlighted text formatting will be called
+      if (defined($language)) {
+        my $pending_formatted = $self->get_pending_formatted_inline_content();
+
+        if (defined($pending_formatted)) {
+            $self->associate_pending_formatted_inline_content($command,
+                                                          $pending_formatted);
+        }
+      }
+    }
   }
   return '';
 }
@@ -597,13 +625,14 @@ sub highlight_preformatted_command($$$$$)
         and defined($commands{$cmdname}->{'results'}->{$command})) {
 
       if (not defined($language)) {
-        $self->document_warn($self, sprintf(__(
+        $self->converter_document_warn(sprintf(__(
        "highlight_syntax.pm: output has HTML item for \@%s but no language %s"),
                                     $cmdname, $command));
       } else {
         $commands{$cmdname}->{'output_languages_counters'}->{$language}++;
 
         if ($self->in_string()) {
+          $content = '' if (!defined($content));
           return $content;
         }
 
@@ -613,7 +642,8 @@ sub highlight_preformatted_command($$$$$)
         # _preformatted_class().
         # Since we are formatting @example itself, it is not in the preformatted
         # context anymore, so we readd.
-        my @pre_classes = $self->preformatted_classes_stack();
+        my $preformatted_classes_stack = $self->preformatted_classes_stack();
+        my @pre_classes = @{$preformatted_classes_stack};
         # NOTE $pre_class_format is setup below to correspond to
         # $pre_class_commands{$cmdname}, which cannot be used directly,
         # as it is private.
@@ -683,7 +713,7 @@ sub highlight_preformatted_command($$$$$)
       # was processed without failure.
       # If they are not equal there should have been a message already.
       if ($cmd_language_input_count == $cmd_language_retrieved_count) {
-        $self->document_warn($self, sprintf(__(
+        $self->converter_document_warn(sprintf(__(
                 "highlight_syntax.pm: output has no HTML item for \@%s %s %s"),
                                     $cmdname, $language, $command));
       } elsif ($self->get_conf('VERBOSE') or $self->get_conf('DEBUG')) {

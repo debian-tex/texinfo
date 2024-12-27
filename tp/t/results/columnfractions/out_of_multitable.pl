@@ -33,9 +33,7 @@ $result_trees{'out_of_multitable'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -54,18 +52,14 @@ $result_errors{'out_of_multitable'} = [
   {
     'error_line' => 'column fraction not a number: aaa
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'column fraction not a number: aaa',
     'type' => 'error'
   },
   {
     'error_line' => '@columnfractions only meaningful on a @multitable line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@columnfractions only meaningful on a @multitable line',
     'type' => 'error'
   }

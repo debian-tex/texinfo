@@ -21,15 +21,14 @@ $result_trees{'unknown_printindex'} = {
             }
           ],
           'cmdname' => 'printindex',
+          'extra' => {},
           'info' => {
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -48,9 +47,7 @@ $result_errors{'unknown_printindex'} = [
   {
     'error_line' => 'unknown index `bidule\' in @printindex
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'unknown index `bidule\' in @printindex',
     'type' => 'error'
   }

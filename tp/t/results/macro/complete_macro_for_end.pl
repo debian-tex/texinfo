@@ -50,9 +50,7 @@ $result_trees{'complete_macro_for_end'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'complete_macro_for_end'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -92,7 +88,7 @@ $result_trees{'complete_macro_for_end'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -135,16 +131,13 @@ $result_trees{'complete_macro_for_end'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 6,
                 'macro' => 'theend'
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],

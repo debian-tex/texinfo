@@ -29,6 +29,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -93,9 +92,11 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'node1'
                   },
                   'type' => 'menu_entry_node'
@@ -120,9 +121,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'menu_entry'
             },
@@ -139,9 +138,11 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'node2'
                   },
                   'type' => 'menu_entry_node'
@@ -166,9 +167,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               },
               'type' => 'menu_entry'
             },
@@ -199,16 +198,12 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -227,19 +222,19 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'in-nodescription'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -254,19 +249,19 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'f1'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -289,9 +284,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -313,6 +306,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'node_description' => {
           'args' => [
             {
@@ -335,17 +329,16 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                       'text' => 'in nodescription'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'anchor',
               'extra' => {
+                'is_target' => 1,
                 'normalized' => 'in-nodescription'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
+                'line_nr' => 15
               }
             },
             {
@@ -369,19 +362,19 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                         }
                       ],
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
+                        'node_content' => {
+                          'contents' => [
+                            {}
+                          ]
+                        },
                         'normalized' => 'node2'
                       },
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'ref',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -404,10 +397,9 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'cmdname' => 'footnote',
+                  'extra' => {},
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 17,
-                    'macro' => ''
+                    'line_nr' => 17
                   }
                 },
                 {
@@ -425,14 +417,12 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                           'text' => 'in w'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'w',
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 18,
-                    'macro' => ''
+                    'line_nr' => 18
                   }
                 },
                 {
@@ -465,14 +455,13 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'cindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 19,
-                    'macro' => ''
+                    'line_nr' => 19
                   },
                   'type' => 'index_entry_command'
                 }
@@ -522,7 +511,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                           'text' => 'float_image'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_arg'
                     }
                   ],
                   'cmdname' => 'image',
@@ -530,9 +519,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     'input_encoding_name' => 'utf-8'
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 22,
-                    'macro' => ''
+                    'line_nr' => 22
                   }
                 },
                 {
@@ -560,9 +547,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     'float' => {}
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 23,
-                    'macro' => ''
+                    'line_nr' => 23
                   }
                 },
                 {
@@ -597,9 +582,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 24,
-                    'macro' => ''
+                    'line_nr' => 24
                   }
                 }
               ],
@@ -636,19 +619,20 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                       'type' => 'empty_line'
                     }
                   ],
-                  'extra' => {},
+                  'extra' => {
+                    'section_number' => '1'
+                  },
                   'info' => {
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 12,
-                    'macro' => ''
+                    'line_nr' => 12
                   }
                 },
                 'float_type' => 'tfloat',
+                'is_target' => 1,
                 'normalized' => 'f1'
               },
               'info' => {
@@ -657,9 +641,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 21,
-                'macro' => ''
+                'line_nr' => 21
               }
             },
             {
@@ -699,9 +681,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 27,
-                'macro' => ''
+                'line_nr' => 27
               }
             }
           ],
@@ -709,9 +689,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
             'element_node' => {}
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           }
         },
         'node_long_description' => {},
@@ -723,9 +701,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
+        'line_nr' => 11
       }
     },
     {},
@@ -748,6 +724,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'node2'
       },
@@ -757,9 +734,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 29,
-        'macro' => ''
+        'line_nr' => 29
       }
     },
     {
@@ -797,19 +772,19 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'in-nodescription'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 32,
-                'macro' => ''
+                'line_nr' => 32
               }
             },
             {
@@ -824,19 +799,19 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'f1'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 32,
-                'macro' => ''
+                'line_nr' => 32
               }
             },
             {
@@ -850,6 +825,16 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
           'text' => '
 ',
           'type' => 'empty_line'
+        },
+        {
+          'args' => [
+            {
+              'text' => ' node1 again to test two nodescription expansions
+',
+              'type' => 'rawline_arg'
+            }
+          ],
+          'cmdname' => 'c'
         },
         {
           'args' => [
@@ -878,9 +863,11 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'node1'
                   },
                   'type' => 'menu_entry_node'
@@ -905,9 +892,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 35,
-                'macro' => ''
+                'line_nr' => 36
               },
               'type' => 'menu_entry'
             },
@@ -938,16 +923,12 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 36,
-                'macro' => ''
+                'line_nr' => 37
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 34,
-            'macro' => ''
+            'line_nr' => 35
           }
         },
         {
@@ -984,9 +965,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 38,
-            'macro' => ''
+            'line_nr' => 39
           }
         },
         {
@@ -1021,9 +1000,7 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 40,
-            'macro' => ''
+            'line_nr' => 41
           }
         },
         {
@@ -1032,26 +1009,26 @@ $result_trees{'commands_in_nodedescriptionblock'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '2'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 30,
-        'macro' => ''
+        'line_nr' => 30
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[3]{'contents'}[7]{'extra'}{'element_node'} = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3];
 $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[5]{'contents'}[2]{'extra'}{'float'} = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[5];
 $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[5]{'extra'}{'caption'} = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[5]{'contents'}[2];
@@ -1059,9 +1036,9 @@ $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_
 $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'extra'}{'element_node'} = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3];
 $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_long_description'} = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'};
 $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[4] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[3]{'extra'}{'node_description'}{'contents'}[5]{'extra'}{'float_section'};
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'commands_in_nodedescriptionblock'}{'contents'}[6]{'contents'}[4]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'commands_in_nodedescriptionblock'} = '@node Top
 @top test commands in nodedescriptionblock
@@ -1096,6 +1073,7 @@ where the max column could be. @w{in w}.
 
 @ref{in nodescription}, @ref{f1}.
 
+@c node1 again to test two nodescription expansions
 @menu
 * node1::
 @end menu
@@ -1131,7 +1109,7 @@ in nodescription, f1.
 ';
 
 $result_sectioning{'commands_in_nodedescriptionblock'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -1140,11 +1118,8 @@ $result_sectioning{'commands_in_nodedescriptionblock'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -1153,16 +1128,17 @@ $result_sectioning{'commands_in_nodedescriptionblock'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'node1'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             },
             {
@@ -1173,144 +1149,130 @@ $result_sectioning{'commands_in_nodedescriptionblock'} = {
                   'extra' => {
                     'isindex' => 1,
                     'normalized' => 'node2'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 2,
-                'section_prev' => {},
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '2',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_prev'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'section_up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_prev'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[1]{'structure'}{'toplevel_up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'commands_in_nodedescriptionblock'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'commands_in_nodedescriptionblock'};
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[1]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'commands_in_nodedescriptionblock'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'commands_in_nodedescriptionblock'};
 
-$result_nodes{'commands_in_nodedescriptionblock'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'normalized' => 'node1'
+$result_nodes{'commands_in_nodedescriptionblock'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_next' => {
+      'node_directions' => {
+        'next' => {
           'cmdname' => 'node',
           'extra' => {
             'associated_section' => {
               'cmdname' => 'chapter',
-              'extra' => {},
-              'structure' => {
-                'section_number' => 2
+              'extra' => {
+                'section_number' => '1'
               }
             },
-            'isindex' => 1,
+            'node_directions' => {
+              'next' => {
+                'cmdname' => 'node',
+                'extra' => {
+                  'associated_section' => {
+                    'cmdname' => 'chapter',
+                    'extra' => {
+                      'section_number' => '2'
+                    }
+                  },
+                  'isindex' => 1,
+                  'node_directions' => {
+                    'prev' => {},
+                    'up' => {}
+                  },
+                  'normalized' => 'node2'
+                }
+              },
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'node1'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {},
+  {}
+];
+$result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'commands_in_nodedescriptionblock'}[0];
+$result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'commands_in_nodedescriptionblock'}[0];
+$result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'commands_in_nodedescriptionblock'}[0];
+$result_nodes{'commands_in_nodedescriptionblock'}[1] = $result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'};
+$result_nodes{'commands_in_nodedescriptionblock'}[2] = $result_nodes{'commands_in_nodedescriptionblock'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'commands_in_nodedescriptionblock'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {
+          'extra' => {
+            'menu_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
             'menus' => [
-              {
-                'cmdname' => 'menu'
-              }
+              {}
             ],
             'normalized' => 'node2'
-          },
-          'structure' => {
-            'menu_child' => {},
-            'node_prev' => {},
-            'node_up' => {}
           }
         },
-        'node_prev' => {},
-        'node_up' => {}
-      }
-    },
-    'node_next' => {}
-  }
-};
-$result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'menu_child'} = $result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'};
-$result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'};
-$result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'commands_in_nodedescriptionblock'};
-$result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'node_prev'} = $result_nodes{'commands_in_nodedescriptionblock'};
-$result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'node_up'} = $result_nodes{'commands_in_nodedescriptionblock'};
-$result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'node_next'} = $result_nodes{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'};
-
-$result_menus{'commands_in_nodedescriptionblock'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'node1'
+        'up' => {}
       },
-      'structure' => {
-        'menu_next' => {
-          'cmdname' => 'node',
-          'extra' => {
-            'isindex' => 1,
-            'normalized' => 'node2'
-          },
-          'structure' => {
-            'menu_child' => {},
-            'menu_prev' => {},
-            'menu_up' => {},
-            'menu_up_hash' => {
-              'Top' => 1
-            }
-          }
-        },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1,
-          'node2' => 1
-        }
-      }
+      'normalized' => 'node1'
     }
-  }
-};
-$result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_child'} = $result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'};
-$result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_prev'} = $result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'};
-$result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'menu_next'}{'structure'}{'menu_up'} = $result_menus{'commands_in_nodedescriptionblock'};
-$result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'commands_in_nodedescriptionblock'}{'structure'}{'menu_child'}{'structure'}{'menu_next'};
+  },
+  {}
+];
+$result_menus{'commands_in_nodedescriptionblock'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'prev'} = $result_menus{'commands_in_nodedescriptionblock'}[1];
+$result_menus{'commands_in_nodedescriptionblock'}[1]{'extra'}{'menu_directions'}{'next'}{'extra'}{'menu_directions'}{'up'} = $result_menus{'commands_in_nodedescriptionblock'}[0];
+$result_menus{'commands_in_nodedescriptionblock'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'commands_in_nodedescriptionblock'}[1]{'extra'}{'menu_directions'}{'next'};
+$result_menus{'commands_in_nodedescriptionblock'}[2] = $result_menus{'commands_in_nodedescriptionblock'}[1]{'extra'}{'menu_directions'}{'next'};
 
 $result_errors{'commands_in_nodedescriptionblock'} = [];
 
@@ -1326,18 +1288,15 @@ $result_floats{'commands_in_nodedescriptionblock'} = {
             'float' => {}
           }
         },
+        'float_number' => '1.1',
         'float_section' => {
           'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
+          'extra' => {
+            'section_number' => '1'
           }
         },
         'float_type' => 'tfloat',
         'normalized' => 'f1'
-      },
-      'structure' => {
-        'float_number' => '1.1'
       }
     }
   ]
@@ -1359,8 +1318,8 @@ $result_converted{'plaintext'}->{'commands_in_nodedescriptionblock'} = 'test com
 * Menu:
 
 * node1::
-               *note node2::.  Footnote(1).  Some text to see where the max column could
-               be.  in w.
+               node2.  Footnote(1).  Some text to see where the max column could be.
+               in w.
 
 [float_image]
 
@@ -1369,7 +1328,7 @@ $result_converted{'plaintext'}->{'commands_in_nodedescriptionblock'} = 'test com
 
 * node2::
 
-*note in nodescription::, *note tfloat 1.1: f1.
+in nodescription, tfloat 1.1: f1.
 
    ---------- Footnotes ----------
 
@@ -1381,18 +1340,17 @@ $result_converted{'plaintext'}->{'commands_in_nodedescriptionblock'} = 'test com
 2 chap2
 *******
 
-*note in nodescription::, *note tfloat 1.1: f1.
+in nodescription, tfloat 1.1: f1.
 
 * Menu:
 
 * node1::
-               *note node2::.  Footnote(1).  Some text to see where the max column could
-               be.  in w.
+               node2.  Footnote(1).  Some text to see where the max column could be.
+               in w.
 
 [float_image]
 
                tfloat 1.1: Cap1
-
 
 
 * Menu:
@@ -1413,9 +1371,7 @@ $result_converted_errors{'plaintext'}->{'commands_in_nodedescriptionblock'} = [
   {
     'error_line' => 'warning: could not find @image file `float_image.txt\' nor alternate text
 ',
-    'file_name' => '',
     'line_nr' => 22,
-    'macro' => '',
     'text' => 'could not find @image file `float_image.txt\' nor alternate text',
     'type' => 'warning'
   }
@@ -1425,7 +1381,7 @@ $result_converted_errors{'plaintext'}->{'commands_in_nodedescriptionblock'} = [
 
 $result_converted{'html'}->{'commands_in_nodedescriptionblock'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>test commands in nodedescriptionblock</title>
@@ -1443,7 +1399,7 @@ $result_converted{'html'}->{'commands_in_nodedescriptionblock'} = '<!DOCTYPE htm
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter-printindex {text-decoration: none}
 span:hover a.copiable-link {visibility: visible}
-td.menu-entry-description {vertical-align: top}
+td.menu-entry-description {vertical-align: top; padding-left: 1em}
 td.menu-entry-destination {vertical-align: top}
 td.printindex-index-entry {vertical-align: top}
 td.printindex-index-section {vertical-align: top; padding-left: 1em}
@@ -1463,8 +1419,8 @@ Next: <a href="#node1" accesskey="n" rel="next">chap1</a> &nbsp; [<a href="#node
 </div>
 <h1 class="top" id="test-commands-in-nodedescriptionblock"><span>test commands in nodedescriptionblock<a class="copiable-link" href="#test-commands-in-nodedescriptionblock"> &para;</a></span></h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td class="menu-entry-destination">&bull; <a href="#node1" accesskey="1">node1</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description"><a class="anchor" id="in-nodescription"></a>
+<table class="menu">
+<tr><td class="menu-entry-destination">&bull; <a href="#node1" accesskey="1">node1</a>:</td><td class="menu-entry-description"><a class="anchor" id="in-nodescription"></a>
 <a class="ref" href="#node2">chap2</a>. Footnote<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a>. Some text to see
 where the max column could be. in&nbsp;w<!-- /@w -->.
 <a class="index-entry-id" id="index-in-nodedescriptionblock"></a>
@@ -1474,7 +1430,7 @@ where the max column could be. in&nbsp;w<!-- /@w -->.
 <div class="caption"><p><strong class="strong">tfloat 1.1: </strong>Cap1</p></div></div>
 
 </td></tr>
-<tr><td class="menu-entry-destination">&bull; <a href="#node2" rel="index" accesskey="2">node2</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+<tr><td class="menu-entry-destination">&bull; <a href="#node2" rel="index" accesskey="2">node2</a>:</td><td class="menu-entry-description">
 </td></tr>
 </table>
 
@@ -1500,8 +1456,8 @@ Previous: <a href="#node1" accesskey="p" rel="prev">chap1</a>, Up: <a href="#Top
 
 <p><a class="ref" href="#in-nodescription">in nodescription</a>, <a class="ref" href="#f1">tfloat 1.1</a>.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td class="menu-entry-destination">&bull; <a href="#node1" accesskey="1">node1</a>:</td><td>&nbsp;&nbsp;</td><td class="menu-entry-description">
+<table class="menu">
+<tr><td class="menu-entry-destination">&bull; <a href="#node1" accesskey="1">node1</a>:</td><td class="menu-entry-description">
 <a class="ref" href="#node2">chap2</a>. Footnote<a class="footnote" id="t_fnode-description-2_DOCF1_2" href="#t_fnode-description-2_FOOT1_2"><sup>2</sup></a>. Some text to see
 where the max column could be. in&nbsp;w<!-- /@w -->.
 
@@ -1513,7 +1469,7 @@ where the max column could be. in&nbsp;w<!-- /@w -->.
 </table>
 
 <div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="node2_cp_letter-I">I</th></tr>
@@ -1548,9 +1504,14 @@ $result_converted_errors{'html'}->{'commands_in_nodedescriptionblock'} = [
   {
     'error_line' => 'warning: @image file `float_image\' (for HTML) not found, using `float_image.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 22,
-    'macro' => '',
+    'text' => '@image file `float_image\' (for HTML) not found, using `float_image.jpg\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: @image file `float_image\' (for HTML) not found, using `float_image.jpg\'
+',
+    'line_nr' => 22,
     'text' => '@image file `float_image\' (for HTML) not found, using `float_image.jpg\'',
     'type' => 'warning'
   }
@@ -1593,6 +1554,7 @@ where the max column could be. <w>in w</w>.
 
 <para><ref label="in-nodescription"><xrefnodename>in nodescription</xrefnodename></ref>, <ref label="f1"><xrefnodename>f1</xrefnodename></ref>.
 </para>
+<!-- c node1 again to test two nodescription expansions -->
 <menu endspaces=" ">
 <menuentry><menuleadingtext>* </menuleadingtext><menunode>node1</menunode><menuseparator>::</menuseparator><menudescription><pre xml:space="preserve">
 </pre></menudescription></menuentry></menu>

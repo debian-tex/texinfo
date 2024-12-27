@@ -43,9 +43,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 1,
-                    'macro' => ''
+                    'line_nr' => 1
                   }
                 }
               ],
@@ -78,9 +76,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     },
                     {
@@ -140,9 +136,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -174,9 +168,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
@@ -207,9 +199,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     },
                     {
@@ -245,9 +235,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 4,
-                        'macro' => ''
+                        'line_nr' => 4
                       }
                     }
                   ],
@@ -286,9 +274,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -302,9 +288,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -332,36 +316,28 @@ $result_errors{'multitable_two_columns_too_much_cells'} = [
   {
     'error_line' => 'too many columns in multitable item (max 2)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 2)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 2)
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   },
   {
     'error_line' => 'too many columns in multitable item (max 2)
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'too many columns in multitable item (max 2)',
     'type' => 'error'
   }

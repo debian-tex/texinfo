@@ -50,9 +50,7 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -92,7 +88,7 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                   'element' => {
                     'args' => [
                       {
-                        'type' => 'brace_command_arg'
+                        'type' => 'brace_arg'
                       }
                     ],
                     'info' => {
@@ -108,7 +104,8 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                   'sourcemark_type' => 'macro_expansion',
                   'status' => 'end'
                 }
-              ]
+              ],
+              'type' => 'menu_comment'
             },
             {
               'args' => [
@@ -137,9 +134,11 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                         }
                       ],
                       'extra' => {
-                        'node_content' => [
-                          {}
-                        ],
+                        'node_content' => {
+                          'contents' => [
+                            {}
+                          ]
+                        },
                         'normalized' => 'second'
                       },
                       'type' => 'menu_entry_node'
@@ -164,9 +163,7 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 7,
-                    'macro' => ''
+                    'line_nr' => 7
                   },
                   'type' => 'menu_entry'
                 },
@@ -197,16 +194,13 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 8,
-                    'macro' => ''
+                    'line_nr' => 8
                   }
                 }
               ],
+              'extra' => {},
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -236,16 +230,12 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         }
       ],
@@ -254,7 +244,7 @@ $result_trees{'macro_in_menu_comment_closed_by_detailmenu'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'macro_in_menu_comment_closed_by_detailmenu'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'macro_in_menu_comment_closed_by_detailmenu'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'macro_in_menu_comment_closed_by_detailmenu'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'macro_in_menu_comment_closed_by_detailmenu'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
 
 $result_texis{'macro_in_menu_comment_closed_by_detailmenu'} = '@macro emptystring
 

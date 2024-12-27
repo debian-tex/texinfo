@@ -1,14 +1,14 @@
-CHARACTER TABULATION: |	|
+CHARACTER TABULATION: | |
 
    LINE FEED (LF): | |
 
-   LINE TABULATION: ||
+   LINE TABULATION: | |
 
    FORM FEED (FF): |
 
    |
 
-   CARRIAGE RETURN (CR): ||
+   CARRIAGE RETURN (CR): | |
 
    SPACE: | |
 

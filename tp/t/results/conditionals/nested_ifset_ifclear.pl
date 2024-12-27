@@ -90,9 +90,7 @@ $result_trees{'nested_ifset_ifclear'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
@@ -101,9 +99,7 @@ $result_trees{'nested_ifset_ifclear'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -150,7 +146,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -187,7 +183,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 15,
                   'macro' => 'conditionals'
                 }
@@ -221,7 +216,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 15,
                   'macro' => 'conditionals'
                 }
@@ -264,7 +258,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 15,
                       'macro' => 'conditionals'
                     }
@@ -326,7 +319,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                           }
                         },
                         'source_info' => {
-                          'file_name' => '',
                           'line_nr' => 15,
                           'macro' => 'conditionals'
                         }
@@ -338,7 +330,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 15,
                       'macro' => 'conditionals'
                     }
@@ -383,7 +374,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 15,
                       'macro' => 'conditionals'
                     }
@@ -439,7 +429,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -476,7 +466,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 19,
                   'macro' => 'conditionals'
                 }
@@ -537,7 +526,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 19,
                       'macro' => 'conditionals'
                     }
@@ -549,7 +537,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 19,
                   'macro' => 'conditionals'
                 }
@@ -582,7 +569,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 19,
                   'macro' => 'conditionals'
                 }
@@ -625,7 +611,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 19,
                       'macro' => 'conditionals'
                     }
@@ -671,7 +656,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 19,
                       'macro' => 'conditionals'
                     }
@@ -727,7 +711,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -739,7 +723,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               'status' => 'start'
             },
             {
-              'counter' => 4,
+              'counter' => 3,
               'element' => {
                 'args' => [
                   {
@@ -760,55 +744,19 @@ $result_trees{'nested_ifset_ifclear'} = {
                 'cmdname' => 'ifset',
                 'contents' => [
                   {
-                    'source_marks' => [
-                      {
-                        'counter' => 3,
-                        'element' => {
-                          'cmdname' => 'ifset',
-                          'contents' => [
-                            {
-                              'text' => 'Both somevar and anothervar are set.
+                    'text' => '@ifset anothervar
 ',
-                              'type' => 'raw'
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'ifset'
-                                    }
-                                  ],
-                                  'info' => {
-                                    'spaces_after_argument' => {
-                                      'text' => '
-'
-                                    }
-                                  },
-                                  'type' => 'line_arg'
-                                }
-                              ],
-                              'cmdname' => 'end',
-                              'extra' => {
-                                'text_arg' => 'ifset'
-                              },
-                              'info' => {
-                                'spaces_before_argument' => {
-                                  'text' => ' '
-                                }
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 23,
-                                'macro' => 'conditionals'
-                              }
-                            }
-                          ]
-                        },
-                        'sourcemark_type' => 'ignored_conditional_block'
-                      }
-                    ],
-                    'text' => ''
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => 'Both somevar and anothervar are set.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end ifset
+',
+                    'type' => 'raw'
                   },
                   {
                     'text' => '@ifclear anothervar
@@ -860,7 +808,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 23,
                       'macro' => 'conditionals'
                     }
@@ -872,7 +819,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 23,
                   'macro' => 'conditionals'
                 }
@@ -917,7 +863,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               'element' => {
                 'args' => [
                   {
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -929,7 +875,7 @@ $result_trees{'nested_ifset_ifclear'} = {
               'status' => 'start'
             },
             {
-              'counter' => 6,
+              'counter' => 4,
               'element' => {
                 'args' => [
                   {
@@ -950,55 +896,19 @@ $result_trees{'nested_ifset_ifclear'} = {
                 'cmdname' => 'ifset',
                 'contents' => [
                   {
-                    'source_marks' => [
-                      {
-                        'counter' => 5,
-                        'element' => {
-                          'cmdname' => 'ifset',
-                          'contents' => [
-                            {
-                              'text' => 'Both somevar and anothervar are set.
+                    'text' => '@ifset anothervar
 ',
-                              'type' => 'raw'
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'ifset'
-                                    }
-                                  ],
-                                  'info' => {
-                                    'spaces_after_argument' => {
-                                      'text' => '
-'
-                                    }
-                                  },
-                                  'type' => 'line_arg'
-                                }
-                              ],
-                              'cmdname' => 'end',
-                              'extra' => {
-                                'text_arg' => 'ifset'
-                              },
-                              'info' => {
-                                'spaces_before_argument' => {
-                                  'text' => ' '
-                                }
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 27,
-                                'macro' => 'conditionals'
-                              }
-                            }
-                          ]
-                        },
-                        'sourcemark_type' => 'ignored_conditional_block'
-                      }
-                    ],
-                    'text' => ''
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => 'Both somevar and anothervar are set.
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end ifset
+',
+                    'type' => 'raw'
                   },
                   {
                     'text' => '@ifclear anothervar
@@ -1050,7 +960,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
                       'line_nr' => 27,
                       'macro' => 'conditionals'
                     }
@@ -1062,7 +971,6 @@ $result_trees{'nested_ifset_ifclear'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
                   'line_nr' => 27,
                   'macro' => 'conditionals'
                 }

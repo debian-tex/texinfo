@@ -144,6 +144,9 @@ not tex
 @end ifnottex
 
 After.'],
+['if_not_closed',
+'@iftex'
+],
 ['false_format_not_closed',
 '@html
 blah blah
@@ -436,6 +439,20 @@ Ra&b
 @ifclear #something
 R#something
 @end ifclear
+'],
+['value_on_ifset',
+'@set xval x
+@set x 1
+
+@ifset @value{xval}
+XVAL SET
+@end ifset
+
+@ifset b
+@ifset @value{xval}
+INTERNALXV
+@end ifset
+@end ifset
 '],
 ['ignore_not_closed',
 '@ignore

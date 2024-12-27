@@ -1,6 +1,6 @@
 /* info.h -- Header file included everywhere
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,10 +23,8 @@
 /* System dependencies.  */
 #include "system.h"
 
-/* Some of our other include files use these.  */
-typedef int Function ();
-typedef void VFunction ();
-typedef char *CFunction ();
+struct window_struct;
+typedef void COMMAND_FUNCTION (struct window_struct *window, int count);
 
 #include "string.h"
 #include "mbiter.h"

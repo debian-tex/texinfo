@@ -25,7 +25,6 @@ $result_trees{'minimal_empty_with_bye'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],

@@ -58,9 +58,7 @@ $result_trees{'recursive_linemacro_in_call'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -69,9 +67,7 @@ $result_trees{'recursive_linemacro_in_call'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -92,11 +88,7 @@ $result_trees{'recursive_linemacro_in_call'} = {
                         'type' => 'bracketed_linemacro_arg'
                       }
                     ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -108,11 +100,15 @@ $result_trees{'recursive_linemacro_in_call'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   }
                 ],
                 'info' => {
-                  'command_name' => 'anorecurse'
+                  'command_name' => 'anorecurse',
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'type' => 'linemacro_call'
               },
@@ -147,7 +143,6 @@ $result_errors{'recursive_linemacro_in_call'} = [
   {
     'error_line' => 'recursive call of macro anorecurse is not allowed; use @rmacro if needed (possibly involving @anorecurse)
 ',
-    'file_name' => '',
     'line_nr' => 5,
     'macro' => 'anorecurse',
     'text' => 'recursive call of macro anorecurse is not allowed; use @rmacro if needed',

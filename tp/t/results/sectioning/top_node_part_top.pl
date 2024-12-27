@@ -7,11 +7,74 @@ use utf8;
 
 $result_trees{'top_node_part_top'} = [
   {
-    'contents' => [
+    'unit_command' => {
+      'args' => [
+        {
+          'contents' => [
+            {
+              'text' => 'top'
+            }
+          ],
+          'info' => {
+            'spaces_after_argument' => {
+              'text' => '
+'
+            }
+          },
+          'type' => 'line_arg'
+        }
+      ],
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_part' => {
+          'args' => [
+            {
+              'contents' => [
+                {
+                  'text' => 'part'
+                }
+              ],
+              'info' => {
+                'spaces_after_argument' => {
+                  'text' => '
+'
+                }
+              },
+              'type' => 'line_arg'
+            }
+          ],
+          'cmdname' => 'part',
+          'contents' => [
+            {
+              'text' => '
+',
+              'type' => 'empty_line'
+            }
+          ],
+          'extra' => {},
+          'info' => {
+            'spaces_before_argument' => {
+              'text' => ' '
+            }
+          },
+          'source_info' => {
+            'line_nr' => 3
+          }
+        }
+      },
+      'info' => {
+        'spaces_before_argument' => {
+          'text' => ' '
+        }
+      },
+      'source_info' => {
+        'line_nr' => 5
+      }
+    },
+    'unit_contents' => [
       {
         'contents' => [
           {
-            'contents' => [],
             'type' => 'preamble_before_content'
           }
         ],
@@ -43,6 +106,7 @@ $result_trees{'top_node_part_top'} = [
           }
         ],
         'extra' => {
+          'is_target' => 1,
           'normalized' => 'Top'
         },
         'info' => {
@@ -51,89 +115,17 @@ $result_trees{'top_node_part_top'} = [
           }
         },
         'source_info' => {
-          'file_name' => '',
-          'line_nr' => 1,
-          'macro' => ''
+          'line_nr' => 1
         }
       },
-      {
-        'args' => [
-          {
-            'contents' => [
-              {
-                'text' => 'part'
-              }
-            ],
-            'info' => {
-              'spaces_after_argument' => {
-                'text' => '
-'
-              }
-            },
-            'type' => 'line_arg'
-          }
-        ],
-        'cmdname' => 'part',
-        'contents' => [
-          {
-            'text' => '
-',
-            'type' => 'empty_line'
-          }
-        ],
-        'extra' => {},
-        'info' => {
-          'spaces_before_argument' => {
-            'text' => ' '
-          }
-        },
-        'source_info' => {
-          'file_name' => '',
-          'line_nr' => 3,
-          'macro' => ''
-        }
-      },
-      {
-        'args' => [
-          {
-            'contents' => [
-              {
-                'text' => 'top'
-              }
-            ],
-            'info' => {
-              'spaces_after_argument' => {
-                'text' => '
-'
-              }
-            },
-            'type' => 'line_arg'
-          }
-        ],
-        'cmdname' => 'top',
-        'extra' => {
-          'associated_part' => {}
-        },
-        'info' => {
-          'spaces_before_argument' => {
-            'text' => ' '
-          }
-        },
-        'source_info' => {
-          'file_name' => '',
-          'line_nr' => 5,
-          'macro' => ''
-        }
-      }
+      {},
+      {}
     ],
-    'extra' => {
-      'unit_command' => {}
-    },
-    'type' => 'unit'
+    'unit_type' => 'unit'
   }
 ];
-$result_trees{'top_node_part_top'}[0]{'contents'}[3]{'extra'}{'associated_part'} = $result_trees{'top_node_part_top'}[0]{'contents'}[2];
-$result_trees{'top_node_part_top'}[0]{'extra'}{'unit_command'} = $result_trees{'top_node_part_top'}[0]{'contents'}[3];
+$result_trees{'top_node_part_top'}[0]{'unit_contents'}[2] = $result_trees{'top_node_part_top'}[0]{'unit_command'}{'extra'}{'associated_part'};
+$result_trees{'top_node_part_top'}[0]{'unit_contents'}[3] = $result_trees{'top_node_part_top'}[0]{'unit_command'};
 
 $result_texis{'top_node_part_top'} = '@node Top
 
@@ -152,47 +144,39 @@ top
 ';
 
 $result_sectioning{'top_node_part_top'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
-        'cmdname' => 'part',
-        'extra' => {
-          'part_associated_section' => {
+        'associated_unit' => {
+          'directions' => {
+            'This' => {}
+          },
+          'unit_command' => {
+            'associated_unit' => {},
             'cmdname' => 'top',
             'extra' => {
               'associated_node' => {
+                'associated_unit' => {},
                 'cmdname' => 'node',
                 'extra' => {
                   'normalized' => 'Top'
-                },
-                'structure' => {
-                  'associated_unit' => {
-                    'extra' => {
-                      'unit_command' => {}
-                    },
-                    'structure' => {
-                      'directions' => {
-                        'This' => {}
-                      }
-                    },
-                    'type' => 'unit'
-                  }
                 }
               },
-              'associated_part' => {}
-            },
-            'structure' => {
-              'associated_unit' => {},
-              'section_level' => 0,
-              'section_prev' => {},
-              'section_up' => {}
+              'associated_part' => {},
+              'section_directions' => {
+                'prev' => {}
+              },
+              'section_level' => 0
             }
-          }
+          },
+          'unit_type' => 'unit'
         },
-        'structure' => {
-          'associated_unit' => {},
+        'cmdname' => 'part',
+        'extra' => {
+          'part_associated_section' => {},
+          'section_directions' => {},
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       },
       {}
@@ -200,108 +184,84 @@ $result_sectioning{'top_node_part_top'} = {
     'section_level' => -1
   }
 };
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_node'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'} = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_node'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_node'}{'structure'}{'associated_unit'};
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_part'} = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'structure'}{'associated_unit'} = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_node'}{'structure'}{'associated_unit'};
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'structure'}{'section_prev'} = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'structure'}{'section_up'} = $result_sectioning{'top_node_part_top'};
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'structure'}{'associated_unit'} = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'}{'extra'}{'associated_node'}{'structure'}{'associated_unit'};
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'top_node_part_top'};
-$result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[1] = $result_sectioning{'top_node_part_top'}{'structure'}{'section_childs'}[0]{'extra'}{'part_associated_section'};
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'directions'}{'This'} = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'};
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'}{'associated_unit'} = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'};
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'}{'extra'}{'associated_node'}{'associated_unit'} = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'};
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'}{'extra'}{'associated_part'} = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'}{'extra'}{'section_directions'}{'prev'} = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'extra'}{'part_associated_section'} = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'};
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'top_node_part_top'};
+$result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[1] = $result_sectioning{'top_node_part_top'}{'extra'}{'section_childs'}[0]{'associated_unit'}{'unit_command'};
 
-$result_nodes{'top_node_part_top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {
-        'associated_part' => {
-          'cmdname' => 'part',
-          'extra' => {},
-          'structure' => {
-            'associated_unit' => {
-              'extra' => {
-                'unit_command' => {}
-              },
-              'structure' => {
-                'directions' => {
-                  'This' => {}
-                }
-              },
-              'type' => 'unit'
-            }
-          }
-        }
-      },
-      'structure' => {
-        'associated_unit' => {}
-      }
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'associated_unit' => {}
-  }
-};
-$result_nodes{'top_node_part_top'}{'extra'}{'associated_section'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'} = $result_nodes{'top_node_part_top'}{'extra'}{'associated_section'};
-$result_nodes{'top_node_part_top'}{'extra'}{'associated_section'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_nodes{'top_node_part_top'}{'extra'}{'associated_section'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'};
-$result_nodes{'top_node_part_top'}{'extra'}{'associated_section'}{'structure'}{'associated_unit'} = $result_nodes{'top_node_part_top'}{'extra'}{'associated_section'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'};
-$result_nodes{'top_node_part_top'}{'structure'}{'associated_unit'} = $result_nodes{'top_node_part_top'}{'extra'}{'associated_section'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'};
-
-$result_menus{'top_node_part_top'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
+$result_nodes{'top_node_part_top'} = [
+  {
     'associated_unit' => {
-      'extra' => {
-        'unit_command' => {
-          'cmdname' => 'top',
-          'extra' => {
-            'associated_part' => {
-              'cmdname' => 'part',
-              'extra' => {},
-              'structure' => {
-                'associated_unit' => {}
-              }
-            }
-          },
-          'structure' => {
-            'associated_unit' => {}
+      'directions' => {
+        'This' => {}
+      },
+      'unit_command' => {
+        'associated_unit' => {},
+        'cmdname' => 'top',
+        'extra' => {
+          'associated_part' => {
+            'associated_unit' => {},
+            'cmdname' => 'part',
+            'extra' => {}
           }
         }
       },
-      'structure' => {
-        'directions' => {
-          'This' => {}
-        }
-      },
-      'type' => 'unit'
+      'unit_type' => 'unit'
+    },
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {},
+      'normalized' => 'Top'
     }
   }
-};
-$result_menus{'top_node_part_top'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'} = $result_menus{'top_node_part_top'}{'structure'}{'associated_unit'};
-$result_menus{'top_node_part_top'}{'structure'}{'associated_unit'}{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_menus{'top_node_part_top'}{'structure'}{'associated_unit'};
-$result_menus{'top_node_part_top'}{'structure'}{'associated_unit'}{'structure'}{'directions'}{'This'} = $result_menus{'top_node_part_top'}{'structure'}{'associated_unit'};
+];
+$result_nodes{'top_node_part_top'}[0]{'associated_unit'}{'directions'}{'This'} = $result_nodes{'top_node_part_top'}[0]{'associated_unit'};
+$result_nodes{'top_node_part_top'}[0]{'associated_unit'}{'unit_command'}{'associated_unit'} = $result_nodes{'top_node_part_top'}[0]{'associated_unit'};
+$result_nodes{'top_node_part_top'}[0]{'associated_unit'}{'unit_command'}{'extra'}{'associated_part'}{'associated_unit'} = $result_nodes{'top_node_part_top'}[0]{'associated_unit'};
+$result_nodes{'top_node_part_top'}[0]{'extra'}{'associated_section'} = $result_nodes{'top_node_part_top'}[0]{'associated_unit'}{'unit_command'};
+
+$result_menus{'top_node_part_top'} = [
+  {
+    'associated_unit' => {
+      'directions' => {
+        'This' => {}
+      },
+      'unit_command' => {
+        'associated_unit' => {},
+        'extra' => {
+          'associated_part' => {
+            'associated_unit' => {},
+            'extra' => {}
+          }
+        }
+      },
+      'unit_type' => 'unit'
+    },
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  }
+];
+$result_menus{'top_node_part_top'}[0]{'associated_unit'}{'directions'}{'This'} = $result_menus{'top_node_part_top'}[0]{'associated_unit'};
+$result_menus{'top_node_part_top'}[0]{'associated_unit'}{'unit_command'}{'associated_unit'} = $result_menus{'top_node_part_top'}[0]{'associated_unit'};
+$result_menus{'top_node_part_top'}[0]{'associated_unit'}{'unit_command'}{'extra'}{'associated_part'}{'associated_unit'} = $result_menus{'top_node_part_top'}[0]{'associated_unit'};
 
 $result_errors{'top_node_part_top'} = [
   {
     'error_line' => 'warning: @node precedes @part, but parts may not be associated with nodes
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@node precedes @part, but parts may not be associated with nodes',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @part should not be associated with @top
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@part should not be associated with @top',
     'type' => 'warning'
   }
@@ -313,38 +273,30 @@ $result_floats{'top_node_part_top'} = {};
 
 $result_elements{'top_node_part_top'} = [
   {
-    'extra' => {
-      'unit_command' => {
-        'cmdname' => 'top',
-        'extra' => {
-          'associated_part' => {
-            'cmdname' => 'part',
-            'extra' => {},
-            'structure' => {
-              'associated_unit' => {}
-            }
-          }
-        },
-        'structure' => {
-          'associated_unit' => {}
+    'directions' => {
+      'This' => {}
+    },
+    'unit_command' => {
+      'associated_unit' => {},
+      'cmdname' => 'top',
+      'extra' => {
+        'associated_part' => {
+          'associated_unit' => {},
+          'cmdname' => 'part',
+          'extra' => {}
         }
       }
     },
-    'structure' => {
-      'directions' => {
-        'This' => {}
-      }
-    },
-    'type' => 'unit'
+    'unit_type' => 'unit'
   }
 ];
-$result_elements{'top_node_part_top'}[0]{'extra'}{'unit_command'}{'extra'}{'associated_part'}{'structure'}{'associated_unit'} = $result_elements{'top_node_part_top'}[0];
-$result_elements{'top_node_part_top'}[0]{'extra'}{'unit_command'}{'structure'}{'associated_unit'} = $result_elements{'top_node_part_top'}[0];
-$result_elements{'top_node_part_top'}[0]{'structure'}{'directions'}{'This'} = $result_elements{'top_node_part_top'}[0];
+$result_elements{'top_node_part_top'}[0]{'directions'}{'This'} = $result_elements{'top_node_part_top'}[0];
+$result_elements{'top_node_part_top'}[0]{'unit_command'}{'associated_unit'} = $result_elements{'top_node_part_top'}[0];
+$result_elements{'top_node_part_top'}[0]{'unit_command'}{'extra'}{'associated_part'}{'associated_unit'} = $result_elements{'top_node_part_top'}[0];
 
 
 
-$result_directions_text{'top_node_part_top'} = 'element: @top top
+$result_directions_text{'top_node_part_top'} = 'output unit: @top top
   This: @top top
 ';
 
@@ -356,7 +308,6 @@ File: ,  Node: Top,  Up: (dir)
 
 top
 ***
-
 
 
 Tag Table:
@@ -373,7 +324,7 @@ End:
 
 $result_converted{'html'}->{'top_node_part_top'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -423,11 +374,7 @@ $result_converted{'xml'}->{'top_node_part_top'} = '<node name="Top" spaces=" "><
 ';
 
 
-$result_converted{'docbook'}->{'top_node_part_top'} = '<part label="">
-<title>part</title>
-<chapter label="" id="Top">
-<title>top</title>
-
+$result_converted{'docbook'}->{'top_node_part_top'} = '
 </part>
 </chapter>
 ';

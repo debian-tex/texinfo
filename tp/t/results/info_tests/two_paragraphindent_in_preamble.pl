@@ -75,16 +75,12 @@ $result_trees{'two_paragraphindent_in_preamble'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 5,
-                    'macro' => ''
+                    'line_nr' => 5
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -121,9 +117,7 @@ $result_trees{'two_paragraphindent_in_preamble'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             },
             {
@@ -160,9 +154,7 @@ $result_trees{'two_paragraphindent_in_preamble'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             },
             {
@@ -209,6 +201,7 @@ $result_trees{'two_paragraphindent_in_preamble'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -217,9 +210,7 @@ $result_trees{'two_paragraphindent_in_preamble'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 13,
-        'macro' => ''
+        'line_nr' => 13
       }
     },
     {
@@ -288,9 +279,7 @@ $result_trees{'two_paragraphindent_in_preamble'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     },
     {
@@ -356,7 +345,7 @@ Second para.
 ';
 
 $result_sectioning{'two_paragraphindent_in_preamble'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -366,37 +355,37 @@ $result_sectioning{'two_paragraphindent_in_preamble'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'two_paragraphindent_in_preamble'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'two_paragraphindent_in_preamble'};
+$result_sectioning{'two_paragraphindent_in_preamble'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'two_paragraphindent_in_preamble'};
 
-$result_nodes{'two_paragraphindent_in_preamble'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'two_paragraphindent_in_preamble'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'two_paragraphindent_in_preamble'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'two_paragraphindent_in_preamble'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'two_paragraphindent_in_preamble'} = [];
 
@@ -422,7 +411,6 @@ test @paragraphindent in preamble effect in preamble
 First para.
 
       Second para.
-
 
 
 Tag Table:

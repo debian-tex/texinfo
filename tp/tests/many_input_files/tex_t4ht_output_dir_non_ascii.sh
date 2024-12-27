@@ -25,8 +25,10 @@ else
   exit 77
 fi
 
-# Need command-line unicode for this test, which is not reliable on Windows
-if test "z$HOST_IS_WINDOWS_VARIABLE" = 'zyes' ; then
+if sed 1q ../non_ascii_extracted_stamp.txt | grep 'OK' >/dev/null; then
+  :
+else
+  echo "S: (no non-ASCII file names) $basename"
   exit 77
 fi
 
@@ -45,7 +47,7 @@ mkdir $basename
 
 # note that it is important to have -c 'COMMAND_LINE_ENCODING UTF-8' before --out
 # such that --out is correctly decoded
-cmd="$prepended_command $PERL -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../ext --init-file tex4ht.pm --iftex -c 'COMMAND_LINE_ENCODING UTF-8' --out $basename/encodé/ $srcdir/../tex_html/tex_encodé_utf8.texi $srcdir/../tex_html/tex_complex.texi -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --force >> $basename/$stdout_file 2>$basename/${basename}.2"
+cmd="$prepended_command $PERL -w $srcdir/../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --set-customization-variable 'TEST 1' --conf-dir $srcdir/../../ext --init-file tex4ht.pm --iftex -c 'COMMAND_LINE_ENCODING UTF-8' --out $basename/encodé/ ../built_input/non_ascii/tex_encodé_utf8.texi $srcdir/../tex_html/tex_complex.texi -c OUTPUT_FILE_NAME_ENCODING=UTF-8 --force >> $basename/$stdout_file 2>$basename/${basename}.2"
 echo "$cmd" >> $logfile
 eval $cmd
 
@@ -61,6 +63,7 @@ else
   rm -f $destination_outdir/*_tex4ht_*.log \
       $destination_outdir/*_tex4ht_*.idv $destination_outdir/*_tex4ht_*.dvi \
       $destination_outdir/*_tex4ht_tex.html $destination_outdir/*.png $outdir/$stdout_file
+  find $outdir | $PERL $srcdir/../escape_file_names.pl
 
   dir=${basename}
   if [ -d $srcdir/${dir}_res ]; then

@@ -19,6 +19,7 @@ end para' ],
 [ 'two_lines','text l 1
 text l 2
 '],
+# no_paragraph commands with spaces after brace not ignored
 [ 'no_paragraph_commands', '@*
 @titlefont{title font}
 @image{aa,bb,cc,dd,.ee}
@@ -142,6 +143,26 @@ in flushleft
 @center in center
 
 @end flushright
+'],
+['indent_before_macro_definition_and_other',
+'
+@indent
+@author someone
+@image{my_image}
+@vskip 0pt plus 1filll
+@html
+<code>in c</code>
+@end html
+@ifnothtml
+not html
+@end ifnothtml
+@setchapternewpage on
+@anchor{spot}
+@cpindex ei
+@macro aaa {g}
+ll /g/
+@end macro
+HHERE
 '],
 );
 

@@ -1,33 +1,33 @@
-# Common.pm: definition of commands. Common code of other Texinfo modules.
+# Common.pm: Common code of other Texinfo modules.
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 # Parts (also from Patrice Dumas) come from texi2html.pl or texi2html.init.
 
 package Texinfo::Common;
 
+# for unicode/layer support in binmode
+# for binmode documented as pushing :utf8 on top of :encoding
+use 5.008001;
+
 use strict;
 
 # To check if there is no erroneous autovivification
 #no autovivification qw(fetch delete exists store strict);
-
-# for unicode/layer support in binmode
-# for binmode documented as pushing :utf8 on top of :encoding
-use 5.008001;
 
 # to determine the null file
 use Config;
@@ -45,34 +45,25 @@ use Locale::Messages;
 
 use Texinfo::Documentlanguages;
 use Texinfo::Commands;
+use Texinfo::Options;
 
 require Exporter;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter);
+our @ISA = qw(Exporter);
 
-%EXPORT_TAGS = ( 'all' => [ qw(
+our @EXPORT_OK = qw(
 collect_commands_in_tree
 collect_commands_list_in_tree
-move_index_entries_after_items_in_tree
-relate_index_entries_to_table_items_in_tree
-protect_colon_in_tree
-protect_comma_in_tree
-protect_first_parenthesis
-protect_node_after_label_in_tree
 valid_customization_option
 valid_tree_transformation
-) ] );
-
-@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+);
 
 # This is where the Texinfo modules get access to __( without explicit
 # import.
-@EXPORT = qw(
+our @EXPORT = qw(
 __ __p
 );
 
-$VERSION = '7.1.1';
-
+our $VERSION = '7.2';
 
 # i18n
 # For the messages translations.
@@ -95,8 +86,7 @@ sub __p($$) {
 #
 # Return the string but do nothing else, used to mark strings to be translated
 # in the Gettext framework.
-# Can be used in other modules, in particular if the modules already overwrite
-# gdt from Texinfo::Translations.
+# Can be used in other modules.
 sub gdt($)
 {
   return $_[0];
@@ -129,10 +119,16 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
 
 # Customization options
 
+# used in main program too
+our %non_decoded_customization_variables;
+foreach my $variable_name ('MACRO_EXPAND', 'INTERNAL_LINKS') {
+  $non_decoded_customization_variables{$variable_name} = 1;
+}
+
 # variables not specific of Parser, used in other contexts.  Spread over
 # the different categories set below.  The default values are in general
 # the same as elsewhere, but occasionally may be specific of the Parser.
-my %default_parser_common_customization = (
+my %common_parser_customization = (
   'INCLUDE_DIRECTORIES' => [ '.' ],
   'documentlanguage' => undef,  # not 'en' as it is better to specify that there is no
                                 # need for translation since the strings are in english
@@ -141,94 +137,60 @@ my %default_parser_common_customization = (
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
                     # If >= 100 tree is printed every line.
   'FORMAT_MENU' => 'menu',           # if not 'menu' no menu error related.
-  # next three related to file names encoding
   'DOC_ENCODING_FOR_INPUT_FILE_NAME' => 1, # use document encoding for input file
                                            # names encoding if set
   'COMMAND_LINE_ENCODING' => undef, # encoding of command line strings
                                     # used to decode file names for error message
-  'INPUT_FILE_NAME_ENCODING' => undef, # used for input file encoding
+  'INPUT_FILE_NAME_ENCODING' => undef, # used for input file name encoding
+  'LOCALE_ENCODING' => undef, # used for file name encoding
 );
 
 # Customization variables obeyed only by the parser, and the default values.
-my %default_parser_specific_customization = (
+my %parser_customization = (
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
+  'NO_INDEX' => 0, # if set, do not record index entries and ignore
+                   # index related @-commands
+  'NO_USER_COMMANDS' => 0, # if set, ignore @*macro, @def*index, @alias and
+                           # @definfoenclose
 );
 
 # this serves both to set defaults and list customization variable
 # valid for the parser.
 # also used in util/txicustomvars
-our %default_parser_customization_values = (%default_parser_common_customization,
-  %default_parser_specific_customization);
+our %default_parser_customization_values = (%common_parser_customization,
+                                            %parser_customization);
 
-
-# @-commands that can be used multiple time in a document and default
-# values.  Associated with customization values too.
-# also used in util/txicustomvars
-our %document_settable_multiple_at_commands = (
-  'allowcodebreaks' => 'true',
-  'clickstyle' => '@arrow',
-  'codequotebacktick' => 'off',
-  'codequoteundirected' => 'off',
-  'contents' => 0,
-  'deftypefnnewline' => 'off',
-  'documentencoding' => 'utf-8',
-  'documentlanguage' => undef, # Documented as en, but no @documentlanguage
-                               # really means that the language is not set.
-                               # --document-language
-  'evenfooting'       => undef,
-  'evenheading'       => undef,
-  'everyfooting'      => undef,
-  'everyheading'      => undef,
-  # is N ems in TeX, 0.4 in.
-  'exampleindent' => 5,
-  'firstparagraphindent' => 'none',
-  'frenchspacing' => 'off',
-  'headings' => 'on',
-  'kbdinputstyle' => 'distinct',
-  'microtype'         => undef,
-  'oddheading'        => undef,
-  'oddfooting'        => undef,
-  'paragraphindent' => 3,
-  'shortcontents' => 0,
-  'summarycontents' => 0,
-  'urefbreakstyle' => 'after',
-  'xrefautomaticsectiontitle' => 'off',
+# can be modified through command-line, but not customization options
+our %parser_document_state_configuration = (
+  # parsed document parsing information still relevant after parsing
+  'values' => {'txicommandconditionals' => 1},
+                              # the key is the name, the value the @set name
+                              # argument.
+                              # The txicommandconditionals is a special value
+                              # that is set to mark that @ifcommandnotdefined
+                              # is implemented
 );
 
-# @-commands that should be unique.  Associated with customization values too.
-# also used in util/txicustomvars
-our %document_settable_unique_at_commands = (
-  'afivepaper' => undef,
-  'afourpaper' => undef,
-  'afourlatex' => undef,
-  'afourwide' => undef,
-  'bsixpaper' => undef,
-  # when passed through a customization variable, documentdescription
-  # should be already formatted for HTML.  There is no default,
-  # what is determined to be the title is used if not set.
-  'documentdescription' => undef,
-  'evenfootingmarks' => undef,
-  'evenheadingmarks' => undef,
-  'everyfootingmarks' => 'bottom',
-  'everyheadingmarks' => 'bottom',
-  'fonttextsize' => 11,
-  'footnotestyle' => 'end',    # --footnote-style
-  'novalidate' => 0,           # --no-validate
-  'oddfootingmarks' => undef,
-  'oddheadingmarks' => undef,
-  'pagesizes' => undef,
-  'setchapternewpage' => 'on',
-  'setfilename' => undef,
-  'smallbook' => undef,
+# parser keys related to customization
+# Set when initializing a parser, but never from command-line/init files
+my %parser_inner_options = (
+  'accept_internalvalue' => 0, # whether @txiinternalvalue should be added
+                               # to the tree or considered invalid.
+                               # currently set if called by gdt.
 );
+
+our %parser_document_parsing_options = (
+                       %default_parser_customization_values,
+                       %parser_document_state_configuration,
+                       %parser_inner_options);
 
 # check that settable commands are contained in global commands
 # from command_data.txt
 if (0) {
 #if (1) {
-  my @global_unique_settable = keys(%document_settable_unique_at_commands);
+  my @global_unique_settable = keys(%Texinfo::Options::unique_at_command_options);
   my @global_unique_commands = keys(%Texinfo::Commands::global_unique_commands);
   my $lcu = List::Compare->new(\@global_unique_settable, \@global_unique_commands);
   # only in the first list
@@ -240,7 +202,7 @@ if (0) {
                               .join(',', $lcu->get_complement)."\n";
   }
 
-  my @global_multi_settable = keys(%document_settable_multiple_at_commands);
+  my @global_multi_settable = keys(%Texinfo::Options::multiple_at_command_options);
   my @global_multi_commands = keys(%Texinfo::Commands::global_commands);
   my $lcm = List::Compare->new(\@global_multi_settable, \@global_multi_commands);
   if (scalar($lcm->get_unique)) {
@@ -252,256 +214,25 @@ if (0) {
   }
 }
 
-# a value corresponds to defaults that are the same for every output format
-# otherwise undef is used
-our %default_converter_command_line_options = (
-  'SPLIT_SIZE'           => 300000,  # --split-size
-  'FILLCOLUMN'           => 72,      # --fill-column
-  'NUMBER_SECTIONS'      => 1,       # --number-sections
-  'NUMBER_FOOTNOTES'     => 1,       # --number-footnotes
-  # only in HTML
-  'TRANSLITERATE_FILE_NAMES' => 1,   # --transliterate-file-names
-  'SPLIT'                => undef,   # --split
-  'HEADERS'              => 1,       # --headers.  Used to set diverse
-                                     # customization options in main program.
-                                     # Only directly used in HTML converter
-  'NODE_FILES'           => undef,   # --node-files.  Depend on SPLIT
-  'VERBOSE'              => undef,   # --verbose
-  'OUTFILE'              => undef,   # --output    If non split and not ending by /.
-                                     # Setting can be format dependent
-  'SUBDIR'               => undef,   # --output    If split or ending by /.
-                                     # Setting can be format dependent
-  'ENABLE_ENCODING'      => 1,       # --disable-encoding/--enable-encoding.
-                                     # The option is directly used in
-                                     # Info/Plaintext, and used in diverse formats
-                                     # for index sorting and plain text output.
-);
-
-# used in main program, defaults documented in manual
-my %default_main_program_command_line_options = (
-  'MACRO_EXPAND'         => undef,   # --macro-expand.  Only for main program
-  # used in HTML only, called from main program
-  'INTERNAL_LINKS'       => undef,   # --internal-links
-  'ERROR_LIMIT'          => 100,     # --error-limit
-  'FORCE'                => undef,   # --force
-  'NO_WARN'              => undef,   # --no-warn
-  'SILENT'               => undef,   # --silent.    Not used.  For completeness
-
-  # following also set in converters
-  'FORMAT_MENU'          => 'menu',  # --headers.  Modified by the format.
-);
-
-# used in main program, defaults documented in manual
-# also used in util/txicustomvars
-our %default_main_program_customization = (
-  'CHECK_NORMAL_MENU_STRUCTURE' => 0, # output warnings when node with
-            # automatic direction and directions in menu are not consistent
-            # with sectionning, and when node directions are not consistent
-            # with menu directions.
-  'CHECK_MISSING_MENU_ENTRY'    => 1,
-  'DUMP_TREE'                   => undef,
-  'DUMP_TEXI'                   => undef,
-  'SHOW_BUILTIN_CSS_RULES'      => 0,
-  'SORT_ELEMENT_COUNT'          => undef,
-  'SORT_ELEMENT_COUNT_WORDS'    => undef,
-  'TEXI2DVI'                    => 'texi2dvi',
-  'TREE_TRANSFORMATIONS'        => undef,
-);
-
 # defaults for the main program.  In general transmitted to converters as defaults
 our %default_main_program_customization_options = (
- %default_main_program_command_line_options,  %default_main_program_customization);
+ %Texinfo::Options::program_cmdline_options,
+ %Texinfo::Options::program_customization_options);
 
-# used in converters, default documented in manual
-# also used in util/txicustomvars
-our %default_converter_customization = (
-  'TOP_NODE_UP'           => '(dir)',   # up node of Top node default value
-  'BASEFILENAME_LENGTH'   => 255 - 10,
-  'DOC_ENCODING_FOR_INPUT_FILE_NAME' => 1,
-  'DOC_ENCODING_FOR_OUTPUT_FILE_NAME' => 0,
-  # only used in HTML
-  'IMAGE_LINK_PREFIX'     => undef,
-  'CASE_INSENSITIVE_FILENAMES' => 0,
-  'DEBUG'                 => 0,
-  # only used in HTML
-  'HANDLER_FATAL_ERROR_LEVEL' => 100,
-  'TEST'                  => 0,
-  'TEXTCONTENT_COMMENT'   => undef,  # in textcontent format
-  # used in TexinfoXML/SXML
-  # Reset by the main program, therefore this value is only used in converter
-  # tests that use the perl modules directly.  Does not need to match with the
-  # documented value used in the main program, nor to be updated every time a
-  # DTD is released, to have a fixed value for the tests.  However, it should
-  # be good to update from time to time to avoid test results that are not
-  # valid against their reported DTD.
-  'TEXINFO_DTD_VERSION'   => '7.1',
-);
-
-# Some are for all converters, EXTENSION for instance, some for
-# some converters, for example CLOSE_QUOTE_SYMBOL and many
-# for HTML.  Could be added to %default_converter_customization.
-# Defaults are documented in manual and set in the various converters.
-# used in util/txicustomvars
-our @variable_string_settables = (
-'AFTER_BODY_OPEN',
-'AFTER_SHORT_TOC_LINES',
-'AFTER_TOC_LINES',
-'ASCII_DASHES_AND_QUOTES',
-'ASCII_GLYPH',
-'ASCII_PUNCTUATION',
-'AUTO_MENU_DESCRIPTION_ALIGN_COLUMN',
-'AUTO_MENU_MAX_WIDTH',
-'AVOID_MENU_REDUNDANCY',
-'BEFORE_SHORT_TOC_LINES',
-'BEFORE_TOC_LINES',
-'BIG_RULE',
-'BODYTEXT',
-'CLASS_BEGIN_USEPACKAGE', # for LaTeX
-'COPIABLE_LINKS',
-'CHAPTER_HEADER_LEVEL',
-'CHECK_HTMLXREF',
-'CLOSE_DOUBLE_QUOTE_SYMBOL',
-'CLOSE_QUOTE_SYMBOL',
-'COMMAND_LINE_ENCODING',
-'COMPLEX_FORMAT_IN_TABLE',
-'CONTENTS_OUTPUT_LOCATION',
-'CONVERT_TO_LATEX_IN_MATH',
-'DATE_IN_HEADER',
-'DEFAULT_RULE',
-'DEF_TABLE',
-'DO_ABOUT',
-'DOC_ENCODING_FOR_INPUT_FILE_NAME',
-'DOC_ENCODING_FOR_OUTPUT_FILE_NAME',
-'DOCTYPE',
-'END_USEPACKAGE', # for LaTeX
-'EPUB_CREATE_CONTAINER_FILE', # for ext/epub3.pm
-'EPUB_KEEP_CONTAINER_FOLDER', # for ext/epub3.pm
-'EXTENSION',
-'EXTERNAL_CROSSREF_EXTENSION',
-'EXTERNAL_CROSSREF_SPLIT',
-'EXTERNAL_DIR',
-'EXTRA_HEAD',
-'FOOTNOTE_END_HEADER_LEVEL',
-'FOOTNOTE_SEPARATE_HEADER_LEVEL',
-'FRAMES',
-'FRAMESET_DOCTYPE',
-'HEADER_IN_TABLE',
-'HIGHLIGHT_SYNTAX', # for ext/highlight_syntax.pm
-'HIGHLIGHT_SYNTAX_DEFAULT_LANGUAGE', # for ext/highlight_syntax.pm
-'HTML_MATH',
-'HTML_ROOT_ELEMENT_ATTRIBUTES',
-'HTMLXREF_FILE',
-'HTMLXREF_MODE',
-'ICONS',
-'IMAGE_LINK_PREFIX',
-'INDEX_ENTRY_COLON',
-'INDEX_SPECIAL_CHARS_WARNING',
-'INFO_JS_DIR',
-'INFO_SPECIAL_CHARS_QUOTE',
-'INFO_SPECIAL_CHARS_WARNING',
-'IGNORE_REF_TO_TOP_NODE_UP',
-'INLINE_CSS_STYLE',
-'INPUT_FILE_NAME_ENCODING',
-'JS_WEBLABELS',
-'JS_WEBLABELS_FILE',
-'LOCALE_ENCODING',
-'L2H_CLEAN',
-'L2H_FILE',
-'L2H_HTML_VERSION',
-'L2H_L2H',
-'L2H_SKIP',
-'L2H_TMP',
-'MATHJAX_SCRIPT',
-'MATHJAX_SOURCE',
-'MAX_HEADER_LEVEL',
-'MENU_ENTRY_COLON',
-'MENU_SYMBOL',
-'MESSAGE_ENCODING',
-'MONOLITHIC',
-'NO_CSS',
-'NO_NUMBER_FOOTNOTE_SYMBOL',
-'NO_CUSTOM_HTML_ATTRIBUTE',
-'NODE_NAME_IN_INDEX',
-'NODE_NAME_IN_MENU',
-'NO_TOP_NODE_OUTPUT',
-'NO_USE_SETFILENAME',
-'OPEN_DOUBLE_QUOTE_SYMBOL',
-'OPEN_QUOTE_SYMBOL',
-'OUTPUT_CHARACTERS',
-'OUTPUT_ENCODING_NAME',
-'OUTPUT_FILE_NAME_ENCODING',
-'OUTPUT_PERL_ENCODING',
-'PACKAGE',
-'PACKAGE_AND_VERSION',
-'PACKAGE_NAME',
-'PACKAGE_URL',
-'PACKAGE_VERSION',
-'PRE_BODY_CLOSE',
-'PREFIX',
-'PROGRAM',
-'PROGRAM_NAME_IN_ABOUT',
-'PROGRAM_NAME_IN_FOOTER',
-'SECTION_NAME_IN_TITLE',
-'SHORT_TOC_LINK_TO_TOC',
-'SHOW_TITLE',
-'SIMPLE_MENU',
-'SORT_ELEMENT_COUNT',
-'T4H_LATEX_CONVERSION',
-'T4H_MATH_CONVERSION',
-'T4H_TEX_CONVERSION',
-'TEXI2HTML',
-'TEXINFO_OUTPUT_FORMAT',
-'TOC_LINKS',
-'TOP_FILE',
-'TOP_NODE_FILE_TARGET',
-'TOP_NODE_UP_URL',
-'USE_ACCESSKEY',
-'USE_ISO',
-'USE_LINKS',
-'USE_NEXT_HEADING_FOR_LONE_NODE',
-'USE_NODES',
-'USE_NODE_DIRECTIONS',
-'USE_NUMERIC_ENTITY',
-'USE_REL_REV',
-'USE_SETFILENAME_EXTENSION',
-'USE_TITLEPAGE_FOR_TITLE',
-'USE_UNIDECODE',
-'USE_UP_NODE_FOR_ELEMENT_UP',
-'USE_XML_SYNTAX',
-'VERTICAL_HEAD_NAVIGATION',
-'WORDS_IN_PAGE',
-'XREF_USE_FLOAT_LABEL',
-'XREF_USE_NODE_NAME_ARG',
-);
-
-# Not strings.
-my @variable_other_settables = (
-  # Documented in the texi2any_api manual
-  'LINKS_BUTTONS', 'TOP_BUTTONS', 'SECTION_BUTTONS',
-  'CHAPTER_FOOTER_BUTTONS', 'SECTION_FOOTER_BUTTONS',
-  'NODE_FOOTER_BUTTONS',
-  'MISC_BUTTONS', 'CHAPTER_BUTTONS',
-  'ACTIVE_ICONS', 'PASSIVE_ICONS',
-  # set from command line.
-  # TODO not documented.
-  'CSS_FILES',            # --css-include
-  'CSS_REFS',             # --css-ref
-  'EXPANDED_FORMATS',     # --if*
-  'INCLUDE_DIRECTORIES',  # -I
-);
-
-our %document_settable_at_commands = (%document_settable_multiple_at_commands,
-   %document_settable_unique_at_commands);
+# used in converters
+our %document_settable_at_commands
+  = (%Texinfo::Options::multiple_at_command_options,
+     %Texinfo::Options::unique_at_command_options);
 
 my %valid_customization_options;
 foreach my $var (keys(%document_settable_at_commands),
-         keys(%default_main_program_command_line_options),
-         keys(%default_converter_command_line_options),
-         keys(%default_main_program_customization),
-         keys(%default_parser_specific_customization),
-         keys(%default_converter_customization),
-         @variable_string_settables,
-         @variable_other_settables) {
+         keys(%Texinfo::Options::program_cmdline_options),
+         keys(%Texinfo::Options::converter_cmdline_options),
+         keys(%Texinfo::Options::program_customization_options),
+         keys(%parser_customization),
+         keys(%Texinfo::Options::converter_customization_options),
+         keys(%Texinfo::Options::converter_other_options),
+         keys(%Texinfo::Options::array_cmdline_options)) {
   $valid_customization_options{$var} = 1;
 }
 
@@ -513,6 +244,8 @@ sub valid_customization_option($)
 
 # not documented on purpose, should not be directly called in user-defined
 # codes
+# FIXME not implementable in XS, would need a type, dynamically added
+# customization variables...
 sub add_valid_customization_option($)
 {
   my $option = shift;
@@ -534,10 +267,29 @@ foreach my $output_format_command ('info', 'plaintext',
 }
 
 
+# constants.  Set by the main program.
+my %build_constants;
+
+sub set_build_constant($$)
+{
+  my $key = shift;
+  my $value = shift;
+
+  $build_constants{$key} = $value;
+}
+
+sub get_build_constant($)
+{
+  my $key = shift;
+
+  return $build_constants{$key};
+}
+
+
 # Tree transformations
 
 my %valid_tree_transformations;
-foreach my $valid_transformation ('simple_menus',
+foreach my $valid_transformation (
     'fill_gaps_in_sectioning', 'move_index_entries_after_items',
     'relate_index_entries_to_items',
     'insert_nodes_for_sectioning_commands',
@@ -615,6 +367,81 @@ our %nobrace_symbol_text;
            '\\', '\\',  # should only appear in math
 );
 
+# used by Texinfo::Convert::Text, Texinfo::Convert::NodeNormalization
+# and Texinfo::Convert::TextContent.
+# 'today' is not set here.
+our %text_brace_no_arg_commands = (
+               # characters
+               'atchar'        => '@',
+               'ampchar'       => '&',
+               'backslashchar' => '\\',
+               'comma'         => ',',
+               'hashchar'      => '#',
+               'lbracechar'    => '{',
+               'rbracechar'    => '}',
+
+               # symbols (22)
+               'arrow'              => '->',
+               'bullet'             => '*',
+               'copyright'          => '(C)',
+               'dots'               => '...',
+               'enddots'            => '...',
+               'equiv'              => '==',
+               'euro'               => 'Euro',
+               'exclamdown'         => '!',
+               'expansion'          => '==>',
+               'geq'                => '>=',
+               'LaTeX'              => 'LaTeX',
+               'leq'                => '<=',
+               'minus'              => '-',
+               'ordf'               => 'a',
+               'ordm'               => 'o',
+               'point'              => '-!-',
+               'pounds'             => '#',
+               'print'              => '-|',
+               'questiondown'       => '?',
+               'registeredsymbol'   => '(R)',
+               'result'             => '=>',
+               'TeX'                => 'TeX',
+               'textdegree'         => 'o',
+
+               # quotes
+               'guillemetleft'   => '<<',
+               'guillemetright'  => '>>',
+               'guillemotleft'   => '<<',
+               'guillemotright'  => '>>',
+               'guilsinglleft'   => '<',
+               'guilsinglright'  => '>',
+               'quotedblbase'    => ',,',
+               'quotedblleft'    => '"',
+               'quotedblright'   => '"',
+               'quoteleft'       => '`',
+               'quoteright'      => "'",
+               'quotesinglbase'  => ',',
+
+               # letters
+               'AA'           => 'AA',
+               'aa'           => 'aa',
+               'AE'           => 'AE',
+               'ae'           => 'ae',
+               'DH'           => 'D',
+               'dh'           => 'd',
+               'L'            => '/L',
+               'l'            => '/l',
+               'OE'           => 'OE',
+               'oe'           => 'oe',
+               'O'            => '/O',
+               'o'            => '/o',
+               'ss'           => 'ss',
+               'TH'           => 'TH', # http://www.evertype.com/standards/wynnyogh/thorn.html
+               'th'           => 'th',
+
+               # other
+               'click'        => '', # specially treated
+               'error'              => 'error-->',
+               'tie'          => ' ',
+);
+
 our %def_map = (
     # basic commands.
     # 'arg' and 'argtype' are for everything appearing after the other
@@ -631,8 +458,8 @@ our %def_map = (
     'defop',     [ 'category', 'class' , 'name', 'arg' ],
     'deftp',     [ 'category', 'name', 'argtype' ],
     # shortcuts
-    # The strings are marked to be translated in the parsers with type
-    # 'untranslated'.
+    # The strings are marked to be translated in the parsers in type
+    # 'untranslated_def_line_arg'.
     'defun',         {'deffn'     => pgdt_context(
                                          'category of functions for @defun',
                                          'Function')},
@@ -755,171 +582,26 @@ foreach my $command (
   keys(%Texinfo::Commands::nobrace_commands),
  ) {
   $all_commands{$command} = 1;
-}
-
-
-# brace commands that are not replaced with text.
-our %non_formatted_brace_commands;
-foreach my $non_formatted_brace_command ('anchor', 'caption',
-               'errormsg', 'hyphenation', 'shortcaption', 'sortas') {
-  $non_formatted_brace_commands{$non_formatted_brace_command} = 1;
-}
-
-
-# functions for main program.  Should not be called in user-defined code.
-# FIXME locate_init_file() is also called in HTML Converter for htmlxref files.
-
-# $FILE:        file name to locate. It can be a file path. Binary string.
-# $DIRECTORIES: a reference on a array containing a list of directories to
-#               search the file in. Binary strings.
-# $ALL_FILES:   if true collect all the files with that name, otherwise stop
-#               at first match.
-sub locate_init_file($$$)
-{
-  my $file = shift;
-  my $directories = shift;
-  my $all_files = shift;
-
-  if (File::Spec->file_name_is_absolute($file)) {
-    return $file if (-e $file and -r $file);
-  } else {
-    my @files;
-    foreach my $dir (@$directories) {
-      next unless (-d $dir);
-      my $possible_file = File::Spec->catfile($dir, $file);
-      if ($all_files) {
-        push (@files, $possible_file)
-          if (-e $possible_file and -r $possible_file);
-      } else {
-        return $possible_file if (-e $possible_file and -r $possible_file);
-      }
-    }
-    return @files if ($all_files);
-  }
-  return undef;
-}
-
-
-# API to open, set encoding and register files.
-# In general $SELF is stored as $converter->{'output_files'}
-# and should be accessed through $converter->output_files_information();
-
-# TODO next three functions not documented anywhere, probably relevant to document
-# both in POD and in HTML Customization API.
-sub output_files_initialize
-{
-  return {'unclosed_files' => {}, 'opened_files' => []};
-}
-#
-# All the opened files are registered, except for stdout,
-# and the closing of files should be registered too with
-# output_files_register_closed() below.  This makes possible to
-# unlink all the opened files and close the files not already
-# closed.
-#
-# $FILE_PATH is the file path, it should be a binary string.
-# If $USE_BINMODE is set, call binmode() to set binary mode.
-# $OUTPUT_ENCODING argument overrides the output encoding.
-# Returns
-#  - the opened filehandle, or undef if opening failed,
-#  - the $! error message or undef if opening succeeded.
-sub output_files_open_out($$$;$$)
-{
-  my $self = shift;
-  my $customization_information = shift;
-  my $file_path = shift;
-  my $use_binmode = shift;
-  my $output_encoding = shift;
-
-  #if (!defined($file_path)) {
-  #  cluck('output_files_open_out: file_path undef');
-  #}
-
-  my $encoding;
-  if (defined($output_encoding)) {
-    $encoding = $output_encoding;
-  } elsif (defined($customization_information->get_conf('OUTPUT_PERL_ENCODING'))) {
-    $encoding = $customization_information->get_conf('OUTPUT_PERL_ENCODING');
-  }
-
-  if ($file_path eq '-') {
-    binmode(STDOUT) if $use_binmode;
-    binmode(STDOUT, ":encoding($encoding)") if (defined($encoding));
-    if ($self) {
-      $self->{'unclosed_files'}->{$file_path} = \*STDOUT;
-    }
-    return \*STDOUT, undef;
-  }
-  my $filehandle = do { local *FH };
-  if (!open ($filehandle, '>', $file_path)) {
-    my $error_message = $!;
-    return undef, $error_message;
-  }
-  # If $use_binmode is true, we run binmode to turn off outputting LF as CR LF
-  # under MS-Windows, so that Info tag tables will have correct offsets.  This
-  # must be done before setting the encoding filters with binmode.
-  binmode($filehandle) if $use_binmode;
-  if ($encoding) {
-    binmode($filehandle, ":encoding($encoding)");
-  }
-  if ($self) {
-    push @{$self->{'opened_files'}}, $file_path;
-    $self->{'unclosed_files'}->{$file_path} = $filehandle;
-  }
-  return $filehandle, undef;
-}
-
-# see the description of $SELF in comment above output_files_open_out.
-#
-# $FILE_PATH is the file path, it should be a binary string.
-sub output_files_register_closed($$)
-{
-  my $self = shift;
-  my $file_path = shift;
-  if ($self->{'unclosed_files'}->{$file_path}) {
-    delete $self->{'unclosed_files'}->{$file_path};
-  } else {
-    cluck "$file_path not opened\n";
+  foreach my $internal_command (keys(%Texinfo::Commands::internal_commands)) {
+    delete $all_commands{$internal_command};
   }
 }
 
-# The next two functions should not be called from user-defined
-# code, only from the main program.  They are defined here for
-# consistency of the API and clarity of the code.
-#
-# see the description of $SELF in comment above output_files_open_out.
-sub output_files_opened_files($)
-{
-  my $self = shift;
-  if (defined($self->{'opened_files'})) {
-    return @{$self->{'opened_files'}};
-  } else {
-    return ();
-  }
-}
 
-# see the description of $SELF in comment above output_files_open_out.
-sub output_files_unclosed_files($)
-{
-  my $self = shift;
-  return $self->{'unclosed_files'};
-}
-# end of output_files API
-
-
+
 # functions used in main program, Parser and/or Texinfo::Structuring.
 # Not supposed to be called in user-defined code.
 
-# Called both in NonXS and XS parsers
+# Called in perl parser
 sub rearrange_tree_beginning($$)
 {
-  my $self = shift;
+  my $document = shift;
   my $before_node_section = shift;
 
   # Put everything before @setfilename in a special type.  This allows to
   # ignore everything before @setfilename.
-  if ($self->global_commands_information()->{'setfilename'}
-      and $self->global_commands_information()->{'setfilename'}->{'parent'}
+  if ($document->global_commands_information()->{'setfilename'}
+      and $document->global_commands_information()->{'setfilename'}->{'parent'}
                                                  eq $before_node_section) {
     my $before_setfilename = {'type' => 'preamble_before_setfilename',
                               'parent' => $before_node_section,
@@ -946,8 +628,7 @@ sub _add_preamble_before_content($)
 
   # add a preamble for informational commands
   my $informational_preamble = {'type' => 'preamble_before_content',
-                                'parent' => $before_node_section,
-                                'contents' => []};
+                                'parent' => $before_node_section,};
   my @first_types;
   if ($before_node_section->{'contents'}) {
     while (@{$before_node_section->{'contents'}}) {
@@ -964,38 +645,14 @@ sub _add_preamble_before_content($)
       } else {
         my $content = shift @{$before_node_section->{'contents'}};
         $content->{'parent'} = $informational_preamble;
+        $informational_preamble->{'contents'} = []
+            if (!$informational_preamble->{'contents'});
         push @{$informational_preamble->{'contents'}}, $content;
       }
     }
   }
   push @first_types, $informational_preamble;
   unshift (@{$before_node_section->{'contents'}}, @first_types);
-}
-
-sub get_perl_encoding($$$)
-{
-  my $commands_info = shift;
-  my $registrar = shift;
-  my $configuration_information = shift;
-
-  my $result;
-  if (defined($commands_info->{'documentencoding'})) {
-    foreach my $element (@{$commands_info->{'documentencoding'}}) {
-      my $perl_encoding = element_associated_processing_encoding($element);
-      if (!defined($perl_encoding)) {
-        my $encoding = $element->{'extra'}->{'input_encoding_name'}
-          if ($element->{'extra'});
-        if (defined($encoding)) {
-          $registrar->line_warn($configuration_information,
-                     sprintf(__("unrecognized encoding name `%s'"), $encoding),
-                                          $element->{'source_info'});
-        }
-      } else {
-        $result = $perl_encoding;
-      }
-    }
-  }
-  return $result;
 }
 
 # for Parser and main program
@@ -1023,8 +680,8 @@ sub warn_unknown_language($) {
   return @messages;
 }
 
-# next functions are for code used in Structuring in addition to Parser.
-# also possibly used in Texinfo::Transformations.
+# next functions are for code used in Structuring or Indices in addition
+# to Parser.  Also possibly used in Texinfo::Transformations.
 
 sub _find_end_brace($$)
 {
@@ -1067,6 +724,15 @@ sub _count_opened_tree_braces($$)
   return $braces_count;
 }
 
+sub ultimate_index($$) {
+  my $indices_information = shift;
+  my $index = shift;
+  while ($index->{'merged_in'}) {
+    $index = $indices_information->{$index->{'merged_in'}};
+  }
+  return $index;
+}
+
 # relocate $SOURCE_MARKS source marks with position between
 # $BEGIN_POSITION and $BEGIN_POSITION + $ADDED_LEN to be relative to
 # $BEGIN_POSITION, and move to element $E.
@@ -1091,21 +757,36 @@ sub relocate_source_marks($$$$)
   for (my $i = 0; $i < scalar(@$source_marks); $i++) {
     my $source_mark = $source_marks->[$i];
     if (($begin_position == 0
-         and (!defined($source_marks->[$i]->{'position'})
+         and (!defined($source_mark->{'position'})
               # this should never happen
-              or $source_marks->[$i]->{'position'} == 0))
-        or ($source_marks->[$i]->{'position'} > $begin_position
-            and $source_marks->[$i]->{'position'} <= $end_position)) {
+              or $source_mark->{'position'} == 0))
+        or (defined($source_mark->{'position'})
+            and $source_mark->{'position'} > $begin_position
+            and $source_mark->{'position'} <= $end_position)) {
       unshift @indices_to_remove, $i;
-      if ($source_mark->{'position'}) {
-        $source_mark->{'position'}
-           = $source_mark->{'position'} - $begin_position;
-      } elsif ($begin_position) {
-        warn "BUG: no $source_mark->{'position'} but $begin_position\n";
+      if (defined($e->{'text'})) {
+        if ($source_mark->{'position'}) {
+          $source_mark->{'position'}
+             = $source_mark->{'position'} - $begin_position;
+        } elsif ($begin_position) {
+          warn "BUG: no $source_mark->{'position'} but $begin_position\n";
+        }
+      } else {
+        # if the source mark is to be added to a command, it can only be right
+        # after the command.  The current use case is a symbol with a source
+        # mark after the symbol replaced by an @-command, so we are in
+        # the case of $added_length = 1 and
+        # $source_mark->{'position'} == $end_position
+        if ($source_mark->{'position'}
+            and $source_mark->{'position'} - $begin_position > 1) {
+          warn "BUG? after command $source_mark->{'position'} way past $begin_position\n";
+        }
+        delete $source_mark->{'position'};
       }
       $e->{'source_marks'} = [] if (! defined($e->{'source_marks'}));
       push @{$e->{'source_marks'}}, $source_mark;
-    } elsif ($source_marks->[$i]->{'position'} > $end_position) {
+    } elsif (defined($source_marks->[$i]->{'position'})
+             and $source_marks->[$i]->{'position'} > $end_position) {
       # only correct if positions are always monotonically increasing
       # but should be the case for now
       last;
@@ -1129,10 +810,10 @@ sub relocate_source_marks($$$$)
 #                      node specification.
 #     node_content - Texinfo tree for the node name on its own
 #
-# A contents array where the manual_content and node_content
-# elements substituted the initial contents is also returned,
-# typically to replace $LABEL_CONTENTS_CONTAINER->{'contents'}
-# for consistency.
+# If $MODIFY_TREE is set and manual name is retrieved, modify the
+# $LABEL_CONTENTS_CONTAINER contents such that the parentheses, the manual
+# part and the node part are not in the same elements in the contents,
+# and use the corresponding elements in the returned object.
 #
 # Could be documented, but only if there is evidence that this function
 # is useful in user-defined code.
@@ -1278,7 +959,7 @@ sub parse_node_manual($;$)
       $idx = 0;
     } else {
       $result = {};
-      $result->{'manual_content'} = $manual;
+      $result->{'manual_content'} = {'contents' => $manual};
     }
   }
 
@@ -1288,23 +969,80 @@ sub parse_node_manual($;$)
 
   if (scalar(@$node_content)) {
     $result = {} if (!$result);
-    $result->{'node_content'} = $node_content;
+    $result->{'node_content'} = {'contents' => $node_content};
   }
 
   return $result;
 }
 
 
+
 # misc functions used in diverse contexts and useful in converters
 
-sub element_associated_processing_encoding($)
+# Used in main program, tests and HTML Converter.
+# TODO document?
+#
+# $INPUT_FILE_PATH: file name to locate.  Binary string.  If it is a file
+#                   path, it is not searched for in directories.
+# $DIRECTORIES: a reference on a array containing a list of directories to
+#               search the file in. Binary strings.
+# $ALL_FILES:   if true collect all the files with that name, otherwise stop
+#               at first match.
+# $DEPRECATED_DIRS:  optional argument.  If set, associates deprecated directory
+#                    names with the directory name that should be used
+#
+# Return an array reference with the files found, only one if $ALL_FILES
+# is false, and an array reference with the deprecated directories used.
+sub locate_file_in_dirs($$$;$)
 {
-  my $element = shift;
+  my $input_file_path = shift;
+  my $directories = shift;
+  my $all_files = shift;
+  my $deprecated_dirs = shift;
+
+  my $deprecated_dirs_used;
+
+  if (File::Spec->file_name_is_absolute($input_file_path)) {
+    return ([$input_file_path], undef)
+       if (-e $input_file_path and -r $input_file_path);
+  } else {
+    my ($volume, $path_directories, $file)
+       = File::Spec->splitpath($input_file_path);
+    my @path_directories = File::Spec->splitdir($path_directories);
+    if (scalar(@path_directories) > 0) {
+      # do not search in directories if the file name already contains
+      # directories.
+      return ([$input_file_path], undef)
+         if (-e $input_file_path and -r $input_file_path);
+    } else {
+      my @files;
+      foreach my $dir (@$directories) {
+        next unless (-d $dir);
+        my $possible_file = "$dir/$input_file_path";
+        if (-e $possible_file and -r $possible_file) {
+          if ($deprecated_dirs and $deprecated_dirs->{$dir}) {
+            $deprecated_dirs_used = [] if (!defined($deprecated_dirs_used));
+            push @$deprecated_dirs_used, $dir;
+          }
+          if ($all_files) {
+            push (@files, $possible_file);
+          } else {
+            return [$possible_file], $deprecated_dirs_used;
+          }
+        }
+      }
+      return (\@files, $deprecated_dirs_used)
+        if ($all_files and scalar(@files));
+    }
+  }
+  return undef, undef;
+}
+
+sub perl_encoding_name($)
+{
+  my $encoding = shift;
 
   my $perl_encoding;
-
-  my $encoding = $element->{'extra'}->{'input_encoding_name'}
-    if ($element->{'extra'});
 
   if (defined($encoding) and $encoding ne '') {
     $encoding = $encoding_name_conversion_map{$encoding}
@@ -1318,6 +1056,16 @@ sub element_associated_processing_encoding($)
   }
 
   return $perl_encoding;
+}
+
+sub element_associated_processing_encoding($)
+{
+  my $element = shift;
+
+  my $encoding = $element->{'extra'}->{'input_encoding_name'}
+    if ($element->{'extra'});
+
+  return perl_encoding_name($encoding);
 }
 
 # Reverse the decoding of the file name from the input encoding.  When
@@ -1342,28 +1090,26 @@ sub encode_file_name($$)
   } else {
     $encoding = $input_encoding;
   }
-  $file_name = Encode::encode($encoding, $file_name);
-  return ($file_name, $encoding);
+  my $encoded_file_name = Encode::encode($encoding, $file_name);
+  return ($encoded_file_name, $encoding);
 }
 
-sub locate_include_file($$)
+sub locate_include_file($;$)
 {
-  my $customization_information = shift;
   my $input_file_path = shift;
+  my $include_directories = shift;
 
   my $ignore_include_directories = 0;
 
-  my ($volume, $directories, $filename)
-     = File::Spec->splitpath($input_file_path);
-  my @directories = File::Spec->splitdir($directories);
-
-  #print STDERR "$customization_information $input_file_path ".
-  # @{$customization_information->get_conf('INCLUDE_DIRECTORIES')}\n";
   # If the path is absolute or begins with . or .., do not search in
   # include directories.  This is consistent with Kpathsea for Texinfo TeX.
   if (File::Spec->file_name_is_absolute($input_file_path)) {
     $ignore_include_directories = 1;
   } else {
+    my ($volume, $directories, $filename)
+      = File::Spec->splitpath($input_file_path);
+    my @directories = File::Spec->splitdir($directories);
+
     foreach my $dir (@directories) {
       if ($dir eq File::Spec->updir() or $dir eq File::Spec->curdir()) {
         $ignore_include_directories = 1;
@@ -1374,36 +1120,27 @@ sub locate_include_file($$)
     }
   }
 
-  my $found_file;
   if ($ignore_include_directories) {
-    $found_file = $input_file_path
-         if (-e $input_file_path and -r $input_file_path);
+    if (-e $input_file_path and -r $input_file_path) {
+      return $input_file_path;
+    }
   } else {
-    my @include_directories;
-    if ($customization_information
-        and $customization_information->get_conf('INCLUDE_DIRECTORIES')) {
-      @include_directories
-         = @{$customization_information->get_conf('INCLUDE_DIRECTORIES')};
-    } else {
-      # no object with directory list and not an absolute path, never succeed
+    if (!$include_directories) {
+      # no directory list and not an absolute path, never succeed
       return undef;
     }
-    foreach my $include_dir (@include_directories) {
-      my ($include_volume, $include_dir_path, $include_filename)
-         = File::Spec->splitpath($include_dir, 1);
-      
-      my $possible_file = File::Spec->catpath($include_volume,
-        File::Spec->catdir(File::Spec->splitdir($include_dir_path),
-                           @directories), $filename);
-      $found_file = $possible_file
-           if (-e $possible_file and -r $possible_file);
-      last if (defined($found_file));
+    foreach my $include_dir (@$include_directories) {
+      my $possible_file = "$include_dir/$input_file_path";
+      if (-e $possible_file and -r $possible_file) {
+        return $possible_file;
+      }
     }
   }
-  return $found_file;
+  return undef;
 }
 
-sub _informative_command_value($)
+# TODO document?
+sub informative_command_value($)
 {
   my $element = shift;
 
@@ -1443,10 +1180,11 @@ sub set_informative_command_value($$)
   my $cmdname = $element->{'cmdname'};
   $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
 
-  my $value = _informative_command_value($element);
+  my $value = informative_command_value($element);
 
   if (defined($value)) {
-    return $self->set_conf($cmdname, $value);
+    my $set = $self->set_conf($cmdname, $value);
+    return $set;
   }
   return 0;
 }
@@ -1473,7 +1211,46 @@ sub _in_preamble($)
 # 'last' means setting to the last value for the command in the document.
 #
 # For unique command, the last may be considered to be the same as the first.
-#
+sub get_global_document_command($$$)
+{
+  my $global_commands_information = shift;
+  my $global_command = shift;
+  my $command_location = shift;
+
+  if ($command_location ne 'last' and $command_location ne 'preamble_or_first'
+      and $command_location ne 'preamble') {
+    warn "BUG: get_global_document_command: unknown command_location: $command_location";
+  }
+
+  my $element;
+  if ($global_commands_information
+      and $global_commands_information->{$global_command}) {
+    if (ref($global_commands_information->{$global_command}) eq 'ARRAY') {
+      if ($command_location eq 'last') {
+        $element = $global_commands_information->{$global_command}->[-1];
+      } else {
+        if ($command_location eq 'preamble_or_first'
+            and not _in_preamble($global_commands_information->{$global_command}->[0])) {
+          $element =
+            $global_commands_information->{$global_command}->[0];
+        } else {
+          foreach my $command_element (@{$global_commands_information->{$global_command}}) {
+            if (_in_preamble($command_element)) {
+              $element = $command_element;
+            } else {
+              last;
+            }
+          }
+        }
+      }
+    } else {
+      # unique command, first, preamble and last are the same
+      $element = $global_commands_information->{$global_command};
+    }
+  }
+  return $element;
+}
+
 # Notice that the only effect is to use set_conf (directly or through
 # set_informative_command_value), no @-commands setting side effects are done
 # and associated customization variables are not set/reset either.
@@ -1484,39 +1261,10 @@ sub set_global_document_command($$$$)
   my $global_command = shift;
   my $command_location = shift;
 
-  if ($command_location ne 'last' and $command_location ne 'preamble_or_first'
-      and $command_location ne 'preamble') {
-    warn "BUG: set_global_document_command: unknown command_location: $command_location";
-  }
+  my $element = get_global_document_command($global_commands_information,
+                                            $global_command, $command_location);
 
-  my $element;
-  if ($global_commands_information
-      and defined($global_commands_information->{$global_command})
-      and ref($global_commands_information->{$global_command}) eq 'ARRAY') {
-    if ($command_location eq 'last') {
-      $element = $global_commands_information->{$global_command}->[-1];
-      set_informative_command_value($self, $element);
-    } else {
-      if ($command_location eq 'preamble_or_first'
-          and not _in_preamble($global_commands_information->{$global_command}->[0])) {
-        $element =
-          $global_commands_information->{$global_command}->[0];
-        set_informative_command_value($self, $element);
-      } else {
-        foreach my $command_element (@{$global_commands_information->{$global_command}}) {
-          if (_in_preamble($command_element)) {
-            $element = $command_element;
-            set_informative_command_value($self, $element);
-          } else {
-            last;
-          }
-        }
-      }
-    }
-  } elsif ($global_commands_information
-           and defined($global_commands_information->{$global_command})) {
-    # unique command, first, preamble and last are the same
-    $element = $global_commands_information->{$global_command};
+  if ($element) {
     set_informative_command_value($self, $element);
   }
   return $element;
@@ -1527,6 +1275,9 @@ sub lookup_index_entry($$)
   my $index_entry_info = shift;
   my $indices_information = shift;
 
+  if (!defined($index_entry_info)) {
+    cluck ("BUG: lookup_index_entry: index_entry_info undef\n");
+  }
   my ($entry_index_name, $entry_number) = @{$index_entry_info};
 
   my $index_info;
@@ -1541,15 +1292,44 @@ sub lookup_index_entry($$)
   return (undef, $index_info);
 }
 
-sub set_output_encodings($$)
+# only used from Perl
+# Remove first $ELEMENT from $ARRAY
+sub remove_from_array($$)
+{
+  my $array = shift;
+  my $element = shift;
+
+  #if (!defined($array)) {
+  #  cluck();
+  #}
+
+  for (my $index = 0; $index < scalar(@$array); $index++) {
+    if ($array->[$index] eq $element) {
+      return splice(@$array, $index, 1);
+    }
+  }
+  return undef;
+}
+
+sub set_output_encoding($$)
 {
   my $customization_information = shift;
-  my $parser_information = shift;
+  my $document = shift;
 
+  my $document_information;
+  if ($document) {
+    $document_information = $document->global_information();
+  }
   $customization_information->set_conf('OUTPUT_ENCODING_NAME',
-               $parser_information->{'input_encoding_name'})
-     if ($parser_information
-         and $parser_information->{'input_encoding_name'});
+               $document_information->{'input_encoding_name'})
+     if ($document_information
+         and $document_information->{'input_encoding_name'});
+}
+
+sub set_output_perl_encoding($)
+{
+  my $customization_information = shift;
+
   if (not defined($customization_information->get_conf('OUTPUT_PERL_ENCODING'))
       and defined($customization_information->get_conf('OUTPUT_ENCODING_NAME'))) {
     my $conversion_encoding
@@ -1560,7 +1340,8 @@ sub set_output_encodings($$)
     }
     my $perl_encoding = Encode::resolve_alias($conversion_encoding);
     if (defined($perl_encoding) and $perl_encoding ne '') {
-      $customization_information->set_conf('OUTPUT_PERL_ENCODING', $perl_encoding);
+      $customization_information->set_conf('OUTPUT_PERL_ENCODING',
+                                           $perl_encoding);
     }
   }
 }
@@ -1574,8 +1355,8 @@ sub section_level($)
   my $section = shift;
   my $level = $command_structuring_level{$section->{'cmdname'}};
   # correct level according to raise/lowersections
-  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
-    $level -= $section->{'extra'}->{'sections_level'};
+  if ($section->{'extra'} and $section->{'extra'}->{'level_modifier'}) {
+    $level -= $section->{'extra'}->{'level_modifier'};
     if ($level < $min_level) {
       if ($command_structuring_level{$section->{'cmdname'}} < $min_level) {
         $level = $command_structuring_level{$section->{'cmdname'}};
@@ -1589,26 +1370,10 @@ sub section_level($)
   return $level;
 }
 
-sub trim_spaces_comment_from_content($)
-{
-  my $contents = shift;
-
-  shift @$contents
-    if ($contents->[0] and $contents->[0]->{'type'}
-       and ($contents->[0]->{'type'} eq 'ignorable_spaces_after_command'
-            or $contents->[0]->{'type'} eq 'spaces_after_close_brace'));
-
-  while (@$contents
-         and (($contents->[-1]->{'cmdname'}
-               and ($contents->[-1]->{'cmdname'} eq 'c'
-                    or $contents->[-1]->{'cmdname'} eq 'comment'))
-              or ($contents->[-1]->{'type'}
-                  and $contents->[-1]->{'type'} eq 'spaces_at_end'))) {
-    pop @$contents;
-  }
-}
-
-# decompose a decimal number on a given base.
+# decompose a decimal number on a given base.  It is not the
+# decomposition used for counting as we start at 0, not 1 for all
+# the factors.  This is in order to get aa and not ba in calling
+# code.
 sub _decompose_integer($$)
 {
   my $number = shift;
@@ -1651,6 +1416,13 @@ sub is_content_empty($;$)
     return 1;
   }
   foreach my $content (@{$tree->{'contents'}}) {
+    if (defined($content->{'text'})) {
+      if ($content->{'text'} =~ /\S/) {
+        return 0;
+      } else {
+        next;
+      }
+    }
     if ($content->{'cmdname'}) {
       if ($content->{'type'} and $content->{'type'} eq 'index_entry_command') {
         if ($do_not_ignore_index_entries) {
@@ -1672,7 +1444,7 @@ sub is_content_empty($;$)
         } else {
           next;
         }
-      } elsif ($non_formatted_brace_commands{$content->{'cmdname'}}
+      } elsif ($Texinfo::Commands::non_formatted_brace_commands{$content->{'cmdname'}}
                or $Texinfo::Commands::non_formatted_block_commands{$content->{'cmdname'}}) {
         next;
       } else {
@@ -1683,9 +1455,6 @@ sub is_content_empty($;$)
       if ($content->{'type'} eq 'paragraph') {
         return 0;
       }
-    }
-    if ($content->{'text'} and $content->{'text'} =~ /\S/) {
-      return 0;
     }
     if (not is_content_empty($content, $do_not_ignore_index_entries)) {
       return 0;
@@ -1722,9 +1491,8 @@ sub _inline_or_block($)
   } elsif ($current->{'cmdname'}
            and exists($not_inline_commands{$current->{'cmdname'}})) {
     return 0;
-  } else {
-    return undef;
   }
+  return undef;
 }
 
 # return true if in running text context.
@@ -1761,6 +1529,9 @@ sub normalize_top_node_name($)
 my $Encode_encoding_object;
 my $last_encoding;
 
+# Only used in the unmaintained IXIN converter, but could be useful in
+# other converters, so it is better to keep it to get an idea of the type of
+# code that needs the output perl encoding information.
 sub count_bytes($$;$)
 {
   my $self = shift;
@@ -1807,42 +1578,61 @@ sub index_content_element($;$)
 # custom heading command line is split at @|
 sub split_custom_heading_command_contents($)
 {
-  my $contents = shift;
+  my $element = shift;
 
-  my $result = [];
+  my $result = undef;
 
   my $nr_split_contents = 0;
 
-  my @contents = @$contents;
+  my $contents_nr = scalar(@{$element->{'contents'}});
 
-  trim_spaces_comment_from_content(\@contents);
-
-  if (scalar(@contents) == 0) {
-    # or undef?
+  if (!$contents_nr) {
     return $result;
   }
 
-  push @$result, [];
+  $result = {'contents' => []};
+  my $heading_element = {'contents' => []};
+  push @{$result->{'contents'}}, $heading_element;
 
-  while (scalar(@contents)) {
-    my $current_content = $contents[0];
-    #print STDERR "$nr_split_contents ".scalar(@contents).": "
+  for (my $i = 0; $i < $contents_nr; $i++) {
+    my $current_content = $element->{'contents'}->[$i];
+    #print STDERR "$nr_split_contents : "
     #          .debug_print_element($current_content)."\n";
     if (defined($current_content->{'cmdname'})
         and $current_content->{'cmdname'} eq '|') {
-      shift @contents;
-      push @$result, [];
-      $nr_split_contents++;
-      if ($nr_split_contents >= 2) {
-        last;
+      if ($nr_split_contents < 2) {
+        $heading_element = {'contents' => []};
+        push @{$result->{'contents'}}, $heading_element;
+        $nr_split_contents++;
       }
     } else {
-      push @{$result->[-1]}, shift @contents;
+      push @{$heading_element->{'contents'}}, $current_content;
     }
   }
-  push @{$result->[-1]}, @contents;
 
   return $result;
+}
+
+# TODO document?
+# currently untested/unused, but there is a similar function in XS that
+# is used.
+sub replace_element_in_contents($$$)
+{
+  my $parent = shift;
+  my $removed = shift;
+  my $added = shift;
+
+  return 0 if (!defined($parent) or !$parent->{'contents'});
+
+  my $nr_contents = scalar(@{$parent->{'contents'}});
+  for (my $i = 0; $i < $nr_contents; $i++) {
+    my $content = $parent->{'contents'}->[$i];
+    if ($content eq $removed) {
+      $parent->{'contents'}->[$i] = $added;
+      return 1;
+    }
+  }
+  return 0;
 }
 
 # not currently used
@@ -1859,13 +1649,14 @@ sub find_parent_root_command($$)
         return $current;
       } elsif ($Texinfo::Commands::block_commands{$current->{'cmdname'}}
                and $Texinfo::Commands::block_commands{$current->{'cmdname'}} eq 'region') {
-        if ($current->{'cmdname'} eq 'copying' and $self
-            and $self->{'global_commands'}
-            and $self->{'global_commands'}->{'insertcopying'}) {
-          foreach my $insertcopying(@{$self->{'global_commands'}->{'insertcopying'}}) {
-            my $root_command
-              = find_parent_root_command($self, $insertcopying);
-            return $root_command if (defined($root_command));
+        if ($current->{'cmdname'} eq 'copying' and $self and $self->{'document'}) {
+          my $global_commands = $self->{'document'}->global_commands_information();
+          if ($global_commands and $global_commands->{'insertcopying'}) {
+            foreach my $insertcopying(@{$global_commands->{'insertcopying'}}) {
+              my $root_command
+                = find_parent_root_command($self, $insertcopying);
+              return $root_command if (defined($root_command));
+            }
           }
         } else {
           return undef;
@@ -1956,585 +1747,45 @@ sub _collect_commands_list_in_tree($$$)
 }
 
 
-# functions useful for Texinfo tree transformations
-# and some tree transformations functions, mostly those
-# used in conversion to main output formats.  In general,
-# tree transformations functions are documented in the POD section.
-
-# Some helper functions defined here are used in other
-# modules but are not generally useful in converters
-# and therefore not public.
-
-sub _copy_tree($$$);
-sub _copy_tree($$$)
-{
-  my $current = shift;
-  my $parent = shift;
-  my $reference_associations = shift;
-  if (exists($reference_associations->{$current})) {
-    # happens for def_*index_element (which are not in the main tree)
-    # as they contain pieces of the main tree
-    #print STDERR "COPY: replace $current: "
-    #          ."$reference_associations->{$current}; "
-    #          .Texinfo::Common::debug_print_element($current)."\n";
-    return $reference_associations->{$current};
-  }
-  my $new = {};
-  $reference_associations->{$current} = $new;
-  $new->{'parent'} = $parent if ($parent);
-  foreach my $key ('type', 'cmdname', 'text') {
-    $new->{$key} = $current->{$key} if (exists($current->{$key}));
-  }
-  foreach my $key ('args', 'contents') {
-    if ($current->{$key}) {
-      if (ref($current->{$key}) ne 'ARRAY') {
-        my $command_or_type = '';
-        if ($new->{'cmdname'}) {
-          $command_or_type = '@'.$new->{'cmdname'};
-        } elsif ($new->{'type'}) {
-          $command_or_type = $new->{'type'};
-        }
-        print STDERR "BUG: Not an array [$command_or_type] $key ".
-                                             ref($current->{$key})."\n";
-      }
-      $new->{$key} = [];
-      foreach my $child (@{$current->{$key}}) {
-        push @{$new->{$key}}, _copy_tree($child, $new, $reference_associations);
-      }
-    }
-  }
-  return $new;
-}
-
-# this code works with arrays mixing scalars and reference to elements.
-# In practice arrays in extra are either only scalars (index_entry,
-# misc_args) or only elements (the remaining).
-sub _substitute_references_in_array($$$;$);
-sub _substitute_references_in_array($$$;$)
-{
-  my $array = shift;
-  my $reference_associations = shift;
-  my $context = shift;
-  my $level = shift;
-
-  $level = 0 if (!defined($level));
-  $level++;
-
-  my $result = [];
-  my $index = 0;
-  foreach my $item (@{$array}) {
-    if (ref($item) eq '') {
-      push @{$result}, $item;
-    } elsif ($reference_associations->{$item}) {
-      push @{$result}, $reference_associations->{$item};
-    } elsif (ref($item) eq 'ARRAY') {
-      # nothing like a two level array currently, and hopefully never
-      push @$result,
-        _substitute_references_in_array($item, $reference_associations,
-                                        "$context [$index]", $level);
-    } else {
-      print STDERR "Trouble with $context [$index] (".ref($item).")\n";
-      push @{$result}, undef;
-    }
-    $index++;
-  }
-  return $result;
-}
-
-sub _copy_extra_info($$$;$);
-sub _copy_extra_info($$$;$)
-{
-  my $current = shift;
-  my $new = shift;
-  my $reference_associations = shift;
-  my $level = shift;
-
-  my $command_or_type = '';
-  if ($new->{'cmdname'}) {
-    $command_or_type = '@'.$new->{'cmdname'};
-  } elsif ($new->{'type'}) {
-    $command_or_type = $new->{'type'};
-  }
-
-  $level = 0 if (!defined($level));
-
-  $level++;
-  #print STDERR (' ' x $level)
-  #   .Texinfo::Common::debug_print_element($current).": $current\n";
-
-  foreach my $key ('args', 'contents') {
-    if ($current->{$key}) {
-      my $index = 0;
-      foreach my $child (@{$current->{$key}}) {
-        _copy_extra_info($child, $new->{$key}->[$index],
-                         $reference_associations, $level);
-        $index++;
-      }
-    }
-  }
-
-  foreach my $info_type ('info', 'extra') {
-    next if (!$current->{$info_type});
-    foreach my $key (keys %{$current->{$info_type}}) {
-      #print STDERR (' ' x $level) . "K $info_type $key\n";
-      my $value = $current->{$info_type}->{$key};
-      if (ref($value) eq '') {
-        $new->{$info_type}->{$key} = $value;
-      } elsif (ref($value) eq 'ARRAY') {
-        # authors index_entry manual_content menus misc_args node_content
-        #print STDERR "Array $command_or_type $info_type -> $key\n";
-        $new->{$info_type}->{$key}
-          = _substitute_references_in_array($value, $reference_associations,
-                             "${info_type}[$command_or_type]{$key}", $level);
-      } elsif (ref($value) eq 'HASH') {
-        if ($reference_associations->{$value}) {
-          # reference to another element in the tree, for example:
-          # associated_node caption columnfractions def_index_element
-          # command_as_argument seealso subentry
-          $new->{$info_type}->{$key} = $reference_associations->{$value};
-          #print STDERR "Done $info_type [$command_or_type]: $key\n";
-        } elsif ($value->{'contents'} or $value->{'args'} or $value->{'cmdname'}
-                 or $value->{'type'} or (defined($value->{'text'})
-                                         and $value->{'text'} ne '')) {
-          # Out of tree element.
-          # Note that the code works only if the out of tree elements are
-          # not referred to by main tree elements.
-          #print STDERR "Doing $info_type [$command_or_type]: $key\n";
-          my $new_element = _copy_tree($value, undef, $reference_associations);
-          _copy_extra_info($value, $new_element,
-                           $reference_associations, $level);
-          $new->{$info_type}->{$key} = $new_element;
-        } else {
-          # code that could handle hash structures that would not be elements.
-          # Not used currently, and it would be better if it stayed that way.
-          #print STDERR "HASH $info_type $key\n";
-          $new->{$info_type}->{$key} = {};
-          foreach my $type_key (keys(%{$value})) {
-            if (ref($value->{$type_key}) eq '') {
-              $new->{$info_type}->{$key}->{$type_key} = $value->{$type_key};
-            } elsif ($reference_associations->{$value->{$type_key}}) {
-              $new->{$info_type}->{$key}->{$type_key}
-                = $reference_associations->{$value->{$type_key}};
-            } elsif (ref($value->{$type_key}) eq 'ARRAY') {
-              $new->{$info_type}->{$key}->{$type_key}
-                = _substitute_references_in_array($value->{$type_key},
-                                   $reference_associations,
-                   "${info_type}[$command_or_type]{$key}{$type_key}", $level);
-            } else {
-              print STDERR "Unexpected $info_type [$command_or_type]{$key}: $type_key\n";
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-sub copy_tree($;$)
-{
-  my $current = shift;
-  my $parent = shift;
-  my $reference_associations = {};
-  my $copy = _copy_tree($current, $parent, $reference_associations);
-  _copy_extra_info($current, $copy, $reference_associations);
-  return $copy;
-}
-
-sub copy_contents($)
-{
-  my $contents = shift;
-  if (ref($contents) ne 'ARRAY') {
-    cluck "$contents not an array";
-    return undef;
-  }
-  my $copy = copy_tree({'contents' => $contents});
-  return $copy->{'contents'};
-}
-
-sub modify_tree($$;$);
-sub modify_tree($$;$)
-{
-  my $tree = shift;
-  my $operation = shift;
-  my $argument = shift;
-  #print STDERR "modify_tree tree: $tree\n";
-
-  if (!defined($tree) or ref($tree) ne 'HASH') {
-    cluck "tree ".(!defined($tree) ? 'UNDEF' : "not a hash: $tree");
-    return undef;
-  }
-
-  if ($tree->{'args'}) {
-    my @args = @{$tree->{'args'}};
-    for (my $i = 0; $i <= $#args; $i++) {
-      my @new_args = &$operation('arg', $args[$i], $argument);
-      modify_tree($args[$i], $operation, $argument);
-      # this puts the new args at the place of the old arg using the
-      # offset from the end of the array
-      splice (@{$tree->{'args'}}, $i - $#args -1, 1, @new_args);
-    }
-  }
-  if ($tree->{'contents'}) {
-    my @contents = @{$tree->{'contents'}};
-    for (my $i = 0; $i <= $#contents; $i++) {
-      my @new_contents = &$operation('content', $contents[$i], $argument);
-      modify_tree($contents[$i], $operation, $argument);
-      # this puts the new contents at the place of the old content using the
-      # offset from the end of the array
-      splice (@{$tree->{'contents'}}, $i - $#contents -1, 1, @new_contents);
-    }
-  }
-  if ($tree->{'source_marks'}) {
-    my @source_marks = @{$tree->{'source_marks'}};
-    for (my $i = 0; $i <= $#source_marks; $i++) {
-      if ($source_marks[$i]->{'element'}) {
-        my @new_element
-          = &$operation('source_mark', $source_marks[$i]->{'element'},
-                        $argument);
-        $source_marks[$i]->{'element'} = $new_element[0];
-      }
-    }
-  }
-  return $tree;
-}
-
-sub _protect_comma($$)
-{
-  my $type = shift;
-  my $current = shift;
-
-  return _protect_text($current, quotemeta(','));
-}
-
-sub protect_comma_in_tree($)
-{
-  my $tree = shift;
-  return modify_tree($tree, \&_protect_comma);
-}
-
-sub _new_asis_command_with_text($$;$)
-{
-  my $text = shift;
-  my $parent = shift;
-  my $text_type = shift;
-  my $new_command = {'cmdname' => 'asis', 'parent' => $parent };
-  push @{$new_command->{'args'}}, {'type' => 'brace_command_arg',
-                                   'parent' => $new_command};
-  push @{$new_command->{'args'}->[0]->{'contents'}}, {
-    'text' => $text,
-    'parent' => $new_command->{'args'}->[0]};
-  if (defined($text_type)) {
-    $new_command->{'args'}->[0]->{'contents'}->[0]->{'type'} = $text_type;
-  }
-  return $new_command;
-}
-
-sub _protect_text($$)
-{
-  my $current = shift;
-  my $to_protect = shift;
-
-  #print STDERR "_protect_text: $to_protect: $current "
-  #                         .debug_print_element($current, 1)."\n";
-  if (defined($current->{'text'}) and $current->{'text'} =~ /$to_protect/
-      and !(defined($current->{'type'}) and $current->{'type'} eq 'raw')) {
-    my @result = ();
-    my $remaining_text = $current->{'text'};
-    while ($remaining_text) {
-      if ($remaining_text =~ s/^(.*?)(($to_protect)+)//) {
-        if ($1 ne '') {
-          push @result, {'text' => $1, 'parent' => $current->{'parent'}};
-          $result[-1]->{'type'} = $current->{'type'}
-            if defined($current->{'type'});
-        }
-        if ($to_protect eq quotemeta(',')) {
-          for (my $i = 0; $i < length($2); $i++) {
-            push @result, {'cmdname' => 'comma', 'parent' => $current->{'parent'},
-                           'args' => [{'type' => 'brace_command_arg'}]};
-          }
-        } else {
-          push @result, _new_asis_command_with_text($2, $current->{'parent'},
-                                                    $current->{'type'});
-        }
-      } else {
-        push @result, {'text' => $remaining_text, 'parent' => $current->{'parent'}};
-        $result[-1]->{'type'} = $current->{'type'}
-          if defined($current->{'type'});
-        last;
-      }
-    }
-    #print STDERR "_protect_text: Result: @result\n";
-    return @result;
-  } else {
-    #print STDERR "_protect_text: No change\n";
-    return ($current);
-  }
-}
-
-sub _protect_colon($$)
-{
-  my $type = shift;
-  my $current = shift;
-
-  return _protect_text($current, quotemeta(':'));
-}
-
-sub protect_colon_in_tree($)
-{
-  my $tree = shift;
-  return modify_tree($tree, \&_protect_colon);
-}
-
-sub _protect_node_after_label($$)
-{
-  my $type = shift;
-  my $current = shift;
-
-  return _protect_text($current, '['. quotemeta(".\t,") .']');
-}
-
-sub protect_node_after_label_in_tree($)
-{
-  my $tree = shift;
-  return modify_tree($tree, \&_protect_node_after_label);
-}
-
-sub protect_first_parenthesis($)
-{
-  my $contents = shift;
-  confess("BUG: protect_first_parenthesis contents undef")
-    if (!defined($contents));
-  #print STDERR "protect_first_parenthesis: $contents\n";
-  my @contents = @$contents;
-  my $brace;
-  if ($contents[0] and $contents->[0]{'text'} and $contents[0]->{'text'} =~ /^\(/) {
-    if ($contents[0]->{'text'} !~ /^\($/) {
-      $brace = shift @contents;
-      my $brace_text = $brace->{'text'};
-      $brace_text =~ s/^\(//;
-      unshift @contents, { 'text' => $brace_text,
-                           'type' => $brace->{'type'},
-                           'parent' => $brace->{'parent'} }
-                                                   if $brace_text ne '';
-    } else {
-      $brace = shift @contents;
-    }
-    unshift @contents, _new_asis_command_with_text('(', $brace->{'parent'},
-                                                    $brace->{'type'});
-  }
-  return \@contents;
-}
-
-sub move_index_entries_after_items($)
-{
-  # enumerate or itemize
-  my $current = shift;
-
-  return unless ($current->{'contents'});
-
-  my $previous;
-  foreach my $item (@{$current->{'contents'}}) {
-    #print STDERR "Before proceeding: $previous $item->{'cmdname'} (@{$previous->{'contents'}})\n" if ($previous and $previous->{'contents'});
-    if (defined($previous) and $item->{'cmdname'}
-        and $item->{'cmdname'} eq 'item'
-        and $previous->{'contents'} and scalar(@{$previous->{'contents'}})) {
-
-      my $previous_ending_container;
-      if ($previous->{'contents'}->[-1]->{'type'}
-          and ($previous->{'contents'}->[-1]->{'type'} eq 'paragraph'
-               or $previous->{'contents'}->[-1]->{'type'} eq 'preformatted')) {
-        $previous_ending_container = $previous->{'contents'}->[-1];
-      } else {
-        $previous_ending_container = $previous;
-      }
-
-      my @gathered_index_entries;
-
-      #print STDERR "Gathering for item $item in previous $previous ($previous_ending_container)\n";
-      while ($previous_ending_container->{'contents'}->[-1]
-             and (($previous_ending_container->{'contents'}->[-1]->{'type'}
-                   and $previous_ending_container->{'contents'}->[-1]->{'type'} eq 'index_entry_command')
-                  or ($previous_ending_container->{'contents'}->[-1]->{'cmdname'}
-                      and ($previous_ending_container->{'contents'}->[-1]->{'cmdname'} eq 'c'
-                           or $previous_ending_container->{'contents'}->[-1]->{'cmdname'} eq 'comment')))) {
-        unshift @gathered_index_entries, pop @{$previous_ending_container->{'contents'}};
-      }
-      #print STDERR "Gathered: @gathered_index_entries\n";
-      if (scalar(@gathered_index_entries)) {
-        # put back leading comments
-        while ($gathered_index_entries[0]
-               and (!$gathered_index_entries[0]->{'type'}
-                    or $gathered_index_entries[0]->{'type'} ne 'index_entry_command')) {
-          #print STDERR "Putting back $gathered_index_entries[0] $gathered_index_entries[0]->{'cmdname'}\n";
-          push @{$previous_ending_container->{'contents'}},
-             shift @gathered_index_entries;
-        }
-
-        # We have the index entries of the previous @item or before item.
-        # Now put them right after the current @item command.
-        if (scalar(@gathered_index_entries)) {
-          my $item_container;
-          if ($item->{'contents'} and $item->{'contents'}->[0]
-              and $item->{'contents'}->[0]->{'type'}
-              and $item->{'contents'}->[0]->{'type'} eq 'preformatted') {
-            $item_container = $item->{'contents'}->[0];
-          } else {
-            $item_container = $item;
-          }
-          foreach my $entry(@gathered_index_entries) {
-            $entry->{'parent'} = $item_container;
-          }
-          if ($item_container->{'contents'}
-              and $item_container->{'contents'}->[0]
-              and $item_container->{'contents'}->[0]->{'type'}
-              and $item_container->{'contents'}->[0]->{'type'} eq 'ignorable_spaces_after_command') {
-            $item_container->{'contents'}->[0]->{'text'} .= "\n"
-              if ($item_container->{'contents'}->[0]->{'text'} !~ /\n$/);
-            unshift @gathered_index_entries, shift @{$item_container->{'contents'}};
-          }
-          unshift @{$item_container->{'contents'}}, @gathered_index_entries;
-        }
-      }
-    }
-    $previous = $item;
-  }
-}
-
-sub _move_index_entries_after_items($$)
-{
-  my $type = shift;
-  my $current = shift;
-
-  if ($current->{'cmdname'} and ($current->{'cmdname'} eq 'enumerate'
-                                 or $current->{'cmdname'} eq 'itemize')) {
-    move_index_entries_after_items($current);
-  }
-  return ($current);
-}
-
-# For @itemize/@enumerate
-sub move_index_entries_after_items_in_tree($)
-{
-  my $tree = shift;
-  return modify_tree($tree, \&_move_index_entries_after_items);
-}
-
-sub _relate_index_entries_to_table_items_in($$)
-{
-  my $table = shift;
-  my $indices_information = shift;
-
-  return unless $table->{'contents'};
-
-  foreach my $table_entry (@{$table->{'contents'}}) {
-    next unless $table_entry->{'contents'}
-      and $table_entry->{'type'} eq 'table_entry';
-
-    my $term = $table_entry->{'contents'}->[0];
-    my $definition;
-    my $item;
-    my @moved_index_entries;
-
-    # Move any index entries from the start of a 'table_definition' to
-    # the 'table_term'.
-    if (defined($table_entry->{'contents'}->[1])
-        and defined($table_entry->{'contents'}->[1]->{'type'})
-        and $table_entry->{'contents'}->[1]->{'type'} eq 'table_definition') {
-      $definition = $table_entry->{'contents'}->[1];
-
-      while (defined($definition->{'contents'}->[0])) {
-        my $child = $definition->{'contents'}->[0];
-        last if !defined($child->{'type'})
-               or $child->{'type'} ne 'index_entry_command';
-        shift @{$definition->{'contents'}};
-        push @moved_index_entries, $child;
-        $child->{'parent'} = $term;
-      }
-      unshift @{$term->{'contents'}}, @moved_index_entries;
-    }
-
-    if (defined($term->{'type'}) and $term->{'type'} eq 'table_term') {
-      # Relate the first index_entry_command in the 'table_term' to
-      # the term itself.
-
-      my $index_entry;
-      foreach my $content (@{$term->{'contents'}}) {
-        if ($content->{'type'}
-            and $content->{'type'} eq 'index_entry_command') {
-          my $index_info;
-          ($index_entry, $index_info)
-            = Texinfo::Common::lookup_index_entry(
-                            $content->{'extra'}->{'index_entry'},
-                            $indices_information)
-              unless $index_entry;
-        } elsif ($content->{'cmdname'} and $content->{'cmdname'} eq 'item') {
-          $item = $content unless $item;
-        }
-        if ($item and $index_entry) {
-          # This is better than overwriting 'entry_element', which
-          # holds important information.
-          $index_entry->{'entry_associated_element'} = $item;
-          last;
-        }
-      }
-    }
-  }
-}
-
-# Locate all @tables in the tree, and relate index entries to
-# the @item that immediately follows or precedes them.
-sub _relate_index_entries_to_table_items($$$)
-{
-  my $type = shift;
-  my $current = shift;
-  my $indices_information = shift;
-
-  return $current unless $current->{'cmdname'};
-
-  if ($current->{'cmdname'} eq 'table') {
-    _relate_index_entries_to_table_items_in($current, $indices_information);
-  }
-
-  return $current;
-}
-
-sub relate_index_entries_to_table_items_in_tree($$)
-{
-  my $tree = shift;
-  my $indices_information = shift;
-
-  return modify_tree($tree, \&_relate_index_entries_to_table_items,
-                     $indices_information);
-}
-
 # Common to different module, but not meant to be used in user-defined
 # codes.
-
-# Register a target element associated to a label that may be the target of
-# a reference and must be unique in the document.  Corresponds to @node,
-# @anchor, and @float (float label corresponds to the second argument).
-#
-# $TARGET_ELEMENTS_LIST array reference for elements associated to a label
-# $TARGET_ELEMENT is the tree element associated to the label.
-sub register_label($$)
-{
-  my ($target_elements_list, $target_element) = @_;
-
-  # register the element in the list.
-  push @{$target_elements_list}, $target_element;
-}
 
 sub get_label_element($)
 {
   my $current = shift;
+  return undef if (!defined($current->{'cmdname'}));
   if (($current->{'cmdname'} eq 'node' or $current->{'cmdname'} eq 'anchor')
       and $current->{'args'} and scalar(@{$current->{'args'}})) {
-    return $current->{'args'}->[0]
+    return $current->{'args'}->[0];
   } elsif ($current->{'cmdname'} eq 'float'
       and $current->{'args'} and scalar(@{$current->{'args'}}) >= 2) {
     return $current->{'args'}->[1];
   }
   return undef;
+}
+
+# For code that can be called both from the main
+# context, with a registrar and customization information, and from
+# a converter
+# NOTE it is considered internal and should not be called in user-defined
+# code.  If this changes, should be documented.
+sub converter_or_registrar_line_warn($$$$)
+{
+  my $registrar = shift;
+  my $customization_information = shift;
+  my $text = shift;
+  my $error_location_info = shift;
+
+  if (defined($registrar)) {
+    my $debug;
+    if ($customization_information) {
+      $debug = $customization_information->get_conf('DEBUG');
+    }
+    $registrar->line_warn($text, $error_location_info, 0, $debug);
+  } else {
+    $customization_information->converter_line_warn($text,
+                                                    $error_location_info);
+  }
 }
 
 # functions used for debugging.  May be used in other modules.
@@ -2574,32 +1825,33 @@ sub debug_print_element($;$)
   my $print_parent = shift;
 
   if (!defined($current)) {
-    return "debug_print_element: UNDEF\n";
+    return "debug_print_element: UNDEF";
   }
   if (ref($current) ne 'HASH') {
-    return "debug_print_element: $current not a hash\n";
+    return "debug_print_element: $current not a hash";
   }
   my $type = '';
   my $cmd = '';
   my $text = '';
-  $type = "($current->{'type'})" if (defined($current->{'type'}));
-  # specific of HTML
-  $type .= '{'.$current->{'extra'}->{'special_element_type'}.'}'
-    if (defined($current->{'extra'})
-      and defined($current->{'extra'}->{'special_element_type'}));
-  if (defined($current->{'cmdname'})) {
-    $cmd = '@' . debug_command_name($current->{'cmdname'});
-  }
-  if (defined($current->{'text'}) and $current->{'text'} ne '') {
-    my $text_str = $current->{'text'};
-    $text_str =~ s/\n/\\n/g;
-    $text = "[T: $text_str]";
-  }
   my $args = '';
   my $contents = '';
-  $args = "[A".scalar(@{$current->{'args'}}).']' if $current->{'args'};
-  $contents = "[C".scalar(@{$current->{'contents'}}).']'
-    if $current->{'contents'};
+  $type = "($current->{'type'})" if (defined($current->{'type'}));
+  if (defined($current->{'text'})) {
+    if ($current->{'text'} eq '') {
+      $text = "[T]";
+    } else {
+      my $text_str = $current->{'text'};
+      $text_str =~ s/\n/\\n/g;
+      $text = "[T: $text_str]";
+    }
+  } else {
+    if (defined($current->{'cmdname'})) {
+      $cmd = '@' . debug_command_name($current->{'cmdname'});
+    }
+    $args = "[A".scalar(@{$current->{'args'}}).']' if $current->{'args'};
+    $contents = "[C".scalar(@{$current->{'contents'}}).']'
+       if $current->{'contents'};
+  }
   my $parent_string = '';
   if ($print_parent) {
     $parent_string = _parent_string($current);
@@ -2619,12 +1871,51 @@ sub debug_print_element_details($;$)
     $string .= "   $key: $current->{$key}\n";
   }
   if ($current->{'extra'}) {
-    $string .= "    EXTRA\n";
+    $string .= " EXTRA\n";
     foreach my $key (keys (%{$current->{'extra'}})) {
-      $string .= "    $key: $current->{'extra'}->{$key}\n";
+      $string .= "  $key: $current->{'extra'}->{$key}\n";
+    }
+  }
+  if ($current->{'info'}) {
+    $string .= " INFO\n";
+    foreach my $key (keys (%{$current->{'info'}})) {
+      $string .= "  $key: $current->{'info'}->{$key}\n";
     }
   }
   return $string;
+}
+
+sub debug_print_output_unit
+{
+  my $current = shift;
+
+  if (!defined($current)) {
+    return "debug_print_output_unit: UNDEF\n";
+  }
+  if (ref($current) ne 'HASH') {
+    return "debug_print_output_unit: $current not a hash\n";
+  }
+  my $type = $current->{'unit_type'};
+  # Should never happen
+  $type = 'UNDEF' if (!defined($type));
+  my $unit_cmd = '';
+  if ($current->{'unit_command'}) {
+    $unit_cmd = debug_print_element($current->{'unit_command'}, 0)
+    .Texinfo::Convert::Texinfo::root_heading_command_to_texinfo(
+                                       $current->{'unit_command'});
+  }
+  my $fname = '';
+  if (defined($current->{'unit_filename'})) {
+    $fname = "{F:$current->{'unit_filename'}}";
+  }
+  my $variety = '';
+  if (defined($current->{'special_unit_variety'})) {
+    $variety = "{V:$current->{'special_unit_variety'}}";
+  }
+  my $contents = '';
+  $contents = "{C".scalar(@{$current->{'unit_contents'}}).'}'
+    if $current->{'unit_contents'};
+  return "{$type}$fname$variety$contents$unit_cmd";
 }
 
 # format list for debugging messages
@@ -2666,14 +1957,23 @@ sub debug_hash
   warn "$str\n";
 }
 
+# for debugging
 use Data::Dumper;
 
 my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args',
-  'extra', 'info', 'def_role', 'spaces_before_argument',
+  'extra', 'info', 'spaces_before_argument',
   'spaces_after_argument', 'comment_at_end', 'index_entry'
 );
 my %kept_keys;
 foreach my $key (@kept_keys) {
+  $kept_keys{$key} = 1;
+}
+my @kept_keys_output_unit = ('unit_contents');
+foreach my $key (@kept_keys_output_unit) {
+  $kept_keys{$key} = 1;
+}
+my @kept_keys_handle = ('tree_document_descriptor');
+foreach my $key (@kept_keys_handle) {
   $kept_keys{$key} = 1;
 }
 sub _filter_print_keys { [grep {$kept_keys{$_}} ( sort keys %{$_[0]} )] };
@@ -2706,6 +2006,9 @@ Texinfo::Common - Texinfo modules common data and miscellaneous methods
     = Texinfo::Common::collect_commands_in_tree($document_root,
                                              \@commands_to_collect);
 
+  my $package_version
+    = Texinfo::Common::get_build_constant('PACKAGE_AND_VERSION');
+
 =head1 NOTES
 
 The Texinfo Perl module main purpose is to be used in C<texi2any> to convert
@@ -2722,8 +2025,47 @@ methods.
 Hashes are defined as C<our> variables, and are therefore available
 outside of the module.
 
-TODO: undocumented
-%null_device_file %default_parser_customization_values %document_settable_multiple_at_commands %document_settable_unique_at_commands %default_converter_command_line_options %default_main_program_customization_options %default_converter_customization @variable_string_settables %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command %encoding_name_conversion_map
+Values defined for a Texinfo build independently of any document or
+output format are available by calling C<get_build_constant>:
+
+=over
+
+=item $value = get_build_constant($name)
+
+The following build constants are available:
+
+=over
+
+=item PACKAGE
+
+=item PACKAGE_CONFIG
+
+=item PACKAGE_AND_VERSION
+
+=item PACKAGE_AND_VERSION_CONFIG
+
+=item PACKAGE_NAME
+
+=item PACKAGE_NAME_CONFIG
+
+=item PACKAGE_VERSION
+
+=item PACKAGE_VERSION_CONFIG
+
+=item PACKAGE_URL
+
+=item PACKAGE_URL_CONFIG
+
+Texinfo package name and versions.  Values of build constants without
+C<_CONFIG> appended are set by configure.  For each variable set by
+configure there is another one with C<_CONFIG> appended
+to the name set to the same value, to match the name of the macros set in
+C.  So, for example C<PACKAGE_VERSION_CONFIG> value is the same as
+C<PACKAGE_VERSION>, set to the C<PACKAGE_VERSION> value set by configure.
+
+=back
+
+=back
 
 =over
 
@@ -2735,6 +2077,9 @@ practice corresponds to C<format_raw> C<%block_commands> plus C<info>
 and C<plaintext>.
 
 =back
+
+TODO: undocumented
+%null_device_file %default_parser_customization_values %multiple_at_command_options %unique_at_command_options %converter_cmdline_options %default_main_program_customization_options %converter_customization_options %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command %encoding_name_conversion_map %text_brace_no_arg_commands
 
 =head1 @-COMMAND INFORMATION
 
@@ -2771,11 +2116,6 @@ X<C<%nobrace_symbol_text>>
 
 Values are ASCII representation of single character non-alphabetical commands
 without brace such as C<*> or C<:>.  The value may be an empty string.
-
-=item %non_formatted_brace_commands
-
-Brace commands that are not immediately replaced with text, such as
-C<anchor>, C<caption>, C<errormsg> and others.
 
 =item %small_block_associated_command
 X<C<%small_block_associated_command>>
@@ -2816,7 +2156,7 @@ only be used in user-defined code with translatable strings already present in
 the domain anyway.  In fact, these functions are documented mainly because they
 are automatically exported.
 
-See L<libintl-perl>,
+See L<Locale::Messages>,
 L<C<gettext> C interface|https://www.gnu.org/software/gettext/manual/html_node/gettext.html>,
 L<Perl in GNU Gettext|https://www.gnu.org/software/gettext/manual/html_node/Perl.html>.
 For translation of strings in output, see L<Texinfo::Translations>.
@@ -2892,7 +2232,7 @@ Return true if the I<$tree> has content that could be formatted.
 I<$do_not_ignore_index_entries> is optional.  If set, index entries
 are considered to be formatted.
 
-=item $file = locate_include_file($customization_information, file_path)
+=item $file = locate_include_file($customization_information, $file_path)
 X<C<locate_include_file>>
 
 Locate I<$file_path>.  If I<$file_path> is an absolute path or has C<.>
@@ -2911,23 +2251,8 @@ an array reference with an index name as first element and the index entry numbe
 in that index (1-based) as second element.  In general, the I<$index_entry_info>
 is an L<C<extra> I<index_entry>|Texinfo::Parser/index_entry> associated to an element.
 
-The I<$index_entry> hash is described in L<Texinfo::Parser/index_entries>.  The
-I<$index_info> hash is described in LL<< C<Texinfo::Parser::indices_information>|Texinfo::Parser/$indices_information = $parser->indices_information() >>.
-
-
-=item move_index_entries_after_items_in_tree($tree)
-X<C<move_index_entries_after_items_in_tree>>
-
-In C<@enumerate> and C<@itemize> from the tree, move index entries
-appearing just before C<@item> after the C<@item>.  Comment lines
-between index entries are moved too.
-
-=item relate_index_entries_to_table_items_in_tree($tree)
-X<C<relate_index_entries_to_table_items_in_tree>>
-
-In tables, relate index entries preceding and following an
-entry with said item.  Reference one of them in the entry's
-C<entry_associated_element>.
+The I<$index_entry> hash is described in L<Texinfo::Document/index_entries>.  The
+I<$index_info> hash is described in L<< C<Texinfo::Document::indices_information>|Texinfo::Document/$indices_information = $document->indices_information() >>.
 
 =item $normalized_name = normalize_top_node_name($node_string)
 X<C<normalize_top_node_name>>
@@ -2935,29 +2260,10 @@ X<C<normalize_top_node_name>>
 Normalize the node name string given in argument, by normalizing
 Top node case.
 
-=item protect_colon_in_tree($tree)
+=item $result = remove_from_array($array, $element)
 
-=item protect_node_after_label_in_tree($tree)
-X<C<protect_colon_in_tree>>
-X<C<protect_node_after_label_in_tree>>
-
-Protect colon with C<protect_colon_in_tree> and characters that
-are special in node names after a label in menu entries (tab
-dot and comma) with C<protect_node_after_label_in_tree>.
-The protection is achieved by putting protected characters
-in C<@asis{}>.
-
-=item protect_comma_in_tree($tree)
-X<C<protect_comma_in_tree>>
-
-Protect comma characters, replacing C<,> with @comma{} in tree.
-
-=item $contents_result = protect_first_parenthesis($contents)
-X<C<protect_first_parenthesis>>
-
-Return a contents array reference with first parenthesis in the
-contents array reference protected.  If I<$contents> is undef
-a fatal error with a backtrace will be emitted.
+Remove first occurence of I<$element> in the array reference I<$array>.
+Return the removed element, or C<undef> if not found.
 
 =item $level = section_level($section)
 X<C<section_level>>
@@ -2971,7 +2277,7 @@ X<C<set_global_document_command>>
 Set the Texinfo customization variable corresponding to I<$cmdname> in
 I<$customization_information>.  The I<$global_commands_information> should
 contain information about global commands in a Texinfo document, typically obtained
-from a parser L<< $parser->global_commands_information()|Texinfo::Parser/$commands = global_commands_information($parser) >>.
+from a parsed document L<< $document->global_commands_information()|Texinfo::Document/$commands = global_commands_information($document) >>.
 I<$command_location> specifies where in the document the value should be taken from,
 for commands that may appear more than once. The possibilities are:
 
@@ -3009,28 +2315,27 @@ a command that sets some information, such as C<@documentlanguage>,
 C<@contents> or C<@footnotestyle> for example.  Return true if the command
 argument was found and the customization variable was set.
 
-=item set_output_encodings($customization_information, $parser_information)
-X<C<set_output_encodings>>
+=item set_output_encoding($customization_information, $document)
+X<C<set_output_encoding>>
 
 If not already set, set C<OUTPUT_ENCODING_NAME> based on input file
-encoding.  Also set C<OUTPUT_PERL_ENCODING> accordingly which is used
-to output in the correct encoding.  In general, C<OUTPUT_PERL_ENCODING>
-should not be set directly by user-defined code such that it corresponds
-to C<OUTPUT_ENCODING_NAME>.
+encoding.
 
-=item $split_contents = split_custom_heading_command_contents($contents)
+=item set_output_perl_encoding($customization_information)
+X<C<set_output_perl_encoding>>
+
+Set C<OUTPUT_PERL_ENCODING> based on C<OUTPUT_ENCODING_NAME>.  In general,
+C<OUTPUT_PERL_ENCODING> should not be set directly by user-defined code such
+that it corresponds to C<OUTPUT_ENCODING_NAME>.
+
+=item $split_contents = split_custom_heading_command_contents($element)
 X<C<split_custom_heading_command_contents>>
 
-Split the I<$contents> array reference at C<@|> in at max three parts.
-Return an array reference containing the split parts.  The I<$contents>
-array reference is supposed to be C<< $element->{'args'}->[0]->{'contents'} >>
+Split the I<$element> contents at C<@|> in at max three parts.
+Return an element containing the split parts in contents, or C<undef> if
+the I<$element> has no useful content.  The input I<$element>
+is supposed to be C<< $element->{'args'}->[0] >>
 of C<%Texinfo::Commands::heading_spec_commands> commands such as C<@everyheading>.
-
-=item trim_spaces_comment_from_content($contents)
-X<C<trim_spaces_comment_from_content>>
-
-Remove empty spaces after commands or braces at begin and
-spaces and comments at end from a content array, modifying it.
 
 =item $status = valid_customization_option($name)
 X<C<valid_option>>

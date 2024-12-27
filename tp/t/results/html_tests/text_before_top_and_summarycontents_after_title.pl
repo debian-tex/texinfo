@@ -50,6 +50,7 @@ $result_trees{'text_before_top_and_summarycontents_after_title'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -58,9 +59,7 @@ $result_trees{'text_before_top_and_summarycontents_after_title'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -109,9 +108,7 @@ $result_trees{'text_before_top_and_summarycontents_after_title'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -147,10 +144,9 @@ $result_trees{'text_before_top_and_summarycontents_after_title'} = {
             }
           ],
           'cmdname' => 'summarycontents',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -159,15 +155,16 @@ $result_trees{'text_before_top_and_summarycontents_after_title'} = {
           'type' => 'empty_line'
         }
       ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
+        'line_nr' => 9
       }
     }
   ],
@@ -204,7 +201,7 @@ In top.
 ';
 
 $result_sectioning{'text_before_top_and_summarycontents_after_title'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -214,52 +211,57 @@ $result_sectioning{'text_before_top_and_summarycontents_after_title'} = {
             'extra' => {
               'normalized' => 'Top'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
-              'structure' => {
+              'extra' => {
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'};
+$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'text_before_top_and_summarycontents_after_title'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'text_before_top_and_summarycontents_after_title'};
 
-$result_nodes{'text_before_top_and_summarycontents_after_title'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
+$result_nodes{'text_before_top_and_summarycontents_after_title'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
+      },
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'text_before_top_and_summarycontents_after_title'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'text_before_top_and_summarycontents_after_title'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'text_before_top_and_summarycontents_after_title'} = [];
 
@@ -270,7 +272,7 @@ $result_floats{'text_before_top_and_summarycontents_after_title'} = {};
 
 $result_converted{'html'}->{'text_before_top_and_summarycontents_after_title'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -294,7 +296,7 @@ ul.toc-numbered-mark {list-style: none}
 </head>
 
 <body lang="en">
-<div class="element-shortcontents" id="SEC_Shortcontents">
+<div class="region-shortcontents" id="SEC_Shortcontents">
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">

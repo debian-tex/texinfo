@@ -1,4 +1,4 @@
-/* Copyright 2010-2023 Free Software Foundation, Inc.
+/* Copyright 2010-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,38 +19,28 @@
 #include <string.h>
 
 #include "command_ids.h"
+#include "builtin_commands.h"
+/* fatal */
+#include "base_utils.h"
+/* for global_parser_conf */
+#include "parser_conf.h"
+/* for lookup_macro and unset_macro_record */
+#include "macro.h"
 #include "commands.h"
-#include "errors.h"
-/* for global_accept_internalvalue */
-#include "parser.h"
-
-#include "command_data.c"
 
 COMMAND *user_defined_command_data = 0;
 static size_t user_defined_number = 0;
 static size_t user_defined_space = 0;
 
-static int
-compare_command_fn (const void *a, const void *b)
-{
-  const COMMAND *ca = (COMMAND *) a;
-  const COMMAND *cb = (COMMAND *) b;
-
-  return strcmp (ca->cmdname, cb->cmdname);
-}
-
-/* Return element number in command_data array.  Return 0 if not found. */
+/* Return element number.  Return 0 if not found. */
 enum command_id
-lookup_command (char *cmdname)
+lookup_command (const char *cmdname)
 {
-  COMMAND *c;
-  COMMAND target;
-  int i;
-
-  target.cmdname = cmdname;
+  enum command_id cmd;
+  size_t i;
 
   /* Check for user-defined commands: macros, indexes, etc. */
-  /* Do this before looking in the built-in commands, in case the user uses 
+  /* Do this before looking in the built-in commands, in case the user uses
      @definfoenclose or similar to override a command.
      If speed is a problem, then we could set a bit in the flags on the
      builtin command (maybe reusing CF_INFOENCLOSE) to say to look in the
@@ -62,34 +52,20 @@ lookup_command (char *cmdname)
         return ((enum command_id) i) | USER_COMMAND_BIT;
     }
 
-  c = (COMMAND *) bsearch (&target, builtin_command_data + 1,
-        /* number of elements */
-        sizeof (builtin_command_data) / sizeof (builtin_command_data[0]) - 1,
-        sizeof (builtin_command_data[0]),
-        compare_command_fn);
+  cmd = lookup_builtin_command (cmdname);
 
-  if (c)
-    {
-      enum command_id cmd;
-      cmd = c - &builtin_command_data[0];
+  /* txiinternalvalue is invalid if the corresponding parameter
+   * is not set */
+  if (cmd == CM_txiinternalvalue && !global_parser_conf.accept_internalvalue)
+    return 0;
 
-      /* txiinternalvalue is invalid if the corresponding configuration
-       * is not set */
-      if (cmd == CM_txiinternalvalue && !global_accept_internalvalue) {
-        return 0;
-      }
-
-      return cmd;
-    }
-
-
-  return 0;
+  return cmd;
 }
 
-/* Add a new user-defined Texinfo command, like an index or macro command.  No 
-   reference to NAME is retained. */
+/* Add a new user-defined Texinfo command, like an index or macro command.
+   No reference to NAME is retained. */
 enum command_id
-add_texinfo_command (char *name)
+add_texinfo_command (const char *name)
 {
   enum command_id existing_cmd = lookup_command (name);
 
@@ -155,7 +131,7 @@ remove_texinfo_command (enum command_id cmd)
 void
 wipe_user_commands (void)
 {
-  int i;
+  size_t i;
   for (i = 0; i < user_defined_number; i++)
     free (user_defined_command_data[i].cmdname);
   user_defined_number = 0;
@@ -165,12 +141,6 @@ int
 close_preformatted_command (enum command_id cmd_id)
 {
   return cmd_id != CM_sp
-          && command_data(cmd_id).flags & CF_close_paragraph
-          && !(command_data(cmd_id).flags & CF_index_entry_command);
+          && command_data(cmd_id).flags & CF_close_paragraph;
 }
 
-int
-item_line_command (enum command_id cmd_id)
-{
-  return command_data(cmd_id).data == BLOCK_item_line;
-}

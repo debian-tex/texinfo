@@ -19,14 +19,12 @@ $result_trees{'simple'} = {
                       'text' => 'in  b'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'b',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -62,5 +60,8 @@ $result_converted{'html_text'}->{'simple'} = '<p><b class="b">in  b</b>.</p>';
 
 
 $result_converted{'latex_text'}->{'simple'} = '\\textbf{in  b}.';
+
+
+$result_converted{'docbook'}->{'simple'} = '<para><emphasis role="bold">in  b</emphasis>.</para>';
 
 1;

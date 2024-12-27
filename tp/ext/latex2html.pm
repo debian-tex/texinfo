@@ -2,7 +2,7 @@
 #
 # latex2html.pm: interface to LaTeX2HTML
 #
-#    Copyright (C) 1999, 2000, 2003, 2005, 2006, 2009, 2011-2023
+#    Copyright (C) 1999, 2000, 2003, 2005, 2006, 2009, 2011-2024
 #                  Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@
 #
 #-##############################################################################
 
-require 5.0;
+use 5.006;
 use strict;
 
 # To check if there is no erroneous autovivification
@@ -119,7 +119,7 @@ sub l2h_to_latex($$$$$)
   my $latex_texts = shift;
 
   unless (open(L2H_LATEX, ">$l2h_latex_path_string")) {
-    $self->document_error($self, sprintf(__(
+    $self->converter_document_error(sprintf(__(
           "l2h: could not open latex file %s for writing: %s"),
                                   $l2h_latex_path_name, $!));
     return 0;
@@ -168,7 +168,10 @@ my @l2h_from_html;
 sub l2h_process($$)
 {
   my $self = shift;
-  my $document_root = shift;
+  my $document = shift;
+
+  my $document_root = $document->tree();
+
   @latex_texts = ();           # array used to associate the index with
                                # a latex text.
   $latex_commands_count = undef;
@@ -203,12 +206,22 @@ sub l2h_process($$)
   # as dir of enclosing html document --
   $destination_directory = $self->get_info('destination_directory');
   $destination_directory = '' if (!defined($destination_directory));
-  my $dir = $destination_directory;
-  $dir = File::Spec->curdir() if ($dir eq '');
+  my $dir;
+  if ($destination_directory eq '') {
+    $dir = File::Spec->curdir();
+  } else {
+    $dir = $destination_directory;
+  }
   my $dir_encoding;
   # $destination_directory_string is used in binary file path strings
   ($destination_directory_string, $dir_encoding)
     = $self->encoded_output_file_name($dir);
+
+  if ($destination_directory ne '') {
+    $self->create_destination_directory($destination_directory_string,
+                                        $dir);
+
+  }
 
   $l2h_name = "${docu_name}_l2h";
   my $l2h_latex_file_name = "${l2h_name}.tex";
@@ -220,8 +233,7 @@ sub l2h_process($$)
   my $encoded_l2h_latex_file_name = encode('UTF-8', $l2h_latex_file_name);
   my $l2h_latex_path_string = File::Spec->catfile($destination_directory_string,
                                                   $encoded_l2h_latex_file_name);
-  $l2h_cache_path_name = File::Spec->catfile($destination_directory,
-                                             "${docu_name}-l2h_cache.pm");
+  $l2h_cache_path_name = "$destination_directory/${docu_name}-l2h_cache.pm";
   # set consistently with $l2h_latex_file_name to ensure that
   # latex2html will create a file with this name.
   my $l2h_html_file_name = "${l2h_name}.html";
@@ -359,7 +371,7 @@ sub l2h_process($$)
       if ($latex_converted_count != $html_converted_count) {
         # unless latex2html somewhat mangles the output this cannot
         # actually happen, so it could also be presented as an error or a bug.
-        $self->document_warn($self, sprintf(__(
+        $self->converter_document_warn(sprintf(__(
           "latex2html.pm: processing produced %d items in HTML; expected %d"),
                           $html_converted_count, $latex_converted_count));
       }
@@ -397,13 +409,13 @@ sub l2h_to_html($$$)
   # Check for dot in directory where dvips will work
   if ($self->get_conf('L2H_TMP')) {
     if ($self->get_conf('L2H_TMP') =~ /\./) {
-      $self->document_warn($self,
+      $self->converter_document_warn(
         __("l2h: L2H_TMP directory contains a dot"));
       $dotbug = 1;
     }
   } else {
     if (cwd() =~ /\./) {
-      $self->document_warn($self,
+      $self->converter_document_warn(
             __("l2h: current directory contains a dot"));
       $dotbug = 1;
     }
@@ -411,7 +423,7 @@ sub l2h_to_html($$$)
 
   my $latex2html_command = $self->get_conf('L2H_L2H');
   if (not defined($latex2html_command) or $latex2html_command !~ /\S/) {
-    $self->document_error($self, __("l2h: command not set"));
+    $self->converter_document_error(__("l2h: command not set"));
     return 0;
   }
 
@@ -433,7 +445,8 @@ sub l2h_to_html($$$)
   # set output dir
   my $encoded_destination_dir_option = ' -no_subdir';
   my $destination_dir_option = $encoded_destination_dir_option;
-  if ($destination_directory ne '') {
+  my $curdir = File::Spec->curdir();
+  if ($destination_directory ne '' and $destination_directory ne $curdir) {
     $encoded_destination_dir_option = " -dir ".$destination_directory_string;
     $destination_dir_option = " -dir ".$destination_directory;
   }
@@ -465,7 +478,7 @@ sub l2h_to_html($$$)
 
   warn "# l2h: executing '$encoded_call'\n" if ($verbose);
   if (system($encoded_call)) {
-    $self->document_error($self, sprintf(__("l2h: command did not succeed: %s"),
+    $self->converter_document_error(sprintf(__("l2h: command did not succeed: %s"),
                                          $call));
     return 0;
   } else  {
@@ -509,7 +522,7 @@ sub l2h_change_image_file_names($$)
         # document extension. copying the file could result in
         # overwriting an output file (almost surely if the default
         # texi2html file names are used).
-        $self->document_warn($self, sprintf(__(
+        $self->converter_document_warn(sprintf(__(
                             "l2h: image has invalid extension: %s"), $src));
         next;
       }
@@ -540,7 +553,7 @@ sub l2h_change_image_file_names($$)
         copy($encoded_file_src, $encoded_file_dest);
       } else {
         if (!rename($encoded_file_src, $encoded_file_dest)) {
-          $self->document_warn($self,
+          $self->converter_document_warn(
                  sprintf(__("l2h: rename %s as %s failed: %s"),
                                  $src_file, $file_dest, $!));
         }
@@ -559,14 +572,13 @@ sub l2h_retrieve_from_html($$)
 
   my @html_retrieved_text_indices;   # the text indices retrieved
 
-  my $l2h_html_path_name = File::Spec->catfile($destination_directory,
-                                               $l2h_html_file_name);
+  my $l2h_html_path_name = "$destination_directory/$l2h_html_file_name";
   my $encoded_l2h_html_file_name = encode('UTF-8', $l2h_html_file_name);
-  my $l2h_html_path_string = File::Spec->catfile($destination_directory_string,
-                                                 $encoded_l2h_html_file_name);
+  my $l2h_html_path_string
+      = "$destination_directory_string/$encoded_l2h_html_file_name";
 
   if (! open(L2H_HTML, "<$l2h_html_path_string")) {
-    $self->document_error($self,
+    $self->converter_document_error(
                 sprintf(__("l2h: could not open %s: %s"),
                                  $l2h_html_path_name, $!));
     # return empty array
@@ -600,7 +612,7 @@ sub l2h_retrieve_from_html($$)
       }
       unless ($h_end_found) {
         # couldn't found the closing comment. Should be a bug.
-        $self->document_warn($self,
+        $self->converter_document_warn(
                 sprintf(__("latex2html.pm: end of \@%s text %d not found"),
                                       $l2h_name, $latex_text_index));
         last;
@@ -680,7 +692,7 @@ sub l2h_convert_command($$$;$$)
       # it could also probably be marked as a bug (or error) as there is no
       # situation in which this could happen with the conditions on succeeding
       # conversion.
-      $self->document_warn($self, sprintf(__(
+      $self->converter_document_warn(sprintf(__(
         "l2h: could not extract the fragment %d for \@%s, text %d, from HTML"),
                    $command_count, $cmdname, $latex_text_index));
     } elsif ($verbose) {
@@ -764,24 +776,23 @@ sub l2h_init_cache($)
     my $loaded_path;
     # do require a relative path, or to have . in INC
     if (not File::Spec->file_name_is_absolute($l2h_cache_path_name)) {
-      $loaded_path = File::Spec->catfile(File::Spec->curdir(),
-                                       $encoded_l2h_cache_path_name);
+      $loaded_path = File::Spec->curdir()."/$encoded_l2h_cache_path_name";
     } else {
       $loaded_path = $encoded_l2h_cache_path_name;
     }
     my $rdo = do "$loaded_path";
     unless ($rdo) {
       # FIXME error or warning?
-      $self->document_error($self,
+      $self->converter_document_error(
                sprintf(__("l2h: could not compile %s: %s"),
                                   $l2h_cache_path_name, $@))
         if ($@);
       if (! defined($rdo)) {
-        $self->document_error($self,
+        $self->converter_document_error(
                sprintf(__("l2h: could not load %s: %s"),
                                   $l2h_cache_path_name, $!));
       } else {
-        $self->document_error($self,
+        $self->converter_document_error(
                sprintf(__("l2h: error loading %s"),
                                    $l2h_cache_path_name));
       }
@@ -801,7 +812,7 @@ sub l2h_store_cache($)
   my ($encoded_l2h_cache_path_name, $l2h_cache_path_encoding)
     = $self->encoded_output_file_name($l2h_cache_path_name);
   unless (open(FH, ">$encoded_l2h_cache_path_name")) {
-    $self->document_error($self,
+    $self->converter_document_error(
           sprintf(__("l2h: could not open %s for writing: %s"),
                                   $l2h_cache_path_name, $!));
     return;
@@ -847,8 +858,7 @@ sub l2h_from_cache($$)
       my $encoded_cached_image_file_name
             = encode('UTF-8', $cached_image_file_name);
       my $cached_image_path_string
-         = File::Spec->catfile($destination_directory_string,
-                               $encoded_cached_image_file_name);
+         = "$destination_directory_string/$encoded_cached_image_file_name";
       unless (-e $cached_image_path_string) {
         return undef;
       }

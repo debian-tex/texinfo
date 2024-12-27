@@ -74,9 +74,11 @@ $result_trees{'empty_menu_entry_name'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -100,9 +102,7 @@ $result_trees{'empty_menu_entry_name'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               },
               'type' => 'menu_entry'
             },
@@ -126,9 +126,11 @@ $result_trees{'empty_menu_entry_name'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'aaa'
                   },
                   'type' => 'menu_entry_node'
@@ -153,9 +155,7 @@ $result_trees{'empty_menu_entry_name'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               },
               'type' => 'menu_entry'
             },
@@ -186,16 +186,12 @@ $result_trees{'empty_menu_entry_name'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -205,6 +201,7 @@ $result_trees{'empty_menu_entry_name'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -213,9 +210,7 @@ $result_trees{'empty_menu_entry_name'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -237,6 +232,7 @@ $result_trees{'empty_menu_entry_name'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'aaa'
       },
       'info' => {
@@ -245,16 +241,14 @@ $result_trees{'empty_menu_entry_name'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 8,
-        'macro' => ''
+        'line_nr' => 8
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1];
-$result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[0];
+$result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[3]{'contents'}[1];
+$result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'empty_menu_entry_name'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'contents'}[3]{'contents'}[0];
 
 $result_texis{'empty_menu_entry_name'} = '@node first
 
@@ -273,65 +267,63 @@ $result_texts{'empty_menu_entry_name'} = '
 
 ';
 
-$result_nodes{'empty_menu_entry_name'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'first'
+$result_nodes{'empty_menu_entry_name'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'first'
+    }
   },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'vvv'
-          }
-        ]
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'up' => {}
       },
-      'type' => 'menu_entry_node'
+      'normalized' => 'aaa'
     }
   }
-};
+];
+$result_nodes{'empty_menu_entry_name'}[1]{'extra'}{'node_directions'}{'up'} = $result_nodes{'empty_menu_entry_name'}[0];
 
-$result_menus{'empty_menu_entry_name'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'first'
+$result_menus{'empty_menu_entry_name'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'first'
+    }
   },
-  'structure' => {
-    'menu_child' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'vvv'
-          }
-        ]
+  {
+    'extra' => {
+      'menu_directions' => {
+        'prev' => {
+          'extra' => {
+            'manual_content' => {}
+          },
+          'type' => 'menu_entry_node'
+        },
+        'up' => {}
       },
-      'type' => 'menu_entry_node'
+      'normalized' => 'aaa'
     }
   }
-};
+];
+$result_menus{'empty_menu_entry_name'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'empty_menu_entry_name'}[0];
 
 $result_errors{'empty_menu_entry_name'} = [
   {
     'error_line' => 'warning: empty menu entry name in `* : (vvv). \'
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => 'empty menu entry name in `* : (vvv). \'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: empty menu entry name in `* :aaa,\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'empty menu entry name in `* :aaa,\'',
     'type' => 'warning'
   }

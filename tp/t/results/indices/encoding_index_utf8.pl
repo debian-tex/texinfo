@@ -50,8 +50,7 @@ $result_trees{'encoding_index_utf8'} = {
               },
               'source_info' => {
                 'file_name' => 'encoding_index_utf8.texi',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -84,6 +83,7 @@ $result_trees{'encoding_index_utf8'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -93,8 +93,7 @@ $result_trees{'encoding_index_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'encoding_index_utf8.texi',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -130,8 +129,7 @@ $result_trees{'encoding_index_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'encoding_index_utf8.texi',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -184,14 +182,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           },
           'type' => 'index_entry_command'
         },
@@ -207,14 +205,13 @@ $result_trees{'encoding_index_utf8'} = {
                           'text' => 'i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '"',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 },
                 {
@@ -228,14 +225,13 @@ $result_trees{'encoding_index_utf8'} = {
                           'text' => 'i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '"',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 },
                 {
@@ -246,14 +242,13 @@ $result_trees{'encoding_index_utf8'} = {
                           'text' => 'i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '"',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 },
                 {
@@ -264,14 +259,13 @@ $result_trees{'encoding_index_utf8'} = {
                           'text' => 'i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '"',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 }
               ],
@@ -293,14 +287,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           },
           'type' => 'index_entry_command'
         },
@@ -322,8 +316,7 @@ $result_trees{'encoding_index_utf8'} = {
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -343,8 +336,7 @@ $result_trees{'encoding_index_utf8'} = {
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -361,8 +353,7 @@ $result_trees{'encoding_index_utf8'} = {
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -379,8 +370,7 @@ $result_trees{'encoding_index_utf8'} = {
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 },
                 {
@@ -397,8 +387,7 @@ $result_trees{'encoding_index_utf8'} = {
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 }
               ],
@@ -420,14 +409,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           },
           'type' => 'index_entry_command'
         },
@@ -457,14 +446,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 12,
-            'macro' => ''
+            'line_nr' => 12
           },
           'type' => 'index_entry_command'
         },
@@ -494,14 +483,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           },
           'type' => 'index_entry_command'
         },
@@ -531,14 +520,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           },
           'type' => 'index_entry_command'
         },
@@ -568,14 +557,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           },
           'type' => 'index_entry_command'
         },
@@ -605,14 +594,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 16,
-            'macro' => ''
+            'line_nr' => 16
           },
           'type' => 'index_entry_command'
         },
@@ -642,14 +631,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 17,
-            'macro' => ''
+            'line_nr' => 17
           },
           'type' => 'index_entry_command'
         },
@@ -679,14 +668,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 18,
-            'macro' => ''
+            'line_nr' => 18
           },
           'type' => 'index_entry_command'
         },
@@ -716,14 +705,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 19,
-            'macro' => ''
+            'line_nr' => 19
           },
           'type' => 'index_entry_command'
         },
@@ -753,14 +742,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           },
           'type' => 'index_entry_command'
         },
@@ -790,14 +779,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 21,
-            'macro' => ''
+            'line_nr' => 21
           },
           'type' => 'index_entry_command'
         },
@@ -827,14 +816,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 22,
-            'macro' => ''
+            'line_nr' => 22
           },
           'type' => 'index_entry_command'
         },
@@ -864,14 +853,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           },
           'type' => 'index_entry_command'
         },
@@ -901,14 +890,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 24,
-            'macro' => ''
+            'line_nr' => 24
           },
           'type' => 'index_entry_command'
         },
@@ -938,14 +927,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 25,
-            'macro' => ''
+            'line_nr' => 25
           },
           'type' => 'index_entry_command'
         },
@@ -975,14 +964,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 26,
-            'macro' => ''
+            'line_nr' => 26
           },
           'type' => 'index_entry_command'
         },
@@ -1012,14 +1001,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 27,
-            'macro' => ''
+            'line_nr' => 27
           },
           'type' => 'index_entry_command'
         },
@@ -1049,14 +1038,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 28,
-            'macro' => ''
+            'line_nr' => 28
           },
           'type' => 'index_entry_command'
         },
@@ -1086,14 +1075,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 29,
-            'macro' => ''
+            'line_nr' => 29
           },
           'type' => 'index_entry_command'
         },
@@ -1123,14 +1112,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 30,
-            'macro' => ''
+            'line_nr' => 30
           },
           'type' => 'index_entry_command'
         },
@@ -1160,14 +1149,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 31,
-            'macro' => ''
+            'line_nr' => 31
           },
           'type' => 'index_entry_command'
         },
@@ -1197,14 +1186,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 32,
-            'macro' => ''
+            'line_nr' => 32
           },
           'type' => 'index_entry_command'
         },
@@ -1234,14 +1223,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 33,
-            'macro' => ''
+            'line_nr' => 33
           },
           'type' => 'index_entry_command'
         },
@@ -1271,14 +1260,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 34,
-            'macro' => ''
+            'line_nr' => 34
           },
           'type' => 'index_entry_command'
         },
@@ -1308,14 +1297,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 35,
-            'macro' => ''
+            'line_nr' => 35
           },
           'type' => 'index_entry_command'
         },
@@ -1345,14 +1334,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 36,
-            'macro' => ''
+            'line_nr' => 36
           },
           'type' => 'index_entry_command'
         },
@@ -1382,14 +1371,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 37,
-            'macro' => ''
+            'line_nr' => 37
           },
           'type' => 'index_entry_command'
         },
@@ -1419,14 +1408,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 38,
-            'macro' => ''
+            'line_nr' => 38
           },
           'type' => 'index_entry_command'
         },
@@ -1456,14 +1445,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 39,
-            'macro' => ''
+            'line_nr' => 39
           },
           'type' => 'index_entry_command'
         },
@@ -1474,14 +1463,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'l',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 40,
-                    'macro' => ''
+                    'line_nr' => 40
                   }
                 }
               ],
@@ -1503,14 +1491,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 40,
-            'macro' => ''
+            'line_nr' => 40
           },
           'type' => 'index_entry_command'
         },
@@ -1521,14 +1509,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'L',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 41,
-                    'macro' => ''
+                    'line_nr' => 41
                   }
                 }
               ],
@@ -1550,14 +1537,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 41,
-            'macro' => ''
+            'line_nr' => 41
           },
           'type' => 'index_entry_command'
         },
@@ -1573,14 +1560,13 @@ $result_trees{'encoding_index_utf8'} = {
                           'text' => 'i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'dotless',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 42,
-                    'macro' => ''
+                    'line_nr' => 42
                   }
                 },
                 {
@@ -1594,14 +1580,13 @@ $result_trees{'encoding_index_utf8'} = {
                           'text' => 'i'
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'dotless',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 42,
-                    'macro' => ''
+                    'line_nr' => 42
                   }
                 },
                 {
@@ -1626,14 +1611,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 42,
-            'macro' => ''
+            'line_nr' => 42
           },
           'type' => 'index_entry_command'
         },
@@ -1653,25 +1638,23 @@ $result_trees{'encoding_index_utf8'} = {
                                   'text' => 'i'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'dotless',
                           'source_info' => {
                             'file_name' => 'encoding_index_utf8.texi',
-                            'line_nr' => 43,
-                            'macro' => ''
+                            'line_nr' => 43
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 43,
-                    'macro' => ''
+                    'line_nr' => 43
                   }
                 },
                 {
@@ -1689,25 +1672,23 @@ $result_trees{'encoding_index_utf8'} = {
                                   'text' => 'i'
                                 }
                               ],
-                              'type' => 'brace_command_arg'
+                              'type' => 'brace_container'
                             }
                           ],
                           'cmdname' => 'dotless',
                           'source_info' => {
                             'file_name' => 'encoding_index_utf8.texi',
-                            'line_nr' => 43,
-                            'macro' => ''
+                            'line_nr' => 43
                           }
                         }
                       ],
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => '^',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 43,
-                    'macro' => ''
+                    'line_nr' => 43
                   }
                 },
                 {
@@ -1732,14 +1713,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 43,
-            'macro' => ''
+            'line_nr' => 43
           },
           'type' => 'index_entry_command'
         },
@@ -1750,14 +1731,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'ss',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 44,
-                    'macro' => ''
+                    'line_nr' => 44
                   }
                 }
               ],
@@ -1779,14 +1759,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 44,
-            'macro' => ''
+            'line_nr' => 44
           },
           'type' => 'index_entry_command'
         },
@@ -1797,14 +1777,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'euro',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 45,
-                    'macro' => ''
+                    'line_nr' => 45
                   }
                 }
               ],
@@ -1826,14 +1805,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 45,
-            'macro' => ''
+            'line_nr' => 45
           },
           'type' => 'index_entry_command'
         },
@@ -1844,14 +1823,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'AE',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 46,
-                    'macro' => ''
+                    'line_nr' => 46
                   }
                 }
               ],
@@ -1873,14 +1851,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 46,
-            'macro' => ''
+            'line_nr' => 46
           },
           'type' => 'index_entry_command'
         },
@@ -1891,14 +1869,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'exclamdown',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 47,
-                    'macro' => ''
+                    'line_nr' => 47
                   }
                 }
               ],
@@ -1920,14 +1897,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 47,
-            'macro' => ''
+            'line_nr' => 47
           },
           'type' => 'index_entry_command'
         },
@@ -1938,14 +1915,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'TH',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 48,
-                    'macro' => ''
+                    'line_nr' => 48
                   }
                 }
               ],
@@ -1967,14 +1943,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 48,
-            'macro' => ''
+            'line_nr' => 48
           },
           'type' => 'index_entry_command'
         },
@@ -1985,14 +1961,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'DH',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 49,
-                    'macro' => ''
+                    'line_nr' => 49
                   }
                 }
               ],
@@ -2014,14 +1989,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 49,
-            'macro' => ''
+            'line_nr' => 49
           },
           'type' => 'index_entry_command'
         },
@@ -2032,14 +2007,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'textdegree',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 50,
-                    'macro' => ''
+                    'line_nr' => 50
                   }
                 }
               ],
@@ -2061,14 +2035,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 50,
-            'macro' => ''
+            'line_nr' => 50
           },
           'type' => 'index_entry_command'
         },
@@ -2098,14 +2072,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 51,
-            'macro' => ''
+            'line_nr' => 51
           },
           'type' => 'index_entry_command'
         },
@@ -2135,14 +2109,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 52,
-            'macro' => ''
+            'line_nr' => 52
           },
           'type' => 'index_entry_command'
         },
@@ -2153,14 +2127,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'quotedblleft',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 53,
-                    'macro' => ''
+                    'line_nr' => 53
                   }
                 }
               ],
@@ -2182,14 +2155,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 53,
-            'macro' => ''
+            'line_nr' => 53
           },
           'type' => 'index_entry_command'
         },
@@ -2200,14 +2173,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'geq',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 54,
-                    'macro' => ''
+                    'line_nr' => 54
                   }
                 }
               ],
@@ -2229,14 +2201,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 54,
-            'macro' => ''
+            'line_nr' => 54
           },
           'type' => 'index_entry_command'
         },
@@ -2247,14 +2219,13 @@ $result_trees{'encoding_index_utf8'} = {
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'comma',
                   'source_info' => {
                     'file_name' => 'encoding_index_utf8.texi',
-                    'line_nr' => 55,
-                    'macro' => ''
+                    'line_nr' => 55
                   }
                 }
               ],
@@ -2276,14 +2247,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 55,
-            'macro' => ''
+            'line_nr' => 55
           },
           'type' => 'index_entry_command'
         },
@@ -2313,14 +2284,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 56,
-            'macro' => ''
+            'line_nr' => 56
           },
           'type' => 'index_entry_command'
         },
@@ -2350,14 +2321,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 57,
-            'macro' => ''
+            'line_nr' => 57
           },
           'type' => 'index_entry_command'
         },
@@ -2387,14 +2358,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 58,
-            'macro' => ''
+            'line_nr' => 58
           },
           'type' => 'index_entry_command'
         },
@@ -2424,14 +2395,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 59,
-            'macro' => ''
+            'line_nr' => 59
           },
           'type' => 'index_entry_command'
         },
@@ -2461,14 +2432,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 60,
-            'macro' => ''
+            'line_nr' => 60
           },
           'type' => 'index_entry_command'
         },
@@ -2498,14 +2469,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 61,
-            'macro' => ''
+            'line_nr' => 61
           },
           'type' => 'index_entry_command'
         },
@@ -2535,14 +2506,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 62,
-            'macro' => ''
+            'line_nr' => 62
           },
           'type' => 'index_entry_command'
         },
@@ -2572,14 +2543,14 @@ $result_trees{'encoding_index_utf8'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 63,
-            'macro' => ''
+            'line_nr' => 63
           },
           'type' => 'index_entry_command'
         },
@@ -2618,12 +2589,12 @@ $result_trees{'encoding_index_utf8'} = {
           },
           'source_info' => {
             'file_name' => 'encoding_index_utf8.texi',
-            'line_nr' => 65,
-            'macro' => ''
+            'line_nr' => 65
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -2634,8 +2605,7 @@ $result_trees{'encoding_index_utf8'} = {
       },
       'source_info' => {
         'file_name' => 'encoding_index_utf8.texi',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     },
     {
@@ -2785,7 +2755,7 @@ encoding index utf8
 ';
 
 $result_sectioning{'encoding_index_utf8'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -2794,53 +2764,58 @@ $result_sectioning{'encoding_index_utf8'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'encoding_index_utf8'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'encoding_index_utf8'};
+$result_sectioning{'encoding_index_utf8'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'encoding_index_utf8'};
 
-$result_nodes{'encoding_index_utf8'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'encoding_index_utf8'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'encoding_index_utf8'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'encoding_index_utf8'}[0];
+$result_nodes{'encoding_index_utf8'}[1] = $result_nodes{'encoding_index_utf8'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'encoding_index_utf8'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'encoding_index_utf8'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'encoding_index_utf8'};
-
-$result_menus{'encoding_index_utf8'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'encoding_index_utf8'} = [];
 
@@ -2853,58 +2828,58 @@ $result_indices_sort_strings{'encoding_index_utf8'} = {
     '-',
     '--',
     ',',
-    '!',
+    "\x{a1}",
     '\'',
     '"',
     '"',
     '"',
-    '"',
+    "\x{201c}",
     '@',
     '`',
-    '>=',
+    "\x{b0}",
+    "\x{2265}",
+    "\x{20ac}",
     '0',
     '9',
     'a',
     'A',
-    'AE',
+    "\x{c6}",
     'b',
     'B',
     'c',
     'd',
-    'D',
+    "\x{d0}",
     'e',
     "\x{e9} \x{e9}",
-    'Euro',
     'f',
     'g',
     'h',
     'i',
-    'i i (dotless)',
-    'i" i"i"i"',
-    'i^ i^ (dotless)',
-    'i^ i^i^i^i^',
+    "\x{131} \x{131} (dotless)",
+    "\x{ee} \x{ee} (dotless)",
+    "\x{ef} \x{ef}\x{ef}\x{ef}",
+    "\x{ee} \x{ee}\x{ee}\x{ee}\x{ee}",
     'j',
     'k',
     'l',
-    'l',
-    'L',
+    "\x{142}",
+    "\x{141}",
     'm',
     'n',
-    'o',
     'o',
     'p',
     'q',
     'r',
     's',
-    'ss',
+    "\x{df}",
     't',
-    'TH',
     'u',
     'v',
     'w',
     'x',
     'y',
-    'z'
+    'z',
+    "\x{de}"
   ]
 };
 

@@ -23,13 +23,9 @@ $result_trees{'unnumbered_no_argument'} = {
         }
       ],
       'cmdname' => 'unnumbered',
-      'extra' => {
-        'missing_argument' => 1
-      },
+      'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -43,31 +39,26 @@ $result_texis{'unnumbered_no_argument'} = '@unnumbered
 $result_texts{'unnumbered_no_argument'} = '';
 
 $result_sectioning{'unnumbered_no_argument'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'unnumbered',
         'extra' => {
-          'missing_argument' => 1
-        },
-        'structure' => {
           'section_level' => 1,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'unnumbered_no_argument'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'unnumbered_no_argument'};
+$result_sectioning{'unnumbered_no_argument'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'unnumbered_no_argument'};
 
 $result_errors{'unnumbered_no_argument'} = [
   {
     'error_line' => 'warning: @unnumbered missing argument
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@unnumbered missing argument',
     'type' => 'warning'
   }

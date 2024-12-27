@@ -38,9 +38,7 @@ $result_trees{'redefined_need'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -65,7 +63,7 @@ $result_floats{'redefined_need'} = {};
 
 $result_converted{'html'}->{'redefined_need'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -81,7 +79,7 @@ $result_converted{'html'}->{'redefined_need'} = '<!DOCTYPE html>
 </head>
 
 <body lang="en">
-<!-- need: 0.1 -->
+<!-- need: 0.1 (|) -->
 
 
 
@@ -99,9 +97,7 @@ $result_converted_errors{'html'}->{'redefined_need'} = [
   {
     'error_line' => 'warning: need has the right arg: 0.1
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'need has the right arg: 0.1',
     'type' => 'warning'
   }

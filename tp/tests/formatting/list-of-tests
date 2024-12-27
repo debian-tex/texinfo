@@ -12,7 +12,7 @@ documentlanguage_cmdline documentlanguage.texi --html -c TEXI2HTML=1 --no-split 
 
 # already tested in t/*.t, but here want to have a result with
 # accented characters in error messages
-cpp_lines ../../t/input_files/cpp_lines.texi --html --no-split -c MESSAGE_ENCODING=UTF-8
+cpp_lines ../../t/input_files/cpp_lines.texi --html --no-split -c MESSAGE_ENCODING=UTF-8 -c DOC_ENCODING_FOR_INPUT_FILE_NAME=1
 
 # the same tests are in t/*.t to test through code
 no_content no_content.texi --html --no-split -c 'BIG_RULE <hr style="height: 6px;">'
@@ -27,9 +27,19 @@ no_content_do_contents_inline no_content.texi --html --no-split -c 'BIG_RULE <hr
 indices_in_begin_tables_lists indices_in_begin_tables_lists.texi --html --no-split -c 'USE_NODES 0'
 indices_in_begin_tables_lists_latex indices_in_begin_tables_lists.texi --latex
 
+# Same file also tested in t/converters_tests.t.  Here we test customization
+# of raw text output, as this output is not customized in t/*.t tests.
+formatting_customizations_input_raw_text ../../t/input_files/formatting_customizations_input.texi -c TEXINFO_OUTPUT_FORMAT=rawtext -c NUMBER_SECTIONS=0 -c ASCII_GLYPH=1 --enable-encoding
+
 # tests of the tree using the same input file are also in t/transformations.t
 # but it is interesting to have automatic tree transformations tested here too.
 index_entries_relate_to_item index_entries_relate_to_item.texi --html --no-split
 
 info_extension_warning foo.info
 
+# test JS_WEBLABELS_FILE set to a file already output as part of the manual
+# formatting.
+js_license_reuse_output_file split_nocopying.texi --html -c JS_WEBLABELS_FILE=Ch1.html -c INFO_JS_DIR=js
+
+# test --macro-expand with the same name as output file.
+reuse_macro_expand_file simplest.texi --macro-expand=@OUT_DIR@simplest.info

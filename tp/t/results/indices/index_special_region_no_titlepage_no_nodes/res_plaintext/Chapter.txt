@@ -2,7 +2,7 @@
 *********
 
 This is a test manual, trivially and explicitly in the public domain(1)
-(*note Top-Footnote-1::).
+(see Top-Footnote-1).
 
 * Menu:
 

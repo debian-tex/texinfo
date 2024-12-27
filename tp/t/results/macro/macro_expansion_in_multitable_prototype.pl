@@ -50,9 +50,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -61,9 +59,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -116,9 +112,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               }
             }
           ],
@@ -127,9 +121,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -150,7 +142,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -172,6 +164,9 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                       'text' => 'h ab i'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 9
+                  },
                   'type' => 'bracketed_arg'
                 },
                 {
@@ -186,7 +181,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -208,6 +203,9 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                       'text' => 'j ab'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 9
+                  },
                   'type' => 'bracketed_arg'
                 },
                 {
@@ -226,14 +224,12 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                               'text' => 's'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'emph',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 9,
-                        'macro' => ''
+                        'line_nr' => 9
                       }
                     },
                     {
@@ -243,7 +239,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                           'element' => {
                             'args' => [
                               {
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -265,6 +261,9 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                       'text' => 'nab'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 9
+                  },
                   'type' => 'bracketed_arg'
                 },
                 {
@@ -284,7 +283,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                                     'text' => '@code{l}'
                                   }
                                 ],
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -307,12 +306,11 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                               'text' => 'l'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'code',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 9,
                         'macro' => 'endbrace'
                       }
@@ -321,6 +319,9 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                       'text' => 'd'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 9
+                  },
                   'source_marks' => [
                     {
                       'counter' => 4,
@@ -347,7 +348,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                                     'text' => 'T'
                                   }
                                 ],
-                                'type' => 'brace_command_arg'
+                                'type' => 'brace_arg'
                               }
                             ],
                             'info' => {
@@ -363,6 +364,9 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                       'text' => 'h cTd'
                     }
                   ],
+                  'source_info' => {
+                    'line_nr' => 9
+                  },
                   'source_marks' => [
                     {
                       'counter' => 5,
@@ -408,9 +412,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                         'cell_number' => 1
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 10,
-                        'macro' => ''
+                        'line_nr' => 10
                       }
                     },
                     {
@@ -433,9 +435,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                         'cell_number' => 2
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 10,
-                        'macro' => ''
+                        'line_nr' => 10
                       }
                     },
                     {
@@ -458,9 +458,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                         'cell_number' => 3
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 10,
-                        'macro' => ''
+                        'line_nr' => 10
                       }
                     },
                     {
@@ -483,9 +481,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                         'cell_number' => 4
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 10,
-                        'macro' => ''
+                        'line_nr' => 10
                       }
                     },
                     {
@@ -509,9 +505,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                         'cell_number' => 5
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 10,
-                        'macro' => ''
+                        'line_nr' => 10
                       }
                     }
                   ],
@@ -550,9 +544,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
@@ -565,9 +557,7 @@ $result_trees{'macro_expansion_in_multitable_prototype'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         }
       ],

@@ -1,6 +1,6 @@
 /* terminal.h -- The external interface to terminal I/O.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,8 +19,6 @@
 
 #if !defined (TERMINAL_H)
 #define TERMINAL_H
-
-#include "info.h"
 
 /* For almost every function externally visible from terminal.c, there is
    a corresponding "hook" function which can be bound in order to replace
@@ -61,7 +59,7 @@ extern void (*terminal_get_screen_size_hook) (void);
 extern int terminal_prep_terminal (void);
 extern void terminal_unprep_terminal (void);
 
-extern int (*terminal_prep_terminal_hook) (void);
+extern void (*terminal_prep_terminal_hook) (void);
 extern void (*terminal_unprep_terminal_hook) (void);
 
 /* Re-initialize the terminal to TERMINAL_NAME. */

@@ -33,9 +33,7 @@ $result_trees{'displaymath'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               },
               'type' => 'balanced_braces'
             },
@@ -49,9 +47,7 @@ $result_trees{'displaymath'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               },
               'type' => 'balanced_braces'
             },
@@ -86,16 +82,12 @@ $result_trees{'displaymath'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -136,9 +128,7 @@ $result_trees{'displaymath'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               },
               'type' => 'balanced_braces'
             },
@@ -152,9 +142,7 @@ $result_trees{'displaymath'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 7,
-                'macro' => ''
+                'line_nr' => 7
               },
               'type' => 'balanced_braces'
             },
@@ -189,16 +177,12 @@ $result_trees{'displaymath'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -245,7 +229,7 @@ $result_floats{'displaymath'} = {};
 
 $result_converted{'html'}->{'displaymath'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -256,13 +240,26 @@ $result_converted{'html'}->{'displaymath'} = '<!DOCTYPE html>
 <meta name="distribution" content="global">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<style type="text/css">
+<!--
+pre.displaymath {font-style: italic; font-family: serif; display: flex; justify-content: center}
+-->
+</style>
 
 <script type=\'text/javascript\'>
 MathJax = {
   options: {
-    skipHtmlTags: {\'[-]\': [\'pre\']},
+    skipHtmlTags: {\'[-]\': [\'pre\']},       // do not skip pre
     ignoreHtmlClass: \'tex2jax_ignore\',
     processHtmlClass: \'tex2jax_process\'
+  },
+  tex: {
+    processEscapes: false,      // do not use \\$ to produce a literal dollar sign
+    processEnvironments: false, // do not process \\begin{xxx}...\\end{xxx} outside math mode
+    processRefs: false,         // do not process \\ref{...} outside of math mode
+    displayMath: [             // start/end delimiter pairs for display math
+      [\'\\\\[\', \'\\\\]\']
+    ],
   },
 };
 </script><script type="text/javascript" id="MathJax-script" async
@@ -271,11 +268,11 @@ MathJax = {
 </head>
 
 <body lang="en" class="tex2jax_ignore">
-<div class="displaymath"><em class="tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
-\\]</em></div>
+<pre class="displaymath tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+\\]</pre>
 <p>before
-</p><div class="displaymath"><em class="tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
-\\]</em></div><p>after
+</p><pre class="displaymath tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+\\]</pre><p>after
 </p>
 
 <a href="js_licenses.html" rel="jslicense"><small>JavaScript license information</small></a>

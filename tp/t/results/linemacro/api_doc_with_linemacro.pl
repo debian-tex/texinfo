@@ -58,9 +58,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -69,9 +67,7 @@ $result_trees{'api_doc_with_linemacro'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -123,9 +119,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
@@ -134,9 +128,7 @@ $result_trees{'api_doc_with_linemacro'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           }
         },
         {
@@ -184,9 +176,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
@@ -195,9 +185,7 @@ $result_trees{'api_doc_with_linemacro'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -259,171 +247,198 @@ $result_trees{'api_doc_with_linemacro'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'Function'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'Function'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'fft.fft'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'fft.fft'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => '(',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'a'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'a'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'n='
-                    },
-                    {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'None'
+                              'text' => 'n='
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'code',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'None'
+                                    }
+                                  ],
+                                  'type' => 'brace_container'
+                                }
+                              ],
+                              'cmdname' => 'code',
+                              'source_info' => {
+                                'line_nr' => 15
+                              }
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'axis='
-                    },
-                    {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => '-1'
+                              'text' => 'axis='
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'code',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => '-1'
+                                    }
+                                  ],
+                                  'type' => 'brace_container'
+                                }
+                              ],
+                              'cmdname' => 'code',
+                              'source_info' => {
+                                'line_nr' => 15
+                              }
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
                       'text' => ',',
                       'type' => 'delimiter'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'text' => 'norm='
-                    },
-                    {
-                      'args' => [
+                      'contents' => [
                         {
                           'contents' => [
                             {
-                              'text' => 'None'
+                              'text' => 'norm='
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'cmdname' => 'code',
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 15,
-                        'macro' => ''
-                      }
+                      'type' => 'def_arg'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'delimiter'
-                      },
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'args' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'None'
+                                    }
+                                  ],
+                                  'type' => 'brace_container'
+                                }
+                              ],
+                              'cmdname' => 'code',
+                              'source_info' => {
+                                'line_nr' => 15
+                              }
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
+                    },
+                    {
                       'text' => ')',
                       'type' => 'delimiter'
                     }
@@ -440,7 +455,19 @@ $result_trees{'api_doc_with_linemacro'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'fft.fft'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'omit_def_name_space' => 1,
                 'original_def_cmdname' => 'defline'
               },
@@ -450,11 +477,8 @@ $result_trees{'api_doc_with_linemacro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 15,
-                'macro' => ''
-              },
-              'type' => 'def_line'
+                'line_nr' => 15
+              }
             },
             {
               'contents' => [
@@ -500,11 +524,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                                         'text' => 'a'
                                       }
                                     ],
-                                    'info' => {
-                                      'spaces_before_argument' => {
-                                        'text' => ' '
-                                      }
-                                    }
+                                    'type' => 'line_arg'
                                   },
                                   {
                                     'contents' => [
@@ -516,11 +536,15 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'spaces_before_argument' => {
                                         'text' => ' '
                                       }
-                                    }
+                                    },
+                                    'type' => 'line_arg'
                                   }
                                 ],
                                 'info' => {
-                                  'command_name' => 'param'
+                                  'command_name' => 'param',
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
                                 },
                                 'type' => 'linemacro_call'
                               },
@@ -531,80 +555,93 @@ $result_trees{'api_doc_with_linemacro'} = {
                           'text' => ''
                         }
                       ],
-                      'type' => 'def_item'
+                      'type' => 'before_defline'
                     },
                     {
                       'args' => [
                         {
                           'contents' => [
                             {
-                              'extra' => {
-                                'def_role' => 'category'
-                              },
-                              'text' => 'Parameter'
+                              'contents' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'Parameter'
+                                    }
+                                  ],
+                                  'type' => 'def_line_arg'
+                                }
+                              ],
+                              'type' => 'def_category'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => 'a'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'a'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'var',
+                                      'source_info' => {
+                                        'line_nr' => 19,
+                                        'macro' => 'param'
+                                      }
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'var',
-                              'extra' => {
-                                'def_role' => 'name'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 19,
-                                'macro' => 'param'
-                              }
+                              'type' => 'def_name'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => ' : array_like'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => ' : array_like'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'code',
+                                      'source_info' => {
+                                        'line_nr' => 19,
+                                        'macro' => 'param'
+                                      },
+                                      'source_marks' => [
+                                        {
+                                          'counter' => 1,
+                                          'sourcemark_type' => 'linemacro_expansion',
+                                          'status' => 'end'
+                                        }
+                                      ]
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'code',
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 19,
-                                'macro' => 'param'
-                              },
-                              'source_marks' => [
-                                {
-                                  'counter' => 1,
-                                  'sourcemark_type' => 'linemacro_expansion',
-                                  'status' => 'end'
-                                }
-                              ]
+                              'type' => 'def_arg'
                             }
                           ],
                           'info' => {
@@ -619,7 +656,29 @@ $result_trees{'api_doc_with_linemacro'} = {
                       'cmdname' => 'defline',
                       'extra' => {
                         'def_command' => 'defline',
-                        'def_index_element' => {},
+                        'def_index_element' => {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'a'
+                                        }
+                                      ],
+                                      'type' => 'brace_container'
+                                    }
+                                  ],
+                                  'cmdname' => 'var'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
                         'omit_def_name_space' => 1,
                         'original_def_cmdname' => 'defline'
                       },
@@ -629,11 +688,9 @@ $result_trees{'api_doc_with_linemacro'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 19,
                         'macro' => 'param'
-                      },
-                      'type' => 'def_line'
+                      }
                     },
                     {
                       'contents' => [
@@ -658,11 +715,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                                         'text' => 'n'
                                       }
                                     ],
-                                    'info' => {
-                                      'spaces_before_argument' => {
-                                        'text' => ' '
-                                      }
-                                    }
+                                    'type' => 'line_arg'
                                   },
                                   {
                                     'contents' => [
@@ -674,11 +727,15 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'spaces_before_argument' => {
                                         'text' => ' '
                                       }
-                                    }
+                                    },
+                                    'type' => 'line_arg'
                                   }
                                 ],
                                 'info' => {
-                                  'command_name' => 'param'
+                                  'command_name' => 'param',
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
                                 },
                                 'type' => 'linemacro_call'
                               },
@@ -699,73 +756,86 @@ $result_trees{'api_doc_with_linemacro'} = {
                         {
                           'contents' => [
                             {
-                              'extra' => {
-                                'def_role' => 'category'
-                              },
-                              'text' => 'Parameter'
+                              'contents' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'Parameter'
+                                    }
+                                  ],
+                                  'type' => 'def_line_arg'
+                                }
+                              ],
+                              'type' => 'def_category'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => 'n'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'n'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'var',
+                                      'source_info' => {
+                                        'line_nr' => 22,
+                                        'macro' => 'param'
+                                      }
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'var',
-                              'extra' => {
-                                'def_role' => 'name'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 22,
-                                'macro' => 'param'
-                              }
+                              'type' => 'def_name'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => ' : int, optional'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => ' : int, optional'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'code',
+                                      'source_info' => {
+                                        'line_nr' => 22,
+                                        'macro' => 'param'
+                                      },
+                                      'source_marks' => [
+                                        {
+                                          'counter' => 2,
+                                          'sourcemark_type' => 'linemacro_expansion',
+                                          'status' => 'end'
+                                        }
+                                      ]
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'code',
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 22,
-                                'macro' => 'param'
-                              },
-                              'source_marks' => [
-                                {
-                                  'counter' => 2,
-                                  'sourcemark_type' => 'linemacro_expansion',
-                                  'status' => 'end'
-                                }
-                              ]
+                              'type' => 'def_arg'
                             }
                           ],
                           'info' => {
@@ -780,7 +850,29 @@ $result_trees{'api_doc_with_linemacro'} = {
                       'cmdname' => 'defline',
                       'extra' => {
                         'def_command' => 'defline',
-                        'def_index_element' => {},
+                        'def_index_element' => {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'n'
+                                        }
+                                      ],
+                                      'type' => 'brace_container'
+                                    }
+                                  ],
+                                  'cmdname' => 'var'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
                         'omit_def_name_space' => 1,
                         'original_def_cmdname' => 'defline'
                       },
@@ -790,11 +882,9 @@ $result_trees{'api_doc_with_linemacro'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 22,
                         'macro' => 'param'
-                      },
-                      'type' => 'def_line'
+                      }
                     },
                     {
                       'contents' => [
@@ -815,14 +905,12 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'text' => 'n'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'var',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 24,
-                                'macro' => ''
+                                'line_nr' => 24
                               }
                             },
                             {
@@ -844,11 +932,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                                         'text' => 'axis'
                                       }
                                     ],
-                                    'info' => {
-                                      'spaces_before_argument' => {
-                                        'text' => ' '
-                                      }
-                                    }
+                                    'type' => 'line_arg'
                                   },
                                   {
                                     'contents' => [
@@ -860,11 +944,15 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'spaces_before_argument' => {
                                         'text' => ' '
                                       }
-                                    }
+                                    },
+                                    'type' => 'line_arg'
                                   }
                                 ],
                                 'info' => {
-                                  'command_name' => 'param'
+                                  'command_name' => 'param',
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
                                 },
                                 'type' => 'linemacro_call'
                               },
@@ -885,73 +973,86 @@ $result_trees{'api_doc_with_linemacro'} = {
                         {
                           'contents' => [
                             {
-                              'extra' => {
-                                'def_role' => 'category'
-                              },
-                              'text' => 'Parameter'
+                              'contents' => [
+                                {
+                                  'contents' => [
+                                    {
+                                      'text' => 'Parameter'
+                                    }
+                                  ],
+                                  'type' => 'def_line_arg'
+                                }
+                              ],
+                              'type' => 'def_category'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => 'axis'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'axis'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'var',
+                                      'source_info' => {
+                                        'line_nr' => 26,
+                                        'macro' => 'param'
+                                      }
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'var',
-                              'extra' => {
-                                'def_role' => 'name'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 26,
-                                'macro' => 'param'
-                              }
+                              'type' => 'def_name'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => ' : int, optional'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => ' : int, optional'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'code',
+                                      'source_info' => {
+                                        'line_nr' => 26,
+                                        'macro' => 'param'
+                                      },
+                                      'source_marks' => [
+                                        {
+                                          'counter' => 3,
+                                          'sourcemark_type' => 'linemacro_expansion',
+                                          'status' => 'end'
+                                        }
+                                      ]
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'code',
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 26,
-                                'macro' => 'param'
-                              },
-                              'source_marks' => [
-                                {
-                                  'counter' => 3,
-                                  'sourcemark_type' => 'linemacro_expansion',
-                                  'status' => 'end'
-                                }
-                              ]
+                              'type' => 'def_arg'
                             }
                           ],
                           'info' => {
@@ -966,7 +1067,29 @@ $result_trees{'api_doc_with_linemacro'} = {
                       'cmdname' => 'defline',
                       'extra' => {
                         'def_command' => 'defline',
-                        'def_index_element' => {},
+                        'def_index_element' => {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'axis'
+                                        }
+                                      ],
+                                      'type' => 'brace_container'
+                                    }
+                                  ],
+                                  'cmdname' => 'var'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
                         'omit_def_name_space' => 1,
                         'original_def_cmdname' => 'defline'
                       },
@@ -976,11 +1099,9 @@ $result_trees{'api_doc_with_linemacro'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 26,
                         'macro' => 'param'
-                      },
-                      'type' => 'def_line'
+                      }
                     },
                     {
                       'contents' => [
@@ -1005,11 +1126,7 @@ $result_trees{'api_doc_with_linemacro'} = {
                                         'text' => 'out'
                                       }
                                     ],
-                                    'info' => {
-                                      'spaces_before_argument' => {
-                                        'text' => ' '
-                                      }
-                                    }
+                                    'type' => 'line_arg'
                                   },
                                   {
                                     'contents' => [
@@ -1021,11 +1138,15 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'spaces_before_argument' => {
                                         'text' => ' '
                                       }
-                                    }
+                                    },
+                                    'type' => 'line_arg'
                                   }
                                 ],
                                 'info' => {
-                                  'command_name' => 'returns'
+                                  'command_name' => 'returns',
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
                                 },
                                 'type' => 'linemacro_call'
                               },
@@ -1048,81 +1169,88 @@ $result_trees{'api_doc_with_linemacro'} = {
                             {
                               'contents' => [
                                 {
-                                  'text' => 'Return Value'
+                                  'contents' => [
+                                    {
+                                      'text' => 'Return Value'
+                                    }
+                                  ],
+                                  'source_info' => {
+                                    'line_nr' => 29,
+                                    'macro' => 'returns'
+                                  },
+                                  'type' => 'bracketed_arg'
                                 }
                               ],
-                              'extra' => {
-                                'def_role' => 'category'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 29,
-                                'macro' => 'returns'
-                              },
-                              'type' => 'bracketed_arg'
+                              'type' => 'def_category'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => 'out'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => 'out'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'var',
+                                      'source_info' => {
+                                        'line_nr' => 29,
+                                        'macro' => 'returns'
+                                      }
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'var',
-                              'extra' => {
-                                'def_role' => 'name'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 29,
-                                'macro' => 'returns'
-                              }
+                              'type' => 'def_name'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'args' => [
+                              'contents' => [
                                 {
                                   'contents' => [
                                     {
-                                      'text' => ' : complex ndarray'
+                                      'args' => [
+                                        {
+                                          'contents' => [
+                                            {
+                                              'text' => ' : complex ndarray'
+                                            }
+                                          ],
+                                          'type' => 'brace_container'
+                                        }
+                                      ],
+                                      'cmdname' => 'code',
+                                      'source_info' => {
+                                        'line_nr' => 29,
+                                        'macro' => 'returns'
+                                      },
+                                      'source_marks' => [
+                                        {
+                                          'counter' => 4,
+                                          'sourcemark_type' => 'linemacro_expansion',
+                                          'status' => 'end'
+                                        }
+                                      ]
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'cmdname' => 'code',
-                              'extra' => {
-                                'def_role' => 'arg'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 29,
-                                'macro' => 'returns'
-                              },
-                              'source_marks' => [
-                                {
-                                  'counter' => 4,
-                                  'sourcemark_type' => 'linemacro_expansion',
-                                  'status' => 'end'
-                                }
-                              ]
+                              'type' => 'def_arg'
                             }
                           ],
                           'info' => {
@@ -1137,7 +1265,29 @@ $result_trees{'api_doc_with_linemacro'} = {
                       'cmdname' => 'defline',
                       'extra' => {
                         'def_command' => 'defline',
-                        'def_index_element' => {},
+                        'def_index_element' => {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'args' => [
+                                    {
+                                      'contents' => [
+                                        {
+                                          'text' => 'out'
+                                        }
+                                      ],
+                                      'type' => 'brace_container'
+                                    }
+                                  ],
+                                  'cmdname' => 'var'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
                         'omit_def_name_space' => 1,
                         'original_def_cmdname' => 'defline'
                       },
@@ -1147,11 +1297,9 @@ $result_trees{'api_doc_with_linemacro'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 29,
                         'macro' => 'returns'
-                      },
-                      'type' => 'def_line'
+                      }
                     },
                     {
                       'contents' => [
@@ -1176,15 +1324,14 @@ $result_trees{'api_doc_with_linemacro'} = {
                                         'text' => 'IndexError'
                                       }
                                     ],
-                                    'info' => {
-                                      'spaces_before_argument' => {
-                                        'text' => ' '
-                                      }
-                                    }
+                                    'type' => 'line_arg'
                                   }
                                 ],
                                 'info' => {
-                                  'command_name' => 'raises'
+                                  'command_name' => 'raises',
+                                  'spaces_before_argument' => {
+                                    'text' => ' '
+                                  }
                                 },
                                 'type' => 'linemacro_call'
                               },
@@ -1207,39 +1354,44 @@ $result_trees{'api_doc_with_linemacro'} = {
                             {
                               'contents' => [
                                 {
-                                  'text' => 'Exception'
+                                  'contents' => [
+                                    {
+                                      'text' => 'Exception'
+                                    }
+                                  ],
+                                  'source_info' => {
+                                    'line_nr' => 32,
+                                    'macro' => 'raises'
+                                  },
+                                  'type' => 'bracketed_arg'
                                 }
                               ],
-                              'extra' => {
-                                'def_role' => 'category'
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 32,
-                                'macro' => 'raises'
-                              },
-                              'type' => 'bracketed_arg'
+                              'type' => 'def_category'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'spaces'
-                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
-                              'extra' => {
-                                'def_role' => 'name'
-                              },
-                              'source_marks' => [
+                              'contents' => [
                                 {
-                                  'counter' => 5,
-                                  'position' => 10,
-                                  'sourcemark_type' => 'linemacro_expansion',
-                                  'status' => 'end'
+                                  'contents' => [
+                                    {
+                                      'source_marks' => [
+                                        {
+                                          'counter' => 5,
+                                          'position' => 10,
+                                          'sourcemark_type' => 'linemacro_expansion',
+                                          'status' => 'end'
+                                        }
+                                      ],
+                                      'text' => 'IndexError'
+                                    }
+                                  ],
+                                  'type' => 'def_line_arg'
                                 }
                               ],
-                              'text' => 'IndexError'
+                              'type' => 'def_name'
                             }
                           ],
                           'info' => {
@@ -1254,7 +1406,19 @@ $result_trees{'api_doc_with_linemacro'} = {
                       'cmdname' => 'defline',
                       'extra' => {
                         'def_command' => 'defline',
-                        'def_index_element' => {},
+                        'def_index_element' => {
+                          'contents' => [
+                            {
+                              'contents' => [
+                                {
+                                  'text' => 'IndexError'
+                                }
+                              ],
+                              'type' => 'def_line_arg'
+                            }
+                          ],
+                          'type' => 'def_name'
+                        },
                         'omit_def_name_space' => 1,
                         'original_def_cmdname' => 'defline'
                       },
@@ -1264,11 +1428,9 @@ $result_trees{'api_doc_with_linemacro'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 32,
                         'macro' => 'raises'
-                      },
-                      'type' => 'def_line'
+                      }
                     },
                     {
                       'contents' => [
@@ -1285,14 +1447,12 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'text' => 'axis'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'var',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 33,
-                                'macro' => ''
+                                'line_nr' => 33
                               }
                             },
                             {
@@ -1306,14 +1466,12 @@ $result_trees{'api_doc_with_linemacro'} = {
                                       'text' => 'a'
                                     }
                                   ],
-                                  'type' => 'brace_command_arg'
+                                  'type' => 'brace_container'
                                 }
                               ],
                               'cmdname' => 'var',
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 33,
-                                'macro' => ''
+                                'line_nr' => 33
                               }
                             },
                             {
@@ -1358,16 +1516,12 @@ $result_trees{'api_doc_with_linemacro'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 35,
-                        'macro' => ''
+                        'line_nr' => 35
                       }
                     }
                   ],
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 18,
-                    'macro' => ''
+                    'line_nr' => 18
                   }
                 },
                 {
@@ -1405,16 +1559,12 @@ $result_trees{'api_doc_with_linemacro'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 37,
-                'macro' => ''
+                'line_nr' => 37
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           }
         }
       ],
@@ -1423,12 +1573,6 @@ $result_trees{'api_doc_with_linemacro'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'extra'}{'def_index_element'} = $result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[3]{'extra'}{'def_index_element'} = $result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2];
-$result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[5]{'extra'}{'def_index_element'} = $result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[2];
-$result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[7]{'extra'}{'def_index_element'} = $result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[2];
-$result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[9]{'extra'}{'def_index_element'} = $result_trees{'api_doc_with_linemacro'}{'contents'}[0]{'contents'}[7]{'contents'}[1]{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[2];
 
 $result_texis{'api_doc_with_linemacro'} = '@linemacro param {param, type}
 @defline Parameter @var{\\param\\} @code{ : \\type\\}

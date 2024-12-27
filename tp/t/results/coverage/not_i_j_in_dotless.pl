@@ -29,9 +29,7 @@ $result_trees{'not_i_j_in_dotless'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -49,25 +47,21 @@ $result_trees{'not_i_j_in_dotless'} = {
                               'text' => 'q'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'dotless',
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 1,
-                        'macro' => ''
+                        'line_nr' => 1
                       }
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => '^',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -92,18 +86,14 @@ $result_errors{'not_i_j_in_dotless'} = [
   {
     'error_line' => '@dotless expects `i\' or `j\' as argument, not `a\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@dotless expects `i\' or `j\' as argument, not `a\'',
     'type' => 'error'
   },
   {
     'error_line' => '@dotless expects `i\' or `j\' as argument, not `q\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@dotless expects `i\' or `j\' as argument, not `q\'',
     'type' => 'error'
   }

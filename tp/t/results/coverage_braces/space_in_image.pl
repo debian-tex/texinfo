@@ -25,7 +25,7 @@ $result_trees{'space_in_image'} = {
                   'text' => ' '
                 }
               },
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -33,7 +33,7 @@ $result_trees{'space_in_image'} = {
                   'text' => 'bb'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -46,7 +46,7 @@ $result_trees{'space_in_image'} = {
                   'text' => ' '
                 }
               },
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -59,7 +59,7 @@ $result_trees{'space_in_image'} = {
                   'text' => ' '
                 }
               },
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             },
             {
               'contents' => [
@@ -72,7 +72,7 @@ $result_trees{'space_in_image'} = {
                   'text' => ' '
                 }
               },
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'image',
@@ -80,9 +80,7 @@ $result_trees{'space_in_image'} = {
             'input_encoding_name' => 'utf-8'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -106,7 +104,7 @@ $result_trees{'space_in_image'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'image',
@@ -114,9 +112,7 @@ $result_trees{'space_in_image'} = {
                 'input_encoding_name' => 'utf-8'
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -154,18 +150,14 @@ $result_converted_errors{'html_text'}->{'space_in_image'} = [
   {
     'error_line' => 'warning: @image file `a\' (for HTML) not found, using `a.e\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `a\' (for HTML) not found, using `a.e\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f\' (for HTML) not found, using `f.jpg\'
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `f\' (for HTML) not found, using `f.jpg\'',
     'type' => 'warning'
   }
@@ -179,22 +171,21 @@ $result_converted_errors{'latex_text'}->{'space_in_image'} = [
   {
     'error_line' => 'warning: @image file `a\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `a\' (for LaTeX) not found',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @image file `f\' (for LaTeX) not found
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@image file `f\' (for LaTeX) not found',
     'type' => 'warning'
   }
 ];
 
+
+
+$result_converted{'docbook'}->{'space_in_image'} = '<informalfigure><mediaobject><imageobject><imagedata fileref="a.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>An image text before paragraph.</literallayout></textobject></mediaobject></informalfigure><para>. <inlinemediaobject><imageobject><imagedata fileref="f.jpg" format="JPG"></imagedata></imageobject><textobject><literallayout>Another image text, in paragraph.</literallayout></textobject></inlinemediaobject>.</para>';
 
 1;

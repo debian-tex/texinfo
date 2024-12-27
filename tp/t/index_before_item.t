@@ -5,12 +5,13 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 6; }
+BEGIN { plan tests => 7; }
 
-use Texinfo::Parser qw(parse_texi_piece);
-use Texinfo::Common qw(move_index_entries_after_items_in_tree);
+use Texinfo::Parser;
 use Texinfo::Convert::Texinfo;
-use DebugTexinfo::DebugTree;
+use Texinfo::Document;
+use Texinfo::ManipulateTree;
+use Texinfo::DebugTree;
 
 ok(1);
 
@@ -20,12 +21,17 @@ sub run_test($$$)
   my $out = shift;
   my $name = shift;
 
-  my $tree = parse_texi_piece(undef, $in);
+  my $parser = Texinfo::Parser::parser();
+  my $document = $parser->parse_texi_piece($in);
+  my $tree = $document->tree();
 
-#print STDERR DebugTexinfo::DebugTree::convert(undef, $tree)."\n";
+  #print STDERR Texinfo::DebugTree::convert_tree(undef, $tree)."\n";
 
-  my $corrected_tree = move_index_entries_after_items_in_tree($tree);
-  my $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo($corrected_tree);
+  Texinfo::ManipulateTree::move_index_entries_after_items_in_tree($tree);
+  # rebuild tree
+  $tree = $document->tree();
+
+  my $texi_result = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
 
   if (!defined($out)) {
     print STDERR " --> $name:\n$texi_result";
@@ -164,3 +170,15 @@ run_test('@itemize i
 @item e--mph item
 @end itemize
 ', 'only comment');
+
+run_test('@enumerate
+@cindex pattern @subentry variable
+@item
+Set the variable
+@end enumerate
+', '@enumerate
+@item
+@cindex pattern @subentry variable
+Set the variable
+@end enumerate
+', 'subentry');

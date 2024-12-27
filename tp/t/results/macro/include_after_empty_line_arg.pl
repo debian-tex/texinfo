@@ -54,9 +54,7 @@ $result_trees{'include_after_empty_line_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,9 +63,7 @@ $result_trees{'include_after_empty_line_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -88,7 +84,7 @@ $result_trees{'include_after_empty_line_arg'} = {
                 'info' => {
                   'command_name' => 'mymacro'
                 },
-                'type' => 'macro_call'
+                'type' => 'macro_call_line'
               },
               'position' => 1,
               'sourcemark_type' => 'macro_expansion',
@@ -104,12 +100,11 @@ $result_trees{'include_after_empty_line_arg'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_container'
                 }
               ],
               'cmdname' => 'code',
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 5,
                 'macro' => 'mymacro'
               },
@@ -152,9 +147,7 @@ $result_trees{'include_after_empty_line_arg'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 6,
-                      'macro' => ''
+                      'line_nr' => 6
                     }
                   },
                   'position' => 1,

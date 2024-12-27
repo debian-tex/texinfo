@@ -17,7 +17,7 @@ This manual is for Stand-alone GNU Info (version @value{VERSION},
 (usually created from Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999,
-2001-2023 Free Software Foundation, Inc.
+2001-2024 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -1763,8 +1763,7 @@ Commands}.
 @anchor{--init-file}
 @cindex @code{--init-file} command line option
 Read key bindings and variable settings from @var{INIT-FILE} instead
-of the @file{.infokey} file in your home directory.  @xref{Custom Key
-Bindings}.
+of the default location.  @xref{Custom Key Bindings}.
 
 @item --node @var{nodename}
 @itemx -n @var{nodename}
@@ -1936,7 +1935,7 @@ interactively, using the @code{set-variable} command described below;
 on the command line, using the @option{-v} (@option{--variable})
 command line option (@pxref{variable-assignment});
 @item
-in the @code{#var} section of the @code{.infokey} file (@pxref{Custom
+in the @code{#var} section of the @code{infokey} file (@pxref{Custom
 Key Bindings}).
 @end enumerate
 
@@ -2073,7 +2072,7 @@ recognized sequence representing a key that is an initial subsequence of
 the first sequence.  In some cases, you may be able to make pressing a
 special key on the keyboard that Info doesn't know about (for example, a
 function key) cause a command to be executed by setting this variable to
-0, and giving the byte sequence the key sends in @file{.infokey}.
+0, and giving the byte sequence the key sends in the @file{infokey} file.
 (@xref{Custom Key Bindings}.)
 
 @anchor{min-search-length}
@@ -2208,7 +2207,7 @@ have the effect of following said cross-reference or menu entry.
 Used for matches from a search command.  (@xref{Searching Commands}.)
 @end vtable
 
-Each of these is given in the @file{.infokey} file just as the variables 
+Each of these is given in the @file{infokey} file just as the variables
 in the previous chapter.  Their values are a comma-separated list of 
 values in the following table:
 
@@ -2266,7 +2265,7 @@ Make the text blink, or not.
 
 @end table
 
-Here is an sample excerpt from an @file{.infokey} file:
+Here is an sample excerpt from an @file{infokey} file:
 
 @example
 #var
@@ -2297,32 +2296,62 @@ so search matches there will still be displayed in yellow.)
 @cindex @file{_info} file (MS-DOS)
 
 Info allows you to override the default key-to-command bindings and
-variable settings described in this document.  (The @option{--vi-keys}
-option rebinds many keys at once; @pxref{--vi-keys}.)
+variable settings described in this document.
+On startup, GNU Info looks for a configuration file:
 
-On startup, GNU Info looks for a configuration file in the invoker's
-@env{HOME} directory called @file{.infokey}, i.e.,
-@file{~/.infokey}.@footnote{Due to the limitations of DOS filesystems,
+@itemize @bullet
+@item
+First, Info checks @file{~/.infokey},
+where @file{~} refers to the user's @env{HOME}
+directory.@footnote{Due to the limitations of DOS filesystems,
 the MS-DOS version of Info looks for a file @file{_infokey} instead.  If
 the @env{HOME} variable is not defined, Info additionally looks in the
-current directory.}  If it is present, then Info adopts the key bindings
-and variable settings contained therein.  To use an alternative
-configuration file, use the @option{--init-file} option
-(@pxref{--init-file}).
+current directory.}
+
+@item
+If the file is not present at this location, Info then checks
+for @file{@env{$XDG_CONFIG_HOME/texinfo/infokey}}.  The default value
+of @env{$XDG_CONFIG_HOME} is @file{~/.config},
+so usually the file will be at @file{~/.config/texinfo/infokey}.
+
+@item
+Info then checks for @file{@var{sysconfdir}/xdg/texinfo/infokey}, where
+@var{sysconfdir} is was set when Info was built, usually to @samp{/etc/}
+or @samp{/usr/local/etc}.
+
+@item
+Finally, Info checks through @env{$XDG_CONFIG_DIRS} which is
+a colon-separated list of directory names, for a file named
+@file{texinfo/infokey}.
+
+@end itemize
+
+@noindent
+This search order is compatible with the
+@uref{https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html, XDG Base Directory Specification}
+although doesn't follow it in every detail.
+
+To use an alternative configuration file, use the @option{--init-file}
+option (@pxref{--init-file}).
+
+If an @file{infokey} file is found, then Info adopts the key bindings
+and variable settings contained therein.
 
 Variables may also be set on the command line with the
 @option{--variable} option (@pxref{variable-assignment}).  Variable
-settings on the command line override settings from the @file{.infokey}
+settings on the command line override settings from the @file{infokey}
 file.
+
+(The @option{--vi-keys} option rebinds many keys at once; @pxref{--vi-keys}.)
 
 @node @t{infokey} format
 @section @command{infokey} format
 
 @cindex @command{infokey} format
-@cindex @file{.infokey} format
-@cindex format of @file{.infokey}
+@cindex @file{infokey} format
+@cindex format of @file{infokey}
 
-Here is an example @file{.infokey} file which specifies the key
+Here is an example @file{infokey} file which specifies the key
 bindings that are activated by the @option{--vi-keys} option to Info 
 (@pxref{--vi-keys}).
 
@@ -2476,9 +2505,9 @@ space, are included in the value.
 Blank lines and lines starting with @code{#} are ignored, except for
 the special section header lines.
 
-Key bindings defined in the @file{.infokey} file take precedence over GNU
+Key bindings defined in the @file{infokey} file take precedence over GNU
 Info's default key bindings, whether or not @samp{--vi-keys} is used.  A
-default key binding may be disabled by overriding it in the @file{.infokey}
+default key binding may be disabled by overriding it in the @file{infokey}
 file with the action @code{invalid}.  In addition, @emph{all} default
 key bindings can be disabled by adding this line @emph{anywhere} in the
 relevant section:
@@ -2499,7 +2528,7 @@ Note that some keys (such as @key{C-c}) have special meanings
 to terminals, and any bindings for these would not be effective.
 @xref{Special Characters,,, coreutils, GNU Coreutils}.
 
-The order in which key bindings are defined in the @file{.infokey} file is
+The order in which key bindings are defined in the @file{infokey} file is
 not important, except that the command summary produced by the
 @code{get-help-window} command only displays the @emph{first} key that
 is bound to each command.

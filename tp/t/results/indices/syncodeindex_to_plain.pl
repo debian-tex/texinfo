@@ -41,9 +41,7 @@ $result_trees{'syncodeindex_to_plain'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -76,6 +74,7 @@ $result_trees{'syncodeindex_to_plain'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -84,9 +83,7 @@ $result_trees{'syncodeindex_to_plain'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -139,14 +136,13 @@ $result_trees{'syncodeindex_to_plain'} = {
             ]
           },
           'info' => {
+            'command_name' => 'kindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           },
           'type' => 'index_entry_command'
         },
@@ -176,14 +172,13 @@ $result_trees{'syncodeindex_to_plain'} = {
             ]
           },
           'info' => {
+            'command_name' => 'vindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           },
           'type' => 'index_entry_command'
         },
@@ -213,14 +208,13 @@ $result_trees{'syncodeindex_to_plain'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           },
           'type' => 'index_entry_command'
         },
@@ -267,9 +261,7 @@ $result_trees{'syncodeindex_to_plain'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -315,13 +307,12 @@ $result_trees{'syncodeindex_to_plain'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 14,
-            'macro' => ''
+            'line_nr' => 14
           }
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -331,9 +322,7 @@ $result_trees{'syncodeindex_to_plain'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -368,33 +357,42 @@ cp index.
 vr index.
 ';
 
-$result_nodes{'syncodeindex_to_plain'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'syncodeindex_to_plain'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
       },
-      'structure' => {
-        'node_prev' => {}
-      }
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'syncodeindex_to_plain'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'syncodeindex_to_plain'}[0];
+$result_nodes{'syncodeindex_to_plain'}[1] = $result_nodes{'syncodeindex_to_plain'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'syncodeindex_to_plain'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'syncodeindex_to_plain'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'syncodeindex_to_plain'};
-
-$result_menus{'syncodeindex_to_plain'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'syncodeindex_to_plain'} = [];
 
@@ -402,17 +400,10 @@ $result_errors{'syncodeindex_to_plain'} = [];
 $result_indices{'syncodeindex_to_plain'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1,
-        'ky' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
@@ -422,23 +413,14 @@ $result_indices{'syncodeindex_to_plain'} = {
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }
@@ -483,7 +465,6 @@ cp index.
 * Menu:
 
 * --v:                                   chap.                  (line 3)
-
 
 
 Tag Table:
@@ -534,7 +515,7 @@ $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 
 <p>cp index.
 </p><div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_cp_symbol-1">-</th></tr>
@@ -546,7 +527,7 @@ $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 
 <p>vr index.
 </p><div class="printindex vr-printindex">
-<table class="vr-entries-printindex" border="0">
+<table class="vr-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="chap_vr_symbol-1">-</th></tr>

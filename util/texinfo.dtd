@@ -10,7 +10,7 @@
   As soon as this file is nontrivially modified, update
   TEXINFO_DTD_VERSION in configure.ac (if not already done).
   See comments there for explanation.
-  
+
   Email bug-texinfo@gnu.org with any discussion.
   (Original author: Philippe Martin.)
 -->
@@ -68,14 +68,14 @@
 <!ENTITY % def.cmds "deffn | defvr | deftypefn | deftypeop | deftypevr
       | defcv | deftypecv | defop | deftp | defun | defmac 
       | defspec | defvar | defopt | deftypefun | deftypevar 
-      | defivar | deftypeivar | defmethod | deftypemethod">
+      | defivar | deftypeivar | defmethod | deftypemethod | defblock">
 
 <!ENTITY % raw.cmds "html | tex | latex | docbook | xml | ignore">
 
 <!-- Commands that appear everywhere, both with block and in paragraphs -->
 <!-- include is in general absent, since it is replaced, but it is
      present if the file was not found -->
-<!ENTITY % ubiquitous.cmds "sp | anchor | indent | noindent | %raw.cmds; 
+<!ENTITY % ubiquitous.cmds "sp | anchor | indent | noindent | %raw.cmds;
                  | %define.cmds; | %option.cmds; | errormsg | include
                  | %indexentry.cmds; | refill | quote-arg | allow-recursion">
 
@@ -86,7 +86,7 @@
                   | cartouche | float | format | smallformat
                   | display | smalldisplay
                   | raggedright | flushleft | flushright
-                  | itemize | enumerate | group
+                  | itemize | enumerate | group | nodedescriptionblock
                   | table | vtable | ftable | multitable | displaymath
                   | %def.cmds; | verbatim">
 
@@ -98,7 +98,7 @@
 <!ENTITY % block  "%block.cmds; | verbatiminclude
                   | %heading.cmds;
                   | %ubiquitous.cmds;
-                  | image | titlefont | center
+                  | image | titlefont | center | nodedescription
                   | insertcopying | page | need | vskip">
 
 <!-- API definition line -->
@@ -175,16 +175,21 @@
 <!ENTITY % Inline.linetext "%Inline.linesimpletext; | %Inline.reference;
                             | %Inline.footnote;">
 <!ENTITY % Inline.line "%Inline.linetext; | image">
-<!-- %Inline.line; appears on @vtable item, so it must be valid in
-     indexterm generated for such item.  In that context seealso,
+<!-- %Inline.line; appears on @vtable item or @def*, so it must be valid in
+     indexterm generated in such context.  In that context seealso,
      seeentry and sortas are not valid.
      In index commands (@cindex...) indexterm, however, footnotes and
      cross-reference are not valid, so %Inline.linesimpletext;, for example,
      would have been better than %Inline.line;.
+     defbracketed can only appear in @def* indexterm, it is invalid in other
+     index term contexts.
      It is not possible to have different contents in different contexts
      in the DTD, so we use the contents for all the contexts -->
-<!ENTITY % Inline.indexentryline "%Inline.line; | seealso | seeentry | sortas">
+<!ENTITY % Inline.indexentryline "%Inline.line; | seealso | seeentry | sortas
+                                  | defbracketed">
 <!ENTITY % Inline.fullline "%Inline.line; | titlefont | anchor">
+
+<!ENTITY % Inline.defargline "%Inline.line; | defbracketed">
 
 <!-- on headings specification lines -->
 <!ENTITY % Inline.headingmark "thischapter | thischaptername
@@ -684,9 +689,16 @@
 <!ELEMENT displaymath  (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST displaymath
           %spacesblockattr;>
+<!ELEMENT nodedescriptionblock (%block;)*>
+<!ATTLIST nodedescriptionblock
+          %spacesblockattr;>
 
 <!ELEMENT center       (#PCDATA | %Inline.fullline;)*>
 <!ATTLIST center
+          %spacesattr;>
+
+<!ELEMENT nodedescription  (#PCDATA | %Inline.fullline;)*>
+<!ATTLIST nodedescription
           %spacesattr;>
 
 <!ELEMENT image        (imagefile, imagewidth?, imageheight?, alttext?,
@@ -1031,44 +1043,60 @@
 <!ATTLIST deftypemethodx
           %spacesattr;>
 
+<!ELEMENT defblock (beforefirstdefline?, ((defline | deftypeline), (%indexentry.cmds;)*, definitionitem?)+)>
+<!ATTLIST defblock
+          endspaces CDATA #IMPLIED>
+<!ELEMENT defline (definitionterm)>
+<!ATTLIST defline
+          %spacesattr;>
+<!ELEMENT deftypeline (definitionterm)>
+<!ATTLIST deftypeline
+          %spacesattr;>
+
 <!ELEMENT definitionterm (indexterm?, (%definition.args;)+)>
 <!ELEMENT definitionitem (%block;)*>
+<!ELEMENT beforefirstdefline (%block;)*>
 
 <!ENTITY % defargattr
          "%bracketedattr; %spacestrailingspacesattr;">
-<!ELEMENT defcategory  (#PCDATA | %Inline.line;)*>
+
+<!ELEMENT defbracketed (#PCDATA | %Inline.line;)*>
+<!ATTLIST defbracketed
+          %defargattr;>
+
+<!ELEMENT defcategory  (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defcategory
           %defargattr;
           automatic (%onoff;) 'off'>
-<!ELEMENT deffunction  (#PCDATA | %Inline.line;)*>
+<!ELEMENT deffunction  (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST deffunction
           %defargattr;>
-<!ELEMENT defsymbol (#PCDATA | %Inline.line;)*>
+<!ELEMENT defsymbol (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defsymbol
           %defargattr;>
-<!ELEMENT defvariable  (#PCDATA | %Inline.line;)*>
+<!ELEMENT defvariable  (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defvariable
           %defargattr;>
-<!ELEMENT defparam     (#PCDATA | %Inline.line;)*>
+<!ELEMENT defparam     (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defparam
           %defargattr;>
 <!ELEMENT defdelimiter (#PCDATA | %Inline.line;)*>
-<!ELEMENT deftype      (#PCDATA | %Inline.line;)*>
+<!ELEMENT deftype      (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST deftype
           %defargattr;>
-<!ELEMENT defparamtype (#PCDATA | %Inline.line;)*>
+<!ELEMENT defparamtype (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defparamtype
           %defargattr;>
-<!ELEMENT defdatatype  (#PCDATA | %Inline.line;)*>
+<!ELEMENT defdatatype  (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defdatatype
           %defargattr;>
-<!ELEMENT defclass     (#PCDATA | %Inline.line;)*>
+<!ELEMENT defclass     (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defclass
           %defargattr;>
-<!ELEMENT defclassvar  (#PCDATA | %Inline.line;)*>
+<!ELEMENT defclassvar  (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defclassvar
           %defargattr;>
-<!ELEMENT defoperation (#PCDATA | %Inline.line;)*>
+<!ELEMENT defoperation (#PCDATA | %Inline.defargline;)*>
 <!ATTLIST defoperation
           %defargattr;>
 
@@ -1341,6 +1369,8 @@
 <!ATTLIST url
           %spacesafterincmdattr;>
 <!ELEMENT urefurl         (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST urefurl
+          %spacesattr;>
 <!ELEMENT urefdesc        (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST urefdesc
           %spacesattr;>

@@ -25,7 +25,6 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -50,6 +49,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -59,8 +59,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
       },
       'source_info' => {
         'file_name' => 'index_entries_relate_to_item.texi',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -96,8 +95,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
       },
       'source_info' => {
         'file_name' => 'index_entries_relate_to_item.texi',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     },
     {
@@ -119,6 +117,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -129,8 +128,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
       },
       'source_info' => {
         'file_name' => 'index_entries_relate_to_item.texi',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -165,10 +163,8 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                   'cmdname' => 'code',
                   'source_info' => {
                     'file_name' => 'index_entries_relate_to_item.texi',
-                    'line_nr' => 9,
-                    'macro' => ''
-                  },
-                  'type' => 'command_as_argument'
+                    'line_nr' => 9
+                  }
                 }
               ],
               'info' => {
@@ -222,14 +218,14 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                         ]
                       },
                       'info' => {
+                        'command_name' => 'cindex',
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 11,
-                        'macro' => ''
+                        'line_nr' => 11
                       },
                       'type' => 'index_entry_command'
                     },
@@ -259,14 +255,14 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                         ]
                       },
                       'info' => {
+                        'command_name' => 'cindex',
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 12,
-                        'macro' => ''
+                        'line_nr' => 12
                       },
                       'type' => 'index_entry_command'
                     },
@@ -296,14 +292,14 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                         ]
                       },
                       'info' => {
+                        'command_name' => 'cindex',
                         'spaces_before_argument' => {
                           'text' => ' '
                         }
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 13,
-                        'macro' => ''
+                        'line_nr' => 13
                       },
                       'type' => 'index_entry_command'
                     },
@@ -325,6 +321,12 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                         }
                       ],
                       'cmdname' => 'item',
+                      'extra' => {
+                        'associated_index_entry' => [
+                          'cp',
+                          1
+                        ]
+                      },
                       'info' => {
                         'spaces_before_argument' => {
                           'text' => ' '
@@ -332,8 +334,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 14,
-                        'macro' => ''
+                        'line_nr' => 14
                       }
                     },
                     {
@@ -361,8 +362,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 15,
-                        'macro' => ''
+                        'line_nr' => 15
                       }
                     },
                     {
@@ -390,8 +390,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 16,
-                        'macro' => ''
+                        'line_nr' => 16
                       }
                     }
                   ],
@@ -453,8 +452,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
                       },
                       'source_info' => {
                         'file_name' => 'index_entries_relate_to_item.texi',
-                        'line_nr' => 20,
-                        'macro' => ''
+                        'line_nr' => 20
                       }
                     }
                   ],
@@ -515,8 +513,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
               },
               'source_info' => {
                 'file_name' => 'index_entries_relate_to_item.texi',
-                'line_nr' => 24,
-                'macro' => ''
+                'line_nr' => 24
               }
             }
           ],
@@ -530,8 +527,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
           },
           'source_info' => {
             'file_name' => 'index_entries_relate_to_item.texi',
-            'line_nr' => 9,
-            'macro' => ''
+            'line_nr' => 9
           }
         },
         {
@@ -569,8 +565,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
           },
           'source_info' => {
             'file_name' => 'index_entries_relate_to_item.texi',
-            'line_nr' => 26,
-            'macro' => ''
+            'line_nr' => 26
           }
         },
         {
@@ -579,7 +574,9 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
@@ -587,8 +584,7 @@ $result_trees{'index_entries_relate_to_item_transformation'} = {
       },
       'source_info' => {
         'file_name' => 'index_entries_relate_to_item.texi',
-        'line_nr' => 7,
-        'macro' => ''
+        'line_nr' => 7
       }
     },
     {
@@ -662,7 +658,7 @@ body2
 ';
 
 $result_sectioning{'index_entries_relate_to_item_transformation'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -671,11 +667,8 @@ $result_sectioning{'index_entries_relate_to_item_transformation'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -685,73 +678,82 @@ $result_sectioning{'index_entries_relate_to_item_transformation'} = {
                   'extra' => {
                     'isindex' => 1,
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'index_entries_relate_to_item_transformation'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_entries_relate_to_item_transformation'};
+$result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'index_entries_relate_to_item_transformation'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'index_entries_relate_to_item_transformation'};
 
-$result_nodes{'index_entries_relate_to_item_transformation'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'index_entries_relate_to_item_transformation'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'index_entries_relate_to_item_transformation'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'index_entries_relate_to_item_transformation'}[0];
+$result_nodes{'index_entries_relate_to_item_transformation'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'index_entries_relate_to_item_transformation'}[0];
+$result_nodes{'index_entries_relate_to_item_transformation'}[1] = $result_nodes{'index_entries_relate_to_item_transformation'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'index_entries_relate_to_item_transformation'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'index_entries_relate_to_item_transformation'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'index_entries_relate_to_item_transformation'};
-$result_nodes{'index_entries_relate_to_item_transformation'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'index_entries_relate_to_item_transformation'};
-
-$result_menus{'index_entries_relate_to_item_transformation'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'index_entries_relate_to_item_transformation'} = [];
 
@@ -803,7 +805,6 @@ File: ,  Node: chap,  Prev: Top,  Up: Top
 * A:                                     chap.                  (line 6)
 * B:                                     chap.                  (line 6)
 * C:                                     chap.                  (line 6)
-
 
 
 Tag Table:

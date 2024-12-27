@@ -578,7 +578,7 @@ Options:\n\
   puts (_("\
 Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
-Texinfo home page: http://www.gnu.org/software/texinfo/"));
+Texinfo home page: https://www.gnu.org/software/texinfo/"));
 }
 
 
@@ -752,11 +752,15 @@ open_possibly_compressed_file (char *filename,
                 return 0;
               nread = fread (data, sizeof (data), 1, f);
               if (nread == 0)
-                return 0;
+                {
+                  fclose (f);
+                  return 0;
+                }
               goto determine_file_type; /* success */
             }
         }
       errno = 0;
+      fclose (f);
       return 0; /* unknown error */
     }
 
@@ -825,16 +829,14 @@ determine_file_type:
     {
       /* Redirect stdin to the file and fork the decompression process
          reading from stdin.  This allows shell metacharacters in filenames. */
-      char *command = concat (*compression_program, " -d", "");
-      FILE *f2;
 
       if (fclose (f) < 0)
         return 0;
-      f2 = freopen (*opened_filename, FOPEN_RBIN, stdin);
-      if (!f)
+      if (!freopen (*opened_filename, FOPEN_RBIN, stdin))
         return 0;
+      char *command = concat (*compression_program, " -d", "");
       f = popen (command, "r");
-      fclose (f2);
+      fclose (stdin);
       if (!f)
         {
           /* Used for error message in calling code. */
@@ -854,7 +856,10 @@ determine_file_type:
 #else
       /* Seek back over the magic bytes.  */
       if (fseek (f, 0, 0) < 0)
-        return 0;
+        {
+          fclose (f);
+          return 0;
+        }
 #endif
     }
 
@@ -877,7 +882,6 @@ readfile (char *filename, int *sizep,
   FILE *f;
   int filled = 0;
   int data_size = 8192;
-  char *data = xmalloc (data_size + 1);
 
   /* If they passed the space for the file name to return, use it.  */
   f = open_possibly_compressed_file (filename, create_callback,
@@ -886,6 +890,8 @@ readfile (char *filename, int *sizep,
 
   if (!f)
     return 0;
+
+  char *data = xmalloc (data_size + 1);
 
   for (;;)
     {
@@ -1614,7 +1620,7 @@ split_entry (const char *entry, char **name, size_t *name_len,
   while (ptr[0] != '\0')
     {
       /* Eat up the whitespace after the name, and at the start of a line. */
-      while (isspace(ptr[0]))
+      while (isspace ((unsigned char) ptr[0]))
         ptr++;
 
       /* Okay, we're at the start of the description. */
@@ -1645,7 +1651,7 @@ split_entry (const char *entry, char **name, size_t *name_len,
               /* *ENDPTR is the 2nd last character */
               if (*endptr == '.')
                 strcat (*description, "  ");
-              else if (!isspace (*endptr))
+              else if (!isspace ((unsigned char) *endptr))
                 strcat (*description, " ");
             }
         }
@@ -1836,7 +1842,7 @@ munge_old_style_debian_options (int argc, char **argv,
                                 int *new_argc, char ***new_argv)
 {
   char *opt = NULL;
-  int i, err;
+  int i, err = 0;
   char *argz = NULL;
   size_t argz_len = 0;
   const char *regex, *title;
@@ -1974,6 +1980,9 @@ main (int argc, char *argv[])
   /* Set the text message domain.  */
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
+
+  /* For any translations of gnulib strings. */
+  bindtextdomain ("gnulib", GNULIB_LOCALEDIR);
 
   /* Make sure standard input can be freopened at will.  Otherwise,
      when stdin starts off closed, bad things could happen if a plain fopen
@@ -2822,7 +2831,11 @@ compare_entries_text (const void *p1, const void *p2)
     len2 = strlen (text2);
   else
     len2 = colon2 - text2;
-  return mbsncasecmp (text1, text2, len1 <= len2 ? len1 : len2);
+  int result = mbsncasecmp (text1, text2, len1 <= len2 ? len1 : len2);
+  if (result == 0) /* Identical start, the longer goes last */
+    return len1 <= len2 ? -1 : +1;
+  else
+    return result;
 }
 
 /* Insert ENTRY into the ADD_ENTRIES_BEFORE vector for line number LINE_NUMBER 

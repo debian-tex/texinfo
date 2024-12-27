@@ -28,15 +28,14 @@ $result_trees{'index_and_node_same_name'} = {
         }
       ],
       'cmdname' => 'top',
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     },
     {
@@ -89,14 +88,13 @@ $result_trees{'index_and_node_same_name'} = {
             ]
           },
           'info' => {
+            'command_name' => 'cindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
+            'line_nr' => 4
           },
           'type' => 'index_entry_command'
         },
@@ -129,9 +127,7 @@ $result_trees{'index_and_node_same_name'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => ''
+            'line_nr' => 5
           }
         },
         {
@@ -141,6 +137,7 @@ $result_trees{'index_and_node_same_name'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'index-node'
       },
@@ -150,9 +147,7 @@ $result_trees{'index_and_node_same_name'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     }
   ],
@@ -176,36 +171,38 @@ $result_texts{'index_and_node_same_name'} = 'top
 ';
 
 $result_sectioning{'index_and_node_same_name'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'index_and_node_same_name'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'index_and_node_same_name'};
+$result_sectioning{'index_and_node_same_name'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'index_and_node_same_name'};
 
-$result_nodes{'index_and_node_same_name'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'isindex' => 1,
-    'normalized' => 'index-node'
+$result_nodes{'index_and_node_same_name'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'isindex' => 1,
+      'normalized' => 'index-node'
+    }
   }
-};
+];
 
-$result_menus{'index_and_node_same_name'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'isindex' => 1,
-    'normalized' => 'index-node'
+$result_menus{'index_and_node_same_name'} = [
+  {
+    'extra' => {
+      'normalized' => 'index-node'
+    }
   }
-};
+];
 
 $result_errors{'index_and_node_same_name'} = [];
 
@@ -223,7 +220,7 @@ $result_indices_sort_strings{'index_and_node_same_name'} = {
 
 $result_converted{'html'}->{'index_and_node_same_name'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>top</title>
@@ -258,7 +255,7 @@ th.sections-header-printindex {text-align:left; padding-left: 1em}
 
 <a class="index-entry-id" id="index-node-1"></a>
 <div class="printindex cp-printindex">
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="index-node_cp_letter-N">N</th></tr>

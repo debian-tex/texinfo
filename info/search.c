@@ -1,6 +1,6 @@
 /* search.c -- searching large bodies of text.
 
-   Copyright 1993-2023 Free Software Foundation, Inc.
+   Copyright 1993-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 /* Search forwards or backwards for the text delimited by BINDING.
    The search is forwards if BINDING->start is greater than BINDING->end. */
 enum search_result
-search (char *string, SEARCH_BINDING *binding, long *poff)
+search (const char *string, const SEARCH_BINDING *binding, long *poff)
 {
   enum search_result result;
 
@@ -49,10 +49,11 @@ search (char *string, SEARCH_BINDING *binding, long *poff)
 
 /* Expand \n and \t in regexp to newlines and tabs */
 static char *
-regexp_expand_newlines_and_tabs (char *regexp)
+regexp_expand_newlines_and_tabs (const char *regexp)
 {
   char *unescaped_regexp = xmalloc (1 + strlen (regexp));
-  char *p, *q;
+  const char *p;
+  char *q;
 
   for (p = regexp, q = unescaped_regexp; *p != '\0'; p++, q++)
     {
@@ -84,10 +85,11 @@ regexp_expand_newlines_and_tabs (char *regexp)
 
 /* Escape any special characters in SEARCH_STRING. */
 static char *
-regexp_escape_string (char *search_string)
+regexp_escape_string (const char *search_string)
 {
   char *special_chars = "\\[]^$.*(){}|+?";
-  char *p, *q;
+  const char *p;
+  char *q;
 
   char *escaped_string = xmalloc (strlen (search_string) * 2 + 1);
 
@@ -113,7 +115,7 @@ extend_matches (MATCH_STATE *state)
   size_t match_alloc = state->match_alloc;
   size_t match_count = state->match_count;
   char *buffer = state->buffer;
-  size_t buflen = state->buflen;
+  long buflen = state->buflen;    /* Should not be negative */
 
   regoff_t offset = 0;
   char saved_char;
@@ -172,11 +174,11 @@ extend_matches (MATCH_STATE *state)
   state->match_count = match_count;
 }
 
-/* Search BUFFER for REGEXP.  If matches are found, pass back the list of 
+/* Search BUFFER for REGEXP.  If matches are found, pass back the list of
    matches in MATCH_STATE. */
 enum search_result
-regexp_search (char *regexp, int is_literal, int is_insensitive,
-               char *buffer, size_t buflen,
+regexp_search (const char *regexp, int is_literal, int is_insensitive,
+               char *buffer, long buflen,
                MATCH_STATE *match_state)
 {
   regex_t preg; /* Compiled pattern buffer for regexp. */
@@ -224,9 +226,10 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
 
 /* Search forwards for STRING through the text delimited in BINDING. */
 enum search_result
-search_forward (char *string, SEARCH_BINDING *binding, long *poff)
+search_forward (const char *string, const SEARCH_BINDING *binding, long *poff)
 {
-  register int c, i, len;
+  register int c;
+  register size_t i, len;
   register char *buff, *end;
   char *alternate = NULL;
 
@@ -243,9 +246,9 @@ search_forward (char *string, SEARCH_BINDING *binding, long *poff)
 
       for (i = 0; i < len; i++)
         {
-          if (islower (alternate[i]))
+          if (islower ((unsigned char) alternate[i]))
             alternate[i] = toupper (alternate[i]);
-          else if (isupper (alternate[i]))
+          else if (isupper ((unsigned char) alternate[i]))
             alternate[i] = tolower (alternate[i]);
         }
     }
@@ -270,7 +273,7 @@ search_forward (char *string, SEARCH_BINDING *binding, long *poff)
           if (binding->flags & S_SkipDest)
             buff += len;
           *poff = buff - binding->buffer;
-	  return search_success;
+          return search_success;
         }
 
       buff++;
@@ -284,9 +287,11 @@ search_forward (char *string, SEARCH_BINDING *binding, long *poff)
 
 /* Search for STRING backwards through the text delimited in BINDING. */
 enum search_result
-search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
+search_backward (const char *input_string, const SEARCH_BINDING *binding,
+                 long *poff)
 {
-  register int c, i, len;
+  register int i_end, c;
+  register size_t i, len;
   register char *buff, *end;
   char *string;
   char *alternate = NULL;
@@ -295,10 +300,10 @@ search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
 
   /* Reverse the characters in the search string. */
   string = xmalloc (1 + len);
-  for (c = 0, i = len - 1; input_string[c]; c++, i--)
-    string[i] = input_string[c];
+  for (i = 0, i_end = len - 1; input_string[i]; i++, i_end--)
+    string[i_end] = input_string[i];
 
-  string[c] = '\0';
+  string[i] = '\0';
 
   /* We match characters in the search buffer against STRING and ALTERNATE.
      ALTERNATE is a case reversed version of STRING; this is cheaper than
@@ -311,9 +316,9 @@ search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
 
       for (i = 0; i < len; i++)
         {
-          if (islower (alternate[i]))
+          if (islower ((unsigned char) alternate[i]))
             alternate[i] = toupper (alternate[i]);
-          else if (isupper (alternate[i]))
+          else if (isupper ((unsigned char) alternate[i]))
             alternate[i] = tolower (alternate[i]);
         }
     }
@@ -340,7 +345,7 @@ search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
           if (binding->flags & S_SkipDest)
             buff -= len;
           *poff = 1 + buff - binding->buffer;
-	  return search_success;
+          return search_success;
         }
 
       buff--;
@@ -357,12 +362,12 @@ search_backward (char *input_string, SEARCH_BINDING *binding, long *poff)
    Return an offset of -1 if STRING does not appear in LINE.  The search
    is bound by the end of the line (i.e., either NEWLINE or 0). */
 int
-string_in_line (char *string, char *line)
+string_in_line (const char *string, char *line)
 {
-  register int end;
+  register size_t end;
   SEARCH_BINDING binding;
   long offset;
-  
+
   /* Find the end of the line. */
   for (end = 0; line[end] && line[end] != '\n'; end++);
 
@@ -379,23 +384,22 @@ string_in_line (char *string, char *line)
 
 /* Return non-zero if STRING is the first text to appear at BINDING. */
 int
-looking_at (char *string, SEARCH_BINDING *binding)
+looking_at (const char *string, const SEARCH_BINDING *binding)
 {
   long search_end;
 
   if (search (string, binding, &search_end) != search_success)
     return 0;
 
-  /* If the string was not found, SEARCH_END is -1.  If the string was found,
-     but not right away, SEARCH_END is != binding->start.  Otherwise, the
-     string was found at binding->start. */
+  /* If the string was not found right away, SEARCH_END is != binding->start.
+     Otherwise, the string was found at binding->start. */
   return search_end == binding->start;
 }
 
-/* Return non-zero if POINTER is looking at the text at STRING before an 
+/* Return non-zero if POINTER is looking at the text at STRING before an
    end-of-line. */
 int
-looking_at_line (char *string, char *pointer)
+looking_at_line (const char *string, const char *pointer)
 {
   int len;
 
@@ -421,13 +425,14 @@ looking_at_line (char *string, char *pointer)
 enum search_result
 match_in_match_list (MATCH_STATE *match_state,
                      long start, long end, int dir,
-                     int *match_index)
+                     size_t *match_index)
 {
   regmatch_t *matches = match_state->matches;
   size_t match_count = match_state->match_count;
 
-  int i;
-  int index = -1;
+  size_t i;
+  size_t index;
+  int found = 0;
 
   for (i = 0; i < match_count || !match_state->finished; i++)
     {
@@ -448,6 +453,7 @@ match_in_match_list (MATCH_STATE *match_state,
       if (matches[i].rm_so >= start)
         {
           index = i;
+          found = 1;
           if (dir > 0)
             {
               *match_index = index;
@@ -456,7 +462,7 @@ match_in_match_list (MATCH_STATE *match_state,
         }
     }
 
-  if (index != -1)
+  if (found)
     {
       *match_index = index;
       return search_success;
@@ -468,7 +474,7 @@ match_in_match_list (MATCH_STATE *match_state,
 
 /* Return match INDEX in STATE.  INDEX must be a valid index. */
 regmatch_t
-match_by_index (MATCH_STATE *state, int index)
+match_by_index (MATCH_STATE *state, size_t index)
 {
   while (state->match_alloc <= index)
     extend_matches (state);
@@ -522,7 +528,7 @@ decide_if_in_match (long off, int *in_match,
 
 /* Used for iterating through a match list. */
 int
-at_end_of_matches (MATCH_STATE *state, int index)
+at_end_of_matches (MATCH_STATE *state, size_t index)
 {
   if (index < state->match_count)
     return 0;
@@ -553,10 +559,10 @@ at_end_of_matches (MATCH_STATE *state, int index)
    of -1 if the item being looked for couldn't be found. */
 
 /* Return the index of the first non-whitespace character in STRING. */
-int
-skip_whitespace (char *string)
+size_t
+skip_whitespace (const char *string)
 {
-  register int i;
+  register size_t i;
 
   for (i = 0; string && whitespace (string[i]); i++);
   return i;
@@ -564,20 +570,20 @@ skip_whitespace (char *string)
 
 /* Return the index of the first non-whitespace or newline character in
    STRING. */
-int
-skip_whitespace_and_newlines (char *string)
+size_t
+skip_whitespace_and_newlines (const char *string)
 {
-  register int i;
+  register size_t i;
 
   for (i = 0; string && whitespace_or_newline (string[i]); i++);
   return i;
 }
 
 /* Return the index of the first whitespace character in STRING. */
-int
-skip_non_whitespace (char *string)
+size_t
+skip_non_whitespace (const char *string)
 {
-  register int i;
+  register size_t i;
 
   for (i = 0; string && string[i] && !whitespace (string[i]); i++);
   return i;
@@ -590,13 +596,13 @@ skip_non_whitespace (char *string)
 /* **************************************************************** */
 
 /* Return the absolute position of the first occurence of a node separator
-   starting in BINDING->buffer between BINDING->start and BINDING->end 
+   starting in BINDING->buffer between BINDING->start and BINDING->end
    inclusive.  Return -1 if no node separator was found. */
 long
-find_node_separator (SEARCH_BINDING *binding)
+find_node_separator (const SEARCH_BINDING *binding)
 {
   register long i;
-  char *body;
+  const char *body;
   int dir;
 
   body = binding->buffer;
@@ -635,10 +641,10 @@ find_node_separator (SEARCH_BINDING *binding)
 
 /* Return the length of the node separator characters that BODY is currently
    pointing at.  If it's not pointing at a node separator, return 0. */
-int
-skip_node_separator (char *body)
+size_t
+skip_node_separator (const char *body)
 {
-  register int i;
+  register size_t i;
 
   i = 0;
 
@@ -663,7 +669,7 @@ skip_node_separator (char *body)
 /* Return the absolute position of the beginning of a section in this file
    whose first line is LABEL, starting the search at binding->start. */
 long
-find_file_section (SEARCH_BINDING *binding, char *label)
+find_file_section (const SEARCH_BINDING *binding, const char *label)
 {
   SEARCH_BINDING s;
   long position;
@@ -677,7 +683,7 @@ find_file_section (SEARCH_BINDING *binding, char *label)
 
   while ((position = find_node_separator (&s)) != -1 )
     {
-      long offset = position;
+      size_t offset = position;
       offset += skip_node_separator (s.buffer + offset);
       if (looking_at_line (label, s.buffer + offset))
         return position;
@@ -690,9 +696,9 @@ find_file_section (SEARCH_BINDING *binding, char *label)
         }
       else
         {
-          s.start = position - 1;
-          if (s.start <= s.end)
+          if (position <= s.end)
             break;
+          s.start = position - 1;
         }
     }
   return -1;
@@ -704,7 +710,7 @@ find_file_section (SEARCH_BINDING *binding, char *label)
    really point to the right node.  It returns the absolute position of
    the separator preceding the node. */
 long
-find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
+find_node_in_binding (const char *nodename, const SEARCH_BINDING *binding)
 {
   long position;
   int offset;
@@ -730,7 +736,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
         continue;
 
       s.start += offset;
-      s.start += skip_whitespace (s.buffer + s.start); 
+      s.start += skip_whitespace (s.buffer + s.start);
       nodename_start = s.buffer + s.start;
       read_quoted_string (nodename_start, "\n\r\t,", 0, &read_nodename);
       if (!read_nodename)

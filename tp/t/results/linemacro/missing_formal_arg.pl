@@ -62,9 +62,7 @@ $result_trees{'missing_formal_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -76,9 +74,7 @@ $result_trees{'missing_formal_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -122,18 +118,14 @@ $result_errors{'missing_formal_arg'} = [
   {
     'error_line' => 'bad or empty @linemacro formal argument: 
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'bad or empty @linemacro formal argument: ',
     'type' => 'error'
   },
   {
     'error_line' => 'unknown command `mymacro\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => 'unknown command `mymacro\'',
     'type' => 'error'
   }

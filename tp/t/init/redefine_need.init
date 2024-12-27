@@ -1,6 +1,7 @@
 use strict;
 
 use Texinfo::Convert::Text;
+use Texinfo::Common;
 
 texinfo_register_command_formatting('need', \&my_need_formatting);
 
@@ -10,13 +11,18 @@ sub my_need_formatting($$$)
   my $cmdname = shift;
   my $command = shift;
 
+  my $package = Texinfo::Common::get_build_constant('PACKAGE');
+  $package = '' if (!defined($package));
+  my $package_config = Texinfo::Common::get_build_constant('PACKAGE_CONFIG');
+  $package_config = '' if (!defined($package_config));
+
   if ($command->{'extra'} and $command->{'extra'}->{'misc_args'}
       and @{$command->{'extra'}->{'misc_args'}}) {
-    $converter->line_warn($converter,
+    $converter->converter_line_warn(
             "need has the right arg: $command->{'extra'}->{'misc_args'}->[0]",
                            $command->{'source_info'});
   } else {
-    $converter->line_warn($converter, "Bad arg for $cmdname",
+    $converter->converter_line_warn("Bad arg for $cmdname",
                           $command->{'source_info'});
   }
   my $arg_text;
@@ -26,5 +32,5 @@ sub my_need_formatting($$$)
     $arg_text = '';
   }
   return (&{$converter->formatting_function('format_comment')}($converter,
-                                                      "$cmdname: $arg_text"));
+                         "$cmdname: $arg_text ($package|$package_config)"));
 }

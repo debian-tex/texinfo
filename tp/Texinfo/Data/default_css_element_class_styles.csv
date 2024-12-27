@@ -1,0 +1,51 @@
+selector|style|notes
+ul.toc-numbered-mark|list-style: none|
+pre.menu-comment-preformatted|font-family: serif|
+pre.menu-entry-description-preformatted|font-family: serif; display: inline|using display: inline is an attempt to avoid a line break when in preformatted in menu.  In 2022 it does not seems to work in firefox, there is still a line break.
+pre.menu-preformatted|font-family: serif|
+a.summary-letter-printindex|text-decoration: none|
+pre.display-preformatted|font-family: inherit|
+pre.displaymath|font-style: italic; font-family: serif; display: flex; justify-content: center|'display: flex; justify-content: center' centers the pre as a whole
+table.cartouche|border-style: solid; border-radius: 0.5em|
+span.program-in-footer|font-size: smaller|used with PROGRAM_NAME_IN_FOOTER
+span.sansserif|font-family: sans-serif; font-weight: normal|
+span.r|font-family: initial; font-weight: normal; font-style: normal|
+td.index-entry-level-1|padding-left: 1.5em|
+td.index-entry-level-2|padding-left: 3.0em|
+kbd.key|font-style: normal|
+kbd.kbd|font-style: oblique|
+strong.def-name|font-family: monospace; font-weight: bold; font-size: larger|
+p.flushleft-paragraph|text-align:left|
+p.flushright-paragraph|text-align:right|
+h1.centerchap|text-align:center|
+h2.centerchap|text-align:center|
+h3.centerchap|text-align:center|
+h1.settitle|text-align:center|
+h1.shorttitlepage|text-align:center|
+h3.subtitle|text-align:right|
+h4.centerchap|text-align:center|
+div.center|text-align:center|
+blockquote.indentedblock|margin-right: 0em|
+td.printindex-index-entry|vertical-align: top|
+td.printindex-index-section|vertical-align: top; padding-left: 1em|
+td.printindex-index-see-also|vertical-align: top; padding-left: 1em|
+td.menu-entry-destination|vertical-align: top|
+td.menu-entry-description|vertical-align: top; padding-left: 1em|
+th.entries-header-printindex|text-align:left|
+th.sections-header-printindex|text-align:left; padding-left: 1em|
+th.menu-comment|text-align:left|
+td.category-def|text-align:right|
+td.call-def|text-align:left|
+table.direction-about|border-collapse: collapse|
+th.button-direction-about|border-width: thin; border-bottom-style: solid; border-right-style: solid|
+th.name-direction-about|border-width: thin; border-bottom-style: solid; border-right-style: solid; border-left-style: solid|
+th.description-direction-about|border-width: thin; border-bottom-style: solid; border-right-style: solid; border-left-style: solid|
+th.example-direction-about|border-width: thin; border-bottom-style: solid; border-left-style: solid|
+td.button-direction-about|text-align: center; border-width: thin; border-right-style: solid|
+td.name-direction-about|text-align: center; border-width: thin; border-right-style: solid; border-left-style: solid|
+td.description-direction-about|border-width: thin; border-right-style: solid; border-left-style: solid|
+td.example-direction-about|border-width: thin; border-left-style: solid|
+img.nav-icon|vertical-align: middle|
+table.def-block|width: 100%|
+a.copiable-link|visibility: hidden; text-decoration: none; line-height: 0em|The anchor element is wrapped in a <span> rather than a block level element to avoid it appearing unless the mouse pointer is directly over the text, as it is annoying for anchors to flicker when you are moving your pointer elsewhere. "line-height: 0em" stops the invisible text from changing vertical spacing.
+span:hover a.copiable-link|visibility: visible|

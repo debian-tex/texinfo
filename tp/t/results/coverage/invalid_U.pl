@@ -19,22 +19,18 @@ $result_trees{'invalid_U'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -48,14 +44,12 @@ $result_trees{'invalid_U'} = {
                       'text' => 'z'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -69,14 +63,12 @@ $result_trees{'invalid_U'} = {
                       'text' => 'abc'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -90,14 +82,12 @@ $result_trees{'invalid_U'} = {
                       'text' => '9999999999999'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -111,14 +101,12 @@ $result_trees{'invalid_U'} = {
                       'text' => '110000'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -132,14 +120,12 @@ $result_trees{'invalid_U'} = {
                       'text' => '10FFFF'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -162,14 +148,12 @@ $result_trees{'invalid_U'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -183,14 +167,12 @@ $result_trees{'invalid_U'} = {
                       'text' => 'FFFD'
                     }
                   ],
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -212,14 +194,12 @@ $result_trees{'invalid_U'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'U',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -249,63 +229,49 @@ $result_errors{'invalid_U'} = [
   {
     'error_line' => '@U expected braces
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@U expected braces',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: no argument specified for @U
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'no argument specified for @U',
     'type' => 'warning'
   },
   {
     'error_line' => 'non-hex digits in argument for @U: z
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'non-hex digits in argument for @U: z',
     'type' => 'error'
   },
   {
     'error_line' => 'warning: fewer than four hex digits in argument for @U: abc
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'fewer than four hex digits in argument for @U: abc',
     'type' => 'warning'
   },
   {
     'error_line' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 9999999999999
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 9999999999999',
     'type' => 'error'
   },
   {
     'error_line' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 110000
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 110000',
     'type' => 'error'
   },
   {
     'error_line' => 'non-hex digits in argument for @U: wxyz
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'non-hex digits in argument for @U: wxyz',
     'type' => 'error'
   }
@@ -338,18 +304,5 @@ $result_converted{'latex_text'}->{'invalid_U'} = ' U+z ઼ U+9999999999999 U+110
 $result_converted{'docbook'}->{'invalid_U'} = '<para> &#xz; &#xabc; &#x9999999999999; &#x110000; &#x10FFFF;
 &#x0023; &#xFFFD; &#xwxyz;
 </para>';
-
-$result_converted_errors{'docbook'}->{'invalid_U'} = [
-  {
-    'error_line' => 'warning: no argument specified for @U
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'no argument specified for @U',
-    'type' => 'warning'
-  }
-];
-
 
 1;

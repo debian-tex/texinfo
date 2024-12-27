@@ -29,28 +29,30 @@ $result_trees{'value_zero'} = {
         {
           'contents' => [
             {
+              'text' => 'Value
+'
+            },
+            {
               'source_marks' => [
                 {
                   'counter' => 1,
                   'element' => {
                     'args' => [
                       {
-                        'text' => 'zero'
+                        'contents' => [
+                          {
+                            'text' => 'zero'
+                          }
+                        ],
+                        'type' => 'brace_container'
                       }
                     ],
                     'cmdname' => 'value'
                   },
                   'line' => '0',
-                  'position' => 6,
                   'sourcemark_type' => 'value_expansion',
                   'status' => 'start'
-                }
-              ],
-              'text' => 'Value
-'
-            },
-            {
-              'source_marks' => [
+                },
                 {
                   'counter' => 1,
                   'position' => 1,

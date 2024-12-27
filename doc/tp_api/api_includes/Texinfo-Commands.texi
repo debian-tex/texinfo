@@ -40,7 +40,7 @@ outside of the module.
 @cindex @code{%index_names}
 
 Hash describing the default Texinfo indices.  The format of this hash is
-described in @ref{Texinfo@asis{::}Parser $indices_information = $parser->indices_information(),, @code{Texinfo::Parser::indices_information}}.
+described in @ref{Texinfo@asis{::}Document $indices_information = $document->indices_information(),, @code{Texinfo::Document::indices_information}}.
 
 @end table
 
@@ -330,6 +330,12 @@ Note that @code{@@item} is in @code{%nobrace_commands} for its role in @code{@@m
 @cindex @code{%non_formatted_block_commands}
 
 Block commands not formatted as text, such as @code{@@ignore} or @code{@@macro}.
+
+@item %non_formatted_brace_commands
+@anchor{Texinfo@asis{::}Commands %non_formatted_brace_commands}
+
+Brace commands that are not immediately replaced with text, such as
+@code{anchor}, @code{caption}, @code{errormsg} and others.
 
 @item %preamble_commands
 @anchor{Texinfo@asis{::}Commands %preamble_commands}

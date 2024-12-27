@@ -17,17 +17,16 @@ $result_trees{'verb_in_xref'} = {
                   'text' => 'point'
                 }
               ],
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'extra' => {
+            'is_target' => 1,
             'normalized' => 'point'
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -51,12 +50,14 @@ $result_trees{'verb_in_xref'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'point'
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -84,7 +85,7 @@ $result_trees{'verb_in_xref'} = {
                               'type' => 'raw'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'verb',
@@ -92,9 +93,7 @@ $result_trees{'verb_in_xref'} = {
                         'delimiter' => '*'
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 3,
-                        'macro' => ''
+                        'line_nr' => 3
                       }
                     }
                   ],
@@ -103,14 +102,12 @@ $result_trees{'verb_in_xref'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'xref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             },
             {
@@ -126,7 +123,7 @@ $result_trees{'verb_in_xref'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'verb_in_xref'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'verb_in_xref'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'verb_in_xref'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'verb_in_xref'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0];
 
 $result_texis{'verb_in_xref'} = '@anchor{point}
 
@@ -145,9 +142,7 @@ $result_errors{'verb_in_xref'} = [
   {
     'error_line' => 'warning: @verb should not appear anywhere inside @xref
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@verb should not appear anywhere inside @xref',
     'type' => 'warning'
   }
@@ -158,7 +153,7 @@ $result_floats{'verb_in_xref'} = {};
 
 
 
-$result_converted{'plaintext'}->{'verb_in_xref'} = '*Note with
+$result_converted{'plaintext'}->{'verb_in_xref'} = 'See with
 verb
 
 ggg : point.
@@ -174,5 +169,13 @@ $result_converted{'latex_text'}->{'verb_in_xref'} = '\\label{anchor:point}%
 
 See \\hyperref[anchor:point]{[point], page~\\pageref*{anchor:point}}.
 ';
+
+
+$result_converted{'docbook'}->{'verb_in_xref'} = '<anchor id="point"/>
+<para>See <link linkend="point"><literal>with
+verb
+
+ggg </literal></link>.
+</para>';
 
 1;

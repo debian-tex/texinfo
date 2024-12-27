@@ -10,7 +10,6 @@ $result_trees{'top_no_argument_and_content'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -45,10 +44,9 @@ $result_trees{'top_no_argument_and_content'} = {
           'type' => 'paragraph'
         }
       ],
+      'extra' => {},
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -66,20 +64,20 @@ A.
 ';
 
 $result_sectioning{'top_no_argument_and_content'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'top_no_argument_and_content'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'top_no_argument_and_content'};
+$result_sectioning{'top_no_argument_and_content'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'top_no_argument_and_content'};
 
 $result_errors{'top_no_argument_and_content'} = [];
 
@@ -94,7 +92,7 @@ $result_converted{'plaintext'}->{'top_no_argument_and_content'} = 'A.
 
 $result_converted{'html'}->{'top_no_argument_and_content'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

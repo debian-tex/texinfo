@@ -42,9 +42,7 @@ $result_trees{'encoding_us_ascii'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -81,6 +79,7 @@ $result_trees{'encoding_us_ascii'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -89,9 +88,7 @@ $result_trees{'encoding_us_ascii'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -111,19 +108,22 @@ $result_texts{'encoding_us_ascii'} = '
 
 ';
 
-$result_nodes{'encoding_us_ascii'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'encoding_us_ascii'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'encoding_us_ascii'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'encoding_us_ascii'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'encoding_us_ascii'} = [];
 
@@ -136,7 +136,6 @@ $result_converted{'info'}->{'encoding_us_ascii'} = 'This is , produced from .
 
 
 File: ,  Node: Top,  Up: (dir)
-
 
 
 Tag Table:

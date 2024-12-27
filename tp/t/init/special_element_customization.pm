@@ -2,16 +2,15 @@
 use utf8;
 use strict;
 
-texinfo_register_special_element_info('target', 'shortcontents', undef);
-texinfo_register_special_element_info('target', 'contents', 't_contents');
-texinfo_register_special_element_info('target', 'footnotes', 't_footnotes');
+texinfo_register_special_unit_info('target', 'shortcontents', undef);
+texinfo_register_special_unit_info('target', 'contents', 't_contents');
+texinfo_register_special_unit_info('target', 'footnotes', 't_footnotes');
 
-texinfo_register_special_element_info('heading', 'shortcontents', undef);
-texinfo_register_special_element_info('heading', 'contents',
+texinfo_register_special_unit_info('heading', 'shortcontents', undef);
+texinfo_register_special_unit_info('heading', 'contents',
                                           'The @emph{Table of Contents}');
-texinfo_register_special_element_info('heading', 'footnotes',
-                                                 'The @emph{Footnotes}');
-# does not work in the test suite
+texinfo_register_special_unit_info('heading', 'footnotes',
+                                              'The @emph{Footnotes}');
 texinfo_set_from_init_file('footnotestyle', 'separate');
 
 my %translations = (
@@ -34,29 +33,27 @@ my %translations = (
 );
 
 
-sub _texi2any_tests_special_element_translate_string($$$;$$$)
+sub _texi2any_tests_special_unit_translate_message($$$;$)
 {
-  my ($self, $string, $lang, $replaced_substrings,
-                              $translation_context, $type) = @_;
+  my ($self, $string, $lang, $translation_context) = @_;
   $translation_context = '' if (!defined($translation_context));
   if (exists($translations{$lang})
       and exists($translations{$lang}->{$string})
       and exists($translations{$lang}->{$string}->{$translation_context})) {
     my $translation = $translations{$lang}->{$string}->{$translation_context};
-    return $self->replace_convert_substrings($translation, $replaced_substrings,
-                                             $type);
+    return $translation;
   }
   return undef;
 }
 
-texinfo_register_formatting_function('format_translate_string',
-                           \&_texi2any_tests_special_element_translate_string);
+texinfo_register_formatting_function('format_translate_message',
+                      \&_texi2any_tests_special_unit_translate_message);
 
 # avoid doing twice if there are more than one manual processed
 my $button_added;
-sub _texi2any_tests_special_element_add_button
+sub _texi2any_tests_special_unit_add_button
 {
-  my ($self, $tree, $stage) = @_;
+  my ($self, $document, $stage) = @_;
 
   if (!$button_added) {
     my @section_buttons = @{$self->get_conf('SECTION_BUTTONS')};
@@ -66,7 +63,7 @@ sub _texi2any_tests_special_element_add_button
   }
 }
 
-texinfo_register_handler('setup', \&_texi2any_tests_special_element_add_button);
+texinfo_register_handler('setup', \&_texi2any_tests_special_unit_add_button);
 
 
 

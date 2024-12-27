@@ -1,0 +1,24 @@
+direction|rel|accesskey|example|text converted|text to_convert string|description converted|description to_convert string|button converted|button to_convert string|
+First|||1.| ${bar}&lt; |||First section in reading order||First|
+Top|start|| $html_default_entity_nbsp ||Top||Cover (top) of document||Top|
+Index|index|| $html_default_entity_nbsp ||Index||Index||Index|
+Last|||1.2.4| &gt;${bar} |||Last section in reading order||Last|
+ |||| $html_default_entity_nbsp |||| ||
+This|||1.2.3||current||Current section||This|
+Forward|next|n|1.2.4| &gt; |||Next section in reading order||Forward|
+Back|prev|p|1.2.2| &lt; |||Previous section in reading order||Back|
+FastForward|||2| &gt;&gt; |||Next chapter||FastForward|
+FastBack|||1| &lt;&lt; |||Beginning of this chapter or previous chapter||FastBack|
+Next|next|n|1.2.4||Next||Next section on same level||Next|
+Prev|prev|p|1.2.2||Prev||Previous section on same level||Prev|
+Up|up|u|1.2|| Up ||Up section||Up|
+NodeNext|next|n|1.2.4||Next||Next node||NodeNext|
+NodePrev|prev|p|1.2.2||Previous||Previous node||NodePrev|
+NodeUp|up|u|1.2||Up||Up node||NodeUp|
+NodeForward|||1.2.4||Forward node||Next node in node reading order||NodeForward|
+NodeBack|||1.2.2||Back node||Previous node in node reading order||NodeBack|
+PrevFile|prev|| $html_default_entity_nbsp ||Previous file||Back section in previous file||PrevFile|
+NextFile|next|| $html_default_entity_nbsp ||Next file||Forward section in next file||NextFile|
+Contents|contents|| $html_default_entity_nbsp ||Contents||Table of contents||Contents|
+Overview||| $html_default_entity_nbsp ||Overview||Short table of contents||Overview|
+About|help|| $html_default_entity_nbsp | ? |||About (help)||About|

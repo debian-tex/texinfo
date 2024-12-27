@@ -25,7 +25,6 @@ $result_trees{'split_for_format_not_split'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         }
       ],
@@ -77,6 +76,7 @@ $result_trees{'split_for_format_not_split'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -86,8 +86,7 @@ $result_trees{'split_for_format_not_split'} = {
       },
       'source_info' => {
         'file_name' => 'simplest.texi',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -119,19 +118,22 @@ This is a very simple texi manual   <>.
 
 ';
 
-$result_nodes{'split_for_format_not_split'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_nodes{'split_for_format_not_split'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
-$result_menus{'split_for_format_not_split'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'split_for_format_not_split'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
   }
-};
+];
 
 $result_errors{'split_for_format_not_split'} = [];
 

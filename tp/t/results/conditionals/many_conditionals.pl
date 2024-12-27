@@ -59,16 +59,12 @@ $result_trees{'many_conditionals'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -89,9 +85,7 @@ $result_trees{'many_conditionals'} = {
                 ],
                 'cmdname' => 'ifhtml',
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 5,
-                  'macro' => ''
+                  'line_nr' => 5
                 }
               },
               'position' => 1,
@@ -136,9 +130,7 @@ $result_trees{'many_conditionals'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 7,
-                      'macro' => ''
+                      'line_nr' => 7
                     }
                   },
                   'position' => 21,
@@ -202,16 +194,12 @@ $result_trees{'many_conditionals'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 11,
-                      'macro' => ''
+                      'line_nr' => 11
                     }
                   }
                 ],
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 9,
-                  'macro' => ''
+                  'line_nr' => 9
                 }
               },
               'position' => 1,
@@ -245,9 +233,7 @@ $result_trees{'many_conditionals'} = {
                 ],
                 'cmdname' => 'ifinfo',
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 14,
-                  'macro' => ''
+                  'line_nr' => 14
                 }
               },
               'position' => 1,
@@ -292,9 +278,7 @@ $result_trees{'many_conditionals'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 16,
-                      'macro' => ''
+                      'line_nr' => 16
                     }
                   },
                   'position' => 21,
@@ -358,16 +342,12 @@ $result_trees{'many_conditionals'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 20,
-                      'macro' => ''
+                      'line_nr' => 20
                     }
                   }
                 ],
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 18,
-                  'macro' => ''
+                  'line_nr' => 18
                 }
               },
               'position' => 1,
@@ -439,16 +419,12 @@ $result_trees{'many_conditionals'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 25,
-                'macro' => ''
+                'line_nr' => 25
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 23,
-            'macro' => ''
+            'line_nr' => 23
           }
         },
         {
@@ -501,16 +477,12 @@ $result_trees{'many_conditionals'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 29,
-                      'macro' => ''
+                      'line_nr' => 29
                     }
                   }
                 ],
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 27,
-                  'macro' => ''
+                  'line_nr' => 27
                 }
               },
               'position' => 1,
@@ -539,9 +511,7 @@ $result_trees{'many_conditionals'} = {
                 ],
                 'cmdname' => 'ifnottex',
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 31,
-                  'macro' => ''
+                  'line_nr' => 31
                 }
               },
               'position' => 1,
@@ -586,9 +556,7 @@ $result_trees{'many_conditionals'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 33,
-                      'macro' => ''
+                      'line_nr' => 33
                     }
                   },
                   'position' => 23,

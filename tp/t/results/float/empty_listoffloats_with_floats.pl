@@ -20,7 +20,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
           'type' => 'preamble_before_beginning'
         },
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -84,14 +83,13 @@ $result_trees{'empty_listoffloats_with_floats'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'extra' => {
             'float_type' => '',
+            'is_target' => 1,
             'normalized' => 'label1'
           },
           'info' => {
@@ -100,9 +98,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -165,9 +161,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -202,15 +196,14 @@ $result_trees{'empty_listoffloats_with_floats'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => '',
+            'is_target' => 1,
             'normalized' => 'label2'
           },
           'info' => {
@@ -219,9 +212,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -279,9 +270,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             }
           ],
@@ -289,9 +278,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
             'float_type' => ''
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
+            'line_nr' => 11
           }
         },
         {
@@ -343,9 +330,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             },
             {
@@ -380,9 +365,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 18,
-                'macro' => ''
+                'line_nr' => 18
               }
             }
           ],
@@ -391,9 +374,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
             'float_type' => ''
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 15,
-            'macro' => ''
+            'line_nr' => 15
           }
         },
         {
@@ -418,9 +399,7 @@ $result_trees{'empty_listoffloats_with_floats'} = {
             'float_type' => ''
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 20,
-            'macro' => ''
+            'line_nr' => 20
           }
         }
       ],
@@ -477,11 +456,9 @@ $result_floats{'empty_listoffloats_with_floats'} = {
     {
       'cmdname' => 'float',
       'extra' => {
+        'float_number' => '1',
         'float_type' => '',
         'normalized' => 'label1'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     },
     {
@@ -493,11 +470,9 @@ $result_floats{'empty_listoffloats_with_floats'} = {
             'float' => {}
           }
         },
+        'float_number' => '2',
         'float_type' => '',
         'normalized' => 'label2'
-      },
-      'structure' => {
-        'float_number' => 2
       }
     },
     {
@@ -528,6 +503,7 @@ $result_floats{'empty_listoffloats_with_floats'}{''}[3]{'extra'}{'caption'}{'ext
 $result_converted{'plaintext'}->{'empty_listoffloats_with_floats'} = 'Label no caption.
 
 1
+
 Label and caption.
 
 2: caption with label
@@ -548,7 +524,7 @@ caption no label
 
 $result_converted{'html'}->{'empty_listoffloats_with_floats'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>

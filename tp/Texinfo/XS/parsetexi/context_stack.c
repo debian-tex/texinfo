@@ -1,4 +1,4 @@
-/* Copyright 2010-2023 Free Software Foundation, Inc.
+/* Copyright 2010-2024 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -14,12 +14,17 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <config.h>
+
 #include <stdlib.h>
 
-#include "debug.h"
-#include "context_stack.h"
+#include "command_ids.h"
+#include "tree_types.h"
+/* for fatal */
+#include "base_utils.h"
+#include "command_stack.h"
 #include "commands.h"
-#include "errors.h"
+#include "debug_parser.h"
+#include "context_stack.h"
 
 static enum context *context_stack;
 static size_t top; /* One above last pushed context. */
@@ -28,62 +33,25 @@ static size_t space;
 /* Kept in sync with context_stack. */
 static COMMAND_STACK command_stack;
 
-/* Generic command stack functions */
-
-void
-reset_command_stack (COMMAND_STACK *stack)
-{
-  stack->top = 0;
-  stack->space = 0;
-  free (stack->stack);
-  stack->stack = 0;
-}
-
-void
-push_command (COMMAND_STACK *stack, enum command_id cmd)
-{
-  if (stack->top >= stack->space)
-    {
-      stack->stack
-        = realloc (stack->stack,
-                   (stack->space += 5) * sizeof (enum command_id));
-    }
-
-  stack->stack[stack->top] = cmd;
-  stack->top++;
-}
-
-enum command_id
-pop_command (COMMAND_STACK *stack)
-{
-  if (stack->top == 0)
-    fatal ("command stack empty");
-
-  return stack->stack[--stack->top];
-}
-
-enum command_id
-top_command (COMMAND_STACK *stack)
-{
-  if (stack->top == 0)
-    fatal ("command stack empty for top");
-
-  return stack->stack[stack->top - 1];
-}
-
 enum command_id
 current_context_command (void)
 {
   int i;
 
   if (top == 0)
-    return CM_NONE;
-  for (i = top -1; i >= 0; i--)
+    fatal ("command stack empty");
+  for (i = top -1; i > 0; i--)
     {
       if (command_stack.stack[i] != CM_NONE)
         return command_stack.stack[i];
     }
   return CM_NONE;
+}
+
+enum command_id
+top_context_command (void)
+{
+  return top_command (&command_stack);
 }
 
 /* Context stacks */
@@ -101,7 +69,10 @@ context_name (enum context c)
   return c == ct_preformatted ? "ct_preformatted"
          : c == ct_line ? "ct_line"
          : c == ct_def ? "ct_def"
-         : c == ct_brace_command ? "ct_brace_command"
+         : c == ct_paragraph ? "ct_paragraph"
+         : c == ct_rawpreformatted ? "ct_rawpreformatted"
+         : c == ct_math ? "ct_math"
+         : c == ct_inlineraw ? "ct_inlineraw"
          : "";
 }
 
@@ -123,7 +94,7 @@ push_context (enum context c, enum command_id cmd)
 }
 
 enum context
-pop_context ()
+pop_context (void)
 {
   if (top == 0)
     fatal ("context stack empty");
@@ -140,25 +111,15 @@ enum context
 current_context (void)
 {
   if (top == 0)
-    return ct_NONE;
+    fatal ("context stack empty");
 
   return context_stack[top - 1];
 }
 
 int
-in_context (enum context context)
+is_context_empty (void)
 {
-  int i;
-
-  if (top == 0)
-    return 0;
-
-  for (i = 0; i < top; i++)
-    {
-      if (context_stack[i] == context)
-        return 1;
-    }
-  return 0;
+  return (top == 0);
 }
 
 
@@ -171,7 +132,7 @@ NESTING_CONTEXT nesting_context;
 
 /* used for @kbd */
 int
-in_preformatted_context_not_menu()
+in_preformatted_context_not_menu ()
 {
   int i;
 

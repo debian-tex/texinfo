@@ -30,13 +30,13 @@ WINDOW *get_internal_info_window (char *name);
 #define ITER_SETBYTES(iter,n) ((iter).cur.bytes = n)
 #define ITER_LIMIT(iter) ((iter).limit - (iter).cur.ptr)
 
-int ansi_escape (mbi_iterator_t iter, size_t *plen);
+int ansi_escape (mbi_iterator_t iter, int *plen);
 
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
 char *printed_representation (mbi_iterator_t *iter,
                                      int *delim, size_t pl_chars,
-                                     size_t *pchars, size_t *pbytes);
+                                     int *pchars, int *pbytes);
 
 
 struct text_buffer

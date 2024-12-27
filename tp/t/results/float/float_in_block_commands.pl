@@ -10,7 +10,6 @@ $result_trees{'float_in_block_commands'} = {
     {
       'contents' => [
         {
-          'contents' => [],
           'type' => 'preamble_before_content'
         },
         {
@@ -78,9 +77,7 @@ $result_trees{'float_in_block_commands'} = {
                     'float' => {}
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 3,
-                    'macro' => ''
+                    'line_nr' => 3
                   }
                 },
                 {
@@ -123,15 +120,14 @@ $result_trees{'float_in_block_commands'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
               'extra' => {
                 'caption' => {},
                 'float_type' => 'Text',
+                'is_target' => 1,
                 'normalized' => 'in-example'
               },
               'info' => {
@@ -140,9 +136,7 @@ $result_trees{'float_in_block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -172,16 +166,12 @@ $result_trees{'float_in_block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -254,9 +244,7 @@ $result_trees{'float_in_block_commands'} = {
                     'float' => {}
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 },
                 {
@@ -291,15 +279,14 @@ $result_trees{'float_in_block_commands'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 10,
-                    'macro' => ''
+                    'line_nr' => 10
                   }
                 }
               ],
               'extra' => {
                 'caption' => {},
                 'float_type' => 'Text',
+                'is_target' => 1,
                 'normalized' => 'in-quotation'
               },
               'info' => {
@@ -308,9 +295,7 @@ $result_trees{'float_in_block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             },
             {
@@ -340,16 +325,12 @@ $result_trees{'float_in_block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -422,9 +403,7 @@ $result_trees{'float_in_block_commands'} = {
                     'float' => {}
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 15,
-                    'macro' => ''
+                    'line_nr' => 15
                   }
                 },
                 {
@@ -459,15 +438,14 @@ $result_trees{'float_in_block_commands'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 16,
-                    'macro' => ''
+                    'line_nr' => 16
                   }
                 }
               ],
               'extra' => {
                 'caption' => {},
                 'float_type' => 'Text',
+                'is_target' => 1,
                 'normalized' => 'in-cartouche'
               },
               'info' => {
@@ -476,9 +454,7 @@ $result_trees{'float_in_block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -508,16 +484,12 @@ $result_trees{'float_in_block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         },
         {
@@ -582,11 +554,9 @@ $result_floats{'float_in_block_commands'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'Text',
         'normalized' => 'in-example'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     },
     {
@@ -598,11 +568,9 @@ $result_floats{'float_in_block_commands'} = {
             'float' => {}
           }
         },
+        'float_number' => '2',
         'float_type' => 'Text',
         'normalized' => 'in-quotation'
-      },
-      'structure' => {
-        'float_number' => 2
       }
     },
     {
@@ -614,11 +582,9 @@ $result_floats{'float_in_block_commands'} = {
             'float' => {}
           }
         },
+        'float_number' => '3',
         'float_type' => 'Text',
         'normalized' => 'in-cartouche'
-      },
-      'structure' => {
-        'float_number' => 3
       }
     }
   ]
@@ -641,7 +607,7 @@ Text 3: float in cartouche
 
 $result_converted{'html'}->{'float_in_block_commands'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -655,6 +621,7 @@ $result_converted{'html'}->{'float_in_block_commands'} = '<!DOCTYPE html>
 <style type="text/css">
 <!--
 div.example {margin-left: 3.2em}
+table.cartouche {border-style: solid; border-radius: 0.5em}
 -->
 </style>
 
@@ -672,7 +639,7 @@ div.example {margin-left: 3.2em}
 <div class="float" id="in-quotation">
 <div class="caption"><p><strong class="strong">Text 2: </strong>float in quotation</p></div></div></blockquote>
 
-<table class="cartouche" border="1"><tr><td>
+<table class="cartouche"><tr><td>
 <div class="float" id="in-cartouche">
 <div class="caption"><p><strong class="strong">Text 3: </strong>float in cartouche</p></div></div></td></tr></table>
 

@@ -38,9 +38,7 @@ $result_trees{'text_before_line_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             }
           ],
@@ -91,6 +89,7 @@ $result_trees{'text_before_line_command'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'LD-Version-Scripts'
       },
       'info' => {
@@ -99,9 +98,7 @@ $result_trees{'text_before_line_command'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -145,10 +142,9 @@ $result_trees{'text_before_line_command'} = {
             }
           ],
           'cmdname' => 'contents',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -202,9 +198,7 @@ $result_trees{'text_before_line_command'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 9,
-                    'macro' => ''
+                    'line_nr' => 9
                   }
                 },
                 {
@@ -241,9 +235,7 @@ $result_trees{'text_before_line_command'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
@@ -253,22 +245,20 @@ $result_trees{'text_before_line_command'} = {
             ]
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 4,
-        'macro' => ''
+        'line_nr' => 4
       }
     }
   ],
@@ -302,7 +292,7 @@ quotation
 ';
 
 $result_sectioning{'text_before_line_command'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'chapter',
@@ -312,84 +302,74 @@ $result_sectioning{'text_before_line_command'} = {
             'extra' => {
               'normalized' => 'LD-Version-Scripts'
             }
-          }
-        },
-        'structure' => {
+          },
           'section_level' => 1,
-          'section_number' => 1,
-          'section_up' => {}
+          'section_number' => '1',
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => 0
   }
 };
-$result_sectioning{'text_before_line_command'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'text_before_line_command'};
+$result_sectioning{'text_before_line_command'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'text_before_line_command'};
 
-$result_nodes{'text_before_line_command'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'chapter',
-      'extra' => {},
-      'structure' => {
-        'section_number' => 1
-      }
-    },
-    'normalized' => 'LD-Version-Scripts'
+$result_nodes{'text_before_line_command'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {
+          'section_number' => '1'
+        }
+      },
+      'normalized' => 'LD-Version-Scripts'
+    }
   }
-};
+];
 
-$result_menus{'text_before_line_command'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'LD-Version-Scripts'
+$result_menus{'text_before_line_command'} = [
+  {
+    'extra' => {
+      'normalized' => 'LD-Version-Scripts'
+    }
   }
-};
+];
 
 $result_errors{'text_before_line_command'} = [
   {
     'error_line' => 'warning: @title should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@title should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @node should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => '@node should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @chapter should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 4,
-    'macro' => '',
     'text' => '@chapter should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @contents should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => '@contents should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @author should only appear at the beginning of a line
 ',
-    'file_name' => '',
     'line_nr' => 9,
-    'macro' => '',
     'text' => '@author should only appear at the beginning of a line',
     'type' => 'warning'
   }

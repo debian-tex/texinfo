@@ -57,9 +57,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 2,
-                        'macro' => ''
+                        'line_nr' => 2
                       }
                     }
                   ],
@@ -93,9 +91,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                             'cell_number' => 1
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 3,
-                            'macro' => ''
+                            'line_nr' => 3
                           }
                         },
                         {
@@ -119,9 +115,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                             'cell_number' => 2
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 4,
-                            'macro' => ''
+                            'line_nr' => 4
                           }
                         }
                       ],
@@ -191,16 +185,12 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                                     }
                                   },
                                   'source_info' => {
-                                    'file_name' => '',
-                                    'line_nr' => 8,
-                                    'macro' => ''
+                                    'line_nr' => 8
                                   }
                                 }
                               ],
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 6,
-                                'macro' => ''
+                                'line_nr' => 6
                               }
                             }
                           ],
@@ -208,9 +198,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                             'cell_number' => 1
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 5,
-                            'macro' => ''
+                            'line_nr' => 5
                           }
                         },
                         {
@@ -254,9 +242,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                                 }
                               },
                               'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 10,
-                                'macro' => ''
+                                'line_nr' => 10
                               }
                             }
                           ],
@@ -264,9 +250,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                             'cell_number' => 2
                           },
                           'source_info' => {
-                            'file_name' => '',
-                            'line_nr' => 9,
-                            'macro' => ''
+                            'line_nr' => 9
                           }
                         }
                       ],
@@ -305,9 +289,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 11,
-                    'macro' => ''
+                    'line_nr' => 11
                   }
                 }
               ],
@@ -321,9 +303,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -353,16 +333,12 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -402,7 +378,7 @@ $result_floats{'verbatim_in_multitable_in_example'} = {};
 
 $result_converted{'html'}->{'verbatim_in_multitable_in_example'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -443,7 +419,6 @@ $result_converted_errors{'html'}->{'verbatim_in_multitable_in_example'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'verbatim_in_multitable_in_example.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

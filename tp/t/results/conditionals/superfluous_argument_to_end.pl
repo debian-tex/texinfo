@@ -27,9 +27,7 @@ $result_trees{'superfluous_argument_to_end'} = {
                 ],
                 'cmdname' => 'ifnothtml',
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'expanded_conditional_command',
@@ -71,9 +69,7 @@ $result_trees{'superfluous_argument_to_end'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 3,
-                      'macro' => ''
+                      'line_nr' => 3
                     }
                   },
                   'position' => 9,
@@ -105,9 +101,7 @@ $result_errors{'superfluous_argument_to_end'} = [
   {
     'error_line' => 'bad argument to @end: ifnothtml superfluous
 ',
-    'file_name' => '',
     'line_nr' => 3,
-    'macro' => '',
     'text' => 'bad argument to @end: ifnothtml superfluous',
     'type' => 'error'
   }

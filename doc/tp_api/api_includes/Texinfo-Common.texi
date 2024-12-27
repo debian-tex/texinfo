@@ -17,6 +17,9 @@ Texinfo::Common - Texinfo modules common data and miscellaneous methods
   my $collected_commands
     = Texinfo::Common::collect_commands_in_tree($document_root,
                                              \@commands_to_collect);
+
+  my $package_version
+    = Texinfo::Common::get_build_constant('PACKAGE_AND_VERSION');
 @end verbatim
 
 @node Texinfo@asis{::}Common NOTES
@@ -38,8 +41,56 @@ methods.
 Hashes are defined as @code{our} variables, and are therefore available
 outside of the module.
 
-TODO: undocumented
-%null_device_file %default_parser_customization_values %document_settable_multiple_at_commands %document_settable_unique_at_commands %default_converter_command_line_options %default_main_program_customization_options %default_converter_customization @@variable_string_settables %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command %encoding_name_conversion_map
+Values defined for a Texinfo build independently of any document or
+output format are available by calling @code{get_build_constant}:
+
+@table @asis
+@item $value = get_build_constant($name)
+@anchor{Texinfo@asis{::}Common $value = get_build_constant($name)}
+
+The following build constants are available:
+
+@table @asis
+@item PACKAGE
+@anchor{Texinfo@asis{::}Common PACKAGE}
+
+@item PACKAGE_CONFIG
+@anchor{Texinfo@asis{::}Common PACKAGE_CONFIG}
+
+@item PACKAGE_AND_VERSION
+@anchor{Texinfo@asis{::}Common PACKAGE_AND_VERSION}
+
+@item PACKAGE_AND_VERSION_CONFIG
+@anchor{Texinfo@asis{::}Common PACKAGE_AND_VERSION_CONFIG}
+
+@item PACKAGE_NAME
+@anchor{Texinfo@asis{::}Common PACKAGE_NAME}
+
+@item PACKAGE_NAME_CONFIG
+@anchor{Texinfo@asis{::}Common PACKAGE_NAME_CONFIG}
+
+@item PACKAGE_VERSION
+@anchor{Texinfo@asis{::}Common PACKAGE_VERSION}
+
+@item PACKAGE_VERSION_CONFIG
+@anchor{Texinfo@asis{::}Common PACKAGE_VERSION_CONFIG}
+
+@item PACKAGE_URL
+@anchor{Texinfo@asis{::}Common PACKAGE_URL}
+
+@item PACKAGE_URL_CONFIG
+@anchor{Texinfo@asis{::}Common PACKAGE_URL_CONFIG}
+
+Texinfo package name and versions.  Values of build constants without
+@code{_CONFIG} appended are set by configure.  For each variable set by
+configure there is another one with @code{_CONFIG} appended
+to the name set to the same value, to match the name of the macros set in
+C.  So, for example @code{PACKAGE_VERSION_CONFIG} value is the same as
+@code{PACKAGE_VERSION}, set to the @code{PACKAGE_VERSION} value set by configure.
+
+@end table
+
+@end table
 
 @table @asis
 @item %texinfo_output_formats
@@ -51,6 +102,9 @@ practice corresponds to @code{format_raw} @code{%block_commands} plus @code{info
 and @code{plaintext}.
 
 @end table
+
+TODO: undocumented
+%null_device_file %default_parser_customization_values %multiple_at_command_options %unique_at_command_options %converter_cmdline_options %default_main_program_customization_options %converter_customization_options %document_settable_at_commands %def_map %command_structuring_level %level_to_structuring_command %encoding_name_conversion_map %text_brace_no_arg_commands
 
 @node Texinfo@asis{::}Common @@-COMMAND INFORMATION
 @section @@-COMMAND INFORMATION
@@ -91,12 +145,6 @@ metasyntactic variables only.
 
 Values are ASCII representation of single character non-alphabetical commands
 without brace such as @code{*} or @code{:}.  The value may be an empty string.
-
-@item %non_formatted_brace_commands
-@anchor{Texinfo@asis{::}Common %non_formatted_brace_commands}
-
-Brace commands that are not immediately replaced with text, such as
-@code{anchor}, @code{caption}, @code{errormsg} and others.
 
 @item %small_block_associated_command
 @anchor{Texinfo@asis{::}Common %small_block_associated_command}
@@ -140,7 +188,7 @@ only be used in user-defined code with translatable strings already present in
 the domain anyway.  In fact, these functions are documented mainly because they
 are automatically exported.
 
-See @ref{,,, libintl-perl},
+See @url{https://metacpan.org/pod/Locale::Messages, Locale::Messages},
 @url{https://www.gnu.org/software/gettext/manual/html_node/gettext.html, @code{gettext} C interface},
 @url{https://www.gnu.org/software/gettext/manual/html_node/Perl.html, Perl in GNU Gettext}.
 For translation of strings in output, see @ref{Texinfo@asis{::}Translations NAME,, Texinfo::Translations}.
@@ -184,7 +232,7 @@ check the element itself, in addition to the parent context.
 Encode the @emph{$file_name} text string to a binary string @emph{$encoded_file_name}
 based on @emph{$input_encoding}.  Also returns the @emph{$encoding} name actually
 used which may have undergone some normalization.  This function is mostly
-a wrapper around @ref{encode,, Encode::encode, Encode} which avoids calling the module if not
+a wrapper around @url{https://metacpan.org/pod/Encode#encode, Encode Encode::encode} which avoids calling the module if not
 needed.  Do nothing if @emph{$input_encoding} is @code{undef}.
 
 @item $text = enumerate_item_representation($specification, $number)
@@ -227,8 +275,8 @@ Return true if the @emph{$tree} has content that could be formatted.
 @emph{$do_not_ignore_index_entries} is optional.  If set, index entries
 are considered to be formatted.
 
-@item $file = locate_include_file($customization_information, file_path)
-@anchor{Texinfo@asis{::}Common $file = locate_include_file($customization_information@comma{} file_path)}
+@item $file = locate_include_file($customization_information, $file_path)
+@anchor{Texinfo@asis{::}Common $file = locate_include_file($customization_information@comma{} $file_path)}
 @cindex @code{locate_include_file}
 
 Locate @emph{$file_path}.  If @emph{$file_path} is an absolute path or has @code{.}
@@ -248,24 +296,8 @@ an array reference with an index name as first element and the index entry numbe
 in that index (1-based) as second element.  In general, the @emph{$index_entry_info}
 is an @ref{Texinfo@asis{::}Parser index_entry,, @code{extra} @emph{index_entry}} associated to an element.
 
-The @emph{$index_entry} hash is described in @ref{Texinfo@asis{::}Parser index_entries}.  The
-@emph{$index_info} hash is described in L@ref{Texinfo@asis{::}Parser $indices_information = $parser->indices_information(),, @code{Texinfo::Parser::indices_information}}.
-
-@item move_index_entries_after_items_in_tree($tree)
-@anchor{Texinfo@asis{::}Common move_index_entries_after_items_in_tree($tree)}
-@cindex @code{move_index_entries_after_items_in_tree}
-
-In @code{@@enumerate} and @code{@@itemize} from the tree, move index entries
-appearing just before @code{@@item} after the @code{@@item}.  Comment lines
-between index entries are moved too.
-
-@item relate_index_entries_to_table_items_in_tree($tree)
-@anchor{Texinfo@asis{::}Common relate_index_entries_to_table_items_in_tree($tree)}
-@cindex @code{relate_index_entries_to_table_items_in_tree}
-
-In tables, relate index entries preceding and following an
-entry with said item.  Reference one of them in the entry's
-@code{entry_associated_element}.
+The @emph{$index_entry} hash is described in @ref{Texinfo@asis{::}Document index_entries}.  The
+@emph{$index_info} hash is described in @ref{Texinfo@asis{::}Document $indices_information = $document->indices_information(),, @code{Texinfo::Document::indices_information}}.
 
 @item $normalized_name = normalize_top_node_name($node_string)
 @anchor{Texinfo@asis{::}Common $normalized_name = normalize_top_node_name($node_string)}
@@ -274,33 +306,11 @@ entry with said item.  Reference one of them in the entry's
 Normalize the node name string given in argument, by normalizing
 Top node case.
 
-@item protect_colon_in_tree($tree)
-@anchor{Texinfo@asis{::}Common protect_colon_in_tree($tree)}
+@item $result = remove_from_array($array, $element)
+@anchor{Texinfo@asis{::}Common $result = remove_from_array($array@comma{} $element)}
 
-@item protect_node_after_label_in_tree($tree)
-@anchor{Texinfo@asis{::}Common protect_node_after_label_in_tree($tree)}
-@cindex @code{protect_colon_in_tree}
-@cindex @code{protect_node_after_label_in_tree}
-
-Protect colon with @code{protect_colon_in_tree} and characters that
-are special in node names after a label in menu entries (tab
-dot and comma) with @code{protect_node_after_label_in_tree}.
-The protection is achieved by putting protected characters
-in @code{@@asis@{@}}.
-
-@item protect_comma_in_tree($tree)
-@anchor{Texinfo@asis{::}Common protect_comma_in_tree($tree)}
-@cindex @code{protect_comma_in_tree}
-
-Protect comma characters, replacing @code{,} with @@comma@{@} in tree.
-
-@item $contents_result = protect_first_parenthesis($contents)
-@anchor{Texinfo@asis{::}Common $contents_result = protect_first_parenthesis($contents)}
-@cindex @code{protect_first_parenthesis}
-
-Return a contents array reference with first parenthesis in the
-contents array reference protected.  If @emph{$contents} is undef
-a fatal error with a backtrace will be emitted.
+Remove first occurence of @emph{$element} in the array reference @emph{$array}.
+Return the removed element, or @code{undef} if not found.
 
 @item $level = section_level($section)
 @anchor{Texinfo@asis{::}Common $level = section_level($section)}
@@ -316,7 +326,7 @@ raise/lowersections.
 Set the Texinfo customization variable corresponding to @emph{$cmdname} in
 @emph{$customization_information}.  The @emph{$global_commands_information} should
 contain information about global commands in a Texinfo document, typically obtained
-from a parser @ref{Texinfo@asis{::}Parser $commands = global_commands_information($parser),, $parser->global_commands_information()}.
+from a parsed document @ref{Texinfo@asis{::}Document $commands = global_commands_information($document),, $document->global_commands_information()}.
 @emph{$command_location} specifies where in the document the value should be taken from,
 for commands that may appear more than once. The possibilities are:
 
@@ -357,31 +367,30 @@ a command that sets some information, such as @code{@@documentlanguage},
 @code{@@contents} or @code{@@footnotestyle} for example.  Return true if the command
 argument was found and the customization variable was set.
 
-@item set_output_encodings($customization_information, $parser_information)
-@anchor{Texinfo@asis{::}Common set_output_encodings($customization_information@comma{} $parser_information)}
-@cindex @code{set_output_encodings}
+@item set_output_encoding($customization_information, $document)
+@anchor{Texinfo@asis{::}Common set_output_encoding($customization_information@comma{} $document)}
+@cindex @code{set_output_encoding}
 
 If not already set, set @code{OUTPUT_ENCODING_NAME} based on input file
-encoding.  Also set @code{OUTPUT_PERL_ENCODING} accordingly which is used
-to output in the correct encoding.  In general, @code{OUTPUT_PERL_ENCODING}
-should not be set directly by user-defined code such that it corresponds
-to @code{OUTPUT_ENCODING_NAME}.
+encoding.
 
-@item $split_contents = split_custom_heading_command_contents($contents)
-@anchor{Texinfo@asis{::}Common $split_contents = split_custom_heading_command_contents($contents)}
+@item set_output_perl_encoding($customization_information)
+@anchor{Texinfo@asis{::}Common set_output_perl_encoding($customization_information)}
+@cindex @code{set_output_perl_encoding}
+
+Set @code{OUTPUT_PERL_ENCODING} based on @code{OUTPUT_ENCODING_NAME}.  In general,
+@code{OUTPUT_PERL_ENCODING} should not be set directly by user-defined code such
+that it corresponds to @code{OUTPUT_ENCODING_NAME}.
+
+@item $split_contents = split_custom_heading_command_contents($element)
+@anchor{Texinfo@asis{::}Common $split_contents = split_custom_heading_command_contents($element)}
 @cindex @code{split_custom_heading_command_contents}
 
-Split the @emph{$contents} array reference at @code{@@|} in at max three parts.
-Return an array reference containing the split parts.  The @emph{$contents}
-array reference is supposed to be @code{$element->@{'args'@}->[0]->@{'contents'@}}
+Split the @emph{$element} contents at @code{@@|} in at max three parts.
+Return an element containing the split parts in contents, or @code{undef} if
+the @emph{$element} has no useful content.  The input @emph{$element}
+is supposed to be @code{$element->@{'args'@}->[0]}
 of @code{%Texinfo::Commands::heading_spec_commands} commands such as @code{@@everyheading}.
-
-@item trim_spaces_comment_from_content($contents)
-@anchor{Texinfo@asis{::}Common trim_spaces_comment_from_content($contents)}
-@cindex @code{trim_spaces_comment_from_content}
-
-Remove empty spaces after commands or braces at begin and
-spaces and comments at end from a content array, modifying it.
 
 @item $status = valid_customization_option($name)
 @anchor{Texinfo@asis{::}Common $status = valid_customization_option($name)}

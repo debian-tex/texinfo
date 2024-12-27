@@ -235,6 +235,12 @@ my @converted_test_cases = (
 '@documentencoding utf8
 
 '],
+['command_not_closed_on_center_line',
+'@center c @strong{
+st}
+'],
+['comment_without_line',
+'@comment'],
 ['definfoenclose',
 '
 definfoenclose phoo,//,\\  @definfoenclose phoo,//,\\
@@ -304,6 +310,16 @@ qsd dsq sdq dsq dssdq sdq sdq sdq dsq sdq dsq dsq sdq dsq sdqsd q
 @indent
 indent in quotation
 @end quotation
+'],
+['indent_with_command_after_without_space',
+'@indent@AA{} b
+'],
+# Need to use a trick such as @value to have a text following
+# @indent without being part of the command name
+['indent_with_text_after_without_space',
+'@set myvalue a
+
+@indent@value{myvalue} b
 '],
 ['noindent_after_smallexample',
 'To obtain.
@@ -598,6 +614,8 @@ in example
 
 @codekbdmacro{}
 '],
+['exdent_no_line',
+'@exdent'],
 );
 
 # info and xml
@@ -623,6 +641,8 @@ my %docbook_tests = (
   'ref_in_center' => 1,
   'footnote_in_center' => 1,
   'command_in_heading_footing' => 1,
+  'command_not_closed_on_center_line' => 1,
+  'comment_without_line' => 1,
 );
 
 my %docbooc_doc_tests = (

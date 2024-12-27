@@ -38,9 +38,7 @@ $result_trees{'empty_last_argument'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -97,9 +95,7 @@ $result_trees{'empty_last_argument'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -108,9 +104,7 @@ $result_trees{'empty_last_argument'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -146,11 +140,7 @@ $result_trees{'empty_last_argument'} = {
                                 'text' => 'foo'
                               }
                             ],
-                            'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
-                            }
+                            'type' => 'line_arg'
                           },
                           {
                             'contents' => [
@@ -163,11 +153,15 @@ $result_trees{'empty_last_argument'} = {
                               'spaces_before_argument' => {
                                 'text' => ' '
                               }
-                            }
+                            },
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
-                          'command_name' => 'defbuiltin'
+                          'command_name' => 'defbuiltin',
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
                         },
                         'type' => 'linemacro_call'
                       },
@@ -202,42 +196,53 @@ $result_trees{'empty_last_argument'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'BIindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 8,
                     'macro' => 'defbuiltin'
                   },
                   'type' => 'index_entry_command'
                 }
               ],
-              'type' => 'def_item'
+              'type' => 'before_defline'
             },
             {
               'args' => [
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'Builtin'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'Builtin'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'foo'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'foo'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     }
                   ],
                   'info' => {
@@ -260,7 +265,19 @@ $result_trees{'empty_last_argument'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'foo'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -269,11 +286,9 @@ $result_trees{'empty_last_argument'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 8,
                 'macro' => 'defbuiltin'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'contents' => [
@@ -289,15 +304,14 @@ $result_trees{'empty_last_argument'} = {
                                 'text' => 'foo'
                               }
                             ],
-                            'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
-                            }
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
-                          'command_name' => 'defbuiltin'
+                          'command_name' => 'defbuiltin',
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
                         },
                         'type' => 'linemacro_call'
                       },
@@ -335,12 +349,12 @@ $result_trees{'empty_last_argument'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'BIindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 10,
                     'macro' => 'defbuiltin'
                   },
@@ -354,23 +368,34 @@ $result_trees{'empty_last_argument'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'Builtin'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'Builtin'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_category'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'foo'
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'foo'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
                     }
                   ],
                   'info' => {
@@ -393,7 +418,19 @@ $result_trees{'empty_last_argument'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'foo'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -402,11 +439,9 @@ $result_trees{'empty_last_argument'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 10,
                 'macro' => 'defbuiltin'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'contents' => [
@@ -422,11 +457,7 @@ $result_trees{'empty_last_argument'} = {
                                 'text' => 'foo'
                               }
                             ],
-                            'info' => {
-                              'spaces_before_argument' => {
-                                'text' => ' '
-                              }
-                            }
+                            'type' => 'line_arg'
                           },
                           {
                             'contents' => [
@@ -439,11 +470,15 @@ $result_trees{'empty_last_argument'} = {
                               'spaces_before_argument' => {
                                 'text' => ' '
                               }
-                            }
+                            },
+                            'type' => 'line_arg'
                           }
                         ],
                         'info' => {
-                          'command_name' => 'defbuiltin'
+                          'command_name' => 'defbuiltin',
+                          'spaces_before_argument' => {
+                            'text' => ' '
+                          }
                         },
                         'type' => 'linemacro_call'
                       },
@@ -481,12 +516,12 @@ $result_trees{'empty_last_argument'} = {
                     ]
                   },
                   'info' => {
+                    'command_name' => 'BIindex',
                     'spaces_before_argument' => {
                       'text' => ' '
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 12,
                     'macro' => 'defbuiltin'
                   },
@@ -500,48 +535,57 @@ $result_trees{'empty_last_argument'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'def_role' => 'category'
-                      },
-                      'text' => 'Builtin'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'name'
-                      },
-                      'text' => 'foo'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'spaces'
-                      },
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    },
-                    {
-                      'extra' => {
-                        'def_role' => 'arg'
-                      },
-                      'source_info' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => 'defbuiltin'
-                      },
-                      'source_marks' => [
+                      'contents' => [
                         {
-                          'counter' => 3,
-                          'sourcemark_type' => 'linemacro_expansion',
-                          'status' => 'end'
+                          'contents' => [
+                            {
+                              'text' => 'Builtin'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
                         }
                       ],
-                      'type' => 'bracketed_arg'
+                      'type' => 'def_category'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'contents' => [
+                            {
+                              'text' => 'foo'
+                            }
+                          ],
+                          'type' => 'def_line_arg'
+                        }
+                      ],
+                      'type' => 'def_name'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'contents' => [
+                        {
+                          'source_info' => {
+                            'line_nr' => 12,
+                            'macro' => 'defbuiltin'
+                          },
+                          'source_marks' => [
+                            {
+                              'counter' => 3,
+                              'sourcemark_type' => 'linemacro_expansion',
+                              'status' => 'end'
+                            }
+                          ],
+                          'type' => 'bracketed_arg'
+                        }
+                      ],
+                      'type' => 'def_arg'
                     }
                   ],
                   'info' => {
@@ -556,7 +600,19 @@ $result_trees{'empty_last_argument'} = {
               'cmdname' => 'defline',
               'extra' => {
                 'def_command' => 'defline',
-                'def_index_element' => {},
+                'def_index_element' => {
+                  'contents' => [
+                    {
+                      'contents' => [
+                        {
+                          'text' => 'foo'
+                        }
+                      ],
+                      'type' => 'def_line_arg'
+                    }
+                  ],
+                  'type' => 'def_name'
+                },
                 'original_def_cmdname' => 'defline'
               },
               'info' => {
@@ -565,11 +621,9 @@ $result_trees{'empty_last_argument'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 12,
                 'macro' => 'defbuiltin'
-              },
-              'type' => 'def_line'
+              }
             },
             {
               'args' => [
@@ -598,16 +652,12 @@ $result_trees{'empty_last_argument'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 13,
-                'macro' => ''
+                'line_nr' => 13
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         }
       ],
@@ -616,9 +666,6 @@ $result_trees{'empty_last_argument'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'empty_last_argument'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'extra'}{'def_index_element'} = $result_trees{'empty_last_argument'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'empty_last_argument'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'extra'}{'def_index_element'} = $result_trees{'empty_last_argument'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[2];
-$result_trees{'empty_last_argument'}{'contents'}[0]{'contents'}[3]{'contents'}[5]{'extra'}{'def_index_element'} = $result_trees{'empty_last_argument'}{'contents'}[0]{'contents'}[3]{'contents'}[5]{'args'}[0]{'contents'}[2];
 
 $result_texis{'empty_last_argument'} = '@defcodeindex BI
 @linemacro defbuiltin {symbol, rest}
@@ -651,7 +698,6 @@ $result_errors{'empty_last_argument'} = [
   {
     'error_line' => 'warning: entry for index `BI\' outside of any node (possibly involving @defbuiltin)
 ',
-    'file_name' => '',
     'line_nr' => 8,
     'macro' => 'defbuiltin',
     'text' => 'entry for index `BI\' outside of any node',
@@ -660,7 +706,6 @@ $result_errors{'empty_last_argument'} = [
   {
     'error_line' => 'warning: entry for index `BI\' outside of any node (possibly involving @defbuiltin)
 ',
-    'file_name' => '',
     'line_nr' => 10,
     'macro' => 'defbuiltin',
     'text' => 'entry for index `BI\' outside of any node',
@@ -669,7 +714,6 @@ $result_errors{'empty_last_argument'} = [
   {
     'error_line' => 'warning: entry for index `BI\' outside of any node (possibly involving @defbuiltin)
 ',
-    'file_name' => '',
     'line_nr' => 12,
     'macro' => 'defbuiltin',
     'text' => 'entry for index `BI\' outside of any node',
@@ -681,51 +725,30 @@ $result_errors{'empty_last_argument'} = [
 $result_indices{'empty_last_argument'} = {
   'index_names' => {
     'BI' => {
-      'contained_indices' => {
-        'BI' => 1
-      },
       'in_code' => 1,
       'name' => 'BI'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }

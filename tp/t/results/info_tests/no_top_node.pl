@@ -29,6 +29,7 @@ $result_trees{'no_top_node'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'node-Top-not-Top-node'
       },
       'info' => {
@@ -37,9 +38,7 @@ $result_trees{'no_top_node'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -52,19 +51,22 @@ $result_texis{'no_top_node'} = '@node node Top not Top node
 
 $result_texts{'no_top_node'} = '';
 
-$result_nodes{'no_top_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'node-Top-not-Top-node'
+$result_nodes{'no_top_node'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'normalized' => 'node-Top-not-Top-node'
+    }
   }
-};
+];
 
-$result_menus{'no_top_node'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'node-Top-not-Top-node'
+$result_menus{'no_top_node'} = [
+  {
+    'extra' => {
+      'normalized' => 'node-Top-not-Top-node'
+    }
   }
-};
+];
 
 $result_errors{'no_top_node'} = [];
 
@@ -77,7 +79,6 @@ $result_converted{'info'}->{'no_top_node'} = 'This is , produced from .
 
 
 File: ,  Node: node Top not Top node
-
 
 
 Tag Table:

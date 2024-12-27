@@ -64,16 +64,12 @@ $result_trees{'empty_line_in_example_end'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -120,7 +116,6 @@ $result_floats{'empty_line_in_example_end'} = {};
 
 
 $result_converted{'plaintext'}->{'empty_line_in_example_end'} = '     in example
-
 
    After line
 ';

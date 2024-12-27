@@ -12,14 +12,12 @@ $result_trees{'empty_anchor'} = {
         {
           'args' => [
             {
-              'type' => 'brace_command_arg'
+              'type' => 'brace_arg'
             }
           ],
           'cmdname' => 'anchor',
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -36,14 +34,12 @@ $result_trees{'empty_anchor'} = {
                       'text' => '   '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'anchor',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -73,18 +69,14 @@ $result_errors{'empty_anchor'} = [
   {
     'error_line' => 'empty argument in @anchor
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => 'empty argument in @anchor',
     'type' => 'error'
   },
   {
     'error_line' => 'empty argument in @anchor
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'empty argument in @anchor',
     'type' => 'error'
   }

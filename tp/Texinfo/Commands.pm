@@ -1,4 +1,4 @@
-# Automatically generated from ./maintain/regenerate_commands_perl_info.pl
+# Automatically generated from regenerate_commands_perl_info.pl
 
 package Texinfo::Commands;
 
@@ -194,6 +194,7 @@ our %brace_commands = (
   "today"                   => 'noarg',
   "dmn"                     => 'other',
   "titlefont"               => 'other',
+  "txiinternalvalue"        => 'special',
   "value"                   => 'special',
   "verb"                    => 'special',
   "w"                       => 'special',
@@ -212,6 +213,7 @@ our %brace_commands = (
   "b"                       => 'style_other',
   "cite"                    => 'style_other',
   "clicksequence"           => 'style_other',
+  "definfoenclose_command"  => 'style_other',
   "dfn"                     => 'style_other',
   "emph"                    => 'style_other',
   "headitemfont"            => 'style_other',
@@ -225,10 +227,6 @@ our %brace_commands = (
   "var"                     => 'style_other',
 );
 
-our %internal_commands = (
-  "txiinternalvalue"        => 'brace',
-);
-
 our %line_commands = (
   "appendix"                => 'line',
   "appendixsec"             => 'line',
@@ -240,6 +238,8 @@ our %line_commands = (
   "centerchap"              => 'line',
   "chapheading"             => 'line',
   "chapter"                 => 'line',
+  "cindex"                  => 'line',
+  "cpindex"                 => 'line',
   "defcvx"                  => 'line',
   "deffnx"                  => 'line',
   "defivarx"                => 'line',
@@ -268,9 +268,14 @@ our %line_commands = (
   "everyfooting"            => 'line',
   "everyheading"            => 'line',
   "exdent"                  => 'line',
+  "findex"                  => 'line',
+  "fnindex"                 => 'line',
   "heading"                 => 'line',
+  "index_entry_command"     => 'line',
   "item_LINE"               => 'line',
   "itemx"                   => 'line',
+  "kindex"                  => 'line',
+  "kyindex"                 => 'line',
   "listoffloats"            => 'line',
   "majorheading"            => 'line',
   "node"                    => 'line',
@@ -279,6 +284,8 @@ our %line_commands = (
   "oddheading"              => 'line',
   "pagesizes"               => 'line',
   "part"                    => 'line',
+  "pgindex"                 => 'line',
+  "pindex"                  => 'line',
   "section"                 => 'line',
   "settitle"                => 'line',
   "shorttitlepage"          => 'line',
@@ -288,12 +295,16 @@ our %line_commands = (
   "subsubheading"           => 'line',
   "subsubsection"           => 'line',
   "subtitle"                => 'line',
+  "tindex"                  => 'line',
   "title"                   => 'line',
   "top"                     => 'line',
+  "tpindex"                 => 'line',
   "unnumbered"              => 'line',
   "unnumberedsec"           => 'line',
   "unnumberedsubsec"        => 'line',
   "unnumberedsubsubsec"     => 'line',
+  "vindex"                  => 'line',
+  "vrindex"                 => 'line',
   "afivepaper"              => 'lineraw',
   "afourlatex"              => 'lineraw',
   "afourpaper"              => 'lineraw',
@@ -411,6 +422,14 @@ our %accent_commands = (
   "udotaccent"              => 1,
   "v"                       => 1,
   "~"                       => 1,
+);
+
+our %appendix_commands = (
+  "appendix"                => 1,
+  "appendixsec"             => 1,
+  "appendixsection"         => 1,
+  "appendixsubsec"          => 1,
+  "appendixsubsubsec"       => 1,
 );
 
 our %blockitem_commands = (
@@ -556,6 +575,8 @@ our %contain_basic_inline_commands = (
   "centerchap"              => 1,
   "chapheading"             => 1,
   "chapter"                 => 1,
+  "cindex"                  => 1,
+  "cpindex"                 => 1,
   "defcv"                   => 1,
   "defcvx"                  => 1,
   "deffn"                   => 1,
@@ -605,21 +626,29 @@ our %contain_basic_inline_commands = (
   "everyfooting"            => 1,
   "everyheading"            => 1,
   "example"                 => 1,
+  "findex"                  => 1,
   "float"                   => 1,
+  "fnindex"                 => 1,
   "ftable"                  => 1,
   "heading"                 => 1,
   "image"                   => 1,
+  "index_entry_command"     => 1,
   "inforef"                 => 1,
   "itemize"                 => 1,
+  "kindex"                  => 1,
+  "kyindex"                 => 1,
   "link"                    => 1,
   "listoffloats"            => 1,
   "majorheading"            => 1,
   "math"                    => 1,
   "multitable"              => 1,
   "node"                    => 1,
+  "nodedescription"         => 1,
   "oddfooting"              => 1,
   "oddheading"              => 1,
   "part"                    => 1,
+  "pgindex"                 => 1,
+  "pindex"                  => 1,
   "pxref"                   => 1,
   "quotation"               => 1,
   "ref"                     => 1,
@@ -637,15 +666,19 @@ our %contain_basic_inline_commands = (
   "subsubsection"           => 1,
   "subtitle"                => 1,
   "table"                   => 1,
+  "tindex"                  => 1,
   "title"                   => 1,
   "titlefont"               => 1,
   "top"                     => 1,
+  "tpindex"                 => 1,
   "unnumbered"              => 1,
   "unnumberedsec"           => 1,
   "unnumberedsubsec"        => 1,
   "unnumberedsubsubsec"     => 1,
   "uref"                    => 1,
   "url"                     => 1,
+  "vindex"                  => 1,
+  "vrindex"                 => 1,
   "vtable"                  => 1,
   "w"                       => 1,
   "xref"                    => 1,
@@ -820,7 +853,6 @@ our %formatted_line_commands = (
   "exdent"                  => 1,
   "heading"                 => 1,
   "item_LINE"               => 1,
-  "item"                    => 1,
   "itemx"                   => 1,
   "majorheading"            => 1,
   "node"                    => 1,
@@ -864,6 +896,7 @@ our %formatted_nobrace_commands = (
 our %global_commands = (
   "allowcodebreaks"         => 1,
   "author"                  => 1,
+  "chapheading"             => 1,
   "clickstyle"              => 1,
   "codequotebacktick"       => 1,
   "codequoteundirected"     => 1,
@@ -872,27 +905,25 @@ our %global_commands = (
   "detailmenu"              => 1,
   "documentencoding"        => 1,
   "documentlanguage"        => 1,
-  "evenfooting"             => 1,
-  "evenheading"             => 1,
-  "everyfooting"            => 1,
-  "everyheading"            => 1,
   "exampleindent"           => 1,
   "firstparagraphindent"    => 1,
   "float"                   => 1,
   "footnote"                => 1,
   "frenchspacing"           => 1,
+  "heading"                 => 1,
   "headings"                => 1,
   "hyphenation"             => 1,
   "insertcopying"           => 1,
   "kbdinputstyle"           => 1,
   "listoffloats"            => 1,
+  "majorheading"            => 1,
   "microtype"               => 1,
-  "oddfooting"              => 1,
-  "oddheading"              => 1,
   "paragraphindent"         => 1,
   "part"                    => 1,
   "printindex"              => 1,
   "shortcontents"           => 1,
+  "subheading"              => 1,
+  "subsubheading"           => 1,
   "subtitle"                => 1,
   "summarycontents"         => 1,
   "titlefont"               => 1,
@@ -908,14 +939,20 @@ our %global_unique_commands = (
   "bsixpaper"               => 1,
   "copying"                 => 1,
   "documentdescription"     => 1,
+  "evenfooting"             => 1,
   "evenfootingmarks"        => 1,
+  "evenheading"             => 1,
   "evenheadingmarks"        => 1,
+  "everyfooting"            => 1,
   "everyfootingmarks"       => 1,
+  "everyheading"            => 1,
   "everyheadingmarks"       => 1,
   "fonttextsize"            => 1,
   "footnotestyle"           => 1,
   "novalidate"              => 1,
+  "oddfooting"              => 1,
   "oddfootingmarks"         => 1,
+  "oddheading"              => 1,
   "oddheadingmarks"         => 1,
   "pagesizes"               => 1,
   "setchapternewpage"       => 1,
@@ -957,6 +994,22 @@ our %in_index_commands = (
   "subentry"                => 1,
 );
 
+our %index_entry_command_commands = (
+  "cindex"                  => 1,
+  "cpindex"                 => 1,
+  "findex"                  => 1,
+  "fnindex"                 => 1,
+  "index_entry_command"     => 1,
+  "kindex"                  => 1,
+  "kyindex"                 => 1,
+  "pgindex"                 => 1,
+  "pindex"                  => 1,
+  "tindex"                  => 1,
+  "tpindex"                 => 1,
+  "vindex"                  => 1,
+  "vrindex"                 => 1,
+);
+
 our %inline_conditional_commands = (
   "inlineifclear"           => 1,
   "inlineifset"             => 1,
@@ -966,6 +1019,12 @@ our %inline_format_commands = (
   "inlinefmt"               => 1,
   "inlinefmtifelse"         => 1,
   "inlineraw"               => 1,
+);
+
+our %internal_commands = (
+  "definfoenclose_command"  => 1,
+  "index_entry_command"     => 1,
+  "txiinternalvalue"        => 1,
 );
 
 our %letter_no_arg_commands = (
@@ -1015,6 +1074,7 @@ our %no_paragraph_commands = (
   "centerchap"              => 1,
   "chapheading"             => 1,
   "chapter"                 => 1,
+  "cindex"                  => 1,
   "clear"                   => 1,
   "clickstyle"              => 1,
   "codequotebacktick"       => 1,
@@ -1023,6 +1083,7 @@ our %no_paragraph_commands = (
   "comment"                 => 1,
   "contents"                => 1,
   "copying"                 => 1,
+  "cpindex"                 => 1,
   "defblock"                => 1,
   "defcodeindex"            => 1,
   "defcv"                   => 1,
@@ -1094,10 +1155,12 @@ our %no_paragraph_commands = (
   "exampleindent"           => 1,
   "exdent"                  => 1,
   "finalout"                => 1,
+  "findex"                  => 1,
   "firstparagraphindent"    => 1,
   "float"                   => 1,
   "flushleft"               => 1,
   "flushright"              => 1,
+  "fnindex"                 => 1,
   "fonttextsize"            => 1,
   "footnotestyle"           => 1,
   "format"                  => 1,
@@ -1132,12 +1195,16 @@ our %no_paragraph_commands = (
   "include"                 => 1,
   "indent"                  => 1,
   "indentedblock"           => 1,
+  "index_entry_command"     => 1,
+  "index_entry_command"     => 1,
   "insertcopying"           => 1,
   "item"                    => 1,
   "item_LINE"               => 1,
   "itemize"                 => 1,
   "itemx"                   => 1,
   "kbdinputstyle"           => 1,
+  "kindex"                  => 1,
+  "kyindex"                 => 1,
   "latex"                   => 1,
   "linemacro"               => 1,
   "lisp"                    => 1,
@@ -1162,6 +1229,8 @@ our %no_paragraph_commands = (
   "pagesizes"               => 1,
   "paragraphindent"         => 1,
   "part"                    => 1,
+  "pgindex"                 => 1,
+  "pindex"                  => 1,
   "printindex"              => 1,
   "quotation"               => 1,
   "raggedright"             => 1,
@@ -1196,10 +1265,12 @@ our %no_paragraph_commands = (
   "tab"                     => 1,
   "table"                   => 1,
   "tex"                     => 1,
+  "tindex"                  => 1,
   "title"                   => 1,
   "titlefont"               => 1,
   "titlepage"               => 1,
   "top"                     => 1,
+  "tpindex"                 => 1,
   "unmacro"                 => 1,
   "unnumbered"              => 1,
   "unnumberedsec"           => 1,
@@ -1208,6 +1279,8 @@ our %no_paragraph_commands = (
   "urefbreakstyle"          => 1,
   "verbatim"                => 1,
   "verbatiminclude"         => 1,
+  "vindex"                  => 1,
+  "vrindex"                 => 1,
   "vskip"                   => 1,
   "vtable"                  => 1,
   "xml"                     => 1,
@@ -1220,6 +1293,15 @@ our %non_formatted_block_commands = (
   "macro"                   => 1,
   "nodedescriptionblock"    => 1,
   "rmacro"                  => 1,
+);
+
+our %non_formatted_brace_commands = (
+  "anchor"                  => 1,
+  "caption"                 => 1,
+  "errormsg"                => 1,
+  "hyphenation"             => 1,
+  "shortcaption"            => 1,
+  "sortas"                  => 1,
 );
 
 our %preamble_commands = (
@@ -1383,6 +1465,16 @@ our %sectioning_heading_commands = (
   "unnumberedsubsubsec"     => 1,
 );
 
+our %unnumbered_commands = (
+  "centerchap"              => 1,
+  "part"                    => 1,
+  "top"                     => 1,
+  "unnumbered"              => 1,
+  "unnumberedsec"           => 1,
+  "unnumberedsubsec"        => 1,
+  "unnumberedsubsubsec"     => 1,
+);
+
 our %variadic_commands = (
   "example"                 => 1,
 );
@@ -1486,14 +1578,12 @@ our %index_names = (
 
 foreach my $index (keys(%index_names)) {
   $index_names{$index}->{"name"} = $index;
-  $index_names{$index}->{"contained_indices"} = {$index => 1};
 }
 
 our %default_index_commands;
 foreach my $index_name (keys (%index_names)) {
   my $one_letter_prefix = substr($index_name, 0, 1);
   foreach my $prefix ($index_name, $one_letter_prefix) {
-    $line_commands{$prefix."index"} = "line";
     $default_index_commands{$prefix."index"} = $index_name;
   }
 }

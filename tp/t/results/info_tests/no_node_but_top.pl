@@ -28,15 +28,14 @@ $result_trees{'no_node_but_top'} = {
         }
       ],
       'cmdname' => 'top',
+      'extra' => {},
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
+        'line_nr' => 1
       }
     }
   ],
@@ -52,20 +51,20 @@ $result_texts{'no_node_but_top'} = 'top
 ';
 
 $result_sectioning{'no_node_but_top'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
-        'structure' => {
+        'extra' => {
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'no_node_but_top'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'no_node_but_top'};
+$result_sectioning{'no_node_but_top'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'no_node_but_top'};
 
 $result_errors{'no_node_but_top'} = [];
 
@@ -78,7 +77,6 @@ $result_converted{'info'}->{'no_node_but_top'} = 'This is , produced from .
 
 top
 ***
-
 
 
 Tag Table:

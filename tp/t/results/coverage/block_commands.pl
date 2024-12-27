@@ -64,16 +64,12 @@ $result_trees{'block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 4,
-                'macro' => ''
+                'line_nr' => 4
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         },
         {
@@ -136,9 +132,7 @@ $result_trees{'block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 8,
-                'macro' => ''
+                'line_nr' => 8
               }
             }
           ],
@@ -148,9 +142,7 @@ $result_trees{'block_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 6,
-            'macro' => ''
+            'line_nr' => 6
           }
         },
         {
@@ -242,9 +234,7 @@ $result_trees{'block_commands'} = {
                 'float' => {}
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 14,
-                'macro' => ''
+                'line_nr' => 14
               }
             },
             {
@@ -279,15 +269,14 @@ $result_trees{'block_commands'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 17,
-                'macro' => ''
+                'line_nr' => 17
               }
             }
           ],
           'extra' => {
             'caption' => {},
             'float_type' => 'a float',
+            'is_target' => 1,
             'normalized' => 'b-float'
           },
           'info' => {
@@ -296,9 +285,7 @@ $result_trees{'block_commands'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
+            'line_nr' => 10
           }
         }
       ],
@@ -356,11 +343,9 @@ $result_floats{'block_commands'} = {
             'float' => {}
           }
         },
+        'float_number' => '1',
         'float_type' => 'a float',
         'normalized' => 'b-float'
-      },
-      'structure' => {
-        'float_number' => 1
       }
     }
   ]

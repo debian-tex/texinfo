@@ -19,7 +19,7 @@ $result_trees{'inline_missing_first_arg'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -36,9 +36,7 @@ $result_trees{'inline_missing_first_arg'} = {
                 'format' => undef
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -47,7 +45,7 @@ $result_trees{'inline_missing_first_arg'} = {
             {
               'args' => [
                 {
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -64,9 +62,7 @@ $result_trees{'inline_missing_first_arg'} = {
                 'format' => undef
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 1,
-                'macro' => ''
+                'line_nr' => 1
               }
             },
             {
@@ -94,18 +90,14 @@ $result_errors{'inline_missing_first_arg'} = [
   {
     'error_line' => 'warning: @inlinefmt missing first argument
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@inlinefmt missing first argument',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: @inlineraw missing first argument
 ',
-    'file_name' => '',
     'line_nr' => 1,
-    'macro' => '',
     'text' => '@inlineraw missing first argument',
     'type' => 'warning'
   }

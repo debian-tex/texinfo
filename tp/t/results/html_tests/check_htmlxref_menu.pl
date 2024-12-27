@@ -10,9 +10,17 @@ $result_trees{'check_htmlxref_menu'} = {
     {
       'contents' => [
         {
-          'text' => '
+          'contents' => [
+            {
+              'text' => '
 ',
-          'type' => 'empty_line'
+              'type' => 'text_before_beginning'
+            }
+          ],
+          'type' => 'preamble_before_beginning'
+        },
+        {
+          'type' => 'preamble_before_content'
         }
       ],
       'type' => 'before_node_section'
@@ -40,9 +48,11 @@ $result_trees{'check_htmlxref_menu'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ]
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            }
           },
           'info' => {
             'spaces_before_argument' => {
@@ -58,9 +68,11 @@ $result_trees{'check_htmlxref_menu'} = {
             }
           ],
           'extra' => {
-            'node_content' => [
-              {}
-            ],
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'first'
           },
           'info' => {
@@ -83,9 +95,11 @@ $result_trees{'check_htmlxref_menu'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ]
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            }
           },
           'info' => {
             'spaces_after_argument' => {
@@ -101,6 +115,7 @@ $result_trees{'check_htmlxref_menu'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -109,9 +124,7 @@ $result_trees{'check_htmlxref_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 2,
-        'macro' => ''
+        'line_nr' => 2
       }
     },
     {
@@ -149,11 +162,13 @@ $result_trees{'check_htmlxref_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ]
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -166,7 +181,7 @@ $result_trees{'check_htmlxref_menu'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -179,7 +194,7 @@ $result_trees{'check_htmlxref_menu'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -192,14 +207,12 @@ $result_trees{'check_htmlxref_menu'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             },
             {
@@ -215,11 +228,13 @@ $result_trees{'check_htmlxref_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ]
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -232,7 +247,7 @@ $result_trees{'check_htmlxref_menu'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -245,7 +260,7 @@ $result_trees{'check_htmlxref_menu'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 },
                 {
                   'contents' => [
@@ -258,14 +273,12 @@ $result_trees{'check_htmlxref_menu'} = {
                       'text' => ' '
                     }
                   },
-                  'type' => 'brace_command_arg'
+                  'type' => 'brace_arg'
                 }
               ],
               'cmdname' => 'ref',
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             },
             {
@@ -307,9 +320,11 @@ $result_trees{'check_htmlxref_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'first'
                   },
                   'type' => 'menu_entry_node'
@@ -334,9 +349,7 @@ $result_trees{'check_htmlxref_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
+                'line_nr' => 9
               },
               'type' => 'menu_entry'
             },
@@ -359,9 +372,11 @@ $result_trees{'check_htmlxref_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'manual_content' => [
-                      {}
-                    ]
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
                   },
                   'type' => 'menu_entry_node'
                 },
@@ -385,9 +400,7 @@ $result_trees{'check_htmlxref_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 10,
-                'macro' => ''
+                'line_nr' => 10
               },
               'type' => 'menu_entry'
             },
@@ -404,9 +417,11 @@ $result_trees{'check_htmlxref_menu'} = {
                     }
                   ],
                   'extra' => {
-                    'node_content' => [
-                      {}
-                    ],
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
                     'normalized' => 'chapter'
                   },
                   'type' => 'menu_entry_node'
@@ -431,9 +446,7 @@ $result_trees{'check_htmlxref_menu'} = {
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               },
               'type' => 'menu_entry'
             },
@@ -464,16 +477,12 @@ $result_trees{'check_htmlxref_menu'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 12,
-                'macro' => ''
+                'line_nr' => 12
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         },
         {
@@ -489,9 +498,7 @@ $result_trees{'check_htmlxref_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 3,
-        'macro' => ''
+        'line_nr' => 3
       }
     },
     {
@@ -517,9 +524,11 @@ $result_trees{'check_htmlxref_menu'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ]
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            }
           },
           'info' => {
             'spaces_after_argument' => {
@@ -542,6 +551,7 @@ $result_trees{'check_htmlxref_menu'} = {
         }
       ],
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'first'
       },
       'info' => {
@@ -550,9 +560,7 @@ $result_trees{'check_htmlxref_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 14,
-        'macro' => ''
+        'line_nr' => 14
       }
     },
     {
@@ -578,9 +586,11 @@ $result_trees{'check_htmlxref_menu'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ]
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            }
           },
           'info' => {
             'spaces_before_argument' => {
@@ -605,12 +615,16 @@ $result_trees{'check_htmlxref_menu'} = {
             }
           ],
           'extra' => {
-            'manual_content' => [
-              {}
-            ],
-            'node_content' => [
-              {}
-            ],
+            'manual_content' => {
+              'contents' => [
+                {}
+              ]
+            },
+            'node_content' => {
+              'contents' => [
+                {}
+              ]
+            },
             'normalized' => 'node-in-dir'
           },
           'info' => {
@@ -627,6 +641,7 @@ $result_trees{'check_htmlxref_menu'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'chapter'
       },
       'info' => {
@@ -635,9 +650,7 @@ $result_trees{'check_htmlxref_menu'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 16,
-        'macro' => ''
+        'line_nr' => 16
       }
     },
     {
@@ -658,33 +671,88 @@ $result_trees{'check_htmlxref_menu'} = {
         }
       ],
       'cmdname' => 'chapter',
-      'extra' => {},
+      'contents' => [
+        {
+          'text' => '
+',
+          'type' => 'empty_line'
+        },
+        {
+          'contents' => [
+            {
+              'args' => [
+                {
+                  'contents' => [
+                    {
+                      'text' => '('
+                    },
+                    {
+                      'text' => 'some_name_inf.inf'
+                    },
+                    {
+                      'text' => ')'
+                    },
+                    {
+                      'text' => 'aa'
+                    }
+                  ],
+                  'extra' => {
+                    'manual_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    },
+                    'node_content' => {
+                      'contents' => [
+                        {}
+                      ]
+                    }
+                  },
+                  'type' => 'brace_arg'
+                }
+              ],
+              'cmdname' => 'xref',
+              'source_info' => {
+                'line_nr' => 19
+              }
+            },
+            {
+              'text' => '.
+'
+            }
+          ],
+          'type' => 'paragraph'
+        }
+      ],
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 17,
-        'macro' => ''
+        'line_nr' => 17
       }
     }
   ],
   'type' => 'document_root'
 };
-$result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[1]{'contents'}[1];
-$result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[2]{'contents'}[0];
-$result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[3]{'contents'}[1];
-$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[0];
-$result_trees{'check_htmlxref_menu'}{'contents'}[3]{'args'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[3]{'args'}[1]{'contents'}[1];
-$result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[1]{'extra'}{'manual_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[1]{'contents'}[1];
-$result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'extra'}{'manual_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'contents'}[1];
-$result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'contents'}[3];
+$result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[1]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[2]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[2]{'contents'}[0];
+$result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[3]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[1]{'args'}[3]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'contents'}[1]{'contents'}[0];
+$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'contents'}[1]{'contents'}[0];
+$result_trees{'check_htmlxref_menu'}{'contents'}[3]{'args'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[3]{'args'}[1]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[1]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[1]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[4]{'args'}[2]{'contents'}[3];
+$result_trees{'check_htmlxref_menu'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'manual_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'check_htmlxref_menu'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'args'}[0]{'extra'}{'node_content'}{'contents'}[0] = $result_trees{'check_htmlxref_menu'}{'contents'}[5]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
 
 $result_texis{'check_htmlxref_menu'} = '
 @node Top, (../there/no_existing_no_manual_direction), first, (dir)
@@ -703,11 +771,12 @@ $result_texis{'check_htmlxref_menu'} = '
 
 @node chapter, (chap_not_existing), (dir)node in dir
 @chapter Chapter
+
+@xref{(some_name_inf.inf)aa}.
 ';
 
 
-$result_texts{'check_htmlxref_menu'} = '
-top
+$result_texts{'check_htmlxref_menu'} = 'top
 ***
 
 a
@@ -720,10 +789,12 @@ a
 
 1 Chapter
 *********
+
+(some_name_inf.inf)aa.
 ';
 
 $result_sectioning{'check_htmlxref_menu'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -732,11 +803,8 @@ $result_sectioning{'check_htmlxref_menu'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -745,119 +813,140 @@ $result_sectioning{'check_htmlxref_menu'} = {
                   'cmdname' => 'node',
                   'extra' => {
                     'normalized' => 'chapter'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'check_htmlxref_menu'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'check_htmlxref_menu'};
+$result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'check_htmlxref_menu'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'check_htmlxref_menu'};
 
-$result_nodes{'check_htmlxref_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'menus' => [
-      {
-        'cmdname' => 'menu'
-      }
-    ],
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'first'
+$result_nodes{'check_htmlxref_menu'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_next' => {
+      'node_directions' => {
+        'next' => {
           'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'no_existing_no_manual.info'
+            'manual_content' => {}
+          },
+          'type' => 'line_arg'
+        },
+        'prev' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'node_directions' => {
+              'next' => {
+                'extra' => {
+                  'manual_content' => {}
+                },
+                'type' => 'line_arg'
               }
-            ]
+            },
+            'normalized' => 'first'
           }
+        },
+        'up' => {
+          'extra' => {
+            'manual_content' => {}
+          },
+          'type' => 'line_arg'
         }
-      }
-    },
-    'node_next' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => '../there/no_existing_no_manual_direction'
-          }
-        ]
-      }
-    },
-    'node_prev' => {},
-    'node_up' => {
-      'extra' => {
-        'manual_content' => [
-          {
-            'text' => 'dir'
-          }
-        ]
-      }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {},
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'chapter',
+        'extra' => {
+          'section_number' => '1'
+        }
+      },
+      'node_directions' => {
+        'next' => {
+          'extra' => {
+            'manual_content' => {}
+          },
+          'type' => 'line_arg'
+        },
+        'prev' => {
+          'extra' => {
+            'manual_content' => {},
+            'normalized' => 'node-in-dir'
+          },
+          'type' => 'line_arg'
+        }
+      },
+      'normalized' => 'chapter'
     }
   }
-};
-$result_nodes{'check_htmlxref_menu'}{'structure'}{'node_prev'} = $result_nodes{'check_htmlxref_menu'}{'structure'}{'menu_child'};
+];
+$result_nodes{'check_htmlxref_menu'}[1] = $result_nodes{'check_htmlxref_menu'}[0]{'extra'}{'node_directions'}{'prev'};
 
-$result_menus{'check_htmlxref_menu'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
+$result_menus{'check_htmlxref_menu'} = [
+  {
+    'extra' => {
+      'menus' => [
+        {}
+      ],
+      'normalized' => 'Top'
+    }
   },
-  'structure' => {
-    'menu_child' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'normalized' => 'first'
-      },
-      'structure' => {
-        'menu_next' => {
+  {
+    'extra' => {
+      'menu_directions' => {
+        'next' => {
           'extra' => {
-            'manual_content' => [
-              {
-                'text' => 'other_no_existing_no_manual'
-              }
-            ]
+            'manual_content' => {}
           },
           'type' => 'menu_entry_node'
         },
-        'menu_up' => {},
-        'menu_up_hash' => {
-          'Top' => 1
-        }
-      }
+        'up' => {}
+      },
+      'normalized' => 'first'
+    }
+  },
+  {
+    'extra' => {
+      'menu_directions' => {
+        'prev' => {},
+        'up' => {}
+      },
+      'normalized' => 'chapter'
     }
   }
-};
-$result_menus{'check_htmlxref_menu'}{'structure'}{'menu_child'}{'structure'}{'menu_up'} = $result_menus{'check_htmlxref_menu'};
+];
+$result_menus{'check_htmlxref_menu'}[1]{'extra'}{'menu_directions'}{'up'} = $result_menus{'check_htmlxref_menu'}[0];
+$result_menus{'check_htmlxref_menu'}[2]{'extra'}{'menu_directions'}{'prev'} = $result_menus{'check_htmlxref_menu'}[1]{'extra'}{'menu_directions'}{'next'};
+$result_menus{'check_htmlxref_menu'}[2]{'extra'}{'menu_directions'}{'up'} = $result_menus{'check_htmlxref_menu'}[0];
 
 $result_errors{'check_htmlxref_menu'} = [];
 
@@ -869,73 +958,99 @@ $result_converted_errors{'file_html'}->{'check_htmlxref_menu'} = [
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `../there/no_existing_no_manual_direction\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `dir\'
 ',
-    'file_name' => '',
     'line_nr' => 2,
-    'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `dir\'',
     'type' => 'warning'
   },
   {
-    'error_line' => 'warning: no htmlxref.cnf entry found for `no_existing_no_manual.info\'
+    'error_line' => 'warning: do not set .info suffix in reference for manual `no_existing_no_manual.info\'
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
-    'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
+    'text' => 'do not set .info suffix in reference for manual `no_existing_no_manual.info\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `no_existing_no_manual.info\'
 ',
-    'file_name' => '',
+    'line_nr' => 5,
+    'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: do not set .info suffix in reference for manual `no_existing_no_manual.info\'
+',
     'line_nr' => 6,
-    'macro' => '',
+    'text' => 'do not set .info suffix in reference for manual `no_existing_no_manual.info\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: no htmlxref.cnf entry found for `no_existing_no_manual.info\'
+',
+    'line_nr' => 6,
     'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `other_no_existing_no_manual\'
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `other_no_existing_no_manual\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: do not set .info suffix in reference for manual `no_existing_no_manual.info\'
+',
+    'line_nr' => 14,
+    'text' => 'do not set .info suffix in reference for manual `no_existing_no_manual.info\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `no_existing_no_manual.info\'
 ',
-    'file_name' => '',
     'line_nr' => 14,
-    'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: do not set .info suffix in reference for manual `no_existing_no_manual.info\'
+',
+    'line_nr' => 14,
+    'text' => 'do not set .info suffix in reference for manual `no_existing_no_manual.info\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `chap_not_existing\'
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `chap_not_existing\'',
     'type' => 'warning'
   },
   {
     'error_line' => 'warning: no htmlxref.cnf entry found for `dir\'
 ',
-    'file_name' => '',
     'line_nr' => 16,
-    'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `dir\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: do not set .inf suffix in reference for manual `some_name_inf.inf\'
+',
+    'line_nr' => 19,
+    'text' => 'do not set .inf suffix in reference for manual `some_name_inf.inf\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => 'warning: no htmlxref.cnf entry found for `some_name_inf.inf\'
+',
+    'line_nr' => 19,
+    'text' => 'no htmlxref.cnf entry found for `some_name_inf.inf\'',
     'type' => 'warning'
   }
 ];

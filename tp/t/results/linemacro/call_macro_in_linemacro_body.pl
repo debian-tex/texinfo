@@ -68,9 +68,7 @@ $result_trees{'call_macro_in_linemacro_body'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
@@ -79,9 +77,7 @@ $result_trees{'call_macro_in_linemacro_body'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -148,9 +144,7 @@ $result_trees{'call_macro_in_linemacro_body'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 11,
-                'macro' => ''
+                'line_nr' => 11
               }
             }
           ],
@@ -159,9 +153,7 @@ $result_trees{'call_macro_in_linemacro_body'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 7,
-            'macro' => ''
+            'line_nr' => 7
           }
         },
         {
@@ -177,11 +169,7 @@ $result_trees{'call_macro_in_linemacro_body'} = {
                         'type' => 'bracketed_linemacro_arg'
                       }
                     ],
-                    'info' => {
-                      'spaces_before_argument' => {
-                        'text' => ' '
-                      }
-                    }
+                    'type' => 'line_arg'
                   },
                   {
                     'contents' => [
@@ -195,11 +183,15 @@ $result_trees{'call_macro_in_linemacro_body'} = {
                       'spaces_before_argument' => {
                         'text' => ' '
                       }
-                    }
+                    },
+                    'type' => 'line_arg'
                   }
                 ],
                 'info' => {
-                  'command_name' => 'lm'
+                  'command_name' => 'lm',
+                  'spaces_before_argument' => {
+                    'text' => ' '
+                  }
                 },
                 'type' => 'linemacro_call'
               },
@@ -219,7 +211,7 @@ $result_trees{'call_macro_in_linemacro_body'} = {
 now second arg: gg '
                       }
                     ],
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   },
                   {
                     'contents' => [
@@ -241,7 +233,7 @@ now second arg: gg '
                         'text' => ' '
                       }
                     },
-                    'type' => 'brace_command_arg'
+                    'type' => 'brace_arg'
                   }
                 ],
                 'info' => {
@@ -265,16 +257,14 @@ now second arg: gg '
                 {
                   'args' => [
                     {
-                      'type' => 'brace_command_arg'
+                      'type' => 'brace_container'
                     }
                   ],
                   'cmdname' => 'code',
                   'source_info' => {
-                    'file_name' => '',
                     'line_nr' => 14,
                     'macro' => 'mymacro'
-                  },
-                  'type' => 'command_as_argument'
+                  }
                 }
               ],
               'info' => {
@@ -300,12 +290,11 @@ now second arg: gg '
                               'text' => 'something'
                             }
                           ],
-                          'type' => 'brace_command_arg'
+                          'type' => 'brace_container'
                         }
                       ],
                       'cmdname' => 'var',
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 14,
                         'macro' => 'mymacro'
                       }
@@ -352,7 +341,6 @@ now second arg: gg '
                         }
                       },
                       'source_info' => {
-                        'file_name' => '',
                         'line_nr' => 14,
                         'macro' => 'mymacro'
                       }
@@ -416,7 +404,6 @@ now second arg: gg '
                 }
               },
               'source_info' => {
-                'file_name' => '',
                 'line_nr' => 14,
                 'macro' => 'mymacro'
               }
@@ -431,7 +418,6 @@ now second arg: gg '
             }
           },
           'source_info' => {
-            'file_name' => '',
             'line_nr' => 14,
             'macro' => 'mymacro'
           }

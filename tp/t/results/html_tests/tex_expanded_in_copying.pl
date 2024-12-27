@@ -73,16 +73,12 @@ $result_trees{'tex_expanded_in_copying'} = {
                     }
                   },
                   'source_info' => {
-                    'file_name' => '',
-                    'line_nr' => 4,
-                    'macro' => ''
+                    'line_nr' => 4
                   }
                 }
               ],
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 2,
-                'macro' => ''
+                'line_nr' => 2
               }
             },
             {
@@ -112,16 +108,12 @@ $result_trees{'tex_expanded_in_copying'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 5,
-                'macro' => ''
+                'line_nr' => 5
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -150,7 +142,7 @@ $result_floats{'tex_expanded_in_copying'} = {};
 
 $result_converted{'html'}->{'tex_expanded_in_copying'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- aa -->
@@ -178,7 +170,6 @@ $result_converted_errors{'html'}->{'tex_expanded_in_copying'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'tex_expanded_in_copying.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

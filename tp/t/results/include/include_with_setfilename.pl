@@ -40,9 +40,7 @@ $result_trees{'include_with_setfilename'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'include',
@@ -78,8 +76,7 @@ $result_trees{'include_with_setfilename'} = {
                 },
                 'source_info' => {
                   'file_name' => 'included_file_with_setfilename.texi',
-                  'line_nr' => 1,
-                  'macro' => ''
+                  'line_nr' => 1
                 }
               },
               'sourcemark_type' => 'setfilename'
@@ -136,9 +133,7 @@ $result_trees{'include_with_setfilename'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 2,
-            'macro' => ''
+            'line_nr' => 2
           }
         }
       ],
@@ -168,7 +163,6 @@ $result_floats{'include_with_setfilename'} = {};
 $result_converted{'info'}->{'include_with_setfilename'} = 'This is include_with_setfilename.info, produced from .
 
 In included file.
-
 
 Tag Table:
 

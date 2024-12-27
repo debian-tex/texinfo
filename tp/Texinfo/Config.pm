@@ -1,31 +1,35 @@
 # Config.pm: namespace used for user configuration (init files) evaluation
 #
-# Copyright 2010-2023 Free Software Foundation, Inc.
-# 
+# Copyright 2010-2024 Free Software Foundation, Inc.
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License,
 # or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # Original author: Patrice Dumas <pertusus@free.fr>
 #
 # functions that should not be called by user init files codes, but
-# are called by the main program are prefixed by GNUT_ while functions that can
-# be called by user init files codes are prefixed by texinfo_.
+# are called by the main program or tests are prefixed by GNUT_ while
+# functions that can be called by user init files codes are prefixed
+# by texinfo_.
 # Functions prefixed by _GNUT_ are private.
 #
 # This package is documented in the customization_api Texinfo manual.  This
 # package is integrated with the Texinfo main program and the Texinfo
 # HTML converter, such that it does not make sense to document the
 # public interface separately.
+#
+# The main calling context can be the main program or the test suite code,
+# it is distinguished from initialization user-defined files calling context.
 
 package Texinfo::Config;
 
@@ -43,45 +47,61 @@ use Encode;
 use Texinfo::Common;
 
 
-# for error messages, passed from main program through initialization
+# for error messages, passed from main calling context through initialization
 # function.
 my $real_command_name = '';
 
 
 #####################################################################
-# customization API, used from main program and from init files
+# customization API, used from main calling context (main program or
+# t/test_utils.pl) and from init files.
 
+# The main calling context may merge $cmdline_options, $options_defaults
+# and $init_files_options.  That's why it is important, in *_set_from_*
+# functions below to also delete keys in other hashes for overriden
+# customization variables, even though it wouldn't change the output of
+# texinfo_get_conf.
 my $cmdline_options;
-my $main_program_default_options;
+my $options_defaults;
 my $init_files_options = {};
 
-# List options that can be set from main program are not
-# handled in the same way than string options.  Indeed, the
-# lists need to be defined in the main program, therefore the main
-# program list options would always take precedence
-# if there is a precedence, and the list options set from
+# List options that can be set at initialization from the main calling context
+# but are not handled in the same way than string options.
+# Indeed, the lists are filled in the main calling context, in high precedence
+# setting, i.e. these lists are filled with command-line
+# options in the main program.  If they were set in the main calling context
+# those lists should be high precedence options, and the list options set from
 # init file would never have any effect.
-# Therefore, for list options, items are added and removed by
+# Therefore, for such list options, items are added and removed by
 # calls to texinfo_add_to_option_list
 # and texinfo_remove_from_option_list, be it from command line
 # or init files, there is no precedence, but the order of calls
 # matter.
 my %options_as_lists;
+# Note that list options not set in the main calling context, but only set
+# from init files are set like string options, with equal precedence
+# (the value set last is used).
 
 # called from texi2any.pl main program and t/test_utils.pl.
-sub GNUT_initialize_config($$$) {
+# References on $OPTIONS_DEFAULT and $CMDLINE_OPTIONS are retained in
+# the main calling context, therefore the hash reference should be used
+# directly, not copies.
+sub GNUT_initialize_customization($$$) {
   $real_command_name = shift;
-  $main_program_default_options = shift;
+  $options_defaults = shift;
   $cmdline_options = shift;
-  # consider options passed from main program for initialization
-  # as list options
+  # highest precedence options passed for initialization from the main context
+  # should only be list options
   foreach my $cmdline_option (keys(%$cmdline_options)) {
     if (ref($cmdline_options->{$cmdline_option}) eq ''
         or ref($cmdline_options->{$cmdline_option}) ne 'ARRAY') {
-      warn "BUG: $cmdline_option not an ARRAY $cmdline_options->{$cmdline_option}\n";
+      warn "BUG: $cmdline_option not an ARRAY: "
+             ." $cmdline_options->{$cmdline_option}\n";
     }
     $options_as_lists{$cmdline_option} = 1;
   }
+
+  #print STDERR "options_defaults: ".join('|',keys(%$options_defaults))."\n";
   #print STDERR "cmdline_options: ".join('|',keys(%$cmdline_options))."\n";
   return $init_files_options;
 }
@@ -243,7 +263,7 @@ sub texinfo_set_from_init_file($$) {
     return 0;
   }
   return 0 if (defined($cmdline_options->{$var}));
-  delete $main_program_default_options->{$var};
+  delete $options_defaults->{$var};
   $init_files_options->{$var} = $value;
   return 1;
 }
@@ -261,7 +281,7 @@ sub GNUT_set_from_cmdline($$)
   }
 
   delete $init_files_options->{$var};
-  delete $main_program_default_options->{$var};
+  delete $options_defaults->{$var};
   if (!Texinfo::Common::valid_customization_option($var)) {
     _GNUT_document_warn(sprintf(__("unknown variable from command line: %s\n"),
                                $var));
@@ -272,7 +292,7 @@ sub GNUT_set_from_cmdline($$)
 }
 
 # add default based, for instance, on the format.
-sub GNUT_set_main_program_default($$)
+sub GNUT_set_customization_default($$)
 {
   my $var = shift;
   my $value = shift;
@@ -284,22 +304,30 @@ sub GNUT_set_main_program_default($$)
 
   return 0 if (defined($cmdline_options->{$var})
     or defined($init_files_options->{$var}));
-  $main_program_default_options->{$var} = $value;
+  $options_defaults->{$var} = $value;
   return 1;
 }
 
 # called both from main program and init files, for %options_as_lists
 # options with lists set in main program.
-sub texinfo_add_to_option_list($$)
+sub texinfo_add_to_option_list($$;$)
 {
   my $var = shift;
   my $values_array_ref = shift;
+  my $prepend = shift;
+
   if (not $options_as_lists{$var}) {
     return 0;
   }
-  foreach my $value (@$values_array_ref) {
-    push @{$cmdline_options->{$var}}, $value
-      unless (grep {$_ eq $value} @{$cmdline_options->{$var}});
+  if ($prepend) {
+    # accept duplicates in that case, as prepending should in general
+    # be used to override by being first
+    unshift @{$cmdline_options->{$var}}, @$values_array_ref;
+  } else {
+    foreach my $value (@$values_array_ref) {
+      push @{$cmdline_options->{$var}}, $value
+        unless (grep {$_ eq $value} @{$cmdline_options->{$var}});
+    }
   }
   return 1;
 }
@@ -324,28 +352,32 @@ sub texinfo_remove_from_option_list($$)
 # For conversion customization variables, converter methods
 # should be used instead, the implementation usually used being
 # from Texinfo::Convert::Converter.
-# It is possible to set up an interface similar to those used in
-# converters for the main program configuration with the
-# Texinfo::MainConfig below, but it should not be accessed/used
-# in user defined code (and is therefore undocumented).
+# NOTE It is possible to set up an interface similar to those used in
+# converters for the main program and tests configuration with the
+# Texinfo::MainConfig package below, but it should not be accessed/used
+# in user defined code (and the Texinfo::MainConfig interface
+# is therefore undocumented).
 sub texinfo_get_conf($)
 {
   my $var = shift;
   confess("BUG: texinfo_get_conf: undef \$cmdline_options."
-         ." Call GNUT_initialize_config")
+         ." Call GNUT_initialize_customization")
     if (!$cmdline_options);
   if (exists($cmdline_options->{$var})) {
     return $cmdline_options->{$var};
   } elsif (exists($init_files_options->{$var})) {
     return $init_files_options->{$var};
-  } elsif (exists($main_program_default_options->{$var})) {
-    return $main_program_default_options->{$var};
+  } elsif (exists($options_defaults->{$var})) {
+    return $options_defaults->{$var};
   } else {
     return undef;
   }
 }
 
 # to dynamically add customization options from init files
+# FIXME not implementable in XS, would need a type, dynamically added
+# customization variables...
+# Documentation in texi2any api manual is ignored.
 sub texinfo_add_valid_customization_option($)
 {
   my $option = shift;
@@ -408,10 +440,22 @@ sub texinfo_register_handler($$;$)
   return 1;
 }
 
-# called from the Converter
+# called from the Converter.  Sort according to priority and return sorted
+# handlers by stage.  (Return actually handler and priority pairs in case the
+# priority name information is interesting).
 sub GNUT_get_stage_handlers()
 {
-  return $GNUT_stage_handlers;
+  my %sorted_stage_handlers;
+  foreach my $stage (keys(%$GNUT_stage_handlers)) {
+    $sorted_stage_handlers{$stage} = [];
+    my @sorted_priorities = sort keys(%{$GNUT_stage_handlers->{$stage}});
+    foreach my $priority (@sorted_priorities) {
+      foreach my $handler (@{$GNUT_stage_handlers->{$stage}->{$priority}}) {
+        push @{$sorted_stage_handlers{$stage}}, [$handler, $priority];
+      }
+    }
+  }
+  return \%sorted_stage_handlers;
 }
 
 #####################################################################
@@ -419,17 +463,19 @@ sub GNUT_get_stage_handlers()
 
 my $GNUT_file_id_setting_references = {};
 my $GNUT_formatting_references = {};
-my $GNUT_formatting_special_element_body = {};
+my $GNUT_formatting_special_unit_body = {};
 my $GNUT_commands_conversion = {};
 my $GNUT_commands_open = {};
+my $GNUT_output_units_conversion = {};
 my $GNUT_types_conversion = {};
 my $GNUT_types_open = {};
+my $GNUT_upper_case_commands = {};
 my $GNUT_no_arg_commands_formatting_strings = {};
 my $GNUT_style_commands_formatting_info = {};
 my $GNUT_accent_command_formatting_info = {};
 my $GNUT_types_formatting_info = {};
 my $GNUT_direction_string_info = {};
-my $GNUT_special_element_info = {};
+my $GNUT_special_unit_info = {};
 
 # called from init files
 sub texinfo_register_file_id_setting_function($$)
@@ -488,6 +534,20 @@ sub GNUT_get_commands_open()
 }
 
 # called from init files
+sub texinfo_register_output_unit_formatting($$)
+{
+  my $command = shift;
+  my $reference = shift;
+  $GNUT_output_units_conversion->{$command} = $reference;
+}
+
+# called from the Converter
+sub GNUT_get_output_units_conversion()
+{
+  return $GNUT_output_units_conversion;
+}
+
+# called from init files
 sub texinfo_register_type_formatting($$)
 {
   my $command = shift;
@@ -516,18 +576,18 @@ sub GNUT_get_types_open()
 }
 
 # called from init files
-sub texinfo_register_formatting_special_element_body($$)
+sub texinfo_register_formatting_special_unit_body($$)
 {
-  my $special_element_variety = shift;
+  my $special_unit_variety = shift;
   my $handler = shift;
 
-  $GNUT_formatting_special_element_body->{$special_element_variety} = $handler;
+  $GNUT_formatting_special_unit_body->{$special_unit_variety} = $handler;
 }
 
 # called from the Converter
-sub GNUT_get_formatting_special_element_body_references()
+sub GNUT_get_formatting_special_unit_body_references()
 {
-  return $GNUT_formatting_special_element_body;
+  return $GNUT_formatting_special_unit_body;
 }
 
 my $default_formatting_context = 'normal';
@@ -542,34 +602,36 @@ sub _GNUT_initialize_no_arg_commands_formatting_strings()
   }
 }
 
+my @all_style_commands_formatting_context = ($default_formatting_context,
+                                             'preformatted');
+
 _GNUT_initialize_no_arg_commands_formatting_strings();
 
 sub _GNUT_initialize_style_commands_formatting_info()
 {
   $GNUT_style_commands_formatting_info = {};
-  foreach my $possible_formatting_context (@all_possible_formatting_context) {
+  foreach my $possible_formatting_context
+                            (@all_style_commands_formatting_context) {
     $GNUT_style_commands_formatting_info->{$possible_formatting_context} = {};
   }
 }
 
 _GNUT_initialize_style_commands_formatting_info();
 
-my @all_special_element_info_types = ('class', 'direction', 'heading', 'order',
+my @all_special_unit_info_types = ('class', 'direction', 'heading', 'order',
                              'file_string', 'target');
 
-sub _GNUT_initialize_special_element_info()
+sub _GNUT_initialize_special_unit_info()
 {
-  $GNUT_special_element_info = {};
-  foreach my $possible_type (@all_special_element_info_types) {
-    $GNUT_special_element_info->{$possible_type} = {};
+  $GNUT_special_unit_info = {};
+  foreach my $possible_type (@all_special_unit_info_types) {
+    $GNUT_special_unit_info->{$possible_type} = {};
   }
 }
 
-_GNUT_initialize_special_element_info();
+_GNUT_initialize_special_unit_info();
 
 # $translated_converted_string is supposed to be already formatted.
-# It may also be relevant to be able to pass a 'tree'
-# directly (it is actually handled by the converter code).
 sub texinfo_register_no_arg_command_formatting($$;$$$$)
 {
   my $command = shift;
@@ -606,7 +668,8 @@ sub texinfo_register_no_arg_command_formatting($$;$$$$)
     }
     $specification->{'translated_to_convert'} = $translated_to_convert_string;
   }
-  $GNUT_no_arg_commands_formatting_strings->{$context}->{$command} = $specification;
+  $GNUT_no_arg_commands_formatting_strings->{$context}->{$command}
+    = $specification;
   return 1;
 }
 
@@ -617,7 +680,7 @@ sub GNUT_get_no_arg_command_formatting($;$)
 
   if (!defined($context)) {
     $context = $default_formatting_context;
-  } elsif (not defined($GNUT_style_commands_formatting_info->{$context})) {
+  } elsif (not defined($GNUT_no_arg_commands_formatting_strings->{$context})) {
     _GNUT_document_warn(sprintf(__("%s: unknown formatting context %s\n"),
                         'GNUT_get_no_arg_command_formatting', $context));
     return undef;
@@ -646,7 +709,7 @@ sub texinfo_register_style_command_formatting($$;$$)
   }
   my $specification = {};
   if ($in_quotes) {
-    $specification->{'quotes'} = $in_quotes;
+    $specification->{'quote'} = $in_quotes;
   }
   if (defined($html_element)) {
     $specification->{'element'} = $html_element;
@@ -672,6 +735,25 @@ sub GNUT_get_style_command_formatting($;$)
     return $GNUT_style_commands_formatting_info->{$context}->{$command};
   }
   return undef;
+}
+
+# called from init files
+sub texinfo_register_upper_case_command($$)
+{
+  my $command = shift;
+  my $value = shift;
+
+  if ($value) {
+    $GNUT_upper_case_commands->{$command} = 1;
+  } else {
+    $GNUT_upper_case_commands->{$command} = 0;
+  }
+}
+
+# called from the Converter
+sub GNUT_get_upper_case_commands_info()
+{
+  return $GNUT_upper_case_commands;
 }
 
 # called from init files
@@ -745,27 +827,27 @@ sub GNUT_get_direction_string_info()
   return { %$GNUT_direction_string_info };
 }
 
-sub texinfo_register_special_element_info($$$)
+sub texinfo_register_special_unit_info($$$)
 {
   my $type = shift;
   my $variety = shift;
   my $thing = shift;
 
-  if (not defined($GNUT_special_element_info->{$type})) {
+  if (not defined($GNUT_special_unit_info->{$type})) {
     _GNUT_document_warn(
          sprintf(__("%s: unknown special element information type %s\n"),
-                  'texinfo_register_special_element_info', $type));
+                  'texinfo_register_special_unit_info', $type));
     return 0;
   }
-  $GNUT_special_element_info->{$type}->{$variety} = {}
-    if (not exists($GNUT_special_element_info->{$type}->{$variety}));
-  $GNUT_special_element_info->{$type}->{$variety} = $thing;
+  $GNUT_special_unit_info->{$type}->{$variety} = {}
+    if (not exists($GNUT_special_unit_info->{$type}->{$variety}));
+  $GNUT_special_unit_info->{$type}->{$variety} = $thing;
   return 1;
 }
 
-sub GNUT_get_special_element_info()
+sub GNUT_get_special_unit_info()
 {
-  return { %$GNUT_special_element_info };
+  return { %$GNUT_special_unit_info };
 }
 
 
@@ -777,7 +859,8 @@ sub GNUT_reinitialize_init_files()
   @init_file_loading_messages = ();
   foreach my $reference ($init_files_options,
      $GNUT_file_id_setting_references,
-     $GNUT_formatting_references, $GNUT_formatting_special_element_body,
+     $GNUT_formatting_references, $GNUT_formatting_special_unit_body,
+     $GNUT_upper_case_commands,
      $GNUT_commands_conversion, $GNUT_commands_open, $GNUT_types_conversion,
      $GNUT_types_open, $GNUT_accent_command_formatting_info,
      $GNUT_types_formatting_info, $GNUT_direction_string_info) {
@@ -786,38 +869,24 @@ sub GNUT_reinitialize_init_files()
   _GNUT_initialize_stage_handlers();
   _GNUT_initialize_no_arg_commands_formatting_strings();
   _GNUT_initialize_style_commands_formatting_info();
-  _GNUT_initialize_special_element_info();
+  _GNUT_initialize_special_unit_info();
 }
 
 
 #####################################################################
 # the objective of this small package is to be in another
 # scope than init files and setup blessed objects that can call
-# get_conf() and set_conf() methods like a parser or a converter.
+# get_conf() and set_conf() methods.
 #
-# For the main program, there is also the need to have
-# access to configuration options in order to have get_conf()
-# return the same as Texinfo::Config::texinfo_get_conf().
-# This is obtained by calling new() without argument.
-#
-# In tests the situation is different as nothing from the
-# Texinfo::Config space is used, it is assumed that the
-# configuration is available as a hash reference key
-# value.  This is obtained by calling new() with an hash
-# reference argument.
+# There is also the need to have access to configuration options
+# in order to have get_conf() return the same as
+# Texinfo::Config::texinfo_get_conf().
 package Texinfo::MainConfig;
 
-sub new(;$)
+sub new()
 {
-  my $options = shift;
-  my $config;
-  if (defined($options)) {
-    # creates a new object based on input hash reference
-    $config = {'standalone' => 1, 'config' => {%$options}};
-  } else {
-    # use Texinfo::Config
-    $config = {'standalone' => 0, 'config' => {}};
-  }
+  # setup additional config to be used with other Texinfo::Config information.
+  my $config = {};
   bless $config;
   return $config;
 }
@@ -827,25 +896,18 @@ sub get_conf($$)
   my $self = shift;
   my $var = shift;
 
-  if ($self->{'standalone'}) {
-    if (defined($self->{'config'}->{$var})) {
-      return $self->{'config'}->{$var};
-    }
-  } else {
-    # as get_conf, but with self having precedence on
-    # main program defaults
-    if (exists($cmdline_options->{$var})) {
-      return $cmdline_options->{$var};
-    } elsif (exists($init_files_options->{$var})) {
-      return $init_files_options->{$var};
-    } elsif (exists($self->{'config'}->{$var})) {
-      return $self->{'config'}->{$var};
-    } elsif (exists($main_program_default_options->{$var})) {
-      return $main_program_default_options->{$var};
-    } else {
-      return undef;
-    }
+  # as get_conf, but with self having precedence on
+  # main calling context defaults
+  if (exists($cmdline_options->{$var})) {
+    return $cmdline_options->{$var};
+  } elsif (exists($init_files_options->{$var})) {
+    return $init_files_options->{$var};
+  } elsif (exists($self->{$var})) {
+    return $self->{$var};
+  } elsif (exists($options_defaults->{$var})) {
+    return $options_defaults->{$var};
   }
+  return undef;
 }
 
 sub set_conf($$$)
@@ -853,10 +915,28 @@ sub set_conf($$$)
   my $self = shift;
   my $var = shift;
   my $val = shift;
-  $self->{'config'}->{$var} = $val;
+  $self->{$var} = $val;
 
   return 1;
 }
 
+# get options in a simple hash.  It is not possible to set
+# customization variables afterwards as the information on
+# precedence has been lost, so this should be called when all the
+# options have been definitively set.
+sub get_customization_options_hash($)
+{
+  my $self = shift;
+
+  my %options = %{$options_defaults};
+  foreach my $config ($self, $init_files_options, $cmdline_options) {
+    foreach my $option (keys(%$config)) {
+      $options{$option} = $config->{$option};
+    }
+  }
+  #print STDERR "MAIN: ".join('|', sort(keys(%options)))."\n";
+
+  return \%options;
+}
 
 1;

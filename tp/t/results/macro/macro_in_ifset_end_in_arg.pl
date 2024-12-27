@@ -54,9 +54,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 3,
-                'macro' => ''
+                'line_nr' => 3
               }
             }
           ],
@@ -65,9 +63,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
 '
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -125,9 +121,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
                       }
                     },
                     'source_info' => {
-                      'file_name' => '',
-                      'line_nr' => 7,
-                      'macro' => ''
+                      'line_nr' => 7
                     }
                   }
                 ],
@@ -137,9 +131,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 5,
-                  'macro' => ''
+                  'line_nr' => 5
                 }
               },
               'position' => 1,
@@ -189,18 +181,14 @@ $result_errors{'macro_in_ifset_end_in_arg'} = [
   {
     'error_line' => 'misplaced }
 ',
-    'file_name' => '',
     'line_nr' => 8,
-    'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
   },
   {
     'error_line' => 'unmatched `@end ifset\'
 ',
-    'file_name' => '',
     'line_nr' => 10,
-    'macro' => '',
     'text' => 'unmatched `@end ifset\'',
     'type' => 'error'
   }

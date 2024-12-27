@@ -12,7 +12,7 @@ $result_trees{'empty_ifset_in_ifset_no_set'} = {
         {
           'source_marks' => [
             {
-              'counter' => 2,
+              'counter' => 1,
               'element' => {
                 'args' => [
                   {
@@ -33,56 +33,22 @@ $result_trees{'empty_ifset_in_ifset_no_set'} = {
                 'cmdname' => 'ifset',
                 'contents' => [
                   {
-                    'source_marks' => [
-                      {
-                        'counter' => 1,
-                        'element' => {
-                          'cmdname' => 'ifset',
-                          'contents' => [
-                            {
-                              'text' => '@end verbatim
-',
-                              'type' => 'raw'
-                            },
-                            {
-                              'args' => [
-                                {
-                                  'contents' => [
-                                    {
-                                      'text' => 'ifset'
-                                    }
-                                  ],
-                                  'info' => {
-                                    'spaces_after_argument' => {
-                                      'text' => '
-'
-                                    }
-                                  },
-                                  'type' => 'line_arg'
-                                }
-                              ],
-                              'cmdname' => 'end',
-                              'extra' => {
-                                'text_arg' => 'ifset'
-                              },
-                              'info' => {
-                                'spaces_before_argument' => {
-                                  'text' => ' '
-                                }
-                              },
-                              'source_info' => {
-                                'file_name' => '',
-                                'line_nr' => 6,
-                                'macro' => ''
-                              }
-                            }
-                          ]
-                        },
-                        'position' => 10,
-                        'sourcemark_type' => 'ignored_conditional_block'
-                      }
-                    ],
                     'text' => '@verbatim
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@ifset
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end verbatim
+',
+                    'type' => 'raw'
+                  },
+                  {
+                    'text' => '@end ifset
 ',
                     'type' => 'raw'
                   }
@@ -93,9 +59,7 @@ $result_trees{'empty_ifset_in_ifset_no_set'} = {
                   }
                 },
                 'source_info' => {
-                  'file_name' => '',
-                  'line_nr' => 2,
-                  'macro' => ''
+                  'line_nr' => 2
                 }
               },
               'position' => 1,
@@ -124,9 +88,7 @@ $result_errors{'empty_ifset_in_ifset_no_set'} = [
   {
     'error_line' => 'no matching `@end ifset\'
 ',
-    'file_name' => '',
     'line_nr' => 6,
-    'macro' => '',
     'text' => 'no matching `@end ifset\'',
     'type' => 'error'
   }

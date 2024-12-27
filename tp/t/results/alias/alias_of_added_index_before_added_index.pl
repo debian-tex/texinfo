@@ -39,9 +39,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -78,9 +76,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
+            'line_nr' => 3
           }
         },
         {
@@ -110,6 +106,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'normalized' => 'Top'
       },
       'info' => {
@@ -118,9 +115,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 5,
-        'macro' => ''
+        'line_nr' => 5
       }
     },
     {
@@ -174,14 +169,13 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
           },
           'info' => {
             'alias_of' => 'new',
+            'command_name' => 'sliindex',
             'spaces_before_argument' => {
               'text' => ' '
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           },
           'type' => 'index_entry_command'
         },
@@ -198,9 +192,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 6,
-        'macro' => ''
+        'line_nr' => 6
       }
     },
     {
@@ -222,6 +214,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
       ],
       'cmdname' => 'node',
       'extra' => {
+        'is_target' => 1,
         'isindex' => 1,
         'normalized' => 'chap'
       },
@@ -231,9 +224,7 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 10,
-        'macro' => ''
+        'line_nr' => 10
       }
     },
     {
@@ -289,22 +280,20 @@ $result_trees{'alias_of_added_index_before_added_index'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 13,
-            'macro' => ''
+            'line_nr' => 13
           }
         }
       ],
-      'extra' => {},
+      'extra' => {
+        'section_number' => '1'
+      },
       'info' => {
         'spaces_before_argument' => {
           'text' => ' '
         }
       },
       'source_info' => {
-        'file_name' => '',
-        'line_nr' => 11,
-        'macro' => ''
+        'line_nr' => 11
       }
     }
   ],
@@ -340,7 +329,7 @@ top
 ';
 
 $result_sectioning{'alias_of_added_index_before_added_index'} = {
-  'structure' => {
+  'extra' => {
     'section_childs' => [
       {
         'cmdname' => 'top',
@@ -349,11 +338,8 @@ $result_sectioning{'alias_of_added_index_before_added_index'} = {
             'cmdname' => 'node',
             'extra' => {
               'normalized' => 'Top'
-            },
-            'structure' => {}
-          }
-        },
-        'structure' => {
+            }
+          },
           'section_childs' => [
             {
               'cmdname' => 'chapter',
@@ -363,73 +349,82 @@ $result_sectioning{'alias_of_added_index_before_added_index'} = {
                   'extra' => {
                     'isindex' => 1,
                     'normalized' => 'chap'
-                  },
-                  'structure' => {}
-                }
-              },
-              'structure' => {
+                  }
+                },
+                'section_directions' => {
+                  'up' => {}
+                },
                 'section_level' => 1,
-                'section_number' => 1,
-                'section_up' => {},
-                'toplevel_prev' => {},
-                'toplevel_up' => {}
+                'section_number' => '1',
+                'toplevel_directions' => {
+                  'prev' => {},
+                  'up' => {}
+                }
               }
             }
           ],
           'section_level' => 0,
-          'section_up' => {}
+          'sectioning_root' => {},
+          'toplevel_directions' => {}
         }
       }
     ],
     'section_level' => -1
   }
 };
-$result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_prev'} = $result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0]{'structure'}{'section_childs'}[0]{'structure'}{'toplevel_up'} = $result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0];
-$result_sectioning{'alias_of_added_index_before_added_index'}{'structure'}{'section_childs'}[0]{'structure'}{'section_up'} = $result_sectioning{'alias_of_added_index_before_added_index'};
+$result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'section_directions'}{'up'} = $result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'prev'} = $result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0]{'extra'}{'section_childs'}[0]{'extra'}{'toplevel_directions'}{'up'} = $result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0];
+$result_sectioning{'alias_of_added_index_before_added_index'}{'extra'}{'section_childs'}[0]{'extra'}{'sectioning_root'} = $result_sectioning{'alias_of_added_index_before_added_index'};
 
-$result_nodes{'alias_of_added_index_before_added_index'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'associated_section' => {
-      'cmdname' => 'top',
-      'extra' => {},
-      'structure' => {}
-    },
-    'normalized' => 'Top'
-  },
-  'structure' => {
-    'node_next' => {
-      'cmdname' => 'node',
-      'extra' => {
-        'associated_section' => {
-          'cmdname' => 'chapter',
-          'extra' => {},
-          'structure' => {
-            'section_number' => 1
-          }
-        },
-        'isindex' => 1,
-        'normalized' => 'chap'
+$result_nodes{'alias_of_added_index_before_added_index'} = [
+  {
+    'cmdname' => 'node',
+    'extra' => {
+      'associated_section' => {
+        'cmdname' => 'top',
+        'extra' => {}
       },
-      'structure' => {
-        'node_prev' => {},
-        'node_up' => {}
-      }
+      'node_directions' => {
+        'next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'associated_section' => {
+              'cmdname' => 'chapter',
+              'extra' => {
+                'section_number' => '1'
+              }
+            },
+            'isindex' => 1,
+            'node_directions' => {
+              'prev' => {},
+              'up' => {}
+            },
+            'normalized' => 'chap'
+          }
+        }
+      },
+      'normalized' => 'Top'
+    }
+  },
+  {}
+];
+$result_nodes{'alias_of_added_index_before_added_index'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'prev'} = $result_nodes{'alias_of_added_index_before_added_index'}[0];
+$result_nodes{'alias_of_added_index_before_added_index'}[0]{'extra'}{'node_directions'}{'next'}{'extra'}{'node_directions'}{'up'} = $result_nodes{'alias_of_added_index_before_added_index'}[0];
+$result_nodes{'alias_of_added_index_before_added_index'}[1] = $result_nodes{'alias_of_added_index_before_added_index'}[0]{'extra'}{'node_directions'}{'next'};
+
+$result_menus{'alias_of_added_index_before_added_index'} = [
+  {
+    'extra' => {
+      'normalized' => 'Top'
+    }
+  },
+  {
+    'extra' => {
+      'normalized' => 'chap'
     }
   }
-};
-$result_nodes{'alias_of_added_index_before_added_index'}{'structure'}{'node_next'}{'structure'}{'node_prev'} = $result_nodes{'alias_of_added_index_before_added_index'};
-$result_nodes{'alias_of_added_index_before_added_index'}{'structure'}{'node_next'}{'structure'}{'node_up'} = $result_nodes{'alias_of_added_index_before_added_index'};
-
-$result_menus{'alias_of_added_index_before_added_index'} = {
-  'cmdname' => 'node',
-  'extra' => {
-    'normalized' => 'Top'
-  },
-  'structure' => {}
-};
+];
 
 $result_errors{'alias_of_added_index_before_added_index'} = [];
 
@@ -437,51 +432,30 @@ $result_errors{'alias_of_added_index_before_added_index'} = [];
 $result_indices{'alias_of_added_index_before_added_index'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 0,
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'name' => 'ky'
     },
     'pg' => {
-      'contained_indices' => {
-        'pg' => 1
-      },
       'in_code' => 1,
       'name' => 'pg'
     },
     'sli' => {
-      'contained_indices' => {
-        'sli' => 1
-      },
       'in_code' => 0,
       'name' => 'sli'
     },
     'tp' => {
-      'contained_indices' => {
-        'tp' => 1
-      },
       'in_code' => 1,
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'name' => 'vr'
     }

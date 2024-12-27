@@ -203,9 +203,7 @@ $result_trees{'example_multi_class'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 16,
-                'macro' => ''
+                'line_nr' => 16
               }
             }
           ],
@@ -215,9 +213,7 @@ $result_trees{'example_multi_class'} = {
             }
           },
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         }
       ],
@@ -288,7 +284,7 @@ $result_converted{'plaintext'}->{'example_multi_class'} = '     void StateManage
 
 $result_converted{'html'}->{'example_multi_class'} = '<!DOCTYPE html>
 <html>
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by texinfo, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
@@ -336,7 +332,6 @@ $result_converted_errors{'html'}->{'example_multi_class'} = [
   {
     'error_line' => 'warning: must specify a title with a title command or @top
 ',
-    'file_name' => 'example_multi_class.texi',
     'text' => 'must specify a title with a title command or @top',
     'type' => 'warning'
   }

@@ -4,7 +4,7 @@
 #
 # chm.pm: convert to chm intermediate formats hhp, hhc, hhk and html files
 #
-#    Copyright 2004, 2006, 2009, 2011-2023 Free Software Foundation, Inc.
+#    Copyright 2004, 2006, 2009, 2011-2024 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,7 +42,6 @@ use Texinfo::Common;
 use Texinfo::Convert::Unicode;
 use Texinfo::Convert::Utils;
 use Texinfo::Convert::Text;
-use Texinfo::Structuring;
 
 texinfo_set_format_from_init_file('html');
 
@@ -191,18 +190,14 @@ sub chm_noop($$)
   return '';
 }
 
-sub _chm_convert_tree_to_text($$;$)
+sub _chm_convert_tree_to_text($$)
 {
   my $converter = shift;
   my $tree = shift;
-  my $options = shift;
-
-  $options = {} if (!defined($options));
 
   return &{$converter->formatting_function('format_protect_text')}($converter,
     Texinfo::Convert::Text::convert_to_text($tree,
-   {Texinfo::Convert::Text::copy_options_for_convert_text($converter),
-     %$options}));
+                                 $converter->{'convert_text_options'}));
 }
 
 sub chm_init($)
@@ -219,14 +214,15 @@ sub chm_init($)
   $outdir = File::Spec->curdir() if ($outdir eq '');
 
   my $hhk_filename = $document_name . ".hhk";
-  my $hhk_file_path_name = File::Spec->catfile($outdir, $hhk_filename);
+  my $hhk_file_path_name = join('/', ($outdir, $hhk_filename));
   my ($encoded_hhk_file_path_name, $hhk_path_encoding)
     = $self->encoded_output_file_name($hhk_file_path_name);
-  my ($hhk_fh, $hhk_error_message) = Texinfo::Common::output_files_open_out(
+  my ($hhk_fh, $hhk_error_message)
+     = Texinfo::Convert::Utils::output_files_open_out(
                       $self->output_files_information(), $self,
                       $encoded_hhk_file_path_name);
   if (!defined($hhk_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("chm.pm: could not open %s for writing: %s\n"),
                   $hhk_file_path_name, $hhk_error_message));
     return 1;
@@ -243,10 +239,19 @@ sub chm_init($)
   }
   print $hhk_fh "</OBJECT>\n";
 
-  my ($index_entries, $index_entries_sort_strings)
-       = Texinfo::Structuring::sort_indices($self, $self,
-                             $self->get_info('index_entries'),
-                             $self->get_info('indices_information'));
+  my $document = $self->get_info('document');
+  my $indices_information;
+  my $sections_list;
+  if ($document) {
+    $indices_information = $document->indices_information();
+    $sections_list = $document->sections_list();
+  }
+
+  my $index_entries;
+  if ($indices_information) {
+    $index_entries = $self->get_converter_indices_sorted_by_index();
+  }
+
   if ($index_entries) {
     foreach my $index_name (sort(keys(%$index_entries))) {
       foreach my $index_entry_ref (@{$index_entries->{$index_name}}) {
@@ -259,13 +264,19 @@ sub chm_init($)
         my $origin_href = $self->command_href($main_entry_element, '');
         my $entry_content_element
               = Texinfo::Common::index_content_element($main_entry_element);
-        my $indices_information = $self->get_info('indices_information');
         my $in_code = 0;
         $in_code = 1
           if ($indices_information->{$index_entry_ref->{'index_name'}}->{'in_code'});
+        if ($in_code) {
+          Texinfo::Convert::Text::set_options_code(
+                                 $self->{'convert_text_options'});
+        }
         my $entry = _chm_convert_tree_to_text($self,
-                         {'contents' => [$entry_content_element]},
-                         {'code' => $in_code});
+                                              $entry_content_element);
+        if ($in_code) {
+          Texinfo::Convert::Text::reset_options_code(
+                                 $self->{'convert_text_options'});
+        }
         print $hhk_fh "<LI> <OBJECT type=\"text/sitemap\">\n"
                       ."<param name=\"Name\" value=\"$entry\">\n"
                       ."<param name=\"Local\" value=\"$origin_href\">\n"
@@ -275,24 +286,25 @@ sub chm_init($)
     }
   }
   print $hhk_fh "</BODY>\n</HTML>\n";
-  Texinfo::Common::output_files_register_closed(
+  Texinfo::Convert::Utils::output_files_register_closed(
     $self->output_files_information(), $encoded_hhk_file_path_name);
   if (!close ($hhk_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
            sprintf(__("chm.pm: error on closing %s: %s"),
                           $hhk_file_path_name, $!));
     return 1;
   }
 
   my $hhc_filename = $document_name . ".hhc";
-  my $hhc_file_path_name = File::Spec->catfile($outdir, $hhc_filename);
+  my $hhc_file_path_name = join('/', ($outdir, $hhc_filename));
   my ($encoded_hhc_file_path_name, $hhc_path_encoding)
     = $self->encoded_output_file_name($hhc_file_path_name);
-  my ($hhc_fh, $hhc_error_message) = Texinfo::Common::output_files_open_out(
+  my ($hhc_fh, $hhc_error_message)
+       = Texinfo::Convert::Utils::output_files_open_out(
                       $self->output_files_information(), $self,
                       $encoded_hhc_file_path_name);
   if (!defined($hhc_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("chm.pm: could not open %s for writing: %s\n"),
                   $hhc_file_path_name, $hhc_error_message));
     return 1;
@@ -311,27 +323,28 @@ sub chm_init($)
   }
   print $hhc_fh "</OBJECT>\n";
 
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}) {
-    my $section_root = $self->{'structuring'}->{'sectioning_root'};
-    my $upper_level = $section_root->{'structure'}->{'section_childs'}->[0]
-                                               ->{'structure'}->{'section_level'};
-    foreach my $top_section (@{$section_root->{'structure'}->{'section_childs'}}) {
-      $upper_level = $top_section->{'structure'}->{'section_level'}
-      if ($top_section->{'structure'}->{'section_level'} < $upper_level);
+  if ($sections_list) {
+    my $section_root = $sections_list->[0]
+                                         ->{'extra'}->{'sectioning_root'};
+    my $upper_level = $section_root->{'extra'}->{'section_childs'}->[0]
+                                               ->{'extra'}->{'section_level'};
+    foreach my $top_section (@{$section_root->{'extra'}->{'section_childs'}}) {
+      $upper_level = $top_section->{'extra'}->{'section_level'}
+      if ($top_section->{'extra'}->{'section_level'} < $upper_level);
     }
     $upper_level = 1 if ($upper_level <= 0);
     my $root_level = $upper_level - 1;
     my $level = $root_level;
-    foreach my $section (@{$self->{'structuring'}->{'sections_list'}}) {
+    foreach my $section (@{$sections_list}) {
       next if ($section->{'cmdname'} eq 'part');
-      my $section_level = $section->{'structure'}->{'section_level'};
+      my $section_level = $section->{'extra'}->{'section_level'};
       $section_level = 1 if ($section_level == 0);
       if ($level < $section_level) {
         while ($level < $section_level) {
           print $hhc_fh "<UL>\n";
           $level++;
         }
-      } elsif ($level > $section->{'structure'}->{'section_level'}) {
+      } elsif ($level > $section->{'extra'}->{'section_level'}) {
         while ($level > $section_level) {
           print $hhc_fh "</UL>\n";
           $level--;
@@ -355,24 +368,25 @@ sub chm_init($)
     }
   }
   print $hhc_fh "</HTML>\n</BODY>\n";
-  Texinfo::Common::output_files_register_closed(
+  Texinfo::Convert::Utils::output_files_register_closed(
     $self->output_files_information(), $encoded_hhc_file_path_name);
   if (!close ($hhc_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
            sprintf(__("chm.pm: error on closing %s: %s"),
                           $hhc_file_path_name, $!));
     return 1;
   }
 
   my $hhp_filename = $document_name . ".hhp";
-  my $hhp_file_path_name = File::Spec->catfile($outdir, $hhp_filename);
+  my $hhp_file_path_name = join('/', ($outdir, $hhp_filename));
   my ($encoded_hhp_file_path_name, $hhp_path_encoding)
     = $self->encoded_output_file_name($hhp_file_path_name);
-  my ($hhp_fh, $hhp_error_message) = Texinfo::Common::output_files_open_out(
+  my ($hhp_fh, $hhp_error_message)
+       = Texinfo::Convert::Utils::output_files_open_out(
                       $self->output_files_information(), $self,
                       $encoded_hhp_file_path_name);
   if (!defined($hhp_fh)) {
-    $self->document_error(
+    $self->converter_document_error(
            $self, sprintf(__("chm.pm: could not open %s for writing: %s\n"),
                   $hhp_file_path_name, $hhp_error_message));
     return 1;
@@ -387,9 +401,9 @@ sub chm_init($)
   }
   my $title = _chm_convert_tree_to_text($self, $self->get_info('title_tree'));
   my $top_file = '';
-  my $top_element = $self->global_direction_element('Top');
+  my $top_element = $self->global_direction_unit('Top');
   if ($top_element) {
-    $top_file = $top_element->{'structure'}->{'unit_filename'};
+    $top_file = $top_element->{'unit_filename'};
   }
 
   print $hhp_fh <<EOT;
@@ -412,19 +426,19 @@ Default=,"$hhc_filename","$hhk_filename","$top_file","$top_file",,,,,0x22520,,0x
 EOT
 
   my %chm_files;
-  if ($self->{'tree_units'}) {
-    foreach my $element (@{$self->{'tree_units'}}) {
-      if (!$chm_files{$element->{'structure'}->{'unit_filename'}}) {
-        print $hhp_fh "$element->{'structure'}->{'unit_filename'}\n";
-        $chm_files{$element->{'structure'}->{'unit_filename'}} = 1;
+  if ($self->{'document_units'}) {
+    foreach my $element (@{$self->{'document_units'}}) {
+      if (!$chm_files{$element->{'unit_filename'}}) {
+        print $hhp_fh "$element->{'unit_filename'}\n";
+        $chm_files{$element->{'unit_filename'}} = 1;
       }
     }
   }
 
-  Texinfo::Common::output_files_register_closed(
+  Texinfo::Convert::Utils::output_files_register_closed(
     $self->output_files_information(), $encoded_hhp_file_path_name);
   if (!close ($hhp_fh)) {
-    $self->document_error($self,
+    $self->converter_document_error(
          sprintf(__("chm.pm: error on closing %s: %s"),
                           $hhp_file_path_name, $!));
     return 1;

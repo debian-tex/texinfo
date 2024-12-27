@@ -69,16 +69,12 @@ $result_trees{'recursive_copying'} = {
                 }
               },
               'source_info' => {
-                'file_name' => '',
-                'line_nr' => 6,
-                'macro' => ''
+                'line_nr' => 6
               }
             }
           ],
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 1,
-            'macro' => ''
+            'line_nr' => 1
           }
         },
         {
@@ -95,10 +91,9 @@ $result_trees{'recursive_copying'} = {
             }
           ],
           'cmdname' => 'insertcopying',
+          'extra' => {},
           'source_info' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
+            'line_nr' => 8
           }
         }
       ],
@@ -125,9 +120,7 @@ $result_errors{'recursive_copying'} = [
   {
     'error_line' => '@insertcopying not allowed inside `@copying\' block
 ',
-    'file_name' => '',
     'line_nr' => 5,
-    'macro' => '',
     'text' => '@insertcopying not allowed inside `@copying\' block',
     'type' => 'error'
   }

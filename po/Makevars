@@ -8,41 +8,61 @@ subdir = po
 top_builddir = ..
 
 # These options get passed to xgettext.  "$" is escaped as "$$" here.
+# When a new function name is added with --keyword/-k, the list in
+# po-check should be updated, too.
 XGETTEXT_OPTIONS = \
  -cTRANSLATORS\
  --from-code=UTF-8\
+ -k  \
  --keyword=_\
  --keyword=N_\
- --keyword=__\
  -k__\
- -k\$$__\
- -k%__\
- -k__x\
- -k__n:1,2\
- -k__nx:1,2\
- -k__xn:1,2\
  -k__p:1c,2\
  -kN__\
- -kline_error:1 \
- -kline_warn:1 \
  -kcommand_error:2 \
  -kcommand_warn:2 \
- -kline_error_ext:3
+ -kline_error:1 \
+ -kline_error_ext:4 \
+ -kline_warn:1 \
+ -kmessage_list_command_error:4 \
+ -kmessage_list_document_error:4 \
+ -kmessage_list_command_warn:5 \
+ -kpmessage_list_command_warn:5c,6 \
+ -kmessage_list_document_warn:4 \
+ -kmessage_list_line_error_ext:6 \
+ -kngettext:1,2 \
+ -kpgettext:1c,2 \
  --flag=error:1:c-format\
  --flag=warning:1:c-format\
  --flag=fatal:1:c-format\
- --flag=file_line_error:3:c-format\
  --flag=line_error:1:c-format\
- --flag=add_word_args:1:c-format\
- --flag=printf_to_message_buffer:1:c-format\
+ --flag=line_warn:1:c-format\
+ --flag=line_error_ext:4:c-format\
  --flag=syntax_error:3:c-format\
- --flag=error_message:2:c-format\
- --flag=printf_to_message_buffer:1:c-format\
  --flag=info_error:1:c-format\
  --flag=window_message_in_echo_area:1:c-format\
  --flag=message_in_echo_area:1:c-format\
- --flag=format_message_node:1:c-format
- --flag=format_message_buffer:1:c-format
+ --flag=format_message_node:1:c-format\
+ --flag=format_message_buffer:1:c-format\
+ --flag=command_error:2:c-format\
+ --flag=command_warn:2:c-format\
+ --flag=message_list_command_error:4:c-format\
+ --flag=message_list_document_error:4:c-format\
+ --flag=message_list_command_warn:5:c-format\
+ --flag=pmessage_list_command_warn:6:c-format\
+ --flag=message_list_document_warn:4:c-format\
+ --flag=message_list_line_error_ext:6:c-format\
+ --flag=converter_document_warn:1:perl-format\
+ --flag=converter_document_error:1:perl-format\
+ --flag=converter_line_warn:1:perl-format\
+ --flag=_line_error:1:perl-format\
+ --flag=_line_warn:1:perl-format\
+ --flag=_command_error:2:perl-format\
+ --flag=_command_warn:2:perl-format\
+ --flag=line_error:1:perl-format\
+ --flag=line_warn:1:perl-format\
+ --flag=__:1:pass-perl-format\
+ --flag=__p:2:pass-perl-format
 
 # This is the copyright holder that gets inserted into the header of the
 # $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding

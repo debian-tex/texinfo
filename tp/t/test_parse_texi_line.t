@@ -5,7 +5,8 @@ use Texinfo::ModulePath (undef, undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 45; }
+# 1 + 2 * (2 * number of tests + 2 * number of errors)
+BEGIN { plan tests => 1 + 2 * (2 * 4 + 2 * (1 + 1 + 4)); }
 
 use Texinfo::Convert::Texinfo;
 use Texinfo::Parser;
@@ -14,6 +15,8 @@ use Texinfo::Parser;
 $ENV{LC_ALL} = 'C';
 $ENV{LANGUAGE} = 'en';
 
+# modules loaded
+ok(1);
 
 # test regressions specific of parse_texi_line
 
@@ -21,36 +24,40 @@ sub test_line($$$$)
 {
   my $parser = shift;
   my $texinfo_line = shift;
-  my $test_explanation = shift;
+  my $test_name = shift;
   my $errors_references = shift;
 
   if (not defined($parser)) {
     $parser = Texinfo::Parser::parser();
   }
 
-  #$parser->{'DEBUG'} = 1; print STDERR "\n$test_explanation\n\n";
-
   my $tree = $parser->parse_texi_line($texinfo_line);
   my $check_texinfo = Texinfo::Convert::Texinfo::convert_to_texinfo($tree);
-  is ($texinfo_line, $check_texinfo, $test_explanation);
+  is($texinfo_line, $check_texinfo, $test_name);
 
-  my $parser_registrar = $parser->registered_errors();
-  my ($error_warnings_list, $error_count) = $parser_registrar->errors();
+  my $reference_error_nrs = 0;
   if (defined($errors_references)) {
-    is (scalar(@$errors_references), scalar(@$error_warnings_list),
-        "warning/errors nr $test_explanation");
+    $reference_error_nrs = scalar(@$errors_references);
   }
+
+  my ($error_warnings_list, $error_count) = $parser->errors();
+  is(scalar(@$error_warnings_list), $reference_error_nrs,
+     "error nr $test_name");
+
   my $error_idx = 0;
   foreach my $error_message (@$error_warnings_list) {
-    if (defined($errors_references) and $error_idx < scalar(@$errors_references)) {
+    if (defined($errors_references)
+        and $error_idx < scalar(@$errors_references)) {
       my ($error_line_nr_reference, $error_line_reference)
         = @{$errors_references->[$error_idx]};
-      is ($error_message->{'line_nr'}, $error_line_nr_reference,
-          "$test_explanation error line $error_idx");
-      is ($error_message->{'error_line'}, $error_line_reference."\n",
-          "$test_explanation error message $error_idx");
+      is($error_message->{'line_nr'}, $error_line_nr_reference,
+         "$test_name error line $error_idx");
+      is($error_message->{'error_line'}, $error_line_reference."\n",
+         "$test_name error message $error_idx");
     } else {
-      warn "not caught: $error_message->{'error_line'}";
+      my $line = $error_message->{'error_line'};
+      chomp($line);
+      warn "not caught: [$error_message->{'line_nr'}, '$line'],\n";
     }
     $error_idx++;
   }
@@ -91,11 +98,13 @@ in chapter
 @listoffloats type
 
 @bye
-', 'long example', [[4, 'warning: @setfilename after the first element'],
-                    [24, 'column fraction not a number: a'],
-                    [24, 'column fraction not a number: b'],
-                    [20, '@columnfractions only meaningful on a @multitable line'],
-]]
+', 'long example',
+   [[4, 'warning: @setfilename after the first element'],
+   [24, 'column fraction not a number: a'],
+   [24, 'column fraction not a number: b'],
+   [24, '@columnfractions only meaningful on a @multitable line'],
+   ],
+]
 );
 
 foreach my $test_string_explanation (@tests) {
@@ -106,9 +115,7 @@ foreach my $test_string_explanation (@tests) {
 # test with the same parser reused
 my $parser = Texinfo::Parser::parser();
 
-my @concatenated_error_messages = ();
 foreach my $test_string_explanation (@tests) {
   my ($texi_string, $explanation, $error_messages) = @$test_string_explanation;
-  push @concatenated_error_messages, @$error_messages if (defined($error_messages));
-  test_line($parser, $texi_string, $explanation, \@concatenated_error_messages);
+  test_line($parser, $texi_string, "reuse parser $explanation", $error_messages);
 }

@@ -63,7 +63,6 @@ override_dh_install:
 	rm -rf $(tmpdir)/usr/share/texmf/tex/generic
 	# install all the files
 	dh_install
-	dh_missing --fail-missing --sourcedir=debian/tmp -X share/info
 
 #binary-indep:
 # There aren't any architecture independent packages here.
@@ -77,6 +76,10 @@ override_dh_installchangelogs:
 override_dh_perl:
 	#dh_perl /usr/lib/texinfo
 	dh_perl /usr/lib/texi2any
+
+override_dh_missing:
+	dh_missing --list-missing --sourcedir=debian/tmp
+	dh_missing --fail-missing --sourcedir=debian/tmp -X share/info -X usr/lib/texi2any
 
 # other targets
 update-texinfo.tex:

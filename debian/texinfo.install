@@ -13,6 +13,7 @@ usr/share/man/man1/texi2*.1
 usr/share/man/man1/pdftexi2dvi.1
 usr/share/man/man5/texinfo.5
 usr/share/texinfo
+usr/share/texi2any
 usr/share/texmf/tex/texinfo/texinfo.tex
 usr/share/texmf/tex/texinfo/texinfo-ja.tex
 usr/share/texmf/tex/texinfo/txi-??.tex

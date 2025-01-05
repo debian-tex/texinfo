@@ -31,6 +31,7 @@ tmpdir := $(CURDIR)/debian/tmp
 override_dh_auto_configure:
 	AWK=awk ./configure \
 	  --with-external-Text-Unidecode=yes \
+	  --with-external-libintl-perl=yes \
 	  --prefix=/usr \
 	  --libexecdir='$${prefix}/lib' \
 	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \

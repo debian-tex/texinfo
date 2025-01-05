@@ -4,5 +4,6 @@ Depends: build-essential,
 	gettext,
 	help2man,
 	libtext-unidecode-perl,
+	libintl-perl,
 	libperl-dev
 Restrictions: allow-stderr

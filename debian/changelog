@@ -1,9 +1,19 @@
-texinfo (7.1.1-2) UNRELEASED; urgency=medium
+texinfo (7.2-1) experimental; urgency=medium
 
+  * New upstream release.
+    "The use of the directories ~/.texinfo and ~/.texi2any for configuration
+    files is deprecated, and should be replaced by texinfo or texi2any
+    directories under XDG_CONFIG_HOME (usually ~/.config/).  the new
+    locations are compatible with the XDG Base Directory Specification.
+    in future versions, the ~/.texinfo and ~/.texi2any directories will
+    not be in search paths."
   * Demote priority of "info" and "install-info" to optional
     (PR #12).
+  * Don't install *.la files into /usr/lib any more.
+  * Build using "--with-external-libintl-perl=yes" to use libintl-perl
+    delivered with Debian.
 
- -- Hilmar Preuße <hille42@debian.org>  Thu, 12 Dec 2024 23:21:10 +0100
+ -- Hilmar Preuße <hille42@debian.org>  Tue, 07 Jan 2025 23:29:37 +0100
 
 texinfo (7.1.1-1) unstable; urgency=medium
 

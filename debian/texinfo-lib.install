@@ -1,1 +1,4 @@
 usr/lib/texi2any/*.so*
+usr/lib/texi2any/*XS.la
+usr/lib/texi2any/XS*.la
+usr/lib/texi2any/Parsetexi.la

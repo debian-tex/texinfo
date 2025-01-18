@@ -1,0 +1,9 @@
+The .la files
+=============
+Currently (v7.2) the .la files are still needed to make sure the .so files
+are loaded by texi2any to speed up things. As of TeXInfo 7.2.x they are
+not needed any more and can be left out. See
+
+https://lists.gnu.org/archive/html/help-texinfo/2025-01/msg00000.html ff.
+
+for details.

@@ -1,8 +1,8 @@
-texinfo (7.2-2) UNRELEASED; urgency=medium
+texinfo (7.2-2) experimental; urgency=medium
 
-  * Install some *.la files after recommendation from upstream.
+  * Install some *.la files again after recommendation from upstream.
 
- -- Hilmar Preuße <hille42@debian.org>  Thu, 09 Jan 2025 22:54:08 +0100
+ -- Hilmar Preuße <hille42@debian.org>  Sat, 18 Jan 2025 23:30:00 +0100
 
 texinfo (7.2-1) experimental; urgency=medium
 

@@ -7,6 +7,7 @@ texinfo (7.2-2) experimental; urgency=medium
 texinfo (7.2-1) experimental; urgency=medium
 
   * New upstream release.
+    - Can be built using gcc-15 (Closes: #1097986).
     "The use of the directories ~/.texinfo and ~/.texi2any for configuration
     files is deprecated, and should be replaced by texinfo or texi2any
     directories under XDG_CONFIG_HOME (usually ~/.config/).  the new

@@ -1,3 +1,10 @@
+texinfo (7.2-3) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Run test suite during build (Closes: #1067479).
+
+ -- Hilmar Preuße <hille42@debian.org>  Fri, 15 Aug 2025 22:08:55 +0200
+
 texinfo (7.2-2) experimental; urgency=medium
 
   * Install some *.la files again after recommendation from upstream.

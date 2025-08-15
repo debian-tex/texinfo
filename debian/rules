@@ -68,7 +68,7 @@ override_dh_install:
 #binary-indep:
 # There aren't any architecture independent packages here.
 
-override_dh_auto_test:
+#override_dh_auto_test:
 	# Skip test suite.
 
 override_dh_installchangelogs:

@@ -1,9 +1,9 @@
 Tests: test-suite
 Depends: build-essential,
-	libncurses-dev,
 	gettext,
 	help2man,
-	libtext-unidecode-perl,
 	libintl-perl,
-	libperl-dev
+	libncurses-dev,
+	libperl-dev,
+	libtext-unidecode-perl
 Restrictions: allow-stderr

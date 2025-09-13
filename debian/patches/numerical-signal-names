@@ -8,9 +8,9 @@ Author: David Weinehall <tao@debian.org>
  util/texi2dvi        |    2 +-
  3 files changed, 5 insertions(+), 5 deletions(-)
 
---- texinfo_71.orig/util/texi2dvi
-+++ texinfo_71/util/texi2dvi
-@@ -1869,7 +1869,7 @@
+--- texinfo.orig/util/texi2dvi
++++ texinfo/util/texi2dvi
+@@ -1745,7 +1745,7 @@
               $SED "s,^$orig_pwd/,,;s,^\./,,;s,/,!,g"`
    esac
    # Remove it at exit if clean mode.

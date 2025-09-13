@@ -1,3 +1,11 @@
+texinfo (7.2-5) UNRELEASED; urgency=medium
+
+  [ Niko Tyni ]
+  * Patch 0001-Fix-test-suite-failures-with-Perl-5.42 to fix test suite
+    failure on Perl 5.42 (Closes: #1115088).
+
+ -- Hilmar Preuße <hille42@debian.org>  Sat, 13 Sep 2025 12:00:50 +0200
+
 texinfo (7.2-4) unstable; urgency=medium
 
   * Disable test suite during build again, b/c it fails on official

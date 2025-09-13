@@ -1,4 +1,3 @@
 warn_missing_tex
 numerical-signal-names
-#c106b85ae5a6bb24de227f50e5d2a1ce81ba7868.diff
 0001-Fix-test-suite-failures-with-Perl-5.42.patch

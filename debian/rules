@@ -69,6 +69,9 @@ override_dh_install:
 # There aren't any architecture independent packages here.
 
 override_dh_auto_test:
+	export LC_ALL=C.UTF-8
+	export LANG=C.UTF-8
+	make check ALL_TESTS=yes
 	# Skip test suite.
 
 override_dh_installchangelogs:

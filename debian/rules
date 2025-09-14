@@ -29,12 +29,11 @@ tmpdir := $(CURDIR)/debian/tmp
 	dh $@
 
 override_dh_auto_configure:
-	AWK=awk ./configure \
+	AWK=awk dh_auto_configure -- \
+	  --libdir='$${prefix}/lib' \
+	  --libexecdir='$${prefix}/lib' \
 	  --with-external-Text-Unidecode=yes \
 	  --with-external-libintl-perl=yes \
-	  --prefix=/usr \
-	  --libexecdir='$${prefix}/lib' \
-	  --infodir='$${prefix}/share/info' --mandir='$${prefix}/share/man' \
 	  --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
 
 execute_before_dh_auto_build:

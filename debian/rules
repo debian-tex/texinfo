@@ -15,9 +15,6 @@ export PERL_EXT_CFLAGS := $(CFLAGS)
 export PERL_EXT_CPPFLAGS := $(CPPFLAGS)
 export PERL_EXT_LDFLAGS := $(LDFLAGS)
 
-texinfo := $(CURDIR)/debian/texinfo
-ii := $(CURDIR)/debian/install-info
-infopkg := $(CURDIR)/debian/info
 tmpdir := $(CURDIR)/debian/tmp
 
 # The Debian provided libintl-perl breaks several tests and probably

@@ -6,6 +6,7 @@ export DH_OPTIONS
 DEB_CFLAGS_MAINT_APPEND=-Wall
 # needed for correct building of new texinfo
 #DEB_CFLAGS_MAINT_STRIP=-Werror=format-security
+DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 include /usr/share/dpkg/architecture.mk
 

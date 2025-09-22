@@ -1,0 +1,8 @@
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/ConvertXS.so]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/DocumentXS.so]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/IndicesXS.so]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/Parsetexi.so]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/StructuringTransfoXS.so]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/libtexinfo-convert.so.0.0.0]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/libtexinfo-convertxs.so.0.0.0]
+texinfo-lib: custom-library-search-path RUNPATH /usr/lib/texi2any [usr/lib/texi2any/libtexinfoxs.so.0.0.0]

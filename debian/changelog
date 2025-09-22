@@ -8,6 +8,7 @@ texinfo (7.2-5) UNRELEASED; urgency=medium
   * Replace "configure call" by "dh_auto_configure".
   * Remove obsolete build workarounds.
   * Enable hardening.
+  * Lintian override: E: texinfo-lib: custom-library-search-path RUNPATH
 
  -- Hilmar Preuße <hille42@debian.org>  Sat, 13 Sep 2025 12:00:50 +0200
 
